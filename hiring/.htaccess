@@ -1,0 +1,7 @@
+<IfModule mod_rewrite.c>
+RewriteEngine on
+<FilesMatch "(\.php)$">
+    Order Allow,Deny
+    Allow from all
+</FilesMatch>
+</ifModule>

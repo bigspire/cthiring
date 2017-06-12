@@ -1,0 +1,94 @@
+USE [HCLIVE]
+GO
+
+/****** Object:  View [dbo].[ResumeView]    Script Date: 21-09-2015 11:21:13 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+ALTER VIEW [dbo].[ResumeView]
+AS
+SELECT     FirstName + ' ' + LastName AS CandidateName, EmailID AS CandidateEmailID, ISNULL(PassportNo, 'NA') AS PassportNo, ISNULL(Mobile, 'NA') 
+                      AS CandidateMobile, ISNULL(PhoneH, 'NA') AS CandidatePhone, ISNULL(CAST(PassportValidity AS nvarchar), '') AS PassportValidity, 
+                      ISNULL(ReleventExp, '0') AS RelevantExperience, ISNULL(TotalExp, '0') AS TotalExperience, ISNULL(CAST(DOB AS nvarchar), '') AS CandidateDOB, 
+                      (CASE Gender WHEN 0 THEN 'Male' WHEN 1 THEN 'Female' ELSE 'NA' END) AS Gender, EducationText AS CandidateEducationText, ISNULL
+                          ((SELECT     JobTitle
+                              FROM         dbo.HCM_JOBTITLE
+                              WHERE     (RID = dbo.HC_RESUME_BANK.DesignationID)), 'NA') AS ResumeDesignation, UniqueNo AS CandidateID, ISNULL
+                          ((SELECT     LocationTitle
+                              FROM         dbo.HCM_RESUME_LOCATIONS
+                              WHERE     (RID = dbo.HC_RESUME_BANK.LocationID)), 'NA') AS ResumeLocation, RID, 
+                      ISNULL((CASE HC_RESUME_BANK.Gender WHEN 0 THEN ' Mr. ' WHEN 1 THEN ' Ms. ' ELSE '' END), 0) AS Salutation, FirstName, LastName, 
+                      ISNULL(AlternateEmailID, N' NA') AS CandidateAlternateEmailID, ISNULL(Phone2, ' NA ') AS CandidatePhone2, SkillsText AS CandidateSkillText, 
+                      ISNULL((CASE HC_RESUME_BANK.Rating WHEN ' 1 ' THEN ' Excellent ' WHEN ' 2 ' THEN ' Very Good ' WHEN ' 3 ' THEN ' Good ' WHEN ' 4 ' THEN ' Moderate '
+                       WHEN ' 5 ' THEN ' Below Moderate' ELSE ' NA ' END), '') AS ResumeRating, ISNULL(RatingScore, ' 0 ') AS CandidateRatingScore, ISNULL
+                          ((SELECT     UserName
+                              FROM         dbo.HC_USERS
+                              WHERE     (RID = dbo.HC_RESUME_BANK.CreatedUserID)), '') AS ResumeCreatedUser, 
+                      ISNULL((CASE HC_RESUME_BANK.ResumeStatus WHEN '  0 ' THEN ' Draft ' WHEN ' 1 ' THEN ' Available ' WHEN ' 2 ' THEN ' IN Process ' WHEN ' 3 ' THEN
+                       ' Hired ' WHEN ' 4 ' THEN ' Blocked ' WHEN ' 5 ' THEN ' NOT Interested ' WHEN ' 6 ' THEN ' Interest Later ' WHEN ' 7 ' THEN ' NOT Reachable ' WHEN
+                       ' 8 ' THEN ' ON Training ' WHEN ' 9 ' THEN ' ON Training Bench ' WHEN ' 10 ' THEN ' ON Bench ' WHEN ' 11 ' THEN ' ON  Market Bench ' WHEN ' 12 ' THEN
+                       ' ON  Assignment ' WHEN ' 13 ' THEN ' OFF Rolls ' ELSE '' END), '') AS ResumeStatus, ISNULL(CONVERT(nvarchar, CreatedDate, 101), '') 
+                      AS ResumeCreatedDate, PerferLocation AS CandidatePreferedLocation, ISNULL(CONVERT(nvarchar, LastUpdateDate, 101), '') AS LastUpdateDate, 
+                      ISNULL(CONVERT(nvarchar, DocModifiedDate, 101), '') AS DocModifiedDate, ISNULL
+                          ((SELECT     SourceName
+                              FROM         dbo.HCM_PLACEMENT_AGENCIES
+                              WHERE     (RID = dbo.HC_RESUME_BANK.ResumeSourceID)), '') AS ResumeSource, ISNULL(ResumeSourceRef, 'NA') AS ResumeSourceReference, 
+                      ISNULL(CAST(WorkingFrom AS nvarchar), N'') AS WorkingFrom, ISNULL((CASE HC_RESUME_BANK.PresentCurrency WHEN 0 THEN '' ELSE
+                          (SELECT     Currency
+                            FROM          HCM_CURRENCYMASTER
+                            WHERE      HCM_CURRENCYMASTER.RID = HC_RESUME_BANK.PresentCurrency) END) + '   ' + CAST(PresentCTC AS nvarchar) 
+                      + ' ' + (CASE HC_RESUME_BANK.PresentScale WHEN 0 THEN '' ELSE
+                          (SELECT     Scale
+                            FROM          HCM_CURRENCYSCALE
+                            WHERE      HCM_CURRENCYSCALE.RID = HC_RESUME_BANK.PresentScale) END), ' 0 ') AS CandidatePresentCTC, 
+                      ISNULL((CASE HC_RESUME_BANK.ExpectedCurrency WHEN 0 THEN '' ELSE
+                          (SELECT     Currency
+                            FROM          HCM_CURRENCYMASTER
+                            WHERE      HCM_CURRENCYMASTER.RID = HC_RESUME_BANK.ExpectedCurrency) END) + '   ' + CAST(ExpectedCTC AS nvarchar) 
+                      + ' ' + (CASE HC_RESUME_BANK.ExpectedScale WHEN 0 THEN '' ELSE
+                          (SELECT     Scale
+                            FROM          HCM_CURRENCYSCALE
+                            WHERE      HCM_CURRENCYSCALE.RID = HC_RESUME_BANK.ExpectedScale) END), '
+                       0 ') AS CandidateExpectedCTC, 
+                      ISNULL
+                          ((SELECT     Title
+                              FROM         dbo.HCM_SOURCING_GRADE
+                              WHERE     (RID = dbo.HC_RESUME_BANK.LevelID)), 'NA') AS SourceingGrade, ISNULL(PresentEmployer, 'NA') AS PresentEmployer, 
+                      ISNULL
+                          ((SELECT     UserName
+                              FROM         dbo.HC_USERS AS HC_USERS_1
+                              WHERE     (RID = dbo.HC_RESUME_BANK.LastModifiedUserID)), 'NA') AS ResumeLastModifiedUser, FunctionText AS CandidateFunctionalArea, 
+                      IndustryText AS CandidateIndustryType, SubFunctionText AS CandidateSubFunctionalArea, ISNULL
+                          ((SELECT     Title
+                              FROM         dbo.HCM_NATIONALITY
+                              WHERE     (RID = dbo.HC_RESUME_BANK.NationalityID)), 'NA') AS Nationality, ISNULL(NoticePeriod, '0') AS NoticePeriod, CreatedDate, 
+                      ' 1 ' AS SLNo, CreatedUserID AS ResumeCreatedUserID,
+                          (SELECT     TOP (1) (CASE SourceType WHEN 0 THEN ' Mail ' WHEN 1 THEN ' Direct ' END) AS Expr1
+                            FROM          dbo.HC_RESUME_BANK_HISTORY
+                            WHERE      (ResumeID = dbo.HC_RESUME_BANK.RID)
+                            ORDER BY UpdatedDate DESC) AS ResumeHistorySourceType,
+                          (SELECT     TOP (1) (CASE [Type] WHEN 0 THEN ' Saved ' WHEN 1 THEN ' Overwritten ' END) AS Expr1
+                            FROM          dbo.HC_RESUME_BANK_HISTORY AS HC_RESUME_BANK_HISTORY_1
+                            WHERE      (ResumeID = dbo.HC_RESUME_BANK.RID)
+                            ORDER BY UpdatedDate DESC) AS ResumeHistoryType, ISNULL(CONVERT(nvarchar,
+                          (SELECT     TOP (1) UpdatedDate
+                            FROM          dbo.HC_RESUME_BANK_HISTORY AS HC_RESUME_BANK_HISTORY_2
+                            WHERE      (ResumeID = dbo.HC_RESUME_BANK.RID)), 101), N'') AS ResumeHistoryUpdatedDate, DesignationID, ISNULL
+                          ((SELECT     JobTitle
+                              FROM         dbo.HCM_JOBTITLE AS HCM_JOBTITLE_1
+                              WHERE     (RID = dbo.HC_RESUME_BANK.DesignationID)), '') AS JobTitle, ISNULL(CAST(AvailableAfter AS nvarchar), N'') AS AvailableAfter, 
+                      ISNULL((CASE HC_RESUME_BANK.WillingToChangeJob WHEN 1 THEN ' Yes' WHEN 0 THEN ' No ' ELSE ' NA ' END), 'NA') AS WillingtoChange, 
+                      ISNULL(PANNo, 'NA') AS PANNo, ISNULL(CAST(Notes AS nvarchar(4000)), 'NA') AS Notes, ISNULL(CAST(HotNotes AS nvarchar(4000)), 'NA') AS HotNotes,
+                       ISNULL(CONVERT(nvarchar, ValidatedDate, 101), N'') AS ResumeValidatedDate, ISNULL
+                          ((SELECT     UserName
+                              FROM         dbo.HC_USERS AS HC_USERS_2
+                              WHERE     (RID = dbo.HC_RESUME_BANK.ValidatedUserID)), '') AS ResumeValidatedUser
+FROM         dbo.HC_RESUME_BANK
+
+
+GO
+
+

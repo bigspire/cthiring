@@ -1,0 +1,101 @@
+{* Purpose : To add,edit and view mailer template.
+   Created : Nikitasa
+   Date : 28-02-2017 *}
+   
+			{include file='include/header.tpl'}	
+			
+			<!-- main content -->
+            <div id="contentwrapper">
+               <div class="main_content">
+            <div class="row-fluid">
+				 <div class="span12">
+				 <nav>
+                        <div id="jCrumbs" class="breadCrumb module">
+                            <ul>
+                                <li>
+                                    <a href="{$smarty.const.webroot}home"><i class="icon-home"></i></a>
+                                </li>                        
+                                <li>
+                                    <a href="">Mailer Templates</a>
+                                </li>
+                                 <li>
+                                  {$template}
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+
+						{if $SUCCESS_MSG}
+							<div class="alert alert-success">
+								<a class="close" data-dismiss="alert">×</a>
+								{$SUCCESS_MSG}
+							</div>
+						{/if}
+<form action="" id="formID" class="formID" method="post" accept-charset="utf-8">
+	<div class="box">
+		<div class="row-fluid">
+		<div class="span12">
+			<table class="table table-bordered dataTable" style="margin-bottom:0;">
+						<tbody>
+									<tr class="tbl_row">
+										<td width="120" class="tbl_column">Template <span class="f_req">*</span></td>
+										<td>
+										<select name="template_id" id="mailer" class="span8 input-xlarge" placeholder="" style="clear:left" id="PositionEmpId">
+										{html_options options=$template_type selected=$template_id} 						
+										</select> 
+										<label for="reg_city" generated="true" class="error">{$templateErr}</label>
+										</td>	
+									</tr>
+									
+									<tr class="tbl_row">
+										<td width="120" class="tbl_column">Subject <span class="f_req">*</span></td>
+										<td>										
+										<input type="text" tabindex="7" name="subject" value="{$subject}" class="span8" autocomplete="off">
+										<label for="reg_city" generated="true" class="error">{$subjectErr} </label>									
+										</td>	
+									</tr>	
+									
+									<tr class="tbl_row">
+										<td width="120" class="tbl_column">Message <span class="f_req">*</span></td>										
+										<td><textarea name="message"  tabindex="8" id="" cols="10" rows="12" class="span10 wysiwyg">{if $smart.post.message}{$smart.post.message}{else}{$message}{/if}</textarea>
+										<br>
+										<label for="reg_city" generated="true" class="error">{$messageErr}</label>
+										<a href="javascript:void(0)" id = 'email' rel="tooltip"  class="btn btn-mini btn-info" title="Email">Email</a>
+										<a href="#" rel="tooltip"  class="btn btn-mini btn-info" title="Full Name">Full Name</a>
+										<a href="#" rel="tooltip"  class="btn btn-mini btn-info" title="Age">Age</a>
+										<a href="#" rel="tooltip"  class="btn btn-mini btn-info" title="Address">Address</a>
+										<a href="#" rel="tooltip"  class="btn btn-mini btn-info" title="Location">Location</a>
+										</td>		
+										<td>
+										
+										</td>	
+									</tr>
+									
+								</tbody>
+							</table>
+						</div>
+<input type="hidden" id="send_cv" value="1">	
+<input type="hidden" id="interview_confirmation" value="2">	
+<input type="hidden" id="schedule_interview" value="3">	
+					</div>
+	<div>
+		</div>
+</div>
+<div class="form-actions">
+									<button class="btn btn-gebo" type="submit">Submit</button>
+									
+								<input type="button" value="Cancel" class="btn" onclick="window.location='{$smarty.const.webroot}home'">
+							</div>
+
+                    </div>
+					
+					</form>
+                </div>
+            </div> 
+		</div>
+		</div>
+		</div>
+		</div>
+	</div>
+			
+{include file='include/footer.tpl'}

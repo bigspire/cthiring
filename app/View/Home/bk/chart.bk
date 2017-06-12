@@ -1,0 +1,112 @@
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+	<script>
+	  google.charts.load('current', {'packages':['bar']});
+      google.charts.setOnLoadCallback(drawChart_1);
+      function drawChart_1() {       
+		  var data = google.visualization.arrayToDataTable([
+          ['Amount','Positions Worked', 'Profiles Submitted','Positions Closed'],
+          ['< 10 lacs',155,122,15],
+          ['10 - 25 lacs',120,78,12],
+          ['25 - 40 lacs',44,55,8],
+		  ['> 40 lacs',12,33,6]
+        ]);
+	
+		  var options = {
+          chart: {
+            title: 'Profile Performance',
+            subtitle: 'Aug, 2016',
+			
+          }, 
+		  vAxis: {
+          title: 'Numbers'
+        },
+		   colors: ['#6688e9', '#fcea54', '#12de6d'],
+		   legend: {position: 'top', maxLines:1, textStyle: {color: '', fontSize: 12}},
+          dataOpacity: 0.7,
+		  isStacked: false,
+		  bar: { groupWidth: '45' },
+		  chartArea:{width:"75%"},
+		  tooltip:{textStyle: {color: '', fontSize: 13}},
+		  titleTextStyle:{ fontSize: 15},
+        };
+
+        var chart = new google.charts.Bar(document.getElementById('profile_work'));
+
+        chart.draw(data, options);
+      }
+
+      google.charts.load('current', {'packages':['bar']});
+      google.charts.setOnLoadCallback(drawChart_2);
+      function drawChart_2() {       
+		  var data = google.visualization.arrayToDataTable([
+          ['Amount','Profile Sourcing','Candidate Coordination','Client Coordination'],
+          ['< 10 lacs',24,67,44],
+          ['10 - 25 lacs',34,78,12],
+          ['25 - 40 lacs',12,55,34],
+		  ['> 40 lacs',12,44,46]
+        ]);
+	
+		  var options = {
+          chart: {
+            title: 'Coordination Performance',
+            subtitle: 'Aug, 2016',
+			
+          },
+		vAxis: {
+          title: 'Percentage'
+        },
+		 colors: ['#23E5FF','#d7f477', '#fabec2',],
+		   legend: {position: 'top', maxLines:1, textStyle: {color: '', fontSize: 12}},
+          dataOpacity: 0.7,
+		  isStacked: false,
+		  bar: { groupWidth: '45' },
+		  chartArea:{width:"75%",height:'60%',top:5},
+		  tooltip:{textStyle: {color: '', fontSize: 13}},
+		  titleTextStyle:{ fontSize: 15},
+        };
+
+        var chart = new google.charts.Bar(document.getElementById('coordinate_work'));
+
+        chart.draw(data, options);
+      }
+     
+	  google.charts.load('current', {'packages':['bar']});
+      google.charts.setOnLoadCallback(drawChart_3);
+      function drawChart_3() {       
+		  var data = google.visualization.arrayToDataTable([
+		  ['Activity','Nos.', { role: 'style' }],
+          ['Candidate Exit',3,'#fabec2'],
+          ['Verification',4,'#c8c3c3'],
+          ['Inability to Pay',1,'#d7f477'],
+		  ['Duplication',1,'#09418d'],
+		  ['Lack of Agreement',6,'#ab1f57']
+        ]);
+	
+		  var options = {
+          chart: {
+            title: 'Bad Debts Performance',
+            subtitle: 'Aug, 2016',
+			
+          },
+		vAxis: {
+          title: 'Numbers'
+        },
+		  legend: {position: 'none', maxLines:1, textStyle: {color: '', fontSize: 12}},
+          dataOpacity: 0.7,
+		  isStacked: false,
+		  bar: { groupWidth: '45' },
+		  chartArea:{width:"75%",height:'60%',top:5},
+		  tooltip:{textStyle: {color: '', fontSize: 13}},
+		  titleTextStyle:{ fontSize: 15},
+        };
+
+        var chart = new google.charts.Bar(document.getElementById('debt_work'));
+
+        chart.draw(data, options);
+      }
+	  
+	 // '#6688e9', '#fcea54', '#12de6d', '#ff0000', '#c8c3c3', '#23E5FF', '#ab1f57',  // '#811905','#09418d', '#fabec2', '#0dac01','#d7f477'
+	 
+	
+	  </script>
+	
