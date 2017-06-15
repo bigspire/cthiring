@@ -74,7 +74,7 @@ class DATABASE_CONFIG {
 	public $default = array(
 		'datasource' => 'Database/Mysql',
 		'persistent' => false,
-		'host' => 'localhost',
+		'host' => '172.20.10.13',
 		'login' => 'cthire',
 		'password' => 'hire938',
 		'database' => 'cthiring_dbase',

@@ -84,6 +84,7 @@ if(empty($_POST)){
 		}
 		$tot = 0;
 		while($row = $mysql->display_result($result)){
+
 			// post of assign asset fields value
 			$collegeData[$tot] = $row['college'];
 			$qualificationData[$tot] = $row['resume_program_id'];
@@ -347,7 +348,7 @@ if(!empty($_POST)){
 	
 	// assigning the date
 	$date =  $fun->current_date();
-	$modified_by = $_SESSION['user_id'];
+	$modified_by = $_SESSION['user_id'] ? $_SESSION['user_id'] : 1;
 	$total_exp = $_POST['year_of_exp'].'.'.$_POST['month_of_exp'];
 	
 	// save all the data
@@ -393,6 +394,19 @@ if(!empty($_POST)){
 			echo 'Caught exception: ',  $e->getMessage(), "\n";
 		}
 		
+		// query to delete education details
+		$query = "CALL delete_res_edu('$getid')";
+		try{
+			if(!$result = $mysql->execute_query($query)){
+				throw new Exception('Problem in deleting education details');
+			}
+			$row = $mysql->display_result($result);
+			// call the next result
+			$mysql->next_query();
+		}catch(Exception $e){
+			echo 'Caught exception: ',  $e->getMessage(), "\n";
+		}
+		
 		for($i = 0; $i < $_POST['edu_count']; $i++){
 			
 			$collegeData = $_POST['college_'.$i];
@@ -404,7 +418,7 @@ if(!empty($_POST)){
 			$universityData = $_POST['university_'.$i];
 		
 			// query to add education details
-			$query = "CALL edit_res_education('$getid','".$fun->is_white_space($mysql->real_escape_str($gradeData))."',
+			$query = "CALL add_res_education('$getid','".$fun->is_white_space($mysql->real_escape_str($gradeData))."',
 				'".$mysql->real_escape_str($year_of_passData)."','".$fun->is_white_space($mysql->real_escape_str($collegeData))."',
 				'".$mysql->real_escape_str($grade_typeData)."','".$fun->is_white_space($mysql->real_escape_str($universityData))."',
 				'".$date."','N','".$mysql->real_escape_str($degreeData)."',
@@ -420,7 +434,7 @@ if(!empty($_POST)){
 				echo 'Caught exception: ',  $e->getMessage(), "\n";
 			}
 		}
-		$edu_id = $row['affected_rows'];
+		$edu_id = $row['inserted_id'];
 		
 		// get and insert is recent field
 		$query = "CALL get_is_recent_edu('".$getid."')";
@@ -447,6 +461,19 @@ if(!empty($_POST)){
 			echo 'Caught exception: ',  $e->getMessage(), "\n";
 		}
 		
+		// query to delete experience details
+		$query = "CALL delete_res_exp('$getid')";
+		try{
+			if(!$result = $mysql->execute_query($query)){
+				throw new Exception('Problem in deleting experience details');
+			}
+			$row = $mysql->display_result($result);
+			// call the next result
+			$mysql->next_query();
+		}catch(Exception $e){
+			echo 'Caught exception: ',  $e->getMessage(), "\n";
+		}
+		
 		for($i = 0; $i < $_POST['exp_count']; $i++){
 			$desigData = $_POST['desig_'.$i];
 			$expData = $_POST['year_of_exp_'.$i].'.'.$_POST['month_of_exp_'.$i];
@@ -456,7 +483,7 @@ if(!empty($_POST)){
 			$vitalData = $_POST['vital_'.$i];
 			
 			// query to add experience details
-			$query = "CALL edit_res_experience('$getid','".$mysql->real_escape_str($desigData)."','".$mysql->real_escape_str($expData)."',
+			$query = "CALL add_res_experience('$getid','".$mysql->real_escape_str($desigData)."','".$mysql->real_escape_str($expData)."',
 				'".$fun->is_white_space($mysql->real_escape_str($locationData))."',
 				'".$fun->is_white_space($mysql->real_escape_str($areaData))."',
 				'".$fun->is_white_space($mysql->real_escape_str($companyData))."',
@@ -466,7 +493,7 @@ if(!empty($_POST)){
 					throw new Exception('Problem in adding experience details');
 				}
 				$row = $mysql->display_result($result);
-				$exp_id = $row['affected_rows'];
+				$exp_id = $row['inserted_id'];
 				// call the next result
 				$mysql->next_query();
 			}catch(Exception $e){

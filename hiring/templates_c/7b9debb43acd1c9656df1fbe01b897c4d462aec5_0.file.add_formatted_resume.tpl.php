@@ -1,8 +1,34 @@
-{* Purpose : To add formatted resume.
- 	Created : Nikitasa
-   Date : 26-05-2017 *}
+<?php
+/* Smarty version 3.1.29, created on 2017-06-15 14:15:36
+  from "C:\xampp\htdocs\2017\ctsvn\cthiring\hiring\templates\add_formatted_resume.tpl" */
+
+if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
+  'has_nocache_code' => false,
+  'version' => '3.1.29',
+  'unifunc' => 'content_59424930940475_60618255',
+  'file_dependency' => 
+  array (
+    '7b9debb43acd1c9656df1fbe01b897c4d462aec5' => 
+    array (
+      0 => 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\templates\\add_formatted_resume.tpl',
+      1 => 1497516322,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+    'file:include/header.tpl' => 1,
+    'file:include/footer.tpl' => 1,
+  ),
+),false)) {
+function content_59424930940475_60618255 ($_smarty_tpl) {
+if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
+?>
+
    
-{include file='include/header.tpl'}
+<?php $_smarty_tpl->smarty->ext->_subtemplate->render($_smarty_tpl, "file:include/header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
+
 			
 			<!-- main content -->
             <div id="contentwrapper">
@@ -48,9 +74,13 @@
 									<tr class="tbl_row">
 										<td width="120" class="tbl_column">Candidate Name <span class="f_req">*</span></td>
 										<td>
-										<input type="text" tabindex="1" name="first_name" placeholder="First Name" value="{$first_name}" class="span4">
-								        <input type="text" tabindex="2" name="last_name" placeholder="Last Name" value="{$last_name}" class="inline_text span4">
-										<label for="reg_city" generated="true" class="error">{$first_nameErr}{$last_nameErr}</label>
+										<input type="text" tabindex="1" name="first_name" placeholder="First Name" value="<?php echo $_smarty_tpl->tpl_vars['first_name']->value;?>
+" class="span4">
+								        <input type="text" tabindex="2" name="last_name" placeholder="Last Name" value="<?php echo $_smarty_tpl->tpl_vars['last_name']->value;?>
+" class="inline_text span4">
+										<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['first_nameErr']->value;
+echo $_smarty_tpl->tpl_vars['last_nameErr']->value;?>
+</label>
 										
 										</td>	
 									</tr>
@@ -58,29 +88,37 @@
 									<tr>
 										<td width="120" class="tbl_column">Email <span class="f_req">*</span></td>
 										<td>	
-										<input type="text" tabindex="3" id="email" name="email" value="{$email}" class="span8">
-										<label for="reg_city" generated="true" class="error">{$emailErr}</label>
+										<input type="text" tabindex="3" id="email" name="email" value="<?php echo $_smarty_tpl->tpl_vars['email']->value;?>
+" class="span8">
+										<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['emailErr']->value;?>
+</label>
 										</td>	
 									</tr>	
 									
                           <tr class="tbl_row">
 										<td width="120" class="tbl_column"> Mobile <span class="f_req">*</span></td>
 										<td>
-										<input type="text" tabindex="4" name="mobile"  value="{$mobile}" class="span8 ui-autocomplete-input" autocomplete="off">							
-									<label for="reg_city" generated="true" class="error">{$mobileErr} </label>	</td>		
+										<input type="text" tabindex="4" name="mobile"  value="<?php echo $_smarty_tpl->tpl_vars['mobile']->value;?>
+" class="span8 ui-autocomplete-input" autocomplete="off">							
+									<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['mobileErr']->value;?>
+ </label>	</td>		
 									</tr>	
 									
 									<tr>
 										<td width="120" class="tbl_column">Telephone <span class="f_req">*</span></td>
 										<td>
-										<input type="text" tabindex="5" name="telephone" value="{$telephone}" class="span8">
-										<label for="reg_city" generated="true" class="error">{$telephoneErr}</label>	</td>	
+										<input type="text" tabindex="5" name="telephone" value="<?php echo $_smarty_tpl->tpl_vars['telephone']->value;?>
+" class="span8">
+										<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['telephoneErr']->value;?>
+</label>	</td>	
 									</tr>								
 									<tr class="tbl_row">
 										<td width="120" class="tbl_column">DOB <span class="f_req">*</span></td>
 										<td> 
-										<input name="dob_field" tabindex="6" value="{$dob_field}"  class="datepick span8" type="text">										
-											<label for="reg_city" generated="true" class="error">{$dobErr}</label></td>
+										<input name="dob_field" tabindex="6" value="<?php echo $_smarty_tpl->tpl_vars['dob_field']->value;?>
+"  class="datepick span8" type="text">										
+											<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['dobErr']->value;?>
+</label></td>
 									</tr>	
 
 									<tr>
@@ -88,19 +126,24 @@
 										<td> 
 										<select tabindex="7" name="position_for" class="span8"  id="position_for">
 										<option value="">Select</option>
-										{html_options options=$requirement selected=$position_for}	
-										<label for="reg_city" generated="true" class="error">{$position_forErr}</label>																					
+										<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['requirement']->value,'selected'=>$_smarty_tpl->tpl_vars['position_for']->value),$_smarty_tpl);?>
+	
+										<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['position_forErr']->value;?>
+</label>																					
 										</td>
 									</tr>
 																		
 									<tr class="tbl_row">
 										<td width="125" class="tbl_column">Current Designation <span class="f_req">*</span></td>
 										<td> 
-										<select tabindex="8" name="designation_id" class="span8" value="{$designation_id}">	
+										<select tabindex="8" name="designation_id" class="span8" value="<?php echo $_smarty_tpl->tpl_vars['designation_id']->value;?>
+">	
 											<option value="">Select</option>
-											{html_options options=$desig_name selected=$designation_id}															
+											<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['desig_name']->value,'selected'=>$_smarty_tpl->tpl_vars['designation_id']->value),$_smarty_tpl);?>
+															
 										</select>
-										<label for="reg_city" generated="true" class="error">{$positionErr}</label>
+										<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['positionErr']->value;?>
+</label>
 										</td>
 									</tr>
 									
@@ -109,42 +152,58 @@
 										<td>
 										<select name="year_of_exp" tabindex="9" class="span4">
 										<option value="">Year</option>
-										{html_options options=$exp_yr selected=$year_of_exp}	
+										<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['exp_yr']->value,'selected'=>$_smarty_tpl->tpl_vars['year_of_exp']->value),$_smarty_tpl);?>
+	
 										</select>
 										<select name="month_of_exp" tabindex="10" class="inline_text span4">
 										<option value="">Month</option>
-										{html_options options=$exp_month selected=$month_of_exp}	
+										<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['exp_month']->value,'selected'=>$_smarty_tpl->tpl_vars['month_of_exp']->value),$_smarty_tpl);?>
+	
 										</select>
-										<label for="reg_city" generated="true" class="error">{$year_of_expErr}{$month_of_expErr}</label>																						
+										<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['year_of_expErr']->value;
+echo $_smarty_tpl->tpl_vars['month_of_expErr']->value;?>
+</label>																						
 										</td>			
 									</tr>	
 
 									<tr class="tbl_row">
 										<td width="120" class="tbl_column">Present Location <span class="f_req">*</span></td>
 										<td>
-								          <input type="text" tabindex="11" name="present_location" value="{$present_location}" class="span8">								
-											<label for="reg_city" generated="true" class="error">{$present_locationErr}</label>
+								          <input type="text" tabindex="11" name="present_location" value="<?php echo $_smarty_tpl->tpl_vars['present_location']->value;?>
+" class="span8">								
+											<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['present_locationErr']->value;?>
+</label>
 										</td>	
 									</tr>
 									<tr>
 										<td width="120" class="tbl_column">Native Location </td>
 										<td>
-								        <input type="text" tabindex="12" name="native_location" placeholder="" value="{if $native_location}{$native_location}{else}{$smarty.post.native_location}{/if}" class="span8">								
+								        <input type="text" tabindex="12" name="native_location" placeholder="" value="<?php if ($_smarty_tpl->tpl_vars['native_location']->value) {
+echo $_smarty_tpl->tpl_vars['native_location']->value;
+} else {
+echo $_POST['native_location'];
+}?>" class="span8">								
 										</td>	
 									</tr>		
 									
 									<tr class="tbl_row">
 										<td width="120" class="tbl_column">Family (Dependents)<span class="f_req"></span></td>										
 										<td>
-										<textarea name="family" tabindex="13" cols="10" rows="2" class="span8">{if $family}{$family}{else}{$smarty.post.family}{/if}</textarea>									
+										<textarea name="family" tabindex="13" cols="10" rows="2" class="span8"><?php if ($_smarty_tpl->tpl_vars['family']->value) {
+echo $_smarty_tpl->tpl_vars['family']->value;
+} else {
+echo $_POST['family'];
+}?></textarea>									
 										</td>			
 									</tr>	
 																	
 										<tr class="tbl_row">
 										<td width="120" class="tbl_column"> Nationality   <span class="f_req">*</span></td>
 										<td>
-										<input type="text" tabindex="14" name="nationality" id="nationality" value="{$nationality}" class="span8 ui-autocomplete-input" autocomplete="off">							
-										<label for="reg_city" generated="true" class="error"> {$nationalityErr} </label>								
+										<input type="text" tabindex="14" name="nationality" id="nationality" value="<?php echo $_smarty_tpl->tpl_vars['nationality']->value;?>
+" class="span8 ui-autocomplete-input" autocomplete="off">							
+										<label for="reg_city" generated="true" class="error"> <?php echo $_smarty_tpl->tpl_vars['nationalityErr']->value;?>
+ </label>								
 										</td>										
 											
 									</tr>					
@@ -159,51 +218,72 @@
 										<td width="120" class="tbl_column"> Languages    <span class="f_req">*</span></td>
 										<td>
  									<select name="res_language[]" multiple class="chosen-select" tabindex="15" id="language">
-										{html_options options=$languages selected=$res_language}
+										<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['languages']->value,'selected'=>$_smarty_tpl->tpl_vars['res_language']->value),$_smarty_tpl);?>
+
 									</select>                             
-									<label for="reg_city" generated="true" class="error">{$languageErr} </label>	
+									<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['languageErr']->value;?>
+ </label>	
 									</td>
 									</tr>
 								<tr>
 										<td width="120" class="tbl_column"> Compensation <span class="f_req">*</span></td>
 										<td>	
 										
-										<input type="text" value="{$present_ctc}"  tabindex="15" name="present_ctc"  placeholder="Present"  class="span2"/>										
+										<input type="text" value="<?php echo $_smarty_tpl->tpl_vars['present_ctc']->value;?>
+"  tabindex="15" name="present_ctc"  placeholder="Present"  class="span2"/>										
 										<select class="span3"   name="present_ctc_type" tabindex="16">
-										{html_options options=$ctc_type selected=$present_ctc_type}
+										<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['ctc_type']->value,'selected'=>$_smarty_tpl->tpl_vars['present_ctc_type']->value),$_smarty_tpl);?>
+
 										</select>  
 											
-										<input type="text" name="expected_ctc" tabindex="17"  placeholder="Expected" value="{$expected_ctc}" class="span2"/>	
+										<input type="text" name="expected_ctc" tabindex="17"  placeholder="Expected" value="<?php echo $_smarty_tpl->tpl_vars['expected_ctc']->value;?>
+" class="span2"/>	
 										<select  class="span3"  name="expected_ctc_type" tabindex="18">
-										{html_options options=$ctc_type selected=$expected_ctc_type}
+										<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['ctc_type']->value,'selected'=>$_smarty_tpl->tpl_vars['expected_ctc_type']->value),$_smarty_tpl);?>
+
 										</select>
 										<span class="f_req">*</span>	
-										<label for="reg_city" generated="true" class="error">{$present_ctcErr}{$present_ctc_typeErr}{$expected_ctcErr}{$expected_ctc_typeErr} </label>	
+										<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['present_ctcErr']->value;
+echo $_smarty_tpl->tpl_vars['present_ctc_typeErr']->value;
+echo $_smarty_tpl->tpl_vars['expected_ctcErr']->value;
+echo $_smarty_tpl->tpl_vars['expected_ctc_typeErr']->value;?>
+ </label>	
 										</td>	
 									</tr>	
 									<tr class="tbl_row">
 										<td width="125" class="tbl_column">Notice Period <span class="f_req">*</span></td>
 										<td> 
 										<select name="notice_period" tabindex="19" class="span8">										
-										{html_options options=$n_p selected=$notice_period}							
+										<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['n_p']->value,'selected'=>$_smarty_tpl->tpl_vars['notice_period']->value),$_smarty_tpl);?>
+							
 										</select>
-										<label for="reg_city" generated="true" class="error">{$notice_periodErr}</label>																				
+										<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['notice_periodErr']->value;?>
+</label>																				
 										</td>
 									</tr>	
 									
 									<tr >
 										<td width="120" class="tbl_column">Gender <span class="f_req">*</span></td>
 										<td> 
-										<input type="radio" tabindex="20" tabindex="14" name="gender"{if isset($gender) && $gender == '1'}{'checked'}{/if} value="1"> Male
-										<input type="radio" tabindex="21" tabindex="15" name="gender"{if isset($gender) && $gender == '2'}{'checked'}{/if} value="2"> Female
-										<label for="reg_city" generated="true" class="error">{$genderErr} </label>																				
+										<input type="radio" tabindex="20" tabindex="14" name="gender"<?php if (isset($_smarty_tpl->tpl_vars['gender']->value) && $_smarty_tpl->tpl_vars['gender']->value == '1') {
+echo 'checked';
+}?> value="1"> Male
+										<input type="radio" tabindex="21" tabindex="15" name="gender"<?php if (isset($_smarty_tpl->tpl_vars['gender']->value) && $_smarty_tpl->tpl_vars['gender']->value == '2') {
+echo 'checked';
+}?> value="2"> Female
+										<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['genderErr']->value;?>
+ </label>																				
 										</td>
 									</tr>	
 									 <tr class="tbl_row">
 										<td width="120" class="tbl_column">Marital Status <span class="f_req"></span></td>
 										<td>
-										<input type="radio" tabindex="22" name="marital_status"{if isset($marital_status) || $smarty.post.marital_status == 1}{'checked'}{/if} value="1"> Single
-										<input type="radio" tabindex="23" name="marital_status"{if isset($marital_status) || $smarty.post.marital_status == 2}{'checked'} {/if} value="2"> Married
+										<input type="radio" tabindex="22" name="marital_status"<?php if (isset($_smarty_tpl->tpl_vars['marital_status']->value) || $_POST['marital_status'] == 1) {
+echo 'checked';
+}?> value="1"> Single
+										<input type="radio" tabindex="23" name="marital_status"<?php if (isset($_smarty_tpl->tpl_vars['marital_status']->value) || $_POST['marital_status'] == 2) {
+echo 'checked';?>
+ <?php }?> value="2"> Married
 										</td>	
 									</tr>						
 									
@@ -211,29 +291,46 @@
 									<tr>
 										<td width="120" class="tbl_column">Technical Expertise and Domain Expertise</td>
 										<td> 
-									   <textarea name="tech_expert" tabindex="24" cols="10" rows="3" class="span8">{if $tech_expert}{$tech_expert}{else}{$smarty.post.tech_expert}{/if}</textarea>									
+									   <textarea name="tech_expert" tabindex="24" cols="10" rows="3" class="span8"><?php if ($_smarty_tpl->tpl_vars['tech_expert']->value) {
+echo $_smarty_tpl->tpl_vars['tech_expert']->value;
+} else {
+echo $_POST['tech_expert'];
+}?></textarea>									
 										</td>
 									</tr>	
 									
 									<tr class="tbl_row">
 										<td width="120" class="tbl_column">Skills </td>
 										<td>
-										<textarea name="skills" cols="10" tabindex="25" rows="3" class="span8">{if $skills}{$skills}{else}{$smarty.post.skills}{/if}</textarea>									
+										<textarea name="skills" cols="10" tabindex="25" rows="3" class="span8"><?php if ($_smarty_tpl->tpl_vars['skills']->value) {
+echo $_smarty_tpl->tpl_vars['skills']->value;
+} else {
+echo $_POST['skills'];
+}?></textarea>									
 										</td>	
 									</tr>									
 									
 									<tr>
 										<td width="120" class="tbl_column">Address <span class="f_req">*</span></td>
 										<td>
-										 <textarea name="address" cols="10" tabindex="26" rows="3" class="span8">{if $address}{$address}{else}{$smarty.post.address}{/if}</textarea>									
-										<label for="reg_city" generated="true" class="error">{$addressErr}</label>
+										 <textarea name="address" cols="10" tabindex="26" rows="3" class="span8"><?php if ($_smarty_tpl->tpl_vars['address']->value) {
+echo $_smarty_tpl->tpl_vars['address']->value;
+} else {
+echo $_POST['address'];
+}?></textarea>									
+										<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['addressErr']->value;?>
+</label>
 										</td>	
 									</tr>
 									
 									<tr class="tbl_row">
 										<td width="120" class="tbl_column">Hobbies </td>
 										<td>
-										<textarea name="hobby" tabindex="27" cols="10" rows="3" class="span8">{if $hobby}{$hobby}{else}{$smarty.post.hobby}{/if}</textarea>									
+										<textarea name="hobby" tabindex="27" cols="10" rows="3" class="span8"><?php if ($_smarty_tpl->tpl_vars['hobby']->value) {
+echo $_smarty_tpl->tpl_vars['hobby']->value;
+} else {
+echo $_POST['hobby'];
+}?></textarea>									
 										</td>	
 									</tr>	
 								</tbody>
@@ -256,7 +353,8 @@
 										<td>
 										<select name="qualification_#index#" tabindex="1" class="span8 qualification_id"  id="qualification_#index#">	
 											<option value="">Select</option>
-											{html_options options=$qual}															
+											<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['qual']->value),$_smarty_tpl);?>
+															
 										</select>						
 										<label for="reg_city" generated="true" class="error" id="qualification_Err_#index#"></label></td>	
 									</tr>
@@ -266,7 +364,8 @@
 										<td> 
 					<select name="specialization_#index#" tabindex="3" class="span8"  id="specialization_#index#">	
 					<option value="">Select</option>
-						{html_options options=$spec}							
+						<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['spec']->value),$_smarty_tpl);?>
+							
 					</select>
 					<label for="reg_city" generated="true" class="error" id="specialization_Err_#index#"></label>										
 				</td>	
@@ -306,15 +405,18 @@
 										<td width="120" class="tbl_column"> College <span class="f_req"></span></td>
 										<td> 
 					<input type="text" tabindex="4" name="college_#index#" id="college_#index#" class="span8" >										
-					<label for="reg_city" generated="true" class="error">{$collegeErr}</labe>									
+					<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['collegeErr']->value;?>
+</labe>									
 				</td>		
 									</tr>
 									<tr class="tbl_row">
 										<td width="120" class="tbl_column"> % of Marks  <span class="f_req">*</span></td>
 										<td> 
-									<input type="text" tabindex="6" name="grade_#index#" id="grade_#index#" value="{$grade}" class="span4" >
+									<input type="text" tabindex="6" name="grade_#index#" id="grade_#index#" value="<?php echo $_smarty_tpl->tpl_vars['grade']->value;?>
+" class="span4" >
 									<select name="grade_type_#index#" tabindex="7" class="inline_text span4"  id="grade_type_#index#">
-										{html_options options=$grade_drop} 
+										<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['grade_drop']->value),$_smarty_tpl);?>
+ 
 									</select>
 									<label for="reg_city" generated="true" class="error" id="gradeErr_#index#"></label>	
 							<label for="reg_city" generated="true" class="error" id="grade_typeErr_#index#"></label>	
@@ -327,7 +429,8 @@
 								<td>
 									<select name="from_yr_#index#" id="from_yr_#index#" tabindex="9" class="span4">
 									<option value="">Select</option>
-										{html_options options=$year_of_pass} 
+										<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['year_of_pass']->value),$_smarty_tpl);?>
+ 
 									</select>
 								<label for="reg_city" generated="true" class="error" id="from_yrErr_#index#">
 								</label>	
@@ -376,7 +479,8 @@
 										<td> 
 										<select tabindex="7" name="desig_#index#" class="span8"  id="desig_#index#">	
 											<option value="">Select</option>
-											{html_options options=$desig_name}															
+											<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['desig_name']->value),$_smarty_tpl);?>
+															
 										</select>
 										<label for="reg_city" generated="true" class="error" id="desigErr_#index#"></label>									
 										</td>
@@ -386,12 +490,14 @@
 										<td>
 										<select name="year_of_exp_#index#" id = "year_of_exp_#index#" tabindex="2" class="span4">
 										<option value="">Year</option>
-										{html_options options=$exp_yr} 
+										<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['exp_yr']->value),$_smarty_tpl);?>
+ 
 										</select>
 										
 										<select name="month_of_exp_#index#" id = "month_of_exp_#index#" tabindex="3" class="inline_text span4">
 										<option value="">Month</option>
-										{html_options options=$exp_month} 
+										<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['exp_month']->value),$_smarty_tpl);?>
+ 
 										</select>
 										
 										<label for="reg_city" generated="true" class="error" id="year_of_expErr_#index#"></label>																						
@@ -504,7 +610,8 @@
 										<td>
 								<select name="train_year_#index#" class="span8" tabindex="1" id="train_year_#index#">	
 									<option value="">Year</option>
-										{html_options options=$year_of_pass} 
+										<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['year_of_pass']->value),$_smarty_tpl);?>
+ 
 									</select>
 									<label for="reg_city" generated="true" class="error" id="train_yearErr_#index#"> </label>
 										</td>	
@@ -572,21 +679,35 @@
 										<td width="120" class="tbl_column">Personality <span class="f_req">*</span>
 										</td>
 										<td>
-<textarea placeholder="" name="personality" tabindex="1" cols="10" rows="3" class="span8">{if $personality}{$personality}{else}{$smarty.post.personality}{/if}</textarea>
-										<label for="reg_city" generated="true" class="error">{$personalityErr} </label>	
+<textarea placeholder="" name="personality" tabindex="1" cols="10" rows="3" class="span8"><?php if ($_smarty_tpl->tpl_vars['personality']->value) {
+echo $_smarty_tpl->tpl_vars['personality']->value;
+} else {
+echo $_POST['personality'];
+}?></textarea>
+										<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['personalityErr']->value;?>
+ </label>	
 										</td>	
 									</tr>	
 									<tr class="">
 										<td width="120" class="tbl_column">Interview Availability <span class="f_req">*</span></td>
 										<td>
-<textarea placeholder="" name="interview_availability" tabindex="2" cols="10" rows="3" class="span8">{if $interview_availability}{$interview_availability}{else}{$smarty.post.interview_availability}{/if}</textarea>
-<label for="reg_city" generated="true" class="error">{$interview_availabilityErr} </label>	
+<textarea placeholder="" name="interview_availability" tabindex="2" cols="10" rows="3" class="span8"><?php if ($_smarty_tpl->tpl_vars['interview_availability']->value) {
+echo $_smarty_tpl->tpl_vars['interview_availability']->value;
+} else {
+echo $_POST['interview_availability'];
+}?></textarea>
+<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['interview_availabilityErr']->value;?>
+ </label>	
 										</td>	
 									</tr>		
 									<tr class="tbl_row">
 										<td width="120" class="tbl_column">Achievements  </td>
 										<td> 
-									   <textarea name="achievement" cols="10" tabindex="3" rows="3" class="span8">{if $achievement}{$achievement}{else}{$smarty.post.achievement}{/if}</textarea>									
+									   <textarea name="achievement" cols="10" tabindex="3" rows="3" class="span8"><?php if ($_smarty_tpl->tpl_vars['achievement']->value) {
+echo $_smarty_tpl->tpl_vars['achievement']->value;
+} else {
+echo $_POST['achievement'];
+}?></textarea>									
 										</td>
 									</tr>	
 									</tbody>
@@ -598,25 +719,39 @@
 			<tr class="tbl_row">
 				<td width="120" class="tbl_column">Know-How about Company  </td>
 				<td> 
-					<textarea name="about_company" tabindex="4" cols="10" rows="3" class="span8">{if $about_company}{$about_company}{else}{$smarty.post.about_company}{/if}</textarea>									
+					<textarea name="about_company" tabindex="4" cols="10" rows="3" class="span8"><?php if ($_smarty_tpl->tpl_vars['about_company']->value) {
+echo $_smarty_tpl->tpl_vars['about_company']->value;
+} else {
+echo $_POST['about_company'];
+}?></textarea>									
 					</td>
 			</tr>		
 			<tr>
 				<td width="120" class="tbl_column">Candidate Brief </td>
 				<td> 
-				   <textarea name="candidate_brief" tabindex="5" cols="10" rows="3" class="span8">{if $candidate_brief}{$candidate_brief}{else}{$smarty.post.candidate_brief}{/if}</textarea>									
+				   <textarea name="candidate_brief" tabindex="5" cols="10" rows="3" class="span8"><?php if ($_smarty_tpl->tpl_vars['candidate_brief']->value) {
+echo $_smarty_tpl->tpl_vars['candidate_brief']->value;
+} else {
+echo $_POST['candidate_brief'];
+}?></textarea>									
 				</td>
 			</tr>										
 		</tbody>
 	</table>
 </div>
 </div>
-<input type="hidden" id="edu_count" name="edu_count" value="{$eduCount}">
-<input type="hidden" id="exp_count" name="exp_count" value="{$expCount}">	
-<input type="hidden" id="train_count" name="train_count" value="{$trainCount}">
-<input type="hidden" id="totCount_edu" name="totCount_edu" value="{$totCount_edu}">	
-<input type="hidden" id="totCount_exp" name="totCount_exp" value="{$totCount_exp}">	
-<input type="hidden" id="add_formatted_resume" name="add_formatted_resume" value="{$marty.post.add_formatted_resume}">
+<input type="hidden" id="edu_count" name="edu_count" value="<?php echo $_smarty_tpl->tpl_vars['eduCount']->value;?>
+">
+<input type="hidden" id="exp_count" name="exp_count" value="<?php echo $_smarty_tpl->tpl_vars['expCount']->value;?>
+">	
+<input type="hidden" id="train_count" name="train_count" value="<?php echo $_smarty_tpl->tpl_vars['trainCount']->value;?>
+">
+<input type="hidden" id="totCount_edu" name="totCount_edu" value="<?php echo $_smarty_tpl->tpl_vars['totCount_edu']->value;?>
+">	
+<input type="hidden" id="totCount_exp" name="totCount_exp" value="<?php echo $_smarty_tpl->tpl_vars['totCount_exp']->value;?>
+">	
+<input type="hidden" id="add_formatted_resume" name="add_formatted_resume" value="<?php echo $_smarty_tpl->tpl_vars['marty']->value['post']['add_formatted_resume'];?>
+">
 
 				
 							</div>
@@ -625,7 +760,8 @@
 </div>
                     </div>
 					</div>
-					<input type="hidden" id="tab_open_resume" value="{$tab_open_resume}"/>
+					<input type="hidden" id="tab_open_resume" value="<?php echo $_smarty_tpl->tpl_vars['tab_open_resume']->value;?>
+"/>
 					 <div class="form-actions">
 									<button class="btn btn-gebo" type="submit">Submit</button>
 								<a href="resume.php"><button type="button" class="btn">Cancel</button></a>
@@ -642,73 +778,220 @@
 		</div>
 	</div>
 			
-{include file='include/footer.tpl'}
+<?php $_smarty_tpl->smarty->ext->_subtemplate->render($_smarty_tpl, "file:include/footer.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
+
 
 		
-	{for $i=0; $i < $eduCount; $i++}
+	<?php
+$_smarty_tpl->tpl_vars['i'] = new Smarty_Variable;
+$_smarty_tpl->tpl_vars['i']->value = 0;
+if ($_smarty_tpl->tpl_vars['i']->value < $_smarty_tpl->tpl_vars['eduCount']->value) {
+for ($_foo=true;$_smarty_tpl->tpl_vars['i']->value < $_smarty_tpl->tpl_vars['eduCount']->value; $_smarty_tpl->tpl_vars['i']->value++) {
+?>
 		
-		<input type="hidden" id="qualificationData_{$i}" name="qualificationData_{$i}" value="{$qualificationData[$i]}">
-		<input type="hidden" id="specializationData_{$i}" name="specializationData_{$i}" value='{html_options options=$spec_data[$i]}'>
-		<input type="hidden" id="locationData_{$i}" name="locationData_{$i}" value="{$locationData[$i]}">
-		<input type="hidden" id="collegeData_{$i}" name="collegeData_{$i}" value="{$collegeData[$i]}">
-		<input type="hidden" id="degreeData_{$i}" name="degreeData_{$i}" value='{html_options options=$degreeData[$i]}'>
-		<input type="hidden" id="degreeSelData_{$i}" name="degreeSelData_{$i}" value="{$degree[$i]}">
-		<input type="hidden" id="specializationSelData_{$i}" name="specializationSelData_{$i}" value="{$spec[$i]}">
+		<input type="hidden" id="qualificationData_<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
+" name="qualificationData_<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
+" value="<?php echo $_smarty_tpl->tpl_vars['qualificationData']->value[$_smarty_tpl->tpl_vars['i']->value];?>
+">
+		<input type="hidden" id="specializationData_<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
+" name="specializationData_<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
+" value='<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['spec_data']->value[$_smarty_tpl->tpl_vars['i']->value]),$_smarty_tpl);?>
+'>
+		<input type="hidden" id="locationData_<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
+" name="locationData_<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
+" value="<?php echo $_smarty_tpl->tpl_vars['locationData']->value[$_smarty_tpl->tpl_vars['i']->value];?>
+">
+		<input type="hidden" id="collegeData_<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
+" name="collegeData_<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
+" value="<?php echo $_smarty_tpl->tpl_vars['collegeData']->value[$_smarty_tpl->tpl_vars['i']->value];?>
+">
+		<input type="hidden" id="degreeData_<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
+" name="degreeData_<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
+" value='<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['degreeData']->value[$_smarty_tpl->tpl_vars['i']->value]),$_smarty_tpl);?>
+'>
+		<input type="hidden" id="degreeSelData_<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
+" name="degreeSelData_<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
+" value="<?php echo $_smarty_tpl->tpl_vars['degree']->value[$_smarty_tpl->tpl_vars['i']->value];?>
+">
+		<input type="hidden" id="specializationSelData_<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
+" name="specializationSelData_<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
+" value="<?php echo $_smarty_tpl->tpl_vars['spec']->value[$_smarty_tpl->tpl_vars['i']->value];?>
+">
 
-		<input type="hidden" id="gradeData_{$i}" name="gradeData_{$i}" value="{$gradeData[$i]}">
-		<input type="hidden" id="grade_typeData_{$i}" name="grade_typeData_{$i}" value="{$grade_typeData[$i]}">
-		<input type="hidden" id="universityData_{$i}" name="universityData_{$i}" value="{$universityData[$i]}">
-		<input type="hidden" id="from_yrData_{$i}" name="from_yrData_{$i}" value="{$from_yrData[$i]}">
+		<input type="hidden" id="gradeData_<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
+" name="gradeData_<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
+" value="<?php echo $_smarty_tpl->tpl_vars['gradeData']->value[$_smarty_tpl->tpl_vars['i']->value];?>
+">
+		<input type="hidden" id="grade_typeData_<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
+" name="grade_typeData_<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
+" value="<?php echo $_smarty_tpl->tpl_vars['grade_typeData']->value[$_smarty_tpl->tpl_vars['i']->value];?>
+">
+		<input type="hidden" id="universityData_<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
+" name="universityData_<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
+" value="<?php echo $_smarty_tpl->tpl_vars['universityData']->value[$_smarty_tpl->tpl_vars['i']->value];?>
+">
+		<input type="hidden" id="from_yrData_<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
+" name="from_yrData_<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
+" value="<?php echo $_smarty_tpl->tpl_vars['from_yrData']->value[$_smarty_tpl->tpl_vars['i']->value];?>
+">
 		
-		<input type="hidden" id="qualification_Err_Data_{$i}"  value="{$eduErr[$i]['qualificationErr']}">
-		<input type="hidden" id="degree_Err_Data_{$i}"  value="{$eduErr[$i]['degreeErr']}">
-		<input type="hidden" id="specialization_Err_Data_{$i}"  value="{$eduErr[$i]['specializationErr']}">
-		<input type="hidden" id="from_yr_Err_Data_{$i}"  value="{$eduErr[$i]['from_yrErr']}">
-		<input type="hidden" id="locationErr_Data_{$i}"  value="{$eduErr[$i]['locationErr']}">
-		<input type="hidden" id="gradeErr_Data_{$i}"  value="{$eduErr[$i]['gradeErr']}">
-		<input type="hidden" id="grade_typeErr_Data_{$i}"  value="{$eduErr[$i]['grade_typeErr']}">
-	{/for}
+		<input type="hidden" id="qualification_Err_Data_<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
+"  value="<?php echo $_smarty_tpl->tpl_vars['eduErr']->value[$_smarty_tpl->tpl_vars['i']->value]['qualificationErr'];?>
+">
+		<input type="hidden" id="degree_Err_Data_<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
+"  value="<?php echo $_smarty_tpl->tpl_vars['eduErr']->value[$_smarty_tpl->tpl_vars['i']->value]['degreeErr'];?>
+">
+		<input type="hidden" id="specialization_Err_Data_<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
+"  value="<?php echo $_smarty_tpl->tpl_vars['eduErr']->value[$_smarty_tpl->tpl_vars['i']->value]['specializationErr'];?>
+">
+		<input type="hidden" id="from_yr_Err_Data_<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
+"  value="<?php echo $_smarty_tpl->tpl_vars['eduErr']->value[$_smarty_tpl->tpl_vars['i']->value]['from_yrErr'];?>
+">
+		<input type="hidden" id="locationErr_Data_<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
+"  value="<?php echo $_smarty_tpl->tpl_vars['eduErr']->value[$_smarty_tpl->tpl_vars['i']->value]['locationErr'];?>
+">
+		<input type="hidden" id="gradeErr_Data_<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
+"  value="<?php echo $_smarty_tpl->tpl_vars['eduErr']->value[$_smarty_tpl->tpl_vars['i']->value]['gradeErr'];?>
+">
+		<input type="hidden" id="grade_typeErr_Data_<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
+"  value="<?php echo $_smarty_tpl->tpl_vars['eduErr']->value[$_smarty_tpl->tpl_vars['i']->value]['grade_typeErr'];?>
+">
+	<?php }
+}
+?>
+
 	
-	{for $i=0; $i < $expCount; $i++}
-		<input type="hidden" id="desigData_{$i}" name="desigData_{$i}" value="{$desigData[$i]}">
-		<input type="hidden" id="areaData_{$i}" name="areaData_{$i}" value="{$areaData[$i]}">
-		<input type="hidden" id="year_of_expData_{$i}" name="year_of_expData_{$i}" value="{$year_of_expData[$i]}">
-		<input type="hidden" id="month_of_expData_{$i}" name="month_of_expData_{$i}" value="{$month_of_expData[$i]}">
-		<input type="hidden" id="companyData_{$i}" name="companyData_{$i}" value="{$companyData[$i]}">
-		<input type="hidden" id="worklocData_{$i}" name="worklocData_{$i}" value="{$worklocData[$i]}">
-		<input type="hidden" id="vitalData_{$i}" name="vitalData_{$i}" value="{$vitalData[$i]}">
-		<input type="hidden" id="company_profileData_{$i}" name="company_profileData_{$i}" value="{$company_profileData[$i]}">
-		<input type="hidden" id="key_responsibilityData_{$i}" name="key_responsibilityData_{$i}" value="{$key_responsibilityData[$i]}">
-		<input type="hidden" id="key_achievementData_{$i}" name="key_achievementData_{$i}" value="{$key_achievementData[$i]}">
-		<input type="hidden" id="reporting_to_Data_{$i}" name="reporting_to_Data_{$i}" value="{$reporting_toData[$i]}">
+	<?php
+$_smarty_tpl->tpl_vars['i'] = new Smarty_Variable;
+$_smarty_tpl->tpl_vars['i']->value = 0;
+if ($_smarty_tpl->tpl_vars['i']->value < $_smarty_tpl->tpl_vars['expCount']->value) {
+for ($_foo=true;$_smarty_tpl->tpl_vars['i']->value < $_smarty_tpl->tpl_vars['expCount']->value; $_smarty_tpl->tpl_vars['i']->value++) {
+?>
+		<input type="hidden" id="desigData_<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
+" name="desigData_<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
+" value="<?php echo $_smarty_tpl->tpl_vars['desigData']->value[$_smarty_tpl->tpl_vars['i']->value];?>
+">
+		<input type="hidden" id="areaData_<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
+" name="areaData_<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
+" value="<?php echo $_smarty_tpl->tpl_vars['areaData']->value[$_smarty_tpl->tpl_vars['i']->value];?>
+">
+		<input type="hidden" id="year_of_expData_<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
+" name="year_of_expData_<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
+" value="<?php echo $_smarty_tpl->tpl_vars['year_of_expData']->value[$_smarty_tpl->tpl_vars['i']->value];?>
+">
+		<input type="hidden" id="month_of_expData_<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
+" name="month_of_expData_<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
+" value="<?php echo $_smarty_tpl->tpl_vars['month_of_expData']->value[$_smarty_tpl->tpl_vars['i']->value];?>
+">
+		<input type="hidden" id="companyData_<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
+" name="companyData_<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
+" value="<?php echo $_smarty_tpl->tpl_vars['companyData']->value[$_smarty_tpl->tpl_vars['i']->value];?>
+">
+		<input type="hidden" id="worklocData_<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
+" name="worklocData_<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
+" value="<?php echo $_smarty_tpl->tpl_vars['worklocData']->value[$_smarty_tpl->tpl_vars['i']->value];?>
+">
+		<input type="hidden" id="vitalData_<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
+" name="vitalData_<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
+" value="<?php echo $_smarty_tpl->tpl_vars['vitalData']->value[$_smarty_tpl->tpl_vars['i']->value];?>
+">
+		<input type="hidden" id="company_profileData_<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
+" name="company_profileData_<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
+" value="<?php echo $_smarty_tpl->tpl_vars['company_profileData']->value[$_smarty_tpl->tpl_vars['i']->value];?>
+">
+		<input type="hidden" id="key_responsibilityData_<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
+" name="key_responsibilityData_<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
+" value="<?php echo $_smarty_tpl->tpl_vars['key_responsibilityData']->value[$_smarty_tpl->tpl_vars['i']->value];?>
+">
+		<input type="hidden" id="key_achievementData_<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
+" name="key_achievementData_<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
+" value="<?php echo $_smarty_tpl->tpl_vars['key_achievementData']->value[$_smarty_tpl->tpl_vars['i']->value];?>
+">
+		<input type="hidden" id="reporting_to_Data_<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
+" name="reporting_to_Data_<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
+" value="<?php echo $_smarty_tpl->tpl_vars['reporting_toData']->value[$_smarty_tpl->tpl_vars['i']->value];?>
+">
 		
-		<input type="hidden" id="desig_Err_Data_{$i}"  value="{$expErr[$i]['desigErr']}">
-		<input type="hidden" id="year_of_exp_Err_Data_{$i}"  value="{$expErr[$i]['year_of_expErr']}">
-		<input type="hidden" id="month_of_exp_Err_Data_{$i}"  value="{$expErr[$i]['month_of_expErr']}">
-		<input type="hidden" id="workloc_Err_Data_{$i}"  value="{$expErr[$i]['worklocErr']}">
-		<input type="hidden" id="area_Err_Data_{$i}"  value="{$expErr[$i]['areaErr']}">
-		<input type="hidden" id="company_Err_Data_{$i}"  value="{$expErr[$i]['companyErr']}">
-		<input type="hidden" id="company_profile_Err_Data_{$i}"  value="{$expErr[$i]['company_profileErr']}">
-		<input type="hidden" id="key_responsibility_Err_Data_{$i}"  value="{$expErr[$i]['key_responsibilityErr']}">
-		<input type="hidden" id="key_achievement_Err_Data_{$i}"  value="{$expErr[$i]['key_achievementErr']}">
-		<input type="hidden" id="reporting_to_Err_Data_{$i}"  value="{$expErr[$i]['reporting_toErr']}">
-	{/for}
+		<input type="hidden" id="desig_Err_Data_<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
+"  value="<?php echo $_smarty_tpl->tpl_vars['expErr']->value[$_smarty_tpl->tpl_vars['i']->value]['desigErr'];?>
+">
+		<input type="hidden" id="year_of_exp_Err_Data_<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
+"  value="<?php echo $_smarty_tpl->tpl_vars['expErr']->value[$_smarty_tpl->tpl_vars['i']->value]['year_of_expErr'];?>
+">
+		<input type="hidden" id="month_of_exp_Err_Data_<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
+"  value="<?php echo $_smarty_tpl->tpl_vars['expErr']->value[$_smarty_tpl->tpl_vars['i']->value]['month_of_expErr'];?>
+">
+		<input type="hidden" id="workloc_Err_Data_<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
+"  value="<?php echo $_smarty_tpl->tpl_vars['expErr']->value[$_smarty_tpl->tpl_vars['i']->value]['worklocErr'];?>
+">
+		<input type="hidden" id="area_Err_Data_<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
+"  value="<?php echo $_smarty_tpl->tpl_vars['expErr']->value[$_smarty_tpl->tpl_vars['i']->value]['areaErr'];?>
+">
+		<input type="hidden" id="company_Err_Data_<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
+"  value="<?php echo $_smarty_tpl->tpl_vars['expErr']->value[$_smarty_tpl->tpl_vars['i']->value]['companyErr'];?>
+">
+		<input type="hidden" id="company_profile_Err_Data_<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
+"  value="<?php echo $_smarty_tpl->tpl_vars['expErr']->value[$_smarty_tpl->tpl_vars['i']->value]['company_profileErr'];?>
+">
+		<input type="hidden" id="key_responsibility_Err_Data_<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
+"  value="<?php echo $_smarty_tpl->tpl_vars['expErr']->value[$_smarty_tpl->tpl_vars['i']->value]['key_responsibilityErr'];?>
+">
+		<input type="hidden" id="key_achievement_Err_Data_<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
+"  value="<?php echo $_smarty_tpl->tpl_vars['expErr']->value[$_smarty_tpl->tpl_vars['i']->value]['key_achievementErr'];?>
+">
+		<input type="hidden" id="reporting_to_Err_Data_<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
+"  value="<?php echo $_smarty_tpl->tpl_vars['expErr']->value[$_smarty_tpl->tpl_vars['i']->value]['reporting_toErr'];?>
+">
+	<?php }
+}
+?>
+
 	
-	{for $i=0; $i < $trainCount; $i++}
-		<input type="hidden" id="train_yearData_{$i}" name="train_yearData_{$i}" value="{$train_yearData[$i]}">
-		<input type="hidden" id="descriptionData_{$i}" name="descriptionData_{$i}" value="{$descriptionData[$i]}">
-		<input type="hidden" id="programtitleData_{$i}" name="programtitleData_{$i}" value="{$programtitleData[$i]}">
-		<input type="hidden" id="train_locationData_{$i}" name="train_locationData_{$i}" value="{$train_locationData[$i]}">
+	<?php
+$_smarty_tpl->tpl_vars['i'] = new Smarty_Variable;
+$_smarty_tpl->tpl_vars['i']->value = 0;
+if ($_smarty_tpl->tpl_vars['i']->value < $_smarty_tpl->tpl_vars['trainCount']->value) {
+for ($_foo=true;$_smarty_tpl->tpl_vars['i']->value < $_smarty_tpl->tpl_vars['trainCount']->value; $_smarty_tpl->tpl_vars['i']->value++) {
+?>
+		<input type="hidden" id="train_yearData_<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
+" name="train_yearData_<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
+" value="<?php echo $_smarty_tpl->tpl_vars['train_yearData']->value[$_smarty_tpl->tpl_vars['i']->value];?>
+">
+		<input type="hidden" id="descriptionData_<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
+" name="descriptionData_<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
+" value="<?php echo $_smarty_tpl->tpl_vars['descriptionData']->value[$_smarty_tpl->tpl_vars['i']->value];?>
+">
+		<input type="hidden" id="programtitleData_<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
+" name="programtitleData_<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
+" value="<?php echo $_smarty_tpl->tpl_vars['programtitleData']->value[$_smarty_tpl->tpl_vars['i']->value];?>
+">
+		<input type="hidden" id="train_locationData_<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
+" name="train_locationData_<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
+" value="<?php echo $_smarty_tpl->tpl_vars['train_locationData']->value[$_smarty_tpl->tpl_vars['i']->value];?>
+">
 		
-		<input type="hidden" id="train_year_Err_Data_{$i}"  value="{$trainErr[$i]['train_yearErr']}">
-		<input type="hidden" id="description_Err_Data_{$i}"  value="{$trainErr[$i]['descriptionErr']}">
-		<input type="hidden" id="programtitle_Err_Data_{$i}"  value="{$trainErr[$i]['programtitleErr']}">
-		<input type="hidden" id="train_location_Err_Data_{$i}"  value="{$trainErr[$i]['train_locationErr']}">
-	{/for}
+		<input type="hidden" id="train_year_Err_Data_<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
+"  value="<?php echo $_smarty_tpl->tpl_vars['trainErr']->value[$_smarty_tpl->tpl_vars['i']->value]['train_yearErr'];?>
+">
+		<input type="hidden" id="description_Err_Data_<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
+"  value="<?php echo $_smarty_tpl->tpl_vars['trainErr']->value[$_smarty_tpl->tpl_vars['i']->value]['descriptionErr'];?>
+">
+		<input type="hidden" id="programtitle_Err_Data_<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
+"  value="<?php echo $_smarty_tpl->tpl_vars['trainErr']->value[$_smarty_tpl->tpl_vars['i']->value]['programtitleErr'];?>
+">
+		<input type="hidden" id="train_location_Err_Data_<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
+"  value="<?php echo $_smarty_tpl->tpl_vars['trainErr']->value[$_smarty_tpl->tpl_vars['i']->value]['train_locationErr'];?>
+">
+	<?php }
+}
+?>
+
 	
 
-{literal}	 
-<script type="text/javascript">	
+	 
+<?php echo '<script'; ?>
+ type="text/javascript">	
 $(document).ready(function(){
    var sheepAdd = {};
 	if($('#sheepItForm').length > 0){ 
@@ -1003,5 +1286,7 @@ $(document).ready(function(){
 		}
 	}
 });
-</script>	
-{/literal}
+<?php echo '</script'; ?>
+>	
+<?php }
+}
