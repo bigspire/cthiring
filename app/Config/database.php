@@ -74,11 +74,7 @@ class DATABASE_CONFIG {
 	public $default = array(
 		'datasource' => 'Database/Mysql',
 		'persistent' => false,
-<<<<<<< HEAD
-		'host' => '172.20.10.13',
-=======
 		'host' => '192.168.1.105',
->>>>>>> master
 		'login' => 'cthire',
 		'password' => 'hire938',
 		'database' => 'hirecraftdata',
