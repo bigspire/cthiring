@@ -8,5 +8,5 @@ Date : 21-01-2017
 define('Host', '192.168.1.105');
 define('Username', 'cthire');
 define('Password', 'hire938');
-define('Database', 'cthiring_dbase');
+define('Database', 'hirecraftdata');
 ?>

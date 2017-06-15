@@ -88,18 +88,18 @@
 									<tr>
 										<th width="100"><?php echo $this->Paginator->sort('first_name', 'Name', array('escape' => false, 'direction' => 'desc'));?></th>
 										<th width="70"><?php echo $this->Paginator->sort('mobile', 'Mobile', array('escape' => false, 'direction' => 'desc'));?></th>
-										<th width="70"><?php echo $this->Paginator->sort('email', 'Email Id', array('escape' => false, 'direction' => 'desc'));?></th>
-										<th width="120"><?php echo $this->Paginator->sort('present_employer', 'Employer', array('escape' => false, 'direction' => 'desc'));?></th>
+										<th width="80"><?php echo $this->Paginator->sort('email', 'Email Id', array('escape' => false, 'direction' => 'desc'));?></th>
+										<!--th width="120"><?php echo $this->Paginator->sort('present_employer', 'Employer', array('escape' => false, 'direction' => 'desc'));?></th-->
 										<th width="60"><?php echo $this->Paginator->sort('total_exp', 'Exp.', array('escape' => false, 'direction' => 'desc'));?></th>
 										<th width="80"><?php echo $this->Paginator->sort('ResLocation.location', 'Location', array('escape' => false, 'direction' => 'desc'));?></th>
-										<th width="90"><?php echo $this->Paginator->sort('education', 'Qualification', array('escape' => false, 'direction' => 'desc'));?></th>
-										<th width="50"><?php echo $this->Paginator->sort('present_ctc', 'Present CTC', array('escape' => false, 'direction' => 'desc'));?></th>
-										<th width="50"><?php echo $this->Paginator->sort('expected_ctc', 'Expected CTC', array('escape' => false, 'direction' => 'desc'));?></th>
-										<th width="80"><?php echo $this->Paginator->sort('status', 'Current Status', array('escape' => false, 'direction' => 'desc'));?></th>
+										<!--th width="90"><?php echo $this->Paginator->sort('education', 'Qualification', array('escape' => false, 'direction' => 'desc'));?></th-->
+										<!--th width="50"><?php echo $this->Paginator->sort('present_ctc', 'Present CTC', array('escape' => false, 'direction' => 'desc'));?></th>
+										<th width="50"><?php echo $this->Paginator->sort('expected_ctc', 'Expected CTC', array('escape' => false, 'direction' => 'desc'));?></th-->
+										<th width="120"><?php echo $this->Paginator->sort('status', 'Current Status', array('escape' => false, 'direction' => 'desc'));?></th>
 										<th width="75"><?php echo $this->Paginator->sort('Creator.first_name', 'Created By', array('escape' => false, 'direction' => 'desc'));?></th>
 										<th width="75"><?php echo $this->Paginator->sort('created_date', 'Created', array('escape' => false, 'direction' => 'desc'));?></th>
 										<th width="75"><?php echo $this->Paginator->sort('modified_date', 'Modified', array('escape' => false, 'direction' => 'desc'));?></th>
-
+										<th width="150">Actions</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -112,16 +112,36 @@
 										<td><a <?php echo $target;?>  href="<?php echo $this->webroot;?>resume/view/<?php echo $res['Resume']['id'];?>/"><?php echo ucwords($res[0]['full_name']);?></a></td>
 										<td><?php echo $this->Functions->get_format_text($res['Resume']['mobile']);?></td>
 										<td><?php echo $this->Functions->get_format_text($res['Resume']['email_id']);?></td>
-										<td><?php echo $res['Resume']['present_employer'];?></td>
+										<!--td><?php echo $res['Resume']['present_employer'];?></td-->
 										<td><?php echo $res['Resume']['total_exp'];?></td>
 										<td><?php echo $res['ResLocation']['location'];?></td>
-										<td><?php echo $res['Resume']['education'];?></td>
-										<td><?php if(!empty($res['Resume']['present_ctc'])): echo $res['Resume']['present_ctc'].' L'; endif; ?></td>
-										<td><?php if(!empty($res['Resume']['expected_ctc'])): echo $res['Resume']['expected_ctc'].' L'; endif; ?></td>
+										<!--td><?php echo $res['Resume']['education'];?></td-->
+										<!--td><?php if(!empty($res['Resume']['present_ctc'])): echo $res['Resume']['present_ctc'].' L'; endif; ?></td>
+										<td><?php if(!empty($res['Resume']['expected_ctc'])): echo $res['Resume']['expected_ctc'].' L'; endif; ?></td-->
 										<td><?php echo $res['ReqResume']['stage_title'];?> - <?php echo $res['ReqResume']['status_title'];?></td>
 										<td><?php echo ucfirst($res['Creator']['first_name']);?></td>
 										<td><?php echo $this->Functions->format_date($res['Resume']['created_date']);?></td>
 										<td><?php echo $this->Functions->format_date($res['Resume']['modified_date']);?></td>
+											<td class="actionItem">
+																				
+								<a href="<?php echo $this->webroot;?>hiring/edit_resume.php?id=<?php echo $res['Resume']['id'];?>" style="margin-left:5px" class="btn  btn-mini" rel="tooltip" class="sepV_a" title="Edit"><i class="icon-pencil"></i></a>
+									<a href="<?php echo $this->webroot;?>hiring/add_formatted_resume.php?id=<?php echo $res['Resume']['id'];?>" style="margin-left:px"  rel="tooltip" data-placement="left" class="btn  btn-mini" title="Create Fully Formatted Resume"><img src="<?php echo $this->webroot;?>img/gCons/add-item.png" width="16" height="16" alt="" /></a>
+
+										<div class="btn-group" style="display:inline-block;float:left;">
+										
+									<button data-toggle="dropdown" rel="tooltip" title="Download" class="btn btn-mini dropdown-toggle"><i class="icon-download"></i> <span class="caret"></span>
+									</button>
+										<ul class="dropdown-menu">
+											<li><a href="#">Snapshot</a></li>
+											<li><a href="#">Candidate Resume</a></li>
+											<li class="divider"></li>
+											<li><a href="#">Fully Formatted Resume</a></li>
+										</ul>
+									
+									
+									</div>	
+</div>										
+										</td>
 
 									</tr>
 								<?php endforeach; ?>

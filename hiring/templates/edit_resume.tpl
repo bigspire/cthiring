@@ -16,7 +16,7 @@
                                     <a href="{$smarty.const.webroot}home"><i class="icon-home"></i></a>
                                 </li>
                                 <li>
-                                    <a href="resume.php">Resumes</a>
+                                    <a href="{$smarty.const.webroot}resume">Resumes</a>
                                 </li>
                             
                                 <li>
@@ -425,7 +425,7 @@
 <input type="hidden" id="tab_open" value="{$tab_open}"/>
 <div class="form-actions">
 	<button class="btn btn-gebo" type="submit">Submit</button>
-	<input type="button" value="Cancel" class="btn" onclick="window.location='resume.php'">
+	<a href="{$smarty.const.webroot}resume"><input type="button" value="Cancel" class="btn"></a>
 </div>
  </div>
 	</div>

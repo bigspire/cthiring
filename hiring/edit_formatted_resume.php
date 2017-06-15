@@ -36,8 +36,8 @@ if($getid !=''){
 			throw new Exception('Problem in checking resume details');
 		}
 		$row = $mysql->display_result($result);
-		$total = $row['total'];
-		if($total == 0){ 
+		$total = $row['id'];
+		if($total == ''){ 
 			header("Location:resume.php?current_status=msg");
 		}
 		// free the memory

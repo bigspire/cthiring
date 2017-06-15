@@ -16,7 +16,7 @@
                            <a href="recruiter_dashboard.php"><i class="icon-home"></i></a>
                         </li>
                         <li>
-                           <a href="resume.php">Resumes</a>
+                           <a href="{$smarty.const.webroot}resume">Resumes</a>
                         </li>
                         <li>
                            Create Fully Formatted Resume
@@ -628,7 +628,7 @@
 					<input type="hidden" id="tab_open_resume" value="{$tab_open_resume}"/>
 					 <div class="form-actions">
 									<button class="btn btn-gebo" type="submit">Submit</button>
-								<a href="resume.php"><button type="button" class="btn">Cancel</button></a>
+								<a href="{$smarty.const.webroot}resume"><button type="button" class="btn">Cancel</button></a>
 							</div>
 					</form>
          	
