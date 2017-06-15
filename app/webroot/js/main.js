@@ -169,6 +169,8 @@ $(document).ready(function() {
 		}
 	});
 	
+	
+	
 	/* function to close the tip 
 	$('#piechart').on('click',function(){
 		$('.popover2').hide();

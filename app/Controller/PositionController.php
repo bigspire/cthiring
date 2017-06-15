@@ -70,7 +70,7 @@ class PositionController extends AppController {
 			
 		// set keyword condition
 		if($this->params->query['keyword'] != ''){
-			$keyCond = array("MATCH (Position.client_name,job_title) AGAINST ('".$this->Functions->format_search_keyword($this->params->query['keyword'])."' IN BOOLEAN MODE)"); 
+			$keyCond = array("MATCH (Client.client_name,job_title) AGAINST ('".$this->Functions->format_search_keyword($this->params->query['keyword'])."' IN BOOLEAN MODE)"); 
 		}
 		// for client contact condition
 		if($contact_id != ''){ 
@@ -505,8 +505,8 @@ class PositionController extends AppController {
 			$date_cond = array('or' => array("Position.created_date between ? and ?" => 
 					array($start, $end)));
 			$this->Position->unBindModel(array('belongsTo' => array('Contact','Creator'), 'hasOne' => array('ReqResume')));
-			$data = $this->Position->find('all', array('fields' => array('Position.client_name','job_title'),
-			'group' => array('Position.client_name','job_title'), 'conditions' => 	array("OR" => array ('Position.client_name like' => '%'.$q.'%',
+			$data = $this->Position->find('all', array('fields' => array('Client.client_name','job_title'),
+			'group' => array('Client.client_name','job_title'), 'conditions' => 	array("OR" => array ('Client.client_name like' => '%'.$q.'%',
 			'job_title like' => '%'.$q.'%'), 'AND' => array('Position.is_deleted' => 'N',$date_cond))));		
 			$this->set('results', $data);
 		}

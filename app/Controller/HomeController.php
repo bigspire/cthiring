@@ -40,7 +40,7 @@ class HomeController  extends AppController {
 	
 	public $components = array('Session', 'Functions');
 	
-	public function index(){ 
+	public function index($dash_type){ 
 		// set the page title
 		$this->set('title_for_layout', 'Home - CT Hiring Advanced');
 		// when the form is submitted for search
@@ -54,10 +54,10 @@ class HomeController  extends AppController {
 		$this->set('locList', $this->get_loc_details());
 		// apply date conditions
 		// for testing date changed
-		// $dateFrm = date('Y-m-d', strtotime('-9 days'));
-		$dateFrm = '2015-11-05';
-		// $dateTo = date('Y-m-d');
-		$dateTo = '2015-11-14';
+		$dateFrm = date('Y-m-d', strtotime('-9 days'));
+		// $dateFrm = '2015-11-05';
+		$dateTo = date('Y-m-d');
+		// $dateTo = '2015-11-14';
 		$start = $this->request->query['from'] ? $this->Functions->format_date_save($this->request->query['from']) : $dateFrm;
 		$end = $this->request->query['to'] ? $this->Functions->format_date_save($this->request->query['to']) : $dateTo;
 		// set date condition				
@@ -76,6 +76,7 @@ class HomeController  extends AppController {
 		}
 		*/
 		
+	
 		
 		if($this->request->query['emp_id'] != ''){			
 			$cv_emp_cond = array('ReqResumeStatus.created_by' => $this->request->query['emp_id']);
@@ -84,11 +85,30 @@ class HomeController  extends AppController {
 			$cv_sent_emp_cond = array('Resume.created_by' => $this->request->query['emp_id']);
 			$client_emp_cond = array('Client.created_by' => $this->request->query['emp_id']);
 		}else if($this->Session->read('USER.Login.rights') != '5'){			
+			/*
 			$cv_emp_cond = array('ReqResumeStatus.created_by' => $this->Session->read('USER.Login.id'));
 			$int_emp_cond = array('ReqResumeStatus.created_by' => $this->Session->read('USER.Login.id'));
 			$pos_emp_cond = array('ReqResume.created_by' => $this->Session->read('USER.Login.id'));
 			$cv_sent_emp_cond = array('Resume.created_by' => $this->Session->read('USER.Login.id'));
 			$client_emp_cond = array('Client.created_by' => $this->Session->read('USER.Login.id'));
+			*/
+		}
+		
+		/* for dashboard switching */
+		if($dash_type == 'rec_view' || $dash_type == ''){
+			$cv_emp_cond = array('ReqResumeStatus.created_by' => $this->Session->read('USER.Login.id'));
+			$int_emp_cond = array('ReqResumeStatus.created_by' => $this->Session->read('USER.Login.id'));
+			$pos_emp_cond = array('ReqResume.created_by' => $this->Session->read('USER.Login.id'));
+			$cv_sent_emp_cond = array('Resume.created_by' => $this->Session->read('USER.Login.id'));
+			$client_emp_cond = array('Client.created_by' => $this->Session->read('USER.Login.id'));
+			$this->set('rec_dash', 'active');
+		}else if($dash_type == 'ac_view'){
+			$cv_emp_cond = '';
+			$int_emp_cond = '';
+			$pos_emp_cond = '';
+			$cv_sent_emp_cond = '';
+			$client_emp_cond = array('Client.created_by' => $this->Session->read('USER.Login.id'));
+			$this->set('ac_dash', 'active');
 		}
 		
 		// for branch condition
@@ -202,10 +222,18 @@ class HomeController  extends AppController {
 		$this->set('END_DATE', date('d-M', strtotime($end)));
 		
 		// get recent clients
+		$cli_options = array(						
+			array('table' => 'requirements',
+					'alias' => 'Position',					
+					'type' => 'LEFT',
+					'conditions' => array('`Position`.`clients_id` = `Client`.`id`')
+			)
+		);
 		// $date_cond = array('or' => array("DATE_FORMAT(Client.created_date, '%Y-%m-%d') between ? and ?" => array($start, $end)));
-		$fields = array('id','client_name','ResLocation.location','created_date','Creator.first_name');
+		$fields = array('id','client_name','ResLocation.location','created_date','Creator.first_name',
+		"count(distinct Position.id) req_count");
 		$conditions = array('fields' => $fields,'limit' => '25','conditions' => array($keyCond,$date_cond,$client_emp_cond),
-		'order' => array('Client.created_date' => 'desc'),	'group' => array('Client.id'), 'joins' => $options);
+		'order' => array('Client.created_date' => 'desc'),	'group' => array('Client.id'), 'joins' => $cli_options);
 		$data = $this->Home->Client->find('all', $conditions);
 		$this->set('client_data', $data);
 		// get recent positions
@@ -248,7 +276,7 @@ class HomeController  extends AppController {
 		);
 		$int_date_cond = array('or' => array("DATE_FORMAT(ReqResume.created_date, '%Y-%m-%d') between ? and ?" => array($start, $end)));
 		$fields = array('id',"concat(Resume.first_name,' ',Resume.last_name) full_name",'email_id','mobile', 'Creator.first_name',
-		'Resume.created_date','Resume.modified_date','ReqResume.stage_title','ReqResume.status_title');			
+		'ReqResume.created_date','Resume.modified_date','ReqResume.stage_title','ReqResume.status_title');			
 		$conditions = array('fields' => $fields,'limit' => '25','conditions' => array($pos_emp_cond,$date_cond,
 		'ReqResume.stage_title like' => '%Interview'),
 		'order' => array('ReqResume.created_date' => 'desc'), 'group' => array('Resume.id'), 'joins' => $interview_options);

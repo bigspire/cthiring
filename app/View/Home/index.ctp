@@ -9,27 +9,29 @@
 					<div class="row-fluid mt15">
 					
 					
-															
-
 								
 						<div class="span12">
 						
 						<?php echo $this->Session->flash();?>   
 						
 						<div class="btns_state pull-right" style="clear:left;margin-right:50px;">
-									<div data-toggle="buttons-radio" class="btn-group clearfix sepH_a">
-										<button class="btn active">Recruiter View</button>
-										<button class="btn">Account Holder View</button>
+									<div  class="btn-group clearfix sepH_a">
+										<button rel="<?php echo $this->webroot;?>home/index/rec_view/" class="dash_view btn <?php echo $rec_dash;?>">Recruiter View</button>
+										<button rel="<?php echo $this->webroot;?>home/index/ac_view/" class="dash_view btn <?php echo $ac_dash;?>">Account Holder View</button>
 									</div>
 									
 									
 						</div>
 						<div class="btns_state pull-right" style="margin-right:30px;">
+					<?php echo $this->Form->create('Home', array('id' => 'formID','class' => 'formID')); ?>
+
 						<div class="dataTables_filter srchBox" id="dt_gal_filter">			
 							<label>
-							<a class="jsRedirect" href="recruiter_dashboard.php"><input value="Reset" type="button" class="btn"/></a></label>
+							<a class="jsRedirect" href="<?php echo $this->webroot;?>home/">
+							<input value="Reset" type="button" class="btn"/></a>
+							</label>
 							<label style="">
-							<input type="submit" value="Submit" class="btn btn-gebo" />
+							<input type="submit" class="btn-gebo" />
 							</label>	
 							 For the period:
 							 
@@ -37,21 +39,23 @@
 							<input type="text" class="input-medium datepick" name="data[Home][from]" value="<?php echo $this->request->query['from'];?>" aria-controls="dt_gal"></label>
 						
 							<input type="text" name="data[Home][to]" value="<?php echo $this->request->query['to'];?>" class="input-medium datepick" aria-controls="dt_gal"></label>
-	
-						</div>		
+						
+						</div>	
+						</form>
+						
 							</div>		
 							<h3 class="heading">Dashboard</h3>
 							
-							<div class="flexslider">
-							<ul class="slides dshb_icoNav tac  mt15" >
+							<div class="flexslider2">
+							<ul class="slides dshb_icoNav tac  mt15">
 								<li><a href="<?php echo $this->webroot;?>position/"><span class="label label-info"><?php echo $POS_TAB_COUNT;?></span> <strong>Positions</strong></a></li>
 								<li><a href="<?php echo $this->webroot;?>resume/"><span class="label label-warning"><?php echo $CV_SENT_TAB_COUNT;?> </span> <strong>CV</strong> Sent</a></li>
 								<li><a href="<?php echo $this->webroot;?>resume/"><span class="label label-success"><?php echo $CV_SHORTLIST_TAB_COUNT;?> </span> <strong>CV</strong> Shortlisted</a></li>
 								<li><a href="<?php echo $this->webroot;?>resume/"><span class="label label-important"><?php echo $CV_REJECT_TAB_COUNT;?> </span> <strong>CV </strong>Rejected</a></li>
 								<li><a href="<?php echo $this->webroot;?>resume/"><span class="label label"><?php echo $CV_WAITING_TAB_COUNT;?></span> <strong>CV</strong> Feedback Awaiting</a></li>
-								<li style="height: 55px"><a href="<?php echo $this->webroot;?>hiring/interview.php"><span class="label label-warning" ><?php echo $INTERVIEW_TAB_COUNT;?> </span> <strong>Candidates </strong>Interviewed</a></li>
-								<li><a href="<?php echo $this->webroot;?>hiring/interview.php"><span class="label label-info"><?php echo $INTERVIEW_DROP_TAB_COUNT;?></span> <strong>Interview </strong>Dropouts</a></li>
-								<li><a href="<?php echo $this->webroot;?>hiring/interview.php"><span class="label label-success"><?php echo $INTERVIEW_REJ_TAB_COUNT;?></span> <strong>Interview </strong>Rejected</a></li>
+								<li><a href="<?php echo $this->webroot;?>hiring/interview.php"><span class="label label-warning" ><?php echo $INTERVIEW_TAB_COUNT;?> </span> <strong>Candidates </strong>Interviewed</a></li>
+								<li><a href="<?php echo $this->webroot;?>hiring/interview.php"><span class="label label-info"><?php echo $INTERVIEW_DROP_TAB_COUNT ? $INTERVIEW_DROP_TAB_COUNT : 0;?></span> <strong>Interview </strong>Dropouts</a></li>
+								<li><a href="<?php echo $this->webroot;?>hiring/interview.php"><span class="label label-success"><?php echo $INTERVIEW_REJ_TAB_COUNT ? $INTERVIEW_REJ_TAB_COUNT : 0;?></span> <strong>Interview </strong>Rejected</a></li>
 								<li><a href="<?php echo $this->webroot;?>resume/"><span class="label label-danger"><?php echo $OFFER_TAB_COUNT;?></span> <strong>Candidates</strong> Offered</a></li>
 								<li><a href="<?php echo $this->webroot;?>resume/"><span class="label label-info"><?php echo $OFFER_REJ_TAB_COUNT;?> </span> <strong>Offer</strong> Dropouts</a></li>
 								<li><a href="<?php echo $this->webroot;?>resume/"><span class="label label-success"><?php echo $JOINED_TAB_COUNT; ?> </span><strong> Candidates</strong> Joined</a></li>
@@ -106,7 +110,7 @@
 										<td width="120" style="width:120px"><?php echo $data['ResLocation']['location'];?></td>
 										<td width="100" style="width:100px"><?php echo $data['Creator']['first_name'];?></td>
 										<td width="100" style="width:100px"><?php echo $this->Functions->format_date($data['Client']['created_date']);?></td>
-										<td  width="100" style="width:80px;text-align:center">21</td>										
+										<td  width="100" style="width:80px;text-align:center"><a href="<?php echo $this->webroot;?>position/?keyword=<?php echo $data['Client']['client_name'];?>"><?php echo $data[0]['req_count'];?></a></td>										
 									</tr>
 								<?php endforeach; ?>	
 								</tbody>
@@ -123,8 +127,8 @@
 							<table class="tableFix table table-striped table-bordered ">
 								<thead class="theadFix">
 									<tr>
-										<th style="width:180px" class="optional">Job Title</th>
-										<th style="width:120px"  class="essential persist">Client</th>
+										<th style="width:170px" class="optional">Job Title</th>
+										<th style="width:140px"  class="essential persist">Client</th>
 										<th style="width:100px" class="optional">Status</th>
 										<th style="width:100px" class="optional">Created Date</th>
 										<th style="width:100px" class="essential" style="text-align:center">CV Sent</th>
@@ -135,10 +139,10 @@
 								<?php foreach($position_data as $data):?>
 									<tr>
 										<td style="width:180px"><a  href="<?php echo $this->webroot;?>position/view/<?php echo $data['Position']['id'];?>"><?php echo $data['Position']['job_title'];?></a></td>
-										<td style="width:120px"><?php echo $data['Client']['client_name'];?></td>
-										<td  style="width:100px"><span class="label label-"><?php echo $data['ReqStatus']['title'];?></span></td>
+										<td style="width:140px"><?php echo $data['Client']['client_name'];?></td>
+										<td  style="width:100px"><span class="label label-<?php echo $this->Functions->get_req_status_color($data['ReqStatus']['title']);?>"><?php echo $data['ReqStatus']['title'];?></span></td>
 										<td  style="width:100px"><?php echo $this->Functions->format_date($data['Position']['created_date']);?></td>
-										<td style="width:100px;text-align:center"><?php echo $data[0]['cv_sent'];?></td>
+										<td style="width:100px;text-align:center"><a href="<?php echo $this->webroot;?>resume/?status=1"><?php echo $data[0]['cv_sent'];?></a></td>
 										
 									</tr>
 									<?php endforeach; ?>	
@@ -194,7 +198,7 @@
 							<?php foreach($resume_data as $data):?>
 								<li>
 <span class="s_color sl_date2" style="font-size:12px;color:#b2abab;"><?php echo date('d,M', strtotime($data['Resume']['created_date']));?>, </span>
-<span class="label label-success pull-right sl_status2"><?php echo $data['ReqResume']['stage_title'];?> - <?php echo $data['ReqResume']['status_title'];?></span>
+<span class="label label-<?php echo $this->Functions->get_res_status_color($data['ReqResume']['status_title']);?> pull-right sl_status2"><?php echo $data['ReqResume']['stage_title'];?> - <?php echo $data['ReqResume']['status_title'];?></span>
 <a href="<?php echo $this->webroot;?>resume/view/<?php echo $data['Resume']['id'];?>" class="sl_name2"><?php echo $data[0]['full_name'];?></a><br />
 <small class="s_color sl_email2"><?php echo $data['Resume']['email_id'];?></small>
 
@@ -242,9 +246,9 @@
 							<ul class="list user_list">
 								<?php foreach($interview_data as $data):?>
 								<li>
-<span class="s_color sl_date" style="font-size:12px;color:#b2abab;"><?php echo date('d,M', strtotime($data['ResInterview']['created_date']));?>, </span>
-									<span class="label label-success pull-right">
-									<?php echo $data['ResInterview']['stage_title'];?> - <span class="sl_status"><?php echo $data['ResInterview']['status_title'];?></span></span>
+<span class="s_color sl_date" style="font-size:12px;color:#b2abab;"><?php echo date('d,M', strtotime($data['ReqResume']['created_date']));?>, </span>
+									<span class="label label-<?php echo $this->Functions->get_int_status_color($data['ReqResume']['status_title']);?> pull-right">
+									<?php echo $data['ReqResume']['stage_title'];?> - <span class="sl_status"><?php echo $data['ReqResume']['status_title'];?></span></span>
 									<a href="<?php echo $this->webroot;?>resume/view/<?php echo $data['Resume']['id'];?>" class="sl_name"><?php echo $data[0]['full_name'];?></a><br />
 									<small class="s_color sl_email"><?php echo $data['Resume']['email_id'];?></small>
 								</li>
@@ -296,7 +300,7 @@
 								<?php foreach($offer_data as $data):?>
 								<li>
 								<span class="s_color sl_date3" style="font-size:12px;color:#b2abab;"><?php echo date('d,M', strtotime($data['ReqResume']['created_date']));?>, </span>
-									<span class="label label-success pull-right">
+									<span class="label label-<?php echo $this->Functions->get_offer_status_color($data['ReqResume']['status_title']);?> pull-right">
 									<?php echo $data['ReqResume']['stage_title'];?> - <span class="sl_status3"><?php echo $data['ReqResume']['status_title'];?></span></span>
 									<a href="<?php echo $this->webroot;?>resume/view/<?php echo $data['Resume']['id'];?>" class="sl_name3"><?php echo $data[0]['full_name'];?></a><br />
 									<small class="s_color sl_email3"><?php echo $data['Resume']['email_id'];?></small>
@@ -338,7 +342,7 @@
 								<?php foreach($join_data as $data):?>
 								<li>
 							<span class="s_color sl_date4" style="font-size:12px;color:#b2abab;"><?php echo date('d,M', strtotime($data['ReqResume']['created_date']));?>, </span>
-									<span class="label label-success pull-right">
+									<span class="label label-<?php echo $this->Functions->get_join_status_color($data['ReqResume']['status_title']);?> pull-right">
 									<?php echo $data['ReqResume']['stage_title'];?> - <span class="sl_status4"><?php echo $data['ReqResume']['status_title'];?></span></span>
 									<a href="<?php echo $this->webroot;?>resume/view/<?php echo $data['Resume']['id'];?>" class="sl_name4"><?php echo $data[0]['full_name'];?></a><br />
 									<small class="s_color sl_email4"><?php echo $data['Resume']['email_id'];?></small>
@@ -734,23 +738,7 @@
 	
 	<!-- datatable -->
 		 
-<style type="text/css">
-.theadFix{
-	display: block;
-	overflow: auto;
-}
 
-.tbodyFix{
-	display: block;
-	height: 135px;
-	overflow: auto;
-}
-
-.tableFix{
-	
-}
-
-	</style>
 
 			 
 			 	<script type="text/javascript" src="https://www.google.com/jsapi"></script>
@@ -783,7 +771,7 @@
 
        data.addRows([
            <?php foreach($DATE_COUNT as $key => $date):?>		  
-              ['<?php echo $date?>', <?php echo $REQ_COUNT[$key] ? $REQ_COUNT[$key] : '';?>, <?php echo $CV_SENT[$key] ? $CV_SENT[$key] : '';?>, <?php echo $CV_SHORTLIST[$key] ? $CV_SHORTLIST[$key]:'';?>,<?php echo $CV_REJECT[$key]?$CV_REJECT[$key]:'';?>, <?php echo $CV_WAITING[$key]?$CV_WAITING[$key]:'';?>, <?php echo $CV_INTERVIEW[$key]?$CV_INTERVIEW[$key]:'';?>,<?php echo $CV_INT_DROP[$key]?$CV_INT_DROP[$key]:'';?>, <?php echo $CV_INT_REJECT[$key]?$CV_INT_REJECT[$key]:'';?>, <?php echo $CV_OFFER[$key]? $CV_OFFER[$key]:'';?>, <?php echo $CV_OFFER_REJECT[$key]?$CV_OFFER_REJECT[$key]:'';?>, <?php echo $CV_JOIN[$key]?$CV_JOIN[$key]:'';?>, <?php echo $CV_BILL[$key];?>],
+              ['<?php echo $date?>', <?php echo $REQ_COUNT[$key] ? $REQ_COUNT[$key] : '';?>, <?php echo $CV_SENT[$key] ? $CV_SENT[$key] : '';?>, <?php echo $CV_SHORTLIST[$key] ? $CV_SHORTLIST[$key]:'';?>,<?php echo $CV_REJECT[$key]?$CV_REJECT[$key]:'';?>, <?php echo $CV_WAITING[$key]?$CV_WAITING[$key]:'';?>, <?php echo $CV_INTERVIEW[$key]?$CV_INTERVIEW[$key]:'';?>,<?php echo $CV_INT_DROP[$key]?$CV_INT_DROP[$key]:'';?>, <?php echo $CV_INT_REJECT[$key]?$CV_INT_REJECT[$key]:'';?>, <?php echo $CV_OFFER[$key]? $CV_OFFER[$key]:'';?>, <?php echo $CV_OFFER_REJECT[$key]?$CV_OFFER_REJECT[$key]:'';?>, <?php echo $CV_JOIN[$key]?$CV_JOIN[$key]:'';?>, <?php echo $CV_BILL[$key] ? $CV_BILL[$key] : '';?>,],
 		   <?php endforeach;?>
        
 			  
@@ -840,6 +828,7 @@
 		  gridlines:{color:'#fff'},
 		  textStyle: {color: '', fontSize: 12},
 		  textPosition : 'none'
+		  
         },
 		axes: {
           x: {
