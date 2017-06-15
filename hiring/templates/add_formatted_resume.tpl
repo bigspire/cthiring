@@ -25,7 +25,7 @@
                   </div>
               </nav>
 					
-<form action="resume.php" id="formID" class="formID" method="post" accept-charset="utf-8">
+<form action="" id="formID" class="formID" method="post" accept-charset="utf-8">
 	<div class="box">
 		<div class="row-fluid">
 		<div class="span12">
@@ -33,23 +33,23 @@
 			<div class="tabbable">
 								<div class="heading">
 										<ul class="nav nav-tabs">
-										<li class="active"><a class="restabChange" rel="interview"  href="#mbox_billing" data-toggle="tab"><i class="splashy-mail_light_down"></i>   Personal </a></li>
-										<li class=""><a class="restabChange" rel="interview"  href="#box_edu" data-toggle="tab"><i class="splashy-mail_light_down"></i>  Education Details </a></li>
-										<li class=""><a class="restabChange" rel="interview"  href="#box_exp" data-toggle="tab"><i class="splashy-mail_light_down"></i>  Experience Details </a></li>
-										<li class=""><a class="restabChange" rel="interview"  href="#box_train" data-toggle="tab"><i class="splashy-mail_light_down"></i>  Training & Programmes</a></li>
-										<li class=""><a class="restabChange" rel="interview"  href="#mbox_Consultant" data-toggle="tab"><i class="splashy-mail_light_down"></i> Consultant Assessment </a></li>	
+										<li class="personal"><a class="restabChange" rel="personal"  href="#box_personal" data-toggle="tab"><i class="splashy-mail_light_down"></i>   Personal </a></li>
+										<li class="education"><a class="restabChange" rel="education"  href="#box_edu" data-toggle="tab"><i class="splashy-mail_light_down"></i>  Education Details </a></li>
+										<li class="exp"><a class="restabChange" rel="exp"  href="#box_exp" data-toggle="tab"><i class="splashy-mail_light_down"></i>  Experience Details </a></li>
+										<li class="training"><a class="restabChange" rel="training"  href="#box_train" data-toggle="tab"><i class="splashy-mail_light_down"></i>  Training & Programmes</a></li>
+										<li class="assess"><a class="restabChange" rel="assess"  href="#box_Consultant" data-toggle="tab"><i class="splashy-mail_light_down"></i> Consultant Assessment </a></li>	
 									</ul>
 								</div>
 			<div class="tab-content" style="overflow:visible">			
-			<div class="tab-pane active" id="mbox_billing">
+			<div class="tab-pane active" id="box_personal">
 			<div class="span6">
 			<table class="table table-bordered dataTable" style="margin-bottom:0;">
 						<tbody>
 									<tr class="tbl_row">
 										<td width="120" class="tbl_column">Candidate Name <span class="f_req">*</span></td>
 										<td>
-										<input type="text" tabindex="7" name="first_name" placeholder="First Name" value="" class="span4">
-								        <input type="text" tabindex="7" name="last_name" placeholder="Last Name" value="" class="inline_text span4">
+										<input type="text" tabindex="1" name="first_name" placeholder="First Name" value="{$first_name}" class="span4">
+								        <input type="text" tabindex="2" name="last_name" placeholder="Last Name" value="{$last_name}" class="inline_text span4">
 										<label for="reg_city" generated="true" class="error">{$first_nameErr}{$last_nameErr}</label>
 										
 										</td>	
@@ -58,7 +58,7 @@
 									<tr>
 										<td width="120" class="tbl_column">Email <span class="f_req">*</span></td>
 										<td>	
-										<input type="text" tabindex="7" id="email" name="email" value="" class="span8">
+										<input type="text" tabindex="3" id="email" name="email" value="{$email}" class="span8">
 										<label for="reg_city" generated="true" class="error">{$emailErr}</label>
 										</td>	
 									</tr>	
@@ -66,50 +66,54 @@
                           <tr class="tbl_row">
 										<td width="120" class="tbl_column"> Mobile <span class="f_req">*</span></td>
 										<td>
-										<input type="text" tabindex="7" name="mobile"  value="{$mobile}" class="span8 ui-autocomplete-input" autocomplete="off">							
+										<input type="text" tabindex="4" name="mobile"  value="{$mobile}" class="span8 ui-autocomplete-input" autocomplete="off">							
 									<label for="reg_city" generated="true" class="error">{$mobileErr} </label>	</td>		
 									</tr>	
 									
 									<tr>
 										<td width="120" class="tbl_column">Telephone <span class="f_req">*</span></td>
 										<td>
-										<input type="text" tabindex="7" name="telephone" value="{$telephone}" class="span8">
+										<input type="text" tabindex="5" name="telephone" value="{$telephone}" class="span8">
 										<label for="reg_city" generated="true" class="error">{$telephoneErr}</label>	</td>	
 									</tr>								
 									<tr class="tbl_row">
 										<td width="120" class="tbl_column">DOB <span class="f_req">*</span></td>
 										<td> 
-										<input name="dob" tabindex="4" value=""  class="datepick span8" placeholder="" type="text" id="HrEmployeeDob">										
+										<input name="dob_field" tabindex="6" value="{$dob_field}"  class="datepick span8" type="text">										
 											<label for="reg_city" generated="true" class="error">{$dobErr}</label></td>
 									</tr>	
 
 									<tr>
 										<td width="120" class="tbl_column">Position Applied For <span class="f_req">*</span></td>
 										<td> 
-										<input type="text" tabindex="7" name="position_for" id="position_for" value="{$position_for}" class="span8 ui-autocomplete-input" autocomplete="off">
-										<label for="reg_city" generated="true" class="error">{$position_forErr}</label>	</td>
+										<select tabindex="7" name="position_for" class="span8"  id="position_for">
+										<option value="">Select</option>
+										{html_options options=$requirement selected=$position_for}	
+										<label for="reg_city" generated="true" class="error">{$position_forErr}</label>																					
+										</td>
 									</tr>
 																		
 									<tr class="tbl_row">
 										<td width="125" class="tbl_column">Current Designation <span class="f_req">*</span></td>
 										<td> 
-										<select tabindex="7" name="designation_id" class="span8"  id="designation_id">	
+										<select tabindex="8" name="designation_id" class="span8" value="{$designation_id}">	
 											<option value="">Select</option>
-											{html_options options=$desig_name selected=$smarty.post.designation_id}															
+											{html_options options=$desig_name selected=$designation_id}															
 										</select>
-										<label for="reg_city" generated="true" class="error">{$positionErr}</label>	</td>
+										<label for="reg_city" generated="true" class="error">{$positionErr}</label>
+										</td>
 									</tr>
 									
 									<tr>
 										<td width="120" class="tbl_column">Total Years of Exp. <span class="f_req">*</span></td>										
 										<td>
-										<select name="year_of_exp" tabindex="8" class="span4">
+										<select name="year_of_exp" tabindex="9" class="span4">
 										<option value="">Year</option>
-										{html_options options=$exp_yr selected=$smarty.post.year_of_exp}	
+										{html_options options=$exp_yr selected=$year_of_exp}	
 										</select>
-										<select name="month_of_exp" tabindex="9" class="inline_text span4">
+										<select name="month_of_exp" tabindex="10" class="inline_text span4">
 										<option value="">Month</option>
-										{html_options options=$exp_month selected=$smarty.post.month_of_exp}	
+										{html_options options=$exp_month selected=$month_of_exp}	
 										</select>
 										<label for="reg_city" generated="true" class="error">{$year_of_expErr}{$month_of_expErr}</label>																						
 										</td>			
@@ -118,42 +122,31 @@
 									<tr class="tbl_row">
 										<td width="120" class="tbl_column">Present Location <span class="f_req">*</span></td>
 										<td>
-								          <input type="text" tabindex="19" name="present_location" placeholder="" value="{$present_location}" class="span8">								
+								          <input type="text" tabindex="11" name="present_location" value="{$present_location}" class="span8">								
 											<label for="reg_city" generated="true" class="error">{$present_locationErr}</label>
 										</td>	
 									</tr>
 									<tr>
 										<td width="120" class="tbl_column">Native Location </td>
 										<td>
-								        <input type="text" tabindex="7" name="native_location" placeholder="" value="" class="span8">								
+								        <input type="text" tabindex="12" name="native_location" placeholder="" value="{if $native_location}{$native_location}{else}{$smarty.post.native_location}{/if}" class="span8">								
 										</td>	
 									</tr>		
 									
 									<tr class="tbl_row">
-										<td width="120" class="tbl_column">Family (Dependents) <span class="f_req"></span></td>										
+										<td width="120" class="tbl_column">Family (Dependents)<span class="f_req"></span></td>										
 										<td>
-										<textarea name="family" id="family" cols="10" rows="3" class="span8"> </textarea>									
+										<textarea name="family" tabindex="13" cols="10" rows="2" class="span8">{if $family}{$family}{else}{$smarty.post.family}{/if}</textarea>									
 										</td>			
 									</tr>	
-									<tr>
+																	
+										<tr class="tbl_row">
 										<td width="120" class="tbl_column"> Nationality   <span class="f_req">*</span></td>
 										<td>
-										<input type="text" tabindex="7" name="nationality" id="nationality" value="{$nationality}" class="span8 ui-autocomplete-input" autocomplete="off">							
+										<input type="text" tabindex="14" name="nationality" id="nationality" value="{$nationality}" class="span8 ui-autocomplete-input" autocomplete="off">							
 										<label for="reg_city" generated="true" class="error"> {$nationalityErr} </label>								
-										</td>		
-									</tr>
-									
-										<tr class="tbl_row">
-										<td width="120" class="tbl_column"> Languages    <span class="f_req">*</span></td>
-										<td>
- 									<select name="language[]" multiple class="chosen-select" id="language">
-									<option value="">Select</option>
-									<option value="1" >English</option>
-									<option value="2" >Hindi</option>
-									<option value="3">Marathi</option>
-									</select>                              
-									<label for="reg_city" generated="true" class="error">{$languageErr} </label>								
-										</td>		
+										</td>										
+											
 									</tr>					
 								</tbody>
 							</table>
@@ -163,96 +156,90 @@
 							<table class="table table-bordered dataTable" style="margin-bottom:0;">
 								<tbody>
 								<tr class="tbl_row">
+										<td width="120" class="tbl_column"> Languages    <span class="f_req">*</span></td>
+										<td>
+ 									<select name="res_language[]" multiple class="chosen-select" tabindex="15" id="language">
+										{html_options options=$languages selected=$res_language}
+									</select>                             
+									<label for="reg_city" generated="true" class="error">{$languageErr} </label>	
+									</td>
+									</tr>
+								<tr>
 										<td width="120" class="tbl_column"> Compensation <span class="f_req">*</span></td>
 										<td>	
 										
-										<input type="text" value=""  name="ctc1_#index#"  id="ctc1#index#" placeholder="Present"  class="span2"/>										
-										<select class="span3"   name="ctc_type_1#index#" id="ctc_type1#index#">
-										<option >Select</option>
-										<option value="1">Thousand</option>
-										<option value="2">Lacs</option>
-										<option value="3">Crore</option>
-										</select> 
+										<input type="text" value="{$present_ctc}"  tabindex="15" name="present_ctc"  placeholder="Present"  class="span2"/>										
+										<select class="span3"   name="present_ctc_type" tabindex="16">
+										{html_options options=$ctc_type selected=$present_ctc_type}
+										</select>  
 											
-										<input type="text" name="ctc2_#index#"  id="ctc2#index#" placeholder="Expected" value="" class="span2"/>	
-										<select  class="span3"  name="ctc_type_2#index#" id="ctc_type2#index#">
-										<option >Select</option>
-										<option value="1">Thousand</option>
-										<option value="2">Lacs</option>
-										<option value="3">Crore</option>
-										</select>			<span class="f_req">*</span>	
-										<label for="reg_city" generated="true" class="error">{$compensationErr} </label>	
+										<input type="text" name="expected_ctc" tabindex="17"  placeholder="Expected" value="{$expected_ctc}" class="span2"/>	
+										<select  class="span3"  name="expected_ctc_type" tabindex="18">
+										{html_options options=$ctc_type selected=$expected_ctc_type}
+										</select>
+										<span class="f_req">*</span>	
+										<label for="reg_city" generated="true" class="error">{$present_ctcErr}{$present_ctc_typeErr}{$expected_ctcErr}{$expected_ctc_typeErr} </label>	
 										</td>	
 									</tr>	
-									<tr>
+									<tr class="tbl_row">
 										<td width="125" class="tbl_column">Notice Period <span class="f_req">*</span></td>
 										<td> 
-<select name="" class="span8"  id="PositionEmpId">	
-										<option >Select</option>									
-										<option value="1">Immediate</option>
-										<option value="2">15 days</option>
-										<option value="3">30 Days</option>
-										<option value="4">45 days</option>		
-										<option value="3">2 Months</option>
-										<option value="4">3 Months</option>	
-										<option value="3">4 Months</option>
-										<option value="4">5 Months</option>		
-										<option value="4">6 Months</option>								
+										<select name="notice_period" tabindex="19" class="span8">										
+										{html_options options=$n_p selected=$notice_period}							
 										</select>
-										<label for="reg_city" generated="true" class="error">{$npErr}</label>																				
+										<label for="reg_city" generated="true" class="error">{$notice_periodErr}</label>																				
 										</td>
 									</tr>	
 									
-									<tr class="tbl_row">
+									<tr >
 										<td width="120" class="tbl_column">Gender <span class="f_req">*</span></td>
 										<td> 
-										<input type="radio" name="male" value="male"> Male
-										<input type="radio" name="male" value="female"> Female
+										<input type="radio" tabindex="20" tabindex="14" name="gender"{if isset($gender) && $gender == '1'}{'checked'}{/if} value="1"> Male
+										<input type="radio" tabindex="21" tabindex="15" name="gender"{if isset($gender) && $gender == '2'}{'checked'}{/if} value="2"> Female
 										<label for="reg_city" generated="true" class="error">{$genderErr} </label>																				
 										</td>
 									</tr>	
-									 <tr>
+									 <tr class="tbl_row">
 										<td width="120" class="tbl_column">Marital Status <span class="f_req"></span></td>
 										<td>
-										<input type="radio" name="single" value="single"> Unmarried
-                              <input type="radio" name="single" value="married" > Married
+										<input type="radio" tabindex="22" name="marital_status"{if isset($marital_status) || $smarty.post.marital_status == 1}{'checked'}{/if} value="1"> Single
+										<input type="radio" tabindex="23" name="marital_status"{if isset($marital_status) || $smarty.post.marital_status == 2}{'checked'} {/if} value="2"> Married
 										</td>	
 									</tr>						
 									
 									
-									<tr class="tbl_row">
+									<tr>
 										<td width="120" class="tbl_column">Technical Expertise and Domain Expertise</td>
 										<td> 
-									   <textarea name="skills" id="skills" cols="10" rows="3" class="span8"> </textarea>									
+									   <textarea name="tech_expert" tabindex="24" cols="10" rows="3" class="span8">{if $tech_expert}{$tech_expert}{else}{$smarty.post.tech_expert}{/if}</textarea>									
 										</td>
 									</tr>	
 									
-									<tr>
+									<tr class="tbl_row">
 										<td width="120" class="tbl_column">Skills </td>
 										<td>
-										<textarea name="skills" id="skills" cols="10" rows="3" class="span8"> </textarea>									
+										<textarea name="skills" cols="10" tabindex="25" rows="3" class="span8">{if $skills}{$skills}{else}{$smarty.post.skills}{/if}</textarea>									
 										</td>	
 									</tr>									
 									
-									<tr class="tbl_row">
+									<tr>
 										<td width="120" class="tbl_column">Address <span class="f_req">*</span></td>
 										<td>
-										 <textarea name="skills" id="skills" cols="10" rows="3" class="span8"> </textarea>									
-										<label for="reg_city" generated="true" class="error">{$addressErr}  </label>
+										 <textarea name="address" cols="10" tabindex="26" rows="3" class="span8">{if $address}{$address}{else}{$smarty.post.address}{/if}</textarea>									
+										<label for="reg_city" generated="true" class="error">{$addressErr}</label>
 										</td>	
 									</tr>
 									
-									<tr>
+									<tr class="tbl_row">
 										<td width="120" class="tbl_column">Hobbies </td>
 										<td>
-										<textarea name="skills" id="skills" cols="10" rows="3" class="span8"> </textarea>									
-										<label for="reg_city" generated="true" class="error">{$hobbiesErr} </label>
+										<textarea name="hobby" tabindex="27" cols="10" rows="3" class="span8">{if $hobby}{$hobby}{else}{$smarty.post.hobby}{/if}</textarea>									
 										</td>	
 									</tr>	
 								</tbody>
 							</table>
 						</div>
-						</div>
+			</div>
 
 					
 					<!-- sheepIt Form -->
@@ -267,39 +254,35 @@
 									<tr class="tbl_row">
 										<td width="120" class="tbl_column">Qualification <span class="f_req">*</span></td>
 										<td>
-										<select name="qualification_#index#" class="span8"  id="qualification#index#">	
-										<option >Select</option>									
-										<option value="1">UG</option>
-										<option value="3">PG</option>
-										<option value="4">ITI</option>									
-										</select>
-									<label for="reg_city" generated="true" class="error">{$qualificationErr} </label>
-										</td>	
+										<select name="qualification_#index#" tabindex="1" class="span8 qualification_id"  id="qualification_#index#">	
+											<option value="">Select</option>
+											{html_options options=$qual}															
+										</select>						
+										<label for="reg_city" generated="true" class="error" id="qualification_Err_#index#"></label></td>	
 									</tr>
 									
 									<tr>
 										<td width="120" class="tbl_column"> Specialization <span class="f_req">*</span></td>
-										<td>
-										<select name="specialization_#index#" class="span8"  id="specialization#index#">	
-										<option >Select</option>									
-										<option value="1">BUSINESS ADMINISTRATOR</option>									
-										</select>
-									<label for="reg_city" generated="true" class="error">{$specErr} </label>										
-										</td>		
+										<td> 
+					<select name="specialization_#index#" tabindex="3" class="span8"  id="specialization_#index#">	
+					<option value="">Select</option>
+						{html_options options=$spec}							
+					</select>
+					<label for="reg_city" generated="true" class="error" id="specialization_Err_#index#"></label>										
+				</td>	
 									</tr>
 						         <tr class="tbl_row">
 										<td width="120" class="tbl_column">University <span class="f_req"></span></td>
-										<td>
-										<input type="text" tabindex="7" name="university_#index#" id="university#index#" value="" class="span8">
-									<label for="reg_city" generated="true" class="error">{$universityErr}</label>
-										</td>	
+										<td> 
+									<input type="text" tabindex="5" name="university_#index#" id="university_#index#" class="span8" >										
+								</td>	
 									</tr>
 	
 										<tr>
 										<td width="120" class="tbl_column">Location <span class="f_req">*</span></td>
 										<td>
-										<input type="text" tabindex="7" name="location_#index#" id="location#index#" value="" class="span8">
-									<label for="reg_city" generated="true" class="error">{$locationErr} </label> 
+										<input type="text" tabindex="8" name="location_#index#" id="location_#index#" value="" class="span8">
+									<label for="reg_city" generated="true" class="error" id="locationErr_#index#"> </label> 
 										</td>	
 										</tr>	
 									</tr>
@@ -311,116 +294,44 @@
 						<tbody>
 									<tr class="tbl_row">
 										<td width="120" class="tbl_column">Degree <span class="f_req">*</span></td>
-										<td>
-										<select name="degree_#index#" class="span8"  id="degree#index#">	
-										<option >Select</option>									
-										<option value="1">B.com</option>
-									   <option value="2">BCA</option>		
-									  <option value="3">B.TECH</option>																			
-						
-										</select>
-									<label for="reg_city" generated="true" class="error">{$degreeErr}</label>
-										</td>	
+										<td> 
+					<select name="degree_#index#" tabindex="2" class="span8 degree_id"  id="degree_#index#">
+					<option value="">Select</option>
+					</select>
+					<label for="reg_city" generated="true" class="error" id="degree_Err_#index#"></label>										
+				</td>	
 									</tr>
 									
 									<tr>
 										<td width="120" class="tbl_column"> College <span class="f_req"></span></td>
-										<td>
-										<input type="text" tabindex="7" name="college_#index#" id="college#index#" value="" class="span8 ui-autocomplete-input" autocomplete="off">							
-									<!--	<label for="reg_city" generated="true" class="error">Please enter the college </label>	-->									
-										</td>		
+										<td> 
+					<input type="text" tabindex="4" name="college_#index#" id="college_#index#" class="span8" >										
+					<label for="reg_city" generated="true" class="error">{$collegeErr}</labe>									
+				</td>		
 									</tr>
 									<tr class="tbl_row">
 										<td width="120" class="tbl_column"> % of Marks  <span class="f_req">*</span></td>
-										<td>
-										<input type="text" tabindex="7" name="per_ofmarks_#index#" id="per_ofmarks#index#" value="" class="span4 ui-autocomplete-input" autocomplete="off">			
-								     <label for="reg_city" generated="true" class="error">{$percErr} </label>	
-								      <select name="coursetype_#index#" class="span4"  id="coursetype#index#">	
-										<option >Course Type</option>									
-										<option value="1">Regular</option>
-									   <option value="2">Part Time</option>		
-									   <option value="3">Correspondence</option>																			
-						
-									  </select>
-									  <label for="reg_city" generated="true" class="error">{$course_typeErr} </label>										
-										</td>		
+										<td> 
+									<input type="text" tabindex="6" name="grade_#index#" id="grade_#index#" value="{$grade}" class="span4" >
+									<select name="grade_type_#index#" tabindex="7" class="inline_text span4"  id="grade_type_#index#">
+										{html_options options=$grade_drop} 
+									</select>
+									<label for="reg_city" generated="true" class="error" id="gradeErr_#index#"></label>	
+							<label for="reg_city" generated="true" class="error" id="grade_typeErr_#index#"></label>	
+							
+								</td>		
 									</tr>
 									
 									<tr>
-										<td width="120" class="tbl_column">From/To Year <span class="f_req">*</span></td>										
-										<td><select name="from_to_year_#index#" id="from_to_year#index#" tabindex="18" class="span4">
-										<option value="">From</option>
-<option value="1">1990</option>
-<option value="2">1991</option>
-<option value="3">1992</option>
-<option value="4">1993</option>
-<option value="5">1994</option>
-<option value="6">1995</option>
-<option value="7">1996</option>
-<option value="8">1997</option>
-<option value="9">1998</option>
-<option value="10">1999</option>
-<option value="11">2000</option>
-<option value="12">2001</option>
-<option value="13">2002</option>
-<option value="14">2003</option>
-<option value="15">2004</option>
-<option value="16">2005</option>
-<option value="2">2006</option>
-<option value="2">2007</option>
-<option value="2">2008</option>
-<option value="2">2009</option>
-<option value="2">2010</option>
-<option value="2">2011</option>
-<option value="2">2001</option>
-<option value="2">2012</option>
-<option value="2">2013</option>
-<option value="2">2014</option>
-<option value="2">2015</option>
-<option value="2">2016</option>
-<option value="2">2017</option>
-<option value="2">2018</option>
-<option value="2">2019</option>
-<option value="2">2020</option>
-
-										</select>
-										<select name="month_of_exp_#index#" id="month_of_exp#index#" tabindex="19" class="inline_text span4">
-										<option value="">To</option>
-<option value="2">1990</option>
-<option value="3">1991</option>
-<option value="2">1992</option>
-<option value="3">1993</option>
-<option value="2">1994</option>
-<option value="3">1995</option>
-<option value="2">1996</option>
-<option value="3">1997</option>
-<option value="2">1998</option>
-<option value="3">1999</option>
-<option value="2">2000</option>
-<option value="2">2001</option>
-<option value="2">2002</option>
-<option value="2">2003</option>
-<option value="2">2004</option>
-<option value="2">2005</option>
-<option value="2">2006</option>
-<option value="2">2007</option>
-<option value="2">2008</option>
-<option value="2">2009</option>
-<option value="2">2010</option>
-<option value="2">2011</option>
-<option value="2">2001</option>
-<option value="2">2012</option>
-<option value="2">2013</option>
-<option value="2">2014</option>
-<option value="2">2015</option>
-<option value="2">2016</option>
-<option value="2">2017</option>
-<option value="2">2018</option>
-<option value="2">2019</option>
-<option value="2">2020</option>
-										</select>
-										<label for="reg_city" generated="true" class="error"> {$from_year}{$to_year} </label>																				
-										</td>			
+										<td width="120" class="tbl_column">Year of passing <span class="f_req">*</span></td>										
+								<td>
+									<select name="from_yr_#index#" id="from_yr_#index#" tabindex="9" class="span4">
+									<option value="">Select</option>
+										{html_options options=$year_of_pass} 
+									</select>
+								<label for="reg_city" generated="true" class="error" id="from_yrErr_#index#">
+								</label>	
+							
 									</tr>	
 					
 								</tbody>
@@ -463,111 +374,57 @@
 					<tr class="tbl_row">
 										<td width="120" class="tbl_column">Designation <span class="f_req">*</span></td>
 										<td> 
-										<input type="text"  name="desig_#index#" value="" id="desig#index#"  class="span8" />
-										<label for="reg_city" generated="true" class="error">{$designationErr}</label>										
+										<select tabindex="7" name="desig_#index#" class="span8"  id="desig_#index#">	
+											<option value="">Select</option>
+											{html_options options=$desig_name}															
+										</select>
+										<label for="reg_city" generated="true" class="error" id="desigErr_#index#"></label>									
 										</td>
 							</tr>
 								<tr>
 										<td width="120" class="tbl_column">Employment Period<span class="f_req">*</span></td>
-										<td><select name="year_of_exp" id = "year_of_exp" tabindex="18" class="span4">
+										<td>
+										<select name="year_of_exp_#index#" id = "year_of_exp_#index#" tabindex="2" class="span4">
 										<option value="">Year</option>
-										<option value="1"="selected">1 Year</option>
-<option value="2">2 Years</option>
-<option value="3">3 Years</option>
-<option value="4">4 Years</option>
-<option value="5">5 Years</option>
-<option value="6">6 Years</option>
-<option value="7">7 Years</option>
-<option value="8">8 Years</option>
-<option value="9">9 Years</option>
-<option value="10">10 Years</option>
-<option value="11">11 Years</option>
-<option value="12">12 Years</option>
-<option value="13">13 Years</option>
-<option value="14">14 Years</option>
-<option value="15">15 Years</option>
-<option value="16">16 Years</option>
-<option value="17">17 Years</option>
-<option value="18">18 Years</option>
-<option value="19">19 Years</option>
-<option value="20">20 Years</option>
-<option value="21">21 Years</option>
-<option value="22">22 Years</option>
-<option value="23">23 Years</option>
-<option value="24">24 Years</option>
-<option value="25">25 Years</option>
-<option value="26">26 Years</option>
-<option value="27">27 Years</option>
-<option value="28">28 Years</option>
-<option value="29">29 Years</option>
-<option value="30">30 Years</option>
-<option value="31">31 Years</option>
-<option value="32">32 Years</option>
-<option value="33">33 Years</option>
-<option value="34">34 Years</option>
-<option value="35">35 Years</option>
-<option value="36">36 Years</option>
-<option value="37">37 Years</option>
-<option value="38">38 Years</option>
-<option value="39">39 Years</option>
-<option value="40">40 Years</option>
-<option value="41">41 Years</option>
-<option value="42">42 Years</option>
-<option value="43">43 Years</option>
-<option value="44">44 Years</option>
-<option value="45">45 Years</option>
-<option value="46">46 Years</option>
-<option value="47">47 Years</option>
-<option value="48">48 Years</option>
-<option value="49">49 Years</option>
-<option value="50">50 Years</option>
-
+										{html_options options=$exp_yr} 
 										</select>
-										<select name="month_of_exp" id = "month_of_exp" tabindex="19" class="inline_text span4">
+										
+										<select name="month_of_exp_#index#" id = "month_of_exp_#index#" tabindex="3" class="inline_text span4">
 										<option value="">Month</option>
-										<option value="1">1 Month</option>
-<option value="2">2 Months</option>
-<option value="3">3 Months</option>
-<option value="4">4 Months</option>
-<option value="5">5 Months</option>
-<option value="7">6 Months</option>
-<option value="8">7 Months</option>
-<option value="9">8 Months</option>
-<option value="10">9 Months</option>
-<option value="11">10 Months</option>
-<option value="10">11 Months</option>
-<option value="11">12 Months</option>
-
+										{html_options options=$exp_month} 
 										</select>
-										<!--label for="reg_city" generated="true" class="error">Please select the created by  </label-->																						
+										
+										<label for="reg_city" generated="true" class="error" id="year_of_expErr_#index#"></label>																						
+										<label for="reg_city" generated="true" class="error" id="month_of_expErr_#index#"></label>																						
 										</td>
 							</tr>
 							<tr class="tbl_row">
-										<td width="120" class="tbl_column">Current location of work <span class="f_req">*</span></td>
+										<td width="120" class="tbl_column">location of work <span class="f_req">*</span></td>
 										<td> 
-										<input type="text"  name="loc_#index#" id="loc#index#" value="" class="span8" />										
-										<!--label for="reg_city" generated="true" class="error">Please enter the current location of work </label-->										
+										<input type="text"  tabindex="4" name="workloc_#index#" id="workloc_#index#" value="" class="span8" />										
+										<label for="reg_city" generated="true" class="error" id="worklocErr_#index#"></label>										
 										</td>
 										
 							</tr>
 							<tr>
 										<td width="120" class="tbl_column">Area of Specialization/Expertise  <span class="f_req">*</span></td>
 										<td> 
-										<input type="text" value=""  name="area_#index#" id="area#index#"  class="span8" />
-										<!--label for="reg_city" generated="true" class="error">Please enter the area of specialization/expertise  </label-->										
+										<input type="text" value=""  name="area_#index#" id="area_#index#"  tabindex="5" class="span8" />
+										<label for="reg_city" generated="true" class="error" id="areaErr_#index#"></label>										
 										</td>
 							</tr>
 								<tr class="tbl_row">
 										<td width="120" class="tbl_column">Company Name <span class="f_req">*</span></td>
 										<td> 
-										<input type="text"  name="company_#index#" value="" id="company#index#"  class="span8" />
-										<!--label for="reg_city" generated="true" class="error">Please enter the company name  </label-->										
+										<input type="text"  tabindex="6" name="company_#index#" value="" id="company_#index#"  class="span8" />
+										<label for="reg_city" generated="true" class="error" id="companyErr_#index#"></label>										
 										</td>
 							</tr>	
 							<tr>
 								<td width="120" class="tbl_column">Company Profile <span class="f_req">*</span></td>
 								<td>
-								<textarea name="company_profile_#index#" id="company_profile#index#" cols="10" rows="3" class="span8"> </textarea>									
+								<textarea name="company_profile_#index#" tabindex="7" id="company_profile_#index#" cols="10" rows="3" class="span8"></textarea>									
+								<label for="reg_city" generated="true" class="error" id="company_profileErr_#index#"></label>
 								</td>	
 							</tr>							
 												
@@ -581,28 +438,31 @@
 								<tr class="tbl_row">
 										<td width="120" class="tbl_column">Other Vital Information (Position Specific)  <span class="f_req"></span></td>
 										<td> 
-										<textarea   placeholder="" name="vital_#index#" tabindex="8" id="vital#index#" cols="10" rows="3" class="span8"></textarea>
+										<textarea   placeholder="" name="vital_#index#" tabindex="8" id="vital_#index#" cols="10" rows="3" class="span8"></textarea>
 										</td>
 							</tr>
 							<tr>
 										<td width="120" class="tbl_column">Key Responsibility <span class="f_req">*</span></td>
 										<td>
-										<textarea name="key_responsibility_#index#" id="key_responsibility#index#" cols="10" rows="3" class="span8"> </textarea>									
-									<!--	<label for="reg_city" generated="true" class="error">Please enter the key responsibility </label> -->
+										<textarea name="key_responsibility_#index#" tabindex="9" id="key_responsibility_#index#" cols="10" rows="3" class="span8"></textarea>									
+									<label for="reg_city" generated="true" class="error" id="key_responsibilityErr_#index#"></label>
 										</td>	
 									</tr>
 									
 									<tr class="tbl_row">
 								<td width="120" class="tbl_column">Key Achievement <span class="f_req">*</span></td>
 								<td>
-								<textarea name="key_achievement_#index#" id="key_achievement#index#" cols="10" rows="3" class="span8"> </textarea>									
+								<textarea name="key_achievement_#index#" tabindex="10" id="key_achievement_#index#" cols="10" rows="3" class="span8"></textarea>									
+								<label for="reg_city" generated="true" class="error" id="key_achievementErr_#index#"></label>
+									
 								</td>	
 							</tr>	
 								   <tr>
 										<td width="120" class="tbl_column"> Reporting To  <span class="f_req">*</span></td>
 										<td>
-										<input type="text" tabindex="7" name="reporting_to_#index#" id="reporting_to#index#" value="" class="span8 ui-autocomplete-input" autocomplete="off">							
-									</td>		
+										<input type="text" tabindex="11" name="reporting_to_#index#" id="reporting_to_#index#" value="" class="span8" autocomplete="off">							
+										<label for="reg_city" generated="true" class="error" id="reporting_toErr_#index#"></label>
+										</td>		
 									</tr>
 					</tbody>
 		  </table>
@@ -631,10 +491,8 @@
 </div>	
 
 <!-- /sheepIt Form -->
-
-
 	<div class="tab-pane" id="box_train">	
-					<div id="sheepItForm3">
+	<div id="sheepItForm3">
  
   <!-- Form template-->
   <div id="sheepItForm3_template" class="" style="clear:left;">
@@ -644,51 +502,19 @@
 									<tr class="tbl_row">
 										<td width="120" class="tbl_column">Year <span class="f_req">*</span></td>
 										<td>
-<select name="year_#index#" class="span8"  id="year#index#">	
-										<option >Year</option>									
-										<option value="2">1990</option>
-<option value="3">1991</option>
-<option value="2">1992</option>
-<option value="3">1993</option>
-<option value="2">1994</option>
-<option value="3">1995</option>
-<option value="2">1996</option>
-<option value="3">1997</option>
-<option value="2">1998</option>
-<option value="3">1999</option>
-<option value="2">2000</option>
-<option value="2">2001</option>
-<option value="2">2002</option>
-<option value="2">2003</option>
-<option value="2">2004</option>
-<option value="2">2005</option>
-<option value="2">2006</option>
-<option value="2">2007</option>
-<option value="2">2008</option>
-<option value="2">2009</option>
-<option value="2">2010</option>
-<option value="2">2011</option>
-<option value="2">2001</option>
-<option value="2">2012</option>
-<option value="2">2013</option>
-<option value="2">2014</option>
-<option value="2">2015</option>
-<option value="2">2016</option>
-<option value="2">2017</option>
-<option value="2">2018</option>
-<option value="2">2019</option>
-<option value="2">2020</option>																	
-						
-										</select>
-									<!--	<label for="reg_city" generated="true" class="error">Please select the year </label> -->
+								<select name="train_year_#index#" class="span8" tabindex="1" id="train_year_#index#">	
+									<option value="">Year</option>
+										{html_options options=$year_of_pass} 
+									</select>
+									<label for="reg_city" generated="true" class="error" id="train_yearErr_#index#"> </label>
 										</td>	
 									</tr>
 									
 									<tr>
 										<td width="120" class="tbl_column"> Description  <span class="f_req">*</span></td>
 										<td>
-										<textarea name="description_#index#" id="description#index#" cols="10" rows="3" class="span8"> </textarea>									
-									<!--	<label for="reg_city" generated="true" class="error">Please enter the description   </label>		-->								
+										<textarea name="description_#index#" tabindex="2" id="description_#index#" cols="10" rows="3" class="span8"></textarea>									
+									<label for="reg_city" generated="true" class="error" id="descriptionErr_#index#"></label>							
 										</td>		
 									</tr>
 						
@@ -701,22 +527,22 @@
 									<tr class="tbl_row">
 										<td width="120" class="tbl_column">Program Title <span class="f_req">*</span></td>
 										<td>
-										<input type="text" tabindex="7" name="programtitle_#index#" id="programtitle#index#" value="" class="span8">
-									<!--	<label for="reg_city" generated="true" class="error">Please enter the program title </label> -->
+										<input type="text" tabindex="3" name="programtitle_#index#" id="programtitle_#index#" value="" class="span8">
+									<label for="reg_city" generated="true" class="error" id="programtitleErr_#index#"></label>
 										</td>	
 									</tr>
 									
 									<tr>
 										<td width="120" class="tbl_column"> Location <span class="f_req">*</span></td>
 										<td>
-										<input type="text" tabindex="7" name="location_#index#" id="location#index#" value="" class="span8 ui-autocomplete-input" autocomplete="off">							
-									<!--	<label for="reg_city" generated="true" class="error">Please enter the location </label>	-->									
+										<input type="text" tabindex="4" name="train_location_#index#" id="train_location_#index#" value="" class="span8 ui-autocomplete-input" autocomplete="off">							
+									<label for="reg_city" generated="true" class="error" id="train_locationErr_#index#"></label>							
 										</td>		
 									</tr>
 								</tbody>
 							</table>
 						</div>
-														<div style="float: left;    clear: left;    margin-top: 5px;    margin-bottom: 5px;">										
+	<div style="float: left;    clear: left;    margin-top: 5px;    margin-bottom: 5px;">										
 <button type="button" id="sheepItForm3_remove_current" >
 <a><span>Remove</span></a></button>
 </div>
@@ -734,61 +560,64 @@
     </span>
   </div>
   <!-- /Controls -->
-
-
 </div>
 </div>
 						
 					
-					<div class="tab-pane" id="mbox_Consultant">
+<div class="tab-pane" id="box_Consultant">
 <div class="span6">
 			<table class="table table-bordered dataTable" style="margin-bottom:0;">
 						<tbody>						
 									<tr class="tbl_row">
-										<td width="120" class="tbl_column">Personality <span class="f_req">*</span></td>
+										<td width="120" class="tbl_column">Personality <span class="f_req">*</span>
+										</td>
 										<td>
-<textarea placeholder="" name="consultant_#index#" tabindex="8" id="consultant#index#" cols="10" rows="3" class="span8"></textarea>
-										<label for="reg_city" generated="true" class="error">Please enter the personality   </label>
+<textarea placeholder="" name="personality" tabindex="1" cols="10" rows="3" class="span8">{if $personality}{$personality}{else}{$smarty.post.personality}{/if}</textarea>
+										<label for="reg_city" generated="true" class="error">{$personalityErr} </label>	
 										</td>	
 									</tr>	
 									<tr class="">
 										<td width="120" class="tbl_column">Interview Availability <span class="f_req">*</span></td>
 										<td>
-<textarea placeholder="" name="interview_availability_#index#" tabindex="8" id="interview_availability#index#" cols="10" rows="3" class="span8"></textarea>
+<textarea placeholder="" name="interview_availability" tabindex="2" cols="10" rows="3" class="span8">{if $interview_availability}{$interview_availability}{else}{$smarty.post.interview_availability}{/if}</textarea>
+<label for="reg_city" generated="true" class="error">{$interview_availabilityErr} </label>	
 										</td>	
 									</tr>		
 									<tr class="tbl_row">
 										<td width="120" class="tbl_column">Achievements  </td>
 										<td> 
-									   <textarea name="skills" id="skills" cols="10" rows="3" class="span8"> </textarea>									
-										<!--label for="reg_city" generated="true" class="error">Please enter the ctc offered </label-->																				
+									   <textarea name="achievement" cols="10" tabindex="3" rows="3" class="span8">{if $achievement}{$achievement}{else}{$smarty.post.achievement}{/if}</textarea>									
 										</td>
 									</tr>	
 									</tbody>
-							</table>
-						</div>
-									<div class="span6">	
-									<table class="table table-bordered dataTable" style="margin-bottom:0;">
-						<tbody>	
-									<tr class="tbl_row">
-										<td width="120" class="tbl_column">Know-How about Company  </td>
-										<td> 
-									   <textarea name="skills" id="skills" cols="10" rows="3" class="span8"> </textarea>									
-										<!--label for="reg_city" generated="true" class="error">Please enter the designation </label-->																				
-										</td>
-									</tr>		
-									<tr>
-										<td width="120" class="tbl_column">Candidate Brief </td>
-										<td> 
-									   <textarea name="skills" id="skills" cols="10" rows="3" class="span8"> </textarea>									
-										<!--label for="reg_city" generated="true" class="error">Please enter the designation </label-->																				
-										</td>
-									</tr>										
-									</tbody>
-							</table>
-						</div>
-
+			</table>
 </div>
+<div class="span6">	
+	<table class="table table-bordered dataTable" style="margin-bottom:0;">
+		<tbody>	
+			<tr class="tbl_row">
+				<td width="120" class="tbl_column">Know-How about Company  </td>
+				<td> 
+					<textarea name="about_company" tabindex="4" cols="10" rows="3" class="span8">{if $about_company}{$about_company}{else}{$smarty.post.about_company}{/if}</textarea>									
+					</td>
+			</tr>		
+			<tr>
+				<td width="120" class="tbl_column">Candidate Brief </td>
+				<td> 
+				   <textarea name="candidate_brief" tabindex="5" cols="10" rows="3" class="span8">{if $candidate_brief}{$candidate_brief}{else}{$smarty.post.candidate_brief}{/if}</textarea>									
+				</td>
+			</tr>										
+		</tbody>
+	</table>
+</div>
+</div>
+<input type="hidden" id="edu_count" name="edu_count" value="{$eduCount}">
+<input type="hidden" id="exp_count" name="exp_count" value="{$expCount}">	
+<input type="hidden" id="train_count" name="train_count" value="{$trainCount}">
+<input type="hidden" id="totCount_edu" name="totCount_edu" value="{$totCount_edu}">	
+<input type="hidden" id="totCount_exp" name="totCount_exp" value="{$totCount_exp}">	
+<input type="hidden" id="add_formatted_resume" name="add_formatted_resume" value="{$marty.post.add_formatted_resume}">
+
 				
 							</div>
 							</div>
@@ -796,6 +625,7 @@
 </div>
                     </div>
 					</div>
+					<input type="hidden" id="tab_open_resume" value="{$tab_open_resume}"/>
 					 <div class="form-actions">
 									<button class="btn btn-gebo" type="submit">Submit</button>
 								<a href="resume.php"><button type="button" class="btn">Cancel</button></a>
@@ -814,7 +644,70 @@
 			
 {include file='include/footer.tpl'}
 
-{literal}	
+		
+	{for $i=0; $i < $eduCount; $i++}
+		
+		<input type="hidden" id="qualificationData_{$i}" name="qualificationData_{$i}" value="{$qualificationData[$i]}">
+		<input type="hidden" id="specializationData_{$i}" name="specializationData_{$i}" value='{html_options options=$spec_data[$i]}'>
+		<input type="hidden" id="locationData_{$i}" name="locationData_{$i}" value="{$locationData[$i]}">
+		<input type="hidden" id="collegeData_{$i}" name="collegeData_{$i}" value="{$collegeData[$i]}">
+		<input type="hidden" id="degreeData_{$i}" name="degreeData_{$i}" value='{html_options options=$degreeData[$i]}'>
+		<input type="hidden" id="degreeSelData_{$i}" name="degreeSelData_{$i}" value="{$degree[$i]}">
+		<input type="hidden" id="specializationSelData_{$i}" name="specializationSelData_{$i}" value="{$spec[$i]}">
+
+		<input type="hidden" id="gradeData_{$i}" name="gradeData_{$i}" value="{$gradeData[$i]}">
+		<input type="hidden" id="grade_typeData_{$i}" name="grade_typeData_{$i}" value="{$grade_typeData[$i]}">
+		<input type="hidden" id="universityData_{$i}" name="universityData_{$i}" value="{$universityData[$i]}">
+		<input type="hidden" id="from_yrData_{$i}" name="from_yrData_{$i}" value="{$from_yrData[$i]}">
+		
+		<input type="hidden" id="qualification_Err_Data_{$i}"  value="{$eduErr[$i]['qualificationErr']}">
+		<input type="hidden" id="degree_Err_Data_{$i}"  value="{$eduErr[$i]['degreeErr']}">
+		<input type="hidden" id="specialization_Err_Data_{$i}"  value="{$eduErr[$i]['specializationErr']}">
+		<input type="hidden" id="from_yr_Err_Data_{$i}"  value="{$eduErr[$i]['from_yrErr']}">
+		<input type="hidden" id="locationErr_Data_{$i}"  value="{$eduErr[$i]['locationErr']}">
+		<input type="hidden" id="gradeErr_Data_{$i}"  value="{$eduErr[$i]['gradeErr']}">
+		<input type="hidden" id="grade_typeErr_Data_{$i}"  value="{$eduErr[$i]['grade_typeErr']}">
+	{/for}
+	
+	{for $i=0; $i < $expCount; $i++}
+		<input type="hidden" id="desigData_{$i}" name="desigData_{$i}" value="{$desigData[$i]}">
+		<input type="hidden" id="areaData_{$i}" name="areaData_{$i}" value="{$areaData[$i]}">
+		<input type="hidden" id="year_of_expData_{$i}" name="year_of_expData_{$i}" value="{$year_of_expData[$i]}">
+		<input type="hidden" id="month_of_expData_{$i}" name="month_of_expData_{$i}" value="{$month_of_expData[$i]}">
+		<input type="hidden" id="companyData_{$i}" name="companyData_{$i}" value="{$companyData[$i]}">
+		<input type="hidden" id="worklocData_{$i}" name="worklocData_{$i}" value="{$worklocData[$i]}">
+		<input type="hidden" id="vitalData_{$i}" name="vitalData_{$i}" value="{$vitalData[$i]}">
+		<input type="hidden" id="company_profileData_{$i}" name="company_profileData_{$i}" value="{$company_profileData[$i]}">
+		<input type="hidden" id="key_responsibilityData_{$i}" name="key_responsibilityData_{$i}" value="{$key_responsibilityData[$i]}">
+		<input type="hidden" id="key_achievementData_{$i}" name="key_achievementData_{$i}" value="{$key_achievementData[$i]}">
+		<input type="hidden" id="reporting_to_Data_{$i}" name="reporting_to_Data_{$i}" value="{$reporting_toData[$i]}">
+		
+		<input type="hidden" id="desig_Err_Data_{$i}"  value="{$expErr[$i]['desigErr']}">
+		<input type="hidden" id="year_of_exp_Err_Data_{$i}"  value="{$expErr[$i]['year_of_expErr']}">
+		<input type="hidden" id="month_of_exp_Err_Data_{$i}"  value="{$expErr[$i]['month_of_expErr']}">
+		<input type="hidden" id="workloc_Err_Data_{$i}"  value="{$expErr[$i]['worklocErr']}">
+		<input type="hidden" id="area_Err_Data_{$i}"  value="{$expErr[$i]['areaErr']}">
+		<input type="hidden" id="company_Err_Data_{$i}"  value="{$expErr[$i]['companyErr']}">
+		<input type="hidden" id="company_profile_Err_Data_{$i}"  value="{$expErr[$i]['company_profileErr']}">
+		<input type="hidden" id="key_responsibility_Err_Data_{$i}"  value="{$expErr[$i]['key_responsibilityErr']}">
+		<input type="hidden" id="key_achievement_Err_Data_{$i}"  value="{$expErr[$i]['key_achievementErr']}">
+		<input type="hidden" id="reporting_to_Err_Data_{$i}"  value="{$expErr[$i]['reporting_toErr']}">
+	{/for}
+	
+	{for $i=0; $i < $trainCount; $i++}
+		<input type="hidden" id="train_yearData_{$i}" name="train_yearData_{$i}" value="{$train_yearData[$i]}">
+		<input type="hidden" id="descriptionData_{$i}" name="descriptionData_{$i}" value="{$descriptionData[$i]}">
+		<input type="hidden" id="programtitleData_{$i}" name="programtitleData_{$i}" value="{$programtitleData[$i]}">
+		<input type="hidden" id="train_locationData_{$i}" name="train_locationData_{$i}" value="{$train_locationData[$i]}">
+		
+		<input type="hidden" id="train_year_Err_Data_{$i}"  value="{$trainErr[$i]['train_yearErr']}">
+		<input type="hidden" id="description_Err_Data_{$i}"  value="{$trainErr[$i]['descriptionErr']}">
+		<input type="hidden" id="programtitle_Err_Data_{$i}"  value="{$trainErr[$i]['programtitleErr']}">
+		<input type="hidden" id="train_location_Err_Data_{$i}"  value="{$trainErr[$i]['train_locationErr']}">
+	{/for}
+	
+
+{literal}	 
 <script type="text/javascript">	
 $(document).ready(function(){
    var sheepAdd = {};
@@ -828,14 +721,136 @@ $(document).ready(function(){
 		   allowAddN: true,
 		   maxFormsCount: 10,
 		   minFormsCount: 1,
-		   iniFormsCount: 1,
+		   iniFormsCount: $('#edu_count').val() ? $('#edu_count').val() : '1',
 		   removeLastConfirmation: true,
 		   removeCurrentConfirmation: true,
 		   removeLastConfirmationMsg: 'Are you sure?',
 		   removeCurrentConfirmationMsg: 'Are you sure?',
-		   continuousIndex: true
+		   continuousIndex: true,
+		   afterAdd: function(source, newForm) {
+			 $('#edu_count').attr('value',source.getFormsCount());
+			 // fetch the degree
+			 $(".qualification_id").change(function (){
+				var qualification_name = $(this).val();
+				 var qual_id = $(this).attr('id').split('_');	
+				
+				 $.ajax({
+					url : "get_degree.php",
+					method : "GET",
+					dataType: "json",
+					data : {qualification : qualification_name},
+					encode  : false
+				})
+					.done(function (data){
+						var div_data = '<option value="">Select</option>';
+						$.each(data,function (a,y){ 
+							div_data +=  "<option value="+a+">"+y+"</option>";
+						});
+					$('#degree_'+qual_id[1]).empty();
+					$('#specialization_'+qual_id[1]).empty();
+					$('#degree_'+qual_id[1]).html(div_data); 
+				});
+			});	
+			// fetch the spec.
+			$(".degree_id").change(function (){
+				var degree_name = $(this).val();
+				var degree_id = $(this).attr('id').split('_');	
+				$.ajax({
+					url : "get_specialization.php",
+					method : "GET",
+					dataType: "json",
+					data : {degree : degree_name},
+					encode  : false
+				})
+					.done(function (data){
+						var div_data = '<option value="">Select</option>';
+						$.each(data,function (a,y){ 
+							div_data +=  "<option value="+a+">"+y+"</option>";
+						});
+				  
+					$('#specialization_'+degree_id[1]).empty();
+					$('#specialization_'+degree_id[1]).html(div_data);  
+					 
+				});
+	});
+		   },
+		   afterRemoveCurrent: function(source) {		
+			 $('#edu_count').attr('value',source.getFormsCount());
+		  }
 	   });	   
 	}
+	
+	/* function to load education php value into form */
+	if($('#sheepItForm').length > 0){
+		for(i = 0; i < $('#edu_count').val(); i++){
+			if($('#from_yrData_'+i).length > 0){ 
+				$('#from_yr_'+i).attr('value', $('#from_yrData_'+i).val());
+			}
+			if($('#to_yrData_'+i).length > 0){ 
+				$('#to_yr_'+i).attr('value', $('#to_yrData_'+i).val());
+			}
+			if($('#gradeData_'+i).length > 0){ 
+				$('#grade_'+i).attr('value', $('#gradeData_'+i).val());
+			}
+			if($('#collegeData_'+i).length > 0){ 
+				$('#college_'+i).val($('#collegeData_'+i).val());
+			}
+			if($('#grade_typeData_'+i).length > 0){ 
+				$('#grade_type_'+i).val($('#grade_typeData_'+i).val());
+			}
+			if($('#universityData_'+i).length > 0){ 
+				$('#university_'+i).val($('#universityData_'+i).val());
+			}
+			if($('#qualificationData_'+i).length > 0){ 
+				$('#qualification_'+i).val($('#qualificationData_'+i).val());
+			}
+			if($('#specializationData_'+i).length > 0){ 
+				$('#specialization_'+i).html('<option value="">Select</option>'+$('#specializationData_'+i).val());
+			}
+			// to retain specialization
+			if($('#specializationSelData_'+i).length > 0){
+				$('#specialization_'+i).val($('#specializationSelData_'+i).val());
+			}			
+			if($('#degreeData_'+i).length > 0){
+				$('#degree_'+i).append( $('#degreeData_'+i).val());
+			}
+			// condition to retain the degree
+			if($('#degreeSelData_'+i).length > 0){
+				$('#degree_'+i).val( $('#degreeSelData_'+i).val());
+			}
+			
+			if($('#locationData_'+i).length > 0){ 
+				$('#location_'+i).val( $('#locationData_'+i).val());
+			}
+			
+			// for error messages
+			if($('#specialization_Err_Data_'+i).length > 0){ 
+				$('#specialization_Err_'+i).html($('#specialization_Err_Data_'+i).val());
+			}
+			if($('#degree_Err_Data_'+i).length > 0){ 
+				$('#degree_Err_'+i).html($('#degree_Err_Data_'+i).val());
+			}
+			if($('#from_yr_Err_Data_'+i).length > 0){ 
+				$('#from_yrErr_'+i).html($('#from_yr_Err_Data_'+i).val());
+			}
+			if($('#to_yr_Err_Data_'+i).length > 0){ 
+				$('#to_yrErr_'+i).html($('#to_yr_Err_Data_'+i).val());
+			}
+			if($('#qualification_Err_Data_'+i).length > 0){ 
+				$('#qualification_Err_'+i).html($('#qualification_Err_Data_'+i).val());
+			}
+			if($('#locationErr_Data_'+i).length > 0){ 
+				$('#locationErr_'+i).html($('#locationErr_Data_'+i).val());
+			}
+			if($('#gradeErr_Data_'+i).length > 0){ 
+				$('#gradeErr_'+i).html($('#gradeErr_Data_'+i).val());
+			}
+			if($('#grade_typeErr_Data_'+i).length > 0){ 
+				$('#grade_typeErr_'+i).html($('#grade_typeErr_Data_'+i).val());
+			}
+		}
+	}
+	
 	if($('#sheepItForm1').length > 0){ 
 	var sheepAdd = $('#sheepItForm1').sheepIt({
 		   separator: '',
@@ -846,33 +861,93 @@ $(document).ready(function(){
 		   allowAddN: true,
 		   maxFormsCount: 10,
 		   minFormsCount: 1,
-		   iniFormsCount: 1,
+		   iniFormsCount: $('#exp_count').val() ? $('#exp_count').val() : '1',
 		   removeLastConfirmation: true,
 		   removeCurrentConfirmation: true,
 		   removeLastConfirmationMsg: 'Are you sure?',
 		   removeCurrentConfirmationMsg: 'Are you sure?',
-		   continuousIndex: true
+		   continuousIndex: true,
+		   afterAdd: function(source, newForm) {
+			 $('#exp_count').attr('value',source.getFormsCount());
+		   },
+		   afterRemoveCurrent: function(source) {		
+			 $('#exp_count').attr('value',source.getFormsCount());
+		  }
 	   });	   
 	}
-	if($('#sheepItForm2').length > 0){ 
-	var sheepAdd = $('#sheepItForm2').sheepIt({
-		   separator: '',
-		   allowRemoveLast: true,
-		   allowRemoveCurrent: true,
-		   allowRemoveAll: true,
-		   allowAdd: true,
-		   allowAddN: true,
-		   maxFormsCount: 10,
-		   minFormsCount: 1,
-		   iniFormsCount: 1,
-		   removeLastConfirmation: true,
-		   removeCurrentConfirmation: true,
-		   removeLastConfirmationMsg: 'Are you sure?',
-		   removeCurrentConfirmationMsg: 'Are you sure?',
-		   continuousIndex: true
-	   });	   
+	
+	/* function to load experience php value into form */
+	if($('#sheepItForm1').length > 0){
+		for(i = 0; i < $('#exp_count').val(); i++){
+			if($('#desigData_'+i).length > 0){ 
+				$('#desig_'+i).attr('value', $('#desigData_'+i).val());
+			}
+			if($('#worklocData_'+i).length > 0){ 
+				$('#workloc_'+i).attr('value', $('#worklocData_'+i).val());
+			}
+			if($('#areaData_'+i).length > 0){ 
+				$('#area_'+i).attr('value', $('#areaData_'+i).val());
+			}
+			if($('#year_of_expData_'+i).length > 0){ 
+				$('#year_of_exp_'+i).attr('value', $('#year_of_expData_'+i).val());
+			}
+			if($('#month_of_expData_'+i).length > 0){ 
+				$('#month_of_exp_'+i).val( $('#month_of_expData_'+i).val());
+			}
+			if($('#companyData_'+i).length > 0){ 
+				$('#company_'+i).val( $('#companyData_'+i).val());
+			}
+			if($('#company_profileData_'+i).length > 0){ 
+				$('#company_profile_'+i).val( $('#company_profileData_'+i).val());
+			}
+			if($('#key_responsibilityData_'+i).length > 0){ 
+				$('#key_responsibility_'+i).val( $('#key_responsibilityData_'+i).val());
+			}
+			if($('#reporting_to_Data_'+i).length > 0){ 
+				$('#reporting_to_'+i).val( $('#reporting_to_Data_'+i).val());
+			}
+			if($('#key_achievementData_'+i).length > 0){ 
+				$('#key_achievement_'+i).val( $('#key_achievementData_'+i).val());
+			}
+			if($('#vitalData_'+i).length > 0){ 
+				$('#vital_'+i).val( $('#vitalData_'+i).val());
+			}
+			
+			// for error messages
+			if($('#desig_Err_Data_'+i).length > 0){ 
+				$('#desigErr_'+i).html($('#desig_Err_Data_'+i).val());
+			}
+			if($('#year_of_exp_Err_Data_'+i).length > 0){ 
+				$('#year_of_expErr_'+i).html($('#year_of_exp_Err_Data_'+i).val());
+			}
+			if($('#month_of_exp_Err_Data_'+i).length > 0){ 
+				$('#month_of_expErr_'+i).html($('#month_of_exp_Err_Data_'+i).val());
+			}
+			if($('#workloc_Err_Data_'+i).length > 0){ 
+				$('#worklocErr_'+i).html($('#workloc_Err_Data_'+i).val());
+			}
+			if($('#area_Err_Data_'+i).length > 0){ 
+				$('#areaErr_'+i).html($('#area_Err_Data_'+i).val());
+			}
+			if($('#company_Err_Data_'+i).length > 0){ 
+				$('#companyErr_'+i).html($('#company_Err_Data_'+i).val());
+			}
+			if($('#company_profile_Err_Data_'+i).length > 0){ 
+				$('#company_profileErr_'+i).html( $('#company_profile_Err_Data_'+i).val());
+			}
+			if($('#key_responsibility_Err_Data_'+i).length > 0){ 
+				$('#key_responsibilityErr_'+i).html( $('#key_responsibility_Err_Data_'+i).val());
+			}
+			if($('#reporting_to_Err_Data_'+i).length > 0){ 
+				$('#reporting_toErr_'+i).html( $('#reporting_to_Err_Data_'+i).val());
+			}
+			if($('#key_achievement_Err_Data_'+i).length > 0){ 
+				$('#key_achievementErr_'+i).html( $('#key_achievement_Err_Data_'+i).val());
+			}
+		}
 	}
-		if($('#sheepItForm3').length > 0){ 
+	
+	if($('#sheepItForm3').length > 0){ 
 	var sheepAdd = $('#sheepItForm3').sheepIt({
 		   separator: '',
 		   allowRemoveLast: true,
@@ -882,14 +957,51 @@ $(document).ready(function(){
 		   allowAddN: true,
 		   maxFormsCount: 10,
 		   minFormsCount: 1,
-		   iniFormsCount: 1,
+		   iniFormsCount: $('#train_count').val() ? $('#train_count').val() : '1',
 		   removeLastConfirmation: true,
 		   removeCurrentConfirmation: true,
 		   removeLastConfirmationMsg: 'Are you sure?',
 		   removeCurrentConfirmationMsg: 'Are you sure?',
-		   continuousIndex: true
+		   continuousIndex: true,
+		   afterAdd: function(source, newForm) {
+			 $('#train_count').attr('value',source.getFormsCount());
+		   },
+		   afterRemoveCurrent: function(source) {		
+			 $('#train_count').attr('value',source.getFormsCount());
+		  }
 	   });	   
+	}
+	/* function to load experience php value into form */
+	if($('#sheepItForm3').length > 0){
+		for(i = 0; i < $('#train_count').val(); i++){
+			if($('#train_yearData_'+i).length > 0){ 
+				$('#train_year_'+i).attr('value', $('#train_yearData_'+i).val());
+			}
+			if($('#descriptionData_'+i).length > 0){ 
+				$('#description_'+i).attr('value', $('#descriptionData_'+i).val());
+			}
+			if($('#programtitleData_'+i).length > 0){ 
+				$('#programtitle_'+i).attr('value', $('#programtitleData_'+i).val());
+			}
+			if($('#train_locationData_'+i).length > 0){ 
+				$('#train_location_'+i).val( $('#train_locationData_'+i).val());
+			}
+			
+			// for error messages
+			if($('#train_year_Err_Data_'+i).length > 0){ 
+				$('#train_yearErr_'+i).html($('#train_year_Err_Data_'+i).val());
+			}
+			if($('#description_Err_Data_'+i).length > 0){ 
+				$('#descriptionErr_'+i).html($('#description_Err_Data_'+i).val());
+			}
+			if($('#programtitle_Err_Data_'+i).length > 0){ 
+				$('#programtitleErr_'+i).html($('#programtitle_Err_Data_'+i).val());
+			}
+			if($('#train_location_Err_Data_'+i).length > 0){ 
+				$('#train_locationErr_'+i).html($('#train_location_Err_Data_'+i).val());
+			}
+		}
 	}
 });
 </script>	
-{/literal}	
+{/literal}

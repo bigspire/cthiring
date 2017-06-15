@@ -549,9 +549,9 @@ $(document).ready(function() {
 				$('.personal').addClass('active');
 				$('#mbox_Personal').addClass('active');
 				$('.education').removeClass('active');
-				$('#mbox_Education').removeClass('active');
+				$('#box_edu').removeClass('active');
 				$('.exp').removeClass('active');
-				$('#mbox_Experience').removeClass('active');
+				$('#box_exp').removeClass('active');
 				$('.assess').removeClass('active');
 				$('#mbox_Consultant').removeClass('active');
 				break;
@@ -580,9 +580,144 @@ $(document).ready(function() {
 		}
 	}
 	
+	/* function to call when the formatted resume tab change */
+	$('.restabChange').click(function(){
+		$('#add_formatted_resume').val($(this).attr('rel'));
+	});
+	
+		/* retain the formatted resume add / edit tab */
+	if($('#add_formatted_resume').length > 0){
+		if($('#add_formatted_resume').val() == 'personal' || $('#add_formatted_resume').val() == ''){
+			$('.personal').addClass('active');
+			$('#box_Personal').addClass('active');
+			$('.education').removeClass('active');
+			$('#box_edu').removeClass('active');
+			$('.exp').removeClass('active');
+			$('#box_exp').removeClass('active');
+			$('.training').removeClass('active');
+			$('#box_train').removeClass('active');
+			$('.assess').removeClass('active');
+			$('#box_Consultant').removeClass('active');
+		}else if($('#add_formatted_resume').val() == 'education'){ 
+			$('.personal').removeClass('active');
+			$('#box_Personal').removeClass('active');
+			$('.education').addClass('active');
+			$('#box_edu').addClass('active');
+			$('.exp').removeClass('active');
+			$('#box_exp').removeClass('active');
+			$('.training').removeClass('active');
+			$('#box_train').removeClass('active');
+			$('.assess').removeClass('active');
+			$('#box_Consultant').removeClass('active');			
+		}else if($('#add_formatted_resume').val() == 'exp'){ 
+			$('.personal').removeClass('active');
+			$('#box_Personal').removeClass('active');
+			$('.education').removeClass('active');
+			$('#box_edu').removeClass('active');
+			$('.exp').addClass('active');
+			$('#box_exp').addClass('active');
+			$('.training').removeClass('active');
+			$('#box_train').removeClass('active');
+			$('.assess').removeClass('active');
+			$('#box_Consultant').removeClass('active');				
+		}else if($('#add_formatted_resume').val() == 'assess'){ 
+			$('.personal').removeClass('active');
+			$('#box_Personal').removeClass('active');
+			$('.education').removeClass('active');
+			$('#box_edu').removeClass('active');
+			$('.exp').removeClass('active');
+			$('#box_exp').removeClass('active');
+			$('.training').removeClass('active');
+			$('#box_train').removeClass('active');
+			$('.assess').addClass('active');
+			$('#box_Consultant').addClass('active');				
+		}else if($('#add_formatted_resume').val() == 'training'){ 
+			$('.personal').removeClass('active');
+			$('#box_Personal').removeClass('active');
+			$('.education').removeClass('active');
+			$('#box_edu').removeClass('active');
+			$('.exp').removeClass('active');
+			$('#box_exp').removeClass('active');
+			$('.training').addClass('active');
+			$('#box_train').addClass('active');
+			$('.assess').removeClass('active');
+			$('#box_Consultant').removeClass('active');				
+		}
+	}
+	
+	// open the error tab in add / edit formatted resume page
+	if($('#tab_open_resume').length > 0){ 
+		if($('#tab_open_resume').val() != ''){
+			open_tab = $('#tab_open_resume').val();
+			switch(open_tab){
+				case 'tab1':
+				$('.personal').addClass('active');
+				$('#box_personal').addClass('active');
+				$('.education').removeClass('active');
+				$('#box_edu').removeClass('active');
+				$('.exp').removeClass('active');
+				$('#box_exp').removeClass('active');
+				$('.training').removeClass('active');
+				$('#box_train').removeClass('active');
+				$('.assess').removeClass('active');
+				$('#box_Consultant').removeClass('active');
+				break;
+				case 'tab2':
+				$('.personal').removeClass('active');
+				$('#box_personal').removeClass('active');
+				$('.education').addClass('active');
+				$('#box_edu').addClass('active');
+				$('.exp').removeClass('active');
+				$('#box_exp').removeClass('active');
+				$('.training').removeClass('active');
+				$('#box_train').removeClass('active');
+				$('.assess').removeClass('active');
+				$('#box_Consultant').removeClass('active');
+				break;
+				case 'tab3':
+				$('.personal').removeClass('active');
+				$('#box_personal').removeClass('active');
+				$('.education').removeClass('active');
+				$('#box_edu').removeClass('active');
+				$('.exp').addClass('active');
+				$('#box_exp').addClass('active');
+				$('.training').removeClass('active');
+				$('#box_train').removeClass('active');
+				$('.assess').removeClass('active');
+				$('#box_Consultant').removeClass('active');
+				break;
+				case 'tab4':
+				$('.personal').removeClass('active');
+				$('#box_personal').removeClass('active');
+				$('.education').removeClass('active');
+				$('#box_edu').removeClass('active');
+				$('.exp').removeClass('active');
+				$('#box_exp').removeClass('active');
+				$('.training').addClass('active');
+				$('#box_train').addClass('active');
+				$('.assess').removeClass('active');
+				$('#box_Consultant').removeClass('active');
+				break;
+				case 'tab5':
+				$('.personal').removeClass('active');
+				$('#box_personal').removeClass('active');
+				$('.education').removeClass('active');
+				$('#box_edu').removeClass('active');
+				$('.exp').removeClass('active');
+				$('#box_exp').removeClass('active');
+				$('.training').removeClass('active');
+				$('#box_train').removeClass('active');
+				$('.assess').addClass('active');
+				$('#box_Consultant').addClass('active');
+				break;
+				
+			}
+		}
+	}
+	
 	// for fetch Degree
 	/*
-	$(".qualification_id").change(function (){ alert('ravi');
+	$(".qualification_id").change(function (){ 
 		var qualification_name = $(this).val();
 		 var qual_id = $(this).attr('id').split('_');	
 		

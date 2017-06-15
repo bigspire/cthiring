@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 2017-06-12 12:23:35 Warning: Warning (2): Missing argument 6 for HomeController::get_position_count(), called in F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php on line 109 and defined in [F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php, line 355]
 =======
 2017-06-14 11:14:17 Error: [MissingConnectionException] Database connection "Mysql" is missing, or could not be created.
@@ -480,13 +481,49 @@ Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
 Trace:
 HomeController::get_position_count() - APP\Controller\HomeController.php, line 355
 HomeController::index() - APP\Controller\HomeController.php, line 109
+=======
+2017-06-12 19:34:55 Error: [MissingConnectionException] Database connection "Mysql" is missing, or could not be created.
+Exception Attributes: array (
+  'class' => 'Mysql',
+  'message' => 'SQLSTATE[HY000] [1045] Access denied for user \'cthire\'@\'localhost\' (using password: YES)',
+  'enabled' => true,
+)
+Request URL: /2017/ctsvn/cthiring/
+Stack Trace:
+#0 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Model\Datasource\DboSource.php(260): Mysql->connect()
+#1 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Model\ConnectionManager.php(105): DboSource->__construct(Array)
+#2 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Model\Model.php(3617): ConnectionManager::getDataSource('default')
+#3 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Model\Model.php(1155): Model->setDataSource('default')
+#4 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Model\Model.php(3644): Model->setSource('users')
+#5 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Model\Model.php(1387): Model->getDataSource()
+#6 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\View\Helper\FormHelper.php(215): Model->schema()
+#7 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\View\Helper\FormHelper.php(468): FormHelper->_introspectModel('Login', 'fields')
+#8 C:\xampp\htdocs\2017\ctsvn\cthiring\app\View\Login\index.ctp(10): FormHelper->create('Login', Array)
+#9 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\View\View.php(961): include('C:\\xampp\\htdocs...')
+#10 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\View\View.php(923): View->_evaluate('C:\\xampp\\htdocs...', Array)
+#11 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\View\View.php(473): View->_render('C:\\xampp\\htdocs...')
+#12 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Controller\Controller.php(960): View->render(NULL, NULL)
+#13 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Routing\Dispatcher.php(200): Controller->render()
+#14 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(LoginController), Object(CakeRequest))
+#15 C:\xampp\htdocs\2017\ctsvn\cthiring\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#16 {main}
+2017-06-12 19:36:04 Warning: Warning (2): mcrypt_encrypt(): Key of size 26 not supported by this algorithm. Only keys of sizes 16, 24 or 32 supported in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\Component\FunctionsComponent.php, line 23]
+Trace:
+mcrypt_encrypt - [internal], line ??
+FunctionsComponent::encrypt() - APP\Controller\Component\FunctionsComponent.php, line 23
+LoginController::index() - APP\Controller\LoginController.php, line 68
+>>>>>>> 401357c878ea4eb14b17f6eaa0d33a28a6312ce9
 ReflectionMethod::invokeArgs() - [internal], line ??
 Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
 Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
 Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
 [main] - APP\webroot\index.php, line 118
 
+<<<<<<< HEAD
 2017-06-14 15:54:16 Warning: Warning (2): Missing argument 6 for HomeController::get_position_count(), called in F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php on line 109 and defined in [F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php, line 355]
+=======
+2017-06-12 19:36:04 Warning: Warning (2): Missing argument 6 for HomeController::get_position_count(), called in C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php on line 109 and defined in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 355]
+>>>>>>> 401357c878ea4eb14b17f6eaa0d33a28a6312ce9
 Trace:
 HomeController::get_position_count() - APP\Controller\HomeController.php, line 355
 HomeController::index() - APP\Controller\HomeController.php, line 109
@@ -496,7 +533,11 @@ Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
 Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
 [main] - APP\webroot\index.php, line 118
 
+<<<<<<< HEAD
 2017-06-14 15:54:16 Warning: Warning (2): Missing argument 6 for HomeController::get_position_count(), called in F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php on line 109 and defined in [F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php, line 355]
+=======
+2017-06-12 19:36:05 Warning: Warning (2): Missing argument 6 for HomeController::get_position_count(), called in C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php on line 109 and defined in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 355]
+>>>>>>> 401357c878ea4eb14b17f6eaa0d33a28a6312ce9
 Trace:
 HomeController::get_position_count() - APP\Controller\HomeController.php, line 355
 HomeController::index() - APP\Controller\HomeController.php, line 109
@@ -506,7 +547,11 @@ Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
 Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
 [main] - APP\webroot\index.php, line 118
 
+<<<<<<< HEAD
 2017-06-14 15:54:17 Warning: Warning (2): Missing argument 6 for HomeController::get_position_count(), called in F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php on line 109 and defined in [F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php, line 355]
+=======
+2017-06-12 19:36:06 Warning: Warning (2): Missing argument 6 for HomeController::get_position_count(), called in C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php on line 109 and defined in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 355]
+>>>>>>> 401357c878ea4eb14b17f6eaa0d33a28a6312ce9
 Trace:
 HomeController::get_position_count() - APP\Controller\HomeController.php, line 355
 HomeController::index() - APP\Controller\HomeController.php, line 109
@@ -516,7 +561,11 @@ Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
 Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
 [main] - APP\webroot\index.php, line 118
 
+<<<<<<< HEAD
 2017-06-14 15:54:17 Warning: Warning (2): Missing argument 6 for HomeController::get_position_count(), called in F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php on line 109 and defined in [F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php, line 355]
+=======
+2017-06-12 19:36:07 Warning: Warning (2): Missing argument 6 for HomeController::get_position_count(), called in C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php on line 109 and defined in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 355]
+>>>>>>> 401357c878ea4eb14b17f6eaa0d33a28a6312ce9
 Trace:
 HomeController::get_position_count() - APP\Controller\HomeController.php, line 355
 HomeController::index() - APP\Controller\HomeController.php, line 109
@@ -526,7 +575,11 @@ Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
 Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
 [main] - APP\webroot\index.php, line 118
 
+<<<<<<< HEAD
 2017-06-14 15:54:18 Warning: Warning (2): Missing argument 6 for HomeController::get_position_count(), called in F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php on line 109 and defined in [F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php, line 355]
+=======
+2017-06-12 19:36:07 Warning: Warning (2): Missing argument 6 for HomeController::get_position_count(), called in C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php on line 109 and defined in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 355]
+>>>>>>> 401357c878ea4eb14b17f6eaa0d33a28a6312ce9
 Trace:
 HomeController::get_position_count() - APP\Controller\HomeController.php, line 355
 HomeController::index() - APP\Controller\HomeController.php, line 109
@@ -536,7 +589,11 @@ Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
 Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
 [main] - APP\webroot\index.php, line 118
 
+<<<<<<< HEAD
 2017-06-14 15:54:20 Warning: Warning (2): Missing argument 6 for HomeController::get_position_count(), called in F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php on line 109 and defined in [F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php, line 355]
+=======
+2017-06-12 19:36:08 Warning: Warning (2): Missing argument 6 for HomeController::get_position_count(), called in C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php on line 109 and defined in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 355]
+>>>>>>> 401357c878ea4eb14b17f6eaa0d33a28a6312ce9
 Trace:
 HomeController::get_position_count() - APP\Controller\HomeController.php, line 355
 HomeController::index() - APP\Controller\HomeController.php, line 109
@@ -546,7 +603,11 @@ Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
 Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
 [main] - APP\webroot\index.php, line 118
 
+<<<<<<< HEAD
 2017-06-14 15:54:20 Warning: Warning (2): Missing argument 6 for HomeController::get_position_count(), called in F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php on line 109 and defined in [F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php, line 355]
+=======
+2017-06-12 19:36:09 Warning: Warning (2): Missing argument 6 for HomeController::get_position_count(), called in C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php on line 109 and defined in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 355]
+>>>>>>> 401357c878ea4eb14b17f6eaa0d33a28a6312ce9
 Trace:
 HomeController::get_position_count() - APP\Controller\HomeController.php, line 355
 HomeController::index() - APP\Controller\HomeController.php, line 109
@@ -556,7 +617,11 @@ Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
 Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
 [main] - APP\webroot\index.php, line 118
 
+<<<<<<< HEAD
 2017-06-14 15:54:21 Warning: Warning (2): Missing argument 6 for HomeController::get_position_count(), called in F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php on line 109 and defined in [F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php, line 355]
+=======
+2017-06-12 19:36:10 Warning: Warning (2): Missing argument 6 for HomeController::get_position_count(), called in C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php on line 109 and defined in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 355]
+>>>>>>> 401357c878ea4eb14b17f6eaa0d33a28a6312ce9
 Trace:
 HomeController::get_position_count() - APP\Controller\HomeController.php, line 355
 HomeController::index() - APP\Controller\HomeController.php, line 109
@@ -566,7 +631,11 @@ Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
 Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
 [main] - APP\webroot\index.php, line 118
 
+<<<<<<< HEAD
 2017-06-14 15:54:21 Warning: Warning (2): Missing argument 6 for HomeController::get_position_count(), called in F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php on line 109 and defined in [F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php, line 355]
+=======
+2017-06-12 19:36:11 Warning: Warning (2): Missing argument 6 for HomeController::get_position_count(), called in C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php on line 109 and defined in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 355]
+>>>>>>> 401357c878ea4eb14b17f6eaa0d33a28a6312ce9
 Trace:
 HomeController::get_position_count() - APP\Controller\HomeController.php, line 355
 HomeController::index() - APP\Controller\HomeController.php, line 109
@@ -576,7 +645,11 @@ Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
 Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
 [main] - APP\webroot\index.php, line 118
 
+<<<<<<< HEAD
 2017-06-14 15:54:22 Warning: Warning (2): Missing argument 6 for HomeController::get_position_count(), called in F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php on line 109 and defined in [F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php, line 355]
+=======
+2017-06-12 19:36:12 Warning: Warning (2): Missing argument 6 for HomeController::get_position_count(), called in C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php on line 109 and defined in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 355]
+>>>>>>> 401357c878ea4eb14b17f6eaa0d33a28a6312ce9
 Trace:
 HomeController::get_position_count() - APP\Controller\HomeController.php, line 355
 HomeController::index() - APP\Controller\HomeController.php, line 109
@@ -586,7 +659,11 @@ Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
 Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
 [main] - APP\webroot\index.php, line 118
 
+<<<<<<< HEAD
 2017-06-14 15:59:22 Warning: Warning (2): Missing argument 6 for HomeController::get_position_count(), called in F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php on line 109 and defined in [F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php, line 355]
+=======
+2017-06-12 19:37:29 Warning: Warning (2): Missing argument 6 for HomeController::get_position_count(), called in C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php on line 109 and defined in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 355]
+>>>>>>> 401357c878ea4eb14b17f6eaa0d33a28a6312ce9
 Trace:
 HomeController::get_position_count() - APP\Controller\HomeController.php, line 355
 HomeController::index() - APP\Controller\HomeController.php, line 109
@@ -596,7 +673,11 @@ Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
 Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
 [main] - APP\webroot\index.php, line 118
 
+<<<<<<< HEAD
 2017-06-14 15:59:23 Warning: Warning (2): Missing argument 6 for HomeController::get_position_count(), called in F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php on line 109 and defined in [F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php, line 355]
+=======
+2017-06-12 19:37:29 Warning: Warning (2): Missing argument 6 for HomeController::get_position_count(), called in C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php on line 109 and defined in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 355]
+>>>>>>> 401357c878ea4eb14b17f6eaa0d33a28a6312ce9
 Trace:
 HomeController::get_position_count() - APP\Controller\HomeController.php, line 355
 HomeController::index() - APP\Controller\HomeController.php, line 109
@@ -606,7 +687,11 @@ Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
 Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
 [main] - APP\webroot\index.php, line 118
 
+<<<<<<< HEAD
 2017-06-14 15:59:23 Warning: Warning (2): Missing argument 6 for HomeController::get_position_count(), called in F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php on line 109 and defined in [F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php, line 355]
+=======
+2017-06-12 19:37:29 Warning: Warning (2): Missing argument 6 for HomeController::get_position_count(), called in C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php on line 109 and defined in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 355]
+>>>>>>> 401357c878ea4eb14b17f6eaa0d33a28a6312ce9
 Trace:
 HomeController::get_position_count() - APP\Controller\HomeController.php, line 355
 HomeController::index() - APP\Controller\HomeController.php, line 109
@@ -616,7 +701,11 @@ Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
 Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
 [main] - APP\webroot\index.php, line 118
 
+<<<<<<< HEAD
 2017-06-14 15:59:24 Warning: Warning (2): Missing argument 6 for HomeController::get_position_count(), called in F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php on line 109 and defined in [F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php, line 355]
+=======
+2017-06-12 19:37:30 Warning: Warning (2): Missing argument 6 for HomeController::get_position_count(), called in C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php on line 109 and defined in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 355]
+>>>>>>> 401357c878ea4eb14b17f6eaa0d33a28a6312ce9
 Trace:
 HomeController::get_position_count() - APP\Controller\HomeController.php, line 355
 HomeController::index() - APP\Controller\HomeController.php, line 109
@@ -626,7 +715,11 @@ Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
 Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
 [main] - APP\webroot\index.php, line 118
 
+<<<<<<< HEAD
 2017-06-14 15:59:25 Warning: Warning (2): Missing argument 6 for HomeController::get_position_count(), called in F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php on line 109 and defined in [F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php, line 355]
+=======
+2017-06-12 19:37:30 Warning: Warning (2): Missing argument 6 for HomeController::get_position_count(), called in C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php on line 109 and defined in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 355]
+>>>>>>> 401357c878ea4eb14b17f6eaa0d33a28a6312ce9
 Trace:
 HomeController::get_position_count() - APP\Controller\HomeController.php, line 355
 HomeController::index() - APP\Controller\HomeController.php, line 109
@@ -636,7 +729,11 @@ Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
 Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
 [main] - APP\webroot\index.php, line 118
 
+<<<<<<< HEAD
 2017-06-14 15:59:25 Warning: Warning (2): Missing argument 6 for HomeController::get_position_count(), called in F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php on line 109 and defined in [F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php, line 355]
+=======
+2017-06-12 19:37:30 Warning: Warning (2): Missing argument 6 for HomeController::get_position_count(), called in C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php on line 109 and defined in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 355]
+>>>>>>> 401357c878ea4eb14b17f6eaa0d33a28a6312ce9
 Trace:
 HomeController::get_position_count() - APP\Controller\HomeController.php, line 355
 HomeController::index() - APP\Controller\HomeController.php, line 109
@@ -646,7 +743,11 @@ Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
 Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
 [main] - APP\webroot\index.php, line 118
 
+<<<<<<< HEAD
 2017-06-14 15:59:25 Warning: Warning (2): Missing argument 6 for HomeController::get_position_count(), called in F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php on line 109 and defined in [F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php, line 355]
+=======
+2017-06-12 19:37:30 Warning: Warning (2): Missing argument 6 for HomeController::get_position_count(), called in C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php on line 109 and defined in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 355]
+>>>>>>> 401357c878ea4eb14b17f6eaa0d33a28a6312ce9
 Trace:
 HomeController::get_position_count() - APP\Controller\HomeController.php, line 355
 HomeController::index() - APP\Controller\HomeController.php, line 109
@@ -656,7 +757,11 @@ Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
 Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
 [main] - APP\webroot\index.php, line 118
 
+<<<<<<< HEAD
 2017-06-14 15:59:26 Warning: Warning (2): Missing argument 6 for HomeController::get_position_count(), called in F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php on line 109 and defined in [F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php, line 355]
+=======
+2017-06-12 19:37:30 Warning: Warning (2): Missing argument 6 for HomeController::get_position_count(), called in C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php on line 109 and defined in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 355]
+>>>>>>> 401357c878ea4eb14b17f6eaa0d33a28a6312ce9
 Trace:
 HomeController::get_position_count() - APP\Controller\HomeController.php, line 355
 HomeController::index() - APP\Controller\HomeController.php, line 109
@@ -666,7 +771,11 @@ Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
 Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
 [main] - APP\webroot\index.php, line 118
 
+<<<<<<< HEAD
 2017-06-14 15:59:26 Warning: Warning (2): Missing argument 6 for HomeController::get_position_count(), called in F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php on line 109 and defined in [F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php, line 355]
+=======
+2017-06-12 19:37:30 Warning: Warning (2): Missing argument 6 for HomeController::get_position_count(), called in C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php on line 109 and defined in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 355]
+>>>>>>> 401357c878ea4eb14b17f6eaa0d33a28a6312ce9
 Trace:
 HomeController::get_position_count() - APP\Controller\HomeController.php, line 355
 HomeController::index() - APP\Controller\HomeController.php, line 109
@@ -676,7 +785,11 @@ Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
 Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
 [main] - APP\webroot\index.php, line 118
 
+<<<<<<< HEAD
 2017-06-14 15:59:27 Warning: Warning (2): Missing argument 6 for HomeController::get_position_count(), called in F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php on line 109 and defined in [F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php, line 355]
+=======
+2017-06-12 19:37:30 Warning: Warning (2): Missing argument 6 for HomeController::get_position_count(), called in C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php on line 109 and defined in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 355]
+>>>>>>> 401357c878ea4eb14b17f6eaa0d33a28a6312ce9
 Trace:
 HomeController::get_position_count() - APP\Controller\HomeController.php, line 355
 HomeController::index() - APP\Controller\HomeController.php, line 109
@@ -686,6 +799,7 @@ Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
 Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
 [main] - APP\webroot\index.php, line 118
 
+<<<<<<< HEAD
 2017-06-14 16:00:41 Warning: Warning (2): Missing argument 1 for HomeController::index() in [F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php, line 43]
 Trace:
 HomeController::index() - APP\Controller\HomeController.php, line 43
@@ -18484,3 +18598,265 @@ Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
 [main] - APP\webroot\index.php, line 118
 
 >>>>>>> master
+=======
+2017-06-13 14:55:19 Error: [MissingConnectionException] Database connection "Mysql" is missing, or could not be created.
+Exception Attributes: array (
+  'class' => 'Mysql',
+  'message' => 'SQLSTATE[HY000] [2002] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond.
+',
+  'enabled' => true,
+)
+Request URL: /2017/ctsvn/cthiring/
+Stack Trace:
+#0 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Model\Datasource\DboSource.php(260): Mysql->connect()
+#1 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Model\ConnectionManager.php(105): DboSource->__construct(Array)
+#2 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Model\Model.php(3617): ConnectionManager::getDataSource('default')
+#3 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Model\Model.php(1155): Model->setDataSource('default')
+#4 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Model\Model.php(3644): Model->setSource('users')
+#5 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Model\Model.php(1387): Model->getDataSource()
+#6 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\View\Helper\FormHelper.php(215): Model->schema()
+#7 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\View\Helper\FormHelper.php(468): FormHelper->_introspectModel('Login', 'fields')
+#8 C:\xampp\htdocs\2017\ctsvn\cthiring\app\View\Login\index.ctp(10): FormHelper->create('Login', Array)
+#9 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\View\View.php(961): include('C:\\xampp\\htdocs...')
+#10 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\View\View.php(923): View->_evaluate('C:\\xampp\\htdocs...', Array)
+#11 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\View\View.php(473): View->_render('C:\\xampp\\htdocs...')
+#12 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Controller\Controller.php(960): View->render(NULL, NULL)
+#13 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Routing\Dispatcher.php(200): Controller->render()
+#14 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(LoginController), Object(CakeRequest))
+#15 C:\xampp\htdocs\2017\ctsvn\cthiring\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#16 {main}
+2017-06-13 15:04:25 Error: [MissingConnectionException] Database connection "Mysql" is missing, or could not be created.
+Exception Attributes: array (
+  'class' => 'Mysql',
+  'message' => 'SQLSTATE[HY000] [2002] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond.
+',
+  'enabled' => true,
+)
+Request URL: /2017/ctsvn/cthiring/
+Stack Trace:
+#0 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Model\Datasource\DboSource.php(260): Mysql->connect()
+#1 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Model\ConnectionManager.php(105): DboSource->__construct(Array)
+#2 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Model\Model.php(3617): ConnectionManager::getDataSource('default')
+#3 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Model\Model.php(1155): Model->setDataSource('default')
+#4 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Model\Model.php(3644): Model->setSource('users')
+#5 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Model\Model.php(1387): Model->getDataSource()
+#6 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\View\Helper\FormHelper.php(215): Model->schema()
+#7 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\View\Helper\FormHelper.php(468): FormHelper->_introspectModel('Login', 'fields')
+#8 C:\xampp\htdocs\2017\ctsvn\cthiring\app\View\Login\index.ctp(10): FormHelper->create('Login', Array)
+#9 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\View\View.php(961): include('C:\\xampp\\htdocs...')
+#10 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\View\View.php(923): View->_evaluate('C:\\xampp\\htdocs...', Array)
+#11 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\View\View.php(473): View->_render('C:\\xampp\\htdocs...')
+#12 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Controller\Controller.php(960): View->render(NULL, NULL)
+#13 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Routing\Dispatcher.php(200): Controller->render()
+#14 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(LoginController), Object(CakeRequest))
+#15 C:\xampp\htdocs\2017\ctsvn\cthiring\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#16 {main}
+2017-06-13 15:09:19 Error: [MissingConnectionException] Database connection "Mysql" is missing, or could not be created.
+Exception Attributes: array (
+  'class' => 'Mysql',
+  'message' => 'SQLSTATE[HY000] [2002] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond.
+',
+  'enabled' => true,
+)
+Request URL: /2017/ctsvn/cthiring/
+Stack Trace:
+#0 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Model\Datasource\DboSource.php(260): Mysql->connect()
+#1 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Model\ConnectionManager.php(105): DboSource->__construct(Array)
+#2 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Model\Model.php(3617): ConnectionManager::getDataSource('default')
+#3 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Model\Model.php(1155): Model->setDataSource('default')
+#4 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Model\Model.php(3644): Model->setSource('users')
+#5 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Model\Model.php(1387): Model->getDataSource()
+#6 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\View\Helper\FormHelper.php(215): Model->schema()
+#7 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\View\Helper\FormHelper.php(468): FormHelper->_introspectModel('Login', 'fields')
+#8 C:\xampp\htdocs\2017\ctsvn\cthiring\app\View\Login\index.ctp(10): FormHelper->create('Login', Array)
+#9 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\View\View.php(961): include('C:\\xampp\\htdocs...')
+#10 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\View\View.php(923): View->_evaluate('C:\\xampp\\htdocs...', Array)
+#11 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\View\View.php(473): View->_render('C:\\xampp\\htdocs...')
+#12 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Controller\Controller.php(960): View->render(NULL, NULL)
+#13 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Routing\Dispatcher.php(200): Controller->render()
+#14 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(LoginController), Object(CakeRequest))
+#15 C:\xampp\htdocs\2017\ctsvn\cthiring\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#16 {main}
+2017-06-13 15:09:59 Error: [MissingConnectionException] Database connection "Mysql" is missing, or could not be created.
+Exception Attributes: array (
+  'class' => 'Mysql',
+  'message' => 'SQLSTATE[HY000] [2002] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond.
+',
+  'enabled' => true,
+)
+Request URL: /2017/ctsvn/cthiring/
+Stack Trace:
+#0 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Model\Datasource\DboSource.php(260): Mysql->connect()
+#1 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Model\ConnectionManager.php(105): DboSource->__construct(Array)
+#2 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Model\Model.php(3617): ConnectionManager::getDataSource('default')
+#3 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Model\Model.php(1155): Model->setDataSource('default')
+#4 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Model\Model.php(3644): Model->setSource('users')
+#5 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Model\Model.php(1387): Model->getDataSource()
+#6 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\View\Helper\FormHelper.php(215): Model->schema()
+#7 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\View\Helper\FormHelper.php(468): FormHelper->_introspectModel('Login', 'fields')
+#8 C:\xampp\htdocs\2017\ctsvn\cthiring\app\View\Login\index.ctp(10): FormHelper->create('Login', Array)
+#9 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\View\View.php(961): include('C:\\xampp\\htdocs...')
+#10 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\View\View.php(923): View->_evaluate('C:\\xampp\\htdocs...', Array)
+#11 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\View\View.php(473): View->_render('C:\\xampp\\htdocs...')
+#12 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Controller\Controller.php(960): View->render(NULL, NULL)
+#13 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Routing\Dispatcher.php(200): Controller->render()
+#14 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(LoginController), Object(CakeRequest))
+#15 C:\xampp\htdocs\2017\ctsvn\cthiring\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#16 {main}
+2017-06-13 15:10:46 Error: [MissingConnectionException] Database connection "Mysql" is missing, or could not be created.
+Exception Attributes: array (
+  'class' => 'Mysql',
+  'message' => 'SQLSTATE[HY000] [2002] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond.
+',
+  'enabled' => true,
+)
+Request URL: /2017/ctsvn/cthiring/
+Stack Trace:
+#0 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Model\Datasource\DboSource.php(260): Mysql->connect()
+#1 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Model\ConnectionManager.php(105): DboSource->__construct(Array)
+#2 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Model\Model.php(3617): ConnectionManager::getDataSource('default')
+#3 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Model\Model.php(1155): Model->setDataSource('default')
+#4 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Model\Model.php(3644): Model->setSource('users')
+#5 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Model\Model.php(1387): Model->getDataSource()
+#6 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\View\Helper\FormHelper.php(215): Model->schema()
+#7 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\View\Helper\FormHelper.php(468): FormHelper->_introspectModel('Login', 'fields')
+#8 C:\xampp\htdocs\2017\ctsvn\cthiring\app\View\Login\index.ctp(10): FormHelper->create('Login', Array)
+#9 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\View\View.php(961): include('C:\\xampp\\htdocs...')
+#10 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\View\View.php(923): View->_evaluate('C:\\xampp\\htdocs...', Array)
+#11 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\View\View.php(473): View->_render('C:\\xampp\\htdocs...')
+#12 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Controller\Controller.php(960): View->render(NULL, NULL)
+#13 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Routing\Dispatcher.php(200): Controller->render()
+#14 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(LoginController), Object(CakeRequest))
+#15 C:\xampp\htdocs\2017\ctsvn\cthiring\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#16 {main}
+2017-06-13 15:11:54 Error: [MissingConnectionException] Database connection "Mysql" is missing, or could not be created.
+Exception Attributes: array (
+  'class' => 'Mysql',
+  'message' => 'SQLSTATE[HY000] [2002] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond.
+',
+  'enabled' => true,
+)
+Request URL: /2017/ctsvn/cthiring/
+Stack Trace:
+#0 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Model\Datasource\DboSource.php(260): Mysql->connect()
+#1 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Model\ConnectionManager.php(105): DboSource->__construct(Array)
+#2 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Model\Model.php(3617): ConnectionManager::getDataSource('default')
+#3 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Model\Model.php(1155): Model->setDataSource('default')
+#4 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Model\Model.php(3644): Model->setSource('users')
+#5 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Model\Model.php(1387): Model->getDataSource()
+#6 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\View\Helper\FormHelper.php(215): Model->schema()
+#7 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\View\Helper\FormHelper.php(468): FormHelper->_introspectModel('Login', 'fields')
+#8 C:\xampp\htdocs\2017\ctsvn\cthiring\app\View\Login\index.ctp(10): FormHelper->create('Login', Array)
+#9 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\View\View.php(961): include('C:\\xampp\\htdocs...')
+#10 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\View\View.php(923): View->_evaluate('C:\\xampp\\htdocs...', Array)
+#11 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\View\View.php(473): View->_render('C:\\xampp\\htdocs...')
+#12 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Controller\Controller.php(960): View->render(NULL, NULL)
+#13 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Routing\Dispatcher.php(200): Controller->render()
+#14 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(LoginController), Object(CakeRequest))
+#15 C:\xampp\htdocs\2017\ctsvn\cthiring\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#16 {main}
+2017-06-13 15:12:40 Error: [MissingConnectionException] Database connection "Mysql" is missing, or could not be created.
+Exception Attributes: array (
+  'class' => 'Mysql',
+  'message' => 'SQLSTATE[HY000] [2002] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond.
+',
+  'enabled' => true,
+)
+Request URL: /2017/ctsvn/cthiring/
+Stack Trace:
+#0 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Model\Datasource\DboSource.php(260): Mysql->connect()
+#1 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Model\ConnectionManager.php(105): DboSource->__construct(Array)
+#2 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Model\Model.php(3617): ConnectionManager::getDataSource('default')
+#3 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Model\Model.php(1155): Model->setDataSource('default')
+#4 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Model\Model.php(3644): Model->setSource('users')
+#5 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Model\Model.php(1387): Model->getDataSource()
+#6 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\View\Helper\FormHelper.php(215): Model->schema()
+#7 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\View\Helper\FormHelper.php(468): FormHelper->_introspectModel('Login', 'fields')
+#8 C:\xampp\htdocs\2017\ctsvn\cthiring\app\View\Login\index.ctp(10): FormHelper->create('Login', Array)
+#9 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\View\View.php(961): include('C:\\xampp\\htdocs...')
+#10 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\View\View.php(923): View->_evaluate('C:\\xampp\\htdocs...', Array)
+#11 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\View\View.php(473): View->_render('C:\\xampp\\htdocs...')
+#12 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Controller\Controller.php(960): View->render(NULL, NULL)
+#13 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Routing\Dispatcher.php(200): Controller->render()
+#14 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(LoginController), Object(CakeRequest))
+#15 C:\xampp\htdocs\2017\ctsvn\cthiring\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#16 {main}
+2017-06-13 15:12:57 Error: [MissingConnectionException] Database connection "Mysql" is missing, or could not be created.
+Exception Attributes: array (
+  'class' => 'Mysql',
+  'message' => 'SQLSTATE[HY000] [2002] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond.
+',
+  'enabled' => true,
+)
+Request URL: /2017/ctsvn/cthiring/
+Stack Trace:
+#0 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Model\Datasource\DboSource.php(260): Mysql->connect()
+#1 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Model\ConnectionManager.php(105): DboSource->__construct(Array)
+#2 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Model\Model.php(3617): ConnectionManager::getDataSource('default')
+#3 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Model\Model.php(1155): Model->setDataSource('default')
+#4 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Model\Model.php(3644): Model->setSource('users')
+#5 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Model\Model.php(1387): Model->getDataSource()
+#6 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\View\Helper\FormHelper.php(215): Model->schema()
+#7 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\View\Helper\FormHelper.php(468): FormHelper->_introspectModel('Login', 'fields')
+#8 C:\xampp\htdocs\2017\ctsvn\cthiring\app\View\Login\index.ctp(10): FormHelper->create('Login', Array)
+#9 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\View\View.php(961): include('C:\\xampp\\htdocs...')
+#10 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\View\View.php(923): View->_evaluate('C:\\xampp\\htdocs...', Array)
+#11 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\View\View.php(473): View->_render('C:\\xampp\\htdocs...')
+#12 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Controller\Controller.php(960): View->render(NULL, NULL)
+#13 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Routing\Dispatcher.php(200): Controller->render()
+#14 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(LoginController), Object(CakeRequest))
+#15 C:\xampp\htdocs\2017\ctsvn\cthiring\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#16 {main}
+2017-06-13 15:13:41 Error: [MissingConnectionException] Database connection "Mysql" is missing, or could not be created.
+Exception Attributes: array (
+  'class' => 'Mysql',
+  'message' => 'SQLSTATE[HY000] [2002] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond.
+',
+  'enabled' => true,
+)
+Request URL: /2017/ctsvn/cthiring/
+Stack Trace:
+#0 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Model\Datasource\DboSource.php(260): Mysql->connect()
+#1 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Model\ConnectionManager.php(105): DboSource->__construct(Array)
+#2 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Model\Model.php(3617): ConnectionManager::getDataSource('default')
+#3 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Model\Model.php(1155): Model->setDataSource('default')
+#4 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Model\Model.php(3644): Model->setSource('users')
+#5 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Model\Model.php(1387): Model->getDataSource()
+#6 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\View\Helper\FormHelper.php(215): Model->schema()
+#7 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\View\Helper\FormHelper.php(468): FormHelper->_introspectModel('Login', 'fields')
+#8 C:\xampp\htdocs\2017\ctsvn\cthiring\app\View\Login\index.ctp(10): FormHelper->create('Login', Array)
+#9 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\View\View.php(961): include('C:\\xampp\\htdocs...')
+#10 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\View\View.php(923): View->_evaluate('C:\\xampp\\htdocs...', Array)
+#11 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\View\View.php(473): View->_render('C:\\xampp\\htdocs...')
+#12 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Controller\Controller.php(960): View->render(NULL, NULL)
+#13 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Routing\Dispatcher.php(200): Controller->render()
+#14 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(LoginController), Object(CakeRequest))
+#15 C:\xampp\htdocs\2017\ctsvn\cthiring\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#16 {main}
+2017-06-13 15:15:11 Error: [MissingConnectionException] Database connection "Mysql" is missing, or could not be created.
+Exception Attributes: array (
+  'class' => 'Mysql',
+  'message' => 'SQLSTATE[HY000] [2002] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond.
+',
+  'enabled' => true,
+)
+Request URL: /2017/ctsvn/cthiring/
+Stack Trace:
+#0 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Model\Datasource\DboSource.php(260): Mysql->connect()
+#1 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Model\ConnectionManager.php(105): DboSource->__construct(Array)
+#2 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Model\Model.php(3617): ConnectionManager::getDataSource('default')
+#3 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Model\Model.php(1155): Model->setDataSource('default')
+#4 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Model\Model.php(3644): Model->setSource('users')
+#5 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Model\Model.php(1387): Model->getDataSource()
+#6 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\View\Helper\FormHelper.php(215): Model->schema()
+#7 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\View\Helper\FormHelper.php(468): FormHelper->_introspectModel('Login', 'fields')
+#8 C:\xampp\htdocs\2017\ctsvn\cthiring\app\View\Login\index.ctp(10): FormHelper->create('Login', Array)
+#9 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\View\View.php(961): include('C:\\xampp\\htdocs...')
+#10 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\View\View.php(923): View->_evaluate('C:\\xampp\\htdocs...', Array)
+#11 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\View\View.php(473): View->_render('C:\\xampp\\htdocs...')
+#12 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Controller\Controller.php(960): View->render(NULL, NULL)
+#13 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Routing\Dispatcher.php(200): Controller->render()
+#14 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(LoginController), Object(CakeRequest))
+#15 C:\xampp\htdocs\2017\ctsvn\cthiring\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#16 {main}
+>>>>>>> 401357c878ea4eb14b17f6eaa0d33a28a6312ce9
