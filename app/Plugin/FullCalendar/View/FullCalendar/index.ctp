@@ -43,8 +43,8 @@ plgFcRoot = '<?php echo $this->Html->url('/'); ?>' + "full_calendar";
 <!--link rel="stylesheet" href="<?php echo $this->webroot;?>full_calendar/css/fullcalendar.css">
 <link rel="stylesheet" href="<?php echo $this->webroot;?>full_calendar/css/fullcalendar.print.css"  media='print'-->
 	
-<div class="Calendar index">
-	<div id="calendar_new"></div>
+<div class="Calendar index" style="height:450px">
+	<div id="calendar_new" style="height:450px"></div>
 </div>
 
 <script src="<?php echo $this->webroot;?>hiring/lib_cthiring/fullcalendar_new/lib/moment.min.js"></script>

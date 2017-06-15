@@ -128,7 +128,7 @@
                                          <li class="{$interview_active} dropdown">
                                             <a data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icon-list-alt icon-white"></i> Interviews <!--span class="label-bub label-info bubble">{$interview_count}</span--><b class="caret"></b></a>
 											  <ul class="dropdown-menu">                                              
-                                                <li><a href="interview.php">Search Interview <!--span class="label-bub label-info white">{$interview_count}</span--></a></li>
+                                                <li><a href="interview.php">Search Interview <span class="label-bub label-info white">{$interview_count}</span></a></li>
 												<!--<li><a href="upload_resume.php">Upload Resume</a></li>
 												<li><a href="upload_resume.php">Upload Psychometric Test</a></li>
 												<li><a href="snapshot.php">Search Snapshot</a></li>-->

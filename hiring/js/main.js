@@ -632,6 +632,11 @@ $(document).ready(function() {
 		$('.stickyTable').stickyTableHeaders();
 	}
 	
+	/* for changing the dashboard view */
+	$('.dash_view').click(function(){
+		location.href = $(this).attr('rel');
+	});
+	
 	// datepicker
 	if($('.datepick').length > 0){	
 		$('.datepick').datepicker({
@@ -800,17 +805,20 @@ $(document).ready(function() {
 		});
 		
 		// Can also be used with $(document).ready()
-		if($('.flexslider').length > 0){
-			jQuery('.flexslider').flexslider({
+		
+		/*
+		if($('.flexslider2').length > 0){
+			jQuery('.flexslider2').flexslider({
 				animation: "slide",
-				animationLoop: true,
+				animationLoop: false,
 				itemWidth: 140,
 				itemMargin: 15,
 				maxItems: 7,
-				controlNav: false,
-				directionNav:false
+				controlNav: true,
+				directionNav:true
 			});
 		}
+		*/
 		
 		/* function to call the mutiple select */
 		if($('.multiSelectOpt').length > 0){

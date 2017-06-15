@@ -74,10 +74,10 @@ class DATABASE_CONFIG {
 	public $default = array(
 		'datasource' => 'Database/Mysql',
 		'persistent' => false,
-		'host' => 'localhost',
+		'host' => '192.168.1.105',
 		'login' => 'cthire',
 		'password' => 'hire938',
-		'database' => 'cthiring_dbase',
+		'database' => 'hirecraftdata',
 		'prefix' => '',
 		//'encoding' => 'utf8',
 	);

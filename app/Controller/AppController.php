@@ -91,7 +91,7 @@ class AppController extends Controller {
 		//$this->Session->destroy();
 		if(count($this->Session->read('USER'))){ 	
 			return true;
-		}else if($this->Cookie->read('ESUSER') != ''){ 
+		}else if($this->Cookie->read('ESUSER') != ''){
 			$this->loadModel('Login');
 			$data = $this->Login->find('first', array('fields' => array('first_name','email_id','id','status','last_login','rights'),'conditions' =>array('Login.id' => $this->Functions->decrypt($this->Cookie->read('ESUSER')), 'is_deleted' => 'N', 'status' => '0')));					
 			if(empty($data)){
@@ -102,7 +102,7 @@ class AppController extends Controller {
 			return true;
 		}else if($this->Cookie->read('ESUSER') == ''){
 			$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Session got expired', 'default', array('class' => 'alert alert-login'));	
-			echo "<script>location.href=$this->webroot</script>";
+			// echo "<script>location.href=$this->webroot</script>";
 			$this->redirect('/');
 		}else{
 			$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Session got expired', 'default', array('class' => 'alert alert-login'));

@@ -177,7 +177,7 @@ class FunctionsHelper extends AppHelper {
 	 public function get_req_status_color($st){
 		switch($st){
 			case 'Planned':
-			$color = '';
+			$color = 'default';
 			break;
 			case 'In-Process':
 			$color = 'warning';
@@ -208,6 +208,105 @@ class FunctionsHelper extends AppHelper {
 		return $color;
 	 }
 	 
+	  /* function to show resume status color */
+	 public function get_res_status_color($st){ 
+		switch($st){
+			case 'Pending':
+			$color = 'default';
+			break;
+			case 'Rejected':
+			$color = 'important';
+			break;
+			case 'CV-Sent':
+			$color = 'info';
+			break;
+			case 'Shortlisted':
+			$color = 'success';
+			break;
+			case 'YRF':
+			$color = 'warning';
+			break;
+		}
+		return $color;
+	}
+	
+	/* function to show interview status color */
+	 public function get_int_status_color($st){
+		switch($st){
+			case 'Pending':
+			$color = 'default';
+			break;
+			case 'Scheduled':
+			$color = 'warning';
+			break;
+			case 'Re-Scheduled':
+			$color = 'warning';
+			break;
+			case 'Selected':
+			$color = 'success';
+			break;
+			case 'Rejected':
+			$color = 'important';
+			break;
+			case 'YRF':
+			$color = 'warning';
+			break;
+			case 'Cancelled':
+			$color = 'info';
+			break;
+			case 'No Show':
+			$color = 'info';
+			break;
+			case 'OnHold':
+			$color = 'warning';
+			break;		
+			
+		}
+		return $color;
+	 }
+	 
+	 /* function to show offer status color */
+	 public function get_offer_status_color($st){
+		switch($st){					
+			case 'Offer Made':
+			$color = 'warning';
+			break;
+			case 'Offer Accepted':
+			$color = 'success';
+			break;
+			case 'Not Interested':
+			$color = 'important';
+			break;
+			case 'Quit':
+			$color = 'important';
+			break;
+			case 'Offer Pending':
+			$color = 'default';
+			break;
+			case 'Rejected':
+			$color = 'important';
+			break;
+			case 'Yet to Join':
+			$color = 'warning';
+			break;		
+			
+		}
+		return $color;
+	 }
+
+	 /* function to show resume status color */
+	 public function get_join_status_color($st){ 
+		switch($st){
+			case 'Joined':
+			$color = 'success';
+			break;
+			case 'Quit':
+			$color = 'important';
+			break;			
+		}
+		return $color;
+	}
+		
 	 /* function to get chart height */
 	 public function get_chart_height($days){ 
 		$cal = $days * 52;	
@@ -276,5 +375,7 @@ class FunctionsHelper extends AppHelper {
 		return $td;
 		
    }
+   
+  
 }
 ?>
