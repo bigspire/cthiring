@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-06-15 14:15:36
+/* Smarty version 3.1.29, created on 2017-06-16 12:51:01
   from "C:\xampp\htdocs\2017\ctsvn\cthiring\hiring\templates\add_formatted_resume.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_59424930940475_60618255',
+  'unifunc' => 'content_594386dd0c8f83_79287004',
   'file_dependency' => 
   array (
     '7b9debb43acd1c9656df1fbe01b897c4d462aec5' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\templates\\add_formatted_resume.tpl',
-      1 => 1497516322,
+      1 => 1497590114,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_59424930940475_60618255 ($_smarty_tpl) {
+function content_594386dd0c8f83_79287004 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -42,7 +42,8 @@ if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdoc
                            <a href="recruiter_dashboard.php"><i class="icon-home"></i></a>
                         </li>
                         <li>
-                           <a href="resume.php">Resumes</a>
+                           <a href="<?php echo @constant('webroot');?>
+resume">Resumes</a>
                         </li>
                         <li>
                            Create Fully Formatted Resume
@@ -764,7 +765,8 @@ echo $_POST['candidate_brief'];
 "/>
 					 <div class="form-actions">
 									<button class="btn btn-gebo" type="submit">Submit</button>
-								<a href="resume.php"><button type="button" class="btn">Cancel</button></a>
+								<a href="<?php echo @constant('webroot');?>
+resume"><button type="button" class="btn">Cancel</button></a>
 							</div>
 					</form>
          	
