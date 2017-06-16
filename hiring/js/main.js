@@ -782,6 +782,23 @@ $(document).ready(function() {
 		location.href = $(this).attr('rel');
 	});
 	
+	/* for status alert options */
+	$('.confirm_status').on('click',function(e){
+				e.preventDefault();
+				smoke.confirm("Are you sure you want to change status?",function(e){
+					if (e){
+						// smoke.alert('Ok, Deleted...', false, {ok: "Thanks"});
+					}else{
+						// smoke.alert('Please...me so sorry. You look good in dress, you look better on my floor.', false, {ok: "Uhh...bye?"});
+					}
+				}, {
+					reverseButtons: true,
+					ok: "Yes",
+					cancel: "No"
+				});
+	});
+		
+	
 	// datepicker
 	if($('.datepick').length > 0){	
 		$('.datepick').datepicker({

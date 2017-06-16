@@ -17,134 +17,408 @@
 							
 						<?php echo $this->Session->flash();?>
 							
-							<div class="row-fluid">
-							<div class="span6">
-							<table class="table table-bordered dataTable" style="margin-bottom:0">
-								
-								<tbody>
-								
-									<tr>
-										
-										<td width="120" class="tbl_column">Job title</td>
-										<td><?php echo $position_data['Position']['job_title'];?></td>
-											
-									</tr>
-									<tr>
-										
-										<td width="120" class="tbl_column">Job Code</td>
-										<td><?php echo $position_data['Position']['job_code'];?></td>
-											
-									</tr>
-										<tr>
-										
-										<td class="tbl_column">Job Location</td>
-										<td><?php echo $position_data['Position']['location'];?></td>
-											
-									</tr>
-									<tr>
-										
-										<td class="tbl_column">No. of Vacancies</td>
-										<td><?php echo $position_data['Position']['no_job'];?></td>
-											
-									</tr>
-									<tr>
-										
-										<td class="tbl_column">Experience</td>
-										<td><?php echo $position_data['Position']['min_exp'].' - '.$position_data['Position']['max_exp'];?> Years</td>
-											
-									</tr>
-									<tr>
-										
-										<td class="tbl_column">CTC Range</td>
-										<td><?php echo $position_data['Position']['ctc_from'].' - '.$position_data['Position']['ctc_to'];?> Lacs</td>
-											
-									</tr>
-									<tr>
-										
-										<td class="tbl_column">Team Members</td>
-										<td><?php echo $position_data[0]['team_member'];?></td>
-											
-									</tr>
-										<tr>
-										
-										<td class="tbl_column">Created On</td>
-										<td><?php echo $this->Functions->format_date($position_data['Position']['created_date']);?></td>
-											
-									</tr>
-								</tbody>
-							</table>
-							</div>
 							
-												
-                      
-						<div class="span6">
-							<table class="table table-bordered dataTable" style="margin-bottom:0">
-								
+								<div class="row-fluid">
+							<div class="span12">
+							<div class="mbox">
+							<div class="tabbable">
+							<div class="heading">
+										<ul class="nav nav-tabs">
+										<li class="active"><a class="restabChange" rel="position"  href="#mbox_basic" data-toggle="tab"><i class="splashy-mail_light_down"></i>  Basic </a></li>
+										<li class=""><a class="restabChange" rel="interview"  href="#mbox_description" data-toggle="tab"><i class="splashy-mail_light_down"></i>  Job Description </a></li>
+										<li class=""><a class="restabChange" rel="interview"  href="#mbox_co-ordination" data-toggle="tab"><i class="splashy-mail_light_down"></i>  Co-ordination </a></li>
+									</ul>
+										
+								</div>
+							
+							
+							<div class="tab-content"  style="overflow:auto;max-height:300px;">
+										<div class="tab-pane active" id="mbox_basic">
+										<div class="span6">
+							<table class="table table-striped table-bordered dataTable" style="margin-bottom:0">
 								<tbody>
-								<tr>
-										
-										<td  class="tbl_column"width="120">Qualification</td>
-										<td><?php echo $position_data['Position']['education'];?></td>
-											
-									</tr>
 									<tr>
 										
-										<td  class="tbl_column"width="120">Job Description</td>
-										<td><a class="notify" data-notify-time = '7000' data-notify-title="In Progress!" data-notify-message="Downloading JD... Please wait..."   href="<?php echo $this->webroot;?>hc/download/<?php echo $position_data['Position']['id']; ?>/jd/">Download</a></td>
-											
-									</tr>
-									<tr>
-										
-										<td  class="tbl_column"width="120">Client</td>
+										<td width="120" class="tbl_column">Client Name</td>
 										<td><?php echo $position_data['Client']['client_name'];?></td>
 											
 									</tr>
 									<tr>
 										
-										<td  class="tbl_column"width="120">Contact Person</td>
-										<td><?php echo $position_data['Contact']['first_name'];?></td>
-											
-									</tr>
-									<tr>
-										
-										<td  class="tbl_column"width="120">Contact Email</td>
-										<td><?php echo $position_data['Contact']['email'];?></td>
-											
-									</tr>
-									<tr>
-										
-										<td  class="tbl_column"width="120">Contact No.</td>
-										<td><?php											
+										<td width="120" class="tbl_column">SPOC Name</td>
+										<td><?php echo $position_data['Contact']['first_name'];?>, 
+										<?php echo $position_data['Contact']['email'];?>. 
+										<?php											
 											echo $position_data['Contact']['phone'];?>
 										<?php 
 											if(str_replace(' ', '', $position_data['Contact']['mobile']) != '' && str_replace(' ', '', $position_data['Contact']['phone']) != ''):
 											echo ', ';
 											endif;
 										?>
-										<?php echo $position_data['Contact']['mobile'];?></td>
+										<?php echo $position_data['Contact']['mobile'];?>
+										
+										</td>
+											
+									</tr>
+									<tr>
+										
+										<td width="120" class="tbl_column">Job Title</td>
+										<td><?php echo $position_data['Position']['job_title'];?></td>
+											
+									</tr>
+									<tr>
+										
+										<td width="120" class="tbl_column">Job Location </td>
+										<td><?php echo $position_data['Position']['location'];?></td>
+											
+									</tr>
+									<tr>
+										
+										<td width="120" class="tbl_column">Experience</td>
+										<td><?php echo $position_data['Position']['min_exp'].' - '.$position_data['Position']['max_exp'];?> Years</td>
+											
+									</tr>
+										<tr>
+										
+										<td class="tbl_column">CTC</td>
+										<td><?php echo $position_data['Position']['ctc_from'].' - '.$position_data['Position']['ctc_to'];?> Lacs</td>
+											
+									</tr>
+									<tr>
+										
+										<td class="tbl_column">Qualification </td>
+										<td><?php echo $position_data['Position']['education'];?></td>
+											
+									</tr>	
+									
+									<tr>
+										
+										<td class="tbl_column">Created On</td>
+										<td><?php echo $this->Functions->format_date($position_data['Position']['created_date']);?></td>
 											
 									</tr>
 									
 									
-									<tr>
+<tr>
 										
 										<td class="tbl_column">Created By</td>
 										<td><?php echo $position_data['Creator']['first_name'];?></td>
 											
 									</tr>
 								
+																	
+								</tbody>
+							</table>
+							</div>
+							
+								<div class="span6">
+							<table class="table  table-striped  table-bordered dataTable" style="margin-bottom:0">
+								<tbody>									
 									<tr>
+										
+										<td class="tbl_column" style="width:140px;">Key Skills</td>
+										<td><?php echo $position_data['Position']['skills'];?></td>
+											
+									</tr>
+									<tr>
+										
+										<td class="tbl_column">No. of Openings</td>
+										<td><?php echo $position_data['Position']['no_job'];?></td>
+											
+									</tr>
+									<tr>
+										
+										<td class="tbl_column">Account Holder </td>
+										<td>Suganya</td>
+											
+									</tr>
+										<tr>
+										
+										<td class="tbl_column">Team Members</td>
+										<td><?php echo $position_data[0]['team_member'];?></td>
+											
+									</tr>
+									<tr>
+										
+										<td class="tbl_column">Start Date</td>
+										<td><?php echo $position_data['Position']['start_date'];?></td>
+											
+									</tr>
+										<tr>
+										
+										<td class="tbl_column">Closure Date</td>
+										<td><?php echo $position_data['Position']['end_date'];?></td>
+											
+									</tr>
+									<tr>
+										
+										<td class="tbl_column">Functional Area</td>
+										<td>Software</td>
+											
+									</tr>
+									
+										<tr>
 										
 										<td class="tbl_column">Modified On</td>
 										<td><?php echo $this->Functions->format_date($position_data['Position']['created_date']);?></td>
 											
 									</tr>
+									
+									
 								</tbody>
 							</table>
 							</div>
-                        
-					
+							</div>
+									
+						<div class="tab-pane" id="mbox_description">
+										
+						<div class="span12">
+							<table class="table table-striped table-bordered dataTable" style="margin-bottom:0">
+								<tbody>
+									<tr>
+										<td  class="tbl_column"width="120">Job Description</td>
+										<td>
+									<?php echo $position_data['Position']['job_desc'];?>	
+										
+
+			<br></td>
+									</tr>
+									<tr>
+								<td width="120" class="tbl_column">Attachment </td>
+									<td>
+										<a class="notify" data-notify-time = '7000' data-notify-title="In Progress!"
+										data-notify-message="Downloading JD... Please wait..."   
+										href="<?php echo $this->webroot;?>hc/download/<?php echo $position_data['Position']['id']; ?>/jd/">
+										Download</a>
+									</td>
+								</tr>
+								</tbody>
+							</table>
+							</div>
+							</div>
+										
+                  <div class="tab-pane" id="mbox_co-ordination">
+										
+						<div class="span12">
+							<table class="table table-striped table-bordered dataTable" style="margin-bottom:0">
+								
+								<tbody>
+								   <tr>
+										
+										<td  class="tbl_column"width="120">Profile Sourcing </td>
+										<td>Bhargavi</td>
+											
+									</tr>
+									<tr>
+										
+										<td  class="tbl_column"width="120">Client Coordination</td>
+										<td>Bhargavi</td>
+											
+									</tr>
+									<tr>
+										
+										<td  class="tbl_column"width="120">Candidate Coordination </td>
+										<td>Lavanya Venkateshappa</td>
+											
+									</tr>
+								</tbody>
+							</table>
+							</div>
+							</div>
+                      </div>
+					  
+					  
+                      </div>  
 					</div>
+					
+					
+					
+					
+				
+					
+					
+					
+					</div></div>
+	
+							
+							
+					
+						<div style="float:left;" class="mt15">
+			
+			
+				<div class="btn-group">
+										<button data-toggle="dropdown" class="btn dropdown-toggle">Change Status <span class="caret"></span></button>
+										<ul class="dropdown-menu">
+											<li><a href="#">Change Status</a></li>
+											<li><a href="#" class="confirm_status">Recruiter Validated</a></li>
+											<li><a href="#" class="confirm_status">CV Validated</a></li>
+											<li><a href="#" class="confirm_status">CV Rejected</a></li>
+											<li class="divider"></li>
+											<li><a href="#" class="confirm_status">First Interview</a></li>
+											<li><a href="#" class="confirm_status">Second Interview</a></li>
+											<li><a href="#" class="confirm_status">Final Interview</a></li>
+										</ul>
+							</div>
+							<div class="btn-group" style="float:left;display:inline-block;margin-left:120px;margin-top:-25px;">
+										<button data-toggle="dropdown" class="btn dropdown-toggle" >Action <span class="caret"></span></button>
+										<ul class="dropdown-menu">
+											<li><a href="#">Action</a></li>
+											<li><a href="<?php echo $this->webroot;?>position/send_message/" class="iframeBox unreadLink" val="50_60">Send CV to Client</a></li>
+											<li><a href="<?php echo $this->webroot;?>position/send_message/" class="iframeBox unreadLink" val="50_60">Interview Confirmation to Client</a></li>
+											<li><a href="<?php echo $this->webroot;?>position/send_message/" class="iframeBox unreadLink" val="50_60">Schedule Interview to Candidates</a></li>
+											<li><a href="<?php echo $this->webroot;?>position/send_message/" class="iframeBox unreadLink" val="50_60">Send Mail</a></li>
+											<li><a href="<?php echo $this->webroot;?>position/send_message/" class="iframeBox unreadLink" val="50_60">Send SMS</a></li>
+										</ul>
+							</div>
+							
+						  <div class="btn-group" style="float:left;display:inline-block;margin-left:195px;margin-top:-25px;">
+								<a class="jsRedirect toggleSearch"  href="javascript:void(0)">
+							<input type="button" value="Search" class="btn btn-success"/></a>												
+							</div>
+							<br>	
+							<div class="dn dataTables_filter srchBox" style="float:left;" id="dt_gal_filter">
+							<label style="margin-top:18px;">
+							<a class="jsRedirect" href="#"><input value="Reset" type="button" class="btn"/></a></label>
+							<label style="margin-top:18px;">
+							<input type="submit" value="Submit" class="btn btn-gebo" /></label>
+				
+<label>Current Status: 
+						<select name="data[Resume][status]" class="input-small" placeholder="" style="clear:left" id="ResumeStatus">
+<option value="">Select</option>
+<option value="1">CV Sent</option>
+<option value="2">Shortlisted</option>
+<option value="3">CV Rejected</option>
+<option value="4">Feedback Awaited</option>
+<option value="5">Candidates Interviewed</option>
+<option value="6">Interview Dropouts</option>
+<option value="7">Interview Rejected</option>
+<option value="8">Candidates Offered</option>
+<option value="9">Offer Dropouts</option>
+<option value="10">Candidates Joined</option>
+<option value="11">Candidates Billed</option>
+</select> 
+
+															
+													
+							</label>
+											
+<label>Branch: 
+							<select name="data[Resume][loc]" class="input-small" placeholder="" style="clear:left" id="ResumeLoc">
+<option value="">Select</option>
+<option value="104">Ahmadabad</option>
+<option value="102">Bangalore</option>
+<option value="103">Chennai</option>
+<option value="105">Hyderabad</option>
+</select> 
+
+							</label>						
+						<label>Employee: 
+						<select name="data[Resume][emp_id]" class="input-small" placeholder="" style="clear:left" id="ResumeEmpId">
+<option value="">Select</option>
+<option value="4">Admin</option>
+<option value="66">Bhargavi</option>
+<option value="74">Karthick Kumar</option>
+<option value="75">Karthik</option>
+<option value="37">Karthikeyan S</option>
+<option value="84">Kishore Kumar</option>
+<option value="89">Kumari</option>
+<option value="45">Lavanya Venkateshappa</option>
+<option value="92">Magimai Tamil Azhagan</option>
+<option value="54">Mary Paulina</option>
+<option value="86">Mohammed Aslam</option>
+<option value="79">Mohan Reddy</option>
+<option value="76">Nandhakumar</option>
+<option value="29">Praveena</option>
+<option value="80">Prerna Khanudi</option>
+<option value="58">Priyanka</option>
+<option value="33">Rajalakshmi S</option>
+<option value="38">Ranjeet Rajpurohit</option>
+<option value="69">Reshu</option>
+<option value="35">Suganya</option>
+<option value="81">Suganya Pillai</option>
+<option value="90">Sumir</option>
+<option value="93">Sumitha</option>
+<option value="73">Vandana</option>
+</select> 
+
+															
+													
+							</label>
+
+							<label>Experience:
+<select name="data[Resume][min_exp]" class="input-small minDrop minexp" rel="max-exp" id="min-exp" placeholder="" style="clear:left">
+<option value="">Min</option>
+<option value="1">1 Year</option>
+<option value="2">2 Years</option>
+<option value="3">3 Years</option>
+<option value="4">4 Years</option>
+<option value="5">5 Years</option>
+<option value="6">6 Years</option>
+<option value="7">7 Years</option>
+<option value="8">8 Years</option>
+<option value="9">9 Years</option>
+<option value="10">10 Years</option>
+<option value="11">11 Years</option>
+<option value="12">12 Years</option>
+<option value="13">13 Years</option>
+<option value="14">14 Years</option>
+<option value="15">15 Years</option>
+<option value="16">16 Years</option>
+<option value="17">17 Years</option>
+<option value="18">18 Years</option>
+<option value="19">19 Years</option>
+<option value="20">20 Years</option>
+<option value="21">21 Years</option>
+<option value="22">22 Years</option>
+<option value="23">23 Years</option>
+<option value="24">24 Years</option>
+<option value="25">25 Years</option>
+<option value="26">26 Years</option>
+<option value="27">27 Years</option>
+<option value="28">28 Years</option>
+<option value="29">29 Years</option>
+<option value="30">30 Years</option>
+<option value="31">31 Years</option>
+<option value="32">32 Years</option>
+<option value="33">33 Years</option>
+<option value="34">34 Years</option>
+<option value="35">35 Years</option>
+<option value="36">36 Years</option>
+<option value="37">37 Years</option>
+<option value="38">38 Years</option>
+<option value="39">39 Years</option>
+<option value="40">40 Years</option>
+<option value="41">41 Years</option>
+<option value="42">42 Years</option>
+<option value="43">43 Years</option>
+<option value="44">44 Years</option>
+<option value="45">45 Years</option>
+<option value="46">46 Years</option>
+<option value="47">47 Years</option>
+<option value="48">48 Years</option>
+<option value="49">49 Years</option>
+<option value="50">50 Years</option>
+</select> 	
+							
+					</label>
+					
+				
+
+						
+							<label>To Date: <input type="text" name="data[Resume][to]" placeholder="dd/mm/yyyy" value="" style="width:70px;"  class="input-small datepick" aria-controls="dt_gal"></label>
+
+							<label>From Date: <input type="text" class="input-small datepick" name="data[Resume][from]" placeholder="dd/mm/yyyy" style="width:70px;"  value="" aria-controls="dt_gal"></label>
+							<label style="">Keyword: <input type="text" placeholder="Candidate / Employer" name="data[Resume][keyword]" id = "SearchText" value="" class="input-medium" aria-controls="dt_gal"></label>
+
+														</div>
+			
+			<!--a href="#"  class="sepV_a" title="Call For Interview">
+			<input value="Call For Interview" type="button" class="btn btn-gebo"/></a-->
+		
+
+		</div>
+					
+					
 					
 					  <div class="row-fluid">
 						<div class="span12">
@@ -184,6 +458,9 @@
 											<table data-msg_rowlink="a" class="table table_vam mbox_table dTableR cvTable" id="dt_inbox">
 												<thead>
 													<tr>
+														<th width="30" style="text-align:center">
+														<input name="chkMul" id="chkMul" type="checkbox">
+													</th>
 														<th width="120">Candidate Name</th>
 														<th  width="100">Mobile</th>
 														<th  width="120">Email</th>
@@ -201,7 +478,7 @@
 														<th  width="90" class="dn offerCol">Offered On</th>
 														<th  width="90" class="dn joinCol">Joined On</th>
 														<!--th  width="110" class="">Modified</th-->
-														<th  width="40"><i class="icon-adt_atach"></i></th>
+														<th width="150">Action</th>
 													</tr>
 												</thead>
 												<tbody>
@@ -246,6 +523,9 @@
 													<tr class="<?php echo $dup_bill;?>  <?php echo $dup_offer;?> <?php echo $dup_interview;?> <?php echo $cv_reject;?> <?php echo $dup;?>  allRow <?php echo $this->Functions->format_string($resume['ReqResumeStatus']['stage_title']);?>  <?php echo $this->Functions->format_string($resume['ReqResumeStatus']['status_title']);?>
 													 <?php echo $this->Functions->get_int_status($resume['ReqResumeStatus']['stage_title'],$resume['ReqResumeStatus']['status_title']);?> <?php echo $this->Functions->get_offer_reject($resume['ReqResumeStatus']['stage_title'],$resume['ReqResumeStatus']['status_title']);?>
 													 <?php echo $resume['ReqResume']['bill_ctc'] > '0' ? 'Billing' : '';?>">
+														<td  style="text-align:center"> 
+															<input type="checkbox" name="chk[]" value="120"> 
+														</td>
 														<td>														
 														<a href="<?php echo $this->webroot;?>resume/view/<?php echo $resume['Resume']['id'];?>/"><?php echo ucwords($resume['Resume']['first_name'].' '.$resume['Resume']['last_name']);?></a></td>
 														<td><span><?php echo $this->Functions->get_format_text($resume['Resume']['mobile']);?></span></td>
@@ -267,7 +547,26 @@
 														<td  class="dn joinCol"><?php echo $this->Functions->format_date($resume['ReqResume']['joined_on']);?></td>
 														
 														<!--td><?php echo $this->Functions->format_date($resume['ReqResume']['modified_date']);?></td-->
-														<td><a class="notify" data-notify-time = '7000' data-notify-title="In Progress!" data-notify-message="Downloading Resume... Please wait..."   href="<?php echo $this->webroot;?>hc/download/<?php echo $resume['Resume']['id']; ?>">Resume</a></td>
+														
+															<td class="actionItem">
+														<div class="btn-group" style="margin-left:5px;display:inline-block;">
+															<!--a href="edit_resume.php" style="margin-left:5px;margin-right:5px" rel="tooltip" class="sepV_a" title="Edit"><i class="icon-pencil"></i></a-->
+															<!-- <a href="#"  style="margin-right:5px"  id="smoke_confirm" rel="tooltip" class="confirm"   title="Delete"><i class="icon-trash"></i></a> -->
+															<!--a href="add_formatted_resume.php" style="margin-right:5px"  rel="tooltip"  title="Create Fully Formatted Resume">
+															<img src="<?php echo $this->webroot;?>img/gCons/add-item.png" width="18" height="18" style="padding-bottom: 5px;">
+															</a-->
+															<button data-toggle="dropdown" rel="tooltip"  title="Download" dropdown-toggle"><i class="icon-download"></i> <span class=""></span></button>
+															<ul style="margin-left:-35px;" class="dropdown-menu">
+																<li><a href="#">Snapshot</a></li>
+																<li><a class="notify" data-notify-time = '7000' data-notify-title="In Progress!" data-notify-message="Downloading Resume... Please wait..."   href="<?php echo $this->webroot;?>hc/download/<?php echo $resume['Resume']['id']; ?>">Candidate Resume</a></li>
+																<li class="divider"></li>
+																<li><a href="#">Fully Formatted Resume</a></li>
+															</ul>
+														</div>											
+														</td>
+														
+														
+														
 													</tr>
 													
 												<?php endforeach; ?>
@@ -288,6 +587,8 @@
 									</div>
 								</div>
 							</div>
+							
+							
 							
 						</div>
 					</div>
