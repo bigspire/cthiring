@@ -36,8 +36,8 @@ if($getid !=''){
 			throw new Exception('Problem in checking resume details');
 		}
 		$row = $mysql->display_result($result);
-		$total = $row['total'];
-		if($total == 0){ 
+		$total = $row['id'];
+		if($total == ''){ 
 			header("Location:resume.php?current_status=msg");
 		}
 		// free the memory
@@ -348,7 +348,7 @@ if(!empty($_POST)){
 	
 	// assigning the date
 	$date =  $fun->current_date();
-	$modified_by = $_SESSION['user_id'] ? $_SESSION['user_id'] : 1;
+	$modified_by = $_SESSION['user_id'];
 	$total_exp = $_POST['year_of_exp'].'.'.$_POST['month_of_exp'];
 	
 	// save all the data
@@ -630,7 +630,7 @@ $smarty->assign('grade_drop', array('' => 'Select', 'R' => 'Regular', 'C' => 'Co
  
 // smarty drop down array for year of passing 
 $year_of_pass = array(); 
-for($l = 1990; $l <= 2020; $l++){
+for($l = 2020; $l >= 1990; $l--){
 	$year_of_pass[$l] = $l;
 }
 $smarty->assign('year_of_pass', $year_of_pass);
