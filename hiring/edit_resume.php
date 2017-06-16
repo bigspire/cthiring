@@ -501,7 +501,9 @@ if(!empty($_POST)){
 			}
 		}
 		if(!empty($edu_id) && !empty($exp_id) && !empty($resume_id) && !empty($position_id)){
-			echo 'save data';die;
+			// echo 'save data';die;
+			header('Location: ../resume/?action=modified');
+
 		} 
 	}
 }
