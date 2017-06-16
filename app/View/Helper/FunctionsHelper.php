@@ -376,6 +376,15 @@ class FunctionsHelper extends AppHelper {
 		
    }
    
+   /* function to check gender */
+   public function check_gender($gen){
+		if($gen == '1'){
+			$txt = 'Male';
+		}else if($gen == '2'){
+			$txt = 'Female';
+		}
+		return $txt;
+   }
   
 }
 ?>

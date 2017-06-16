@@ -132,7 +132,7 @@
 									<button data-toggle="dropdown" rel="tooltip" title="Download" class="btn btn-mini dropdown-toggle"><i class="icon-download"></i> <span class="caret"></span>
 									</button>
 										<ul class="dropdown-menu">
-											<li><a href="#">Snapshot</a></li>
+											<li><a href="<?php echo $this->webroot;?>resume/profile_snapshot/<?php echo $res['Resume']['id'];?>/">Snapshot</a></li>
 											<li><a href="#">Candidate Resume</a></li>
 											<li class="divider"></li>
 											<li><a href="#">Fully Formatted Resume</a></li>

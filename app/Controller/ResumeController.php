@@ -338,5 +338,59 @@ class ResumeController extends AppController {
 			$this->set('results', $data);
 		}
     }
+	
+	/* function to export the profile snap shot */
+	public function profile_snapshot($id){
+			// create the pdf
+			if(!empty($id)){
+											
+				// convert to PDF
+				require_once(WWW_ROOT.'/vendor/html2pdf/vendor/autoload.php');												
+				try{
+					$options = array(			
+				array('table' => 'req_resume',
+						'alias' => 'ReqResume',					
+						'type' => 'LEFT',
+						'conditions' => array('`ReqResume`.`resume_id` = `Resume`.`id`')
+				),
+				
+				array('table' => 'requirements',
+						'alias' => 'Position',					
+						'type' => 'LEFT',
+						'conditions' => array('`Position`.`id` = `ReqResume`.`requirements_id`')
+				),
+				array('table' => 'clients',
+						'alias' => 'Client',					
+						'type' => 'LEFT',
+						'conditions' => array('`Client`.`id` = `Position`.`clients_id`')
+				),
+				array(
+						'table' => 'req_resume_status',
+						'alias' => 'ReqResumeStatus',					
+						'type' => 'LEFT',
+						'conditions' => array('`ReqResumeStatus`.`req_resume_id` = `ReqResume`.`id`')
+						)
+		);
+					// get candidate details
+					$user_data2 = $this->Resume->find('all', array('fields' => array('first_name', 'last_name','Designation.Designation','education',
+					'total_exp','present_employer','exp_skills','ResLocation.location','present_ctc','expected_ctc','notice_period','dob','gender',
+					'family','consultant_assess','Position.job_title'), 'conditions' => array('Resume.id' => $id), 'joins' => $options));
+					$user_data = $user_data2[0];
+					// get the HTML
+					ob_start();
+					include(WWW_ROOT.'/vendor/html2pdf/examples/res/snapshot_template.php');
+					$content = ob_get_clean();
+					$html2pdf = new HTML2PDF('P', 'A4', 'fr');
+					$html2pdf->pdf->SetDisplayMode('fullpage');
+					$html2pdf->writeHTML($content, isset($_GET['vuehtml']));
+					$html2pdf->Output(ucfirst(strtolower($user_data['Resume']['first_name'])).' '.ucfirst(strtolower($user_data['Resume']['last_name'])).'_snapshot.pdf', 'D');
+					// $root = WWW_ROOT.'home';
+					// echo "<script>location.href=$root></script>";								
+				}catch(HTML2PDF_exception $e){
+					echo $e;
+					exit;
+				}
+			}
+	}
 
 }
