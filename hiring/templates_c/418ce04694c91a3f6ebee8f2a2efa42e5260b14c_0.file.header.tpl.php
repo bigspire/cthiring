@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-06-12 19:36:43
+/* Smarty version 3.1.29, created on 2017-06-16 12:51:01
   from "C:\xampp\htdocs\2017\ctsvn\cthiring\hiring\templates\include\header.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_593e9ff32fb062_27574148',
+  'unifunc' => 'content_594386dd27a961_74895714',
   'file_dependency' => 
   array (
     '418ce04694c91a3f6ebee8f2a2efa42e5260b14c' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\templates\\include\\header.tpl',
-      1 => 1497270582,
+      1 => 1497590114,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_593e9ff32fb062_27574148 ($_smarty_tpl) {
+function content_594386dd27a961_74895714 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -169,8 +169,8 @@ resume/">Search Resume <?php if ($_smarty_tpl->tpl_vars['resume_count']->value) 
                                             <a data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icon-list-alt icon-white"></i> Interviews <!--span class="label-bub label-info bubble"><?php echo $_smarty_tpl->tpl_vars['interview_count']->value;?>
 </span--><b class="caret"></b></a>
 											  <ul class="dropdown-menu">                                              
-                                                <li><a href="interview.php">Search Interview <!--span class="label-bub label-info white"><?php echo $_smarty_tpl->tpl_vars['interview_count']->value;?>
-</span--></a></li>
+                                                <li><a href="interview.php">Search Interview <span class="label-bub label-info white"><?php echo $_smarty_tpl->tpl_vars['interview_count']->value;?>
+</span></a></li>
 												<!--<li><a href="upload_resume.php">Upload Resume</a></li>
 												<li><a href="upload_resume.php">Upload Psychometric Test</a></li>
 												<li><a href="snapshot.php">Search Snapshot</a></li>-->
