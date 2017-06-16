@@ -72,6 +72,18 @@
 class DATABASE_CONFIG {
 
 	public $default = array(
+			'datasource' => 'Database/Mysql',
+			'persistent' => false,
+			'host' => 'localhost',
+			'login' => 'root',
+			'password' => '',
+			'database' => 'cthiring_local',
+			'prefix' => '',
+			//'encoding' => 'utf8',
+		);
+
+	/*
+	public $default = array(
 		'datasource' => 'Database/Mysql',
 		'persistent' => false,
 		'host' => 'cthiring.coa2hvsxllkw.ap-northeast-1.rds.amazonaws.com',
@@ -82,6 +94,8 @@ class DATABASE_CONFIG {
 		//'encoding' => 'utf8',
 	);
 
+	*/
+	
 	public $sqlserver_db = array(
 		'datasource' => 'Database/Sqlserver',
 		'persistent' => false,

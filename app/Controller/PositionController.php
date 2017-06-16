@@ -588,4 +588,9 @@ class PositionController extends AppController {
 	public function check_read_exists($id, $user){
 		return $this->Read->find('count', array('conditions' => array('requirements_id' => $id, 'users_id' => $user)));
 	}
+	
+	/* function to send the message */
+	public function send_message(){
+		
+	}
 }

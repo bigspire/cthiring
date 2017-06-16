@@ -76,6 +76,8 @@ class ClientController extends AppController {
 			// $empCond = array('ReqResumeStatus.created_by' => $this->Session->read('USER.Login.id'));
 		}
 		
+		$empCond = array('Client.created_by' => $this->Session->read('USER.Login.id'));
+		
 		// set the page title
 		$this->set('title_for_layout', 'Clients - CT Hiring - ES');	
 		$fields = array('id','client_name','phone','ResLocation.location','address','created_date','Creator.first_name','status');
