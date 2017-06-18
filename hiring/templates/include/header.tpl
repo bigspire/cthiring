@@ -179,9 +179,9 @@
                                             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
 											<i class="icon-cog icon-white"></i> Settings <b class="caret"></b></a>
                                           <ul class="dropdown-menu">
-                                                <li><a href="grade.php">Grade <span class="label-bub label-info white">{$grade_count}</span></a></li>
-                                                <li><a href="users.php">Users <span class="label-bub label-info white">{$users_count}</span></a></li>
-												<li><a href="roles.php">Roles [Access] <span class="label-bub label-info white">3</span></a></li>
+                                                <li><a href="grade.php">Grade {if $grade_count}<span class="label-bub label-info white">{$grade_count}</span>{/if}</a></li>
+                                                <li><a href="users.php">Users {if $users_count}<span class="label-bub label-info white">{$users_count}</span>{/if}</a></li>
+												<li><a href="roles.php">Roles [Access] {if $roles_count}<span class="label-bub label-info white">{$roles_count}</span>{/if}</a></li>
 												
 												<li class="dropdown">
 													<a href="#">Mailer Templates <b class="caret-right"></b></a>

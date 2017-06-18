@@ -344,6 +344,8 @@ if(!empty($_POST)){
 			//echo 'save data';
 			header('Location: ../resume/?action=created');
 		} 
+	}else{
+		$smarty->assign('tab_open', ($tab1 == 'fail' ? 'tab1' : ($tab2 == 'fail' ? 'tab2' : ($tab3 == 'fail' ? 'tab3' : 'tab4' ))));
 	}
 }
 
@@ -426,7 +428,7 @@ $smarty->assign('grade_drop', array('' => 'Select', 'R' => 'Regular', 'C' => 'Co
  
 // smarty drop down array for year of passing 
 $year_of_pass = array(); 
-for($l = 1990; $l <= 2020; $l++){
+for($l = 2020; $l >= 1990; $l--){
 	$year_of_pass[$l] = $l;
 }
 $smarty->assign('year_of_pass', $year_of_pass);

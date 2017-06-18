@@ -573,6 +573,16 @@ $(document).ready(function() {
 				$('.assess').removeClass('active');
 				$('#mbox_Consultant').removeClass('active');
 				break;
+				case 'tab4':
+				$('.personal').removeClass('active');
+				$('#mbox_Personal').removeClass('active');
+				$('.education').removeClass('active');
+				$('#mbox_Education').removeClass('active');
+				$('.exp').removeClass('active');
+				$('#mbox_Experience').removeClass('active');
+				$('.assess').addClass('active');
+				$('#mbox_Consultant').addClass('active');
+				break;
 				
 			}
 		}
@@ -646,8 +656,8 @@ $(document).ready(function() {
 	// open the error tab in add / edit formatted resume page
 	if($('#tab_open_resume').length > 0){ 
 		if($('#tab_open_resume').val() != ''){
-			open_tab = $('#tab_open_resume').val();
-			switch(open_tab){
+			open_tab_full = $('#tab_open_resume').val();
+			switch(open_tab_full){
 				case 'tab1':
 				$('.personal').addClass('active');
 				$('#box_personal').addClass('active');

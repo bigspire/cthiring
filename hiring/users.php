@@ -105,8 +105,8 @@ try{
 	while($obj = $mysql->display_result($result))
 	{
  		$data[] = $obj;
- 		$data[$i]['status'] = $fun->display_status($obj['status']);
- 		$data[$i]['status_cls'] = $fun->status_cls($obj['status']);
+ 		$data[$i]['status'] = $fun->display_user_status($obj['status']);
+ 		$data[$i]['status_cls'] = $fun->user_status_cls($obj['status']);
  		$data[$i]['created_date'] = $fun->convert_date_to_display($obj['created_date']);
  		$data[$i]['modified_date'] = $fun->convert_date_to_display($obj['modified_date']);
  		$i++;

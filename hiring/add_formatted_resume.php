@@ -315,17 +315,17 @@ if(!empty($_POST)){
 		$locationData[] = $_POST['location_'.$i];
 			
 		// array for printing correct field name in error message 
-		$fieldtype = array('1','1', '1', '1','0','0','1'); 
-		$actualfield = array('qualification', 'degree', 'specialization', 'from year', 'location', '% of Marks', 'type'); 
-		$field_ar = array('qualification_'.$i => 'qualificationErr', 'degree_'.$i => 'degreeErr',
+		$fieldtype2 = array('1','1', '1', '1','0','0','1'); 
+		$actualfield2 = array('qualification', 'degree', 'specialization', 'from year', 'location', '% of Marks', 'type'); 
+		$field_ar2 = array('qualification_'.$i => 'qualificationErr', 'degree_'.$i => 'degreeErr',
    		   'specialization_'.$i => 'specializationErr', 'from_yr_'.$i => 'from_yrErr',
 		   'location_'.$i => 'locationErr', 'grade_'.$i => 'gradeErr', 'grade_type_'.$i => 'grade_typeErr'); 
 		$j = 0;
-		foreach($field_ar as $field => $er_var){ 
+		foreach($field_ar2 as $field => $er_var){ 
 			if($_POST[$field] == ''){
-				$error_msg = $fieldtype[$j] ? ' select the ' : ' enter the ';
-				$actual_field =  $actualfield[$j];
-				$er[$i][$er_var] = 'Please'. $error_msg .$actual_field;
+				$error_msg2 = $fieldtype2[$j] ? ' select the ' : ' enter the ';
+				$actual_field2 =  $actualfield2[$j];
+				$er2[$i][$er_var] = 'Please'. $error_msg2 .$actual_field2;
 				$test = 'error';
 				$tab2 = 'fail';
 			}
@@ -340,7 +340,7 @@ if(!empty($_POST)){
 	$smarty->assign('from_yrData', $from_yrData);
 	$smarty->assign('qualificationData', $qualificationData);
 	$smarty->assign('eduCount', $_POST['edu_count']);
-	$smarty->assign('eduErr',$er);
+	$smarty->assign('eduErr',$er2);
 
 	// post of experience fields value
 	for($i = 0; $i < $_POST['exp_count']; $i++){
@@ -358,21 +358,21 @@ if(!empty($_POST)){
 		$reporting_toData[] = $_POST['reporting_to_'.$i];
 		
 		// array for printing correct field name in error message 
-		$fieldtype1 = array('1','1','1','0','0','0','0','0','0','0'); 
-		$actualfield1 = array('designation','employment year','employment month','location of work',
+		$fieldtype3 = array('1','1','1','0','0','0','0','0','0','0'); 
+		$actualfield3 = array('designation','employment year','employment month','location of work',
 		'area of specialization/expertise','company name','company profile','key responsibility',
 		'key achievement','reporting to'); 
-		$field_ar1 = array('desig_'.$i => 'desigErr', 'year_of_exp_'.$i => 'year_of_expErr',
+		$field_ar3 = array('desig_'.$i => 'desigErr', 'year_of_exp_'.$i => 'year_of_expErr',
 			'month_of_exp_'.$i => 'month_of_expErr','workloc_'.$i => 'worklocErr','area_'.$i => 'areaErr',
 			'company_'.$i => 'companyErr','company_profile_'.$i => 'company_profileErr',
 			'key_responsibility_'.$i => 'key_responsibilityErr','key_achievement_'.$i => 'key_achievementErr',
 			'reporting_to_'.$i => 'reporting_toErr'); 
 		$j = 0; 
-		foreach($field_ar1 as $field1 => $er_var1){
-			if($_POST[$field1] == ''){
-				$error_msg1 = $fieldtype1[$j] ? ' select the ' : ' enter the ';
-				$actual_field1 =  $actualfield1[$j];
-				$er1[$i][$er_var1] = 'Please'. $error_msg1 .$actual_field1;
+		foreach($field_ar3 as $field => $er_var){
+			if($_POST[$field] == ''){
+				$error_msg3 = $fieldtype3[$j] ? ' select the ' : ' enter the ';
+				$actual_field3 =  $actualfield3[$j];
+				$er3[$i][$er_var] = 'Please'. $error_msg3 .$actual_field3;
 				$test = 'error';
 				$tab3 = 'fail';
 			}
@@ -391,7 +391,7 @@ if(!empty($_POST)){
 	$smarty->assign('key_achievementData', $key_achievementData);
 	$smarty->assign('reporting_toData', $reporting_toData);
 	$smarty->assign('expCount', $_POST['exp_count']);
-	$smarty->assign('expErr',$er1);
+	$smarty->assign('expErr',$er3);
 	
 	
 	// post of training fields values
@@ -403,18 +403,18 @@ if(!empty($_POST)){
 		$train_locationData[] = $_POST['train_location_'.$i];
 		
 		// array for printing correct field name in error message 
-		$fieldtype2 = array('1', '0', '0', '0'); 
-		$actualfield2 = array( 'year','description','program title','location'); 
-		$field_ar2 = array('train_year_'.$i => 'train_yearErr', 'description_'.$i => 'descriptionErr',
+		$fieldtype4 = array('1', '0', '0', '0'); 
+		$actualfield4 = array( 'year','description','program title','location'); 
+		$field_ar4 = array('train_year_'.$i => 'train_yearErr', 'description_'.$i => 'descriptionErr',
    		 'programtitle_'.$i => 'programtitleErr', 'train_location_'.$i => 'train_locationErr'); 
 		$j = 0; 
-		foreach($field_ar2 as $field2 => $er_var2){ 
-			if($_POST[$field2] == ''){
-				$error_msg2 = $fieldtype2[$j] ? ' select the ' : ' enter the ';
-				$actual_field2 =  $actualfield2[$j];
-				$er2[$i][$er_var2] = 'Please'. $error_msg2 .$actual_field2;
-				$test = 'error';
-				$tab3 = 'fail';
+		foreach($field_ar4 as $field => $er_var){ 
+			if($_POST[$field] == ''){
+				$error_msg4 = $fieldtype4[$j] ? ' select the ' : ' enter the ';
+				$actual_field4 =  $actualfield4[$j];
+				$er4[$i][$er_var] = 'Please'. $error_msg4 .$actual_field4;
+				$test4 = 'error';
+				$tab4 = 'fail';
 			}
 			$j++;
 		}
@@ -424,7 +424,7 @@ if(!empty($_POST)){
 	$smarty->assign('programtitleData', $programtitleData);
 	$smarty->assign('train_locationData', $train_locationData);
 	$smarty->assign('trainCount', $_POST['train_count']);
-	$smarty->assign('trainErr',$er2);
+	$smarty->assign('trainErr',$er4);
 		
 	// mobile validation
 	if($fun->is_phonenumber($_POST['mobile']) || $fun->size_of_phonenumber($_POST['mobile'])){
@@ -441,12 +441,11 @@ if(!empty($_POST)){
 	}
 	
 	// array for printing correct field name in error message
-	$fieldtype = array('0', '0','0','0','0','0', '0','1','1','0', '0','0','1','1', '1','1','0','0','0','0','0','0','0');
+	$fieldtype = array('0', '0','0','0','0','0', '0','1','1','0', '0','0','1','1', '1','1','0','0','0','0','0');
 	$actualfield = array('first name', 'last name','email', 'mobile', 'telephone', 'dob', 'position for',
 						'current designation', 'total years of experience','total months of experience',
 						'present CTC','expected CTC','present CTC type','expected CTC type',
-						'notice period','gender', 'present location','nationality', 'language','address',
-						'personality','interview availability');
+						'notice period','gender', 'present location','nationality', 'language','address');
    $field = array('first_name' => 'first_nameErr', 'last_name' => 'last_nameErr','email' => 'emailErr',
     'mobile' => 'mobileErr','telephone' => 'telephoneErr','dob_field' => 'dobErr', 'position_for' => 'position_forErr',
     'designation_id' => 'positionErr','year_of_exp' => 'year_of_expErr', 'month_of_exp' => 'month_of_expErr',
@@ -454,7 +453,7 @@ if(!empty($_POST)){
 	'present_ctc_type' => 'present_ctc_typeErr','expected_ctc_type' => 'expected_ctc_typeErr',
 	'notice_period' => 'notice_periodErr','gender' => 'genderErr',
 	'present_location' => 'present_locationErr','nationality' => 'nationalityErr','res_language' => 'languageErr',
-	'address' => 'addressErr','personality' => 'personalityErr','interview_availability' => 'interview_availabilityErr');
+	'address' => 'addressErr');
 	$j = 0;
 	foreach ($field as $field => $er_var){ 
 		if($_POST[$field] == ''){
@@ -470,6 +469,33 @@ if(!empty($_POST)){
 			$j++;
 	}
 	
+	$language_list = array();
+		if(count($_POST['res_language']) > 0){
+			foreach($_POST['res_language'] as $lang){
+				$language_list[] = $lang;
+		}
+	}
+	$smarty->assign($res_language,$language_list);
+	
+	// array for printing correct field name in error message for consultant
+	$fieldtype1 = array('0','0');
+	$actualfield1 = array('personality','interview availability');
+	$field1 = array('personality' => 'personalityErr','interview_availability' => 'interview_availabilityErr');
+	$j = 0;
+	foreach ($field1 as $field => $er_var){ 
+		if($_POST[$field] == ''){
+			$error_msg1 = $fieldtype1[$j] ? ' select the ' : ' enter the ';
+			$actual_field1 =  $actualfield1[$j];
+			$er1[$er_var] = 'Please'. $error_msg .$actual_field1;
+			$test = 'error';
+			$tab5 = 'fail';
+			$smarty->assign($er_var,$er1[$er_var]);
+		}else{
+			$smarty->assign($field1,$_POST[$field]);
+		}
+			$j++;
+	}
+	
 	/*
 	// save all the data
 	if($test != 'error'){
@@ -481,7 +507,7 @@ if(!empty($_POST)){
 	
 	// assigning the date
 	$date =  $fun->current_date();
-	$modified_by = $_SESSION['user_id'] ? $_SESSION['user_id'] : '1';
+	$modified_by = $_SESSION['user_id'];
 	$total_exp = $_POST['year_of_exp'].'.'.$_POST['month_of_exp'];
 	
 	// save all the data
@@ -531,13 +557,6 @@ if(!empty($_POST)){
 				}
 			}catch(Exception $e){
 				echo 'Caught exception: ',  $e->getMessage(), "\n";
-			}
-		
-			$language_list = array();
-			if(count($_POST['res_language']) > 0){
-				foreach($_POST['res_language'] as $perm){
-					$language_list[] = $perm;
-				}
 			}
 		
 			foreach($language_list as $key => $val){
@@ -726,10 +745,11 @@ if(!empty($_POST)){
 			}
 		}
 		if(!empty($edu_id) && !empty($exp_id) && !empty($train_id) && !empty($language_id) && !empty($resume_id) && !empty($position_id)){
-			echo 'save data';die;
+			// echo 'save data';die;
+			header('Location: ../resume/?action=created');
 		} 
 	}else{
-		$smarty->assign('tab_open_resume', ($tab1 == 'fail' ? 'tab1' : ($tab2 == 'fail' ? 'tab2' : ($tab3 == 'fail' ? 'tab3' : '' ))));
+		$smarty->assign('tab_open_resume', ($tab1 == 'fail' ? 'tab1' : ($tab2 == 'fail' ? 'tab2' : ($tab3 == 'fail' ? 'tab3' : ($tab4 == 'fail' ? 'tab4' : ($tab5 == 'fail' ? 'tab5' : ''))))));
 		// $smarty->assign('tab_open_resume', 'tab2');
 	}
 }
@@ -813,7 +833,7 @@ $smarty->assign('grade_drop', array('' => 'Select', 'R' => 'Regular', 'C' => 'Co
  
 // smarty drop down array for year of passing 
 $year_of_pass = array(); 
-for($l = 1990; $l <= 2020; $l++){
+for($l = 2020; $l >= 1990; $l--){
 	$year_of_pass[$l] = $l;
 }
 $smarty->assign('year_of_pass', $year_of_pass);

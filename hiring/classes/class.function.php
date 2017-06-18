@@ -141,7 +141,7 @@ class fun{
 		}
 	}
 
-  // function to validate database it_software status field 
+  // function to validate database status field 
 	public function display_status($status){
 		if($status == '1'){
 			$st = 'Active';
@@ -149,8 +149,28 @@ class fun{
 	 		$st = 'Inactive';
 		}
 		return $st;
-	}	
+	}
+	
 
+	// function to validate database in user page, status field 
+	public function display_user_status($status){
+		if($status == '0'){
+			$st = 'Active';
+		}elseif($status == '1'){	
+	 		$st = 'Inactive';
+		}
+		return $st;
+	}	
+	
+	// status color field validation for user page
+	public function user_status_cls($status){
+		if($status == '0'){
+		 $stat = 'success';
+		}elseif($status == '1'){
+		 $stat = 'important';	
+		}
+		return $stat;
+	} 
 
 	// status color field validation
 	public function status_cls($status){

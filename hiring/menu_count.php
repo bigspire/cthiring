@@ -151,6 +151,24 @@ try{
 	echo 'Caught exception: ',  $e->getMessage(), "\n";
 }
 
+// fetch roles menu count
+$query = 'CALL count_roles()';
+try{
+	if(!$result = $mysql->execute_query($query)){
+		throw new Exception('Problem in executing roles count page');
+	}
+	// calling mysql fetch_result function
+	$roles = $mysql->display_result($result);
+	// assign position count variables here
+	$smarty->assign('roles_count', $roles['count']);
+	// free the memory
+	$mysql->clear_result($result);
+	// call the next result
+	$mysql->next_query();
+}catch(Exception $e){
+	echo 'Caught exception: ',  $e->getMessage(), "\n";
+}
+
 // fetch client menu count
 $query = 'CALL count_client()';
 try{
