@@ -46,6 +46,9 @@
 		<!-- calendar -->
             <!--link rel="stylesheet" href="<?php echo $this->webroot;?>hiring/lib_cthiring/fullcalendar/fullcalendar_gebo.css" /-->
 			
+			<link rel="stylesheet" href="<?php echo $this->webroot;?>hiring/css/smoke.css" />
+
+						
 			<link rel="stylesheet" media="screen" href="<?php echo $this->webroot;?>hiring/css/datepicker/datepicker.css"/>	   
 			
 			<link rel="stylesheet" href="<?php echo $this->webroot;?>hiring/css/flexslider.css" />
@@ -141,6 +144,7 @@
 				});
 			</script>
 			<script type="text/javascript" src="<?php echo $this->webroot;?>hiring/lib_cthiring/chosen/chosen.jquery.min.js"></script>
+			<script src="<?php echo $this->webroot;?>hiring/js/smoke.min.js"></script>
 
 			<script type="text/javascript" src="<?php echo $this->webroot;?>hiring/js/sheepit-jquery.sheepItPlugin-v1.1.1/jquery.sheepItPlugin.js"></script>
 			<script src="<?php echo $this->webroot;?>hiring/js/datepicker/bootstrap-datepicker.js"></script>

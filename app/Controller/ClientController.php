@@ -135,7 +135,7 @@ class ClientController extends AppController {
 							// save account holder
 							$this->save_account_holder($this->Client->id);
 							// show the msg.
-							$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Client created successfully', 'default', array('class' => 'alert alert-success'));				
+							$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Client modified successfully', 'default', array('class' => 'alert alert-success'));				
 							$this->redirect('/client/');
 						}else{
 							// show the error msg.
@@ -408,7 +408,7 @@ class ClientController extends AppController {
 		$this->loadModel('ClientAccountHolder');
 		$ac_holder = $this->ClientAccountHolder->find('all', array('fields' => array('User.id'),
 		'order' => array('User.first_name ASC'), 'conditions' => array('ClientAccountHolder.clients_id' => $id, 
-		'User.is_deleted' => 'N','User.status' => '4')));
+		'User.is_deleted' => 'N')));
 		foreach($ac_holder as $record){
 			$users[] = $record['User']['id'];
 		}

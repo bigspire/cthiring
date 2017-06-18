@@ -95,7 +95,7 @@
 					
 							
 <?php endif; ?>				
-							<table class="table table-hover table-bordered dataTable stickyTable">
+							<table class="table table-striped table-bordered dataTable stickyTable">
 								<thead>
 									<tr>
 

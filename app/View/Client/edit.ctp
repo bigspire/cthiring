@@ -21,7 +21,7 @@
                         </div>
                     </nav>
 			
-	<?php echo $this->Form->create('Client', array('id' => '', 'class' => '')); ?>
+	<?php echo $this->Form->create('Client', array('id' => '', 'class' => 'formID')); ?>
 			
 							<?php echo $this->Session->flash();?>
 
@@ -332,8 +332,8 @@
 <?php echo $this->Form->input('Client.id', array('type' => 'hidden')); ?>
 
 
-				<button class="btn btn-gebo" type="submit">Submit</button>
-				<a href="<?php echo $this->webroot;?>client/" class="jsRedirect"><input type="button" value="Cancel" class="btn"></a>
+				<input class="btn btn-gebo" type="submit" value="Submit">
+				<a href="<?php echo $this->webroot;?>client/" class="cancelBtn jsRedirect"><input type="button" value="Cancel" class="btn"></a>
 
 </div>
                     </div>

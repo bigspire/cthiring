@@ -154,7 +154,7 @@
 				<tbody>
 				
 				  <tr  class="tbl_row">
-										<td width="120" class="tbl_column">Key Skills <span class="f_req"></span></td>
+										<td width="120" class="tbl_column">Key Skills <span class="f_req">*</span></td>
 										<td> 
 <?php echo $this->Form->input('skills', array('div'=> false,'type' => 'text', 'label' => false, 'class' => 'span8', 'cols' => '10', 'rows' => '3',
   'required' => false, 'placeholder' => '',	'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 

@@ -83,7 +83,7 @@
 							
 <?php endif; ?>	
 
-						<table class="table table-hover table-bordered dataTable stickyTable">
+						<table class="table table-striped table-bordered dataTable stickyTable">
 								<thead>
 									<tr>
 										<th width="100"><?php echo $this->Paginator->sort('first_name', 'Name', array('escape' => false, 'direction' => 'desc'));?></th>

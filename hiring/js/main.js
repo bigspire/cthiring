@@ -48,21 +48,7 @@ $(document).ready(function() {
 		});
 	});
 	
-	/* for status alert options */
-	$('.confirm_status').on('click',function(e){
-				e.preventDefault();
-				smoke.confirm("Are you sure you want to change status?",function(e){
-					if (e){
-						// smoke.alert('Ok, Deleted...', false, {ok: "Thanks"});
-					}else{
-						// smoke.alert('Please...me so sorry. You look good in dress, you look better on my floor.', false, {ok: "Uhh...bye?"});
-					}
-				}, {
-					reverseButtons: true,
-					ok: "Yes",
-					cancel: "No"
-				});
-	});
+	
 			
 			
 	
@@ -95,6 +81,7 @@ $(document).ready(function() {
 		$('input[type=submit]', this).attr('disabled', 'disabled');
 		// hide cancel button
 		$('button[type=button]', this).hide();
+		$('.cancelBtn').hide();
 		
 	});
 	
@@ -188,6 +175,17 @@ $(document).ready(function() {
 			});	
 		});
 	}*/
+	
+	/* function for autocomplete search */
+	if(jQuery('#SearchKeywords').length > 0){ 
+		$('#SearchKeywords').ready(function () {
+			webroot = $("#webroot").attr('value');
+			jQuery('#SearchText').autocomplete(webroot+'search/', {
+			width: 227,
+			selectFirst: true			
+			});	
+		});
+	}
 	
 	
 	
