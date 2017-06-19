@@ -194,13 +194,23 @@ class ExcelComponent extends Component {
 			
 		}else if($template == 'clients'){
 			$i = 2;
+			
+			$fields = array('id','client_name','ResLocation.location','created_date',
+		'Creator.first_name','status',"group_concat(distinct CAH.first_name separator ', ') account_holder", 'city',
+		'count(distinct Position.id) no_pos','count(distinct CON.id) no_contact', 'modified_date');
+		
+		
 			foreach($this->data as $key => $value) {
 					$this->sheet->setCellValueByColumnAndRow($j++,$i,ucwords($value['Client']['client_name']));
-					$this->sheet->setCellValueByColumnAndRow($j++,$i,$value['Client']['phone']);
+					$this->sheet->setCellValueByColumnAndRow($j++,$i,$value['Client']['city']);
 					$this->sheet->setCellValueByColumnAndRow($j++,$i,ucfirst($value['ResLocation']['location']));
-					$this->sheet->setCellValueByColumnAndRow($j++,$i,$value['Client']['status'] ? 'Inactive' : 'Active');
+					$this->sheet->setCellValueByColumnAndRow($j++,$i,$value[0]['no_pos']);
+					$this->sheet->setCellValueByColumnAndRow($j++,$i,$value[0]['no_contact']);
+					$this->sheet->setCellValueByColumnAndRow($j++,$i,$value[0]['account_holder']);
+					$this->sheet->setCellValueByColumnAndRow($j++,$i,$value['Client']['status'] ? 'Inactive' : 'Active');					
 					$this->sheet->setCellValueByColumnAndRow($j++,$i,ucfirst($value['Creator']['first_name']));				
 					$this->sheet->setCellValueByColumnAndRow($j++,$i,$this->format_date($value['Client']['created_date']));
+					$this->sheet->setCellValueByColumnAndRow($j++,$i,$this->format_date($value['Client']['modified_date']));
 					$i++;
 					$j= 0;			
 				}			

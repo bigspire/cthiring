@@ -29,20 +29,23 @@
 					<?php echo $this->Form->create('Home', array('id' => 'formID','class' => 'formID')); ?>
 
 						<div class="dataTables_filter srchBox" id="dt_gal_filter">			
-							<label>
-							<a class="jsRedirect" href="<?php echo $this->webroot;?>home/">
-							<input value="Reset" type="button" class="btn"/></a>
-							</label>
-							<label style="">
-							<input type="submit" class="btn-gebo" />
-							</label>	
-							 For the period:
-							 
-
+							
+							<label> For the period:	</label>
+							 <span id="sandbox-container">
+						<span  class="input-daterange" id="datepicker">	
 							<input type="text" class="input-medium datepick" name="data[Home][from]" value="<?php echo $this->request->query['from'];?>" aria-controls="dt_gal"></label>
-						
 							<input type="text" name="data[Home][to]" value="<?php echo $this->request->query['to'];?>" class="input-medium datepick" aria-controls="dt_gal"></label>
-						
+												
+						</span>	
+						</span>							
+							
+							<input type="submit" value="Submit" class="btn-gebo" />
+							
+							<a class="jsRedirect" href="<?php echo $this->webroot;?>home/">
+							<input value="Reset" type="button" class="btn-gebo"/>
+							</a>
+							
+							
 						</div>	
 						</form>
 						
@@ -830,7 +833,7 @@
 		  textStyle: {color: '', fontSize: 12}
         },
         hAxis: {
-          title: 'Numbers',
+          title: '',
 		  gridlines:{color:'#fff'},
 		  textStyle: {color: '', fontSize: 12},
 		  textPosition : 'none'
@@ -842,11 +845,11 @@
           }
         },
 		  colors: ['#6688e9', '#fcea54', '#12de6d', '#ff0000', '#c8c3c3', '#23E5FF', '#ab1f57',  '#811905','#09418d', '#fabec2', '#0dac01','#d7f477'],
-		  legend: {position: 'bottom', maxLines:5, textStyle: {color: '', fontSize: 12}},
+		  legend: {position: 'top', maxLines:4, textStyle: {color: '', fontSize: 11}},
           dataOpacity: 0.7,
 		  isStacked: true,
-		  bar: { groupWidth: '65%' },
-		  chartArea:{width:"85%",height:'70%',top:5},
+		  bar: {groupWidth: '65%'},
+		  chartArea:{width:"75%",height:'70%',top:100},
 		  tooltip:{textStyle: {color: '', fontSize: 13}},
 		  titleTextStyle:{ fontSize: 15},
         };

@@ -34,8 +34,8 @@
 			<div class="tabbable">
 				<div class="heading">
 					<ul class="nav nav-tabs">
-						<li class="active cli_tab"><a class="clitabChange" rel="client"  href="#mbox_client" data-toggle="tab"><i class="splashy-mail_light_down"></i>  Client </a></li>
-						<li class="con_tab"><a class="clitabChange" rel="contact"  href="#mbox_client_contact" data-toggle="tab"><i class="splashy-mail_light_down"></i>  Client Contact </a></li>
+						<li class="active cli_tab"><a class="clitabChange" rel="client"  href="#mbox_client" data-toggle="tab"><i class="splashy-smiley_happy"></i>  Client </a></li>
+						<li class="con_tab"><a class="clitabChange" rel="contact"  href="#mbox_client_contact" data-toggle="tab"><i class="splashy-smiley_surprised"></i>  Client Contact </a></li>
 					 </ul>
 				</div>
 		<div class="tab-content" style="overflow:visible">
@@ -77,18 +77,24 @@
 								<!--label for="reg_city" generated="true" class="error">Please enter the city / town </label-->										
 							</td>	
 						</tr>
-						  <tr>
-						<td width="120" class="tbl_column">Status <span class="f_req">*</span></td>
+						
+
+	<tr class="tbl_row">
+						<td width="120" class="tbl_column">Account Holder <span class="f_req">*</span></td>
 						<td>	
-						<?php echo $this->Form->input('Client.status', array('div'=> false,'type' => 'select', 'label' => false, 
-		'class' => 'span8', 'empty' => 'Select', 'required' => false, 'placeholder' => '', 
-		'style' => "clear:left", 'options' => $statusList, 'default' => '1', 'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 
 						
-						
+	<?php echo $this->Form->input('account_holder', array('div'=> false,'type' => 'select', 'label' => false, 
+		'class' => 'span8 chosen-select', 'multiple' => 'multiple', 'empty' => 'Select', 'required' => false, 'placeholder' => '', 
+		'style' => "clear:left", 'options' => $userList, 'selected' => $acholderList, 'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 
 					
-							<!--label for="reg_city" generated="true" class="error">Please select the status </label-->											
+
+					
 						</td>	
-				  </tr>																					
+
+				  </tr>	
+				  
+
+																									
 				</tbody>
 			</table>
 		</div>
@@ -135,20 +141,18 @@
 							
 						
 																	
-					<tr class="tbl_row">
-						<td width="120" class="tbl_column">Account Holder <span class="f_req">*</span></td>
+				  <tr>
+						<td width="120" class="tbl_column">Status <span class="f_req">*</span></td>
 						<td>	
+						<?php echo $this->Form->input('Client.status', array('div'=> false,'type' => 'select', 'label' => false, 
+		'class' => 'span8', 'empty' => 'Select', 'required' => false, 'placeholder' => '', 
+		'style' => "clear:left", 'options' => $statusList, 'default' => '1', 'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 
 						
-	<?php echo $this->Form->input('account_holder', array('div'=> false,'type' => 'select', 'label' => false, 
-		'class' => 'span8 chosen-select', 'multiple' => 'multiple', 'empty' => 'Select', 'required' => false, 'placeholder' => '', 
-		'style' => "clear:left", 'options' => $userList, 'selected' => $acholderList, 'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 
+						
 					
-
-					
+							<!--label for="reg_city" generated="true" class="error">Please select the status </label-->											
 						</td>	
-
-				  </tr>	
-				  
+				  </tr>
 									
 				</tbody>
 			</table>
@@ -216,7 +220,7 @@
 						<td width="120" class="tbl_column">Contact Details <span class="f_req">*</span></td>
 						<td> 
 		<?php echo $this->Form->input('mobile_#index#', array('div'=> false,'type' => 'text', 'label' => false, 'class' => 'span4',  'required' => false, 
-		'placeholder' => 'Mobile No.', 'id' => 'mobile_#index#','error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 
+		'placeholder' => 'Mobile No.', 'id' => 'mobile_#index#', 'maxlength' => '11', 'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 
 				
 				<?php echo $this->Form->input('phone_#index#', array('div'=> false,'type' => 'text', 'label' => false, 'class' => 'inline_text span4',  'required' => false, 
 		'placeholder' => 'Landline No.', 'id' => 'phone_#index#','error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 
@@ -332,9 +336,11 @@
 <?php echo $this->Form->input('Client.id', array('type' => 'hidden')); ?>
 
 
+				
 				<input class="btn btn-gebo" type="submit" value="Submit">
-				<a href="<?php echo $this->webroot;?>client/" class="cancelBtn jsRedirect"><input type="button" value="Cancel" class="btn"></a>
-
+				<a href="<?php echo $this->webroot;?>client/" class="cancelBtn jsRedirect">
+				<input type="button" value="Cancel" class="btn"></a>
+				
 </div>
                     </div>
                     

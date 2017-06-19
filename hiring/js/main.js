@@ -54,7 +54,7 @@ $(document).ready(function() {
 	
 	/* for search open/close */
 	$('.toggleSearch').click(function(){ 
-		$('.dataTables_filter').slideToggle();
+		$('.dataTables_filter').slideToggle('fast');
 	});
 	
 	/* editor */
@@ -73,6 +73,15 @@ $(document).ready(function() {
 		});
 	}
 	
+	$('#sandbox-container .input-daterange').datepicker({
+		showOtherMonths: true,
+		selectOtherMonths: true,
+		format: 'dd/mm/yyyy',
+		prevText: "",
+		nextText: "",
+		autoclose:true,
+		todayHighlight: false
+	});
 	 
 	/* when the form submitted */
 	$('.formID').submit(function(){ 		
@@ -84,6 +93,8 @@ $(document).ready(function() {
 		$('.cancelBtn').hide();
 		
 	});
+	
+	
 	
 	/* function to switch the tabs */
 	$('.tabChange').click(function(){	
@@ -901,19 +912,17 @@ $(document).ready(function() {
 	/* toggle home page search in bd */
 	$('.homeSrch').click(function(){
 		if ($('.homeSrchBox').is(":hidden")){
-			$('.homeSrchBox').show();
 			$('#srchSubmit').val(1);
 		}else{
-			$('.homeSrchBox').hide();
 			$('#srchSubmit').val(0);
 		}
 	});
 	
 	if($('.homeSrch').length > 0){
-		if ($('#srchSubmit').val() == '1'){
-			$('.homeSrchBox').show();
+		if ($('#srchSubmit').val() == '1'){ 
+			$('.dataTables_filter').show();
 		}else{
-			$('.homeSrchBox').hide();
+			$('.dataTables_filter').hide();
 		}
 	}
 	
@@ -1038,3 +1047,47 @@ function load_colorBox(obj, size){
 			return false;
 		}
 	}
+
+	/*
+function check_in_out(){	
+	var nowTemp = new Date();
+	var now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0);
+	 
+	var checkin = $('.dpd1').datepicker({
+	  showOtherMonths: true,
+	  selectOtherMonths: true,
+	  prevText: "",
+      nextText: "",
+      autoclose:true,
+	  startDate:$('#start_date').val(),
+	  endDate:$('#end_date').val(),
+	  todayHighlight: false,
+	  format: 'dd/mm/yyyy',
+	  onRender: function(date) { 
+		return date.valueOf() < now.valueOf() ? 'disabled' : '';
+	  }
+	}).on('changeDate', function(ev) {
+	  if (ev.date.valueOf() > checkout.date.valueOf()){
+		var newDate = new Date(ev.date)
+		newDate.setDate(newDate.getDate() + 1);
+		checkout.setValue(newDate);
+	  }
+	  checkin.hide();
+	  $('.dpd2')[0].focus();
+	}).data('datepicker');
+
+	var checkout = $('.dpd2').datepicker({
+	  format: 'dd/mm/yyyy',
+	  'todayHighlight': false,
+	  onRender: function(date) { 
+		if($('#sameDatePos').val() == '1' && $('#sameDatePos').val() != undefined){
+			return date.valueOf() < checkin.date.valueOf() ? 'disabled' : '';
+		}else{
+			return date.valueOf() <= checkin.date.valueOf() ? 'disabled' : '';
+		}
+	  }
+	}).on('changeDate', function(ev) {
+	  checkout.hide();
+	}).data('datepicker');
+}
+*/

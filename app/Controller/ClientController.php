@@ -34,11 +34,11 @@ class ClientController extends AppController {
 	public function index(){
 		if($this->request->is('post')){
 			$url_vars = $this->Functions->create_url(array('keyword','from','to','status'),'Client'); 			
-			$this->redirect('/client/?'.$url_vars);				
+			$this->redirect('/client/?srch_status=1&'.$url_vars);				
 		}
 		// set date condition
 		if($start = $this->request->query['from'] != '' || $start = $this->request->query['to'] != ''){
-			$start = $this->request->query['from'] ? $this->request->query['from'] : date('d/m/Y', strtotime('-3 year'));
+			$start = $this->request->query['from'] ? $this->request->query['from'] :  ''; //date('d/m/Y', strtotime('-3 year'));
 			$end = $this->request->query['to'] ? $this->request->query['to'] : date('d/m/Y');
 			$date_cond = array('or' => array("DATE_FORMAT(Client.created_date, '%Y-%m-%d') between ? and ?" => 
 						array($this->Functions->format_date_save($start), $this->Functions->format_date_save($end))));
@@ -46,7 +46,8 @@ class ClientController extends AppController {
 			
 		// set keyword condition
 		if($this->params->query['keyword'] != ''){
-			$keyCond = array("MATCH (ResLocation.location,client_name) AGAINST ('".$this->Functions->format_search_keyword($this->params->query['keyword'])."' IN BOOLEAN MODE)"); 
+			$keyCond = array("MATCH (ResLocation.location,client_name,Creator.first_name,Con.first_name,
+			CAH.first_name) AGAINST ('".$this->Functions->format_search_keyword($this->params->query['keyword'])."' IN BOOLEAN MODE)"); 
 		}
 		// for employee condition
 		if($this->request->query['status'] != ''){ 
@@ -70,7 +71,27 @@ class ClientController extends AppController {
 						'alias' => 'ReqResumeStatus',					
 						'type' => 'LEFT',
 						'conditions' => array('`ReqResumeStatus`.`req_resume_id` = `ReqResume`.`id`')
-				)				
+				),
+				array('table' => 'client_account_holder',
+						'alias' => 'AH',					
+						'type' => 'LEFT',
+						'conditions' => array('`AH`.`clients_id` = `Client`.`id`')
+				),
+				array('table' => 'users',
+						'alias' => 'CAH',					
+						'type' => 'LEFT',
+						'conditions' => array('`AH`.`users_id` = `CAH`.`id`')
+				),
+				array('table' => 'client_contact',
+						'alias' => 'CC',					
+						'type' => 'LEFT',
+						'conditions' => array('`CC`.`clients_id` = `Client`.`id`')
+				),
+				array('table' => 'contact',
+						'alias' => 'CON',					
+						'type' => 'LEFT',
+						'conditions' => array('`CON`.`id` = `CC`.`contact_id`')
+				)
 			);
 			
 			// $empCond = array('ReqResumeStatus.created_by' => $this->Session->read('USER.Login.id'));
@@ -80,12 +101,15 @@ class ClientController extends AppController {
 		
 		// set the page title
 		$this->set('title_for_layout', 'Clients - CT Hiring - ES');	
-		$fields = array('id','client_name','phone','ResLocation.location','address','created_date','Creator.first_name','status');
+		$fields = array('id','client_name','ResLocation.location','created_date',
+		'Creator.first_name','status',"group_concat(distinct CAH.first_name separator ', ') account_holder", 'city',
+		'count(distinct Position.id) no_pos','count(distinct CON.id) no_contact', 'modified_date');
 		// for export
 		if($this->request->query['action'] == 'export'){ 
 			$data = $this->Client->find('all', array('fields' => $fields,'conditions' => 
-			array($keyCond,$date_cond,$stCond,$empCond),'order' => array('created_date' => 'desc'), 'group' => array('Client.id')));
-			$this->Excel->generate('clients', $data, $data, 'Client Report', 'Client Details');
+			array($keyCond,$date_cond,$stCond,$empCond),'order' => array('created_date' => 'desc'), 
+			'group' => array('Client.id'), 'joins' => $options));
+			$this->Excel->generate('clients', $data, $data, 'Client Report', 'ClientDetails'.date('ddmmyy'));
 		}
 		$this->paginate = array('fields' => $fields,'limit' => '25','conditions' => array($keyCond,$date_cond,$stCond,$empCond),
 		'order' => array('created_date' => 'desc'),	'group' => array('Client.id'), 'joins' => $options);
@@ -105,15 +129,15 @@ class ClientController extends AppController {
 			// authorize user before action
 			$ret_value = $this->auth_action($id);
 			if($ret_value == 'pass'){
-			$this->set('statusList', array('1' => 'Active', '0' => 'Inactive'));
+			$this->set('statusList', array('0' => 'Active', '1' => 'Inactive'));
 			$this->set('titleList', array('1' => 'Mr.', '2' => 'Ms.'));
 			$this->load_static_data();
 				// load contact
 				$this->loadModel('Contact');
 				if (!empty($this->request->data)){  
 					// validates the form
-					$this->request->data['Client']['created_by'] = $this->Session->read('USER.Login.id');
-					$this->request->data['Client']['created_date'] = $this->Functions->get_current_date();
+					$this->request->data['Client']['modified_by'] = $this->Session->read('USER.Login.id');
+					$this->request->data['Client']['modified_date'] = $this->Functions->get_current_date();
 					$this->Client->set($this->request->data);
 					// retain the district
 					$this->get_district_list($this->request->data['Client']['state']);
@@ -129,11 +153,13 @@ class ClientController extends AppController {
 								// remove contact list
 							$this->remove_contact_list($this->Client->id);
 							// remove contact list
-							$this->remove_client_contact_list($this->Client->id);						
+							$this->remove_client_contact_list($this->Client->id);
+							// remove account holder list
+							$this->remove_account_holder_list($this->Client->id);							
 							// save contact list
 							$this->save_client_contact_list($this->Client->id);
 							// save account holder
-							$this->save_account_holder($this->Client->id);
+							$this->save_account_holder($this->Client->id);							
 							// show the msg.
 							$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Client modified successfully', 'default', array('class' => 'alert alert-success'));				
 							$this->redirect('/client/');
@@ -221,11 +247,11 @@ class ClientController extends AppController {
 	
 	/* function to remove the client contact list */
 	public function remove_client_contact_list($id){		
-		$data = $this->ClientContact->find('all', array('fields' => array('contact_id'), 'conditions' => array('clients_id' => $id)));
+		$data = $this->ClientContact->find('all', array('fields' => array('contact_id', 'clients_id'), 'conditions' => array('clients_id' => $id)));
 		foreach($data as $record){
 			 $this->Contact->delete($record['ClientContact']['contact_id']);
 		}
-		$this->ClientContact->deleteAll(array('ClientContact.clients_id' => $record['ClientContact']['contact_id']), false);
+		$this->ClientContact->deleteAll(array('ClientContact.clients_id' => $record['ClientContact']['clients_id']), false);
 	}	
 
 	
@@ -254,7 +280,7 @@ class ClientController extends AppController {
 		// set the page title		
 		$this->set('title_for_layout', 'Create Client - Clients - CT Hiring');	
 		$this->load_static_data();
-		$this->set('statusList', array('1' => 'Active', '0' => 'Inactive'));
+		$this->set('statusList', array('0' => 'Active', '1' => 'Inactive'));
 		$this->set('titleList', array('1' => 'Mr.', '2' => 'Ms.'));
 		if ($this->request->is('post')){
 			// validates the form
@@ -294,13 +320,27 @@ class ClientController extends AppController {
 			if($this->request->data['Client']['first_name_'.$i] == ''){
 				$error[$i]['fname'] = 'Please enter the first name';
 				$er_flag = false;
-			}			
+			}
 			if($this->request->data['Client']['mobile_'.$i] == ''){
 				$error[$i]['mobile'] = 'Please enter the mobile';
 				$er_flag = false;
 			}
+			$mobile = $this->request->data['Client']['mobile_'.$i];
+			if(!is_numeric($mobile)){
+				$error[$i]['mobile'] = 'Please enter the numeric only';
+				$er_flag = false;
+			}
+			if(strlen($mobile) < 10){
+				$error[$i]['mobile'] = 'Mobile no. must be min. 10 digits';
+				$er_flag = false;
+			}						
 			if($this->request->data['Client']['email_'.$i] == ''){
 				$error[$i]['email'] = 'Please enter the email address';
+				$er_flag = false;
+			}
+			// validate email
+			if($this->Functions->email_validation($this->request->data['Client']['email_'.$i])){
+				$error[$i]['email'] = 'Please enter valid email address';
 				$er_flag = false;
 			}
 			if($this->request->data['Client']['title_'.$i] == ''){
@@ -323,6 +363,7 @@ class ClientController extends AppController {
 		$this->render(false);
 		die;
 	}
+	
 	
 	
 	/* function to save contact lists */
@@ -371,7 +412,7 @@ class ClientController extends AppController {
 		$this->set('stateList', $state_list);
 		// load the account holders
 		$user_list = $this->Client->Creator->find('list',  array('fields' => array('id','first_name'), 
-		'order' => array('first_name ASC'),'conditions' => array('status' => '0')));
+		'order' => array('first_name ASC'),'conditions' => array('status' => '0', 'roles_id' => '34')));
 		$this->set('userList', $user_list);
 		// fetch the contact branch
 		$this->loadModel('ContactBranch');
@@ -420,9 +461,29 @@ class ClientController extends AppController {
 	public function view($id){	
 		// set the page title
 		$this->set('title_for_layout', 'View Client - CT Hiring - ES');	
-		$fields = array('id','client_name','phone','ResLocation.location','address','created_date','Creator.first_name','address','status');
-		$data = $this->Client->find('all', array('fields' => $fields,'conditions' => array('Client.id' => $id)));
+		$options = array(			
+			array('table' => 'state',
+				  'alias' => 'State',					
+				  'type' => 'LEFT',
+				  'conditions' => array('`State`.`id` = `ResLocation`.`state_id`')
+			),
+			array('table' => 'users',
+				  'alias' => 'Modifier',					
+				  'type' => 'LEFT',
+				  'conditions' => array('`Modifier`.`id` = `Client`.`modified_by`')
+			)
+		);
+		$fields = array('id','client_name','phone','ResLocation.location','address','created_date','Creator.first_name',
+		'address','status','door_no','street_name','area_name','city','modified_date','pincode','State.state','Modifier.first_name');
+		$data = $this->Client->find('all', array('fields' => $fields,'conditions' => array('Client.id' => $id),
+		'joins' => $options));
 		$this->set('client_data', $data[0]);
+		// get account holder
+		$this->loadModel('ClientAccountHolder');
+		$ac_holder = $this->ClientAccountHolder->find('all', array('fields' => array("group_concat(User.first_name separator ', ') account_holder"),
+		'order' => array('User.first_name ASC'), 'conditions' => array('ClientAccountHolder.clients_id' => $id, 
+		'User.is_deleted' => 'N'), 'group' => array('User.id')));
+		$this->set('accountList', $ac_holder[0][0]['account_holder']);
 		// get the client contacts
 		$this->loadModel('ClientContact');
 		$options = array(			
@@ -439,8 +500,16 @@ class ClientController extends AppController {
 		);		
 		$contact = $this->ClientContact->find('all', array('fields' => array('Contact.id','Contact.first_name','Contact.last_name','Contact.email',
 		'Contact.phone','Contact.mobile','Contact.created_date','Creator.first_name','Designation.designation'), 
-		'conditions' => array('clients_id' => $id), 'order' => array('Contact.created_date' => 'desc'), 'joins' => $options));
+		'conditions' => array('clients_id' => $id), 'order' => array('Contact.created_date' => 'desc'),
+		'joins' => $options));
 		$this->set('contact_data', $contact);
+		// get the clients requirements
+		$this->loadModel('Position');
+		$fields = array('id','job_title','location','no_job','min_exp','max_exp','ctc_from','ctc_to','ReqStatus.title',
+		'Creator.first_name','created_date','modified_date', 'count(ReqResume.id) cv_sent','group_concat(ReqResume.status_title) joined');
+		$data = $this->Position->find('all', array('fields' => $fields,'limit' => '25','conditions' => array('clients_id' => $id),
+		'order' => array('created_date' => 'desc'),	'group' => array('Position.id')));
+		$this->set('position_data', $data);
 		
 	}
 	

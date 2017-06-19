@@ -470,7 +470,7 @@
 	/* datatables */
 		div.dataTables_length label{float:left;text-align:left}
 		div.dataTables_length select{width:75px}
-		div.dataTables_filter label{float:right}
+		div.dataTables_filter label{float:left}
 		div.dataTables_info{padding-top:8px}
 		div.dataTables_paginate{float:right;margin:0}
 		.dataTables_wrapper{position:relative;overflow:hidden}
@@ -797,7 +797,7 @@
 		}
 		.srchBox label{margin-left:10px;}
 		.nav .dropdown .active{color:#ffffff}
-		.tbl_column{font-weight:;color:#686060;}
+		.tbl_column{color:#686060;}
 		.tbl_row{background:#f9f9f9;}
 		.dn{display:none}
 		.footer_div{padding-bottom:0px;}

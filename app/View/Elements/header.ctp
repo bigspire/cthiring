@@ -54,7 +54,7 @@
 											</ul-->
                                         </li>
 										  <li class="dropdown <?php echo $client_menu ?>">
-                                            <a data-toggle="dropdown" class="dropdown-toggle " href="#"><i class="icon-user icon-white"></i> Clients <span class="label-bub label-info bubble">1</span><b class="caret"></b></a>
+                                            <a data-toggle="dropdown" class="dropdown-toggle " href="#"><i class="icon-user icon-white"></i> Clients <!--span class="label-bub label-info bubble">1</span--><b class="caret"></b></a>
 											  <ul class="dropdown-menu">
                                                 <li><a href="<?php echo $this->webroot;?>client/add/">Add Client</a></li>
                                                 <li><a href="<?php echo $this->webroot;?>client/">Search Client <!--span class="label-bub label-info white">1</span--></a></li>
@@ -64,14 +64,14 @@
                                           </li>
 										  
 										  <li class="dropdown <?php echo $position_menu ?>">
-                                            <a  data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icon-list-alt icon-white"></i> Positions <span class="label-bub label-info bubble">14</span><b class="caret"></b></a>
+                                            <a  data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icon-list-alt icon-white"></i> Positions <!--span class="label-bub label-info bubble">14</span--><b class="caret"></b></a>
                                              <ul class="dropdown-menu">
                                                 <li><a href="<?php echo $this->webroot;?>position/add/">Add Position</a></li>
                                                 <li><a href="<?php echo $this->webroot;?>position/">Search Position <!--span class="label-bub label-info white">14</span--></a></a></li>
                                             </ul>
                                         </li>
                                         <li class="dropdown <?php echo $resume_menu ?>">
-                                            <a data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icon-th icon-white"></i> Resumes <span class="label-bub label-info bubble">13453</span><b class="caret"></b></a>
+                                            <a data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icon-th icon-white"></i> Resumes <!--span class="label-bub label-info bubble"></span--><b class="caret"></b></a>
 											  <ul class="dropdown-menu">
                                                 <li><a href="<?php echo $this->webroot;?>hiring/upload_resume.php" class="iframeBox unreadLink" val="40_50">Upload Resume</a></li>
                                                 <li><a href="<?php echo $this->webroot;?>resume/">Search Resume <!--span class="label-bub label-info white">13453</span--></a></li>
@@ -84,7 +84,7 @@
                                          
 										 
                                          <li class="dropdown">
-                                            <a data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icon-list-alt icon-white"></i> Interviews <span class="label-bub label-info bubble">14</span><b class="caret"></b></a>
+                                            <a data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icon-list-alt icon-white"></i> Interviews <!--span class="label-bub label-info bubble">14</span--><b class="caret"></b></a>
 											  <ul class="dropdown-menu">                                              
                                                 <li><a href="<?php echo $this->webroot;?>hiring/interview.php">Search Interview <!--span class="label-bub label-info white">14</span--></a></li>
 												<!--<li><a href="upload_resume.php">Upload Resume</a></li>
@@ -97,10 +97,9 @@
                                             <a data-toggle="dropdown" class="dropdown-toggle " href="#"><i class="icon-file icon-white"></i> Billings <b class="caret"></b></a>
                                            <ul class="dropdown-menu">
                                                 <li><a href="incentive.php">Search Incentive</a></li>
-                                                <li><a href="bonus.php">Search Bonus</a></li>
 												 <li><a href="<?php echo $this->webroot;?>hiring/add_billing.php">Add Billing</a></li>
 												 <li><a href="<?php echo $this->webroot;?>hiring/billing.php">Search Billing</a></li>
-												 <li><a href="<?php echo $this->webroot;?>hiring/approve_billing.php">Approve Billing <span class="label-bub label-info white">20</span></a></li>
+												 <li><a href="<?php echo $this->webroot;?>hiring/approve_billing.php">Approve Billing <!--span class="label-bub label-info white">20</span--></a></li>
                                             </ul>
                                         </li>
 										
