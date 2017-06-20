@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-06-15 11:29:53
+/* Smarty version 3.1.29, created on 2017-06-18 15:52:13
   from "F:\xampp\htdocs\ctsvn\cthiring\hiring\templates\include\header.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_59422259137410_55092356',
+  'unifunc' => 'content_59465455212596_10098068',
   'file_dependency' => 
   array (
     'cfffd9fba5ecbb5e37ebc8a8f0410f0246cfad8b' => 
     array (
       0 => 'F:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\templates\\include\\header.tpl',
-      1 => 1497506370,
+      1 => 1497781278,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_59422259137410_55092356 ($_smarty_tpl) {
+function content_59465455212596_10098068 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -226,11 +226,12 @@ resume/">Search Resume <?php if ($_smarty_tpl->tpl_vars['resume_count']->value) 
                                             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
 											<i class="icon-cog icon-white"></i> Settings <b class="caret"></b></a>
                                           <ul class="dropdown-menu">
-                                                <li><a href="grade.php">Grade <span class="label-bub label-info white"><?php echo $_smarty_tpl->tpl_vars['grade_count']->value;?>
-</span></a></li>
-                                                <li><a href="users.php">Users <span class="label-bub label-info white"><?php echo $_smarty_tpl->tpl_vars['users_count']->value;?>
-</span></a></li>
-												<li><a href="roles.php">Roles [Access] <span class="label-bub label-info white">3</span></a></li>
+                                                <li><a href="grade.php">Grade <?php if ($_smarty_tpl->tpl_vars['grade_count']->value) {?><span class="label-bub label-info white"><?php echo $_smarty_tpl->tpl_vars['grade_count']->value;?>
+</span><?php }?></a></li>
+                                                <li><a href="users.php">Users <?php if ($_smarty_tpl->tpl_vars['users_count']->value) {?><span class="label-bub label-info white"><?php echo $_smarty_tpl->tpl_vars['users_count']->value;?>
+</span><?php }?></a></li>
+												<li><a href="roles.php">Roles [Access] <?php if ($_smarty_tpl->tpl_vars['roles_count']->value) {?><span class="label-bub label-info white"><?php echo $_smarty_tpl->tpl_vars['roles_count']->value;?>
+</span><?php }?></a></li>
 												
 												<li class="dropdown">
 													<a href="#">Mailer Templates <b class="caret-right"></b></a>

@@ -369,12 +369,12 @@
 	
 	/* dashboard icon navigation*/
 		.dshb_icoNav {margin:0;text-align:left}
-		.dshb_icoNav li {-webkit-box-shadow: inset 0px 1px 0px 0px #fff;box-shadow: inset 0px 1px 0px 0px #fff;margin:0px 10px 10px 0px;float:left;text-align:center;list-style:none;display:inline-block;background: #f9f9f9;background: -moz-linear-gradient(top, #f9f9f9 0%, #efefef 100%);background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f9f9f9), color-stop(100%,#efefef));background: -webkit-linear-gradient(top, #f9f9f9 0%,#efefef 100%);background: -o-linear-gradient(top, #f9f9f9 0%,#efefef 100%);background: -ms-linear-gradient(top, #f9f9f9 0%,#efefef 100%);background: linear-gradient(top, #f9f9f9 0%,#efefef 100%);filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9f9f9', endColorstr='#efefef',GradientType=0 );border:1px solid #e2e2e2;-webkit-border-radius: 6px;-moz-border-radius: 6px;-ms-border-radius: 6px;border-radius: 6px}
+		.dshb_icoNav li {-webkit-box-shadow: inset 0px 1px 0px 0px #fff;box-shadow: inset 0px 1px 0px 0px #fff;margin:0px 10px 10px 0px;float:left;text-align:left;list-style:none;display:inline-block;background: #f9f9f9;background: -moz-linear-gradient(top, #f9f9f9 0%, #efefef 100%);background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f9f9f9), color-stop(100%,#efefef));background: -webkit-linear-gradient(top, #f9f9f9 0%,#efefef 100%);background: -o-linear-gradient(top, #f9f9f9 0%,#efefef 100%);background: -ms-linear-gradient(top, #f9f9f9 0%,#efefef 100%);background: linear-gradient(top, #f9f9f9 0%,#efefef 100%);filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9f9f9', endColorstr='#efefef',GradientType=0 );border:1px solid #e2e2e2;-webkit-border-radius: 6px;-moz-border-radius: 6px;-ms-border-radius: 6px;border-radius: 6px}
 		.dshb_icoNav li:hover {border-color:#d2d2d2;-moz-box-shadow: 0 0 6px #ccc;-webkit-box-shadow: 0 0 6px #ccc;box-shadow: 0 0 6px #ccc}
-		.dshb_icoNav li a {position:relative;display:block;padding:14px 8px 8px;width:150px;height:28px;cursor:default;font-size:12px;color:#222;background-repeat:no-repeat;background-position: center 10px;cursor:pointer}
+		.dshb_icoNav li a {position:relative;display:block;padding:14px 8px 8px;width:72px;height:28px;cursor:default;font-size:12px;color:#222;background-repeat:no-repeat;background-position: center 10px;cursor:pointer}
 		.dshb_icoNav li a:hover {text-decoration:none}
 		.dshb_icoNav .label {position:absolute;left:0px;top:-5px}
-		.dshb_icoNav strong{font-size:15px}
+		.dshb_icoNav strong{font-size:13px}
 		.iconNav_left {text-align:left}
 		.iconNav_right {text-align:right}
 	
@@ -470,7 +470,7 @@
 	/* datatables */
 		div.dataTables_length label{float:left;text-align:left}
 		div.dataTables_length select{width:75px}
-		div.dataTables_filter label{float:right}
+		div.dataTables_filter label{float:left}
 		div.dataTables_info{padding-top:8px}
 		div.dataTables_paginate{float:right;margin:0}
 		.dataTables_wrapper{position:relative;overflow:hidden}
@@ -797,7 +797,7 @@
 		}
 		.srchBox label{margin-left:10px;}
 		.nav .dropdown .active{color:#ffffff}
-		.tbl_column{font-weight:;color:#686060;}
+		.tbl_column{color:#686060;}
 		.tbl_row{background:#f9f9f9;}
 		.dn{display:none}
 		.footer_div{padding-bottom:0px;}
@@ -915,3 +915,4 @@ line-height: 18px;padding: 3px 15px;background-color:#eaeeef !important; backgro
 .ui-state-hover{ padding: 3px 15px !important;border:1px solid #efefef !important;line-height:18px;border-radius:0 !important;}
 .theadFix{display: block;	overflow: auto;}
 .tbodyFix{display: block;	height: 180px !important;	overflow: auto;}
+.overflowData{max-height:300px;overflow:auto;}

@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-06-16 16:07:58
+/* Smarty version 3.1.29, created on 2017-06-20 13:15:40
   from "F:\xampp\htdocs\ctsvn\cthiring\hiring\templates\add_resume.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5943b506c30a10_45871716',
+  'unifunc' => 'content_5948d2a4d9f7e8_06849574',
   'file_dependency' => 
   array (
     '0c86b014e44c0947e63f54dd6044281fcbe00859' => 
     array (
       0 => 'F:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\templates\\add_resume.tpl',
-      1 => 1495626070,
+      1 => 1497781278,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5943b506c30a10_45871716 ($_smarty_tpl) {
+function content_5948d2a4d9f7e8_06849574 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'F:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -169,19 +169,19 @@ echo $_smarty_tpl->tpl_vars['month_of_expErr']->value;?>
 										
 										<input type="text" tabindex="10" name="present_ctc" value="<?php echo $_smarty_tpl->tpl_vars['present_ctc']->value;?>
 " placeholder="Present"  class="span2"/>										
-										<select class="span3"   name="present_ctc_type">
+										<select class="span3"  tabindex="11"  name="present_ctc_type">
 										<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['ctc_type']->value,'selected'=>$_POST['present_ctc_type']),$_smarty_tpl);?>
 
 										</select> 
 											
-										<input type="text" tabindex="11" name="expected_ctc" value="<?php echo $_smarty_tpl->tpl_vars['expected_ctc']->value;?>
+										<input type="text" tabindex="12" name="expected_ctc" value="<?php echo $_smarty_tpl->tpl_vars['expected_ctc']->value;?>
 " placeholder="Expected"  class="span2"/>	
-										<select  class="span3"  name="expected_ctc_type">
+										<select  class="span3" tabindex="13"  name="expected_ctc_type">
 										<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['ctc_type']->value,'selected'=>$_POST['expected_ctc_type']),$_smarty_tpl);?>
 
 										</select>			
 										<span class="f_req">*</span>		
-										<label for="reg_city" tabindex="12" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['present_ctcErr']->value;
+										<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['present_ctcErr']->value;
 echo $_smarty_tpl->tpl_vars['present_ctc_typeErr']->value;
 echo $_smarty_tpl->tpl_vars['expected_ctcErr']->value;
 echo $_smarty_tpl->tpl_vars['expected_ctc_typeErr']->value;?>
@@ -191,7 +191,7 @@ echo $_smarty_tpl->tpl_vars['expected_ctc_typeErr']->value;?>
 									<tr>
 										<td width="125" class="tbl_column">Notice Period <span class="f_req">*</span></td>
 										<td> 
-										<select name="notice_period" tabindex="13" class="span8">										
+										<select name="notice_period" tabindex="14" class="span8">										
 										<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['n_p']->value,'selected'=>$_POST['notice_period']),$_smarty_tpl);?>
 							
 										</select>
@@ -202,10 +202,10 @@ echo $_smarty_tpl->tpl_vars['expected_ctc_typeErr']->value;?>
 									<tr class="tbl_row">
 										<td width="120" class="tbl_column">Gender <span class="f_req">*</span></td>
 										<td> 
-										<input type="radio" tabindex="2" tabindex="14" name="gender"<?php if ($_POST['gender'] == '1') {
+										<input type="radio" tabindex="2" tabindex="15" name="gender"<?php if ($_POST['gender'] == '1') {
 echo 'checked';
 }?> value="1"> Male
-										<input type="radio" tabindex="3" tabindex="15" name="gender"<?php if ($_POST['gender'] == '2') {
+										<input type="radio" tabindex="3" tabindex="16" name="gender"<?php if ($_POST['gender'] == '2') {
 echo 'checked';?>
  <?php }?> value="2"> Female
 										<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['genderErr']->value;?>
@@ -215,10 +215,10 @@ echo 'checked';?>
 									 <tr>
 										<td width="120" class="tbl_column">Marital Status <span class="f_req"></span></td>
 										<td>
-										<input type="radio" tabindex="16" name="marital_status"<?php if ($_POST['marital_status'] && $_POST['marital_status'] == 1) {
+										<input type="radio" tabindex="17" name="marital_status"<?php if ($_POST['marital_status'] && $_POST['marital_status'] == 1) {
 echo 'checked';
 }?> value="1"> Single
-										<input type="radio" tabindex="17" name="marital_status"<?php if ($_POST['marital_status'] && $_POST['marital_status'] == 2) {
+										<input type="radio" tabindex="18" name="marital_status"<?php if ($_POST['marital_status'] && $_POST['marital_status'] == 2) {
 echo 'checked';?>
  <?php }?> value="2"> Married
 										</td>	
@@ -226,14 +226,14 @@ echo 'checked';?>
 									<tr class="tbl_row">
 										<td width="120" class="tbl_column">Family (Dependents) <span class="f_req"></span></td>										
 										<td>
-										<textarea name="family" id="family" tabindex="18" cols="10" rows="3" class="span8"><?php echo $_POST['family'];?>
+										<textarea name="family" id="family" tabindex="19" cols="10" rows="3" class="span8"><?php echo $_POST['family'];?>
 </textarea>									
 										</td>			
 									</tr>	
 									<tr>
 										<td width="120" class="tbl_column">Present Location <span class="f_req">*</span> </td>
 										<td>
-								        <input type="text" tabindex="19" name="present_location" placeholder="" value="<?php echo $_smarty_tpl->tpl_vars['present_location']->value;?>
+								        <input type="text" tabindex="20" name="present_location" placeholder="" value="<?php echo $_smarty_tpl->tpl_vars['present_location']->value;?>
 " class="span8">								
 										<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['present_locationErr']->value;?>
 </label>
@@ -242,7 +242,7 @@ echo 'checked';?>
 									<tr class="tbl_row">
 										<td width="120" class="tbl_column">Native Location </td>
 										<td>
-								        <input type="text" tabindex="20" name="native_location" value="<?php echo $_POST['native_location'];?>
+								        <input type="text" tabindex="21" name="native_location" value="<?php echo $_POST['native_location'];?>
 " class="span8">								
 										</td>	
 									</tr>										

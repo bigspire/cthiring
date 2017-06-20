@@ -76,8 +76,7 @@ class HomeController  extends AppController {
 		}
 		*/
 		
-	
-		
+		/*
 		if($this->request->query['emp_id'] != ''){			
 			$cv_emp_cond = array('ReqResumeStatus.created_by' => $this->request->query['emp_id']);
 			$int_emp_cond = array('ReqResumeStatus.created_by' => $this->request->query['emp_id']);
@@ -85,31 +84,130 @@ class HomeController  extends AppController {
 			$cv_sent_emp_cond = array('Resume.created_by' => $this->request->query['emp_id']);
 			$client_emp_cond = array('Client.created_by' => $this->request->query['emp_id']);
 		}else if($this->Session->read('USER.Login.rights') != '5'){			
-			/*
 			$cv_emp_cond = array('ReqResumeStatus.created_by' => $this->Session->read('USER.Login.id'));
 			$int_emp_cond = array('ReqResumeStatus.created_by' => $this->Session->read('USER.Login.id'));
 			$pos_emp_cond = array('ReqResume.created_by' => $this->Session->read('USER.Login.id'));
 			$cv_sent_emp_cond = array('Resume.created_by' => $this->Session->read('USER.Login.id'));
 			$client_emp_cond = array('Client.created_by' => $this->Session->read('USER.Login.id'));
-			*/
 		}
+		*/
 		
 		/* for dashboard switching */
 		if($dash_type == 'rec_view' || $dash_type == ''){
-			$cv_emp_cond = array('ReqResumeStatus.created_by' => $this->Session->read('USER.Login.id'));
-			$int_emp_cond = array('ReqResumeStatus.created_by' => $this->Session->read('USER.Login.id'));
+			$cv_emp_cond = array('ReqResume.created_by' => $this->Session->read('USER.Login.id'));
+			$int_emp_cond = array('ReqResume.created_by' => $this->Session->read('USER.Login.id'));
 			$pos_emp_cond = array('ReqResume.created_by' => $this->Session->read('USER.Login.id'));
 			$cv_sent_emp_cond = array('Resume.created_by' => $this->Session->read('USER.Login.id'));
-			$client_emp_cond = array('Client.created_by' => $this->Session->read('USER.Login.id'));
+			$resume_options = array(			
+				array('table' => 'req_resume',
+						'alias' => 'ReqResume',					
+						'type' => 'LEFT',
+						'conditions' => array('`ReqResume`.`resume_id` = `Resume`.`id`')
+				)
+			);
+			$cli_options = array(						
+				array('table' => 'requirements',
+						'alias' => 'Position',					
+						'type' => 'LEFT',
+						'conditions' => array('`Position`.`clients_id` = `Client`.`id`')
+				),
+				array('table' => 'req_team',
+						'alias' => 'ReqTeam',					
+						'type' => 'LEFT',
+						'conditions' => array('`ReqTeam`.`requirements_id` = `Position`.`id`')
+				)
+			);	
+			$pos_emp_cond2 = array('ReqResume.created_by' => $this->Session->read('USER.Login.id'));
+			$client_emp_cond = array('ReqTeam.users_id' => $this->Session->read('USER.Login.id'));
 			$this->set('rec_dash', 'active');
 		}else if($dash_type == 'ac_view'){
+			$cli_options = array(						
+				array('table' => 'requirements',
+						'alias' => 'Position',					
+						'type' => 'LEFT',
+						'conditions' => array('`Position`.`clients_id` = `Client`.`id`')
+				),
+				array('table' => 'client_account_holder',
+						'alias' => 'ClientAH',					
+						'type' => 'LEFT',
+						'conditions' => array('`Client`.`id` = `ClientAH`.`clients_id`',
+						'ClientAH.users_id' => $this->Session->read('USER.Login.id'))
+				)
+			);
+			$resume_options = array(
+				array('table' => 'req_resume',
+						'alias' => 'ReqResume',					
+						'type' => 'LEFT',
+						'conditions' => array('`ReqResume`.`resume_id` = `Resume`.`id`')
+				),
+				array('table' => 'requirements',
+						'alias' => 'Position',					
+						'type' => 'LEFT',
+						'conditions' => array('`Position`.`id` = `ReqResume`.`requirements_id``')
+				),
+				array('table' => 'clients',
+						'alias' => 'Client',					
+						'type' => 'LEFT',
+						'conditions' => array('`Position`.`clients_id` = `Client`.`id`')
+				),				
+				array('table' => 'client_account_holder',
+						'alias' => 'ClientAH',					
+						'type' => 'LEFT',
+						'conditions' => array('`Client`.`id` = `ClientAH`.`clients_id`')
+				)
+			);
+			$count_options = array(				
+				array('table' => 'clients',
+						'alias' => 'Client',					
+						'type' => 'LEFT',
+						'conditions' => array('`Position`.`clients_id` = `Client`.`id`')
+				),				
+				array('table' => 'client_account_holder',
+						'alias' => 'ClientAH',					
+						'type' => 'LEFT',
+						'conditions' => array('`Client`.`id` = `ClientAH`.`clients_id`',
+						'ClientAH.users_id' => $this->Session->read('USER.Login.id'))
+				)
+			);
+			$ac_join = array(							
+				array('table' => 'client_account_holder',
+						'alias' => 'ClientAH',					
+						'type' => 'LEFT',
+						'conditions' => array('`Client`.`id` = `ClientAH`.`clients_id`')
+				)
+			);
+			$cv_emp_cond = array('ClientAH.users_id' => $this->Session->read('USER.Login.id'));
+			$int_emp_cond =  array('ClientAH.users_id' => $this->Session->read('USER.Login.id'));
+			$pos_emp_cond =  array('ClientAH.users_id' => $this->Session->read('USER.Login.id'));
+			$cv_sent_emp_cond =  array('ClientAH.users_id' => $this->Session->read('USER.Login.id'));			
+			$client_emp_cond = array('ClientAH.users_id' => $this->Session->read('USER.Login.id'));
+			$pos_emp_cond2 = array('Position.created_by' => $this->Session->read('USER.Login.id'));
+			$this->set('ac_dash', 'active');
+		}else if($dash_type == 'bd_view'){
+			$resume_options = array(			
+				array('table' => 'req_resume',
+						'alias' => 'ReqResume',					
+						'type' => 'LEFT',
+						'conditions' => array('`ReqResume`.`resume_id` = `Resume`.`id`')
+				)
+			);
 			$cv_emp_cond = '';
 			$int_emp_cond = '';
 			$pos_emp_cond = '';
 			$cv_sent_emp_cond = '';
+			$pos_emp_cond2 = '';
+			// get recent clients
+			$cli_options = array(						
+				array('table' => 'requirements',
+						'alias' => 'Position',					
+						'type' => 'LEFT',
+						'conditions' => array('`Position`.`clients_id` = `Client`.`id`')
+				)
+			);
 			$client_emp_cond = array('Client.created_by' => $this->Session->read('USER.Login.id'));
-			$this->set('ac_dash', 'active');
+			$this->set('bd_dash', 'active');
 		}
+		
 		
 		// for branch condition
 		if($this->request->query['loc'] != ''){					
@@ -126,7 +224,7 @@ class HomeController  extends AppController {
 		
 		foreach($chart_date as $date){
 			// get the requirements count
-			$req_count_data = $this->get_position_count($date,$pos_emp_cond,$pos_emp_options,$branch_cond,$client_cond);	
+			$req_count_data = $this->get_position_count($date,$pos_emp_cond,$ac_join,$branch_cond,$client_cond);	
 			$req_count[] = count($req_count_data);
 			$req_data[] = $req_count_data;
 			if($this->request->query['type'] == 'req'){
@@ -221,47 +319,38 @@ class HomeController  extends AppController {
 		$this->set('START_DATE', date('d-M', strtotime($start)));
 		$this->set('END_DATE', date('d-M', strtotime($end)));
 		
-		// get recent clients
-		$cli_options = array(						
-			array('table' => 'requirements',
-					'alias' => 'Position',					
-					'type' => 'LEFT',
-					'conditions' => array('`Position`.`clients_id` = `Client`.`id`')
-			)
-		);
-		// $date_cond = array('or' => array("DATE_FORMAT(Client.created_date, '%Y-%m-%d') between ? and ?" => array($start, $end)));
+		
+		$date_cond = array('or' => array("DATE_FORMAT(Client.created_date, '%Y-%m-%d') between ? and ?" => array($start, $end)));
 		$fields = array('id','client_name','ResLocation.location','created_date','Creator.first_name',
 		"count(distinct Position.id) req_count");
-		$conditions = array('fields' => $fields,'limit' => '25','conditions' => array($keyCond,$date_cond,$client_emp_cond),
+		$conditions = array('fields' => $fields,'limit' => '250','conditions' => array($keyCond,$date_cond,$client_emp_cond),
 		'order' => array('Client.created_date' => 'desc'),	'group' => array('Client.id'), 'joins' => $cli_options);
 		$data = $this->Home->Client->find('all', $conditions);
 		$this->set('client_data', $data);
 		// get recent positions
 		$this->loadModel('Position');
-		// $date_cond = array('or' => array("DATE_FORMAT(Position.created_date, '%Y-%m-%d') between ? and ?" => array($start, $end)));
+		$date_cond = array('or' => array("DATE_FORMAT(Position.created_date, '%Y-%m-%d') between ? and ?" => array($start, $end)));
 		$fields = array('id','job_title','location','Client.client_name', 'Creator.first_name','created_date', 'count(ReqResume.id) cv_sent','ReqStatus.title');			
-		$conditions = array('fields' => $fields,'limit' => '25','conditions' => array($date_cond,$pos_emp_cond),
-		'order' => array('created_date' => 'desc'),	'group' => array('Position.id'), 'joins' => $options);
+		$conditions = array('fields' => $fields,'limit' => '250','conditions' => array($date_cond,$pos_emp_cond2),
+		'order' => array('created_date' => 'desc'),	'group' => array('Position.id'));
+		$this->Position->unBindModel(array('belongsTo' => array('FunctionArea')));
 		$data = $this->Position->find('all', $conditions);
 		$this->set('position_data', $data);
-		$date_cond = array('or' => array("DATE_FORMAT(ReqResume.created_date, '%Y-%m-%d') between ? and ?" => 	array($start, $end)));
+		$this->set('POS_TAB_COUNT', count($data));
+
+		$date_cond = array('or' => array("DATE_FORMAT(ReqResume.modified_date, '%Y-%m-%d') between ? and ?" => 	array($start, $end)));
 		// get recent resumes sent
 		$this->loadModel('Resume');
-		$resume_options = array(			
-			array('table' => 'req_resume',
-					'alias' => 'ReqResume',					
-					'type' => 'LEFT',
-					'conditions' => array('`ReqResume`.`resume_id` = `Resume`.`id`')
-			)
-		);
+		
 		$fields = array('id',"concat(Resume.first_name,' ',Resume.last_name) full_name",'email_id','mobile', 'Creator.first_name',
-		'Resume.created_date','Resume.modified_date','ReqResume.stage_title','ReqResume.status_title');			
-		$conditions = array('fields' => $fields,'limit' => '25','conditions' => array($date_cond,$pos_emp_cond,
+		'ReqResume.stage_title','ReqResume.status_title','ReqResume.modified_date');			
+		$conditions = array('fields' => $fields,'limit' => '250','conditions' => array($date_cond,$pos_emp_cond,
 		'ReqResume.stage_title' =>   array( 'Validation - Account Holder', 'Validation - Recruiter','Shortlist')),
-		'order' => array('ReqResume.created_date' => 'desc'),'group' => array('Resume.id'), 'joins' => $resume_options);
+		'order' => array('ReqResume.modified_date' => 'desc'),'group' => array('Resume.id'), 'joins' => $resume_options);
 		$data = $this->Resume->find('all', $conditions);
 		$this->set('resume_data', $data);
 		// get recent interviews
+		/*
 		$interview_options = array(
 				array('table' => 'req_resume',
 						'alias' => 'ReqResume',					
@@ -272,81 +361,89 @@ class HomeController  extends AppController {
 						'alias' => 'ResInterview',					
 						'type' => 'LEFT',
 						'conditions' => array('`ReqResume`.`id` = `ResInterview`.`req_resume_id`')
+				),
+				array('table' => 'requirements',
+						'alias' => 'Position',					
+						'type' => 'LEFT',
+						'conditions' => array('`Position`.`id` = `ReqResume`.`requirements_id`')
+				),
+				array('table' => 'clients',
+						'alias' => 'Client',					
+						'type' => 'LEFT',
+						'conditions' => array('`Client`.`id` = `Position`.`clients_id`')
+				),
+				array('table' => 'client_account_holder',
+						'alias' => 'ClientAH',					
+						'type' => 'LEFT',
+						'conditions' => array('`Client`.`id` = `ClientAH`.`clients_id`')
 				)
 		);
-		$int_date_cond = array('or' => array("DATE_FORMAT(ReqResume.created_date, '%Y-%m-%d') between ? and ?" => array($start, $end)));
+		*/
 		$fields = array('id',"concat(Resume.first_name,' ',Resume.last_name) full_name",'email_id','mobile', 'Creator.first_name',
-		'ReqResume.created_date','Resume.modified_date','ReqResume.stage_title','ReqResume.status_title');			
-		$conditions = array('fields' => $fields,'limit' => '25','conditions' => array($pos_emp_cond,$date_cond,
+		'ReqResume.modified_date','Resume.modified_date','ReqResume.stage_title','ReqResume.status_title');			
+		$conditions = array('fields' => $fields,'limit' => '250','conditions' => array($pos_emp_cond,$date_cond,
 		'ReqResume.stage_title like' => '%Interview'),
-		'order' => array('ReqResume.created_date' => 'desc'), 'group' => array('Resume.id'), 'joins' => $interview_options);
+		'order' => array('ReqResume.modified_date' => 'desc'), 'group' => array('Resume.id'), 'joins' => $resume_options);
 		$data = $this->Resume->find('all', $conditions);
 		$this->set('interview_data', $data);
 		// get recent resumes with offers
 		$fields = array('id',"concat(Resume.first_name,' ',Resume.last_name) full_name",'email_id','mobile', 'Creator.first_name',
-		'Resume.created_date','Resume.modified_date','ReqResume.stage_title','ReqResume.status_title');		
-		$conditions = array('fields' => $fields,'limit' => '25','conditions' => array('ReqResume.stage_title' => 'Offer', 
-		$date_cond,$pos_emp_cond, 'ReqResume.stage_title' => 'Offer'),'order' => array('created_date' => 'desc'),
+		'ReqResume.modified_date','Resume.modified_date','ReqResume.stage_title','ReqResume.status_title');		
+		$conditions = array('fields' => $fields,'limit' => '250','conditions' => array('ReqResume.stage_title' => 'Offer', 
+		$date_cond,$pos_emp_cond, 'ReqResume.stage_title' => 'Offer'),'order' => array('ReqResume.modified_date' => 'desc'),
 		'group' => array('Resume.id'), 'joins' => $resume_options);
 		$data = $this->Resume->find('all', $conditions);
 		$this->set('offer_data', $data);
 		// get resent resumes joinees
 		$fields = array('id',"concat(Resume.first_name,' ',Resume.last_name) full_name",'email_id','mobile', 'Creator.first_name',
-		'Resume.created_date','Resume.modified_date','ReqResume.stage_title','ReqResume.status_title');		
-		$conditions = array('fields' => $fields,'limit' => '25','conditions' => array('ReqResume.stage_title' => 'Joining', 
-		$date_cond,$pos_emp_cond, 'ReqResume.stage_title' => 'Joining'),'order' => array('created_date' => 'desc'),
+		'Resume.created_date','ReqResume.modified_date','ReqResume.stage_title','ReqResume.status_title');		
+		$conditions = array('fields' => $fields,'limit' => '250','conditions' => array('ReqResume.stage_title' => 'Joining', 
+		$date_cond,$pos_emp_cond, 'ReqResume.stage_title' => 'Joining'),'order' => array('ReqResume.modified_date' => 'desc'),
 		'group' => array('Resume.id'), 'joins' => $resume_options);
 		$data = $this->Resume->find('all', $conditions);
 		$this->set('join_data', $data);
 		
 		// get the total counts of positions
+		/*
 		$date_cond = array('or' => array("DATE_FORMAT(Position.created_date, '%Y-%m-%d') between ? and ?" => array($start, $end)));
 		$pos_count_tab = $this->Position->find('count', array('conditions' => array('Position.req_status_id' => array('1', '2'),
 		$pos_emp_cond,$date_cond)));
-		$this->set('POS_TAB_COUNT', $pos_count_tab);
+		*/
 		// get the total counts of cv sent
-		$this->loadModel('ReqResumeStatus');
-		$date_cond = array('or' => array("DATE_FORMAT(ReqResumeStatus.created_date, '%Y-%m-%d') between ? and ?" => array($start, $end)));
-		$cv_sent_count_tab = $this->ReqResumeStatus->find('count', array('conditions' => array('ReqResumeStatus.stage_title' => 
-		'Validation - Account Holder','ReqResumeStatus.status_title' => 'Validated',
-		$cv_emp_cond,$date_cond)));
+		$this->loadModel('ReqResume');
+		$date_cond = array('or' => array("DATE_FORMAT(ReqResume.modified_date, '%Y-%m-%d') between ? and ?" => array($start, $end)));
+		$cv_sent_count_tab = $this->ReqResume->find('count', array('conditions' => array('ReqResume.stage_title' => 
+		'Validation - Account Holder','ReqResume.status_title' => 'Validated',	$cv_emp_cond,$date_cond), 'joins' => $count_options));
 		$this->set('CV_SENT_TAB_COUNT', $cv_sent_count_tab);
 		// get the total counts of cv shortlisted
-		$cv_shortlist_count_tab = $this->ReqResumeStatus->find('count', array('conditions' => array('ReqResumeStatus.status_title' => 'Shortlisted',
-		$cv_emp_cond,$date_cond)));
+		$cv_shortlist_count_tab = $this->ReqResume->find('count', array('conditions' => array('ReqResume.status_title' => 'Shortlisted',
+		$cv_emp_cond,$date_cond), 'joins' => $count_options));
 		$this->set('CV_SHORTLIST_TAB_COUNT', $cv_shortlist_count_tab);
 		// get the total counts of cv rejected
-		$cv_reject_count_tab = $this->ReqResumeStatus->find('count', array('conditions' => array('ReqResumeStatus.stage_title' => 'Shortlist', 'ReqResumeStatus.status_title' => 'Rejected',
-		$cv_emp_cond,$date_cond)));
+		$cv_reject_count_tab = $this->ReqResume->find('count', array('conditions' => array('ReqResume.stage_title' => 'Shortlist', 'ReqResume.status_title' => 'Rejected',
+		$cv_emp_cond,$date_cond), 'joins' => $count_options));
 		$this->set('CV_REJECT_TAB_COUNT', $cv_reject_count_tab);
 		// get the total counts of cv waiting or hold
-		$validate_cond_waiting = array("OR" => array ('ReqResumeStatus.status_title' => 'YRF',	'ReqResumeStatus.status_title' => 'OnHold'));
-		$cv_waiting_count_tab = $this->ReqResumeStatus->find('count', array('conditions' => array($validate_cond_waiting,
-		$cv_emp_cond,$date_cond)));
+		$validate_cond_waiting = array("OR" => array ('ReqResume.status_title' => 'YRF',	'ReqResume.status_title' => 'OnHold'));
+		$cv_waiting_count_tab = $this->ReqResume->find('count', array('conditions' => array($validate_cond_waiting,
+		$cv_emp_cond,$date_cond), 'joins' => $count_options));
 		$this->set('CV_WAITING_TAB_COUNT', $cv_waiting_count_tab);
-		// get the total counts of candidates interviewed
-		$options = array(			
-			array('table' => 'req_resume_interview',
-					'alias' => 'ResInterview',					
-					'type' => 'LEFT',
-					'conditions' => array('`ResInterview`.`req_resume_id` = `ReqResume`.`id`')
-			),
-		);
-		$date_cond = array('or' => array("DATE_FORMAT(ResInterview.int_date, '%Y-%m-%d') between ? and ?" => array($start, $end)));
-		$cv_interview_count_tab = $this->ReqResumeStatus->find('count', array('conditions' => array('ReqResumeStatus.stage_title like' => '%Interview',
-		$cv_emp_cond,$date_cond), 'joins' => $options));
+		// get the total counts of candidates interviewed		
+		// $date_cond = array('or' => array("DATE_FORMAT(ResInterview.int_date, '%Y-%m-%d') between ? and ?" => array($start, $end)));
+		$cv_interview_count_tab = $this->ReqResume->find('count', array('conditions' => array('ReqResume.status_title like' => '%Scheduled',
+		$cv_emp_cond,$date_cond), 'joins' => $count_options));
 		$this->set('INTERVIEW_TAB_COUNT', $cv_interview_count_tab);
 		/*
 		// get the total counts of candidates interview drop outs
-		$cv_int_drop_count_tab = $this->ReqResumeStatus->find('count', array('conditions' => array('ReqResumeStatus.stage_title like' => '%Interview', 'ReqResumeStatus.status_title' => 'No Show',
+		$cv_int_drop_count_tab = $this->ReqResume->find('count', array('conditions' => array('ReqResume.stage_title like' => '%Interview', 'ReqResume.status_title' => 'No Show',
 		$cv_emp_cond,$date_cond), 'joins' => $options));
 		$this->set('INTERVIEW_DROP_TAB_COUNT', $cv_int_drop_count_tab);
 		*/
 		// get the total counts of candidates interview drop outs and rejected
-		$int_count_tab = $this->ReqResumeStatus->find('all', array('fields' => array('ReqResumeStatus.status_title', 'count(*) count'),'conditions' => array('ReqResumeStatus.stage_title like' => '%Interview',
-		$cv_emp_cond,$date_cond), 'group' => array('ReqResumeStatus.status_title'), 'joins' => $options));
+		$int_count_tab = $this->ReqResume->find('all', array('fields' => array('ReqResume.status_title', 'count(*) count'),'conditions' => array('ReqResume.stage_title like' => '%Interview',
+		$cv_emp_cond,$date_cond), 'group' => array('ReqResume.status_title'), 'joins' => $count_options));
 		foreach($int_count_tab as $int_data){
-			switch($int_data['ReqResumeStatus']['status_title']){
+			switch($int_data['ReqResume']['status_title']){
 				case 'No Show':
 				$this->set('INTERVIEW_DROP_TAB_COUNT',  $int_data[0]['count']);
 				break;
@@ -357,21 +454,20 @@ class HomeController  extends AppController {
 			}
 		}
 		// get the candidates offered
-		$offer_cond = array('ReqResumeStatus.stage_title' => 'Offer','ReqResumeStatus.status_title !=' => array('Offer Pending','Rejected', 'Not Interested','Quit'));
-		$date_cond = array('or' => array("DATE_FORMAT(ReqResumeStatus.created_date, '%Y-%m-%d') between ? and ?" => array($start, $end)));
-		$offer_count_tab = $this->ReqResumeStatus->find('count', array('conditions' => array($offer_cond,$cv_emp_cond,$date_cond)));
+		$offer_cond = array('ReqResume.stage_title' => 'Offer','ReqResume.status_title !=' => array('Offer Pending','Rejected', 'Not Interested','Quit'));
+		$offer_count_tab = $this->ReqResume->find('count', array('conditions' => array($offer_cond,$cv_emp_cond,$date_cond), 'joins' => $count_options));
 		$this->set('OFFER_TAB_COUNT', $offer_count_tab);
 		// get the total counts of candidates offer drop outs and joined
 		// $validate_cond = 		
-		$offer_reject_cond = array('ReqResumeStatus.stage_title' => 'Offer', 'ReqResumeStatus.status_title' => array('Rejected', 'Not Interested','Quit'));
-		$offer_reject_count_tab = $this->ReqResumeStatus->find('count', array('conditions' => array($offer_reject_cond,$cv_emp_cond,$date_cond)));
+		$offer_reject_cond = array('ReqResume.stage_title' => 'Offer', 'ReqResume.status_title' => array('Rejected', 'Not Interested','Quit'));
+		$offer_reject_count_tab = $this->ReqResume->find('count', array('conditions' => array($offer_reject_cond,$cv_emp_cond,$date_cond), 'joins' => $count_options));
 		$this->set('OFFER_REJ_TAB_COUNT', $offer_reject_count_tab);
-		$join_cond = array('ReqResumeStatus.stage_title' => 'Joining', 'ReqResumeStatus.status_title' => 'Joined');
-		$join_count_tab = $this->ReqResumeStatus->find('count', array('conditions' => array($join_cond,$cv_emp_cond,$date_cond)));
+		$join_cond = array('ReqResume.stage_title' => 'Joining', 'ReqResume.status_title' => 'Joined');
+		$join_count_tab = $this->ReqResume->find('count', array('conditions' => array($join_cond,$cv_emp_cond,$date_cond), 'joins' => $count_options));
 		$this->set('JOINED_TAB_COUNT', $join_count_tab);
 		// get the billing status count
-		$billing_count_tab = $this->ReqResumeStatus->find('all', array('fields' => array('count(*) count','sum(bill_ctc) ctc'),'conditions' => array($join_cond,$cv_emp_cond,$date_cond,
-		'ReqResume.bill_ctc >' => '0')));
+		$billing_count_tab = $this->ReqResume->find('all', array('fields' => array('count(*) count','sum(bill_ctc) ctc'),'conditions' => array($join_cond,$cv_emp_cond,$date_cond,
+		'ReqResume.bill_ctc >' => '0'), 'joins' => $count_options));
 		$this->set('BILLED_TAB_COUNT', $billing_count_tab[0][0]['count']);
 		$this->set('BILLED_AMT_TAB_COUNT', $billing_count_tab[0][0]['ctc']);
 		
@@ -380,12 +476,12 @@ class HomeController  extends AppController {
 	
 	
 	/* function to get position counts */
-	public function get_position_count($date,$pos_emp_cond,$pos_emp_options,$branch_cond,$client_cond,$reqCond){
+	public function get_position_count($date,$pos_emp_cond,$ac_join,$branch_cond,$client_cond,$reqCond){
 		// set date condition
 		$this->Home->unBindModel(array('belongsTo' => array('Contact','ReqStatus')));
 		$count_data = $this->Home->find('all', array('fields' => array('Home.id','Home.job_title','Client.client_name'),
 		'conditions' => array("DATE_FORMAT(Home.created_date, '%Y-%m-%d')" => $date,$pos_emp_cond,$branch_cond,$client_cond,$reqCond),
-		'order' => array('Client.client_name' => 'asc'), 'group' => array('Home.id'), 'joins' => $pos_emp_options));
+		'order' => array('Client.client_name' => 'asc'), 'joins' => $ac_join, 'group' => array('Home.id')));
 		return $count_data;		
 	}
 	
@@ -419,6 +515,11 @@ class HomeController  extends AppController {
 					'type' => 'LEFT',
 					'conditions' => array('`Client`.`id` = `Position`.`clients_id`')
 			),
+			array('table' => 'client_account_holder',
+					'alias' => 'ClientAH',					
+					'type' => 'LEFT',
+					'conditions' => array('`Client`.`id` = `ClientAH`.`clients_id`')
+			)
 		);
 		$validate_cond = array('ReqResumeStatus.stage_title' => 'Validation - Account Holder','ReqResumeStatus.status_title' => 'Validated');
 		if(empty($reqCond)){
@@ -460,6 +561,11 @@ class HomeController  extends AppController {
 					'type' => 'LEFT',
 					'conditions' => array('`Client`.`id` = `Position`.`clients_id`')
 			),
+			array('table' => 'client_account_holder',
+					'alias' => 'ClientAH',					
+					'type' => 'LEFT',
+					'conditions' => array('`Client`.`id` = `ClientAH`.`clients_id`')
+			)
 		);
 		if(empty($reqCond)){
 			$dateCond = array("DATE_FORMAT(ReqResumeStatus.created_date, '%Y-%m-%d')" => $date);
@@ -501,6 +607,11 @@ class HomeController  extends AppController {
 					'type' => 'LEFT',
 					'conditions' => array('`Client`.`id` = `Position`.`clients_id`')
 			),
+			array('table' => 'client_account_holder',
+					'alias' => 'ClientAH',					
+					'type' => 'LEFT',
+					'conditions' => array('`Client`.`id` = `ClientAH`.`clients_id`')
+			)
 		);
 		if(empty($reqCond)){
 			$dateCond = array("DATE_FORMAT(ReqResumeStatus.created_date, '%Y-%m-%d')" => $date);
@@ -543,6 +654,11 @@ class HomeController  extends AppController {
 					'type' => 'LEFT',
 					'conditions' => array('`Client`.`id` = `Position`.`clients_id`')
 			),
+			array('table' => 'client_account_holder',
+					'alias' => 'ClientAH',					
+					'type' => 'LEFT',
+					'conditions' => array('`Client`.`id` = `ClientAH`.`clients_id`')
+			)
 		);
 		if(empty($reqCond)){
 			$dateCond = array("DATE_FORMAT(ReqResumeStatus.created_date, '%Y-%m-%d')" => $date);
@@ -616,6 +732,11 @@ class HomeController  extends AppController {
 					'type' => 'LEFT',
 					'conditions' => array('`ResInterview`.`req_resume_id` = `ReqResume`.`id`')
 			),
+			array('table' => 'client_account_holder',
+					'alias' => 'ClientAH',					
+					'type' => 'LEFT',
+					'conditions' => array('`Client`.`id` = `ClientAH`.`clients_id`')
+			)
 		);
 		
 		if(empty($reqCond)){
@@ -658,6 +779,11 @@ class HomeController  extends AppController {
 					'type' => 'LEFT',
 					'conditions' => array('`Client`.`id` = `Position`.`clients_id`')
 			),
+			array('table' => 'client_account_holder',
+					'alias' => 'ClientAH',					
+					'type' => 'LEFT',
+					'conditions' => array('`Client`.`id` = `ClientAH`.`clients_id`')
+			)
 		);
 		if(empty($reqCond)){
 			$dateCond = array("DATE_FORMAT(ReqResumeStatus.created_date, '%Y-%m-%d')" => $date);
@@ -701,6 +827,11 @@ class HomeController  extends AppController {
 					'type' => 'LEFT',
 					'conditions' => array('`Client`.`id` = `Position`.`clients_id`')
 			),
+			array('table' => 'client_account_holder',
+					'alias' => 'ClientAH',					
+					'type' => 'LEFT',
+					'conditions' => array('`Client`.`id` = `ClientAH`.`clients_id`')
+			)
 		);
 		if(empty($reqCond)){
 			$dateCond = array("DATE_FORMAT(ReqResumeStatus.created_date, '%Y-%m-%d')" => $date);
@@ -744,6 +875,11 @@ class HomeController  extends AppController {
 					'type' => 'LEFT',
 					'conditions' => array('`Client`.`id` = `Position`.`clients_id`')
 			),
+			array('table' => 'client_account_holder',
+					'alias' => 'ClientAH',					
+					'type' => 'LEFT',
+					'conditions' => array('`Client`.`id` = `ClientAH`.`clients_id`')
+			)
 		);
 		if(empty($reqCond)){
 			$dateCond = array("DATE_FORMAT(ReqResumeStatus.created_date, '%Y-%m-%d')" => $date);
@@ -785,6 +921,11 @@ class HomeController  extends AppController {
 					'type' => 'LEFT',
 					'conditions' => array('`Client`.`id` = `Position`.`clients_id`')
 			),
+			array('table' => 'client_account_holder',
+					'alias' => 'ClientAH',					
+					'type' => 'LEFT',
+					'conditions' => array('`Client`.`id` = `ClientAH`.`clients_id`')
+			)
 		);
 		$this->loadModel('ReqResumeStatus');	
 		if(empty($reqCond)){
@@ -826,6 +967,11 @@ class HomeController  extends AppController {
 					'type' => 'LEFT',
 					'conditions' => array('`Client`.`id` = `Position`.`clients_id`')
 			),
+			array('table' => 'client_account_holder',
+					'alias' => 'ClientAH',					
+					'type' => 'LEFT',
+					'conditions' => array('`Client`.`id` = `ClientAH`.`clients_id`')
+			)
 		);
 		$this->loadModel('ReqResumeStatus');
 		if(empty($reqCond)){
@@ -866,7 +1012,13 @@ class HomeController  extends AppController {
 					'alias' => 'Client',					
 					'type' => 'LEFT',
 					'conditions' => array('`Client`.`id` = `Position`.`clients_id`')
-			),
+			)
+			,
+			array('table' => 'client_account_holder',
+					'alias' => 'ClientAH',					
+					'type' => 'LEFT',
+					'conditions' => array('`Client`.`id` = `ClientAH`.`clients_id`')
+			)
 		);
 		$this->loadModel('ReqResumeStatus');
 		if(empty($reqCond)){

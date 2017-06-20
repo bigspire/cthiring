@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-06-16 16:06:53
+/* Smarty version 3.1.29, created on 2017-06-20 10:52:51
   from "F:\xampp\htdocs\ctsvn\cthiring\hiring\templates\upload_resume.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5943b4c52d5788_28798902',
+  'unifunc' => 'content_5948b12b7563a8_53338957',
   'file_dependency' => 
   array (
     '602023cf55f708dc344f20e9cb60d49d2982a851' => 
     array (
       0 => 'F:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\templates\\upload_resume.tpl',
-      1 => 1488974140,
+      1 => 1497936168,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_5943b4c52d5788_28798902 ($_smarty_tpl) {
+function content_5948b12b7563a8_53338957 ($_smarty_tpl) {
 ?>
 
 
@@ -53,7 +53,7 @@ function content_5943b4c52d5788_28798902 ($_smarty_tpl) {
 
 
 				 		
-<form action="upload_resume.php" id="formID" method="post" enctype="multipart/form-data" accept-charset="utf-8">
+<form action="upload_resume.php" class="formID" id="formID" method="post" enctype="multipart/form-data" accept-charset="utf-8">
 <div class="box">
 	<div class="row-fluid">
 		<div class="span6">
@@ -74,7 +74,7 @@ echo $_smarty_tpl->tpl_vars['attachmentuploadErr']->value;?>
 			<div class="form-actions">
 				<input name="submit" class="btn btn-gebo theForm" value="Save" type="submit"/>
 				<!--<button class="btn btn-gebo theForm" type="submit">Save</button>-->
-				<input type="button" value="Cancel" class="btn cancel">
+				<input type="button" value="Cancel" class="cancelBtn btn cancel">
 			</div>
 		</div>
 	</div>

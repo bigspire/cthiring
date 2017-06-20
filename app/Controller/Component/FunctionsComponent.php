@@ -52,6 +52,13 @@ class FunctionsComponent extends Component {
 		}
 	}
 	
+	/* validate email */
+	public function email_validation($email){
+		if(!empty($email) && !filter_var($email, FILTER_VALIDATE_EMAIL)){
+			return true;
+		}
+	}
+	
 	/* function to format the date to show */
 	public function format_date_show($date){ 
 		$exp_date = explode('-', $date);

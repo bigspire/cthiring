@@ -46,6 +46,9 @@
 		<!-- calendar -->
             <!--link rel="stylesheet" href="<?php echo $this->webroot;?>hiring/lib_cthiring/fullcalendar/fullcalendar_gebo.css" /-->
 			
+			<link rel="stylesheet" href="<?php echo $this->webroot;?>hiring/css/smoke.css" />
+
+						
 			<link rel="stylesheet" media="screen" href="<?php echo $this->webroot;?>hiring/css/datepicker/datepicker.css"/>	   
 			
 			<link rel="stylesheet" href="<?php echo $this->webroot;?>hiring/css/flexslider.css" />
@@ -102,6 +105,7 @@
 			<script src="<?php echo $this->webroot;?>hiring/lib_cthiring/antiscroll/jquery-mousewheel.js"></script>
 			<!-- common functions -->
 			<script src="<?php echo $this->webroot;?>hiring/js/gebo_common.js"></script>
+			<link type="text/css" media="screen" href="<?php echo $this->webroot;?>hiring/css/jquery.autocomplete.css" rel="stylesheet" />
 
 			<script src="<?php echo $this->webroot;?>hiring/lib_cthiring/jquery-ui/jquery-ui-1.8.20.custom.min.js"></script>
             <!-- touch events for jquery ui-->
@@ -129,6 +133,10 @@
 			
 			<!-- buttons functions -->
 			<script src="<?php echo $this->webroot;?>hiring/js/gebo_btns.js"></script>
+			
+			<!--script src="<?php echo $this->webroot;?>hiring/js/textcounter.min.js"></script-->
+
+			
 			 <!-- TinyMce WYSIWG editor -->
 			<script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
 	
@@ -141,9 +149,11 @@
 				});
 			</script>
 			<script type="text/javascript" src="<?php echo $this->webroot;?>hiring/lib_cthiring/chosen/chosen.jquery.min.js"></script>
+			<script src="<?php echo $this->webroot;?>hiring/js/smoke.min.js"></script>
+			<script type="text/javascript" src="<?php echo $this->webroot;?>hiring/js/jquery.autocomplete.min.js"></script>
 
 			<script type="text/javascript" src="<?php echo $this->webroot;?>hiring/js/sheepit-jquery.sheepItPlugin-v1.1.1/jquery.sheepItPlugin.js"></script>
-			<script src="<?php echo $this->webroot;?>hiring/js/datepicker/bootstrap-datepicker.js"></script>
+			<script src="<?php echo $this->webroot;?>hiring/js/datepicker/bootstrap-datepicker.min.js"></script>
 	
 			<script src="<?php echo $this->webroot;?>hiring/js/main.js"></script>
 			<script src="<?php echo $this->webroot;?>hiring/js/jquery.slimscroll.min.js"></script>

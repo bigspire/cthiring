@@ -160,4 +160,58 @@ class AppController extends Controller {
 		} 
 				
 	}
+	
+	/* function used to upload the image */
+	function  upload_file($src, $dest){	
+		if(!empty($src)){			
+			// copy the file to the image path			
+			if(!copy($src, $dest)){
+				echo 'failed to copy the file';
+			}else{				
+				return 1;
+			}
+		}
+	}
+	
+	/* function to download the file */
+	public function download_file($path){	
+		// Must be fresh start
+		if( headers_sent() )
+		die('Headers Sent');
+		// Required for some browsers
+		if(ini_get('zlib.output_compression'))
+		ini_set('zlib.output_compression', 'Off');
+		// File Exists?
+		if(file_exists($path)){
+			// Parse Info / Get Extension
+			$fsize = filesize($path);
+			$path_parts = pathinfo($path);
+			$ext = strtolower($path_parts["extension"]);
+			// Determine Content Type
+			switch($ext){			 
+			  case "zip": $ctype="application/zip"; break;
+			  case "doc": $ctype="application/msword"; break;
+			  case "xls": $ctype="application/vnd.ms-excel"; break;		 
+			  case "gif": $ctype="image/gif"; break;
+			  case "png": $ctype="image/png"; break;
+			  case "jpeg":
+			  case "jpg": $ctype="image/jpg"; break;
+			  default: $ctype="application/force-download";
+			}
+			header("Pragma: public"); // required
+			header("Expires: 0");
+			header("Cache-Control: must-revalidate, post-check=0, pre-check=0");
+			header("Cache-Control: private",false); // required for certain browsers
+			header("Content-Type: $ctype");
+			$file_name =  basename($path);
+			header("Content-Disposition: attachment; filename=\"".$file_name."\";" );
+			header("Content-Transfer-Encoding: binary");
+			header("Content-Length: ".$fsize);
+			ob_clean();
+			flush();
+			readfile( $path );
+		}else{
+			die('File Not Found');
+		}
+	} 
 }

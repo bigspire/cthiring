@@ -793,7 +793,7 @@
 		}
 		.srchBox label{margin-left:10px;}
 		.nav .dropdown .active{color:#ffffff}
-		.tbl_column{font-weight:;color:#686060;}
+		.tbl_column{color:#686060;font-size:14px;}
 		.tbl_row{background:#f9f9f9;}
 		.dn{display:none}
 		.footer_div{padding-bottom:0px;}

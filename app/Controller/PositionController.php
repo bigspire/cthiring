@@ -41,7 +41,7 @@ class PositionController extends AppController {
 		$this->set('title_for_layout', 'Positions - CT Hiring - ES');
 		$this->set('empList', $this->Position->get_employee_details());	
 		$this->set('locList', $this->get_loc_details());
-		$this->set('stList', array('10' => 'Planned', '1' => 'In-Process', '2' => 'On-Hold', '3' => 'Closed', '4' => 'Cancelled', '5' => 'Unread'));			
+		$this->set('stList', array('10' => 'Planned', '1' => 'In-Process', '2' => 'On-Hold', '3' => 'Closed', '4' => 'Cancelled'));			
 		$fields = array('id','job_title','location','no_job','min_exp','max_exp','ctc_from','ctc_to','ReqStatus.title','req_status_id',
 		'Client.client_name','team_member', 'Creator.first_name','created_date','modified_date', 'count(ReqResume.id) cv_sent',
 		'group_concat(ReqResume.status_title) joined','count(distinct Read.id) read_count', "group_concat(distinct ResOwner.first_name  SEPARATOR ', ') team_member");
@@ -61,16 +61,18 @@ class PositionController extends AppController {
 			)
 		);
 		
-		$start = $this->request->query['from'] ? $this->request->query['from'] : date('d/m/Y', strtotime('-15 month'));
-		$end = $this->request->query['to'] ? $this->request->query['to'] : date('d/m/Y');
-		$end_search = $this->request->query['to'] ? $this->request->query['to'] : date('d/m/Y', strtotime('+1 day'));
-		// set date condition
-		$date_cond = array('or' => array("DATE_FORMAT(Position.created_date, '%Y-%m-%d') between ? and ?" => 
-					array($this->Functions->format_date_save($start), $this->Functions->format_date_save($end_search))));
-			
+		if($this->request->query['from'] != '' || $this->request->query['to'] != ''){
+			$start = $this->request->query['from'] ? $this->request->query['from'] : ''; // date('d/m/Y', strtotime('-15 month'));
+			$end = $this->request->query['to'] ? $this->request->query['to'] : date('d/m/Y');
+			$end_search = $this->request->query['to'] ? $this->request->query['to'] :  date('d/m/Y', strtotime('+1 day'));
+			// set date condition
+			$date_cond = array('or' => array("DATE_FORMAT(Position.created_date, '%Y-%m-%d') between ? and ?" => 
+						array($this->Functions->format_date_save($start), $this->Functions->format_date_save($end_search))));
+		}
+		
 		// set keyword condition
 		if($this->params->query['keyword'] != ''){
-			$keyCond = array("MATCH (Client.client_name,job_title) AGAINST ('".$this->Functions->format_search_keyword($this->params->query['keyword'])."' IN BOOLEAN MODE)"); 
+			$keyCond = array("MATCH (Client.client_name,job_title,Creator.first_name) AGAINST ('".$this->Functions->format_search_keyword($this->params->query['keyword'])."' IN BOOLEAN MODE)"); 
 		}
 		// for client contact condition
 		if($contact_id != ''){ 
@@ -146,20 +148,21 @@ class PositionController extends AppController {
 			// retain the district
 			$this->get_contact_list($this->request->data['Position']['clients_id']);
 			// validate the client contacts
-			$coord_validate = $this->validate_coord();
+			// $coord_validate = $this->validate_coord();
 			// validate the form fields
 			if ($this->Position->validates(array('fieldList' => array('clients_id','client_contact_id','job_title','location','max_exp',
-			'ctc_to_type','skills','no_job','team_member_req','end_date','function_area_id','status','job_desc'))) && $coord_validate){
+			'ctc_to_type','skills','no_job','team_member_req','end_date','function_area_id','status','job_desc')))){
 				// format the dates
 				$this->request->data['Position']['start_date'] = $this->Functions->format_date_save($this->request->data['Position']['start_date']);
 				$this->request->data['Position']['end_date'] = $this->Functions->format_date_save($this->request->data['Position']['end_date']);
 				// save the data
 				if($this->Position->save($this->request->data['Position'])){
 					// save position coordination
-					$this->save_position_coodination($this->Position->id);
+					// $this->save_position_coodination($this->Position->id);
 					// save team members list
-					$this->save_team_member($this->Position->id);
+					$this->save_team_member($this->Position->id);					
 					// save the file name
+					$this->save_job_desc($this->Position->id);
 					$this->Position->saveField('job_desc_file', $this->Position->id.'_'.$this->request->data['Position']['desc_file']['name']);
 					// show the msg.
 					$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Position created successfully', 'default', array('class' => 'alert alert-success'));				
@@ -173,6 +176,18 @@ class PositionController extends AppController {
 				$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Please check the validation errors...', 'default', array('class' => 'alert alert-error'));					
 			}			
 		}				
+	}
+	
+	/* function to save the JD */
+	public function save_job_desc($id){
+		// save the attachment
+		if(!empty($this->request->data['Position']['desc_file']['tmp_name'])){
+			$src = $this->request->data['Position']['desc_file']['tmp_name'];
+			$dest = 'uploads/jd/'.$id.'_'.$this->request->data['Position']['desc_file']['name'];
+			$this->upload_file($src, $dest);
+			// save the file name
+			$this->Position->saveField('job_desc_file', $id.'_'.$this->data['Position']['desc_file']['name']);							
+		}
 	}
 	
 	
@@ -191,31 +206,31 @@ class PositionController extends AppController {
 				$this->set('ctcList', array('T' => 'Thousands', 'L' => 'Lacs'));
 				if (!empty($this->request->data)){
 					// validates the form
-					$this->request->data['Position']['created_by'] = $this->Session->read('USER.Login.id');
-					$this->request->data['Position']['created_date'] = $this->Functions->get_current_date();
+					$this->request->data['Position']['modified_by'] = $this->Session->read('USER.Login.id');
+					$this->request->data['Position']['modified_date'] = $this->Functions->get_current_date();
 					$this->Position->set($this->request->data);
 					// retain the district
 					$this->get_contact_list($this->request->data['Position']['clients_id']);
 					// validate the client contacts
-					$coord_validate = $this->validate_coord();
+					// $coord_validate = $this->validate_coord();
 					// validate the form fields
 					if ($this->Position->validates(array('fieldList' => array('clients_id','client_contact_id','job_title','location','max_exp',
-					'ctc_from','ctc_to','ctc_from_type','ctc_to_type','skills','no_job','team_member_req','end_date','function_area_id','job_desc'))) && $coord_validate){
+					'ctc_from','ctc_to','ctc_from_type','ctc_to_type','skills','no_job','team_member_req','end_date','function_area_id','job_desc')))){
 						// format the dates
 						$this->request->data['Position']['start_date'] = $this->Functions->format_date_save($this->request->data['Position']['start_date']);
 						$this->request->data['Position']['end_date'] = $this->Functions->format_date_save($this->request->data['Position']['end_date']);
 						// save the data
 						if($this->Position->save($this->request->data['Position'])){
+							// save the file name
+							$this->save_job_desc($this->Position->id);
 							// remove position coordination
-							$this->remove_position_coodination($this->Position->id);
+							// $this->remove_position_coodination($this->Position->id);
 							// save position coordination
-							$this->save_position_coodination($this->Position->id);
+							// $this->save_position_coodination($this->Position->id);
 							// remove team members list
 							$this->remove_team_member($this->Position->id);
 							// save team members list
 							$this->save_team_member($this->Position->id);
-							// save the file name
-							$this->Position->saveField('job_desc_file', $this->Position->id.'_'.$this->data['Position']['desc_file']['name']);
 							// show the msg.
 							$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Position modified successfully', 'default', array('class' => 'alert alert-success'));				
 							$this->redirect('/position/');
@@ -230,7 +245,7 @@ class PositionController extends AppController {
 				}else{
 					// get the position details
 					$data = $this->Position->find('all', array('fields' => array('Position.id','clients_id','client_contact_id','job_title','location','min_exp','max_exp',
-					'ctc_from','ctc_to','education','ctc_from_type','ctc_to_type','skills','no_job','start_date','end_date','function_area_id','job_desc'), 
+					'ctc_from','ctc_to','education','ctc_from_type','ctc_to_type','skills','no_job','start_date','end_date','function_area_id','job_desc','job_desc_file'), 
 					'conditions' => array('Position.id' => $id), 'joins' => $options));
 					$this->request->data = $data[0];
 					$this->request->data['Position']['start_date'] = $this->Functions->format_date_show($this->request->data['Position']['start_date']);
@@ -240,12 +255,14 @@ class PositionController extends AppController {
 					// retain the account holder
 					$this->get_team_member_list($id);
 					// fetch the contacts
+					/*
 					$this->loadModel('PositionCoord');
 					$data = $this->PositionCoord->find('all', array('fields' => array('users_id', 'requirements_id', 'inc_sharing_id','percent'),
 					'conditions' => array('PositionCoord.requirements_id ' => $id),
 					'order' => array('PositionCoord.id' => 'asc'),'joins' => $options));
 					$this->set('count_coord', count($data));
-					$this->set('coord_list', $data);					
+					$this->set('coord_list', $data);
+					*/
 				}
 			}else if($ret_value == 'fail'){ 
 				$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert-error">&times;</button>Invalid Entry', 'default', array('class' => 'alert alert-error'));	
@@ -258,6 +275,12 @@ class PositionController extends AppController {
 			$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert-error">&times;</button>Invalid Entry', 'default', array('class' => 'alert alert-error'));		
 			$this->redirect('/position/');	
 		}				
+	}
+	
+	/* function to download the file */
+	public function download_doc($file){
+		 $this->download_file(WWW_ROOT.'/uploads/jd/'.$file);
+		 die;
 	}
 	
 	/* function to auth record */
@@ -368,9 +391,13 @@ class PositionController extends AppController {
 	public function load_static_data(){
 		// load the clients
 		$client_list = $this->Position->Client->find('list', array('fields' => array('id','client_name'), 
-		'order' => array('client_name ASC'),'conditions' => array('is_deleted' => 'N', 'status' => '1')));
+		'order' => array('client_name ASC'),'conditions' => array('is_deleted' => 'N', 'status' => '0')));
 		$this->set('clientList', $client_list);
 		// load the account holders
+		$ac_list = $this->Position->Creator->find('list',  array('fields' => array('id','first_name'), 
+		'order' => array('first_name ASC'),'conditions' => array('status' => '0', 'roles_id' => '34')));
+		$this->set('acList', $ac_list);
+		// load the team members
 		$user_list = $this->Position->Creator->find('list',  array('fields' => array('id','first_name'), 
 		'order' => array('first_name ASC'),'conditions' => array('status' => '0')));
 		$this->set('userList', $user_list);
@@ -380,9 +407,11 @@ class PositionController extends AppController {
 		$this->set('functionList', $function_list);
 		// get the sharing details
 		$this->loadModel('Coordination');
+		/*
 		$coord_list = $this->Coordination->find('list',  array('fields' => array('id','type'), 
 		'order' => array('id ASC'),'conditions' => array('is_deleted' => 'N', 'status' => '1')));
 		$this->set('coordList', $coord_list);
+		*/
 
 	}
 	
@@ -470,6 +499,24 @@ class PositionController extends AppController {
 		$this->render(false);
 		die;
 	}
+	
+	/* function to load the districts options */
+	public function get_account_holder(){
+		$this->layout = 'ajax';
+		$this->load_ach($this->request->query['id']);
+		$this->render(false);
+		die;
+	}
+	
+	
+	/* function to load the account holder */
+	public function load_ach($id){ 
+		$this->loadModel('ClientAccountHolder');		
+		$ac_list = $this->ClientAccountHolder->find('all', array('fields' => array("group_concat(User.first_name separator ', ') ach"),
+		'order' => array('first_name ASC'),'conditions' => array('ClientAccountHolder.clients_id' => $id)));	
+		echo $ac_list[0][0]['ach'];
+	}
+	
 	
 	/* function to load the districts options */
 	public function load_contact($id){

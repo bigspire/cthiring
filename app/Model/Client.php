@@ -61,6 +61,11 @@ class Client extends AppModel {
                 'rule'     => 'notEmpty',
                 'required' => true,
                 'message'  => 'Please enter the pincode'
+            ),
+			'numeric' => array(
+                'rule'     => 'numeric',
+                'required' => true,
+                'message'  => 'Please enter numeric values only'
             )
         ),
 		'state' => array(		

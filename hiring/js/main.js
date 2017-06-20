@@ -48,13 +48,18 @@ $(document).ready(function() {
 		});
 	});
 	
-	/* for status alert options */
-	$('.confirm_status').on('click',function(e){
-				e.preventDefault();
-				smoke.confirm("Are you sure you want to change status?",function(e){
+	
+		/* function to show the alert message for cancel */   
+	
+	$(".cancel_event").click( function(e) {
+		e.preventDefault();
+				smoke.confirm("Are you sure you want to cancel?",function(e){
 					if (e){
-						// smoke.alert('Ok, Deleted...', false, {ok: "Thanks"});
+						webroot = $("#webroot").attr('value');
+						location.href = webroot;
+				// smoke.alert('Ok, Deleted...', false, {ok: "Thanks"});
 					}else{
+						return false;
 						// smoke.alert('Please...me so sorry. You look good in dress, you look better on my floor.', false, {ok: "Uhh...bye?"});
 					}
 				}, {
@@ -62,13 +67,12 @@ $(document).ready(function() {
 					ok: "Yes",
 					cancel: "No"
 				});
-	});
-			
-			
+	});		
+		
 	
 	/* for search open/close */
 	$('.toggleSearch').click(function(){ 
-		$('.dataTables_filter').slideToggle();
+		$('.dataTables_filter').slideToggle('fast');
 	});
 	
 	/* editor */
@@ -87,6 +91,24 @@ $(document).ready(function() {
 		});
 	}
 	
+	// for counting the text
+	/*
+	$('.count_checker').textcounter({
+		type: "character",
+		max: $(this).attr('max_val'),
+		min: $(this).attr('min_val')
+	});
+	*/
+	
+	$('#sandbox-container .input-daterange').datepicker({
+		showOtherMonths: true,
+		selectOtherMonths: true,
+		format: 'dd/mm/yyyy',
+		prevText: "",
+		nextText: "",
+		autoclose:true,
+		todayHighlight: false
+	});
 	 
 	/* when the form submitted */
 	$('.formID').submit(function(){ 		
@@ -95,8 +117,11 @@ $(document).ready(function() {
 		$('input[type=submit]', this).attr('disabled', 'disabled');
 		// hide cancel button
 		$('button[type=button]', this).hide();
+		$('.cancelBtn').hide();
 		
 	});
+	
+	
 	
 	/* function to switch the tabs */
 	$('.tabChange').click(function(){	
@@ -188,6 +213,17 @@ $(document).ready(function() {
 			});	
 		});
 	}*/
+	
+	/* function for autocomplete search */
+	if(jQuery('#SearchKeywords').length > 0){ 
+		$('#SearchKeywords').ready(function () {
+			webroot = $("#webroot").attr('value');
+			jQuery('#SearchText').autocomplete(webroot+'search/', {
+			width: 227,
+			selectFirst: true			
+			});	
+		});
+	}
 	
 	
 	
@@ -294,8 +330,8 @@ $(document).ready(function() {
 		var sheepAdd = $('#sheepItFormContact').sheepIt({
 			   separator: '',
 			   allowRemoveLast: true,
-			   allowRemoveCurrent: true,
-			   allowRemoveAll: true,
+			   allowRemoveCurrent: false,
+			   allowRemoveAll: false,
 			   allowAdd: true,
 			   allowAddN: true,
 			   maxFormsCount: 10,
@@ -315,6 +351,9 @@ $(document).ready(function() {
 		   });	
 			
 			for(i = 0; i < $('#contact_count').val(); i++){
+				if($('#titleID_'+i).length > 0){
+					$('#contactID_'+i).val($('#titleID_'+i).val());
+				}
 				if($('#titleName_'+i).length > 0){
 					$('#title_'+i).val($('#titleName_'+i).val());
 				}
@@ -367,7 +406,7 @@ $(document).ready(function() {
 	/* multiple option for add client contacts */
 	$(document).ready(function(){
 	    var sheepAdd = {}; 
-		if($('#sheepItFormPosition').length > 0){
+		if($('#sheepItFormPosition-NOT REQUIRED').length > 0){
 		var sheepAdd = $('#sheepItFormPosition').sheepIt({
 			   separator: '',
 			   allowRemoveLast: true,
@@ -441,7 +480,27 @@ $(document).ready(function() {
 			$('.load_contact').append(html);
 			// $(".bdDist").trigger("chosen:updated");
 		});	
+		// retain the account holder
+		if($('.load_ach').length > 0){
+			$('.load_ach').val('Loading..');
+			$.ajax({
+			 url: $('#webroot').val()+'get_account_holder/?id='+id	
+			}).done(function( html ) {	
+				$('.load_ach').val(html);
+			});
+		}
 	});
+	
+	// retain the account holder
+		if($('.load_ach').length > 0){
+			$('.load_ach').val('Loading..');
+			$.ajax({
+			 url: $('#webroot').val()+'get_account_holder/?id='+$('#client_id').val(),
+			 async: false	
+			}).done(function( html ) {	
+				$('.load_ach').val(html);
+			});
+		}
 	
 	/* retain the client contact tab */
 	if($('#add_client').length > 0){
@@ -903,19 +962,17 @@ $(document).ready(function() {
 	/* toggle home page search in bd */
 	$('.homeSrch').click(function(){
 		if ($('.homeSrchBox').is(":hidden")){
-			$('.homeSrchBox').show();
 			$('#srchSubmit').val(1);
 		}else{
-			$('.homeSrchBox').hide();
 			$('#srchSubmit').val(0);
 		}
 	});
 	
 	if($('.homeSrch').length > 0){
-		if ($('#srchSubmit').val() == '1'){
-			$('.homeSrchBox').show();
+		if ($('#srchSubmit').val() == '1'){ 
+			$('.dataTables_filter').show();
 		}else{
-			$('.homeSrchBox').hide();
+			$('.dataTables_filter').hide();
 		}
 	}
 	
@@ -1040,3 +1097,47 @@ function load_colorBox(obj, size){
 			return false;
 		}
 	}
+
+	/*
+function check_in_out(){	
+	var nowTemp = new Date();
+	var now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0);
+	 
+	var checkin = $('.dpd1').datepicker({
+	  showOtherMonths: true,
+	  selectOtherMonths: true,
+	  prevText: "",
+      nextText: "",
+      autoclose:true,
+	  startDate:$('#start_date').val(),
+	  endDate:$('#end_date').val(),
+	  todayHighlight: false,
+	  format: 'dd/mm/yyyy',
+	  onRender: function(date) { 
+		return date.valueOf() < now.valueOf() ? 'disabled' : '';
+	  }
+	}).on('changeDate', function(ev) {
+	  if (ev.date.valueOf() > checkout.date.valueOf()){
+		var newDate = new Date(ev.date)
+		newDate.setDate(newDate.getDate() + 1);
+		checkout.setValue(newDate);
+	  }
+	  checkin.hide();
+	  $('.dpd2')[0].focus();
+	}).data('datepicker');
+
+	var checkout = $('.dpd2').datepicker({
+	  format: 'dd/mm/yyyy',
+	  'todayHighlight': false,
+	  onRender: function(date) { 
+		if($('#sameDatePos').val() == '1' && $('#sameDatePos').val() != undefined){
+			return date.valueOf() < checkin.date.valueOf() ? 'disabled' : '';
+		}else{
+			return date.valueOf() <= checkin.date.valueOf() ? 'disabled' : '';
+		}
+	  }
+	}).on('changeDate', function(ev) {
+	  checkout.hide();
+	}).data('datepicker');
+}
+*/

@@ -10,10 +10,34 @@
 					
 						 <div class="span12">
 
-<div class="heading clearfix">
-								<h3 class="pull-left">Positions <small>view</small></h3>
-			
+ <nav>
+                        <div id="jCrumbs" class="breadCrumb module">
+                            <ul>
+                                <li>
+                                    <a href="<?php echo $this->webroot;?>home/"><i class="icon-home"></i></a>
+                                </li>
+                                <li>
+                                    <a href="<?php echo $this->webroot;?>position/">Positions</a>
+                                </li>
+                            
+                                <li>
+                                   <?php echo $position_data['Position']['job_title'];?>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+					
+					<div class="srch_buttons">
+							<a rel="tooltip" title="Edit the Position Info." href="<?php echo $this->webroot;?>position/edit/<?php echo $this->request->params['pass'][0];?>" class="sepV_a" title="Edit Position">
+					<input value="Edit" type="button" class="btn btn-info"></a>
+					<!--<a href="#"  class="sepV_a" title="Delete Position">
+					<input value="Delete" type="button" class="btn btn-danger"/></a>-->
+					<a rel="tooltip"  title="Upload New Resume" href="<?php echo $this->webroot;?>hiring/upload_resume.php" 
+					 val="40_50"  class="iframeBox sepV_a cboxElement">
+					<input value="Upload Resume" type="button" class="btn btn-warning"></a>					
 							</div>
+							
+							
 							
 						<?php echo $this->Session->flash();?>
 							
@@ -24,9 +48,9 @@
 							<div class="tabbable">
 							<div class="heading">
 										<ul class="nav nav-tabs">
-										<li class="active"><a class="restabChange" rel="position"  href="#mbox_basic" data-toggle="tab"><i class="splashy-mail_light_down"></i>  Basic </a></li>
-										<li class=""><a class="restabChange" rel="interview"  href="#mbox_description" data-toggle="tab"><i class="splashy-mail_light_down"></i>  Job Description </a></li>
-										<li class=""><a class="restabChange" rel="interview"  href="#mbox_co-ordination" data-toggle="tab"><i class="splashy-mail_light_down"></i>  Co-ordination </a></li>
+										<li class="active"><a class="restabChange" rel="position"  href="#mbox_basic" data-toggle="tab"><i class="splashy-smiley_happy"></i>  Basic </a></li>
+										<li class=""><a class="restabChange" rel="interview"  href="#mbox_description" data-toggle="tab"><i class="splashy-smiley_amused"></i>  Job Description </a></li>
+										<!--li class=""><a class="restabChange" rel="interview"  href="#mbox_co-ordination" data-toggle="tab"><i class="splashy-mail_light_down"></i>  Co-ordination </a></li-->
 									</ul>
 										
 								</div>
@@ -197,7 +221,7 @@
 							</div>
 							</div>
 										
-                  <div class="tab-pane" id="mbox_co-ordination">
+                  <!--div class="tab-pane" id="mbox_co-ordination">
 										
 						<div class="span12">
 							<table class="table table-striped table-bordered dataTable" style="margin-bottom:0">
@@ -224,7 +248,7 @@
 								</tbody>
 							</table>
 							</div>
-							</div>
+							</div-->
                       </div>
 					  
 					  

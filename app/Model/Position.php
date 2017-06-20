@@ -147,9 +147,22 @@ class Position extends AppModel {
             'empty' => array(
                 'rule'     => 'validate_jobDesc',
                 'required' => true,
-                'message'  => 'Please type or attach job description'
+                'message'  => 'Please type job description here or attach job description file below'
+            ),
+			 'minlength' => array(
+                'rule'     => 'check_length',
+                'required' => true,
+                'message'  => 'Job description must be min. of 500 chars.'
+            )
+        ),
+		'desc_file' => array(		
+            'empty' => array(
+                'rule'     => 'validate_file',
+                'required' => true,
+                'message'  => 'Please upload only doc or docx formats only'
             )
         )
+			
 	);
 	
 	/* function to validate the team members */
@@ -160,6 +173,34 @@ class Position extends AppModel {
 			return false;
 		}
 	}
+	
+	/* function to validate the job desc length */
+	public function check_length(){
+		if($this->data['Position']['job_desc'] != ''){
+			if(strlen($this->data['Position']['job_desc']) < 500){				
+				return false;
+			}else{
+				return true;
+			}
+		}else{
+			return true;
+		}
+	}
+	
+	/* function to validate the file type */
+	public function validate_file(){ 
+		if($this->data['Position']['desc_file']['name'] != ''){
+			if($this->data['Position']['desc_file']['type'] == 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
+			|| $this->data['Position']['desc_file']['type'] == 'application/msword'){			
+				return true;
+			}else{
+				return false;
+			}
+		}else{
+			return true;
+		}
+	}
+	
 	
 	/* function to validate the experience */
 	public function validate_exp(){
