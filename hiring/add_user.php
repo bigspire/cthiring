@@ -33,7 +33,7 @@ if(!empty($_POST)){
 	// array for printing correct field name in error message
 	$fieldtype = array('0', '0' ,'0','0','1','1','1');
 	$actualfield = array('first name','last name', 'email address', 'mobile','role','status');
-   $field = array('first_name' => 'first_nameErr','last_name' => 'last_nameErr', 'email' => 'emailErr' ,'mobile' => 'mobileErr',
+    $field = array('first_name' => 'first_nameErr','last_name' => 'last_nameErr', 'email' => 'emailErr' ,'mobile' => 'mobileErr',
    'role' => 'roleErr','status' => 'statusErr','location' => 'locationErr');
 	$j = 0;
 	foreach ($field as $field => $er_var){ 
@@ -71,9 +71,12 @@ if(!empty($_POST)){
 	if(empty($test)){
 		if($row['total'] == '0'){
 			// query to insert user details.
-			$query = "CALL add_user('".$mysql->real_escape_str($_POST['email'])."','".$mysql->real_escape_str($_POST['first_name'])."',
-						'".$mysql->real_escape_str($_POST['last_name'])."','".$mysql->real_escape_str($_POST['mobile'])."',
-						'".$mysql->real_escape_str($_POST['designation'])."','".$mysql->real_escape_str($_POST['status'])."',
+			$query = "CALL add_user('".$mysql->real_escape_str($_POST['email'])."',
+						'".$fun->is_white_space($mysql->real_escape_str($_POST['first_name']))."',
+						'".$fun->is_white_space($mysql->real_escape_str($_POST['last_name']))."',
+						'".$mysql->real_escape_str($_POST['mobile'])."',
+						'".$fun->is_white_space($mysql->real_escape_str($_POST['designation']))."',
+						'".$mysql->real_escape_str($_POST['status'])."',
 						'".$mysql->real_escape_str($_POST['role'])."','".$mysql->real_escape_str($_SESSION['user_id'])."',
 			 			'".$date."','".$mysql->real_escape_str($_POST['location'])."')";
 			// Calling the function that makes the insert
@@ -142,7 +145,7 @@ try{
 }
 
 // smarty dropdown array for status
-$smarty->assign('user_status', array('' => 'Select', '1' => 'Active', '2' => 'Inactive'));
+$smarty->assign('user_status', array('' => 'Select', '0' => 'Active', '1' => 'Inactive'));
 // closing mysql
 $mysql->close_connection();
 

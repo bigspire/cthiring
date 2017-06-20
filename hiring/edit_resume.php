@@ -311,13 +311,13 @@ if(!empty($_POST)){
 	}
 	
 	// array for printing correct field name in error message
-	$fieldtype = array('0', '0','0','0','0', '0','1','1','0', '0','0','1','1', '1','1','0','0');
-	$actualfield = array('first name', 'last name','email', 'mobile','dob', 'position for',
+	$fieldtype = array('0', '0','0','0','0', '0','1','1','0', '0','0','1', '1','1','0','0');
+	$actualfield = array('first name', 'last name','email', 'mobile','dob',
 						'current designation', 'total years of experience','total months of experience',
 						'present CTC','expected CTC','present CTC type','expected CTC type',
 						'notice period','gender', 'present location');
    $field = array('first_name' => 'first_nameErr', 'last_name' => 'last_nameErr','email' => 'emailErr',
-    'mobile' => 'mobileErr','dob_field' => 'dobErr', 'position_for' => 'position_forErr',
+    'mobile' => 'mobileErr','dob_field' => 'dobErr',
     'designation_id' => 'positionErr','year_of_exp' => 'year_of_expErr', 'month_of_exp' => 'month_of_expErr',
     'present_ctc' => 'present_ctcErr','expected_ctc' => 'expected_ctcErr',
 	'present_ctc_type' => 'present_ctc_typeErr','expected_ctc_type' => 'expected_ctc_typeErr',
@@ -378,7 +378,8 @@ if(!empty($_POST)){
 		}catch(Exception $e){
 			echo 'Caught exception: ',  $e->getMessage(), "\n";
 		}
-
+		
+		/*
 		// query to add position for details
 		$query = "CALL edit_req_resume_position('".$modified_by."','".$date."',
 			'".$mysql->real_escape_str($_POST['position_for'])."','$getid')";
@@ -393,6 +394,7 @@ if(!empty($_POST)){
 		}catch(Exception $e){
 			echo 'Caught exception: ',  $e->getMessage(), "\n";
 		}
+		*/
 		
 		// query to delete education details
 		$query = "CALL delete_res_edu('$getid')";
@@ -500,7 +502,7 @@ if(!empty($_POST)){
 				echo 'Caught exception: ',  $e->getMessage(), "\n";
 			}
 		}
-		if(!empty($edu_id) && !empty($exp_id) && !empty($resume_id) && !empty($position_id)){
+		if(!empty($edu_id) && !empty($exp_id) && !empty($resume_id)){
 			// echo 'save data';die;
 			header('Location: ../resume/?action=modified');
 

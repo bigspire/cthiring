@@ -177,13 +177,13 @@ if(!empty($_POST)){
 	}
 	
 	// array for printing correct field name in error message
-	$fieldtype = array('0', '0','0','0','0', '0','1','1','0', '0','0','1','1', '1','1','0','0');
-	$actualfield = array('first name', 'last name','email', 'mobile','dob', 'position for',
+	$fieldtype = array('0', '0','0','0','0', '0','1','1','0', '0','0','1','1','1','0','0');
+	$actualfield = array('first name', 'last name','email', 'mobile','dob',
 						'current designation', 'total years of experience','total months of experience',
 						'present CTC','expected CTC','present CTC type','expected CTC type',
 						'notice period','gender', 'present location');
    $field = array('first_name' => 'first_nameErr', 'last_name' => 'last_nameErr','email' => 'emailErr',
-    'mobile' => 'mobileErr','dob' => 'dobErr', 'position_for' => 'position_forErr',
+    'mobile' => 'mobileErr','dob' => 'dobErr',
     'designation_id' => 'positionErr','year_of_exp' => 'year_of_expErr', 'month_of_exp' => 'month_of_expErr',
     'present_ctc' => 'present_ctcErr','expected_ctc' => 'expected_ctcErr',
 	'present_ctc_type' => 'present_ctc_typeErr','expected_ctc_type' => 'expected_ctc_typeErr',
@@ -247,7 +247,7 @@ if(!empty($_POST)){
 
 		// query to add position for details
 		$query = "CALL add_req_resume_position('".$created_by."','".$date."',
-			'".$mysql->real_escape_str($_POST['position_for'])."','".$resume_id."')";
+			'".$mysql->real_escape_str($_SESSION['position_for'])."','".$resume_id."')";
 		try{
 			if(!$result = $mysql->execute_query($query)){
 				throw new Exception('Problem in adding position details');
@@ -403,16 +403,17 @@ try{
 	echo 'Caught exception: ',  $e->getMessage(), "\n";
 }
 
-// query to fetch position details. 
-$query = 'CALL get_requirements()';
+
+// query to fetch client and position details. 
+$query = "CALL get_res_client_details('".$_SESSION['client']."','".$_SESSION['position_for']."')";
 try{
 	// calling mysql exe_query function
 	if(!$result = $mysql->execute_query($query)){
-		throw new Exception('Problem in getting requirement');
+		throw new Exception('Problem in getting client and position details');
 	}
 	while($row = $mysql->display_result($result))
 	{
- 		$requirement[$row['id']] = ucwords($row['job_title']);
+ 		$requirement = ucwords($row['job_title']).' ( '.($row['client_name']).' )';
 	}
 	$smarty->assign('requirement',$requirement);
 	// free the memory

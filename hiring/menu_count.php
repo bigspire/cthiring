@@ -170,7 +170,9 @@ try{
 }
 
 // fetch client menu count
-$query = 'CALL count_client()';
+$query = "CALL count_client()";
+// $query = "CALL count_client('".$_SESSION['user_id']."','".$_SESSION['roles_id']."')";
+// $query = "CALL count_client_demo('98','30')";
 try{
 	if(!$result = $mysql->execute_query($query)){
 		throw new Exception('Problem in executing client count page');

@@ -91,11 +91,11 @@ if(empty($_POST)){
 
 if(!empty($_POST)){
 	// Validating the required fields  
-	if(strlen(trim($_POST['eligible'])) != strlen($_POST['eligible'])) {
+	/* if(strlen(trim($_POST['eligible'])) != strlen($_POST['eligible'])) {
 		$eligibilityErr = 'Please enter the valid eligibility incentive(%)';
     	$smarty->assign('eligibilityErr',$eligibilityErr);
     	$test = 'error';
-	}
+	} */
 	// array for printing correct field name in error message
 	$fieldtype = array('1', '1','1','0','1');
 	$actualfield = array('grade', 'target from', 'target to', 'eligibility incentive(%)','status');
@@ -136,7 +136,7 @@ if(!empty($_POST)){
 		if($row['total'] == '0'){
 			// query to update eligibility es. 
 			$query = "CALL edit_eligibility('".$getid."','".$mysql->real_escape_str($_POST['target_from'])."','".$mysql->real_escape_str($_POST['target_to'])."',
-			'".$mysql->real_escape_str($_POST['eligible'])."','".$date."','".$mysql->real_escape_str($_POST['status'])."',
+			'".$fun->is_white_space($mysql->real_escape_str($_POST['eligible']))."','".$date."','".$mysql->real_escape_str($_POST['status'])."',
 			'".$mysql->real_escape_str($_POST['grade'])."')";
 			// calling the function that makes the insert
 			try{
