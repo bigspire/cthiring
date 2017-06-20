@@ -31,7 +31,7 @@
 					
 								<div class="srch_buttons">
 							<a class="jsRedirect toggleSearch"  href="javascript:void(0)">
-							<input type="button" value="Search" class="btn btn-success"/></a>
+							<input type="button" value="Search" class="homeSrch btn btn-success"/></a>
 							<a class="notify jsRedirect" data-notify-time = '3000' data-notify-title="In Progress!" data-notify-message="Downloading Excel... Please wait..."   href="<?php echo $this->webroot;?>position/?action=export&<?php echo $this->Functions->get_url_vars($this->request->query);?>"><input type="button" value="Export Excel" class="btn btn-warning"/></a>
 
 							<a class="jsRedirect" data-notify-time = '3000'   href="<?php echo $this->webroot;?>position/add/">
@@ -49,9 +49,20 @@
 						
 	<?php echo $this->Form->create('Position', array('id' => 'formID','class' => 'formID')); ?>
 		
-							<div class="dataTables_filter srchBox" style="float:left;" id="dt_gal_filter">
-							<label style="margin-top:18px;"><a class="jsRedirect" href="<?php echo $this->webroot;?>position/"><input value="Reset" type="button" class="btn"/></a></label>
-							<label style="margin-top:18px;"><input type="submit" value="Submit" class="btn btn-gebo" /></label>
+							<div class="dn dataTables_filter srchBox homeSrchBox" id="dt_gal_filter">
+							
+							<label style="margin-left:0">Keyword: <input type="text" placeholder="Search Keywords Here.." name="data[Position][keyword]" id = "SearchText" value="<?php echo $this->params->query['keyword'];?>" class="input-large" aria-controls="dt_gal"></label>
+							
+							<span id="sandbox-container">
+						<span  class="input-daterange" id="datepicker">	
+							<label>From Date: <input placeholder="dd/mm/yyyy" type="text" class="input-small" name="data[Position][from]" value="<?php echo $this->request->query['from'];?>" aria-controls="dt_gal"></label>
+
+							<label>To Date: <input  placeholder="dd/mm/yyyy" type="text" name="data[Position][to]" value="<?php echo $this->request->query['to'];?>" class="input-small" aria-controls="dt_gal"></label>
+
+						</span>	
+						</span>	
+							
+							
 							
 							<label>Status: 
 							<?php echo $this->Form->input('status', array('div'=> false,'type' => 'select', 'label' => false, 'class' => 'input-medium', 'empty' => 'Select', 'selected' => $this->params->query['status'], 'required' => false, 'placeholder' => '', 'style' => "clear:left", 'options' => $stList)); ?> 
@@ -72,12 +83,15 @@
 							
 							<?php endif; ?>
 
-							<label>To Date: <input type="text" name="data[Position][to]" value="<?php echo $this->request->query['to'];?>" class="input-small datepick" aria-controls="dt_gal"></label>
+							
+														<label style="margin-top:18px;"><input type="submit" value="Submit" class="btn btn-gebo" /></label>
 
-							<label>From Date: <input type="text" class="input-small datepick" name="data[Position][from]" value="<?php echo $this->request->query['from'];?>" aria-controls="dt_gal"></label>
-							<label style="margin-left:0">Keyword: <input type="text" placeholder="Job Title or Client Name.." name="data[Position][keyword]" id = "SearchText" value="<?php echo $this->params->query['keyword'];?>" class="input-large" aria-controls="dt_gal"></label>
+							<label style="margin-top:18px;"><a class="jsRedirect" href="<?php echo $this->webroot;?>position/"><input value="Reset" type="button" class="btn"/></a></label>
 
+							
 														</div>
+						<input type="hidden" id="srchSubmit" value="<?php echo $this->params->query['srch_status'];?>">
+
 
 						<input type="hidden" value="1" id="SearchKeywords">
 						<input type="hidden" value="<?php echo $this->webroot;?>position/" id="webroot">
@@ -99,17 +113,17 @@
 								<thead>
 									<tr>
 
-										<th width="210"><?php echo $this->Paginator->sort('job_title', 'Job Title', array('escape' => false, 'direction' => 'desc'));?></th>										
-										<th width="120"><?php echo $this->Paginator->sort('Client.client_name', 'Client', array('escape' => false, 'direction' => 'desc'));?></th>
-										<th width="80"><?php echo $this->Paginator->sort('no_job', 'Vacancies', array('escape' => false, 'direction' => 'desc'));?></th>
-										<th width="75"><?php echo $this->Paginator->sort('team_member', 'Team', array('escape' => false, 'direction' => 'desc'));?></th>
-										<th width="75">CV Sent</th>
-										<th width="75">Joined</th>
-										<th width="100"><?php echo $this->Paginator->sort('status', 'Status', array('escape' => false, 'direction' => 'desc'));?></th>
-										<th width="75"><?php echo $this->Paginator->sort('Creator.first_name', 'Created By', array('escape' => false, 'direction' => 'desc'));?></th>
-										<th width="75"><?php echo $this->Paginator->sort('created_date', 'Created', array('escape' => false, 'direction' => 'desc'));?></th>
-										<th width="75"><?php echo $this->Paginator->sort('modified_date', 'Modified', array('escape' => false, 'direction' => 'desc'));?></th>
-										<th width="75">Message</th>
+										<th width="210"><?php echo $this->Paginator->sort('job_title', 'Job Title', array('escape' => false, 'direction' => 'desc', 'rel' => 'tooltip', 'title' => 'Sort by Ascending or Descending'));?></th>										
+										<th width="120"><?php echo $this->Paginator->sort('Client.client_name', 'Client', array('escape' => false, 'direction' => 'desc', 'rel' => 'tooltip', 'title' => 'Sort by Ascending or Descending'));?></th>
+										<th width="80"  style="text-align:center"><?php echo $this->Paginator->sort('no_job', 'Vacancies', array('escape' => false, 'direction' => 'desc', 'rel' => 'tooltip', 'title' => 'Sort by Ascending or Descending'));?></th>
+										<th width="75"><?php echo $this->Paginator->sort('team_member', 'Team', array('escape' => false, 'direction' => 'desc', 'rel' => 'tooltip', 'title' => 'Sort by Ascending or Descending'));?></th>
+										<th width="75"  style="text-align:center">CV Sent</th>
+										<th width="75"  style="text-align:center">Joined</th>
+										<th width="100"  style="text-align:center"><?php echo $this->Paginator->sort('status', 'Status', array('escape' => false, 'direction' => 'desc', 'rel' => 'tooltip', 'title' => 'Sort by Ascending or Descending'));?></th>
+										<th width="75"><?php echo $this->Paginator->sort('Creator.first_name', 'Created By', array('escape' => false, 'direction' => 'desc', 'rel' => 'tooltip', 'title' => 'Sort by Ascending or Descending'));?></th>
+										<th width="75"><?php echo $this->Paginator->sort('created_date', 'Created', array('escape' => false, 'direction' => 'desc', 'rel' => 'tooltip', 'title' => 'Sort by Ascending or Descending'));?></th>
+										<th width="75"><?php echo $this->Paginator->sort('modified_date', 'Modified', array('escape' => false, 'direction' => 'desc', 'rel' => 'tooltip', 'title' => 'Sort by Ascending or Descending'));?></th>
+										<th width="60" style="text-align:center">Message</th>
 										<th width="50" style="text-align:center">Actions</th>
 									</tr>
 								</thead>
@@ -123,26 +137,28 @@
 										<?php if(!empty($noHead)): $target = "target='_blank'"; endif;?>
 										<td width=""><a <?php echo $target;?> href="<?php echo $this->webroot;?>position/view/<?php echo $req['Position']['id'];?>/"><?php echo ucwords($req['Position']['job_title']);?></a></td>
 										<td width="" ><?php echo $req['Client']['client_name'];?></td>
-										<td  width=""><?php echo $req['Position']['no_job'];?></td>
+										<td   style="text-align:center" width=""><?php echo $req['Position']['no_job'];?></td>
 										
 						
 						<td width=""><?php echo $req[0]['team_member'];?></td>
-						<td width=""><?php echo $req[0]['cv_sent'];?>
-						<td width=""><?php echo $this->Functions->get_total_joined($req[0]['joined']);?></td>
-						<td width=""><span class="label label-<?php echo $this->Functions->get_req_status_color($req['ReqStatus']['title']);?>"><?php echo $req['ReqStatus']['title'];?></span>			
+						<td width=""  style="text-align:center"><?php echo $req[0]['cv_sent'];?>
+						<td width=""  style="text-align:center"><?php echo $this->Functions->get_total_joined($req[0]['joined']);?></td>
+						<td width=""  style="text-align:center"><span rel="tooltip" title="Requirement Status: <?php echo $req['ReqStatus']['title'];?> " class="label label-<?php echo $this->Functions->get_req_status_color($req['ReqStatus']['title']);?>"><?php echo $req['ReqStatus']['title'];?></span>			
 										</td>
 						<td width=""><?php echo $req['Creator']['first_name'];?></td>
 						<td width=""><?php echo $this->Functions->format_date($req['Position']['created_date']);?></td>
 						<td width=""><?php echo $this->Functions->format_date($req['Position']['modified_date']);?></td>
-									<th>
-									<a href="<?php echo $this->webroot;?>position/view_message/<?php echo $req['Position']['id'];?>" class="iframeBox unreadLink" val="70_80" rel="tooltip" title="Messages"><i class="icon-envelope"></i></a> 
+						
+						<th  style="text-align:center">
+					<a href="<?php echo $this->webroot;?>position/view_message/<?php echo $req['Position']['id'];?>/" class="btn  btn-mini iframeBox unreadLink" val="70_80" title="Messages" rel="tooltip" class="sepV_a"><i class="icon-envelope"></i></a>
+
 									<?php if($req[0]['read_count'] > 0):?>
 									<span class="label label-important unreadCount"><?php echo $req[0]['read_count'];?></span>
 									<?php endif; ?>
-									</th>
+						</th>
 									
 	<td class="actionItem" style="text-align:center">
-	<a href="<?php echo $this->webroot;?>position/edit/<?php echo $req['Position']['id'];?>/" class="btn  btn-mini"  rel="tooltip" class="sepV_a" title="Edit"><i class="icon-pencil"></i></a>
+	<a href="<?php echo $this->webroot;?>position/edit/<?php echo $req['Position']['id'];?>/" class="btn  btn-mini"  rel="tooltip" class="sepV_a" title="Edit Position"><i class="icon-pencil"></i></a>
 										</td>
 								</tr>
 								<?php endforeach; ?>

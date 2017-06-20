@@ -311,7 +311,7 @@
 
 
 				<input class="btn btn-gebo" type="submit" value="Submit">
-				<a href="<?php echo $this->webroot;?>client/" class="cancelBtn jsRedirect">
+					<a href="javascript:void(0)" class="cancelBtn cancel_event jsRedirect">
 				<input type="button" value="Cancel" class="btn"></a>
 
 </div>

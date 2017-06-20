@@ -49,8 +49,26 @@ $(document).ready(function() {
 	});
 	
 	
-			
-			
+		/* function to show the alert message for cancel */   
+	
+	$(".cancel_event").click( function(e) {
+		e.preventDefault();
+				smoke.confirm("Are you sure you want to cancel?",function(e){
+					if (e){
+						webroot = $("#webroot").attr('value');
+						location.href = webroot;
+				// smoke.alert('Ok, Deleted...', false, {ok: "Thanks"});
+					}else{
+						return false;
+						// smoke.alert('Please...me so sorry. You look good in dress, you look better on my floor.', false, {ok: "Uhh...bye?"});
+					}
+				}, {
+					reverseButtons: true,
+					ok: "Yes",
+					cancel: "No"
+				});
+	});		
+		
 	
 	/* for search open/close */
 	$('.toggleSearch').click(function(){ 
@@ -72,6 +90,15 @@ $(document).ready(function() {
 			});
 		});
 	}
+	
+	// for counting the text
+	/*
+	$('.count_checker').textcounter({
+		type: "character",
+		max: $(this).attr('max_val'),
+		min: $(this).attr('min_val')
+	});
+	*/
 	
 	$('#sandbox-container .input-daterange').datepicker({
 		showOtherMonths: true,
@@ -303,8 +330,8 @@ $(document).ready(function() {
 		var sheepAdd = $('#sheepItFormContact').sheepIt({
 			   separator: '',
 			   allowRemoveLast: true,
-			   allowRemoveCurrent: true,
-			   allowRemoveAll: true,
+			   allowRemoveCurrent: false,
+			   allowRemoveAll: false,
 			   allowAdd: true,
 			   allowAddN: true,
 			   maxFormsCount: 10,
@@ -324,6 +351,9 @@ $(document).ready(function() {
 		   });	
 			
 			for(i = 0; i < $('#contact_count').val(); i++){
+				if($('#titleID_'+i).length > 0){
+					$('#contactID_'+i).val($('#titleID_'+i).val());
+				}
 				if($('#titleName_'+i).length > 0){
 					$('#title_'+i).val($('#titleName_'+i).val());
 				}
@@ -376,7 +406,7 @@ $(document).ready(function() {
 	/* multiple option for add client contacts */
 	$(document).ready(function(){
 	    var sheepAdd = {}; 
-		if($('#sheepItFormPosition').length > 0){
+		if($('#sheepItFormPosition-NOT REQUIRED').length > 0){
 		var sheepAdd = $('#sheepItFormPosition').sheepIt({
 			   separator: '',
 			   allowRemoveLast: true,
@@ -450,7 +480,27 @@ $(document).ready(function() {
 			$('.load_contact').append(html);
 			// $(".bdDist").trigger("chosen:updated");
 		});	
+		// retain the account holder
+		if($('.load_ach').length > 0){
+			$('.load_ach').val('Loading..');
+			$.ajax({
+			 url: $('#webroot').val()+'get_account_holder/?id='+id	
+			}).done(function( html ) {	
+				$('.load_ach').val(html);
+			});
+		}
 	});
+	
+	// retain the account holder
+		if($('.load_ach').length > 0){
+			$('.load_ach').val('Loading..');
+			$.ajax({
+			 url: $('#webroot').val()+'get_account_holder/?id='+$('#client_id').val(),
+			 async: false	
+			}).done(function( html ) {	
+				$('.load_ach').val(html);
+			});
+		}
 	
 	/* retain the client contact tab */
 	if($('#add_client').length > 0){

@@ -133,6 +133,10 @@
 			
 			<!-- buttons functions -->
 			<script src="<?php echo $this->webroot;?>hiring/js/gebo_btns.js"></script>
+			
+			<!--script src="<?php echo $this->webroot;?>hiring/js/textcounter.min.js"></script-->
+
+			
 			 <!-- TinyMce WYSIWG editor -->
 			<script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
 	

@@ -37,7 +37,7 @@ class ClientController extends AppController {
 			$this->redirect('/client/?srch_status=1&'.$url_vars);				
 		}
 		// set date condition
-		if($start = $this->request->query['from'] != '' || $start = $this->request->query['to'] != ''){
+		if($this->request->query['from'] != '' || $this->request->query['to'] != ''){
 			$start = $this->request->query['from'] ? $this->request->query['from'] :  ''; //date('d/m/Y', strtotime('-3 year'));
 			$end = $this->request->query['to'] ? $this->request->query['to'] : date('d/m/Y');
 			$date_cond = array('or' => array("DATE_FORMAT(Client.created_date, '%Y-%m-%d') between ? and ?" => 
@@ -151,7 +151,7 @@ class ClientController extends AppController {
 						// save the data
 						if($this->Client->save($this->request->data['Client'])){
 								// remove contact list
-							$this->remove_contact_list($this->Client->id);
+							// $this->remove_contact_list($this->Client->id);
 							// remove contact list
 							$this->remove_client_contact_list($this->Client->id);
 							// remove account holder list
@@ -195,7 +195,7 @@ class ClientController extends AppController {
 					// retain the account holder
 					$this->get_account_holder_list($id);
 					// fetch the contacts
-					$data = $this->Contact->find('all', array('fields' => array('title', 'first_name', 'last_name','email','mobile',
+					$data = $this->Contact->find('all', array('fields' => array('id','title', 'first_name', 'last_name','email','mobile',
 					'designation_id','status', 'contact_branch_id'), 'conditions' => array('ClientCont.clients_id ' => $id),
 					'order' => array('Contact.id' => 'asc'),'joins' => $options));	
 					$this->set('contact_list', $data);					
@@ -246,12 +246,9 @@ class ClientController extends AppController {
 	}
 	
 	/* function to remove the client contact list */
-	public function remove_client_contact_list($id){		
-		$data = $this->ClientContact->find('all', array('fields' => array('contact_id', 'clients_id'), 'conditions' => array('clients_id' => $id)));
-		foreach($data as $record){
-			 $this->Contact->delete($record['ClientContact']['contact_id']);
-		}
-		$this->ClientContact->deleteAll(array('ClientContact.clients_id' => $record['ClientContact']['clients_id']), false);
+	public function remove_client_contact_list($id){	
+		$this->loadModel('ClientContact');
+		$this->ClientContact->deleteAll(array('ClientContact.clients_id' => $id), false);
 	}	
 
 	
@@ -371,14 +368,16 @@ class ClientController extends AppController {
 		for($i = 0; $i < $this->request->data['Client']['contact_count']; $i++){ 
 			if($this->request->data['Client']['first_name_'.$i] != ''){ 
 				$this->loadModel('Contact');
-				$this->Contact->id = '';
+				$this->Contact->id = $this->request->data['Client']['contactID_'.$i];
 				$data = array('title' => $this->request->data['Client']['title_'.$i],'first_name' => $this->request->data['Client']['first_name_'.$i],
 				'last_name' => $this->request->data['Client']['last_name_'.$i],'mobile' => $this->request->data['Client']['mobile_'.$i],
 				'phone' => $this->request->data['Client']['phone_'.$i],'designation_id' => $this->request->data['Client']['designation_'.$i],
 				'status' => $this->request->data['Client']['status_'.$i],'contact_branch_id' => $this->request->data['Client']['branch_'.$i],
 				'email' => $this->request->data['Client']['email_'.$i], 'created_by' => $this->Session->read('USER.Login.id'),
 				'created_date' => $this->Functions->get_current_date());
-				$this->Contact->create();
+				if($this->request->data['Client']['contactID_'.$i] == ''){
+					$this->Contact->create();
+				}
 				if($this->Contact->save($data, true, $fieldList = array('title','first_name','last_name','email',
 				'phone','mobile','status','created_date','created_by','designation_id','contact_branch_id'))){
 					// save the client contact id

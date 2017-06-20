@@ -21,8 +21,13 @@
                             </ul>
                         </div>
                     </nav>
+					
+					
+					
+							
+							
 			
-	<?php echo $this->Form->create('Position', array('method' => 'post', 'id' => '', 'class' => '', 'enctype' => 'multipart/form-data')); ?>
+	<?php echo $this->Form->create('Position', array('method' => 'post', 'id' => '', 'class' => 'formID', 'enctype' => 'multipart/form-data')); ?>
 			
 							<?php echo $this->Session->flash();?>
 
@@ -35,9 +40,9 @@
 			<div class="tabbable">
 				<div class="heading">
 					<ul class="nav nav-tabs">
-						<li class="active basic"><a class="postabChange" rel="basic"  href="#basic" data-toggle="tab"><i class="splashy-mail_light_down"></i> Basic </a></li>
-						<li class="job_desc"><a class="postabChange" rel="job_desc"  href="#job_desc" data-toggle="tab"><i class="splashy-mail_light_down"></i>  Job Description </a></li>
-						<li class="coordination"><a class="postabChange" rel="coordination"  href="#coordination" data-toggle="tab"><i class="splashy-mail_light_down"></i> Coordination </a></li>
+						<li class="active basic"><a class="postabChange" rel="basic"  href="#basic" data-toggle="tab"><i class="splashy-smiley_happy"></i> Basic </a></li>
+						<li class="job_desc"><a class="postabChange" rel="job_desc"  href="#job_desc" data-toggle="tab"><i class="splashy-smiley_amused"></i>  Job Description </a></li>
+						<!--li class="coordination"><a class="postabChange" rel="coordination"  href="#coordination" data-toggle="tab"><i class="splashy-smiley_surprised"></i> Coordination </a></li-->
 
 											</ul>
 				</div>
@@ -50,7 +55,7 @@
 							<td width="120" class="tbl_column">Client Name <span class="f_req">*</span></td>
 							<td>										
 				<?php echo $this->Form->input('clients_id', array('div'=> false,'type' => 'select', 'label' => false, 
-		'class' => 'span8 input-xlarge load_client', 'empty' => 'Select', 'required' => false, 'placeholder' => '', 
+		'class' => 'span8 input-xlarge load_client','id' => 'client_id', 'empty' => 'Select', 'required' => false, 'placeholder' => '', 
 		'style' => "clear:left", 'options' => $clientList, 'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 
 																				
 				
@@ -98,11 +103,11 @@
 										<td>
 										
 		<?php echo $this->Form->input('min_exp', array('div'=> false,'type' => 'select', 'label' => false, 
-		'class' => 'span4', 'empty' => 'Select', 'required' => false, 'placeholder' => '', 
+		'class' => 'span4', 'empty' => 'Min.', 'required' => false, 'placeholder' => '', 
 		'style' => "clear:left", 'options' => $expList, 'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 
 		
 		<?php echo $this->Form->input('max_exp', array('div'=> false,'type' => 'select', 'label' => false, 
-		'class' => 'span4 inline_text', 'empty' => 'Select', 'required' => false, 'placeholder' => '', 
+		'class' => 'span4 inline_text', 'empty' => 'Max.', 'required' => false, 'placeholder' => '', 
 		'style' => "clear:left", 'options' => $expList, 'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 
 									
 									
@@ -152,7 +157,19 @@
 		<div class="span6">		
 			<table class="table table-bordered dataTable" style="margin-bottom:0;">
 				<tbody>
-				
+					<tr class="tbl_row">
+						<td width="120" class="tbl_column">Account Holder <span class="f_req">*</span></td>
+						<td>	
+						
+	<?php echo $this->Form->input('account_holder', array('div'=> false,'type' => 'text', 'label' => false, 
+		'class' => 'load_ach span8', 'readonly' => 'readonly', 'value' => '',  'required' => false, 'placeholder' => '', 
+		'style' => "clear:left",  'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 
+					
+
+					
+						</td>	
+
+				  </tr>
 				  <tr  class="tbl_row">
 										<td width="120" class="tbl_column">Key Skills <span class="f_req">*</span></td>
 										<td> 
@@ -180,19 +197,7 @@
 							
 						
 																	
-					<tr class="tbl_row">
-						<td width="120" class="tbl_column">Account Holder <span class="f_req">*</span></td>
-						<td>	
-						
-	<?php echo $this->Form->input('account_holder', array('div'=> false,'type' => 'select', 'label' => false, 
-		'class' => 'span8 chosen-select', 'multiple' => 'multiple', 'required' => false, 'placeholder' => '', 
-		'style' => "clear:left", 'options' => $userList, 'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 
 					
-
-					
-						</td>	
-
-				  </tr>	
 				  
 				  <tr class="">
 						<td width="120" class="tbl_column">Team Members <span class="f_req">*</span></td>
@@ -211,11 +216,17 @@
 				  	<tr class="tbl_row">
 										<td width="120" class="tbl_column">Requirement Date <span class="f_req">*</span></td>
 										<td> 
-	<?php echo $this->Form->input('start_date', array('div'=> false,'type' => 'text', 'label' => false, 'class' => 'span4 datepick',  'required' => false, 'placeholder' => 'Start Date',
+										
+						<span id="sandbox-container">
+						<span  class="input-daterange" id="datepicker">					
+	<?php echo $this->Form->input('start_date', array('div'=> false,'type' => 'text', 'label' => false, 'class' => 'span4',  'required' => false, 'placeholder' => 'Start Date',
 				'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 	
 					
-<?php echo $this->Form->input('end_date', array('div'=> false,'type' => 'text', 'label' => false, 'class' => 'span4 inline_text datepick',  'required' => false, 'placeholder' => 'Closure Date',
+<?php echo $this->Form->input('end_date', array('div'=> false,'type' => 'text', 'label' => false, 'class' => 'span4 inline_text',  'required' => false, 'placeholder' => 'Closure Date',
 				'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 	
+				
+				</span>	
+						</span>	
 					
 									
 
@@ -261,6 +272,10 @@
 									<td>
 <?php echo $this->Form->input('desc_file', array('div'=> false,'type' => 'file', 'label' => false, 'class' => '',  'required' => false, 'placeholder' => '',
 				'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 
+				<a href="<?php echo $this->webroot;?>position/download_doc/<?php echo $this->request->data['Position']['job_desc_file'];?>"><?php echo $this->request->data['Position']['job_desc_file'];?></a>
+<br>
+
+		<textarea   style="width:1200px" rows = "10"><?php echo trim($this->Functions->read_document(WWW_ROOT.'/uploads/jd/'.$this->request->data['Position']['job_desc_file']));?></textarea>
 
 									</td>
 								</tr>
@@ -269,11 +284,11 @@
 						</div>
 		</div>
 		
-		<div class="tab-pane" id="coordination">
+		<!--div class="tab-pane" id="coordination">
 		<div id="sheepItFormPosition">
  
   <!-- Form template-->
-  <div id="sheepItFormPosition_template" class="" style="clear:left;">
+  <!--div id="sheepItFormPosition_template" class="" style="clear:left;">
   
 		<div class="span6">
 			<table class="table table-bordered dataTable" style="margin-bottom:0;">
@@ -335,19 +350,18 @@
   <!-- /Form template-->
    
   <!-- No forms template -->
-  <div id="sheepItFormPosition_noforms_template">No data</div>
   <!-- /No forms template-->
    
   <!-- Controls -->
-  <div id="sheepItFormPosition_controls">
+  <!--div id="sheepItFormPosition_controls">
     <span id="sheepItFormPosition_add" style="float:right;margin-top:5px;">
     	<button type="button"><a><span>Add Another</span></a></button>
     </span>
-  </div>
+  </div-->
   <!-- /Controls -->
 
 </div>
-		</div>
+		</div-->
 		
 		</div>
 		</div>
@@ -358,33 +372,37 @@
 
 
 <?php
-$count_coord = $count_coord ?  $count_coord : $this->request->data['Position']['position_count'];
-echo $this->Form->input('position_edit_count', array('type' => 'hidden','value' => $count_coord,  'id' => 'position_edit_count'));
-echo $this->Form->input('position_count', array('type' => 'hidden', 'id' => 'position_count'));
-for($i = 0; $i < $count_coord; $i++):
-$coord_user = $this->request->data['Position']['employee_'.$i] ? $this->request->data['Position']['employee_'.$i] : $coord_list[$i]['PositionCoord']['users_id'];
-$coord_percent = $this->request->data['Position']['percent_'.$i] ? $this->request->data['Position']['percent_'.$i] : $coord_list[$i]['PositionCoord']['percent'];
-$coord_type = $this->request->data['Position']['coordination_'.$i] ? $this->request->data['Position']['coordination_'.$i] : $coord_list[$i]['PositionCoord']['inc_sharing_id'];
+// $count_coord = $count_coord ?  $count_coord : $this->request->data['Position']['position_count'];
+// echo $this->Form->input('position_edit_count', array('type' => 'hidden','value' => $count_coord,  'id' => 'position_edit_count'));
+// echo $this->Form->input('position_count', array('type' => 'hidden', 'id' => 'position_count'));
+// for($i = 0; $i < $count_coord; $i++):
+// $coord_user = $this->request->data['Position']['employee_'.$i] ? $this->request->data['Position']['employee_'.$i] : $coord_list[$i]['PositionCoord']['users_id'];
+// $coord_percent = $this->request->data['Position']['percent_'.$i] ? $this->request->data['Position']['percent_'.$i] : $coord_list[$i]['PositionCoord']['percent'];
+// $coord_type = $this->request->data['Position']['coordination_'.$i] ? $this->request->data['Position']['coordination_'.$i] : $coord_list[$i]['PositionCoord']['inc_sharing_id'];
 ?>
 
 
-		<input type="hidden" id="employeeName_<?php echo $i;?>" name="employeeName_<?php echo $i;?>" value="<?php echo $coord_user ;?>">
+		<!--input type="hidden" id="employeeName_<?php echo $i;?>" name="employeeName_<?php echo $i;?>" value="<?php echo $coord_user ;?>">
 		<input type="hidden" id="coordName_<?php echo $i;?>" name="coordName_<?php echo $i;?>" value="<?php echo $coord_type;?>">
 		<input type="hidden" id="percentName_<?php echo $i;?>" name="percentName_<?php echo $i;?>" value="<?php echo $coord_percent;?>">
 		<!-- error messages -->
-		<input type="hidden" id="empNameErr_<?php echo $i;?>" value="<?php echo $errorData[$i]['emp'];?>">
+		<!--input type="hidden" id="empNameErr_<?php echo $i;?>" value="<?php echo $errorData[$i]['emp'];?>">
 		<input type="hidden" id="perErr_<?php echo $i;?>" value="<?php echo $errorData[$i]['percent'];?>">
-		<input type="hidden" id="coordErr_<?php echo $i;?>" value="<?php echo $errorData[$i]['coord'];?>">				
-<?php endfor;?>
+		<input type="hidden" id="coordErr_<?php echo $i;?>" value="<?php echo $errorData[$i]['coord'];?>"-->				
+<?php // endfor;?>
 
 <?php echo $this->Form->input('add_position', array('type' => 'hidden',  'id' => 'add_position')); ?>
 
 <?php echo $this->Form->input('webroot', array('type' => 'hidden', 'value' => $this->webroot.'position/', 'id' => 'webroot')); ?>
-<?php echo $this->Form->input('Position.id', array('type' => 'hidden')); ?>
 
+<?php echo $this->Form->input('Position.id', array('id' => 'pos_id', 'type' => 'hidden')); ?>
 
-				<button class="btn btn-gebo" type="submit">Submit</button>
-				<a href="<?php echo $this->webroot;?>position/" class="jsRedirect"><input type="button" value="Cancel" class="btn"></a>
+<?php echo $this->Form->input('ClientID', array('value' => $this->request->data['Position']['clients_id'], 'id' => 'client_id', 'type' => 'hidden')); ?>
+
+				<input type="submit" class="btn btn-gebo" type="submit" value="Submit">
+				
+				<a href="javascript:void(0)" class="cancelBtn cancel_event jsRedirect">
+				<input type="button" value="Cancel" class="btn"></a>
 
 </div>
                     </div>

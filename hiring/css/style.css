@@ -915,3 +915,4 @@ line-height: 18px;padding: 3px 15px;background-color:#eaeeef !important; backgro
 .ui-state-hover{ padding: 3px 15px !important;border:1px solid #efefef !important;line-height:18px;border-radius:0 !important;}
 .theadFix{display: block;	overflow: auto;}
 .tbodyFix{display: block;	height: 180px !important;	overflow: auto;}
+.overflowData{max-height:300px;overflow:auto;}

@@ -32,7 +32,7 @@
 
 
 				 		
-<form action="upload_resume.php" id="formID" method="post" enctype="multipart/form-data" accept-charset="utf-8">
+<form action="upload_resume.php" class="formID" id="formID" method="post" enctype="multipart/form-data" accept-charset="utf-8">
 <div class="box">
 	<div class="row-fluid">
 		<div class="span6">
@@ -51,7 +51,7 @@
 			<div class="form-actions">
 				<input name="submit" class="btn btn-gebo theForm" value="Save" type="submit"/>
 				<!--<button class="btn btn-gebo theForm" type="submit">Save</button>-->
-				<input type="button" value="Cancel" class="btn cancel">
+				<input type="button" value="Cancel" class="cancelBtn btn cancel">
 			</div>
 		</div>
 	</div>

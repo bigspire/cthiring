@@ -44,9 +44,9 @@
 								
 							<?php echo $this->Form->create('Client', array('id' => 'formID','class' => 'formID')); ?>
 	
-							<div class="dataTables_filter srchBox homeSrchBox" id="dt_gal_filter">
+							<div class="dataTables_filter dn srchBox homeSrchBox homeSrch" id="dt_gal_filter">
 							
-													<label style="margin-left:0">Keyword: <input type="text" placeholder="Search Keywords Here..." name="data[Client][keyword]" id = "SearchText" value="<?php echo $this->params->query['keyword'];?>" class="input-large" aria-controls="dt_gal"></label>
+						<label style="margin-left:0">Keyword: <input type="text" placeholder="Search Keywords Here..." name="data[Client][keyword]" id = "SearchText" value="<?php echo $this->params->query['keyword'];?>" class="input-large" aria-controls="dt_gal"></label>
 
 						
 
