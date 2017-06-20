@@ -94,12 +94,13 @@
                                          </li>
                                       
                                         <li class="dropdown">
-                                            <a data-toggle="dropdown" class="dropdown-toggle " href="#"><i class="icon-file icon-white"></i> Billings <b class="caret"></b></a>
+                                            <a data-toggle="dropdown" class="dropdown-toggle " href="#"><i class="icon-file icon-white"></i> Incentive <b class="caret"></b></a>
                                            <ul class="dropdown-menu">
-                                                <li><a href="incentive.php">Search Incentive</a></li>
-												 <li><a href="<?php echo $this->webroot;?>hiring/add_billing.php">Add Billing</a></li>
+                                                <li><a href="incentive.php">Search Billing</a></li>
+												 <li><a href="incentive.php">Generate Incentive</a></li>
+												 <!--li><a href="<?php echo $this->webroot;?>hiring/add_billing.php">Add Billing</a></li>
 												 <li><a href="<?php echo $this->webroot;?>hiring/billing.php">Search Billing</a></li>
-												 <li><a href="<?php echo $this->webroot;?>hiring/approve_billing.php">Approve Billing <!--span class="label-bub label-info white">20</span--></a></li>
+												 <li><a href="<?php echo $this->webroot;?>hiring/approve_billing.php">Approve Billing <!--span class="label-bub label-info white">20</span></a></li-->
                                             </ul>
                                         </li>
 										
