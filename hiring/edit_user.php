@@ -121,9 +121,12 @@ if(!empty($_POST)){
 	if(empty($test)){
 		if($row['total'] == '0'){
 			// query to insert sharing percent. 
-			$query = "CALL edit_user('$getid','".$mysql->real_escape_str($_POST['email_id'])."','".$mysql->real_escape_str($_POST['first_name'])."',
-						'".$mysql->real_escape_str($_POST['last_name'])."','".$mysql->real_escape_str($_POST['mobile'])."',
-						'".$mysql->real_escape_str($_POST['position'])."','".$mysql->real_escape_str($_POST['status'])."',
+			$query = "CALL edit_user('$getid','".$mysql->real_escape_str($_POST['email_id'])."',
+						'".$fun->is_white_space($mysql->real_escape_str($_POST['first_name']))."',
+						'".$fun->is_white_space($mysql->real_escape_str($_POST['last_name']))."',
+						'".$mysql->real_escape_str($_POST['mobile'])."',
+						'".$fun->is_white_space($mysql->real_escape_str($_POST['position']))."',
+						'".$mysql->real_escape_str($_POST['status'])."',
 						'".$mysql->real_escape_str($_POST['roles_id'])."','".$mysql->real_escape_str($_SESSION['user_id'])."',
 			 			'".$date."','".$mysql->real_escape_str($_POST['location_id'])."')";
 			// Calling the function that makes the insert
@@ -194,7 +197,7 @@ try{
 }
 
 // smarty drop down array for status
-$smarty->assign('user_status', array('' => 'Select', '1' => 'Active', '2' => 'Inactive'));
+$smarty->assign('user_status', array('' => 'Select', '0' => 'Active', '1' => 'Inactive'));
 // closing mysql
 $mysql->close_connection();
 

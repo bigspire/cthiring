@@ -88,15 +88,15 @@ if(empty($_POST)){
 
 if(!empty($_POST)){
 	// Validating the required fields
-	if(strlen(trim($_POST['role_name'])) != strlen($_POST['role_name'])) {
+	/* if(strlen(trim($_POST['role_name'])) != strlen($_POST['role_name'])) {
 		$roleErr = 'Please enter the valid role';
     	$smarty->assign('roleErr',$roleErr);
     	$test = 'error';
-	}
+	} */
 	// array for printing correct field name in error message
 	$fieldtype = array('0', '1', '1');
 	$actualfield = array('role ', 'status', 'permissions');	
-   $field = array('role_name' => 'roleErr', 'status' => 'statusErr','modules_id' => 'permissionsErr');
+    $field = array('role_name' => 'roleErr', 'status' => 'statusErr','modules_id' => 'permissionsErr');
 	$j = 0;
 
 	foreach ($field as $field => $er_var){
@@ -129,7 +129,7 @@ if(!empty($_POST)){
 	$date =  $fun->current_date();
 	
 	// query to check whether it is exist or not. 
-	$query = "CALL check_role_exist('$getid', '".$_POST['role_name']."')";
+	$query = "CALL check_role_exist('$getid', '".$fun->is_white_space($_POST['role_name'])."')";
 	// Calling the function that makes the insert
 	try{
 		// calling mysql exe_query function
@@ -148,8 +148,10 @@ if(!empty($_POST)){
 	if(empty($test)){
 		if($row['total'] == '0'){
 			// query to insert grade. 
-		   $query = "CALL edit_role('".$mysql->real_escape_str($getid)."','".$mysql->real_escape_str($_POST['role_name'])."',
-			'".$mysql->real_escape_str($_POST['description'])."','".$date."','".$mysql->real_escape_str($_POST['status'])."')";
+		   $query = "CALL edit_role('".$mysql->real_escape_str($getid)."',
+			'".$fun->is_white_space($mysql->real_escape_str($_POST['role_name']))."',
+			'".$fun->is_white_space($mysql->real_escape_str($_POST['description']))."',
+			'".$date."','".$mysql->real_escape_str($_POST['status'])."')";
 			try{
 	    		// calling mysql exe_query function
 				if(!$result = $mysql->execute_query($query)){

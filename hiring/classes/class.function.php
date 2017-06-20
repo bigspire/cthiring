@@ -140,6 +140,14 @@ class fun{
 			return $c_d;
 		}
 	}
+	
+	// function to validate database created_date field 
+	public function convert_date_db($created_date){
+		if(($created_date != '') && ($created_date != '0000-00-00')){
+			$c_d = date('Y-m-d', strtotime($created_date));
+			return $c_d;
+		}
+	}
 
   // function to validate database status field 
 	public function display_status($status){
@@ -229,6 +237,40 @@ class fun{
 			case '6':
 			$cond = "Rejected";
 			break;			
+		}
+		return $cond;
+	}
+	
+	/* function to get the recruiter performance condition */
+	public function get_performance_cond($st){
+		switch($st){
+			case '0 || 1':
+			$cond = "0 - 1";
+			break;
+			case '1 || 2':
+			$cond = "1 - 2";
+			break;
+			case '2 || 3 || 4':
+			$cond = "2 - 4";
+			break;
+			case '4 || 5 || 6 || 7 || 8':
+			$cond = "4 - 8";
+			break;
+			case '8 || 9 || 10 || 11 || 12':
+			$cond = "8 - 12";
+			break;
+			case '12 || 13 || 14 || 15 || 16 || 17 || 18 || 19 || 20':
+			$cond = "12 - 20";
+			break;	
+			case '20 || 21 || 22 || 23 || 24 || 25 || 26 || 27 || 28 || 29 || 30':
+			$cond = "20 - 30";
+			break;
+			case '30 || 31 || 32 || 33 || 34 || 35 || 36 || 37 || 38 || 39 || 40':
+			$cond = "30 - 40";
+			break;
+			case '40 || >40':
+			$cond = "> 40";
+			break;
 		}
 		return $cond;
 	}

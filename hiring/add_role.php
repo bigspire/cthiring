@@ -17,15 +17,15 @@ include('menu_count.php');
 
 if(!empty($_POST)){
 	// Validating the required fields
-	if(strlen(trim($_POST['role'])) != strlen($_POST['role'])) {
+	/* if(strlen(trim($_POST['role'])) != strlen($_POST['role'])) {
 		$roleErr = 'Please enter the valid role';
     	$smarty->assign('roleErr',$roleErr);
     	$test = 'error';
-	}
+	}*/
 	// array for printing correct field name in error message
 	$fieldtype = array('0', '1', '1');
 	$actualfield = array('role ', 'status', 'permissions');	
-   $field = array('role' => 'roleErr', 'status' => 'statusErr','permission' => 'permissionsErr');
+    $field = array('role' => 'roleErr', 'status' => 'statusErr','permission' => 'permissionsErr');
 	$j = 0;
 
 	foreach ($field as $field => $er_var){
@@ -60,7 +60,7 @@ if(!empty($_POST)){
 	$date =  $fun->current_date();
 	
 	// query to check whether it is exist or not. 
-	$query = "CALL check_role_exist('0', '".$_POST['role']."')";
+	$query = "CALL check_role_exist('0', '".$fun->is_white_space($_POST['role'])."')";
 	// Calling the function that makes the insert
 	try{
 		// calling mysql exe_query function
@@ -79,8 +79,8 @@ if(!empty($_POST)){
 	if(empty($test)){
 		if($row['total'] == '0'){ 
 			// query to insert role. 
-			$query = "CALL add_role('".$mysql->real_escape_str($_POST['role'])."',
-			'".$mysql->real_escape_str($_POST['description'])."','".$date."',
+			$query = "CALL add_role('".$fun->is_white_space($mysql->real_escape_str($_POST['role']))."',
+			'".$fun->is_white_space($mysql->real_escape_str($_POST['description']))."','".$date."',
 			 '".$mysql->real_escape_str($_POST['status'])."')";
 			// Calling the function that makes the insert
 			try{

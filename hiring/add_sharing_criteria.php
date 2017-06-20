@@ -38,11 +38,11 @@ try{
 
 if(!empty($_POST)){
 	// Validating the required fields  
-	if(strlen(trim($_POST['share'])) != strlen($_POST['share'])) {
+	/* if(strlen(trim($_POST['share'])) != strlen($_POST['share'])) {
 		$shareErr = 'Please enter the valid % of share';
     	$smarty->assign('shareErr',$shareErr);
     	$test = 'error';
-	}
+	} */
 	// array for printing correct field name in error message
 	$fieldtype = array('1', '0' ,'1');
 	$actualfield = array('type', '% of share', 'status');
@@ -82,7 +82,7 @@ if(!empty($_POST)){
 	if(empty($test)){
 		if($row['total'] == '0'){
 			// query to insert sharing percent. 
-			$query = "CALL add_sharing_percent('".$mysql->real_escape_str($_POST['share'])."',
+			$query = "CALL add_sharing_percent('".$mysql->real_escape_str($mysql->real_escape_str($_POST['share']))."',
 			 '".$date."','".$mysql->real_escape_str($_POST['status'])."','".$mysql->real_escape_str($_POST['type'])."')";
 			// Calling the function that makes the insert
 			try{

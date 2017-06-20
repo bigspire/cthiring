@@ -46,6 +46,15 @@
 <div class="span6">
 			<table class="table table-bordered dataTable" style="margin-bottom:0;">
 						<tbody>
+						<tr class="tbl_row">
+										<td width="120" class="tbl_column">Position For <span class="f_req">*</span></td>
+										<td>
+										<input type="text" tabindex="3" value="{$requirement}" class="span8" disabled>
+										</td>
+									</tr>	
+									
+									<tr>
+									
 									<tr class="tbl_row">
 										<td width="120" class="tbl_column">Candidate Name <span class="f_req">*</span></td>
 										<td>
@@ -77,7 +86,7 @@
 										</td>
 									</tr>	
 
-										<tr class="tbl_row">
+										<!--tr class="tbl_row">
 										<td width="120" class="tbl_column">Position For <span class="f_req">*</span></td>
 										<td> 
 										<select tabindex="6" name="position_for" class="span8"  id="position_for">
@@ -85,7 +94,7 @@
 										{html_options options=$requirement selected=$smarty.post.position_for}	
 										<label for="reg_city" generated="true" class="error">{$position_forErr}</label>																					
 										</td>
-									</tr>	
+									</tr-->	
 									<tr>
 										<td width="120" class="tbl_column">Current Designation<span class="f_req">*</span></td>
 										<td>										

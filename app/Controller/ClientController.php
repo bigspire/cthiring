@@ -46,7 +46,7 @@ class ClientController extends AppController {
 			
 		// set keyword condition
 		if($this->params->query['keyword'] != ''){
-			$keyCond = array("MATCH (ResLocation.location,client_name,Creator.first_name,Con.first_name,
+			$keyCond = array("MATCH (ResLocation.location,client_name,Creator.first_name,CON.first_name,
 			CAH.first_name) AGAINST ('".$this->Functions->format_search_keyword($this->params->query['keyword'])."' IN BOOLEAN MODE)"); 
 		}
 		// for employee condition

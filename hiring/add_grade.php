@@ -17,11 +17,11 @@ include('menu_count.php');
 
 if(!empty($_POST)){
 	// Validating the required fields
-	if($fun->is_white_space($_POST['grade_name'])){
+	/* if($fun->is_white_space($_POST['grade_name'])){
 		$grade_nameErr = 'Please enter the valid grade';
     	$smarty->assign('grade_nameErr',$grade_nameErr);
     	$test = 'error';
-	}	
+	} */	
 	// array for printing correct field name in error message
 	$fieldtype = array('0', '1');
 	$actualfield = array('grade ', 'status');
@@ -42,7 +42,7 @@ if(!empty($_POST)){
 	// assigning the date
 	$date =  $fun->current_date();
 	// query to check whether it is exist or not. 
-	$query = "CALL check_grade_exist('0', '".$_POST['grade_name']."')";
+	$query = "CALL check_grade_exist('0', '".$fun->is_white_space($_POST['grade_name'])."')";
 	// Calling the function that makes the insert
 	try{
 		// calling mysql exe_query function
@@ -61,7 +61,9 @@ if(!empty($_POST)){
 	if(empty($test)){
 		if($row['total'] == '0'){
 			// query to insert grade. 
-			$query = "CALL add_grade('".$_SESSION['user_id']."','".$mysql->real_escape_str($_POST['grade_name'])."', '".$date."','".$mysql->real_escape_str($_POST['status'])."')";
+			$query = "CALL add_grade('".$_SESSION['user_id']."',
+			'".$fun->is_white_space($mysql->real_escape_str($_POST['grade_name']))."',
+			'".$date."','".$mysql->real_escape_str($_POST['status'])."')";
 			// Calling the function that makes the insert
 			try{
 				// calling mysql exe_query function

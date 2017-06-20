@@ -105,7 +105,7 @@
 							{if isset($status)}
 								{html_options options=$user_status selected=$status}	
 							{else}
-								{html_options options=$user_status selected='1'}	
+								{html_options options=$user_status selected='0'}	
 							{/if}
 							</select> 
 							<label for="reg_city" generated="true" class="error">{$statusErr}</label>											

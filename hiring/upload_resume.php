@@ -15,13 +15,61 @@ include('classes/class.function.php');
 // add menu count
 include('menu_count.php');
 
+// query to fetch all clients names. 
+$query = 'CALL get_clients()';
+try{
+	// calling mysql exe_query function
+	if(!$result = $mysql->execute_query($query)){
+		throw new Exception('Problem in getting client details');
+	}
+	while($row = $mysql->display_result($result))
+	{
+ 		$clients[$row['id']] = ucwords($row['client_name']);
+	}
+	$smarty->assign('clients',$clients);
+	// free the memory
+	$mysql->clear_result($result);
+	// call the next result
+	$mysql->next_query();
+}catch(Exception $e){
+	echo 'Caught exception: ',  $e->getMessage(), "\n";
+}
+
+// query to fetch position details. 
+$query = "CALL get_position('".$_POST['client']."')";
+try{
+	// calling mysql exe_query function
+	if(!$result = $mysql->execute_query($query)){
+		throw new Exception('Problem in getting requirement');
+	}
+	while($row = $mysql->display_result($result))
+	{
+ 		$position[$row['id']] = ucwords($row['job_title']);
+	}
+	$smarty->assign('position',$position);
+	// free the memory
+	$mysql->clear_result($result);
+	// call the next result
+	$mysql->next_query();
+}catch(Exception $e){
+	echo 'Caught exception: ',  $e->getMessage(), "\n";
+} 
+
 if(!empty($_POST)){
 
 	// validating the required fields
 	if(!isset($_POST['resume']) && empty($_FILES['resume']['name'])){
 		$smarty->assign('resumeErr', 'Please upload the resume');	
-		$test = 'error';		
-	}	
+		$test = 'error';			
+	}
+	if($_POST['client'] == ''){
+		$smarty->assign('clientErr', 'Please select the client');	
+		$test = 'error';
+	}
+	if(empty($_POST['position_for'])){
+		$smarty->assign('position_forErr', 'Please select the position for');	
+		$test = 'error';
+	}
 	
 	$req_size =  5242880;
 
@@ -73,6 +121,8 @@ if(!empty($_POST)){
 				$row = $mysql->display_result($result);
 				$last_id = $row['inserted_id'];
 				$_SESSION['resume_doc_id'] = $last_id;
+				$_SESSION['client'] = $_POST['client'];
+				$_SESSION['position_for'] = $_POST['position_for'];
 				// call the next result
 				$mysql->next_query();
 			}catch(Exception $e){
