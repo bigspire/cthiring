@@ -155,8 +155,62 @@ class AppController extends Controller {
 					case 8:					
 					$this->set('view_resume', 1);
 					break;
-					case 9:					
-					$this->set('view_interview', 1);
+					case 14:					
+					$this->set('view_incentive', 1);
+					break;
+					case 13:					
+					$this->set('create_incentive', 1);
+					break;
+					case 17:					
+					$this->set('recruiter_report', 1);
+					break;
+					case 18:					
+					$this->set('account_holder_report', 1);
+					break;
+					case 19:					
+					$this->set('location_report', 1);
+					break;
+					case 20:					
+					$this->set('failure_report', 1);
+					break;				
+					case 22:					
+					$this->set('revenue_report', 1);
+					break;
+					case 23:					
+					$this->set('tat_report', 1);
+					break;
+					case 24:					
+					$this->set('collection_report', 1);
+					break;
+					case 25:					
+					$this->set('client_retention_report', 1);
+					break;
+					case 26:					
+					$this->set('incentive_report', 1);
+					break;
+					case 27:					
+					$this->set('daily_report', 1);
+					break;
+					case 28:					
+					$this->set('weekly_report', 1);
+					break;
+					case 29:					
+					$this->set('sent_item', 1);
+					break;
+					case 30:					
+					$this->set('manage_grade', 1);
+					break;
+					case 31:					
+					$this->set('manage_users', 1);
+					break;
+					case 32:					
+					$this->set('manage_roles', 1);
+					break;
+					case 33:					
+					$this->set('manage_mailer_template', 1);
+					break;
+					case 34:					
+					$this->set('manage_incentive', 1);
 					break;
 				}				
 			}

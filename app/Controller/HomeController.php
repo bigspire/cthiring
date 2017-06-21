@@ -92,8 +92,9 @@ class HomeController  extends AppController {
 		}
 		*/
 		
+		
 		/* for dashboard switching */
-		if($dash_type == 'rec_view' || $dash_type == ''){
+		if($dash_type == 'rec_view' || $this->Session->read('USER.Login.roles_id') == '30'){
 			$cv_emp_cond = array('ReqResume.created_by' => $this->Session->read('USER.Login.id'));
 			$int_emp_cond = array('ReqResume.created_by' => $this->Session->read('USER.Login.id'));
 			$pos_emp_cond = array('ReqResume.created_by' => $this->Session->read('USER.Login.id'));
@@ -131,9 +132,10 @@ class HomeController  extends AppController {
 					'ReqTeam.users_id' => $this->Session->read('USER.Login.id')
 					)
 			);
-			
 			$this->set('rec_dash', 'active');
-		}else if($dash_type == 'ac_view'){
+
+			
+		}else if($dash_type == 'ac_view'  || $this->Session->read('USER.Login.roles_id') == '34'){
 			$cli_options = array(						
 				array('table' => 'requirements',
 						'alias' => 'Position',					
@@ -196,7 +198,8 @@ class HomeController  extends AppController {
 			$client_emp_cond = array('ClientAH.users_id' => $this->Session->read('USER.Login.id'));
 			$pos_emp_cond2 = array('Position.created_by' => $this->Session->read('USER.Login.id'));
 			$this->set('ac_dash', 'active');
-		}else if($dash_type == 'bd_view'){
+		}else if($dash_type == 'bd_view'  || ($this->Session->read('USER.Login.roles_id') == '33' || $this->Session->read('USER.Login.roles_id') == '35'
+		|| $this->Session->read('USER.Login.roles_id') == '26')){
 			$resume_options = array(			
 				array('table' => 'req_resume',
 						'alias' => 'ReqResume',					

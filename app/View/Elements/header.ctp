@@ -111,33 +111,72 @@
                                         <li class="dropdown">
                                             <a data-toggle="dropdown" class="dropdown-toggle " href="#"><i class="icon-file icon-white"></i> Incentive <b class="caret"></b></a>
                                            <ul class="dropdown-menu">
+										   <?php if($view_incentive == '1'):?> 
+										   
+													
                                                 <li><a href="incentive.php">Search Billing</a></li>
+												
+												
+											<?php endif; ?>
+											
+											<?php if($create_incentive == '1'):?> 
 												 <li><a href="incentive.php">Generate Incentive</a></li>
+											<?php endif; ?>
+											
 												 <!--li><a href="<?php echo $this->webroot;?>hiring/add_billing.php">Add Billing</a></li>
 												 <li><a href="<?php echo $this->webroot;?>hiring/billing.php">Search Billing</a></li>
 												 <li><a href="<?php echo $this->webroot;?>hiring/approve_billing.php">Approve Billing <!--span class="label-bub label-info white">20</span></a></li-->
                                             </ul>
                                         </li>
-										
+	
+
+	 <?php if($recruiter_report == '1' || $account_holder_report == '1' || $location_report == '1' || $failure_report == '1'
+|| 	$revenue_report == '1' || $tat_report == '1' || $collection_report == '1' || $client_retention_report == '1' || $incentive_report == '1'
+|| $incentive_report == '1' || $daily_report == '1' || $weekly_report == '1'):?> 
 										 <li class="dropdown">
                                             <a data-toggle="dropdown" class="dropdown-toggle " href="#"><i class="icon-download-alt icon-white"></i> Reports <b class="caret"></b></a>
                                           <ul class="dropdown-menu">
+										    <?php if($recruiter_report == '1'):?> 
                                                 <li><a href="recruiter_performance.php">Recruiter Performance</a></li>
+											<?php endif; ?>	
+											 <?php if($account_holder_report == '1'):?> 
                                                 <li><a href="ah_performance.php">Account Holder Performance</a></li>
+													<?php endif; ?>	
+												 <?php if($location_report == '1'):?> 
 												<li><a href="location_performance.php">Location Performance</a></li>
+													<?php endif; ?>	
                                                <!-- <li><a href="#">Clientwise Performance</a></li>-->
+											    <?php if($failure_report == '1'):?> 
                                                 <li><a href="#">Recruiter Performance(Failure Root Cause Analysis )</a></li>
+													<?php endif; ?>	
+												 <?php if($revenue_report == '1'):?> 
 												<li><a href="revenue.php">Revenue </a></li>
+													<?php endif; ?>	
+												 <?php if($tat_report == '1'):?> 
 												<li><a href="tat_time.php">TAT Time </a></li>
+													<?php endif; ?>	
+												 <?php if($collection_report == '1'):?> 
 												<li><a href="collection_table.php">Collection Table </a></li>
+													<?php endif; ?>	
+												 <?php if($client_retention_report == '1'):?> 
 												<li><a href="client_retention.php">Client Retention Table </a></li>
+													<?php endif; ?>	
+												 <?php if($incentive_report == '1'):?> 
 												<li><a href="incentive_report.php">Incentive </a></li>
+													<?php endif; ?>	
+												 <?php if($daily_report == '1'):?> 
 												<li><a href="daily_performance.php">Daily Performance </a></li>
+													<?php endif; ?>	
+												 <?php if($weekly_report == '1'):?> 
 												<li><a href="weekly_performance.php">Weekly Performance </a></li>
+													<?php endif; ?>	
+												
                                             </ul>
 
 										 
                                         </li>
+										
+						<?php endif; ?>
                                            <li class="dropdown">
                                             <a data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icon-th icon-white"></i> Mail Box <b class="caret"></b></a>
 											  <ul class="dropdown-menu">                                              
@@ -146,14 +185,22 @@
                                             </ul>
                                          </li>
 										
+									  <?php if($manage_grade == '1' || $manage_users == '1' || $manage_roles == '1' || $manage_mailer_template == '1'
+									  || $manage_incentive == '1'):?> 	
 										 <li class="dropdown">
                                             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
 											<i class="icon-cog icon-white"></i> Settings <b class="caret"></b></a>
                                           <ul class="dropdown-menu">
+										   <?php if($manage_grade == '1'):?> 
                                                 <li><a href="<?php echo $this->webroot;?>hiring/grade.php">Grade <!--span class="label-bub label-info white">102</span--></a></li>
-                                                <li><a href="<?php echo $this->webroot;?>hiring/users.php">Users <!--span class="label-bub label-info white">14</span--></a></li>
+												<?php endif; ?>	
+                                             <?php if($manage_users == '1'):?>    
+											   <li><a href="<?php echo $this->webroot;?>hiring/users.php">Users <!--span class="label-bub label-info white">14</span--></a></li>
+											   <?php endif; ?>	
+											 <?php if($manage_roles == '1'):?> 	
 												<li><a href="<?php echo $this->webroot;?>hiring/roles.php">Roles [Access] <!--span class="label-bub label-info white">3</span--></a></li>
-												
+												<?php endif; ?>	
+											 <?php if($manage_mailer_template == '1'):?> 	
 												<li class="dropdown">
 													<a href="#">Mailer Templates <b class="caret-right"></b></a>
 													<ul class="dropdown-menu">
@@ -162,6 +209,8 @@
 														<li><a href="<?php echo $this->webroot;?>hiring/mailer_template.php?id=3">Schedule Interview to Candidates</a></li>														
 													</ul>
 												</li>
+												<?php endif; ?>	
+											 <?php if($manage_incentive == '1'):?> 	
                                            <li class="dropdown">
 													<a href="#">Incentive <b class="caret-right"></b></a>
 													<ul class="dropdown-menu">
@@ -171,11 +220,12 @@
 														<li><a href="<?php echo $this->webroot;?>hiring/bonus_share.php">Bonus Share</a></li>														
 													</ul>
 												</li>
+												<?php endif; ?>	
                                             </ul>
 
 										 
                                         </li>
-										
+										 <?php endif; ?>
 										
                                         <li>
                                         </li>

@@ -14,12 +14,30 @@
 						
 						<?php echo $this->Session->flash();?>   
 						
-						<div class="btns_state pull-right" style="clear:left;margin-right:50px;">
+						<?php if($this->Session->read('USER.Login.roles_id') == '30'): ?>
+						<?php $margin = ''; ?>
+						<?php else: ?>
+						<?php $margin = 'margin-right:50px';?>
+						<?php endif; ?>
+						
+						<div class="btns_state pull-right" style="clear:left;<?php echo $margin;?>">
+									
+									
 									<div  class="btn-group clearfix sepH_a">
-										<button rel="<?php echo $this->webroot;?>home/index/rec_view/" class="dash_view btn <?php echo $rec_dash;?>">Recruiter View</button>
+									
+									<?php if($this->Session->read('USER.Login.roles_id') == '34'): ?>
 										<button rel="<?php echo $this->webroot;?>home/index/ac_view/" class="dash_view btn <?php echo $ac_dash;?>">Account Holder View</button>
-										<button rel="<?php echo $this->webroot;?>home/index/bd_view/" class="dash_view btn <?php echo $bd_dash;?>">Biz. Developer View</button>
+										<button rel="<?php echo $this->webroot;?>home/index/rec_view/" class="dash_view btn <?php echo $rec_dash;?>">Recruiter View</button>
+									
+									<?php elseif($this->Session->read('USER.Login.roles_id') == '33' || $this->Session->read('USER.Login.roles_id') == '35'  || $this->Session->read('USER.Login.roles_id') == '26'): ?>
+									<button rel="<?php echo $this->webroot;?>home/index/bd_view/" class="dash_view btn <?php echo $bd_dash;?>">Biz. Developer View</button>
+									<button rel="<?php echo $this->webroot;?>home/index/rec_view/" class="dash_view btn <?php echo $rec_dash;?>">Recruiter View</button>
+									<button rel="<?php echo $this->webroot;?>home/index/ac_view/" class="dash_view btn <?php echo $ac_dash;?>">Account Holder View</button>
 
+									
+									<?php endif; ?>
+										
+										
 									</div>
 									
 									
