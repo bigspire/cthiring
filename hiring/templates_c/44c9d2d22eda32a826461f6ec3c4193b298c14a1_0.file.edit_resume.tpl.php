@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-06-15 21:18:01
+/* Smarty version 3.1.29, created on 2017-06-21 17:38:13
   from "F:\xampp\htdocs\ctsvn\cthiring\hiring\templates\edit_resume.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5942ac31bba5d0_81225106',
+  'unifunc' => 'content_594a61add0cdb2_76134940',
   'file_dependency' => 
   array (
     '44c9d2d22eda32a826461f6ec3c4193b298c14a1' => 
     array (
       0 => 'F:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\templates\\edit_resume.tpl',
-      1 => 1497541676,
+      1 => 1497959907,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5942ac31bba5d0_81225106 ($_smarty_tpl) {
+function content_594a61add0cdb2_76134940 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'F:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -73,6 +73,16 @@ resume">Resumes</a>
 <div class="span6">
 			<table class="table table-bordered dataTable" style="margin-bottom:0;">
 						<tbody>
+						
+									<tr class="tbl_row">
+										<td width="120" class="tbl_column">Position For <span class="f_req">*</span></td>
+										<td>
+										<input type="text" tabindex="3" value="<?php echo $_smarty_tpl->tpl_vars['position_for']->value;?>
+ ( <?php echo $_smarty_tpl->tpl_vars['client_name']->value;?>
+ )" class="span8" disabled>
+										</td>
+									</tr>
+									
 									<tr class="tbl_row">
 										<td width="120" class="tbl_column">Candidate Name <span class="f_req">*</span></td>
 										<td>
@@ -114,7 +124,7 @@ echo $_smarty_tpl->tpl_vars['last_nameErr']->value;?>
 										</td>
 									</tr>	
 
-										<tr class="tbl_row">
+										<!--tr class="tbl_row">
 										<td width="120" class="tbl_column">Position For <span class="f_req">*</span></td>
 										<td> 
 										<select tabindex="6" name="position_for" class="span8"  id="position_for">
@@ -124,7 +134,7 @@ echo $_smarty_tpl->tpl_vars['last_nameErr']->value;?>
 										<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['position_forErr']->value;?>
 </label>																					
 										</td>
-									</tr>	
+									</tr-->	
 									<tr>
 										<td width="120" class="tbl_column">Current Designation<span class="f_req">*</span></td>
 										<td>										

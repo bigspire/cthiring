@@ -39,7 +39,7 @@ class LoginController extends AppController {
 				$this->request->data['Login']['email'] = trim($this->request->data['Login']['email']);
 				$this->Login->set($this->request->data);					
 				if ($this->Login->validates(array('fieldList' => array('email', 'mypassword')))) {					
-					$data = $this->Login->find('first', array('fields' => array('first_name','email_id','id','status','last_login','rights'),'conditions' =>array('email_id' => $this->request->data['Login']['email'],
+					$data = $this->Login->find('first', array('fields' => array('first_name','email_id','id','status','last_login','rights','roles_id'),'conditions' =>array('email_id' => $this->request->data['Login']['email'],
 					'is_deleted' => 'N', 'status' => '0')));
 					// when success login attempt
 					if($data['Login']['id'] != ''){

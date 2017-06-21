@@ -46,6 +46,7 @@ class AppController extends Controller {
 				// $this->check_sync_time();
 				$this->get_unread_count();
 			}
+
 		}
 	}
 	
@@ -56,6 +57,8 @@ class AppController extends Controller {
 			die;		
 		}		
 	}
+	
+	
 
 	/* function to check sync status */
 	public function check_sync_time(){
@@ -93,7 +96,7 @@ class AppController extends Controller {
 			return true;
 		}else if($this->Cookie->read('ESUSER') != ''){
 			$this->loadModel('Login');
-			$data = $this->Login->find('first', array('fields' => array('first_name','email_id','id','status','last_login','rights'),'conditions' =>array('Login.id' => $this->Functions->decrypt($this->Cookie->read('ESUSER')), 'is_deleted' => 'N', 'status' => '0')));					
+			$data = $this->Login->find('first', array('fields' => array('first_name','email_id','id','status','last_login','rights','roles_id'),'conditions' =>array('Login.id' => $this->Functions->decrypt($this->Cookie->read('ESUSER')), 'is_deleted' => 'N', 'status' => '0')));					
 			if(empty($data)){
 					$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Invalid Attempt', 'default', array('class' => 'alert  alert-login'));				
 					$this->redirect('/');
@@ -110,6 +113,56 @@ class AppController extends Controller {
 			$this->redirect('/');
 		}
 	}
+	
+	/* function to check the role access */
+	public function check_role_access($cur_module){
+		$this->loadModel('Permission');
+		$permissions = $this->Permission->find('all', array('fields' => array('modules_id'), 'conditions' => array('roles_id' => $this->Session->read('USER.Login.roles_id'))));	
+		//echo "<pre>"; print_r($module_list);
+		$modules = $this->Permission->Module->find('all', array('fields' => array('id'), 'conditions' => array('status' => 'A'), 'order' => array('module_name' => 'asc')));
+		//echo '<pre>'; print_r($permissions);
+		foreach($permissions as $per){
+			$format_per[] = $per['Permission']['modules_id'];
+		}
+		// if not home controller
+		if($this->params['controller'] != 'home'){		
+			// check user has permission to module
+			if (!in_array($cur_module, $format_per)){
+				$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert-error">&times;</button>Invalid Entry', 'default', array('class' => 'alert alert-error'));	
+				$this->redirect('/home/');	
+			}
+		}
+		// check the module exists in the list
+		foreach($modules as $key => $module){
+			// check the user module exists in the database module list
+			if (in_array($module['Module']['id'], $format_per)) { 	
+				switch($module['Module']['id']){
+					case 1:					
+					$this->set('create_client', 1);
+					break;					
+					case 2:					
+					$this->set('view_client', 1);
+					break;						
+					case 4:					
+					$this->set('create_position', 1);
+					break;					
+					case 5:					
+					$this->set('view_position', 1);
+					break;
+					case 7:					
+					$this->set('create_resume', 1);
+					break;
+					case 8:					
+					$this->set('view_resume', 1);
+					break;
+					case 9:					
+					$this->set('view_interview', 1);
+					break;
+				}				
+			}
+		}
+	}
+	
 	
 	/* function to set the menu active */
 	public function front_active_menus(){ 

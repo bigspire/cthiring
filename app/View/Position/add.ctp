@@ -98,11 +98,11 @@
 										<td>
 										
 		<?php echo $this->Form->input('min_exp', array('div'=> false,'type' => 'select', 'label' => false, 
-		'class' => 'span4', 'empty' => 'Min.', 'required' => false, 'placeholder' => '', 
+		'class' => 'minDrop span4', 'empty' => 'Min.',  'id' => 'minDrop', 'rel' => 'maxDrop','required' => false, 'placeholder' => '', 
 		'style' => "clear:left", 'options' => $expList, 'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 
 		
 		<?php echo $this->Form->input('max_exp', array('div'=> false,'type' => 'select', 'label' => false, 
-		'class' => 'span4 inline_text', 'empty' => 'Max.', 'required' => false, 'placeholder' => '', 
+		'class' => 'maxDrop span4 inline_text','id' => 'maxDrop','empty' => 'Max.', 'required' => false, 'placeholder' => '', 
 		'style' => "clear:left", 'options' => $expList, 'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 
 									
 									

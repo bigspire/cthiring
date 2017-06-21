@@ -35,20 +35,23 @@ class ResumeController extends AppController {
 		if($this->request->is('post')){
 			$url_vars = $this->Functions->create_url(array('keyword','from','to','min_exp','max_exp',
 			'int_from','int_to','emp_id','loc','status','report_status'),'Resume'); 			
-			$this->redirect('/resume/?'.$url_vars);				
+			$this->redirect('/resume/?srch_status=1&'.$url_vars);				
 		}
 		// set the page title
 		$this->set('title_for_layout', 'Resumes - CT Hiring - ES');	
 		$this->set('empList', $this->Resume->get_employee_details());	
 		$this->set('locList', $this->get_loc_details());
 		$this->set('stList', $this->get_status_details());
-		$start = $this->request->query['from'] ? $this->request->query['from'] : date('d/m/Y', strtotime('-15 months'));
-		$end = $this->request->query['to'] ? $this->request->query['to'] : date('d/m/Y');
-		$end_search = $this->request->query['to'] ? $this->request->query['to'] : date('d/m/Y', strtotime('+1 day'));
-		// set date condition
-		$date_cond = array('or' => array("DATE_FORMAT(Resume.created_date, '%Y-%m-%d') between ? and ?" => 
+		
+		if($this->request->query['from'] != '' || $this->request->query['to'] != ''){
+			$start = $this->request->query['from'] ? $this->request->query['from'] : ''; //date('d/m/Y', strtotime('-15 months'));
+			$end = $this->request->query['to'] ? $this->request->query['to'] : date('d/m/Y');
+			$end_search = $this->request->query['to'] ? $this->request->query['to'] : date('d/m/Y', strtotime('+1 day'));
+			// set date condition
+			$date_cond = array('or' => array("DATE_FORMAT(Resume.created_date, '%Y-%m-%d') between ? and ?" => 
 					array($this->Functions->format_date_save($start), $this->Functions->format_date_save($end_search))));
-					
+		}			
+		
 		$exp_list = $this->Functions->get_experience();
 		$this->set('expList', $exp_list);	
 		// set keyword condition
@@ -80,6 +83,22 @@ class ResumeController extends AppController {
 					array($this->Functions->format_date_save($start), $this->Functions->format_date_save($end_search))));
 			
 		}
+		
+			// check role based access
+		if($this->Session->read('USER.Login.roles_id') == '34'){ // account holder
+			$empCond = array('AH.users_id' => $this->Session->read('USER.Login.id'));
+		}else if($this->Session->read('USER.Login.roles_id') == '30'){ // recruiter
+			$empCond = array('OR' => array(
+					'ReqResume.created_by' =>  $this->Session->read('USER.Login.id')
+					)
+			);		
+			//$empCond = array('ReqResumeStatus.created_by' => $this->Session->read('USER.Login.id'),
+			//'ReqResumeStatus.stage_title' => 'Validation - Account Holder', 'ReqResumeStatus.status_title' => 'Validated');		
+		}else if($this->Session->read('USER.Login.roles_id') == '33' || $this->Session->read('USER.Login.roles_id') == '35'){ // director & BD
+			$empCond = '';
+		}
+		
+		
 		$options = array(			
 				array('table' => 'req_resume',
 						'alias' => 'ReqResume',					
@@ -102,7 +121,12 @@ class ResumeController extends AppController {
 						'alias' => 'ReqResumeStatus',					
 						'type' => 'LEFT',
 						'conditions' => array('`ReqResumeStatus`.`req_resume_id` = `ReqResume`.`id`')
-						)
+				),
+				array('table' => 'client_account_holder',
+						'alias' => 'AH',					
+						'type' => 'LEFT',
+						'conditions' => array('`AH`.`clients_id` = `Client`.`id`')
+				),
 		);
 		// for employee condition
 		
@@ -161,6 +185,7 @@ class ResumeController extends AppController {
 		if(empty($data)){
 			$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Oops! No Resumes Found!', 'default', array('class' => 'alert alert-info'));
 		}
+		
 		
 	}
 	
@@ -391,6 +416,11 @@ class ResumeController extends AppController {
 					exit;
 				}
 			}
+	}
+	
+	// check the role permissions
+	public function beforeFilter(){ 
+		$this->check_role_access(8);
 	}
 
 }

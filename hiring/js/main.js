@@ -892,6 +892,25 @@ $(document).ready(function() {
 
 	});
 	
+	 /* function to update max drop down */
+	if($('.minDrop').length > 0){ 
+		var max_val = $('.maxDrop').val();
+		cur_obj = $('.minDrop').attr('id');		
+		option_id = $('.minDrop').attr('rel');
+		val = parseFloat($('.minDrop').val());
+		$('#'+option_id).append('<option>Loading...</option>');
+		html = "<option value=''>Max</option>";
+		$('#'+cur_obj+' option').each(function(){
+			// allow only values equals or greater than
+			if(val < $(this).val()){
+				html += '<option value='+$(this).val()+'>'+$(this).text()+'</option>';
+			}
+		});
+		$('#'+option_id).empty();
+		$('#'+option_id).append(html);
+		$('#'+option_id).val(max_val);
+	}
+	
 	/* function to switch the view resume tabs */
 	if($('.restabChange').length > 0){
 		$('.restabChange').click(function(){ 

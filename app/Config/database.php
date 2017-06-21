@@ -70,7 +70,7 @@
 
 
 class DATABASE_CONFIG {
-/*
+
 	public $default = array(
 			'datasource' => 'Database/Mysql',
 			'persistent' => false,
@@ -82,7 +82,7 @@ class DATABASE_CONFIG {
 			//'encoding' => 'utf8',
 		);
 
-*/
+/*
 	public $default = array(
 		'datasource' => 'Database/Mysql',
 		'persistent' => false,
@@ -94,7 +94,7 @@ class DATABASE_CONFIG {
 		//'encoding' => 'utf8',
 	);
 
-	
+	*/
 	
 	public $sqlserver_db = array(
 		'datasource' => 'Database/Sqlserver',

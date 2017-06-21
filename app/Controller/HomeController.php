@@ -115,10 +115,23 @@ class HomeController  extends AppController {
 						'alias' => 'ReqTeam',					
 						'type' => 'LEFT',
 						'conditions' => array('`ReqTeam`.`requirements_id` = `Position`.`id`')
+				),
+				array('table' => 'req_resume',
+						'alias' => 'ReqResume',					
+						'type' => 'LEFT',
+						'conditions' => array('`ReqResume`.`requirements_id` = `Position`.`id`')
 				)
 			);	
-			$pos_emp_cond2 = array('ReqResume.created_by' => $this->Session->read('USER.Login.id'));
-			$client_emp_cond = array('ReqTeam.users_id' => $this->Session->read('USER.Login.id'));
+			$pos_emp_cond2 = array('ReqResume.created_by' => $this->Session->read('USER.Login.id'));			
+			
+			// $client_emp_cond = array('ReqTeam.users_id' => $this->Session->read('USER.Login.id'));
+			
+			$client_emp_cond = array('OR' => array(
+					'ReqResume.created_by' =>  $this->Session->read('USER.Login.id'),
+					'ReqTeam.users_id' => $this->Session->read('USER.Login.id')
+					)
+			);
+			
 			$this->set('rec_dash', 'active');
 		}else if($dash_type == 'ac_view'){
 			$cli_options = array(						
@@ -1072,6 +1085,8 @@ class HomeController  extends AppController {
 	
 	public function beforeFilter(){ 
 		$this->check_session();
+		// check role access
+		$this->check_role_access();
 	}
 	
 	/* function to save feedback */

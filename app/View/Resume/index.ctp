@@ -5,36 +5,66 @@
             <div id="contentwrapper">
                 <div class="main_content">
                 
-						<?php echo $this->Session->flash();?>
 
 					
 					<div class="row-fluid footer_div">
 						 <div class="span12">
 
-<div class="heading clearfix">
-								<h3 class="pull-left">Resumes <small>list</small></h3>
-			
-							</div>
+  <nav>
+                        <div id="jCrumbs" class="breadCrumb module">
+                            <ul>
+                                <li>
+                                    <a href="<?php echo $this->webroot;?>home/"><i class="icon-home"></i></a>
+                                </li>
+                                <li>
+                                    <a href="<?php echo $this->webroot;?>resume/">Resumes</a>
+                                </li>
+                            
+                                <li>
+                                   Search Resumes
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+
+						<div class="srch_buttons">
+							<a class="jsRedirect toggleSearch"  href="javascript:void(0)"><input type="button" value="Search" class="homeSrch btn btn-success"/></a>
+							<a class="notify" data-notify-time = '3000' data-notify-title="In Progress!" data-notify-message="Downloading Excel... Please wait..."  href="<?php echo $this->webroot;?>resume/?action=export&<?php echo $this->Functions->get_url_vars($this->request->query);?>"><input type="button" value="Export Excel" class="btn btn-warning"/></a>
 							
+							<?php if($create_resume == '1'):?>
+<a rel="tooltip"  title="Upload New Resume" href="<?php echo $this->webroot;?>hiring/upload_resume.php" 
+					 val="40_50"  class="iframeBox sepV_a cboxElement">
+					<input value="Upload Resume" type="button" class="btn btn-info"></a>	
+					<?php endif; ?>
+						</div>
+						
+						
+				<?php echo $this->Session->flash();?>
+
+										
 							<?php echo $this->Form->create('Resume', array('id' => 'formID','class' => 'formID')); ?>
 	
-							<div class="dataTables_filter srchBox" style="float:left;" id="dt_gal_filter">
-							<label style="margin-top:18px;"><a class="jsRedirect notify" data-notify-time = '3000' data-notify-title="In Progress!" data-notify-message="Downloading Excel... Please wait..."  href="<?php echo $this->webroot;?>resume/?action=export&<?php echo $this->Functions->get_url_vars($this->request->query);?>"><input type="button" value="Export" class="btn btn-warning"/></a></label>
-							<label style="margin-top:18px;"><a class="jsRedirect" href="<?php echo $this->webroot;?>resume/"><input value="Reset" type="button" class="btn"/></a></label>
-							<label style="margin-top:18px;"><input type="submit" value="Submit" class="btn btn-gebo" /></label>
-				
-<label>Current Status: 
-						<?php echo $this->Form->input('status', array('div'=> false,'type' => 'select', 'label' => false, 'class' => 'input-small', 'empty' => 'Select', 'selected' => $this->params->query['status'], 'required' => false, 'placeholder' => '', 'style' => "clear:left", 'options' => $stList)); ?> 
+							<div class="dataTables_filter dn srchBox homeSrchBox homeSrch" id="dt_gal_filter">
+							
+							
+							
+								<label style="margin-left:0">Keyword: <input type="text" placeholder="Candidate / Employer" name="data[Resume][keyword]" id = "SearchText" value="<?php echo $this->params->query['keyword'];?>" class="input-medium" aria-controls="dt_gal"></label>
 
-															
-													
-							</label>
+					<span id="sandbox-container">
+						<span  class="input-daterange" id="datepicker">	
+						<label>From Date: <input type="text" placeholder="dd/mm/yyyy" class="input-small datepick" name="data[Resume][from]" style="width:70px;"  value="<?php echo $this->request->query['from'];?>" aria-controls="dt_gal"></label>
+
+							<label>To Date: <input type="text" placeholder="dd/mm/yyyy" name="data[Resume][to]" value="<?php echo $this->request->query['to'];?>" style="width:70px;"  class="input-small datepick" aria-controls="dt_gal"></label>
+</span>	
+						</span>	
+							
+									</label>
 <?php if($this->Session->read('USER.Login.rights') == '5'):?>											
 <label>Branch: 
 							<?php echo $this->Form->input('loc', array('div'=> false,'type' => 'select', 'label' => false, 'class' => 'input-small', 'empty' => 'Select', 'selected' => $this->params->query['loc'], 'required' => false, 'placeholder' => '', 'style' => "clear:left", 'options' => $locList)); ?> 
 
-							</label>						
-						<label>Employee: 
+							</label>
+			<label>Employee: 
 						<?php echo $this->Form->input('emp_id', array('div'=> false,'type' => 'select', 'label' => false, 'class' => 'input-small', 'empty' => 'Select', 'selected' => $this->params->query['emp_id'], 'required' => false, 'placeholder' => '', 'style' => "clear:left", 'options' => $empList)); ?> 
 
 															
@@ -42,28 +72,41 @@
 							</label>
 							
 					<?php endif; ?>		
-							
-							<label>Interview To: <input type="text" name="data[Resume][int_to]" value="<?php echo $this->request->query['int_to'];?>" style="width:70px;" class="input-small datepick" aria-controls="dt_gal"></label>
+					
+					
+	<span id="sandbox-container">
+						<span  class="input-daterange" id="datepicker">	
+						
+			<label>Interview From: <input type="text" placeholder="dd/mm/yyyy" class="input-small datepick" name="data[Resume][int_from]" style="width:70px;"  value="<?php echo $this->request->query['int_from'];?>" aria-controls="dt_gal"></label>
 
-							<label>Interview From: <input type="text" class="input-small datepick" name="data[Resume][int_from]" style="width:70px;"  value="<?php echo $this->request->query['int_from'];?>" aria-controls="dt_gal"></label>
-							<label>&nbsp; 
-												<?php  echo $this->Form->input('max_exp', array('div'=> false,'type' => 'select', 'label' => false,'selected' => $this->request->query['max_exp'], 'class' => 'input-small maxDrop maxexp', 'id' => 'max-exp',  'empty' => 'Max', 'required' => false, 'placeholder' => '', 'style' => "clear:left", 'options' => $expList)); ?> 	
-							</label>
-							<label>Experience:
+							
+							<label>Interview To: <input type="text" placeholder="dd/mm/yyyy" name="data[Resume][int_to]" value="<?php echo $this->request->query['int_to'];?>" style="width:70px;" class="input-small datepick" aria-controls="dt_gal"></label>
+</span>	
+						</span>	
+								<label>Experience:
 <?php echo $this->Form->input('min_exp', array('div'=> false,'type' => 'select', 'label' => false, 'selected' => $this->request->query['min_exp'],'class' => 'input-small minDrop minexp', 'rel' => 'max-exp', 'id' => 'min-exp',  'empty' => 'Min', 'required' => false, 'placeholder' => '', 'style' => "clear:left", 'options' => $expList)); ?> 	
 							
 					</label>
 					
-				
-
-						
-							<label>To Date: <input type="text" name="data[Resume][to]" value="<?php echo $this->request->query['to'];?>" style="width:70px;"  class="input-small datepick" aria-controls="dt_gal"></label>
-
-							<label>From Date: <input type="text" class="input-small datepick" name="data[Resume][from]" style="width:70px;"  value="<?php echo $this->request->query['from'];?>" aria-controls="dt_gal"></label>
-							<label style="margin-left:0">Keyword: <input type="text" placeholder="Candidate / Employer" name="data[Resume][keyword]" id = "SearchText" value="<?php echo $this->params->query['keyword'];?>" class="input-medium" aria-controls="dt_gal"></label>
+							<label>&nbsp; 
+												<?php  echo $this->Form->input('max_exp', array('div'=> false,'type' => 'select', 'label' => false,'selected' => $this->request->query['max_exp'], 'class' => 'input-small maxDrop maxexp', 'id' => 'max-exp',  'empty' => 'Max', 'required' => false, 'placeholder' => '', 'style' => "clear:left", 'options' => $expList)); ?> 	
+							</label>					
+							
+							<label>Current Status: 
+						<?php echo $this->Form->input('status', array('div'=> false,'type' => 'select', 'label' => false, 'class' => 'input-small', 'empty' => 'Select', 'selected' => $this->params->query['status'], 'required' => false, 'placeholder' => '', 'style' => "clear:left", 'options' => $stList)); ?> 
+</label>
+							
+						<label style="margin-top:18px;">	<input type="submit" value="Submit" class="btn btn-gebo" /></label>
+							
+							
+							<label style="margin-top:18px;"><a class="jsRedirect" href="<?php echo $this->webroot;?>resume/">
+							<input value="Reset" type="button" class="btn"/></a>
+</label>
 
 														</div>
 <input type="hidden" value="1" id="SearchKeywords">
+					<input type="hidden" id="srchSubmit" value="<?php echo $this->params->query['srch_status'];?>">
+
 						<input type="hidden" value="<?php echo $this->webroot;?>resume/" id="webroot">
 						</form>
 					<?php endif; ?>			
