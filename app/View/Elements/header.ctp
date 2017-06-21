@@ -56,8 +56,12 @@
 										  <li class="dropdown <?php echo $client_menu ?>">
                                             <a data-toggle="dropdown" class="dropdown-toggle " href="#"><i class="icon-user icon-white"></i> Clients <!--span class="label-bub label-info bubble">1</span--><b class="caret"></b></a>
 											  <ul class="dropdown-menu">
+											  <?php if($create_client == '1'):?>
                                                 <li><a href="<?php echo $this->webroot;?>client/add/">Add Client</a></li>
+											  <?php endif; ?>
+											   <?php if($view_client == '1'):?>
                                                 <li><a href="<?php echo $this->webroot;?>client/">Search Client <!--span class="label-bub label-info white">1</span--></a></li>
+												 <?php endif; ?>
 												<!-- <li><a href="add_client_contact.php">Add Client Contact</a></li>-->
 												<!--  <li><a href="client_contact.php">Search Client Contact</a></li>-->
                                             </ul>
@@ -66,15 +70,24 @@
 										  <li class="dropdown <?php echo $position_menu ?>">
                                             <a  data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icon-list-alt icon-white"></i> Positions <!--span class="label-bub label-info bubble">14</span--><b class="caret"></b></a>
                                              <ul class="dropdown-menu">
-                                                <li><a href="<?php echo $this->webroot;?>position/add/">Add Position</a></li>
+                                                 <?php if($create_position == '1'):?>
+												 <li><a href="<?php echo $this->webroot;?>position/add/">Add Position</a></li>
+												  <?php endif; ?>
+												  <?php if($view_position == '1'):?> 
                                                 <li><a href="<?php echo $this->webroot;?>position/">Search Position <!--span class="label-bub label-info white">14</span--></a></a></li>
+												 <?php endif; ?>
                                             </ul>
                                         </li>
+										
                                         <li class="dropdown <?php echo $resume_menu ?>">
                                             <a data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icon-th icon-white"></i> Resumes <!--span class="label-bub label-info bubble"></span--><b class="caret"></b></a>
 											  <ul class="dropdown-menu">
+											   <?php if($create_resume == '1'):?>
                                                 <li><a href="<?php echo $this->webroot;?>hiring/upload_resume.php" class="iframeBox unreadLink" val="40_50">Upload Resume</a></li>
+												 <?php endif; ?>
+												 <?php if($view_resume == '1'):?>
                                                 <li><a href="<?php echo $this->webroot;?>resume/">Search Resume <!--span class="label-bub label-info white">13453</span--></a></li>
+												 <?php endif; ?>
 												<!--<li><a href="upload_resume.php">Upload Resume</a></li>
 												<li><a href="upload_resume.php">Upload Psychometric Test</a></li>
 												<li><a href="snapshot.php">Search Snapshot</a></li>-->
@@ -82,7 +95,7 @@
                                          </li>
 										 
                                          
-										 
+										<?php if($view_interview == '1'):?> 
                                          <li class="dropdown">
                                             <a data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icon-list-alt icon-white"></i> Interviews <!--span class="label-bub label-info bubble">14</span--><b class="caret"></b></a>
 											  <ul class="dropdown-menu">                                              
@@ -92,7 +105,9 @@
 												<li><a href="snapshot.php">Search Snapshot</a></li>-->
                                             </ul>
                                          </li>
-                                      
+                                       <?php endif; ?>
+									   
+									   
                                         <li class="dropdown">
                                             <a data-toggle="dropdown" class="dropdown-toggle " href="#"><i class="icon-file icon-white"></i> Incentive <b class="caret"></b></a>
                                            <ul class="dropdown-menu">

@@ -58,6 +58,22 @@ class PositionController extends AppController {
 					'conditions' => array('`Read.requirements_id` = `Position`.`id`',
 					'Read.users_id' => $this->Session->read('USER.Login.id'),
 					'Read.status' => 'U')
+			),			
+			
+			array('table' => 'client_account_holder',
+					'alias' => 'AH',					
+					'type' => 'LEFT',
+					'conditions' => array('`AH`.`clients_id` = `Client`.`id`')
+			),
+			array('table' => 'users',
+					'alias' => 'CAH',					
+					'type' => 'LEFT',
+					'conditions' => array('`AH`.`users_id` = `CAH`.`id`')
+			),
+			array('table' => 'req_team',
+					'alias' => 'ReqTeam',					
+					'type' => 'LEFT',
+					'conditions' => array('`ReqTeam`.`requirements_id` = `Position`.`id`')
 			)
 		);
 		
@@ -69,6 +85,23 @@ class PositionController extends AppController {
 			$date_cond = array('or' => array("DATE_FORMAT(Position.created_date, '%Y-%m-%d') between ? and ?" => 
 						array($this->Functions->format_date_save($start), $this->Functions->format_date_save($end_search))));
 		}
+		
+		// check role based access
+		if($this->Session->read('USER.Login.roles_id') == '34'){ // account holder
+			$empCond = array('AH.users_id' => $this->Session->read('USER.Login.id'));
+		}else if($this->Session->read('USER.Login.roles_id') == '30'){ // recruiter
+			$empCond = array('OR' => array(
+					'ReqResume.created_by' =>  $this->Session->read('USER.Login.id'),
+					'ReqTeam.users_id' => $this->Session->read('USER.Login.id')
+					)
+			);
+			//$empCond = array('ReqResumeStatus.created_by' => $this->Session->read('USER.Login.id'),
+			//'ReqResumeStatus.stage_title' => 'Validation - Account Holder', 'ReqResumeStatus.status_title' => 'Validated');		
+		}else if($this->Session->read('USER.Login.roles_id') == '33' || $this->Session->read('USER.Login.roles_id') == '35'){ // director & BD
+			$empCond = '';
+		}
+		
+	
 		
 		// set keyword condition
 		if($this->params->query['keyword'] != ''){
@@ -133,6 +166,7 @@ class PositionController extends AppController {
 	
 	/* function to add the position */
 	public function add(){ 
+		$this->check_role_access(4);
 		// set the page title		
 		$this->set('title_for_layout', 'Create Position - Positions - CT Hiring');	
 		$this->load_static_data();
@@ -639,5 +673,10 @@ class PositionController extends AppController {
 	/* function to send the message */
 	public function send_message(){
 		
+	}
+	
+	// check the role permissions
+	public function beforeFilter(){ 
+		$this->check_role_access(5);
 	}
 }

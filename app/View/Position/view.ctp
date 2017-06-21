@@ -32,10 +32,14 @@
 					<input value="Edit" type="button" class="btn btn-info"></a>
 					<!--<a href="#"  class="sepV_a" title="Delete Position">
 					<input value="Delete" type="button" class="btn btn-danger"/></a>-->
+					
+					<?php if($create_resume == '1'):?>
 					<a rel="tooltip"  title="Upload New Resume" href="<?php echo $this->webroot;?>hiring/upload_resume.php" 
 					 val="40_50"  class="iframeBox sepV_a cboxElement">
 					<input value="Upload Resume" type="button" class="btn btn-warning"></a>					
-							</div>
+						<?php endif; ?>
+
+						</div>
 							
 							
 							

@@ -34,8 +34,11 @@
 							<input type="button" value="Search" class="homeSrch btn btn-success"/></a>
 							<a class="notify jsRedirect" data-notify-time = '3000' data-notify-title="In Progress!" data-notify-message="Downloading Excel... Please wait..."   href="<?php echo $this->webroot;?>position/?action=export&<?php echo $this->Functions->get_url_vars($this->request->query);?>"><input type="button" value="Export Excel" class="btn btn-warning"/></a>
 
+							 <?php if($create_client == '1'):?>
 							<a class="jsRedirect" data-notify-time = '3000'   href="<?php echo $this->webroot;?>position/add/">
-							<input type="button" value="Create Position" class="btn btn-info"/></a>						
+							<input type="button" value="Create Position" class="btn btn-info"/></a>		
+							<?php endif; ?>
+							
 							</div>
 						
 						
@@ -141,8 +144,8 @@
 										
 						
 						<td width=""><?php echo $req[0]['team_member'];?></td>
-						<td width=""  style="text-align:center"><?php echo $req[0]['cv_sent'];?>
-						<td width=""  style="text-align:center"><?php echo $this->Functions->get_total_joined($req[0]['joined']);?></td>
+						<td width=""  style="text-align:center"><a title="View CV Sent"  href="<?php echo $this->webroot;?>resume/?status=1" rel="tooltip"><?php echo $req[0]['cv_sent'];?></a>
+						<td width=""  style="text-align:center"><a title="View Joined Resumes"  href="<?php echo $this->webroot;?>resume/?status=10"  rel="tooltip"><?php echo $this->Functions->get_total_joined($req[0]['joined']);?></a></td>
 						<td width=""  style="text-align:center"><span rel="tooltip" title="Requirement Status: <?php echo $req['ReqStatus']['title'];?> " class="label label-<?php echo $this->Functions->get_req_status_color($req['ReqStatus']['title']);?>"><?php echo $req['ReqStatus']['title'];?></span>			
 										</td>
 						<td width=""><?php echo $req['Creator']['first_name'];?></td>

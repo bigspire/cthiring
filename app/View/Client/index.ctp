@@ -31,7 +31,10 @@
 						<div class="srch_buttons">
 							<a class="jsRedirect toggleSearch"  href="javascript:void(0)"><input type="button" value="Search" class="homeSrch btn btn-success"/></a>
 							<a class="notify" data-notify-time = '3000' data-notify-title="In Progress!" data-notify-message="Downloading Excel... Please wait..."  href="<?php echo $this->webroot;?>client/?action=export&<?php echo $this->Functions->get_url_vars($this->request->query);?>"><input type="button" value="Export Excel" class="btn btn-warning"/></a>
+							
+							<?php if($create_position == '1'):?>
 							<a class="jsRedirect"  href="<?php echo $this->webroot;?>client/add/"><input type="button" value="Create Client" class="btn btn-info"/></a>
+							<?php endif; ?>
 						</div>
 						
 			<?php echo $this->Session->flash();?>			
@@ -64,6 +67,8 @@
 
 						<input type="hidden" value="1" id="SearchKeywords">
 						<input type="hidden" value="<?php echo $this->webroot;?>client/" id="webroot">
+					<input type="hidden" id="srchSubmit" value="<?php echo $this->params->query['srch_status'];?>">
+
 						
 	<label>Status: 
 							<?php echo $this->Form->input('status', array('div'=> false,'type' => 'select', 'label' => false, 'class' => 'input-small', 'empty' => 'Select', 'selected' => $this->params->query['status'], 'required' => false, 'placeholder' => '', 'style' => "clear:left", 'options' => array('2' => 'Active','1' => 'Inactive'))); ?> 

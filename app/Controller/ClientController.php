@@ -54,8 +54,21 @@ class ClientController extends AppController {
 			$status = $this->request->query['status'] == '2' ?  '0' : $this->request->query['status'];
 			$stCond = array('Client.status' => $status);
 		}
-		// user condition
-		if($this->Session->read('USER.Login.rights') != '5'){
+		// check role based access
+		if($this->Session->read('USER.Login.roles_id') == '34'){ // account holder
+			$empCond = array('AH.users_id' => $this->Session->read('USER.Login.id'));
+		}else if($this->Session->read('USER.Login.roles_id') == '30'){ // recruiter
+			$empCond = array('OR' => array(
+					'ReqResume.created_by' =>  $this->Session->read('USER.Login.id'),
+					'ReqTeam.users_id' => $this->Session->read('USER.Login.id')
+					)
+			);		
+			//$empCond = array('ReqResumeStatus.created_by' => $this->Session->read('USER.Login.id'),
+			//'ReqResumeStatus.stage_title' => 'Validation - Account Holder', 'ReqResumeStatus.status_title' => 'Validated');		
+		}else if($this->Session->read('USER.Login.roles_id') == '33' || $this->Session->read('USER.Login.roles_id') == '35'){ // director & BD
+			$empCond = '';
+		}
+		
 			$options = array(			
 				array('table' => 'requirements',
 						'alias' => 'Position',					
@@ -66,12 +79,7 @@ class ClientController extends AppController {
 						'alias' => 'ReqResume',					
 						'type' => 'LEFT',
 						'conditions' => array('`ReqResume`.`requirements_id` = `Position`.`id`')
-				),
-				array('table' => 'req_resume_status',
-						'alias' => 'ReqResumeStatus',					
-						'type' => 'LEFT',
-						'conditions' => array('`ReqResumeStatus`.`req_resume_id` = `ReqResume`.`id`')
-				),
+				),				
 				array('table' => 'client_account_holder',
 						'alias' => 'AH',					
 						'type' => 'LEFT',
@@ -91,13 +99,15 @@ class ClientController extends AppController {
 						'alias' => 'CON',					
 						'type' => 'LEFT',
 						'conditions' => array('`CON`.`id` = `CC`.`contact_id`')
+				),
+				array('table' => 'req_team',
+						'alias' => 'ReqTeam',					
+						'type' => 'LEFT',
+						'conditions' => array('`ReqTeam`.`requirements_id` = `Position`.`id`')
 				)
 			);
 			
-			// $empCond = array('ReqResumeStatus.created_by' => $this->Session->read('USER.Login.id'));
-		}
 		
-		$empCond = array('Client.created_by' => $this->Session->read('USER.Login.id'));
 		
 		// set the page title
 		$this->set('title_for_layout', 'Clients - CT Hiring - ES');	
@@ -273,7 +283,8 @@ class ClientController extends AppController {
 	}
 	
 	/* function to add the client */
-	public function add(){ 
+	public function add(){
+		$this->check_role_access(1);
 		// set the page title		
 		$this->set('title_for_layout', 'Create Client - Clients - CT Hiring');	
 		$this->load_static_data();
@@ -526,6 +537,11 @@ class ClientController extends AppController {
 			$this->set('results', $data);
 		}
     }
+	
+	// check the role permissions
+	public function beforeFilter(){ 
+		$this->check_role_access(2);
+	}
 	
 
 }
