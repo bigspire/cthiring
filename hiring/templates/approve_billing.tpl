@@ -63,24 +63,20 @@
 						{/if}
 						<form action="" id="formID" name="searchFrm" class="formID" method="post" accept-charset="utf-8"><div style="display:none;"><input type="hidden" name="_method" value="POST"/></div>	
 						<div class="{$hide} dataTables_filter srchBox reset_show" style="float:left;" id="dt_gal_filter">
-							<label style="margin-top:18px;"><a href="approve_billing.php" class="jsRedirect">
-							<input value="Reset" id="reset" type="button" class="btn"/></a>
-							</label>
-							<label style="margin-top:18px;"><input type="submit" value="Submit" class="btn btn-gebo" /></label>
-							
+						<label style="margin-left:0;">Keyword: <input type="text" placeholder="Candidate Name or Client Name" name="keyword" id ="keyword" value="{$keyword}" class="input-large" aria-controls="dt_gal"></label>	
+						<label>Billing Till: <input type="text" name="t_date" value="{$t_date}" placeholder="dd/mm/yyyy" class="input-small datepick" aria-controls="dt_gal"></label>
+						<label>Billing From: <input type="text" class="input-small datepick" name="f_date" placeholder="dd/mm/yyyy" value="{$f_date}" aria-controls="dt_gal"></label>
 						<label>Employee: 
 						<select name="employee" class="input-medium" placeholder="" style="clear:left" id="BillingEmpId">
 						<option value="">Select</option>
 							{html_options options=$emp_name selected=$employee}
 						</option>
 						</select> 
+						</label>
+						<label style="margin-top:18px;"><input type="submit" value="Submit" class="btn btn-gebo" /></label>
+						<label style="margin-top:18px;"><a href="approve_billing.php" class="jsRedirect">
+							<input value="Reset" id="reset" type="button" class="btn"/></a>
 						</label>	
-							
-							
-						<label>Billing Till: <input type="text" name="t_date" value="{$t_date}" placeholder="dd/mm/yyyy" class="input-small datepick" aria-controls="dt_gal"></label>
-						<label>Billing From: <input type="text" class="input-small datepick" name="f_date" placeholder="dd/mm/yyyy" value="{$f_date}" aria-controls="dt_gal"></label>
-						<label style="margin-left:0;">Keyword: <input type="text" placeholder="Candidate Name or Client Name" name="keyword" id ="keyword" value="{$keyword}" class="input-large" aria-controls="dt_gal"></label>
-
 						</div>
 
 						<input type="hidden" value="1" id="SearchKeywords">

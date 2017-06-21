@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-06-20 16:15:30
+/* Smarty version 3.1.29, created on 2017-06-20 17:30:01
   from "C:\xampp\htdocs\2017\ctsvn\cthiring\hiring\templates\upload_resume.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5948fccaa90c86_24261795',
+  'unifunc' => 'content_59490e419a6781_68751596',
   'file_dependency' => 
   array (
     '1effb1acafb93d7bfa5e9c52b333e85de322510f' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\templates\\upload_resume.tpl',
-      1 => 1497955522,
+      1 => 1497959266,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_5948fccaa90c86_24261795 ($_smarty_tpl) {
+function content_59490e419a6781_68751596 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -85,7 +85,7 @@ if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdoc
 
 
 				 		
-<form action="upload_resume.php" id="formID" method="post" enctype="multipart/form-data" accept-charset="utf-8">
+<form action="upload_resume.php" class="formID" id="formID" method="post" enctype="multipart/form-data" accept-charset="utf-8">
 <div class="box">
 	<div class="row-fluid">
 		<div class="span6">
@@ -131,7 +131,7 @@ echo $_smarty_tpl->tpl_vars['attachmentuploadErr']->value;?>
 			<div class="form-actions">
 				<input name="submit" class="btn btn-gebo theForm" value="Save" type="submit"/>
 				<!--<button class="btn btn-gebo theForm" type="submit">Save</button>-->
-				<input type="button" value="Cancel" class="btn cancel">
+				<input type="button" value="Cancel" class="cancelBtn btn cancel">
 			</div>
 		</div>
 	</div>

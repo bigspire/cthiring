@@ -61,9 +61,7 @@
 					<form action="" id="formID" name="searchFrm" class="formID" method="post" accept-charset="utf-8">
 						<div style="display:none;"><input type="hidden" name="_method" value="POST"/></div>	
 						<div class="{$hide} dataTables_filter srchBox" style="float:left;" id="dt_gal_filter">
-							<label style="margin-top:18px;"><a class="jsRedirect" href="incentive.php"><input value="Reset" type="button" class="btn"/></a></label>
-							<label style="margin-top:18px;"><input type="submit" value="Submit" class="btn btn-gebo" /></label>
-					
+							
 							
 							<label>To Date: <input type="text" placeholder="dd/mm/yyyy" name="t_date" value="{$t_date}" class="input-small datepick" aria-controls="dt_gal"></label>
 							<label>From Date: <input type="text" placeholder="dd/mm/yyyy" class="input-small datepick" name="f_date" value="{$f_date}" aria-controls="dt_gal"></label>
@@ -72,14 +70,10 @@
 						<option value="">Select</option>
 							{html_options options=$emp_name selected=$employee}
 						</option>
-						</select> 
-</label>
-							
-							<!--<label style="margin-left:0">Keyword: <input type="text" placeholder="Job Title or Client Name.." 
-							name="keyword" id = "keyword" value="{$keyword}" class="input-large" 
-							aria-controls="dt_gal"></label>-->
-
-														</div>
+						</select> </label>
+							<label style="margin-top:18px;"><input type="submit" value="Submit" class="btn btn-gebo" /></label>
+					<label style="margin-top:18px;"><a class="jsRedirect" href="incentive.php"><input value="Reset" type="button" class="btn"/></a></label>																		
+					</div>
 
 						<input type="hidden" value="1" id="SearchKeywords">
 						<input type="hidden" value="incentive/" id="webroot">
@@ -90,14 +84,14 @@
 							<table class="table table-striped table-bordered dataTable stickyTable">
 								<thead>
 									<tr>
-										<th width="180"><a href="incentive.php?field=employee&order={$order}&page={$smarty.get.page}&f_date={$f_date}&t_date={$t_date}&employee={$employee}" class="{$sort_field_employee}">Employee</a></th>										
-										<th width="150"><a href="incentive.php?field=target_amt&order={$order}&page={$smarty.get.page}&f_date={$f_date}&t_date={$t_date}&employee={$employee}" class="{$sort_field_target_amt}">Target Amount</a></th>
-										<th width="180"><a href="incentive.php?field=achievement_amt&order={$order}&page={$smarty.get.page}&f_date={$f_date}&t_date={$t_date}&employee={$employee}" class="{$sort_field_achievement_amt}">Achievement in Amt.</a></th>
-										<th width="160"><a href="incentive.php?field=achievement_percent&order={$order}&page={$smarty.get.page}&f_date={$f_date}&t_date={$t_date}&employee={$employee}" class="{$sort_field_achievement_percent}">Achievement in % </a></th>
-										<th width="150"><a href="incentive.php?field=eligible_incentive_percent&order={$order}&page={$smarty.get.page}&f_date={$f_date}&t_date={$t_date}&employee={$employee}" class="{$sort_field_eligible_incentive_percent}">Eligible Incentive % </a></th>
-										<th width="180"><a href="incentive.php?field=eligible_incentive_amt&order={$order}&page={$smarty.get.page}&f_date={$f_date}&t_date={$t_date}&employee={$employee}" class="{$sort_field_eligible_incentive_amt}">Eligible Incentive Amt. </a></th>
-										<th width="100"><a href="incentive.php?field=quarter&order={$order}&page={$smarty.get.page}&f_date={$f_date}&t_date={$t_date}&employee={$employee}" class="{$sort_field_quarter}">Quarter</a></th>
-										<th width="120"><a href="incentive.php?field=created_date&order={$order}&page={$smarty.get.page}&f_date={$f_date}&t_date={$t_date}&employee={$employee}" class="{$sort_field_created_date}">Created</a></th>
+										<th width="180"><a href="incentive.php?field=employee&order={$order}&page={$smarty.get.page}&f_date={$f_date}&t_date={$t_date}&employee={$employee}" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="{$sort_field_employee}">Employee</a></th>										
+										<th width="150"><a href="incentive.php?field=target_amt&order={$order}&page={$smarty.get.page}&f_date={$f_date}&t_date={$t_date}&employee={$employee}" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="{$sort_field_target_amt}">Target Amount</a></th>
+										<th width="180"><a href="incentive.php?field=achievement_amt&order={$order}&page={$smarty.get.page}&f_date={$f_date}&t_date={$t_date}&employee={$employee}" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="{$sort_field_achievement_amt}">Achievement in Amt.</a></th>
+										<th width="160"><a href="incentive.php?field=achievement_percent&order={$order}&page={$smarty.get.page}&f_date={$f_date}&t_date={$t_date}&employee={$employee}" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="{$sort_field_achievement_percent}">Achievement in % </a></th>
+										<th width="150"><a href="incentive.php?field=eligible_incentive_percent&order={$order}&page={$smarty.get.page}&f_date={$f_date}&t_date={$t_date}&employee={$employee}" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="{$sort_field_eligible_incentive_percent}">Eligible Incentive % </a></th>
+										<th width="180"><a href="incentive.php?field=eligible_incentive_amt&order={$order}&page={$smarty.get.page}&f_date={$f_date}&t_date={$t_date}&employee={$employee}" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="{$sort_field_eligible_incentive_amt}">Eligible Incentive Amt. </a></th>
+										<th width="100"><a href="incentive.php?field=quarter&order={$order}&page={$smarty.get.page}&f_date={$f_date}&t_date={$t_date}&employee={$employee}" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="{$sort_field_quarter}">Quarter</a></th>
+										<th width="120"><a href="incentive.php?field=created_date&order={$order}&page={$smarty.get.page}&f_date={$f_date}&t_date={$t_date}&employee={$employee}" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="{$sort_field_created_date}">Created</a></th>
 									</tr>
 								</thead>
 

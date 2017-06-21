@@ -60,16 +60,14 @@
 						<form action="" id="formID" name="searchFrm" class="formID" method="post" accept-charset="utf-8"><div style="display:none;"><input type="hidden" name="_method" value="POST"/></div>	
 							<div style="display:none;"><input type="hidden" name="_method" value="POST"/></div>	
 							<div class="{$hide} dataTables_filter srchBox" style="float:left;" id="dt_gal_filter">
-							<label style="margin-top:18px;"><a href="users.php" class="jsRedirect"><input value="Reset" type="button" class="btn"/></a></label>
-							<label style="margin-top:18px;"><input type="submit" value="Submit" class="btn btn-gebo" /></label>
-							
+							<label style="margin-left:0;">Keyword: <input type="text" placeholder="Search Here..." name="keyword" id="keyword" value="{$keyword}" class="input-large" aria-controls="dt_gal"></label>
 							<label>Status: 
 							<select name="status" class="input-small" style="clear:left" id="ClientStatus">
 								{html_options options=$status_type selected=$status}
 							</select> 
 							</label>
-							<label style="margin-left:0;">Keyword: <input type="text" placeholder="Search Here..." name="keyword" id="keyword" value="{$keyword}" class="input-large" aria-controls="dt_gal"></label>
-							
+							<label style="margin-top:18px;"><input type="submit" value="Submit" class="btn btn-gebo" /></label>
+							<label style="margin-top:18px;"><a href="users.php" class="jsRedirect"><input value="Reset" type="button" class="btn"/></a></label>
 							</div>
 
 						<input type="hidden" value="1" id="SearchKeywords">
@@ -81,13 +79,13 @@
 							<table class="table table-striped table-bordered dataTable stickyTable">
 								<thead>
 									<tr>
-										<th width="200"><a href="users.php?field=employee&order={$order}&page={$smarty.get.page}&keyword={$keyword}&status={$status}" class="{$sort_field_employee}">Full Name</a></th>
-										<th width="100"><a href="users.php?field=email_id&order={$order}&page={$smarty.get.page}&keyword={$keyword}&status={$status}" class="{$sort_field_email_id}">Email</a></th>
-										<th width="100"><a href="users.php?field=mobile&order={$order}&page={$smarty.get.page}&keyword={$keyword}&status={$status}" class="{$sort_field_mobile}">Mobile</a></th>
-										<th width="100"><a href="users.php?field=role_name&order={$order}&page={$smarty.get.page}&keyword={$keyword}&status={$status}" class="{$sort_field_role_name}">Role</a></th>
-										<th width="100"><a href="users.php?field=status&order={$order}&page={$smarty.get.page}&keyword={$keyword}&status={$status}" class="{$sort_field_status}">Status</a></th>
-										<th width="75"><a href="users.php?field=created_date&order={$order}&page={$smarty.get.page}&keyword={$keyword}&status={$status}" class="{$sort_field_created_date}">Created</a></th>
-										<th width="75"><a href="users.php?field=modified_date&order={$order}&page={$smarty.get.page}&keyword={$keyword}&status={$status}" class="{$sort_field_modified_date}">Modified</a></th>
+										<th width="200"><a href="users.php?field=employee&order={$order}&page={$smarty.get.page}&keyword={$keyword}&status={$status}" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="{$sort_field_employee}">Full Name</a></th>
+										<th width="100"><a href="users.php?field=email_id&order={$order}&page={$smarty.get.page}&keyword={$keyword}&status={$status}" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="{$sort_field_email_id}">Email</a></th>
+										<th width="100"><a href="users.php?field=mobile&order={$order}&page={$smarty.get.page}&keyword={$keyword}&status={$status}" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="{$sort_field_mobile}">Mobile</a></th>
+										<th width="100"><a href="users.php?field=role_name&order={$order}&page={$smarty.get.page}&keyword={$keyword}&status={$status}" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="{$sort_field_role_name}">Role</a></th>
+										<th width="100"><a href="users.php?field=status&order={$order}&page={$smarty.get.page}&keyword={$keyword}&status={$status}" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="{$sort_field_status}">Status</a></th>
+										<th width="75"><a href="users.php?field=created_date&order={$order}&page={$smarty.get.page}&keyword={$keyword}&status={$status}" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="{$sort_field_created_date}">Created</a></th>
+										<th width="75"><a href="users.php?field=modified_date&order={$order}&page={$smarty.get.page}&keyword={$keyword}&status={$status}" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="{$sort_field_modified_date}">Modified</a></th>
 										<th width="30" style="text-align:center">Actions</th>
 									</tr>
 								</thead>

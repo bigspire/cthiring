@@ -35,15 +35,9 @@
 			<form>
 															
 				<div class="dataTables_filter homeSrchBox srchBox" style="float:left;margin-left:;margin-top:15px"  id="dt_gal_filter">
-						<label style="margin-top:18px;"><a href="javascript:void(0)">
-						<input value="Toggle Graph" type="button" class="btn hide_graph"/></a></label>
-						<label style="margin-top:18px;"><a href="#">
-						<input value="Export" type="button" class="btn btn-warning"/></a></label>
-						<label style="margin-top:18px;"><a href="recruiter_performance.php">
-						<input value="Reset" type="button" class="btn"/></a></label>
-						<label style="margin-top:18px;"><input type="submit" value="Submit" class="btn btn-gebo" />					
-						</label>
-							
+						<label>To Date: <input type="text" name="t_date" value="{$t_date}" class="input-small datepick" aria-controls="dt_gal"></label>
+						<label>From Date: <input type="text" class="input-small datepick" name="f_date" value="{$f_date}" aria-controls="dt_gal"></label>
+					
 						<label>Employee: 
 							<select name="emp_name" class="input-medium" placeholder="" style="clear:left" id="emp_name">
 								<option value="">Select</option>	
@@ -57,8 +51,14 @@
 								{html_options options=$clients selected=$smarty.get.client_name}			    			
 							</select>
 						</label>
-						<label>To Date: <input type="text" name="t_date" value="{$t_date}" class="input-small datepick" aria-controls="dt_gal"></label>
-						<label>From Date: <input type="text" class="input-small datepick" name="f_date" value="{$f_date}" aria-controls="dt_gal"></label>
+						<label style="margin-top:18px;"><a href="javascript:void(0)">
+						<input value="Toggle Graph" type="button" class="btn hide_graph"/></a></label>
+						<label style="margin-top:18px;"><a href="#">
+						<input value="Export" type="button" class="btn btn-warning"/></a></label>
+						<label style="margin-top:18px;"><a href="recruiter_performance.php">
+						<input value="Reset" type="button" class="btn"/></a></label>
+						<label style="margin-top:18px;"><input type="submit" value="Submit" class="btn btn-gebo" />					
+						</label>
 				</div>
 					
 <input type="hidden" name="submit" id="submit"/>

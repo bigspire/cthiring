@@ -62,24 +62,10 @@
 						<form action="" id="formID" name="searchFrm" class="formID" method="post" accept-charset="utf-8">
 						<div style="display:none;"><input type="hidden" name="_method" value="POST"/></div>	
 						<div class="{$hide} dataTables_filter srchBox" style="float:left;" id="dt_gal_filter">
-						<label style="margin-top:18px;">
-							<a class="jsRedirect" href="interview.php"><input value="Reset" type="button" class="btn"/></a></label>
-							<label style="margin-top:18px;">
-							<input type="submit" value="Submit" class="btn btn-gebo" /></label>
-				
-						<label>Current Status: 
-						<select name="current_status" class="input-medium" placeholder="" style="clear:left" id="InterviewStatus">
-						{html_options options=$status_type selected=$current_status}
-						</select> 
-						</label>
-	
-						<label>Branch: 
-							<select name="branch" class="input-medium" placeholder="" style="clear:left" id="ResumeLoc">
-						<option value="">Select</option>
-							{html_options options=$branch_name selected=$branch}
-							</select> 
-						</label>	
-										
+						
+						<label style="margin-left:0;">Keyword: <input type="text" placeholder="Search Here..." name="keyword" id = "keyword" value="{$keyword}" class="input-medium" aria-controls="dt_gal"></label>
+						<label>To Date: <input type="text" name="t_date" placeholder="dd/mm/yyyy" value="{$t_date}" style="width:70px;"  class="input-small datepick" aria-controls="dt_gal"></label>
+						<label>From Date: <input type="text" class="input-small datepick" name="f_date" placeholder="dd/mm/yyyy" style="width:70px;"  value="{$f_date}" aria-controls="dt_gal"></label>
 						<label>Employee: 
 						<select name="employee" class="input-medium" placeholder="" style="clear:left" id="InterviewEmpId">
 						<option value="">Select</option>
@@ -87,14 +73,22 @@
 						</option>
 						</select> 
 						</label>
-
-							
-							<label>To Date: <input type="text" name="t_date" placeholder="dd/mm/yyyy" value="{$t_date}" style="width:70px;"  class="input-small datepick" aria-controls="dt_gal"></label>
-
-							<label>From Date: <input type="text" class="input-small datepick" name="f_date" placeholder="dd/mm/yyyy" style="width:70px;"  value="{$f_date}" aria-controls="dt_gal"></label>
-							<label style="margin-left:0;">Keyword: <input type="text" placeholder="Search Here..." name="keyword" id = "keyword" value="{$keyword}" class="input-medium" aria-controls="dt_gal"></label>
-
-														</div>
+						<label>Branch: 
+							<select name="branch" class="input-medium" placeholder="" style="clear:left" id="ResumeLoc">
+						<option value="">Select</option>
+							{html_options options=$branch_name selected=$branch}
+							</select> 
+						</label>
+						<label>Current Status: 
+						<select name="current_status" class="input-medium" placeholder="" style="clear:left" id="InterviewStatus">
+						{html_options options=$status_type selected=$current_status}
+						</select> 
+						</label>						
+						<label style="margin-top:18px;">
+							<a class="jsRedirect" href="interview.php"><input value="Reset" type="button" class="btn"/></a></label>
+							<label style="margin-top:18px;">
+							<input type="submit" value="Submit" class="btn btn-gebo" /></label>				
+					</div>
 <input type="hidden" value="1" id="SearchKeywords">
 						<input type="hidden" value="interview/" id="webroot">
 						</form>
@@ -102,14 +96,14 @@
 						<table class="table table-striped table-bordered dataTable stickyTable">
 								<thead>
 									<tr>
-										<th width="120"><a href="interview.php?field=candidate_name&order={$order}&page={$smarty.get.page}&keyword={$keyword}&f_date={$f_date}&t_date={$t_date}&employee={$employee}&branch={$branch}&status={$status}" class="{$sort_field_candidate_name}">Candidate Name</a></th>
-										<th width="150"><a href="interview.php?field=position&order={$order}&page={$smarty.get.page}&keyword={$keyword}&f_date={$f_date}&t_date={$t_date}&employee={$employee}&branch={$branch}&status={$status}" class="{$sort_field_position}">Position</a></th>
-										<th width="120"><a href="interview.php?field=company&order={$order}&page={$smarty.get.page}&keyword={$keyword}&f_date={$f_date}&t_date={$t_date}&employee={$employee}&branch={$branch}&status={$status}" class="{$sort_field_company}">Company</a></th>
-										<th width="60"><a href="interview.php?field=interview_date&order={$order}&page={$smarty.get.page}&keyword={$keyword}&f_date={$f_date}&t_date={$t_date}&employee={$employee}&branch={$branch}&status={$status}" class="{$sort_field_interview_date}">Interview Date</a></th>
-										<th width="50"><a href="interview.php?field=stage&order={$order}&page={$smarty.get.page}&keyword={$keyword}&f_date={$f_date}&t_date={$t_date}&employee={$employee}&branch={$branch}&status={$status}" class="{$sort_field_stage}">Stage</a></th>
-										<th width="50"><a href="interview.php?field=current_status&order={$order}&page={$smarty.get.page}&keyword={$keyword}&f_date={$f_date}&t_date={$t_date}&employee={$employee}&branch={$branch}&current_status={$current_status}" class="{$sort_field_current_status}">Status</a></th>
-										<th width="90"><a href="interview.php?field=created_by&order={$order}&page={$smarty.get.page}&keyword={$keyword}&f_date={$f_date}&t_date={$t_date}&employee={$employee}&branch={$branch}&status={$status}" class="{$sort_field_created_by}">Created By</a></th>
-										<th width="50"><a href="interview.php?field=created_date&order={$order}&page={$smarty.get.page}&keyword={$keyword}&f_date={$f_date}&t_date={$t_date}&employee={$employee}&branch={$branch}&status={$status}" class="{$sort_field_created_date}">Created</a></th>
+										<th width="120"><a href="interview.php?field=candidate_name&order={$order}&page={$smarty.get.page}&keyword={$keyword}&f_date={$f_date}&t_date={$t_date}&employee={$employee}&branch={$branch}&status={$status}" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="{$sort_field_candidate_name}">Candidate Name</a></th>
+										<th width="150"><a href="interview.php?field=position&order={$order}&page={$smarty.get.page}&keyword={$keyword}&f_date={$f_date}&t_date={$t_date}&employee={$employee}&branch={$branch}&status={$status}" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="{$sort_field_position}">Position</a></th>
+										<th width="120"><a href="interview.php?field=company&order={$order}&page={$smarty.get.page}&keyword={$keyword}&f_date={$f_date}&t_date={$t_date}&employee={$employee}&branch={$branch}&status={$status}" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="{$sort_field_company}">Company</a></th>
+										<th width="60"><a href="interview.php?field=interview_date&order={$order}&page={$smarty.get.page}&keyword={$keyword}&f_date={$f_date}&t_date={$t_date}&employee={$employee}&branch={$branch}&status={$status}" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="{$sort_field_interview_date}">Interview Date</a></th>
+										<th width="50"><a href="interview.php?field=stage&order={$order}&page={$smarty.get.page}&keyword={$keyword}&f_date={$f_date}&t_date={$t_date}&employee={$employee}&branch={$branch}&status={$status}" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="{$sort_field_stage}">Stage</a></th>
+										<th width="50"><a href="interview.php?field=current_status&order={$order}&page={$smarty.get.page}&keyword={$keyword}&f_date={$f_date}&t_date={$t_date}&employee={$employee}&branch={$branch}&current_status={$current_status}" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="{$sort_field_current_status}">Status</a></th>
+										<th width="90"><a href="interview.php?field=created_by&order={$order}&page={$smarty.get.page}&keyword={$keyword}&f_date={$f_date}&t_date={$t_date}&employee={$employee}&branch={$branch}&status={$status}" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="{$sort_field_created_by}">Created By</a></th>
+										<th width="50"><a href="interview.php?field=created_date&order={$order}&page={$smarty.get.page}&keyword={$keyword}&f_date={$f_date}&t_date={$t_date}&employee={$employee}&branch={$branch}&status={$status}" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="{$sort_field_created_date}">Created</a></th>
 									</tr>
 								</thead>
 								<tbody>

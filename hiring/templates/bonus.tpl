@@ -41,9 +41,9 @@
 							</div>
 	<form action="#" id="formID" class="formID" method="post" accept-charset="utf-8"><div style="display:none;"><input type="hidden" name="_method" value="POST"/></div>		
 							<div class="dn dataTables_filter srchBox" style="float:left;" id="dt_gal_filter">							
-							<label style="margin-top:18px;"><a class="jsRedirect" href="bonus.php"><input value="Reset" type="button" class="btn"/></a></label>
-							<label style="margin-top:18px;"><input type="submit" value="Submit" class="btn btn-gebo" /></label>
-					
+							<label style="margin-left:0">Keyword: <input type="text" placeholder="Job Title or Client Name.." name="data[Bonus][keyword]" id = "SearchText" value="" class="input-large" aria-controls="dt_gal"></label>
+
+							
 							
 							<label>To Date: <input type="text" placeholder="dd/mm/yyyy" name="data[Bonus][to]" value="" class="input-small datepick" aria-controls="dt_gal"></label>
 							<label>From Date: <input type="text" placeholder="dd/mm/yyyy" class="input-small datepick" name="data[Bonus][from]" value="" aria-controls="dt_gal"></label>
@@ -76,9 +76,12 @@
 <option value="73">Vandana</option>
 </select> 
 </label>
+<label style="margin-top:18px;"><input type="submit" value="Submit" class="btn btn-gebo" /></label>
+					
+<label style="margin-top:18px;"><a class="jsRedirect" href="bonus.php"><input value="Reset" type="button" class="btn"/></a></label>
 							
-							<label style="margin-left:0">Keyword: <input type="text" placeholder="Job Title or Client Name.." name="data[Bonus][keyword]" id = "SearchText" value="" class="input-large" aria-controls="dt_gal"></label>
-
+							
+							
 														</div>
 
 						<input type="hidden" value="1" id="SearchKeywords">

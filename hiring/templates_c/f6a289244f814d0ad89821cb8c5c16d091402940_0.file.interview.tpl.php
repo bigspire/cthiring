@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-06-12 19:37:42
+/* Smarty version 3.1.29, created on 2017-06-21 16:13:29
   from "C:\xampp\htdocs\2017\ctsvn\cthiring\hiring\templates\interview.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_593ea02ea28881_39270098',
+  'unifunc' => 'content_594a4dd1cfb9c0_10571700',
   'file_dependency' => 
   array (
     'f6a289244f814d0ad89821cb8c5c16d091402940' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\templates\\interview.tpl',
-      1 => 1497270582,
+      1 => 1498041752,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_593ea02ea28881_39270098 ($_smarty_tpl) {
+function content_594a4dd1cfb9c0_10571700 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -106,26 +106,13 @@ $_smarty_tpl->ext->_updateScope->updateScope($_smarty_tpl, 'hide', 0);?>
 						<div style="display:none;"><input type="hidden" name="_method" value="POST"/></div>	
 						<div class="<?php echo $_smarty_tpl->tpl_vars['hide']->value;?>
  dataTables_filter srchBox" style="float:left;" id="dt_gal_filter">
-						<label style="margin-top:18px;">
-							<a class="jsRedirect" href="interview.php"><input value="Reset" type="button" class="btn"/></a></label>
-							<label style="margin-top:18px;">
-							<input type="submit" value="Submit" class="btn btn-gebo" /></label>
-				
-						<label>Current Status: 
-						<select name="current_status" class="input-medium" placeholder="" style="clear:left" id="InterviewStatus">
-						<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['status_type']->value,'selected'=>$_smarty_tpl->tpl_vars['current_status']->value),$_smarty_tpl);?>
-
-						</select> 
-						</label>
-	
-						<label>Branch: 
-							<select name="branch" class="input-medium" placeholder="" style="clear:left" id="ResumeLoc">
-						<option value="">Select</option>
-							<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['branch_name']->value,'selected'=>$_smarty_tpl->tpl_vars['branch']->value),$_smarty_tpl);?>
-
-							</select> 
-						</label>	
-										
+						
+						<label style="margin-left:0;">Keyword: <input type="text" placeholder="Search Here..." name="keyword" id = "keyword" value="<?php echo $_smarty_tpl->tpl_vars['keyword']->value;?>
+" class="input-medium" aria-controls="dt_gal"></label>
+						<label>To Date: <input type="text" name="t_date" placeholder="dd/mm/yyyy" value="<?php echo $_smarty_tpl->tpl_vars['t_date']->value;?>
+" style="width:70px;"  class="input-small datepick" aria-controls="dt_gal"></label>
+						<label>From Date: <input type="text" class="input-small datepick" name="f_date" placeholder="dd/mm/yyyy" style="width:70px;"  value="<?php echo $_smarty_tpl->tpl_vars['f_date']->value;?>
+" aria-controls="dt_gal"></label>
 						<label>Employee: 
 						<select name="employee" class="input-medium" placeholder="" style="clear:left" id="InterviewEmpId">
 						<option value="">Select</option>
@@ -134,17 +121,24 @@ $_smarty_tpl->ext->_updateScope->updateScope($_smarty_tpl, 'hide', 0);?>
 						</option>
 						</select> 
 						</label>
+						<label>Branch: 
+							<select name="branch" class="input-medium" placeholder="" style="clear:left" id="ResumeLoc">
+						<option value="">Select</option>
+							<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['branch_name']->value,'selected'=>$_smarty_tpl->tpl_vars['branch']->value),$_smarty_tpl);?>
 
-							
-							<label>To Date: <input type="text" name="t_date" placeholder="dd/mm/yyyy" value="<?php echo $_smarty_tpl->tpl_vars['t_date']->value;?>
-" style="width:70px;"  class="input-small datepick" aria-controls="dt_gal"></label>
+							</select> 
+						</label>
+						<label>Current Status: 
+						<select name="current_status" class="input-medium" placeholder="" style="clear:left" id="InterviewStatus">
+						<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['status_type']->value,'selected'=>$_smarty_tpl->tpl_vars['current_status']->value),$_smarty_tpl);?>
 
-							<label>From Date: <input type="text" class="input-small datepick" name="f_date" placeholder="dd/mm/yyyy" style="width:70px;"  value="<?php echo $_smarty_tpl->tpl_vars['f_date']->value;?>
-" aria-controls="dt_gal"></label>
-							<label style="margin-left:0;">Keyword: <input type="text" placeholder="Search Here..." name="keyword" id = "keyword" value="<?php echo $_smarty_tpl->tpl_vars['keyword']->value;?>
-" class="input-medium" aria-controls="dt_gal"></label>
-
-														</div>
+						</select> 
+						</label>						
+						<label style="margin-top:18px;">
+							<a class="jsRedirect" href="interview.php"><input value="Reset" type="button" class="btn"/></a></label>
+							<label style="margin-top:18px;">
+							<input type="submit" value="Submit" class="btn btn-gebo" /></label>				
+					</div>
 <input type="hidden" value="1" id="SearchKeywords">
 						<input type="hidden" value="interview/" id="webroot">
 						</form>

@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-06-12 19:37:46
+/* Smarty version 3.1.29, created on 2017-06-21 16:15:08
   from "C:\xampp\htdocs\2017\ctsvn\cthiring\hiring\templates\incentive.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_593ea032553124_41473053',
+  'unifunc' => 'content_594a4e347b2946_97075494',
   'file_dependency' => 
   array (
     'eb99508c2f1c6575b67c530e753fbe03facaea6a' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\templates\\incentive.tpl',
-      1 => 1497270582,
+      1 => 1498041901,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_593ea032553124_41473053 ($_smarty_tpl) {
+function content_594a4e347b2946_97075494 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -99,9 +99,7 @@ $_smarty_tpl->ext->_updateScope->updateScope($_smarty_tpl, 'hide', 0);?>
 						<div style="display:none;"><input type="hidden" name="_method" value="POST"/></div>	
 						<div class="<?php echo $_smarty_tpl->tpl_vars['hide']->value;?>
  dataTables_filter srchBox" style="float:left;" id="dt_gal_filter">
-							<label style="margin-top:18px;"><a class="jsRedirect" href="incentive.php"><input value="Reset" type="button" class="btn"/></a></label>
-							<label style="margin-top:18px;"><input type="submit" value="Submit" class="btn btn-gebo" /></label>
-					
+							
 							
 							<label>To Date: <input type="text" placeholder="dd/mm/yyyy" name="t_date" value="<?php echo $_smarty_tpl->tpl_vars['t_date']->value;?>
 " class="input-small datepick" aria-controls="dt_gal"></label>
@@ -113,15 +111,10 @@ $_smarty_tpl->ext->_updateScope->updateScope($_smarty_tpl, 'hide', 0);?>
 							<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['emp_name']->value,'selected'=>$_smarty_tpl->tpl_vars['employee']->value),$_smarty_tpl);?>
 
 						</option>
-						</select> 
-</label>
-							
-							<!--<label style="margin-left:0">Keyword: <input type="text" placeholder="Job Title or Client Name.." 
-							name="keyword" id = "keyword" value="<?php echo $_smarty_tpl->tpl_vars['keyword']->value;?>
-" class="input-large" 
-							aria-controls="dt_gal"></label>-->
-
-														</div>
+						</select> </label>
+							<label style="margin-top:18px;"><input type="submit" value="Submit" class="btn btn-gebo" /></label>
+					<label style="margin-top:18px;"><a class="jsRedirect" href="incentive.php"><input value="Reset" type="button" class="btn"/></a></label>																		
+					</div>
 
 						<input type="hidden" value="1" id="SearchKeywords">
 						<input type="hidden" value="incentive/" id="webroot">

@@ -84,12 +84,12 @@
 							<table class="table table-striped table-bordered dataTable stickyTable">
 								<thead>
 									<tr>
-										<th width="200"><a href="eligibility.php?field=target_from&order={$order}&page={$smarty.get.page}&keyword={$keyword}&status={$status}" class="{$sort_target_from}">Target Actualization(%) </a></th>
-										<th width="150"><a href="eligibility.php?field=grade&order={$order}&page={$smarty.get.page}&keyword={$keyword}&status={$status}" class="{$sort_field_grade}">Grade</a></th>
-										<th width="230"><a href="eligibility.php?field=eligible&order={$order}&page={$smarty.get.page}&keyword={$keyword}&status={$status}" class="{$sort_field_eligible}">Eligibility Incentive(%) on realized contribution</a></th>
-										<th width="100"><a href="eligibility.php?field=status&order={$order}&page={$smarty.get.page}&keyword={$keyword}&status={$status}" class="{$sort_field_status}">Status</a></th>
-										<th width="80"><a href="eligibility.php?field=created&order={$order}&page={$smarty.get.page}&keyword={$keyword}&status={$status}" class="{$sort_field_created}">Created</a></th>
-										<th width="80"><a href="eligibility.php?field=modified&order={$order}&page={$smarty.get.page}&keyword={$keyword}&status={$status}" class="{$sort_field_modified}">Modified</a></th>
+										<th width="200"><a href="eligibility.php?field=target_from&order={$order}&page={$smarty.get.page}&keyword={$keyword}&status={$status}" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="{$sort_target_from}">Target Actualization(%) </a></th>
+										<th width="150"><a href="eligibility.php?field=grade&order={$order}&page={$smarty.get.page}&keyword={$keyword}&status={$status}" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="{$sort_field_grade}">Grade</a></th>
+										<th width="230"><a href="eligibility.php?field=eligible&order={$order}&page={$smarty.get.page}&keyword={$keyword}&status={$status}" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="{$sort_field_eligible}">Eligibility Incentive(%) on realized contribution</a></th>
+										<th width="100"><a href="eligibility.php?field=status&order={$order}&page={$smarty.get.page}&keyword={$keyword}&status={$status}" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="{$sort_field_status}">Status</a></th>
+										<th width="80"><a href="eligibility.php?field=created&order={$order}&page={$smarty.get.page}&keyword={$keyword}&status={$status}" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="{$sort_field_created}">Created</a></th>
+										<th width="80"><a href="eligibility.php?field=modified&order={$order}&page={$smarty.get.page}&keyword={$keyword}&status={$status}" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="{$sort_field_modified}">Modified</a></th>
 										<th width="50" style="text-align:center">Actions</th>
 									</tr>
 								</thead>

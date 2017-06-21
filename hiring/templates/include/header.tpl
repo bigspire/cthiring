@@ -96,27 +96,27 @@
 											</ul-->
                                         </li>
 										  <li class="dropdown <?php echo $fun->set_menu_active(array('add_client','edit_client','client','view_client','client_contact','add_client_contact','edit_client_contact'));?>">
-                                            <a data-toggle="dropdown" class="dropdown-toggle " href="#"><i class="icon-user icon-white"></i> Clients {if $client_count}<span class="label-bub label-info bubble">{$client_count}</span>{/if}<b class="caret"></b></a>
+                                            <a data-toggle="dropdown" class="dropdown-toggle " href="#"><i class="icon-user icon-white"></i> Clients {* if $client_count *}<!--span class="label-bub label-info bubble">{* $client_count *}</span-->{* /if *}<b class="caret"></b></a>
 											  <ul class="dropdown-menu">
                                                 <li><a href="{webroot}client/add/">Add Client</a></li>
-                                                <li><a href="{webroot}client/">Search Client {if $client_count}<span class="label-bub label-info white">{$client_count}</span>{/if}</a></li>
+                                                <li><a href="{webroot}client/">Search Client {* if $client_count *}<!-- span class="label-bub label-info white">{* $client_count *}</span-->{* /if *}</a></li>
 												<!-- <li><a href="add_client_contact.php">Add Client Contact</a></li>-->
 												<!--  <li><a href="client_contact.php">Search Client Contact</a></li>-->
                                             </ul>
                                           </li>
 										  
 										  <li class="<?php echo $fun->set_menu_active(array('position','view_position','add_position','edit_position'));?>  dropdown">
-                                            <a  data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icon-list-alt icon-white"></i> Positions {if $position_count}<span class="label-bub label-info bubble">{$position_count}</span>{/if}<b class="caret"></b></a>
+                                            <a  data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icon-list-alt icon-white"></i> Positions {* if $position_count *}<!--span class="label-bub label-info bubble">{* $position_count *}</span-->{* /if *}<b class="caret"></b></a>
                                              <ul class="dropdown-menu">
                                                 <li><a href="{webroot}position/add/">Add Position</a></li>
-                                                <li><a href="{webroot}/position/">Search Position {if $position_count}<span class="label-bub label-info white">{$position_count}</span>{/if}</a></li>
+                                                <li><a href="{webroot}/position/">Search Position {* if $position_count *}<!-- span class="label-bub label-info white">{* $position_count *}</span-->{* /if *}</a></li>
                                             </ul>
                                         </li>
                                         <li class="{$resume_active} dropdown">
-                                            <a data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icon-th icon-white"></i> Resumes {if $resume_count}<span class="label-bub label-info bubble">{$resume_count}</span>{/if}<b class="caret"></b></a>
+                                            <a data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icon-th icon-white"></i> Resumes {* if $resume_count *}<!-- span class="label-bub label-info bubble">{$resume_count}</span-->{* /if *}<b class="caret"></b></a>
 											  <ul class="dropdown-menu">
-                                                <li><a href="upload_resume.php" class="iframeBox unreadLink" val="40_50">Upload Resume</a></li>
-                                                <li><a href="{webroot}resume/">Search Resume {if $resume_count}<span class="label-bub label-info white">{$resume_count}</span>{/if}</a></li>
+                                                <li><a href="upload_resume.php" class="iframeBox unreadLink" val="40_55">Upload Resume</a></li>
+                                                <li><a href="{webroot}resume/">Search Resume {* if $resume_count *}<!-- span class="label-bub label-info white">{$resume_count}</span-->{* /if *}</a></li>
 												<!--<li><a href="upload_resume.php">Upload Resume</a></li>
 												<li><a href="upload_resume.php">Upload Psychometric Test</a></li>
 												<li><a href="snapshot.php">Search Snapshot</a></li>-->
@@ -128,7 +128,7 @@
                                          <li class="{$interview_active} dropdown">
                                             <a data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icon-list-alt icon-white"></i> Interviews <!--span class="label-bub label-info bubble">{$interview_count}</span--><b class="caret"></b></a>
 											  <ul class="dropdown-menu">                                              
-                                                <li><a href="interview.php">Search Interview <span class="label-bub label-info white">{$interview_count}</span></a></li>
+                                                <li><a href="interview.php">Search Interview <!-- span class="label-bub label-info white">{* $interview_count *}</span--></a></li>
 												<!--<li><a href="upload_resume.php">Upload Resume</a></li>
 												<li><a href="upload_resume.php">Upload Psychometric Test</a></li>
 												<li><a href="snapshot.php">Search Snapshot</a></li>-->
@@ -136,14 +136,16 @@
                                          </li>
                                       
                                         <li class="{$billings_active} dropdown">
-                                            <a data-toggle="dropdown" class="dropdown-toggle " href="#"><i class="icon-file icon-white"></i> Billings {if $approve_billing_count}<span class="label-bub label-info white">{$approve_billing_count}</span>{/if}<b class="caret"></b></a>
+                                            <a data-toggle="dropdown" class="dropdown-toggle " href="#"><i class="icon-file icon-white"></i> Incentive <!--span class="label-bub label-info white"></span--><b class="caret"></b></a>
                                            <ul class="dropdown-menu">
-                                                <li><a href="incentive.php">Search Incentive</a></li>
-                                                <li><a href="bonus.php">Search Bonus</a></li>
-												 <li><a href="add_billing.php">Add Billing</a></li>
-												 <li><a href="billing.php">Search Billing</a></li>
+												<li><a href="billing.php">Search Billing</a></li>
+                                                <li><a href="incentive.php">Generate Incentive</a></li>
+                                                <!--li><a href="bonus.php">Search Bonus</a></li-->
+												 <!--li><a href="add_billing.php">Add Billing</a></li -->
+												 
 												 {* if $approve_billing_count *}
-												 <li><a href="approve_billing.php">Approve Billing {if $approve_billing_count}<span class="label-bub label-info white">{$approve_billing_count}</span>{/if}</a></li>
+												 <!--li><a href="approve_billing.php">Approve Billing {if $approve_billing_count}
+												 <span class="label-bub label-info white">{$approve_billing_count}</span>{/if}</a></li-->
                                       {* /if *}     
                                             </ul>
                                         </li>
@@ -197,7 +199,7 @@
 														<li><a href="base_target.php">Base Target</a></li>
 														<li><a href="eligibility.php">Eligibility</a></li>
 														<li><a href="sharing_criteria.php">Sharing Criteria</a></li>	
-														<li><a href="bonus_share.php">Bonus Share</a></li>														
+														<!--li><a href="bonus_share.php">Bonus Share</a></li-->														
 													</ul>
 												</li>
                                             </ul>
