@@ -62,9 +62,12 @@
 						<div style="display:none;"><input type="hidden" name="_method" value="POST"/></div>	
 						<div class="{$hide} dataTables_filter srchBox" style="float:left;" id="dt_gal_filter">
 							
-							
-							<label>To Date: <input type="text" placeholder="dd/mm/yyyy" name="t_date" value="{$t_date}" class="input-small datepick" aria-controls="dt_gal"></label>
+							<span id="sandbox-container">
+							<span class="input-daterange" id="datepicker">	
 							<label>From Date: <input type="text" placeholder="dd/mm/yyyy" class="input-small datepick" name="f_date" value="{$f_date}" aria-controls="dt_gal"></label>
+							<label>To Date: <input type="text" placeholder="dd/mm/yyyy" name="t_date" value="{$t_date}" class="input-small datepick" aria-controls="dt_gal"></label>				
+							</span></span>
+							
 							<label>Employee: 
 						<select name="employee" class="input-medium" placeholder="" style="clear:left" id="IncentiveEmpId">
 						<option value="">Select</option>

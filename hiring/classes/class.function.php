@@ -6,7 +6,7 @@ Date : 21-01-2017
 */
 class fun{
 
-	public $key = '33YhGkf983ilkasjdf4GSD0198';
+	public $key = '33YhGkf983ilkasjdf4GSD01';
 
 	/* function to decrypt */
 	function decrypt($cypher){

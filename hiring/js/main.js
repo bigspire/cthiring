@@ -225,13 +225,25 @@ $(document).ready(function() {
 		});
 	}
 	
+		/* function for autocomplete search */
+	if(jQuery('#keyword').length > 0){ 
+		$('#keyword').ready(function () {
+			jQuery('#keyword').autocomplete('autocomplete_search.php?page='+$('#page').val(), {
+			width: 227,
+			selectFirst: true			
+			});	
+		});
+	}
 	
+	
+	
+	/*
 	
 	 // for auto complete search 
 	 if($('#keyword').length > 0){
 		var json;
 		$("#keyword")
-		  .bind("keydown", function( event ){
+		  .bind("keydown", function( event ){ alert('nikki');
 			var data; 
 			// for asset type search			
 			if ( event.keyCode === $.ui.keyCode.TAB &&
@@ -315,6 +327,8 @@ $(document).ready(function() {
 		});
 	}
 	
+	*/
+	
 	function extractLast( term ) {
 		 return split( term ).pop();
 	}
@@ -322,6 +336,8 @@ $(document).ready(function() {
 	function split( val ){
 		 return val.split( /,\s*/ );
 	}
+	
+	
 	
 	/* multiple option for add client contacts */
 	$(document).ready(function(){

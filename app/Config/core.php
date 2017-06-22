@@ -243,7 +243,7 @@
  */
 	Configure::write('Security.cipherSeed', '77468593409657445354249657496823645');
 	
-	Configure::write('Security.key', '33YhGkf983ilkasjdf4GSD0198');
+	Configure::write('Security.key', '33YhGkf983ilkasjdf4GSD01');
 
 
 /**

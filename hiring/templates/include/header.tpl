@@ -22,7 +22,7 @@
 			<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
             <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Sans" />
 			<link rel="stylesheet" media="screen" href="css/datepicker/datepicker.css">	
-
+			
 			<link type="text/css" media="screen" href="css/jquery.autocomplete.css" rel="stylesheet" />
 			<link rel="stylesheet" href="css/gritter/jquery.gritter.css">
 			<!-- smoke_js -->
@@ -64,7 +64,7 @@
                                     <ul class="dropdown-menu">
 																			<li class="divider"></li>
 
-										<li><a href="edit_profile.php">Edit Profile</a></li>
+										<li><a href="view_profile.php">View Profile</a></li>
 
 										<li><a href="{webroot}login/logout/">Log Out</a></li>
                                     </ul>

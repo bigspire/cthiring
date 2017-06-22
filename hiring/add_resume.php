@@ -5,6 +5,7 @@ Created : Nikitasa
 Date : 09-03-2017
 */
 
+
 session_start();
 // including smarty config
 include 'configs/smartyconfig.php';
