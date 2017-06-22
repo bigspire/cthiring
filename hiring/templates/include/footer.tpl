@@ -28,7 +28,8 @@
 <script src="js/gebo_common.js"></script>		
 <script type="text/javascript" src="js/jquery.stickytableheaders.min.js"></script>
 <script type="text/javascript" src="js/jquery.autocomplete.min.js"></script>
-<script src="js/datepicker/bootstrap-datepicker.js"></script>
+<!--script src="js/datepicker/bootstrap-datepicker.js"></script-->
+<script src="js/datepicker/bootstrap-datepicker.min.js"></script>
 <script src="js/jquery.slimscroll.min.js"></script>
 <script type="text/javascript" src="js/jquery.alerts.js"></script>
 <script src="js/application.js"></script>

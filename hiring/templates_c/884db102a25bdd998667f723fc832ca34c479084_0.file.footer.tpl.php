@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-06-12 19:36:43
+/* Smarty version 3.1.29, created on 2017-06-22 12:53:11
   from "C:\xampp\htdocs\2017\ctsvn\cthiring\hiring\templates\include\footer.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_593e9ff338f783_18441601',
+  'unifunc' => 'content_594b705f64dc62_11367747',
   'file_dependency' => 
   array (
     '884db102a25bdd998667f723fc832ca34c479084' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\templates\\include\\footer.tpl',
-      1 => 1497270582,
+      1 => 1498116186,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_593e9ff338f783_18441601 ($_smarty_tpl) {
+function content_594b705f64dc62_11367747 ($_smarty_tpl) {
 ?>
 <div id="footer">
 
@@ -77,8 +77,10 @@ function content_593e9ff338f783_18441601 ($_smarty_tpl) {
 <?php echo '<script'; ?>
  type="text/javascript" src="js/jquery.autocomplete.min.js"><?php echo '</script'; ?>
 >
+<!--script src="js/datepicker/bootstrap-datepicker.js"><?php echo '</script'; ?>
+-->
 <?php echo '<script'; ?>
- src="js/datepicker/bootstrap-datepicker.js"><?php echo '</script'; ?>
+ src="js/datepicker/bootstrap-datepicker.min.js"><?php echo '</script'; ?>
 >
 <?php echo '<script'; ?>
  src="js/jquery.slimscroll.min.js"><?php echo '</script'; ?>

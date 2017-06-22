@@ -5,6 +5,9 @@
 	Date : 22-02-2017
 */
 
+// starting session
+session_start();
+
 //include smarty congig file
 include 'configs/smartyconfig.php';
 // include mysql class

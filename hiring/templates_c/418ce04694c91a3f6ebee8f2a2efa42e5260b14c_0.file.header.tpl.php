@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-06-21 17:10:32
+/* Smarty version 3.1.29, created on 2017-06-22 15:28:48
   from "C:\xampp\htdocs\2017\ctsvn\cthiring\hiring\templates\include\header.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_594a5b30ad5034_75014680',
+  'unifunc' => 'content_594b94d818fe91_18849451',
   'file_dependency' => 
   array (
     '418ce04694c91a3f6ebee8f2a2efa42e5260b14c' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\templates\\include\\header.tpl',
-      1 => 1498045225,
+      1 => 1498125455,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_594a5b30ad5034_75014680 ($_smarty_tpl) {
+function content_594b94d818fe91_18849451 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -46,7 +46,7 @@ function content_594a5b30ad5034_75014680 ($_smarty_tpl) {
 			<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
             <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Sans" />
 			<link rel="stylesheet" media="screen" href="css/datepicker/datepicker.css">	
-
+			
 			<link type="text/css" media="screen" href="css/jquery.autocomplete.css" rel="stylesheet" />
 			<link rel="stylesheet" href="css/gritter/jquery.gritter.css">
 			<!-- smoke_js -->
@@ -89,7 +89,7 @@ function content_594a5b30ad5034_75014680 ($_smarty_tpl) {
                                     <ul class="dropdown-menu">
 																			<li class="divider"></li>
 
-										<li><a href="edit_profile.php">Edit Profile</a></li>
+										<li><a href="view_profile.php">View Profile</a></li>
 
 										<li><a href="<?php echo webroot;?>
 login/logout/">Log Out</a></li>

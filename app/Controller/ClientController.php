@@ -109,6 +109,7 @@ class ClientController extends AppController {
 			
 		
 		
+		
 		// set the page title
 		$this->set('title_for_layout', 'Clients - CT Hiring - ES');	
 		$fields = array('id','client_name','ResLocation.location','created_date',

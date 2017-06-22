@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-06-21 16:09:05
+/* Smarty version 3.1.29, created on 2017-06-22 13:42:44
   from "C:\xampp\htdocs\2017\ctsvn\cthiring\hiring\templates\sharing_criteria.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_594a4cc9663a09_33104522',
+  'unifunc' => 'content_594b7bfc3c8a61_78866528',
   'file_dependency' => 
   array (
     '5b0319cc5100caf7d195f47eeb676305ebb9b995' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\templates\\sharing_criteria.tpl',
-      1 => 1498041539,
+      1 => 1498047007,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_594a4cc9663a09_33104522 ($_smarty_tpl) {
+function content_594b7bfc3c8a61_78866528 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -124,31 +124,31 @@ $_smarty_tpl->ext->_updateScope->updateScope($_smarty_tpl, 'hide', 0);?>
 &page=<?php echo $_GET['page'];?>
 &keyword=<?php echo $_smarty_tpl->tpl_vars['keyword']->value;?>
 &status=<?php echo $_smarty_tpl->tpl_vars['status']->value;?>
-" class="<?php echo $_smarty_tpl->tpl_vars['sort_field_type']->value;?>
+" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="<?php echo $_smarty_tpl->tpl_vars['sort_field_type']->value;?>
 ">Type</a></th>
 										<th width="200"><a href="sharing_criteria.php?field=percent&order=<?php echo $_smarty_tpl->tpl_vars['order']->value;?>
 &page=<?php echo $_GET['page'];?>
 &keyword=<?php echo $_smarty_tpl->tpl_vars['keyword']->value;?>
 &status=<?php echo $_smarty_tpl->tpl_vars['status']->value;?>
-" class="<?php echo $_smarty_tpl->tpl_vars['sort_field_percent']->value;?>
+" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="<?php echo $_smarty_tpl->tpl_vars['sort_field_percent']->value;?>
 ">% of Share</a></th>								 	
 										<th width="100"><a href="sharing_criteria.php?field=status&order=<?php echo $_smarty_tpl->tpl_vars['order']->value;?>
 &page=<?php echo $_GET['page'];?>
 &keyword=<?php echo $_smarty_tpl->tpl_vars['keyword']->value;?>
 &status=<?php echo $_smarty_tpl->tpl_vars['status']->value;?>
-" class="<?php echo $_smarty_tpl->tpl_vars['sort_field_status']->value;?>
+" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="<?php echo $_smarty_tpl->tpl_vars['sort_field_status']->value;?>
 ">Status</a></th>
 										<th width="75"><a href="sharing_criteria.php?field=created&order=<?php echo $_smarty_tpl->tpl_vars['order']->value;?>
 &page=<?php echo $_GET['page'];?>
 &keyword=<?php echo $_smarty_tpl->tpl_vars['keyword']->value;?>
 &status=<?php echo $_smarty_tpl->tpl_vars['status']->value;?>
-" class="<?php echo $_smarty_tpl->tpl_vars['sort_field_created']->value;?>
+" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="<?php echo $_smarty_tpl->tpl_vars['sort_field_created']->value;?>
 ">Created</a></th>
 										<th width="75"><a href="sharing_criteria.php?field=modified&order=<?php echo $_smarty_tpl->tpl_vars['order']->value;?>
 &page=<?php echo $_GET['page'];?>
 &keyword=<?php echo $_smarty_tpl->tpl_vars['keyword']->value;?>
 &status=<?php echo $_smarty_tpl->tpl_vars['status']->value;?>
-" class="<?php echo $_smarty_tpl->tpl_vars['sort_field_modified']->value;?>
+" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="<?php echo $_smarty_tpl->tpl_vars['sort_field_modified']->value;?>
 ">Modified</a></th>
 										<th width="30" style="text-align:center">Actions</th>
 									</tr>

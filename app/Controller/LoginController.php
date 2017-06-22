@@ -64,7 +64,8 @@ class LoginController extends AppController {
 								// save the last login
 								$this->Login->id = $data['Login']['id'];
 								$this->Login->saveField('last_login', $this->Functions->get_current_date());
-								// set cookie								
+								// set cookie			
+					
 								$this->set_cookie('ESUSER', $this->Functions->encrypt($data['Login']['id']), '30 Days');
 								$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Hi '.$data['Login']['first_name'].', Welcome to CT Hiring', 'default', array('class' => 'alert alert-success'));
 

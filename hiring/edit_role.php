@@ -5,6 +5,9 @@ Created : Nikitasa
 Date : 27-02-2017 
 */
 
+// starting session
+session_start();
+
 // including smarty config
 include 'configs/smartyconfig.php';
 // including Database class file

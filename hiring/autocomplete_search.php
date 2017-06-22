@@ -9,8 +9,8 @@ $mysql->connect_database();
 // include function validation class
 include('classes/class.function.php');
 //get search term
-$keyword = $_GET['term'];
-$term = $_GET['term'];
+$keyword = $_GET['q'];
+$term = $_GET['q'];
 if($_GET['page'] == 'list_grade'){
 	// get matched data from grade
 	$query = "CALL search_grade('".$keyword."')";
@@ -321,7 +321,7 @@ if($_GET['state'] == 'get_billing_info'){
 }
 
 
-/* if(!empty($unique)){
+if(!empty($unique)){
 	// display the search results
 	foreach($unique as $res):
 		if(!empty($res)): 
@@ -331,15 +331,15 @@ if($_GET['state'] == 'get_billing_info'){
 }else{
 	echo $no_data = 'No Results!';
 	// echo json_encode($no_data); 
-} */
+}
 
-
+/*
 if(!empty($unique)){
 	echo json_encode($unique); 
 }else{
 	$no_data[] = 'No Results!';
 	echo json_encode($no_data); 
-}
+} */
 // calling mysql close db connection function
 $c_c = $mysql->close_connection(); 
 ?>

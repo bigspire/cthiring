@@ -5,9 +5,15 @@ Created : Nikitasa
 Date : 30-01-2017
 */
 
+// starting session
 session_start();
+
 //assign user id
 $_SESSION['user_id'] = $fun->decrypt($_COOKIE['CakeCookie']['ESUSER']);
+
+if($_SESSION['user_id'] == ''){
+	header('Location: ../cthiring/');
+}
 // get user name
 $query = "call get_employee_by_id('".$_SESSION['user_id']."')";
 try{

@@ -58,24 +58,19 @@
 							{assign var=hide value=dn}
 						{/if}
 							<form action="" id="formID" name="searchFrm" class="formID" method="post" accept-charset="utf-8"><div style="display:none;"><input type="hidden" name="_method" value="POST"/></div>	
-							<div class="{$hide} dataTables_filter srchBox" style="float:left;" id="dt_gal_filter">
-							<label style="margin-top:18px;"><a href="eligibility.php" class="jsRedirect"><input value="Reset" type="button" class="btn"/></a></label>
-							<label style="margin-top:18px;"><input type="submit" value="Submit" class="btn btn-gebo" /></label>
 							
-						
+							<div class="{$hide} dataTables_filter srchBox" style="float:left;" id="dt_gal_filter">
+							<label style="margin-left:0">Keyword: <input type="text" placeholder="Search Here..." name="keyword" id="keyword" value="{$keyword}" class="input-large" aria-controls="dt_gal"></label>
 							<label>Status: 
 							<select name="status" class="input-small" style="clear:left" id="ClientStatus">
 								{html_options options=$status_type selected=$status}
 							</select> 
 							</label>
-
-							<!--<label>To Date: <input type="text" name="data[Client][to]" value="" class="input-small datepick" aria-controls="dt_gal"></label>
-
-							<label>From Date: <input type="text" class="input-small datepick" name="data[Client][from]" value="" aria-controls="dt_gal"></label>
-							-->
-							<label style="margin-left:0">Keyword: <input type="text" placeholder="Search Here..." name="keyword" id="keyword" value="{$keyword}" class="input-large" aria-controls="dt_gal"></label>
-
-														</div>
+							<label style="margin-top:18px;"><input type="submit" value="Submit" class="btn btn-gebo" /></label>
+							
+							<label style="margin-top:18px;"><a href="eligibility.php" class="jsRedirect"><input value="Reset" type="button" class="btn"/></a></label>
+							
+						</div>
 
 						<input type="hidden" value="1" id="SearchKeywords">
 						<input type="hidden" value="eligibility.php" id="webroot">

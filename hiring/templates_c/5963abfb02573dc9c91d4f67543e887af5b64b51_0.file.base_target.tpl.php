@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-06-21 16:22:36
+/* Smarty version 3.1.29, created on 2017-06-22 12:04:09
   from "C:\xampp\htdocs\2017\ctsvn\cthiring\hiring\templates\base_target.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_594a4ff43bd558_15137996',
+  'unifunc' => 'content_594b64e1d31a28_54029026',
   'file_dependency' => 
   array (
     '5963abfb02573dc9c91d4f67543e887af5b64b51' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\templates\\base_target.tpl',
-      1 => 1498042342,
+      1 => 1498047287,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_594a4ff43bd558_15137996 ($_smarty_tpl) {
+function content_594b64e1d31a28_54029026 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -120,37 +120,37 @@ $_smarty_tpl->ext->_updateScope->updateScope($_smarty_tpl, 'hide', 0);?>
 &page=<?php echo $_GET['page'];?>
 &keyword=<?php echo $_smarty_tpl->tpl_vars['keyword']->value;?>
 &status=<?php echo $_smarty_tpl->tpl_vars['status']->value;?>
-" class="<?php echo $_smarty_tpl->tpl_vars['sort_field_grade']->value;?>
+" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="<?php echo $_smarty_tpl->tpl_vars['sort_field_grade']->value;?>
 ">Grade</a></th>
 										<th width="200"><a href="base_target.php?field=no_times&order=<?php echo $_smarty_tpl->tpl_vars['order']->value;?>
 &page=<?php echo $_GET['page'];?>
 &keyword=<?php echo $_smarty_tpl->tpl_vars['keyword']->value;?>
 &status=<?php echo $_smarty_tpl->tpl_vars['status']->value;?>
-" class="<?php echo $_smarty_tpl->tpl_vars['sort_field_no_times']->value;?>
+" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="<?php echo $_smarty_tpl->tpl_vars['sort_field_no_times']->value;?>
 ">No. of times</a></th>
 										<th width="200"><a href="base_target.php?field=type&order=<?php echo $_smarty_tpl->tpl_vars['order']->value;?>
 &page=<?php echo $_GET['page'];?>
 &keyword=<?php echo $_smarty_tpl->tpl_vars['keyword']->value;?>
 &status=<?php echo $_smarty_tpl->tpl_vars['status']->value;?>
-" class="<?php echo $_smarty_tpl->tpl_vars['sort_field_type']->value;?>
+" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="<?php echo $_smarty_tpl->tpl_vars['sort_field_type']->value;?>
 ">Type</a></th>									 	
 										<th width="100"><a href="base_target.php?field=status&order=<?php echo $_smarty_tpl->tpl_vars['order']->value;?>
 &page=<?php echo $_GET['page'];?>
 &keyword=<?php echo $_smarty_tpl->tpl_vars['keyword']->value;?>
 &status=<?php echo $_smarty_tpl->tpl_vars['status']->value;?>
-" class="<?php echo $_smarty_tpl->tpl_vars['sort_field_status']->value;?>
+" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="<?php echo $_smarty_tpl->tpl_vars['sort_field_status']->value;?>
 ">Status</a></th>
 										<th width="75"><a href="base_target.php?field=created&order=<?php echo $_smarty_tpl->tpl_vars['order']->value;?>
 &page=<?php echo $_GET['page'];?>
 &keyword=<?php echo $_smarty_tpl->tpl_vars['keyword']->value;?>
 &status=<?php echo $_smarty_tpl->tpl_vars['status']->value;?>
-" class="<?php echo $_smarty_tpl->tpl_vars['sort_field_created']->value;?>
+" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="<?php echo $_smarty_tpl->tpl_vars['sort_field_created']->value;?>
 ">Created</a></th>
 										<th width="75"><a href="base_target.php?field=modified&order=<?php echo $_smarty_tpl->tpl_vars['order']->value;?>
 &page=<?php echo $_GET['page'];?>
 &keyword=<?php echo $_smarty_tpl->tpl_vars['keyword']->value;?>
 &status=<?php echo $_smarty_tpl->tpl_vars['status']->value;?>
-" class="<?php echo $_smarty_tpl->tpl_vars['sort_field_modified']->value;?>
+" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="<?php echo $_smarty_tpl->tpl_vars['sort_field_modified']->value;?>
 ">Modified</a></th>
 										<th width="30" style="text-align:center">Actions</th>
 									</tr>
