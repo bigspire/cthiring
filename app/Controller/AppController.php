@@ -132,7 +132,7 @@ class AppController extends Controller {
 				$this->redirect('/home/');	
 			}
 		}
-		// check the module exists in the list
+		// check the all module exists in the list
 		foreach($modules as $key => $module){
 			// check the user module exists in the database module list
 			if (in_array($module['Module']['id'], $format_per)) { 	
@@ -155,6 +155,9 @@ class AppController extends Controller {
 					case 8:					
 					$this->set('view_resume', 1);
 					break;
+					case 10:					
+					$this->set('view_interview', 1);
+					break;					
 					case 14:					
 					$this->set('view_incentive', 1);
 					break;
