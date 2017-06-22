@@ -23,6 +23,11 @@ include('menu_count.php');
 
 $keyword = $_POST['keyword'] ? $_POST['keyword'] : $_GET['keyword'];
 
+$module_access = $fun->check_role_access('32',$modules);
+$smarty->assign('module',$module_access);
+if($module_access['manage_role'] != '1'){
+	header('Location:page_error.php');
+}
 // to display the data using status filter
 if(isset($_POST['status'])){
 	$status = $_POST['status'];

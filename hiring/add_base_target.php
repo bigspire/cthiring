@@ -18,8 +18,6 @@ include('classes/class.function.php');
 // add menu count
 include('menu_count.php');
 
-
-
 // query to fetch all grade names. 
 $query = 'CALL get_grade()';
 try{

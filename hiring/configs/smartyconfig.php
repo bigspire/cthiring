@@ -8,7 +8,7 @@ Date : 21-01-2017
 error_reporting(E_ALL & ~E_NOTICE);
 
 date_default_timezone_set('Asia/Kolkata');
-ini_set('display_errors', '0');
+ini_set('display_errors', '1');
 // smarty config
 include('vendor/smarty-3.1.29/libs/Smarty.class.php');
 $smarty = new Smarty();

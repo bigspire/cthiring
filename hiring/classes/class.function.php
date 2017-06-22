@@ -14,6 +14,113 @@ class fun{
 		return trim(mcrypt_decrypt(MCRYPT_RIJNDAEL_256, $this->key, base64_decode($cypher), MCRYPT_MODE_ECB, mcrypt_create_iv(mcrypt_get_iv_size(MCRYPT_RIJNDAEL_256, MCRYPT_MODE_ECB), MCRYPT_RAND)));
     }
 	
+	/* function to check the role access */
+	public function check_role_access($cur_module,$modules){
+		// get all the permissions
+		// $permissions = array();
+		// get all the permissions of that role
+		// $modules = array();
+		foreach($modules as $per){			
+			$format_per[] = $per;
+		}
+		// if not home controller
+		//if($this->params['controller'] != 'home'){		
+			// check user has permission to module
+			if (!in_array($cur_module, $format_per)){
+				//$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert-error">&times;</button>Invalid Entry', 'default', array('class' => 'alert alert-error'));	
+				header('Location:../home/?access=invalid');	
+			}
+		//}
+		// check the module exists in the list
+		foreach($modules as $key => $module){
+			// check the user module exists in the database module list
+			if (in_array($module, $format_per)) { 	
+				switch($module){
+					case 1:		
+					$mod['create_client'] = 1;
+					break;					
+					case 2:					
+					// $this->set('view_client', 1);
+					break;						
+					case 4:					
+					// $this->set('create_position', 1);
+					break;					
+					case 5:					
+					// $this->set('view_position', 1);
+					break;
+					case 7:					
+					// $this->set('create_resume', 1);
+					break;
+					case 8:					
+					//$this->set('view_resume', 1);
+					break;
+					case 10:					
+					//$this->set('view_interview', 1);
+					break;					
+					case 14:					
+					//$this->set('view_incentive', 1);
+					break;
+					case 13:					
+					//$this->set('create_incentive', 1);
+					break;
+					case 17:					
+					//$this->set('recruiter_report', 1);
+					break;
+					case 18:					
+					//$this->set('account_holder_report', 1);
+					break;
+					case 19:					
+					//$this->set('location_report', 1);
+					break;
+					case 20:					
+					//$this->set('failure_report', 1);
+					break;				
+					case 22:					
+					//$this->set('revenue_report', 1);
+					break;
+					case 23:					
+					//$this->set('tat_report', 1);
+					break;
+					case 24:					
+					//$this->set('collection_report', 1);
+					break;
+					case 25:					
+					//$this->set('client_retention_report', 1);
+					break;
+					case 26:					
+					//$this->set('incentive_report', 1);
+					break;
+					case 27:					
+					//$this->set('daily_report', 1);
+					break;
+					case 28:					
+					//$this->set('weekly_report', 1);
+					break;
+					case 29:					
+					//$this->set('sent_item', 1);
+					break;
+					case 30:					
+					$mod['manage_grade'] = 1;
+					break;
+					case 31:					
+					//$this->set('manage_users', 1);
+					break;
+					case 32:			
+					$mod['manage_role'] = 1;
+					//$this->set('manage_roles', 1);
+					break;
+					case 33:					
+					//$this->set('manage_mailer_template', 1);
+					break;
+					case 34:					
+					//$this->set('manage_incentive', 1);
+					break;
+				}				
+			}
+		}
+		return $mod;
+	}
+	
 	/* function to encrypt */
 	 function encrypt($plain){
         return trim(base64_encode(mcrypt_encrypt(MCRYPT_RIJNDAEL_256, $this->key, $plain, MCRYPT_MODE_ECB, mcrypt_create_iv(mcrypt_get_iv_size(MCRYPT_RIJNDAEL_256, MCRYPT_MODE_ECB), MCRYPT_RAND))));

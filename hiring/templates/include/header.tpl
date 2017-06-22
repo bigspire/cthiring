@@ -181,10 +181,15 @@
                                             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
 											<i class="icon-cog icon-white"></i> Settings <b class="caret"></b></a>
                                           <ul class="dropdown-menu">
+											{if $module['manage_grade'] eq '1'}
                                                 <li><a href="grade.php">Grade {if $grade_count}<span class="label-bub label-info white">{$grade_count}</span>{/if}</a></li>
+											{/if}
                                                 <li><a href="users.php">Users {if $users_count}<span class="label-bub label-info white">{$users_count}</span>{/if}</a></li>
+																						
+											{if $module['manage_role'] eq '1'}
+	
 												<li><a href="roles.php">Roles [Access] {if $roles_count}<span class="label-bub label-info white">{$roles_count}</span>{/if}</a></li>
-												
+											{/if}
 												<li class="dropdown">
 													<a href="#">Mailer Templates <b class="caret-right"></b></a>
 													<ul class="dropdown-menu">

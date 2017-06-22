@@ -194,4 +194,44 @@ try{
 }catch(Exception $e){
 	echo 'Caught exception: ',  $e->getMessage(), "\n";
 }
+
+$query = "call get_roles_id('".$_SESSION['user_id']."')";
+try{
+	// calling mysql exe_query function
+	if(!$result = $mysql->execute_query($query)){
+		throw new Exception('Problem in executing get user role');
+	}
+	$row = $mysql->display_result($result);
+	$roleid = $row['roles_id']; 
+	$mysql->clear_result($result);
+	// call the next result
+	$mysql->next_query();
+}catch(Exception $e){
+	echo 'Caught exception: ',  $e->getMessage(), "\n";
+}
+
+// get user modules
+$query = "call get_user_module('".$roleid."')";
+try{
+	// calling mysql exe_query function
+	if(!$result = $mysql->execute_query($query)){
+		throw new Exception('Problem in executing get user modules');
+	}
+	$modules = array();
+	while($row = $mysql->display_result($result)){
+		$modules[] = $row['id'];
+	}
+		$mysql->clear_result($result);
+	// call the next result
+	$mysql->next_query();
+}catch(Exception $e){
+	echo 'Caught exception: ',  $e->getMessage(), "\n";
+}
+/*
+// assign smarty for module names
+foreach($modules as $key => $record){
+	$smarty->assign($record, $record); 
+} */
+// print_r($_SESSION);
+$smarty->assign('user_id', $roleid); 
 ?>
