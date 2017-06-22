@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-06-18 15:52:13
+/* Smarty version 3.1.29, created on 2017-06-21 18:16:06
   from "F:\xampp\htdocs\ctsvn\cthiring\hiring\templates\include\header.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_59465455212596_10098068',
+  'unifunc' => 'content_594a6a8ed9eca1_94680941',
   'file_dependency' => 
   array (
     'cfffd9fba5ecbb5e37ebc8a8f0410f0246cfad8b' => 
     array (
       0 => 'F:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\templates\\include\\header.tpl',
-      1 => 1497781278,
+      1 => 1498049151,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_59465455212596_10098068 ($_smarty_tpl) {
+function content_594a6a8ed9eca1_94680941 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -123,39 +123,35 @@ home/" class=""><i class="icon-file icon-white"></i> Dashboard </a>
 											</ul-->
                                         </li>
 										  <li class="dropdown <?php echo '<?php ';?>echo $fun->set_menu_active(array('add_client','edit_client','client','view_client','client_contact','add_client_contact','edit_client_contact'));<?php echo '?>';?>">
-                                            <a data-toggle="dropdown" class="dropdown-toggle " href="#"><i class="icon-user icon-white"></i> Clients <?php if ($_smarty_tpl->tpl_vars['client_count']->value) {?><span class="label-bub label-info bubble"><?php echo $_smarty_tpl->tpl_vars['client_count']->value;?>
-</span><?php }?><b class="caret"></b></a>
+                                            <a data-toggle="dropdown" class="dropdown-toggle " href="#"><i class="icon-user icon-white"></i> Clients <!--span class="label-bub label-info bubble"></span--><b class="caret"></b></a>
 											  <ul class="dropdown-menu">
                                                 <li><a href="<?php echo webroot;?>
 client/add/">Add Client</a></li>
                                                 <li><a href="<?php echo webroot;?>
-client/">Search Client <?php if ($_smarty_tpl->tpl_vars['client_count']->value) {?><span class="label-bub label-info white"><?php echo $_smarty_tpl->tpl_vars['client_count']->value;?>
-</span><?php }?></a></li>
+client/">Search Client <!-- span class="label-bub label-info white"></span--></a></li>
 												<!-- <li><a href="add_client_contact.php">Add Client Contact</a></li>-->
 												<!--  <li><a href="client_contact.php">Search Client Contact</a></li>-->
                                             </ul>
                                           </li>
 										  
 										  <li class="<?php echo '<?php ';?>echo $fun->set_menu_active(array('position','view_position','add_position','edit_position'));<?php echo '?>';?>  dropdown">
-                                            <a  data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icon-list-alt icon-white"></i> Positions <?php if ($_smarty_tpl->tpl_vars['position_count']->value) {?><span class="label-bub label-info bubble"><?php echo $_smarty_tpl->tpl_vars['position_count']->value;?>
-</span><?php }?><b class="caret"></b></a>
+                                            <a  data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icon-list-alt icon-white"></i> Positions <!--span class="label-bub label-info bubble"></span--><b class="caret"></b></a>
                                              <ul class="dropdown-menu">
                                                 <li><a href="<?php echo webroot;?>
 position/add/">Add Position</a></li>
                                                 <li><a href="<?php echo webroot;?>
-/position/">Search Position <?php if ($_smarty_tpl->tpl_vars['position_count']->value) {?><span class="label-bub label-info white"><?php echo $_smarty_tpl->tpl_vars['position_count']->value;?>
-</span><?php }?></a></li>
+/position/">Search Position <!-- span class="label-bub label-info white"></span--></a></li>
                                             </ul>
                                         </li>
                                         <li class="<?php echo $_smarty_tpl->tpl_vars['resume_active']->value;?>
  dropdown">
-                                            <a data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icon-th icon-white"></i> Resumes <?php if ($_smarty_tpl->tpl_vars['resume_count']->value) {?><span class="label-bub label-info bubble"><?php echo $_smarty_tpl->tpl_vars['resume_count']->value;?>
-</span><?php }?><b class="caret"></b></a>
+                                            <a data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icon-th icon-white"></i> Resumes <!-- span class="label-bub label-info bubble"><?php echo $_smarty_tpl->tpl_vars['resume_count']->value;?>
+</span--><b class="caret"></b></a>
 											  <ul class="dropdown-menu">
-                                                <li><a href="upload_resume.php" class="iframeBox unreadLink" val="40_50">Upload Resume</a></li>
+                                                <li><a href="upload_resume.php" class="iframeBox unreadLink" val="40_55">Upload Resume</a></li>
                                                 <li><a href="<?php echo webroot;?>
-resume/">Search Resume <?php if ($_smarty_tpl->tpl_vars['resume_count']->value) {?><span class="label-bub label-info white"><?php echo $_smarty_tpl->tpl_vars['resume_count']->value;?>
-</span><?php }?></a></li>
+resume/">Search Resume <!-- span class="label-bub label-info white"><?php echo $_smarty_tpl->tpl_vars['resume_count']->value;?>
+</span--></a></li>
 												<!--<li><a href="upload_resume.php">Upload Resume</a></li>
 												<li><a href="upload_resume.php">Upload Psychometric Test</a></li>
 												<li><a href="snapshot.php">Search Snapshot</a></li>-->
@@ -169,8 +165,7 @@ resume/">Search Resume <?php if ($_smarty_tpl->tpl_vars['resume_count']->value) 
                                             <a data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icon-list-alt icon-white"></i> Interviews <!--span class="label-bub label-info bubble"><?php echo $_smarty_tpl->tpl_vars['interview_count']->value;?>
 </span--><b class="caret"></b></a>
 											  <ul class="dropdown-menu">                                              
-                                                <li><a href="interview.php">Search Interview <span class="label-bub label-info white"><?php echo $_smarty_tpl->tpl_vars['interview_count']->value;?>
-</span></a></li>
+                                                <li><a href="interview.php">Search Interview <!-- span class="label-bub label-info white"></span--></a></li>
 												<!--<li><a href="upload_resume.php">Upload Resume</a></li>
 												<li><a href="upload_resume.php">Upload Psychometric Test</a></li>
 												<li><a href="snapshot.php">Search Snapshot</a></li>-->
@@ -179,16 +174,17 @@ resume/">Search Resume <?php if ($_smarty_tpl->tpl_vars['resume_count']->value) 
                                       
                                         <li class="<?php echo $_smarty_tpl->tpl_vars['billings_active']->value;?>
  dropdown">
-                                            <a data-toggle="dropdown" class="dropdown-toggle " href="#"><i class="icon-file icon-white"></i> Billings <?php if ($_smarty_tpl->tpl_vars['approve_billing_count']->value) {?><span class="label-bub label-info white"><?php echo $_smarty_tpl->tpl_vars['approve_billing_count']->value;?>
-</span><?php }?><b class="caret"></b></a>
+                                            <a data-toggle="dropdown" class="dropdown-toggle " href="#"><i class="icon-file icon-white"></i> Incentive <!--span class="label-bub label-info white"></span--><b class="caret"></b></a>
                                            <ul class="dropdown-menu">
-                                                <li><a href="incentive.php">Search Incentive</a></li>
-                                                <li><a href="bonus.php">Search Bonus</a></li>
-												 <li><a href="add_billing.php">Add Billing</a></li>
-												 <li><a href="billing.php">Search Billing</a></li>
+												<li><a href="billing.php">Search Billing</a></li>
+                                                <li><a href="incentive.php">Generate Incentive</a></li>
+                                                <!--li><a href="bonus.php">Search Bonus</a></li-->
+												 <!--li><a href="add_billing.php">Add Billing</a></li -->
 												 
-												 <li><a href="approve_billing.php">Approve Billing <?php if ($_smarty_tpl->tpl_vars['approve_billing_count']->value) {?><span class="label-bub label-info white"><?php echo $_smarty_tpl->tpl_vars['approve_billing_count']->value;?>
-</span><?php }?></a></li>
+												 
+												 <!--li><a href="approve_billing.php">Approve Billing <?php if ($_smarty_tpl->tpl_vars['approve_billing_count']->value) {?>
+												 <span class="label-bub label-info white"><?php echo $_smarty_tpl->tpl_vars['approve_billing_count']->value;?>
+</span><?php }?></a></li-->
                                            
                                             </ul>
                                         </li>
@@ -247,7 +243,7 @@ resume/">Search Resume <?php if ($_smarty_tpl->tpl_vars['resume_count']->value) 
 														<li><a href="base_target.php">Base Target</a></li>
 														<li><a href="eligibility.php">Eligibility</a></li>
 														<li><a href="sharing_criteria.php">Sharing Criteria</a></li>	
-														<li><a href="bonus_share.php">Bonus Share</a></li>														
+														<!--li><a href="bonus_share.php">Bonus Share</a></li-->														
 													</ul>
 												</li>
                                             </ul>

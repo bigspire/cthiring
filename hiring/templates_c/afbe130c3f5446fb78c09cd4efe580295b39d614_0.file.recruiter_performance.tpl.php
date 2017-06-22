@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-06-20 20:33:17
+/* Smarty version 3.1.29, created on 2017-06-21 18:48:24
   from "F:\xampp\htdocs\ctsvn\cthiring\hiring\templates\recruiter_performance.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_59493935332141_54516428',
+  'unifunc' => 'content_594a7220212ae9_23232730',
   'file_dependency' => 
   array (
     'afbe130c3f5446fb78c09cd4efe580295b39d614' => 
     array (
       0 => 'F:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\templates\\recruiter_performance.tpl',
-      1 => 1497959907,
+      1 => 1498049151,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_59493935332141_54516428 ($_smarty_tpl) {
+function content_594a7220212ae9_23232730 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'F:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -61,15 +61,11 @@ if (!is_callable('smarty_function_html_options')) require_once 'F:\\xampp\\htdoc
 			<form>
 															
 				<div class="dataTables_filter homeSrchBox srchBox" style="float:left;margin-left:;margin-top:15px"  id="dt_gal_filter">
-						<label style="margin-top:18px;"><a href="javascript:void(0)">
-						<input value="Toggle Graph" type="button" class="btn hide_graph"/></a></label>
-						<label style="margin-top:18px;"><a href="#">
-						<input value="Export" type="button" class="btn btn-warning"/></a></label>
-						<label style="margin-top:18px;"><a href="recruiter_performance.php">
-						<input value="Reset" type="button" class="btn"/></a></label>
-						<label style="margin-top:18px;"><input type="submit" value="Submit" class="btn btn-gebo" />					
-						</label>
-							
+						<label>To Date: <input type="text" name="t_date" value="<?php echo $_smarty_tpl->tpl_vars['t_date']->value;?>
+" class="input-small datepick" aria-controls="dt_gal"></label>
+						<label>From Date: <input type="text" class="input-small datepick" name="f_date" value="<?php echo $_smarty_tpl->tpl_vars['f_date']->value;?>
+" aria-controls="dt_gal"></label>
+					
 						<label>Employee: 
 							<select name="emp_name" class="input-medium" placeholder="" style="clear:left" id="emp_name">
 								<option value="">Select</option>	
@@ -85,10 +81,14 @@ if (!is_callable('smarty_function_html_options')) require_once 'F:\\xampp\\htdoc
 			    			
 							</select>
 						</label>
-						<label>To Date: <input type="text" name="t_date" value="<?php echo $_smarty_tpl->tpl_vars['t_date']->value;?>
-" class="input-small datepick" aria-controls="dt_gal"></label>
-						<label>From Date: <input type="text" class="input-small datepick" name="f_date" value="<?php echo $_smarty_tpl->tpl_vars['f_date']->value;?>
-" aria-controls="dt_gal"></label>
+						<label style="margin-top:18px;"><a href="javascript:void(0)">
+						<input value="Toggle Graph" type="button" class="btn hide_graph"/></a></label>
+						<label style="margin-top:18px;"><a href="#">
+						<input value="Export" type="button" class="btn btn-warning"/></a></label>
+						<label style="margin-top:18px;"><a href="recruiter_performance.php">
+						<input value="Reset" type="button" class="btn"/></a></label>
+						<label style="margin-top:18px;"><input type="submit" value="Submit" class="btn btn-gebo" />					
+						</label>
 				</div>
 					
 <input type="hidden" name="submit" id="submit"/>
