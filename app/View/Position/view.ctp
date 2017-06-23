@@ -144,6 +144,13 @@
 								<tbody>									
 									<tr>
 										
+										<td class="tbl_column">Account Holder </td>
+										<td><?php echo $position_data[0]['ac_holder'];?></td>
+											
+									</tr>
+									
+									<tr>
+										
 										<td class="tbl_column" style="width:140px;">Key Skills</td>
 										<td><?php echo $position_data['Position']['skills'];?></td>
 											
@@ -154,34 +161,29 @@
 										<td><?php echo $position_data['Position']['no_job'];?></td>
 											
 									</tr>
-									<tr>
-										
-										<td class="tbl_column">Account Holder </td>
-										<td>Suganya</td>
-											
-									</tr>
+									
 										<tr>
 										
 										<td class="tbl_column">Team Members</td>
-										<td><?php echo $position_data[0]['team_member'];?></td>
+										<td><?php echo $position_data[0]['team_member2'];?></td>
 											
 									</tr>
 									<tr>
 										
 										<td class="tbl_column">Start Date</td>
-										<td><?php echo $position_data['Position']['start_date'];?></td>
+										<td><?php echo $this->Functions->format_date($position_data['Position']['start_date']);?></td>
 											
 									</tr>
 										<tr>
 										
 										<td class="tbl_column">Closure Date</td>
-										<td><?php echo $position_data['Position']['end_date'];?></td>
+										<td><?php echo $this->Functions->format_date($position_data['Position']['end_date']);?></td>
 											
 									</tr>
 									<tr>
 										
 										<td class="tbl_column">Functional Area</td>
-										<td>Software</td>
+										<td><?php echo $position_data['FunctionArea']['function'];?></td>
 											
 									</tr>
 									

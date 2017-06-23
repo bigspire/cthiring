@@ -213,11 +213,14 @@ class Position extends AppModel {
 	
 	/* function to validate the job desc */
 	public function validate_jobDesc(){
-		if($this->data['Position']['job_desc'] == '' && $this->data['Position']['desc_file']['name'] == ''){
-			return false;
-		}else{
-			return true;
+		if($this->data['Position']['page'] != 'edit_position'){
+			if($this->data['Position']['job_desc'] == '' && $this->data['Position']['desc_file']['name'] == ''){
+				return false;
+			}else{
+				return true;
+			}
 		}
+		return true;
 	}
 	
 	

@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-06-21 18:16:06
+/* Smarty version 3.1.29, created on 2017-06-23 10:11:31
   from "F:\xampp\htdocs\ctsvn\cthiring\hiring\templates\interview.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_594a6a8ecedc79_07819505',
+  'unifunc' => 'content_594c9bfb477652_61055657',
   'file_dependency' => 
   array (
     '4e985a140a13046fe41ff6c256b5264f271d75e1' => 
     array (
       0 => 'F:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\templates\\interview.tpl',
-      1 => 1498049151,
+      1 => 1498131200,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_594a6a8ecedc79_07819505 ($_smarty_tpl) {
+function content_594c9bfb477652_61055657 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'F:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -109,10 +109,15 @@ $_smarty_tpl->ext->_updateScope->updateScope($_smarty_tpl, 'hide', 0);?>
 						
 						<label style="margin-left:0;">Keyword: <input type="text" placeholder="Search Here..." name="keyword" id = "keyword" value="<?php echo $_smarty_tpl->tpl_vars['keyword']->value;?>
 " class="input-medium" aria-controls="dt_gal"></label>
-						<label>To Date: <input type="text" name="t_date" placeholder="dd/mm/yyyy" value="<?php echo $_smarty_tpl->tpl_vars['t_date']->value;?>
-" style="width:70px;"  class="input-small datepick" aria-controls="dt_gal"></label>
+						
+						<span id="sandbox-container">
+						<span  class="input-daterange" id="datepicker">	
 						<label>From Date: <input type="text" class="input-small datepick" name="f_date" placeholder="dd/mm/yyyy" style="width:70px;"  value="<?php echo $_smarty_tpl->tpl_vars['f_date']->value;?>
 " aria-controls="dt_gal"></label>
+						<label>To Date: <input type="text" name="t_date" placeholder="dd/mm/yyyy" value="<?php echo $_smarty_tpl->tpl_vars['t_date']->value;?>
+" style="width:70px;"  class="input-small datepick" aria-controls="dt_gal"></label>						
+						</span></span>
+						
 						<label>Employee: 
 						<select name="employee" class="input-medium" placeholder="" style="clear:left" id="InterviewEmpId">
 						<option value="">Select</option>

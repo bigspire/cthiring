@@ -83,7 +83,7 @@ class PositionController extends AppController {
 			$end_search = $this->request->query['to'] ? $this->request->query['to'] :  date('d/m/Y', strtotime('+1 day'));
 			// set date condition
 			$date_cond = array('or' => array("DATE_FORMAT(Position.created_date, '%Y-%m-%d') between ? and ?" => 
-						array($this->Functions->format_date_save($start), $this->Functions->format_date_save($end_search))));
+						 array($this->Functions->format_date_save($start), $this->Functions->format_date_save($end_search))));
 		}
 		
 		// check role based access
@@ -461,28 +461,50 @@ class PositionController extends AppController {
 		// set the page title
 		$this->set('title_for_layout', 'View Positions - CT Hiring - ES');
 		$options = array(			
+			/*
 			array('table' => 'users',
 					'alias' => 'ResOwner',					
 					'type' => 'LEFT',
 					'conditions' => array('`ResOwner.id` = `ReqResume`.`created_by`')
 			),
-			
+			*/
 			array('table' => 'client_contact',
 					'alias' => 'PositionContact',					
 					'type' => 'LEFT',
-					'conditions' => array('`PositionContact.clients_id` = `Position`.`id`',
+					'conditions' => array('`PositionContact.clients_id` = `Client`.`id`',
 					'`Position.client_contact_id` = `PositionContact`.`contact_id`')
 			),
 			array('table' => 'contact',
 					'alias' => 'Contact',					
 					'type' => 'LEFT',
 					'conditions' => array('`Contact.id` = `PositionContact`.`contact_id`')
+			),
+			array('table' => 'client_account_holder',
+					'alias' => 'CAH',					
+					'type' => 'INNER',
+					'conditions' => array('`CAH.clients_id` = `Client`.`id`')
+			),
+			array('table' => 'users',
+					'alias' => 'AH',					
+					'type' => 'INNER',
+					'conditions' => array('`CAH.users_id` = `AH`.`id`', )
+			),
+			array('table' => 'req_team',
+					'alias' => 'ReqTeam',					
+					'type' => 'INNER',
+					'conditions' => array('`ReqTeam.requirements_id` = `Position`.`id`', )
+			),
+			array('table' => 'users',
+					'alias' => 'TeamMember',					
+					'type' => 'INNER',
+					'conditions' => array('`ReqTeam.users_id` = `TeamMember`.`id`', )
 			)
 		);		
 		$fields = array('id','job_title','job_code','education','location','no_job','min_exp','max_exp','ctc_from','ctc_to','ReqStatus.title',
 		'Client.client_name', 'Creator.first_name','created_date','modified_date', 'count(ReqResume.id) cv_sent','req_status_id',
-		'group_concat(ReqResume.status_title) joined', "group_concat(distinct ResOwner.first_name  SEPARATOR ', ') team_member",
-		'Contact.first_name','Contact.email','Contact.mobile','Contact.phone','Contact.id');
+		'group_concat(ReqResume.status_title) joined', 'start_date', 'end_date', //"group_concat(distinct ResOwner.first_name  SEPARATOR ', ') team_member",
+		"group_concat(distinct AH.first_name  SEPARATOR ', ') ac_holder","group_concat(distinct TeamMember.first_name  SEPARATOR ', ') team_member2",
+		'skills','Contact.first_name','Contact.email','Contact.mobile','Contact.phone','Contact.id','FunctionArea.function');
 		$data = $this->Position->find('all', array('fields' => $fields,'conditions' => array('Position.id' => $id), 'joins' => $options));
 		$this->set('position_data', $data[0]);
 		// get the resume details

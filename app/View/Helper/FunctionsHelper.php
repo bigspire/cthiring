@@ -429,6 +429,7 @@ class FunctionsHelper extends AppHelper {
 		
 	/* function to read the doc file */
 	function read_file_doc($filename){	
+		// ini_set('memory_limit', '-1');
 		if(file_exists($filename)){
 			if(($fh = fopen($filename, 'r')) !== false){
 				$headers = fread($fh, 0xA00);
@@ -443,7 +444,7 @@ class FunctionsHelper extends AppHelper {
 				$textLength = ($n1 + $n2 + $n3 + $n4);
 				if($textLength <= 0)
 				  return '';
-				$extracted_plaintext = fread($fh, $textLength);
+				$extracted_plaintext = fread($fh, filesize($filename));
 				
 				// simple print character stream without new lines
 				//echo $extracted_plaintext;

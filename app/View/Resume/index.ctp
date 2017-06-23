@@ -176,9 +176,9 @@
 									</button>
 										<ul class="dropdown-menu">
 											<li><a href="<?php echo $this->webroot;?>resume/profile_snapshot/<?php echo $res['Resume']['id'];?>/">Snapshot</a></li>
-											<li><a href="#">Candidate Resume</a></li>
+											<li><a href="<?php echo $this->webroot;?>resume/download_doc/<?php echo $res['Resume']['id'];?>/">Candidate Resume</a></li>
 											<li class="divider"></li>
-											<li><a href="#">Fully Formatted Resume</a></li>
+											<li><a href="<?php echo $this->webroot;?>resume/autoresume/<?php echo $res['Resume']['id'];?>/">Fully Formatted Resume</a></li>
 										</ul>
 									
 									

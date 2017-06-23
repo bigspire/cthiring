@@ -391,7 +391,7 @@
 		<input type="hidden" id="coordErr_<?php echo $i;?>" value="<?php echo $errorData[$i]['coord'];?>"-->				
 <?php // endfor;?>
 
-<?php echo $this->Form->input('add_position', array('type' => 'hidden',  'id' => 'add_position')); ?>
+<?php echo $this->Form->input('page', array('type' => 'hidden',   'value' => 'edit_position')); ?>
 
 <?php echo $this->Form->input('webroot', array('type' => 'hidden', 'value' => $this->webroot.'position/', 'id' => 'webroot')); ?>
 
