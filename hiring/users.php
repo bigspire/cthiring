@@ -21,6 +21,10 @@ include('classes/class.paging.php');
 // add menu count
 include('menu_count.php');
 
+// role based validation
+$module_access = $fun->check_role_access('31',$modules);
+$smarty->assign('module',$module_access);
+
 $keyword = $_POST['keyword'] ? $_POST['keyword'] : $_GET['keyword'];
 
 // to display the data using status filter

@@ -98,8 +98,12 @@
 										  <li class="dropdown <?php echo $fun->set_menu_active(array('add_client','edit_client','client','view_client','client_contact','add_client_contact','edit_client_contact'));?>">
                                             <a data-toggle="dropdown" class="dropdown-toggle " href="#"><i class="icon-user icon-white"></i> Clients {* if $client_count *}<!--span class="label-bub label-info bubble">{* $client_count *}</span-->{* /if *}<b class="caret"></b></a>
 											  <ul class="dropdown-menu">
+											  {if $module['create_client'] eq '1'}
                                                 <li><a href="{webroot}client/add/">Add Client</a></li>
-                                                <li><a href="{webroot}client/">Search Client {* if $client_count *}<!-- span class="label-bub label-info white">{* $client_count *}</span-->{* /if *}</a></li>
+											  {/if}
+                                               {if $module['view_client'] eq '1'}
+												<li><a href="{webroot}client/">Search Client {* if $client_count *}<!-- span class="label-bub label-info white">{* $client_count *}</span-->{* /if *}</a></li>
+											    {/if}
 												<!-- <li><a href="add_client_contact.php">Add Client Contact</a></li>-->
 												<!--  <li><a href="client_contact.php">Search Client Contact</a></li>-->
                                             </ul>
@@ -108,23 +112,32 @@
 										  <li class="<?php echo $fun->set_menu_active(array('position','view_position','add_position','edit_position'));?>  dropdown">
                                             <a  data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icon-list-alt icon-white"></i> Positions {* if $position_count *}<!--span class="label-bub label-info bubble">{* $position_count *}</span-->{* /if *}<b class="caret"></b></a>
                                              <ul class="dropdown-menu">
+											 {if $module['create_position'] eq '1'}
                                                 <li><a href="{webroot}position/add/">Add Position</a></li>
+											 {/if}
+											 {if $module['view_position'] eq '1'}
                                                 <li><a href="{webroot}/position/">Search Position {* if $position_count *}<!-- span class="label-bub label-info white">{* $position_count *}</span-->{* /if *}</a></li>
-                                            </ul>
+											  {/if}
+										   </ul>
                                         </li>
+										
                                         <li class="{$resume_active} dropdown">
                                             <a data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icon-th icon-white"></i> Resumes {* if $resume_count *}<!-- span class="label-bub label-info bubble">{$resume_count}</span-->{* /if *}<b class="caret"></b></a>
 											  <ul class="dropdown-menu">
+											  {if $module['create_resume'] eq '1'}
                                                 <li><a href="upload_resume.php" class="iframeBox unreadLink" val="40_55">Upload Resume</a></li>
-                                                <li><a href="{webroot}resume/">Search Resume {* if $resume_count *}<!-- span class="label-bub label-info white">{$resume_count}</span-->{* /if *}</a></li>
+                                               {/if}
+											   {if $module['view_resume'] eq '1'}
+												<li><a href="{webroot}resume/">Search Resume {* if $resume_count *}<!-- span class="label-bub label-info white">{$resume_count}</span-->{* /if *}</a></li>
+											   {/if}
 												<!--<li><a href="upload_resume.php">Upload Resume</a></li>
 												<li><a href="upload_resume.php">Upload Psychometric Test</a></li>
 												<li><a href="snapshot.php">Search Snapshot</a></li>-->
                                             </ul>
                                          </li>
-										 
+										
                                          
-										 
+										 {if $module['view_interview'] eq '1'}
                                          <li class="{$interview_active} dropdown">
                                             <a data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icon-list-alt icon-white"></i> Interviews <!--span class="label-bub label-info bubble">{$interview_count}</span--><b class="caret"></b></a>
 											  <ul class="dropdown-menu">                                              
@@ -134,12 +147,17 @@
 												<li><a href="snapshot.php">Search Snapshot</a></li>-->
                                             </ul>
                                          </li>
-                                      
+										 {/if}
+                                      {if $module['view_billing'] eq '1' || $module['view_incentive'] eq '1'}
                                         <li class="{$billings_active} dropdown">
                                             <a data-toggle="dropdown" class="dropdown-toggle " href="#"><i class="icon-file icon-white"></i> Incentive <!--span class="label-bub label-info white"></span--><b class="caret"></b></a>
                                            <ul class="dropdown-menu">
+										   {if $module['view_billing'] eq '1'}
 												<li><a href="billing.php">Search Billing</a></li>
-                                                <li><a href="incentive.php">Generate Incentive</a></li>
+										   {/if}
+										   {if $module['view_incentive'] eq '1'}
+                                                <li><a href="incentive.php">Search Incentive</a></li>
+										   {/if}
                                                 <!--li><a href="bonus.php">Search Bonus</a></li-->
 												 <!--li><a href="add_billing.php">Add Billing</a></li -->
 												 
@@ -149,47 +167,91 @@
                                       {* /if *}     
                                             </ul>
                                         </li>
+										{/if}
 										
-										 <li class="dropdown">
+										{if $module['recruiter_report'] eq '1' || $module['account_holder_report'] eq '1' || $module['location_report'] eq '1'
+										|| $module['failure_report'] eq '1' || $module['revenue_report'] eq '1' || $module['tat_report'] eq '1'
+										|| $module['collection_report'] eq '1' || $module['client_retention_report'] eq '1' || $module['incentive_report'] eq '1'
+										|| $module['daily_report'] eq '1' || $module['weekly_report'] eq '1'}
+										<li class="dropdown">
                                             <a data-toggle="dropdown" class="dropdown-toggle " href="#"><i class="icon-download-alt icon-white"></i> Reports <b class="caret"></b></a>
                                           <ul class="dropdown-menu">
+											{if $module['recruiter_report'] eq '1'}
                                                 <li><a href="recruiter_performance.php">Recruiter Performance</a></li>
+											{/if}
+										  
+											{if $module['account_holder_report'] eq '1'}
                                                 <li><a href="ah_performance.php">Account Holder Performance</a></li>
+										    {/if}
+											
+											{if $module['location_report'] eq '1'}
 												<li><a href="location_performance.php">Location Performance</a></li>
                                                <!-- <li><a href="#">Clientwise Performance</a></li>-->
-                                                <li><a href="#">Recruiter Performance(Failure Root Cause Analysis )</a></li>
+											{/if}
+											
+											{if $module['failure_report'] eq '1'}
+											   <li><a href="#">Recruiter Performance(Failure Root Cause Analysis )</a></li>
+											{/if}
+											
+											{if $module['revenue_report'] eq '1'}
 												<li><a href="revenue.php">Revenue </a></li>
+											{/if}
+											
+											{if $module['tat_report'] eq '1'}
 												<li><a href="tat_time.php">TAT Time </a></li>
+											{/if}
+											
+											{if $module['collection_report'] eq '1'}
 												<li><a href="collection_table.php">Collection Table </a></li>
+											{/if}
+											
+											{if $module['client_retention_report'] eq '1'}
 												<li><a href="client_retention.php">Client Retention Table </a></li>
+											{/if}
+											
+											{if $module['incentive_report'] eq '1'}
 												<li><a href="incentive_report.php">Incentive </a></li>
+											{/if}
+											
+											{if $module['daily_report'] eq '1'}
 												<li><a href="daily_performance.php">Daily Performance </a></li>
+											{/if}
+											
+											{if $module['weekly_report'] eq '1'}
 												<li><a href="weekly_performance.php">Weekly Performance </a></li>
+											{/if}
                                             </ul>
+										</li>
+                                        {/if}
 
-										 
-                                        </li>
-                                           <li class="{$mailbox_active} dropdown">
+										{if $module['sent_item'] eq '1'}
+										<li class="{$mailbox_active} dropdown">
                                             <a data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icon-th icon-white"></i> Mail Box <b class="caret"></b></a>
 											  <ul class="dropdown-menu">                                              
                                                 <li><a href="mailbox.php">Sent Items </a></li>
 											
                                             </ul>
-                                         </li>
+                                        </li>
+										{/if}
 										
-										 <li class="{$setting_active}  dropdown">
+										{if $module['manage_grade'] eq '1' || $module['manage_users'] eq '1' || $module['manage_role'] eq '1' || $module['manage_mailer_template'] eq '1'|| $module['manage_incentive'] eq '1'}
+										
+										<li class="{$setting_active}  dropdown">
                                             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
 											<i class="icon-cog icon-white"></i> Settings <b class="caret"></b></a>
                                           <ul class="dropdown-menu">
 											{if $module['manage_grade'] eq '1'}
                                                 <li><a href="grade.php">Grade {if $grade_count}<span class="label-bub label-info white">{$grade_count}</span>{/if}</a></li>
 											{/if}
+											{if $module['manage_users'] eq '1'}
                                                 <li><a href="users.php">Users {if $users_count}<span class="label-bub label-info white">{$users_count}</span>{/if}</a></li>
-																						
+											{/if}											
 											{if $module['manage_role'] eq '1'}
 	
 												<li><a href="roles.php">Roles [Access] {if $roles_count}<span class="label-bub label-info white">{$roles_count}</span>{/if}</a></li>
 											{/if}
+											
+											{if $module['manage_mailer_template'] eq '1'}
 												<li class="dropdown">
 													<a href="#">Mailer Templates <b class="caret-right"></b></a>
 													<ul class="dropdown-menu">
@@ -198,6 +260,9 @@
 														<li><a href="mailer_template.php?id=3">Schedule Interview to Candidates</a></li>														
 													</ul>
 												</li>
+											{/if}
+											
+											{if $module['manage_incentive'] eq '1'}
                                            <li class="dropdown">
 													<a href="#">Incentive <b class="caret-right"></b></a>
 													<ul class="dropdown-menu">
@@ -207,10 +272,10 @@
 														<!--li><a href="bonus_share.php">Bonus Share</a></li-->														
 													</ul>
 												</li>
+											{/if}
                                             </ul>
-
-										 
                                         </li>
+										{/if}
 										
 										
                                         <li>

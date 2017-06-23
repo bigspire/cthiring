@@ -7,9 +7,6 @@
 		<!-- main content -->
             <div id="contentwrapper">
                 <div class="main_content">
-                
-				
-					
 										
 					<div class="row-fluid">
 						
@@ -19,7 +16,7 @@
                         <div id="jCrumbs" class="breadCrumb module">
                             <ul>
                                 <li>
-                                    <a href="recruiter_dashboard.php"><i class="icon-home"></i></a>
+                                    <a href="{$smarty.const.webroot}home"><i class="icon-home"></i></a>
                                 </li>
                                 <li>
                                     <a href="recruiter_performance.php">Recruiter Performance</a>

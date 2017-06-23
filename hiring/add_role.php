@@ -17,6 +17,9 @@ include('classes/class.function.php');
 // add menu count
 include('menu_count.php');
 
+$module_access = $fun->check_role_access('32',$modules);
+$smarty->assign('module',$module_access);
+
 if(!empty($_POST)){
 	// Validating the required fields
 	/* if(strlen(trim($_POST['role'])) != strlen($_POST['role'])) {

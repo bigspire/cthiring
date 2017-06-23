@@ -17,6 +17,10 @@ include('classes/class.function.php');
 // add menu count
 include('menu_count.php');
 
+// role based validation
+$module_access = $fun->check_role_access('30',$modules);
+$smarty->assign('module',$module_access);
+
 if(!empty($_POST)){
 	// Validating the required fields
 	/* if($fun->is_white_space($_POST['grade_name'])){
