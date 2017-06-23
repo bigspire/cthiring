@@ -40,9 +40,8 @@ if($_POST){
 	$post_url .= '&t_date='.$t_date;
 }
 
-
 // count the total no. of records
-$query = "CALL list_billing('".$keyword."','".$_SESSION['user_id']."','".$from_date."','".$to_date."','0','0','','','".$_GET['action']."')";
+$query = "CALL list_billing('".$keyword."','".$_SESSION['user_id']."','".$roleid."','".$from_date."','".$to_date."','0','0','','','".$_GET['action']."')";
 try{
 	if(!$result = $mysql->execute_query($query)){
 		throw new Exception('Problem in executing list billing page');
@@ -70,8 +69,8 @@ try{
 
 // set the condition to check ascending or descending order		
 $order = ($_GET['order'] == 'desc') ? 'asc' :  'desc';	
-$sort_fields = array('1' => 'job_title','client_name','billing_amount','billing_date','candidate_name','created_date');
-$org_fields = array('1' => 'job_title','client_name','billing_amount','billing_date','candidate_name','created_date');
+$sort_fields = array('1' => 'job_title','client_name','billing_amount','billing_date','candidate_name');
+$org_fields = array('1' => 'job_title','client_name','billing_amount','billing_date','candidate_name');
 
 // to set the sorting image
 foreach($sort_fields as $key => $b_field){
@@ -85,7 +84,7 @@ foreach($sort_fields as $key => $b_field){
 // if no fields are set, set default sort image
 if(empty($_GET['field'])){		
 	$order = 'desc';			
-	$field = 'ib.created_date';			
+	$field = 'rr.billing_date';			
 	$smarty->assign('sort_field_created_date', 'sorting desc');
 }	
 $smarty->assign('order', $order);
@@ -95,7 +94,7 @@ if($search_key = array_search($_GET['field'], $sort_fields)){
 }
 
 // fetch all records
-$query =  "CALL list_billing('".$keyword."','".$_SESSION['user_id']."','".$from_date."','".$to_date."','$start','$limit','".$field."','".$order."','".$_GET['action']."')";
+$query =  "CALL list_billing('".$keyword."','".$_SESSION['user_id']."','".$roleid."','".$from_date."','".$to_date."','$start','$limit','".$field."','".$order."','".$_GET['action']."')";
 try{
 	if(!$result = $mysql->execute_query($query)){
 		throw new Exception('Problem in executing list billing page');
@@ -106,7 +105,6 @@ try{
 	{
  		$data[] = $obj;
  		$data[$i]['billing_date'] = $fun->convert_date_to_display($obj['billing_date']);
- 		$data[$i]['created_date'] = $fun->convert_date_to_display($obj['created_date']);
  		$data[$i]['status'] = $fun->format_status($obj['st_status'],$obj['st_created'],$obj['st_user'],$obj['st_modified']);
  		$i++;
  		$pno[]=$paging->print_no();
@@ -120,9 +118,9 @@ try{
 		include('classes/class.excel.php');
 		$excelObj = new libExcel();
 		// function to print the excel header
-      $excelObj->printHeader($header = array('Position','Client Name','Billing Amount','Billing Date','Candidate Name','Created Date','Status') ,$col = array('A','B','C','D','E','F','G'));  
+      $excelObj->printHeader($header = array('Position','Client Name','Billing Amount','Candidate Name','Billing Date',) ,$col = array('A','B','C','D','E'));  
 		// function to print the excel data
-		$excelObj->printCell($data, $count,$col = array('A','B','C','D','E','F','G'), $field = array('job_title','client_name','billing_amount','billing_date','candidate_name','created_date','status'),'Billing_'.$current_date);
+		$excelObj->printCell($data, $count,$col = array('A','B','C','D','E'), $field = array('job_title','client_name','billing_amount','candidate_name','billing_date',),'Billing_'.$current_date);
 	}	
 	
 	// create validation
