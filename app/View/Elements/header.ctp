@@ -1,5 +1,4 @@
-
-            <header>
+<header>
                 <div class="navbar navbar-fixed-top">
                     <div class="navbar-inner">
                         <div class="container-fluid">
@@ -111,16 +110,16 @@
                                         <li class="dropdown">
                                             <a data-toggle="dropdown" class="dropdown-toggle " href="#"><i class="icon-file icon-white"></i> Incentive <b class="caret"></b></a>
                                            <ul class="dropdown-menu">
-										   <?php if($view_incentive == '1'):?> 
+										   <?php if($view_billing == '1'):?> 
 										   
 													
-                                                <li><a href="incentive.php">Search Billing</a></li>
+                                                <li><a href="<?php echo $this->webroot;?>hiring/billing.php">Search Billing</a></li>
 												
 												
 											<?php endif; ?>
 											
-											<?php if($create_incentive == '1'):?> 
-												 <li><a href="incentive.php">Generate Incentive</a></li>
+											<?php if($view_incentive == '1'):?> 
+												 <li><a href="<?php echo $this->webroot;?>hiring/incentive.php">Search Incentive</a></li>
 											<?php endif; ?>
 											
 												 <!--li><a href="<?php echo $this->webroot;?>hiring/add_billing.php">Add Billing</a></li>

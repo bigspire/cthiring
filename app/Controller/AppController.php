@@ -215,6 +215,9 @@ class AppController extends Controller {
 					case 34:					
 					$this->set('manage_incentive', 1);
 					break;
+					case 35:					
+					$this->set('view_billing', 1);
+					break;
 				}				
 			}
 		}
