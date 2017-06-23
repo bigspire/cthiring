@@ -18,6 +18,10 @@ include('classes/class.function.php');
 // add menu count
 include('menu_count.php');
 
+// role based validation
+$module_access = $fun->check_role_access('34',$modules);
+$smarty->assign('module',$module_access);
+
 $getid = $_GET['id'];
 $smarty->assign('getid',$getid);
 // validate url 

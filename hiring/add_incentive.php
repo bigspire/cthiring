@@ -16,6 +16,10 @@ include('classes/class.function.php');
 // add menu count
 include('menu_count.php');
 
+// role based validation
+$module_access = $fun->check_role_access('34',$modules);
+$smarty->assign('module',$module_access);
+
 if(!empty($_POST)){	
 	// array for printing correct field name in error message
 	$fieldtype = array('1', '1');

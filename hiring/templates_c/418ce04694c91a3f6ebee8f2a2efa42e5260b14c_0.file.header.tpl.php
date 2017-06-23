@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-06-22 15:28:48
+/* Smarty version 3.1.29, created on 2017-06-23 15:47:05
   from "C:\xampp\htdocs\2017\ctsvn\cthiring\hiring\templates\include\header.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_594b94d818fe91_18849451',
+  'unifunc' => 'content_594ceaa1cb24d4_46202559',
   'file_dependency' => 
   array (
     '418ce04694c91a3f6ebee8f2a2efa42e5260b14c' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\templates\\include\\header.tpl',
-      1 => 1498125455,
+      1 => 1498213021,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_594b94d818fe91_18849451 ($_smarty_tpl) {
+function content_594ceaa1cb24d4_46202559 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -125,10 +125,14 @@ home/" class=""><i class="icon-file icon-white"></i> Dashboard </a>
 										  <li class="dropdown <?php echo '<?php ';?>echo $fun->set_menu_active(array('add_client','edit_client','client','view_client','client_contact','add_client_contact','edit_client_contact'));<?php echo '?>';?>">
                                             <a data-toggle="dropdown" class="dropdown-toggle " href="#"><i class="icon-user icon-white"></i> Clients <!--span class="label-bub label-info bubble"></span--><b class="caret"></b></a>
 											  <ul class="dropdown-menu">
+											  <?php if ($_smarty_tpl->tpl_vars['module']->value['create_client'] == '1') {?>
                                                 <li><a href="<?php echo webroot;?>
 client/add/">Add Client</a></li>
-                                                <li><a href="<?php echo webroot;?>
+											  <?php }?>
+                                               <?php if ($_smarty_tpl->tpl_vars['module']->value['view_client'] == '1') {?>
+												<li><a href="<?php echo webroot;?>
 client/">Search Client <!-- span class="label-bub label-info white"></span--></a></li>
+											    <?php }?>
 												<!-- <li><a href="add_client_contact.php">Add Client Contact</a></li>-->
 												<!--  <li><a href="client_contact.php">Search Client Contact</a></li>-->
                                             </ul>
@@ -137,29 +141,38 @@ client/">Search Client <!-- span class="label-bub label-info white"></span--></a
 										  <li class="<?php echo '<?php ';?>echo $fun->set_menu_active(array('position','view_position','add_position','edit_position'));<?php echo '?>';?>  dropdown">
                                             <a  data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icon-list-alt icon-white"></i> Positions <!--span class="label-bub label-info bubble"></span--><b class="caret"></b></a>
                                              <ul class="dropdown-menu">
+											 <?php if ($_smarty_tpl->tpl_vars['module']->value['create_position'] == '1') {?>
                                                 <li><a href="<?php echo webroot;?>
 position/add/">Add Position</a></li>
+											 <?php }?>
+											 <?php if ($_smarty_tpl->tpl_vars['module']->value['view_position'] == '1') {?>
                                                 <li><a href="<?php echo webroot;?>
 /position/">Search Position <!-- span class="label-bub label-info white"></span--></a></li>
-                                            </ul>
+											  <?php }?>
+										   </ul>
                                         </li>
+										
                                         <li class="<?php echo $_smarty_tpl->tpl_vars['resume_active']->value;?>
  dropdown">
                                             <a data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icon-th icon-white"></i> Resumes <!-- span class="label-bub label-info bubble"><?php echo $_smarty_tpl->tpl_vars['resume_count']->value;?>
 </span--><b class="caret"></b></a>
 											  <ul class="dropdown-menu">
+											  <?php if ($_smarty_tpl->tpl_vars['module']->value['create_resume'] == '1') {?>
                                                 <li><a href="upload_resume.php" class="iframeBox unreadLink" val="40_55">Upload Resume</a></li>
-                                                <li><a href="<?php echo webroot;?>
+                                               <?php }?>
+											   <?php if ($_smarty_tpl->tpl_vars['module']->value['view_resume'] == '1') {?>
+												<li><a href="<?php echo webroot;?>
 resume/">Search Resume <!-- span class="label-bub label-info white"><?php echo $_smarty_tpl->tpl_vars['resume_count']->value;?>
 </span--></a></li>
+											   <?php }?>
 												<!--<li><a href="upload_resume.php">Upload Resume</a></li>
 												<li><a href="upload_resume.php">Upload Psychometric Test</a></li>
 												<li><a href="snapshot.php">Search Snapshot</a></li>-->
                                             </ul>
                                          </li>
-										 
+										
                                          
-										 
+										 <?php if ($_smarty_tpl->tpl_vars['module']->value['view_interview'] == '1') {?>
                                          <li class="<?php echo $_smarty_tpl->tpl_vars['interview_active']->value;?>
  dropdown">
                                             <a data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icon-list-alt icon-white"></i> Interviews <!--span class="label-bub label-info bubble"><?php echo $_smarty_tpl->tpl_vars['interview_count']->value;?>
@@ -171,13 +184,18 @@ resume/">Search Resume <!-- span class="label-bub label-info white"><?php echo $
 												<li><a href="snapshot.php">Search Snapshot</a></li>-->
                                             </ul>
                                          </li>
-                                      
+										 <?php }?>
+                                      <?php if ($_smarty_tpl->tpl_vars['module']->value['view_billing'] == '1' || $_smarty_tpl->tpl_vars['module']->value['view_incentive'] == '1') {?>
                                         <li class="<?php echo $_smarty_tpl->tpl_vars['billings_active']->value;?>
  dropdown">
                                             <a data-toggle="dropdown" class="dropdown-toggle " href="#"><i class="icon-file icon-white"></i> Incentive <!--span class="label-bub label-info white"></span--><b class="caret"></b></a>
                                            <ul class="dropdown-menu">
+										   <?php if ($_smarty_tpl->tpl_vars['module']->value['view_billing'] == '1') {?>
 												<li><a href="billing.php">Search Billing</a></li>
-                                                <li><a href="incentive.php">Generate Incentive</a></li>
+										   <?php }?>
+										   <?php if ($_smarty_tpl->tpl_vars['module']->value['view_incentive'] == '1') {?>
+                                                <li><a href="incentive.php">Search Incentive</a></li>
+										   <?php }?>
                                                 <!--li><a href="bonus.php">Search Bonus</a></li-->
 												 <!--li><a href="add_billing.php">Add Billing</a></li -->
 												 
@@ -188,47 +206,93 @@ resume/">Search Resume <!-- span class="label-bub label-info white"><?php echo $
                                            
                                             </ul>
                                         </li>
+										<?php }?>
 										
-										 <li class="dropdown">
+										<?php if ($_smarty_tpl->tpl_vars['module']->value['recruiter_report'] == '1' || $_smarty_tpl->tpl_vars['module']->value['account_holder_report'] == '1' || $_smarty_tpl->tpl_vars['module']->value['location_report'] == '1' || $_smarty_tpl->tpl_vars['module']->value['failure_report'] == '1' || $_smarty_tpl->tpl_vars['module']->value['revenue_report'] == '1' || $_smarty_tpl->tpl_vars['module']->value['tat_report'] == '1' || $_smarty_tpl->tpl_vars['module']->value['collection_report'] == '1' || $_smarty_tpl->tpl_vars['module']->value['client_retention_report'] == '1' || $_smarty_tpl->tpl_vars['module']->value['incentive_report'] == '1' || $_smarty_tpl->tpl_vars['module']->value['daily_report'] == '1' || $_smarty_tpl->tpl_vars['module']->value['weekly_report'] == '1') {?>
+										<li class="dropdown">
                                             <a data-toggle="dropdown" class="dropdown-toggle " href="#"><i class="icon-download-alt icon-white"></i> Reports <b class="caret"></b></a>
                                           <ul class="dropdown-menu">
+											<?php if ($_smarty_tpl->tpl_vars['module']->value['recruiter_report'] == '1') {?>
                                                 <li><a href="recruiter_performance.php">Recruiter Performance</a></li>
+											<?php }?>
+										  
+											<?php if ($_smarty_tpl->tpl_vars['module']->value['account_holder_report'] == '1') {?>
                                                 <li><a href="ah_performance.php">Account Holder Performance</a></li>
+										    <?php }?>
+											
+											<?php if ($_smarty_tpl->tpl_vars['module']->value['location_report'] == '1') {?>
 												<li><a href="location_performance.php">Location Performance</a></li>
                                                <!-- <li><a href="#">Clientwise Performance</a></li>-->
-                                                <li><a href="#">Recruiter Performance(Failure Root Cause Analysis )</a></li>
+											<?php }?>
+											
+											<?php if ($_smarty_tpl->tpl_vars['module']->value['failure_report'] == '1') {?>
+											   <li><a href="#">Recruiter Performance(Failure Root Cause Analysis )</a></li>
+											<?php }?>
+											
+											<?php if ($_smarty_tpl->tpl_vars['module']->value['revenue_report'] == '1') {?>
 												<li><a href="revenue.php">Revenue </a></li>
+											<?php }?>
+											
+											<?php if ($_smarty_tpl->tpl_vars['module']->value['tat_report'] == '1') {?>
 												<li><a href="tat_time.php">TAT Time </a></li>
+											<?php }?>
+											
+											<?php if ($_smarty_tpl->tpl_vars['module']->value['collection_report'] == '1') {?>
 												<li><a href="collection_table.php">Collection Table </a></li>
+											<?php }?>
+											
+											<?php if ($_smarty_tpl->tpl_vars['module']->value['client_retention_report'] == '1') {?>
 												<li><a href="client_retention.php">Client Retention Table </a></li>
+											<?php }?>
+											
+											<?php if ($_smarty_tpl->tpl_vars['module']->value['incentive_report'] == '1') {?>
 												<li><a href="incentive_report.php">Incentive </a></li>
+											<?php }?>
+											
+											<?php if ($_smarty_tpl->tpl_vars['module']->value['daily_report'] == '1') {?>
 												<li><a href="daily_performance.php">Daily Performance </a></li>
+											<?php }?>
+											
+											<?php if ($_smarty_tpl->tpl_vars['module']->value['weekly_report'] == '1') {?>
 												<li><a href="weekly_performance.php">Weekly Performance </a></li>
+											<?php }?>
                                             </ul>
+										</li>
+                                        <?php }?>
 
-										 
-                                        </li>
-                                           <li class="<?php echo $_smarty_tpl->tpl_vars['mailbox_active']->value;?>
+										<?php if ($_smarty_tpl->tpl_vars['module']->value['sent_item'] == '1') {?>
+										<li class="<?php echo $_smarty_tpl->tpl_vars['mailbox_active']->value;?>
  dropdown">
                                             <a data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icon-th icon-white"></i> Mail Box <b class="caret"></b></a>
 											  <ul class="dropdown-menu">                                              
                                                 <li><a href="mailbox.php">Sent Items </a></li>
 											
                                             </ul>
-                                         </li>
+                                        </li>
+										<?php }?>
 										
-										 <li class="<?php echo $_smarty_tpl->tpl_vars['setting_active']->value;?>
+										<?php if ($_smarty_tpl->tpl_vars['module']->value['manage_grade'] == '1' || $_smarty_tpl->tpl_vars['module']->value['manage_users'] == '1' || $_smarty_tpl->tpl_vars['module']->value['manage_role'] == '1' || $_smarty_tpl->tpl_vars['module']->value['manage_mailer_template'] == '1' || $_smarty_tpl->tpl_vars['module']->value['manage_incentive'] == '1') {?>
+										
+										<li class="<?php echo $_smarty_tpl->tpl_vars['setting_active']->value;?>
   dropdown">
                                             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
 											<i class="icon-cog icon-white"></i> Settings <b class="caret"></b></a>
                                           <ul class="dropdown-menu">
+											<?php if ($_smarty_tpl->tpl_vars['module']->value['manage_grade'] == '1') {?>
                                                 <li><a href="grade.php">Grade <?php if ($_smarty_tpl->tpl_vars['grade_count']->value) {?><span class="label-bub label-info white"><?php echo $_smarty_tpl->tpl_vars['grade_count']->value;?>
 </span><?php }?></a></li>
+											<?php }?>
+											<?php if ($_smarty_tpl->tpl_vars['module']->value['manage_users'] == '1') {?>
                                                 <li><a href="users.php">Users <?php if ($_smarty_tpl->tpl_vars['users_count']->value) {?><span class="label-bub label-info white"><?php echo $_smarty_tpl->tpl_vars['users_count']->value;?>
 </span><?php }?></a></li>
+											<?php }?>											
+											<?php if ($_smarty_tpl->tpl_vars['module']->value['manage_role'] == '1') {?>
+	
 												<li><a href="roles.php">Roles [Access] <?php if ($_smarty_tpl->tpl_vars['roles_count']->value) {?><span class="label-bub label-info white"><?php echo $_smarty_tpl->tpl_vars['roles_count']->value;?>
 </span><?php }?></a></li>
-												
+											<?php }?>
+											
+											<?php if ($_smarty_tpl->tpl_vars['module']->value['manage_mailer_template'] == '1') {?>
 												<li class="dropdown">
 													<a href="#">Mailer Templates <b class="caret-right"></b></a>
 													<ul class="dropdown-menu">
@@ -237,6 +301,9 @@ resume/">Search Resume <!-- span class="label-bub label-info white"><?php echo $
 														<li><a href="mailer_template.php?id=3">Schedule Interview to Candidates</a></li>														
 													</ul>
 												</li>
+											<?php }?>
+											
+											<?php if ($_smarty_tpl->tpl_vars['module']->value['manage_incentive'] == '1') {?>
                                            <li class="dropdown">
 													<a href="#">Incentive <b class="caret-right"></b></a>
 													<ul class="dropdown-menu">
@@ -246,10 +313,10 @@ resume/">Search Resume <!-- span class="label-bub label-info white"><?php echo $
 														<!--li><a href="bonus_share.php">Bonus Share</a></li-->														
 													</ul>
 												</li>
+											<?php }?>
                                             </ul>
-
-										 
                                         </li>
+										<?php }?>
 										
 										
                                         <li>

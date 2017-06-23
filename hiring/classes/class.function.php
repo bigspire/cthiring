@@ -14,6 +14,105 @@ class fun{
 		return trim(mcrypt_decrypt(MCRYPT_RIJNDAEL_256, $this->key, base64_decode($cypher), MCRYPT_MODE_ECB, mcrypt_create_iv(mcrypt_get_iv_size(MCRYPT_RIJNDAEL_256, MCRYPT_MODE_ECB), MCRYPT_RAND)));
     }
 	
+	/* function to check the role access */
+	public function check_role_access($cur_module,$modules){
+		foreach($modules as $per){			
+			$format_per[] = $per;
+		}
+		if (!in_array($cur_module, $format_per)){
+			header('Location:../home/?access=invalid');	
+		}
+		foreach($modules as $key => $module){
+			// check the user module exists in the database module list
+			if (in_array($module, $format_per)) { 	
+				switch($module){
+					case 1:		
+					$mod['create_client'] = 1;
+					break;					
+					case 2:					
+					$mod['view_client'] = 1;
+					break;						
+					case 4:					
+					$mod['create_position'] = 1;
+					break;					
+					case 5:					
+					$mod['view_position'] = 1;
+					break;
+					case 7:					
+					$mod['create_resume'] = 1;
+					break;
+					case 8:					
+					$mod['view_resume'] = 1;
+					break;
+					case 10:					
+					$mod['view_interview'] = 1;
+					break;					
+					case 14:					
+					$mod['view_incentive'] = 1;
+					break;
+					case 13:					
+					$mod['create_incentive'] = 1;
+					break;
+					case 17:					
+					$mod['recruiter_report'] = 1;
+					break;
+					case 18:					
+					$mod['account_holder_report'] = 1;
+					break;
+					case 19:					
+					$mod['location_report'] = 1;
+					break;
+					case 20:					
+					$mod['failure_report'] = 1;
+					break;				
+					case 22:					
+					$mod['revenue_report'] = 1;
+					break;
+					case 23:					
+					$mod['tat_report'] = 1;
+					break;
+					case 24:					
+					$mod['collection_report'] = 1;
+					break;
+					case 25:					
+					$mod['client_retention_report'] = 1;
+					break;
+					case 26:					
+					$mod['incentive_report'] = 1;
+					break;
+					case 27:					
+					$mod['daily_report'] = 1;
+					break;
+					case 28:					
+					$mod['weekly_report'] = 1;
+					break;
+					case 29:					
+					$mod['sent_item'] = 1;
+					break;
+					case 30:					
+					$mod['manage_grade'] = 1;
+					break;
+					case 31:					
+					$mod['manage_users'] = 1;
+					break;
+					case 32:			
+					$mod['manage_role'] = 1;
+					break;
+					case 33:					
+					$mod['manage_mailer_template'] = 1;
+					break;
+					case 34:					
+					$mod['manage_incentive'] = 1;
+					break;
+					case 35:					
+					$mod['view_billing'] = 1;
+					break;
+				}				
+			}
+		}
+		return $mod;
+	}
+	
 	/* function to encrypt */
 	 function encrypt($plain){
         return trim(base64_encode(mcrypt_encrypt(MCRYPT_RIJNDAEL_256, $this->key, $plain, MCRYPT_MODE_ECB, mcrypt_create_iv(mcrypt_get_iv_size(MCRYPT_RIJNDAEL_256, MCRYPT_MODE_ECB), MCRYPT_RAND))));

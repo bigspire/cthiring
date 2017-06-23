@@ -19,6 +19,14 @@ include('classes/class.paging.php');
 // add menu count
 include('menu_count.php');
 
+// role based validation
+$module_access = $fun->check_role_access('29',$modules);
+$smarty->assign('module',$module_access);
+
+// role based validation
+$module_access = $fun->check_role_access('29',$modules);
+$smarty->assign('module',$module_access);
+
 $keyword = $_POST['keyword'] ? $_POST['keyword'] : $_GET['keyword'];
 
 //post url for paging

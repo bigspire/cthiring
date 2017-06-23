@@ -40,8 +40,8 @@
 								&f_date={$f_date}&t_date={$t_date}">
 								<button type="button" val="billing.php?action=export&keyword={$smarty.post.keyword}&f_date={$f_date}&t_date={$t_date}" name="export" class="jsRedirect btn btn-warning" >Export Excel</button></a>
 							{/if}
-							<a class="jsRedirect" data-notify-time = '3000'   href="add_billing.php">
-							<input type="button" value="Create Billing" class="btn btn-info"/></a>	
+							<!-- a class="jsRedirect" data-notify-time = '3000'   href="add_billing.php">
+							<input type="button" value="Create Billing" class="btn btn-info"/></a-->	
 						</div>
 						
 						{if $SUCCESS_MSG}
@@ -91,10 +91,8 @@
 										<th width="180"><a href="billing.php?field=job_title&order={$order}&page={$smarty.get.page}&keyword={$keyword}&f_date={$f_date}&t_date={$t_date}" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="{$sort_field_job_title}">Position</a></th>
 										<th width="150"><a href="billing.php?field=client_name&order={$order}&page={$smarty.get.page}&keyword={$keyword}&f_date={$f_date}&t_date={$t_date}" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="{$sort_field_client_name}">Client Name</a></th>
 										<th width="90"><a href="billing.php?field=billing_amount&order={$order}&page={$smarty.get.page}&keyword={$keyword}&f_date={$f_date}&t_date={$t_date}" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="{$sort_field_billing_amount}">Billing Amount</a></th>
-										<th width="80"><a href="billing.php?field=billing_date&order={$order}&page={$smarty.get.page}&keyword={$keyword}&f_date={$f_date}&t_date={$t_date}" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="{$sort_field_billing_date}">Billing Date</a></th>
 										<th width="120"><a href="billing.php?field=candidate_name&order={$order}&page={$smarty.get.page}&keyword={$keyword}&f_date={$f_date}&t_date={$t_date}" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="{$sort_field_candidate_name}">Candidate Name</a></th>
-										<th width="80"><a href="billing.php?field=created_date&order={$order}&page={$smarty.get.page}&keyword={$keyword}&f_date={$f_date}&t_date={$t_date}" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="{$sort_field_created_date}">Created Date</a></th>
-										<th width="80">Status</a></th>
+										<th width="80"><a href="billing.php?field=billing_date&order={$order}&page={$smarty.get.page}&keyword={$keyword}&f_date={$f_date}&t_date={$t_date}" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="{$sort_field_billing_date}">Billing Date</a></th>
 									</tr>
 								</thead>
 								<tbody>	
@@ -104,10 +102,8 @@
 										<td><a  href="view_billing.php?id={$item.id}">{$item.job_title}</a></td>
 										<td>{$item.client_name}</td>
 										<td>{$item.billing_amount}</td>
-										<td>{$item.billing_date}</td>
 										<td>{$item.candidate_name}</td>
-										<td>{$item.created_date}</td>
-										<td>{$item.status}</td>	
+										<td>{$item.billing_date}</td>
 									</tr>		
 									{* /if *}
 								{/foreach}				

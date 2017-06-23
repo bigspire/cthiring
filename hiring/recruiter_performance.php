@@ -22,6 +22,10 @@ include('classes/class.mailer.php');
 // content class
 include('classes/class.content.php');
 
+// role based validation
+$module_access = $fun->check_role_access('17',$modules);
+$smarty->assign('module',$module_access);
+
 // query to fetch all employee names. 
 $query = 'CALL get_employee()';
 try{

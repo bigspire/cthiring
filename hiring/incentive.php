@@ -19,6 +19,10 @@ include('classes/class.paging.php');
 // add menu count
 include('menu_count.php');
 
+// role based validation
+$module_access = $fun->check_role_access('14',$modules);
+$smarty->assign('module',$module_access);
+
 $f_date = $_POST['f_date'] ? $_POST['f_date'] : $_GET['f_date'];  
 $t_date = $_POST['t_date'] ? $_POST['t_date'] : $_GET['t_date']; 
 $from_date = $fun->convert_date($f_date);

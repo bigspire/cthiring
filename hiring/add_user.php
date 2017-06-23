@@ -16,6 +16,10 @@ include('classes/class.function.php');
 // add menu count
 include('menu_count.php');
 
+// role based validation
+$module_access = $fun->check_role_access('31',$modules);
+$smarty->assign('module',$module_access);
+
 if(!empty($_POST)){
 	// Validating the required fields  
 	if($fun->is_phonenumber($_POST['mobile']) || $fun->size_of_phonenumber($_POST['mobile'])) {

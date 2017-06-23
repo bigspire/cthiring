@@ -25,6 +25,10 @@ if(empty($_SESSION['resume_doc_id'])){
 	header('Location:page_error.php');
 }
 
+// role based validation
+$module_access = $fun->check_role_access('7',$modules);
+$smarty->assign('module',$module_access);
+
 // post of education fields value
 for($i = 0; $i < $_POST['edu_count']; $i++){
 	$quali[] = $_POST['qualification_'.$i];
