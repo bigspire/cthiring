@@ -192,7 +192,7 @@ if($error){
 		
 		// is approved condition - when L1 or L2 rejects
 		if($status == 'R'){
-			$is_approved = 'N';
+			$is_approved = 'Y';
 		}
 		// is approved condition - after L2 approves or L1 only exists and approves
 		elseif(($status == 'A' && $level2 == $_SESSION['user_id']) || ($status == 'A' && $level2 == '0')){

@@ -150,7 +150,7 @@
 										 {/if}
                                       {if $module['view_billing'] eq '1' || $module['view_incentive'] eq '1'}
                                         <li class="{$billings_active} dropdown">
-                                            <a data-toggle="dropdown" class="dropdown-toggle " href="#"><i class="icon-file icon-white"></i> Incentive <!--span class="label-bub label-info white"></span--><b class="caret"></b></a>
+                                            <a data-toggle="dropdown" class="dropdown-toggle " href="#"><i class="icon-file icon-white"></i> Incentive {if $approve_billing_count}<span class="label-bub label-info white">{$approve_billing_count}</span>{/if}<b class="caret"></b></a>
                                            <ul class="dropdown-menu">
 										   {if $module['view_billing'] eq '1'}
 												<li><a href="billing.php">Search Billing</a></li>

@@ -34,7 +34,7 @@ if(($fun->isnumeric($id)) || ($fun->is_empty($id)) || ($id == 0)){
 }
 
 // check valid approve billing user  
-$query = "CALL check_valid_approve_users('".$_SESSION['status_id']."','".$_SESSION['user_id']."')";
+$query = "CALL check_valid_approve_users('".$_GET['id']."','".$_SESSION['user_id']."')";
 try{
 	if(!$result = $mysql->execute_query($query)){
 		throw new Exception('Problem in fetching valid approve user');
@@ -48,9 +48,8 @@ try{
 }catch(Exception $e){
 	echo 'Caught exception: ',  $e->getMessage(), "\n";
 }
-
 // redirecting to error page if users dont have permission to see view page
-if($valid_user['total'] == '0'){
+if($valid_user['users_id'] != $_SESSION['user_id']){
 	header('Location:page_error.php');
 }
 
