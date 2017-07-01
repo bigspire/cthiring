@@ -123,7 +123,7 @@ $(document).ready(function() {
 	
 	
 	
-	/* function to switch the tabs */
+	/* function to switch the tabs 
 	$('.tabChange').click(function(){	
 		show_div = $(this).attr('rel');
 		switch(show_div){
@@ -189,6 +189,23 @@ $(document).ready(function() {
 			$('.cvTable').show();
 		}
 		
+		
+	});
+	*/
+	
+	/* function to switch the tabs */
+	$('.tabChange').click(function(){	
+		show_div = $(this).attr('rel');
+		switch(show_div){
+			case 'all':
+			$('.cv_row').show();
+			$('.status_row').hide();
+			break;	
+			case 'other_cv':
+			$('.cv_row').hide();
+			$('.status_row').show();
+			break;			
+		}			
 		
 	});
 	

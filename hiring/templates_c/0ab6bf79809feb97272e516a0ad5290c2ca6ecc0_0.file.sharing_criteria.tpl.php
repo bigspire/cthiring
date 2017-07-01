@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-06-17 16:31:40
+/* Smarty version 3.1.29, created on 2017-06-24 17:57:25
   from "F:\xampp\htdocs\ctsvn\cthiring\hiring\templates\sharing_criteria.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_59450c14065639_96003609',
+  'unifunc' => 'content_594e5aade0ffa1_37726003',
   'file_dependency' => 
   array (
     '0ab6bf79809feb97272e516a0ad5290c2ca6ecc0' => 
     array (
       0 => 'F:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\templates\\sharing_criteria.tpl',
-      1 => 1487936004,
+      1 => 1498049151,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_59450c14065639_96003609 ($_smarty_tpl) {
+function content_594e5aade0ffa1_37726003 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'F:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -97,23 +97,18 @@ $_smarty_tpl->ext->_updateScope->updateScope($_smarty_tpl, 'hide', 0);?>
 						<form action="" id="formID" name="searchFrm" class="formID" method="post" accept-charset="utf-8"><div style="display:none;"><input type="hidden" name="_method" value="POST"/></div>	
 							<div class="<?php echo $_smarty_tpl->tpl_vars['hide']->value;?>
  dataTables_filter srchBox" style="float:left;" id="dt_gal_filter">
-							<label style="margin-top:18px;"><a href="sharing_criteria.php" class="jsRedirect"><input value="Reset" type="button" class="btn"/></a></label>
-							<label style="margin-top:18px;"><input type="submit" value="Submit" class="btn btn-gebo" /></label>
-							
+							<label style="margin-left:0">Keyword: <input type="text" placeholder="Search Here..." name="keyword" id="keyword" value="<?php echo $_smarty_tpl->tpl_vars['keyword']->value;?>
+" class="input-large" aria-controls="dt_gal"></label>
 							<label>Status: 
 							<select name="status" class="input-small" style="clear:left" id="ClientStatus">
 								<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['status_type']->value,'selected'=>$_smarty_tpl->tpl_vars['status']->value),$_smarty_tpl);?>
 
 							</select> 
 							</label>
-
-							<!--<label>To Date: <input type="text" name="data[Client][to]" value="" class="input-small datepick" aria-controls="dt_gal"></label>
-
-							<label>From Date: <input type="text" class="input-small datepick" name="data[Client][from]" value="" aria-controls="dt_gal"></label>
-							-->
-							<label style="margin-left:0">Keyword: <input type="text" placeholder="Search Here..." name="keyword" id="keyword" value="<?php echo $_smarty_tpl->tpl_vars['keyword']->value;?>
-" class="input-large" aria-controls="dt_gal"></label>
-
+							<label style="margin-top:18px;"><a href="sharing_criteria.php" class="jsRedirect"><input value="Reset" type="button" class="btn"/></a></label>
+							
+							<label style="margin-top:18px;"><input type="submit" value="Submit" class="btn btn-gebo" /></label>
+							
 														</div>
 
 							<input type="hidden" value="1" id="SearchKeywords">
@@ -129,31 +124,31 @@ $_smarty_tpl->ext->_updateScope->updateScope($_smarty_tpl, 'hide', 0);?>
 &page=<?php echo $_GET['page'];?>
 &keyword=<?php echo $_smarty_tpl->tpl_vars['keyword']->value;?>
 &status=<?php echo $_smarty_tpl->tpl_vars['status']->value;?>
-" class="<?php echo $_smarty_tpl->tpl_vars['sort_field_type']->value;?>
+" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="<?php echo $_smarty_tpl->tpl_vars['sort_field_type']->value;?>
 ">Type</a></th>
 										<th width="200"><a href="sharing_criteria.php?field=percent&order=<?php echo $_smarty_tpl->tpl_vars['order']->value;?>
 &page=<?php echo $_GET['page'];?>
 &keyword=<?php echo $_smarty_tpl->tpl_vars['keyword']->value;?>
 &status=<?php echo $_smarty_tpl->tpl_vars['status']->value;?>
-" class="<?php echo $_smarty_tpl->tpl_vars['sort_field_percent']->value;?>
+" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="<?php echo $_smarty_tpl->tpl_vars['sort_field_percent']->value;?>
 ">% of Share</a></th>								 	
 										<th width="100"><a href="sharing_criteria.php?field=status&order=<?php echo $_smarty_tpl->tpl_vars['order']->value;?>
 &page=<?php echo $_GET['page'];?>
 &keyword=<?php echo $_smarty_tpl->tpl_vars['keyword']->value;?>
 &status=<?php echo $_smarty_tpl->tpl_vars['status']->value;?>
-" class="<?php echo $_smarty_tpl->tpl_vars['sort_field_status']->value;?>
+" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="<?php echo $_smarty_tpl->tpl_vars['sort_field_status']->value;?>
 ">Status</a></th>
 										<th width="75"><a href="sharing_criteria.php?field=created&order=<?php echo $_smarty_tpl->tpl_vars['order']->value;?>
 &page=<?php echo $_GET['page'];?>
 &keyword=<?php echo $_smarty_tpl->tpl_vars['keyword']->value;?>
 &status=<?php echo $_smarty_tpl->tpl_vars['status']->value;?>
-" class="<?php echo $_smarty_tpl->tpl_vars['sort_field_created']->value;?>
+" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="<?php echo $_smarty_tpl->tpl_vars['sort_field_created']->value;?>
 ">Created</a></th>
 										<th width="75"><a href="sharing_criteria.php?field=modified&order=<?php echo $_smarty_tpl->tpl_vars['order']->value;?>
 &page=<?php echo $_GET['page'];?>
 &keyword=<?php echo $_smarty_tpl->tpl_vars['keyword']->value;?>
 &status=<?php echo $_smarty_tpl->tpl_vars['status']->value;?>
-" class="<?php echo $_smarty_tpl->tpl_vars['sort_field_modified']->value;?>
+" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="<?php echo $_smarty_tpl->tpl_vars['sort_field_modified']->value;?>
 ">Modified</a></th>
 										<th width="30" style="text-align:center">Actions</th>
 									</tr>
