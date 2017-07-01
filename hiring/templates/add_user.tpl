@@ -72,7 +72,20 @@
 							</select> 
 							<label for="reg_city" generated="true" class="error">{$roleErr}</label>											
 						</td>	
-				  </tr>																							
+				  </tr>		
+	  <tr class="tbl_row">
+						<td width="120" class="tbl_column">Status <span class="f_req">*</span></td>
+						<td>	
+							<select name="status" class="span8"  id="PositionEmpId">
+							{if isset($status)}
+								{html_options options=$user_status selected=$status}	
+							{else}
+								{html_options options=$user_status selected='0'}	
+							{/if}
+							</select> 
+							<label for="reg_city" generated="true" class="error">{$statusErr}</label>											
+						</td>	
+				  </tr>				  
 				</tbody>
 			</table>
 		</div>
@@ -97,20 +110,28 @@
 							<input type="text" tabindex="7" name="designation" value="{$smarty.post.designation}" class="span8" autocomplete="off">									
 						</td>	
 				  </tr>
-				    
-				  <tr class="tbl_row">
-						<td width="120" class="tbl_column">Status <span class="f_req">*</span></td>
+				    <tr class="tbl_row">
+						<td width="120" class="tbl_column">L1 </td>
 						<td>	
-							<select name="status" class="span8"  id="PositionEmpId">
-							{if isset($status)}
-								{html_options options=$user_status selected=$status}	
-							{else}
-								{html_options options=$user_status selected='0'}	
-							{/if}
+							<select name="level1" class="span8"  id="PositionEmpId">
+							<option value="">Select</option>
+						{html_options options=$users selected='0' selected=$smarty.post.level1}
+
 							</select> 
-							<label for="reg_city" generated="true" class="error">{$statusErr}</label>											
 						</td>	
-				  </tr>						
+				  </tr>
+
+
+				   <tr class="tbl_row">
+						<td width="120" class="tbl_column">L2 </td>
+						<td>	
+							<select name="level2" class="span8"  id="PositionEmpId">
+							<option  value="">Select</option>
+								{html_options options=$users selected='0' selected=$smarty.post.level2}
+							</select> 
+						</td>	
+				  </tr>	
+								
 				</tbody>
 			</table>
 		</div>
@@ -119,8 +140,8 @@
 </div>
 </div>
 <div class="form-actions">
-				<input name="submit" class="btn btn-gebo" value="Submit" type="submit"/>
-				<input type="button" value="Cancel" class="btn" onclick="window.location='users.php'">
+				<input class="btn btn-gebo" type="submit" value="Submit">
+				<a href="users.php" class="cancelBtn"><input type="button" value="Cancel" class="btn"></a>
 </div>
                     </div>
 				</form>

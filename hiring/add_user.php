@@ -73,9 +73,9 @@ if(!empty($_POST)){
 //	echo $row['total'];die;
 //echo $test;die;
 	if(empty($test)){
-		if($row['total'] == '0'){
-			// query to insert user details.
-			$query = "CALL add_user('".$mysql->real_escape_str($_POST['email'])."',
+		if($row['total'] == '0'){				
+				// query to insert user details.
+				$query = "CALL add_user('".$mysql->real_escape_str($_POST['email'])."',
 						'".$fun->is_white_space($mysql->real_escape_str($_POST['first_name']))."',
 						'".$fun->is_white_space($mysql->real_escape_str($_POST['last_name']))."',
 						'".$mysql->real_escape_str($_POST['mobile'])."',
@@ -83,19 +83,33 @@ if(!empty($_POST)){
 						'".$mysql->real_escape_str($_POST['status'])."',
 						'".$mysql->real_escape_str($_POST['role'])."','".$mysql->real_escape_str($_SESSION['user_id'])."',
 			 			'".$date."','".$mysql->real_escape_str($_POST['location'])."')";
-			// Calling the function that makes the insert
-			try{
-				// calling mysql exe_query function
+				// Calling the function that makes the insert
+				try{
+					// calling mysql exe_query function
 				if(!$result = $mysql->execute_query($query)){
 					throw new Exception('Problem in executing add user');
 				}
 				$row = $mysql->display_result($result);
 				$last_id = $row['inserted_id'];
 					if(!empty($last_id)){
-						// redirecting to list users page
-						header('Location: users.php?status=created');		
+						// update L1 and L2 if required
+						if($_POST['level1'] != '' || $_POST['level2'] != ''){
+						// call the next result
+						$mysql->next_query();
+						$query = "CALL add_approval('".$mysql->real_escape_str($last_id)."',
+						'".$mysql->real_escape_str($_POST['level1'])."','".$mysql->real_escape_str($_POST['level2'])."',
+						'".$date."')";
+						// calling mysql exe_query function
+						if(!$result = $mysql->execute_query($query)){
+							throw new Exception('Problem in executing add user approval');
+						}
+						// free the memory
+						$mysql->clear_result($result);						
+						}
+					// redirecting to list users page
+					header('Location: users.php?status=created');		
 					}
-				// free the memory
+					// free the memory
 				$mysql->clear_result($result);
 			}catch(Exception $e){
 				echo 'Caught exception: ',  $e->getMessage(), "\n";
@@ -140,6 +154,26 @@ try{
  		$locations[$row['id']] = ucwords($row['branch']);
 	}
 	$smarty->assign('locations',$locations);
+	// free the memory
+	$mysql->clear_result($result);
+	// call the next result
+	$mysql->next_query();
+}catch(Exception $e){
+	echo 'Caught exception: ',  $e->getMessage(), "\n";
+}
+
+// query to fetch all employee names. 
+$query = 'CALL get_employee()';
+try{
+	// calling mysql exe_query function
+	if(!$result = $mysql->execute_query($query)){
+		throw new Exception('Problem in getting employee details');
+	}
+	while($row = $mysql->display_result($result))
+	{
+ 		$emp_name[$row['id']] = ucwords($row['emp_name']);
+	}
+	$smarty->assign('users',$emp_name);
 	// free the memory
 	$mysql->clear_result($result);
 	// call the next result

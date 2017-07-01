@@ -74,6 +74,23 @@ if(empty($_POST)){
 	}	
 }
 
+// get L1 & L2
+$query = "CALL get_approve_user('$getid')";
+try{
+	// calling mysql exe_query function
+	if(!$result = $mysql->execute_query($query)){ 
+		throw new Exception('Problem in getting approve user details');
+	}
+	$row = $mysql->display_result($result);
+	$smarty->assign('lead', $row);
+	// free the memory
+	$mysql->clear_result($result);
+	// call the next result
+	$mysql->next_query();
+}catch(Exception $e){
+	echo 'Caught exception: ',  $e->getMessage(), "\n";
+}	
+
 if(!empty($_POST)){
 	// Validating the required fields  
 	if($fun->is_phonenumber($_POST['mobile']) || $fun->size_of_phonenumber($_POST['mobile'])) {
@@ -124,7 +141,8 @@ if(!empty($_POST)){
 	}catch(Exception $e){
 		echo 'Caught exception: ',  $e->getMessage(), "\n";
 	} 
-
+		
+	
 	if(empty($test)){
 		if($row['total'] == '0'){
 			// query to insert sharing percent. 
@@ -142,13 +160,38 @@ if(!empty($_POST)){
 				if(!$result = $mysql->execute_query($query)){
 					throw new Exception('Problem in executing edit user');
 				}
-				$row = $mysql->display_result($result);
+				$row = $mysql->display_result($result);				
 				// free the memory
 				$mysql->clear_result($result);
-				// call the next result
-				$mysql->next_query();
 				$affected_rows = $row['affected_rows'];
 				if(!empty($affected_rows)){
+					// call the next result
+					$mysql->next_query();
+					// check L1 or L2 available
+					// calling mysql exe_query function
+					$query = "CALL check_approval('".$mysql->real_escape_str($_GET['id'])."')";
+					if(!$result = $mysql->execute_query($query)){
+						throw new Exception('Problem in getting check approval');
+					}
+					$row = $mysql->display_result($result);
+					if($row['id'] != ''){
+						// update L1 and L2 if required
+						$query2 = "CALL edit_approval('".$mysql->real_escape_str($row['id'])."','".$mysql->real_escape_str($_GET['id'])."',
+						'".$mysql->real_escape_str($_POST['level1'])."','".$mysql->real_escape_str($_POST['level2'])."',
+						'".$date."')";
+					}else if($_POST['level1'] != '' || $_POST['level2'] != ''){
+						$query2 = "CALL add_approval('".$mysql->real_escape_str($_GET['id'])."',
+						'".$mysql->real_escape_str($_POST['level1'])."','".$mysql->real_escape_str($_POST['level2'])."',
+						'".$date."')";
+					}
+					// call the next result
+					$mysql->next_query();
+					// calling mysql exe_query function
+					if($query2 != ''){
+						if(!$result = $mysql->execute_query($query2)){
+							throw new Exception('Problem in executing approval');
+						}
+					}
 					// redirecting to list users page
 					header('Location: users.php?status=updated');		
 				}
@@ -195,6 +238,25 @@ try{
  		$locations[$row['id']] = ucwords($row['branch']);
 	}
 	$smarty->assign('locations',$locations);
+	// free the memory
+	$mysql->clear_result($result);
+	// call the next result
+	$mysql->next_query();
+}catch(Exception $e){
+	echo 'Caught exception: ',  $e->getMessage(), "\n";
+}
+// query to fetch all employee names. 
+$query = 'CALL get_employee()';
+try{
+	// calling mysql exe_query function
+	if(!$result = $mysql->execute_query($query)){
+		throw new Exception('Problem in getting employee details');
+	}
+	while($row = $mysql->display_result($result))
+	{
+ 		$emp_name[$row['id']] = ucwords($row['emp_name']);
+	}
+	$smarty->assign('users',$emp_name);
 	// free the memory
 	$mysql->clear_result($result);
 	// call the next result

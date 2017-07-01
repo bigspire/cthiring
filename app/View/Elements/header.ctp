@@ -21,7 +21,7 @@
                                     <ul class="dropdown-menu">
 																			<li class="divider"></li>
 
-										<li><a href="edit_profile.php">Edit Profile</a></li>
+										<li><a href="<?php echo $this->webroot;?>hiring/view_profile.php">View Profile</a></li>
 
 										<li><a href="<?php echo $this->webroot;?>login/logout/">Log Out</a></li>
                                     </ul>

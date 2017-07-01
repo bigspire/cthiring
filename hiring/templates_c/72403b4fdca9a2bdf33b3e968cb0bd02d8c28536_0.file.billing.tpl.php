@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-06-23 19:31:20
+/* Smarty version 3.1.29, created on 2017-07-01 16:50:59
   from "F:\xampp\htdocs\ctsvn\cthiring\hiring\templates\billing.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_594d1f309f12b4_57040143',
+  'unifunc' => 'content_5957859b2254d1_78674774',
   'file_dependency' => 
   array (
     '72403b4fdca9a2bdf33b3e968cb0bd02d8c28536' => 
     array (
       0 => 'F:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\templates\\billing.tpl',
-      1 => 1498225510,
+      1 => 1498904389,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_594d1f309f12b4_57040143 ($_smarty_tpl) {
+function content_5957859b2254d1_78674774 ($_smarty_tpl) {
 ?>
 
    
@@ -72,8 +72,8 @@ home"><i class="icon-home"></i></a>
 &t_date=<?php echo $_smarty_tpl->tpl_vars['t_date']->value;?>
 " name="export" class="jsRedirect btn btn-warning" >Export Excel</button></a>
 							<?php }?>
-							<!-- a class="jsRedirect" data-notify-time = '3000'   href="add_billing.php">
-							<input type="button" value="Create Billing" class="btn btn-info"/></a-->	
+							<a class="jsRedirect" data-notify-time = '3000'   href="add_billing.php">
+							<input type="button" value="Create Billing" class="btn btn-info"/></a>	
 						</div>
 						
 						<?php if ($_smarty_tpl->tpl_vars['SUCCESS_MSG']->value) {?>
@@ -156,6 +156,13 @@ $_smarty_tpl->ext->_updateScope->updateScope($_smarty_tpl, 'hide', 0);?>
 &t_date=<?php echo $_smarty_tpl->tpl_vars['t_date']->value;?>
 " rel="tooltip" data-original-title="Sort by Ascending or Descending" class="<?php echo $_smarty_tpl->tpl_vars['sort_field_candidate_name']->value;?>
 ">Candidate Name</a></th>
+										<th width="80"><a href="billing.php?field=account_holder&order=<?php echo $_smarty_tpl->tpl_vars['order']->value;?>
+&page=<?php echo $_GET['page'];?>
+&keyword=<?php echo $_smarty_tpl->tpl_vars['keyword']->value;?>
+&f_date=<?php echo $_smarty_tpl->tpl_vars['f_date']->value;?>
+&t_date=<?php echo $_smarty_tpl->tpl_vars['t_date']->value;?>
+" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="<?php echo $_smarty_tpl->tpl_vars['sort_field_billing_date']->value;?>
+">Account Holder</a></th>
 										<th width="80"><a href="billing.php?field=billing_date&order=<?php echo $_smarty_tpl->tpl_vars['order']->value;?>
 &page=<?php echo $_GET['page'];?>
 &keyword=<?php echo $_smarty_tpl->tpl_vars['keyword']->value;?>
@@ -190,6 +197,8 @@ $__foreach_item_0_saved_local_item = $_smarty_tpl->tpl_vars['item'];
 										<td><?php echo $_smarty_tpl->tpl_vars['item']->value['billing_amount'];?>
 </td>
 										<td><?php echo $_smarty_tpl->tpl_vars['item']->value['candidate_name'];?>
+</td>
+										<td><?php echo $_smarty_tpl->tpl_vars['item']->value['st_user'];?>
 </td>
 										<td><?php echo $_smarty_tpl->tpl_vars['item']->value['billing_date'];?>
 </td>

@@ -72,7 +72,18 @@
 							</select> 
 							<label for="reg_city" generated="true" class="error">{$locationErr}</label>											
 						</td>	
-				  </tr>																						
+				  </tr>	
+
+  <tr>
+						<td width="120" class="tbl_column">Status <span class="f_req">*</span></td>
+						<td>	
+							<select name="status" class="span8"  id="PositionEmpId">
+								{html_options options=$user_status selected=$status}
+							</select> 
+							<label for="reg_city" generated="true" class="error">{$statusErr}</label>	
+						</td>	
+				  </tr>	
+				  
 				</tbody>
 			</table>
 		</div>
@@ -98,15 +109,29 @@
 						</td>	
 				  </tr>
 				    
-				  <tr>
-						<td width="120" class="tbl_column">Status <span class="f_req">*</span></td>
+					  <tr class="tbl_row">
+						<td width="120" class="tbl_column">L1 </td>
 						<td>	
-							<select name="status" class="span8"  id="PositionEmpId">
-								{html_options options=$user_status selected=$status}
+							<select name="level1" class="span8"  id="PositionEmpId">
+							<option  value="">Select</option>
+						{html_options options=$users selected='0' selected=$lead.level1}	
+
 							</select> 
-							<label for="reg_city" generated="true" class="error">{$statusErr}</label>	
 						</td>	
-				  </tr>						
+				  </tr>
+
+
+				   <tr class="tbl_row">
+						<td width="120" class="tbl_column">L2 </td>
+						<td>	
+							<select name="level2" class="span8"  id="PositionEmpId">
+							<option  value="">Select</option>
+								{html_options options=$users selected='0' selected=$lead.level2}	
+							</select> 
+						</td>	
+				  </tr>	
+				  
+									
 				</tbody>
 			</table>
 		</div>
@@ -115,8 +140,8 @@
 </div>
 </div>
 <div class="form-actions">
-				<button class="btn btn-gebo" type="submit">Submit</button>
-				<input type="button" value="Cancel" class="btn" onclick="window.location='users.php'">
+				<input class="btn btn-gebo" type="submit" value="Submit">
+				<a href="users.php" class="cancelBtn"><input type="button" value="Cancel" class="btn"></a>
 </div>
                     </div>
 				</form>

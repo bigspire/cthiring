@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-06-21 18:44:13
+/* Smarty version 3.1.29, created on 2017-07-01 19:18:32
   from "F:\xampp\htdocs\ctsvn\cthiring\hiring\templates\add_user.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_594a71256c99c2_80327766',
+  'unifunc' => 'content_5957a830cd0d84_78290500',
   'file_dependency' => 
   array (
     '0309edb399d41ab69c0b7608e5b7cbe278fd617c' => 
     array (
       0 => 'F:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\templates\\add_user.tpl',
-      1 => 1497959907,
+      1 => 1498916907,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_594a71256c99c2_80327766 ($_smarty_tpl) {
+function content_5957a830cd0d84_78290500 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'F:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -110,7 +110,23 @@ home"><i class="icon-home"></i></a>
 							<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['roleErr']->value;?>
 </label>											
 						</td>	
-				  </tr>																							
+				  </tr>		
+	  <tr class="tbl_row">
+						<td width="120" class="tbl_column">Status <span class="f_req">*</span></td>
+						<td>	
+							<select name="status" class="span8"  id="PositionEmpId">
+							<?php if (isset($_smarty_tpl->tpl_vars['status']->value)) {?>
+								<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['user_status']->value,'selected'=>$_smarty_tpl->tpl_vars['status']->value),$_smarty_tpl);?>
+	
+							<?php } else { ?>
+								<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['user_status']->value,'selected'=>'0'),$_smarty_tpl);?>
+	
+							<?php }?>
+							</select> 
+							<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['statusErr']->value;?>
+</label>											
+						</td>	
+				  </tr>				  
 				</tbody>
 			</table>
 		</div>
@@ -138,23 +154,30 @@ home"><i class="icon-home"></i></a>
 " class="span8" autocomplete="off">									
 						</td>	
 				  </tr>
-				    
-				  <tr class="tbl_row">
-						<td width="120" class="tbl_column">Status <span class="f_req">*</span></td>
+				    <tr class="tbl_row">
+						<td width="120" class="tbl_column">L1 </td>
 						<td>	
-							<select name="status" class="span8"  id="PositionEmpId">
-							<?php if (isset($_smarty_tpl->tpl_vars['status']->value)) {?>
-								<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['user_status']->value,'selected'=>$_smarty_tpl->tpl_vars['status']->value),$_smarty_tpl);?>
-	
-							<?php } else { ?>
-								<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['user_status']->value,'selected'=>'0'),$_smarty_tpl);?>
-	
-							<?php }?>
+							<select name="level1" class="span8"  id="PositionEmpId">
+							<option value="">Select</option>
+						<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['users']->value,'selected'=>$_POST['level1']),$_smarty_tpl);?>
+
+
 							</select> 
-							<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['statusErr']->value;?>
-</label>											
 						</td>	
-				  </tr>						
+				  </tr>
+
+
+				   <tr class="tbl_row">
+						<td width="120" class="tbl_column">L2 </td>
+						<td>	
+							<select name="level2" class="span8"  id="PositionEmpId">
+							<option  value="">Select</option>
+								<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['users']->value,'selected'=>$_POST['level2']),$_smarty_tpl);?>
+
+							</select> 
+						</td>	
+				  </tr>	
+								
 				</tbody>
 			</table>
 		</div>
@@ -163,8 +186,8 @@ home"><i class="icon-home"></i></a>
 </div>
 </div>
 <div class="form-actions">
-				<input name="submit" class="btn btn-gebo" value="Submit" type="submit"/>
-				<input type="button" value="Cancel" class="btn" onclick="window.location='users.php'">
+				<input class="btn btn-gebo" type="submit" value="Submit">
+				<a href="users.php" class="cancelBtn"><input type="button" value="Cancel" class="btn"></a>
 </div>
                     </div>
 				</form>
