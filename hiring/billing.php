@@ -41,7 +41,7 @@ if($_POST){
 }
 
 // count the total no. of records
-$query = "CALL list_billing('".$keyword."','".$_SESSION['user_id']."','".$roleid."','".$from_date."','".$to_date."','0','0','','','".$_GET['action']."')";
+$query = "CALL list_billing('".$keyword."','".$_SESSION['user_id']."','".$from_date."','".$to_date."','0','0','','','".$_GET['action']."')";
 try{
 	if(!$result = $mysql->execute_query($query)){
 		throw new Exception('Problem in executing list billing page');
@@ -84,7 +84,7 @@ foreach($sort_fields as $key => $b_field){
 // if no fields are set, set default sort image
 if(empty($_GET['field'])){		
 	$order = 'desc';			
-	$field = 'rr.billing_date';			
+	$field = 'req_r.billing_date';			
 	$smarty->assign('sort_field_created_date', 'sorting desc');
 }	
 $smarty->assign('order', $order);
@@ -94,7 +94,7 @@ if($search_key = array_search($_GET['field'], $sort_fields)){
 }
 
 // fetch all records
-$query =  "CALL list_billing('".$keyword."','".$_SESSION['user_id']."','".$roleid."','".$from_date."','".$to_date."','$start','$limit','".$field."','".$order."','".$_GET['action']."')";
+$query =  "CALL list_billing('".$keyword."','".$_SESSION['user_id']."','".$from_date."','".$to_date."','$start','$limit','".$field."','".$order."','".$_GET['action']."')";
 try{
 	if(!$result = $mysql->execute_query($query)){
 		throw new Exception('Problem in executing list billing page');
@@ -120,7 +120,7 @@ try{
 		// function to print the excel header
       $excelObj->printHeader($header = array('Position','Client Name','Billing Amount','Candidate Name','Billing Date',) ,$col = array('A','B','C','D','E'));  
 		// function to print the excel data
-		$excelObj->printCell($data, $count,$col = array('A','B','C','D','E'), $field = array('job_title','client_name','billing_amount','candidate_name','billing_date',),'Billing_'.$current_date);
+		$excelObj->printCell($data, $count,$col = array('A','B','C','D','E'), $field = array('job_title','client_name','billing_amount','candidate_name',),'Billing_'.$current_date);
 	}	
 	
 	// create validation

@@ -29,7 +29,7 @@
 				{if $EXIST_MSG}
 				 <div id="flashMessage" class="alert alert-error"><button type="button" class="close" data-dismiss="alert">×</button>{$EXIST_MSG}</div>					
 				{/if}
-<form action="add_billing.php" id="formID"  name="searchFrm" class="formID" method="post" accept-charset="utf-8">
+<form action="add_billing.php?res_id={$smarty.get.res_id}&req_res_id={$smarty.get.req_res_id}" id="formID"  name="searchFrm" class="formID" method="post" accept-charset="utf-8">
 	<div class="box">
 		<div class="row-fluid">
 		<div class="span12">
@@ -40,19 +40,15 @@
 			<div class="span6">
 			<table class="table table-bordered dataTable" style="margin-bottom:0;">
 						<tbody>
+						<input type="hidden" value="{if $resume_id}{$resume_id}{else}{$smarty.post.resume_id}{/if}" name="resume_id">
+	<input type="hidden" value="{if $requirement_id}{$requirement_id}{else}{$smarty.post.requirement_id}{/if}" name="requirement_id">
+	<input type="hidden" value="{if $client_id}{$client_id}{else}{$smarty.post.client_id}{/if}" name="client_id">
+	
 									<tr class="tbl_row">
 										<td width="120" class="tbl_column">Candidate Name <span class="f_req">*</span></td>
 													
 										<td>
-	<input type="text" placeholder="Search Here..." name="keyword" id="keyword" value="{$keyword}" class="span10" aria-controls="dt_gal">
-	<input type="hidden" value="{$smarty.post.resume_id}" name="resume_id" id="resume_id">
-	<input type="hidden" value="{$smarty.post.requirements_id}" name="requirements_id" id="requirements_id">
-	<input type="hidden" value="{$smarty.post.client_id}" name="client_id" id="client_id">
-	<input type="hidden" value="{$smarty.post.created_by}" name="created_by">
-	<input type="hidden" id="page" value="add_billing_candidate_search">
-	<input type="hidden" value="1" id="SearchKeywords">
-	<input type="hidden"  id="retainBilling">
-	<label for="reg_city" generated="true" class="error">{$keywordErr}</label>
+											<input type="text" name="candidate_name" disabled value="{if $candidate_name}{$candidate_name}{else}{$smarty.post.candidate_name}{/if}" class="span10" aria-controls="dt_gal">
 										</td>	
 									</tr>
 									
@@ -60,16 +56,13 @@
 									<tr>
 										<td width="120" class="tbl_column">Position <span class="f_req">*</span></td>
 										<td>
-										<input type="hidden" name="position" id="position"  value="{$smarty.post.position}">
-									<label id="lbl_position"></label>		
-													
+										<input type="text" name="position" disabled value="{if $position}{$position}{else}{$smarty.post.position}{/if}">															
 									</td>
 									</tr>	
 									<tr class="tbl_row">
 										<td width="120" class="tbl_column">Client Name <span class="f_req">*</span></td>
 										<td>
-										<input type="hidden" name="client" id="client"  value="{$smarty.post.client}">
-									<label id="lbl_client"></label>							
+										<input type="text" name="client_name" disabled value="{if $client_name}{$client_name}{else}{$smarty.post.client_name}{/if}">						
 									</td>
 									</tr>		
 									<tr>
@@ -77,8 +70,7 @@
 									<tr>
 										<td width="120" class="tbl_column">CTC Offered <span class="f_req">*</span></td>
 										<td> 
-										<input type="hidden" name="ctc" id="ctc_offered"  value="{$smarty.post.ctc}">
-										<label id="lbl_ctc_offered"></label>
+										<input type="text" name="ctc_offer" disabled value="{if $ctc_offer}{$ctc_offer}{else}{$smarty.post.ctc_offer}{/if}">
 										</td>
 									</tr>										
 								</tbody>
@@ -92,23 +84,20 @@
 									<tr class="tbl_row">
 										<td width="120" class="tbl_column">Billing Amount <span class="f_req">*</span></td>
 										<td> 
-										<input type="hidden" name="billing" id="billing_amount"  value="{$smarty.post.billing}">
-										<label id="lbl_billing_amount"></label>
+										<input type="text" name="billing" disabled value="{if $billing_amount}{$billing_amount}{else}{$smarty.post.billing_amount}{/if}">
 										</td>
 									</tr>
 									<tr>
 										<td width="120" class="tbl_column">Billing Date <span class="f_req">*</span></td>
 										<td> 
-										<input type="hidden" name="billing_date" id="billing_date"  value="{$smarty.post.billing_date}">
-										<label id="lbl_billing_date"></label>										
+										<input type="text" name="billing_date"  disabled value="{if $billing_date}{$billing_date}{else}{$smarty.post.billing_date}{/if}">									
 										</td>
 									</tr>
 													
 									<tr class="tbl_row">
 										<td width="120" class="tbl_column">Joined Date <span class="f_req">*</span></td>
 										<td> 
-										<input type="hidden" name="joined_date" id="joined_date"  value="{$smarty.post.joined_date}">
-										<label id="lbl_joined_date"></label>										
+										<input type="text" name="joined_date" disabled value="{if $joined_date}{$joined_date}{else}{$smarty.post.joined_date}{/if}">										
 										</td>
 									</tr>
 								</tbody>
@@ -127,7 +116,6 @@
 									<a href="billing.php">
 									<button type="button" val="billing.php" class="btn Cancel">Cancel</button>
 									</a>
-					<input type="hidden" id="web_root" value="billing.php">
 				 </div>
 		</form>
                
@@ -141,21 +129,3 @@
 	</div>	
 
 {include file='include/footer.tpl'}
-{literal}
-<script type="text/javascript">	
-$(document).ready(function(){
-	/* retaining billing details*/
-	if($('#retainBilling').length > 0){
-		$('#lbl_position').html($('#position').val());
-		$('#lbl_client').html($('#client').val());
-		$('#lbl_ctc_offered').html($('#ctc_offered').val());
-		$('#lbl_billing_amount').html($('#billing_amount').val());
-		$('#lbl_billing_date').html($('#billing_date').val());
-		$('#lbl_joined_date').html($('#joined_date').val());
-		$('#client_id').html($('#client_id').val());
-		$('#requirements_id').html($('#requirements_id').val());
-		$('#resume_id').html($('#resume_id').val());
-	}
- });
-</script>
-{/literal}

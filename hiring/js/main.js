@@ -100,15 +100,17 @@ $(document).ready(function() {
 	});
 	*/
 	
-	$('#sandbox-container .input-daterange').datepicker({
-		showOtherMonths: true,
-		selectOtherMonths: true,
-		format: 'dd/mm/yyyy',
-		prevText: "",
-		nextText: "",
-		autoclose:true,
-		todayHighlight: false
-	});
+	if($('.input-daterange').length > 0){
+		$('#sandbox-container .input-daterange').datepicker({
+			showOtherMonths: true,
+			selectOtherMonths: true,
+			format: 'dd/mm/yyyy',
+			prevText: "",
+			nextText: "",
+			autoclose:true,
+			todayHighlight: false
+		});
+	}
 	 
 	/* when the form submitted */
 	$('.formID').submit(function(){ 		

@@ -248,7 +248,8 @@ if($_GET['page'] == 'list_grade'){
    }catch(Exception $e){
 		echo 'Caught exception: ',  $e->getMessage(), "\n";
    }
-}elseif($_GET['page'] == 'add_billing_candidate_search'){
+}
+/* elseif($_GET['page'] == 'add_billing_candidate_search'){
 	// get matched data from joined candidate
 	$query = "CALL get_billing_candidate_name('".$term."')";
 	try{	
@@ -273,7 +274,7 @@ if($_GET['page'] == 'list_grade'){
 		foreach($unique_result as $key => $res){
 			if(!empty($res)){ 
 				$unique[$key] = $res;				
-				/*
+				
 				$email_split = explode(';', $res);
 				$name_split = explode(',', $res);
 				if(!empty($email_split[1])){
@@ -281,7 +282,7 @@ if($_GET['page'] == 'list_grade'){
 				}else{					
 					$unique[$key] = '<strong>'.$name_split[0].'</strong>'.', '.$name_split[1];
 				}
-				*/
+				
 			}
 		}
 		// free the memory
@@ -291,7 +292,6 @@ if($_GET['page'] == 'list_grade'){
 		echo 'Caught exception: ',  $e->getMessage(), "\n";
    }	
 }
-
 
 if($_GET['page'] == 'get_billing_info'){
 	// get all billing details 
@@ -318,7 +318,7 @@ if($_GET['page'] == 'get_billing_info'){
    }catch(Exception $e){
 		echo 'Caught exception: ',  $e->getMessage(), "\n";
    }
-}
+} */
 
 
 if(!empty($unique)){

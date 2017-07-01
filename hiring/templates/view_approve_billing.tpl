@@ -21,7 +21,7 @@
                                 </li>
                             
                                 <li>
-                                  Basavaraj
+                                  {ucwords($employee_name)}
                                 </li>
                             </ul>
                         </div>
@@ -32,14 +32,8 @@
 							<div class="span12">
 		<div class="mbox">
 						<div class="tabbable">
-								<div class="heading">
-										<ul class="nav nav-tabs">
-										<li class="active"><a class="restabChange" rel="interview"  href="#mbox_billing" data-toggle="tab"><i class="splashy-mail_light_down"></i>   Billing Details </a></li>
-										<li class=""><a class="restabChange" rel="interview"  href="#mbox_co-ordination" data-toggle="tab"><i class="splashy-mail_light_down"></i>  Co-ordination </a></li>
-									</ul>
-								</div>
 			<div class="tab-content" style="overflow:visible">			
-			<div class="tab-pane active" id="mbox_billing">
+			
 				<div class="span6">
 							<table class="table table-striped table-bordered dataTable" style="">
 								<tbody>
@@ -88,39 +82,8 @@
 								</tbody>
 							</table>
 					</div>
-              </div>    
-                 <div class="tab-pane" id="mbox_co-ordination">	
-							{foreach from=$data item=item key=key}
-              <div class="span12" style="margin-top:5px;margin-left:0px;"> 
-					<div class="span6">      
-							<table class="table table-striped table-bordered dataTable" style="">
-							<tbody>
-									<tr class="tbl_row">
-										<td width="120" class="tbl_column">Employee <span class="f_req"></span></td>
-										<td>{ucwords($item.employee)}</td>	
-									</tr>	
-									
-									<tr>
-									<td width="120" class="tbl_column">Value (% of work)<span class="f_req"></span></td>
-									<td> {$item.percent}</td>	
-									</tr>		
-																	
-								</tbody>
-							</table>
-					</div> 
-					<div class="span6">      
-							<table class="table table-striped table-bordered dataTable" style="">
-							<tbody>
-									<tr class="tbl_row">
-										<td width="120" class="tbl_column">Co-ordination Type <span class="f_req"></span></td>
-										<td>{$item.type}</td>	
-									</tr>									
-								</tbody>
-							</table>
-					</div>
-					</div>
-					{/foreach} 
-							</div>     
+               
+                  
                  </div>         
                  </div>         
                  </div>         
