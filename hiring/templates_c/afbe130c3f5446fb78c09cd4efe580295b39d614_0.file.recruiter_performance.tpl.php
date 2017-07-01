@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-06-21 18:48:24
+/* Smarty version 3.1.29, created on 2017-07-01 15:52:15
   from "F:\xampp\htdocs\ctsvn\cthiring\hiring\templates\recruiter_performance.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_594a7220212ae9_23232730',
+  'unifunc' => 'content_595777d76c50f0_61504475',
   'file_dependency' => 
   array (
     'afbe130c3f5446fb78c09cd4efe580295b39d614' => 
     array (
       0 => 'F:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\templates\\recruiter_performance.tpl',
-      1 => 1498049151,
+      1 => 1498225510,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_594a7220212ae9_23232730 ($_smarty_tpl) {
+function content_595777d76c50f0_61504475 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'F:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -33,9 +33,6 @@ if (!is_callable('smarty_function_html_options')) require_once 'F:\\xampp\\htdoc
 		<!-- main content -->
             <div id="contentwrapper">
                 <div class="main_content">
-                
-				
-					
 										
 					<div class="row-fluid">
 						
@@ -45,7 +42,8 @@ if (!is_callable('smarty_function_html_options')) require_once 'F:\\xampp\\htdoc
                         <div id="jCrumbs" class="breadCrumb module">
                             <ul>
                                 <li>
-                                    <a href="recruiter_dashboard.php"><i class="icon-home"></i></a>
+                                    <a href="<?php echo @constant('webroot');?>
+home"><i class="icon-home"></i></a>
                                 </li>
                                 <li>
                                     <a href="recruiter_performance.php">Recruiter Performance</a>

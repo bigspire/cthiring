@@ -863,11 +863,11 @@
           }
         },
 		  colors: ['#6688e9', '#fcea54', '#12de6d', '#ff0000', '#c8c3c3', '#23E5FF', '#ab1f57',  '#811905','#09418d', '#fabec2', '#0dac01','#d7f477'],
-		  legend: {position: 'top', maxLines:4, textStyle: {color: '', fontSize: 11}},
+		  legend: {position: 'bottom', maxLines:4, textStyle: {color: '', fontSize: 11}},
           dataOpacity: 0.7,
 		  isStacked: true,
 		  bar: {groupWidth: '65%'},
-		  chartArea:{width:"75%",height:'70%',top:100},
+		  chartArea:{width:"75%",height:'70%',top:10},
 		  tooltip:{textStyle: {color: '', fontSize: 13}},
 		  titleTextStyle:{ fontSize: 15},
         };
