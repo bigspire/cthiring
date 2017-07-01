@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-06-23 15:47:05
+/* Smarty version 3.1.29, created on 2017-06-29 21:54:10
   from "C:\xampp\htdocs\2017\ctsvn\cthiring\hiring\templates\include\header.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_594ceaa1cb24d4_46202559',
+  'unifunc' => 'content_595529aa34b076_50988275',
   'file_dependency' => 
   array (
     '418ce04694c91a3f6ebee8f2a2efa42e5260b14c' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\templates\\include\\header.tpl',
-      1 => 1498213021,
+      1 => 1498753439,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_594ceaa1cb24d4_46202559 ($_smarty_tpl) {
+function content_595529aa34b076_50988275 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -197,13 +197,18 @@ resume/">Search Resume <!-- span class="label-bub label-info white"><?php echo $
                                                 <li><a href="incentive.php">Search Incentive</a></li>
 										   <?php }?>
                                                 <!--li><a href="bonus.php">Search Bonus</a></li-->
-												 <!--li><a href="add_billing.php">Add Billing</a></li -->
+												<?php if ($_smarty_tpl->tpl_vars['module']->value['add_billing'] == '1') {?>
+												 <li><a href="add_billing.php">Add Billing</a></li>
+												<?php }?>
+												
+												 <?php if ($_smarty_tpl->tpl_vars['module']->value['approve_billing'] == '1') {?>
 												 
-												 
-												 <!--li><a href="approve_billing.php">Approve Billing <?php if ($_smarty_tpl->tpl_vars['approve_billing_count']->value) {?>
+												 <?php if ($_smarty_tpl->tpl_vars['approve_billing_count']->value) {?>
+												 <li><a href="approve_billing.php">Approve Billing <?php if ($_smarty_tpl->tpl_vars['approve_billing_count']->value) {?>
 												 <span class="label-bub label-info white"><?php echo $_smarty_tpl->tpl_vars['approve_billing_count']->value;?>
-</span><?php }?></a></li-->
-                                           
+</span><?php }?></a></li>
+												<?php }?> 
+												<?php }?>
                                             </ul>
                                         </li>
 										<?php }?>

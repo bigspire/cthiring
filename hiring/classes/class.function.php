@@ -107,6 +107,12 @@ class fun{
 					case 35:					
 					$mod['view_billing'] = 1;
 					break;
+					case 36:					
+					$mod['add_billing'] = 1;
+					break;
+					case 37:					
+					$mod['approve_billing'] = 1;
+					break;
 				}				
 			}
 		}

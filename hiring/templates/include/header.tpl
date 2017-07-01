@@ -159,12 +159,17 @@
                                                 <li><a href="incentive.php">Search Incentive</a></li>
 										   {/if}
                                                 <!--li><a href="bonus.php">Search Bonus</a></li-->
-												 <!--li><a href="add_billing.php">Add Billing</a></li -->
+												{if $module['add_billing'] eq '1'}
+												 <li><a href="add_billing.php">Add Billing</a></li>
+												{/if}
+												
+												 {if $module['approve_billing'] eq '1'}
 												 
-												 {* if $approve_billing_count *}
-												 <!--li><a href="approve_billing.php">Approve Billing {if $approve_billing_count}
-												 <span class="label-bub label-info white">{$approve_billing_count}</span>{/if}</a></li-->
-                                      {* /if *}     
+												 {if $approve_billing_count}
+												 <li><a href="approve_billing.php">Approve Billing {if $approve_billing_count}
+												 <span class="label-bub label-info white">{$approve_billing_count}</span>{/if}</a></li>
+												{/if} 
+												{/if}
                                             </ul>
                                         </li>
 										{/if}

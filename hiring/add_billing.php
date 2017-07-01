@@ -20,6 +20,10 @@ include('classes/class.mailer.php');
 // content class
 include('classes/class.content.php');
 
+// role based validation
+$module_access = $fun->check_role_access('36',$modules);
+$smarty->assign('module',$module_access);
+
 if(!empty($_POST)){
 	
 	 // candidate Field Validation
@@ -29,34 +33,6 @@ if(!empty($_POST)){
 		$test = 'error';
 		$smarty->assign('keywordErr' , 'Please select the candidate name');
     }
-
-	// post of billing fields value
-	for($i = 0; $i < $_POST['billing_count']; $i++){
-		
-		$empnameData[$i] = $_POST['empname_'.$i];
-		$percentData[$i] = $_POST['percent_'.$i];
-		$typeData[$i] = $_POST['type_'.$i];	
-		// Validating the required fields  
-		// array for printing correct field name in error message	
-		$fieldtype = array('1', '1', '0');
-		$actualfield = array('employee', 'co-ordination type', 'value (% of work)');
-		$field_ar = array('empname_'.$i => 'empnameErr', 'type_'.$i => 'typeErr','percent_'.$i => 'percentErr');
-		$j = 0;
-		foreach($field_ar as $field => $er_var){ 
-			if($_POST[$field] == ''){
-				$error_msg = $fieldtype[$j] ? ' select the ' : ' enter the ';
-				$actual_field =  $actualfield[$j];
-				$er[$i][$er_var] = 'Please'. $error_msg .$actual_field;
-			}
-			$j++;
-		}
-	}
-	$smarty->assign('empnameData', $empnameData);
-	$smarty->assign('typeData', $typeData);
-	$smarty->assign('percentData', $percentData);
-	$smarty->assign('billingCount', $_POST['billing_count']);
-	$smarty->assign('billingErr',$er);
-
 	
 	// assigning the date
 	$date =  $fun->current_date();
@@ -107,33 +83,7 @@ if(!empty($_POST)){
 			}		
 		
 		
-		
-			// iterate the for to insert all the coordination details
-			for($i = 0; $i < $_POST['billing_count']; $i++){
-				$empname = $_POST['empname_'.$i];
-				$percent = $_POST['percent_'.$i];	
-				$type_value = $_POST['type_'.$i];
-				$type_explode = explode("-", $type_value);
-				$type = $type_explode[0];
-					
-				// query to insert into database. 
-				$query = "CALL add_billing_coordination('".$mysql->real_escape_str($empname)."','".$type."',
-					'".$mysql->real_escape_str($percent)."', '".$last_id."')";
-				// Calling the function that makes the insert
-				try{
-					// calling mysql exe_query function
-					if(!$result = $mysql->execute_query($query)){
-						throw new Exception('Problem in adding coordination details');
-					}
-					$row = $mysql->display_result($result);				
-					// free the memory
-					$mysql->clear_result($result);
-					// call the next result
-					$mysql->next_query();
-				}catch(Exception $e){
-					echo 'Caught exception: ',  $e->getMessage(), "\n";
-				}
-			}
+
 			
 				// query to insert into database. 
 				$query = "CALL add_billing_status('".$date."','".$last_id."','".$_SESSION["approval_user_id"]."')";

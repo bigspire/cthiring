@@ -293,7 +293,7 @@ if($_GET['page'] == 'list_grade'){
 }
 
 
-if($_GET['state'] == 'get_billing_info'){
+if($_GET['page'] == 'get_billing_info'){
 	// get all billing details 
 	$query = "CALL get_billing('".$_GET['resume_id']."')";
 	// $query = "CALL get_billing('74654')";

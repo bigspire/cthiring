@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-06-23 16:08:28
+/* Smarty version 3.1.29, created on 2017-06-23 22:29:21
   from "C:\xampp\htdocs\2017\ctsvn\cthiring\hiring\templates\recruiter_performance.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_594cefa4a38839_11644069',
+  'unifunc' => 'content_594d48e96d9634_14912346',
   'file_dependency' => 
   array (
     'e9f870459f6f3503d798f7524200aef954755f9a' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\templates\\recruiter_performance.tpl',
-      1 => 1498214301,
+      1 => 1498216367,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_594cefa4a38839_11644069 ($_smarty_tpl) {
+function content_594d48e96d9634_14912346 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -33,9 +33,6 @@ if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdoc
 		<!-- main content -->
             <div id="contentwrapper">
                 <div class="main_content">
-                
-				
-					
 										
 					<div class="row-fluid">
 						

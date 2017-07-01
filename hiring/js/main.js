@@ -225,7 +225,7 @@ $(document).ready(function() {
 		});
 	}
 	
-		/* function for autocomplete search */
+	/* function for autocomplete search */
 	if(jQuery('#keyword').length > 0){ 
 		$('#keyword').ready(function () {
 			jQuery('#keyword').autocomplete('autocomplete_search.php?page='+$('#page').val(), {

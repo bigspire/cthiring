@@ -19,6 +19,10 @@ include('classes/class.paging.php');
 // add menu count
 include('menu_count.php');
 
+// role based validation
+$module_access = $fun->check_role_access('37',$modules);
+$smarty->assign('module',$module_access);
+
 // get record id   
 $id = $_GET['id'];
 $_SESSION['status_id'] = $_GET['status_id'];
