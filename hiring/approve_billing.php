@@ -99,7 +99,7 @@ try{
 		throw new Exception('Problem in executing list approve billing page');
 	}
 	// calling mysql fetch_result function
-	$i = '0';
+	$i = '0'; 
 	while($obj = $mysql->display_result($result))
 	{
  		$data[] = $obj;

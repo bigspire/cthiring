@@ -15,12 +15,15 @@ class fun{
     }
 	
 	/* function to check the role access */
-	public function check_role_access($cur_module,$modules){
+	public function check_role_access($cur_module,$modules, $page){
 		foreach($modules as $per){			
 			$format_per[] = $per;
 		}
-		if (!in_array($cur_module, $format_per)){
-			header('Location:../home/?access=invalid');	
+		// not to check for view profile
+		if($page != 'view_profile'){
+			if (!in_array($cur_module, $format_per)){
+				header('Location:../home/?access=invalid');	
+			}
 		}
 		foreach($modules as $key => $module){
 			// check the user module exists in the database module list

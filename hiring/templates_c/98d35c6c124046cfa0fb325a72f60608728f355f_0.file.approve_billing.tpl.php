@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-06-21 16:24:21
+/* Smarty version 3.1.29, created on 2017-07-01 23:59:55
   from "C:\xampp\htdocs\2017\ctsvn\cthiring\hiring\templates\approve_billing.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_594a505ded1747_72868643',
+  'unifunc' => 'content_5957ea23749089_48252220',
   'file_dependency' => 
   array (
     '98d35c6c124046cfa0fb325a72f60608728f355f' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\templates\\approve_billing.tpl',
-      1 => 1498042455,
+      1 => 1498933727,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_594a505ded1747_72868643 ($_smarty_tpl) {
+function content_5957ea23749089_48252220 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
