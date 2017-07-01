@@ -537,12 +537,13 @@ class PositionController extends AppController {
 			)
 		);		
 		$validate_cond = array('ReqResumeStatus.stage_title NOT LIKE' => 'Validation%');
-		$data = $this->ReqResumeStatus->find('all', array('fields' => array('Resume.id','Resume.first_name','Resume.last_name','ReqResumeStatus.status_title','ReqResumeStatus.stage_title',
+		$data = $this->ReqResumeStatus->find('all', array('fields' => array('Resume.id','Resume.first_name',
+		'Resume.last_name','ReqResumeStatus.status_title','ReqResumeStatus.stage_title',
 		'ReqResumeStatus.created_date',	'Resume.mobile','Resume.email_id','Resume.present_ctc','ReqResume.created_date',
 		'Resume.expected_ctc','Resume.present_employer','Resume.notice_period','ResLoc.location','ReqResume.status_title','ReqResume.stage_title',
 		'ReqResume.bill_ctc','Reason.reason','Designation.designation','Creator.first_name','ReqResume.modified_date', 'ReqResume.date_offer','ReqResume.joined_on'),
 		'conditions' => array('requirements_id' => $id,$validate_cond),
-		'order' => array('Resume.created_date' => 'desc'), 'joins' => $options));		
+		'order' => array('Resume.created_date' => 'desc'),'group' => array('ReqResume.id'), 'joins' => $options));		
 		$this->set('resume_data', $data);	
 		
 	}

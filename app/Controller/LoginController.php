@@ -67,6 +67,7 @@ class LoginController extends AppController {
 								// set cookie			
 					
 								$this->set_cookie('ESUSER', $this->Functions->encrypt($data['Login']['id']), '30 Days');
+								$this->set_cookie('ESUSERROLE', $this->Functions->encrypt($data['Login']['roles_id']), '30 Days');
 								$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Hi '.$data['Login']['first_name'].', Welcome to CT Hiring', 'default', array('class' => 'alert alert-success'));
 
 								$this->redirect('/home/');								
@@ -178,6 +179,7 @@ class LoginController extends AppController {
 	public function logout() {	
 		$this->Session->destroy();
 		$this->delete_cookie('ESUSER');
+		$this->delete_cookie('ESUSERROLE');
 		$this->disable_cache();		
 		$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>You have successfully signed off', 'default', array('class' => 'alert alert-success alert-login'));
 		$this->redirect('/');

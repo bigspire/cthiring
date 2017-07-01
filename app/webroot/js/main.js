@@ -11,71 +11,19 @@ $(document).ready(function() {
 	});
 	
 	/* function to switch the tabs */
-	$('.tabChange').click(function(){	
+	$('.tabChange').click(function(){	alert('ravi');
 		show_div = $(this).attr('rel');
+		alert(show_div);
 		switch(show_div){
 			case 'all':
-			$('.allRow').show();
-			// hide duplicate rows
-			$('.duplicate').hide();
+			$('.cv_row').show();
+			$('.status_row').hide();
 			break;	
-			case 'Interview':
-			$('.allRow').hide();
-			$('.Interview').show();
-			$('.duplicateInt').hide();
-			// hide duplicate rows
-			break;	
-			case 'Offer':
-			$('.allRow').hide();
-			$('.Offer').show();
-			$('.duplicateOffer').hide();
-			// hide duplicate rows
-			break;
-			case 'Billing':
-			$('.allRow').hide();
-			$('.Billing').show();
-			$('.duplicateBill').hide();
+			case 'other_cv':
+			$('.cv_row').hide();
+			$('.status_row').show();
 			break;			
-			default:
-			$('.allRow').hide();
-			$('.'+show_div).show();
-			break;			
-		}		
-		//alert(show_div);
-		// display reason for reject
-		if(show_div == 'OfferReject' || show_div == 'NoShow' || show_div == 'cv_reject'  || show_div == 'InterviewReject'){
-			$('.reasonCol').show();
-			$('.noticePeriod').hide();
-			$('.joinCol').hide();
-			$('.offerCol').hide();
-		}else if(show_div == 'Joined'){
-			$('.joinCol').show();
-			$('.noticePeriod').hide();
-			$('.reasonCol').hide();
-			$('.offerCol').hide();
-		}else if(show_div == 'Offer'){
-			$('.joinCol').hide();
-			$('.noticePeriod').hide();
-			$('.reasonCol').hide();
-			$('.offerCol').show();
-		}else{
-			$('.reasonCol').hide();
-			$('.joinCol').hide();
-			$('.noticePeriod').show();
-			$('.offerCol').hide();
-			
-		}
-
-		// for no records
-		tab_count = $(this).attr('val');
-		if(tab_count == ''){	
-			$('.no_record').show();
-			$('.cvTable').hide();
-		}else{
-			$('.no_record').hide();
-			$('.cvTable').show();
-		}
-		
+		}			
 		
 	});
 	
