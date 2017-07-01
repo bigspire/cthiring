@@ -161,8 +161,10 @@
 						</th>
 									
 	<td class="actionItem" style="text-align:center">
+	<?php if($this->Session->read('USER.Login.id') == $req['Position']['created_by']):?>
 	<a href="<?php echo $this->webroot;?>position/edit/<?php echo $req['Position']['id'];?>/" class="btn  btn-mini"  rel="tooltip" class="sepV_a" title="Edit Position"><i class="icon-pencil"></i></a>
-										</td>
+	<?php endif; ?>	
+		</td>
 								</tr>
 								<?php endforeach; ?>
 								</tbody>

@@ -61,6 +61,9 @@
 											   <?php if($view_client == '1'):?>
                                                 <li><a href="<?php echo $this->webroot;?>client/">Search Client <!--span class="label-bub label-info white">1</span--></a></li>
 												 <?php endif; ?>
+												  <?php if($approve_client == '1'):?>
+                                                <li><a href="<?php echo $this->webroot;?>client/index/pending/">Approve Client <!--span class="label-bub label-info white">1</span--></a></li>
+												 <?php endif; ?>
 												<!-- <li><a href="add_client_contact.php">Add Client Contact</a></li>-->
 												<!--  <li><a href="client_contact.php">Search Client Contact</a></li>-->
                                             </ul>
@@ -74,6 +77,9 @@
 												  <?php endif; ?>
 												  <?php if($view_position == '1'):?> 
                                                 <li><a href="<?php echo $this->webroot;?>position/">Search Position <!--span class="label-bub label-info white">14</span--></a></a></li>
+												 <?php endif; ?>
+												  <?php if($approve_position == '1'):?>
+                                                <li><a href="<?php echo $this->webroot;?>position/index/?status=pending">Approve Position <!--span class="label-bub label-info white">1</span--></a></li>
 												 <?php endif; ?>
                                             </ul>
                                         </li>
@@ -111,12 +117,12 @@
                                             <a data-toggle="dropdown" class="dropdown-toggle " href="#"><i class="icon-file icon-white"></i> Incentive <b class="caret"></b></a>
                                            <ul class="dropdown-menu">
 										   <?php if($view_billing == '1'):?> 
-										   
-													
                                                 <li><a href="<?php echo $this->webroot;?>hiring/billing.php">Search Billing</a></li>
-												
-												
-											<?php endif; ?>
+										   <?php endif; ?>
+											
+											 <?php if($approve_billing == '1'):?>	   
+											 <li><a href="<?php echo $this->webroot;?>hiring/approve_billing.php">Approve Billing</a></li>												
+											 <?php endif; ?>
 											
 											<?php if($view_incentive == '1'):?> 
 												 <li><a href="<?php echo $this->webroot;?>hiring/incentive.php">Search Incentive</a></li>

@@ -44,7 +44,8 @@ class PositionController extends AppController {
 		$this->set('stList', array('10' => 'Planned', '1' => 'In-Process', '2' => 'On-Hold', '3' => 'Closed', '4' => 'Cancelled'));			
 		$fields = array('id','job_title','location','no_job','min_exp','max_exp','ctc_from','ctc_to','ReqStatus.title','req_status_id',
 		'Client.client_name','team_member', 'Creator.first_name','created_date','modified_date', 'count(ReqResume.id) cv_sent',
-		'group_concat(ReqResume.status_title) joined','count(distinct Read.id) read_count', "group_concat(distinct ResOwner.first_name  SEPARATOR ', ') team_member");
+		'group_concat(ReqResume.status_title) joined','count(distinct Read.id) read_count', "group_concat(distinct ResOwner.first_name
+		SEPARATOR ', ') team_member", 'Position.created_by');
 				
 		$options = array(			
 			array('table' => 'users',
@@ -146,6 +147,7 @@ class PositionController extends AppController {
 					array($this->Functions->format_date_save($start), $this->Functions->format_date_save($end_search))));
 			
 		}
+		$aprCond = array('is_approve' => 'A', 'Position.status' => 'A');
 		// for export
 		if($this->request->query['action'] == 'export'){
 			$data = $this->Position->find('all', array('fields' => $fields,'conditions' => 
@@ -154,7 +156,7 @@ class PositionController extends AppController {
 			$this->Excel->generate('positions', $data, $data, 'Report', 'Position');
 		}
 		
-		$this->paginate = array('fields' => $fields,'limit' => '25','conditions' => array($keyCond,$date_cond,$branchCond,$empCond,$stCond,$contactCond),
+		$this->paginate = array('fields' => $fields,'limit' => '25','conditions' => array($aprCond,$keyCond,$date_cond,$branchCond,$empCond,$stCond,$contactCond),
 		'order' => array('created_date' => 'desc'),	'group' => array('Position.id'), 'joins' => $options);
 		$data = $this->paginate('Position');
 		$this->set('data', $data);
@@ -185,7 +187,7 @@ class PositionController extends AppController {
 			// $coord_validate = $this->validate_coord();
 			// validate the form fields
 			if ($this->Position->validates(array('fieldList' => array('clients_id','client_contact_id','job_title','location','max_exp',
-			'ctc_to_type','skills','no_job','team_member_req','end_date','function_area_id','status','job_desc')))){
+			'ctc_to_type','skills','no_job','team_member_req','end_date','function_area_id','status','job_desc','education')))){
 				// format the dates
 				$this->request->data['Position']['start_date'] = $this->Functions->format_date_save($this->request->data['Position']['start_date']);
 				$this->request->data['Position']['end_date'] = $this->Functions->format_date_save($this->request->data['Position']['end_date']);
@@ -249,7 +251,7 @@ class PositionController extends AppController {
 					// $coord_validate = $this->validate_coord();
 					// validate the form fields
 					if ($this->Position->validates(array('fieldList' => array('clients_id','client_contact_id','job_title','location','max_exp',
-					'ctc_from','ctc_to','ctc_from_type','ctc_to_type','skills','no_job','team_member_req','end_date','function_area_id','job_desc')))){
+					'ctc_from','ctc_to','ctc_from_type','ctc_to_type','skills','no_job','team_member_req','end_date','function_area_id','job_desc','education')))){
 						// format the dates
 						$this->request->data['Position']['start_date'] = $this->Functions->format_date_save($this->request->data['Position']['start_date']);
 						$this->request->data['Position']['end_date'] = $this->Functions->format_date_save($this->request->data['Position']['end_date']);
