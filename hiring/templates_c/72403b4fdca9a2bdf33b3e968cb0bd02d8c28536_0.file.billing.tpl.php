@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-07-01 16:50:59
+/* Smarty version 3.1.29, created on 2017-07-01 22:59:00
   from "F:\xampp\htdocs\ctsvn\cthiring\hiring\templates\billing.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5957859b2254d1_78674774',
+  'unifunc' => 'content_5957dbdcbe96e3_21878946',
   'file_dependency' => 
   array (
     '72403b4fdca9a2bdf33b3e968cb0bd02d8c28536' => 
     array (
       0 => 'F:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\templates\\billing.tpl',
-      1 => 1498904389,
+      1 => 1498930115,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5957859b2254d1_78674774 ($_smarty_tpl) {
+function content_5957dbdcbe96e3_21878946 ($_smarty_tpl) {
 ?>
 
    
@@ -72,8 +72,8 @@ home"><i class="icon-home"></i></a>
 &t_date=<?php echo $_smarty_tpl->tpl_vars['t_date']->value;?>
 " name="export" class="jsRedirect btn btn-warning" >Export Excel</button></a>
 							<?php }?>
-							<a class="jsRedirect" data-notify-time = '3000'   href="add_billing.php">
-							<input type="button" value="Create Billing" class="btn btn-info"/></a>	
+							<!-- a class="jsRedirect" data-notify-time = '3000'   href="add_billing.php">
+							<input type="button" value="Create Billing" class="btn btn-info"/></a-->	
 						</div>
 						
 						<?php if ($_smarty_tpl->tpl_vars['SUCCESS_MSG']->value) {?>
@@ -102,21 +102,17 @@ $_smarty_tpl->ext->_updateScope->updateScope($_smarty_tpl, 'hide', 0);?>
 							<form action="" id="formID" name="searchFrm" class="formID" method="post" accept-charset="utf-8"><div style="display:none;"><input type="hidden" name="_method" value="POST"/></div>	
 							<div class="<?php echo $_smarty_tpl->tpl_vars['hide']->value;?>
  dataTables_filter srchBox" style="float:left;" id="dt_gal_filter">
-							<label style="margin-left:0;">Keyword: <input type="text" placeholder="Candidate Name or Client Name" name="keyword" id="keyword" value="<?php echo $_smarty_tpl->tpl_vars['keyword']->value;?>
-" class="input-large" aria-controls="dt_gal"></label>
-							
-							 
-							<span id="sandbox-container">
-							<span  class="input-daterange" id="datepicker">
-							<label>Billing From: 
-							<input type="text" class="input-small datepick" name="f_date" placeholder="dd/mm/yyyy" value="<?php echo $_smarty_tpl->tpl_vars['f_date']->value;?>
-" aria-controls="dt_gal"></label>
-							<label>Billing Till:
-							<input type="text" name="t_date" value="<?php echo $_smarty_tpl->tpl_vars['t_date']->value;?>
-" placeholder="dd/mm/yyyy" class="input-small datepick" aria-controls="dt_gal"></label>
-							</span></span>
+							<label style="margin-top:18px;"><a href="billing.php" class="jsRedirect"><input value="Reset" type="button" class="btn"/></a></label>
 							<label style="margin-top:18px;"><input type="submit" value="Submit" class="btn btn-gebo" /></label>					
-							<label style="margin-top:18px;"><a href="billing.php" class="jsRedirect"><input value="Reset" type="button" class="btn"/></a></label>	
+							
+						<label>Billing Till: <input type="text" name="t_date" value="<?php echo $_smarty_tpl->tpl_vars['t_date']->value;?>
+" placeholder="dd/mm/yyyy" class="input-small datepick" aria-controls="dt_gal"></label>
+
+							<label>Billing From: <input type="text" class="input-small datepick" name="f_date" placeholder="dd/mm/yyyy" value="<?php echo $_smarty_tpl->tpl_vars['f_date']->value;?>
+" aria-controls="dt_gal"></label>
+								<label style="margin-left:0;">Keyword: <input type="text" placeholder="Candidate Name or Client Name" name="keyword" id="keyword" value="<?php echo $_smarty_tpl->tpl_vars['keyword']->value;?>
+" class="input-large" aria-controls="dt_gal"></label>
+
 							</div>
 
 						<input type="hidden" value="1" id="SearchKeywords">
@@ -133,43 +129,44 @@ $_smarty_tpl->ext->_updateScope->updateScope($_smarty_tpl, 'hide', 0);?>
 &keyword=<?php echo $_smarty_tpl->tpl_vars['keyword']->value;?>
 &f_date=<?php echo $_smarty_tpl->tpl_vars['f_date']->value;?>
 &t_date=<?php echo $_smarty_tpl->tpl_vars['t_date']->value;?>
-" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="<?php echo $_smarty_tpl->tpl_vars['sort_field_job_title']->value;?>
+" class="<?php echo $_smarty_tpl->tpl_vars['sort_field_job_title']->value;?>
 ">Position</a></th>
 										<th width="150"><a href="billing.php?field=client_name&order=<?php echo $_smarty_tpl->tpl_vars['order']->value;?>
 &page=<?php echo $_GET['page'];?>
 &keyword=<?php echo $_smarty_tpl->tpl_vars['keyword']->value;?>
 &f_date=<?php echo $_smarty_tpl->tpl_vars['f_date']->value;?>
 &t_date=<?php echo $_smarty_tpl->tpl_vars['t_date']->value;?>
-" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="<?php echo $_smarty_tpl->tpl_vars['sort_field_client_name']->value;?>
+" class="<?php echo $_smarty_tpl->tpl_vars['sort_field_client_name']->value;?>
 ">Client Name</a></th>
 										<th width="90"><a href="billing.php?field=billing_amount&order=<?php echo $_smarty_tpl->tpl_vars['order']->value;?>
 &page=<?php echo $_GET['page'];?>
 &keyword=<?php echo $_smarty_tpl->tpl_vars['keyword']->value;?>
 &f_date=<?php echo $_smarty_tpl->tpl_vars['f_date']->value;?>
 &t_date=<?php echo $_smarty_tpl->tpl_vars['t_date']->value;?>
-" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="<?php echo $_smarty_tpl->tpl_vars['sort_field_billing_amount']->value;?>
+" class="<?php echo $_smarty_tpl->tpl_vars['sort_field_billing_amount']->value;?>
 ">Billing Amount</a></th>
-										<th width="120"><a href="billing.php?field=candidate_name&order=<?php echo $_smarty_tpl->tpl_vars['order']->value;?>
-&page=<?php echo $_GET['page'];?>
-&keyword=<?php echo $_smarty_tpl->tpl_vars['keyword']->value;?>
-&f_date=<?php echo $_smarty_tpl->tpl_vars['f_date']->value;?>
-&t_date=<?php echo $_smarty_tpl->tpl_vars['t_date']->value;?>
-" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="<?php echo $_smarty_tpl->tpl_vars['sort_field_candidate_name']->value;?>
-">Candidate Name</a></th>
-										<th width="80"><a href="billing.php?field=account_holder&order=<?php echo $_smarty_tpl->tpl_vars['order']->value;?>
-&page=<?php echo $_GET['page'];?>
-&keyword=<?php echo $_smarty_tpl->tpl_vars['keyword']->value;?>
-&f_date=<?php echo $_smarty_tpl->tpl_vars['f_date']->value;?>
-&t_date=<?php echo $_smarty_tpl->tpl_vars['t_date']->value;?>
-" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="<?php echo $_smarty_tpl->tpl_vars['sort_field_billing_date']->value;?>
-">Account Holder</a></th>
 										<th width="80"><a href="billing.php?field=billing_date&order=<?php echo $_smarty_tpl->tpl_vars['order']->value;?>
 &page=<?php echo $_GET['page'];?>
 &keyword=<?php echo $_smarty_tpl->tpl_vars['keyword']->value;?>
 &f_date=<?php echo $_smarty_tpl->tpl_vars['f_date']->value;?>
 &t_date=<?php echo $_smarty_tpl->tpl_vars['t_date']->value;?>
-" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="<?php echo $_smarty_tpl->tpl_vars['sort_field_billing_date']->value;?>
+" class="<?php echo $_smarty_tpl->tpl_vars['sort_field_billing_date']->value;?>
 ">Billing Date</a></th>
+										<th width="120"><a href="billing.php?field=candidate_name&order=<?php echo $_smarty_tpl->tpl_vars['order']->value;?>
+&page=<?php echo $_GET['page'];?>
+&keyword=<?php echo $_smarty_tpl->tpl_vars['keyword']->value;?>
+&f_date=<?php echo $_smarty_tpl->tpl_vars['f_date']->value;?>
+&t_date=<?php echo $_smarty_tpl->tpl_vars['t_date']->value;?>
+" class="<?php echo $_smarty_tpl->tpl_vars['sort_field_candidate_name']->value;?>
+">Candidate Name</a></th>
+										<th width="80"><a href="billing.php?field=created_date&order=<?php echo $_smarty_tpl->tpl_vars['order']->value;?>
+&page=<?php echo $_GET['page'];?>
+&keyword=<?php echo $_smarty_tpl->tpl_vars['keyword']->value;?>
+&f_date=<?php echo $_smarty_tpl->tpl_vars['f_date']->value;?>
+&t_date=<?php echo $_smarty_tpl->tpl_vars['t_date']->value;?>
+" class="<?php echo $_smarty_tpl->tpl_vars['sort_field_created_date']->value;?>
+">Created Date</a></th>
+										<th width="80">Status</a></th>
 									</tr>
 								</thead>
 								<tbody>	
@@ -196,12 +193,14 @@ $__foreach_item_0_saved_local_item = $_smarty_tpl->tpl_vars['item'];
 </td>
 										<td><?php echo $_smarty_tpl->tpl_vars['item']->value['billing_amount'];?>
 </td>
-										<td><?php echo $_smarty_tpl->tpl_vars['item']->value['candidate_name'];?>
-</td>
-										<td><?php echo $_smarty_tpl->tpl_vars['item']->value['st_user'];?>
-</td>
 										<td><?php echo $_smarty_tpl->tpl_vars['item']->value['billing_date'];?>
 </td>
+										<td><?php echo $_smarty_tpl->tpl_vars['item']->value['candidate_name'];?>
+</td>
+										<td><?php echo $_smarty_tpl->tpl_vars['item']->value['created_date'];?>
+</td>
+										<td><?php echo $_smarty_tpl->tpl_vars['item']->value['status'];?>
+</td>	
 									</tr>		
 									
 								<?php
