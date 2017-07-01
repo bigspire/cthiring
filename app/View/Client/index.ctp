@@ -130,8 +130,10 @@
 									<td><?php echo $this->Functions->format_date($client['Client']['modified_date']);?></td>
 
 <td class="actionItem" style="text-align:center">
+	<?php if($this->Session->read('USER.Login.id') == $client['Client']['created_by']):?>
 	<a href="<?php echo $this->webroot;?>client/edit/<?php echo $client['Client']['id'];?>/" class="btn  btn-mini"  rel="tooltip" class="sepV_a" title="Edit Company"><i class="icon-pencil"></i></a>
-										</td>
+	<?php endif; ?>	
+	</td>
 									</tr>
 								<?php endforeach; ?>
 								</tbody>

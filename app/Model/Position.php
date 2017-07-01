@@ -86,6 +86,13 @@ class Position extends AppModel {
                 'message'  => 'Please enter the job title'
             )
         ),
+		'education' => array(
+            'empty' => array(
+                'rule'     => 'notEmpty',
+                'required' => true,
+                'message'  => 'Please enter the qualification'
+            )
+        ),
 		'location' => array(		
             'empty' => array(
                 'rule'     => 'notEmpty',

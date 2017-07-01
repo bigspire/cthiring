@@ -218,6 +218,18 @@ class AppController extends Controller {
 					case 35:					
 					$this->set('view_billing', 1);
 					break;
+					case 36:					
+					$this->set('create_billing', 1);
+					break;
+					case 37:					
+					$this->set('approve_billing', 1);
+					break;
+					case 38:					
+					$this->set('approve_position', 1);
+					break;
+					case 39:					
+					$this->set('approve_client', 1);
+					break;
 				}				
 			}
 		}

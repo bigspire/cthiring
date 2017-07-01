@@ -136,7 +136,7 @@
 									</tr>	
 								
 								   <tr  class="tbl_row">
-										<td width="120" class="tbl_column">Qualification </td>
+										<td width="120" class="tbl_column">Qualification <span class="f_req">*</span></td>
 										<td> 
 <?php echo $this->Form->input('education', array('div'=> false,'type' => 'text', 'label' => false, 'class' => 'span8', 'cols' => '10', 'rows' => '3',
   'required' => false, 'placeholder' => '',	'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 
