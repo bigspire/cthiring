@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-07-01 22:59:01
+/* Smarty version 3.1.29, created on 2017-07-02 20:58:59
   from "F:\xampp\htdocs\ctsvn\cthiring\hiring\templates\include\header.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5957dbdd3438b0_65541447',
+  'unifunc' => 'content_5959113b70f617_36873464',
   'file_dependency' => 
   array (
     'cfffd9fba5ecbb5e37ebc8a8f0410f0246cfad8b' => 
     array (
       0 => 'F:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\templates\\include\\header.tpl',
-      1 => 1498930115,
+      1 => 1499008692,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_5957dbdd3438b0_65541447 ($_smarty_tpl) {
+function content_5959113b70f617_36873464 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -147,7 +147,7 @@ position/add/">Add Position</a></li>
 											 <?php }?>
 											 <?php if ($_smarty_tpl->tpl_vars['module']->value['view_position'] == '1') {?>
                                                 <li><a href="<?php echo webroot;?>
-/position/">Search Position <!-- span class="label-bub label-info white"></span--></a></li>
+position/">Search Position <!-- span class="label-bub label-info white"></span--></a></li>
 											  <?php }?>
 										   </ul>
                                         </li>
@@ -188,7 +188,8 @@ resume/">Search Resume <!-- span class="label-bub label-info white"><?php echo $
                                       <?php if ($_smarty_tpl->tpl_vars['module']->value['view_billing'] == '1' || $_smarty_tpl->tpl_vars['module']->value['view_incentive'] == '1') {?>
                                         <li class="<?php echo $_smarty_tpl->tpl_vars['billings_active']->value;?>
  dropdown">
-                                            <a data-toggle="dropdown" class="dropdown-toggle " href="#"><i class="icon-file icon-white"></i> Incentive <!--span class="label-bub label-info white"></span--><b class="caret"></b></a>
+                                            <a data-toggle="dropdown" class="dropdown-toggle " href="#"><i class="icon-file icon-white"></i> Incentive <?php if ($_smarty_tpl->tpl_vars['approve_billing_count']->value) {?><span class="label-bub label-info white"><?php echo $_smarty_tpl->tpl_vars['approve_billing_count']->value;?>
+</span><?php }?><b class="caret"></b></a>
                                            <ul class="dropdown-menu">
 										   <?php if ($_smarty_tpl->tpl_vars['module']->value['view_billing'] == '1') {?>
 												<li><a href="billing.php">Search Billing</a></li>

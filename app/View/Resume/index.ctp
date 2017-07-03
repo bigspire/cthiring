@@ -38,6 +38,11 @@
 					<?php endif; ?>
 						</div>
 						
+						<?php if($this->request->query['action'] == 'created'):	?>					
+						<div id="flashMessage" class="alert alert-success">
+						<button type="button" class="close" data-dismiss="alert-error">×</button>Resume Created Successfully</div>
+						<?php endif; ?>
+						
 						
 				<?php echo $this->Session->flash();?>
 
@@ -59,19 +64,18 @@
 						</span>	
 							
 									</label>
-<?php if($this->Session->read('USER.Login.rights') == '5'):?>											
-<label>Branch: 
-							<?php echo $this->Form->input('loc', array('div'=> false,'type' => 'select', 'label' => false, 'class' => 'input-small', 'empty' => 'Select', 'selected' => $this->params->query['loc'], 'required' => false, 'placeholder' => '', 'style' => "clear:left", 'options' => $locList)); ?> 
-
+					<?php if($approveUser):?>
+							<label>Employee: 
+						<?php echo $this->Form->input('emp_id', array('div'=> false,'type' => 'select', 'label' => false, 'class' => 'input-medium', 'empty' => 'Select', 'selected' => $this->params->query['emp_id'], 'required' => false, 'placeholder' => '', 'style' => "clear:left", 'options' => $empList)); ?> 					
 							</label>
-			<label>Employee: 
-						<?php echo $this->Form->input('emp_id', array('div'=> false,'type' => 'select', 'label' => false, 'class' => 'input-small', 'empty' => 'Select', 'selected' => $this->params->query['emp_id'], 'required' => false, 'placeholder' => '', 'style' => "clear:left", 'options' => $empList)); ?> 
-
-															
-													
+						<?php endif; ?>
+						
+						<?php if($this->Session->read('USER.Login.roles_id') == '33' || $this->Session->read('USER.Login.roles_id') == '38'):?>	
+							<label>
+							Branch: 
+							<?php echo $this->Form->input('loc', array('div'=> false,'type' => 'select', 'label' => false, 'class' => 'input-medium', 'empty' => 'Select', 'selected' => $this->params->query['loc'], 'required' => false, 'placeholder' => '', 'style' => "clear:left", 'options' => $locList)); ?> 
 							</label>
-							
-					<?php endif; ?>		
+						<?php endif; ?>	
 					
 					
 	<span id="sandbox-container">
@@ -157,7 +161,7 @@
 										<td><?php echo $this->Functions->get_format_text($res['Resume']['email_id']);?></td>
 										<!--td><?php echo $res['Resume']['present_employer'];?></td-->
 										<td><?php echo $res['Resume']['total_exp'];?></td>
-										<td><?php echo $res['ResLocation']['location'];?></td>
+										<td><?php echo $res['ResLocation']['location'] ? $res['ResLocation']['location'] : $res['Resume']['present_location'];?></td>
 										<!--td><?php echo $res['Resume']['education'];?></td-->
 										<!--td><?php if(!empty($res['Resume']['present_ctc'])): echo $res['Resume']['present_ctc'].' L'; endif; ?></td>
 										<td><?php if(!empty($res['Resume']['expected_ctc'])): echo $res['Resume']['expected_ctc'].' L'; endif; ?></td-->
@@ -176,7 +180,7 @@
 									</button>
 										<ul class="dropdown-menu">
 											<li><a href="<?php echo $this->webroot;?>resume/profile_snapshot/<?php echo $res['Resume']['id'];?>/">Snapshot</a></li>
-											<li><a href="<?php echo $this->webroot;?>resume/download_doc/<?php echo $res['Resume']['id'];?>/">Candidate Resume</a></li>
+											<li><a href="<?php echo $this->webroot;?>resume/download_doc/<?php echo $res['ResDoc']['resume'];?>/">Candidate Resume</a></li>
 											<li class="divider"></li>
 											<li><a href="<?php echo $this->webroot;?>resume/autoresume/<?php echo $res['Resume']['id'];?>/">Fully Formatted Resume</a></li>
 										</ul>

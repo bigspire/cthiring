@@ -386,6 +386,16 @@ class FunctionsHelper extends AppHelper {
 		return $txt;
    }
    
+    /* function to check gender */
+   public function check_marital($st){
+		if($st == '1'){
+			$txt = 'Single';
+		}else if($st == '2'){
+			$txt = 'Married';
+		}
+		return $txt;
+   }
+   
    /* function to read the resume */	
 	function read_document($filename){
 		$file_extension = substr($filename, strlen($filename)-4, 4);
@@ -454,6 +464,89 @@ class FunctionsHelper extends AppHelper {
 			}
 		}
 	}
+	
+	 /* function to find the min and max exp */
+   public function check_exp($value){ 		
+		if($value == '0'){
+			$str =  'Fresher';
+		}else if($value < 1 && $value != ''){			
+			$str = preg_replace('/^0./', '', $value).' Month';
+			$value = 2;
+		}else if($value >= 1){
+			$str = $value.' Year';
+		}
+		
+		if($value > 1){
+			$suffix = 's';
+		}
+		
+		return $str.$suffix;
+   }
+   
+   /* function to get ctc type */
+   public function get_ctc_type($type){
+		switch($type){
+			case 'K':
+			$value = 'Thousands';
+			break;
+			case 'L':
+			$value = 'Lacs';
+			break;
+			case 'C':
+			$value = 'Crore';
+			break;
+			
+		}
+		return $value;
+   }
+   
+    /* function to get ctc type */
+   public function get_notice($val){
+		switch($val){
+			case '0':
+			$value = 'Immediate';
+			break;
+			case '15':
+			$value = '15 Days';
+			break;
+			case '30':
+			$value = '30 Days';
+			break;
+			case '40':
+			$value = '45 Days';
+			break;
+			case '60':
+			$value = '2 Months';
+			break;
+			case '90':
+			$value = '3 Months';
+			break;
+			case '120':
+			$value = '4 Months';
+			break;
+			case '150':
+			$value = '5 Months';
+			break;
+			case '180':
+			$value = '6 Months';
+			break;
+			
+		}
+		return $value;
+   }
+   
+   /* function to get course type */
+   public function get_course_type($type){
+		switch($type){
+			case 'R':
+			$value = 'Regular';
+			break;
+			case 'C':
+			$value = 'Correspondence';
+			break;			
+		}
+		return $value;
+   }
   
 }
 ?>

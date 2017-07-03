@@ -178,7 +178,19 @@
 										{html_options options=$ctc_type selected=$expected_ctc_type}
 										</select>
 										<span class="f_req">*</span>	
-										<label for="reg_city" generated="true" class="error">{$present_ctcErr}{$present_ctc_typeErr}{$expected_ctcErr}{$expected_ctc_typeErr} </label>	
+										
+										<label for="reg_city" generated="true" class="error">
+										{$present_ctcErr}
+										</label>
+											<label for="reg_city" generated="true" class="error">
+										{$present_ctc_typeErr}</label>
+											<label for="reg_city" generated="true" class="error">
+										{$expected_ctcErr}</label>
+											<label for="reg_city" generated="true" class="error">
+										{$expected_ctc_typeErr}
+										</label>	
+										
+										
 										</td>	
 									</tr>	
 									<tr class="tbl_row">
@@ -627,9 +639,11 @@
 					</div>
 					<input type="hidden" id="tab_open_resume" value="{$tab_open_resume}"/>
 					 <div class="form-actions">
-									<button class="btn btn-gebo" type="submit">Submit</button>
-								<a href="{$smarty.const.webroot}resume"><button type="button" class="btn">Cancel</button></a>
-							</div>
+	<input class="btn btn-gebo" type="submit" value="Submit">
+	<a href="{$smarty.const.webroot}resume" class="jsRedirect cancelBtn"><input type="button" value="Cancel" class="btn">
+	</a>
+	
+	</div>
 					</form>
          	
 				
