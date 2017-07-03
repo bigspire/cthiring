@@ -39,10 +39,7 @@
 						
 			<?php echo $this->Session->flash();?>			
 
-<div class="heading clearfix">
-								<h3 class="pull-left">Clients <small>list</small></h3>
-				
-							</div>
+
 							
 								
 							<?php echo $this->Form->create('Client', array('id' => 'formID','class' => 'formID')); ?>
@@ -69,7 +66,9 @@
 						<input type="hidden" value="<?php echo $this->webroot;?>client/" id="webroot">
 					<input type="hidden" id="srchSubmit" value="<?php echo $this->params->query['srch_status'];?>">
 
-						
+			
+
+			
 	<label>Status: 
 							<?php echo $this->Form->input('status', array('div'=> false,'type' => 'select', 'label' => false, 'class' => 'input-small', 'empty' => 'Select', 'selected' => $this->params->query['status'], 'required' => false, 'placeholder' => '', 'style' => "clear:left", 'options' => array('2' => 'Active','1' => 'Inactive'))); ?> 
 

@@ -116,7 +116,7 @@
                                                 <li><a href="{webroot}position/add/">Add Position</a></li>
 											 {/if}
 											 {if $module['view_position'] eq '1'}
-                                                <li><a href="{webroot}/position/">Search Position {* if $position_count *}<!-- span class="label-bub label-info white">{* $position_count *}</span-->{* /if *}</a></li>
+                                                <li><a href="{webroot}position/">Search Position {* if $position_count *}<!-- span class="label-bub label-info white">{* $position_count *}</span-->{* /if *}</a></li>
 											  {/if}
 										   </ul>
                                         </li>

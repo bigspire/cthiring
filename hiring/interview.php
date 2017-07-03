@@ -23,6 +23,8 @@ include('menu_count.php');
 $module_access = $fun->check_role_access('10',$modules);
 $smarty->assign('module',$module_access);
 
+
+
 $keyword = $_POST['keyword'] ? $_POST['keyword'] : $_GET['keyword'];
 $f_date = $_POST['f_date'] ? $_POST['f_date'] : $_GET['f_date'];  
 $t_date = $_POST['t_date'] ? $_POST['t_date'] : $_GET['t_date']; 
@@ -143,7 +145,43 @@ try{
 	echo 'Caught exception: ',  $e->getMessage(), "\n";
 }
 
+		// for director and BH
+		if($_SESSION['roles_id'] == '33' || $_SESSION['roles_id'] == '38'){
+			$show = 'all';
+			$team_cond = false;
+		}else{
+			$team_cond = true;
+		}
+		// call the next result
+		$mysql->next_query();
+		$id = $_SESSION['user_id'];
+		// get the team members
+		if($show == '1'){
+			$qryCond = "(a.level1 = '$id' or a.level2 = '$id') and ";
+		}		
+		$sql = "select u.id, u.first_name, u.last_name from users u inner join	approval a  on (a.users_id = u.id) where
+		$qryCond u.is_deleted = 'N' and u.status = '0' group by u.id order by u.first_name asc";		
+		$result = $mysql->execute_query($sql);		
+		while($row = $mysql->display_result($result)){
+			$emp_name[$row['id']] = ucwords($row['first_name'].' '.$row['last_name']);
+		}
+		
+		if(!empty($result)){
+			$smarty->assign('approveUser', '1');		
+			foreach($result as $rec){
+				$id_str .=  $rec['u']['id'].' , ';
+			}
+			if($team_cond){
+				$cond1 .= 'or ( ReqResume.created_by in('.$id_str.')';
+				$cond2 .= 'or AH.users_id in('.$id_str.')
+				)';
+				
+			}
+			$smarty->assign('emp_name',$emp_name);
+		}
+
 // query to fetch all employee names. 
+/*
 $query = 'CALL get_employee()';
 try{
 	// calling mysql exe_query function
@@ -162,7 +200,7 @@ try{
 }catch(Exception $e){
 	echo 'Caught exception: ',  $e->getMessage(), "\n";
 } 
-
+*/
 // query to fetch all branch list. 
 $query = 'CALL get_branch()';
 try{

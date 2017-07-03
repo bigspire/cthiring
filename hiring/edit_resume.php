@@ -522,6 +522,7 @@ $smarty->assign('grade_type', array('' => 'Select', 'I' => 'Individual', 'T' => 
 // smarty drop down array for experience year 
 $exp_yr = array(); 
 for($l = 1; $l <= 50; $l++){ 
+$exp_yr[0] = '0 Years';
 	if($l == '1') {
 		$exp_yr[$l] = $l.' '.Year; 
 	}else {
@@ -531,6 +532,8 @@ for($l = 1; $l <= 50; $l++){
 $smarty->assign('exp_yr', $exp_yr);
 // smarty drop down array for experience month 
 $exp_month = array(); 
+$exp_month[0] = '0 Months';
+
 for($l = 1; $l <= 11; $l++){
 	if($l == '1') {
 		$exp_month[$l] = $l.' '.Month;

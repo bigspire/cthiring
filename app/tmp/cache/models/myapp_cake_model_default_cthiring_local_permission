@@ -1,18 +1,2 @@
-<<<<<<< HEAD
-1585243863
-=======
-<<<<<<< HEAD
-1585243790
-=======
-<<<<<<< HEAD
-1585233516
-=======
-<<<<<<< HEAD
-1585217573
-=======
-1585218143
->>>>>>> 4a8a210f951000c3bd20b92614644e637fdcbfac
->>>>>>> 9ea79f7e0775c6a102c27509e54c33692926bb73
->>>>>>> 6d8ff73b9de002dbd4c17b1bb29e480f9af5035f
->>>>>>> 6919699e64c64953a3280d0ed2c731fc488201d0
+1585354739
 a:4:{s:2:"id";a:6:{s:4:"type";s:7:"integer";s:4:"null";b:0;s:7:"default";N;s:6:"length";i:10;s:8:"unsigned";b:1;s:3:"key";s:7:"primary";}s:12:"created_date";a:4:{s:4:"type";s:8:"datetime";s:4:"null";b:0;s:7:"default";N;s:6:"length";N;}s:10:"modules_id";a:6:{s:4:"type";s:7:"integer";s:4:"null";b:0;s:7:"default";N;s:6:"length";i:10;s:8:"unsigned";b:1;s:3:"key";s:5:"index";}s:8:"roles_id";a:6:{s:4:"type";s:7:"integer";s:4:"null";b:0;s:7:"default";N;s:6:"length";i:10;s:8:"unsigned";b:1;s:3:"key";s:5:"index";}}

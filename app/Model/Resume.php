@@ -59,4 +59,9 @@ class Resume extends AppModel {
 		return $this->Creator->find('list',  array('fields' => array('id','first_name'), 'order' => array('first_name ASC'),'conditions' => array('status' => 0)));
 	}
 	
+	/* function to get the team members */
+	public function get_team($id){
+		return $this->get_team_mem($id);
+	}
+	
 }

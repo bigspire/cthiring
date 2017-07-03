@@ -33,8 +33,8 @@ class PositionController extends AppController {
 	public function index($contact_id){			
 		// when the form is submitted for search
 		if($this->request->is('post')){
-			$url_vars = $this->Functions->create_url(array('keyword','from','to','loc','emp_id','status'),'Position'); 			
-			$this->redirect('/position/?'.$url_vars);				
+			$url_vars = $this->Functions->create_url(array('keyword','from','to','loc','emp_id','status','unread'),'Position'); 			
+			$this->redirect('/position/?srch_status=1&'.$url_vars);				
 		}
 		
 		// set the page title
@@ -87,6 +87,34 @@ class PositionController extends AppController {
 						 array($this->Functions->format_date_save($start), $this->Functions->format_date_save($end_search))));
 		}
 		
+		// for director and BH
+		if($this->Session->read('USER.Login.roles_id') == '33' || $this->Session->read('USER.Login.roles_id') == '38'){
+			$show = 'all';
+			$team_cond = false;
+		}else{
+			$team_cond = true;
+		}
+		
+		// get the team members
+		$result = $this->Position->get_team($this->Session->read('USER.Login.id'),$show);
+		if(!empty($result)){
+			$this->set('approveUser', '1');
+			// for drop down listing
+			$format_list = $this->Functions->format_dropdown($result, 'u','id','first_name', 'last_name');
+			$this->set('empList', $format_list);
+			$data[] =  $this->Session->read('USER.Login.id');
+			foreach($result as $rec){
+				$data[] =  $rec['u']['id'];
+			}
+			if($team_cond){
+				$teamCond = array('OR' => array(
+					'ReqResume.created_by' =>  $data,
+					'ReqTeam.users_id' => $data,
+					'AH.users_id' => $data					
+					)
+				);
+			}
+		}
 		// check role based access
 		if($this->Session->read('USER.Login.roles_id') == '34'){ // account holder
 			$empCond = array('AH.users_id' => $this->Session->read('USER.Login.id'));
@@ -130,10 +158,12 @@ class PositionController extends AppController {
 		}
 		
 		// for status condition
-		if($this->request->query['status'] != '' && $this->request->query['status'] != '5'){ 
+		if($this->request->query['status'] != ''){ 
 			$st = $this->request->query['status'] == '10' ? '0' : $this->request->query['status'];
 			$stCond = array('Position.req_status_id' => $st);
-		}else if($this->request->query['status'] == '5'){
+		}
+		// for unread status count
+		if($this->request->query['unread'] == '1'){
 			$stCond = array('Read.users_id' => $this->Session->read('USER.Login.id'), 'Read.status' => 'U');
 		}
 		
@@ -151,12 +181,12 @@ class PositionController extends AppController {
 		// for export
 		if($this->request->query['action'] == 'export'){
 			$data = $this->Position->find('all', array('fields' => $fields,'conditions' => 
-			array($keyCond,$date_cond,$branchCond,$empCond,$stCond), 
+			array($keyCond,$date_cond,$branchCond,$empCond,$stCond,$teamCond,$contactCond), 
 			'order' => array('created_date' => 'desc'), 'group' => array('Position.id'), 'joins' => $options));
 			$this->Excel->generate('positions', $data, $data, 'Report', 'Position');
 		}
 		
-		$this->paginate = array('fields' => $fields,'limit' => '25','conditions' => array($aprCond,$keyCond,$date_cond,$branchCond,$empCond,$stCond,$contactCond),
+		$this->paginate = array('fields' => $fields,'limit' => '25','conditions' => array($aprCond,$keyCond,$date_cond,$branchCond,$empCond,$stCond,$contactCond,$teamCond),
 		'order' => array('created_date' => 'desc'),	'group' => array('Position.id'), 'joins' => $options);
 		$data = $this->paginate('Position');
 		$this->set('data', $data);

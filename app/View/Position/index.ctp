@@ -45,10 +45,7 @@
 					<?php echo $this->Session->flash();?>
 				
 	
-<div class="heading clearfix">
-								<h3 class="pull-left">Positions <small>list</small></h3>
-					
-							</div>
+
 						
 	<?php echo $this->Form->create('Position', array('id' => 'formID','class' => 'formID')); ?>
 		
@@ -68,23 +65,33 @@
 							
 							
 							<label>Status: 
-							<?php echo $this->Form->input('status', array('div'=> false,'type' => 'select', 'label' => false, 'class' => 'input-medium', 'empty' => 'Select', 'selected' => $this->params->query['status'], 'required' => false, 'placeholder' => '', 'style' => "clear:left", 'options' => $stList)); ?> 
+							<?php echo $this->Form->input('status', array('div'=> false,'type' => 'select', 
+							'label' => false, 'class' => 'input-medium', 'empty' => 'Select',
+							'selected' => $this->params->query['status'], 'required' => false, 'placeholder' => '', 'style' => "clear:left", 'options' => $stList)); ?> 
 
 							
 							</label>
-						<?php if($this->Session->read('USER.Login.rights') == '5'):?>	
+							<?php if($approveUser):?>
 							<label>Employee: 
-						<?php echo $this->Form->input('emp_id', array('div'=> false,'type' => 'select', 'label' => false, 'class' => 'input-medium', 'empty' => 'Select', 'selected' => $this->params->query['emp_id'], 'required' => false, 'placeholder' => '', 'style' => "clear:left", 'options' => $empList)); ?> 
-
-															
-													
+						<?php echo $this->Form->input('emp_id', array('div'=> false,'type' => 'select', 'label' => false, 'class' => 'input-medium', 'empty' => 'Select', 'selected' => $this->params->query['emp_id'], 'required' => false, 'placeholder' => '', 'style' => "clear:left", 'options' => $empList)); ?> 					
 							</label>
-							<label>Branch: 
+						<?php endif; ?>
+						
+						<?php if($this->Session->read('USER.Login.roles_id') == '33' || $this->Session->read('USER.Login.roles_id') == '38'):?>	
+							<label>
+							Branch: 
 							<?php echo $this->Form->input('loc', array('div'=> false,'type' => 'select', 'label' => false, 'class' => 'input-medium', 'empty' => 'Select', 'selected' => $this->params->query['loc'], 'required' => false, 'placeholder' => '', 'style' => "clear:left", 'options' => $locList)); ?> 
+							</label>
+						<?php endif; ?>
+							
+							<label>Unread: 
+							<?php echo $this->Form->input('unread', array('div'=> false,'type' => 'checkbox', 'label' => false, 'class' => 'input-medium', 'title' => 'Check for Unread Positions', 'checked' => $this->params->query['unread'], 'required' => false, 'placeholder' => '')); ?> 
 
 							</label>
 							
-							<?php endif; ?>
+							
+							
+							
 
 							
 														<label style="margin-top:18px;"><input type="submit" value="Submit" class="btn btn-gebo" /></label>
@@ -144,8 +151,8 @@
 										
 						
 						<td width=""><?php echo $req[0]['team_member'];?></td>
-						<td width=""  style="text-align:center"><a title="View CV Sent"  href="<?php echo $this->webroot;?>resume/?status=1" rel="tooltip"><?php echo $req[0]['cv_sent'];?></a>
-						<td width=""  style="text-align:center"><a title="View Joined Resumes"  href="<?php echo $this->webroot;?>resume/?status=10"  rel="tooltip"><?php echo $this->Functions->get_total_joined($req[0]['joined']);?></a></td>
+						<td width=""  style="text-align:center"><a title="View CV Sent"  href="<?php echo $this->webroot;?>resume/?status=1&spec=<?php echo $req['Position']['id'];?>" rel="tooltip"><?php echo $req[0]['cv_sent'];?></a>
+						<td width=""  style="text-align:center"><a title="View Joined Resumes"  href="<?php echo $this->webroot;?>resume/?status=10&spec=<?php echo $req['Position']['id'];?>"  rel="tooltip"><?php echo $this->Functions->get_total_joined($req[0]['joined']);?></a></td>
 						<td width=""  style="text-align:center"><span rel="tooltip" title="Requirement Status: <?php echo $req['ReqStatus']['title'];?> " class="label label-<?php echo $this->Functions->get_req_status_color($req['ReqStatus']['title']);?>"><?php echo $req['ReqStatus']['title'];?></span>			
 										</td>
 						<td width=""><?php echo $req['Creator']['first_name'];?></td>

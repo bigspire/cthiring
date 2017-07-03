@@ -71,6 +71,7 @@
 						<label>To Date: <input type="text" name="t_date" placeholder="dd/mm/yyyy" value="{$t_date}" style="width:70px;"  class="input-small datepick" aria-controls="dt_gal"></label>						
 						</span></span>
 						
+						{if $approveUser}
 						<label>Employee: 
 						<select name="employee" class="input-medium" placeholder="" style="clear:left" id="InterviewEmpId">
 						<option value="">Select</option>
@@ -78,21 +79,29 @@
 						</option>
 						</select> 
 						</label>
+						{/if}
+						
+						{if $smarty.session.roles_id eq '33' || $smarty.session.roles_id eq '38'}
 						<label>Branch: 
 							<select name="branch" class="input-medium" placeholder="" style="clear:left" id="ResumeLoc">
 						<option value="">Select</option>
 							{html_options options=$branch_name selected=$branch}
 							</select> 
 						</label>
+						{/if}
+						
 						<label>Current Status: 
 						<select name="current_status" class="input-medium" placeholder="" style="clear:left" id="InterviewStatus">
 						{html_options options=$status_type selected=$current_status}
 						</select> 
 						</label>						
 						<label style="margin-top:18px;">
-							<a class="jsRedirect" href="interview.php"><input value="Reset" type="button" class="btn"/></a></label>
-							<label style="margin-top:18px;">
-							<input type="submit" value="Submit" class="btn btn-gebo" /></label>				
+							<input type="submit" value="Submit" class="btn btn-gebo" /></label>	
+						
+						<label style="margin-top:18px;">
+							<a class="jsRedirect" href="interview.php"><input value="Reset" type="button" class="btn"/></a>
+							</label>
+										
 					</div>
 <input type="hidden" value="1" id="SearchKeywords">
 						<input type="hidden" value="interview/" id="webroot">

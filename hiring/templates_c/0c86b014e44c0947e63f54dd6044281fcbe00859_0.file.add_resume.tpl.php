@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-06-24 11:14:34
+/* Smarty version 3.1.29, created on 2017-07-03 05:35:22
   from "F:\xampp\htdocs\ctsvn\cthiring\hiring\templates\add_resume.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_594dfc42ea76d4_87484881',
+  'unifunc' => 'content_59598a428cb3f5_23437565',
   'file_dependency' => 
   array (
     '0c86b014e44c0947e63f54dd6044281fcbe00859' => 
     array (
       0 => 'F:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\templates\\add_resume.tpl',
-      1 => 1497959907,
+      1 => 1499040266,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_594dfc42ea76d4_87484881 ($_smarty_tpl) {
+function content_59598a428cb3f5_23437565 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'F:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -108,7 +108,7 @@ echo $_smarty_tpl->tpl_vars['last_nameErr']->value;?>
                                     <tr class="tbl_row">
 										<td width="120" class="tbl_column"> Mobile <span class="f_req">*</span></td>
 										<td>
-										<input type="text" tabindex="4" name="mobile" id="keyword" value="<?php echo $_smarty_tpl->tpl_vars['mobile']->value;?>
+										<input type="text" tabindex="4" name="mobile" id="" value="<?php echo $_smarty_tpl->tpl_vars['mobile']->value;?>
 " autocomplete="off">							
 									<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['mobileErr']->value;?>
  </label>							
@@ -191,11 +191,22 @@ echo $_smarty_tpl->tpl_vars['month_of_expErr']->value;?>
 
 										</select>			
 										<span class="f_req">*</span>		
-										<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['present_ctcErr']->value;
-echo $_smarty_tpl->tpl_vars['present_ctc_typeErr']->value;
-echo $_smarty_tpl->tpl_vars['expected_ctcErr']->value;
-echo $_smarty_tpl->tpl_vars['expected_ctc_typeErr']->value;?>
-</label>	
+										<label for="reg_city" generated="true" class="error">
+										<?php echo $_smarty_tpl->tpl_vars['present_ctcErr']->value;?>
+
+										</label>
+											<label for="reg_city" generated="true" class="error">
+										<?php echo $_smarty_tpl->tpl_vars['present_ctc_typeErr']->value;?>
+</label>
+											<label for="reg_city" generated="true" class="error">
+										<?php echo $_smarty_tpl->tpl_vars['expected_ctcErr']->value;?>
+</label>
+											<label for="reg_city" generated="true" class="error">
+										<?php echo $_smarty_tpl->tpl_vars['expected_ctc_typeErr']->value;?>
+</label>
+										
+										
+										</label>	
 										</td>
 									</tr>
 									<tr>
@@ -446,7 +457,7 @@ echo 'checked';?>
 									
 						
 							<tr class="tbl_row">
-										<td width="120" class="tbl_column">Location<span class="f_req">*</span></td>
+										<td width="120" class="tbl_column">Location <span class="f_req">*</span></td>
 										<td> 
 										<input type="text"  tabindex="6" name="location_#index#" id="location_#index#"  class="span8" />
 										<label for="reg_city" generated="true" class="error" id="location_Err_#index#"></label>										
@@ -522,7 +533,10 @@ echo 'checked';?>
 "/>
 <div class="form-actions">
 	<button class="btn btn-gebo" type="submit">Submit</button>
-	<input type="button" value="Cancel" class="btn" onclick="window.location='resume.php'">
+	<a href="<?php echo @constant('webroot');?>
+resume" class="jsRedirect cancelBtn"><input type="button" value="Cancel" class="btn">
+	</a>
+	
 </div>
  </div>
 	</div>

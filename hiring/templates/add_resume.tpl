@@ -74,7 +74,7 @@
                                     <tr class="tbl_row">
 										<td width="120" class="tbl_column"> Mobile <span class="f_req">*</span></td>
 										<td>
-										<input type="text" tabindex="4" name="mobile" id="keyword" value="{$mobile}" autocomplete="off">							
+										<input type="text" tabindex="4" name="mobile" id="" value="{$mobile}" autocomplete="off">							
 									<label for="reg_city" generated="true" class="error">{$mobileErr} </label>							
 										</td>		
 									</tr>									
@@ -141,7 +141,18 @@
 										{html_options options=$ctc_type selected=$smarty.post.expected_ctc_type}
 										</select>			
 										<span class="f_req">*</span>		
-										<label for="reg_city" generated="true" class="error">{$present_ctcErr}{$present_ctc_typeErr}{$expected_ctcErr}{$expected_ctc_typeErr}</label>	
+										<label for="reg_city" generated="true" class="error">
+										{$present_ctcErr}
+										</label>
+											<label for="reg_city" generated="true" class="error">
+										{$present_ctc_typeErr}</label>
+											<label for="reg_city" generated="true" class="error">
+										{$expected_ctcErr}</label>
+											<label for="reg_city" generated="true" class="error">
+										{$expected_ctc_typeErr}</label>
+										
+										
+										</label>	
 										</td>
 									</tr>
 									<tr>
@@ -368,7 +379,7 @@
 									
 						
 							<tr class="tbl_row">
-										<td width="120" class="tbl_column">Location<span class="f_req">*</span></td>
+										<td width="120" class="tbl_column">Location <span class="f_req">*</span></td>
 										<td> 
 										<input type="text"  tabindex="6" name="location_#index#" id="location_#index#"  class="span8" />
 										<label for="reg_city" generated="true" class="error" id="location_Err_#index#"></label>										
@@ -436,8 +447,10 @@
 </div>
 <input type="hidden" id="tab_open" value="{$tab_open}"/>
 <div class="form-actions">
-	<button class="btn btn-gebo" type="submit">Submit</button>
-	<input type="button" value="Cancel" class="btn" onclick="window.location='resume.php'">
+	<input class="btn btn-gebo" type="submit" value="Submit">
+	<a href="{$smarty.const.webroot}resume" class="jsRedirect cancelBtn"><input type="button" value="Cancel" class="btn">
+	</a>
+	
 </div>
  </div>
 	</div>
