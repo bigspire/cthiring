@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-07-01 23:15:06
+/* Smarty version 3.1.29, created on 2017-07-03 12:39:58
   from "C:\xampp\htdocs\2017\ctsvn\cthiring\hiring\templates\include\header.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5957dfa23b7b11_12930522',
+  'unifunc' => 'content_5959edc6541431_62228931',
   'file_dependency' => 
   array (
     '418ce04694c91a3f6ebee8f2a2efa42e5260b14c' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\templates\\include\\header.tpl',
-      1 => 1498931098,
+      1 => 1499065761,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_5957dfa23b7b11_12930522 ($_smarty_tpl) {
+function content_5959edc6541431_62228931 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -147,7 +147,7 @@ position/add/">Add Position</a></li>
 											 <?php }?>
 											 <?php if ($_smarty_tpl->tpl_vars['module']->value['view_position'] == '1') {?>
                                                 <li><a href="<?php echo webroot;?>
-/position/">Search Position <!-- span class="label-bub label-info white"></span--></a></li>
+position/">Search Position <!-- span class="label-bub label-info white"></span--></a></li>
 											  <?php }?>
 										   </ul>
                                         </li>

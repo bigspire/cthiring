@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-07-03 10:07:55
+/* Smarty version 3.1.29, created on 2017-07-03 14:10:00
   from "C:\xampp\htdocs\2017\ctsvn\cthiring\hiring\templates\add_formatted_resume.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5959ca231b2604_90224966',
+  'unifunc' => 'content_595a02e0d34533_94159767',
   'file_dependency' => 
   array (
     '7b9debb43acd1c9656df1fbe01b897c4d462aec5' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\templates\\add_formatted_resume.tpl',
-      1 => 1498938858,
+      1 => 1499065761,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5959ca231b2604_90224966 ($_smarty_tpl) {
+function content_595a02e0d34533_94159767 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -244,11 +244,23 @@ echo $_POST['family'];
 
 										</select>
 										<span class="f_req">*</span>	
-										<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['present_ctcErr']->value;
-echo $_smarty_tpl->tpl_vars['present_ctc_typeErr']->value;
-echo $_smarty_tpl->tpl_vars['expected_ctcErr']->value;
-echo $_smarty_tpl->tpl_vars['expected_ctc_typeErr']->value;?>
- </label>	
+										
+										<label for="reg_city" generated="true" class="error">
+										<?php echo $_smarty_tpl->tpl_vars['present_ctcErr']->value;?>
+
+										</label>
+											<label for="reg_city" generated="true" class="error">
+										<?php echo $_smarty_tpl->tpl_vars['present_ctc_typeErr']->value;?>
+</label>
+											<label for="reg_city" generated="true" class="error">
+										<?php echo $_smarty_tpl->tpl_vars['expected_ctcErr']->value;?>
+</label>
+											<label for="reg_city" generated="true" class="error">
+										<?php echo $_smarty_tpl->tpl_vars['expected_ctc_typeErr']->value;?>
+
+										</label>	
+										
+										
 										</td>	
 									</tr>	
 									<tr class="tbl_row">
@@ -764,10 +776,12 @@ echo $_POST['candidate_brief'];
 					<input type="hidden" id="tab_open_resume" value="<?php echo $_smarty_tpl->tpl_vars['tab_open_resume']->value;?>
 "/>
 					 <div class="form-actions">
-									<button class="btn btn-gebo" type="submit">Submit</button>
-								<a href="<?php echo @constant('webroot');?>
-resume"><button type="button" class="btn">Cancel</button></a>
-							</div>
+	<input class="btn btn-gebo" type="submit" value="Submit">
+	<a href="<?php echo @constant('webroot');?>
+resume" class="jsRedirect cancelBtn"><input type="button" value="Cancel" class="btn">
+	</a>
+	
+	</div>
 					</form>
          	
 				

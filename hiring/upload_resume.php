@@ -18,6 +18,7 @@ include('classes/class.function.php');
 // add menu count
 include('menu_count.php');
 
+$clients = array();
 // query to fetch all clients names. 
 $query = 'CALL get_clients()';
 try{
@@ -38,6 +39,7 @@ try{
 	echo 'Caught exception: ',  $e->getMessage(), "\n";
 }
 
+$position = array();
 // query to fetch position details. 
 $query = "CALL get_position('".$_POST['client']."')";
 try{

@@ -99,7 +99,7 @@ if(!empty($_POST)){
 		$grade_typeData[] = $_POST['grade_type_'.$i];
 		$year_of_passData[] = $_POST['year_of_pass_'.$i];
 		$universityData[] = $_POST['university_'.$i];
-			
+	
 		// array for printing correct field name in error message 
 		$fieldtype = array('1','1', '1', '1'); 
 		$actualfield = array('qualification', 'degree', 'specialization', 'year of passing'); 
@@ -125,7 +125,8 @@ if(!empty($_POST)){
 	$smarty->assign('qualificationData', $qualificationData);
 	$smarty->assign('eduCount', $_POST['edu_count']);
 	$smarty->assign('eduErr',$er);
-
+	
+	
 	// post of experience fields value
 	for($i = 0; $i < $_POST['exp_count']; $i++){
 		
@@ -138,22 +139,39 @@ if(!empty($_POST)){
 		$locationData[] = $_POST['location_'.$i];
 		$vitalData[] = $_POST['vital_'.$i];
 		
-		// array for printing correct field name in error message 
-		$fieldtype1 = array('0', '1', '0', '0', '0'); 
-		$actualfield1 = array( 'designation','employment period','area of specialization/expertise',
-			'company name','location'); 
-		$field_ar1 = array('desig_'.$i => 'desigErr', 'year_of_exp_'.$i => 'year_of_expErr',
-   		 'area_'.$i => 'areaErr', 'company_'.$i => 'companyErr','location_'.$i => 'locationErr'); 
-		$j = 0; 
-		foreach($field_ar1 as $field1 => $er_var1){ 
-			if($_POST[$field1] == ''){
-				$error_msg1 = $fieldtype1[$j] ? ' select the ' : ' enter the ';
-				$actual_field1 =  $actualfield1[$j];
-				$er1[$i][$er_var1] = 'Please'. $error_msg1 .$actual_field1;
-				$test = 'error';
-				$tab3 = 'fail';
+		if($_POST['year_of_exp'] == 0 && $_POST['month_of_exp'] == 0){
+			// array for printing correct field name in error message 
+			$fieldtype1 = array('0', '1', '0', '0', '0'); 
+			$actualfield1 = array( 'designation','employment period','area of specialization/expertise',
+				'company name','location'); 
+			$field_ar1 = array('desig_'.$i => '', 'year_of_exp_'.$i => '',
+				'area_'.$i => '', 'company_'.$i => '','location_'.$i => ''); 
+			$j = 0; 
+			foreach($field_ar1 as $field1 => $er_var1){ 
+				if($_POST[$field1] == ''){
+					$error_msg1 = $fieldtype1[$j] ? ' select the ' : ' enter the ';
+					$actual_field1 =  $actualfield1[$j];
+				}
+				$j++;
 			}
-			$j++;
+		}else{
+			// array for printing correct field name in error message 
+			$fieldtype1 = array('0', '1', '0', '0', '0'); 
+			$actualfield1 = array( 'designation','employment period','area of specialization/expertise',
+				'company name','location'); 
+			$field_ar1 = array('desig_'.$i => 'desigErr', 'year_of_exp_'.$i => 'year_of_expErr',
+			'area_'.$i => 'areaErr', 'company_'.$i => 'companyErr','location_'.$i => 'locationErr'); 
+			$j = 0; 
+			foreach($field_ar1 as $field1 => $er_var1){ 
+				if($_POST[$field1] == ''){
+					$error_msg1 = $fieldtype1[$j] ? ' select the ' : ' enter the ';
+					$actual_field1 =  $actualfield1[$j];
+					$er1[$i][$er_var1] = 'Please'. $error_msg1 .$actual_field1;
+					$test = 'error';
+					$tab3 = 'fail';
+				}
+				$j++;
+			}
 		}
 	}
 	$smarty->assign('desigData', $desigData);

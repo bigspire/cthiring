@@ -63,10 +63,15 @@ if(empty($_POST)){
 		}
 		$row = $mysql->display_result($result);
 		$smarty->assign('dob_field', $fun->convert_date_display($row['dob']));
-		$total_exp  = $row['total_exp'];
-		$total_exp_yrs = explode(".", $total_exp);
-		$smarty->assign('year_of_exp',$total_exp_yrs[0]);
-		$smarty->assign('month_of_exp',$total_exp_yrs[1]);
+		$total_exp  = $row['total_exp'];		
+		if($total_exp == '0'){
+			$smarty->assign('year_of_exp',0);
+			$smarty->assign('month_of_exp',0);
+		}else{
+			$total_exp_yrs = explode(".", $total_exp);
+			$smarty->assign('year_of_exp',$total_exp_yrs[0]);
+			$smarty->assign('month_of_exp',$total_exp_yrs[1]);
+		}
 		$smarty->assign('rows',$row);
 		// assign the db values into session
 		foreach($row as $key => $record){
@@ -153,7 +158,14 @@ if(empty($_POST)){
 		while($row = $mysql->display_result($result)){
 			// post of assign asset fields value
 			$total_experience = $row['experience'];
-			$total_yr_exp = explode(".", $total_experience);
+			if($total_experience == '0'){
+				$year_of_expData[$tot] = '0';
+				$month_of_expData[$tot] = '0';
+			}else{
+				$total_yr_exp = explode(".", $total_experience);
+				$year_of_expData[$tot] = $total_yr_exp[0];
+				$month_of_expData[$tot] = $total_yr_exp[1];
+			}
 			
 			$desigData[$tot] = $row['designation_id'];
 			$areaData[$tot] = $row['skills'];
@@ -766,6 +778,7 @@ $smarty->assign('grade_type', array('' => 'Select', 'I' => 'Individual', 'T' => 
 // smarty drop down array for experience year 
 $exp_yr = array(); 
 for($l = 1; $l <= 50; $l++){ 
+$exp_yr[0] = '0 Years';
 	if($l == '1') {
 		$exp_yr[$l] = $l.' '.Year; 
 	}else {
@@ -775,6 +788,8 @@ for($l = 1; $l <= 50; $l++){
 $smarty->assign('exp_yr', $exp_yr);
 // smarty drop down array for experience month 
 $exp_month = array(); 
+$exp_month[0] = '0 Months';
+
 for($l = 1; $l <= 11; $l++){
 	if($l == '1') {
 		$exp_month[$l] = $l.' '.Month;
@@ -783,6 +798,7 @@ for($l = 1; $l <= 11; $l++){
 	} 
 }
 $smarty->assign('exp_month', $exp_month);
+
 
 // smarty drop down array for current ctc
 $smarty->assign('ctc_type', array('' => 'Select', 'T' => 'Thousand', 'L' => 'Lacs', 'C' => 'Crore'));
