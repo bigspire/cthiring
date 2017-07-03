@@ -351,11 +351,11 @@
 								<div class="tabbable">
 									<div class="heading">
 										<ul class="nav nav-tabs">
-										<li class="active"><a class="restabChange" rel="position"  href="#mbox_inbox" data-toggle="tab"><i class="splashy-mail_light_down"></i>  Position Details </a></li>
+										<li class="active"><a class="restabChange" rel="position"  href="#mbox_inbox" data-toggle="tab"><i class="splashy-application_windows_edit"></i>  Position Details </a></li>
 
-											<li class=""><a class="restabChange" rel="interview"  href="#mbox_inbox" data-toggle="tab"><i class="splashy-mail_light_down"></i>  Interview Details </a></li>
-											<li><a href="#mbox_outbox" class="restabChange" rel="joined" data-toggle="tab"> Joining Details </a></li>
-											<li><a href="#mbox_trash" class="restabChange"  rel="billing"  data-toggle="tab">Billing Details</a></li>
+											<li class=""><a class="restabChange" rel="interview"  href="#mbox_inbox" data-toggle="tab"><i class="splashy-calendar_day_event"></i>  Interview Details </a></li>
+											<li><a href="#mbox_outbox" class="restabChange" rel="joined" data-toggle="tab"> <i class="splashy-group_blue_add"></i> Joining Details </a></li>
+											<li><a href="#mbox_trash" class="restabChange"  rel="billing"  data-toggle="tab"><i class="splashy-ticket"></i> Billing Details</a></li>
 											
 										</ul>
 									</div>
