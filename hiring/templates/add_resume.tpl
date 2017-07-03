@@ -35,7 +35,7 @@
 									<div class="tabbable">
 										<div class="heading">
 										<ul class="nav nav-tabs">
-										<li class="personal"><a class="resaddtabChange" rel="personal"  href="#mbox_Personal" data-toggle="tab"><i class="splashy-mail_light_down"></i>  Personal </a></li>
+										<li class="personal"><a class="resaddtabChange restabChange" rel="personal"  href="#mbox_Personal" data-toggle="tab"><i class="splashy-mail_light_down"></i>  Personal </a></li>
 										<li class="education"><a class="resaddtabChange" rel="education"  href="#mbox_Education" data-toggle="tab"><i class="splashy-mail_light_down"></i>  Education </a></li>
 										<li class="exp"><a class="resaddtabChange" rel="exp"  href="#mbox_Experience" data-toggle="tab"><i class="splashy-mail_light_down"></i> Experience </a></li>
 										<li class="assess"><a class="resaddtabChange" rel="assess"  href="#mbox_Consultant" data-toggle="tab"><i class="splashy-mail_light_down"></i> Consultant Assessment </a></li>

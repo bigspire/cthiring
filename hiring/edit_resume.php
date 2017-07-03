@@ -204,7 +204,7 @@ $edu = $_POST['edu_count'] ? $_POST['edu_count'] : $tot;
 	
 		$degree_id = $_POST['degree_'.$i] ? $_POST['degree_'.$i] : $degree[$i];
 		// smarty drop down for Specialization
-		$specializationData = array();
+		$specializationData2 = array();
 		$query ="CALL get_resume_spec_degree('".$degree_id."')";
 		try{
 			// calling mysql exe_query function
@@ -212,10 +212,10 @@ $edu = $_POST['edu_count'] ? $_POST['edu_count'] : $tot;
 				throw new Exception('Problem in executing spec.');
 			}
 			while($obj = $mysql->display_result($result)){ 
-				$specializationData[$obj['id']] = $obj['spec'];  	   
+				$specializationData2[$obj['id']] = $obj['spec'];  	   
 			}
 		
-			$spec_data[] = $specializationData;
+			$spec_data[] = $specializationData2;
 
 			// free the memory
 			$mysql->clear_result($result);

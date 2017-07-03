@@ -27,7 +27,10 @@
 			<link rel="stylesheet" href="css/gritter/jquery.gritter.css">
 			<!-- smoke_js -->
             <link rel="stylesheet" href="css/smoke.css" />
-						<!-- colorbox -->
+			 <!-- splashy icons -->
+            <link rel="stylesheet" href="img/splashy/splashy.css"  />
+
+			<!-- colorbox -->
 	<link rel="stylesheet" href="css/colorbox/colorbox.css">
 	<link rel="stylesheet" href="lib_cthiring/chosen/chosen.css" type="text/css">
 		<link rel="stylesheet" href="lib_cthiring/multisel/multi-select.css" type="text/css">
