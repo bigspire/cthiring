@@ -108,7 +108,7 @@ if(!empty($_POST)){
 	// array for printing correct field name in error message
 	$fieldtype = array('0', '0' ,'0','0','1','1','1');
 	$actualfield = array('first name','last name', 'email address', 'mobile','role','status');
-   $field = array('first_name' => 'first_nameErr','last_name' => 'last_nameErr', 'email_id' => 'emailErr' ,
+    $field = array('first_name' => 'first_nameErr','last_name' => 'last_nameErr', 'email_id' => 'emailErr' ,
    'mobile' => 'mobileErr','roles_id' => 'roleErr','status' => 'statusErr','location_id' => 'locationErr');
 	$j = 0;
 	foreach ($field as $field => $er_var){ 
@@ -206,6 +206,7 @@ if(!empty($_POST)){
 }
 
 // query to fetch all roles. 
+$roles = array();
 $query = 'CALL get_roles()';
 try{
 	// calling mysql exe_query function

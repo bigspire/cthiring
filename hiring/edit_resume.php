@@ -62,11 +62,18 @@ if(empty($_POST)){
 			throw new Exception('Problem in executing get resume personal');
 		}
 		$row = $mysql->display_result($result);
+		$_SESSION[clients_id] = $row['clients_id'];
+		$_SESSION[position_for] = $row['position_for'];
 		$smarty->assign('dob_field', $fun->convert_date_display($row['dob']));
 		$total_exp  = $row['total_exp'];
 		$total_exp_yrs = explode(".", $total_exp);
-		$smarty->assign('year_of_exp',$total_exp_yrs[0]);
-		$smarty->assign('month_of_exp',$total_exp_yrs[1]);
+		if($total_exp == '0'){
+			$smarty->assign('year_of_exp',0);
+			$smarty->assign('month_of_exp',0);
+		}else{
+			$smarty->assign('year_of_exp',$total_exp_yrs[0]);
+			$smarty->assign('month_of_exp',$total_exp_yrs[1]);
+		}
 		$smarty->assign('rows',$row);
 		// assign the db values into session
 		foreach($row as $key => $record){
@@ -131,12 +138,17 @@ if(empty($_POST)){
 		while($row = $mysql->display_result($result)){
 			// post of assign asset fields value
 			$total_experience = $row['experience'];
-			$total_yr_exp = explode(".", $total_experience);
+			if($total_experience == '0'){
+				$year_of_expData[$tot] = '0';
+				$month_of_expData[$tot] = '0';
+			}else{
+				$total_yr_exp = explode(".", $total_experience);
+				$year_of_expData[$tot] = $total_yr_exp[0];
+				$month_of_expData[$tot] = $total_yr_exp[1];
+			}
 			
 			$desigData[$tot] = $row['designation_id'];
 			$areaData[$tot] = $row['skills'];
-			$year_of_expData[$tot] = $total_yr_exp[0];
-			$month_of_expData[$tot] = $total_yr_exp[1];
 			$companyData[$tot] = $row['company'];
 			$locationData[$tot] = $row['work_location'];
 			$vitalData[$tot] = $row['other_info'];			
@@ -168,6 +180,7 @@ $edu = $_POST['edu_count'] ? $_POST['edu_count'] : $tot;
 		$quali[] = $_POST['qualification_'.$i] ? $_POST['qualification_'.$i] : $qualificationData[$i];
 		$degree[] = $_POST['degree_'.$i] ? $_POST['degree_'.$i] : $degreeData[$i];
 		// smarty drop down for degree
+		$degreeData = array();
 		$query ="CALL get_resume_degree_program('".$quali[$i]."')";
 		try{
 			// calling mysql exe_query function
@@ -191,6 +204,7 @@ $edu = $_POST['edu_count'] ? $_POST['edu_count'] : $tot;
 	
 		$degree_id = $_POST['degree_'.$i] ? $_POST['degree_'.$i] : $degree[$i];
 		// smarty drop down for Specialization
+		$specializationData = array();
 		$query ="CALL get_resume_spec_degree('".$degree_id."')";
 		try{
 			// calling mysql exe_query function
@@ -202,7 +216,6 @@ $edu = $_POST['edu_count'] ? $_POST['edu_count'] : $tot;
 			}
 		
 			$spec_data[] = $specializationData;
-		
 
 			// free the memory
 			$mysql->clear_result($result);
@@ -271,22 +284,39 @@ if(!empty($_POST)){
 		$locationData[] = $_POST['location_'.$i];
 		$vitalData[] = $_POST['vital_'.$i];
 		
-		// array for printing correct field name in error message 
-		$fieldtype1 = array('0', '1', '0', '0', '0'); 
-		$actualfield1 = array( 'designation','employment period','area of specialization/expertise',
-			'company name','location'); 
-		$field_ar1 = array('desig_'.$i => 'desigErr', 'year_of_exp_'.$i => 'year_of_expErr',
-   		 'area_'.$i => 'areaErr', 'company_'.$i => 'companyErr','location_'.$i => 'locationErr'); 
-		$j = 0; 
-		foreach($field_ar1 as $field1 => $er_var1){ 
-			if($_POST[$field1] == ''){
-				$error_msg1 = $fieldtype1[$j] ? ' select the ' : ' enter the ';
-				$actual_field1 =  $actualfield1[$j];
-				$er1[$i][$er_var1] = 'Please'. $error_msg1 .$actual_field1;
-				$test = 'error';
-				$tab3 = 'fail';
+		if($_POST['year_of_exp'] == 0 && $_POST['month_of_exp'] == 0){
+			// array for printing correct field name in error message 
+			$fieldtype1 = array('0', '1', '0', '0', '0'); 
+			$actualfield1 = array( 'designation','employment period','area of specialization/expertise',
+				'company name','location'); 
+			$field_ar1 = array('desig_'.$i => '', 'year_of_exp_'.$i => '',
+				'area_'.$i => '', 'company_'.$i => '','location_'.$i => ''); 
+			$j = 0; 
+			foreach($field_ar1 as $field1 => $er_var1){ 
+				if($_POST[$field1] == ''){
+					$error_msg1 = $fieldtype1[$j] ? ' select the ' : ' enter the ';
+					$actual_field1 =  $actualfield1[$j];
+				}
+				$j++;
 			}
-			$j++;
+		}else{
+			// array for printing correct field name in error message 
+			$fieldtype1 = array('0', '1', '0', '0', '0'); 
+			$actualfield1 = array( 'designation','employment period','area of specialization/expertise',
+				'company name','location'); 
+			$field_ar1 = array('desig_'.$i => 'desigErr', 'year_of_exp_'.$i => 'year_of_expErr',
+			'area_'.$i => 'areaErr', 'company_'.$i => 'companyErr','location_'.$i => 'locationErr'); 
+			$j = 0; 
+			foreach($field_ar1 as $field1 => $er_var1){ 
+				if($_POST[$field1] == ''){
+					$error_msg1 = $fieldtype1[$j] ? ' select the ' : ' enter the ';
+					$actual_field1 =  $actualfield1[$j];
+					$er1[$i][$er_var1] = 'Please'. $error_msg1 .$actual_field1;
+					$test = 'error';
+					$tab3 = 'fail';
+				}
+				$j++;
+			}
 		}
 	}
 
@@ -313,6 +343,8 @@ if(!empty($_POST)){
     	$smarty->assign('emailErr',$emailErr);
     	$test = 'error';
 	}
+	
+	$position = $_POST['position'] ? $_POST['position'] : $row['position'];
 	
 	// array for printing correct field name in error message
 	$fieldtype = array('0', '0','0','0','0', '0','1','1','0', '0','0','1', '1','1','0','0');
@@ -424,11 +456,11 @@ if(!empty($_POST)){
 			$universityData = $_POST['university_'.$i];
 		
 			// query to add education details
-			$query = "CALL add_res_education('$getid','".$fun->is_white_space($mysql->real_escape_str($gradeData))."',
+			$query = "CALL add_res_education('".$fun->is_white_space($mysql->real_escape_str($gradeData))."',
 				'".$mysql->real_escape_str($year_of_passData)."','".$fun->is_white_space($mysql->real_escape_str($collegeData))."',
 				'".$mysql->real_escape_str($grade_typeData)."','".$fun->is_white_space($mysql->real_escape_str($universityData))."',
 				'".$date."','N','".$mysql->real_escape_str($degreeData)."',
-				'".$mysql->real_escape_str($specializationData)."')";
+				'".$mysql->real_escape_str($specializationData)."','$getid')";
 			try{
 				if(!$result = $mysql->execute_query($query)){
 					throw new Exception('Problem in adding education details');
@@ -489,11 +521,11 @@ if(!empty($_POST)){
 			$vitalData = $_POST['vital_'.$i];
 			
 			// query to add experience details
-			$query = "CALL add_res_experience('$getid','".$mysql->real_escape_str($desigData)."','".$mysql->real_escape_str($expData)."',
+			$query = "CALL add_res_experience('".$mysql->real_escape_str($desigData)."','".$mysql->real_escape_str($expData)."',
 				'".$fun->is_white_space($mysql->real_escape_str($locationData))."',
 				'".$fun->is_white_space($mysql->real_escape_str($areaData))."',
 				'".$fun->is_white_space($mysql->real_escape_str($companyData))."',
-				'".$fun->is_white_space($mysql->real_escape_str($vitalData))."','N')";
+				'".$fun->is_white_space($mysql->real_escape_str($vitalData))."','N','$getid')";
 			try{
 				if(!$result = $mysql->execute_query($query)){
 					throw new Exception('Problem in adding experience details');
@@ -656,6 +688,26 @@ try{
  		$emp_name[$row['id']] = ucwords($row['emp_name']);
 	}
 	$smarty->assign('emp_name',$emp_name);
+	// free the memory
+	$mysql->clear_result($result);
+	// call the next result
+	$mysql->next_query();
+}catch(Exception $e){
+	echo 'Caught exception: ',  $e->getMessage(), "\n";
+}
+
+// query to fetch client and position details. 
+$query = "CALL get_res_client_details('".$_SESSION['clients_id']."','".$_SESSION['position_for']."')";
+try{
+	// calling mysql exe_query function
+	if(!$result = $mysql->execute_query($query)){
+		throw new Exception('Problem in getting client and position details');
+	}
+	while($row = $mysql->display_result($result))
+	{
+ 		$position = ucwords($row['job_title']).' ( '.($row['client_name']).' )';
+	}
+	$smarty->assign('position',$position);
 	// free the memory
 	$mysql->clear_result($result);
 	// call the next result
