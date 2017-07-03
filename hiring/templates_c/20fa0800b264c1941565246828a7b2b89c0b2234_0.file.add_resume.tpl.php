@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-06-20 16:41:57
+/* Smarty version 3.1.29, created on 2017-07-03 11:22:01
   from "C:\xampp\htdocs\2017\ctsvn\cthiring\hiring\templates\add_resume.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_594902fd523173_13180726',
+  'unifunc' => 'content_5959db81f2efe8_26883680',
   'file_dependency' => 
   array (
     '20fa0800b264c1941565246828a7b2b89c0b2234' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\templates\\add_resume.tpl',
-      1 => 1497957111,
+      1 => 1499061010,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_594902fd523173_13180726 ($_smarty_tpl) {
+function content_5959db81f2efe8_26883680 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -108,7 +108,7 @@ echo $_smarty_tpl->tpl_vars['last_nameErr']->value;?>
                                     <tr class="tbl_row">
 										<td width="120" class="tbl_column"> Mobile <span class="f_req">*</span></td>
 										<td>
-										<input type="text" tabindex="4" name="mobile" id="keyword" value="<?php echo $_smarty_tpl->tpl_vars['mobile']->value;?>
+										<input type="text" tabindex="4" name="mobile"  value="<?php echo $_smarty_tpl->tpl_vars['mobile']->value;?>
 " autocomplete="off">							
 									<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['mobileErr']->value;?>
  </label>							

@@ -216,7 +216,7 @@
 									</tr>	
 									
 									<tr class="tbl_row">
-										<td width="120" class="tbl_column">Skills </td>
+										<td width="120" class="tbl_column">Computer Skills </td>
 										<td>
 										<textarea name="skills" cols="10" tabindex="25" rows="3" class="span8">{if $skills}{$skills}{else}{$smarty.post.skills}{/if}</textarea>									
 										</td>	
@@ -399,7 +399,7 @@
 										</td>
 							</tr>
 							<tr class="tbl_row">
-										<td width="120" class="tbl_column">location of work <span class="f_req">*</span></td>
+										<td width="120" class="tbl_column">Location of work <span class="f_req">*</span></td>
 										<td> 
 										<input type="text"  tabindex="4" name="workloc_#index#" id="workloc_#index#" value="" class="span8" />										
 										<label for="reg_city" generated="true" class="error" id="worklocErr_#index#"></label>										
@@ -450,7 +450,7 @@
 									</tr>
 									
 									<tr class="tbl_row">
-								<td width="120" class="tbl_column">Key Achievement <span class="f_req">*</span></td>
+								<td width="120" class="tbl_column">Notable Achievements  <span class="f_req">*</span></td>
 								<td>
 								<textarea name="key_achievement_#index#" tabindex="10" id="key_achievement_#index#" cols="10" rows="3" class="span8"></textarea>									
 								<label for="reg_city" generated="true" class="error" id="key_achievementErr_#index#"></label>

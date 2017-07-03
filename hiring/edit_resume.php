@@ -424,11 +424,11 @@ if(!empty($_POST)){
 			$universityData = $_POST['university_'.$i];
 		
 			// query to add education details
-			$query = "CALL add_res_education('$getid','".$fun->is_white_space($mysql->real_escape_str($gradeData))."',
+			$query = "CALL add_res_education('".$fun->is_white_space($mysql->real_escape_str($gradeData))."',
 				'".$mysql->real_escape_str($year_of_passData)."','".$fun->is_white_space($mysql->real_escape_str($collegeData))."',
 				'".$mysql->real_escape_str($grade_typeData)."','".$fun->is_white_space($mysql->real_escape_str($universityData))."',
 				'".$date."','N','".$mysql->real_escape_str($degreeData)."',
-				'".$mysql->real_escape_str($specializationData)."')";
+				'".$mysql->real_escape_str($specializationData)."','$getid')";
 			try{
 				if(!$result = $mysql->execute_query($query)){
 					throw new Exception('Problem in adding education details');

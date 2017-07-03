@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-06-16 16:39:47
+/* Smarty version 3.1.29, created on 2017-07-03 10:07:55
   from "C:\xampp\htdocs\2017\ctsvn\cthiring\hiring\templates\add_formatted_resume.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5943bc7b0a2188_24948568',
+  'unifunc' => 'content_5959ca231b2604_90224966',
   'file_dependency' => 
   array (
     '7b9debb43acd1c9656df1fbe01b897c4d462aec5' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\templates\\add_formatted_resume.tpl',
-      1 => 1497611210,
+      1 => 1498938858,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5943bc7b0a2188_24948568 ($_smarty_tpl) {
+function content_5959ca231b2604_90224966 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -301,7 +301,7 @@ echo $_POST['tech_expert'];
 									</tr>	
 									
 									<tr class="tbl_row">
-										<td width="120" class="tbl_column">Skills </td>
+										<td width="120" class="tbl_column">Computer Skills </td>
 										<td>
 										<textarea name="skills" cols="10" tabindex="25" rows="3" class="span8"><?php if ($_smarty_tpl->tpl_vars['skills']->value) {
 echo $_smarty_tpl->tpl_vars['skills']->value;
@@ -506,7 +506,7 @@ echo $_POST['hobby'];
 										</td>
 							</tr>
 							<tr class="tbl_row">
-										<td width="120" class="tbl_column">location of work <span class="f_req">*</span></td>
+										<td width="120" class="tbl_column">Location of work <span class="f_req">*</span></td>
 										<td> 
 										<input type="text"  tabindex="4" name="workloc_#index#" id="workloc_#index#" value="" class="span8" />										
 										<label for="reg_city" generated="true" class="error" id="worklocErr_#index#"></label>										
@@ -557,7 +557,7 @@ echo $_POST['hobby'];
 									</tr>
 									
 									<tr class="tbl_row">
-								<td width="120" class="tbl_column">Key Achievement <span class="f_req">*</span></td>
+								<td width="120" class="tbl_column">Notable Achievements  <span class="f_req">*</span></td>
 								<td>
 								<textarea name="key_achievement_#index#" tabindex="10" id="key_achievement_#index#" cols="10" rows="3" class="span8"></textarea>									
 								<label for="reg_city" generated="true" class="error" id="key_achievementErr_#index#"></label>

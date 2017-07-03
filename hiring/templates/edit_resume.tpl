@@ -49,7 +49,7 @@
 									<tr class="tbl_row">
 										<td width="120" class="tbl_column">Position For <span class="f_req">*</span></td>
 										<td>
-										<input type="text" tabindex="3" value="{$position_for} ( {$client_name} )" class="span8" disabled>
+										<input type="text" tabindex="3" value="{$position}" class="span8" disabled>
 										</td>
 									</tr>
 									
@@ -416,7 +416,7 @@
 									<tr class="">
 										<td width="120" class="tbl_column">Interview Availability </td>
 										<td>
-<textarea placeholder="" name="interview_availability" tabindex="2" id="interview_availability" cols="10" rows="3" class="span10">{if $interview_availability}{$interview_availability}{else}{$smarty.post.interview_availability}{/if}</textarea>
+<textarea placeholder="" name="interview_availability" tabindex="2"  cols="10" rows="3" class="span10">{if $interview_availability}{$interview_availability}{else}{$smarty.post.interview_availability}{/if}</textarea>
 										</td>	
 									</tr>													
 								</tbody>

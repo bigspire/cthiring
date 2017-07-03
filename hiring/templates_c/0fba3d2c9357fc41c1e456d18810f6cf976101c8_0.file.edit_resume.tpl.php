@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-06-20 17:03:22
+/* Smarty version 3.1.29, created on 2017-07-03 12:38:18
   from "C:\xampp\htdocs\2017\ctsvn\cthiring\hiring\templates\edit_resume.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_59490802260650_86816731',
+  'unifunc' => 'content_5959ed627acfa8_11494880',
   'file_dependency' => 
   array (
     '0fba3d2c9357fc41c1e456d18810f6cf976101c8' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\templates\\edit_resume.tpl',
-      1 => 1497958393,
+      1 => 1499063897,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_59490802260650_86816731 ($_smarty_tpl) {
+function content_5959ed627acfa8_11494880 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -77,9 +77,8 @@ resume">Resumes</a>
 									<tr class="tbl_row">
 										<td width="120" class="tbl_column">Position For <span class="f_req">*</span></td>
 										<td>
-										<input type="text" tabindex="3" value="<?php echo $_smarty_tpl->tpl_vars['position_for']->value;?>
- ( <?php echo $_smarty_tpl->tpl_vars['client_name']->value;?>
- )" class="span8" disabled>
+										<input type="text" tabindex="3" value="<?php echo $_smarty_tpl->tpl_vars['position']->value;?>
+" class="span8" disabled>
 										</td>
 									</tr>
 									
@@ -505,7 +504,7 @@ echo $_POST['consultant'];
 									<tr class="">
 										<td width="120" class="tbl_column">Interview Availability </td>
 										<td>
-<textarea placeholder="" name="interview_availability" tabindex="2" id="interview_availability" cols="10" rows="3" class="span10"><?php if ($_smarty_tpl->tpl_vars['interview_availability']->value) {
+<textarea placeholder="" name="interview_availability" tabindex="2"  cols="10" rows="3" class="span10"><?php if ($_smarty_tpl->tpl_vars['interview_availability']->value) {
 echo $_smarty_tpl->tpl_vars['interview_availability']->value;
 } else {
 echo $_POST['interview_availability'];

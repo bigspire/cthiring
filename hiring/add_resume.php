@@ -345,7 +345,22 @@ if(!empty($_POST)){
 				echo 'Caught exception: ',  $e->getMessage(), "\n";
 			}
 		}
-		if(!empty($edu_id) && !empty($exp_id) && !empty($resume_id) && !empty($position_id)){
+		
+		// query to add experience details
+		$query = "CALL add_req_resume_status('Validation - Account Holder','Pending','".$created_by."','".$date."','".$position_id."')";
+		try{
+			if(!$result = $mysql->execute_query($query)){
+				throw new Exception('Problem in adding resume requirement status details');
+			}
+			$row = $mysql->display_result($result);
+			$req_res_id = $row['inserted_id'];
+			// call the next result
+			$mysql->next_query();
+		}catch(Exception $e){
+			echo 'Caught exception: ',  $e->getMessage(), "\n";
+		}
+
+		if(!empty($edu_id) && !empty($exp_id) && !empty($resume_id) && !empty($position_id) && !empty($req_res_id)){
 			//echo 'save data';
 			header('Location: ../resume/?action=created');
 		} 
