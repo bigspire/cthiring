@@ -45246,3 +45246,282 @@ Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
 Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
 [main] - APP\webroot\index.php, line 118
 
+2017-07-03 10:01:51 Warning: Warning (2): in_array() expects parameter 2 to be array, null given in [F:\xampp\htdocs\ctsvn\cthiring\app\Controller\AppController.php, line 130]
+Trace:
+in_array - [internal], line ??
+AppController::check_role_access() - APP\Controller\AppController.php, line 130
+ResumeController::beforeFilter() - APP\Controller\ResumeController.php, line 525
+call_user_func - [internal], line ??
+CakeEventManager::dispatch() - CORE\Cake\Event\CakeEventManager.php, line 243
+Controller::startupProcess() - CORE\Cake\Controller\Controller.php, line 676
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 189
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-03 10:01:51 Warning: Warning (2): Missing argument 1 for AppController::check_role_access(), called in F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php on line 1092 and defined in [F:\xampp\htdocs\ctsvn\cthiring\app\Controller\AppController.php, line 118]
+Trace:
+AppController::check_role_access() - APP\Controller\AppController.php, line 118
+HomeController::beforeFilter() - APP\Controller\HomeController.php, line 1092
+call_user_func - [internal], line ??
+CakeEventManager::dispatch() - CORE\Cake\Event\CakeEventManager.php, line 243
+Controller::startupProcess() - CORE\Cake\Controller\Controller.php, line 676
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 189
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-03 10:01:51 Warning: Warning (2): Missing argument 1 for HomeController::index() in [F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php, line 43]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 43
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-03 10:01:51 Warning: Warning (2): Missing argument 6 for HomeController::get_position_count(), called in F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php on line 243 and defined in [F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php, line 495]
+Trace:
+HomeController::get_position_count() - APP\Controller\HomeController.php, line 495
+HomeController::index() - APP\Controller\HomeController.php, line 243
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-03 10:01:53 Warning: Warning (2): Missing argument 6 for HomeController::get_position_count(), called in F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php on line 243 and defined in [F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php, line 495]
+Trace:
+HomeController::get_position_count() - APP\Controller\HomeController.php, line 495
+HomeController::index() - APP\Controller\HomeController.php, line 243
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-03 10:01:54 Warning: Warning (2): Missing argument 6 for HomeController::get_position_count(), called in F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php on line 243 and defined in [F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php, line 495]
+Trace:
+HomeController::get_position_count() - APP\Controller\HomeController.php, line 495
+HomeController::index() - APP\Controller\HomeController.php, line 243
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-03 10:01:55 Warning: Warning (2): Missing argument 6 for HomeController::get_position_count(), called in F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php on line 243 and defined in [F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php, line 495]
+Trace:
+HomeController::get_position_count() - APP\Controller\HomeController.php, line 495
+HomeController::index() - APP\Controller\HomeController.php, line 243
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-03 10:01:57 Warning: Warning (2): Missing argument 6 for HomeController::get_position_count(), called in F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php on line 243 and defined in [F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php, line 495]
+Trace:
+HomeController::get_position_count() - APP\Controller\HomeController.php, line 495
+HomeController::index() - APP\Controller\HomeController.php, line 243
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-03 10:01:58 Warning: Warning (2): Missing argument 6 for HomeController::get_position_count(), called in F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php on line 243 and defined in [F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php, line 495]
+Trace:
+HomeController::get_position_count() - APP\Controller\HomeController.php, line 495
+HomeController::index() - APP\Controller\HomeController.php, line 243
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-03 10:01:59 Warning: Warning (2): Missing argument 6 for HomeController::get_position_count(), called in F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php on line 243 and defined in [F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php, line 495]
+Trace:
+HomeController::get_position_count() - APP\Controller\HomeController.php, line 495
+HomeController::index() - APP\Controller\HomeController.php, line 243
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-03 10:02:01 Warning: Warning (2): Missing argument 6 for HomeController::get_position_count(), called in F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php on line 243 and defined in [F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php, line 495]
+Trace:
+HomeController::get_position_count() - APP\Controller\HomeController.php, line 495
+HomeController::index() - APP\Controller\HomeController.php, line 243
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-03 10:02:02 Warning: Warning (2): Missing argument 6 for HomeController::get_position_count(), called in F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php on line 243 and defined in [F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php, line 495]
+Trace:
+HomeController::get_position_count() - APP\Controller\HomeController.php, line 495
+HomeController::index() - APP\Controller\HomeController.php, line 243
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-03 10:02:03 Warning: Warning (2): Missing argument 6 for HomeController::get_position_count(), called in F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php on line 243 and defined in [F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php, line 495]
+Trace:
+HomeController::get_position_count() - APP\Controller\HomeController.php, line 495
+HomeController::index() - APP\Controller\HomeController.php, line 243
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-03 10:02:10 Warning: Warning (2): Missing argument 2 for AppModel::get_team_mem(), called in F:\xampp\htdocs\ctsvn\cthiring\app\Model\Resume.php on line 64 and defined in [F:\xampp\htdocs\ctsvn\cthiring\app\Model\AppModel.php, line 35]
+Trace:
+AppModel::get_team_mem() - APP\Model\AppModel.php, line 35
+Resume::get_team() - APP\Model\Resume.php, line 64
+ResumeController::index() - APP\Controller\ResumeController.php, line 74
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-03 10:02:22 Warning: Warning (2): Missing argument 2 for AppModel::get_team_mem(), called in F:\xampp\htdocs\ctsvn\cthiring\app\Model\Resume.php on line 64 and defined in [F:\xampp\htdocs\ctsvn\cthiring\app\Model\AppModel.php, line 35]
+Trace:
+AppModel::get_team_mem() - APP\Model\AppModel.php, line 35
+Resume::get_team() - APP\Model\Resume.php, line 64
+ResumeController::index() - APP\Controller\ResumeController.php, line 74
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-03 10:52:54 Warning: Warning (2): htmlspecialchars() [<a href='http://php.net/function.htmlspecialchars'>function.htmlspecialchars</a>]: Invalid multibyte sequence in argument in [F:\xampp\htdocs\ctsvn\cthiring\lib\Cake\basics.php, line 231]
+Trace:
+htmlspecialchars - [internal], line ??
+h - CORE\Cake\basics.php, line 231
+FormHelper::_selectOptions() - CORE\Cake\View\Helper\FormHelper.php, line 2786
+FormHelper::select() - CORE\Cake\View\Helper\FormHelper.php, line 2132
+FormHelper::_getInput() - CORE\Cake\View\Helper\FormHelper.php, line 1087
+FormHelper::input() - CORE\Cake\View\Helper\FormHelper.php, line 1051
+include - APP\View\Client\add.ctp, line 208
+View::_evaluate() - CORE\Cake\View\View.php, line 961
+View::_render() - CORE\Cake\View\View.php, line 923
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 960
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-03 10:52:54 Warning: Warning (2): htmlspecialchars() [<a href='http://php.net/function.htmlspecialchars'>function.htmlspecialchars</a>]: Invalid multibyte sequence in argument in [F:\xampp\htdocs\ctsvn\cthiring\lib\Cake\basics.php, line 231]
+Trace:
+htmlspecialchars - [internal], line ??
+h - CORE\Cake\basics.php, line 231
+FormHelper::_selectOptions() - CORE\Cake\View\Helper\FormHelper.php, line 2786
+FormHelper::select() - CORE\Cake\View\Helper\FormHelper.php, line 2132
+FormHelper::_getInput() - CORE\Cake\View\Helper\FormHelper.php, line 1087
+FormHelper::input() - CORE\Cake\View\Helper\FormHelper.php, line 1051
+include - APP\View\Client\add.ctp, line 208
+View::_evaluate() - CORE\Cake\View\View.php, line 961
+View::_render() - CORE\Cake\View\View.php, line 923
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 960
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-03 11:14:39 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'ResEdu.other_info' in 'field list'
+Request URL: /ctsvn/cthiring/resume/view/144512/
+Stack Trace:
+#0 F:\xampp\htdocs\ctsvn\cthiring\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 F:\xampp\htdocs\ctsvn\cthiring\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('SELECT `ResEdu`...', Array)
+#2 F:\xampp\htdocs\ctsvn\cthiring\lib\Cake\Model\Datasource\DboSource.php(668): DboSource->execute('SELECT `ResEdu`...', Array, Array)
+#3 F:\xampp\htdocs\ctsvn\cthiring\lib\Cake\Model\Datasource\DboSource.php(1106): DboSource->fetchAll('SELECT `ResEdu`...', false)
+#4 F:\xampp\htdocs\ctsvn\cthiring\lib\Cake\Model\Model.php(3022): DboSource->read(Object(ResEdu), Array)
+#5 F:\xampp\htdocs\ctsvn\cthiring\lib\Cake\Model\Model.php(2994): Model->_readDataSource('all', Array)
+#6 F:\xampp\htdocs\ctsvn\cthiring\app\Controller\ResumeController.php(351): Model->find('all', Array)
+#7 [internal function]: ResumeController->view('144512')
+#8 F:\xampp\htdocs\ctsvn\cthiring\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(ResumeController), Array)
+#9 F:\xampp\htdocs\ctsvn\cthiring\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#10 F:\xampp\htdocs\ctsvn\cthiring\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(ResumeController), Object(CakeRequest))
+#11 F:\xampp\htdocs\ctsvn\cthiring\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#12 {main}
+2017-07-03 11:14:57 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'ResEdu.other_info' in 'field list'
+Request URL: /ctsvn/cthiring/resume/view/144512/
+Stack Trace:
+#0 F:\xampp\htdocs\ctsvn\cthiring\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 F:\xampp\htdocs\ctsvn\cthiring\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('SELECT `ResEdu`...', Array)
+#2 F:\xampp\htdocs\ctsvn\cthiring\lib\Cake\Model\Datasource\DboSource.php(668): DboSource->execute('SELECT `ResEdu`...', Array, Array)
+#3 F:\xampp\htdocs\ctsvn\cthiring\lib\Cake\Model\Datasource\DboSource.php(1106): DboSource->fetchAll('SELECT `ResEdu`...', false)
+#4 F:\xampp\htdocs\ctsvn\cthiring\lib\Cake\Model\Model.php(3022): DboSource->read(Object(ResEdu), Array)
+#5 F:\xampp\htdocs\ctsvn\cthiring\lib\Cake\Model\Model.php(2994): Model->_readDataSource('all', Array)
+#6 F:\xampp\htdocs\ctsvn\cthiring\app\Controller\ResumeController.php(351): Model->find('all', Array)
+#7 [internal function]: ResumeController->view('144512')
+#8 F:\xampp\htdocs\ctsvn\cthiring\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(ResumeController), Array)
+#9 F:\xampp\htdocs\ctsvn\cthiring\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#10 F:\xampp\htdocs\ctsvn\cthiring\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(ResumeController), Object(CakeRequest))
+#11 F:\xampp\htdocs\ctsvn\cthiring\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#12 {main}
+2017-07-03 11:15:02 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'ResEdu.other_info' in 'field list'
+Request URL: /ctsvn/cthiring/resume/view/144512/
+Stack Trace:
+#0 F:\xampp\htdocs\ctsvn\cthiring\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 F:\xampp\htdocs\ctsvn\cthiring\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('SELECT `ResEdu`...', Array)
+#2 F:\xampp\htdocs\ctsvn\cthiring\lib\Cake\Model\Datasource\DboSource.php(668): DboSource->execute('SELECT `ResEdu`...', Array, Array)
+#3 F:\xampp\htdocs\ctsvn\cthiring\lib\Cake\Model\Datasource\DboSource.php(1106): DboSource->fetchAll('SELECT `ResEdu`...', false)
+#4 F:\xampp\htdocs\ctsvn\cthiring\lib\Cake\Model\Model.php(3022): DboSource->read(Object(ResEdu), Array)
+#5 F:\xampp\htdocs\ctsvn\cthiring\lib\Cake\Model\Model.php(2994): Model->_readDataSource('all', Array)
+#6 F:\xampp\htdocs\ctsvn\cthiring\app\Controller\ResumeController.php(351): Model->find('all', Array)
+#7 [internal function]: ResumeController->view('144512')
+#8 F:\xampp\htdocs\ctsvn\cthiring\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(ResumeController), Array)
+#9 F:\xampp\htdocs\ctsvn\cthiring\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#10 F:\xampp\htdocs\ctsvn\cthiring\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(ResumeController), Object(CakeRequest))
+#11 F:\xampp\htdocs\ctsvn\cthiring\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#12 {main}
+2017-07-03 11:16:27 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'ResEdu.other_info' in 'field list'
+Request URL: /ctsvn/cthiring/resume/view/144512/
+Stack Trace:
+#0 F:\xampp\htdocs\ctsvn\cthiring\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 F:\xampp\htdocs\ctsvn\cthiring\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('SELECT `ResEdu`...', Array)
+#2 F:\xampp\htdocs\ctsvn\cthiring\lib\Cake\Model\Datasource\DboSource.php(668): DboSource->execute('SELECT `ResEdu`...', Array, Array)
+#3 F:\xampp\htdocs\ctsvn\cthiring\lib\Cake\Model\Datasource\DboSource.php(1106): DboSource->fetchAll('SELECT `ResEdu`...', false)
+#4 F:\xampp\htdocs\ctsvn\cthiring\lib\Cake\Model\Model.php(3022): DboSource->read(Object(ResEdu), Array)
+#5 F:\xampp\htdocs\ctsvn\cthiring\lib\Cake\Model\Model.php(2994): Model->_readDataSource('all', Array)
+#6 F:\xampp\htdocs\ctsvn\cthiring\app\Controller\ResumeController.php(351): Model->find('all', Array)
+#7 [internal function]: ResumeController->view('144512')
+#8 F:\xampp\htdocs\ctsvn\cthiring\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(ResumeController), Array)
+#9 F:\xampp\htdocs\ctsvn\cthiring\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#10 F:\xampp\htdocs\ctsvn\cthiring\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(ResumeController), Object(CakeRequest))
+#11 F:\xampp\htdocs\ctsvn\cthiring\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#12 {main}
+2017-07-03 11:16:42 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'ResEdu.other_info' in 'field list'
+Request URL: /ctsvn/cthiring/resume/view/144512/
+Stack Trace:
+#0 F:\xampp\htdocs\ctsvn\cthiring\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 F:\xampp\htdocs\ctsvn\cthiring\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('SELECT `ResEdu`...', Array)
+#2 F:\xampp\htdocs\ctsvn\cthiring\lib\Cake\Model\Datasource\DboSource.php(668): DboSource->execute('SELECT `ResEdu`...', Array, Array)
+#3 F:\xampp\htdocs\ctsvn\cthiring\lib\Cake\Model\Datasource\DboSource.php(1106): DboSource->fetchAll('SELECT `ResEdu`...', false)
+#4 F:\xampp\htdocs\ctsvn\cthiring\lib\Cake\Model\Model.php(3022): DboSource->read(Object(ResEdu), Array)
+#5 F:\xampp\htdocs\ctsvn\cthiring\lib\Cake\Model\Model.php(2994): Model->_readDataSource('all', Array)
+#6 F:\xampp\htdocs\ctsvn\cthiring\app\Controller\ResumeController.php(351): Model->find('all', Array)
+#7 [internal function]: ResumeController->view('144512')
+#8 F:\xampp\htdocs\ctsvn\cthiring\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(ResumeController), Array)
+#9 F:\xampp\htdocs\ctsvn\cthiring\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#10 F:\xampp\htdocs\ctsvn\cthiring\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(ResumeController), Object(CakeRequest))
+#11 F:\xampp\htdocs\ctsvn\cthiring\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#12 {main}
+2017-07-03 11:17:26 Warning: Warning (2): Invalid argument supplied for foreach() in [F:\xampp\htdocs\ctsvn\cthiring\app\View\Resume\view.ctp, line 180]
+Trace:
+include - APP\View\Resume\view.ctp, line 180
+View::_evaluate() - CORE\Cake\View\View.php, line 961
+View::_render() - CORE\Cake\View\View.php, line 923
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 960
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+

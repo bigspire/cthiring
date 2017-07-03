@@ -56,7 +56,7 @@ class ResumeController extends AppController {
 		$this->set('expList', $exp_list);	
 		// set keyword condition
 		if($this->params->query['keyword'] != '' && $this->params->query['report_status'] == ''){			
-			$keyCond = array("MATCH (ResLocation.location,Resume.first_name,Resume.last_name,Resume.present_employer) AGAINST ('".$this->Functions->format_search_keyword($this->params->query['keyword'])."' IN BOOLEAN MODE)");
+			$keyCond = array("MATCH (ResLocation.location,Resume.first_name,Resume.last_name,Resume.present_employer,present_location) AGAINST ('".$this->Functions->format_search_keyword($this->params->query['keyword'])."' IN BOOLEAN MODE)");
 		}else if($this->params->query['keyword'] != '' && $this->params->query['report_status'] != ''){
 			$keyCond = array('Client.client_name'  => $this->params->query['keyword']);
 
@@ -207,7 +207,7 @@ class ResumeController extends AppController {
 		}
 		$fields = array('id',"concat(Resume.first_name,' ',Resume.last_name) full_name",'email_id','mobile','mobile2','total_exp','education','present_employer',
 		'ResLocation.location','present_ctc','expected_ctc', 'Creator.first_name','Resume.created_date',
-		'Resume.modified_date','ReqResume.stage_title','ReqResume.status_title','ResDoc.resume');	
+		'Resume.modified_date','ReqResume.stage_title','ReqResume.status_title','ResDoc.resume','present_location');	
 		// for export
 		if($this->request->query['action'] == 'export'){ 
 			$data = $this->Resume->find('all', array('fields' => $fields,'conditions' => 
@@ -340,10 +340,21 @@ class ResumeController extends AppController {
 		);
 		$fields = array('id','ReqResume.id','first_name','last_name','email_id','mobile','mobile2','total_exp','education','present_employer',
 		'ResLocation.location', 'present_ctc','expected_ctc', 'Creator.first_name','created_date','notice_period',
-		'Resume.modified_date','ReqResume.stage_title','ReqResume.status_title','Designation.designation');
+		'Resume.modified_date','ReqResume.stage_title','ReqResume.status_title','Designation.designation','present_ctc_type','expected_ctc_type',
+		'gender','marital_status','family','present_location','native_location','consultant_assess','interview_avail');
 		$data = $this->Resume->find('all', array('fields' => $fields,'conditions' => array('Resume.id' => $id),
 		'order' => array('ReqResume.id' => 'desc'),'joins' => $options));
 		$this->set('resume_data', $data[0]);		
+		// get resume education details
+		$this->loadModel('ResEdu');
+		$data = $this->ResEdu->find('all', array('conditions' => array('resume_id' => $id), 'fields' => array('percent_mark','year_passing','college',
+		'course_type','university','location','ResDegree.degree','ResSpec.spec'), 'order' => array('ResEdu.id' => 'desc')));
+		$this->set('edu_data', $data);	
+		// get resume experience details
+		$this->loadModel('ResExp');
+		$data = $this->ResExp->find('all', array('conditions' => array('resume_id' => $id), 'fields' => array('experience','work_location','skills',
+		'company','other_info','Designation.designation'), 'order' => array('ResExp.id' => 'desc')));
+		$this->set('exp_data', $data);
 		// get interview details
 		$this->loadModel('ResInterview');		
 		$int_data = $this->ResInterview->find('all', array('fields' => array('int_date','stage_title','status_title',

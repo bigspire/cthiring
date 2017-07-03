@@ -161,7 +161,7 @@
 										<td><?php echo $this->Functions->get_format_text($res['Resume']['email_id']);?></td>
 										<!--td><?php echo $res['Resume']['present_employer'];?></td-->
 										<td><?php echo $res['Resume']['total_exp'];?></td>
-										<td><?php echo $res['ResLocation']['location'];?></td>
+										<td><?php echo $res['ResLocation']['location'] ? $res['ResLocation']['location'] : $res['Resume']['present_location'];?></td>
 										<!--td><?php echo $res['Resume']['education'];?></td-->
 										<!--td><?php if(!empty($res['Resume']['present_ctc'])): echo $res['Resume']['present_ctc'].' L'; endif; ?></td>
 										<td><?php if(!empty($res['Resume']['expected_ctc'])): echo $res['Resume']['expected_ctc'].' L'; endif; ?></td-->

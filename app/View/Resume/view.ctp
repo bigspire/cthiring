@@ -10,131 +10,262 @@
 					
 						 <div class="span12">
 
-<div class="heading clearfix">
-								<h3 class="pull-left">Resume <small>view</small></h3>
-		
-							</div>
+				<nav>
+                        <div id="jCrumbs" class="breadCrumb module">
+                            <ul>
+                                <li>
+                                    <a href="<?php echo $this->webroot;?>home/"><i class="icon-home"></i></a>
+                                </li>
+                                <li>
+                                    <a href="<?php echo $this->webroot;?>resume/">Resumes</a>
+                                </li>
+                            
+                                <li>
+                                  <?php echo ucwords($resume_data['Resume']['first_name'].' '.$resume_data['Resume']['last_name']);?>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
 							
 						<?php echo $this->Session->flash();?>
 							
 							<div class="row-fluid">
-							<div class="span6">
-							<table class="table table-bordered dataTable" style="margin-bottom:0">
-								
-								<tbody>
-								
-									<tr>
-										
-										<td width="120" class="tbl_column">Candidate Name</td>
-										<td><?php echo ucwords($resume_data['Resume']['first_name'].' '.$resume_data['Resume']['last_name']);?></td>
-											
-									</tr>
-									<tr>
-										
-										<td width="120" class="tbl_column">Mobile</td>
-										<td><?php echo $this->Functions->get_format_text($resume_data['Resume']['mobile'], ',');?></td>
-											
-									</tr>
-										<tr>
-										
-										<td class="tbl_column">Email</td>
-										<td><?php echo $this->Functions->get_format_text($resume_data['Resume']['email_id'], ';');?></td>
-											
-									</tr>
-									<tr>
-										
-										<td class="tbl_column">Location</td>
-										<td><?php echo $resume_data['ResLocation']['location'];?></td>
-											
-									</tr>
-										<tr>
-										
-										<td class="tbl_column">Created By</td>
-										<td><?php echo $resume_data['Creator']['first_name'];?></td>
-											
-									</tr>
-									<tr>
-										
-										<td class="tbl_column">Created</td>
-										<td><?php echo $this->Functions->format_date($resume_data['Resume']['created_date']);?></td>
-											
-									</tr>
-									<tr>
-										
-										<td class="tbl_column">Modified</td>
-										<td><?php echo $this->Functions->format_date($resume_data['Resume']['modified_date']);?></td>
-											
-									</tr>
-									
-										<tr>
-										
-										<td class="tbl_column">Resume</td>
-										<td><a class="notify" data-notify-time = '7000' data-notify-title="In Progress!" data-notify-message="Downloading Resume... Please wait..."  href="<?php echo $this->webroot;?>hc/download/<?php echo $resume_data['Resume']['id']; ?>">Candidate Resume </a></td>
-											
-									</tr>
-								</tbody>
-							</table>
-							</div>
 							
-												
-                      
-						<div class="span6">
-							<table class="table table-bordered dataTable" style="margin-bottom:0">
+							<div class="mbox">
+							<div class="tabbable">
+									<div class="heading">
+								<ul class="nav nav-tabs">
+										<li class="active"><a class="restabChange" rel="position"  href="#mbox_Personal" data-toggle="tab"><i class="splashy-contact_blue"></i>  Personal </a></li>
+										<li class=""><a class="restabChange" rel="interview"  href="#mbox_Education" data-toggle="tab"><i class="splashy-document_letter_add"></i>  Education </a></li>
+										<li class=""><a class="restabChange" rel="interview"  href="#mbox_Experience" data-toggle="tab"><i class="splashy-folder_classic_stuffed_add"></i> Experience </a></li>
+										<li class=""><a class="restabChange" rel="interview"  href="#mbox_consultant" data-toggle="tab"><i class="splashy-contact_grey_edit"></i> Consultant Assessment </a></li>
+								</ul>
+									</div>
+										
 								
+									
+									
+									
+									
+									<div class="tab-content"  style="overflow:auto;max-height:300px;">
+										<div class="tab-pane active" id="mbox_Personal">
+																						
+							<div class="span6">
+							<table class="table table-bordered table-striped dataTable" style="margin-bottom:0">
 								<tbody>
-								<tr>
-										
-										<td  class="tbl_column" width="120">Qualification</td>
-										<td><?php echo $resume_data['Resume']['education'];?></td>
-											
+									<tr class="">
+										<td width="120" class="tbl_column">Candidate Name</td>
+										<td><?php echo ucwords($resume_data['Resume']['first_name'].' '.$resume_data['Resume']['last_name']);?></td>	
 									</tr>
-									<tr>
-										
-										<td  class="tbl_column" width="120">Experience</td>
-										<td><?php echo $resume_data['Resume']['total_exp'];?> Yr(s)</td>
-											
-									</tr>	
-									<tr>
-										
-										<td class="tbl_column">Present Designation</td>
-										<td><?php echo $resume_data['Designation']['designation'];?></td>
-											
+									<tr class="">
+										<td width="120" class="tbl_column">Email</td>
+										<td><?php echo $this->Functions->get_format_text($resume_data['Resume']['email_id'], ';');?></td>	
 									</tr>
-									<tr>
-										
-										<td class="tbl_column">Present Company</td>
-										<td><?php echo $resume_data['Resume']['present_employer'];?></td>
-											
+									<tr class="">
+										<td width="120" class="tbl_column">Mobile</td>
+										<td><?php echo $this->Functions->get_format_text($resume_data['Resume']['mobile'], ',');?></td>	
+									</tr>
+									<tr>										
+										<td width="120" class="tbl_column">DOB</td>
+										<td><?php echo $resume_data['Resume']['dob'];?></td>	
 									</tr>
 									
 									<tr>
-										
-										<td class="tbl_column">Present CTC</td>
-										<td><?php if(!empty($resume_data['Resume']['present_ctc'])): echo $resume_data['Resume']['present_ctc'].' L'; endif; ?></td>
-											
+										<td class="tbl_column">Position For</td>
+										<td></td>
 									</tr>
 									<tr>
-										
-										<td class="tbl_column">Expected CTC</td>
-										<td><?php if(!empty($resume_data['Resume']['expected_ctc'])): echo $resume_data['Resume']['expected_ctc'].' L'; endif; ?></td>
-											
+										<td class="tbl_column">Current Designation</td>
+										<td><?php echo $resume_data['Designation']['designation'];?></td>	
 									</tr>
 									<tr>
-										
-										<td  class="tbl_column" width="120">Notice Period</td>
-										<td><?php echo $resume_data['Resume']['notice_period'];?> Days</td>
-											
-									</tr>	
-								<tr>
-										
-										<td  class="tbl_column" width="120">Status</td>
-										<td><?php echo $resume_data['ReqResume']['stage_title'];?> - <?php echo $resume_data['ReqResume']['status_title'];?></td>
-											
+										<td class="tbl_column">Total Years of Exp</td>
+										<td><?php echo $this->Functions->check_exp($resume_data['Resume']['total_exp']);?></td>	
 									</tr>
 								</tbody>
 							</table>
 							</div>
-                        
+
+							<div class="span6">
+							<table class="table table-bordered dataTable table-striped " style="margin-bottom:0">
+								<tbody>	
+									<tr>
+										<td  class="tbl_column" width="120">CTC</td>
+										<td>
+										<?php echo $resume_data['Resume']['present_ctc'];?>
+										<?php echo $this->Functions->get_ctc_type($resume_data['Resume']['present_ctc_type']);?> - 
+										<?php echo $resume_data['Resume']['expected_ctc'];?>
+										<?php echo $this->Functions->get_ctc_type($resume_data['Resume']['expected_ctc_type']);?></td>	
+									</tr>	
+									<tr>
+										<td  class="tbl_column" width="120">Notice Period</td>
+										<td><?php echo $this->Functions->get_notice($resume_data['Resume']['notice_period']);?></td>	
+									</tr>										
+									<tr>
+										<td class="tbl_column">Gender</td>
+										<td><?php echo $this->Functions->check_gender($resume_data['Resume']['gender']);?></td>
+									</tr>
+									<tr>
+										<td class="tbl_column">Marital Status</td>
+										<td><?php echo $this->Functions->check_marital($resume_data['Resume']['marital_status']);?></td>
+									</tr>
+									<tr>
+										<td class="tbl_column">Family (Dependents) </td>
+										<td><?php echo $resume_data['Resume']['family'];?></td>
+									</tr>
+									<tr class="">
+										<td width="120" class="tbl_column">Present Location</td>
+										<td><?php echo $resume_data['Resume']['present_location'];?></td>	
+									</tr>
+									<tr class="">
+										<td width="120" class="tbl_column">Native Location</td>
+										<td><?php echo $resume_data['Resume']['native_location'];?></td>	
+									</tr>
+								</tbody>
+							</table>
+							</div>
+							</div>
+										
+							<div class="tab-pane" id="mbox_Education">
+						
+						<?php foreach($edu_data as $key => $edu): ?>
+						<?php $margin = $key != '0' ? 'margin-top:10px' :  '';?>
+						<div class="row-fluid" style="<?php echo $margin;?>">
+							<div class="span6">
+							<table class="table table-bordered table-striped dataTable" style="margin-bottom:0">
+								<tbody>
+									<tr>
+										<td  class="tbl_column" width="120">Degree</td>
+										<td><?php echo $edu['ResDegree']['degree']; ?></td>
+									</tr>
+									<tr>
+										<td  class="tbl_column" width="120">Specialization</td>
+										<td><?php echo $edu['ResSpec']['spec']; ?></td>	
+									</tr>	
+									<tr>
+										<td class="tbl_column">College</td>
+										<td><?php echo $edu['ResEdu']['college']; ?></td>
+									</tr>
+								
+								</tbody>
+							</table>
+							</div>
+                        					
+							<div class="span6">
+							<table class="table table-bordered  table-striped dataTable" style="margin-bottom:0">
+								<tbody>
+										<tr>
+										<td class="tbl_column">University</td>
+										<td><?php echo $edu['ResEdu']['university']; ?></td>
+									</tr>
+									<tr>
+										<td class="tbl_column">% of Marks / Grade </td>
+										<td><?php echo $edu['ResEdu']['percent_mark']; ?></td>
+									</tr>
+									<tr>
+										<td  class="tbl_column" width="120">Course Type </td>
+										<td><?php echo $this->Functions->get_course_type($edu['ResEdu']['course_type']); ?></td>
+									</tr>	
+								</tbody>
+							</table>
+							</div>
+                    
+						</div>
+							<?php endforeach; ?>
+					
+					</div>
+								
+						<div class="tab-pane" id="mbox_Experience">
+						
+						<?php foreach($exp_data as $key => $exp): ?>
+						<?php $margin = $key != '0' ? 'margin-top:10px' :  '';?>
+						<div class="row-fluid" style="<?php echo $margin;?>">
+						
+							<div class="span6">
+							<table class="table table-bordered table-striped dataTable" style="">
+								<tbody>
+									<tr>
+										<td  class="tbl_column" width="120">Designation </td>
+										<td><?php echo $exp['Designation']['designation']; ?></td>
+									</tr>	
+									<tr>
+										<td class="tbl_column">Employment Period</td>
+										<td><?php echo $this->Functions->check_exp($exp['ResExp']['experience']); ?></td>
+									</tr>
+									<tr>
+										<td class="tbl_column">Area of Specialization/Expertise</td>
+										<td><?php echo $exp['ResExp']['skills']; ?></td>
+									</tr>
+										<tr>
+										<td class="tbl_column">Company Name</td>
+										<td><?php echo $exp['ResExp']['company']; ?></td>	
+									</tr>
+								
+								   <!--	<tr>
+										<td class="tbl_column">CTC</td>
+										<td>5.6 - 8.6 Lacs</td>
+									</tr> -->
+									
+								   <!--<tr>
+										<td class="tbl_column">Company Name</td>
+										<td>Bigspire Software Pvt Ltd</td>	
+									</tr> -->
+								</tbody>
+							</table>
+							</div>
+                        					
+							<div class="span6">
+							<table class="table table-bordered  table-striped dataTable" style="">
+								<tbody>
+										<tr>
+										<td class="tbl_column">Current location of work</td>
+										<td><?php echo $exp['ResExp']['work_location']; ?></td>
+									</tr>
+									
+								
+								<!--	<tr>
+										<td class="tbl_column">Area of Specialization/Expertise</td>
+										<td>PHP, JAVA, .Net, Salesforce, Angular JS, Selenium</td>
+									</tr> -->
+							<!--	<tr>
+										<td  class="tbl_column" width="120">Notice Period</td>
+										<td>3 Months</td>
+									</tr>	-->
+									<tr>
+										<td  class="tbl_column" width="120">Other Vital Information (Position Specific)</td>
+										<td><?php echo $exp['ResExp']['other_info']; ?></td>
+									</tr>
+									
+								</tbody>
+							</table>
+							</div>
+						</div>
+						<?php endforeach; ?>
+					 </div>
+		<div class="tab-pane" id="mbox_consultant">
+																						
+							<div class="span12">
+							<table class="table table-bordered  dataTable" style="margin-bottom:0">
+								<tbody>
+									<tr  class="tbl_row">
+										<td width="120" class="tbl_column">Consultant Assessment</td>
+										<td><?php echo $edu['Resume']['consultant_assess']; ?></td>	
+									</tr>		
+									<tr>
+										<td width="120" class="tbl_column">Interview Availability</td>
+										<td><?php echo $edu['Resume']['interview_avail']; ?></td>	
+									</tr>								
+								</tbody>
+							</table>
+							</div>
+
+							</div>
+								</div>	
+								</div>
+							</div>
+						
+							
+					
 					
 					</div>
 					
