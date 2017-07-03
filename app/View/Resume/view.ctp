@@ -26,6 +26,12 @@
                             </ul>
                         </div>
                     </nav>
+					<div class="srch_buttons">
+							<a href="<?php echo $this->webroot;?>hiring/edit_resume.php?id=<?php echo $this->request->params['pass'][0];?>"  class="sepV_a" title="Edit">
+								<input value="Edit" type="button" class="btn btn-info"/>
+							</a>				
+							</div>
+
 							
 						<?php echo $this->Session->flash();?>
 							
@@ -53,6 +59,10 @@
 							<div class="span6">
 							<table class="table table-bordered table-striped dataTable" style="margin-bottom:0">
 								<tbody>
+								<tr>
+										<td class="tbl_column">Position For</td>
+										<td></td>
+									</tr>
 									<tr class="">
 										<td width="120" class="tbl_column">Candidate Name</td>
 										<td><?php echo ucwords($resume_data['Resume']['first_name'].' '.$resume_data['Resume']['last_name']);?></td>	
@@ -67,13 +77,10 @@
 									</tr>
 									<tr>										
 										<td width="120" class="tbl_column">DOB</td>
-										<td><?php echo $resume_data['Resume']['dob'];?></td>	
+										<td><?php echo $this->Functions->format_date($resume_data['Resume']['dob']);?></td>	
 									</tr>
 									
-									<tr>
-										<td class="tbl_column">Position For</td>
-										<td></td>
-									</tr>
+									
 									<tr>
 										<td class="tbl_column">Current Designation</td>
 										<td><?php echo $resume_data['Designation']['designation'];?></td>	
@@ -82,6 +89,36 @@
 										<td class="tbl_column">Total Years of Exp</td>
 										<td><?php echo $this->Functions->check_exp($resume_data['Resume']['total_exp']);?></td>	
 									</tr>
+									
+								
+								<tr>
+										
+										<td class="tbl_column">Created By</td>
+										<td><?php echo $resume_data['Creator']['first_name'];?></td>
+											
+									</tr>
+									
+										<tr>
+										
+										<td class="tbl_column">Resume</td>
+										<td>
+									<?php if($resume_data['ResDoc']['resume'] == ''):?>	
+										<a class="notify" data-notify-time = '7000' data-notify-title="In Progress!" data-notify-message="Downloading Resume... Please wait..."  href="<?php echo $this->webroot;?>hc/download/<?php echo $resume_data['Resume']['id']; ?>">Candidate Resume </a></td>
+									<?php else: ?>	
+									<a class="notify" data-notify-time = '2000' data-notify-title="In Progress!" data-notify-message="Downloading Resume... Please wait..."  href="<?php echo $this->webroot;?>resume/download_doc/<?php echo $resume_data['ResDoc']['resume']; ?>">Candidate Resume </a></td>
+
+									<?php endif; ?>	
+	
+										
+										
+									</tr>
+										<tr>
+										
+										<td  class="tbl_column" width="120"><b>Current Status</b></td>
+										<td><?php echo $resume_data['ReqResume']['stage_title'];?> - <?php echo $resume_data['ReqResume']['status_title'];?></td>
+											
+									</tr>
+									
 								</tbody>
 							</table>
 							</div>
@@ -120,6 +157,41 @@
 									<tr class="">
 										<td width="120" class="tbl_column">Native Location</td>
 										<td><?php echo $resume_data['Resume']['native_location'];?></td>	
+									</tr>
+									
+									<?php if($resume_data['Resume']['education']):?>
+									
+										<tr>
+										
+										<td  class="tbl_column" width="120">Qualification</td>
+										<td><?php echo $resume_data['Resume']['education'];?></td>
+											
+									</tr>
+									<?php endif; ?>	
+									
+									<?php if($resume_data['Resume']['present_employer']):?>
+									
+										<tr>
+										
+										<td class="tbl_column">Present Company</td>
+										<td><?php echo $resume_data['Resume']['present_employer'];?></td>
+									<?php endif; ?>	
+									</tr>
+										
+									<tr>
+										
+										<td class="tbl_column">Created</td>
+										<td><?php echo $this->Functions->format_date($resume_data['Resume']['created_date']);?></td>
+											
+									</tr>
+									
+									
+									
+									<tr>
+										
+										<td class="tbl_column">Last Modified</td>
+										<td><?php echo $this->Functions->format_date($resume_data['Resume']['modified_date']);?></td>
+											
 									</tr>
 								</tbody>
 							</table>
@@ -166,6 +238,10 @@
 										<td  class="tbl_column" width="120">Course Type </td>
 										<td><?php echo $this->Functions->get_course_type($edu['ResEdu']['course_type']); ?></td>
 									</tr>	
+									
+									
+								
+									
 								</tbody>
 							</table>
 							</div>

@@ -336,12 +336,18 @@ class ResumeController extends AppController {
 					'alias' => 'ReqResume',					
 					'type' => 'LEFT',
 					'conditions' => array('`Resume`.`id` = `ReqResume`.`resume_id`')
+			),
+			array(
+				'table' => 'resume_doc',
+				'alias' => 'ResDoc',					
+				'type' => 'LEFT',
+				'conditions' => array('`ResDoc`.`id` = `Resume`.`resume_doc_id`')
 			)
 		);
 		$fields = array('id','ReqResume.id','first_name','last_name','email_id','mobile','mobile2','total_exp','education','present_employer',
 		'ResLocation.location', 'present_ctc','expected_ctc', 'Creator.first_name','created_date','notice_period',
 		'Resume.modified_date','ReqResume.stage_title','ReqResume.status_title','Designation.designation','present_ctc_type','expected_ctc_type',
-		'gender','marital_status','family','present_location','native_location','consultant_assess','interview_avail');
+		'gender','marital_status','family','present_location','native_location', 'dob','consultant_assess','interview_avail','ResDoc.resume');
 		$data = $this->Resume->find('all', array('fields' => $fields,'conditions' => array('Resume.id' => $id),
 		'order' => array('ReqResume.id' => 'desc'),'joins' => $options));
 		$this->set('resume_data', $data[0]);		
