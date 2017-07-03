@@ -33,11 +33,11 @@
 			<div class="tabbable">
 								<div class="heading">
 										<ul class="nav nav-tabs">
-										<li class="personal"><a class="restabChange" rel="personal"  href="#box_personal" data-toggle="tab"><i class="splashy-mail_light_down"></i>   Personal </a></li>
-										<li class="education"><a class="restabChange" rel="education"  href="#box_edu" data-toggle="tab"><i class="splashy-mail_light_down"></i>  Education Details </a></li>
-										<li class="exp"><a class="restabChange" rel="exp"  href="#box_exp" data-toggle="tab"><i class="splashy-mail_light_down"></i>  Experience Details </a></li>
-										<li class="training"><a class="restabChange" rel="training"  href="#box_train" data-toggle="tab"><i class="splashy-mail_light_down"></i>  Training & Programmes</a></li>
-										<li class="assess"><a class="restabChange" rel="assess"  href="#box_Consultant" data-toggle="tab"><i class="splashy-mail_light_down"></i> Consultant Assessment </a></li>	
+										<li class="personal"><a class="restabChange" rel="personal"  href="#box_personal" data-toggle="tab"><i class="splashy-contact_blue"></i>   Personal </a></li>
+										<li class="education"><a class="restabChange" rel="education"  href="#box_edu" data-toggle="tab"><i class="splashy-document_letter_add"></i>  Education Details </a></li>
+										<li class="exp"><a class="restabChange" rel="exp"  href="#box_exp" data-toggle="tab"><i class="splashy-folder_classic_stuffed_add"></i>  Experience Details </a></li>
+										<li class="training"><a class="restabChange" rel="training"  href="#box_train" data-toggle="tab"><i class="splashy-shield_star"></i>  Training & Programmes</a></li>
+										<li class="assess"><a class="restabChange" rel="assess"  href="#box_Consultant" data-toggle="tab"><i class="splashy-contact_grey_edit"></i> Consultant Assessment </a></li>	
 									</ul>
 								</div>
 			<div class="tab-content" style="overflow:visible">			
@@ -581,7 +581,7 @@
 			<table class="table table-bordered dataTable" style="margin-bottom:0;">
 						<tbody>						
 									<tr class="tbl_row">
-										<td width="120" class="tbl_column">Personality <span class="f_req">*</span>
+										<td width="120" class="tbl_column">Candidates Personality <span class="f_req">*</span>
 										</td>
 										<td>
 <textarea placeholder="" name="personality" tabindex="1" cols="10" rows="3" class="span8">{if $personality}{$personality}{else}{$smarty.post.personality}{/if}</textarea>
@@ -601,6 +601,12 @@
 									   <textarea name="achievement" cols="10" tabindex="3" rows="3" class="span8">{if $achievement}{$achievement}{else}{$smarty.post.achievement}{/if}</textarea>									
 										</td>
 									</tr>	
+									<tr class="">
+									<td width="120" class="tbl_column">Any other vital inputs for the interview  </td>
+									<td> 
+										<textarea name="vital_info_interview" tabindex="4" cols="10" rows="3" class="span8">{if $vital_info_interview}{$vital_info_interview}{else}{$smarty.post.vital_info_interview}{/if}</textarea>									
+									</td>
+									</tr>
 									</tbody>
 			</table>
 </div>
@@ -608,11 +614,26 @@
 	<table class="table table-bordered dataTable" style="margin-bottom:0;">
 		<tbody>	
 			<tr class="tbl_row">
-				<td width="120" class="tbl_column">Know-How about Company  </td>
+				<td width="120" class="tbl_column">Candidates Outlook on Company   </td>
 				<td> 
 					<textarea name="about_company" tabindex="4" cols="10" rows="3" class="span8">{if $about_company}{$about_company}{else}{$smarty.post.about_company}{/if}</textarea>									
 					</td>
-			</tr>		
+			</tr>
+			<tr class="tbl_row">
+				<td width="120" class="tbl_column">Relevant Exposure <span class="f_req">*</span></td>
+				<td> 
+					<textarea name="relevant_exposure" tabindex="4" cols="10" rows="3" class="span8">{if $relevant_exposure}{$relevant_exposure}{else}{$smarty.post.relevant_exposure}{/if}</textarea>									
+					<label for="reg_city" generated="true" class="error">{$relevant_exposureErr} </label>	
+					</td>
+			</tr>
+			<tr class="tbl_row">
+				<td width="120" class="tbl_column">Credentials considered for Shortlisting <span class="f_req">*</span></td>
+				<td> 
+					<textarea name="credential_shortlisting" tabindex="4" cols="10" rows="3" class="span8">{if $credential_shortlisting}{$credential_shortlisting}{else}{$smarty.post.credential_shortlisting}{/if}</textarea>									
+					<label for="reg_city" generated="true" class="error">{$credential_shortlistingErr} </label>	
+					</td>
+			</tr>
+				
 			<tr>
 				<td width="120" class="tbl_column">Candidate Brief </td>
 				<td> 

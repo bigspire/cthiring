@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-06-22 13:58:37
+/* Smarty version 3.1.29, created on 2017-07-03 17:19:18
   from "C:\xampp\htdocs\2017\ctsvn\cthiring\hiring\templates\interview.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_594b7fb5281779_38187554',
+  'unifunc' => 'content_595a2f3e723ff2_37108971',
   'file_dependency' => 
   array (
     'f6a289244f814d0ad89821cb8c5c16d091402940' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\templates\\interview.tpl',
-      1 => 1498120051,
+      1 => 1499065761,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_594b7fb5281779_38187554 ($_smarty_tpl) {
+function content_595a2f3e723ff2_37108971 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -118,6 +118,7 @@ $_smarty_tpl->ext->_updateScope->updateScope($_smarty_tpl, 'hide', 0);?>
 " style="width:70px;"  class="input-small datepick" aria-controls="dt_gal"></label>						
 						</span></span>
 						
+						<?php if ($_smarty_tpl->tpl_vars['approveUser']->value) {?>
 						<label>Employee: 
 						<select name="employee" class="input-medium" placeholder="" style="clear:left" id="InterviewEmpId">
 						<option value="">Select</option>
@@ -126,6 +127,9 @@ $_smarty_tpl->ext->_updateScope->updateScope($_smarty_tpl, 'hide', 0);?>
 						</option>
 						</select> 
 						</label>
+						<?php }?>
+						
+						<?php if ($_SESSION['roles_id'] == '33' || $_SESSION['roles_id'] == '38') {?>
 						<label>Branch: 
 							<select name="branch" class="input-medium" placeholder="" style="clear:left" id="ResumeLoc">
 						<option value="">Select</option>
@@ -133,6 +137,8 @@ $_smarty_tpl->ext->_updateScope->updateScope($_smarty_tpl, 'hide', 0);?>
 
 							</select> 
 						</label>
+						<?php }?>
+						
 						<label>Current Status: 
 						<select name="current_status" class="input-medium" placeholder="" style="clear:left" id="InterviewStatus">
 						<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['status_type']->value,'selected'=>$_smarty_tpl->tpl_vars['current_status']->value),$_smarty_tpl);?>
@@ -140,9 +146,12 @@ $_smarty_tpl->ext->_updateScope->updateScope($_smarty_tpl, 'hide', 0);?>
 						</select> 
 						</label>						
 						<label style="margin-top:18px;">
-							<a class="jsRedirect" href="interview.php"><input value="Reset" type="button" class="btn"/></a></label>
-							<label style="margin-top:18px;">
-							<input type="submit" value="Submit" class="btn btn-gebo" /></label>				
+							<input type="submit" value="Submit" class="btn btn-gebo" /></label>	
+						
+						<label style="margin-top:18px;">
+							<a class="jsRedirect" href="interview.php"><input value="Reset" type="button" class="btn"/></a>
+							</label>
+										
 					</div>
 <input type="hidden" value="1" id="SearchKeywords">
 						<input type="hidden" value="interview/" id="webroot">
