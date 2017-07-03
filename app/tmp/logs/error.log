@@ -46361,348 +46361,26 @@ Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
 Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
 [main] - APP\webroot\index.php, line 118
 
+<<<<<<< HEAD
 2017-07-03 14:53:36 Warning: Warning (2): Missing argument 2 for AppModel::get_team_mem(), called in C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\Resume.php on line 64 and defined in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\AppModel.php, line 35]
 Trace:
 AppModel::get_team_mem() - APP\Model\AppModel.php, line 35
 Resume::get_team() - APP\Model\Resume.php, line 64
 ResumeController::index() - APP\Controller\ResumeController.php, line 74
-ReflectionMethod::invokeArgs() - [internal], line ??
-Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
-Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
-Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
-[main] - APP\webroot\index.php, line 118
-
-2017-07-03 15:00:40 Warning: Warning (2): Missing argument 2 for AppModel::get_team_mem(), called in C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\Resume.php on line 64 and defined in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\AppModel.php, line 35]
+=======
+2017-07-03 15:23:42 Warning: Warning (2): in_array() expects parameter 2 to be array, null given in [F:\xampp\htdocs\ctsvn\cthiring\app\Controller\AppController.php, line 130]
 Trace:
-AppModel::get_team_mem() - APP\Model\AppModel.php, line 35
-Resume::get_team() - APP\Model\Resume.php, line 64
-ResumeController::index() - APP\Controller\ResumeController.php, line 74
-ReflectionMethod::invokeArgs() - [internal], line ??
-Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
-Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+in_array - [internal], line ??
+AppController::check_role_access() - APP\Controller\AppController.php, line 130
+ClientController::beforeFilter() - APP\Controller\ClientController.php, line 544
+call_user_func - [internal], line ??
+CakeEventManager::dispatch() - CORE\Cake\Event\CakeEventManager.php, line 243
+Controller::startupProcess() - CORE\Cake\Controller\Controller.php, line 676
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 189
 Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
 [main] - APP\webroot\index.php, line 118
 
-2017-07-03 15:00:52 Warning: Warning (2): Missing argument 2 for AppModel::get_team_mem(), called in C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\Resume.php on line 64 and defined in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\AppModel.php, line 35]
-Trace:
-AppModel::get_team_mem() - APP\Model\AppModel.php, line 35
-Resume::get_team() - APP\Model\Resume.php, line 64
-ResumeController::index() - APP\Controller\ResumeController.php, line 74
-ReflectionMethod::invokeArgs() - [internal], line ??
-Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
-Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
-Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
-[main] - APP\webroot\index.php, line 118
-
-2017-07-03 15:17:49 Warning: Warning (2): Missing argument 2 for AppModel::get_team_mem(), called in C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\Resume.php on line 64 and defined in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\AppModel.php, line 35]
-Trace:
-AppModel::get_team_mem() - APP\Model\AppModel.php, line 35
-Resume::get_team() - APP\Model\Resume.php, line 64
-ResumeController::index() - APP\Controller\ResumeController.php, line 74
-ReflectionMethod::invokeArgs() - [internal], line ??
-Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
-Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
-Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
-[main] - APP\webroot\index.php, line 118
-
-2017-07-03 15:18:01 Warning: Warning (2): Missing argument 2 for AppModel::get_team_mem(), called in C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\Resume.php on line 64 and defined in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\AppModel.php, line 35]
-Trace:
-AppModel::get_team_mem() - APP\Model\AppModel.php, line 35
-Resume::get_team() - APP\Model\Resume.php, line 64
-ResumeController::index() - APP\Controller\ResumeController.php, line 74
-ReflectionMethod::invokeArgs() - [internal], line ??
-Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
-Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
-Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
-[main] - APP\webroot\index.php, line 118
-
-2017-07-03 15:20:08 Warning: Warning (2): Missing argument 2 for AppModel::get_team_mem(), called in C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\Resume.php on line 64 and defined in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\AppModel.php, line 35]
-Trace:
-AppModel::get_team_mem() - APP\Model\AppModel.php, line 35
-Resume::get_team() - APP\Model\Resume.php, line 64
-ResumeController::index() - APP\Controller\ResumeController.php, line 74
-ReflectionMethod::invokeArgs() - [internal], line ??
-Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
-Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
-Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
-[main] - APP\webroot\index.php, line 118
-
-2017-07-03 15:24:20 Warning: Warning (2): Missing argument 2 for AppModel::get_team_mem(), called in C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\Resume.php on line 64 and defined in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\AppModel.php, line 35]
-Trace:
-AppModel::get_team_mem() - APP\Model\AppModel.php, line 35
-Resume::get_team() - APP\Model\Resume.php, line 64
-ResumeController::index() - APP\Controller\ResumeController.php, line 74
-ReflectionMethod::invokeArgs() - [internal], line ??
-Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
-Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
-Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
-[main] - APP\webroot\index.php, line 118
-
-2017-07-03 15:24:59 Warning: Warning (2): Missing argument 2 for AppModel::get_team_mem(), called in C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\Resume.php on line 64 and defined in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\AppModel.php, line 35]
-Trace:
-AppModel::get_team_mem() - APP\Model\AppModel.php, line 35
-Resume::get_team() - APP\Model\Resume.php, line 64
-ResumeController::index() - APP\Controller\ResumeController.php, line 74
-ReflectionMethod::invokeArgs() - [internal], line ??
-Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
-Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
-Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
-[main] - APP\webroot\index.php, line 118
-
-2017-07-03 15:25:05 Warning: Warning (2): Missing argument 2 for AppModel::get_team_mem(), called in C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\Resume.php on line 64 and defined in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\AppModel.php, line 35]
-Trace:
-AppModel::get_team_mem() - APP\Model\AppModel.php, line 35
-Resume::get_team() - APP\Model\Resume.php, line 64
-ResumeController::index() - APP\Controller\ResumeController.php, line 74
-ReflectionMethod::invokeArgs() - [internal], line ??
-Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
-Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
-Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
-[main] - APP\webroot\index.php, line 118
-
-2017-07-03 15:26:28 Warning: Warning (2): Missing argument 2 for AppModel::get_team_mem(), called in C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\Resume.php on line 64 and defined in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\AppModel.php, line 35]
-Trace:
-AppModel::get_team_mem() - APP\Model\AppModel.php, line 35
-Resume::get_team() - APP\Model\Resume.php, line 64
-ResumeController::index() - APP\Controller\ResumeController.php, line 74
-ReflectionMethod::invokeArgs() - [internal], line ??
-Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
-Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
-Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
-[main] - APP\webroot\index.php, line 118
-
-2017-07-03 15:27:11 Warning: Warning (2): Missing argument 2 for AppModel::get_team_mem(), called in C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\Resume.php on line 64 and defined in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\AppModel.php, line 35]
-Trace:
-AppModel::get_team_mem() - APP\Model\AppModel.php, line 35
-Resume::get_team() - APP\Model\Resume.php, line 64
-ResumeController::index() - APP\Controller\ResumeController.php, line 74
-ReflectionMethod::invokeArgs() - [internal], line ??
-Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
-Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
-Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
-[main] - APP\webroot\index.php, line 118
-
-2017-07-03 15:27:51 Warning: Warning (2): Missing argument 2 for AppModel::get_team_mem(), called in C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\Resume.php on line 64 and defined in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\AppModel.php, line 35]
-Trace:
-AppModel::get_team_mem() - APP\Model\AppModel.php, line 35
-Resume::get_team() - APP\Model\Resume.php, line 64
-ResumeController::index() - APP\Controller\ResumeController.php, line 74
-ReflectionMethod::invokeArgs() - [internal], line ??
-Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
-Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
-Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
-[main] - APP\webroot\index.php, line 118
-
-2017-07-03 15:34:05 Warning: Warning (2): Missing argument 2 for AppModel::get_team_mem(), called in C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\Resume.php on line 64 and defined in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\AppModel.php, line 35]
-Trace:
-AppModel::get_team_mem() - APP\Model\AppModel.php, line 35
-Resume::get_team() - APP\Model\Resume.php, line 64
-ResumeController::index() - APP\Controller\ResumeController.php, line 74
-ReflectionMethod::invokeArgs() - [internal], line ??
-Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
-Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
-Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
-[main] - APP\webroot\index.php, line 118
-
-2017-07-03 15:34:13 Warning: Warning (2): Missing argument 2 for AppModel::get_team_mem(), called in C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\Resume.php on line 64 and defined in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\AppModel.php, line 35]
-Trace:
-AppModel::get_team_mem() - APP\Model\AppModel.php, line 35
-Resume::get_team() - APP\Model\Resume.php, line 64
-ResumeController::index() - APP\Controller\ResumeController.php, line 74
-ReflectionMethod::invokeArgs() - [internal], line ??
-Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
-Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
-Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
-[main] - APP\webroot\index.php, line 118
-
-2017-07-03 15:34:20 Warning: Warning (2): Missing argument 2 for AppModel::get_team_mem(), called in C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\Resume.php on line 64 and defined in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\AppModel.php, line 35]
-Trace:
-AppModel::get_team_mem() - APP\Model\AppModel.php, line 35
-Resume::get_team() - APP\Model\Resume.php, line 64
-ResumeController::index() - APP\Controller\ResumeController.php, line 74
-ReflectionMethod::invokeArgs() - [internal], line ??
-Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
-Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
-Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
-[main] - APP\webroot\index.php, line 118
-
-2017-07-03 15:34:34 Warning: Warning (2): Missing argument 2 for AppModel::get_team_mem(), called in C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\Resume.php on line 64 and defined in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\AppModel.php, line 35]
-Trace:
-AppModel::get_team_mem() - APP\Model\AppModel.php, line 35
-Resume::get_team() - APP\Model\Resume.php, line 64
-ResumeController::index() - APP\Controller\ResumeController.php, line 74
-ReflectionMethod::invokeArgs() - [internal], line ??
-Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
-Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
-Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
-[main] - APP\webroot\index.php, line 118
-
-2017-07-03 15:34:46 Warning: Warning (2): Missing argument 2 for AppModel::get_team_mem(), called in C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\Resume.php on line 64 and defined in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\AppModel.php, line 35]
-Trace:
-AppModel::get_team_mem() - APP\Model\AppModel.php, line 35
-Resume::get_team() - APP\Model\Resume.php, line 64
-ResumeController::index() - APP\Controller\ResumeController.php, line 74
-ReflectionMethod::invokeArgs() - [internal], line ??
-Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
-Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
-Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
-[main] - APP\webroot\index.php, line 118
-
-2017-07-03 15:36:48 Warning: Warning (2): Missing argument 2 for AppModel::get_team_mem(), called in C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\Resume.php on line 64 and defined in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\AppModel.php, line 35]
-Trace:
-AppModel::get_team_mem() - APP\Model\AppModel.php, line 35
-Resume::get_team() - APP\Model\Resume.php, line 64
-ResumeController::index() - APP\Controller\ResumeController.php, line 74
-ReflectionMethod::invokeArgs() - [internal], line ??
-Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
-Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
-Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
-[main] - APP\webroot\index.php, line 118
-
-2017-07-03 15:37:02 Warning: Warning (2): Missing argument 2 for AppModel::get_team_mem(), called in C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\Resume.php on line 64 and defined in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\AppModel.php, line 35]
-Trace:
-AppModel::get_team_mem() - APP\Model\AppModel.php, line 35
-Resume::get_team() - APP\Model\Resume.php, line 64
-ResumeController::index() - APP\Controller\ResumeController.php, line 74
-ReflectionMethod::invokeArgs() - [internal], line ??
-Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
-Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
-Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
-[main] - APP\webroot\index.php, line 118
-
-2017-07-03 15:37:11 Warning: Warning (2): Missing argument 2 for AppModel::get_team_mem(), called in C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\Resume.php on line 64 and defined in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\AppModel.php, line 35]
-Trace:
-AppModel::get_team_mem() - APP\Model\AppModel.php, line 35
-Resume::get_team() - APP\Model\Resume.php, line 64
-ResumeController::index() - APP\Controller\ResumeController.php, line 74
-ReflectionMethod::invokeArgs() - [internal], line ??
-Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
-Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
-Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
-[main] - APP\webroot\index.php, line 118
-
-2017-07-03 15:37:35 Warning: Warning (2): Missing argument 2 for AppModel::get_team_mem(), called in C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\Resume.php on line 64 and defined in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\AppModel.php, line 35]
-Trace:
-AppModel::get_team_mem() - APP\Model\AppModel.php, line 35
-Resume::get_team() - APP\Model\Resume.php, line 64
-ResumeController::index() - APP\Controller\ResumeController.php, line 74
-ReflectionMethod::invokeArgs() - [internal], line ??
-Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
-Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
-Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
-[main] - APP\webroot\index.php, line 118
-
-2017-07-03 15:37:47 Warning: Warning (2): Missing argument 2 for AppModel::get_team_mem(), called in C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\Resume.php on line 64 and defined in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\AppModel.php, line 35]
-Trace:
-AppModel::get_team_mem() - APP\Model\AppModel.php, line 35
-Resume::get_team() - APP\Model\Resume.php, line 64
-ResumeController::index() - APP\Controller\ResumeController.php, line 74
-ReflectionMethod::invokeArgs() - [internal], line ??
-Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
-Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
-Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
-[main] - APP\webroot\index.php, line 118
-
-2017-07-03 16:00:46 Warning: Warning (2): Missing argument 2 for AppModel::get_team_mem(), called in C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\Resume.php on line 64 and defined in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\AppModel.php, line 35]
-Trace:
-AppModel::get_team_mem() - APP\Model\AppModel.php, line 35
-Resume::get_team() - APP\Model\Resume.php, line 64
-ResumeController::index() - APP\Controller\ResumeController.php, line 74
-ReflectionMethod::invokeArgs() - [internal], line ??
-Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
-Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
-Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
-[main] - APP\webroot\index.php, line 118
-
-2017-07-03 16:00:54 Warning: Warning (2): Missing argument 2 for AppModel::get_team_mem(), called in C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\Resume.php on line 64 and defined in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\AppModel.php, line 35]
-Trace:
-AppModel::get_team_mem() - APP\Model\AppModel.php, line 35
-Resume::get_team() - APP\Model\Resume.php, line 64
-ResumeController::index() - APP\Controller\ResumeController.php, line 74
-ReflectionMethod::invokeArgs() - [internal], line ??
-Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
-Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
-Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
-[main] - APP\webroot\index.php, line 118
-
-2017-07-03 16:01:02 Warning: Warning (2): Missing argument 2 for AppModel::get_team_mem(), called in C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\Resume.php on line 64 and defined in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\AppModel.php, line 35]
-Trace:
-AppModel::get_team_mem() - APP\Model\AppModel.php, line 35
-Resume::get_team() - APP\Model\Resume.php, line 64
-ResumeController::index() - APP\Controller\ResumeController.php, line 74
-ReflectionMethod::invokeArgs() - [internal], line ??
-Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
-Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
-Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
-[main] - APP\webroot\index.php, line 118
-
-2017-07-03 16:01:10 Warning: Warning (2): Missing argument 2 for AppModel::get_team_mem(), called in C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\Resume.php on line 64 and defined in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\AppModel.php, line 35]
-Trace:
-AppModel::get_team_mem() - APP\Model\AppModel.php, line 35
-Resume::get_team() - APP\Model\Resume.php, line 64
-ResumeController::index() - APP\Controller\ResumeController.php, line 74
-ReflectionMethod::invokeArgs() - [internal], line ??
-Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
-Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
-Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
-[main] - APP\webroot\index.php, line 118
-
-2017-07-03 16:13:33 Warning: Warning (2): Missing argument 2 for AppModel::get_team_mem(), called in C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\Resume.php on line 64 and defined in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\AppModel.php, line 35]
-Trace:
-AppModel::get_team_mem() - APP\Model\AppModel.php, line 35
-Resume::get_team() - APP\Model\Resume.php, line 64
-ResumeController::index() - APP\Controller\ResumeController.php, line 74
-ReflectionMethod::invokeArgs() - [internal], line ??
-Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
-Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
-Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
-[main] - APP\webroot\index.php, line 118
-
-2017-07-03 16:13:41 Warning: Warning (2): Missing argument 2 for AppModel::get_team_mem(), called in C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\Resume.php on line 64 and defined in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\AppModel.php, line 35]
-Trace:
-AppModel::get_team_mem() - APP\Model\AppModel.php, line 35
-Resume::get_team() - APP\Model\Resume.php, line 64
-ResumeController::index() - APP\Controller\ResumeController.php, line 74
-ReflectionMethod::invokeArgs() - [internal], line ??
-Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
-Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
-Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
-[main] - APP\webroot\index.php, line 118
-
-2017-07-03 17:02:02 Warning: Warning (2): Missing argument 2 for AppModel::get_team_mem(), called in C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\Resume.php on line 64 and defined in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\AppModel.php, line 35]
-Trace:
-AppModel::get_team_mem() - APP\Model\AppModel.php, line 35
-Resume::get_team() - APP\Model\Resume.php, line 64
-ResumeController::index() - APP\Controller\ResumeController.php, line 74
-ReflectionMethod::invokeArgs() - [internal], line ??
-Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
-Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
-Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
-[main] - APP\webroot\index.php, line 118
-
-2017-07-03 17:02:12 Warning: Warning (2): Missing argument 2 for AppModel::get_team_mem(), called in C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\Resume.php on line 64 and defined in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\AppModel.php, line 35]
-Trace:
-AppModel::get_team_mem() - APP\Model\AppModel.php, line 35
-Resume::get_team() - APP\Model\Resume.php, line 64
-ResumeController::index() - APP\Controller\ResumeController.php, line 74
-ReflectionMethod::invokeArgs() - [internal], line ??
-Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
-Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
-Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
-[main] - APP\webroot\index.php, line 118
-
-2017-07-03 17:02:23 Warning: Warning (2): Missing argument 2 for AppModel::get_team_mem(), called in C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\Resume.php on line 64 and defined in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\AppModel.php, line 35]
-Trace:
-AppModel::get_team_mem() - APP\Model\AppModel.php, line 35
-Resume::get_team() - APP\Model\Resume.php, line 64
-ResumeController::index() - APP\Controller\ResumeController.php, line 74
-ReflectionMethod::invokeArgs() - [internal], line ??
-Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
-Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
-Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
-[main] - APP\webroot\index.php, line 118
-
-2017-07-03 17:11:50 Warning: Warning (2): Missing argument 1 for AppController::check_role_access(), called in C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php on line 1092 and defined in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\AppController.php, line 118]
+2017-07-03 15:23:42 Warning: Warning (2): Missing argument 1 for AppController::check_role_access(), called in F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php on line 1092 and defined in [F:\xampp\htdocs\ctsvn\cthiring\app\Controller\AppController.php, line 118]
 Trace:
 AppController::check_role_access() - APP\Controller\AppController.php, line 118
 HomeController::beforeFilter() - APP\Controller\HomeController.php, line 1092
@@ -46713,7 +46391,710 @@ Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 189
 Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
 [main] - APP\webroot\index.php, line 118
 
+2017-07-03 15:23:42 Warning: Warning (2): Missing argument 1 for HomeController::index() in [F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php, line 43]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 43
+>>>>>>> 41e4f7a19ab3f0fe4a94d47a61ea7350fcbf221c
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+<<<<<<< HEAD
+2017-07-03 15:00:40 Warning: Warning (2): Missing argument 2 for AppModel::get_team_mem(), called in C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\Resume.php on line 64 and defined in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\AppModel.php, line 35]
+Trace:
+AppModel::get_team_mem() - APP\Model\AppModel.php, line 35
+Resume::get_team() - APP\Model\Resume.php, line 64
+ResumeController::index() - APP\Controller\ResumeController.php, line 74
+=======
+2017-07-03 15:23:43 Warning: Warning (2): Missing argument 6 for HomeController::get_position_count(), called in F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php on line 243 and defined in [F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php, line 495]
+Trace:
+HomeController::get_position_count() - APP\Controller\HomeController.php, line 495
+HomeController::index() - APP\Controller\HomeController.php, line 243
+>>>>>>> 41e4f7a19ab3f0fe4a94d47a61ea7350fcbf221c
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+<<<<<<< HEAD
+2017-07-03 15:00:52 Warning: Warning (2): Missing argument 2 for AppModel::get_team_mem(), called in C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\Resume.php on line 64 and defined in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\AppModel.php, line 35]
+Trace:
+AppModel::get_team_mem() - APP\Model\AppModel.php, line 35
+Resume::get_team() - APP\Model\Resume.php, line 64
+ResumeController::index() - APP\Controller\ResumeController.php, line 74
+=======
+2017-07-03 15:23:44 Warning: Warning (2): Missing argument 6 for HomeController::get_position_count(), called in F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php on line 243 and defined in [F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php, line 495]
+Trace:
+HomeController::get_position_count() - APP\Controller\HomeController.php, line 495
+HomeController::index() - APP\Controller\HomeController.php, line 243
+>>>>>>> 41e4f7a19ab3f0fe4a94d47a61ea7350fcbf221c
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+<<<<<<< HEAD
+2017-07-03 15:17:49 Warning: Warning (2): Missing argument 2 for AppModel::get_team_mem(), called in C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\Resume.php on line 64 and defined in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\AppModel.php, line 35]
+Trace:
+AppModel::get_team_mem() - APP\Model\AppModel.php, line 35
+Resume::get_team() - APP\Model\Resume.php, line 64
+ResumeController::index() - APP\Controller\ResumeController.php, line 74
+=======
+2017-07-03 15:23:46 Warning: Warning (2): Missing argument 6 for HomeController::get_position_count(), called in F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php on line 243 and defined in [F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php, line 495]
+Trace:
+HomeController::get_position_count() - APP\Controller\HomeController.php, line 495
+HomeController::index() - APP\Controller\HomeController.php, line 243
+>>>>>>> 41e4f7a19ab3f0fe4a94d47a61ea7350fcbf221c
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+<<<<<<< HEAD
+2017-07-03 15:18:01 Warning: Warning (2): Missing argument 2 for AppModel::get_team_mem(), called in C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\Resume.php on line 64 and defined in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\AppModel.php, line 35]
+Trace:
+AppModel::get_team_mem() - APP\Model\AppModel.php, line 35
+Resume::get_team() - APP\Model\Resume.php, line 64
+ResumeController::index() - APP\Controller\ResumeController.php, line 74
+=======
+2017-07-03 15:23:47 Warning: Warning (2): Missing argument 6 for HomeController::get_position_count(), called in F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php on line 243 and defined in [F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php, line 495]
+Trace:
+HomeController::get_position_count() - APP\Controller\HomeController.php, line 495
+HomeController::index() - APP\Controller\HomeController.php, line 243
+>>>>>>> 41e4f7a19ab3f0fe4a94d47a61ea7350fcbf221c
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+<<<<<<< HEAD
+2017-07-03 15:20:08 Warning: Warning (2): Missing argument 2 for AppModel::get_team_mem(), called in C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\Resume.php on line 64 and defined in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\AppModel.php, line 35]
+Trace:
+AppModel::get_team_mem() - APP\Model\AppModel.php, line 35
+Resume::get_team() - APP\Model\Resume.php, line 64
+ResumeController::index() - APP\Controller\ResumeController.php, line 74
+=======
+2017-07-03 15:23:49 Warning: Warning (2): Missing argument 6 for HomeController::get_position_count(), called in F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php on line 243 and defined in [F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php, line 495]
+Trace:
+HomeController::get_position_count() - APP\Controller\HomeController.php, line 495
+HomeController::index() - APP\Controller\HomeController.php, line 243
+>>>>>>> 41e4f7a19ab3f0fe4a94d47a61ea7350fcbf221c
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+<<<<<<< HEAD
+2017-07-03 15:24:20 Warning: Warning (2): Missing argument 2 for AppModel::get_team_mem(), called in C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\Resume.php on line 64 and defined in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\AppModel.php, line 35]
+Trace:
+AppModel::get_team_mem() - APP\Model\AppModel.php, line 35
+Resume::get_team() - APP\Model\Resume.php, line 64
+ResumeController::index() - APP\Controller\ResumeController.php, line 74
+=======
+2017-07-03 15:23:50 Warning: Warning (2): Missing argument 6 for HomeController::get_position_count(), called in F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php on line 243 and defined in [F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php, line 495]
+Trace:
+HomeController::get_position_count() - APP\Controller\HomeController.php, line 495
+HomeController::index() - APP\Controller\HomeController.php, line 243
+>>>>>>> 41e4f7a19ab3f0fe4a94d47a61ea7350fcbf221c
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+<<<<<<< HEAD
+2017-07-03 15:24:59 Warning: Warning (2): Missing argument 2 for AppModel::get_team_mem(), called in C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\Resume.php on line 64 and defined in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\AppModel.php, line 35]
+Trace:
+AppModel::get_team_mem() - APP\Model\AppModel.php, line 35
+Resume::get_team() - APP\Model\Resume.php, line 64
+ResumeController::index() - APP\Controller\ResumeController.php, line 74
+=======
+2017-07-03 15:23:51 Warning: Warning (2): Missing argument 6 for HomeController::get_position_count(), called in F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php on line 243 and defined in [F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php, line 495]
+Trace:
+HomeController::get_position_count() - APP\Controller\HomeController.php, line 495
+HomeController::index() - APP\Controller\HomeController.php, line 243
+>>>>>>> 41e4f7a19ab3f0fe4a94d47a61ea7350fcbf221c
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+<<<<<<< HEAD
+2017-07-03 15:25:05 Warning: Warning (2): Missing argument 2 for AppModel::get_team_mem(), called in C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\Resume.php on line 64 and defined in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\AppModel.php, line 35]
+Trace:
+AppModel::get_team_mem() - APP\Model\AppModel.php, line 35
+Resume::get_team() - APP\Model\Resume.php, line 64
+ResumeController::index() - APP\Controller\ResumeController.php, line 74
+=======
+2017-07-03 15:23:53 Warning: Warning (2): Missing argument 6 for HomeController::get_position_count(), called in F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php on line 243 and defined in [F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php, line 495]
+Trace:
+HomeController::get_position_count() - APP\Controller\HomeController.php, line 495
+HomeController::index() - APP\Controller\HomeController.php, line 243
+>>>>>>> 41e4f7a19ab3f0fe4a94d47a61ea7350fcbf221c
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+<<<<<<< HEAD
+2017-07-03 15:26:28 Warning: Warning (2): Missing argument 2 for AppModel::get_team_mem(), called in C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\Resume.php on line 64 and defined in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\AppModel.php, line 35]
+Trace:
+AppModel::get_team_mem() - APP\Model\AppModel.php, line 35
+Resume::get_team() - APP\Model\Resume.php, line 64
+ResumeController::index() - APP\Controller\ResumeController.php, line 74
+=======
+2017-07-03 15:23:54 Warning: Warning (2): Missing argument 6 for HomeController::get_position_count(), called in F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php on line 243 and defined in [F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php, line 495]
+Trace:
+HomeController::get_position_count() - APP\Controller\HomeController.php, line 495
+HomeController::index() - APP\Controller\HomeController.php, line 243
+>>>>>>> 41e4f7a19ab3f0fe4a94d47a61ea7350fcbf221c
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+<<<<<<< HEAD
+2017-07-03 15:27:11 Warning: Warning (2): Missing argument 2 for AppModel::get_team_mem(), called in C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\Resume.php on line 64 and defined in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\AppModel.php, line 35]
+Trace:
+AppModel::get_team_mem() - APP\Model\AppModel.php, line 35
+Resume::get_team() - APP\Model\Resume.php, line 64
+ResumeController::index() - APP\Controller\ResumeController.php, line 74
+=======
+2017-07-03 15:23:55 Warning: Warning (2): Missing argument 6 for HomeController::get_position_count(), called in F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php on line 243 and defined in [F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php, line 495]
+Trace:
+HomeController::get_position_count() - APP\Controller\HomeController.php, line 495
+HomeController::index() - APP\Controller\HomeController.php, line 243
+>>>>>>> 41e4f7a19ab3f0fe4a94d47a61ea7350fcbf221c
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+<<<<<<< HEAD
+2017-07-03 15:27:51 Warning: Warning (2): Missing argument 2 for AppModel::get_team_mem(), called in C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\Resume.php on line 64 and defined in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\AppModel.php, line 35]
+Trace:
+AppModel::get_team_mem() - APP\Model\AppModel.php, line 35
+Resume::get_team() - APP\Model\Resume.php, line 64
+ResumeController::index() - APP\Controller\ResumeController.php, line 74
+=======
+2017-07-03 15:25:32 Warning: Warning (2): htmlspecialchars() [<a href='http://php.net/function.htmlspecialchars'>function.htmlspecialchars</a>]: Invalid multibyte sequence in argument in [F:\xampp\htdocs\ctsvn\cthiring\lib\Cake\basics.php, line 231]
+Trace:
+htmlspecialchars - [internal], line ??
+h - CORE\Cake\basics.php, line 231
+FormHelper::_selectOptions() - CORE\Cake\View\Helper\FormHelper.php, line 2786
+FormHelper::select() - CORE\Cake\View\Helper\FormHelper.php, line 2132
+FormHelper::_getInput() - CORE\Cake\View\Helper\FormHelper.php, line 1087
+FormHelper::input() - CORE\Cake\View\Helper\FormHelper.php, line 1051
+include - APP\View\Client\add.ctp, line 208
+View::_evaluate() - CORE\Cake\View\View.php, line 961
+View::_render() - CORE\Cake\View\View.php, line 923
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 960
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-03 15:25:32 Warning: Warning (2): htmlspecialchars() [<a href='http://php.net/function.htmlspecialchars'>function.htmlspecialchars</a>]: Invalid multibyte sequence in argument in [F:\xampp\htdocs\ctsvn\cthiring\lib\Cake\basics.php, line 231]
+Trace:
+htmlspecialchars - [internal], line ??
+h - CORE\Cake\basics.php, line 231
+FormHelper::_selectOptions() - CORE\Cake\View\Helper\FormHelper.php, line 2786
+FormHelper::select() - CORE\Cake\View\Helper\FormHelper.php, line 2132
+FormHelper::_getInput() - CORE\Cake\View\Helper\FormHelper.php, line 1087
+FormHelper::input() - CORE\Cake\View\Helper\FormHelper.php, line 1051
+include - APP\View\Client\add.ctp, line 208
+View::_evaluate() - CORE\Cake\View\View.php, line 961
+View::_render() - CORE\Cake\View\View.php, line 923
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 960
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-03 15:27:45 Warning: Warning (2): Missing argument 1 for PositionController::index() in [F:\xampp\htdocs\ctsvn\cthiring\app\Controller\PositionController.php, line 33]
+Trace:
+PositionController::index() - APP\Controller\PositionController.php, line 33
+>>>>>>> 41e4f7a19ab3f0fe4a94d47a61ea7350fcbf221c
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+<<<<<<< HEAD
+2017-07-03 15:34:05 Warning: Warning (2): Missing argument 2 for AppModel::get_team_mem(), called in C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\Resume.php on line 64 and defined in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\AppModel.php, line 35]
+Trace:
+AppModel::get_team_mem() - APP\Model\AppModel.php, line 35
+Resume::get_team() - APP\Model\Resume.php, line 64
+ResumeController::index() - APP\Controller\ResumeController.php, line 74
+=======
+2017-07-03 15:27:45 Warning: Warning (2): Missing argument 2 for AppModel::get_team_mem(), called in F:\xampp\htdocs\ctsvn\cthiring\app\Model\Position.php on line 260 and defined in [F:\xampp\htdocs\ctsvn\cthiring\app\Model\AppModel.php, line 35]
+Trace:
+AppModel::get_team_mem() - APP\Model\AppModel.php, line 35
+Position::get_team() - APP\Model\Position.php, line 260
+PositionController::index() - APP\Controller\PositionController.php, line 99
+>>>>>>> 41e4f7a19ab3f0fe4a94d47a61ea7350fcbf221c
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+<<<<<<< HEAD
+2017-07-03 15:34:13 Warning: Warning (2): Missing argument 2 for AppModel::get_team_mem(), called in C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\Resume.php on line 64 and defined in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\AppModel.php, line 35]
+Trace:
+AppModel::get_team_mem() - APP\Model\AppModel.php, line 35
+Resume::get_team() - APP\Model\Resume.php, line 64
+ResumeController::index() - APP\Controller\ResumeController.php, line 74
+=======
+2017-07-03 15:27:48 Warning: Warning (2): Missing argument 1 for PositionController::index() in [F:\xampp\htdocs\ctsvn\cthiring\app\Controller\PositionController.php, line 33]
+Trace:
+PositionController::index() - APP\Controller\PositionController.php, line 33
+>>>>>>> 41e4f7a19ab3f0fe4a94d47a61ea7350fcbf221c
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+<<<<<<< HEAD
+2017-07-03 15:34:20 Warning: Warning (2): Missing argument 2 for AppModel::get_team_mem(), called in C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\Resume.php on line 64 and defined in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\AppModel.php, line 35]
+Trace:
+AppModel::get_team_mem() - APP\Model\AppModel.php, line 35
+Resume::get_team() - APP\Model\Resume.php, line 64
+ResumeController::index() - APP\Controller\ResumeController.php, line 74
+=======
+2017-07-03 15:27:48 Warning: Warning (2): Missing argument 2 for AppModel::get_team_mem(), called in F:\xampp\htdocs\ctsvn\cthiring\app\Model\Position.php on line 260 and defined in [F:\xampp\htdocs\ctsvn\cthiring\app\Model\AppModel.php, line 35]
+Trace:
+AppModel::get_team_mem() - APP\Model\AppModel.php, line 35
+Position::get_team() - APP\Model\Position.php, line 260
+PositionController::index() - APP\Controller\PositionController.php, line 99
+>>>>>>> 41e4f7a19ab3f0fe4a94d47a61ea7350fcbf221c
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+<<<<<<< HEAD
+2017-07-03 15:34:34 Warning: Warning (2): Missing argument 2 for AppModel::get_team_mem(), called in C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\Resume.php on line 64 and defined in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\AppModel.php, line 35]
+Trace:
+AppModel::get_team_mem() - APP\Model\AppModel.php, line 35
+Resume::get_team() - APP\Model\Resume.php, line 64
+ResumeController::index() - APP\Controller\ResumeController.php, line 74
+=======
+2017-07-03 15:27:51 Warning: Warning (2): Missing argument 1 for AppController::check_role_access(), called in F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php on line 1092 and defined in [F:\xampp\htdocs\ctsvn\cthiring\app\Controller\AppController.php, line 118]
+Trace:
+AppController::check_role_access() - APP\Controller\AppController.php, line 118
+HomeController::beforeFilter() - APP\Controller\HomeController.php, line 1092
+call_user_func - [internal], line ??
+CakeEventManager::dispatch() - CORE\Cake\Event\CakeEventManager.php, line 243
+Controller::startupProcess() - CORE\Cake\Controller\Controller.php, line 676
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 189
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-03 15:27:51 Warning: Warning (2): Missing argument 1 for HomeController::index() in [F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php, line 43]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 43
+>>>>>>> 41e4f7a19ab3f0fe4a94d47a61ea7350fcbf221c
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+<<<<<<< HEAD
+2017-07-03 15:34:46 Warning: Warning (2): Missing argument 2 for AppModel::get_team_mem(), called in C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\Resume.php on line 64 and defined in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\AppModel.php, line 35]
+Trace:
+AppModel::get_team_mem() - APP\Model\AppModel.php, line 35
+Resume::get_team() - APP\Model\Resume.php, line 64
+ResumeController::index() - APP\Controller\ResumeController.php, line 74
+=======
+2017-07-03 15:27:51 Warning: Warning (2): Missing argument 6 for HomeController::get_position_count(), called in F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php on line 243 and defined in [F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php, line 495]
+Trace:
+HomeController::get_position_count() - APP\Controller\HomeController.php, line 495
+HomeController::index() - APP\Controller\HomeController.php, line 243
+>>>>>>> 41e4f7a19ab3f0fe4a94d47a61ea7350fcbf221c
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+<<<<<<< HEAD
+2017-07-03 15:36:48 Warning: Warning (2): Missing argument 2 for AppModel::get_team_mem(), called in C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\Resume.php on line 64 and defined in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\AppModel.php, line 35]
+Trace:
+AppModel::get_team_mem() - APP\Model\AppModel.php, line 35
+Resume::get_team() - APP\Model\Resume.php, line 64
+ResumeController::index() - APP\Controller\ResumeController.php, line 74
+=======
+2017-07-03 15:27:52 Warning: Warning (2): Missing argument 6 for HomeController::get_position_count(), called in F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php on line 243 and defined in [F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php, line 495]
+Trace:
+HomeController::get_position_count() - APP\Controller\HomeController.php, line 495
+HomeController::index() - APP\Controller\HomeController.php, line 243
+>>>>>>> 41e4f7a19ab3f0fe4a94d47a61ea7350fcbf221c
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+<<<<<<< HEAD
+2017-07-03 15:37:02 Warning: Warning (2): Missing argument 2 for AppModel::get_team_mem(), called in C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\Resume.php on line 64 and defined in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\AppModel.php, line 35]
+Trace:
+AppModel::get_team_mem() - APP\Model\AppModel.php, line 35
+Resume::get_team() - APP\Model\Resume.php, line 64
+ResumeController::index() - APP\Controller\ResumeController.php, line 74
+=======
+2017-07-03 15:27:53 Warning: Warning (2): Missing argument 6 for HomeController::get_position_count(), called in F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php on line 243 and defined in [F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php, line 495]
+Trace:
+HomeController::get_position_count() - APP\Controller\HomeController.php, line 495
+HomeController::index() - APP\Controller\HomeController.php, line 243
+>>>>>>> 41e4f7a19ab3f0fe4a94d47a61ea7350fcbf221c
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+<<<<<<< HEAD
+2017-07-03 15:37:11 Warning: Warning (2): Missing argument 2 for AppModel::get_team_mem(), called in C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\Resume.php on line 64 and defined in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\AppModel.php, line 35]
+Trace:
+AppModel::get_team_mem() - APP\Model\AppModel.php, line 35
+Resume::get_team() - APP\Model\Resume.php, line 64
+ResumeController::index() - APP\Controller\ResumeController.php, line 74
+=======
+2017-07-03 15:27:55 Warning: Warning (2): Missing argument 6 for HomeController::get_position_count(), called in F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php on line 243 and defined in [F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php, line 495]
+Trace:
+HomeController::get_position_count() - APP\Controller\HomeController.php, line 495
+HomeController::index() - APP\Controller\HomeController.php, line 243
+>>>>>>> 41e4f7a19ab3f0fe4a94d47a61ea7350fcbf221c
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+<<<<<<< HEAD
+2017-07-03 15:37:35 Warning: Warning (2): Missing argument 2 for AppModel::get_team_mem(), called in C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\Resume.php on line 64 and defined in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\AppModel.php, line 35]
+Trace:
+AppModel::get_team_mem() - APP\Model\AppModel.php, line 35
+Resume::get_team() - APP\Model\Resume.php, line 64
+ResumeController::index() - APP\Controller\ResumeController.php, line 74
+=======
+2017-07-03 15:27:56 Warning: Warning (2): Missing argument 6 for HomeController::get_position_count(), called in F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php on line 243 and defined in [F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php, line 495]
+Trace:
+HomeController::get_position_count() - APP\Controller\HomeController.php, line 495
+HomeController::index() - APP\Controller\HomeController.php, line 243
+>>>>>>> 41e4f7a19ab3f0fe4a94d47a61ea7350fcbf221c
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+<<<<<<< HEAD
+2017-07-03 15:37:47 Warning: Warning (2): Missing argument 2 for AppModel::get_team_mem(), called in C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\Resume.php on line 64 and defined in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\AppModel.php, line 35]
+Trace:
+AppModel::get_team_mem() - APP\Model\AppModel.php, line 35
+Resume::get_team() - APP\Model\Resume.php, line 64
+ResumeController::index() - APP\Controller\ResumeController.php, line 74
+=======
+2017-07-03 15:27:58 Warning: Warning (2): Missing argument 6 for HomeController::get_position_count(), called in F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php on line 243 and defined in [F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php, line 495]
+Trace:
+HomeController::get_position_count() - APP\Controller\HomeController.php, line 495
+HomeController::index() - APP\Controller\HomeController.php, line 243
+>>>>>>> 41e4f7a19ab3f0fe4a94d47a61ea7350fcbf221c
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+<<<<<<< HEAD
+2017-07-03 16:00:46 Warning: Warning (2): Missing argument 2 for AppModel::get_team_mem(), called in C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\Resume.php on line 64 and defined in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\AppModel.php, line 35]
+Trace:
+AppModel::get_team_mem() - APP\Model\AppModel.php, line 35
+Resume::get_team() - APP\Model\Resume.php, line 64
+ResumeController::index() - APP\Controller\ResumeController.php, line 74
+=======
+2017-07-03 15:27:59 Warning: Warning (2): Missing argument 6 for HomeController::get_position_count(), called in F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php on line 243 and defined in [F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php, line 495]
+Trace:
+HomeController::get_position_count() - APP\Controller\HomeController.php, line 495
+HomeController::index() - APP\Controller\HomeController.php, line 243
+>>>>>>> 41e4f7a19ab3f0fe4a94d47a61ea7350fcbf221c
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+<<<<<<< HEAD
+2017-07-03 16:00:54 Warning: Warning (2): Missing argument 2 for AppModel::get_team_mem(), called in C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\Resume.php on line 64 and defined in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\AppModel.php, line 35]
+Trace:
+AppModel::get_team_mem() - APP\Model\AppModel.php, line 35
+Resume::get_team() - APP\Model\Resume.php, line 64
+ResumeController::index() - APP\Controller\ResumeController.php, line 74
+=======
+2017-07-03 15:28:00 Warning: Warning (2): Missing argument 6 for HomeController::get_position_count(), called in F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php on line 243 and defined in [F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php, line 495]
+Trace:
+HomeController::get_position_count() - APP\Controller\HomeController.php, line 495
+HomeController::index() - APP\Controller\HomeController.php, line 243
+>>>>>>> 41e4f7a19ab3f0fe4a94d47a61ea7350fcbf221c
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+<<<<<<< HEAD
+2017-07-03 16:01:02 Warning: Warning (2): Missing argument 2 for AppModel::get_team_mem(), called in C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\Resume.php on line 64 and defined in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\AppModel.php, line 35]
+Trace:
+AppModel::get_team_mem() - APP\Model\AppModel.php, line 35
+Resume::get_team() - APP\Model\Resume.php, line 64
+ResumeController::index() - APP\Controller\ResumeController.php, line 74
+=======
+2017-07-03 15:28:01 Warning: Warning (2): Missing argument 6 for HomeController::get_position_count(), called in F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php on line 243 and defined in [F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php, line 495]
+Trace:
+HomeController::get_position_count() - APP\Controller\HomeController.php, line 495
+HomeController::index() - APP\Controller\HomeController.php, line 243
+>>>>>>> 41e4f7a19ab3f0fe4a94d47a61ea7350fcbf221c
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+<<<<<<< HEAD
+2017-07-03 16:01:10 Warning: Warning (2): Missing argument 2 for AppModel::get_team_mem(), called in C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\Resume.php on line 64 and defined in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\AppModel.php, line 35]
+Trace:
+AppModel::get_team_mem() - APP\Model\AppModel.php, line 35
+Resume::get_team() - APP\Model\Resume.php, line 64
+ResumeController::index() - APP\Controller\ResumeController.php, line 74
+=======
+2017-07-03 15:28:03 Warning: Warning (2): Missing argument 6 for HomeController::get_position_count(), called in F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php on line 243 and defined in [F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php, line 495]
+Trace:
+HomeController::get_position_count() - APP\Controller\HomeController.php, line 495
+HomeController::index() - APP\Controller\HomeController.php, line 243
+>>>>>>> 41e4f7a19ab3f0fe4a94d47a61ea7350fcbf221c
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+<<<<<<< HEAD
+2017-07-03 16:13:33 Warning: Warning (2): Missing argument 2 for AppModel::get_team_mem(), called in C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\Resume.php on line 64 and defined in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\AppModel.php, line 35]
+Trace:
+AppModel::get_team_mem() - APP\Model\AppModel.php, line 35
+Resume::get_team() - APP\Model\Resume.php, line 64
+ResumeController::index() - APP\Controller\ResumeController.php, line 74
+=======
+2017-07-03 15:29:56 Warning: Warning (2): Missing argument 1 for PositionController::index() in [F:\xampp\htdocs\ctsvn\cthiring\app\Controller\PositionController.php, line 33]
+Trace:
+PositionController::index() - APP\Controller\PositionController.php, line 33
+>>>>>>> 41e4f7a19ab3f0fe4a94d47a61ea7350fcbf221c
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+<<<<<<< HEAD
+2017-07-03 16:13:41 Warning: Warning (2): Missing argument 2 for AppModel::get_team_mem(), called in C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\Resume.php on line 64 and defined in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\AppModel.php, line 35]
+Trace:
+AppModel::get_team_mem() - APP\Model\AppModel.php, line 35
+Resume::get_team() - APP\Model\Resume.php, line 64
+ResumeController::index() - APP\Controller\ResumeController.php, line 74
+=======
+2017-07-03 15:29:56 Warning: Warning (2): Missing argument 2 for AppModel::get_team_mem(), called in F:\xampp\htdocs\ctsvn\cthiring\app\Model\Position.php on line 260 and defined in [F:\xampp\htdocs\ctsvn\cthiring\app\Model\AppModel.php, line 35]
+Trace:
+AppModel::get_team_mem() - APP\Model\AppModel.php, line 35
+Position::get_team() - APP\Model\Position.php, line 260
+PositionController::index() - APP\Controller\PositionController.php, line 99
+>>>>>>> 41e4f7a19ab3f0fe4a94d47a61ea7350fcbf221c
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+<<<<<<< HEAD
+2017-07-03 17:02:02 Warning: Warning (2): Missing argument 2 for AppModel::get_team_mem(), called in C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\Resume.php on line 64 and defined in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\AppModel.php, line 35]
+Trace:
+AppModel::get_team_mem() - APP\Model\AppModel.php, line 35
+Resume::get_team() - APP\Model\Resume.php, line 64
+ResumeController::index() - APP\Controller\ResumeController.php, line 74
+=======
+2017-07-03 15:30:05 Warning: Warning (2): Missing argument 1 for AppController::check_role_access(), called in F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php on line 1092 and defined in [F:\xampp\htdocs\ctsvn\cthiring\app\Controller\AppController.php, line 118]
+Trace:
+AppController::check_role_access() - APP\Controller\AppController.php, line 118
+HomeController::beforeFilter() - APP\Controller\HomeController.php, line 1092
+call_user_func - [internal], line ??
+CakeEventManager::dispatch() - CORE\Cake\Event\CakeEventManager.php, line 243
+Controller::startupProcess() - CORE\Cake\Controller\Controller.php, line 676
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 189
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-03 15:30:05 Warning: Warning (2): Missing argument 1 for HomeController::index() in [F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php, line 43]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 43
+>>>>>>> 41e4f7a19ab3f0fe4a94d47a61ea7350fcbf221c
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+<<<<<<< HEAD
+2017-07-03 17:02:12 Warning: Warning (2): Missing argument 2 for AppModel::get_team_mem(), called in C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\Resume.php on line 64 and defined in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\AppModel.php, line 35]
+Trace:
+AppModel::get_team_mem() - APP\Model\AppModel.php, line 35
+Resume::get_team() - APP\Model\Resume.php, line 64
+ResumeController::index() - APP\Controller\ResumeController.php, line 74
+=======
+2017-07-03 15:30:05 Warning: Warning (2): Missing argument 6 for HomeController::get_position_count(), called in F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php on line 243 and defined in [F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php, line 495]
+Trace:
+HomeController::get_position_count() - APP\Controller\HomeController.php, line 495
+HomeController::index() - APP\Controller\HomeController.php, line 243
+>>>>>>> 41e4f7a19ab3f0fe4a94d47a61ea7350fcbf221c
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+<<<<<<< HEAD
+2017-07-03 17:02:23 Warning: Warning (2): Missing argument 2 for AppModel::get_team_mem(), called in C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\Resume.php on line 64 and defined in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\AppModel.php, line 35]
+Trace:
+AppModel::get_team_mem() - APP\Model\AppModel.php, line 35
+Resume::get_team() - APP\Model\Resume.php, line 64
+ResumeController::index() - APP\Controller\ResumeController.php, line 74
+=======
+2017-07-03 15:30:07 Warning: Warning (2): Missing argument 6 for HomeController::get_position_count(), called in F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php on line 243 and defined in [F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php, line 495]
+Trace:
+HomeController::get_position_count() - APP\Controller\HomeController.php, line 495
+HomeController::index() - APP\Controller\HomeController.php, line 243
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-03 15:30:08 Warning: Warning (2): Missing argument 6 for HomeController::get_position_count(), called in F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php on line 243 and defined in [F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php, line 495]
+Trace:
+HomeController::get_position_count() - APP\Controller\HomeController.php, line 495
+HomeController::index() - APP\Controller\HomeController.php, line 243
+>>>>>>> 41e4f7a19ab3f0fe4a94d47a61ea7350fcbf221c
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+<<<<<<< HEAD
+2017-07-03 17:11:50 Warning: Warning (2): Missing argument 1 for AppController::check_role_access(), called in C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php on line 1092 and defined in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\AppController.php, line 118]
+=======
+2017-07-03 15:30:09 Warning: Warning (2): Missing argument 6 for HomeController::get_position_count(), called in F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php on line 243 and defined in [F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php, line 495]
+Trace:
+HomeController::get_position_count() - APP\Controller\HomeController.php, line 495
+HomeController::index() - APP\Controller\HomeController.php, line 243
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-03 15:30:10 Warning: Warning (2): Missing argument 6 for HomeController::get_position_count(), called in F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php on line 243 and defined in [F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php, line 495]
+Trace:
+HomeController::get_position_count() - APP\Controller\HomeController.php, line 495
+HomeController::index() - APP\Controller\HomeController.php, line 243
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-03 15:30:12 Warning: Warning (2): Missing argument 6 for HomeController::get_position_count(), called in F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php on line 243 and defined in [F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php, line 495]
+Trace:
+HomeController::get_position_count() - APP\Controller\HomeController.php, line 495
+HomeController::index() - APP\Controller\HomeController.php, line 243
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-03 15:30:13 Warning: Warning (2): Missing argument 6 for HomeController::get_position_count(), called in F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php on line 243 and defined in [F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php, line 495]
+Trace:
+HomeController::get_position_count() - APP\Controller\HomeController.php, line 495
+HomeController::index() - APP\Controller\HomeController.php, line 243
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-03 15:30:14 Warning: Warning (2): Missing argument 6 for HomeController::get_position_count(), called in F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php on line 243 and defined in [F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php, line 495]
+Trace:
+HomeController::get_position_count() - APP\Controller\HomeController.php, line 495
+HomeController::index() - APP\Controller\HomeController.php, line 243
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-03 15:30:15 Warning: Warning (2): Missing argument 6 for HomeController::get_position_count(), called in F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php on line 243 and defined in [F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php, line 495]
+Trace:
+HomeController::get_position_count() - APP\Controller\HomeController.php, line 495
+HomeController::index() - APP\Controller\HomeController.php, line 243
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-03 15:30:17 Warning: Warning (2): Missing argument 6 for HomeController::get_position_count(), called in F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php on line 243 and defined in [F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php, line 495]
+Trace:
+HomeController::get_position_count() - APP\Controller\HomeController.php, line 495
+HomeController::index() - APP\Controller\HomeController.php, line 243
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-03 15:30:37 Warning: Warning (2): Missing argument 1 for AppController::check_role_access(), called in F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php on line 1092 and defined in [F:\xampp\htdocs\ctsvn\cthiring\app\Controller\AppController.php, line 118]
+>>>>>>> 41e4f7a19ab3f0fe4a94d47a61ea7350fcbf221c
+Trace:
+AppController::check_role_access() - APP\Controller\AppController.php, line 118
+HomeController::beforeFilter() - APP\Controller\HomeController.php, line 1092
+call_user_func - [internal], line ??
+CakeEventManager::dispatch() - CORE\Cake\Event\CakeEventManager.php, line 243
+Controller::startupProcess() - CORE\Cake\Controller\Controller.php, line 676
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 189
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+<<<<<<< HEAD
 2017-07-03 17:11:50 Warning: Warning (2): Missing argument 1 for HomeController::index() in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 43]
+=======
+2017-07-03 15:30:37 Warning: Warning (2): Missing argument 1 for HomeController::index() in [F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php, line 43]
+>>>>>>> 41e4f7a19ab3f0fe4a94d47a61ea7350fcbf221c
 Trace:
 HomeController::index() - APP\Controller\HomeController.php, line 43
 ReflectionMethod::invokeArgs() - [internal], line ??
@@ -46722,7 +47103,11 @@ Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
 Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
 [main] - APP\webroot\index.php, line 118
 
+<<<<<<< HEAD
 2017-07-03 17:11:50 Warning: Warning (2): Missing argument 6 for HomeController::get_position_count(), called in C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php on line 243 and defined in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 495]
+=======
+2017-07-03 15:30:37 Warning: Warning (2): Missing argument 6 for HomeController::get_position_count(), called in F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php on line 243 and defined in [F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php, line 495]
+>>>>>>> 41e4f7a19ab3f0fe4a94d47a61ea7350fcbf221c
 Trace:
 HomeController::get_position_count() - APP\Controller\HomeController.php, line 495
 HomeController::index() - APP\Controller\HomeController.php, line 243
@@ -46732,7 +47117,11 @@ Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
 Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
 [main] - APP\webroot\index.php, line 118
 
+<<<<<<< HEAD
 2017-07-03 17:11:50 Warning: Warning (2): Missing argument 6 for HomeController::get_position_count(), called in C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php on line 243 and defined in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 495]
+=======
+2017-07-03 15:30:39 Warning: Warning (2): Missing argument 6 for HomeController::get_position_count(), called in F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php on line 243 and defined in [F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php, line 495]
+>>>>>>> 41e4f7a19ab3f0fe4a94d47a61ea7350fcbf221c
 Trace:
 HomeController::get_position_count() - APP\Controller\HomeController.php, line 495
 HomeController::index() - APP\Controller\HomeController.php, line 243
@@ -46742,7 +47131,11 @@ Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
 Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
 [main] - APP\webroot\index.php, line 118
 
+<<<<<<< HEAD
 2017-07-03 17:11:50 Warning: Warning (2): Missing argument 6 for HomeController::get_position_count(), called in C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php on line 243 and defined in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 495]
+=======
+2017-07-03 15:30:40 Warning: Warning (2): Missing argument 6 for HomeController::get_position_count(), called in F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php on line 243 and defined in [F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php, line 495]
+>>>>>>> 41e4f7a19ab3f0fe4a94d47a61ea7350fcbf221c
 Trace:
 HomeController::get_position_count() - APP\Controller\HomeController.php, line 495
 HomeController::index() - APP\Controller\HomeController.php, line 243
@@ -46752,7 +47145,11 @@ Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
 Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
 [main] - APP\webroot\index.php, line 118
 
+<<<<<<< HEAD
 2017-07-03 17:11:51 Warning: Warning (2): Missing argument 6 for HomeController::get_position_count(), called in C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php on line 243 and defined in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 495]
+=======
+2017-07-03 15:30:42 Warning: Warning (2): Missing argument 6 for HomeController::get_position_count(), called in F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php on line 243 and defined in [F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php, line 495]
+>>>>>>> 41e4f7a19ab3f0fe4a94d47a61ea7350fcbf221c
 Trace:
 HomeController::get_position_count() - APP\Controller\HomeController.php, line 495
 HomeController::index() - APP\Controller\HomeController.php, line 243
@@ -46762,7 +47159,11 @@ Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
 Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
 [main] - APP\webroot\index.php, line 118
 
+<<<<<<< HEAD
 2017-07-03 17:11:51 Warning: Warning (2): Missing argument 6 for HomeController::get_position_count(), called in C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php on line 243 and defined in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 495]
+=======
+2017-07-03 15:30:43 Warning: Warning (2): Missing argument 6 for HomeController::get_position_count(), called in F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php on line 243 and defined in [F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php, line 495]
+>>>>>>> 41e4f7a19ab3f0fe4a94d47a61ea7350fcbf221c
 Trace:
 HomeController::get_position_count() - APP\Controller\HomeController.php, line 495
 HomeController::index() - APP\Controller\HomeController.php, line 243
@@ -46772,7 +47173,11 @@ Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
 Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
 [main] - APP\webroot\index.php, line 118
 
+<<<<<<< HEAD
 2017-07-03 17:11:51 Warning: Warning (2): Missing argument 6 for HomeController::get_position_count(), called in C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php on line 243 and defined in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 495]
+=======
+2017-07-03 15:30:45 Warning: Warning (2): Missing argument 6 for HomeController::get_position_count(), called in F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php on line 243 and defined in [F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php, line 495]
+>>>>>>> 41e4f7a19ab3f0fe4a94d47a61ea7350fcbf221c
 Trace:
 HomeController::get_position_count() - APP\Controller\HomeController.php, line 495
 HomeController::index() - APP\Controller\HomeController.php, line 243
@@ -46782,7 +47187,11 @@ Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
 Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
 [main] - APP\webroot\index.php, line 118
 
+<<<<<<< HEAD
 2017-07-03 17:11:51 Warning: Warning (2): Missing argument 6 for HomeController::get_position_count(), called in C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php on line 243 and defined in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 495]
+=======
+2017-07-03 15:30:46 Warning: Warning (2): Missing argument 6 for HomeController::get_position_count(), called in F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php on line 243 and defined in [F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php, line 495]
+>>>>>>> 41e4f7a19ab3f0fe4a94d47a61ea7350fcbf221c
 Trace:
 HomeController::get_position_count() - APP\Controller\HomeController.php, line 495
 HomeController::index() - APP\Controller\HomeController.php, line 243
@@ -46792,7 +47201,11 @@ Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
 Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
 [main] - APP\webroot\index.php, line 118
 
+<<<<<<< HEAD
 2017-07-03 17:11:52 Warning: Warning (2): Missing argument 6 for HomeController::get_position_count(), called in C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php on line 243 and defined in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 495]
+=======
+2017-07-03 15:30:47 Warning: Warning (2): Missing argument 6 for HomeController::get_position_count(), called in F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php on line 243 and defined in [F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php, line 495]
+>>>>>>> 41e4f7a19ab3f0fe4a94d47a61ea7350fcbf221c
 Trace:
 HomeController::get_position_count() - APP\Controller\HomeController.php, line 495
 HomeController::index() - APP\Controller\HomeController.php, line 243
@@ -46802,7 +47215,11 @@ Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
 Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
 [main] - APP\webroot\index.php, line 118
 
+<<<<<<< HEAD
 2017-07-03 17:11:52 Warning: Warning (2): Missing argument 6 for HomeController::get_position_count(), called in C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php on line 243 and defined in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 495]
+=======
+2017-07-03 15:30:49 Warning: Warning (2): Missing argument 6 for HomeController::get_position_count(), called in F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php on line 243 and defined in [F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php, line 495]
+>>>>>>> 41e4f7a19ab3f0fe4a94d47a61ea7350fcbf221c
 Trace:
 HomeController::get_position_count() - APP\Controller\HomeController.php, line 495
 HomeController::index() - APP\Controller\HomeController.php, line 243
@@ -46812,7 +47229,11 @@ Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
 Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
 [main] - APP\webroot\index.php, line 118
 
+<<<<<<< HEAD
 2017-07-03 17:11:52 Warning: Warning (2): Missing argument 6 for HomeController::get_position_count(), called in C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php on line 243 and defined in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 495]
+=======
+2017-07-03 15:30:50 Warning: Warning (2): Missing argument 6 for HomeController::get_position_count(), called in F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php on line 243 and defined in [F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php, line 495]
+>>>>>>> 41e4f7a19ab3f0fe4a94d47a61ea7350fcbf221c
 Trace:
 HomeController::get_position_count() - APP\Controller\HomeController.php, line 495
 HomeController::index() - APP\Controller\HomeController.php, line 243
@@ -46822,7 +47243,738 @@ Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
 Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
 [main] - APP\webroot\index.php, line 118
 
+<<<<<<< HEAD
 2017-07-03 17:11:57 Warning: Warning (2): Missing argument 2 for AppModel::get_team_mem(), called in C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\Resume.php on line 64 and defined in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\AppModel.php, line 35]
+Trace:
+AppModel::get_team_mem() - APP\Model\AppModel.php, line 35
+=======
+2017-07-03 15:30:56 Warning: Warning (2): Missing argument 1 for PositionController::index() in [F:\xampp\htdocs\ctsvn\cthiring\app\Controller\PositionController.php, line 33]
+Trace:
+PositionController::index() - APP\Controller\PositionController.php, line 33
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-03 15:30:56 Warning: Warning (2): Missing argument 2 for AppModel::get_team_mem(), called in F:\xampp\htdocs\ctsvn\cthiring\app\Model\Position.php on line 260 and defined in [F:\xampp\htdocs\ctsvn\cthiring\app\Model\AppModel.php, line 35]
+Trace:
+AppModel::get_team_mem() - APP\Model\AppModel.php, line 35
+Position::get_team() - APP\Model\Position.php, line 260
+PositionController::index() - APP\Controller\PositionController.php, line 99
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-03 15:31:02 Warning: Warning (2): htmlspecialchars() [<a href='http://php.net/function.htmlspecialchars'>function.htmlspecialchars</a>]: Invalid multibyte sequence in argument in [F:\xampp\htdocs\ctsvn\cthiring\lib\Cake\basics.php, line 231]
+Trace:
+htmlspecialchars - [internal], line ??
+h - CORE\Cake\basics.php, line 231
+FormHelper::_selectOptions() - CORE\Cake\View\Helper\FormHelper.php, line 2786
+FormHelper::select() - CORE\Cake\View\Helper\FormHelper.php, line 2132
+FormHelper::_getInput() - CORE\Cake\View\Helper\FormHelper.php, line 1087
+FormHelper::input() - CORE\Cake\View\Helper\FormHelper.php, line 1051
+include - APP\View\Position\edit.ctp, line 58
+View::_evaluate() - CORE\Cake\View\View.php, line 961
+View::_render() - CORE\Cake\View\View.php, line 923
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 960
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-03 15:31:02 Warning: Warning (2): htmlspecialchars() [<a href='http://php.net/function.htmlspecialchars'>function.htmlspecialchars</a>]: Invalid multibyte sequence in argument in [F:\xampp\htdocs\ctsvn\cthiring\lib\Cake\basics.php, line 231]
+Trace:
+htmlspecialchars - [internal], line ??
+h - CORE\Cake\basics.php, line 231
+FormHelper::_selectOptions() - CORE\Cake\View\Helper\FormHelper.php, line 2786
+FormHelper::select() - CORE\Cake\View\Helper\FormHelper.php, line 2132
+FormHelper::_getInput() - CORE\Cake\View\Helper\FormHelper.php, line 1087
+FormHelper::input() - CORE\Cake\View\Helper\FormHelper.php, line 1051
+include - APP\View\Position\edit.ctp, line 58
+View::_evaluate() - CORE\Cake\View\View.php, line 961
+View::_render() - CORE\Cake\View\View.php, line 923
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 960
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-03 15:31:02 Warning: Warning (2): htmlspecialchars() [<a href='http://php.net/function.htmlspecialchars'>function.htmlspecialchars</a>]: Invalid multibyte sequence in argument in [F:\xampp\htdocs\ctsvn\cthiring\lib\Cake\basics.php, line 231]
+Trace:
+htmlspecialchars - [internal], line ??
+h - CORE\Cake\basics.php, line 231
+FormHelper::_selectOptions() - CORE\Cake\View\Helper\FormHelper.php, line 2786
+FormHelper::select() - CORE\Cake\View\Helper\FormHelper.php, line 2132
+FormHelper::_getInput() - CORE\Cake\View\Helper\FormHelper.php, line 1087
+FormHelper::input() - CORE\Cake\View\Helper\FormHelper.php, line 1051
+include - APP\View\Position\edit.ctp, line 58
+View::_evaluate() - CORE\Cake\View\View.php, line 961
+View::_render() - CORE\Cake\View\View.php, line 923
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 960
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-03 15:31:03 Warning: Warning (2): Cannot modify header information - headers already sent by (output started at F:\xampp\htdocs\ctsvn\cthiring\app\Controller\PositionController.php:606) in [F:\xampp\htdocs\ctsvn\cthiring\app\Controller\AppController.php, line 255]
+Trace:
+header - [internal], line ??
+AppController::disable_cache() - APP\Controller\AppController.php, line 255
+AppController::check_session() - APP\Controller\AppController.php, line 93
+AppController::beforeRender() - APP\Controller\AppController.php, line 43
+call_user_func - [internal], line ??
+CakeEventManager::dispatch() - CORE\Cake\Event\CakeEventManager.php, line 243
+Controller::render() - CORE\Cake\Controller\Controller.php, line 933
+PositionController::get_account_holder() - APP\Controller\PositionController.php, line 596
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-03 15:31:03 Warning: Warning (2): Cannot modify header information - headers already sent by (output started at F:\xampp\htdocs\ctsvn\cthiring\app\Controller\PositionController.php:606) in [F:\xampp\htdocs\ctsvn\cthiring\app\Controller\AppController.php, line 256]
+Trace:
+header - [internal], line ??
+AppController::disable_cache() - APP\Controller\AppController.php, line 256
+AppController::check_session() - APP\Controller\AppController.php, line 93
+AppController::beforeRender() - APP\Controller\AppController.php, line 43
+call_user_func - [internal], line ??
+CakeEventManager::dispatch() - CORE\Cake\Event\CakeEventManager.php, line 243
+Controller::render() - CORE\Cake\Controller\Controller.php, line 933
+PositionController::get_account_holder() - APP\Controller\PositionController.php, line 596
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-03 15:31:03 Warning: Warning (2): Cannot modify header information - headers already sent by (output started at F:\xampp\htdocs\ctsvn\cthiring\app\Controller\PositionController.php:606) in [F:\xampp\htdocs\ctsvn\cthiring\app\Controller\AppController.php, line 257]
+Trace:
+header - [internal], line ??
+AppController::disable_cache() - APP\Controller\AppController.php, line 257
+AppController::check_session() - APP\Controller\AppController.php, line 93
+AppController::beforeRender() - APP\Controller\AppController.php, line 43
+call_user_func - [internal], line ??
+CakeEventManager::dispatch() - CORE\Cake\Event\CakeEventManager.php, line 243
+Controller::render() - CORE\Cake\Controller\Controller.php, line 933
+PositionController::get_account_holder() - APP\Controller\PositionController.php, line 596
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-03 15:31:03 Warning: Warning (2): Cannot modify header information - headers already sent by (output started at F:\xampp\htdocs\ctsvn\cthiring\app\Controller\PositionController.php:606) in [F:\xampp\htdocs\ctsvn\cthiring\app\Controller\AppController.php, line 258]
+Trace:
+header - [internal], line ??
+AppController::disable_cache() - APP\Controller\AppController.php, line 258
+AppController::check_session() - APP\Controller\AppController.php, line 93
+AppController::beforeRender() - APP\Controller\AppController.php, line 43
+call_user_func - [internal], line ??
+CakeEventManager::dispatch() - CORE\Cake\Event\CakeEventManager.php, line 243
+Controller::render() - CORE\Cake\Controller\Controller.php, line 933
+PositionController::get_account_holder() - APP\Controller\PositionController.php, line 596
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-03 15:31:03 Warning: Warning (2): Cannot modify header information - headers already sent by (output started at F:\xampp\htdocs\ctsvn\cthiring\app\Controller\PositionController.php:606) in [F:\xampp\htdocs\ctsvn\cthiring\app\Controller\AppController.php, line 259]
+Trace:
+header - [internal], line ??
+AppController::disable_cache() - APP\Controller\AppController.php, line 259
+AppController::check_session() - APP\Controller\AppController.php, line 93
+AppController::beforeRender() - APP\Controller\AppController.php, line 43
+call_user_func - [internal], line ??
+CakeEventManager::dispatch() - CORE\Cake\Event\CakeEventManager.php, line 243
+Controller::render() - CORE\Cake\Controller\Controller.php, line 933
+PositionController::get_account_holder() - APP\Controller\PositionController.php, line 596
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-03 15:31:10 Warning: Warning (2): Missing argument 1 for PositionController::index() in [F:\xampp\htdocs\ctsvn\cthiring\app\Controller\PositionController.php, line 33]
+Trace:
+PositionController::index() - APP\Controller\PositionController.php, line 33
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-03 15:31:10 Warning: Warning (2): Missing argument 2 for AppModel::get_team_mem(), called in F:\xampp\htdocs\ctsvn\cthiring\app\Model\Position.php on line 260 and defined in [F:\xampp\htdocs\ctsvn\cthiring\app\Model\AppModel.php, line 35]
+Trace:
+AppModel::get_team_mem() - APP\Model\AppModel.php, line 35
+Position::get_team() - APP\Model\Position.php, line 260
+PositionController::index() - APP\Controller\PositionController.php, line 99
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-03 15:31:17 Warning: Warning (2): htmlspecialchars() [<a href='http://php.net/function.htmlspecialchars'>function.htmlspecialchars</a>]: Invalid multibyte sequence in argument in [F:\xampp\htdocs\ctsvn\cthiring\lib\Cake\basics.php, line 231]
+Trace:
+htmlspecialchars - [internal], line ??
+h - CORE\Cake\basics.php, line 231
+FormHelper::_selectOptions() - CORE\Cake\View\Helper\FormHelper.php, line 2786
+FormHelper::select() - CORE\Cake\View\Helper\FormHelper.php, line 2132
+FormHelper::_getInput() - CORE\Cake\View\Helper\FormHelper.php, line 1087
+FormHelper::input() - CORE\Cake\View\Helper\FormHelper.php, line 1051
+include - APP\View\Position\add.ctp, line 54
+View::_evaluate() - CORE\Cake\View\View.php, line 961
+View::_render() - CORE\Cake\View\View.php, line 923
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 960
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-03 15:31:17 Warning: Warning (2): htmlspecialchars() [<a href='http://php.net/function.htmlspecialchars'>function.htmlspecialchars</a>]: Invalid multibyte sequence in argument in [F:\xampp\htdocs\ctsvn\cthiring\lib\Cake\basics.php, line 231]
+Trace:
+htmlspecialchars - [internal], line ??
+h - CORE\Cake\basics.php, line 231
+FormHelper::_selectOptions() - CORE\Cake\View\Helper\FormHelper.php, line 2786
+FormHelper::select() - CORE\Cake\View\Helper\FormHelper.php, line 2132
+FormHelper::_getInput() - CORE\Cake\View\Helper\FormHelper.php, line 1087
+FormHelper::input() - CORE\Cake\View\Helper\FormHelper.php, line 1051
+include - APP\View\Position\add.ctp, line 54
+View::_evaluate() - CORE\Cake\View\View.php, line 961
+View::_render() - CORE\Cake\View\View.php, line 923
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 960
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-03 15:31:17 Warning: Warning (2): htmlspecialchars() [<a href='http://php.net/function.htmlspecialchars'>function.htmlspecialchars</a>]: Invalid multibyte sequence in argument in [F:\xampp\htdocs\ctsvn\cthiring\lib\Cake\basics.php, line 231]
+Trace:
+htmlspecialchars - [internal], line ??
+h - CORE\Cake\basics.php, line 231
+FormHelper::_selectOptions() - CORE\Cake\View\Helper\FormHelper.php, line 2786
+FormHelper::select() - CORE\Cake\View\Helper\FormHelper.php, line 2132
+FormHelper::_getInput() - CORE\Cake\View\Helper\FormHelper.php, line 1087
+FormHelper::input() - CORE\Cake\View\Helper\FormHelper.php, line 1051
+include - APP\View\Position\add.ctp, line 54
+View::_evaluate() - CORE\Cake\View\View.php, line 961
+View::_render() - CORE\Cake\View\View.php, line 923
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 960
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-03 15:31:50 Warning: Warning (2): Missing argument 1 for PositionController::index() in [F:\xampp\htdocs\ctsvn\cthiring\app\Controller\PositionController.php, line 33]
+Trace:
+PositionController::index() - APP\Controller\PositionController.php, line 33
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-03 15:31:50 Warning: Warning (2): Missing argument 2 for AppModel::get_team_mem(), called in F:\xampp\htdocs\ctsvn\cthiring\app\Model\Position.php on line 260 and defined in [F:\xampp\htdocs\ctsvn\cthiring\app\Model\AppModel.php, line 35]
+Trace:
+AppModel::get_team_mem() - APP\Model\AppModel.php, line 35
+Position::get_team() - APP\Model\Position.php, line 260
+PositionController::index() - APP\Controller\PositionController.php, line 99
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-03 15:31:54 Warning: Warning (2): htmlspecialchars() [<a href='http://php.net/function.htmlspecialchars'>function.htmlspecialchars</a>]: Invalid multibyte sequence in argument in [F:\xampp\htdocs\ctsvn\cthiring\lib\Cake\basics.php, line 231]
+Trace:
+htmlspecialchars - [internal], line ??
+h - CORE\Cake\basics.php, line 231
+FormHelper::_selectOptions() - CORE\Cake\View\Helper\FormHelper.php, line 2786
+FormHelper::select() - CORE\Cake\View\Helper\FormHelper.php, line 2132
+FormHelper::_getInput() - CORE\Cake\View\Helper\FormHelper.php, line 1087
+FormHelper::input() - CORE\Cake\View\Helper\FormHelper.php, line 1051
+include - APP\View\Position\add.ctp, line 54
+View::_evaluate() - CORE\Cake\View\View.php, line 961
+View::_render() - CORE\Cake\View\View.php, line 923
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 960
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-03 15:31:54 Warning: Warning (2): htmlspecialchars() [<a href='http://php.net/function.htmlspecialchars'>function.htmlspecialchars</a>]: Invalid multibyte sequence in argument in [F:\xampp\htdocs\ctsvn\cthiring\lib\Cake\basics.php, line 231]
+Trace:
+htmlspecialchars - [internal], line ??
+h - CORE\Cake\basics.php, line 231
+FormHelper::_selectOptions() - CORE\Cake\View\Helper\FormHelper.php, line 2786
+FormHelper::select() - CORE\Cake\View\Helper\FormHelper.php, line 2132
+FormHelper::_getInput() - CORE\Cake\View\Helper\FormHelper.php, line 1087
+FormHelper::input() - CORE\Cake\View\Helper\FormHelper.php, line 1051
+include - APP\View\Position\add.ctp, line 54
+View::_evaluate() - CORE\Cake\View\View.php, line 961
+View::_render() - CORE\Cake\View\View.php, line 923
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 960
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-03 15:31:54 Warning: Warning (2): htmlspecialchars() [<a href='http://php.net/function.htmlspecialchars'>function.htmlspecialchars</a>]: Invalid multibyte sequence in argument in [F:\xampp\htdocs\ctsvn\cthiring\lib\Cake\basics.php, line 231]
+Trace:
+htmlspecialchars - [internal], line ??
+h - CORE\Cake\basics.php, line 231
+FormHelper::_selectOptions() - CORE\Cake\View\Helper\FormHelper.php, line 2786
+FormHelper::select() - CORE\Cake\View\Helper\FormHelper.php, line 2132
+FormHelper::_getInput() - CORE\Cake\View\Helper\FormHelper.php, line 1087
+FormHelper::input() - CORE\Cake\View\Helper\FormHelper.php, line 1051
+include - APP\View\Position\add.ctp, line 54
+View::_evaluate() - CORE\Cake\View\View.php, line 961
+View::_render() - CORE\Cake\View\View.php, line 923
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 960
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-03 15:31:57 Warning: Warning (2): Missing argument 1 for PositionController::index() in [F:\xampp\htdocs\ctsvn\cthiring\app\Controller\PositionController.php, line 33]
+Trace:
+PositionController::index() - APP\Controller\PositionController.php, line 33
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-03 15:31:58 Warning: Warning (2): Missing argument 2 for AppModel::get_team_mem(), called in F:\xampp\htdocs\ctsvn\cthiring\app\Model\Position.php on line 260 and defined in [F:\xampp\htdocs\ctsvn\cthiring\app\Model\AppModel.php, line 35]
+Trace:
+AppModel::get_team_mem() - APP\Model\AppModel.php, line 35
+Position::get_team() - APP\Model\Position.php, line 260
+PositionController::index() - APP\Controller\PositionController.php, line 99
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-03 15:32:01 Warning: Warning (2): htmlspecialchars() [<a href='http://php.net/function.htmlspecialchars'>function.htmlspecialchars</a>]: Invalid multibyte sequence in argument in [F:\xampp\htdocs\ctsvn\cthiring\lib\Cake\basics.php, line 231]
+Trace:
+htmlspecialchars - [internal], line ??
+h - CORE\Cake\basics.php, line 231
+FormHelper::_selectOptions() - CORE\Cake\View\Helper\FormHelper.php, line 2786
+FormHelper::select() - CORE\Cake\View\Helper\FormHelper.php, line 2132
+FormHelper::_getInput() - CORE\Cake\View\Helper\FormHelper.php, line 1087
+FormHelper::input() - CORE\Cake\View\Helper\FormHelper.php, line 1051
+include - APP\View\Position\edit.ctp, line 58
+View::_evaluate() - CORE\Cake\View\View.php, line 961
+View::_render() - CORE\Cake\View\View.php, line 923
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 960
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-03 15:32:01 Warning: Warning (2): htmlspecialchars() [<a href='http://php.net/function.htmlspecialchars'>function.htmlspecialchars</a>]: Invalid multibyte sequence in argument in [F:\xampp\htdocs\ctsvn\cthiring\lib\Cake\basics.php, line 231]
+Trace:
+htmlspecialchars - [internal], line ??
+h - CORE\Cake\basics.php, line 231
+FormHelper::_selectOptions() - CORE\Cake\View\Helper\FormHelper.php, line 2786
+FormHelper::select() - CORE\Cake\View\Helper\FormHelper.php, line 2132
+FormHelper::_getInput() - CORE\Cake\View\Helper\FormHelper.php, line 1087
+FormHelper::input() - CORE\Cake\View\Helper\FormHelper.php, line 1051
+include - APP\View\Position\edit.ctp, line 58
+View::_evaluate() - CORE\Cake\View\View.php, line 961
+View::_render() - CORE\Cake\View\View.php, line 923
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 960
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-03 15:32:01 Warning: Warning (2): htmlspecialchars() [<a href='http://php.net/function.htmlspecialchars'>function.htmlspecialchars</a>]: Invalid multibyte sequence in argument in [F:\xampp\htdocs\ctsvn\cthiring\lib\Cake\basics.php, line 231]
+Trace:
+htmlspecialchars - [internal], line ??
+h - CORE\Cake\basics.php, line 231
+FormHelper::_selectOptions() - CORE\Cake\View\Helper\FormHelper.php, line 2786
+FormHelper::select() - CORE\Cake\View\Helper\FormHelper.php, line 2132
+FormHelper::_getInput() - CORE\Cake\View\Helper\FormHelper.php, line 1087
+FormHelper::input() - CORE\Cake\View\Helper\FormHelper.php, line 1051
+include - APP\View\Position\edit.ctp, line 58
+View::_evaluate() - CORE\Cake\View\View.php, line 961
+View::_render() - CORE\Cake\View\View.php, line 923
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 960
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-03 15:32:02 Warning: Warning (2): Cannot modify header information - headers already sent by (output started at F:\xampp\htdocs\ctsvn\cthiring\app\Controller\PositionController.php:606) in [F:\xampp\htdocs\ctsvn\cthiring\app\Controller\AppController.php, line 255]
+Trace:
+header - [internal], line ??
+AppController::disable_cache() - APP\Controller\AppController.php, line 255
+AppController::check_session() - APP\Controller\AppController.php, line 93
+AppController::beforeRender() - APP\Controller\AppController.php, line 43
+call_user_func - [internal], line ??
+CakeEventManager::dispatch() - CORE\Cake\Event\CakeEventManager.php, line 243
+Controller::render() - CORE\Cake\Controller\Controller.php, line 933
+PositionController::get_account_holder() - APP\Controller\PositionController.php, line 596
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-03 15:32:02 Warning: Warning (2): Cannot modify header information - headers already sent by (output started at F:\xampp\htdocs\ctsvn\cthiring\app\Controller\PositionController.php:606) in [F:\xampp\htdocs\ctsvn\cthiring\app\Controller\AppController.php, line 256]
+Trace:
+header - [internal], line ??
+AppController::disable_cache() - APP\Controller\AppController.php, line 256
+AppController::check_session() - APP\Controller\AppController.php, line 93
+AppController::beforeRender() - APP\Controller\AppController.php, line 43
+call_user_func - [internal], line ??
+CakeEventManager::dispatch() - CORE\Cake\Event\CakeEventManager.php, line 243
+Controller::render() - CORE\Cake\Controller\Controller.php, line 933
+PositionController::get_account_holder() - APP\Controller\PositionController.php, line 596
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-03 15:32:02 Warning: Warning (2): Cannot modify header information - headers already sent by (output started at F:\xampp\htdocs\ctsvn\cthiring\app\Controller\PositionController.php:606) in [F:\xampp\htdocs\ctsvn\cthiring\app\Controller\AppController.php, line 257]
+Trace:
+header - [internal], line ??
+AppController::disable_cache() - APP\Controller\AppController.php, line 257
+AppController::check_session() - APP\Controller\AppController.php, line 93
+AppController::beforeRender() - APP\Controller\AppController.php, line 43
+call_user_func - [internal], line ??
+CakeEventManager::dispatch() - CORE\Cake\Event\CakeEventManager.php, line 243
+Controller::render() - CORE\Cake\Controller\Controller.php, line 933
+PositionController::get_account_holder() - APP\Controller\PositionController.php, line 596
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-03 15:32:02 Warning: Warning (2): Cannot modify header information - headers already sent by (output started at F:\xampp\htdocs\ctsvn\cthiring\app\Controller\PositionController.php:606) in [F:\xampp\htdocs\ctsvn\cthiring\app\Controller\AppController.php, line 258]
+Trace:
+header - [internal], line ??
+AppController::disable_cache() - APP\Controller\AppController.php, line 258
+AppController::check_session() - APP\Controller\AppController.php, line 93
+AppController::beforeRender() - APP\Controller\AppController.php, line 43
+call_user_func - [internal], line ??
+CakeEventManager::dispatch() - CORE\Cake\Event\CakeEventManager.php, line 243
+Controller::render() - CORE\Cake\Controller\Controller.php, line 933
+PositionController::get_account_holder() - APP\Controller\PositionController.php, line 596
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-03 15:32:02 Warning: Warning (2): Cannot modify header information - headers already sent by (output started at F:\xampp\htdocs\ctsvn\cthiring\app\Controller\PositionController.php:606) in [F:\xampp\htdocs\ctsvn\cthiring\app\Controller\AppController.php, line 259]
+Trace:
+header - [internal], line ??
+AppController::disable_cache() - APP\Controller\AppController.php, line 259
+AppController::check_session() - APP\Controller\AppController.php, line 93
+AppController::beforeRender() - APP\Controller\AppController.php, line 43
+call_user_func - [internal], line ??
+CakeEventManager::dispatch() - CORE\Cake\Event\CakeEventManager.php, line 243
+Controller::render() - CORE\Cake\Controller\Controller.php, line 933
+PositionController::get_account_holder() - APP\Controller\PositionController.php, line 596
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-03 15:32:09 Warning: Warning (2): Missing argument 1 for PositionController::index() in [F:\xampp\htdocs\ctsvn\cthiring\app\Controller\PositionController.php, line 33]
+Trace:
+PositionController::index() - APP\Controller\PositionController.php, line 33
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-03 15:32:09 Warning: Warning (2): Missing argument 2 for AppModel::get_team_mem(), called in F:\xampp\htdocs\ctsvn\cthiring\app\Model\Position.php on line 260 and defined in [F:\xampp\htdocs\ctsvn\cthiring\app\Model\AppModel.php, line 35]
+Trace:
+AppModel::get_team_mem() - APP\Model\AppModel.php, line 35
+Position::get_team() - APP\Model\Position.php, line 260
+PositionController::index() - APP\Controller\PositionController.php, line 99
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-03 15:32:51 Warning: Warning (2): Missing argument 1 for PositionController::index() in [F:\xampp\htdocs\ctsvn\cthiring\app\Controller\PositionController.php, line 33]
+Trace:
+PositionController::index() - APP\Controller\PositionController.php, line 33
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-03 15:32:51 Warning: Warning (2): Missing argument 2 for AppModel::get_team_mem(), called in F:\xampp\htdocs\ctsvn\cthiring\app\Model\Position.php on line 260 and defined in [F:\xampp\htdocs\ctsvn\cthiring\app\Model\AppModel.php, line 35]
+Trace:
+AppModel::get_team_mem() - APP\Model\AppModel.php, line 35
+Position::get_team() - APP\Model\Position.php, line 260
+PositionController::index() - APP\Controller\PositionController.php, line 99
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-03 15:32:52 Warning: Warning (2): Missing argument 1 for PositionController::index() in [F:\xampp\htdocs\ctsvn\cthiring\app\Controller\PositionController.php, line 33]
+Trace:
+PositionController::index() - APP\Controller\PositionController.php, line 33
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-03 15:32:52 Warning: Warning (2): Missing argument 2 for AppModel::get_team_mem(), called in F:\xampp\htdocs\ctsvn\cthiring\app\Model\Position.php on line 260 and defined in [F:\xampp\htdocs\ctsvn\cthiring\app\Model\AppModel.php, line 35]
+Trace:
+AppModel::get_team_mem() - APP\Model\AppModel.php, line 35
+Position::get_team() - APP\Model\Position.php, line 260
+PositionController::index() - APP\Controller\PositionController.php, line 99
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-03 15:32:55 Warning: Warning (2): htmlspecialchars() [<a href='http://php.net/function.htmlspecialchars'>function.htmlspecialchars</a>]: Invalid multibyte sequence in argument in [F:\xampp\htdocs\ctsvn\cthiring\lib\Cake\basics.php, line 231]
+Trace:
+htmlspecialchars - [internal], line ??
+h - CORE\Cake\basics.php, line 231
+FormHelper::_selectOptions() - CORE\Cake\View\Helper\FormHelper.php, line 2786
+FormHelper::select() - CORE\Cake\View\Helper\FormHelper.php, line 2132
+FormHelper::_getInput() - CORE\Cake\View\Helper\FormHelper.php, line 1087
+FormHelper::input() - CORE\Cake\View\Helper\FormHelper.php, line 1051
+include - APP\View\Position\edit.ctp, line 58
+View::_evaluate() - CORE\Cake\View\View.php, line 961
+View::_render() - CORE\Cake\View\View.php, line 923
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 960
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-03 15:32:55 Warning: Warning (2): htmlspecialchars() [<a href='http://php.net/function.htmlspecialchars'>function.htmlspecialchars</a>]: Invalid multibyte sequence in argument in [F:\xampp\htdocs\ctsvn\cthiring\lib\Cake\basics.php, line 231]
+Trace:
+htmlspecialchars - [internal], line ??
+h - CORE\Cake\basics.php, line 231
+FormHelper::_selectOptions() - CORE\Cake\View\Helper\FormHelper.php, line 2786
+FormHelper::select() - CORE\Cake\View\Helper\FormHelper.php, line 2132
+FormHelper::_getInput() - CORE\Cake\View\Helper\FormHelper.php, line 1087
+FormHelper::input() - CORE\Cake\View\Helper\FormHelper.php, line 1051
+include - APP\View\Position\edit.ctp, line 58
+View::_evaluate() - CORE\Cake\View\View.php, line 961
+View::_render() - CORE\Cake\View\View.php, line 923
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 960
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-03 15:32:55 Warning: Warning (2): htmlspecialchars() [<a href='http://php.net/function.htmlspecialchars'>function.htmlspecialchars</a>]: Invalid multibyte sequence in argument in [F:\xampp\htdocs\ctsvn\cthiring\lib\Cake\basics.php, line 231]
+Trace:
+htmlspecialchars - [internal], line ??
+h - CORE\Cake\basics.php, line 231
+FormHelper::_selectOptions() - CORE\Cake\View\Helper\FormHelper.php, line 2786
+FormHelper::select() - CORE\Cake\View\Helper\FormHelper.php, line 2132
+FormHelper::_getInput() - CORE\Cake\View\Helper\FormHelper.php, line 1087
+FormHelper::input() - CORE\Cake\View\Helper\FormHelper.php, line 1051
+include - APP\View\Position\edit.ctp, line 58
+View::_evaluate() - CORE\Cake\View\View.php, line 961
+View::_render() - CORE\Cake\View\View.php, line 923
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 960
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-03 15:32:57 Warning: Warning (2): Cannot modify header information - headers already sent by (output started at F:\xampp\htdocs\ctsvn\cthiring\app\Controller\PositionController.php:606) in [F:\xampp\htdocs\ctsvn\cthiring\app\Controller\AppController.php, line 255]
+Trace:
+header - [internal], line ??
+AppController::disable_cache() - APP\Controller\AppController.php, line 255
+AppController::check_session() - APP\Controller\AppController.php, line 93
+AppController::beforeRender() - APP\Controller\AppController.php, line 43
+call_user_func - [internal], line ??
+CakeEventManager::dispatch() - CORE\Cake\Event\CakeEventManager.php, line 243
+Controller::render() - CORE\Cake\Controller\Controller.php, line 933
+PositionController::get_account_holder() - APP\Controller\PositionController.php, line 596
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-03 15:32:57 Warning: Warning (2): Cannot modify header information - headers already sent by (output started at F:\xampp\htdocs\ctsvn\cthiring\app\Controller\PositionController.php:606) in [F:\xampp\htdocs\ctsvn\cthiring\app\Controller\AppController.php, line 256]
+Trace:
+header - [internal], line ??
+AppController::disable_cache() - APP\Controller\AppController.php, line 256
+AppController::check_session() - APP\Controller\AppController.php, line 93
+AppController::beforeRender() - APP\Controller\AppController.php, line 43
+call_user_func - [internal], line ??
+CakeEventManager::dispatch() - CORE\Cake\Event\CakeEventManager.php, line 243
+Controller::render() - CORE\Cake\Controller\Controller.php, line 933
+PositionController::get_account_holder() - APP\Controller\PositionController.php, line 596
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-03 15:32:57 Warning: Warning (2): Cannot modify header information - headers already sent by (output started at F:\xampp\htdocs\ctsvn\cthiring\app\Controller\PositionController.php:606) in [F:\xampp\htdocs\ctsvn\cthiring\app\Controller\AppController.php, line 257]
+Trace:
+header - [internal], line ??
+AppController::disable_cache() - APP\Controller\AppController.php, line 257
+AppController::check_session() - APP\Controller\AppController.php, line 93
+AppController::beforeRender() - APP\Controller\AppController.php, line 43
+call_user_func - [internal], line ??
+CakeEventManager::dispatch() - CORE\Cake\Event\CakeEventManager.php, line 243
+Controller::render() - CORE\Cake\Controller\Controller.php, line 933
+PositionController::get_account_holder() - APP\Controller\PositionController.php, line 596
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-03 15:32:57 Warning: Warning (2): Cannot modify header information - headers already sent by (output started at F:\xampp\htdocs\ctsvn\cthiring\app\Controller\PositionController.php:606) in [F:\xampp\htdocs\ctsvn\cthiring\app\Controller\AppController.php, line 258]
+Trace:
+header - [internal], line ??
+AppController::disable_cache() - APP\Controller\AppController.php, line 258
+AppController::check_session() - APP\Controller\AppController.php, line 93
+AppController::beforeRender() - APP\Controller\AppController.php, line 43
+call_user_func - [internal], line ??
+CakeEventManager::dispatch() - CORE\Cake\Event\CakeEventManager.php, line 243
+Controller::render() - CORE\Cake\Controller\Controller.php, line 933
+PositionController::get_account_holder() - APP\Controller\PositionController.php, line 596
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-03 15:32:57 Warning: Warning (2): Cannot modify header information - headers already sent by (output started at F:\xampp\htdocs\ctsvn\cthiring\app\Controller\PositionController.php:606) in [F:\xampp\htdocs\ctsvn\cthiring\app\Controller\AppController.php, line 259]
+Trace:
+header - [internal], line ??
+AppController::disable_cache() - APP\Controller\AppController.php, line 259
+AppController::check_session() - APP\Controller\AppController.php, line 93
+AppController::beforeRender() - APP\Controller\AppController.php, line 43
+call_user_func - [internal], line ??
+CakeEventManager::dispatch() - CORE\Cake\Event\CakeEventManager.php, line 243
+Controller::render() - CORE\Cake\Controller\Controller.php, line 933
+PositionController::get_account_holder() - APP\Controller\PositionController.php, line 596
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-03 15:33:02 Warning: Warning (2): Missing argument 1 for PositionController::index() in [F:\xampp\htdocs\ctsvn\cthiring\app\Controller\PositionController.php, line 33]
+Trace:
+PositionController::index() - APP\Controller\PositionController.php, line 33
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-03 15:33:02 Warning: Warning (2): Missing argument 2 for AppModel::get_team_mem(), called in F:\xampp\htdocs\ctsvn\cthiring\app\Model\Position.php on line 260 and defined in [F:\xampp\htdocs\ctsvn\cthiring\app\Model\AppModel.php, line 35]
+Trace:
+AppModel::get_team_mem() - APP\Model\AppModel.php, line 35
+Position::get_team() - APP\Model\Position.php, line 260
+PositionController::index() - APP\Controller\PositionController.php, line 99
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-03 15:33:06 Warning: Warning (2): htmlspecialchars() [<a href='http://php.net/function.htmlspecialchars'>function.htmlspecialchars</a>]: Invalid multibyte sequence in argument in [F:\xampp\htdocs\ctsvn\cthiring\lib\Cake\basics.php, line 231]
+Trace:
+htmlspecialchars - [internal], line ??
+h - CORE\Cake\basics.php, line 231
+FormHelper::_selectOptions() - CORE\Cake\View\Helper\FormHelper.php, line 2786
+FormHelper::select() - CORE\Cake\View\Helper\FormHelper.php, line 2132
+FormHelper::_getInput() - CORE\Cake\View\Helper\FormHelper.php, line 1087
+FormHelper::input() - CORE\Cake\View\Helper\FormHelper.php, line 1051
+include - APP\View\Position\add.ctp, line 54
+View::_evaluate() - CORE\Cake\View\View.php, line 961
+View::_render() - CORE\Cake\View\View.php, line 923
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 960
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-03 15:33:06 Warning: Warning (2): htmlspecialchars() [<a href='http://php.net/function.htmlspecialchars'>function.htmlspecialchars</a>]: Invalid multibyte sequence in argument in [F:\xampp\htdocs\ctsvn\cthiring\lib\Cake\basics.php, line 231]
+Trace:
+htmlspecialchars - [internal], line ??
+h - CORE\Cake\basics.php, line 231
+FormHelper::_selectOptions() - CORE\Cake\View\Helper\FormHelper.php, line 2786
+FormHelper::select() - CORE\Cake\View\Helper\FormHelper.php, line 2132
+FormHelper::_getInput() - CORE\Cake\View\Helper\FormHelper.php, line 1087
+FormHelper::input() - CORE\Cake\View\Helper\FormHelper.php, line 1051
+include - APP\View\Position\add.ctp, line 54
+View::_evaluate() - CORE\Cake\View\View.php, line 961
+View::_render() - CORE\Cake\View\View.php, line 923
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 960
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-03 15:33:06 Warning: Warning (2): htmlspecialchars() [<a href='http://php.net/function.htmlspecialchars'>function.htmlspecialchars</a>]: Invalid multibyte sequence in argument in [F:\xampp\htdocs\ctsvn\cthiring\lib\Cake\basics.php, line 231]
+Trace:
+htmlspecialchars - [internal], line ??
+h - CORE\Cake\basics.php, line 231
+FormHelper::_selectOptions() - CORE\Cake\View\Helper\FormHelper.php, line 2786
+FormHelper::select() - CORE\Cake\View\Helper\FormHelper.php, line 2132
+FormHelper::_getInput() - CORE\Cake\View\Helper\FormHelper.php, line 1087
+FormHelper::input() - CORE\Cake\View\Helper\FormHelper.php, line 1051
+include - APP\View\Position\add.ctp, line 54
+View::_evaluate() - CORE\Cake\View\View.php, line 961
+View::_render() - CORE\Cake\View\View.php, line 923
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 960
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-03 15:33:12 Warning: Warning (2): Missing argument 1 for PositionController::index() in [F:\xampp\htdocs\ctsvn\cthiring\app\Controller\PositionController.php, line 33]
+Trace:
+PositionController::index() - APP\Controller\PositionController.php, line 33
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-03 15:33:12 Warning: Warning (2): Missing argument 2 for AppModel::get_team_mem(), called in F:\xampp\htdocs\ctsvn\cthiring\app\Model\Position.php on line 260 and defined in [F:\xampp\htdocs\ctsvn\cthiring\app\Model\AppModel.php, line 35]
+Trace:
+AppModel::get_team_mem() - APP\Model\AppModel.php, line 35
+Position::get_team() - APP\Model\Position.php, line 260
+PositionController::index() - APP\Controller\PositionController.php, line 99
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-03 15:34:12 Warning: Warning (2): Missing argument 2 for AppModel::get_team_mem(), called in F:\xampp\htdocs\ctsvn\cthiring\app\Model\Resume.php on line 64 and defined in [F:\xampp\htdocs\ctsvn\cthiring\app\Model\AppModel.php, line 35]
 Trace:
 AppModel::get_team_mem() - APP\Model\AppModel.php, line 35
 Resume::get_team() - APP\Model\Resume.php, line 64
@@ -46833,3 +47985,69 @@ Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
 Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
 [main] - APP\webroot\index.php, line 118
 
+2017-07-03 15:36:54 Warning: Warning (2): Missing argument 2 for AppModel::get_team_mem(), called in F:\xampp\htdocs\ctsvn\cthiring\app\Model\Resume.php on line 64 and defined in [F:\xampp\htdocs\ctsvn\cthiring\app\Model\AppModel.php, line 35]
+Trace:
+AppModel::get_team_mem() - APP\Model\AppModel.php, line 35
+>>>>>>> 41e4f7a19ab3f0fe4a94d47a61ea7350fcbf221c
+Resume::get_team() - APP\Model\Resume.php, line 64
+ResumeController::index() - APP\Controller\ResumeController.php, line 74
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+<<<<<<< HEAD
+=======
+2017-07-03 17:06:02 Warning: Warning (2): Missing argument 1 for PositionController::index() in [F:\xampp\htdocs\ctsvn\cthiring\app\Controller\PositionController.php, line 33]
+Trace:
+PositionController::index() - APP\Controller\PositionController.php, line 33
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-03 17:06:02 Warning: Warning (2): Missing argument 2 for AppModel::get_team_mem(), called in F:\xampp\htdocs\ctsvn\cthiring\app\Model\Position.php on line 260 and defined in [F:\xampp\htdocs\ctsvn\cthiring\app\Model\AppModel.php, line 35]
+Trace:
+AppModel::get_team_mem() - APP\Model\AppModel.php, line 35
+Position::get_team() - APP\Model\Position.php, line 260
+PositionController::index() - APP\Controller\PositionController.php, line 99
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-03 17:06:07 Warning: Warning (2): Missing argument 2 for AppModel::get_team_mem(), called in F:\xampp\htdocs\ctsvn\cthiring\app\Model\Resume.php on line 64 and defined in [F:\xampp\htdocs\ctsvn\cthiring\app\Model\AppModel.php, line 35]
+Trace:
+AppModel::get_team_mem() - APP\Model\AppModel.php, line 35
+Resume::get_team() - APP\Model\Resume.php, line 64
+ResumeController::index() - APP\Controller\ResumeController.php, line 74
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-03 17:08:14 Warning: Warning (2): Missing argument 1 for PositionController::index() in [F:\xampp\htdocs\ctsvn\cthiring\app\Controller\PositionController.php, line 33]
+Trace:
+PositionController::index() - APP\Controller\PositionController.php, line 33
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-03 17:08:14 Warning: Warning (2): Missing argument 2 for AppModel::get_team_mem(), called in F:\xampp\htdocs\ctsvn\cthiring\app\Model\Position.php on line 260 and defined in [F:\xampp\htdocs\ctsvn\cthiring\app\Model\AppModel.php, line 35]
+Trace:
+AppModel::get_team_mem() - APP\Model\AppModel.php, line 35
+Position::get_team() - APP\Model\Position.php, line 260
+PositionController::index() - APP\Controller\PositionController.php, line 99
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+>>>>>>> 41e4f7a19ab3f0fe4a94d47a61ea7350fcbf221c

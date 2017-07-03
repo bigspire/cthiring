@@ -34,8 +34,8 @@
 			<div class="tabbable">
 				<div class="heading">
 					<ul class="nav nav-tabs">
-						<li class="active cli_tab"><a class="clitabChange" rel="client"  href="#mbox_client" data-toggle="tab"><i class="splashy-smiley_happy"></i>  Client </a></li>
-						<li class="con_tab"><a class="clitabChange" rel="contact"  href="#mbox_client_contact" data-toggle="tab"><i class="splashy-smiley_surprised"></i>  Client Contact </a></li>
+						<li class="active cli_tab"><a class="clitabChange" rel="client"  href="#mbox_client" data-toggle="tab"><i class="splashy-map"></i>  Client </a></li>
+						<li class="con_tab"><a class="clitabChange" rel="contact"  href="#mbox_client_contact" data-toggle="tab"><i class="splashy-group_blue"></i>  Client Contact </a></li>
 					 </ul>
 				</div>
 		<div class="tab-content" style="overflow:visible">

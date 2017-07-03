@@ -34,7 +34,7 @@
 							<input type="button" value="Search" class="homeSrch btn btn-success"/></a>
 							<a class="notify jsRedirect" data-notify-time = '3000' data-notify-title="In Progress!" data-notify-message="Downloading Excel... Please wait..."   href="<?php echo $this->webroot;?>position/?action=export&<?php echo $this->Functions->get_url_vars($this->request->query);?>"><input type="button" value="Export Excel" class="btn btn-warning"/></a>
 
-							 <?php if($create_client == '1'):?>
+							 <?php if($create_position == '1'):?>
 							<a class="jsRedirect" data-notify-time = '3000'   href="<?php echo $this->webroot;?>position/add/">
 							<input type="button" value="Create Position" class="btn btn-info"/></a>		
 							<?php endif; ?>
