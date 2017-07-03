@@ -110,20 +110,21 @@ if(empty($_POST)){
 		if(!$result = $mysql->execute_query($query)){ 
 			throw new Exception('Problem in executing get resume education');
 		}
-		$tot = 0;
+		
+		$edu_tot = 0;
 		while($row = $mysql->display_result($result)){
 			// print_r($row);
 			// post of assign asset fields value
-			$collegeData[$tot] = $row['college'];
-			$qualificationData[$tot] = $row['resume_program_id'];
-			$degreeData[$tot] = $row['resume_degree_id'];
-			$specializationData[$tot] = $row['resume_spec_id'];
-			$gradeData[$tot] = $row['percent_mark'];
-			$grade_typeData[$tot] = $row['course_type'];
-			$from_yrData[$tot] = $row['year_passing'];
-			$universityData[$tot] = $row['university'];
-			$locationData[$tot] = $row['location'];
-			$tot++;
+			$collegeData[$edu_tot] = $row['college'];
+			$qualificationData[$edu_tot] = $row['resume_program_id'];
+			$degreeData[$edu_tot] = $row['resume_degree_id'];
+			$specializationData[$edu_tot] = $row['resume_spec_id'];
+			$gradeData[$edu_tot] = $row['percent_mark'];
+			$grade_typeData[$edu_tot] = $row['course_type'];
+			$from_yrData[$edu_tot] = $row['year_passing'];
+			$universityData[$edu_tot] = $row['university'];
+			$locationData[$edu_tot] = $row['location'];
+			$edu_tot++;
 		}	
 		
 		$smarty->assign('collegeData', $collegeData);
@@ -135,9 +136,9 @@ if(empty($_POST)){
 		$smarty->assign('qualificationData', $qualificationData);
 		$smarty->assign('degreeData', $degreeData);
 		$smarty->assign('specializationData', $specializationData);
-		$smarty->assign('eduCount', $tot);
+		$smarty->assign('eduCount', $edu_tot);
 		
-		$smarty->assign('totCount_edu', $tot);
+		$smarty->assign('totCount_edu', $edu_tot);
 	
 		// free the memory
 		$mysql->clear_result($result);
@@ -169,8 +170,6 @@ if(empty($_POST)){
 			
 			$desigData[$tot] = $row['designation_id'];
 			$areaData[$tot] = $row['skills'];
-			$year_of_expData[$tot] = $total_yr_exp[0];
-			$month_of_expData[$tot] = $total_yr_exp[1];
 			$companyData[$tot] = $row['company'];
 			$company_profileData[$tot] = $row['company_profile'];
 			$worklocData[$tot] = $row['work_location'];
@@ -238,11 +237,12 @@ if(empty($_POST)){
 	}
 }
 
-$edu = $_POST['edu_count'] ? $_POST['edu_count'] : $tot;
+	$edu = $_POST['edu_count'] ? $_POST['edu_count'] : $edu_tot;
 	// post of education fields value
 	for($i = 0; $i < $edu; $i++){
 		$quali[] = $_POST['qualification_'.$i] ? $_POST['qualification_'.$i] : $qualificationData[$i];
 		$degree[] = $_POST['degree_'.$i] ? $_POST['degree_'.$i] : $degreeData[$i];
+		$degreeData = array();
 		// smarty drop down for degree
 		$query ="CALL get_resume_degree_program('".$quali[$i]."')";
 		try{
@@ -267,6 +267,7 @@ $edu = $_POST['edu_count'] ? $_POST['edu_count'] : $tot;
 	
 		$degree_id = $_POST['degree_'.$i] ? $_POST['degree_'.$i] : $degree[$i];
 		// smarty drop down for Specialization
+		$specializationData2 = array();
 		$query ="CALL get_resume_spec_degree('".$degree_id."')";
 		try{
 			// calling mysql exe_query function
@@ -274,10 +275,10 @@ $edu = $_POST['edu_count'] ? $_POST['edu_count'] : $tot;
 				throw new Exception('Problem in executing spec.');
 			}
 			while($obj = $mysql->display_result($result)){ 
-				$specializationData[$obj['id']] = $obj['spec'];  	   
+				$specializationData2[$obj['id']] = $obj['spec'];  	   
 			}
 		
-			$spec_data[] = $specializationData;
+			$spec_data[] = $specializationData2;
 		
 
 			// free the memory
@@ -494,9 +495,10 @@ if(!empty($_POST)){
 	$smarty->assign($res_language,$language_list);
 	
 	// array for printing correct field name in error message for consultant
-	$fieldtype1 = array('0','0');
-	$actualfield1 = array('personality','interview availability');
-	$field1 = array('personality' => 'personalityErr','interview_availability' => 'interview_availabilityErr');
+	$fieldtype1 = array('0','0','0','0');
+	$actualfield1 = array('personality','interview availability','credentials considered for shortlisting','relevant exposure');
+	$field1 = array('personality' => 'personalityErr','interview_availability' => 'interview_availabilityErr',
+		'credential_shortlisting' => 'credential_shortlistingErr', 'relevant_exposure' => 'relevant_exposureErr');
 	$j = 0;
 	foreach ($field1 as $field => $er_var){ 
 		if($_POST[$field] == ''){
@@ -551,7 +553,10 @@ if(!empty($_POST)){
  			'".$fun->is_white_space($mysql->real_escape_str($_POST['interview_availability']))."',
 			'".$fun->is_white_space($mysql->real_escape_str($_POST['achievement']))."',
 			'".$fun->is_white_space($mysql->real_escape_str($_POST['about_company']))."',
-			'".$fun->is_white_space($mysql->real_escape_str($_POST['candidate_brief']))."')";
+			'".$fun->is_white_space($mysql->real_escape_str($_POST['candidate_brief']))."',
+			'".$fun->is_white_space($mysql->real_escape_str($_POST['credential_shortlisting']))."',
+			'".$fun->is_white_space($mysql->real_escape_str($_POST['relevant_exposure']))."',
+			'".$fun->is_white_space($mysql->real_escape_str($_POST['vital_info_interview']))."')";
 		try{
 			if(!$result = $mysql->execute_query($query)){
 				throw new Exception('Problem in updating personal details');
