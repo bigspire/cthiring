@@ -40,9 +40,8 @@
 			<div class="tabbable">
 				<div class="heading">
 					<ul class="nav nav-tabs">
-						<li class="active basic"><a class="postabChange" rel="basic"  href="#basic" data-toggle="tab"><i class="splashy-smiley_happy"></i> Basic </a></li>
-						<li class="job_desc"><a class="postabChange" rel="job_desc"  href="#job_desc" data-toggle="tab"><i class="splashy-smiley_amused"></i>  Job Description </a></li>
-						<!--li class="coordination"><a class="postabChange" rel="coordination"  href="#coordination" data-toggle="tab"><i class="splashy-smiley_surprised"></i> Coordination </a></li-->
+								<li class="active basic"><a class="postabChange" rel="basic"  href="#basic" data-toggle="tab"><i class="splashy-document_a4_edit"></i> Basic Details </a></li>
+						<li class="job_desc"><a class="postabChange" rel="job_desc"  href="#job_desc" data-toggle="tab"><i class="splashy-document_a4_add"></i>  Job Description </a></li>				<!--li class="coordination"><a class="postabChange" rel="coordination"  href="#coordination" data-toggle="tab"><i class="splashy-smiley_surprised"></i> Coordination </a></li-->
 
 											</ul>
 				</div>

@@ -164,8 +164,8 @@
 								<div class="tabbable">
 									<div class="heading">
 										<ul class="nav nav-tabs">
-											<li class="active"><a href="#mbox_inbox" data-toggle="tab"><i class="splashy-smiley_surprised"></i>  Client Contacts <span class="label label-success"> <?php echo count($contact_data);?></span></a></li>
-											<li class=""><a href="#mbox_inbox2" class="tabChange" data-toggle="tab"><i class="splashy-smiley_happy"></i>  Client Requirements <span class="label label-warning"><?php echo count($position_data);?> </span></a></li>											
+											<li class="active"><a href="#mbox_inbox" data-toggle="tab"><i class="splashy-group_blue"></i>  Client Contacts <span class="label label-success"> <?php echo count($contact_data);?></span></a></li>
+											<li class=""><a href="#mbox_inbox2" class="tabChange" data-toggle="tab"><i class="splashy-documents_okay"></i>  Client Requirements <span class="label label-warning"><?php echo count($position_data);?> </span></a></li>											
 
 										</ul>
 									</div>
