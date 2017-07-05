@@ -142,38 +142,38 @@
                                             <a data-toggle="dropdown" class="dropdown-toggle " href="#"><i class="icon-download-alt icon-white"></i> Reports <b class="caret"></b></a>
                                           <ul class="dropdown-menu">
 										    <?php if($recruiter_report == '1'):?> 
-                                                <li><a href="recruiter_performance.php">Recruiter Performance</a></li>
+                                                <li><a href="<?php echo $this->webroot;?>hiring/recruiter_performance.php">Recruiter Performance</a></li>
 											<?php endif; ?>	
 											 <?php if($account_holder_report == '1'):?> 
-                                                <li><a href="ah_performance.php">Account Holder Performance</a></li>
+                                                <li><a href="<?php echo $this->webroot;?>hiring/ah_performance.php">Account Holder Performance</a></li>
 													<?php endif; ?>	
 												 <?php if($location_report == '1'):?> 
-												<li><a href="location_performance.php">Location Performance</a></li>
+												<li><a href="<?php echo $this->webroot;?>hiring/location_performance.php">Location Performance</a></li>
 													<?php endif; ?>	
                                                <!-- <li><a href="#">Clientwise Performance</a></li>-->
-											    <?php if($failure_report == '1'):?> 
-                                                <li><a href="#">Recruiter Performance(Failure Root Cause Analysis )</a></li>
-													<?php endif; ?>	
+											    <?php // if($failure_report == '1'):?> 
+                                                <!--li><a href="#">Recruiter Performance(Failure Root Cause Analysis )</a></li-->
+													<?php // endif; ?>	
 												 <?php if($revenue_report == '1'):?> 
-												<li><a href="revenue.php">Revenue </a></li>
+												<li><a href="<?php echo $this->webroot;?>hiring/revenue.php">Revenue </a></li>
 													<?php endif; ?>	
 												 <?php if($tat_report == '1'):?> 
-												<li><a href="tat_time.php">TAT Time </a></li>
+												<li><a href="<?php echo $this->webroot;?>hiring/tat_time.php">TAT Time </a></li>
 													<?php endif; ?>	
 												 <?php if($collection_report == '1'):?> 
-												<li><a href="collection_table.php">Collection Table </a></li>
+												<li><a href="<?php echo $this->webroot;?>hiring/collection_table.php">Collection Table </a></li>
 													<?php endif; ?>	
 												 <?php if($client_retention_report == '1'):?> 
-												<li><a href="client_retention.php">Client Retention Table </a></li>
+												<li><a href="<?php echo $this->webroot;?>hiring/client_retention.php">Client Retention Table </a></li>
 													<?php endif; ?>	
 												 <?php if($incentive_report == '1'):?> 
-												<li><a href="incentive_report.php">Incentive </a></li>
+												<li><a href="<?php echo $this->webroot;?>hiring/incentive_report.php">Incentive </a></li>
 													<?php endif; ?>	
 												 <?php if($daily_report == '1'):?> 
-												<li><a href="daily_performance.php">Daily Performance </a></li>
+												<li><a href="<?php echo $this->webroot;?>hiring/daily_performance.php">Daily Performance </a></li>
 													<?php endif; ?>	
 												 <?php if($weekly_report == '1'):?> 
-												<li><a href="weekly_performance.php">Weekly Performance </a></li>
+												<li><a href="<?php echo $this->webroot;?>hiring/weekly_performance.php">Weekly Performance </a></li>
 													<?php endif; ?>	
 												
                                             </ul>
