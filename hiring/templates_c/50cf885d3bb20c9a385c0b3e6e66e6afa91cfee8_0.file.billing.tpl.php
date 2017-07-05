@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-07-01 17:59:09
+/* Smarty version 3.1.29, created on 2017-07-04 10:02:57
   from "C:\xampp\htdocs\2017\ctsvn\cthiring\hiring\templates\billing.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_59579595b03e10_42780375',
+  'unifunc' => 'content_595b1a797a56f9_88012634',
   'file_dependency' => 
   array (
     '50cf885d3bb20c9a385c0b3e6e66e6afa91cfee8' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\templates\\billing.tpl',
-      1 => 1498912146,
+      1 => 1499142774,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_59579595b03e10_42780375 ($_smarty_tpl) {
+function content_595b1a797a56f9_88012634 ($_smarty_tpl) {
 ?>
 
    
@@ -102,17 +102,18 @@ $_smarty_tpl->ext->_updateScope->updateScope($_smarty_tpl, 'hide', 0);?>
 							<form action="" id="formID" name="searchFrm" class="formID" method="post" accept-charset="utf-8"><div style="display:none;"><input type="hidden" name="_method" value="POST"/></div>	
 							<div class="<?php echo $_smarty_tpl->tpl_vars['hide']->value;?>
  dataTables_filter srchBox" style="float:left;" id="dt_gal_filter">
-							<label style="margin-top:18px;"><a href="billing.php" class="jsRedirect"><input value="Reset" type="button" class="btn"/></a></label>
-							<label style="margin-top:18px;"><input type="submit" value="Submit" class="btn btn-gebo" /></label>					
 							
-						<label>Billing Till: <input type="text" name="t_date" value="<?php echo $_smarty_tpl->tpl_vars['t_date']->value;?>
-" placeholder="dd/mm/yyyy" class="input-small datepick" aria-controls="dt_gal"></label>
-
-							<label>Billing From: <input type="text" class="input-small datepick" name="f_date" placeholder="dd/mm/yyyy" value="<?php echo $_smarty_tpl->tpl_vars['f_date']->value;?>
-" aria-controls="dt_gal"></label>
 								<label style="margin-left:0;">Keyword: <input type="text" placeholder="Candidate Name or Client Name" name="keyword" id="keyword" value="<?php echo $_smarty_tpl->tpl_vars['keyword']->value;?>
 " class="input-large" aria-controls="dt_gal"></label>
-
+								<label>Billing From: <input type="text" class="input-small datepick" name="f_date" placeholder="dd/mm/yyyy" value="<?php echo $_smarty_tpl->tpl_vars['f_date']->value;?>
+" aria-controls="dt_gal"></label>
+						
+								<label>Billing Till: <input type="text" name="t_date" value="<?php echo $_smarty_tpl->tpl_vars['t_date']->value;?>
+" placeholder="dd/mm/yyyy" class="input-small datepick" aria-controls="dt_gal"></label>
+						
+								<label style="margin-top:18px;"><a href="billing.php" class="jsRedirect"><input value="Reset" type="button" class="btn"/></a></label>
+							<label style="margin-top:18px;"><input type="submit" value="Submit" class="btn btn-gebo" /></label>					
+							
 							</div>
 
 						<input type="hidden" value="1" id="SearchKeywords">

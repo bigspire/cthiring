@@ -87,7 +87,7 @@
 </div>
 <div class="form-actions">
 				<button class="btn btn-gebo" type="submit">Submit</button>
-				<input type="button" value="Cancel" class="btn" onclick="window.location='roles.php'">
+				<input type="button" value="Cancel" class="btn cancel_event " onclick="window.location='roles.php'">
 </div>
                     </div>
 				</form>

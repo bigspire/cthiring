@@ -41,8 +41,9 @@ if($getid !=''){
 		}
 		$row = $mysql->display_result($result);
 		$total = $row['id'];
-		if($total == ''){ 
-			header("Location:resume.php?current_status=msg");
+		if($total == '' || $row['created_by'] != $_SESSION['user_id']){ 
+			// header("Location:resume.php?current_status=msg");
+			header('Location: ../resume/?current_status=msg');
 		}
 		// free the memory
 		$mysql->clear_result($result);

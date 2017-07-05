@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-06-19 11:18:29
+/* Smarty version 3.1.29, created on 2017-07-05 13:27:57
   from "C:\xampp\htdocs\2017\ctsvn\cthiring\hiring\templates\add_eligibility.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_594765ad0aeb95_09114778',
+  'unifunc' => 'content_595c9c05aefe95_73144204',
   'file_dependency' => 
   array (
     'aa1ddebef775ed4e403ccbaaa703c72044edd60a' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\templates\\add_eligibility.tpl',
-      1 => 1497270582,
+      1 => 1499173590,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_594765ad0aeb95_09114778 ($_smarty_tpl) {
+function content_595c9c05aefe95_73144204 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -139,7 +139,7 @@ home"><i class="icon-home"></i></a>
 </div>
 <div class="form-actions">
 				<input name="submit" class="btn btn-gebo" value="Submit" type="submit"/>
-				<input type="button" value="Cancel" class="btn" onclick="window.location='eligibility.php'">
+				<input type="button" value="Cancel" class="btn cancel_event" onclick="window.location='eligibility.php'">
 </div>
                     </div>
 				</form>

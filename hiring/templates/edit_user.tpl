@@ -141,7 +141,7 @@
 </div>
 <div class="form-actions">
 				<input class="btn btn-gebo" type="submit" value="Submit">
-				<a href="users.php" class="cancelBtn"><input type="button" value="Cancel" class="btn"></a>
+				<a href="users.php" class="cancelBtn cancel_event"><input type="button" value="Cancel" class="btn"></a>
 </div>
                     </div>
 				</form>
