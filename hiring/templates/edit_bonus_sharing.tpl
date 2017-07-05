@@ -91,7 +91,7 @@
 </div>
 <div class="form-actions">
 				<input name="submit" class="btn btn-gebo" value="Submit" type="submit"/>
-				<input type="button" value="Cancel" class="btn" onclick="window.location='bonus_share.php'">
+				<input type="button" value="Cancel" class="btn cancel_event" onclick="window.location='bonus_share.php'">
 </div>
                     </div>
 				</form>

@@ -92,7 +92,7 @@
 </div>
 <div class="form-actions">
 				<input name="submit" class="btn btn-gebo" value="Submit" type="submit"/>
-				<input type="button" value="Cancel" class="btn" onclick="window.location='base_target.php'">
+				<input type="button" value="Cancel" class="btn cancel_event" onclick="window.location='base_target.php'">
 </div>
                     </div>
 				</form>

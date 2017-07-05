@@ -113,9 +113,9 @@
 <input type="hidden" id="billing_count" name="billing_count" value="{$billingCount}">
 					 <div class="form-actions">
 					 			<input name="submit" class="btn btn-gebo submit" value="Submit" type="submit"/>
-									<a href="billing.php">
-									<button type="button" val="billing.php" class="btn Cancel">Cancel</button>
-									</a>
+								<a href="billing.php">
+									<button type="button" val="billing.php" class="btn Cancel cancel_event">Cancel</button>
+								</a>
 				 </div>
 		</form>
                

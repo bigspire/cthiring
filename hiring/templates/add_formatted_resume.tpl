@@ -661,7 +661,9 @@
 					<input type="hidden" id="tab_open_resume" value="{$tab_open_resume}"/>
 					 <div class="form-actions">
 	<input class="btn btn-gebo" type="submit" value="Submit">
-	<a href="{$smarty.const.webroot}resume" class="jsRedirect cancelBtn"><input type="button" value="Cancel" class="btn">
+	<input type="hidden" name="data[Client][webroot]" value="{$smarty.const.webroot}resume" id="webroot">
+	<a href="javascript:void(0)" class="jsRedirect cancel_event cancelBtn">
+	<input type="button" value="Cancel" class="btn">
 	</a>
 	
 	</div>

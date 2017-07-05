@@ -59,7 +59,7 @@
 </div>
 <div class="form-actions">
 				<input name="submit" class="btn btn-gebo" value="Submit" type="submit"/>
-				<a href="incentive.php"><button type="button" class="btn">Cancel</button></a>
+				<a href="incentive.php"><button type="button" class="btn cancel_event">Cancel</button></a>
 </div>
                     </div>
 				</form>
