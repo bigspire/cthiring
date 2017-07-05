@@ -124,6 +124,19 @@ $(document).ready(function() {
 	});
 	
 	
+	/* function to switch the view resume tabs */
+	$('.restabChange').click(function(){ 
+		show_div = $(this).attr('rel');
+		if(show_div == 'interview'){
+			$('.allCol').hide();
+			$('.'+show_div).show();
+		}else{
+			$('.allRow').hide();
+			$('.'+show_div+'Row').show();
+			$('.allCol').hide();
+			$('.'+show_div).show();
+		}
+	});
 	
 	/* function to switch the tabs 
 	$('.tabChange').click(function(){	
@@ -191,21 +204,39 @@ $(document).ready(function() {
 			$('.cvTable').show();
 		}
 		
-		
 	});
+	
 	*/
+		
+	
 	
 	/* function to switch the tabs */
 	$('.tabChange').click(function(){	
-		show_div = $(this).attr('rel');
+		show_div = $(this).attr('rel');		
 		switch(show_div){
-			case 'all':
-			$('.cv_row').show();
+			case 'upload_row':
+			$('.upload_row').show();
+			$('.sent_row').hide();
 			$('.status_row').hide();
+			$('.overall_status_row').hide();
 			break;	
-			case 'other_cv':
-			$('.cv_row').hide();
-			$('.status_row').show();
+			case 'sent_row':
+			$('.upload_row').hide();
+			$('.sent_row').show();
+			$('.status_row').hide();
+			$('.overall_status_row').hide();
+			break;
+			case 'status_row':
+			$('.upload_row').hide();
+			$('.sent_row').hide();
+			$('.status_row').show();	
+			$('.overall_status_row').hide();
+			break;	
+			case 'overall_status_row':
+			$('.upload_row').hide();
+			$('.sent_row').hide();
+			$('.status_row').hide();
+			$('.overall_status_row').show();			
 			break;			
 		}			
 		
@@ -947,7 +978,7 @@ $(document).ready(function() {
 	}
 	
 	/* function to switch the view resume tabs */
-	if($('.restabChange').length > 0){
+	// if($('.restabChange').length > 0){
 		$('.restabChange').click(function(){ 
 			if($(this).attr('val') == '1'){
 				show_div = $(this).attr('rel');
@@ -962,7 +993,7 @@ $(document).ready(function() {
 				}
 			}
 		});
-	}
+	// }
 	
 	/* function to close the tip 
 	$('#piechart').on('click',function(){

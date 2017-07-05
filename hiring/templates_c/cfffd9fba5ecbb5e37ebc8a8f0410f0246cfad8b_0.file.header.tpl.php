@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-07-02 20:58:59
+/* Smarty version 3.1.29, created on 2017-07-03 20:31:24
   from "F:\xampp\htdocs\ctsvn\cthiring\hiring\templates\include\header.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5959113b70f617_36873464',
+  'unifunc' => 'content_595a5c44361635_54389610',
   'file_dependency' => 
   array (
     'cfffd9fba5ecbb5e37ebc8a8f0410f0246cfad8b' => 
     array (
       0 => 'F:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\templates\\include\\header.tpl',
-      1 => 1499008692,
+      1 => 1499093811,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_5959113b70f617_36873464 ($_smarty_tpl) {
+function content_595a5c44361635_54389610 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -51,7 +51,10 @@ function content_5959113b70f617_36873464 ($_smarty_tpl) {
 			<link rel="stylesheet" href="css/gritter/jquery.gritter.css">
 			<!-- smoke_js -->
             <link rel="stylesheet" href="css/smoke.css" />
-						<!-- colorbox -->
+			 <!-- splashy icons -->
+            <link rel="stylesheet" href="img/splashy/splashy.css"  />
+
+			<!-- colorbox -->
 	<link rel="stylesheet" href="css/colorbox/colorbox.css">
 	<link rel="stylesheet" href="lib_cthiring/chosen/chosen.css" type="text/css">
 		<link rel="stylesheet" href="lib_cthiring/multisel/multi-select.css" type="text/css">

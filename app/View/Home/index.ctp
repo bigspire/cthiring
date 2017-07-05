@@ -29,7 +29,8 @@
 										<button rel="<?php echo $this->webroot;?>home/index/ac_view/" class="dash_view btn <?php echo $ac_dash;?>">Account Holder View</button>
 										<button rel="<?php echo $this->webroot;?>home/index/rec_view/" class="dash_view btn <?php echo $rec_dash;?>">Recruiter View</button>
 									
-									<?php elseif($this->Session->read('USER.Login.roles_id') == '33' || $this->Session->read('USER.Login.roles_id') == '35'  || $this->Session->read('USER.Login.roles_id') == '26'): ?>
+									<?php elseif($this->Session->read('USER.Login.roles_id') == '33' || $this->Session->read('USER.Login.roles_id') == '35'  || $this->Session->read('USER.Login.roles_id') == '26'
+									 || $this->Session->read('USER.Login.roles_id') == '39'): ?>
 									<button rel="<?php echo $this->webroot;?>home/index/bd_view/" class="dash_view btn <?php echo $bd_dash;?>">Biz. Developer View</button>
 									<button rel="<?php echo $this->webroot;?>home/index/rec_view/" class="dash_view btn <?php echo $rec_dash;?>">Recruiter View</button>
 									<button rel="<?php echo $this->webroot;?>home/index/ac_view/" class="dash_view btn <?php echo $ac_dash;?>">Account Holder View</button>

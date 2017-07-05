@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-07-03 06:01:26
+/* Smarty version 3.1.29, created on 2017-07-03 22:40:50
   from "F:\xampp\htdocs\ctsvn\cthiring\hiring\templates\edit_resume.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5959905eade1c6_95511981',
+  'unifunc' => 'content_595a7a9a70fe15_68193243',
   'file_dependency' => 
   array (
     '44c9d2d22eda32a826461f6ec3c4193b298c14a1' => 
     array (
       0 => 'F:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\templates\\edit_resume.tpl',
-      1 => 1499040408,
+      1 => 1499093811,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5959905eade1c6_95511981 ($_smarty_tpl) {
+function content_595a7a9a70fe15_68193243 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'F:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -62,10 +62,10 @@ resume">Resumes</a>
 									<div class="tabbable">
 										<div class="heading">
 										<ul class="nav nav-tabs">
-										<li class="personal"><a class="resaddtabChange" rel="personal"  href="#mbox_Personal" data-toggle="tab"><i class="splashy-mail_light_down"></i>  Personal </a></li>
-										<li class="education"><a class="resaddtabChange" rel="education"  href="#mbox_Education" data-toggle="tab"><i class="splashy-mail_light_down"></i>  Education </a></li>
-										<li class="exp"><a class="resaddtabChange" rel="exp"  href="#mbox_Experience" data-toggle="tab"><i class="splashy-mail_light_down"></i> Experience </a></li>
-										<li class="assess"><a class="resaddtabChange" rel="assess"  href="#mbox_Consultant" data-toggle="tab"><i class="splashy-mail_light_down"></i> Consultant Assessment </a></li>
+										<li class="personal"><a class="resaddtabChange" rel="personal"  href="#mbox_Personal" data-toggle="tab"><i class="splashy-contact_blue"></i>  Personal </a></li>
+										<li class="education"><a class="resaddtabChange" rel="education"  href="#mbox_Education" data-toggle="tab"><i class="splashy-document_letter_add"></i>  Education </a></li>
+										<li class="exp"><a class="resaddtabChange" rel="exp"  href="#mbox_Experience" data-toggle="tab"><i class="splashy-folder_classic_stuffed_add"></i> Experience </a></li>
+										<li class="assess"><a class="resaddtabChange" rel="assess"  href="#mbox_Consultant" data-toggle="tab"><i class="splashy-contact_grey_edit"></i> Consultant Assessment </a></li>
 									</ul>
 										</div>
 <div class="tab-content" style="overflow:visible">
@@ -77,9 +77,8 @@ resume">Resumes</a>
 									<tr class="tbl_row">
 										<td width="120" class="tbl_column">Position For <span class="f_req">*</span></td>
 										<td>
-										<input type="text" tabindex="3" value="<?php echo $_smarty_tpl->tpl_vars['position_for']->value;?>
- ( <?php echo $_smarty_tpl->tpl_vars['client_name']->value;?>
- )" class="span8" disabled>
+										<input type="text" tabindex="3" name="position" value="<?php echo $_smarty_tpl->tpl_vars['position']->value;?>
+" class="span8" disabled>
 										</td>
 									</tr>
 									
@@ -518,7 +517,7 @@ echo $_POST['consultant'];
 									<tr class="">
 										<td width="120" class="tbl_column">Interview Availability </td>
 										<td>
-<textarea placeholder="" name="interview_availability" tabindex="2" id="interview_availability" cols="10" rows="3" class="span10"><?php if ($_smarty_tpl->tpl_vars['interview_availability']->value) {
+<textarea placeholder="" name="interview_availability" tabindex="2"  cols="10" rows="3" class="span10"><?php if ($_smarty_tpl->tpl_vars['interview_availability']->value) {
 echo $_smarty_tpl->tpl_vars['interview_availability']->value;
 } else {
 echo $_POST['interview_availability'];

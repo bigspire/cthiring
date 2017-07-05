@@ -62,7 +62,12 @@
                                                 <li><a href="<?php echo $this->webroot;?>client/">Search Client <!--span class="label-bub label-info white">1</span--></a></li>
 												 <?php endif; ?>
 												  <?php if($approve_client == '1'):?>
-                                                <li><a href="<?php echo $this->webroot;?>client/index/pending/">Approve Client <!--span class="label-bub label-info white">1</span--></a></li>
+                                                <li><a href="<?php echo $this->webroot;?>client/index/pending/">Approve Client 
+												<?php if($APPR_CLIENT_COUNT):?>
+												<span class="label-bub label-info white"><?php echo $APPR_CLIENT_COUNT;?></span>
+												<?php endif; ?>
+												</a>
+												</li>
 												 <?php endif; ?>
 												<!-- <li><a href="add_client_contact.php">Add Client Contact</a></li>-->
 												<!--  <li><a href="client_contact.php">Search Client Contact</a></li>-->

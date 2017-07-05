@@ -348,9 +348,9 @@ class ResumeController extends AppController {
 		'ResLocation.location', 'present_ctc','expected_ctc', 'Creator.first_name','created_date','notice_period',
 		'Resume.modified_date','ReqResume.stage_title','ReqResume.status_title','Designation.designation','present_ctc_type','expected_ctc_type',
 		'gender','marital_status','family','present_location','native_location', 'dob','consultant_assess','interview_avail','ResDoc.resume');
-		$data = $this->Resume->find('all', array('fields' => $fields,'conditions' => array('Resume.id' => $id),
+		$data2 = $this->Resume->find('all', array('fields' => $fields,'conditions' => array('Resume.id' => $id),
 		'order' => array('ReqResume.id' => 'desc'),'joins' => $options));
-		$this->set('resume_data', $data[0]);		
+		$this->set('resume_data', $data2[0]);		
 		// get resume education details
 		$this->loadModel('ResEdu');
 		$data = $this->ResEdu->find('all', array('conditions' => array('resume_id' => $id), 'fields' => array('percent_mark','year_passing','college',
@@ -365,28 +365,29 @@ class ResumeController extends AppController {
 		$this->loadModel('ResInterview');		
 		$int_data = $this->ResInterview->find('all', array('fields' => array('int_date','stage_title','status_title',
 		'ReqResume.billing_date','ReqResume.bill_ctc','ReqResume.ctc_offer','ReqResume.joined_on','outcome','ReqResume.date_offer'),
-		'conditions' => array('req_resume_id' => $data[0]['ReqResume']['id']), 'order' => array('int_date' => 'desc')));
+		'conditions' => array('req_resume_id' => $data2[0]['ReqResume']['id']), 'order' => array('int_date' => 'desc')));
 		$this->set('int_data', $int_data);
 		// get requirement details
 		$this->loadModel('ReqResume');
 		$options = array(			
 			array('table' => 'clients',
 					'alias' => 'Client',					
-					'type' => 'INNER',
+					'type' => 'LEFT',
 					'conditions' => array('`Client`.`id` = `Position`.`clients_id`')
 			),
 			array('table' => 'client_contact',
 					'alias' => 'ClientContact',					
-					'type' => 'INNER',
+					'type' => 'LEFT',
 					'conditions' => array('`ClientContact.clients_id` = `Client`.`id`',
 					'`Position.client_contact_id` = `ClientContact`.`contact_id`')
 			),
 			array('table' => 'contact',
 					'alias' => 'Contact',					
-					'type' => 'INNER',
+					'type' => 'LEFT',
 					'conditions' => array('`Contact.id` = `ClientContact`.`contact_id`')
 			)
-		);
+		);	
+		
 		
 		$data = $this->ReqResume->find('all', array('fields' => array('Position.job_title','Client.client_name','Contact.first_name',
 		'Contact.email','Contact.mobile','Contact.phone','Position.id'), 'conditions' => array('ReqResume.resume_id' => $id),

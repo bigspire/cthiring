@@ -45,6 +45,7 @@ class AppController extends Controller {
 			if(!$this->request->is('ajax')){
 				// $this->check_sync_time();
 				$this->get_unread_count();
+				$this->get_approve_client_count();
 			}
 
 		}
@@ -87,6 +88,13 @@ class AppController extends Controller {
 		'group' => array('Read.id')));
 		$this->set('msg_count', $count);
 	}
+			
+	/* get unread count for the approve client */
+	public function get_approve_client_count(){
+		$this->loadModel('Client');
+		$count = $this->Client->find('count', array('conditions' => array('Client.status' => '2','Client.is_approve' => 'W'),	'group' => array('Client.id')));
+		$this->set('APPR_CLIENT_COUNT', $count);
+	}		
 			
 	/* function to check the users session */
 	public function check_session(){

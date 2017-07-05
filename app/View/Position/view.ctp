@@ -28,8 +28,11 @@
                     </nav>
 					
 					<div class="srch_buttons">
-							<a rel="tooltip" title="Edit the Position Info." href="<?php echo $this->webroot;?>position/edit/<?php echo $this->request->params['pass'][0];?>" class="sepV_a" title="Edit Position">
-					<input value="Edit" type="button" class="btn btn-info"></a>
+				<?php if($this->Session->read('USER.Login.id') == $position_data['Position']['created_by']):?>	
+				<a rel="tooltip" title="Edit the Position Info." href="<?php echo $this->webroot;?>position/edit/<?php echo $this->request->params['pass'][0];?>" class="sepV_a" title="Edit Position">
+				<input value="Edit" type="button" class="btn btn-info"></a>
+				<?php endif; ?>	
+					
 					<!--<a href="#"  class="sepV_a" title="Delete Position">
 					<input value="Delete" type="button" class="btn btn-danger"/></a>-->
 					
@@ -226,35 +229,7 @@
 							</table>
 							</div>
 							</div>
-										
-                  <!--div class="tab-pane" id="mbox_co-ordination">
-										
-						<div class="span12">
-							<table class="table table-striped table-bordered dataTable" style="margin-bottom:0">
-								
-								<tbody>
-								   <tr>
-										
-										<td  class="tbl_column"width="120">Profile Sourcing </td>
-										<td>Bhargavi</td>
-											
-									</tr>
-									<tr>
-										
-										<td  class="tbl_column"width="120">Client Coordination</td>
-										<td>Bhargavi</td>
-											
-									</tr>
-									<tr>
-										
-										<td  class="tbl_column"width="120">Candidate Coordination </td>
-										<td>Lavanya Venkateshappa</td>
-											
-									</tr>
-								</tbody>
-							</table>
-							</div>
-							</div-->
+				
                       </div>
 					  
 					  
@@ -275,7 +250,7 @@
 					
 				
 							<br>	
-							<div class="dn dataTables_filter srchBox"  id="dt_gal_filter">
+							<!--div class="dn dataTables_filter srchBox"  id="dt_gal_filter">
 							
 					<label style="">Keyword: <input type="text" placeholder="Candidate / Employer" name="data[Resume][keyword]" id = "SearchText" value="" class="input-medium" aria-controls="dt_gal"></label>
 
@@ -419,7 +394,7 @@
 			<input value="Call For Interview" type="button" class="btn btn-gebo"/></a-->
 		
 
-		</div>
+		</div-->
 					
 					
 					
@@ -428,87 +403,89 @@
 							<div class="mbox">
 								<div class="tabbable">
 									<div class="heading">
-										<ul class="nav nav-tabs">
+									
+									<ul class="nav nav-tabs">
+										<?php $sent_count =  $this->Functions->get_req_tab_count_new($resume_data, 'Validation - Account Holder|Validation - Recruiter','cv_sent');?>
+										<?php // $cv_sent =  $this->Functions->get_req_tab_count_new($resume_data, 'CV-Sent', 'cv_sent');?>
+
 										<?php $total = count($resume_data);?>
-										
-										
-										<li class="active"><a href="#mbox_upload" class="tabChange" val="<?php echo $total;?>" rel="all"  data-toggle="tab"><i class="splashy-box_add"></i>  CV Uploaded <?php if($total):?><span class="label label-success"> <?php echo $total;?></span><?php endif; ?></a></li>
+										<li class="active"><a href="#mbox_inbox" class="tabChange" val="<?php echo $total;?>" rel="upload_row"  data-toggle="tab"><i class="splashy-box_add"></i>  CV Uploaded <?php if($total):?><span class="label label-info"> <?php echo $total;?></span><?php endif; ?></a></li>
 
-											<li><a href="#mbox_inbox" class="tabChange" val="<?php echo $total;?>" rel="all"  data-toggle="tab"><i class="splashy-box_okay"></i>  CV Sent <?php if($total):?><span class="label label-success"> <?php echo $total;?></span><?php endif; ?></a></li>
+										<li><a href="#mbox_inbox" class="tabChange" val="<?php echo $cv_sent;?>" rel="sent_row"  data-toggle="tab"><i class="splashy-box_okay"></i>  CV Sent <?php if($sent_count):?><span class="label label-info"> <?php echo $sent_count;?></span><?php endif; ?></a></li>
 									
-											<li class=""><a href="#mbox_inbox" class="tabChange"  rel="other_cv"  data-toggle="tab"><i class="splashy-box_share"></i>  CV Status</a></li>
+										<li><a href="#mbox_inbox" class="tabChange"  rel="status_row"  data-toggle="tab"><i class="splashy-box_share"></i>  CV Status</a></li>
 
-										
+										<li><a href="#mbox_overall" class="tabChange"  rel="overall_status_row"  data-toggle="tab"><i class="splashy-box_new"></i>  Overall Status</a></li>
+
 										</ul>
+										
 									</div>
-									<div class="">
 									
-									<div class="tab-pane active" id="mbox_upload">											
+
+									<div class="tab-pane active" id="mbox_inbox">											
 											
-											<table data-msg_rowlink="a" class="table table_vam mbox_table dTableR cvTable" id="dt_inbox">
+											<table data-msg_rowlink="a" class="table table_vam mbox_table dTableR cvTable dataTable stickyTable" id="dt_inbox">
 												<thead>
-													<tr class="cv_row">
+													<tr class="upload_row">
 														<th width="120">Candidate Name</th>
 														<th  width="100">Mobile</th>
 														<th  width="120">Email</th>
-														<!--th  width="100">Present Company</th>
-														<th  width="120">Present Designation</th-->
 														<th  width="100">Present Location</th>
-														<th  width="80">Present CTC</th>
-														<th  width="80">Expected CTC</th>
-														<th  width="80">Current Status</th>
-														<th  width="90" class="dn reasonCol">Reason</th>
-														<th  width="90"  class="noticePeriod">Notice Period</th>
-														<th  width="90" class="">CV Owner</th>
-														<th  width="110" class="">CV Sent</th>
-														<th  width="90" class="dn joinCol">Offered On</th>
-														<th  width="90" class="dn offerCol">Offered On</th>
-														<th  width="90" class="dn joinCol">Joined On</th>
-														<!--th  width="110" class="">Modified</th-->
+														<th  width="75">Present CTC</th>
+														<th  width="75">Expected CTC</th>
+														<th  width="80"  class="noticePeriod">Notice Period</th>
+														<th  width="140" class="">CV Owner</th>
+														<th  width="90" class="">CV Created</th>
+
 														<th width="150">Action</th>
 													</tr>
 													
+													<tr class="dn sent_row">
+														<th width="120">Candidate Name</th>
+														<th  width="100">Mobile</th>
+														<th  width="120">Email</th>
+														<th  width="100">Present Location</th>
+														<th  width="75">Present CTC</th>
+														<th  width="75">Expected CTC</th>
+														<th  width="80"  class="noticePeriod">Notice Period</th>
+														<th  width="140" class="">CV Owner</th>
+														<th  width="90" class="">CV Created</th>
+														<th width="150">Action</th>
+													</tr>
+													
+													
 														<tr class="dn status_row">
-														<th >Candidate Name</th>
-														<th >&nbsp;</th>
-														<th>&nbsp;</th>
-														<th >&nbsp;</th>
-														<th >&nbsp;</th>
-														<th>&nbsp;</th>
-														<th >&nbsp;</th>
-														<th>&nbsp;</th>
-														<th >&nbsp;</th>
+														<th>Candidate Name</th>
+														<th>Screening Status</th>
+														<th>Interview Status</th>
+														<th>Offer Status</th>
+														<th>Joining Status</th>
+														<th>Billing Status</th>
 													
 													</tr>
+													
+												
 													
 												</thead>
 												<tbody>
 													
+												<?php foreach($resume_data as $resume):	?>
+													
 												
-													 
-													<?php foreach($resume_data as $resume):	?>
-													<tr class="cv_row">
+													
+													<tr class="upload_row">
 														<td>														
 														<a target="_blank" href="<?php echo $this->webroot;?>resume/view/<?php echo $resume['Resume']['id'];?>/"><?php echo ucwords($resume['Resume']['first_name'].' '.$resume['Resume']['last_name']);?></a></td>
 														<td><span><?php echo $this->Functions->get_format_text($resume['Resume']['mobile']);?></span></td>
 														<td><?php echo $this->Functions->get_format_text($resume['Resume']['email_id']);?></td>
-														<!--td><?php echo $resume['Resume']['present_employer'];?></td>
-														<td><?php echo $resume['Designation']['designation'];?></td-->
 														<td><?php echo $resume['ResLoc']['location'];?></td>
 														<td><?php if(!empty($resume['Resume']['present_ctc'])): echo $resume['Resume']['present_ctc'].' L'; endif; ?></td>
 														<td><?php if(!empty($resume['Resume']['present_ctc'])): echo $resume['Resume']['present_ctc'].' L'; endif; ?></td>
-														<td><?php echo $resume['ReqResume']['stage_title'].' / '.$resume['ReqResume']['status_title'];?></td>
-														<td  class="dn reasonCol"><?php echo $resume['Reason']['reason'];?></td>
 														<td  class="noticePeriod"><?php echo $resume['Resume']['notice_period'];?> Days</td>
 														<td><?php echo $resume['Creator']['first_name'];?></td>
 														<td><?php echo $this->Functions->format_date($resume['ReqResume']['created_date']);?></td>
 														
-														<td  class="dn offerCol"><?php echo $this->Functions->format_date($resume['ReqResume']['date_offer']);?></td>
-
-														<td  class="dn joinCol"><?php echo $this->Functions->format_date($resume['ReqResume']['date_offer']);?></td>
-														<td  class="dn joinCol"><?php echo $this->Functions->format_date($resume['ReqResume']['joined_on']);?></td>
 														
-														<!--td><?php echo $this->Functions->format_date($resume['ReqResume']['modified_date']);?></td-->
 														
 															<td class="actionItem">
 														<div class="btn-group" style="margin-left:5px;display:inline-block;">
@@ -530,462 +507,28 @@
 														
 														
 													</tr>
+													
+													
 													<?php endforeach; ?>
 													
-													<?php // foreach($resume_data as $resume):	?>
-													<tr class="dn status_row">
-														<td>														
-														<a target="_blank" href="<?php echo $this->webroot;?>resume/view/<?php echo $resume['Resume']['id'];?>/"><?php echo ucwords($resume['Resume']['first_name'].' '.$resume['Resume']['last_name']);?></a></td>
-														
-													<td>	
-														
-														<div class="span1" style="width:110px;">
-									<div class="btn-group">
-										<button class="btn btn btn-mini">Feedback Awaiting</button>
-										
-										
-									</div>	
-								</div>
-												</td>	
-
-
-<td>	
-														
-															<div class="span1" style="width:110px;">
-									<div class="btn-group">
-										<button class="btn btn btn-mini btn-danger">CV Rejected</button>
-										
-										
-									</div>	
-								</div>
-												</td>
-												
-												<td>&nbsp; </td>
-<td>&nbsp; </td><td>&nbsp; </td><td>&nbsp; </td><td>&nbsp; </td><td>&nbsp; </td><td>&nbsp; </td>
-	
-																		
-														
-													</tr>
-													
-													<tr class="dn status_row">
-														<td>														
-														<a target="_blank" href="<?php echo $this->webroot;?>resume/view/<?php echo $resume['Resume']['id'];?>/"><?php echo ucwords($resume['Resume']['first_name'].' '.$resume['Resume']['last_name']);?></a></td>
-														
-													<td>	
-														
-														<div class="span1" style="width:110px;">
-									<div class="btn-group">
-										<button class="btn btn btn-mini">Feedback Awaiting</button>
-										
-										
-									</div>	
-								</div>
-												</td>	
-
-<td>	
-														
-															<div class="span1" style="width:110px;">
-									<div class="btn-group">
-										<button class="btn btn btn-mini">CV Shortlisted</button>
-										
-										
-									</div>	
-								</div>
-												</td>
-
-
-
-<td>	
-									<div class="span1"  style="width:110px;">
-									<div class="btn-group">
-										<button class="btn  btn-mini btn-success">First Interview </button>
-										<button data-toggle="dropdown" class="btn btn-success btn-mini dropdown-toggle"><span class="caret"></span></button>
-										<ul class="dropdown-menu">
-											<li><a href="#">Second Interview</a></li>
-											<li><a href="#">Final Interview</a></li>
-											<li class="divider"></li>
-											<li><a href="#">Interview Reject</a></li>
-										</ul>
-									</div>	
-								</div>
-												</td>
-<td>&nbsp; </td><td>&nbsp; </td><td>&nbsp; </td><td>&nbsp; </td><td>&nbsp; </td><td>&nbsp; </td>
-													
-													</tr>
-													
-												<tr class="dn status_row">
-														<td>														
-														<a target="_blank" href="<?php echo $this->webroot;?>resume/view/<?php echo $resume['Resume']['id'];?>/"><?php echo ucwords($resume['Resume']['first_name'].' '.$resume['Resume']['last_name']);?></a></td>
-														
-													<td>	
-														
-														<div class="span1" style="width:110px;">
-									<div class="btn-group">
-										<button class="btn btn btn-mini">Feedback Awaiting</button>
-										
-										
-									</div>	
-								</div>
-												</td>	
-
-<td>	
-														
-															<div class="span1" style="width:110px;">
-									<div class="btn-group">
-										<button class="btn btn btn-mini">CV Shortlisted</button>
-										
-										
-									</div>	
-								</div>
-												</td>
-
-
-
-<td>	
-									<div class="span1"  style="width:110px;">
-									<div class="btn-group">
-										<button class="btn  btn-mini">First Interview </button>
-										
-									</div>	
-								</div>
-												</td>
-
-<td>	
-									<div class="span1"  style="width:110px;">
-									<div class="btn-group">
-										<button class="btn  btn-mini">Second Interview </button>
-										
-									</div>	
-								</div>
-												</td>
-
-<td>	
-									<div class="span1"  style="width:110px;">
-									<div class="btn-group">
-										<button class="btn  btn-mini btn-danger">Interview Rejected </button>
-										
-									</div>	
-								</div>
-												</td>
-
-<td>&nbsp; </td>											
-												<td>&nbsp; </td><td>&nbsp; </td><td>&nbsp; </td><td>&nbsp; </td>		
-													</tr>
-													
-												<tr class="dn status_row">
-														<td>														
-														<a target="_blank" href="<?php echo $this->webroot;?>resume/view/<?php echo $resume['Resume']['id'];?>/"><?php echo ucwords($resume['Resume']['first_name'].' '.$resume['Resume']['last_name']);?></a></td>
-														
-													<td>	
-														
-														<div class="span1" style="width:110px;">
-									<div class="btn-group">
-										<button class="btn btn btn-mini">Feedback Awaiting</button>
-										
-										
-									</div>	
-								</div>
-												</td>	
-
-<td>	
-														
-															<div class="span1" style="width:110px;">
-									<div class="btn-group">
-										<button class="btn btn btn-mini">CV Shortlisted</button>
-										
-										
-									</div>	
-								</div>
-												</td>
-
-
-
-<td>	
-									<div class="span1"  style="width:110px;">
-									<div class="btn-group">
-										<button class="btn  btn-mini">First Interview </button>
-										
-									</div>	
-								</div>
-												</td>
-
-<td>	
-									<div class="span1"  style="width:110px;">
-									<div class="btn-group">
-										<button class="btn  btn-mini">Second Interview </button>
-										
-									</div>	
-								</div>
-												</td>
-
-<td>	
-									<div class="span1"  style="width:110px;">
-									<div class="btn-group">
-										<button class="btn  btn-mini">Final Interview </button>
-										
-									</div>	
-								</div></td>
-
-<td>	
-														
-														<div class="span1"  style="width:110px;">
-									<div class="btn-group">
-										<button class="btn btn-success btn-mini">Offer</button>
-										<button data-toggle="dropdown" class="btn btn-success btn-mini dropdown-toggle"><span class="caret"></span></button>
-										<ul class="dropdown-menu">
-											<li><a href="#">Accept</a></li>
-											<li><a href="#">On Hold</a></li>
-											<li class="divider"></li>
-											<li><a href="#">Rejected</a></li>
-										</ul>
-									</div>	
-								</div>
-												</td><td>&nbsp; </td><td>&nbsp; </td><td>&nbsp; </td>
-
-													
-													</tr>
-												
-	<tr class="dn status_row">
-														<td>														
-														<a target="_blank" href="<?php echo $this->webroot;?>resume/view/<?php echo $resume['Resume']['id'];?>/"><?php echo ucwords($resume['Resume']['first_name'].' '.$resume['Resume']['last_name']);?></a></td>
-														
-													<td>	
-														
-														<div class="span1" style="width:110px;">
-									<div class="btn-group">
-										<button class="btn btn btn-mini">Feedback Awaiting</button>
-										
-										
-									</div>	
-								</div>
-												</td>	
-
-<td>	
-														
-															<div class="span1" style="width:110px;">
-									<div class="btn-group">
-										<button class="btn btn btn-mini">CV Shortlisted</button>
-										
-										
-									</div>	
-								</div>
-												</td>
-
-
-
-<td>	
-									<div class="span1"  style="width:110px;">
-									<div class="btn-group">
-										<button class="btn  btn-mini">First Interview </button>
-										
-									</div>	
-								</div>
-												</td>
-
-<td>	
-									<div class="span1"  style="width:110px;">
-									<div class="btn-group">
-										<button class="btn  btn-mini">Second Interview </button>
-										
-									</div>	
-								</div>
-												</td>
-
-<td>	
-									<div class="span1"  style="width:110px;">
-									<div class="btn-group">
-										<button class="btn  btn-mini">Final Interview </button>
-										
-									</div>	
-								</div></td>
-
-<td>	
-														
-														<div class="span1"  style="width:110px;">
-									<div class="btn-group">
-										<button class="btn btn-mini">Offered</button>
-										
-									</div>	
-								</div>
-												</td>
-
-<td>	
-														
-									<div class="span1"  style="width:110px;">
-									<div class="btn-group">
-										<button class="btn btn-success btn-mini">Joining</button>
-										<button data-toggle="dropdown" class="btn btn-success btn-mini dropdown-toggle"><span class="caret"></span></button>
-										<ul class="dropdown-menu">
-											<li><a href="#">Joined</a></li>
-											<li class="divider"></li>
-											<li><a href="#">Not Joined</a></li>
-										</ul>
-									</div>	
-								</div>
-												</td>
-
-<td>&nbsp; </td><td>&nbsp; </td>	<td>&nbsp; </td>
-
-												
-														
-													</tr>
-		<tr class="dn status_row">
-														<td>														
-														<a target="_blank" href="<?php echo $this->webroot;?>resume/view/<?php echo $resume['Resume']['id'];?>/"><?php echo ucwords($resume['Resume']['first_name'].' '.$resume['Resume']['last_name']);?></a></td>
-														
-													<td>	
-														
-														<div class="span1" style="width:110px;">
-									<div class="btn-group">
-										<button class="btn btn btn-mini">Feedback Awaiting</button>
-										
-										
-									</div>	
-								</div>
-												</td>	
-
-<td>	
-														
-															<div class="span1" style="width:110px;">
-									<div class="btn-group">
-										<button class="btn btn btn-mini">CV Shortlisted</button>
-										
-										
-									</div>	
-								</div>
-												</td>
-
-
-
-<td>	
-									<div class="span1"  style="width:110px;">
-									<div class="btn-group">
-										<button class="btn  btn-mini">First Interview </button>
-										
-									</div>	
-								</div>
-												</td>
-
-<td>	
-									<div class="span1"  style="width:110px;">
-									<div class="btn-group">
-										<button class="btn  btn-mini">Second Interview </button>
-										
-									</div>	
-								</div>
-												</td>
-
-<td>	
-									<div class="span1"  style="width:110px;">
-									<div class="btn-group">
-										<button class="btn  btn-mini">Final Interview </button>
-										
-									</div>	
-								</div></td>
-
-<td>	
-														
-														<div class="span1"  style="width:110px;">
-									<div class="btn-group">
-										<button class="btn btn-mini">Offered</button>
-										
-									</div>	
-								</div>
-												</td>
-
-<td>	
-														
-									<div class="span1"  style="width:110px;">
-									<div class="btn-group">
-										<button class="btn btn-warning btn-mini">Joined</button>
-										
-									</div>	
-								</div>
-												</td>
-<td>&nbsp; </td><td>&nbsp; </td>
-													
-													</tr>
-																								
-													<?php // endforeach; ?>
-												
-												
-												</tbody>
-											</table>	
-											
-											<div class="alert alert-login no_record dn">
-								<a class="close" data-dismiss="alert">×</a>
-								<strong>Oops!</strong> No records found!.
-							</div>
-							
-										</div>
-								
-								
-										<div class="tab-pane active" id="mbox_inbox">											
-											
-											<table data-msg_rowlink="a" class="table table_vam mbox_table dTableR cvTable" id="dt_inbox">
-												<thead>
-													<tr class="cv_row">
-														<th width="120">Candidate Name</th>
-														<th  width="100">Mobile</th>
-														<th  width="120">Email</th>
-														<!--th  width="100">Present Company</th>
-														<th  width="120">Present Designation</th-->
-														<th  width="100">Present Location</th>
-														<th  width="80">Present CTC</th>
-														<th  width="80">Expected CTC</th>
-														<th  width="80">Current Status</th>
-														<th  width="90" class="dn reasonCol">Reason</th>
-														<th  width="90"  class="noticePeriod">Notice Period</th>
-														<th  width="90" class="">CV Owner</th>
-														<th  width="110" class="">CV Sent</th>
-														<th  width="90" class="dn joinCol">Offered On</th>
-														<th  width="90" class="dn offerCol">Offered On</th>
-														<th  width="90" class="dn joinCol">Joined On</th>
-														<!--th  width="110" class="">Modified</th-->
-														<th width="150">Action</th>
-													</tr>
-													
-														<tr class="dn status_row">
-														<th >Candidate Name</th>
-														<th >&nbsp;</th>
-														<th>&nbsp;</th>
-														<th >&nbsp;</th>
-														<th >&nbsp;</th>
-														<th>&nbsp;</th>
-														<th >&nbsp;</th>
-														<th>&nbsp;</th>
-														<th >&nbsp;</th>
-													
-													</tr>
-													
-												</thead>
-												<tbody>
-													
-												
 													 
 													<?php foreach($resume_data as $resume):	?>
-													<tr class="cv_row">
+					<?php if($resume['ReqResume']['stage_title'] != 'Validation - Recruiter' && $resume['ReqResume']['stage_title'] != 'Validation - Account Holder'):?>
+		
+													
+													<tr class="dn sent_row">
 														<td>														
 														<a target="_blank" href="<?php echo $this->webroot;?>resume/view/<?php echo $resume['Resume']['id'];?>/"><?php echo ucwords($resume['Resume']['first_name'].' '.$resume['Resume']['last_name']);?></a></td>
 														<td><span><?php echo $this->Functions->get_format_text($resume['Resume']['mobile']);?></span></td>
 														<td><?php echo $this->Functions->get_format_text($resume['Resume']['email_id']);?></td>
-														<!--td><?php echo $resume['Resume']['present_employer'];?></td>
-														<td><?php echo $resume['Designation']['designation'];?></td-->
 														<td><?php echo $resume['ResLoc']['location'];?></td>
 														<td><?php if(!empty($resume['Resume']['present_ctc'])): echo $resume['Resume']['present_ctc'].' L'; endif; ?></td>
 														<td><?php if(!empty($resume['Resume']['present_ctc'])): echo $resume['Resume']['present_ctc'].' L'; endif; ?></td>
-														<td><?php echo $resume['ReqResume']['stage_title'].' / '.$resume['ReqResume']['status_title'];?></td>
-														<td  class="dn reasonCol"><?php echo $resume['Reason']['reason'];?></td>
 														<td  class="noticePeriod"><?php echo $resume['Resume']['notice_period'];?> Days</td>
 														<td><?php echo $resume['Creator']['first_name'];?></td>
 														<td><?php echo $this->Functions->format_date($resume['ReqResume']['created_date']);?></td>
 														
-														<td  class="dn offerCol"><?php echo $this->Functions->format_date($resume['ReqResume']['date_offer']);?></td>
-
-														<td  class="dn joinCol"><?php echo $this->Functions->format_date($resume['ReqResume']['date_offer']);?></td>
-														<td  class="dn joinCol"><?php echo $this->Functions->format_date($resume['ReqResume']['joined_on']);?></td>
 														
-														<!--td><?php echo $this->Functions->format_date($resume['ReqResume']['modified_date']);?></td-->
 														
 															<td class="actionItem">
 														<div class="btn-group" style="margin-left:5px;display:inline-block;">
@@ -1007,383 +550,204 @@
 														
 														
 													</tr>
+													<?php endif; ?>
 													<?php endforeach; ?>
 													
-													<?php // foreach($resume_data as $resume):	?>
-													<tr class="dn status_row">
-														<td>														
-														<a target="_blank" href="<?php echo $this->webroot;?>resume/view/<?php echo $resume['Resume']['id'];?>/"><?php echo ucwords($resume['Resume']['first_name'].' '.$resume['Resume']['last_name']);?></a></td>
-														
-													<td>	
-														
-														<div class="span1" style="width:110px;">
-									<div class="btn-group">
-										<button class="btn btn btn-mini">Feedback Awaiting</button>
-										
-										
-									</div>	
-								</div>
-												</td>	
-
-
-<td>	
-														
-															<div class="span1" style="width:110px;">
-									<div class="btn-group">
-										<button class="btn btn btn-mini btn-danger">CV Rejected</button>
-										
-										
-									</div>	
-								</div>
-												</td>
-												
-												<td>&nbsp; </td>
-<td>&nbsp; </td><td>&nbsp; </td><td>&nbsp; </td><td>&nbsp; </td><td>&nbsp; </td><td>&nbsp; </td>
-	
-																		
-														
-													</tr>
 													
+													<?php  foreach($resume_data as $resume):	?>
+													
+								<?php if($resume['ReqResume']['stage_title'] != 'Validation - Recruiter' && $resume['ReqResume']['stage_title'] != 'Validation - Account Holder'):?>
+
 													<tr class="dn status_row">
 														<td>														
 														<a target="_blank" href="<?php echo $this->webroot;?>resume/view/<?php echo $resume['Resume']['id'];?>/"><?php echo ucwords($resume['Resume']['first_name'].' '.$resume['Resume']['last_name']);?></a></td>
 														
-													<td>	
-														
-														<div class="span1" style="width:110px;">
+									
+							<td>	
+												
+							<?php if($resume['ReqResume']['stage_title'] == 'Shortlist' && $resume['ReqResume']['status_title'] == 'CV-Sent'):
+								$action = '1';?>																		
+									<div class="span1"  style="width:110px;">
+					
 									<div class="btn-group">
-										<button class="btn btn btn-mini">Feedback Awaiting</button>
-										
-										
+										<button class="btn btn-info btn-mini"  rel="tooltip" title="CV Feedback Awaiting">FA </button>
+										<button data-toggle="dropdown" class="btn btn-mini btn-info  dropdown-toggle"><span class="caret"></span></button>
+										<ul class="dropdown-menu">
+											<li><a href="#">Shortlist</a></li>
+											<li><a href="#">Reject</a></li>
+										</ul>
 									</div>	
 								</div>
-												</td>	
-
-<td>	
-														
-															<div class="span1" style="width:110px;">
-									<div class="btn-group">
-										<button class="btn btn btn-mini">CV Shortlisted</button>
-										
-										
-									</div>	
+	<?php elseif($resume['ReqResume']['stage_title'] == 'Shortlist' || $resume['ReqResume']['stage_title'] == 'Rejected'):
+							?>
+							
+								<div class="span1" style="width:110px;">
+<div class="btn btn-mini alert alert-danger" rel="tooltip" title="CV Rejected" style="cursor:default;margin-bottom:0px;padding:4px 7px 4px 9px;text-align:center;">
+                <?php echo ucfirst($resume['ReqResume']['status_title']);?>	
+            </div>									
+									
 								</div>
-												</td>
+<?php elseif($resume['ReqResume']['stage_title'] == 'Shortlist' || $resume['ReqResume']['stage_title'] == 'Shortlisted'):
+$action = 1;?>
+								
+								<div class="span1" style="width:110px;">
+<div class="btn btn-mini alert alert-success" rel="tooltip" title="CV Shortlisted" style="cursor:default;margin-bottom:0px;padding:4px 7px 4px 9px;text-align:center;">
+                <?php echo ucfirst($resume['ReqResume']['status_title']);?>	
+            </div>									
+									
+								</div>
+							<?php endif; ?>
+								</td>	
+								
+								
 
-
-
-<td>	
+							<td>	
+												
+							<?php if(strstr($resume['ReqResume']['stage_title'], 'Interview') && $action != '1'): 
+							$action = '1';?>																		
 									<div class="span1"  style="width:110px;">
 									<div class="btn-group">
-										<button class="btn  btn-mini btn-success">First Interview </button>
-										<button data-toggle="dropdown" class="btn btn-success btn-mini dropdown-toggle"><span class="caret"></span></button>
+										<button class="btn  btn-mini btn-warning" rel="tooltip" title="Interview Awaiting">IA </button>
+										<button data-toggle="dropdown" class="btn btn-warning btn-mini dropdown-toggle"><span class="caret"></span></button>
 										<ul class="dropdown-menu">
-											<li><a href="#">Second Interview</a></li>
-											<li><a href="#">Final Interview</a></li>
-											<li class="divider"></li>
+											<li><a href="#">Interview Schedule</a></li>
 											<li><a href="#">Interview Reject</a></li>
 										</ul>
 									</div>	
 								</div>
-												</td>
-<td>&nbsp; </td><td>&nbsp; </td><td>&nbsp; </td><td>&nbsp; </td><td>&nbsp; </td><td>&nbsp; </td>
-													
-													</tr>
-													
-												<tr class="dn status_row">
-														<td>														
-														<a target="_blank" href="<?php echo $this->webroot;?>resume/view/<?php echo $resume['Resume']['id'];?>/"><?php echo ucwords($resume['Resume']['first_name'].' '.$resume['Resume']['last_name']);?></a></td>
-														
-													<td>	
-														
-														<div class="span1" style="width:110px;">
-									<div class="btn-group">
-										<button class="btn btn btn-mini">Feedback Awaiting</button>
-										
-										
-									</div>	
+<?php elseif(strstr($resume['ReqResume']['stage_title'], 'Interview') && $resume['ReqResume']['status_title'] == 'Selected'
+ && $action != '1'):?>
+							<div class="span1" style="width:110px;">
+										<div class="span1" style="width:110px;">
+<div class="btn btn-mini alert alert-success" rel="tooltip" title="Interview Selected" style="cursor:default;margin-bottom:0px;padding:4px 7px 4px 9px;text-align:center;">
+                <?php echo ucfirst($resume['ReqResume']['status_title']);?>	
+            </div>									
+									
 								</div>
-												</td>	
-
-<td>	
-														
-															<div class="span1" style="width:110px;">
-									<div class="btn-group">
-										<button class="btn btn btn-mini">CV Shortlisted</button>
-										
-										
-									</div>	
 								</div>
-												</td>
-
-
-
-<td>	
+<?php elseif(strstr($resume['ReqResume']['stage_title'], 'Interview') && $resume['ReqResume']['status_title'] == 'Rejected'	 && $action != '1'):
+							$action = 1;?>
+							
+								<div class="span1" style="width:110px;">
+<div class="btn btn-mini alert alert-danger" rel="tooltip" title="Interview Rejected" style="cursor:default;margin-bottom:0px;padding:4px 7px 4px 9px;text-align:center;">
+                <?php echo ucfirst($resume['ReqResume']['status_title']);?>	
+            </div>									
+									
+								</div>
+			
+							<?php endif; ?>
+								</td>	
+								
+								<td>	
+												
+		<?php if($resume['ReqResume']['stage_title'] == 'Offer'  && $resume['ReqResume']['status_title'] == 'Offer Pending') :
+							$action = '1';?>																		
 									<div class="span1"  style="width:110px;">
 									<div class="btn-group">
-										<button class="btn  btn-mini">First Interview </button>
-										
-									</div>	
-								</div>
-												</td>
-
-<td>	
-									<div class="span1"  style="width:110px;">
-									<div class="btn-group">
-										<button class="btn  btn-mini">Second Interview </button>
-										
-									</div>	
-								</div>
-												</td>
-
-<td>	
-									<div class="span1"  style="width:110px;">
-									<div class="btn-group">
-										<button class="btn  btn-mini btn-danger">Interview Rejected </button>
-										
-									</div>	
-								</div>
-												</td>
-
-<td>&nbsp; </td>											
-												<td>&nbsp; </td><td>&nbsp; </td><td>&nbsp; </td><td>&nbsp; </td>		
-													</tr>
-													
-												<tr class="dn status_row">
-														<td>														
-														<a target="_blank" href="<?php echo $this->webroot;?>resume/view/<?php echo $resume['Resume']['id'];?>/"><?php echo ucwords($resume['Resume']['first_name'].' '.$resume['Resume']['last_name']);?></a></td>
-														
-													<td>	
-														
-														<div class="span1" style="width:110px;">
-									<div class="btn-group">
-										<button class="btn btn btn-mini">Feedback Awaiting</button>
-										
-										
-									</div>	
-								</div>
-												</td>	
-
-<td>	
-														
-															<div class="span1" style="width:110px;">
-									<div class="btn-group">
-										<button class="btn btn btn-mini">CV Shortlisted</button>
-										
-										
-									</div>	
-								</div>
-												</td>
-
-
-
-<td>	
-									<div class="span1"  style="width:110px;">
-									<div class="btn-group">
-										<button class="btn  btn-mini">First Interview </button>
-										
-									</div>	
-								</div>
-												</td>
-
-<td>	
-									<div class="span1"  style="width:110px;">
-									<div class="btn-group">
-										<button class="btn  btn-mini">Second Interview </button>
-										
-									</div>	
-								</div>
-												</td>
-
-<td>	
-									<div class="span1"  style="width:110px;">
-									<div class="btn-group">
-										<button class="btn  btn-mini">Final Interview </button>
-										
-									</div>	
-								</div></td>
-
-<td>	
-														
-														<div class="span1"  style="width:110px;">
-									<div class="btn-group">
-										<button class="btn btn-success btn-mini">Offer</button>
-										<button data-toggle="dropdown" class="btn btn-success btn-mini dropdown-toggle"><span class="caret"></span></button>
+										<button class="btn  btn-mini btn-warning" title="Offer Pending" rel="tooltip">OP </button>
+										<button data-toggle="dropdown" class="btn btn-warning btn-mini dropdown-toggle"><span class="caret"></span></button>
 										<ul class="dropdown-menu">
-											<li><a href="#">Accept</a></li>
-											<li><a href="#">On Hold</a></li>
-											<li class="divider"></li>
-											<li><a href="#">Rejected</a></li>
+											<li><a href="#">Shortlist</a></li>
+											<li><a href="#">Decline</a></li>
 										</ul>
 									</div>	
 								</div>
-												</td><td>&nbsp; </td><td>&nbsp; </td><td>&nbsp; </td>
-
-													
-													</tr>
+								
+	<?php elseif($resume['ReqResume']['stage_title'] == 'Offer' || $resume['ReqResume']['stage_title'] == 'Rejected'):
+							?>
+							
+								<div class="span1" style="width:110px;">
+<div class="btn btn-mini alert alert-danger" rel="tooltip" title="Offer Declined" style="cursor:default;margin-bottom:0px;padding:4px 7px 4px 9px;text-align:center;">
+                <?php echo ucfirst($resume['ReqResume']['status_title']);?>	
+            </div>									
+									
+								</div>
+<?php elseif($resume['ReqResume']['stage_title'] == 'Offer' || $resume['ReqResume']['stage_title'] == 'Offer Accepted'):
+$action = 1;?>
+								
+								<div class="span1" style="width:110px;">
+<div class="btn btn-mini alert alert-success" rel="tooltip" title="Offer Accepted" style="cursor:default;margin-bottom:0px;padding:4px 7px 4px 9px;text-align:center;">
+                <?php echo ucfirst($resume['ReqResume']['status_title']);?>	
+            </div>									
+									
+								</div>	
+								
+							<?php endif; ?>
+								</td>
+								
+								<td>	
 												
-	<tr class="dn status_row">
-														<td>														
-														<a target="_blank" href="<?php echo $this->webroot;?>resume/view/<?php echo $resume['Resume']['id'];?>/"><?php echo ucwords($resume['Resume']['first_name'].' '.$resume['Resume']['last_name']);?></a></td>
-														
-													<td>	
-														
-														<div class="span1" style="width:110px;">
-									<div class="btn-group">
-										<button class="btn btn btn-mini">Feedback Awaiting</button>
-										
-										
-									</div>	
-								</div>
-												</td>	
-
-<td>	
-														
-															<div class="span1" style="width:110px;">
-									<div class="btn-group">
-										<button class="btn btn btn-mini">CV Shortlisted</button>
-										
-										
-									</div>	
-								</div>
-												</td>
-
-
-
-<td>	
+	<?php if($resume['ReqResume']['stage_title'] == 'Offer' && $resume['ReqResume']['status_title'] == 'Offer Accepted'):
+							$action = '1';?>																		
 									<div class="span1"  style="width:110px;">
 									<div class="btn-group">
-										<button class="btn  btn-mini">First Interview </button>
-										
-									</div>	
-								</div>
-												</td>
-
-<td>	
-									<div class="span1"  style="width:110px;">
-									<div class="btn-group">
-										<button class="btn  btn-mini">Second Interview </button>
-										
-									</div>	
-								</div>
-												</td>
-
-<td>	
-									<div class="span1"  style="width:110px;">
-									<div class="btn-group">
-										<button class="btn  btn-mini">Final Interview </button>
-										
-									</div>	
-								</div></td>
-
-<td>	
-														
-														<div class="span1"  style="width:110px;">
-									<div class="btn-group">
-										<button class="btn btn-mini">Offered</button>
-										
-									</div>	
-								</div>
-												</td>
-
-<td>	
-														
-									<div class="span1"  style="width:110px;">
-									<div class="btn-group">
-										<button class="btn btn-success btn-mini">Joining</button>
-										<button data-toggle="dropdown" class="btn btn-success btn-mini dropdown-toggle"><span class="caret"></span></button>
+										<button class="btn  btn-mini btn-warning" title="Joining Awaiting" rel="tooltip">JA </button>
+										<button data-toggle="dropdown" class="btn btn-warning btn-mini dropdown-toggle"><span class="caret"></span></button>
 										<ul class="dropdown-menu">
 											<li><a href="#">Joined</a></li>
-											<li class="divider"></li>
 											<li><a href="#">Not Joined</a></li>
+											<li><a href="#">Deferred</a></li>
+
 										</ul>
 									</div>	
 								</div>
-												</td>
-
-<td>&nbsp; </td><td>&nbsp; </td>	<td>&nbsp; </td>
-
+<?php elseif($resume['ReqResume']['stage_title'] == 'Joining' || $resume['ReqResume']['stage_title'] == 'Not Joined'):
+							?>
+							
+								<div class="span1" style="width:110px;">
+<div class="btn btn-mini alert alert-danger" rel="tooltip" title="Candidate Not Joined" style="cursor:default;margin-bottom:0px;padding:4px 7px 4px 9px;text-align:center;">
+                <?php echo ucfirst($resume['ReqResume']['status_title']);?>	
+            </div>									
+									
+								</div>
+<?php elseif($resume['ReqResume']['stage_title'] == 'Joining' || $resume['ReqResume']['stage_title'] == 'Joined'):
+$action = 1;?>
+								
+								<div class="span1" style="width:110px;">
+<div class="btn btn-mini alert alert-success" rel="tooltip" title="Candidate Joined" style="cursor:default;margin-bottom:0px;padding:4px 7px 4px 9px;text-align:center;">
+                <?php echo ucfirst($resume['ReqResume']['status_title']);?>	
+            </div>									
+									
+								</div>	
+								
+							<?php endif; ?>
+								</td>
 												
+									<td>	
+												
+	<?php if($resume['ReqResume']['status_title'] ==  'Joined' && $resume['ReqResume']['bill_ctc'] == '0.00'):
+							$action = '1';?>																		
+									<div class="span1"  style="width:110px;">
+									<div class="btn-group">
+										<button class="btn  btn-mini btn-warning">BA </button>
+										<button data-toggle="dropdown" class="btn btn-warning btn-mini dropdown-toggle"><span class="caret"></span></button>
+										<ul class="dropdown-menu">
+											<li><a href="#">Add Bill</a></li>
+
+										</ul>
+									</div>	
+								</div>
+	
+<?php elseif($resume['ReqResume']['status_title'] == 'Joined'  && $resume['ReqResume']['bill_ctc'] != '0.00'):
+$action = 1;?>
+								
+								<div class="span1" style="width:110px;">
+<div class="btn btn-mini alert alert-success" rel="tooltip" title="Candidate Billed" style="cursor:default;margin-bottom:0px;padding:4px 7px 4px 9px;text-align:center;">
+                Billed
+            </div>									
+									
+								</div>	
+								
+							<?php endif; ?>
+								</td>
+											
+	
+												<?php $action = '';?>						
 														
 													</tr>
-		<tr class="dn status_row">
-														<td>														
-														<a target="_blank" href="<?php echo $this->webroot;?>resume/view/<?php echo $resume['Resume']['id'];?>/"><?php echo ucwords($resume['Resume']['first_name'].' '.$resume['Resume']['last_name']);?></a></td>
-														
-													<td>	
-														
-														<div class="span1" style="width:110px;">
-									<div class="btn-group">
-										<button class="btn btn btn-mini">Feedback Awaiting</button>
-										
-										
-									</div>	
-								</div>
-												</td>	
-
-<td>	
-														
-															<div class="span1" style="width:110px;">
-									<div class="btn-group">
-										<button class="btn btn btn-mini">CV Shortlisted</button>
-										
-										
-									</div>	
-								</div>
-												</td>
-
-
-
-<td>	
-									<div class="span1"  style="width:110px;">
-									<div class="btn-group">
-										<button class="btn  btn-mini">First Interview </button>
-										
-									</div>	
-								</div>
-												</td>
-
-<td>	
-									<div class="span1"  style="width:110px;">
-									<div class="btn-group">
-										<button class="btn  btn-mini">Second Interview </button>
-										
-									</div>	
-								</div>
-												</td>
-
-<td>	
-									<div class="span1"  style="width:110px;">
-									<div class="btn-group">
-										<button class="btn  btn-mini">Final Interview </button>
-										
-									</div>	
-								</div></td>
-
-<td>	
-														
-														<div class="span1"  style="width:110px;">
-									<div class="btn-group">
-										<button class="btn btn-mini">Offered</button>
-										
-									</div>	
-								</div>
-												</td>
-
-<td>	
-														
-									<div class="span1"  style="width:110px;">
-									<div class="btn-group">
-										<button class="btn btn-warning btn-mini">Joined</button>
-										
-									</div>	
-								</div>
-												</td>
-<td>&nbsp; </td><td>&nbsp; </td>
-													
-													</tr>
-																								
-													<?php // endforeach; ?>
+						<?php endif; ?>
+											
+													<?php  endforeach; ?>
 												
 												
 												</tbody>
@@ -1398,7 +762,17 @@
 								
 									
 									
-									</div>
+									<div class="tab-pane overall_status_row dn" id="mbox_overall">											
+											
+										
+									over all status display
+							
+										</div>
+								
+								
+									
+									
+									
 								</div>
 							</div>
 							

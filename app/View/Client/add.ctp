@@ -80,19 +80,6 @@
 						</tr>
 						 
 
-	<tr class="tbl_row">
-						<td width="120" class="tbl_column">Account Holder <span class="f_req">*</span></td>
-						<td>	
-						
-	<?php echo $this->Form->input('account_holder', array('div'=> false,'type' => 'select', 'label' => false, 
-		'class' => 'span8 chosen-select', 'multiple' => 'multiple', 'empty' => 'Select', 'required' => false, 'placeholder' => '', 
-		'style' => "clear:left", 'options' => $userList, 'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 
-					
-
-					
-						</td>	
-
-				  </tr>	
 				  
 																				
 				</tbody>
@@ -140,20 +127,22 @@
 
 							
 						
+	<tr class="tbl_row">
+						<td width="120" class="tbl_column">Account Holder <span class="f_req">*</span></td>
+						<td>	
+						
+	<?php echo $this->Form->input('account_holder', array('div'=> false,'type' => 'select', 'label' => false, 
+		'class' => 'span8 chosen-select', 'multiple' => 'multiple', 'empty' => 'Select', 'required' => false, 'placeholder' => '', 
+		'style' => "clear:left", 'options' => $userList, 'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 
+					
+
+					
+						</td>	
+
+				  </tr>	
 																	
 				
-				  <tr>
-						<td width="120" class="tbl_column">Status <span class="f_req">*</span></td>
-						<td>	
-						<?php echo $this->Form->input('Client.status', array('div'=> false,'type' => 'select', 'label' => false, 
-		'class' => 'span8', 'empty' => 'Select', 'required' => false, 'placeholder' => '', 
-		'style' => "clear:left", 'options' => $statusList, 'default' => '1', 'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 
-						
-						
-					
-							<!--label for="reg_city" generated="true" class="error">Please select the status </label-->											
-						</td>	
-				  </tr>	
+				
 									
 				</tbody>
 			</table>

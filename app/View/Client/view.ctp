@@ -28,11 +28,13 @@
                         </div>
                     </nav>
 
+						
 					<div class="srch_buttons">
 						<div style="text-align:right;">
+							<?php if($this->Session->read('USER.Login.id') == $client_data['Client']['created_by'] && $client_data['Client']['status'] == '1'):?>
 							<a href="<?php echo $this->webroot;?>client/edit/<?php echo $this->request->params['pass'][0];?>" class="sepV_a" title="Edit Client">
 							<input value="Edit" type="button" class="btn btn-info"></a>
-						
+							<?php endif; ?>
 						</div>
 					</div>	
 						
@@ -141,6 +143,8 @@
 										<td>
 										<?php if($client_data['Client']['status'] == '1'):?>
 										<span class="label label">Inactive</span>
+										<?php elseif($client_data['Client']['status'] == '2'):?>
+										<span title="Awaiting for Approval" rel="tooltip" class="label label-warning">Awaiting Approval</span>
 										<?php else:?>
 										<span class="label label-success">Active</span>
 										<?php endif; ?>
@@ -164,9 +168,10 @@
 								<div class="tabbable">
 									<div class="heading">
 										<ul class="nav nav-tabs">
-											<li class="active"><a href="#mbox_inbox" data-toggle="tab"><i class="splashy-group_blue"></i>  Client Contacts <span class="label label-success"> <?php echo count($contact_data);?></span></a></li>
-											<li class=""><a href="#mbox_inbox2" class="tabChange" data-toggle="tab"><i class="splashy-documents_okay"></i>  Client Requirements <span class="label label-warning"><?php echo count($position_data);?> </span></a></li>											
-
+								<li class="active"><a href="#mbox_inbox" data-toggle="tab"><i class="splashy-group_blue"></i>  Client Contacts <span class="label label-info"> <?php echo count($contact_data);?></span></a></li>											
+										<?php if($client_data['Client']['status'] == '1'):?>
+											<li class=""><a href="#mbox_inbox2" class="tabChange" data-toggle="tab"><i class="splashy-documents_okay"></i>  Client Requirements <span class="label label-info"><?php echo count($position_data);?> </span></a></li>											
+										<?php endif; ?>
 										</ul>
 									</div>
 									<div class="tab-content"  style="overflow:auto;max-height:300px;">
@@ -209,7 +214,7 @@
 												<thead>
 													<tr>
 														<th width="150">Job Title</th>	
-														<th width="50">No. of Openings</th>																
+														<th width="80">No. of Openings</th>																
 														<th width="90" style="text-align:center">CV Sent</th>
 														<th width="120" style="text-align:center">Joined</th>
 														<th width="120">Status</th>
@@ -255,9 +260,20 @@
 						</div>
 					</div>
 					
-					<div class="form-actions">
-									
-									<a  class="jsRedirect goback" val="<?php echo $this->request->referer();?>"  href="javascript:void(0);"><button class="btn">Back</button></a>
+	<div class="form-actions">
+		<?php if($client_data['Client']['is_approve'] == 'W'):?>
+<a class="iframeBox unreadLink" rel="tooltip" title="Approve Client" href="<?php echo $this->webroot;?>client/remark/approve/<?php echo $client_data['Client']['id'];?>" val="40_50"><input type="button" value="Approve" class="btn btn btn-success"/></a>
+<a class="iframeBox unreadLink" rel="tooltip" title="Reject Client" href="<?php echo $this->webroot;?>client/remark/reject/<?php echo $client_data['Client']['id'];?>" val="40_50"><input type="button" value="Reject" class="btn btn btn-danger"/></a>
+<a href="<?php echo $this->webroot;?>client/index/pending/" rel="tooltip" title="Cancel and Back to Clients"  class="jsRedirect"><button class="btn">Cancel</button></a>
+	<?php endif; ?>
+	
+	<?php if($client_data['Client']['is_approve'] == 'W'):?>
+	<a href="<?php echo $this->webroot;?>client/pending/" rel="tooltip" title="Back to Clients"  class="jsRedirect"><button class="btn">Back</button></a>
+	<?php else: ?>
+	<a href="<?php echo $this->webroot;?>client/" rel="tooltip" title="Back to Clients"  class="jsRedirect"><button class="btn">Back</button></a>
+	<?php endif; ?>
+
+						
 					</div>
                   
 				  </div>

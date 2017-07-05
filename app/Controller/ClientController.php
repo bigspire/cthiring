@@ -31,7 +31,7 @@ class ClientController extends AppController {
 	public $components = array('Session', 'Functions', 'Excel');
 
 
-	public function index(){
+	public function index($status){ 
 		if($this->request->is('post')){
 			$url_vars = $this->Functions->create_url(array('keyword','from','to','status'),'Client'); 			
 			$this->redirect('/client/?srch_status=1&'.$url_vars);				
@@ -43,6 +43,13 @@ class ClientController extends AppController {
 			$date_cond = array('or' => array("DATE_FORMAT(Client.created_date, '%Y-%m-%d') between ? and ?" => 
 						array($this->Functions->format_date_save($start), $this->Functions->format_date_save($end))));
 		}
+		
+		// show awaiting approval condition
+		if($status =='pending'){
+			$approveCond = array('Client.status' => '2', 'Client.is_approve' => 'W');
+		}else{
+			$approveCond = array('Client.status' => '0', 'Client.is_approve' => 'A');
+		}		
 			
 		// set keyword condition
 		if($this->params->query['keyword'] != ''){
@@ -118,11 +125,12 @@ class ClientController extends AppController {
 		// for export
 		if($this->request->query['action'] == 'export'){ 
 			$data = $this->Client->find('all', array('fields' => $fields,'conditions' => 
-			array($keyCond,$date_cond,$stCond,$empCond),'order' => array('created_date' => 'desc'), 
+			array($keyCond,$date_cond,$stCond,$empCond,$approveCond),'order' => array('created_date' => 'desc'), 
 			'group' => array('Client.id'), 'joins' => $options));
 			$this->Excel->generate('clients', $data, $data, 'Client Report', 'ClientDetails'.date('ddmmyy'));
 		}
-		$this->paginate = array('fields' => $fields,'limit' => '25','conditions' => array($keyCond,$date_cond,$stCond,$empCond),
+		$this->paginate = array('fields' => $fields,'limit' => '25','conditions' => array($keyCond,$date_cond,$stCond,
+		$empCond,$approveCond),
 		'order' => array('created_date' => 'desc'),	'group' => array('Client.id'), 'joins' => $options);
 		$data = $this->paginate('Client');
 		$this->set('data', $data);
@@ -295,6 +303,7 @@ class ClientController extends AppController {
 			// validates the form
 			$this->request->data['Client']['created_by'] = $this->Session->read('USER.Login.id');
 		    $this->request->data['Client']['created_date'] = $this->Functions->get_current_date();
+			$this->request->data['Client']['status'] = 2;
 			$this->Client->set($this->request->data);
 			// retain the district
 			$this->get_district_list($this->request->data['Client']['state']);
@@ -423,7 +432,7 @@ class ClientController extends AppController {
 		$this->set('stateList', $state_list);
 		// load the account holders
 		$user_list = $this->Client->Creator->find('list',  array('fields' => array('id','first_name'), 
-		'order' => array('first_name ASC'),'conditions' => array('status' => '0', 'roles_id' => '34')));
+		'order' => array('first_name ASC'),'conditions' => array('status' => '0')));
 		$this->set('userList', $user_list);
 		// fetch the contact branch
 		$this->loadModel('ContactBranch');
@@ -485,7 +494,8 @@ class ClientController extends AppController {
 			)
 		);
 		$fields = array('id','client_name','phone','ResLocation.location','address','created_date','Creator.first_name',
-		'address','status','door_no','street_name','area_name','city','modified_date','pincode','State.state','Modifier.first_name');
+		'address','status','door_no','street_name','area_name','city','modified_date','pincode','State.state',
+		'Modifier.first_name','is_approve','Client.created_by');
 		$data = $this->Client->find('all', array('fields' => $fields,'conditions' => array('Client.id' => $id),
 		'joins' => $options));
 		$this->set('client_data', $data[0]);
@@ -522,6 +532,21 @@ class ClientController extends AppController {
 		'order' => array('created_date' => 'desc'),	'group' => array('Position.id')));
 		$this->set('position_data', $data);
 		
+	}
+	
+	public function remark($st, $id){
+		$this->layout = 'framebox';
+		if(!empty($this->request->data)){
+			$status = $st == 'approve' ? '0' : '1';
+			$data = array('id' => $id, 'status' => $status, 'approve_date' => $this->Functions->get_current_date(),
+			'is_approve' => 'A');		
+			if ($this->request->is('post') && $st != '') { 
+				// update the todo
+				if($this->Client->save($data, array('validate' => false))){		
+					$this->set('form_status', '1');
+				}
+			}
+		}
 	}
 	
 	/* auto complete search */	
