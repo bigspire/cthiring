@@ -62,6 +62,8 @@ if(empty($_POST)){
 			throw new Exception('Problem in executing get resume personal');
 		}
 		$row = $mysql->display_result($result);
+		$_SESSION['clients_id'] = $row['clients_id'];
+		$_SESSION['position_for'] = $row['position_for'];
 		$smarty->assign('dob_field', $fun->convert_date_display($row['dob']));
 		$total_exp  = $row['total_exp'];		
 		if($total_exp == '0'){
@@ -845,6 +847,26 @@ try{
  		$requirement[$row['id']] = ucwords($row['job_title']);
 	}
 	$smarty->assign('requirement',$requirement);
+	// free the memory
+	$mysql->clear_result($result);
+	// call the next result
+	$mysql->next_query();
+}catch(Exception $e){
+	echo 'Caught exception: ',  $e->getMessage(), "\n";
+}
+
+// query to fetch client and position details. 
+$query = "CALL get_res_client_details('".$_SESSION['clients_id']."','".$_SESSION['position_for']."')";
+try{
+	// calling mysql exe_query function
+	if(!$result = $mysql->execute_query($query)){
+		throw new Exception('Problem in getting client and position details');
+	}
+	while($row = $mysql->display_result($result))
+	{
+ 		$position = ucwords($row['job_title']).' ( '.($row['client_name']).' )';
+	}
+	$smarty->assign('position',$position);
 	// free the memory
 	$mysql->clear_result($result);
 	// call the next result
