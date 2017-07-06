@@ -57,6 +57,9 @@ end_last_page div
 <span style="font-size: 20px; font-weight: bold">PROFILE SNAPSHOT</span>
 <span style="margin-left:300px;margin-top:10px;font-size:32px;font-weight:bold;">CTHiring</span>
 
+<span style="margin-left:300px;"><img src="<?php echo $img_path;?>"/></span>
+
+
 <br>
 <br>
 <br>

@@ -429,6 +429,7 @@ class ResumeController extends AppController {
 			if(!empty($id)){
 											
 				// convert to PDF
+				$img_path = WWW_ROOT.'/img/career-tree3.png';
 				require_once(WWW_ROOT.'/vendor/html2pdf/vendor/autoload.php');												
 				try{
 					$options = array(			
