@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-07-05 17:22:31
+/* Smarty version 3.1.29, created on 2017-07-05 18:27:34
   from "F:\xampp\htdocs\ctsvn\cthiring\hiring\templates\add_resume.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_595cd2ff479581_31994418',
+  'unifunc' => 'content_595ce23ea9cff1_56685688',
   'file_dependency' => 
   array (
     '0c86b014e44c0947e63f54dd6044281fcbe00859' => 
     array (
       0 => 'F:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\templates\\add_resume.tpl',
-      1 => 1499093811,
+      1 => 1499258372,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_595cd2ff479581_31994418 ($_smarty_tpl) {
+function content_595ce23ea9cff1_56685688 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'F:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -536,8 +536,11 @@ echo 'checked';?>
 "/>
 <div class="form-actions">
 	<input class="btn btn-gebo" type="submit" value="Submit">
-	<a href="<?php echo @constant('webroot');?>
-resume" class="jsRedirect cancelBtn"><input type="button" value="Cancel" class="btn">
+	<input type="hidden" name="data[Client][webroot]" value="<?php echo @constant('webroot');?>
+resume" id="webroot">
+
+	<a href="javascript:void(0)" class="jsRedirect cancelBtn cancel_event">
+	<input type="button" value="Cancel" class="btn">
 	</a>
 	
 </div>
