@@ -63,8 +63,8 @@ if(empty($_POST)){
 			throw new Exception('Problem in executing get resume personal');
 		}
 		$row = $mysql->display_result($result);
-		$_SESSION[clients_id] = $row['clients_id'];
-		$_SESSION[position_for] = $row['position_for'];
+		$_SESSION['clients_id'] = $row['clients_id'];
+		$_SESSION['position_for'] = $row['position_for'];
 		$smarty->assign('dob_field', $fun->convert_date_display($row['dob']));
 		$total_exp  = $row['total_exp'];
 		$total_exp_yrs = explode(".", $total_exp);

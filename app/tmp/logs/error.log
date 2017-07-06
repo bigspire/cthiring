@@ -57197,6 +57197,7 @@ Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
 Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
 [main] - APP\webroot\index.php, line 118
 
+<<<<<<< HEAD
 2017-07-05 18:10:46 Warning: Warning (2): Missing argument 2 for AppModel::get_team_mem(), called in F:\xampp\htdocs\ctsvn\cthiring\app\Model\Resume.php on line 64 and defined in [F:\xampp\htdocs\ctsvn\cthiring\app\Model\AppModel.php, line 35]
 Trace:
 AppModel::get_team_mem() - APP\Model\AppModel.php, line 35
@@ -57224,34 +57225,77 @@ Trace:
 AppModel::get_team_mem() - APP\Model\AppModel.php, line 35
 Resume::get_team() - APP\Model\Resume.php, line 64
 ResumeController::index() - APP\Controller\ResumeController.php, line 74
+=======
+2017-07-06 08:27:44 Warning: Warning (2): in_array() expects parameter 2 to be array, null given in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\AppController.php, line 130]
+Trace:
+in_array - [internal], line ??
+AppController::check_role_access() - APP\Controller\AppController.php, line 130
+ResumeController::beforeFilter() - APP\Controller\ResumeController.php, line 542
+call_user_func - [internal], line ??
+CakeEventManager::dispatch() - CORE\Cake\Event\CakeEventManager.php, line 243
+Controller::startupProcess() - CORE\Cake\Controller\Controller.php, line 676
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 189
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-06 08:27:44 Warning: Warning (2): Missing argument 1 for AppController::check_role_access(), called in C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php on line 1092 and defined in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\AppController.php, line 118]
+Trace:
+AppController::check_role_access() - APP\Controller\AppController.php, line 118
+HomeController::beforeFilter() - APP\Controller\HomeController.php, line 1092
+call_user_func - [internal], line ??
+CakeEventManager::dispatch() - CORE\Cake\Event\CakeEventManager.php, line 243
+Controller::startupProcess() - CORE\Cake\Controller\Controller.php, line 676
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 189
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-06 08:27:44 Warning: Warning (2): Missing argument 1 for HomeController::index() in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 43]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 43
+>>>>>>> 11597f0f7a47b0f073d4e7db32333bb65d50052f
 ReflectionMethod::invokeArgs() - [internal], line ??
 Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
 Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
 Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
 [main] - APP\webroot\index.php, line 118
 
+<<<<<<< HEAD
 2017-07-05 18:28:33 Warning: Warning (2): Missing argument 2 for AppModel::get_team_mem(), called in F:\xampp\htdocs\ctsvn\cthiring\app\Model\Resume.php on line 64 and defined in [F:\xampp\htdocs\ctsvn\cthiring\app\Model\AppModel.php, line 35]
 Trace:
 AppModel::get_team_mem() - APP\Model\AppModel.php, line 35
 Resume::get_team() - APP\Model\Resume.php, line 64
 ResumeController::index() - APP\Controller\ResumeController.php, line 74
+=======
+2017-07-06 08:27:44 Warning: Warning (2): Missing argument 6 for HomeController::get_position_count(), called in C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php on line 243 and defined in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 495]
+Trace:
+HomeController::get_position_count() - APP\Controller\HomeController.php, line 495
+HomeController::index() - APP\Controller\HomeController.php, line 243
+>>>>>>> 11597f0f7a47b0f073d4e7db32333bb65d50052f
 ReflectionMethod::invokeArgs() - [internal], line ??
 Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
 Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
 Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
 [main] - APP\webroot\index.php, line 118
 
+<<<<<<< HEAD
 2017-07-05 18:32:09 Warning: Warning (2): Missing argument 2 for AppModel::get_team_mem(), called in F:\xampp\htdocs\ctsvn\cthiring\app\Model\Resume.php on line 64 and defined in [F:\xampp\htdocs\ctsvn\cthiring\app\Model\AppModel.php, line 35]
 Trace:
 AppModel::get_team_mem() - APP\Model\AppModel.php, line 35
 Resume::get_team() - APP\Model\Resume.php, line 64
 ResumeController::index() - APP\Controller\ResumeController.php, line 74
+=======
+2017-07-06 08:27:45 Warning: Warning (2): Missing argument 6 for HomeController::get_position_count(), called in C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php on line 243 and defined in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 495]
+Trace:
+HomeController::get_position_count() - APP\Controller\HomeController.php, line 495
+HomeController::index() - APP\Controller\HomeController.php, line 243
+>>>>>>> 11597f0f7a47b0f073d4e7db32333bb65d50052f
 ReflectionMethod::invokeArgs() - [internal], line ??
 Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
 Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
 Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
 [main] - APP\webroot\index.php, line 118
 
+<<<<<<< HEAD
 2017-07-05 18:32:26 Warning: Warning (2): Cannot modify header information - headers already sent by (output started at F:\xampp\htdocs\ctsvn\cthiring\app\webroot\vendor\html2pdf\vendor\tecnickcom\tcpdf\include\tcpdf_static.php:350) in [F:\xampp\htdocs\ctsvn\cthiring\app\Controller\AppController.php, line 263]
 Trace:
 header - [internal], line ??
@@ -57416,6 +57460,8 @@ Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
 [main] - APP\webroot\index.php, line 118
 
 2017-07-06 06:20:58 Warning: Warning (2): Missing argument 6 for HomeController::get_position_count(), called in F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php on line 243 and defined in [F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php, line 495]
+=======
+2017-07-06 08:27:45 Warning: Warning (2): Missing argument 6 for HomeController::get_position_count(), called in C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php on line 243 and defined in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 495]
 Trace:
 HomeController::get_position_count() - APP\Controller\HomeController.php, line 495
 HomeController::index() - APP\Controller\HomeController.php, line 243
@@ -57425,7 +57471,52 @@ Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
 Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
 [main] - APP\webroot\index.php, line 118
 
+2017-07-06 08:27:46 Warning: Warning (2): Missing argument 6 for HomeController::get_position_count(), called in C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php on line 243 and defined in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 495]
+Trace:
+HomeController::get_position_count() - APP\Controller\HomeController.php, line 495
+HomeController::index() - APP\Controller\HomeController.php, line 243
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-06 08:27:46 Warning: Warning (2): Missing argument 6 for HomeController::get_position_count(), called in C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php on line 243 and defined in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 495]
+Trace:
+HomeController::get_position_count() - APP\Controller\HomeController.php, line 495
+HomeController::index() - APP\Controller\HomeController.php, line 243
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-06 08:27:47 Warning: Warning (2): Missing argument 6 for HomeController::get_position_count(), called in C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php on line 243 and defined in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 495]
+Trace:
+HomeController::get_position_count() - APP\Controller\HomeController.php, line 495
+HomeController::index() - APP\Controller\HomeController.php, line 243
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-06 08:27:47 Warning: Warning (2): Missing argument 6 for HomeController::get_position_count(), called in C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php on line 243 and defined in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 495]
+>>>>>>> 11597f0f7a47b0f073d4e7db32333bb65d50052f
+Trace:
+HomeController::get_position_count() - APP\Controller\HomeController.php, line 495
+HomeController::index() - APP\Controller\HomeController.php, line 243
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+<<<<<<< HEAD
 2017-07-06 06:21:07 Warning: Warning (2): Missing argument 6 for HomeController::get_position_count(), called in F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php on line 243 and defined in [F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php, line 495]
+=======
+2017-07-06 08:27:48 Warning: Warning (2): Missing argument 6 for HomeController::get_position_count(), called in C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php on line 243 and defined in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 495]
+>>>>>>> 11597f0f7a47b0f073d4e7db32333bb65d50052f
 Trace:
 HomeController::get_position_count() - APP\Controller\HomeController.php, line 495
 HomeController::index() - APP\Controller\HomeController.php, line 243
@@ -57435,7 +57526,11 @@ Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
 Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
 [main] - APP\webroot\index.php, line 118
 
+<<<<<<< HEAD
 2017-07-06 06:21:09 Warning: Warning (2): Missing argument 6 for HomeController::get_position_count(), called in F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php on line 243 and defined in [F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php, line 495]
+=======
+2017-07-06 08:27:48 Warning: Warning (2): Missing argument 6 for HomeController::get_position_count(), called in C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php on line 243 and defined in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 495]
+>>>>>>> 11597f0f7a47b0f073d4e7db32333bb65d50052f
 Trace:
 HomeController::get_position_count() - APP\Controller\HomeController.php, line 495
 HomeController::index() - APP\Controller\HomeController.php, line 243
@@ -57445,7 +57540,11 @@ Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
 Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
 [main] - APP\webroot\index.php, line 118
 
+<<<<<<< HEAD
 2017-07-06 06:21:10 Warning: Warning (2): Missing argument 6 for HomeController::get_position_count(), called in F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php on line 243 and defined in [F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php, line 495]
+=======
+2017-07-06 08:27:49 Warning: Warning (2): Missing argument 6 for HomeController::get_position_count(), called in C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php on line 243 and defined in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 495]
+>>>>>>> 11597f0f7a47b0f073d4e7db32333bb65d50052f
 Trace:
 HomeController::get_position_count() - APP\Controller\HomeController.php, line 495
 HomeController::index() - APP\Controller\HomeController.php, line 243
@@ -57455,67 +57554,308 @@ Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
 Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
 [main] - APP\webroot\index.php, line 118
 
+<<<<<<< HEAD
 2017-07-06 06:21:12 Warning: Warning (2): Missing argument 6 for HomeController::get_position_count(), called in F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php on line 243 and defined in [F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php, line 495]
 Trace:
 HomeController::get_position_count() - APP\Controller\HomeController.php, line 495
 HomeController::index() - APP\Controller\HomeController.php, line 243
+=======
+2017-07-06 08:31:00 Warning: Warning (2): Missing argument 2 for AppModel::get_team_mem(), called in C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\Resume.php on line 64 and defined in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\AppModel.php, line 35]
+Trace:
+AppModel::get_team_mem() - APP\Model\AppModel.php, line 35
+Resume::get_team() - APP\Model\Resume.php, line 64
+ResumeController::index() - APP\Controller\ResumeController.php, line 74
+>>>>>>> 11597f0f7a47b0f073d4e7db32333bb65d50052f
 ReflectionMethod::invokeArgs() - [internal], line ??
 Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
 Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
 Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
 [main] - APP\webroot\index.php, line 118
 
+<<<<<<< HEAD
 2017-07-06 06:21:13 Warning: Warning (2): Missing argument 6 for HomeController::get_position_count(), called in F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php on line 243 and defined in [F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php, line 495]
 Trace:
 HomeController::get_position_count() - APP\Controller\HomeController.php, line 495
 HomeController::index() - APP\Controller\HomeController.php, line 243
+=======
+2017-07-06 09:12:04 Warning: Warning (2): Missing argument 2 for AppModel::get_team_mem(), called in C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\Resume.php on line 64 and defined in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\AppModel.php, line 35]
+Trace:
+AppModel::get_team_mem() - APP\Model\AppModel.php, line 35
+Resume::get_team() - APP\Model\Resume.php, line 64
+ResumeController::index() - APP\Controller\ResumeController.php, line 74
+>>>>>>> 11597f0f7a47b0f073d4e7db32333bb65d50052f
 ReflectionMethod::invokeArgs() - [internal], line ??
 Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
 Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
 Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
 [main] - APP\webroot\index.php, line 118
 
+<<<<<<< HEAD
 2017-07-06 06:21:14 Warning: Warning (2): Missing argument 6 for HomeController::get_position_count(), called in F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php on line 243 and defined in [F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php, line 495]
 Trace:
 HomeController::get_position_count() - APP\Controller\HomeController.php, line 495
 HomeController::index() - APP\Controller\HomeController.php, line 243
+=======
+2017-07-06 09:12:04 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Client.is_approve' in 'where clause'
+Request URL: /2017/ctsvn/cthiring/resume?keyword=
+Stack Trace:
+#0 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('SELECT COUNT(*)...', Array)
+#2 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Model\Datasource\DboSource.php(668): DboSource->execute('SELECT COUNT(*)...', Array, Array)
+#3 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Model\Datasource\DboSource.php(1106): DboSource->fetchAll('SELECT COUNT(*)...', false)
+#4 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Model\Model.php(3022): DboSource->read(Object(Client), Array)
+#5 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Model\Model.php(2994): Model->_readDataSource('count', Array)
+#6 C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\AppController.php(95): Model->find('count', Array)
+#7 C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\AppController.php(48): AppController->get_approve_client_count()
+#8 [internal function]: AppController->beforeRender(Object(CakeEvent))
+#9 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Event\CakeEventManager.php(243): call_user_func(Array, Object(CakeEvent))
+#10 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Controller\Controller.php(933): CakeEventManager->dispatch(Object(CakeEvent))
+#11 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Routing\Dispatcher.php(200): Controller->render()
+#12 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(ResumeController), Object(CakeRequest))
+#13 C:\xampp\htdocs\2017\ctsvn\cthiring\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#14 {main}
+2017-07-06 09:12:04 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /2017/ctsvn/cthiring/css/cake.generic.css
+Stack Trace:
+#0 C:\xampp\htdocs\2017\ctsvn\cthiring\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2017-07-06 09:12:04 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /2017/ctsvn/cthiring/img/cake.power.gif
+Stack Trace:
+#0 C:\xampp\htdocs\2017\ctsvn\cthiring\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2017-07-06 09:12:04 Error: [MissingControllerException] Controller class Favicon.icoController could not be found.
+Exception Attributes: array (
+  'class' => 'Favicon.icoController',
+  'plugin' => NULL,
+)
+Request URL: /2017/ctsvn/cthiring/favicon.ico
+Stack Trace:
+#0 C:\xampp\htdocs\2017\ctsvn\cthiring\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2017-07-06 09:12:07 Warning: Warning (2): Missing argument 2 for AppModel::get_team_mem(), called in C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\Resume.php on line 64 and defined in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\AppModel.php, line 35]
+Trace:
+AppModel::get_team_mem() - APP\Model\AppModel.php, line 35
+Resume::get_team() - APP\Model\Resume.php, line 64
+ResumeController::index() - APP\Controller\ResumeController.php, line 74
+>>>>>>> 11597f0f7a47b0f073d4e7db32333bb65d50052f
 ReflectionMethod::invokeArgs() - [internal], line ??
 Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
 Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
 Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
 [main] - APP\webroot\index.php, line 118
 
+<<<<<<< HEAD
 2017-07-06 06:21:15 Warning: Warning (2): Missing argument 6 for HomeController::get_position_count(), called in F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php on line 243 and defined in [F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php, line 495]
 Trace:
 HomeController::get_position_count() - APP\Controller\HomeController.php, line 495
 HomeController::index() - APP\Controller\HomeController.php, line 243
+=======
+2017-07-06 09:12:07 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Client.is_approve' in 'where clause'
+Request URL: /2017/ctsvn/cthiring/resume?keyword=
+Stack Trace:
+#0 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('SELECT COUNT(*)...', Array)
+#2 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Model\Datasource\DboSource.php(668): DboSource->execute('SELECT COUNT(*)...', Array, Array)
+#3 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Model\Datasource\DboSource.php(1106): DboSource->fetchAll('SELECT COUNT(*)...', false)
+#4 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Model\Model.php(3022): DboSource->read(Object(Client), Array)
+#5 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Model\Model.php(2994): Model->_readDataSource('count', Array)
+#6 C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\AppController.php(95): Model->find('count', Array)
+#7 C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\AppController.php(48): AppController->get_approve_client_count()
+#8 [internal function]: AppController->beforeRender(Object(CakeEvent))
+#9 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Event\CakeEventManager.php(243): call_user_func(Array, Object(CakeEvent))
+#10 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Controller\Controller.php(933): CakeEventManager->dispatch(Object(CakeEvent))
+#11 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Routing\Dispatcher.php(200): Controller->render()
+#12 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(ResumeController), Object(CakeRequest))
+#13 C:\xampp\htdocs\2017\ctsvn\cthiring\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#14 {main}
+2017-07-06 09:12:07 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /2017/ctsvn/cthiring/css/cake.generic.css
+Stack Trace:
+#0 C:\xampp\htdocs\2017\ctsvn\cthiring\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2017-07-06 09:12:07 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /2017/ctsvn/cthiring/img/cake.power.gif
+Stack Trace:
+#0 C:\xampp\htdocs\2017\ctsvn\cthiring\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2017-07-06 09:12:09 Warning: Warning (2): Missing argument 2 for AppModel::get_team_mem(), called in C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\Resume.php on line 64 and defined in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\AppModel.php, line 35]
+Trace:
+AppModel::get_team_mem() - APP\Model\AppModel.php, line 35
+Resume::get_team() - APP\Model\Resume.php, line 64
+ResumeController::index() - APP\Controller\ResumeController.php, line 74
+>>>>>>> 11597f0f7a47b0f073d4e7db32333bb65d50052f
 ReflectionMethod::invokeArgs() - [internal], line ??
 Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
 Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
 Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
 [main] - APP\webroot\index.php, line 118
 
+<<<<<<< HEAD
 2017-07-06 06:21:16 Warning: Warning (2): Missing argument 6 for HomeController::get_position_count(), called in F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php on line 243 and defined in [F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php, line 495]
 Trace:
 HomeController::get_position_count() - APP\Controller\HomeController.php, line 495
 HomeController::index() - APP\Controller\HomeController.php, line 243
+=======
+2017-07-06 09:12:09 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Client.is_approve' in 'where clause'
+Request URL: /2017/ctsvn/cthiring/resume?keyword=
+Stack Trace:
+#0 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('SELECT COUNT(*)...', Array)
+#2 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Model\Datasource\DboSource.php(668): DboSource->execute('SELECT COUNT(*)...', Array, Array)
+#3 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Model\Datasource\DboSource.php(1106): DboSource->fetchAll('SELECT COUNT(*)...', false)
+#4 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Model\Model.php(3022): DboSource->read(Object(Client), Array)
+#5 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Model\Model.php(2994): Model->_readDataSource('count', Array)
+#6 C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\AppController.php(95): Model->find('count', Array)
+#7 C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\AppController.php(48): AppController->get_approve_client_count()
+#8 [internal function]: AppController->beforeRender(Object(CakeEvent))
+#9 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Event\CakeEventManager.php(243): call_user_func(Array, Object(CakeEvent))
+#10 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Controller\Controller.php(933): CakeEventManager->dispatch(Object(CakeEvent))
+#11 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Routing\Dispatcher.php(200): Controller->render()
+#12 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(ResumeController), Object(CakeRequest))
+#13 C:\xampp\htdocs\2017\ctsvn\cthiring\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#14 {main}
+2017-07-06 09:12:09 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /2017/ctsvn/cthiring/css/cake.generic.css
+Stack Trace:
+#0 C:\xampp\htdocs\2017\ctsvn\cthiring\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2017-07-06 09:12:09 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /2017/ctsvn/cthiring/img/cake.power.gif
+Stack Trace:
+#0 C:\xampp\htdocs\2017\ctsvn\cthiring\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2017-07-06 09:12:15 Warning: Warning (2): Missing argument 2 for AppModel::get_team_mem(), called in C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\Resume.php on line 64 and defined in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\AppModel.php, line 35]
+Trace:
+AppModel::get_team_mem() - APP\Model\AppModel.php, line 35
+Resume::get_team() - APP\Model\Resume.php, line 64
+ResumeController::index() - APP\Controller\ResumeController.php, line 74
+>>>>>>> 11597f0f7a47b0f073d4e7db32333bb65d50052f
 ReflectionMethod::invokeArgs() - [internal], line ??
 Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
 Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
 Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
 [main] - APP\webroot\index.php, line 118
 
+<<<<<<< HEAD
 2017-07-06 06:21:17 Warning: Warning (2): Missing argument 6 for HomeController::get_position_count(), called in F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php on line 243 and defined in [F:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php, line 495]
 Trace:
 HomeController::get_position_count() - APP\Controller\HomeController.php, line 495
 HomeController::index() - APP\Controller\HomeController.php, line 243
+=======
+2017-07-06 09:12:15 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Client.is_approve' in 'where clause'
+Request URL: /2017/ctsvn/cthiring/resume/?keyword=
+Stack Trace:
+#0 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('SELECT COUNT(*)...', Array)
+#2 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Model\Datasource\DboSource.php(668): DboSource->execute('SELECT COUNT(*)...', Array, Array)
+#3 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Model\Datasource\DboSource.php(1106): DboSource->fetchAll('SELECT COUNT(*)...', false)
+#4 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Model\Model.php(3022): DboSource->read(Object(Client), Array)
+#5 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Model\Model.php(2994): Model->_readDataSource('count', Array)
+#6 C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\AppController.php(95): Model->find('count', Array)
+#7 C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\AppController.php(48): AppController->get_approve_client_count()
+#8 [internal function]: AppController->beforeRender(Object(CakeEvent))
+#9 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Event\CakeEventManager.php(243): call_user_func(Array, Object(CakeEvent))
+#10 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Controller\Controller.php(933): CakeEventManager->dispatch(Object(CakeEvent))
+#11 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Routing\Dispatcher.php(200): Controller->render()
+#12 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(ResumeController), Object(CakeRequest))
+#13 C:\xampp\htdocs\2017\ctsvn\cthiring\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#14 {main}
+2017-07-06 09:12:15 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /2017/ctsvn/cthiring/css/cake.generic.css
+Stack Trace:
+#0 C:\xampp\htdocs\2017\ctsvn\cthiring\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2017-07-06 09:12:15 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /2017/ctsvn/cthiring/img/cake.power.gif
+Stack Trace:
+#0 C:\xampp\htdocs\2017\ctsvn\cthiring\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2017-07-06 09:12:22 Warning: Warning (2): Missing argument 2 for AppModel::get_team_mem(), called in C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\Resume.php on line 64 and defined in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\AppModel.php, line 35]
+Trace:
+AppModel::get_team_mem() - APP\Model\AppModel.php, line 35
+Resume::get_team() - APP\Model\Resume.php, line 64
+ResumeController::index() - APP\Controller\ResumeController.php, line 74
+>>>>>>> 11597f0f7a47b0f073d4e7db32333bb65d50052f
 ReflectionMethod::invokeArgs() - [internal], line ??
 Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
 Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
 Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
 [main] - APP\webroot\index.php, line 118
 
+<<<<<<< HEAD
 2017-07-06 06:22:06 Warning: Warning (2): Missing argument 2 for AppModel::get_team_mem(), called in F:\xampp\htdocs\ctsvn\cthiring\app\Model\Resume.php on line 64 and defined in [F:\xampp\htdocs\ctsvn\cthiring\app\Model\AppModel.php, line 35]
+=======
+2017-07-06 09:12:22 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Client.is_approve' in 'where clause'
+Request URL: /2017/ctsvn/cthiring/resume/?keyword=
+Stack Trace:
+#0 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('SELECT COUNT(*)...', Array)
+#2 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Model\Datasource\DboSource.php(668): DboSource->execute('SELECT COUNT(*)...', Array, Array)
+#3 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Model\Datasource\DboSource.php(1106): DboSource->fetchAll('SELECT COUNT(*)...', false)
+#4 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Model\Model.php(3022): DboSource->read(Object(Client), Array)
+#5 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Model\Model.php(2994): Model->_readDataSource('count', Array)
+#6 C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\AppController.php(95): Model->find('count', Array)
+#7 C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\AppController.php(48): AppController->get_approve_client_count()
+#8 [internal function]: AppController->beforeRender(Object(CakeEvent))
+#9 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Event\CakeEventManager.php(243): call_user_func(Array, Object(CakeEvent))
+#10 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Controller\Controller.php(933): CakeEventManager->dispatch(Object(CakeEvent))
+#11 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Routing\Dispatcher.php(200): Controller->render()
+#12 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(ResumeController), Object(CakeRequest))
+#13 C:\xampp\htdocs\2017\ctsvn\cthiring\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#14 {main}
+2017-07-06 09:12:22 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /2017/ctsvn/cthiring/img/cake.power.gif
+Stack Trace:
+#0 C:\xampp\htdocs\2017\ctsvn\cthiring\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2017-07-06 09:12:22 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /2017/ctsvn/cthiring/css/cake.generic.css
+Stack Trace:
+#0 C:\xampp\htdocs\2017\ctsvn\cthiring\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2017-07-06 09:12:28 Warning: Warning (2): Missing argument 2 for AppModel::get_team_mem(), called in C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\Resume.php on line 64 and defined in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\AppModel.php, line 35]
+>>>>>>> 11597f0f7a47b0f073d4e7db32333bb65d50052f
 Trace:
 AppModel::get_team_mem() - APP\Model\AppModel.php, line 35
 Resume::get_team() - APP\Model\Resume.php, line 64
@@ -57526,3 +57866,123 @@ Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
 Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
 [main] - APP\webroot\index.php, line 118
 
+<<<<<<< HEAD
+=======
+2017-07-06 09:12:28 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Client.is_approve' in 'where clause'
+Request URL: /2017/ctsvn/cthiring/resume/?keyword=
+Stack Trace:
+#0 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('SELECT COUNT(*)...', Array)
+#2 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Model\Datasource\DboSource.php(668): DboSource->execute('SELECT COUNT(*)...', Array, Array)
+#3 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Model\Datasource\DboSource.php(1106): DboSource->fetchAll('SELECT COUNT(*)...', false)
+#4 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Model\Model.php(3022): DboSource->read(Object(Client), Array)
+#5 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Model\Model.php(2994): Model->_readDataSource('count', Array)
+#6 C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\AppController.php(95): Model->find('count', Array)
+#7 C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\AppController.php(48): AppController->get_approve_client_count()
+#8 [internal function]: AppController->beforeRender(Object(CakeEvent))
+#9 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Event\CakeEventManager.php(243): call_user_func(Array, Object(CakeEvent))
+#10 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Controller\Controller.php(933): CakeEventManager->dispatch(Object(CakeEvent))
+#11 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Routing\Dispatcher.php(200): Controller->render()
+#12 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(ResumeController), Object(CakeRequest))
+#13 C:\xampp\htdocs\2017\ctsvn\cthiring\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#14 {main}
+2017-07-06 09:12:28 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /2017/ctsvn/cthiring/css/cake.generic.css
+Stack Trace:
+#0 C:\xampp\htdocs\2017\ctsvn\cthiring\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2017-07-06 09:12:28 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /2017/ctsvn/cthiring/img/cake.power.gif
+Stack Trace:
+#0 C:\xampp\htdocs\2017\ctsvn\cthiring\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2017-07-06 09:12:33 Warning: Warning (2): Missing argument 1 for ClientController::index() in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\ClientController.php, line 34]
+Trace:
+ClientController::index() - APP\Controller\ClientController.php, line 34
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-06 09:12:33 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Client.is_approve' in 'where clause'
+Request URL: /2017/ctsvn/cthiring/client/
+Stack Trace:
+#0 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('SELECT `Client`...', Array)
+#2 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Model\Datasource\DboSource.php(668): DboSource->execute('SELECT `Client`...', Array, Array)
+#3 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Model\Datasource\DboSource.php(1106): DboSource->fetchAll('SELECT `Client`...', false)
+#4 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Model\Model.php(3022): DboSource->read(Object(Client), Array)
+#5 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Model\Model.php(2994): Model->_readDataSource('all', Array)
+#6 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Controller\Component\PaginatorComponent.php(196): Model->find('all', Array)
+#7 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Controller\Controller.php(1086): PaginatorComponent->paginate('Client', Array, Array)
+#8 C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\ClientController.php(135): Controller->paginate('Client')
+#9 [internal function]: ClientController->index()
+#10 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(ClientController), Array)
+#11 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#12 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(ClientController), Object(CakeRequest))
+#13 C:\xampp\htdocs\2017\ctsvn\cthiring\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#14 {main}
+2017-07-06 09:12:33 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /2017/ctsvn/cthiring/img/cake.power.gif
+Stack Trace:
+#0 C:\xampp\htdocs\2017\ctsvn\cthiring\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2017-07-06 09:12:33 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /2017/ctsvn/cthiring/css/cake.generic.css
+Stack Trace:
+#0 C:\xampp\htdocs\2017\ctsvn\cthiring\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2017-07-06 09:12:36 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Client.is_approve' in 'where clause'
+Request URL: /2017/ctsvn/cthiring/client/add/
+Stack Trace:
+#0 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('SELECT COUNT(*)...', Array)
+#2 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Model\Datasource\DboSource.php(668): DboSource->execute('SELECT COUNT(*)...', Array, Array)
+#3 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Model\Datasource\DboSource.php(1106): DboSource->fetchAll('SELECT COUNT(*)...', false)
+#4 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Model\Model.php(3022): DboSource->read(Object(Client), Array)
+#5 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Model\Model.php(2994): Model->_readDataSource('count', Array)
+#6 C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\AppController.php(95): Model->find('count', Array)
+#7 C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\AppController.php(48): AppController->get_approve_client_count()
+#8 [internal function]: AppController->beforeRender(Object(CakeEvent))
+#9 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Event\CakeEventManager.php(243): call_user_func(Array, Object(CakeEvent))
+#10 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Controller\Controller.php(933): CakeEventManager->dispatch(Object(CakeEvent))
+#11 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Routing\Dispatcher.php(200): Controller->render()
+#12 C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(ClientController), Object(CakeRequest))
+#13 C:\xampp\htdocs\2017\ctsvn\cthiring\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#14 {main}
+2017-07-06 09:12:36 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /2017/ctsvn/cthiring/css/cake.generic.css
+Stack Trace:
+#0 C:\xampp\htdocs\2017\ctsvn\cthiring\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2017-07-06 09:12:36 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /2017/ctsvn/cthiring/img/cake.power.gif
+Stack Trace:
+#0 C:\xampp\htdocs\2017\ctsvn\cthiring\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+>>>>>>> 11597f0f7a47b0f073d4e7db32333bb65d50052f

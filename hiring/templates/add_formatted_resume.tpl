@@ -46,6 +46,13 @@
 			<table class="table table-bordered dataTable" style="margin-bottom:0;">
 						<tbody>
 									<tr class="tbl_row">
+										<td width="120" class="tbl_column">Position For <span class="f_req">*</span></td>
+										<td>
+										<input type="text" tabindex="3" name="position" value="{$position}" class="span8" disabled>
+										</td>
+									</tr>
+									
+									<tr class="tbl_row">
 										<td width="120" class="tbl_column">Candidate Name <span class="f_req">*</span></td>
 										<td>
 										<input type="text" tabindex="1" name="first_name" placeholder="First Name" value="{$first_name}" class="span4">
@@ -83,7 +90,7 @@
 											<label for="reg_city" generated="true" class="error">{$dobErr}</label></td>
 									</tr>	
 
-									<tr>
+									<!--tr>
 										<td width="120" class="tbl_column">Position Applied For <span class="f_req">*</span></td>
 										<td> 
 										<select tabindex="7" name="position_for" class="span8"  id="position_for">
@@ -91,7 +98,7 @@
 										{html_options options=$requirement selected=$position_for}	
 										<label for="reg_city" generated="true" class="error">{$position_forErr}</label>																					
 										</td>
-									</tr>
+									</tr-->
 																		
 									<tr class="tbl_row">
 										<td width="125" class="tbl_column">Current Designation <span class="f_req">*</span></td>
