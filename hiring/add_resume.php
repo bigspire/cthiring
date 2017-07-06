@@ -270,7 +270,7 @@ if(!empty($_POST)){
 
 		// query to add position for details
 		$query = "CALL add_req_resume_position('".$created_by."','".$date."',
-			'".$mysql->real_escape_str($_SESSION['position_for'])."','".$resume_id."')";
+			'".$mysql->real_escape_str($_SESSION['position_for'])."','".$resume_id."','Validation - Account Holder','Pending')";
 		try{
 			if(!$result = $mysql->execute_query($query)){
 				throw new Exception('Problem in adding position details');
