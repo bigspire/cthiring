@@ -90,8 +90,13 @@
 </div>
 </div>
 <div class="form-actions">
+<<<<<<< HEAD
+				<input class="btn btn-gebo" type="submit" value="Submit">
+				<a href="roles.php" class="cancelBtn"><input type="button" value="Cancel" class="btn"></a>
+=======
 				<button class="btn btn-gebo" type="submit">Submit</button>
 				<input type="button" value="Cancel" class="btn cancel_event" onclick="window.location='roles.php'">
+>>>>>>> b2cfd8db470872ff260f012d203ae614995be585
 </div>
                     </div>
 				</form>

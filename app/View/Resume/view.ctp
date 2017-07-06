@@ -27,9 +27,14 @@
                         </div>
                     </nav>
 					<div class="srch_buttons">
+					
+					<?php if($this->Session->read('USER.Login.id') == $resume_data['Resume']['created_by']):?>	
+
 							<a href="<?php echo $this->webroot;?>hiring/edit_resume.php?id=<?php echo $this->request->params['pass'][0];?>"  class="sepV_a" title="Edit">
 								<input value="Edit" type="button" class="btn btn-info"/>
-							</a>				
+							</a>
+					<?php endif; ?>	
+							
 							</div>
 
 							

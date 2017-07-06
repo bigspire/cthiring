@@ -113,6 +113,19 @@ class FunctionsHelper extends AppHelper {
 		
 	}
 	
+	/* function to get the req. tab counts */
+	public function get_req_tab_count_new($data, $str, $field){
+		$split_str2 = explode('|', $str);
+		foreach($data as $record){			
+			if($field == 'cv_sent'){
+				if($record['ReqResume']['stage_title'] != $split_str2[0] && $record['ReqResume']['stage_title'] != $split_str2[1]){
+					$count++;
+					}
+				}			
+		}
+		return $count;
+	}
+	
 	
 	/* function to get the req. tab counts */
 	public function get_req_tab_count($data, $str, $type, $field){

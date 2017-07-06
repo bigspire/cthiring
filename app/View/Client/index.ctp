@@ -29,10 +29,18 @@
                     </nav>
 
 						<div class="srch_buttons">
+							<?php if($this->request->params['pass'][0] != 'pending'):?>
 							<a class="jsRedirect toggleSearch"  href="javascript:void(0)"><input type="button" value="Search" class="homeSrch btn btn-success"/></a>
-							<a class="notify" data-notify-time = '3000' data-notify-title="In Progress!" data-notify-message="Downloading Excel... Please wait..."  href="<?php echo $this->webroot;?>client/?action=export&<?php echo $this->Functions->get_url_vars($this->request->query);?>"><input type="button" value="Export Excel" class="btn btn-warning"/></a>
+							<?php endif; ?>
+
+														
+							<?php if($this->request->params['pass'][0] != 'pending' && ($this->Session->read('USER.Login.roles_id') == '33' 
+							|| $this->Session->read('USER.Login.roles_id') == '39')):?>
+							<a class="notify" data-notify-time = '3000' data-notify-title="In Progress!" data-notify-message="Downloading Excel... Please wait..." 
+							href="<?php echo $this->webroot;?>client/?action=export&<?php echo $this->Functions->get_url_vars($this->request->query);?>"><input type="button" value="Export Excel" class="btn btn-warning"/></a>
+							<?php endif; ?>
 							
-							<?php if($create_position == '1'):?>
+							<?php if($create_client == '1' && $this->request->params['pass'][0] != 'pending'):?>
 							<a class="jsRedirect"  href="<?php echo $this->webroot;?>client/add/"><input type="button" value="Create Client" class="btn btn-info"/></a>
 							<?php endif; ?>
 						</div>
@@ -117,6 +125,8 @@
 										<td style="text-align:center">
 										<?php if($client['Client']['status'] == '1'):?>
 										<span title="Inactive Client" rel="tooltip" class="label label">Inactive</span>
+										<?php elseif($client['Client']['status'] == '2'):?>
+										<span title="Awaiting for Approval" rel="tooltip" class="label label-warning">Awaiting Approval</span>
 										<?php else:?>
 										<span title="Active Client" rel="tooltip" class="label label-success">Active</span>
 										<?php endif; ?>
@@ -129,9 +139,15 @@
 									<td><?php echo $this->Functions->format_date($client['Client']['modified_date']);?></td>
 
 <td class="actionItem" style="text-align:center">
-	<?php if($this->Session->read('USER.Login.id') == $client['Client']['created_by']):?>
+	<?php if($this->Session->read('USER.Login.id') == $client['Client']['created_by'] && $client['Client']['status'] == '0'):?>
 	<a href="<?php echo $this->webroot;?>client/edit/<?php echo $client['Client']['id'];?>/" class="btn  btn-mini"  rel="tooltip" class="sepV_a" title="Edit Company"><i class="icon-pencil"></i></a>
 	<?php endif; ?>	
+	
+	<?php if($client['Client']['status'] == '2'):?>
+	<a rel="tooltip" title="Verify Client" href="<?php echo $this->webroot;?>client/view/<?php echo $client['Client']['id'];?>/" class="btn  btn-mini"><i class="icon-edit"></i></a>
+	<?php endif; ?>									
+										
+										
 	</td>
 									</tr>
 								<?php endforeach; ?>

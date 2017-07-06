@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-06-16 17:59:09
+/* Smarty version 3.1.29, created on 2017-07-05 17:21:17
   from "F:\xampp\htdocs\ctsvn\cthiring\hiring\templates\edit_role.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5943cf15e17b42_63894356',
+  'unifunc' => 'content_595cd2b53c5c37_88047571',
   'file_dependency' => 
   array (
     'cacedd190021d33cee84c07727b0ee7ee034587f' => 
     array (
       0 => 'F:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\templates\\edit_role.tpl',
-      1 => 1488271088,
+      1 => 1499101118,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5943cf15e17b42_63894356 ($_smarty_tpl) {
+function content_595cd2b53c5c37_88047571 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'F:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -124,8 +124,8 @@ echo $_smarty_tpl->tpl_vars['role_desc']->value;
 </div>
 </div>
 <div class="form-actions">
-				<button class="btn btn-gebo" type="submit">Submit</button>
-				<input type="button" value="Cancel" class="btn" onclick="window.location='roles.php'">
+<input class="btn btn-gebo" type="submit" value="Submit">
+				<a href="roles.php" class="cancelBtn"><input type="button" value="Cancel" class="btn"></a>
 </div>
                     </div>
 				</form>

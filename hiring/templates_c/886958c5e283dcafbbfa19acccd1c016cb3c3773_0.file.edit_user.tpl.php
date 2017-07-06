@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-07-01 19:15:06
+/* Smarty version 3.1.29, created on 2017-07-03 20:31:52
   from "F:\xampp\htdocs\ctsvn\cthiring\hiring\templates\edit_user.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5957a7624d7f62_74341563',
+  'unifunc' => 'content_595a5c60f11a92_21657011',
   'file_dependency' => 
   array (
     '886958c5e283dcafbbfa19acccd1c016cb3c3773' => 
     array (
       0 => 'F:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\templates\\edit_user.tpl',
-      1 => 1498916699,
+      1 => 1499073217,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5957a7624d7f62_74341563 ($_smarty_tpl) {
+function content_595a5c60f11a92_21657011 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'F:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -134,7 +134,7 @@ home"><i class="icon-home"></i></a>
 				 <tr class="tbl_row">
 						<td width="120" class="tbl_column">Role <span class="f_req">*</span></td>
 						<td>	
-							<select name="roles_id" class="span8"  id="PositionEmpId">
+							<select name="roles_id" class="span8">
 								<option value="">Select</option>
 								<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['roles']->value,'selected'=>$_smarty_tpl->tpl_vars['roles_id']->value),$_smarty_tpl);?>
 	

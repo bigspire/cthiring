@@ -199,7 +199,7 @@ class HomeController  extends AppController {
 			$pos_emp_cond2 = array('Position.created_by' => $this->Session->read('USER.Login.id'));
 			$this->set('ac_dash', 'active');
 		}else if($dash_type == 'bd_view'  || ($this->Session->read('USER.Login.roles_id') == '33' || $this->Session->read('USER.Login.roles_id') == '35'
-		|| $this->Session->read('USER.Login.roles_id') == '26')){
+		|| $this->Session->read('USER.Login.roles_id') == '26' || $this->Session->read('USER.Login.roles_id') == '39')){
 			$resume_options = array(			
 				array('table' => 'req_resume',
 						'alias' => 'ReqResume',					

@@ -177,7 +177,7 @@ class PositionController extends AppController {
 					array($this->Functions->format_date_save($start), $this->Functions->format_date_save($end_search))));
 			
 		}
-		$aprCond = array('is_approve' => 'A', 'Position.status' => 'A');
+		$aprCond = array('Position.is_approve' => 'A', 'Position.status' => 'A');
 		// for export
 		if($this->request->query['action'] == 'export'){
 			$data = $this->Position->find('all', array('fields' => $fields,'conditions' => 
@@ -536,45 +536,29 @@ class PositionController extends AppController {
 		'Client.client_name', 'Creator.first_name','created_date','modified_date', 'count(ReqResume.id) cv_sent','req_status_id',
 		'group_concat(ReqResume.status_title) joined', 'start_date', 'end_date', //"group_concat(distinct ResOwner.first_name  SEPARATOR ', ') team_member",
 		"group_concat(distinct AH.first_name  SEPARATOR ', ') ac_holder","group_concat(distinct TeamMember.first_name  SEPARATOR ', ') team_member2",
-		'skills','Contact.first_name','Contact.email','Contact.mobile','Contact.phone','Contact.id','FunctionArea.function');
+		'skills','Contact.first_name','Contact.email','Contact.mobile','Contact.phone','Contact.id','FunctionArea.function',
+		'Position.created_by');
 		$data = $this->Position->find('all', array('fields' => $fields,'conditions' => array('Position.id' => $id), 'joins' => $options));
 		$this->set('position_data', $data[0]);
 		// get the resume details
-		$this->loadModel('ReqResumeStatus');
-		$options = array(			
-			array('table' => 'resume',
-					'alias' => 'Resume',					
-					'type' => 'LEFT',
-					'conditions' => array('`Resume`.`id` = `ReqResume`.`resume_id`')
-			),
+		$options = array(					
 			array('table' => 'res_location',
 					'alias' => 'ResLoc',					
 					'type' => 'LEFT',
 					'conditions' => array('`ResLoc`.`id` = `Resume`.`res_location_id`')
 			),
-			array('table' => 'designation',
-					'alias' => 'Designation',					
-					'type' => 'LEFT',
-					'conditions' => array('`Designation`.`id` = `Resume`.`designation_id`')
-			),
+			
 			array('table' => 'users',
 					'alias' => 'Creator',					
 					'type' => 'LEFT',
 					'conditions' => array('`Creator`.`id` = `ReqResume`.`created_by`')
-			),
-			array('table' => 'reason',
-					'alias' => 'Reason',					
-					'type' => 'LEFT',
-					'conditions' => array('`Reason`.`id` = `ReqResume`.`reason_id`')
 			)
 		);		
-		$validate_cond = array('ReqResumeStatus.stage_title NOT LIKE' => 'Validation%');
-		$data = $this->ReqResumeStatus->find('all', array('fields' => array('Resume.id','Resume.first_name',
-		'Resume.last_name','ReqResumeStatus.status_title','ReqResumeStatus.stage_title',
-		'ReqResumeStatus.created_date',	'Resume.mobile','Resume.email_id','Resume.present_ctc','ReqResume.created_date',
-		'Resume.expected_ctc','Resume.present_employer','Resume.notice_period','ResLoc.location','ReqResume.status_title','ReqResume.stage_title',
-		'ReqResume.bill_ctc','Reason.reason','Designation.designation','Creator.first_name','ReqResume.modified_date', 'ReqResume.date_offer','ReqResume.joined_on'),
-		'conditions' => array('requirements_id' => $id,$validate_cond),
+		$data = $this->Position->ReqResume->find('all', array('fields' => array('Resume.id','Resume.first_name',
+		'Resume.last_name','ReqResume.status_title','ReqResume.stage_title',
+		'ReqResume.created_date','Resume.mobile','Resume.email_id','Resume.present_ctc','Resume.expected_ctc',
+		'Resume.notice_period','ResLoc.location','Creator.first_name','ReqResume.modified_date','ReqResume.bill_ctc'),
+		'conditions' => array('requirements_id' => $id),
 		'order' => array('Resume.created_date' => 'desc'),'group' => array('ReqResume.id'), 'joins' => $options));		
 		$this->set('resume_data', $data);	
 		
