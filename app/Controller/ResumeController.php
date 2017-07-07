@@ -425,10 +425,15 @@ class ResumeController extends AppController {
 	
 	/* function to export the profile snap shot */
 	public function profile_snapshot($id){
+	
+					
+			// $id = '144515';
+
 			// create the pdf
 			if(!empty($id)){
 											
 				// convert to PDF
+				$img_path ='http://localhost/ctsvn/cthiring/img/career-tree3.png';
 				require_once(WWW_ROOT.'/vendor/html2pdf/vendor/autoload.php');												
 				try{
 					$options = array(			
@@ -437,12 +442,12 @@ class ResumeController extends AppController {
 						'type' => 'LEFT',
 						'conditions' => array('`ReqResume`.`resume_id` = `Resume`.`id`')
 				),
-				
 				array('table' => 'requirements',
 						'alias' => 'Position',					
 						'type' => 'LEFT',
 						'conditions' => array('`Position`.`id` = `ReqResume`.`requirements_id`')
 				),
+				
 				array('table' => 'clients',
 						'alias' => 'Client',					
 						'type' => 'LEFT',
@@ -453,17 +458,40 @@ class ResumeController extends AppController {
 						'alias' => 'ReqResumeStatus',					
 						'type' => 'LEFT',
 						'conditions' => array('`ReqResumeStatus`.`req_resume_id` = `ReqResume`.`id`')
+					),
+				array(
+						'table' => 'resume_doc',
+						'alias' => 'ResDoc',					
+						'type' => 'LEFT',
+						'conditions' => array('`ResDoc`.`id` = `Resume`.`resume_doc_id`')
 					)
 				
 				);
 					// get candidate details
-					$user_data2 = $this->Resume->find('all', array('fields' => array('first_name', 'last_name','Designation.Designation','education',
-					'total_exp','present_employer','exp_skills','ResLocation.location','present_ctc','expected_ctc','notice_period','dob','gender',
-					'family','consultant_assess','Position.job_title'), 'conditions' => array('Resume.id' => $id), 'joins' => $options));
+					$user_data2 = $this->Resume->find('all', array('fields' => array('first_name', 'last_name','Designation.designation','education',
+					'total_exp','present_employer','exp_skills','ResLocation.location','present_ctc', 'present_ctc_type',
+					'expected_ctc_type','expected_ctc','notice_period','dob','gender','present_location','skills',
+					'family','consultant_assess','Position.job_title','ResDoc.resume'),
+					'conditions' => array('Resume.id' => $id), 'joins' => $options));
 					$user_data = $user_data2[0];
+					// get resume education details
+					$this->loadModel('ResEdu');
+					$data = $this->ResEdu->find('all', array('conditions' => array('resume_id' => $id), 'fields' => array('percent_mark','year_passing','college',
+					'course_type','university','location','ResDegree.degree','ResSpec.spec'), 'order' => array('ResEdu.id' => 'desc')));
+					$edu_data = $data;	
+					// get resume experience details
+					$this->loadModel('ResExp');
+					$data = $this->ResExp->find('all', array('conditions' => array('resume_id' => $id), 'fields' => array('experience','work_location','skills',
+					'company','other_info','Designation.designation'), 'order' => array('ResExp.id' => 'desc')));
+					$exp_data = $data;
+					
 					// get the HTML
 					ob_start();
-					include(WWW_ROOT.'/vendor/html2pdf/examples/res/snapshot_template.php');
+					// generate resume jpg
+					// $file = '../../hiring/uploads/resume/'.$user_data['ResDoc']['resume'];
+					// $convert = $this->Functions->read_document($file);
+					// generate pdf file
+					include(WWW_ROOT.'/vendor/html2pdf/examples/res/snapshot_template.php');					
 					$content = ob_get_clean();
 					$html2pdf = new HTML2PDF('P', 'A4', 'fr');
 					$html2pdf->pdf->SetDisplayMode('fullpage');
