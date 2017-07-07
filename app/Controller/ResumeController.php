@@ -568,6 +568,7 @@ class ResumeController extends AppController {
 	
 	// check the role permissions
 	public function beforeFilter(){ 
+		$this->check_session();
 		$this->check_role_access(8);
 	}
 

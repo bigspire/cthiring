@@ -40,7 +40,6 @@ class AppController extends Controller {
 			$this->check_site_maintenance();
 		}
 		if($this->request->params['controller'] != 'login'){ 
-			$this->check_session();
 			$this->front_active_menus();
 			if(!$this->request->is('ajax')){
 				// $this->check_sync_time();

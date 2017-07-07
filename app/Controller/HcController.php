@@ -45,5 +45,10 @@ class HcController extends AppController {
 		}
 		$this->render(false);
 	}
+	
+	// check the role permissions
+	public function beforeFilter(){ 
+		$this->check_session();
+	}
 
 }

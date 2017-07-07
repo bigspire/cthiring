@@ -196,10 +196,9 @@ class TskeventtypeController extends AppController {
 		
 	}
 	
-	/* clear the cache */
-	
+	/* clear the cache */	
 	public function beforeFilter() { 
-		//$this->disable_cache();
+		$this->check_session();
 		$this->show_tabs(63);
 	}
 	

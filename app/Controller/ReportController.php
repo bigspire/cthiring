@@ -262,4 +262,10 @@ class ReportController extends AppController {
 			$this->set('results', $data);
 		}
     }
+	
+		// check the role permissions
+	public function beforeFilter(){ 
+		$this->check_session();
+		
+	}
 }
