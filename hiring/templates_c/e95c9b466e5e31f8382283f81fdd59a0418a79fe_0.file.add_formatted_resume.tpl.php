@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-06-15 21:19:21
+/* Smarty version 3.1.29, created on 2017-07-08 08:52:31
   from "F:\xampp\htdocs\ctsvn\cthiring\hiring\templates\add_formatted_resume.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5942ac81517414_40173159',
+  'unifunc' => 'content_59604ff7c8d403_47512677',
   'file_dependency' => 
   array (
     'e95c9b466e5e31f8382283f81fdd59a0418a79fe' => 
     array (
       0 => 'F:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\templates\\add_formatted_resume.tpl',
-      1 => 1497541706,
+      1 => 1499324500,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5942ac81517414_40173159 ($_smarty_tpl) {
+function content_59604ff7c8d403_47512677 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'F:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -60,11 +60,11 @@ resume">Resumes</a>
 			<div class="tabbable">
 								<div class="heading">
 										<ul class="nav nav-tabs">
-										<li class="personal"><a class="restabChange" rel="personal"  href="#box_personal" data-toggle="tab"><i class="splashy-mail_light_down"></i>   Personal </a></li>
-										<li class="education"><a class="restabChange" rel="education"  href="#box_edu" data-toggle="tab"><i class="splashy-mail_light_down"></i>  Education Details </a></li>
-										<li class="exp"><a class="restabChange" rel="exp"  href="#box_exp" data-toggle="tab"><i class="splashy-mail_light_down"></i>  Experience Details </a></li>
-										<li class="training"><a class="restabChange" rel="training"  href="#box_train" data-toggle="tab"><i class="splashy-mail_light_down"></i>  Training & Programmes</a></li>
-										<li class="assess"><a class="restabChange" rel="assess"  href="#box_Consultant" data-toggle="tab"><i class="splashy-mail_light_down"></i> Consultant Assessment </a></li>	
+										<li class="personal"><a class="restabChange" rel="personal"  href="#box_personal" data-toggle="tab"><i class="splashy-contact_blue"></i>   Personal </a></li>
+										<li class="education"><a class="restabChange" rel="education"  href="#box_edu" data-toggle="tab"><i class="splashy-document_letter_add"></i>  Education Details </a></li>
+										<li class="exp"><a class="restabChange" rel="exp"  href="#box_exp" data-toggle="tab"><i class="splashy-folder_classic_stuffed_add"></i>  Experience Details </a></li>
+										<li class="training"><a class="restabChange" rel="training"  href="#box_train" data-toggle="tab"><i class="splashy-shield_star"></i>  Training & Programmes</a></li>
+										<li class="assess"><a class="restabChange" rel="assess"  href="#box_Consultant" data-toggle="tab"><i class="splashy-contact_grey_edit"></i> Consultant Assessment </a></li>	
 									</ul>
 								</div>
 			<div class="tab-content" style="overflow:visible">			
@@ -72,6 +72,14 @@ resume">Resumes</a>
 			<div class="span6">
 			<table class="table table-bordered dataTable" style="margin-bottom:0;">
 						<tbody>
+									<tr class="tbl_row">
+										<td width="120" class="tbl_column">Position For <span class="f_req">*</span></td>
+										<td>
+										<input type="text" tabindex="3" name="position" value="<?php echo $_smarty_tpl->tpl_vars['position']->value;?>
+" class="span8" disabled>
+										</td>
+									</tr>
+									
 									<tr class="tbl_row">
 										<td width="120" class="tbl_column">Candidate Name <span class="f_req">*</span></td>
 										<td>
@@ -122,7 +130,7 @@ echo $_smarty_tpl->tpl_vars['last_nameErr']->value;?>
 </label></td>
 									</tr>	
 
-									<tr>
+									<!--tr>
 										<td width="120" class="tbl_column">Position Applied For <span class="f_req">*</span></td>
 										<td> 
 										<select tabindex="7" name="position_for" class="span8"  id="position_for">
@@ -132,7 +140,7 @@ echo $_smarty_tpl->tpl_vars['last_nameErr']->value;?>
 										<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['position_forErr']->value;?>
 </label>																					
 										</td>
-									</tr>
+									</tr-->
 																		
 									<tr class="tbl_row">
 										<td width="125" class="tbl_column">Current Designation <span class="f_req">*</span></td>
@@ -244,11 +252,23 @@ echo $_POST['family'];
 
 										</select>
 										<span class="f_req">*</span>	
-										<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['present_ctcErr']->value;
-echo $_smarty_tpl->tpl_vars['present_ctc_typeErr']->value;
-echo $_smarty_tpl->tpl_vars['expected_ctcErr']->value;
-echo $_smarty_tpl->tpl_vars['expected_ctc_typeErr']->value;?>
- </label>	
+										
+										<label for="reg_city" generated="true" class="error">
+										<?php echo $_smarty_tpl->tpl_vars['present_ctcErr']->value;?>
+
+										</label>
+											<label for="reg_city" generated="true" class="error">
+										<?php echo $_smarty_tpl->tpl_vars['present_ctc_typeErr']->value;?>
+</label>
+											<label for="reg_city" generated="true" class="error">
+										<?php echo $_smarty_tpl->tpl_vars['expected_ctcErr']->value;?>
+</label>
+											<label for="reg_city" generated="true" class="error">
+										<?php echo $_smarty_tpl->tpl_vars['expected_ctc_typeErr']->value;?>
+
+										</label>	
+										
+										
 										</td>	
 									</tr>	
 									<tr class="tbl_row">
@@ -301,7 +321,7 @@ echo $_POST['tech_expert'];
 									</tr>	
 									
 									<tr class="tbl_row">
-										<td width="120" class="tbl_column">Skills </td>
+										<td width="120" class="tbl_column">Computer Skills </td>
 										<td>
 										<textarea name="skills" cols="10" tabindex="25" rows="3" class="span8"><?php if ($_smarty_tpl->tpl_vars['skills']->value) {
 echo $_smarty_tpl->tpl_vars['skills']->value;
@@ -506,7 +526,7 @@ echo $_POST['hobby'];
 										</td>
 							</tr>
 							<tr class="tbl_row">
-										<td width="120" class="tbl_column">location of work <span class="f_req">*</span></td>
+										<td width="120" class="tbl_column">Location of work <span class="f_req">*</span></td>
 										<td> 
 										<input type="text"  tabindex="4" name="workloc_#index#" id="workloc_#index#" value="" class="span8" />										
 										<label for="reg_city" generated="true" class="error" id="worklocErr_#index#"></label>										
@@ -557,7 +577,7 @@ echo $_POST['hobby'];
 									</tr>
 									
 									<tr class="tbl_row">
-								<td width="120" class="tbl_column">Key Achievement <span class="f_req">*</span></td>
+								<td width="120" class="tbl_column">Notable Achievements  <span class="f_req">*</span></td>
 								<td>
 								<textarea name="key_achievement_#index#" tabindex="10" id="key_achievement_#index#" cols="10" rows="3" class="span8"></textarea>									
 								<label for="reg_city" generated="true" class="error" id="key_achievementErr_#index#"></label>
@@ -677,7 +697,7 @@ echo $_POST['hobby'];
 			<table class="table table-bordered dataTable" style="margin-bottom:0;">
 						<tbody>						
 									<tr class="tbl_row">
-										<td width="120" class="tbl_column">Personality <span class="f_req">*</span>
+										<td width="120" class="tbl_column">Candidates Personality <span class="f_req">*</span>
 										</td>
 										<td>
 <textarea placeholder="" name="personality" tabindex="1" cols="10" rows="3" class="span8"><?php if ($_smarty_tpl->tpl_vars['personality']->value) {
@@ -711,6 +731,16 @@ echo $_POST['achievement'];
 }?></textarea>									
 										</td>
 									</tr>	
+									<tr class="">
+									<td width="120" class="tbl_column">Any other vital inputs for the interview  </td>
+									<td> 
+										<textarea name="vital_info_interview" tabindex="4" cols="10" rows="3" class="span8"><?php if ($_smarty_tpl->tpl_vars['vital_info_interview']->value) {
+echo $_smarty_tpl->tpl_vars['vital_info_interview']->value;
+} else {
+echo $_POST['vital_info_interview'];
+}?></textarea>									
+									</td>
+									</tr>
 									</tbody>
 			</table>
 </div>
@@ -718,7 +748,7 @@ echo $_POST['achievement'];
 	<table class="table table-bordered dataTable" style="margin-bottom:0;">
 		<tbody>	
 			<tr class="tbl_row">
-				<td width="120" class="tbl_column">Know-How about Company  </td>
+				<td width="120" class="tbl_column">Candidates Outlook on Company   </td>
 				<td> 
 					<textarea name="about_company" tabindex="4" cols="10" rows="3" class="span8"><?php if ($_smarty_tpl->tpl_vars['about_company']->value) {
 echo $_smarty_tpl->tpl_vars['about_company']->value;
@@ -726,7 +756,32 @@ echo $_smarty_tpl->tpl_vars['about_company']->value;
 echo $_POST['about_company'];
 }?></textarea>									
 					</td>
-			</tr>		
+			</tr>
+			<tr class="tbl_row">
+				<td width="120" class="tbl_column">Relevant Exposure <span class="f_req">*</span></td>
+				<td> 
+					<textarea name="relevant_exposure" tabindex="4" cols="10" rows="3" class="span8"><?php if ($_smarty_tpl->tpl_vars['relevant_exposure']->value) {
+echo $_smarty_tpl->tpl_vars['relevant_exposure']->value;
+} else {
+echo $_POST['relevant_exposure'];
+}?></textarea>									
+					<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['relevant_exposureErr']->value;?>
+ </label>	
+					</td>
+			</tr>
+			<tr class="tbl_row">
+				<td width="120" class="tbl_column">Credentials considered for Shortlisting <span class="f_req">*</span></td>
+				<td> 
+					<textarea name="credential_shortlisting" tabindex="4" cols="10" rows="3" class="span8"><?php if ($_smarty_tpl->tpl_vars['credential_shortlisting']->value) {
+echo $_smarty_tpl->tpl_vars['credential_shortlisting']->value;
+} else {
+echo $_POST['credential_shortlisting'];
+}?></textarea>									
+					<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['credential_shortlistingErr']->value;?>
+ </label>	
+					</td>
+			</tr>
+				
 			<tr>
 				<td width="120" class="tbl_column">Candidate Brief </td>
 				<td> 
@@ -764,10 +819,14 @@ echo $_POST['candidate_brief'];
 					<input type="hidden" id="tab_open_resume" value="<?php echo $_smarty_tpl->tpl_vars['tab_open_resume']->value;?>
 "/>
 					 <div class="form-actions">
-									<button class="btn btn-gebo" type="submit">Submit</button>
-								<a href="<?php echo @constant('webroot');?>
-resume"><button type="button" class="btn">Cancel</button></a>
-							</div>
+	<input class="btn btn-gebo" type="submit" value="Submit">
+	<input type="hidden" name="data[Client][webroot]" value="<?php echo @constant('webroot');?>
+resume" id="webroot">
+	<a href="javascript:void(0)" class="jsRedirect cancel_event cancelBtn">
+	<input type="button" value="Cancel" class="btn">
+	</a>
+	
+	</div>
 					</form>
          	
 				

@@ -207,7 +207,7 @@ class ResumeController extends AppController {
 		}
 		$fields = array('id',"concat(Resume.first_name,' ',Resume.last_name) full_name",'email_id','mobile','mobile2','total_exp','education','present_employer',
 		'ResLocation.location','present_ctc','expected_ctc', 'Creator.first_name','Resume.created_date',
-		'Resume.modified_date','ReqResume.stage_title','ReqResume.status_title','ResDoc.resume','present_location');	
+		'Resume.modified_date','ReqResume.stage_title','ReqResume.status_title','ResDoc.resume','present_location','snapshot','autoresume');	
 		// for export
 		if($this->request->query['action'] == 'export'){ 
 			$data = $this->Resume->find('all', array('fields' => $fields,'conditions' => 
@@ -230,12 +230,7 @@ class ResumeController extends AppController {
 		
 	}
 	
-	/* function to get the status details */
-	public function get_status_details(){
-		$st = array('1' => 'CV Sent', '2' => 'Shortlisted', '3' => 'CV Rejected','4' => 'Feedback Awaited','5' => 'Candidates Interviewed','6' => 'Interview Dropouts',
-		'7' => 'Interview Rejected','8' => 'Candidates Offered','9' => 'Offer Dropouts','10' => 'Candidates Joined','11' => 'Candidates Billed');
-		return $st;
-	}
+	
 	
 	/* function to get the status condition */
 	public function get_status_cond($st){
@@ -424,7 +419,7 @@ class ResumeController extends AppController {
     }
 	
 	/* function to export the profile snap shot */
-	public function profile_snapshot($id){
+	public function profile_snapshot($id, $snap_file){
 	
 					
 			// $id = '144515';
@@ -515,8 +510,7 @@ class ResumeController extends AppController {
 	/* function to export the profile snap shot */
 	public function autoresume($id){
 			// create the pdf
-			if(!empty($id)){
-											
+			if(!empty($id)){											
 				// convert to PDF
 				require_once(WWW_ROOT.'/vendor/html2pdf/vendor/autoload.php');												
 				try{
@@ -542,21 +536,43 @@ class ResumeController extends AppController {
 						'alias' => 'ReqResumeStatus',					
 						'type' => 'LEFT',
 						'conditions' => array('`ReqResumeStatus`.`req_resume_id` = `ReqResume`.`id`')
-						)
-		);
+						),
+				array(
+						'table' => 'resume_doc',
+						'alias' => 'ResDoc',					
+						'type' => 'LEFT',
+						'conditions' => array('`ResDoc`.`id` = `Resume`.`resume_doc_id`')
+					)
+			);
 					// get candidate details
-					$user_data2 = $this->Resume->find('all', array('fields' => array('first_name', 'last_name','Designation.Designation','education',
-					'total_exp','present_employer','exp_skills','ResLocation.location','present_ctc','expected_ctc','notice_period','dob','gender',
-					'family','consultant_assess','Position.job_title'), 'conditions' => array('Resume.id' => $id), 'joins' => $options));
+					// get candidate details
+					$user_data2 = $this->Resume->find('all', array('fields' => array('first_name', 'last_name','Designation.designation','education',
+					'total_exp','present_employer','exp_skills','ResLocation.location','present_ctc', 'present_ctc_type',
+					'expected_ctc_type','expected_ctc','notice_period','dob','gender','present_location','skills',
+					'family','consultant_assess','Position.job_title','ResDoc.resume'),
+					'conditions' => array('Resume.id' => $id), 'joins' => $options));
 					$user_data = $user_data2[0];
+					// get resume education details
+					$this->loadModel('ResEdu');
+					$data = $this->ResEdu->find('all', array('conditions' => array('resume_id' => $id), 'fields' => array('percent_mark','year_passing','college',
+					'course_type','university','location','ResDegree.degree','ResSpec.spec'), 'order' => array('ResEdu.id' => 'desc')));
+					$edu_data = $data;	
+					// get resume experience details
+					$this->loadModel('ResExp');
+					$data = $this->ResExp->find('all', array('conditions' => array('resume_id' => $id), 'fields' => array('experience','work_location','skills',
+					'company','other_info','Designation.designation'), 'order' => array('ResExp.id' => 'desc')));
+					$exp_data = $data;
 					// get the HTML
 					ob_start();
 					include(WWW_ROOT.'/vendor/html2pdf/examples/res/autoresume_template.php');
+
 					$content = ob_get_clean();
 					$html2pdf = new HTML2PDF('P', 'A4', 'fr');
 					$html2pdf->pdf->SetDisplayMode('fullpage');
 					$html2pdf->writeHTML($content, isset($_GET['vuehtml']));
-					$html2pdf->Output(ucfirst(strtolower($user_data['Resume']['first_name'])).' '.ucfirst(strtolower($user_data['Resume']['last_name'])).'_snapshot.pdf', 'D');
+					$html2pdf->addFont('OpenSans', 'normal', 'OpenSans.php');
+					$html2pdf->setDefaultFont('OpenSans');
+					$html2pdf->Output(ucfirst(strtolower($user_data['Resume']['first_name'])).' '.ucfirst(strtolower($user_data['Resume']['last_name'])).'_autoresume.pdf', 'D');
 					// $root = WWW_ROOT.'home';
 					// echo "<script>location.href=$root></script>";								
 				}catch(HTML2PDF_exception $e){

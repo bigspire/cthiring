@@ -246,155 +246,55 @@
 					</div></div>
 	
 							
-							
+					<?php echo $this->Form->create('Position', array('id' => 'formID','class' => 'formID')); ?>
+			
 					
 				
 							<br>	
-							<!--div class="dn dataTables_filter srchBox"  id="dt_gal_filter">
+							<div class="dn dataTables_filter srchBox"  id="dt_gal_filter">
 							
-					<label style="">Keyword: <input type="text" placeholder="Candidate / Employer" name="data[Resume][keyword]" id = "SearchText" value="" class="input-medium" aria-controls="dt_gal"></label>
+					<label style="margin-left:0">Keyword: <input type="text" placeholder="Search Keywords Here.." name="data[Position][keyword]" id = "SearchText" value="<?php echo $this->params->query['keyword'];?>" class="input-large" aria-controls="dt_gal"></label>
+							
+							<span id="sandbox-container">
+						<span  class="input-daterange" id="datepicker">	
+							<label>From Date: <input placeholder="dd/mm/yyyy" type="text" class="input-small" name="data[Position][from]" value="<?php echo $this->request->query['from'];?>" aria-controls="dt_gal"></label>
 
-													<label>From Date: <input type="text" class="input-small datepick" name="data[Resume][from]" placeholder="dd/mm/yyyy" style="width:70px;"  value="" aria-controls="dt_gal"></label>
+							<label>To Date: <input  placeholder="dd/mm/yyyy" type="text" name="data[Position][to]" value="<?php echo $this->request->query['to'];?>" class="input-small" aria-controls="dt_gal"></label>
 
-							<label>To Date: <input type="text" name="data[Resume][to]" placeholder="dd/mm/yyyy" value="" style="width:70px;"  class="input-small datepick" aria-controls="dt_gal"></label>
-
+						</span>	
+						</span>	
+							
+		<label>Current Status: 
+						<?php echo $this->Form->input('status', array('div'=> false,'type' => 'select', 'label' => false, 'class' => 'input-small', 'empty' => 'Select', 'selected' => $this->params->query['status'], 'required' => false, 'placeholder' => '', 'style' => "clear:left", 'options' => $stList)); ?> 
+</label>
 							
 							
-<label>Current Status: 
-						<select name="data[Resume][status]" class="input-small" placeholder="" style="clear:left" id="ResumeStatus">
-<option value="">Select</option>
-<option value="1">CV Sent</option>
-<option value="2">Shortlisted</option>
-<option value="3">CV Rejected</option>
-<option value="4">Feedback Awaited</option>
-<option value="5">Candidates Interviewed</option>
-<option value="6">Interview Dropouts</option>
-<option value="7">Interview Rejected</option>
-<option value="8">Candidates Offered</option>
-<option value="9">Offer Dropouts</option>
-<option value="10">Candidates Joined</option>
-<option value="11">Candidates Billed</option>
-</select> 
-
-															
-													
+						
+			
+			<?php if($approveUser):?>
+							<label>Employee: 
+						<?php echo $this->Form->input('emp_id', array('div'=> false,'type' => 'select', 'label' => false, 'class' => 'input-medium', 'empty' => 'Select', 'selected' => $this->params->query['emp_id'], 'required' => false, 'placeholder' => '', 'style' => "clear:left", 'options' => $empList)); ?> 					
 							</label>
-							
-							
-							
-							<label>Experience:
-<select name="data[Resume][min_exp]" class="input-small minDrop minexp" rel="max-exp" id="min-exp" placeholder="" style="clear:left">
-<option value="">Min</option>
-<option value="1">1 Year</option>
-<option value="2">2 Years</option>
-<option value="3">3 Years</option>
-<option value="4">4 Years</option>
-<option value="5">5 Years</option>
-<option value="6">6 Years</option>
-<option value="7">7 Years</option>
-<option value="8">8 Years</option>
-<option value="9">9 Years</option>
-<option value="10">10 Years</option>
-<option value="11">11 Years</option>
-<option value="12">12 Years</option>
-<option value="13">13 Years</option>
-<option value="14">14 Years</option>
-<option value="15">15 Years</option>
-<option value="16">16 Years</option>
-<option value="17">17 Years</option>
-<option value="18">18 Years</option>
-<option value="19">19 Years</option>
-<option value="20">20 Years</option>
-<option value="21">21 Years</option>
-<option value="22">22 Years</option>
-<option value="23">23 Years</option>
-<option value="24">24 Years</option>
-<option value="25">25 Years</option>
-<option value="26">26 Years</option>
-<option value="27">27 Years</option>
-<option value="28">28 Years</option>
-<option value="29">29 Years</option>
-<option value="30">30 Years</option>
-<option value="31">31 Years</option>
-<option value="32">32 Years</option>
-<option value="33">33 Years</option>
-<option value="34">34 Years</option>
-<option value="35">35 Years</option>
-<option value="36">36 Years</option>
-<option value="37">37 Years</option>
-<option value="38">38 Years</option>
-<option value="39">39 Years</option>
-<option value="40">40 Years</option>
-<option value="41">41 Years</option>
-<option value="42">42 Years</option>
-<option value="43">43 Years</option>
-<option value="44">44 Years</option>
-<option value="45">45 Years</option>
-<option value="46">46 Years</option>
-<option value="47">47 Years</option>
-<option value="48">48 Years</option>
-<option value="49">49 Years</option>
-<option value="50">50 Years</option>
-</select> 	
-			</label>
-			<label>Employee: 
-						<select name="data[Resume][emp_id]" class="input-small" placeholder="" style="clear:left" id="ResumeEmpId">
-<option value="">Select</option>
-<option value="4">Admin</option>
-<option value="66">Bhargavi</option>
-<option value="74">Karthick Kumar</option>
-<option value="75">Karthik</option>
-<option value="37">Karthikeyan S</option>
-<option value="84">Kishore Kumar</option>
-<option value="89">Kumari</option>
-<option value="45">Lavanya Venkateshappa</option>
-<option value="92">Magimai Tamil Azhagan</option>
-<option value="54">Mary Paulina</option>
-<option value="86">Mohammed Aslam</option>
-<option value="79">Mohan Reddy</option>
-<option value="76">Nandhakumar</option>
-<option value="29">Praveena</option>
-<option value="80">Prerna Khanudi</option>
-<option value="58">Priyanka</option>
-<option value="33">Rajalakshmi S</option>
-<option value="38">Ranjeet Rajpurohit</option>
-<option value="69">Reshu</option>
-<option value="35">Suganya</option>
-<option value="81">Suganya Pillai</option>
-<option value="90">Sumir</option>
-<option value="93">Sumitha</option>
-<option value="73">Vandana</option>
-</select> 
-
-</label>											
-<label>Branch: 
-							<select name="data[Resume][loc]" class="input-small" placeholder="" style="clear:left" id="ResumeLoc">
-<option value="">Select</option>
-<option value="104">Ahmadabad</option>
-<option value="102">Bangalore</option>
-<option value="103">Chennai</option>
-<option value="105">Hyderabad</option>
-</select> 
-
+						<?php endif; ?>
+						
+						<?php if($this->Session->read('USER.Login.roles_id') == '33' || $this->Session->read('USER.Login.roles_id') == '38'):?>	
+							<label>
+							Branch: 
+							<?php echo $this->Form->input('loc', array('div'=> false,'type' => 'select', 'label' => false, 'class' => 'input-medium', 'empty' => 'Select', 'selected' => $this->params->query['loc'], 'required' => false, 'placeholder' => '', 'style' => "clear:left", 'options' => $locList)); ?> 
+							</label>
+						<?php endif; ?>
 							</label>						
 						
 															
 													
-				
-					
 				<label style="margin-top:18px;">
-							<a class="jsRedirect" href="#"><input value="Reset" type="button" class="btn"/></a></label>
-							<label style="margin-top:18px;">
 							<input type="submit" value="Submit" class="btn btn-gebo" /></label>
-						
-
-														</div>
+					
+						</div>
 			
-			<!--a href="#"  class="sepV_a" title="Call For Interview">
-			<input value="Call For Interview" type="button" class="btn btn-gebo"/></a-->
-		
+		</form>
 
-		</div-->
+		</div>
 					
 					
 					
@@ -416,9 +316,15 @@
 										<li><a href="#mbox_inbox" class="tabChange"  rel="status_row"  data-toggle="tab"><i class="splashy-box_share"></i>  CV Status</a></li>
 
 										<li><a href="#mbox_overall" class="tabChange"  rel="overall_status_row"  data-toggle="tab"><i class="splashy-box_new"></i>  Overall Status</a></li>
-
+	
+	<div style="float: right;  margin-right: 100px;  margin-top: 5px;">
+								<a class="jsRedirect toggleSearch" href="javascript:void(0)">
+								<input type="button" value="Search" class="btn btn-success"></a>
+								</div>
+								
 										</ul>
-										
+								
+	
 									</div>
 									
 
@@ -560,12 +466,18 @@
 
 													<tr class="dn status_row">
 														<td>														
-														<a target="_blank" href="<?php echo $this->webroot;?>resume/view/<?php echo $resume['Resume']['id'];?>/"><?php echo ucwords($resume['Resume']['first_name'].' '.$resume['Resume']['last_name']);?></a></td>
+	<a target="_blank" href="<?php echo $this->webroot;?>resume/view/<?php echo $resume['Resume']['id'];?>/">
+	<?php echo ucwords($resume['Resume']['first_name'].' '.$resume['Resume']['last_name']);?></a>
+	<span style="font-size:9px">(<?php echo $resume['ReqResume']['stage_title'];?> <?php echo $resume['ReqResume']['status_title'];?>)</span>
+
+	
+	</td>
 														
 									
 							<td>	
-												
-							<?php if($resume['ReqResume']['stage_title'] == 'Shortlist' && $resume['ReqResume']['status_title'] == 'CV-Sent'):
+							
+							<?php if($resume['ReqResume']['stage_title'] == 'Shortlist' && ($resume['ReqResume']['status_title'] == 'CV-Sent'
+							|| $resume['ReqResume']['status_title'] == 'YRF')):
 								$action = '1';?>																		
 									<div class="span1"  style="width:110px;">
 					
@@ -573,26 +485,28 @@
 										<button class="btn btn-info btn-mini"  rel="tooltip" title="CV Feedback Awaiting">FA </button>
 										<button data-toggle="dropdown" class="btn btn-mini btn-info  dropdown-toggle"><span class="caret"></span></button>
 										<ul class="dropdown-menu">
-											<li><a href="#">Shortlist</a></li>
-											<li><a href="#">Reject</a></li>
+	<li><a  href="<?php echo $this->webroot;?>position/update_cv/cv_shortlist/" val="40_50"  class="iframeBox sepV_a cboxElement">Shortlist</a></li>
+	<li><a  href="<?php echo $this->webroot;?>position/update_cv/cv_reject/" val="40_50"  class="iframeBox sepV_a cboxElement">Reject</a></li>
 										</ul>
 									</div>	
 								</div>
-	<?php elseif($resume['ReqResume']['stage_title'] == 'Shortlist' || $resume['ReqResume']['stage_title'] == 'Rejected'):
+	<?php elseif($resume['ReqResume']['stage_title'] == 'Shortlist' && $resume['ReqResume']['status_title'] == 'Rejected'):
 							?>
 							
 								<div class="span1" style="width:110px;">
 <div class="btn btn-mini alert alert-danger" rel="tooltip" title="CV Rejected" style="cursor:default;margin-bottom:0px;padding:4px 7px 4px 9px;text-align:center;">
-                <?php echo ucfirst($resume['ReqResume']['status_title']);?>	
+                Rejected
             </div>									
 									
 								</div>
-<?php elseif($resume['ReqResume']['stage_title'] == 'Shortlist' || $resume['ReqResume']['stage_title'] == 'Shortlisted'):
-$action = 1;?>
+<?php elseif(($resume['ReqResume']['stage_title'] == 'Shortlist' && $resume['ReqResume']['status_title'] == 'Shortlisted')
+|| strstr($resume['ReqResume']['stage_title'], 'Interview') || $resume['ReqResume']['stage_title'] == 'Offer'
+|| $resume['ReqResume']['stage_title'] == 'Joining'):
+?>
 								
 								<div class="span1" style="width:110px;">
 <div class="btn btn-mini alert alert-success" rel="tooltip" title="CV Shortlisted" style="cursor:default;margin-bottom:0px;padding:4px 7px 4px 9px;text-align:center;">
-                <?php echo ucfirst($resume['ReqResume']['status_title']);?>	
+                Shortlisted
             </div>									
 									
 								</div>
@@ -603,24 +517,26 @@ $action = 1;?>
 
 							<td>	
 												
-							<?php if(strstr($resume['ReqResume']['stage_title'], 'Interview') && $action != '1'): 
+							<?php 
+	if((strstr($resume['ReqResume']['stage_title'], 'Interview') ||
+($resume['ReqResume']['stage_title'] == 'Shortlist' && $resume['ReqResume']['status_title'] == 'Shortlisted')) && $action != '1'): 
 							$action = '1';?>																		
 									<div class="span1"  style="width:110px;">
 									<div class="btn-group">
-										<button class="btn  btn-mini btn-warning" rel="tooltip" title="Interview Awaiting">IA </button>
-										<button data-toggle="dropdown" class="btn btn-warning btn-mini dropdown-toggle"><span class="caret"></span></button>
+										<button class="btn  btn-mini btn-info" rel="tooltip" title="Interview Awaiting">IA </button>
+										<button data-toggle="dropdown" class="btn btn-info btn-mini dropdown-toggle"><span class="caret"></span></button>
 										<ul class="dropdown-menu">
-											<li><a href="#">Interview Schedule</a></li>
-											<li><a href="#">Interview Reject</a></li>
+											<li><a  href="<?php echo $this->webroot;?>position/interview_schedule/" val="40_50"  class="iframeBox sepV_a cboxElement">Interview Schedule / Reschedule</a></li>
+											<li><a  href="<?php echo $this->webroot;?>position/update_interview/" val="40_50"  class="iframeBox sepV_a cboxElement">Interview Reject</a></li>
 										</ul>
 									</div>	
 								</div>
-<?php elseif(strstr($resume['ReqResume']['stage_title'], 'Interview') && $resume['ReqResume']['status_title'] == 'Selected'
- && $action != '1'):?>
+<?php elseif((strstr($resume['ReqResume']['stage_title'], 'Interview') && $resume['ReqResume']['status_title'] == 'Selected')
+|| ($resume['ReqResume']['stage_title'] == 'Offer' || $resume['ReqResume']['stage_title'] == 'Joining') && $action != '1'):?>
 							<div class="span1" style="width:110px;">
 										<div class="span1" style="width:110px;">
 <div class="btn btn-mini alert alert-success" rel="tooltip" title="Interview Selected" style="cursor:default;margin-bottom:0px;padding:4px 7px 4px 9px;text-align:center;">
-                <?php echo ucfirst($resume['ReqResume']['status_title']);?>	
+               Selected
             </div>									
 									
 								</div>
@@ -630,7 +546,7 @@ $action = 1;?>
 							
 								<div class="span1" style="width:110px;">
 <div class="btn btn-mini alert alert-danger" rel="tooltip" title="Interview Rejected" style="cursor:default;margin-bottom:0px;padding:4px 7px 4px 9px;text-align:center;">
-                <?php echo ucfirst($resume['ReqResume']['status_title']);?>	
+               Rejected
             </div>									
 									
 								</div>
@@ -644,30 +560,32 @@ $action = 1;?>
 							$action = '1';?>																		
 									<div class="span1"  style="width:110px;">
 									<div class="btn-group">
-										<button class="btn  btn-mini btn-warning" title="Offer Pending" rel="tooltip">OP </button>
-										<button data-toggle="dropdown" class="btn btn-warning btn-mini dropdown-toggle"><span class="caret"></span></button>
+										<button class="btn  btn-mini btn-info" title="Offer Pending" rel="tooltip">OP </button>
+										<button data-toggle="dropdown" class="btn btn-info btn-mini dropdown-toggle"><span class="caret"></span></button>
 										<ul class="dropdown-menu">
-											<li><a href="#">Shortlist</a></li>
-											<li><a href="#">Decline</a></li>
+											<li><a  href="<?php echo $this->webroot;?>position/update_cv/offer_shortlist/" val="40_50"  class="iframeBox sepV_a cboxElement">Shortlist</a></li>
+											<li><a  href="<?php echo $this->webroot;?>position/update_cv/offer_decline/" val="40_50"  class="iframeBox sepV_a cboxElement">Decline</a></li>
 										</ul>
 									</div>	
 								</div>
 								
-	<?php elseif($resume['ReqResume']['stage_title'] == 'Offer' || $resume['ReqResume']['stage_title'] == 'Rejected'):
+	<?php elseif($resume['ReqResume']['stage_title'] == 'Offer' && ($resume['ReqResume']['status_title'] == 'Rejected'
+	|| $resume['ReqResume']['status_title'] == 'Not Interested')):
 							?>
 							
 								<div class="span1" style="width:110px;">
 <div class="btn btn-mini alert alert-danger" rel="tooltip" title="Offer Declined" style="cursor:default;margin-bottom:0px;padding:4px 7px 4px 9px;text-align:center;">
-                <?php echo ucfirst($resume['ReqResume']['status_title']);?>	
+                 <?php echo ucfirst($resume['ReqResume']['status_title']);?>	
+				
             </div>									
 									
 								</div>
-<?php elseif($resume['ReqResume']['stage_title'] == 'Offer' || $resume['ReqResume']['stage_title'] == 'Offer Accepted'):
+<?php elseif(($resume['ReqResume']['stage_title'] == 'Offer' && $resume['ReqResume']['status_title'] == 'Offer Accepted') || $resume['ReqResume']['stage_title'] == 'Joining'):
 $action = 1;?>
 								
 								<div class="span1" style="width:110px;">
 <div class="btn btn-mini alert alert-success" rel="tooltip" title="Offer Accepted" style="cursor:default;margin-bottom:0px;padding:4px 7px 4px 9px;text-align:center;">
-                <?php echo ucfirst($resume['ReqResume']['status_title']);?>	
+                Offer Accepted
             </div>									
 									
 								</div>	
@@ -681,31 +599,30 @@ $action = 1;?>
 							$action = '1';?>																		
 									<div class="span1"  style="width:110px;">
 									<div class="btn-group">
-										<button class="btn  btn-mini btn-warning" title="Joining Awaiting" rel="tooltip">JA </button>
-										<button data-toggle="dropdown" class="btn btn-warning btn-mini dropdown-toggle"><span class="caret"></span></button>
+										<button class="btn  btn-mini btn-info" title="Joining Awaiting" rel="tooltip">JA </button>
+										<button data-toggle="dropdown" class="btn btn-info btn-mini dropdown-toggle"><span class="caret"></span></button>
 										<ul class="dropdown-menu">
-											<li><a href="#">Joined</a></li>
-											<li><a href="#">Not Joined</a></li>
-											<li><a href="#">Deferred</a></li>
+											<li><a  href="<?php echo $this->webroot;?>position/update_joining/" val="40_50"  class="iframeBox sepV_a cboxElement">Joined</a></li>
+											<li><a  href="<?php echo $this->webroot;?>position/update_cv/not_joined/" val="40_50"  class="iframeBox sepV_a cboxElement">Not Joined</a></li>
+											<li><a  href="<?php echo $this->webroot;?>position/update_cv/join_defer/" val="40_50"  class="iframeBox sepV_a cboxElement">Deferred</a></li>
 
 										</ul>
 									</div>	
 								</div>
-<?php elseif($resume['ReqResume']['stage_title'] == 'Joining' || $resume['ReqResume']['stage_title'] == 'Not Joined'):
+<?php elseif($resume['ReqResume']['stage_title'] == 'Joining' && $resume['ReqResume']['status_title'] == 'Not Joined'):
 							?>
 							
 								<div class="span1" style="width:110px;">
 <div class="btn btn-mini alert alert-danger" rel="tooltip" title="Candidate Not Joined" style="cursor:default;margin-bottom:0px;padding:4px 7px 4px 9px;text-align:center;">
-                <?php echo ucfirst($resume['ReqResume']['status_title']);?>	
+               Not Joined
             </div>									
 									
 								</div>
-<?php elseif($resume['ReqResume']['stage_title'] == 'Joining' || $resume['ReqResume']['stage_title'] == 'Joined'):
-$action = 1;?>
+<?php elseif($resume['ReqResume']['stage_title'] == 'Joining' && $resume['ReqResume']['status_title'] == 'Joined'):?>
 								
 								<div class="span1" style="width:110px;">
 <div class="btn btn-mini alert alert-success" rel="tooltip" title="Candidate Joined" style="cursor:default;margin-bottom:0px;padding:4px 7px 4px 9px;text-align:center;">
-                <?php echo ucfirst($resume['ReqResume']['status_title']);?>	
+               Joined
             </div>									
 									
 								</div>	
@@ -719,20 +636,18 @@ $action = 1;?>
 							$action = '1';?>																		
 									<div class="span1"  style="width:110px;">
 									<div class="btn-group">
-										<button class="btn  btn-mini btn-warning">BA </button>
-										<button data-toggle="dropdown" class="btn btn-warning btn-mini dropdown-toggle"><span class="caret"></span></button>
+										<button class="btn  btn-mini btn-info">BA </button>
+										<button data-toggle="dropdown" class="btn btn-info btn-mini dropdown-toggle"><span class="caret"></span></button>
 										<ul class="dropdown-menu">
-											<li><a href="#">Add Bill</a></li>
-
+											<li><a href="<?php echo $this->webroot;?>hiring/add_billing.php?res_id=&req_res_id=" target="_blank">Add Bill</a></li>
 										</ul>
 									</div>	
 								</div>
 	
-<?php elseif($resume['ReqResume']['status_title'] == 'Joined'  && $resume['ReqResume']['bill_ctc'] != '0.00'):
-$action = 1;?>
+<?php elseif($resume['ReqResume']['status_title'] == 'Joined'  && $resume['ReqResume']['bill_ctc'] != '0.00'):?>
 								
 								<div class="span1" style="width:110px;">
-<div class="btn btn-mini alert alert-success" rel="tooltip" title="Candidate Billed" style="cursor:default;margin-bottom:0px;padding:4px 7px 4px 9px;text-align:center;">
+<div class="btn btn-mini alert alert-success" rel="tooltip" title="Candidate Billed (₹<?php echo $resume['ReqResume']['bill_ctc'];?>)" style="cursor:default;margin-bottom:0px;padding:4px 7px 4px 9px;text-align:center;">
                 Billed
             </div>									
 									
@@ -765,7 +680,7 @@ $action = 1;?>
 									<div class="tab-pane overall_status_row dn" id="mbox_overall">											
 											
 										
-									over all status display
+									
 							
 										</div>
 								

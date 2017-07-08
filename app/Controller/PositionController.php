@@ -43,7 +43,7 @@ class PositionController extends AppController {
 		$this->set('locList', $this->get_loc_details());
 		$this->set('stList', array('10' => 'Planned', '1' => 'In-Process', '2' => 'On-Hold', '3' => 'Closed', '4' => 'Cancelled'));			
 		$fields = array('id','job_title','location','no_job','min_exp','max_exp','ctc_from','ctc_to','ReqStatus.title','req_status_id',
-		'Client.client_name','team_member', 'Creator.first_name','created_date','modified_date', 'count(ReqResume.id) cv_sent',
+		'Client.client_name','team_member', 'Creator.first_name','created_date','modified_date', 'count(distinct ReqResume.id) cv_sent',
 		'group_concat(ReqResume.status_title) joined','count(distinct Read.id) read_count', "group_concat(distinct ResOwner.first_name
 		SEPARATOR ', ') team_member", 'Position.created_by');
 				
@@ -488,10 +488,32 @@ class PositionController extends AppController {
 
 	}
 	
+	
 	/* function to view the position */
 	public function view($id){	
 		// set the page title
 		$this->set('title_for_layout', 'View Positions - CT Hiring - ES');
+		$this->set('stList', $this->get_status_details());
+		// get the team members
+		$result = $this->Position->get_team($this->Session->read('USER.Login.id'),$show);
+		if(!empty($result)){
+			$this->set('approveUser', '1');
+			// for drop down listing
+			$format_list = $this->Functions->format_dropdown($result, 'u','id','first_name', 'last_name');
+			$this->set('empList', $format_list);
+			$data[] =  $this->Session->read('USER.Login.id');
+			foreach($result as $rec){
+				$data[] =  $rec['u']['id'];
+			}
+			if($team_cond){
+				$teamCond = array('OR' => array(
+					'ReqResume.created_by' =>  $data,
+					'ReqTeam.users_id' => $data,
+					'AH.users_id' => $data					
+					)
+				);
+			}
+		}
 		$options = array(			
 			/*
 			array('table' => 'users',
@@ -533,7 +555,7 @@ class PositionController extends AppController {
 			)
 		);		
 		$fields = array('id','job_title','job_code','education','location','no_job','min_exp','max_exp','ctc_from','ctc_to','ReqStatus.title',
-		'Client.client_name', 'Creator.first_name','created_date','modified_date', 'count(ReqResume.id) cv_sent','req_status_id',
+		'Client.client_name', 'Creator.first_name','created_date','modified_date', 'count(DISTINCT  ReqResume.id) cv_sent','req_status_id',
 		'group_concat(ReqResume.status_title) joined', 'start_date', 'end_date', //"group_concat(distinct ResOwner.first_name  SEPARATOR ', ') team_member",
 		"group_concat(distinct AH.first_name  SEPARATOR ', ') ac_holder","group_concat(distinct TeamMember.first_name  SEPARATOR ', ') team_member2",
 		'skills','Contact.first_name','Contact.email','Contact.mobile','Contact.phone','Contact.id','FunctionArea.function',
@@ -563,6 +585,68 @@ class PositionController extends AppController {
 		$this->set('resume_data', $data);	
 		
 	}
+	
+	
+	public function update_cv($st, $id){
+		$this->layout = 'framebox';
+		if(!empty($this->request->data)){
+			$status = $st == 'approve' ? '0' : '1';
+			$data = array('id' => $id, 'status' => $status, 'approve_date' => $this->Functions->get_current_date(),
+			'is_approve' => 'A');		
+			if ($this->request->is('post') && $st != '') { 
+				// update the todo
+				if($this->Client->save($data, array('validate' => false))){		
+					$this->set('form_status', '1');
+				}
+			}
+		}
+	}
+	
+	public function update_interview($st, $id){
+		$this->layout = 'framebox';
+		if(!empty($this->request->data)){
+			$status = $st == 'approve' ? '0' : '1';
+			$data = array('id' => $id, 'status' => $status, 'approve_date' => $this->Functions->get_current_date(),
+			'is_approve' => 'A');		
+			if ($this->request->is('post') && $st != '') { 
+				// update the todo
+				if($this->Client->save($data, array('validate' => false))){		
+					$this->set('form_status', '1');
+				}
+			}
+		}
+	}
+	
+	public function interview_schedule($st, $id){
+		$this->layout = 'framebox';
+		if(!empty($this->request->data)){
+			$status = $st == 'approve' ? '0' : '1';
+			$data = array('id' => $id, 'status' => $status, 'approve_date' => $this->Functions->get_current_date(),
+			'is_approve' => 'A');		
+			if ($this->request->is('post') && $st != '') { 
+				// update the todo
+				if($this->Client->save($data, array('validate' => false))){		
+					$this->set('form_status', '1');
+				}
+			}
+		}
+	}
+	
+	public function update_joining($st, $id){
+		$this->layout = 'framebox';
+		if(!empty($this->request->data)){
+			$status = $st == 'approve' ? '0' : '1';
+			$data = array('id' => $id, 'status' => $status, 'approve_date' => $this->Functions->get_current_date(),
+			'is_approve' => 'A');		
+			if ($this->request->is('post') && $st != '') { 
+				// update the todo
+				if($this->Client->save($data, array('validate' => false))){		
+					$this->set('form_status', '1');
+				}
+			}
+		}
+	}
+	
 	
 	
 	/* function to load the districts options */
