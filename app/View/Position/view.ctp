@@ -377,17 +377,37 @@
 													
 												<?php foreach($resume_data as $resume):	?>
 													
-												
+	<?php if($resume['ReqResume']['stage_title'] != 'Validation - Recruiter' && $resume['ReqResume']['stage_title'] != 'Validation - Account Holder'):?>
+	<?php $row_type = 'sent_row';
+	else:
+	$row_type = 'upload_row';
+	endif; ?>
+		
 													
-													<tr class="upload_row">
+													<tr class="<?php echo $row_type;?>">
 														<td>														
 														<a target="_blank" href="<?php echo $this->webroot;?>resume/view/<?php echo $resume['Resume']['id'];?>/"><?php echo ucwords($resume['Resume']['first_name'].' '.$resume['Resume']['last_name']);?></a></td>
 														<td><span><?php echo $this->Functions->get_format_text($resume['Resume']['mobile']);?></span></td>
 														<td><?php echo $this->Functions->get_format_text($resume['Resume']['email_id']);?></td>
-														<td><?php echo $resume['ResLoc']['location'];?></td>
-														<td><?php if(!empty($resume['Resume']['present_ctc'])): echo $resume['Resume']['present_ctc'].' L'; endif; ?></td>
-														<td><?php if(!empty($resume['Resume']['present_ctc'])): echo $resume['Resume']['present_ctc'].' L'; endif; ?></td>
-														<td  class="noticePeriod"><?php echo $resume['Resume']['notice_period'];?> Days</td>
+													<td>
+														<?php if($resume['ResLoc']['location'] != ''):
+														echo $resume['ResLoc']['location'];
+														else:
+														echo $resume['Resume']['present_location'];
+														endif;
+														?>
+														</td>
+														<td>
+														
+										<?php echo $resume['Resume']['present_ctc'];?>
+										<?php echo $this->Functions->get_ctc_type($resume['Resume']['present_ctc_type']);?>
+										</td>
+														<td>
+														
+										<?php echo $resume['Resume']['expected_ctc'];?>
+										<?php echo $this->Functions->get_ctc_type($resume['Resume']['expected_ctc_type']);?>
+										
+														<td  class="noticePeriod"><?php echo $this->Functions->get_notice($resume['Resume']['notice_period']);?></td>
 														<td><?php echo $resume['Creator']['first_name'];?></td>
 														<td><?php echo $this->Functions->format_date($resume['ReqResume']['created_date']);?></td>
 														
@@ -400,12 +420,18 @@
 															<!--a href="add_formatted_resume.php" style="margin-right:5px"  rel="tooltip"  title="Create Fully Formatted Resume">
 															<img src="<?php echo $this->webroot;?>img/gCons/add-item.png" width="18" height="18" style="padding-bottom: 5px;">
 															</a-->
-															<button data-toggle="dropdown" rel="tooltip"  title="Download" dropdown-toggle"><i class="icon-download"></i> <span class=""></span></button>
+															<button data-toggle="dropdown"><i class="icon-refresh"></i> <span class=""></span></button>
 															<ul style="margin-left:-35px;" class="dropdown-menu">
-																<li><a href="#">Snapshot</a></li>
+															
+																<li><a href="<?php echo $this->webroot;?>position/send_cv/<?php echo $resume['Resume']['id']; ?>/<?php echo $this->request->params['pass'][0];?>/" val="60_90"  class="iframeBox">Send CV</a></li>
+
+																<?php if($resume['ResDoc']['resume'] == ''):?>
 																<li><a class="notify" data-notify-time = '7000' data-notify-title="In Progress!" data-notify-message="Downloading Resume... Please wait..."   href="<?php echo $this->webroot;?>hc/download/<?php echo $resume['Resume']['id']; ?>">Candidate Resume</a></li>
-																<li class="divider"></li>
-																<li><a href="#">Fully Formatted Resume</a></li>
+																<?php else:?>
+																<li><a class="notify" data-notify-time = '3000' data-notify-title="In Progress!" data-notify-message="Downloading Resume... Please wait..."   href="<?php echo $this->webroot;?>resume/download_doc/<?php echo $resume['ResDoc']['resume']; ?>">Candidate Resume</a></li>
+																<?php endif; ?>
+																<li><a href="<?php echo $this->webroot;?>resume/profile_snapshot/<?php echo $resume['Resume']['id']; ?>">Snapshot</a></li>
+																
 															</ul>
 														</div>											
 														</td>
@@ -418,46 +444,6 @@
 													<?php endforeach; ?>
 													
 													 
-													<?php foreach($resume_data as $resume):	?>
-					<?php if($resume['ReqResume']['stage_title'] != 'Validation - Recruiter' && $resume['ReqResume']['stage_title'] != 'Validation - Account Holder'):?>
-		
-													
-													<tr class="dn sent_row">
-														<td>														
-														<a target="_blank" href="<?php echo $this->webroot;?>resume/view/<?php echo $resume['Resume']['id'];?>/"><?php echo ucwords($resume['Resume']['first_name'].' '.$resume['Resume']['last_name']);?></a></td>
-														<td><span><?php echo $this->Functions->get_format_text($resume['Resume']['mobile']);?></span></td>
-														<td><?php echo $this->Functions->get_format_text($resume['Resume']['email_id']);?></td>
-														<td><?php echo $resume['ResLoc']['location'];?></td>
-														<td><?php if(!empty($resume['Resume']['present_ctc'])): echo $resume['Resume']['present_ctc'].' L'; endif; ?></td>
-														<td><?php if(!empty($resume['Resume']['present_ctc'])): echo $resume['Resume']['present_ctc'].' L'; endif; ?></td>
-														<td  class="noticePeriod"><?php echo $resume['Resume']['notice_period'];?> Days</td>
-														<td><?php echo $resume['Creator']['first_name'];?></td>
-														<td><?php echo $this->Functions->format_date($resume['ReqResume']['created_date']);?></td>
-														
-														
-														
-															<td class="actionItem">
-														<div class="btn-group" style="margin-left:5px;display:inline-block;">
-															<!--a href="edit_resume.php" style="margin-left:5px;margin-right:5px" rel="tooltip" class="sepV_a" title="Edit"><i class="icon-pencil"></i></a-->
-															<!-- <a href="#"  style="margin-right:5px"  id="smoke_confirm" rel="tooltip" class="confirm"   title="Delete"><i class="icon-trash"></i></a> -->
-															<!--a href="add_formatted_resume.php" style="margin-right:5px"  rel="tooltip"  title="Create Fully Formatted Resume">
-															<img src="<?php echo $this->webroot;?>img/gCons/add-item.png" width="18" height="18" style="padding-bottom: 5px;">
-															</a-->
-															<button data-toggle="dropdown" rel="tooltip"  title="Download" dropdown-toggle"><i class="icon-download"></i> <span class=""></span></button>
-															<ul style="margin-left:-35px;" class="dropdown-menu">
-																<li><a href="#">Snapshot</a></li>
-																<li><a class="notify" data-notify-time = '7000' data-notify-title="In Progress!" data-notify-message="Downloading Resume... Please wait..."   href="<?php echo $this->webroot;?>hc/download/<?php echo $resume['Resume']['id']; ?>">Candidate Resume</a></li>
-																<li class="divider"></li>
-																<li><a href="#">Fully Formatted Resume</a></li>
-															</ul>
-														</div>											
-														</td>
-														
-														
-														
-													</tr>
-													<?php endif; ?>
-													<?php endforeach; ?>
 													
 													
 													<?php  foreach($resume_data as $resume):	?>
