@@ -72,7 +72,7 @@
                                     <tr class="tbl_row">
 										<td width="120" class="tbl_column"> Mobile <span class="f_req">*</span></td>
 										<td>
-										<input type="text" tabindex="4" name="mobile" id="" value="{$mobile}" autocomplete="off">							
+										<input type="text" tabindex="4" name="mobile" id="" class="span8" value="{$mobile}" autocomplete="off">							
 									<label for="reg_city" generated="true" class="error">{$mobileErr} </label>							
 										</td>		
 									</tr>									
