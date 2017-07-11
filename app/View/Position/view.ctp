@@ -422,9 +422,9 @@
 															</a-->
 															<button data-toggle="dropdown"><i class="icon-refresh"></i> <span class=""></span></button>
 															<ul style="margin-left:-35px;" class="dropdown-menu">
-															
+																<?php if($row_type == 'status_row'):?>
 																<li><a href="<?php echo $this->webroot;?>position/send_cv/<?php echo $resume['Resume']['id']; ?>/<?php echo $this->request->params['pass'][0];?>/" val="60_90"  class="iframeBox">Send CV</a></li>
-
+																<?php endif; ?>
 																<?php if($resume['ResDoc']['resume'] == ''):?>
 																<li><a class="notify" data-notify-time = '7000' data-notify-title="In Progress!" data-notify-message="Downloading Resume... Please wait..."   href="<?php echo $this->webroot;?>hc/download/<?php echo $resume['Resume']['id']; ?>">Candidate Resume</a></li>
 																<?php else:?>

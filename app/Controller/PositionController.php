@@ -632,7 +632,8 @@ class PositionController extends AppController {
 			$cand_data = $this->Position->find('all', array('fields' => $fields,'conditions' => array('Resume.id' => $res_id),
 			'joins' => $options));
 			// print_r($cand_data);
-			$this->set('candidate_name', ucwords($cand_data[0]['Resume']['first_name'].' '.$cand_data[0]['Resume']['last_name']));
+			$cand_name = ucwords($cand_data[0]['Resume']['first_name'].' '.$cand_data[0]['Resume']['last_name']);
+			$this->set('candidate_name', $cand_name);
 			// get resume education details
 			$this->loadModel('ResEdu');
 			$edu_data = $this->ResEdu->find('all', array('conditions' => array('resume_id' => $res_id), 'fields' => array('percent_mark','year_passing','college',
@@ -644,10 +645,13 @@ class PositionController extends AppController {
 			// get the mail template details
 			$this->loadModel('MailTemplate');
 			$data = $this->MailTemplate->findById('1', array('fields' => 'subject','message'));
+			$loc = $cand_data[0]['ResLoc']['location'] ? $cand_data[0]['ResLoc']['location'] : $cand_data[0]['Resume']['present_location'];
 			$tags = array('[candidate_name]','[mobile]','[email_id]','[position]','[address]','[location]','[designation]','[experience]',
 			'[client]','[client_contact_name]','[client_contact_no]','[job_location]','[job_desc]','[resume]','[snapshot]','[autoresume]',
 			'[function]','[today_date]');
-			$template_data = array();
+			$template_data = array($cand_name,$cand_data[0]['Resume']['mobile'],$cand_data[0]['Position']['job_title'],
+			$cand_data[0]['Position']['address1']. '<br>'.$cand_data[0]['Position']['address2'],$loc,
+			$cand_data[0]['Designation']['designation'],'','','','','','','','','','','','',date('d-M, Y'));
 			$body_text = str_replace($tags, $template_data, $data['MailTemplate']['message']);
 			$subject_text = str_replace($tags, $template_data, $data['MailTemplate']['subject']);
 			$this->set('subject', $subject_text);
