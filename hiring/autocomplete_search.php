@@ -61,7 +61,9 @@ if($_GET['page'] == 'list_grade'){
    }catch(Exception $e){
 		echo 'Caught exception: ',  $e->getMessage(), "\n";
    }
-}elseif($_GET['page'] == 'list_eligibility'){
+}
+/*
+elseif($_GET['page'] == 'list_eligibility'){
 	// get matched data from eligibility
 	$query = "CALL search_eligibility('".$keyword."')";
 	try{	
@@ -70,7 +72,7 @@ if($_GET['page'] == 'list_grade'){
 		}
 		// iterate until get the matched results
 		while($obj = $mysql->display_result($result)){
-			$data[] = strtolower($fun->match_results($keyword,$obj['grade']));		
+			$data[] = strtolower($fun->match_results($keyword,$obj['type']));		
 		}
 		
 		// filter the duplicate values
@@ -86,7 +88,8 @@ if($_GET['page'] == 'list_grade'){
    }catch(Exception $e){
 		echo 'Caught exception: ',  $e->getMessage(), "\n";
    }
-}elseif($_GET['page'] == 'list_sharing_criteria'){
+}
+*/elseif($_GET['page'] == 'list_sharing_criteria'){
 	// get matched data from sharing criteria
 	$query = "CALL search_sharing('".$keyword."')";
 	try{	

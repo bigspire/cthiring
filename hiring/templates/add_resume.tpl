@@ -49,7 +49,7 @@
 						<tr class="tbl_row">
 										<td width="120" class="tbl_column">Position For <span class="f_req">*</span></td>
 										<td>
-										<input type="text" tabindex="3" value="{$requirement}" class="span8" disabled>
+										<input type="text"  value="{$requirement}" class="span8" disabled>
 										</td>
 									</tr>	
 									
@@ -74,7 +74,7 @@
                                     <tr class="tbl_row">
 										<td width="120" class="tbl_column"> Mobile <span class="f_req">*</span></td>
 										<td>
-										<input type="text" tabindex="4" name="mobile"  value="{$mobile}" autocomplete="off">							
+										<input type="text" tabindex="4" name="mobile" class="span8" value="{$mobile}" autocomplete="off">							
 
 							
 										

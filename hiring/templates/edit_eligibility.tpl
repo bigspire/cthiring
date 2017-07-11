@@ -39,27 +39,35 @@
 			<table class="table table-bordered dataTable" style="margin-bottom:0;">
 				<tbody>
 						<tr class="tbl_row">
-							<td width="120" class="tbl_column">Target Actualization(%)  <span class="f_req">*</span></td>
+							<td width="120" class="tbl_column">CTC  <span class="f_req">*</span></td>
 							<td>										
-							<select name="target_from" id="target_from" tabindex="1" class="span4">
-							<option value="">Select</option>	
-								{html_options options=$target selected=$target_from}			    			
+							<select name="ctc_from" tabindex="1" rel="maxDrop" class="span4 minDrop" id="minDrop">
+							<option value="">Min.</option>	
+							{html_options options=$target selected=$ctc_from}			    			
 							</select>	
-							
-							<select name="target_to" id="target_to" tabindex="2" class="inline_text span4">
+						
+							<select name="ctc_to"  tabindex="2" id="maxDrop" class="inline_text span4 maxDrop">
 							<option value="">Select</option>	
-								{html_options options=$target selected=$target_to}			    			
+							{html_options options=$target selected=$ctc_to}			    			
 							</select>
-							<label for="reg_city" generated="true" class="error">{$target_from_Err} {$target_to_Err} </label>									
+							<label for="reg_city" generated="true" class="error">{$target_from_Err} </label>									
+							<label for="reg_city" generated="true" class="error">{$target_to_Err}</label>									
 							</td>	
 						</tr>	
 						<tr>
-							<td width="120" class="tbl_column">Eligibility Incentive(%)  <span class="f_req">*</span></td>
+							<td width="120" class="tbl_column">No of Resume  <span class="f_req">*</span></td>
 							<td>										
-								<input type="text" tabindex="4" name="eligible" value="{$eligible}" class="span8">
-								<label for="reg_city" generated="true" class="error"></label>							
+								<input type="text" tabindex="4" name="no_resumes" value="{$no_resumes}" class="span8">
+								<label for="reg_city" generated="true" class="error">{$no_resumeErr} </label>									
 							</td>	
-						</tr>																											
+						</tr>
+						<tr class="tbl_row">
+							<td width="120" class="tbl_column">Amount (INR) <span class="f_req">*</span></td>
+							<td>										
+								<input type="text" tabindex="4" name="amount" value="{$amount}" class="span8">
+								<label for="reg_city" generated="true" class="error">{$amountErr} </label>									
+							</td>	
+						</tr>						
 				</tbody>
 			</table>
 		</div>
@@ -68,29 +76,26 @@
 			<table class="table table-bordered dataTable" style="margin-bottom:0;">
 				<tbody>	 
 					<tr class="tbl_row">
-							<td width="120" class="tbl_column">Grade <span class="f_req">*</span></td>
+							<td width="120" class="tbl_column">Type <span class="f_req">*</span></td>
 							<td>										
-								<select name="grade" tabindex="3"  class="span8" id="grade">
-								<option value="">Select</option>	
-								{html_options options=$g_name selected=$grade_id}			    			
-								</select>
-								<label for="reg_city" generated="true" class="error">{$gradenameErr}<label>									
+							<select name="type" id="type" tabindex="3" class="span8">
+							{html_options options=$types selected=$type}			    			
+							</select>
+								<label for="reg_city" generated="true" class="error">{$typesErr}</label>									
 							</td>	
 						</tr>	
 						 
 				  <tr>
 						<td width="120" class="tbl_column">Status <span class="f_req">*</span></td>
 						<td>	
-						<select name=status id="status" tabindex="5" class="span8" id="status" >
-							{if isset($status)}
-								{html_options  options=$grade_status selected=$status}	
-							{else}
-								{html_options  options=$grade_status selected='1'}	
-							{/if} 
-							</select>
+						<select name=status id="status" tabindex="5" class="span8">
+							
+								{html_options  options=$grade_status selected=$status}		
+							
+						</select>
 							<label for="reg_city" generated="true" class="error">{$statusErr}</label>											
 						</td>	
-				  </tr>						
+				  </tr>									
 				</tbody>
 			</table>
 		</div>
@@ -100,7 +105,11 @@
 </div>
 <div class="form-actions">
 				<input name="submit" class="btn btn-gebo" value="Submit" type="submit"/>
-				<input type="button" value="Cancel" class="btn" onclick="window.location='eligibility.php'">
+				<input type="hidden" name="data[Client][webroot]" value="eligibility.php" id="webroot">
+
+				<a href="javascript:void(0)" class="jsRedirect cancelBtn cancel_event">
+	<input type="button" value="Cancel" class="btn">
+	</a>
 </div>
                     </div>
 				</form>
