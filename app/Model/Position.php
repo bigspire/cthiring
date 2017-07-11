@@ -52,7 +52,7 @@ class Position extends AppModel {
 		'ReqResume' => array(
             'className'  => 'ReqResume',
 			'foreignKey' => 'requirements_id',
-			'conditions' => array('stage_title not like' => 'Validation%')
+			// 'conditions' => array('stage_title not like' => 'Validation%')
 
         ),
 		/*

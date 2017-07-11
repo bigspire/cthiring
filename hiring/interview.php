@@ -23,8 +23,6 @@ include('menu_count.php');
 $module_access = $fun->check_role_access('10',$modules);
 $smarty->assign('module',$module_access);
 
-
-
 $keyword = $_POST['keyword'] ? $_POST['keyword'] : $_GET['keyword'];
 $f_date = $_POST['f_date'] ? $_POST['f_date'] : $_GET['f_date'];  
 $t_date = $_POST['t_date'] ? $_POST['t_date'] : $_GET['t_date']; 
@@ -44,9 +42,44 @@ if($_POST){
 	$post_url .= '&current_status='.$current_status;
 }
 
+		// for director and BH
+		if($_SESSION['roles_id'] == '33' || $_SESSION['roles_id'] == '38'){
+			$show = 'all';
+			$team_cond = false;
+		}else{
+			$team_cond = true;
+		}
+		// call the next result
+		$mysql->next_query();
+		$id = $_SESSION['user_id'];
+		// get the team members
+		if($show != 'all'){
+			$qryCond = "(a.level1 = '$id' or a.level2 = '$id') and ";
+		}		
+		$sql = "select u.id, u.first_name, u.last_name from users u left join	approval a  on (a.users_id = u.id) where
+		$qryCond u.is_deleted = 'N' and u.status = '0' group by u.id order by u.first_name asc";		
+		$result = $mysql->execute_query($sql);		
+		while($row = $mysql->display_result($result)){
+			$emp_name[$row['id']] = ucwords($row['first_name'].' '.$row['last_name']);
+		}
+		// if not director or BH
+		if(!empty($emp_name)){
+			$smarty->assign('approveUser', '1');		
+			foreach($result as $rec){
+				// concatenate the list of team members
+				$id_str .=  $rec['u']['id'].' , ';
+			}
+			if($team_cond){
+				$cond .= 'or ( rr.created_by in('.$id_str.')';
+				$cond .= 'or ah.users_id in('.$id_str.')
+				)';
+				
+			}
+			$smarty->assign('emp_name',$emp_name);
+		}
 
 // count the total no. of records
-$query = "CALL list_interview('".$_SESSION['user_id']."','".$_SESSION['roles_id']."','".$keyword."','".$employee."','".$branch."','".$fun->get_status_cond($current_status)."','".$from_date."','".$to_date."','0','0','','','".$_GET['action']."')";
+$query = "CALL list_interview('".$_SESSION['user_id']."','".$_SESSION['roles_id']."','".$keyword."','".$employee."','".$branch."','".$fun->get_status_cond($current_status)."','".$from_date."','".$to_date."','0','0','','','".$_GET['action']."','".$cond."')";
 try{
 	if(!$result = $mysql->execute_query($query)){
 		throw new Exception('Problem in executing list interview page');
@@ -74,8 +107,8 @@ try{
 
 // set the condition to check ascending or descending order		
 $order = ($_GET['order'] == 'desc') ? 'asc' :  'desc';	
-$sort_fields = array('1' => 'candidate_name','position','company','interview_date','stage','current_status','created_by','created_date');
-$org_fields = array('1' => 'candidate_name','position','company','interview_date','stage','status','created_by','created_date');
+$sort_fields = array('1' => 'candidate_name','position','company','ac_holder','interview_date','stage','current_status','created_by','created_date');
+$org_fields = array('1' => 'candidate_name','position','company','ac_holder','interview_date','stage','status','created_by','created_date');
 
 // to set the sorting image
 foreach($sort_fields as $key => $b_field){
@@ -98,8 +131,11 @@ if($search_key = array_search($_GET['field'], $sort_fields)){
 	$field =  $org_fields[$search_key];
 }
 
+
+		
+
 // fetch all records
-$query =  "CALL list_interview('".$_SESSION['user_id']."','".$_SESSION['roles_id']."','".$keyword."','".$employee."','".$branch."','".$fun->get_status_cond($current_status)."','".$from_date."','".$to_date."','$start','$limit','".$field."','".$order."','".$_GET['action']."')";
+$query =  "CALL list_interview('".$_SESSION['user_id']."','".$_SESSION['roles_id']."','".$keyword."','".$employee."','".$branch."','".$fun->get_status_cond($current_status)."','".$from_date."','".$to_date."','$start','$limit','".$field."','".$order."','".$_GET['action']."', '".$cond."')";
 try{
 	if(!$result = $mysql->execute_query($query)){
 		throw new Exception('Problem in executing list interview page');
@@ -124,9 +160,9 @@ try{
 		include('classes/class.excel.php');
 		$excelObj = new libExcel();
 		// function to print the excel header
-      $excelObj->printHeader($header = array('Candidate Name','Position','Company','Interview Date','Stage','Status','Created By','Created') ,$col = array('A','B','C','D','E','F','G','H'));  
+      $excelObj->printHeader($header = array('Candidate Name','Position','Company','Account Holder','Interview Date','Stage','Status','Created By','Created') ,$col = array('A','B','C','D','E','F','G','H','I'));  
 		// function to print the excel data
-		$excelObj->printCell($data, $count,$col = array('A','B','C','D','E','F','G','H'), $field = array('candidate_name','position','company','interview_date','stage','status','created_by','created_date'),'Interview_'.$current_date);
+		$excelObj->printCell($data, $count,$col = array('A','B','C','D','E','F','G','H','I'), $field = array('candidate_name','position','company','ac_holder','interview_date','stage','status','created_by','created_date'),'Interview_'.$current_date);
 	}	
 
 	// approve or reject validation
@@ -145,54 +181,20 @@ try{
 	echo 'Caught exception: ',  $e->getMessage(), "\n";
 }
 
-		// for director and BH
-		if($_SESSION['roles_id'] == '33' || $_SESSION['roles_id'] == '38'){
-			$show = 'all';
-			$team_cond = false;
-		}else{
-			$team_cond = true;
-		}
-		// call the next result
-		$mysql->next_query();
-		$id = $_SESSION['user_id'];
-		// get the team members
-		if($show == '1'){
-			$qryCond = "(a.level1 = '$id' or a.level2 = '$id') and ";
-		}		
-		$sql = "select u.id, u.first_name, u.last_name from users u inner join	approval a  on (a.users_id = u.id) where
-		$qryCond u.is_deleted = 'N' and u.status = '0' group by u.id order by u.first_name asc";		
-		$result = $mysql->execute_query($sql);		
-		while($row = $mysql->display_result($result)){
-			$emp_name[$row['id']] = ucwords($row['first_name'].' '.$row['last_name']);
-		}
-		
-		if(!empty($result)){
-			$smarty->assign('approveUser', '1');		
-			foreach($result as $rec){
-				$id_str .=  $rec['u']['id'].' , ';
-			}
-			if($team_cond){
-				$cond1 .= 'or ( ReqResume.created_by in('.$id_str.')';
-				$cond2 .= 'or AH.users_id in('.$id_str.')
-				)';
-				
-			}
-			$smarty->assign('emp_name',$emp_name);
-		}
 
-// query to fetch all employee names. 
+// query to fetch all account holder names. 
 /*
-$query = 'CALL get_employee()';
+$query = 'CALL get_accountholder_name()';
 try{
 	// calling mysql exe_query function
 	if(!$result = $mysql->execute_query($query)){
-		throw new Exception('Problem in getting employee details');
+		throw new Exception('Problem in getting account holder details');
 	}
 	while($row = $mysql->display_result($result))
 	{
- 		$emp_name[$row['id']] = ucwords($row['emp_name']);
+ 		$ac_holder[$row['id']] = ucwords($row['account_holder']);
 	}
-	$smarty->assign('emp_name',$emp_name);
+	$smarty->assign('ac_holder',$ac_holder);
 	// free the memory
 	$mysql->clear_result($result);
 	// call the next result

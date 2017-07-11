@@ -27,7 +27,7 @@ if(isset($_GET['id'])){
 		if(!$result = $mysql->execute_query($query)){
 			throw new Exception('Problem in deleting');
 		}  
-  		header('Location:eligibility.php?page='.$_GET['page'].'&status=deleted');	
+  		header('Location:eligibility.php?page='.$_GET['page'].'&cur_status=deleted');	
    }catch(Exception $e){
 		echo 'Caught exception: ',  $e->getMessage(), "\n";
 	}

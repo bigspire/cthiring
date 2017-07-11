@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-06-19 11:56:13
+/* Smarty version 3.1.29, created on 2017-07-11 13:17:15
   from "C:\xampp\htdocs\2017\ctsvn\cthiring\hiring\templates\edit_eligibility.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_59476e8597ac77_90817185',
+  'unifunc' => 'content_59648283527118_00797197',
   'file_dependency' => 
   array (
     'dc2c74504b45c8c62ca088c2b3d0b93397286d09' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\templates\\edit_eligibility.tpl',
-      1 => 1497270582,
+      1 => 1499759228,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_59476e8597ac77_90817185 ($_smarty_tpl) {
+function content_59648283527118_00797197 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -67,32 +67,43 @@ home"><i class="icon-home"></i></a>
 			<table class="table table-bordered dataTable" style="margin-bottom:0;">
 				<tbody>
 						<tr class="tbl_row">
-							<td width="120" class="tbl_column">Target Actualization(%)  <span class="f_req">*</span></td>
+							<td width="120" class="tbl_column">CTC  <span class="f_req">*</span></td>
 							<td>										
-							<select name="target_from" id="target_from" tabindex="1" class="span4">
-							<option value="">Select</option>	
-								<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['target']->value,'selected'=>$_smarty_tpl->tpl_vars['target_from']->value),$_smarty_tpl);?>
+							<select name="ctc_from" tabindex="1" rel="maxDrop" class="span4 minDrop" id="minDrop">
+							<option value="">Min.</option>	
+							<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['target']->value,'selected'=>$_smarty_tpl->tpl_vars['ctc_from']->value),$_smarty_tpl);?>
 			    			
 							</select>	
-							
-							<select name="target_to" id="target_to" tabindex="2" class="inline_text span4">
+						
+							<select name="ctc_to"  tabindex="2" id="maxDrop" class="inline_text span4 maxDrop">
 							<option value="">Select</option>	
-								<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['target']->value,'selected'=>$_smarty_tpl->tpl_vars['target_to']->value),$_smarty_tpl);?>
+							<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['target']->value,'selected'=>$_smarty_tpl->tpl_vars['ctc_to']->value),$_smarty_tpl);?>
 			    			
 							</select>
 							<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['target_from_Err']->value;?>
- <?php echo $_smarty_tpl->tpl_vars['target_to_Err']->value;?>
  </label>									
+							<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['target_to_Err']->value;?>
+</label>									
 							</td>	
 						</tr>	
 						<tr>
-							<td width="120" class="tbl_column">Eligibility Incentive(%)  <span class="f_req">*</span></td>
+							<td width="120" class="tbl_column">No of Resume  <span class="f_req">*</span></td>
 							<td>										
-								<input type="text" tabindex="4" name="eligible" value="<?php echo $_smarty_tpl->tpl_vars['eligible']->value;?>
+								<input type="text" tabindex="4" name="no_resumes" value="<?php echo $_smarty_tpl->tpl_vars['no_resumes']->value;?>
 " class="span8">
-								<label for="reg_city" generated="true" class="error"></label>							
+								<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['no_resumeErr']->value;?>
+ </label>									
 							</td>	
-						</tr>																											
+						</tr>
+						<tr class="tbl_row">
+							<td width="120" class="tbl_column">Amount (INR) <span class="f_req">*</span></td>
+							<td>										
+								<input type="text" tabindex="4" name="amount" value="<?php echo $_smarty_tpl->tpl_vars['amount']->value;?>
+" class="span8">
+								<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['amountErr']->value;?>
+ </label>									
+							</td>	
+						</tr>						
 				</tbody>
 			</table>
 		</div>
@@ -101,34 +112,30 @@ home"><i class="icon-home"></i></a>
 			<table class="table table-bordered dataTable" style="margin-bottom:0;">
 				<tbody>	 
 					<tr class="tbl_row">
-							<td width="120" class="tbl_column">Grade <span class="f_req">*</span></td>
+							<td width="120" class="tbl_column">Type <span class="f_req">*</span></td>
 							<td>										
-								<select name="grade" tabindex="3"  class="span8" id="grade">
-								<option value="">Select</option>	
-								<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['g_name']->value,'selected'=>$_smarty_tpl->tpl_vars['grade_id']->value),$_smarty_tpl);?>
+							<select name="type" id="type" tabindex="3" class="span8">
+							<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['types']->value,'selected'=>$_smarty_tpl->tpl_vars['type']->value),$_smarty_tpl);?>
 			    			
-								</select>
-								<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['gradenameErr']->value;?>
-<label>									
+							</select>
+								<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['typesErr']->value;?>
+</label>									
 							</td>	
 						</tr>	
 						 
 				  <tr>
 						<td width="120" class="tbl_column">Status <span class="f_req">*</span></td>
 						<td>	
-						<select name=status id="status" tabindex="5" class="span8" id="status" >
-							<?php if (isset($_smarty_tpl->tpl_vars['status']->value)) {?>
+						<select name=status id="status" tabindex="5" class="span8">
+							
 								<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['grade_status']->value,'selected'=>$_smarty_tpl->tpl_vars['status']->value),$_smarty_tpl);?>
-	
-							<?php } else { ?>
-								<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['grade_status']->value,'selected'=>'1'),$_smarty_tpl);?>
-	
-							<?php }?> 
-							</select>
+		
+							
+						</select>
 							<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['statusErr']->value;?>
 </label>											
 						</td>	
-				  </tr>						
+				  </tr>									
 				</tbody>
 			</table>
 		</div>
@@ -138,7 +145,11 @@ home"><i class="icon-home"></i></a>
 </div>
 <div class="form-actions">
 				<input name="submit" class="btn btn-gebo" value="Submit" type="submit"/>
-				<input type="button" value="Cancel" class="btn" onclick="window.location='eligibility.php'">
+				<input type="hidden" name="data[Client][webroot]" value="eligibility.php" id="webroot">
+
+				<a href="javascript:void(0)" class="jsRedirect cancelBtn cancel_event">
+	<input type="button" value="Cancel" class="btn">
+	</a>
 </div>
                     </div>
 				</form>

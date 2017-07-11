@@ -52,27 +52,6 @@ if($getid !=''){
 	}
 }
 
-// query to fetch all grade names. 
-$query = 'CALL get_grade()';
-try{
-	// calling mysql exe_query function
-	if(!$result = $mysql->execute_query($query)){
-		throw new Exception('Problem in executing grade');
-	}
-
-	while($row = $mysql->display_result($result))
-	{
- 		$grade_name[$row['id']] = $row['grade'];
-	}
-	$smarty->assign('g_name',$grade_name);
-	// free the memory
-	$mysql->clear_result($result);
-	// call the next result
-	$mysql->next_query();
-}catch(Exception $e){
-	echo 'Caught exception: ',  $e->getMessage(), "\n";
-} 
-
 // get database values
 if(empty($_POST)){
 	$query = "CALL get_eligibility('$getid')";
@@ -98,16 +77,22 @@ if(empty($_POST)){
 
 if(!empty($_POST)){
 	// Validating the required fields  
-	/* if(strlen(trim($_POST['eligible'])) != strlen($_POST['eligible'])) {
-		$eligibilityErr = 'Please enter the valid eligibility incentive(%)';
-    	$smarty->assign('eligibilityErr',$eligibilityErr);
+	if(($fun->isnumeric($_POST['amount'])) || ($fun->is_phonenumber($_POST['amount']))){
+		$amountErr = 'Please enter the numeric value';
+    	$smarty->assign('amountErr',$amountErr);
     	$test = 'error';
-	} */
+	} 
+	if(($fun->isnumeric($_POST['no_resumes'])) || ($fun->is_phonenumber($_POST['no_resumes']))){
+		$no_resumeErr = 'Please enter the numeric value';
+    	$smarty->assign('no_resumeErr',$no_resumeErr);
+    	$test = 'error';
+	}
+	
 	// array for printing correct field name in error message
-	$fieldtype = array('1', '1','1','0','1');
-	$actualfield = array('grade', 'target from', 'target to', 'eligibility incentive(%)','status');
-    $field = array('grade' => 'gradenameErr','target_from' => 'target_from_Err',
-	'target_to' => 'target_to_Err','eligible' => 'eligibilityErr', 'status' => 'statusErr');
+	$fieldtype = array('1', '1','1','0','0','1');
+	$actualfield = array('type', 'ctc from', 'ctc to', 'no of resume','amount','status');
+    $field = array('type' => 'typesErr','ctc_from' => 'target_from_Err',
+	'ctc_to' => 'target_to_Err','no_resumes' => 'no_resumeErr','amount' => 'amountErr', 'status' => 'statusErr');
 	$j = 0;
 	foreach($field as $field => $er_var){
 		if($_POST[$field] == ''){ 
@@ -125,12 +110,12 @@ if(!empty($_POST)){
 	$date =  $fun->current_date();
 	if(empty($test)){
 		// query to check whether it is exist or not. 
-		$query = "CALL check_grade_exist('0', '".$_POST['grade']."')";
+		$query = "CALL check_eligibile('".$getid."', '".$_POST['ctc_from']."','".$_POST['ctc_to']."','".$_POST['type']."')";
 		// Calling the function that makes the insert
 		try{
 			// calling mysql exe_query function
 			if(!$result = $mysql->execute_query($query)){
-				throw new Exception('Problem in executing to check grade exist');
+				throw new Exception('Problem in executing to check eligibility exist');
 			}
 			$row = $mysql->display_result($result);
 			// free the memory
@@ -142,9 +127,12 @@ if(!empty($_POST)){
 		}
 		if($row['total'] == '0'){
 			// query to update eligibility es. 
-			$query = "CALL edit_eligibility('".$getid."','".$mysql->real_escape_str($_POST['target_from'])."','".$mysql->real_escape_str($_POST['target_to'])."',
-			'".$fun->is_white_space($mysql->real_escape_str($_POST['eligible']))."','".$date."','".$mysql->real_escape_str($_POST['status'])."',
-			'".$mysql->real_escape_str($_POST['grade'])."')";
+			$query = "CALL edit_eligibility('".$getid."','".$mysql->real_escape_str($_POST['ctc_from'])."',
+			'".$mysql->real_escape_str($_POST['ctc_to'])."',
+			'".$mysql->real_escape_str($_POST['type'])."',
+			'".$fun->is_white_space($mysql->real_escape_str($_POST['no_resumes']))."',
+			'".$fun->is_white_space($mysql->real_escape_str($_POST['amount']))."',
+			'".$date."','".$mysql->real_escape_str($_POST['status'])."')";
 			// calling the function that makes the insert
 			try{
 				// calling mysql exe_query function
@@ -157,7 +145,7 @@ if(!empty($_POST)){
 				$mysql->clear_result($result);
 				if(!empty($affected_rows)){
 					// redirecting to list eligibility page
-					header('Location: eligibility.php?status=updated');	
+					header('Location: eligibility.php?cur_status=updated');	
 				}
 			}catch(Exception $e){
 				echo 'Caught exception: ',  $e->getMessage(), "\n";
@@ -170,10 +158,17 @@ if(!empty($_POST)){
 }
 // smarty drop down array for status
 $smarty->assign('grade_status', array('' => 'Select', '1' => 'Active', '2' => 'Inactive'));
+// smarty drop down array for type
+$smarty->assign('types', array('' => 'Select', 'PS' => 'Profile Sending', 'PI' => 'Profile Shortlisting','PC' => 'Position Closing'));
+
 // smarty dropdown array for no of times
 $target = array();
-for($l = '100'; $l >= '1'; $l--){
-	$target[$l] = $l ;
+for($l = '1'; $l <= '100'; $l++){
+	if($l == '1') {
+		$target[$l] = $l.' '.Lac;
+	}else{
+		$target[$l] = $l.' '.Lacs ;
+	}
 }
 $smarty->assign('target', $target);
 // closing mysql

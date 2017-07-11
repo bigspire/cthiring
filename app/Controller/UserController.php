@@ -79,6 +79,11 @@ class UserController extends AppController {
 		}
     }
 	
+	/* clear the cache */	
+	public function beforeFilter() { 
+		$this->check_session();
+		$this->show_tabs(31);
+	}
 	
 
 }

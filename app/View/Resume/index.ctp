@@ -144,9 +144,10 @@
 										<th width="50"><?php echo $this->Paginator->sort('expected_ctc', 'Expected CTC', array('escape' => false, 'direction' => 'desc'));?></th-->
 										<th width="120"><?php echo $this->Paginator->sort('status', 'Current Status', array('escape' => false, 'direction' => 'desc'));?></th>
 										<th width="75"><?php echo $this->Paginator->sort('Creator.first_name', 'Created By', array('escape' => false, 'direction' => 'desc'));?></th>
+										<th width="80" style="text-align:center">Actions</th>
 										<th width="75"><?php echo $this->Paginator->sort('created_date', 'Created', array('escape' => false, 'direction' => 'desc'));?></th>
 										<th width="75"><?php echo $this->Paginator->sort('modified_date', 'Modified', array('escape' => false, 'direction' => 'desc'));?></th>
-										<th width="150">Actions</th>
+										
 									</tr>
 								</thead>
 								<tbody>
@@ -167,29 +168,39 @@
 										<td><?php if(!empty($res['Resume']['expected_ctc'])): echo $res['Resume']['expected_ctc'].' L'; endif; ?></td-->
 										<td><?php echo $res['ReqResume']['stage_title'];?> - <?php echo $res['ReqResume']['status_title'];?></td>
 										<td><?php echo ucfirst($res['Creator']['first_name']);?></td>
-										<td><?php echo $this->Functions->format_date($res['Resume']['created_date']);?></td>
-										<td><?php echo $this->Functions->format_date($res['Resume']['modified_date']);?></td>
-											<td class="actionItem">
-																				
-								<a href="<?php echo $this->webroot;?>hiring/edit_resume.php?id=<?php echo $res['Resume']['id'];?>" style="margin-left:5px" class="btn  btn-mini" rel="tooltip" class="sepV_a" title="Edit"><i class="icon-pencil"></i></a>
-									<a href="<?php echo $this->webroot;?>hiring/add_formatted_resume.php?id=<?php echo $res['Resume']['id'];?>" style="margin-left:px"  rel="tooltip" data-placement="left" class="btn  btn-mini" title="Create Fully Formatted Resume"><img src="<?php echo $this->webroot;?>img/gCons/add-item.png" width="16" height="16" alt="" /></a>
-
-										<div class="btn-group" style="display:inline-block;float:left;">
+										<td class="actionItem">
+								
+	<div class="btn-group" style="display:inline-block;float:left;">
 										
 									<button data-toggle="dropdown" rel="tooltip" title="Download" class="btn btn-mini dropdown-toggle"><i class="icon-download"></i> <span class="caret"></span>
 									</button>
 										<ul class="dropdown-menu">
-											<li><a href="<?php echo $this->webroot;?>resume/profile_snapshot/<?php echo $res['Resume']['id'];?>/">Snapshot</a></li>
+											<li><a href="<?php echo $this->webroot;?>resume/profile_snapshot/<?php echo $res['Resume']['id'];?>/<?php echo $res['Resume']['snapshot'];?>">Snapshot</a></li>
 											<li><a href="<?php echo $this->webroot;?>resume/download_doc/<?php echo $res['ResDoc']['resume'];?>/">Candidate Resume</a></li>
-											<li class="divider"></li>
-											<li><a href="<?php echo $this->webroot;?>resume/autoresume/<?php echo $res['Resume']['id'];?>/">Fully Formatted Resume</a></li>
+											<?php if($res['Resume']['autoresume']):?>
+											<li><a href="<?php echo $this->webroot;?>resume/autoresume/<?php echo $res['Resume']['id'];?>/<?php echo $res['Resume']['autoresume'];?>">Fully Formatted Resume</a></li>
+											<?php endif; ?>
+
 										</ul>
-									
-									
+									</div>
+								
+								<div class="btn-group" style="display:inline-block;float:left;">
+										
+									<button data-toggle="dropdown" rel="tooltip" title="Edit" class="btn btn-mini dropdown-toggle"><i class="icon-pencil"></i> <span class="caret"></span>
+									</button>
+										<ul class="dropdown-menu">
+											<li><a href="<?php echo $this->webroot;?>hiring/edit_resume.php?id=<?php echo $res['Resume']['id'];?>">Resume</a></li>
+											<li><a href="<?php echo $this->webroot;?>hiring/add_formatted_resume.php?id=<?php echo $res['Resume']['id'];?>">Fully Formatted Resume</a></li>
+
+										</ul>
 									</div>	
+
+										
 </div>										
 										</td>
-
+<td><?php echo $this->Functions->format_date($res['Resume']['created_date']);?></td>
+										<td><?php echo $this->Functions->format_date($res['Resume']['modified_date']);?></td>
+											
 									</tr>
 								<?php endforeach; ?>
 								</tbody>

@@ -257,6 +257,19 @@ class fun{
 		}
 	}
 
+	
+   // function to validate database status field 
+	public function display_eligibility_type($type){
+		if($type == 'PI'){
+			$st = 'Profile Shortlisting';
+		}else if($type == 'PS'){	
+	 		$st = 'Profile Sending';
+		}else if($type == 'PC'){
+			$st = 'Position Closing';
+		}
+		return $st;
+	}
+	
   // function to validate database status field 
 	public function display_status($status){
 		if($status == '1'){

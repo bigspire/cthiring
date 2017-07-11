@@ -30,8 +30,8 @@
 								<a class="jsRedirect toggleSearch"  href="javascript:void(0)">
 							<input type="button" value="Search" class="btn btn-success"/></a>
 							{if !$ALERT_MSG}
-								<a href="eligibility.php?action=export&keyword={$smarty.post.keyword}">
-								<button type="button" val="eligibility.php?action=export&keyword={$smarty.post.keyword}" name="export" class="jsRedirect btn btn-warning" >Export Excel</button></a>
+								<a href="eligibility.php?action=export&status={$status}&type={$smarty.post.type}">
+								<button type="button" val="eligibility.php?action=export&status={$status}&type={$smarty.post.type}" name="export" class="jsRedirect btn btn-warning" >Export Excel</button></a>
 							{/if}
 							
 							<a class="jsRedirect" data-notify-time = '3000'   href="add_eligibility.php">
@@ -52,7 +52,7 @@
 							</div>
 						{/if}
 						
-						{if $keyword}
+						{if $smarty.post.type}
 						  {assign var=hide value=''}
 						{else}
 							{assign var=hide value=dn}
@@ -60,7 +60,12 @@
 							<form action="" id="formID" name="searchFrm" class="formID" method="post" accept-charset="utf-8"><div style="display:none;"><input type="hidden" name="_method" value="POST"/></div>	
 							
 							<div class="{$hide} dataTables_filter srchBox" style="float:left;" id="dt_gal_filter">
-							<label style="margin-left:0">Keyword: <input type="text" placeholder="Search Here..." name="keyword" id="keyword" value="{$keyword}" class="input-large" aria-controls="dt_gal"></label>
+							<!--label style="margin-left:0">Keyword: <input type="text" placeholder="Search Here..." name="keyword" id="keyword" value="{$keyword}" class="input-large" aria-controls="dt_gal"></label-->
+							<label style="margin-left:0">Type: 
+							<select name="type" class="input-medium" style="clear:left" id="ClientStatus">
+								{html_options options=$eligibility_type selected=$smarty.post.type}
+							</select> 
+							</label>
 							<label>Status: 
 							<select name="status" class="input-small" style="clear:left" id="ClientStatus">
 								{html_options options=$status_type selected=$status}
@@ -79,22 +84,24 @@
 							<table class="table table-striped table-bordered dataTable stickyTable">
 								<thead>
 									<tr>
-										<th width="200"><a href="eligibility.php?field=target_from&order={$order}&page={$smarty.get.page}&keyword={$keyword}&status={$status}" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="{$sort_target_from}">Target Actualization(%) </a></th>
-										<th width="150"><a href="eligibility.php?field=grade&order={$order}&page={$smarty.get.page}&keyword={$keyword}&status={$status}" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="{$sort_field_grade}">Grade</a></th>
-										<th width="230"><a href="eligibility.php?field=eligible&order={$order}&page={$smarty.get.page}&keyword={$keyword}&status={$status}" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="{$sort_field_eligible}">Eligibility Incentive(%) on realized contribution</a></th>
-										<th width="100"><a href="eligibility.php?field=status&order={$order}&page={$smarty.get.page}&keyword={$keyword}&status={$status}" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="{$sort_field_status}">Status</a></th>
-										<th width="80"><a href="eligibility.php?field=created&order={$order}&page={$smarty.get.page}&keyword={$keyword}&status={$status}" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="{$sort_field_created}">Created</a></th>
-										<th width="80"><a href="eligibility.php?field=modified&order={$order}&page={$smarty.get.page}&keyword={$keyword}&status={$status}" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="{$sort_field_modified}">Modified</a></th>
+										<th width="100"><a href="eligibility.php?field=ctc_from&order={$order}&page={$smarty.get.page}&type={$type}&status={$status}" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="{$sort_field_ctc_from}">CTC</a></th>
+										<th width="150"><a href="eligibility.php?field=type&order={$order}&page={$smarty.get.page}&type={$type}&status={$status}" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="{$sort_field_type}">Type</a></th>
+										<th width="100"><a href="eligibility.php?field=no_resumes&order={$order}&page={$smarty.get.page}&type={$type}&status={$status}" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="{$sort_field_no_resumes}">No of Resume</a></th>
+										<th width="100"><a href="eligibility.php?field=amount&order={$order}&page={$smarty.get.page}&type={$type}&status={$status}" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="{$sort_field_amount}">Amount</a></th>
+										<th width="100"><a href="eligibility.php?field=status&order={$order}&page={$smarty.get.page}&type={$type}&status={$status}" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="{$sort_field_status}">Status</a></th>
+										<th width="80"><a href="eligibility.php?field=created&order={$order}&page={$smarty.get.page}&type={$type}&status={$status}" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="{$sort_field_created}">Created</a></th>
+										<th width="80"><a href="eligibility.php?field=modified&order={$order}&page={$smarty.get.page}&type={$type}&status={$status}" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="{$sort_field_modified}">Modified</a></th>
 										<th width="50" style="text-align:center">Actions</th>
 									</tr>
 								</thead>
 								<tbody>	
 								{foreach from=$data item=item key=key}	
-									{if $item.grade}
+									
 									<tr>
-										<td>{$item.target_from} - {$item.target_to}</td>
-										<td>{$item.grade}</td>
-										<td>{$item.eligible}%</td>
+										<td>{$item.target_elig}</td>
+										<td>{$item.type}</td>
+										<td>{$item.no_resumes}</td>
+										<td>{$item.amount}</td>
 										<td><span class="label label-{$item.status_cls}">{$item.status}</span></td>
 										<td>{$item.created_date}</td>
 										<td>{$item.modified_date}</td>
@@ -103,7 +110,7 @@
 										<a id="{$item.id}" href="javascript:void(0)" rel="tooltip" class="btn Confirm btn-mini" value="#"  title="Delete"><i class="icon-trash"></i></a>
 										</td>
 									</tr>
-									{/if}
+									
 								{/foreach}								
 								</tbody>
 							</table>

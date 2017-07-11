@@ -38,12 +38,12 @@ class PositionController extends AppController {
 		}
 		
 		// set the page title
-		$this->set('title_for_layout', 'Positions - CT Hiring - ES');
+		$this->set('title_for_layout', 'Positions - CT Hiring');
 		$this->set('empList', $this->Position->get_employee_details());	
 		$this->set('locList', $this->get_loc_details());
 		$this->set('stList', array('10' => 'Planned', '1' => 'In-Process', '2' => 'On-Hold', '3' => 'Closed', '4' => 'Cancelled'));			
 		$fields = array('id','job_title','location','no_job','min_exp','max_exp','ctc_from','ctc_to','ReqStatus.title','req_status_id',
-		'Client.client_name','team_member', 'Creator.first_name','created_date','modified_date', 'count(ReqResume.id) cv_sent',
+		'Client.client_name','team_member', 'Creator.first_name','created_date','modified_date', 'count(distinct ReqResume.id) cv_sent',
 		'group_concat(ReqResume.status_title) joined','count(distinct Read.id) read_count', "group_concat(distinct ResOwner.first_name
 		SEPARATOR ', ') team_member", 'Position.created_by');
 				
@@ -488,10 +488,32 @@ class PositionController extends AppController {
 
 	}
 	
+	
 	/* function to view the position */
 	public function view($id){	
 		// set the page title
-		$this->set('title_for_layout', 'View Positions - CT Hiring - ES');
+		$this->set('title_for_layout', 'View Positions - CT Hiring');
+		$this->set('stList', $this->get_status_details());
+		// get the team members
+		$result = $this->Position->get_team($this->Session->read('USER.Login.id'),$show);
+		if(!empty($result)){
+			$this->set('approveUser', '1');
+			// for drop down listing
+			$format_list = $this->Functions->format_dropdown($result, 'u','id','first_name', 'last_name');
+			$this->set('empList', $format_list);
+			$data[] =  $this->Session->read('USER.Login.id');
+			foreach($result as $rec){
+				$data[] =  $rec['u']['id'];
+			}
+			if($team_cond){
+				$teamCond = array('OR' => array(
+					'ReqResume.created_by' =>  $data,
+					'ReqTeam.users_id' => $data,
+					'AH.users_id' => $data					
+					)
+				);
+			}
+		}
 		$options = array(			
 			/*
 			array('table' => 'users',
@@ -531,9 +553,9 @@ class PositionController extends AppController {
 					'type' => 'INNER',
 					'conditions' => array('`ReqTeam.users_id` = `TeamMember`.`id`', )
 			)
-		);		
+		);
 		$fields = array('id','job_title','job_code','education','location','no_job','min_exp','max_exp','ctc_from','ctc_to','ReqStatus.title',
-		'Client.client_name', 'Creator.first_name','created_date','modified_date', 'count(ReqResume.id) cv_sent','req_status_id',
+		'Client.client_name', 'Creator.first_name','created_date','modified_date', 'count(DISTINCT  ReqResume.id) cv_sent','req_status_id',
 		'group_concat(ReqResume.status_title) joined', 'start_date', 'end_date', //"group_concat(distinct ResOwner.first_name  SEPARATOR ', ') team_member",
 		"group_concat(distinct AH.first_name  SEPARATOR ', ') ac_holder","group_concat(distinct TeamMember.first_name  SEPARATOR ', ') team_member2",
 		'skills','Contact.first_name','Contact.email','Contact.mobile','Contact.phone','Contact.id','FunctionArea.function',
@@ -552,17 +574,160 @@ class PositionController extends AppController {
 					'alias' => 'Creator',					
 					'type' => 'LEFT',
 					'conditions' => array('`Creator`.`id` = `ReqResume`.`created_by`')
+			),
+			array(
+				'table' => 'resume_doc',
+				'alias' => 'ResDoc',					
+				'type' => 'LEFT',
+				'conditions' => array('`ResDoc`.`id` = `Resume`.`resume_doc_id`')
 			)
 		);		
 		$data = $this->Position->ReqResume->find('all', array('fields' => array('Resume.id','Resume.first_name',
 		'Resume.last_name','ReqResume.status_title','ReqResume.stage_title',
 		'ReqResume.created_date','Resume.mobile','Resume.email_id','Resume.present_ctc','Resume.expected_ctc',
-		'Resume.notice_period','ResLoc.location','Creator.first_name','ReqResume.modified_date','ReqResume.bill_ctc'),
+		'Resume.notice_period','ResLoc.location','Creator.first_name','ReqResume.modified_date','ReqResume.bill_ctc','ResDoc.resume',
+		'Resume.present_location','Resume.present_ctc_type','Resume.expected_ctc_type'),
 		'conditions' => array('requirements_id' => $id),
 		'order' => array('Resume.created_date' => 'desc'),'group' => array('ReqResume.id'), 'joins' => $options));		
 		$this->set('resume_data', $data);	
 		
 	}
+	
+	/* function to send CV to client */
+	public function send_cv($res_id, $pos_id){ 
+		$this->layout = 'framebox';
+		// when the values are not empty
+		if(!empty($res_id) && !empty($pos_id)){
+			$options = array(			
+			array('table' => 'resume',
+					'alias' => 'Resume',					
+					'type' => 'LEFT',
+					'conditions' => array('`Resume`.`id` = `ReqResume`.`resume_id`')
+			),
+			array(
+				'table' => 'resume_doc',
+				'alias' => 'ResDoc',					
+				'type' => 'LEFT',
+				'conditions' => array('`ResDoc`.`id` = `Resume`.`resume_doc_id`')
+				),
+			array(
+				'table' => 'res_location',
+				'alias' => 'ResLocation',					
+				'type' => 'LEFT',
+				'conditions' => array('`ResLocation`.`id` = `Resume`.`res_location_id`')
+				)
+				,
+			array(
+				'table' => 'designation',
+				'alias' => 'Designation',					
+				'type' => 'LEFT',
+				'conditions' => array('`Designation`.`id` = `Resume`.`designation_id`')
+				)
+			);
+			$fields = array('Resume.first_name','Resume.last_name','Resume.email_id','Resume.mobile','Resume.mobile2','Resume.total_exp','Resume.education','Resume.present_employer',
+			'ResLocation.location', 'Resume.present_ctc','Resume.expected_ctc', 'Creator.first_name','Resume.created_date','Resume.notice_period',
+			'Resume.modified_date','ReqResume.stage_title','ReqResume.status_title','Designation.designation','Resume.present_ctc_type','Resume.expected_ctc_type',
+			'Resume.gender','Resume.marital_status','Resume.family','Resume.present_location','Resume.native_location', 'Resume.dob','Resume.consultant_assess',
+			'Resume.interview_avail','ResDoc.resume');
+			$cand_data = $this->Position->find('all', array('fields' => $fields,'conditions' => array('Resume.id' => $res_id),
+			'joins' => $options));
+			// print_r($cand_data);
+			$this->set('candidate_name', ucwords($cand_data[0]['Resume']['first_name'].' '.$cand_data[0]['Resume']['last_name']));
+			// get resume education details
+			$this->loadModel('ResEdu');
+			$edu_data = $this->ResEdu->find('all', array('conditions' => array('resume_id' => $res_id), 'fields' => array('percent_mark','year_passing','college',
+			'course_type','university','location','ResDegree.degree','ResSpec.spec'), 'order' => array('ResEdu.id' => 'desc')));
+			// get resume experience details
+			$this->loadModel('ResExp');
+			$exp_data = $this->ResExp->find('all', array('conditions' => array('resume_id' => $res_id), 'fields' => array('experience','work_location','skills',
+			'company','other_info','Designation.designation'), 'order' => array('ResExp.id' => 'desc')));
+			// get the mail template details
+			$this->loadModel('MailTemplate');
+			$data = $this->MailTemplate->findById('1', array('fields' => 'subject','message'));
+			$tags = array('[candidate_name]','[mobile]','[email_id]','[position]','[address]','[location]','[designation]','[experience]',
+			'[client]','[client_contact_name]','[client_contact_no]','[job_location]','[job_desc]','[resume]','[snapshot]','[autoresume]',
+			'[function]','[today_date]');
+			$template_data = array();
+			$body_text = str_replace($tags, $template_data, $data['MailTemplate']['message']);
+			$subject_text = str_replace($tags, $template_data, $data['MailTemplate']['subject']);
+			$this->set('subject', $subject_text);
+			$this->set('body', $body_text);
+
+		}
+		if(!empty($this->request->data)){
+			$status = $st == 'approve' ? '0' : '1';
+			$data = array('id' => $id, 'status' => $status, 'approve_date' => $this->Functions->get_current_date(),
+			'is_approve' => 'A');		
+			if ($this->request->is('post') && $st != '') { 
+				// update the todo
+				if($this->Client->save($data, array('validate' => false))){		
+					$this->set('form_status', '1');
+				}
+			}
+		}
+	}
+	
+	
+	public function update_cv($st, $id){
+		$this->layout = 'framebox';
+		if(!empty($this->request->data)){
+			$status = $st == 'approve' ? '0' : '1';
+			$data = array('id' => $id, 'status' => $status, 'approve_date' => $this->Functions->get_current_date(),
+			'is_approve' => 'A');		
+			if ($this->request->is('post') && $st != '') { 
+				// update the todo
+				if($this->Client->save($data, array('validate' => false))){		
+					$this->set('form_status', '1');
+				}
+			}
+		}
+	}
+	
+	public function update_interview($st, $id){
+		$this->layout = 'framebox';
+		if(!empty($this->request->data)){
+			$status = $st == 'approve' ? '0' : '1';
+			$data = array('id' => $id, 'status' => $status, 'approve_date' => $this->Functions->get_current_date(),
+			'is_approve' => 'A');		
+			if ($this->request->is('post') && $st != '') { 
+				// update the todo
+				if($this->Client->save($data, array('validate' => false))){		
+					$this->set('form_status', '1');
+				}
+			}
+		}
+	}
+	
+	public function interview_schedule($st, $id){
+		$this->layout = 'framebox';
+		if(!empty($this->request->data)){
+			$status = $st == 'approve' ? '0' : '1';
+			$data = array('id' => $id, 'status' => $status, 'approve_date' => $this->Functions->get_current_date(),
+			'is_approve' => 'A');		
+			if ($this->request->is('post') && $st != '') { 
+				// update the todo
+				if($this->Client->save($data, array('validate' => false))){		
+					$this->set('form_status', '1');
+				}
+			}
+		}
+	}
+	
+	public function update_joining($st, $id){
+		$this->layout = 'framebox';
+		if(!empty($this->request->data)){
+			$status = $st == 'approve' ? '0' : '1';
+			$data = array('id' => $id, 'status' => $status, 'approve_date' => $this->Functions->get_current_date(),
+			'is_approve' => 'A');		
+			if ($this->request->is('post') && $st != '') { 
+				// update the todo
+				if($this->Client->save($data, array('validate' => false))){		
+					$this->set('form_status', '1');
+				}
+			}
+		}
+	}
+	
 	
 	
 	/* function to load the districts options */
@@ -716,6 +881,8 @@ class PositionController extends AppController {
 	
 	// check the role permissions
 	public function beforeFilter(){ 
+		$this->check_session();
 		$this->check_role_access(5);
+		
 	}
 }

@@ -40,7 +40,6 @@ class AppController extends Controller {
 			$this->check_site_maintenance();
 		}
 		if($this->request->params['controller'] != 'login'){ 
-			$this->check_session();
 			$this->front_active_menus();
 			if(!$this->request->is('ajax')){
 				// $this->check_sync_time();
@@ -60,7 +59,7 @@ class AppController extends Controller {
 	}
 	
 	
-
+	
 	/* function to check sync status */
 	public function check_sync_time(){
 		// get sync details
@@ -256,6 +255,12 @@ class AppController extends Controller {
 
 	}
 	
+	/* function to get the status details */
+	public function get_status_details(){
+		$st = array('1' => 'CV Sent', '2' => 'Shortlisted', '3' => 'CV Rejected','4' => 'Feedback Awaited','5' => 'Candidates Interviewed','6' => 'Interview Dropouts',
+		'7' => 'Interview Rejected','8' => 'Candidates Offered','9' => 'Offer Dropouts','10' => 'Candidates Joined','11' => 'Candidates Billed');
+		return $st;
+	}
 	
 	/* function to disable the browser cache */
 	public function disable_cache(){

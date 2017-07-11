@@ -303,12 +303,6 @@ class TskeventController extends AppController {
 		
 	}
 	
-	/* clear the cache */
-	
-	public function beforeFilter() { 
-		//$this->disable_cache();
-		// $this->show_tabs(59);
-	}
 	
 	
 	/* function to update event tips session */
@@ -332,6 +326,11 @@ class TskeventController extends AppController {
 		}
     }
 	
+	// check the role permissions
+	public function beforeFilter(){ 
+		$this->check_session();
+		
+	}
 	
 	
 }
