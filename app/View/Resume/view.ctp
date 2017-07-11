@@ -137,10 +137,11 @@
 										<?php echo $resume_data['Resume']['present_ctc'];?>
 										<?php echo $this->Functions->get_ctc_type($resume_data['Resume']['present_ctc_type']);?> - 
 										<?php echo $resume_data['Resume']['expected_ctc'];?>
-										<?php echo $this->Functions->get_ctc_type($resume_data['Resume']['expected_ctc_type']);?></td>	
+										<?php echo $this->Functions->get_ctc_type($resume_data['Resume']['expected_ctc_type']);?>
+										</td>	
 									</tr>	
 									<tr>
-										<td  class="tbl_column" width="120">Notice Period</td>
+									<td  class="tbl_column" width="120">Notice Period</td>
 										<td><?php echo $this->Functions->get_notice($resume_data['Resume']['notice_period']);?></td>	
 									</tr>										
 									<tr>
