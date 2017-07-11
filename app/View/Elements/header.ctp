@@ -226,7 +226,7 @@
 													<ul class="dropdown-menu">
 														<li><a href="<?php echo $this->webroot;?>hiring/base_target.php">Base Target</a></li>
 														<li><a href="<?php echo $this->webroot;?>hiring/eligibility.php">Eligibility</a></li>
-														<li><a href="<?php echo $this->webroot;?>hiring/sharing_criteria.php">Sharing Criteria</a></li>	
+														<!--li><a href="<?php echo $this->webroot;?>hiring/sharing_criteria.php">Sharing Criteria</a></li-->	
 														<li><a href="<?php echo $this->webroot;?>hiring/bonus_share.php">Bonus Share</a></li>														
 													</ul>
 												</li>
