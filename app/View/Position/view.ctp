@@ -37,7 +37,7 @@
 					<input value="Delete" type="button" class="btn btn-danger"/></a>-->
 					
 					<?php if($create_resume == '1'):?>
-					<a rel="tooltip"  title="Upload New Resume" href="<?php echo $this->webroot;?>hiring/upload_resume.php" 
+					<a rel="tooltip"  title="Upload New Resume" href="<?php echo $this->webroot;?>hiring/upload_resume.php?client_id=<?php echo $position_data['Client']['id'];?>&req_id=<?php echo $this->request->params['pass'][0];?>"
 					 val="40_50"  class="iframeBox sepV_a cboxElement">
 					<input value="Upload Resume" type="button" class="btn btn-warning"></a>					
 						<?php endif; ?>
@@ -422,7 +422,7 @@
 															</a-->
 															<button data-toggle="dropdown"><i class="icon-refresh"></i> <span class=""></span></button>
 															<ul style="margin-left:-35px;" class="dropdown-menu">
-																<?php if($row_type == 'status_row'):?>
+																<?php if($row_type == 'upload_row'):?>
 																<li><a href="<?php echo $this->webroot;?>position/send_cv/<?php echo $resume['Resume']['id']; ?>/<?php echo $this->request->params['pass'][0];?>/" val="60_90"  class="iframeBox">Send CV</a></li>
 																<?php endif; ?>
 																<?php if($resume['ResDoc']['resume'] == ''):?>
@@ -471,7 +471,7 @@
 										<button class="btn btn-info btn-mini"  rel="tooltip" title="CV Feedback Awaiting">FA </button>
 										<button data-toggle="dropdown" class="btn btn-mini btn-info  dropdown-toggle"><span class="caret"></span></button>
 										<ul class="dropdown-menu">
-	<li><a  href="<?php echo $this->webroot;?>position/update_cv/cv_shortlist/" val="40_50"  class="iframeBox sepV_a cboxElement">Shortlist</a></li>
+	<li><a  href="<?php echo $this->webroot;?>position/update_cv/shortlist/" val="40_50"  class="iframeBox sepV_a cboxElement">Shortlist</a></li>
 	<li><a  href="<?php echo $this->webroot;?>position/update_cv/cv_reject/" val="40_50"  class="iframeBox sepV_a cboxElement">Reject</a></li>
 										</ul>
 									</div>	

@@ -554,7 +554,7 @@ class PositionController extends AppController {
 					'conditions' => array('`ReqTeam.users_id` = `TeamMember`.`id`', )
 			)
 		);
-		$fields = array('id','job_title','job_code','education','location','no_job','min_exp','max_exp','ctc_from','ctc_to','ReqStatus.title',
+		$fields = array('id','Client.id','job_title','job_code','education','location','no_job','min_exp','max_exp','ctc_from','ctc_to','ReqStatus.title',
 		'Client.client_name', 'Creator.first_name','created_date','modified_date', 'count(DISTINCT  ReqResume.id) cv_sent','req_status_id',
 		'group_concat(ReqResume.status_title) joined', 'start_date', 'end_date', //"group_concat(distinct ResOwner.first_name  SEPARATOR ', ') team_member",
 		"group_concat(distinct AH.first_name  SEPARATOR ', ') ac_holder","group_concat(distinct TeamMember.first_name  SEPARATOR ', ') team_member2",
@@ -622,13 +622,21 @@ class PositionController extends AppController {
 				'alias' => 'Designation',					
 				'type' => 'LEFT',
 				'conditions' => array('`Designation`.`id` = `Resume`.`designation_id`')
+				)	
+				,
+			array(
+				'table' => 'contact',
+				'alias' => 'Contact',					
+				'type' => 'LEFT',
+				'conditions' => array('`Contact`.`id` = `Position`.`client_contact_id`')
 				)
 			);
 			$fields = array('Resume.first_name','Resume.last_name','Resume.email_id','Resume.mobile','Resume.mobile2','Resume.total_exp','Resume.education','Resume.present_employer',
 			'ResLocation.location', 'Resume.present_ctc','Resume.expected_ctc', 'Creator.first_name','Resume.created_date','Resume.notice_period',
 			'Resume.modified_date','ReqResume.stage_title','ReqResume.status_title','Designation.designation','Resume.present_ctc_type','Resume.expected_ctc_type',
 			'Resume.gender','Resume.marital_status','Resume.family','Resume.present_location','Resume.native_location', 'Resume.dob','Resume.consultant_assess',
-			'Resume.interview_avail','ResDoc.resume');
+			'Resume.interview_avail','ResDoc.resume','Position.job_title','Position.location','Position.job_desc','Contact.first_name'
+			,'Contact.mobile');
 			$cand_data = $this->Position->find('all', array('fields' => $fields,'conditions' => array('Resume.id' => $res_id),
 			'joins' => $options));
 			// print_r($cand_data);
@@ -647,11 +655,14 @@ class PositionController extends AppController {
 			$data = $this->MailTemplate->findById('1', array('fields' => 'subject','message'));
 			$loc = $cand_data[0]['ResLoc']['location'] ? $cand_data[0]['ResLoc']['location'] : $cand_data[0]['Resume']['present_location'];
 			$tags = array('[candidate_name]','[mobile]','[email_id]','[position]','[address]','[location]','[designation]','[experience]',
-			'[client]','[client_contact_name]','[client_contact_no]','[job_location]','[job_desc]','[resume]','[snapshot]','[autoresume]',
-			'[function]','[today_date]');
-			$template_data = array($cand_name,$cand_data[0]['Resume']['mobile'],$cand_data[0]['Position']['job_title'],
+			'[client]','[client_contact_name]','[client_contact_no]','[job_location]','[job_desc]','[function]','[today_date]');
+			$template_data = array($cand_name,$cand_data[0]['Resume']['mobile'],$cand_data[0]['Resume']['email_id'], 
+			$cand_data[0]['Position']['job_title'],
 			$cand_data[0]['Position']['address1']. '<br>'.$cand_data[0]['Position']['address2'],$loc,
-			$cand_data[0]['Designation']['designation'],'','','','','','','','','','','','',date('d-M, Y'));
+			$cand_data[0]['Designation']['designation'],$this->Functions->check_exp($cand_data[0]['Position']['total_exp']),
+			$cand_data[0]['Client']['client_name'],$cand_data[0]['Contact']['first_name'],$cand_data[0]['Contact']['mobile'],
+			$cand_data[0]['Position']['location'],$cand_data[0]['Position']['job_desc'],$cand_data[0]['FunctionArea']['function'],
+			date('d-M, Y'));
 			$body_text = str_replace($tags, $template_data, $data['MailTemplate']['message']);
 			$subject_text = str_replace($tags, $template_data, $data['MailTemplate']['subject']);
 			$this->set('subject', $subject_text);
@@ -659,25 +670,37 @@ class PositionController extends AppController {
 
 		}
 		if(!empty($this->request->data)){
-			$status = $st == 'approve' ? '0' : '1';
-			$data = array('id' => $id, 'status' => $status, 'approve_date' => $this->Functions->get_current_date(),
-			'is_approve' => 'A');		
-			if ($this->request->is('post') && $st != '') { 
-				// update the todo
-				if($this->Client->save($data, array('validate' => false))){		
-					$this->set('form_status', '1');
+			// get the req. resume id
+			$this->loadModel('ReqResume');
+			$req_res_id = $this->ReqResume->find('all', array('fields' => array('ReqResume.id'), 
+			'conditions' => array('requirements_id' => $pos_id, 'resume_id' => $res_id)));
+			// save req resume table
+			$data = array('id' => $req_res_id[0]['ReqResume']['id'], 'resume_id' => $res_id, 'requirements_id' => $pos_id, 'created_date' => $this->Functions->get_current_date(),
+			'created_by' => $this->Session->read('USER.Login.id'),
+			'stage_title' => 'Shortlist', 'status_title' => 'CV-Sent');
+			// save  req resume
+			if($this->ReqResume->save($data, array('validate' => false))){		
+				// save req resume status
+				$this->loadModel('ReqResumeStatus');
+				$data = array('req_resume_id' => $req_res_id[0]['ReqResume']['id'], 'created_date' => $this->Functions->get_current_date(),
+				'created_by' => $this->Session->read('USER.Login.id'), 'stage_title' => 'Shortlist', 'status_title' => 'CV-Sent');
+				if($this->ReqResumeStatus->save($data, array('validate' => false))){
+					// send mail to client 
+					
+					// if successfully update
+					$this->set('cv_update_status', 1);
 				}
 			}
 		}
 	}
 	
 	
-	public function update_cv($st, $id){
+	public function update_cv($id, $st){
 		$this->layout = 'framebox';
 		if(!empty($this->request->data)){
-			$status = $st == 'approve' ? '0' : '1';
-			$data = array('id' => $id, 'status' => $status, 'approve_date' => $this->Functions->get_current_date(),
-			'is_approve' => 'A');		
+			$status = $st == 'cv_shortlist' ? 'Shortlisted' : 'Rejected';
+			$data = array('status_title' => $status, 
+			'created_date' => $this->Functions->get_current_date(),'modified_date' => $this->Functions->get_current_date());		
 			if ($this->request->is('post') && $st != '') { 
 				// update the todo
 				if($this->Client->save($data, array('validate' => false))){		
