@@ -30,10 +30,10 @@
 				<tbody> 
 				
 				<tr class="tbl_row" >
-					<td width="120" class="tbl_column">Candidate Name
+					<td width="120" class="tbl_column">Candidate Name 
 					</td>
 						<td>
-						<?php echo $this->Form->input('candidate', array('div'=> false,'type' => 'text', 'label' => false, 'class' => 'input-large', 'readonly' => 'readonly', 'value' => $candidate_name,   'required' => false, 'placeholder' => '')); ?> 					
+						<?php echo $this->Form->input('candidate', array('div'=> false,'type' => 'text', 'label' => false, 'class' => 'input-xlarge', 'readonly' => 'readonly', 'value' => $candidate_name,   'required' => false, 'placeholder' => '')); ?> 					
 						</td>	
 				</tr>
 				
@@ -41,7 +41,7 @@
 					<td width="120" class="tbl_column">Subject <span class="f_req">*</span>
 					</td>
 						<td>
-						<?php echo $this->Form->input('subject', array('div'=> false,'type' => 'text', 'label' => false, 'class' => 'input-large', 'value' => $subject, 'required' => false, 'placeholder' => '')); ?> 					
+						<?php echo $this->Form->input('subject', array('div'=> false,'type' => 'text', 'label' => false, 'class' => 'span8', 'value' => $subject, 'required' => false, 'placeholder' => '')); ?> 					
 						</td>	
 				</tr>
 				
@@ -53,7 +53,7 @@
 					</td>
 						<td>
 					<?php echo $this->Form->input('message', array('div'=> false,'type' => 'text', 'label' => false, 
-					'class' => 'span10 wysiwyg',  'cols' => '6', 'style' => 'height:200px', 
+					'class' => 'span10 wysiwyg',  'cols' => '6', 'style' => 'height:120px', 
 					'required' => false, 'placeholder' => '', 'value' => $body, 
 					'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 
 

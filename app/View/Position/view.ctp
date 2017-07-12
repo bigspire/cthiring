@@ -38,7 +38,7 @@
 					
 					<?php if($create_resume == '1'):?>
 					<a rel="tooltip"  title="Upload New Resume" href="<?php echo $this->webroot;?>hiring/upload_resume.php?client_id=<?php echo $position_data['Client']['id'];?>&req_id=<?php echo $this->request->params['pass'][0];?>"
-					 val="40_50"  class="iframeBox sepV_a cboxElement">
+					 val="60_90"  class="iframeBox sepV_a cboxElement">
 					<input value="Upload Resume" type="button" class="btn btn-warning"></a>					
 						<?php endif; ?>
 
@@ -471,8 +471,8 @@
 										<button class="btn btn-info btn-mini"  rel="tooltip" title="CV Feedback Awaiting">FA </button>
 										<button data-toggle="dropdown" class="btn btn-mini btn-info  dropdown-toggle"><span class="caret"></span></button>
 										<ul class="dropdown-menu">
-	<li><a  href="<?php echo $this->webroot;?>position/update_cv/shortlist/" val="40_50"  class="iframeBox sepV_a cboxElement">Shortlist</a></li>
-	<li><a  href="<?php echo $this->webroot;?>position/update_cv/cv_reject/" val="40_50"  class="iframeBox sepV_a cboxElement">Reject</a></li>
+	<li><a  href="<?php echo $this->webroot;?>position/update_cv/<?php echo  $resume['Resume']['id'];?>/<?php echo $this->request->params['pass'][0];?>/shortlist/" val="40_60"  class="iframeBox sepV_a cboxElement">Shortlist</a></li>
+	<li><a  href="<?php echo $this->webroot;?>position/update_cv/<?php echo  $resume['Resume']['id'];?>/<?php echo $this->request->params['pass'][0];?>/<?php echo $this->request->params['pass'][0];?>/cv_reject/" val="40_60"  class="iframeBox sepV_a cboxElement">Reject</a></li>
 										</ul>
 									</div>	
 								</div>
@@ -480,7 +480,7 @@
 							?>
 							
 								<div class="span1" style="width:110px;">
-<div class="btn btn-mini alert alert-danger" rel="tooltip" title="CV Rejected" style="cursor:default;margin-bottom:0px;padding:4px 7px 4px 9px;text-align:center;">
+<div class="btn btn-mini alert alert-danger" rel="tooltip" title="CV Rejected" style="background-image:none;cursor:default;margin-bottom:0px;padding:4px 7px 4px 9px;text-align:center;">
                 Rejected
             </div>									
 									
@@ -491,7 +491,7 @@
 ?>
 								
 								<div class="span1" style="width:110px;">
-<div class="btn btn-mini alert alert-success" rel="tooltip" title="CV Shortlisted" style="cursor:default;margin-bottom:0px;padding:4px 7px 4px 9px;text-align:center;">
+<div class="btn btn-mini alert alert-success" rel="tooltip" title="CV Shortlisted" style="background-image:none;cursor:default;margin-bottom:0px;padding:4px 7px 4px 9px;text-align:center;">
                 Shortlisted
             </div>									
 									
@@ -512,8 +512,10 @@
 										<button class="btn  btn-mini btn-info" rel="tooltip" title="Interview Awaiting">IA </button>
 										<button data-toggle="dropdown" class="btn btn-info btn-mini dropdown-toggle"><span class="caret"></span></button>
 										<ul class="dropdown-menu">
-											<li><a  href="<?php echo $this->webroot;?>position/interview_schedule/" val="40_50"  class="iframeBox sepV_a cboxElement">Interview Schedule / Reschedule</a></li>
-											<li><a  href="<?php echo $this->webroot;?>position/update_interview/" val="40_50"  class="iframeBox sepV_a cboxElement">Interview Reject</a></li>
+											<li><a  href="<?php echo $this->webroot;?>position/schedule_interview/<?php echo  $resume['Resume']['id'];?>/<?php echo $this->request->params['pass'][0];?>/" val="60_90"  class="iframeBox sepV_a cboxElement">Interview Schedule / Reschedule</a></li>
+											<li><a  href="<?php echo $this->webroot;?>position/update_interview/<?php echo  $resume['Resume']['id'];?>/<?php echo $this->request->params['pass'][0];?>/shortlist/" val="60_90"  class="iframeBox sepV_a cboxElement">Interview Shortlist</a></li>
+
+											<li><a  href="<?php echo $this->webroot;?>position/update_interview/<?php echo  $resume['Resume']['id'];?>/<?php echo $this->request->params['pass'][0];?>/reject/" val="60_90"  class="iframeBox sepV_a cboxElement">Interview Reject</a></li>
 										</ul>
 									</div>	
 								</div>
@@ -521,7 +523,7 @@
 || ($resume['ReqResume']['stage_title'] == 'Offer' || $resume['ReqResume']['stage_title'] == 'Joining') && $action != '1'):?>
 							<div class="span1" style="width:110px;">
 										<div class="span1" style="width:110px;">
-<div class="btn btn-mini alert alert-success" rel="tooltip" title="Interview Selected" style="cursor:default;margin-bottom:0px;padding:4px 7px 4px 9px;text-align:center;">
+<div class="btn btn-mini alert alert-success" rel="tooltip" title="Interview Selected" style="background-image:none;cursor:default;margin-bottom:0px;padding:4px 7px 4px 9px;text-align:center;">
                Selected
             </div>									
 									
@@ -531,7 +533,7 @@
 							$action = 1;?>
 							
 								<div class="span1" style="width:110px;">
-<div class="btn btn-mini alert alert-danger" rel="tooltip" title="Interview Rejected" style="cursor:default;margin-bottom:0px;padding:4px 7px 4px 9px;text-align:center;">
+<div class="btn btn-mini alert alert-danger" rel="tooltip" title="Interview Rejected" style="background-image:none;cursor:default;margin-bottom:0px;padding:4px 7px 4px 9px;text-align:center;">
                Rejected
             </div>									
 									
@@ -549,8 +551,8 @@
 										<button class="btn  btn-mini btn-info" title="Offer Pending" rel="tooltip">OP </button>
 										<button data-toggle="dropdown" class="btn btn-info btn-mini dropdown-toggle"><span class="caret"></span></button>
 										<ul class="dropdown-menu">
-											<li><a  href="<?php echo $this->webroot;?>position/update_cv/offer_shortlist/" val="40_50"  class="iframeBox sepV_a cboxElement">Shortlist</a></li>
-											<li><a  href="<?php echo $this->webroot;?>position/update_cv/offer_decline/" val="40_50"  class="iframeBox sepV_a cboxElement">Decline</a></li>
+											<li><a  href="<?php echo $this->webroot;?>position/update_cv/offer_shortlist/" val="60_90"  class="iframeBox sepV_a cboxElement">Shortlist</a></li>
+											<li><a  href="<?php echo $this->webroot;?>position/update_cv/offer_decline/" val="60_90"  class="iframeBox sepV_a cboxElement">Decline</a></li>
 										</ul>
 									</div>	
 								</div>
@@ -560,7 +562,7 @@
 							?>
 							
 								<div class="span1" style="width:110px;">
-<div class="btn btn-mini alert alert-danger" rel="tooltip" title="Offer Declined" style="cursor:default;margin-bottom:0px;padding:4px 7px 4px 9px;text-align:center;">
+<div class="btn btn-mini alert alert-danger" rel="tooltip" title="Offer Declined" style="background-image:none;cursor:default;margin-bottom:0px;padding:4px 7px 4px 9px;text-align:center;">
                  <?php echo ucfirst($resume['ReqResume']['status_title']);?>	
 				
             </div>									
@@ -570,7 +572,7 @@
 $action = 1;?>
 								
 								<div class="span1" style="width:110px;">
-<div class="btn btn-mini alert alert-success" rel="tooltip" title="Offer Accepted" style="cursor:default;margin-bottom:0px;padding:4px 7px 4px 9px;text-align:center;">
+<div class="btn btn-mini alert alert-success" rel="tooltip" title="Offer Accepted" style="background-image:none;cursor:default;margin-bottom:0px;padding:4px 7px 4px 9px;text-align:center;">
                 Offer Accepted
             </div>									
 									
@@ -588,9 +590,9 @@ $action = 1;?>
 										<button class="btn  btn-mini btn-info" title="Joining Awaiting" rel="tooltip">JA </button>
 										<button data-toggle="dropdown" class="btn btn-info btn-mini dropdown-toggle"><span class="caret"></span></button>
 										<ul class="dropdown-menu">
-											<li><a  href="<?php echo $this->webroot;?>position/update_joining/" val="40_50"  class="iframeBox sepV_a cboxElement">Joined</a></li>
-											<li><a  href="<?php echo $this->webroot;?>position/update_cv/not_joined/" val="40_50"  class="iframeBox sepV_a cboxElement">Not Joined</a></li>
-											<li><a  href="<?php echo $this->webroot;?>position/update_cv/join_defer/" val="40_50"  class="iframeBox sepV_a cboxElement">Deferred</a></li>
+											<li><a  href="<?php echo $this->webroot;?>position/update_joining/" val="60_90"  class="iframeBox sepV_a cboxElement">Joined</a></li>
+											<li><a  href="<?php echo $this->webroot;?>position/update_cv/not_joined/" val="60_90"  class="iframeBox sepV_a cboxElement">Not Joined</a></li>
+											<li><a  href="<?php echo $this->webroot;?>position/update_cv/join_defer/" val="60_90"  class="iframeBox sepV_a cboxElement">Deferred</a></li>
 
 										</ul>
 									</div>	
@@ -599,7 +601,7 @@ $action = 1;?>
 							?>
 							
 								<div class="span1" style="width:110px;">
-<div class="btn btn-mini alert alert-danger" rel="tooltip" title="Candidate Not Joined" style="cursor:default;margin-bottom:0px;padding:4px 7px 4px 9px;text-align:center;">
+<div class="btn btn-mini alert alert-danger" rel="tooltip" title="Candidate Not Joined" style="background-image:none;cursor:default;margin-bottom:0px;padding:4px 7px 4px 9px;text-align:center;">
                Not Joined
             </div>									
 									
@@ -607,7 +609,7 @@ $action = 1;?>
 <?php elseif($resume['ReqResume']['stage_title'] == 'Joining' && $resume['ReqResume']['status_title'] == 'Joined'):?>
 								
 								<div class="span1" style="width:110px;">
-<div class="btn btn-mini alert alert-success" rel="tooltip" title="Candidate Joined" style="cursor:default;margin-bottom:0px;padding:4px 7px 4px 9px;text-align:center;">
+<div class="btn btn-mini alert alert-success" rel="tooltip" title="Candidate Joined" style="background-image:none;cursor:default;margin-bottom:0px;padding:4px 7px 4px 9px;text-align:center;">
                Joined
             </div>									
 									
@@ -633,7 +635,7 @@ $action = 1;?>
 <?php elseif($resume['ReqResume']['status_title'] == 'Joined'  && $resume['ReqResume']['bill_ctc'] != '0.00'):?>
 								
 								<div class="span1" style="width:110px;">
-<div class="btn btn-mini alert alert-success" rel="tooltip" title="Candidate Billed (₹<?php echo $resume['ReqResume']['bill_ctc'];?>)" style="cursor:default;margin-bottom:0px;padding:4px 7px 4px 9px;text-align:center;">
+<div class="btn btn-mini alert alert-success" rel="tooltip" title="Candidate Billed (₹<?php echo $resume['ReqResume']['bill_ctc'];?>)" style="background-image:none;cursor:default;margin-bottom:0px;padding:4px 7px 4px 9px;text-align:center;">
                 Billed
             </div>									
 									

@@ -9,7 +9,12 @@
       <!-- gebo blue theme-->
          <link rel="stylesheet" href="<?php echo $this->webroot;?>hiring/css/blue.css" id="link_theme" />            
       <!-- main styles -->
+	  
+				  
+	     <link rel="stylesheet" href="<?php echo $this->webroot;?>hiring/lib_cthiring/datepicker/datepicker.css" />
+
          <link rel="stylesheet" href="<?php echo $this->webroot;?>hiring/css/style.css" />
+		 
 		<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Sans" />
 		<style type="text/css">
 		.chzn-container .chzn-results {max-height:150px !important}
@@ -36,9 +41,13 @@
 	 <script src="<?php echo $this->webroot;?>hiring/js/jquery.min.js"></script>		
 
 	 <script src="<?php echo $this->webroot;?>hiring/bootstrap/js/bootstrap.min.js"></script>	
-	 <script src="<?php echo $this->webroot;?>hiring/js/framejs.js"></script>		
 	<!-- TinyMce WYSIWG editor -->
    <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
+	
+	<script type="text/javascript" src="<?php echo $this->webroot;?>hiring/lib_cthiring/datepicker/bootstrap-datepicker.min.js"></script>
+	<script type="text/javascript" src="<?php echo $this->webroot;?>hiring/lib_cthiring/datepicker/bootstrap-timepicker.min.js"></script>
+	
+	<script src="<?php echo $this->webroot;?>hiring/js/framejs.js"></script>		
 
 	 <?php if($form_status == '1'): ?>
 	<script type="text/javascript">

@@ -42,3 +42,35 @@
 			});
 		});
 	}
+	/* for timepicker */
+	if($('.timepicker').length > 0){
+		$('.timepicker').timepicker();
+	}
+	
+		// datepicker
+	if($('.datepick').length > 0){	
+		$('.datepick').datepicker({
+			showOtherMonths: true,
+			selectOtherMonths: true,
+			format: 'dd/mm/yyyy',
+			prevText: "",
+			nextText: "",
+			autoclose:true,
+			startDate:$('#start_date').val(),
+			endDate:$('#end_date').val(),
+			todayHighlight: false
+		});
+	
+	}
+	
+		// datepicker
+	if($('.datetimepick').length > 0){	
+		$('.datetimepick').timepicker({
+				defaultTime: 'current',
+				minuteStep: 1,
+				disableFocus: true,
+				template: 'dropdown'
+			});	
+	}
+	
+	
