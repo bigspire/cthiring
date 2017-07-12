@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-07-11 16:34:16
+/* Smarty version 3.1.29, created on 2017-07-11 17:53:56
   from "C:\xampp\htdocs\2017\ctsvn\cthiring\hiring\templates\eligibility.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5964b0b0bd7e00_04111069',
+  'unifunc' => 'content_5964c35c7fd803_47929755',
   'file_dependency' => 
   array (
     '18e1afa98226f9f7e2dda2100ef99a8116e00cee' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\templates\\eligibility.tpl',
-      1 => 1499771053,
+      1 => 1499775832,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5964b0b0bd7e00_04111069 ($_smarty_tpl) {
+function content_5964c35c7fd803_47929755 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -146,7 +146,7 @@ $_smarty_tpl->ext->_updateScope->updateScope($_smarty_tpl, 'hide', 0);?>
 &type=<?php echo $_smarty_tpl->tpl_vars['type']->value;?>
 &status=<?php echo $_smarty_tpl->tpl_vars['status']->value;?>
 " rel="tooltip" data-original-title="Sort by Ascending or Descending" class="<?php echo $_smarty_tpl->tpl_vars['sort_field_amount']->value;?>
-">Amount</a></th>
+">Amount (INR)</a></th>
 										<th width="100"><a href="eligibility.php?field=status&order=<?php echo $_smarty_tpl->tpl_vars['order']->value;?>
 &page=<?php echo $_GET['page'];?>
 &type=<?php echo $_smarty_tpl->tpl_vars['type']->value;?>
