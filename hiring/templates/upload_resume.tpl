@@ -63,12 +63,29 @@
 
 
 				 		
-<form action="upload_resume.php" class="formID" id="formID" method="post" enctype="multipart/form-data" accept-charset="utf-8">
+<form action="upload_resume.php?client_id={$client_id}&req_id={$req_id}" class="formID" id="formID" method="post" enctype="multipart/form-data" accept-charset="utf-8">
 <div class="box">
 	<div class="row-fluid">
 		<div class="span6">
 			<table class="table table-bordered dataTable" align="centre">
 				<tbody> 
+				{if $client_id and $req_id}
+					<tr class="tbl_row">
+										<td width="120" class="tbl_column">Client <span class="f_req">*</span></td>
+										<td> 
+										<input type="text" name="client" disabled id="client" value="{$client}" class="input-large" aria-controls="dt_gal"></label>																					
+										</td>
+					</tr>
+					
+					<tr class="">
+										<td width="120" class="tbl_column">Position For <span class="f_req">*</span></td>
+										<td> 
+										<input type="text" name="position_for" disabled id="position_for" value="{$position_for}" class="input-large" aria-controls="dt_gal"></label>																																									
+										</td>
+					</tr>
+					
+				{else}
+				
 					<tr class="tbl_row">
 										<td width="120" class="tbl_column">Client <span class="f_req">*</span></td>
 										<td> 
@@ -90,7 +107,9 @@
 										<label class="error">{$position_forErr}</label>																					
 										</td>
 					</tr>
-					<tr class="tbl_row" >
+					
+				{/if}
+				<tr class="tbl_row" >
 						<td width="120" class="tbl_column">Resume <span class="f_req">*</span></td>
 						<td>
 						<input type="file" tabindex="3" name="resume" class="upload" id="resume"/>
