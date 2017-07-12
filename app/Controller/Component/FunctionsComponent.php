@@ -167,6 +167,24 @@ class FunctionsComponent extends Component {
 		}
 	}
 	
+	 /* function to find the min and max exp */
+   public function check_exp($value){ 		
+		if($value == '0'){
+			$str =  'Fresher';
+		}else if($value < 1 && $value != ''){			
+			$str = preg_replace('/^0./', '', $value).' Month';
+			$value = 2;
+		}else if($value >= 1){
+			$str = $value.' Year';
+		}
+		
+		if($value > 1){
+			$suffix = 's';
+		}
+		
+		return $str.$suffix;
+   }
+	
 	
 }
 ?>
