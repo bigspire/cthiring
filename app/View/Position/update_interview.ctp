@@ -32,7 +32,7 @@
 					<td width="120" class="tbl_column">Candidate Name
 					</td>
 						<td>
-						<?php echo $this->Form->input('candidate', array('div'=> false,'type' => 'text', 'label' => false, 'class' => 'input-large', 'readonly' => 'readonly', 'value' => $candidate_name,   'required' => false, 'placeholder' => '')); ?> 					
+						<?php echo $this->Form->input('candidate', array('div'=> false,'type' => 'text', 'label' => false, 'class' => 'span4', 'readonly' => 'readonly', 'value' => $candidate_name,   'required' => false, 'placeholder' => '')); ?> 					
 						</td>	
 				</tr>
 				
@@ -52,7 +52,7 @@
 			<input name="submit" class="btn btn-gebo theForm" value="Submit"  type="submit"/>
 					<a class="jsRedirect toggleSearch"  href="javascript:window.close()">
 					<input type="button" value="Cancel" id="cancel" class="btn cancel"/></a>
-					<input type="hidden" id="success_page" value="<?php echo $this->webroot;?>position/view/<?php echo $this->request->params['pass'][1]?>/#cv_shortlisted"/>
+					<input type="hidden" id="success_page" value="<?php echo $this->webroot;?>position/view/<?php echo $this->request->params['pass'][1]?>"/>
 			</div>
 		</div>
 	</div>

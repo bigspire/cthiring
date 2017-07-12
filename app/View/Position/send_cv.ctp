@@ -41,7 +41,7 @@
 					<td width="120" class="tbl_column">Subject <span class="f_req">*</span>
 					</td>
 						<td>
-						<?php echo $this->Form->input('subject', array('div'=> false,'type' => 'text', 'label' => false, 'class' => 'span8', 'value' => $subject, 'required' => false, 'placeholder' => '')); ?> 					
+						<?php echo $this->Form->input('subject', array('div'=> false,'type' => 'text', 'label' => false, 'class' => 'span8', 'value' => $subject_1, 'required' => false, 'placeholder' => '')); ?> 					
 						</td>	
 				</tr>
 				
@@ -54,7 +54,7 @@
 						<td>
 					<?php echo $this->Form->input('message', array('div'=> false,'type' => 'text', 'label' => false, 
 					'class' => 'span10 wysiwyg',  'cols' => '6', 'style' => 'height:120px', 
-					'required' => false, 'placeholder' => '', 'value' => $body, 
+					'required' => false, 'placeholder' => '', 'value' => $body_1, 
 					'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 
 
 						</td>	

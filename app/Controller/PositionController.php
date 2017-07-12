@@ -599,7 +599,7 @@ class PositionController extends AppController {
 		// when the values are not empty
 		if(!empty($res_id) && !empty($pos_id)){
 			// get the template details
-			$this->get_template_details($res_id,$pos_id);
+			$this->get_template_details($res_id,$pos_id, '1');
 
 		}
 		if(!empty($this->request->data)){
@@ -627,7 +627,7 @@ class PositionController extends AppController {
 	}
 	
 	/* function to get the template details */
-	public function get_template_details($res_id, $pos_id){
+	public function get_template_details($res_id, $pos_id, $mailtemplete){
 		$options = array(			
 			array('table' => 'resume',
 					'alias' => 'Resume',					
@@ -682,7 +682,7 @@ class PositionController extends AppController {
 			'company','other_info','Designation.designation'), 'order' => array('ResExp.id' => 'desc')));
 			// get the mail template details
 			$this->loadModel('MailTemplate');
-			$data = $this->MailTemplate->findById('1', array('fields' => 'subject','message'));
+			$data = $this->MailTemplate->findById($mailtemplete, array('fields' => 'subject','message'));
 			$loc = $cand_data[0]['ResLoc']['location'] ? $cand_data[0]['ResLoc']['location'] : $cand_data[0]['Resume']['present_location'];
 			$tags = array('[candidate_name]','[mobile]','[email_id]','[position]','[address]','[location]','[designation]','[experience]',
 			'[client]','[client_contact_name]','[client_contact_no]','[job_location]','[job_desc]','[function]','[today_date]');
@@ -695,8 +695,8 @@ class PositionController extends AppController {
 			date('d-M, Y'));
 			$body_text = str_replace($tags, $template_data, $data['MailTemplate']['message']);
 			$subject_text = str_replace($tags, $template_data, $data['MailTemplate']['subject']);
-			$this->set('subject', $subject_text);
-			$this->set('body', $body_text);
+			$this->set('subject_'.$mailtemplete, $subject_text);
+			$this->set('body_'.$mailtemplete, $body_text);
 	}
 	
 	/* function to update the CV status */
@@ -733,39 +733,87 @@ class PositionController extends AppController {
 		}
 	}
 	
-	/* function to update the interview interview */		
-	public function update_interview($st, $id){
+	/* function to update offer */
+	public function update_offer($id,$pos_id,$st){
 		$this->layout = 'framebox';
+		$status = $st == 'offer_accept' ? 'Offer Accepted' : 'Declined';
+		$head_label = $st == 'offer_accept' ? 'Offer Accepted' : 'Offer Declined';
+		$this->set('headLabel', $head_label);
+		// get candidate details
+		$this->loadModel('Resume');
+		$cand_data = $this->Resume->findById($id, array('fields' => 'first_name','last_name'));
+		$cand_name = ucwords($cand_data['Resume']['first_name'].' '.$cand_data['Resume']['last_name']);
+		$this->set('candidate_name', $cand_name);
 		if(!empty($this->request->data)){
-			$status = $st == 'approve' ? '0' : '1';
-			$data = array('id' => $id, 'status' => $status, 'approve_date' => $this->Functions->get_current_date(),
-			'is_approve' => 'A');		
-			if ($this->request->is('post') && $st != '') { 
-				// update the todo
-				if($this->Client->save($data, array('validate' => false))){		
-					$this->set('form_status', '1');
+			// get the req. resume id
+			$this->loadModel('ReqResume');
+			$req_res_id = $this->ReqResume->find('all', array('fields' => array('ReqResume.id'), 
+			'conditions' => array('requirements_id' => $pos_id, 'resume_id' => $id)));
+			// save req resume table
+			$data = array('id' => $req_res_id[0]['ReqResume']['id'],'modified_date' => $this->Functions->get_current_date(),
+			'modified_by' => $this->Session->read('USER.Login.id'), 'stage_title' => 'Offer', 'status_title' => $status);
+			// save  req resume
+			if($this->ReqResume->save($data, array('validate' => false))){		
+				// save req resume status
+				$this->loadModel('ReqResumeStatus');
+				$data = array('req_resume_id' => $req_res_id[0]['ReqResume']['id'], 'created_date' => $this->Functions->get_current_date(),
+				'created_by' => $this->Session->read('USER.Login.id'), 'stage_title' => 'Offer', 'status_title' => $status,
+				'note' => $this->request->data['Position']['note']);
+				if($this->ReqResumeStatus->save($data, array('validate' => false))){					
+					// if successfully update
+					$this->set('cv_update_status', 1);
 				}
 			}
 		}
 	}
 	
-	/* function to schedule for interview */
-	public function schedule_interview($id, $pos_id){
+	
+	/* function to update joining */
+	public function update_joining($id,$pos_id,$st){
 		$this->layout = 'framebox';
-		if(!empty($id) && !empty($pos_id)){
-			// get the template details
-			$this->get_template_details($id,$pos_id);
-			// get interview levels
-			$int_levels = array('First Interview', 'Second Interview', 'Final Interview');
-			$this->set('int_levels', $int_levels);
-			// get interview levels
-			$int_levels = array('First Interview', 'Second Interview', 'Final Interview');
-			$this->set('int_levels', $int_levels);
-			// get interview duration
-			$int_duration = array('30 Mins.', '45 Mins.', '1 Hr', '2 Hrs', '3 Hrs');
-			$this->set('int_duration', $int_duration);
+		$status = ($st == 'joined' ? 'Joined' : ($st == 'not_joined' ?  'Not Joined' : 'Deferred'));
+		$head_label = ($st == 'joined' ? 'Candidate Joined' : ($st == 'not_joined' ?  'Candidate Not Joined' : 'Joining Deferred'));
+		$this->set('headLabel', $head_label);
+		// get candidate details
+		$this->loadModel('Resume');
+		$cand_data = $this->Resume->findById($id, array('fields' => 'first_name','last_name'));
+		$cand_name = ucwords($cand_data['Resume']['first_name'].' '.$cand_data['Resume']['last_name']);
+		$this->set('candidate_name', $cand_name);
+		if(!empty($this->request->data)){
+			// get the req. resume id
+			$this->loadModel('ReqResume');
+			$req_res_id = $this->ReqResume->find('all', array('fields' => array('ReqResume.id'), 
+			'conditions' => array('requirements_id' => $pos_id, 'resume_id' => $id)));
+			// save req resume table
+			$data = array('id' => $req_res_id[0]['ReqResume']['id'],'modified_date' => $this->Functions->get_current_date(),
+			'modified_by' => $this->Session->read('USER.Login.id'), 'stage_title' => 'Joining', 'status_title' => $status);
+			// save  req resume
+			if($this->ReqResume->save($data, array('validate' => false))){		
+				// save req resume status
+				$this->loadModel('ReqResumeStatus');
+				$data = array('req_resume_id' => $req_res_id[0]['ReqResume']['id'], 'created_date' => $this->Functions->get_current_date(),
+				'created_by' => $this->Session->read('USER.Login.id'), 'stage_title' => 'Joining', 'status_title' => $status,
+				'note' => $this->request->data['Position']['note']);
+				if($this->ReqResumeStatus->save($data, array('validate' => false))){					
+					// if successfully update
+					$this->set('cv_update_status', 1);
+				}
+			}
 		}
-		// when the form submitted
+	}
+	
+	
+	/* function to update the interview interview */		
+	public function update_interview($id,$pos_id,$st,$int_level){
+		$this->layout = 'framebox';
+		$status = $st == 'shortlist' ? 'Selected' : 'Rejected';
+		$head_label = $st == 'shortlist' ? 'Interview Selected' : 'Interview Rejected';
+		$this->set('headLabel', $head_label);
+		// get candidate details
+		$this->loadModel('Resume');
+		$cand_data = $this->Resume->findById($id, array('fields' => 'first_name','last_name'));
+		$cand_name = ucwords($cand_data['Resume']['first_name'].' '.$cand_data['Resume']['last_name']);
+		$this->set('candidate_name', $cand_name);
 		if(!empty($this->request->data)){
 			// get the req. resume id
 			$this->loadModel('ReqResume');
@@ -779,9 +827,16 @@ class PositionController extends AppController {
 				// save req resume status
 				$this->loadModel('ReqResumeStatus');
 				$data = array('req_resume_id' => $req_res_id[0]['ReqResume']['id'], 'created_date' => $this->Functions->get_current_date(),
-				'created_by' => $this->Session->read('USER.Login.id'), 'stage_title' => 'Shortlist', 'status_title' => $status,
-				'note' => $this->request->data['Position']['note']);
-				if($this->ReqResumeStatus->save($data, array('validate' => false))){					
+				'created_by' => $this->Session->read('USER.Login.id'), 'stage_title' => $this->Functions->get_level_text($int_level),
+				'status_title' => $status);
+				if($this->ReqResumeStatus->save($data, array('validate' => false))){
+					// save interview status
+					$this->loadModel('ResInterview');
+					$interview_id = $this->ResInterview->find('all', array('conditions' => array('ResInterview.req_resume_id' => $req_res_id[0]['ReqResume']['id'],
+					'ResInterview.stage_title' => $this->Functions->get_level_text($int_level))));
+					$data = array('id' => $interview_id[0]['ResInterview']['id'], 'req_resume_id' => $req_res_id[0]['ReqResume']['id'], 'modified_date' => $this->Functions->get_current_date(),
+					'modified_by' => $this->Session->read('USER.Login.id'), 'status_title' => $status);
+					$this->ResInterview->save($data, array('validate' => false));
 					// if successfully update
 					$this->set('cv_update_status', 1);
 				}
@@ -789,22 +844,73 @@ class PositionController extends AppController {
 		}
 	}
 	
-	public function update_joining($st, $id){
+	/* function to schedule for interview */
+	public function schedule_interview($id, $pos_id){
 		$this->layout = 'framebox';
+		if(!empty($id) && !empty($pos_id)){
+			// get the template details
+			$this->get_template_details($id,$pos_id, '3');
+			$this->get_template_details($id,$pos_id, '2');
+			// get interview levels
+			$int_levels = array('First Interview', 'Second Interview', 'Final Interview');
+			$this->set('int_levels', $int_levels);
+			// get interview levels
+			$int_levels = array('First Interview' => 'First Interview' , 'Second Interview' => 'Second Interview', 'Final Interview' => 'Final Interview');
+			$this->set('int_levels', $int_levels);
+			// get interview duration
+			$int_duration = array('00:30:00' => '30 Mins.', '00:45:00' => '45 Mins.', '01:00:00' => '1 Hr', '02:00:00' => '2 Hrs', '03:00:00' => '3 Hrs');
+			$this->set('int_duration', $int_duration);
+			// load the interview stages
+			$this->loadModel('InterviewStage');
+			$stage_list = $this->InterviewStage->find('list', array('fields' => array('id','interview_stage'), 
+			'order' => array('interview_stage ASC'),'conditions' => array('is_deleted' => 'N', 'status' => '1')));
+			$this->set('stageList', $stage_list);
+		}
+		// when the form submitted
 		if(!empty($this->request->data)){
-			$status = $st == 'approve' ? '0' : '1';
-			$data = array('id' => $id, 'status' => $status, 'approve_date' => $this->Functions->get_current_date(),
-			'is_approve' => 'A');		
-			if ($this->request->is('post') && $st != '') { 
-				// update the todo
-				if($this->Client->save($data, array('validate' => false))){		
-					$this->set('form_status', '1');
+			// validate the form
+			$this->Position->set($this->request->data);
+			// retain the district
+			// validate the form fields
+			if ($this->Position->validates(array('fieldList' => array('interview_level','interview_stage_id','int_date','int_time',
+				'int_duration','subject','message','subject_client','message_client')))){	
+				// get the req. resume id
+				$this->loadModel('ReqResume');
+				$req_res_id = $this->ReqResume->find('all', array('fields' => array('ReqResume.id'), 
+				'conditions' => array('requirements_id' => $pos_id, 'resume_id' => $id)));
+				// save req resume table
+				$data = array('id' => $req_res_id[0]['ReqResume']['id'],'modified_date' => $this->Functions->get_current_date(),
+				'modified_by' => $this->Session->read('USER.Login.id'),	 'stage_title' => $this->request->data['Position']['interview_level'],
+				 'status_title' => 'Scheduled');
+				// save  req resume
+				if($this->ReqResume->save($data, array('validate' => false))){		
+					// save req resume status
+					$this->loadModel('ReqResumeStatus');
+					$data = array('req_resume_id' => $req_res_id[0]['ReqResume']['id'], 'created_date' => $this->Functions->get_current_date(),
+					'created_by' => $this->Session->read('USER.Login.id'), 'stage_title' => $this->request->data['Position']['interview_level'],
+					'status_title' => 'Scheduled');					
+					if($this->ReqResumeStatus->save($data, array('validate' => false))){
+						// save interview status
+						$this->loadModel('ResInterview');
+						$data = array('req_resume_id' => $req_res_id[0]['ReqResume']['id'], 'created_date' => $this->Functions->get_current_date(),
+						'created_by' => $this->Session->read('USER.Login.id'), 'stage_title' => $this->request->data['Position']['interview_level'],
+						'status_title' => 'Scheduled',	'int_date' => $this->Functions->format_date_save($this->request->data['Position']['int_date']),
+						'int_duration' => $this->request->data['Position']['int_duration'], 'int_time' => $this->request->data['Position']['int_time'],
+						'interview_stage_id' => $this->request->data['Position']['interview_stage_id']);
+						$this->ResInterview->save($data, array('validate' => false));
+						// if successfully update
+						$this->set('cv_update_status', 1);
+					}
 				}
+			}else{
+				// show the error msg.
+				$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Problem in saving the data...', 'default', array('class' => 'alert alert-error'));					
 			}
+			
 		}
 	}
 	
-	
+
 	
 	/* function to load the districts options */
 	public function get_contact(){

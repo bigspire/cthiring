@@ -168,9 +168,69 @@ class Position extends AppModel {
                 'required' => true,
                 'message'  => 'Please upload only doc or docx formats only'
             )
-        )
-			
+        ),
+	
+		'interview_level' => array(		
+            'empty' => array(
+                'rule'     => 'notEmpty',
+                'required' => true,
+                'message'  => 'Please select the interview level'
+            )
+        ),
+		'subject' => array(		
+            'empty' => array(
+                'rule'     => 'notEmpty',
+                'required' => true,
+                'message'  => 'Please enter the mail subject'
+            )
+        ),
+		'message' => array(		
+            'empty' => array(
+                'rule'     => 'notEmpty',
+                'required' => true,
+                'message'  => 'Please select the mail message'
+            )
+        ),
+	
+		'interview_stage_id' => array(		
+            'empty' => array(
+                'rule'     => 'notEmpty',
+                'required' => true,
+                'message'  => 'Please select the interview stage'
+            )
+        ),
+	
+		'int_date' => array(		
+            'empty' => array(
+                'rule'     => 'notEmpty',
+                'required' => true,
+                'message'  => 'Please select the interview date'
+            )
+        ),
+	
+		'int_time' => array(		
+            'empty' => array(
+                'rule'     => 'notEmpty',
+                'required' => true,
+                'message'  => 'Please select the interview time'
+            )
+        ),
+	
+		'int_duration' => array(		
+            'empty' => array(
+                'rule'     => 'notEmpty',
+                'required' => true,
+                'message'  => 'Please select the interview duration'
+            )
+        )		
 	);
+	
+	
+	
+	
+	
+	
+	
 	
 	/* function to validate the team members */
 	public function validate_team(){ 
