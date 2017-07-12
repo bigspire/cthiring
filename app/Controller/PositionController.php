@@ -598,7 +598,37 @@ class PositionController extends AppController {
 		$this->layout = 'framebox';
 		// when the values are not empty
 		if(!empty($res_id) && !empty($pos_id)){
-			$options = array(			
+			// get the template details
+			$this->get_template_details($res_id,$pos_id);
+
+		}
+		if(!empty($this->request->data)){
+			// get the req. resume id
+			$this->loadModel('ReqResume');
+			$req_res_id = $this->ReqResume->find('all', array('fields' => array('ReqResume.id'), 
+			'conditions' => array('requirements_id' => $pos_id, 'resume_id' => $res_id)));
+			// save req resume table
+			$data = array('id' => $req_res_id[0]['ReqResume']['id'],'modified_date' => $this->Functions->get_current_date(),
+			'modified_by' => $this->Session->read('USER.Login.id'),	'stage_title' => 'Shortlist', 'status_title' => 'CV-Sent');
+			// save  req resume
+			if($this->ReqResume->save($data, array('validate' => false))){		
+				// save req resume status
+				$this->loadModel('ReqResumeStatus');
+				$data = array('req_resume_id' => $req_res_id[0]['ReqResume']['id'], 'created_date' => $this->Functions->get_current_date(),
+				'created_by' => $this->Session->read('USER.Login.id'), 'stage_title' => 'Shortlist', 'status_title' => 'CV-Sent');
+				if($this->ReqResumeStatus->save($data, array('validate' => false))){
+					// send mail to client 
+					
+					// if successfully update
+					$this->set('cv_update_status', 1);
+				}
+			}
+		}
+	}
+	
+	/* function to get the template details */
+	public function get_template_details($res_id, $pos_id){
+		$options = array(			
 			array('table' => 'resume',
 					'alias' => 'Resume',					
 					'type' => 'LEFT',
@@ -667,26 +697,35 @@ class PositionController extends AppController {
 			$subject_text = str_replace($tags, $template_data, $data['MailTemplate']['subject']);
 			$this->set('subject', $subject_text);
 			$this->set('body', $body_text);
-
-		}
+	}
+	
+	/* function to update the CV status */
+	public function update_cv($id,$pos_id,$st){
+		$this->layout = 'framebox';
+		$status = $st == 'shortlist' ? 'Shortlisted' : 'Rejected';
+		$head_label = $st == 'shortlist' ? 'Shortlist CV' : 'Reject CV';
+		$this->set('headLabel', $head_label);
+		// get candidate details
+		$this->loadModel('Resume');
+		$cand_data = $this->Resume->findById($id, array('fields' => 'first_name','last_name'));
+		$cand_name = ucwords($cand_data['Resume']['first_name'].' '.$cand_data['Resume']['last_name']);
+		$this->set('candidate_name', $cand_name);
 		if(!empty($this->request->data)){
 			// get the req. resume id
 			$this->loadModel('ReqResume');
 			$req_res_id = $this->ReqResume->find('all', array('fields' => array('ReqResume.id'), 
-			'conditions' => array('requirements_id' => $pos_id, 'resume_id' => $res_id)));
+			'conditions' => array('requirements_id' => $pos_id, 'resume_id' => $id)));
 			// save req resume table
-			$data = array('id' => $req_res_id[0]['ReqResume']['id'], 'resume_id' => $res_id, 'requirements_id' => $pos_id, 'created_date' => $this->Functions->get_current_date(),
-			'created_by' => $this->Session->read('USER.Login.id'),
-			'stage_title' => 'Shortlist', 'status_title' => 'CV-Sent');
+			$data = array('id' => $req_res_id[0]['ReqResume']['id'],'modified_date' => $this->Functions->get_current_date(),
+			'modified_by' => $this->Session->read('USER.Login.id'),	 'status_title' => $status);
 			// save  req resume
 			if($this->ReqResume->save($data, array('validate' => false))){		
 				// save req resume status
 				$this->loadModel('ReqResumeStatus');
 				$data = array('req_resume_id' => $req_res_id[0]['ReqResume']['id'], 'created_date' => $this->Functions->get_current_date(),
-				'created_by' => $this->Session->read('USER.Login.id'), 'stage_title' => 'Shortlist', 'status_title' => 'CV-Sent');
-				if($this->ReqResumeStatus->save($data, array('validate' => false))){
-					// send mail to client 
-					
+				'created_by' => $this->Session->read('USER.Login.id'), 'stage_title' => 'Shortlist', 'status_title' => $status,
+				'note' => $this->request->data['Position']['note']);
+				if($this->ReqResumeStatus->save($data, array('validate' => false))){					
 					// if successfully update
 					$this->set('cv_update_status', 1);
 				}
@@ -694,22 +733,7 @@ class PositionController extends AppController {
 		}
 	}
 	
-	
-	public function update_cv($id, $st){
-		$this->layout = 'framebox';
-		if(!empty($this->request->data)){
-			$status = $st == 'cv_shortlist' ? 'Shortlisted' : 'Rejected';
-			$data = array('status_title' => $status, 
-			'created_date' => $this->Functions->get_current_date(),'modified_date' => $this->Functions->get_current_date());		
-			if ($this->request->is('post') && $st != '') { 
-				// update the todo
-				if($this->Client->save($data, array('validate' => false))){		
-					$this->set('form_status', '1');
-				}
-			}
-		}
-	}
-	
+	/* function to update the interview interview */		
 	public function update_interview($st, $id){
 		$this->layout = 'framebox';
 		if(!empty($this->request->data)){
@@ -725,16 +749,41 @@ class PositionController extends AppController {
 		}
 	}
 	
-	public function interview_schedule($st, $id){
+	/* function to schedule for interview */
+	public function schedule_interview($id, $pos_id){
 		$this->layout = 'framebox';
+		if(!empty($id) && !empty($pos_id)){
+			// get the template details
+			$this->get_template_details($id,$pos_id);
+			// get interview levels
+			$int_levels = array('First Interview', 'Second Interview', 'Final Interview');
+			$this->set('int_levels', $int_levels);
+			// get interview levels
+			$int_levels = array('First Interview', 'Second Interview', 'Final Interview');
+			$this->set('int_levels', $int_levels);
+			// get interview duration
+			$int_duration = array('30 Mins.', '45 Mins.', '1 Hr', '2 Hrs', '3 Hrs');
+			$this->set('int_duration', $int_duration);
+		}
+		// when the form submitted
 		if(!empty($this->request->data)){
-			$status = $st == 'approve' ? '0' : '1';
-			$data = array('id' => $id, 'status' => $status, 'approve_date' => $this->Functions->get_current_date(),
-			'is_approve' => 'A');		
-			if ($this->request->is('post') && $st != '') { 
-				// update the todo
-				if($this->Client->save($data, array('validate' => false))){		
-					$this->set('form_status', '1');
+			// get the req. resume id
+			$this->loadModel('ReqResume');
+			$req_res_id = $this->ReqResume->find('all', array('fields' => array('ReqResume.id'), 
+			'conditions' => array('requirements_id' => $pos_id, 'resume_id' => $id)));
+			// save req resume table
+			$data = array('id' => $req_res_id[0]['ReqResume']['id'],'modified_date' => $this->Functions->get_current_date(),
+			'modified_by' => $this->Session->read('USER.Login.id'),	 'status_title' => $status);
+			// save  req resume
+			if($this->ReqResume->save($data, array('validate' => false))){		
+				// save req resume status
+				$this->loadModel('ReqResumeStatus');
+				$data = array('req_resume_id' => $req_res_id[0]['ReqResume']['id'], 'created_date' => $this->Functions->get_current_date(),
+				'created_by' => $this->Session->read('USER.Login.id'), 'stage_title' => 'Shortlist', 'status_title' => $status,
+				'note' => $this->request->data['Position']['note']);
+				if($this->ReqResumeStatus->save($data, array('validate' => false))){					
+					// if successfully update
+					$this->set('cv_update_status', 1);
 				}
 			}
 		}

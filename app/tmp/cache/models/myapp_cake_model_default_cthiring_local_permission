@@ -1,2 +1,6 @@
+<<<<<<< HEAD
+1586168237
+=======
 1586159035
+>>>>>>> 86c1ca5b19dc914f947dce55826536cf4d624a17
 a:4:{s:2:"id";a:6:{s:4:"type";s:7:"integer";s:4:"null";b:0;s:7:"default";N;s:6:"length";i:10;s:8:"unsigned";b:1;s:3:"key";s:7:"primary";}s:12:"created_date";a:4:{s:4:"type";s:8:"datetime";s:4:"null";b:0;s:7:"default";N;s:6:"length";N;}s:10:"modules_id";a:6:{s:4:"type";s:7:"integer";s:4:"null";b:0;s:7:"default";N;s:6:"length";i:10;s:8:"unsigned";b:1;s:3:"key";s:5:"index";}s:8:"roles_id";a:6:{s:4:"type";s:7:"integer";s:4:"null";b:0;s:7:"default";N;s:6:"length";i:10;s:8:"unsigned";b:1;s:3:"key";s:5:"index";}}
