@@ -58,6 +58,8 @@ if(!empty($_GET['res_id']) && !empty($_GET['req_res_id'])){
 	}catch(Exception $e){
 		echo 'Caught exception: ',  $e->getMessage(), "\n";
 	}
+}else{
+	header('Location: ../');
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST'){
