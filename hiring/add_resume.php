@@ -200,6 +200,7 @@ if(!empty($_POST)){
     	$test = 'error';
 	}
 	
+	
 	// array for printing correct field name in error message
 	$fieldtype = array('0', '0','0','0','0', '0','1','1','0', '0','0','1','1','1','0','0');
 	$actualfield = array('first name', 'last name','email', 'mobile','dob',
@@ -256,7 +257,8 @@ if(!empty($_POST)){
  			'".$fun->is_white_space($mysql->real_escape_str($_POST['family']))."','".$mysql->real_escape_str($total_exp)."',
  			'".$date."','".$created_by."','N','".$mysql->real_escape_str($_SESSION['resume_doc_id'])."',
  			'".$fun->is_white_space($mysql->real_escape_str($_POST['consultant']))."',
- 			'".$fun->is_white_space($mysql->real_escape_str($_POST['interview_availability']))."')";
+ 			'".$fun->is_white_space($mysql->real_escape_str($_POST['interview_availability']))."',
+			'".$fun->is_white_space($mysql->real_escape_str($_POST['certification']))."')";
 		try{
 			if(!$result = $mysql->execute_query($query)){
 				throw new Exception('Problem in adding personal details');

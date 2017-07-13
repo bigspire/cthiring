@@ -327,7 +327,7 @@
   <!-- Form template-->
   <div id="sheepItForm1_template" class="" style="clear:left;">
  
-				   <div class="span6">
+		<div class="span6">
 		<table class="table table-bordered dataTable" style="margin-bottom:0;">
 			<tbody>
 			
@@ -394,9 +394,24 @@
 										<textarea name="vital_#index#" tabindex="7" id="vital_#index#" cols="10" rows="3" class="span8"></textarea>
 										</td>
 							</tr>
+			
 					</tbody>
 		  </table>
-		</div>		
+		  </div>
+		  
+		  <div class="span12">
+		  <table class="table table-bordered dataTable" style="margin-bottom:0;">
+		  <tbody>
+		  <tr>
+			<td width="120" class="tbl_column">Project / Certification Details (optional) <span class="f_req"></span></td>
+				<td> 
+						<textarea name="certification" tabindex="7" id="certification" cols="10" rows="3" class="span8">{if $certification}{$certification}{else}{$smarty.post.certification}{/if}</textarea>
+				</td>
+			</tr>
+		  </tbody>
+		  </table>
+		  </div>
+			
 								
 
 <div style="float: left;    clear: left;    margin-top: 5px;    margin-bottom: 5px;">										
@@ -417,11 +432,9 @@
     </span>
   </div>
   <!-- /Controls -->
-
-
+</div>
 </div>
 
-</div>
 <div class="tab-pane" id="mbox_Consultant">
 <div class="span12">
 			<table class="table table-bordered dataTable" style="margin-bottom:0;">
