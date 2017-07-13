@@ -184,6 +184,22 @@ class FunctionsComponent extends Component {
 		
 		return $str.$suffix;
    }
+   
+       /* function to get interview level text */
+   public function get_level_text($level){
+		switch($level){
+			case '1':
+			$value = 'First Interview';
+			break;
+			case '2':
+			$value = 'Second Interview';
+			break;	
+			case '3':
+			$value = 'Final Interview';
+			break;				
+		}
+		return $value;
+   }
 	
 	
 }

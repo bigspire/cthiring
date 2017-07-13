@@ -560,6 +560,75 @@ class FunctionsHelper extends AppHelper {
 		}
 		return $value;
    }
+   
+    /* function to get interview level same */
+   public function get_int_level_same($level){		
+		switch($level){			
+			case 'First':
+			$value = '1';
+			break;
+			case 'Second':
+			$value = '2';
+			break;	
+			case 'Final':
+			$value = '3';
+			break;			
+		}
+		return $value;
+   }
+   
+   
+   /* function to get interview level */
+   public function get_int_level($level){
+		if($level == ''){
+			return '1';
+		}
+		switch($level){			
+			case 'First':
+			$value = '2';
+			break;
+			case 'Second':
+			$value = '3';
+			break;	
+			case 'Final':
+			$value = '3';
+			break;				
+		}
+		return $value;
+   }
+   
+    /* function to get interview level order */
+   public function get_int_level_order($level){
+		if($level == ''){
+			return 'First';
+		}
+		switch($level){			
+			case 'First':
+			$value = 'Second';
+			break;
+			case 'Second':
+			$value = 'Final';
+			break;							
+		}
+		return $value;
+   }
+     
+  
+    /* function to get interview level text */
+   public function get_level_text($level){
+		switch($level){
+			case '1':
+			$value = 'First Interview';
+			break;
+			case '2':
+			$value = 'Second Interview';
+			break;	
+			case '3':
+			$value = 'Final Interview';
+			break;				
+		}
+		return $value;
+   }
   
 }
 ?>
