@@ -1,2 +1,10 @@
+<<<<<<< HEAD
 1586244241
+=======
+<<<<<<< HEAD
+1586240233
+=======
+1586240016
+>>>>>>> e65ae3a4e369754862be6142ee5cc28436d45303
+>>>>>>> fbfa9d859700924cf49a287e3ef51ce06fb5acb8
 a:6:{s:2:"id";a:6:{s:4:"type";s:7:"integer";s:4:"null";b:0;s:7:"default";N;s:6:"length";i:10;s:8:"unsigned";b:1;s:3:"key";s:7:"primary";}s:6:"status";a:6:{s:4:"type";s:13:"enum('U','R')";s:4:"null";b:0;s:7:"default";N;s:6:"length";i:1;s:7:"collate";s:17:"latin1_swedish_ci";s:7:"charset";s:6:"latin1";}s:12:"created_date";a:4:{s:4:"type";s:8:"datetime";s:4:"null";b:0;s:7:"default";N;s:6:"length";N;}s:13:"modified_date";a:4:{s:4:"type";s:8:"datetime";s:4:"null";b:1;s:7:"default";N;s:6:"length";N;}s:15:"requirements_id";a:6:{s:4:"type";s:7:"integer";s:4:"null";b:0;s:7:"default";N;s:6:"length";i:10;s:8:"unsigned";b:1;s:3:"key";s:5:"index";}s:8:"users_id";a:6:{s:4:"type";s:7:"integer";s:4:"null";b:0;s:7:"default";N;s:6:"length";i:10;s:8:"unsigned";b:1;s:3:"key";s:5:"index";}}

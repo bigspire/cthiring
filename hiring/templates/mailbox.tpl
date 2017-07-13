@@ -59,12 +59,12 @@
 							<div class="{$hide} dataTables_filter srchBox" style="float:left;" id="dt_gal_filter">
 							
 								<label style="margin-left:0;">Keyword: <input type="text" placeholder="Candidate Name or Client Name" name="keyword" id="keyword" value="{$keyword}" class="input-large" aria-controls="dt_gal"></label>
-								<label>Billing From: <input type="text" class="input-small datepick" name="f_date" placeholder="dd/mm/yyyy" value="{$f_date}" aria-controls="dt_gal"></label>
+								<label>From: <input type="text" class="input-small datepick" name="f_date" placeholder="dd/mm/yyyy" value="{$f_date}" aria-controls="dt_gal"></label>
 						
-								<label>Billing Till: <input type="text" name="t_date" value="{$t_date}" placeholder="dd/mm/yyyy" class="input-small datepick" aria-controls="dt_gal"></label>
+								<label>Till: <input type="text" name="t_date" value="{$t_date}" placeholder="dd/mm/yyyy" class="input-small datepick" aria-controls="dt_gal"></label>
 						
-								<label style="margin-top:18px;"><a href="mailbox.php" class="jsRedirect"><input value="Reset" type="button" class="btn"/></a></label>
-							<label style="margin-top:18px;"><input type="submit" value="Submit" class="btn btn-gebo" /></label>					
+								<label style="margin-top:18px;"><input type="submit" value="Submit" class="btn btn-gebo" /></label>					
+							<label style="margin-top:18px;"><a href="mailbox.php" class="jsRedirect"><input value="Reset" type="button" class="btn"/></a></label>
 							
 							</div>
 
@@ -77,20 +77,20 @@
 							<table class="table table-striped table-bordered dataTable stickyTable">
 								<thead>
 									<tr>
-										<th width="180"><a href="mailbox.php?field=to&order={$order}&page={$smarty.get.page}&keyword={$keyword}&f_date={$f_date}&t_date={$t_date}" class="{$sort_field_to}">To</a></th>
-										<th width="150"><a href="mailbox.php?field=subject&order={$order}&page={$smarty.get.page}&keyword={$keyword}&f_date={$f_date}&t_date={$t_date}" class="{$sort_field_subject}">Subject</a></th>
-										<th width="90"><a href="mailbox.php?field=message&order={$order}&page={$smarty.get.page}&keyword={$keyword}&f_date={$f_date}&t_date={$t_date}" class="{$sort_field_message}">Message</a></th>
-										<th width="80"><a href="mailbox.php?field=date&order={$order}&page={$smarty.get.page}&keyword={$keyword}&f_date={$f_date}&t_date={$t_date}" class="{$sort_field_date}">Date</a></th>
-										<th width="120"><a href="mailbox.php?field=attachment&order={$order}&page={$smarty.get.page}&keyword={$keyword}&f_date={$f_date}&t_date={$t_date}" class="{$sort_field_attachment}">Attachment</a></th>
+										<th width="80"><a href="mailbox.php?field=to&order={$order}&page={$smarty.get.page}&keyword={$keyword}&f_date={$f_date}&t_date={$t_date}" class="{$sort_field_to}">To</a></th>
+										<th width="90"><a href="mailbox.php?field=subject&order={$order}&page={$smarty.get.page}&keyword={$keyword}&f_date={$f_date}&t_date={$t_date}" class="{$sort_field_subject}">Subject</a></th>
+										<th width="120"><a href="mailbox.php?field=message&order={$order}&page={$smarty.get.page}&keyword={$keyword}&f_date={$f_date}&t_date={$t_date}" class="{$sort_field_message}">Message</a></th>
+										<th width="50"><a href="mailbox.php?field=date&order={$order}&page={$smarty.get.page}&keyword={$keyword}&f_date={$f_date}&t_date={$t_date}" class="{$sort_field_date}">Date</a></th>
+										<th width="50">Attachment</a></th>
 									</tr>
 								</thead>
 								<tbody>	
 								{foreach from=$data item=item key=key}	
 									<tr>
-										<td>{$item.to}</td>
+										<td>{if $item.mail_type == 'C'}{$item.client_name} ({$item.email}){else}{$item.candidate_name} ({$item.email_id}){/if}</td>
 										<td>{$item.subject}</td>
-										<td><a  href="view_mailbox.php?id={$item.id}">{$item.message}</a></td>
-										<td>{$item.date}</td>
+										<td><a href="view_mailbox.php?id={$item.id}">{$item.message}</a></td>
+										<td>{$item.created_date}</td>
 										<td>{$item.attachment}</td>
 									</tr>		
 								{/foreach}				
@@ -112,7 +112,7 @@
 </div>
 </div>
 </div>
-<input type="hidden" id="page" value="list_billing">
+<input type="hidden" id="page" value="mail_box">
               </div>
             </div>
      </div>

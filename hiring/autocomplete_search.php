@@ -61,6 +61,32 @@ if($_GET['page'] == 'list_grade'){
    }catch(Exception $e){
 		echo 'Caught exception: ',  $e->getMessage(), "\n";
    }
+}elseif($_GET['page'] == 'mail_box'){
+	// get matched data from base target
+	$query = "CALL search_mail_box('".$keyword."')";
+	try{	
+		if(!$result = $mysql->execute_query($query)){
+			throw new Exception('Problem in executing mail box page');
+		}
+		// iterate until get the matched results
+		while($obj = $mysql->display_result($result)){
+			$data[] = strtolower($fun->match_results($keyword,$obj['client_name']));		
+			$data[] = strtolower($fun->match_results($keyword,$obj['candidate_name']));
+		}
+		
+		// filter the duplicate values
+		$unique_result = array_unique($data);	
+		// display the search results
+		foreach($unique_result as $res){
+			if(!empty($res)){ 
+				$unique[] = $res;
+			}
+		}
+		// free the memory
+		$mysql->clear_result($result);		
+   }catch(Exception $e){
+		echo 'Caught exception: ',  $e->getMessage(), "\n";
+   }
 }
 /*
 elseif($_GET['page'] == 'list_eligibility'){
