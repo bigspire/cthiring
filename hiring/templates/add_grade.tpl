@@ -73,7 +73,12 @@
 </div>
 <div class="form-actions">
 				<input name="submit" class="btn btn-gebo" value="Submit" type="submit"/>
-				<input type="button" value="Cancel" class="btn cancel_event" onclick="window.location='grade.php'">
+				<input type="hidden" name="data[Client][webroot]" value="grade.php" id="webroot">
+
+	<a href="javascript:void(0)" class="jsRedirect cancelBtn cancel_event">
+	<input type="button" value="Cancel" class="btn">
+	</a>
+
 </div>
                     </div>
 				</form>
