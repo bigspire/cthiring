@@ -86,13 +86,12 @@
 </div>
 </div>
 <div class="form-actions">
-<<<<<<< HEAD
 <input class="btn btn-gebo" type="submit" value="Submit">
-				<a href="roles.php" class="cancelBtn"><input type="button" value="Cancel" class="btn"></a>
-=======
-				<button class="btn btn-gebo" type="submit">Submit</button>
-				<input type="button" value="Cancel" class="btn cancel_event " onclick="window.location='roles.php'">
->>>>>>> b2cfd8db470872ff260f012d203ae614995be585
+	<input type="hidden" name="data[Client][webroot]" value="roles.php" id="webroot">
+
+	<a href="javascript:void(0)" class="jsRedirect cancelBtn cancel_event">
+	<input type="button" value="Cancel" class="btn">
+	</a>
 </div>
                     </div>
 				</form>

@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-06-17 17:53:41
+/* Smarty version 3.1.29, created on 2017-07-13 14:16:01
   from "C:\xampp\htdocs\2017\ctsvn\cthiring\hiring\templates\edit_grade.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_59451f4da27290_72279142',
+  'unifunc' => 'content_596733498cb708_20350226',
   'file_dependency' => 
   array (
     'f2c0aaca68ae3427aa28ae23a81e33d750bf2084' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\templates\\edit_grade.tpl',
-      1 => 1497270582,
+      1 => 1499935553,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_59451f4da27290_72279142 ($_smarty_tpl) {
+function content_596733498cb708_20350226 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -102,8 +102,11 @@ home"><i class="icon-home"></i></a>
 </div>
 <div class="form-actions">
 				<input name="submit" class="btn btn-gebo" value="Submit" type="submit"/>
-				<input type="button" value="Cancel" class="btn" onclick="window.location='grade.php'">
-</div>
+				<input type="hidden" name="data[Client][webroot]" value="grade.php" id="webroot">
+
+	<a href="javascript:void(0)" class="jsRedirect cancelBtn cancel_event">
+	<input type="button" value="Cancel" class="btn">
+	</a></div>
                     </div>
 				</form>
          </div>

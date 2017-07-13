@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-07-13 13:05:09
+/* Smarty version 3.1.29, created on 2017-07-13 14:56:13
   from "C:\xampp\htdocs\2017\ctsvn\cthiring\hiring\templates\mailbox.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_596722ad23ff95_45262760',
+  'unifunc' => 'content_59673cb5501831_70126178',
   'file_dependency' => 
   array (
     '00d477005a4f3f1cd4d830fb0002b32dff223f52' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\templates\\mailbox.tpl',
-      1 => 1499931305,
+      1 => 1499937963,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_596722ad23ff95_45262760 ($_smarty_tpl) {
+function content_59673cb5501831_70126178 ($_smarty_tpl) {
 ?>
 
    
@@ -139,6 +139,13 @@ $_smarty_tpl->ext->_updateScope->updateScope($_smarty_tpl, 'hide', 0);?>
 &t_date=<?php echo $_smarty_tpl->tpl_vars['t_date']->value;?>
 " class="<?php echo $_smarty_tpl->tpl_vars['sort_field_date']->value;?>
 ">Date</a></th>
+										<th width="50"><a href="mailbox.php?field=created_by&order=<?php echo $_smarty_tpl->tpl_vars['order']->value;?>
+&page=<?php echo $_GET['page'];?>
+&keyword=<?php echo $_smarty_tpl->tpl_vars['keyword']->value;?>
+&f_date=<?php echo $_smarty_tpl->tpl_vars['f_date']->value;?>
+&t_date=<?php echo $_smarty_tpl->tpl_vars['t_date']->value;?>
+" class="<?php echo $_smarty_tpl->tpl_vars['sort_field_created_by']->value;?>
+">Created by</a></th>
 										<th width="50">Attachment</a></th>
 									</tr>
 								</thead>
@@ -171,6 +178,8 @@ echo $_smarty_tpl->tpl_vars['item']->value['candidate_name'];?>
 "><?php echo $_smarty_tpl->tpl_vars['item']->value['message'];?>
 </a></td>
 										<td><?php echo $_smarty_tpl->tpl_vars['item']->value['created_date'];?>
+</td>
+										<td><?php echo $_smarty_tpl->tpl_vars['item']->value['employee'];?>
 </td>
 										<td><?php echo $_smarty_tpl->tpl_vars['item']->value['attachment'];?>
 </td>

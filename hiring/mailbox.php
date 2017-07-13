@@ -37,7 +37,7 @@ if($_POST){
 }
 
 		// for director and BH
-		if($_SESSION['roles_id'] == '33' || $_SESSION['roles_id'] == '38'){
+		if($_SESSION['roles_id'] != ''){
 			$show = 'all';
 			$team_cond = false;
 		}else{
@@ -101,8 +101,8 @@ try{
 
 // set the condition to check ascending or descending order		
 $order = ($_GET['order'] == 'desc') ? 'asc' :  'desc';	
-$sort_fields = array('1' => 'to','to','subject','message','date');
-$org_fields = array('1' => 'candidate_name','client_name','subject','message','created_date');
+$sort_fields = array('1' => 'to','to','subject','message','date','created_by');
+$org_fields = array('1' => 'candidate_name','client_name','subject','message','created_date','employee');
 
 // to set the sorting image
 foreach($sort_fields as $key => $b_field){
@@ -137,9 +137,7 @@ try{
 	while($obj = $mysql->display_result($result))
 	{
  		$data[] = $obj;
- 		$data[$i]['interview_date'] = $fun->convert_date_to_display($obj['interview_date']);
  		$data[$i]['created_date'] = $fun->convert_date_to_display($obj['created_date']);
- 		$data[$i]['status_cls'] = $fun->interview_status_cls($obj['status']);
  		$i++;
  		$pno[]=$paging->print_no();
  		$smarty->assign('pno',$pno);
