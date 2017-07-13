@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-07-03 17:16:41
+/* Smarty version 3.1.29, created on 2017-07-13 10:48:50
   from "C:\xampp\htdocs\2017\ctsvn\cthiring\hiring\templates\include\header.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_595a2ea11eff73_98899315',
+  'unifunc' => 'content_596702baaf8288_07641586',
   'file_dependency' => 
   array (
     '418ce04694c91a3f6ebee8f2a2efa42e5260b14c' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\templates\\include\\header.tpl',
-      1 => 1499082382,
+      1 => 1499923110,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_595a2ea11eff73_98899315 ($_smarty_tpl) {
+function content_596702baaf8288_07641586 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -74,7 +74,7 @@ function content_595a2ea11eff73_98899315 ($_smarty_tpl) {
                         <div class="container-fluid">
                             
 							<a class="brand" href="recruiter_dashboard.php">
-							 CT Hiring</a>
+							 Manage Hiring </a>
                             <ul class="nav user_menu pull-right">
                          
 						 <!--li class="divider-vertical hidden-phone hidden-tablet"></li>    

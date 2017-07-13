@@ -50,7 +50,7 @@
                         <div class="container-fluid">
                             
 							<a class="brand" href="recruiter_dashboard.php">
-							 CT Hiring</a>
+							 Manage Hiring </a>
                             <ul class="nav user_menu pull-right">
                          
 						 <!--li class="divider-vertical hidden-phone hidden-tablet"></li>    
