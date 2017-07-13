@@ -586,7 +586,7 @@ class PositionController extends AppController {
 		'Resume.last_name','ReqResume.status_title','ReqResume.stage_title',
 		'ReqResume.created_date','Resume.mobile','Resume.email_id','Resume.present_ctc','Resume.expected_ctc',
 		'Resume.notice_period','ResLoc.location','Creator.first_name','ReqResume.modified_date','ReqResume.bill_ctc','ResDoc.resume',
-		'Resume.present_location','Resume.present_ctc_type','Resume.expected_ctc_type'),
+		'Resume.present_location','Resume.present_ctc_type','Resume.expected_ctc_type', 'ReqResume.id'),
 		'conditions' => array('requirements_id' => $id),
 		'order' => array('Resume.created_date' => 'desc'),'group' => array('ReqResume.id'), 'joins' => $options));		
 		$this->set('resume_data', $data);	

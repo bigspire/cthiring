@@ -48,7 +48,7 @@ class UserController extends AppController {
 			$stCond = array('User.status' => '0');
 		}
 		// set the page title
-		$this->set('title_for_layout', 'Users - CT Hiring - ES');	
+		$this->set('title_for_layout', 'Users - Manage Hiring');	
 		$fields = array('id','first_name','email_id','last_name','mobile','status','created_date','position','Location.location');
 		// for export
 		if($this->request->query['action'] == 'export'){ 

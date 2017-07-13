@@ -38,7 +38,7 @@ class ResumeController extends AppController {
 			$this->redirect('/resume/?srch_status=1&'.$url_vars);				
 		}
 		// set the page title
-		$this->set('title_for_layout', 'Resumes - CT Hiring - ES');	
+		$this->set('title_for_layout', 'Resumes - Manage Hiring');	
 		$this->set('empList', $this->Resume->get_employee_details());	
 		$this->set('locList', $this->get_loc_details());
 		$this->set('stList', $this->get_status_details());
@@ -325,7 +325,7 @@ class ResumeController extends AppController {
 	/* function to view the Resume */
 	public function view($id){	
 		// set the page title
-		$this->set('title_for_layout', 'View Resume - CT Hiring - ES');	
+		$this->set('title_for_layout', 'View Resume - Manage Hiring');	
 		$options = array(			
 			array('table' => 'req_resume',
 					'alias' => 'ReqResume',					

@@ -32,7 +32,7 @@ class LoginController extends AppController {
 	/* function to login the employer */
 	public function index(){	
 		// set the page title
-		$this->set('title_for_layout', 'Login -  CT Hiring Advanced');	
+		$this->set('title_for_layout', 'Login -  Manage Hiring');	
 			$this->check_session_login();
 			if ($this->request->is('post')) { 
 				// validates the form

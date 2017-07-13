@@ -5,11 +5,11 @@ body{background:#2E162E;}
 				<a href="http://career-tree.in" target="_blank" style=""><img src="<?php echo $this->webroot;?>img/career-tree-logo-small.png" alt="" class="retina-ready"></a>
 				</div>
 
-<h1 style="margin-left:42%;color:#fff;padding-bottom:15px;font-size:44px;">CT Hiring</h1>
+<h1 style="margin-left:39%;color:#fff;padding-bottom:15px;font-size:44px;">Manage Hiring</h1>
 		<div class="login_box">
 			<?php echo $this->Form->create('Login', array('id' => 'login_form', 'class' => 'formID')); ?>
 
-				<div class="top_b">Sign in to ES Admin 
+				<div class="top_b">Sign in to Manage Hiring 
 </div>    
 				<?php echo $this->Session->flash();?>
 				

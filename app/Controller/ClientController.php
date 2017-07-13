@@ -118,7 +118,7 @@ class ClientController extends AppController {
 		
 		
 		// set the page title
-		$this->set('title_for_layout', 'Clients - CT Hiring - ES');	
+		$this->set('title_for_layout', 'Clients - Manage Hiring');	
 		$fields = array('id','client_name','ResLocation.location','created_date',
 		'Creator.first_name','status',"group_concat(distinct CAH.first_name separator ', ') account_holder", 'city',
 		'count(distinct Position.id) no_pos','count(distinct CON.id) no_contact', 'modified_date', 'Client.created_by');
@@ -480,7 +480,7 @@ class ClientController extends AppController {
 	/* function to view the position */
 	public function view($id){	
 		// set the page title
-		$this->set('title_for_layout', 'View Client - CT Hiring - ES');	
+		$this->set('title_for_layout', 'View Client - Manage Hiring');	
 		$options = array(			
 			array('table' => 'state',
 				  'alias' => 'State',					
