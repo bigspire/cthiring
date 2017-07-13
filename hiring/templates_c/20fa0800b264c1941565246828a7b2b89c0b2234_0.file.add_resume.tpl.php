@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-07-13 16:38:26
+/* Smarty version 3.1.29, created on 2017-07-13 17:02:10
   from "C:\xampp\htdocs\2017\ctsvn\cthiring\hiring\templates\add_resume.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_596754aa22e1c7_48862160',
+  'unifunc' => 'content_59675a3ab96c70_85649870',
   'file_dependency' => 
   array (
     '20fa0800b264c1941565246828a7b2b89c0b2234' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\templates\\add_resume.tpl',
-      1 => 1499944092,
+      1 => 1499945202,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_596754aa22e1c7_48862160 ($_smarty_tpl) {
+function content_59675a3ab96c70_85649870 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -551,6 +551,9 @@ echo $_POST['certification'];
 </div>
 <input type="hidden" id="tab_open" value="<?php echo $_smarty_tpl->tpl_vars['tab_open']->value;?>
 "/>
+<input type="hidden" id="end_date" name="end_date" value="<?php echo $_smarty_tpl->tpl_vars['dob_default']->value;?>
+">	
+
 <div class="form-actions">
 	<input class="btn btn-gebo" type="submit" value="Submit">
 	<input type="hidden" name="data[Client][webroot]" value="<?php echo @constant('webroot');?>
