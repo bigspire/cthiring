@@ -22,7 +22,17 @@
 <?php echo $this->Form->create('Client', array('id' => '', 'class' => 'formID')); ?>
 	<div class="box">
 	<div class="box-title mb5">
-			<h4>Approve Client </h4>
+	
+	
+			<h4>
+			
+		<?php if($this->request->params['pass'][0] == 'approve'):?>
+			Approve Client
+			<?php else:?>
+			Reject Client
+			<?php endif; ?>
+			
+			</h4>
 	</div>
 	
 	

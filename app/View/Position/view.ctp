@@ -245,7 +245,19 @@
 					
 					</div></div>
 	
-							
+							<div class="form-actions">
+		<?php if($position_data['Position']['is_approve'] == 'W'):?>
+<a class="iframeBox unreadLink" rel="tooltip" title="Approve Position" href="<?php echo $this->webroot;?>position/remark/approve/<?php echo $position_data['Position']['id'];?>" val="40_50"><input type="button" value="Approve" class="btn btn btn-success"/></a>
+<a class="iframeBox unreadLink" rel="tooltip" title="Reject Position" href="<?php echo $this->webroot;?>position/remark/reject/<?php echo $position_data['Position']['id'];?>" val="40_50"><input type="button" value="Reject" class="btn btn btn-danger"/></a>
+<a href="<?php echo $this->webroot;?>position/index/pending/" rel="tooltip" title="Cancel and Back to Positions"  class="jsRedirect"><button class="btn">Cancel</button></a>
+	<?php endif; ?>
+	
+	<?php if($position_data['Position']['is_approve'] == 'A'):?>
+	<a href="<?php echo $this->webroot;?>position/" rel="tooltip" title="Back to Positions"  class="jsRedirect"><button class="btn">Back</button></a>
+	<?php endif; ?>
+
+						
+					</div>
 					<?php echo $this->Form->create('Position', array('id' => 'formID','class' => 'formID')); ?>
 			
 					
@@ -295,9 +307,11 @@
 		</form>
 
 		</div>
-					
-					
-					
+			
+
+			
+					<?php if($position_data['Position']['is_approve'] == 'A'):?>	
+				
 					  <div class="row-fluid">
 						<div class="span12">
 							<div class="mbox">
@@ -715,7 +729,7 @@ $action = 1;?>
 								
                     </div>
 					
-                   
+              <?php endif; ?>
 				
 
 				    

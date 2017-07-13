@@ -84,7 +84,11 @@
                                                 <li><a href="<?php echo $this->webroot;?>position/">Search Position <!--span class="label-bub label-info white">14</span--></a></a></li>
 												 <?php endif; ?>
 												  <?php if($approve_position == '1'):?>
-                                                <li><a href="<?php echo $this->webroot;?>position/index/?status=pending">Approve Position <!--span class="label-bub label-info white">1</span--></a></li>
+                                                <li><a href="<?php echo $this->webroot;?>position/index/pending/">Approve Position 
+												<?php if($APPR_REQ_COUNT):?>
+												<span class="label-bub label-info white"><?php echo $APPR_REQ_COUNT;?></span>
+												<?php endif; ?>
+												</a></li>
 												 <?php endif; ?>
                                             </ul>
                                         </li>

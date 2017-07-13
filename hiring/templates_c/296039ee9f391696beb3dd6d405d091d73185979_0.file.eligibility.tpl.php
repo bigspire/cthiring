@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-06-24 17:55:55
+/* Smarty version 3.1.29, created on 2017-07-13 13:34:29
   from "F:\xampp\htdocs\ctsvn\cthiring\hiring\templates\eligibility.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_594e5a539f3820_14184742',
+  'unifunc' => 'content_5967298db65d94_48063091',
   'file_dependency' => 
   array (
     '296039ee9f391696beb3dd6d405d091d73185979' => 
     array (
       0 => 'F:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\templates\\eligibility.tpl',
-      1 => 1498131200,
+      1 => 1499845244,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_594e5a539f3820_14184742 ($_smarty_tpl) {
+function content_5967298db65d94_48063091 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'F:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -57,9 +57,11 @@ home"><i class="icon-home"></i></a>
 								<a class="jsRedirect toggleSearch"  href="javascript:void(0)">
 							<input type="button" value="Search" class="btn btn-success"/></a>
 							<?php if (!$_smarty_tpl->tpl_vars['ALERT_MSG']->value) {?>
-								<a href="eligibility.php?action=export&keyword=<?php echo $_POST['keyword'];?>
+								<a href="eligibility.php?action=export&status=<?php echo $_smarty_tpl->tpl_vars['status']->value;?>
+&type=<?php echo $_POST['type'];?>
 ">
-								<button type="button" val="eligibility.php?action=export&keyword=<?php echo $_POST['keyword'];?>
+								<button type="button" val="eligibility.php?action=export&status=<?php echo $_smarty_tpl->tpl_vars['status']->value;?>
+&type=<?php echo $_POST['type'];?>
 " name="export" class="jsRedirect btn btn-warning" >Export Excel</button></a>
 							<?php }?>
 							
@@ -83,7 +85,7 @@ home"><i class="icon-home"></i></a>
 							</div>
 						<?php }?>
 						
-						<?php if ($_smarty_tpl->tpl_vars['keyword']->value) {?>
+						<?php if ($_POST['type']) {?>
 						  <?php $_smarty_tpl->tpl_vars['hide'] = new Smarty_Variable('', null);
 $_smarty_tpl->ext->_updateScope->updateScope($_smarty_tpl, 'hide', 0);?>
 						<?php } else { ?>
@@ -94,8 +96,14 @@ $_smarty_tpl->ext->_updateScope->updateScope($_smarty_tpl, 'hide', 0);?>
 							
 							<div class="<?php echo $_smarty_tpl->tpl_vars['hide']->value;?>
  dataTables_filter srchBox" style="float:left;" id="dt_gal_filter">
-							<label style="margin-left:0">Keyword: <input type="text" placeholder="Search Here..." name="keyword" id="keyword" value="<?php echo $_smarty_tpl->tpl_vars['keyword']->value;?>
-" class="input-large" aria-controls="dt_gal"></label>
+							<!--label style="margin-left:0">Keyword: <input type="text" placeholder="Search Here..." name="keyword" id="keyword" value="<?php echo $_smarty_tpl->tpl_vars['keyword']->value;?>
+" class="input-large" aria-controls="dt_gal"></label-->
+							<label style="margin-left:0">Type: 
+							<select name="type" class="input-medium" style="clear:left" id="ClientStatus">
+								<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['eligibility_type']->value,'selected'=>$_POST['type']),$_smarty_tpl);?>
+
+							</select> 
+							</label>
 							<label>Status: 
 							<select name="status" class="input-small" style="clear:left" id="ClientStatus">
 								<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['status_type']->value,'selected'=>$_smarty_tpl->tpl_vars['status']->value),$_smarty_tpl);?>
@@ -115,39 +123,45 @@ $_smarty_tpl->ext->_updateScope->updateScope($_smarty_tpl, 'hide', 0);?>
 							<table class="table table-striped table-bordered dataTable stickyTable">
 								<thead>
 									<tr>
-										<th width="200"><a href="eligibility.php?field=target_from&order=<?php echo $_smarty_tpl->tpl_vars['order']->value;?>
+										<th width="100"><a href="eligibility.php?field=ctc_from&order=<?php echo $_smarty_tpl->tpl_vars['order']->value;?>
 &page=<?php echo $_GET['page'];?>
-&keyword=<?php echo $_smarty_tpl->tpl_vars['keyword']->value;?>
+&type=<?php echo $_smarty_tpl->tpl_vars['type']->value;?>
 &status=<?php echo $_smarty_tpl->tpl_vars['status']->value;?>
-" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="<?php echo $_smarty_tpl->tpl_vars['sort_target_from']->value;?>
-">Target Actualization(%) </a></th>
-										<th width="150"><a href="eligibility.php?field=grade&order=<?php echo $_smarty_tpl->tpl_vars['order']->value;?>
+" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="<?php echo $_smarty_tpl->tpl_vars['sort_field_ctc_from']->value;?>
+">CTC</a></th>
+										<th width="150"><a href="eligibility.php?field=type&order=<?php echo $_smarty_tpl->tpl_vars['order']->value;?>
 &page=<?php echo $_GET['page'];?>
-&keyword=<?php echo $_smarty_tpl->tpl_vars['keyword']->value;?>
+&type=<?php echo $_smarty_tpl->tpl_vars['type']->value;?>
 &status=<?php echo $_smarty_tpl->tpl_vars['status']->value;?>
-" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="<?php echo $_smarty_tpl->tpl_vars['sort_field_grade']->value;?>
-">Grade</a></th>
-										<th width="230"><a href="eligibility.php?field=eligible&order=<?php echo $_smarty_tpl->tpl_vars['order']->value;?>
+" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="<?php echo $_smarty_tpl->tpl_vars['sort_field_type']->value;?>
+">Type</a></th>
+										<th width="100"><a href="eligibility.php?field=no_resumes&order=<?php echo $_smarty_tpl->tpl_vars['order']->value;?>
 &page=<?php echo $_GET['page'];?>
-&keyword=<?php echo $_smarty_tpl->tpl_vars['keyword']->value;?>
+&type=<?php echo $_smarty_tpl->tpl_vars['type']->value;?>
 &status=<?php echo $_smarty_tpl->tpl_vars['status']->value;?>
-" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="<?php echo $_smarty_tpl->tpl_vars['sort_field_eligible']->value;?>
-">Eligibility Incentive(%) on realized contribution</a></th>
+" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="<?php echo $_smarty_tpl->tpl_vars['sort_field_no_resumes']->value;?>
+">No of Resume</a></th>
+										<th width="100"><a href="eligibility.php?field=amount&order=<?php echo $_smarty_tpl->tpl_vars['order']->value;?>
+&page=<?php echo $_GET['page'];?>
+&type=<?php echo $_smarty_tpl->tpl_vars['type']->value;?>
+&status=<?php echo $_smarty_tpl->tpl_vars['status']->value;?>
+" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="<?php echo $_smarty_tpl->tpl_vars['sort_field_amount']->value;?>
+">Amount (INR)</a></th>
 										<th width="100"><a href="eligibility.php?field=status&order=<?php echo $_smarty_tpl->tpl_vars['order']->value;?>
 &page=<?php echo $_GET['page'];?>
-&keyword=<?php echo $_smarty_tpl->tpl_vars['keyword']->value;?>
+&type=<?php echo $_smarty_tpl->tpl_vars['type']->value;?>
 &status=<?php echo $_smarty_tpl->tpl_vars['status']->value;?>
 " rel="tooltip" data-original-title="Sort by Ascending or Descending" class="<?php echo $_smarty_tpl->tpl_vars['sort_field_status']->value;?>
 ">Status</a></th>
 										<th width="80"><a href="eligibility.php?field=created&order=<?php echo $_smarty_tpl->tpl_vars['order']->value;?>
 &page=<?php echo $_GET['page'];?>
-&keyword=<?php echo $_smarty_tpl->tpl_vars['keyword']->value;?>
+&type=<?php echo $_smarty_tpl->tpl_vars['type']->value;?>
 &status=<?php echo $_smarty_tpl->tpl_vars['status']->value;?>
 " rel="tooltip" data-original-title="Sort by Ascending or Descending" class="<?php echo $_smarty_tpl->tpl_vars['sort_field_created']->value;?>
 ">Created</a></th>
 										<th width="80"><a href="eligibility.php?field=modified&order=<?php echo $_smarty_tpl->tpl_vars['order']->value;?>
 &page=<?php echo $_GET['page'];?>
-&keyword=<?php echo $_smarty_tpl->tpl_vars['keyword']->value;?>
+&type=<?php echo $_smarty_tpl->tpl_vars['type']->value;?>
 &status=<?php echo $_smarty_tpl->tpl_vars['status']->value;?>
 " rel="tooltip" data-original-title="Sort by Ascending or Descending" class="<?php echo $_smarty_tpl->tpl_vars['sort_field_modified']->value;?>
 ">Modified</a></th>
@@ -169,15 +183,16 @@ foreach ($_from as $_smarty_tpl->tpl_vars['key']->value => $_smarty_tpl->tpl_var
 $_smarty_tpl->tpl_vars['item']->_loop = true;
 $__foreach_item_0_saved_local_item = $_smarty_tpl->tpl_vars['item'];
 ?>	
-									<?php if ($_smarty_tpl->tpl_vars['item']->value['grade']) {?>
+									
 									<tr>
-										<td><?php echo $_smarty_tpl->tpl_vars['item']->value['target_from'];?>
- - <?php echo $_smarty_tpl->tpl_vars['item']->value['target_to'];?>
+										<td><?php echo $_smarty_tpl->tpl_vars['item']->value['target_elig'];?>
 </td>
-										<td><?php echo $_smarty_tpl->tpl_vars['item']->value['grade'];?>
+										<td><?php echo $_smarty_tpl->tpl_vars['item']->value['type'];?>
 </td>
-										<td><?php echo $_smarty_tpl->tpl_vars['item']->value['eligible'];?>
-%</td>
+										<td><?php echo $_smarty_tpl->tpl_vars['item']->value['no_resumes'];?>
+</td>
+										<td><?php echo $_smarty_tpl->tpl_vars['item']->value['amount'];?>
+</td>
 										<td><span class="label label-<?php echo $_smarty_tpl->tpl_vars['item']->value['status_cls'];?>
 "><?php echo $_smarty_tpl->tpl_vars['item']->value['status'];?>
 </span></td>
@@ -192,7 +207,7 @@ $__foreach_item_0_saved_local_item = $_smarty_tpl->tpl_vars['item'];
 " href="javascript:void(0)" rel="tooltip" class="btn Confirm btn-mini" value="#"  title="Delete"><i class="icon-trash"></i></a>
 										</td>
 									</tr>
-									<?php }?>
+									
 								<?php
 $_smarty_tpl->tpl_vars['item'] = $__foreach_item_0_saved_local_item;
 }
