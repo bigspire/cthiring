@@ -29,9 +29,9 @@
 		.js .hide {display: inherit}
 	
 	
-	/* external links */
+	/* external links 
 		.external_link {background: url(../img/external_link.png) no-repeat right center;padding-right:12px}
-	
+	*/
 	/* main headings*/
 		.heading {border-bottom: 1px solid #dcdcdc;margin-bottom: 8px;padding-bottom: 5px}
 		.heading h1,.heading h2,.heading h3,h1.heading,h2.heading,h3.heading,.modal-header h3 {font-family: 'PT Sans', sans-serif;font-weight:400}
@@ -183,7 +183,7 @@
         .sidebar .accordion-group .active a{color:#fff}
         .sidebar .accordion-group .accordion-heading a{color:#222}
         .sidebar .accordion-inner{border-top:1px solid #ccc;background:#fafafa}	
-		.login_page{ background: url("../img/es_login.png") #2E162E no-repeat;  background-position: 29% 15%;}
+		.login_page{ background: url("../img/es_login.png") no-repeat;  background-position: 29% 15%;}
 		.sdb_h_active a {background: url("../img/bullet_green.png") no-repeat 98% center}
 
 	/* login page */

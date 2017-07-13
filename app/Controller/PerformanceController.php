@@ -32,30 +32,30 @@ class PerformanceController extends AppController {
 
 	public function recruiter(){
 		// set the page title
-		$this->set('title_for_layout', 'Recruiter Performance - CT Hiring - ES');		
+		$this->set('title_for_layout', 'Recruiter Performance - Manage Hiring');		
     }
 	
 	public function account_holder(){
 		// set the page title
-		$this->set('title_for_layout', 'Account Holder Performance - CT Hiring - ES');
+		$this->set('title_for_layout', 'Account Holder Performance - Manage Hiring');
 		
     }
 	
 	public function location(){
 		// set the page title
-		$this->set('title_for_layout', 'Location Performance - CT Hiring - ES');
+		$this->set('title_for_layout', 'Location Performance - Manage Hiring');
 		
     }
 	
 	public function client(){
 		// set the page title
-		$this->set('title_for_layout', 'Client wise Performance - CT Hiring - ES');
+		$this->set('title_for_layout', 'Client wise Performance - Manage Hiring');
 		
     }
 	
 	public function revenue(){
 		// set the page title
-		$this->set('title_for_layout', 'Revenue Performance - CT Hiring - ES');
+		$this->set('title_for_layout', 'Revenue Performance - Manage Hiring');
 		
     }
 }

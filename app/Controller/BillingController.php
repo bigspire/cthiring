@@ -32,7 +32,7 @@ class BillingController extends AppController {
 
 	public function index(){	
 		// set the page title
-		$this->set('title_for_layout', 'Billings - CT Hiring - ES');
+		$this->set('title_for_layout', 'Billings - Manage Hiring');
 		// when the form is submitted for search
 		if($this->request->is('post')){
 			$url_vars = $this->Functions->create_url(array('keyword','from','to','emp_id'),'Billing'); 			

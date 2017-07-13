@@ -650,7 +650,7 @@ $action = 1;?>
 										<button class="btn  btn-mini btn-info">BA </button>
 										<button data-toggle="dropdown" class="btn btn-info btn-mini dropdown-toggle"><span class="caret"></span></button>
 										<ul class="dropdown-menu">
-											<li><a href="<?php echo $this->webroot;?>hiring/add_billing.php?res_id=<?php echo $resume['Resume']['id'];?>&req_id=<?php echo $this->request->params['pass'][0];?>">Add Billing</a></li>
+											<li><a href="<?php echo $this->webroot;?>hiring/add_billing.php?res_id=<?php echo $resume['Resume']['id'];?>&req_res_id=<?php echo $resume['ReqResume']['id'];?>">Add Billing</a></li>
 										</ul>
 									</div>	
 								</div>

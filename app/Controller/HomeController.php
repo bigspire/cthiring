@@ -42,7 +42,7 @@ class HomeController  extends AppController {
 	
 	public function index($dash_type){ 
 		// set the page title
-		$this->set('title_for_layout', 'Home - CT Hiring Advanced');
+		$this->set('title_for_layout', 'Home - Manage Hiring');
 		// when the form is submitted for search
 		if($this->request->is('post')){
 			$url_vars = $this->Functions->create_url(array('from','to','loc','emp_id','srchSubmit','client','type'),'Home'); 			
