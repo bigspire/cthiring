@@ -403,7 +403,8 @@ if(!empty($_POST)){
  			'".$fun->is_white_space($mysql->real_escape_str($_POST['family']))."','".$mysql->real_escape_str($total_exp)."',
  			'".$date."','".$modified_by."','N','".$mysql->real_escape_str($_SESSION['resume_doc_id'])."',
  			'".$fun->is_white_space($mysql->real_escape_str($_POST['consultant']))."',
- 			'".$fun->is_white_space($mysql->real_escape_str($_POST['interview_availability']))."')";
+ 			'".$fun->is_white_space($mysql->real_escape_str($_POST['interview_availability']))."',
+			'".$fun->is_white_space($mysql->real_escape_str($_POST['certification']))."')";
 		try{
 			if(!$result = $mysql->execute_query($query)){
 				throw new Exception('Problem in adding personal details');

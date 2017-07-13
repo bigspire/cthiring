@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-07-10 16:12:17
+/* Smarty version 3.1.29, created on 2017-07-13 16:38:26
   from "C:\xampp\htdocs\2017\ctsvn\cthiring\hiring\templates\add_resume.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_59635a099654d6_19229943',
+  'unifunc' => 'content_596754aa22e1c7_48862160',
   'file_dependency' => 
   array (
     '20fa0800b264c1941565246828a7b2b89c0b2234' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\templates\\add_resume.tpl',
-      1 => 1499683154,
+      1 => 1499944092,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_59635a099654d6_19229943 ($_smarty_tpl) {
+function content_596754aa22e1c7_48862160 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -402,7 +402,7 @@ echo 'checked';?>
   <!-- Form template-->
   <div id="sheepItForm1_template" class="" style="clear:left;">
  
-				   <div class="span6">
+		<div class="span6">
 		<table class="table table-bordered dataTable" style="margin-bottom:0;">
 			<tbody>
 			
@@ -472,9 +472,28 @@ echo 'checked';?>
 										<textarea name="vital_#index#" tabindex="7" id="vital_#index#" cols="10" rows="3" class="span8"></textarea>
 										</td>
 							</tr>
+			
 					</tbody>
 		  </table>
-		</div>		
+		  </div>
+		  
+		  <div class="span12">
+		  <table class="table table-bordered dataTable" style="margin-bottom:0;">
+		  <tbody>
+		  <tr>
+			<td width="120" class="tbl_column">Project / Certification Details (optional) <span class="f_req"></span></td>
+				<td> 
+						<textarea name="certification" tabindex="7" id="certification" cols="10" rows="3" class="span8"><?php if ($_smarty_tpl->tpl_vars['certification']->value) {
+echo $_smarty_tpl->tpl_vars['certification']->value;
+} else {
+echo $_POST['certification'];
+}?></textarea>
+				</td>
+			</tr>
+		  </tbody>
+		  </table>
+		  </div>
+			
 								
 
 <div style="float: left;    clear: left;    margin-top: 5px;    margin-bottom: 5px;">										
@@ -495,11 +514,9 @@ echo 'checked';?>
     </span>
   </div>
   <!-- /Controls -->
-
-
+</div>
 </div>
 
-</div>
 <div class="tab-pane" id="mbox_Consultant">
 <div class="span12">
 			<table class="table table-bordered dataTable" style="margin-bottom:0;">
