@@ -1,13 +1,21 @@
-{* Purpose : To add,edit,delete and view mailbox.
+{* Purpose : To list and search billing.
    Created : Nikitasa
-   Date : 04-03-2017 *}
+   Date : 06-03-2017 *}
    
-			{include file='include/header.tpl'}	
 
-			 <!-- main content -->
+			{include file='include/header.tpl'}	
+            <!-- main content -->
+            <div id="contentwrapper">
+			
+			
+			        <!-- main content -->
             <div id="contentwrapper">
                 <div class="main_content">
-                    <nav>
+                
+								
+					<div class="row-fluid">
+						 <div class="span12">
+							<nav>
                         <div id="jCrumbs" class="breadCrumb module">
                             <ul>
                                 <li>
@@ -22,186 +30,93 @@
                             </ul>
                         </div>
                     </nav>
-					
-					
-					
-                    
-                    <div class="row-fluid">
-						<div class="span12">
-							<div class="mbox">
-								<div class="tabbable">
-									<div class="heading">
-										<ul class="nav nav-tabs">
-											<li class="active"><a href="#mbox_sent" data-toggle="tab"><i class="splashy-mail_light_up"></i> Sent</a></li>
-											<li><a href="#mbox_trash" data-toggle="tab"><i class="icon-adt_trash"></i> Trash</a></li>
-										</ul>
-									</div>
-									<div class="tab-content">
-										<div class="tab-pane active" id="mbox_sent">
-											<table data-msg_rowlink="a" class="table table_vam mbox_table dTableR" id="dt_outbox">
-												<thead>
-													<tr>
-														<th class="table_checkbox"><input type="checkbox" data-tableid="dt_outbox" class="select_msgs" name="select_msgs"></th>
-														<th><i class="splashy-star_empty"></i></th>
-														<th><i class="splashy-mail_light"></i></th>
-														<th>To</th>
-														<th>Subject</th>
-														<th>Message</th>
-														<th>Date</th>
-														<th><i class="icon-adt_atach"></i></th>
-													</tr>
-												</thead>
-												<tbody>
-												{foreach from=$data item=item key=key}	
-													<tr>
-														<td class="nohref"><input type="checkbox" class="select_msg" name="msg_sel"></td>
-														<td class="nohref starSelect"><i class="splashy-star_empty mbox_star"></i></td>
-														<td><i class="splashy-mail_light_right"></i></td>
-														<td><span>{$item.email_id}</span></td>
-														<td>{$item.subject}</td>
-														<td><a href="#msg_view">{$item.message}</a></td>
-														<td>{$item.created_date}</td>
-														{if $item.attachment}
-														<td><i class="icon-adt_atach"></i></td>
-														{else}
-														<td></td>
-														{/if}
-													</tr>
-												{/foreach}
-												</tbody>
-											</table>
-										</div>
-										
-										<div id="msg_view" class="tab-pane">
-											<div class="doc_view">
-												<div class="doc_view_header">
-													<dl class="dl-horizontal">
-														<dt>Subject</dt>
-															<dd>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</dd>
-														<dt>Sender</dt>
-															<dd><span>email1@example.com</span></dd>
-														<dt>Recipient</dt>
-															<dd><span>johnsmith@example.com</span></dd>
-														<dt>Date</dt>
-															<dd>20 June 2012 12:32:25</dd>
-														<dt><i class="icon-adt_atach"></i></dt>
-															<dd><a href="javascript:void(0)">image01.jpg</a>, <a href="javascript:void(0)">image02.jpg</a>, <a href="javascript:void(0)">document.pdf</a></dd>
-													</dl>
-												</div>
-												<div class="doc_view_content">
-													Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse iaculis consectetur feugiat. Cras lacinia ullamcorper mauris, a tincidunt lacus malesuada non. Mauris ut mi ut augue vehicula suscipit. Suspendisse lobortis tempor urna, ut feugiat mauris pretium sed. Aliquam eget dolor eget dolor euismod feugiat eu et augue. Sed metus metus, condimentum quis vulputate et, pretium eu tortor. Maecenas felis felis, dignissim at pretium sit amet, condimentum a libero. Nam laoreet semper tortor sed fermentum. Duis eleifend tortor sed justo venenatis aliquam.
-													Curabitur augue elit, mattis eu ornare eget, varius sed metus. Cras fringilla fermentum malesuada. Nulla consectetur sollicitudin nibh, iaculis sagittis diam placerat ac. Aenean molestie vestibulum mattis. Suspendisse elementum, tellus quis mattis adipiscing, dui mauris pulvinar mauris, et rhoncus nisi turpis sit amet turpis. Duis nunc nisl, ullamcorper quis ultricies quis, suscipit non dui. Etiam id urna massa, at pharetra velit. Ut tortor mi, vestibulum id imperdiet a, consectetur vel lorem.
-													Maecenas eget velit pharetra tellus placerat condimentum at vel sapien. Suspendisse ac urna turpis, eget lobortis purus. Ut id arcu et nulla accumsan semper. In lacinia vestibulum nulla ac pellentesque. Nullam mattis ante ornare est tincidunt placerat. Donec non feugiat felis. Sed felis lacus, molestie in luctus vel, tempor a dui. Aliquam erat volutpat. Morbi laoreet gravida sagittis. Nulla tempor ipsum vitae tortor suscipit facilisis et at ligula. Ut lobortis, mauris vel faucibus condimentum, metus nulla varius odio, sed accumsan lorem elit sed mi. Nunc venenatis orci vel erat tincidunt quis tincidunt erat tempus. Cras vel sapien sed enim viverra egestas nec id orci. Nulla nec ornare ante. Donec tristique iaculis nunc in fringilla.
-												</div>
-												<div class="doc_view_footer clearfix">
-													<div class="btn-group pull-left">
-														<a class="btn" href="javascript:void(0)"><i class="icon-pencil"></i> Answer</a>
-														<a class="btn" href="javascript:void(0)"><i class="icon-share-alt"></i> Forward</a>
-														<a class="btn" href="#"><i class="icon-trash"></i> Delete</a>
-													</div>
-													<div class="pull-right">
-														Size: 240 KB
-													</div>
-												</div>
-											</div>
-											<ul class="pager">
-												<li class="previous">
-													<a href="#"><i class="icon-chevron-left"></i> Previous</a>
-												</li>
-												<li class="next">
-													<a href="#">Next <i class="icon-chevron-right"></i></a>
-												</li>
-											</ul>
-										</div>
-										
-										<div class="tab-pane" id="mbox_trash">
-											<table data-msg_rowlink="a" class="table table_vam mbox_table dTableR" id="dt_trash2">
-												<thead>
-													<tr>
-														<th class="table_checkbox">
-														<input type="checkbox" class="select_msgs" name="select_msgs"></th>
-														<th>To</th>
-														<th>Subject</th>
-														<th>Message</th>
-														<th>Date</th>
-													</tr>
-												</thead>
-												<!--tbody>
-													{foreach from=$data1 item=item key=key}	
-													<tr>
-														<td class="nohref"><input type="checkbox" class="select_msg" name="msg_sel"></td>
-														<td class="nohref starSelect"><i class="splashy-star_empty mbox_star"></i></td>
-														<td><i class="splashy-mail_light_right"></i></td>
-														<td><span>{$item.email_id}</span></td>
-														<td>{$item.subject}</td>
-														<td><a href="#msg_view">{$item.message}</a></td>
-														<td>{$item.deleted_date}</td>
-														{if $item.attachment}
-														<td><i class="icon-adt_atach"></i></td>
-														{else}
-														<td></td>
-														{/if}
-													</tr>
-													{/foreach}
-												</tbody-->
-											</table>
-											
-					
-	
-	
-										</div>
-									</div>
-								</div>
+
+						<div class="srch_buttons">
+								<a class="jsRedirect toggleSearch"  href="javascript:void(0)">
+							<input type="button" value="Search" class="btn btn-success"/></a>
+						</div>
+						
+						{if $SUCCESS_MSG}
+							<div class="alert alert-success">
+								<a class="close" data-dismiss="alert">×</a>
+								{$SUCCESS_MSG}
 							</div>
+						{/if}
+						
+						{if $ALERT_MSG}
+							<div class="alert alert-success">
+								<a class="close" data-dismiss="alert">×</a>
+								{$ALERT_MSG}
+							</div>
+						{/if}
+						
+						{if $keyword || $f_date || $t_date}
+						  {assign var=hide value=''}
+						{else}
+							{assign var=hide value=dn}
+						{/if}
+							<form action="" id="formID" name="searchFrm" class="formID" method="post" accept-charset="utf-8"><div style="display:none;"><input type="hidden" name="_method" value="POST"/></div>	
+							<div class="{$hide} dataTables_filter srchBox" style="float:left;" id="dt_gal_filter">
 							
-						</div>
-					</div>
-					
-					<!-- hide elements -->
-					<div class="hide">
-						<!-- actions for inbox -->
-						<div class="dt_inbox_actions">
-							<div class="btn-group">
-								<a href="javascript:void(0)" class="btn" title="Answer"><i class="icon-pencil"></i></a>
-								<a href="javascript:void(0)" class="btn" title="Forward"><i class="icon-share-alt"></i></a>
-								<a href="#" class="delete_msg btn" title="Delete" data-tableid="dt_inbox"><i class="icon-trash"></i></a>
+								<label style="margin-left:0;">Keyword: <input type="text" placeholder="Candidate Name or Client Name" name="keyword" id="keyword" value="{$keyword}" class="input-large" aria-controls="dt_gal"></label>
+								<label>Billing From: <input type="text" class="input-small datepick" name="f_date" placeholder="dd/mm/yyyy" value="{$f_date}" aria-controls="dt_gal"></label>
+						
+								<label>Billing Till: <input type="text" name="t_date" value="{$t_date}" placeholder="dd/mm/yyyy" class="input-small datepick" aria-controls="dt_gal"></label>
+						
+								<label style="margin-top:18px;"><a href="mailbox.php" class="jsRedirect"><input value="Reset" type="button" class="btn"/></a></label>
+							<label style="margin-top:18px;"><input type="submit" value="Submit" class="btn btn-gebo" /></label>					
+							
 							</div>
-						</div>
-						<!-- actions for outbox -->
-						<div class="dt_outbox_actions">
-							<div class="btn-group">
-								<!--<a href="javascript:void(0)" class="btn" title="Resend"><i class="icon-share-alt"></i></a>-->
-								<a href="#" class="delete_msg btn" title="Delete" data-tableid="dt_outbox"><i class="icon-trash"></i></a>
-							</div>
-						</div>
-			
-						<!-- confirmation box -->
-						<div id="confirm_dialog" class="cbox_content">
-							<div class="sepH_c tac"><strong>Are you sure you want to delete this message(s)?</strong></div>
-							<div class="tac">
-								<a href="#" class="btn btn-gebo confirm_yes">Yes</a>
-								<a href="#" class="btn confirm_no">No</a>
-							</div>
-						</div>
-					</div>
-                        
-                </div>
-            </div> 
+
+						<input type="hidden" value="1" id="SearchKeywords">
+						<input type="hidden" value="#" id="webroot">
+						</form>
+
+							
+							
+							<table class="table table-striped table-bordered dataTable stickyTable">
+								<thead>
+									<tr>
+										<th width="180"><a href="mailbox.php?field=to&order={$order}&page={$smarty.get.page}&keyword={$keyword}&f_date={$f_date}&t_date={$t_date}" class="{$sort_field_to}">To</a></th>
+										<th width="150"><a href="mailbox.php?field=subject&order={$order}&page={$smarty.get.page}&keyword={$keyword}&f_date={$f_date}&t_date={$t_date}" class="{$sort_field_subject}">Subject</a></th>
+										<th width="90"><a href="mailbox.php?field=message&order={$order}&page={$smarty.get.page}&keyword={$keyword}&f_date={$f_date}&t_date={$t_date}" class="{$sort_field_message}">Message</a></th>
+										<th width="80"><a href="mailbox.php?field=date&order={$order}&page={$smarty.get.page}&keyword={$keyword}&f_date={$f_date}&t_date={$t_date}" class="{$sort_field_date}">Date</a></th>
+										<th width="120"><a href="mailbox.php?field=attachment&order={$order}&page={$smarty.get.page}&keyword={$keyword}&f_date={$f_date}&t_date={$t_date}" class="{$sort_field_attachment}">Attachment</a></th>
+									</tr>
+								</thead>
+								<tbody>	
+								{foreach from=$data item=item key=key}	
+									<tr>
+										<td>{$item.to}</td>
+										<td>{$item.subject}</td>
+										<td><a  href="view_mailbox.php?id={$item.id}">{$item.message}</a></td>
+										<td>{$item.date}</td>
+										<td>{$item.attachment}</td>
+									</tr>		
+								{/foreach}				
+								</tbody>
+							</table>
+<div class="row" style="margin-left:0px;">
+<div class="span4">					   
+<div class="" id="dt_gal_info">
+{$page_info}
+</div> 
+</div>
+
+<div class="span8">
+<div class="dataTables_paginate paging_bootstrap pagination">
+<ul>
+{$page_links}
+</ul>
+</div>
+</div>
+</div>
+</div>
+<input type="hidden" id="page" value="list_billing">
+              </div>
+            </div>
+     </div>
 		</div>
 		</div>	
 	</div>	
 {include file='include/footer.tpl'}
-<link rel="stylesheet" type="text/css" href="css/jquery.dataTables.css">
-<script type="text/javascript" language="javascript" src="//code.jquery.com/jquery-1.12.4.js"></script>
-<script type="text/javascript" language="javascript" src="js/jquery.dataTables.js"></script>
-{literal}
-<script type="text/javascript" language="javascript">
-$(document).ready(function(){
-	$('#dt_trash2').DataTable({
-		"processing": true,
-        "serverSide": true,
-		"ajax": "server_mail_box.php"
-	} );
-});
-</script>
-{/literal}
