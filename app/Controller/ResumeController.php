@@ -207,7 +207,8 @@ class ResumeController extends AppController {
 		}
 		$fields = array('id',"concat(Resume.first_name,' ',Resume.last_name) full_name",'email_id','mobile','mobile2','total_exp','education','present_employer',
 		'ResLocation.location','present_ctc','expected_ctc', 'Creator.first_name','Resume.created_date',
-		'Resume.modified_date','ReqResume.stage_title','ReqResume.status_title','ResDoc.resume','present_location','snapshot','autoresume');	
+		'Resume.modified_date','ReqResume.stage_title','ReqResume.status_title','ResDoc.resume','present_location','snapshot','autoresume',
+		'Resume.created_by');	
 		// for export
 		if($this->request->query['action'] == 'export'){ 
 			$data = $this->Resume->find('all', array('fields' => $fields,'conditions' => 

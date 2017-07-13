@@ -184,7 +184,10 @@
 										</ul>
 									</div>
 								
-								<div class="btn-group" style="display:inline-block;float:left;">
+								
+								<?php if($res['Resume']['created_by'] == $this->Session->read('USER.Login.id')):?>
+								
+									<div class="btn-group" style="display:inline-block;float:left;">
 										
 									<button data-toggle="dropdown" rel="tooltip" title="Edit" class="btn btn-mini dropdown-toggle"><i class="icon-pencil"></i> <span class="caret"></span>
 									</button>
@@ -194,6 +197,8 @@
 
 										</ul>
 									</div>	
+									
+							   <?php endif; ?>
 
 										
 </div>										
