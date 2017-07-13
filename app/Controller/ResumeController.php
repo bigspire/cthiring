@@ -119,7 +119,12 @@ class ResumeController extends AppController {
 		
 			// check role based access
 		if($this->Session->read('USER.Login.roles_id') == '34'){ // account holder
-			$empCond = array('AH.users_id' => $this->Session->read('USER.Login.id'));
+			// $empCond = array('AH.users_id' => $this->Session->read('USER.Login.id'));
+			$empCond = array('OR' => array(
+					'AH.users_id' =>  $this->Session->read('USER.Login.id'),
+					'ReqResume.created_by' =>  $this->Session->read('USER.Login.id')
+					)
+				);
 		}else if($this->Session->read('USER.Login.roles_id') == '30'){ // recruiter
 			$empCond = array('OR' => array(
 					'ReqResume.created_by' =>  $this->Session->read('USER.Login.id')
