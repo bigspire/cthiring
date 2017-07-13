@@ -171,6 +171,12 @@
 	<?php if($this->Session->read('USER.Login.id') == $req['Position']['created_by']):?>
 	<a href="<?php echo $this->webroot;?>position/edit/<?php echo $req['Position']['id'];?>/" class="btn  btn-mini"  rel="tooltip" class="sepV_a" title="Edit Position"><i class="icon-pencil"></i></a>
 	<?php endif; ?>	
+	
+	<?php if($req['Position']['is_approve'] == 'W'):?>
+	<a rel="tooltip" title="Verify Position" href="<?php echo $this->webroot;?>position/view/<?php echo $req['Position']['id'];?>/" class="btn  btn-mini"><i class="icon-edit"></i></a>
+	<?php endif; ?>		
+	
+	
 		</td>
 								</tr>
 								<?php endforeach; ?>

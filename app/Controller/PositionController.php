@@ -30,7 +30,7 @@ class PositionController extends AppController {
 	
 	public $components = array('Session', 'Functions', 'Excel');
 
-	public function index($contact_id){			
+	public function index($rec_status,$contact_id){			
 		// when the form is submitted for search
 		if($this->request->is('post')){
 			$url_vars = $this->Functions->create_url(array('keyword','from','to','loc','emp_id','status','unread'),'Position'); 			
@@ -45,7 +45,7 @@ class PositionController extends AppController {
 		$fields = array('id','job_title','location','no_job','min_exp','max_exp','ctc_from','ctc_to','ReqStatus.title','req_status_id',
 		'Client.client_name','team_member', 'Creator.first_name','created_date','modified_date', 'count(distinct ReqResume.id) cv_sent',
 		'group_concat(ReqResume.status_title) joined','count(distinct Read.id) read_count', "group_concat(distinct ResOwner.first_name
-		SEPARATOR ', ') team_member", 'Position.created_by');
+		SEPARATOR ', ') team_member", 'Position.created_by','Position.is_approve');
 				
 		$options = array(			
 			array('table' => 'users',
@@ -88,7 +88,8 @@ class PositionController extends AppController {
 		}
 		
 		// for director and BH
-		if($this->Session->read('USER.Login.roles_id') == '33' || $this->Session->read('USER.Login.roles_id') == '38'){
+		if($this->Session->read('USER.Login.roles_id') == '33' || $this->Session->read('USER.Login.roles_id') == '38'
+		|| $this->Session->read('USER.Login.roles_id') == '39'){
 			$show = 'all';
 			$team_cond = false;
 		}else{
@@ -126,7 +127,8 @@ class PositionController extends AppController {
 			);
 			//$empCond = array('ReqResumeStatus.created_by' => $this->Session->read('USER.Login.id'),
 			//'ReqResumeStatus.stage_title' => 'Validation - Account Holder', 'ReqResumeStatus.status_title' => 'Validated');		
-		}else if($this->Session->read('USER.Login.roles_id') == '33' || $this->Session->read('USER.Login.roles_id') == '35'){ // director & BD
+		}else if($this->Session->read('USER.Login.roles_id') == '33' || $this->Session->read('USER.Login.roles_id') == '35'
+		|| $this->Session->read('USER.Login.roles_id') == '39'){ // director & BD
 			$empCond = '';
 		}
 		
@@ -162,6 +164,15 @@ class PositionController extends AppController {
 			$st = $this->request->query['status'] == '10' ? '0' : $this->request->query['status'];
 			$stCond = array('Position.req_status_id' => $st);
 		}
+		
+		// show awaiting approval condition
+		if($rec_status =='pending'){
+			$approveCond = array('Position.status' => 'I', 'Position.is_approve' => 'W');
+		}else{
+			$approveCond = array('Position.status' => 'A', 'Position.is_approve' => 'A');
+		}
+		
+		
 		// for unread status count
 		if($this->request->query['unread'] == '1'){
 			$stCond = array('Read.users_id' => $this->Session->read('USER.Login.id'), 'Read.status' => 'U');
@@ -177,7 +188,6 @@ class PositionController extends AppController {
 					array($this->Functions->format_date_save($start), $this->Functions->format_date_save($end_search))));
 			
 		}
-		$aprCond = array('Position.is_approve' => 'A', 'Position.status' => 'A');
 		// for export
 		if($this->request->query['action'] == 'export'){
 			$data = $this->Position->find('all', array('fields' => $fields,'conditions' => 
@@ -186,7 +196,7 @@ class PositionController extends AppController {
 			$this->Excel->generate('positions', $data, $data, 'Report', 'Position');
 		}
 		
-		$this->paginate = array('fields' => $fields,'limit' => '25','conditions' => array($aprCond,$keyCond,$date_cond,$branchCond,$empCond,$stCond,$contactCond,$teamCond),
+		$this->paginate = array('fields' => $fields,'limit' => '25','conditions' => array($keyCond,$approveCond,$date_cond,$branchCond,$empCond,$stCond,$contactCond,$teamCond),
 		'order' => array('created_date' => 'desc'),	'group' => array('Position.id'), 'joins' => $options);
 		$data = $this->paginate('Position');
 		$this->set('data', $data);
@@ -222,7 +232,8 @@ class PositionController extends AppController {
 				$this->request->data['Position']['start_date'] = $this->Functions->format_date_save($this->request->data['Position']['start_date']);
 				$this->request->data['Position']['end_date'] = $this->Functions->format_date_save($this->request->data['Position']['end_date']);
 				// save the data
-				if($this->Position->save($this->request->data['Position'])){
+				$this->request->data['Position']['status'] = 'I';
+				if($this->Position->save($this->request->data['Position'], array('validate' => false))){
 					// save position coordination
 					// $this->save_position_coodination($this->Position->id);
 					// save team members list
@@ -231,7 +242,7 @@ class PositionController extends AppController {
 					$this->save_job_desc($this->Position->id);
 					$this->Position->saveField('job_desc_file', $this->Position->id.'_'.$this->request->data['Position']['desc_file']['name']);
 					// show the msg.
-					$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Position created successfully', 'default', array('class' => 'alert alert-success'));				
+					$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Position created successfully. After approval, it will be visible', 'default', array('class' => 'alert alert-warning'));				
 					$this->redirect('/position/');
 				}else{
 					// show the error msg.
@@ -559,7 +570,7 @@ class PositionController extends AppController {
 		'group_concat(ReqResume.status_title) joined', 'start_date', 'end_date', //"group_concat(distinct ResOwner.first_name  SEPARATOR ', ') team_member",
 		"group_concat(distinct AH.first_name  SEPARATOR ', ') ac_holder","group_concat(distinct TeamMember.first_name  SEPARATOR ', ') team_member2",
 		'skills','Contact.first_name','Contact.email','Contact.mobile','Contact.phone','Contact.id','FunctionArea.function',
-		'Position.created_by');
+		'Position.created_by','Position.is_approve');
 		$data = $this->Position->find('all', array('fields' => $fields,'conditions' => array('Position.id' => $id), 'joins' => $options));
 		$this->set('position_data', $data[0]);
 		// get the resume details
@@ -591,6 +602,25 @@ class PositionController extends AppController {
 		'order' => array('Resume.created_date' => 'desc'),'group' => array('ReqResume.id'), 'joins' => $options));		
 		$this->set('resume_data', $data);	
 		
+	}
+	
+	/* function to approve / reject the position */
+	public function remark($st, $id){
+		$this->layout = 'framebox';
+		if(!empty($this->request->data)){
+			$status = $st == 'approve' ? 'A' : 'I';
+			$is_approve = $st == 'approve' ? 'A' : 'R';
+			$data = array('id' => $id, 'status' => $status, 'approve_date' => $this->Functions->get_current_date(),
+			'is_approve' => $is_approve);		
+			if ($this->request->is('post') && $st != '') { 
+				// update the todo
+				if($this->Position->save($data, array('validate' => false))){		
+					$this->set('form_status', '1');
+					$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Position updated successfully.', 'default', array('class' => 'alert alert-success'));				
+
+				}
+			}
+		}
 	}
 	
 	/* function to send CV to client */

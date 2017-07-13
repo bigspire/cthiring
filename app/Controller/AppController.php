@@ -45,6 +45,7 @@ class AppController extends Controller {
 				// $this->check_sync_time();
 				$this->get_unread_count();
 				$this->get_approve_client_count();
+				$this->get_approve_req_count();
 			}
 
 		}
@@ -93,7 +94,16 @@ class AppController extends Controller {
 		$this->loadModel('Client');
 		$count = $this->Client->find('count', array('conditions' => array('Client.status' => '2','Client.is_approve' => 'W'),	'group' => array('Client.id')));
 		$this->set('APPR_CLIENT_COUNT', $count);
+	}	
+
+	/* get unread count for the approve client */
+	public function get_approve_req_count(){
+		$this->loadModel('Position');
+		$count = $this->Position->find('count', array('conditions' => array('Position.status' => 'I','Position.is_approve' => 'W'),	'group' => array('Position.id')));
+		$this->set('APPR_REQ_COUNT', $count);
 	}		
+	
+	
 			
 	/* function to check the users session */
 	public function check_session(){

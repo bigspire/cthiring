@@ -170,7 +170,7 @@
 										<td><?php echo ucfirst($res['Creator']['first_name']);?></td>
 										<td class="actionItem">
 								
-	<div class="btn-group" style="display:inline-block;float:left;">
+	<div class="btn-group" style="display:inline-block;float:left;margin-left:4px;">
 										
 									<button data-toggle="dropdown" rel="tooltip" title="Download" class="btn btn-mini dropdown-toggle"><i class="icon-download"></i> <span class="caret"></span>
 									</button>

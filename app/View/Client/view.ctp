@@ -267,9 +267,7 @@
 <a href="<?php echo $this->webroot;?>client/index/pending/" rel="tooltip" title="Cancel and Back to Clients"  class="jsRedirect"><button class="btn">Cancel</button></a>
 	<?php endif; ?>
 	
-	<?php if($client_data['Client']['is_approve'] == 'W'):?>
-	<a href="<?php echo $this->webroot;?>client/pending/" rel="tooltip" title="Back to Clients"  class="jsRedirect"><button class="btn">Back</button></a>
-	<?php else: ?>
+	<?php if($client_data['Client']['is_approve'] == 'A'):?>
 	<a href="<?php echo $this->webroot;?>client/" rel="tooltip" title="Back to Clients"  class="jsRedirect"><button class="btn">Back</button></a>
 	<?php endif; ?>
 

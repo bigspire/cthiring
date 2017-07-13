@@ -72,7 +72,8 @@ class ClientController extends AppController {
 			);		
 			//$empCond = array('ReqResumeStatus.created_by' => $this->Session->read('USER.Login.id'),
 			//'ReqResumeStatus.stage_title' => 'Validation - Account Holder', 'ReqResumeStatus.status_title' => 'Validated');		
-		}else if($this->Session->read('USER.Login.roles_id') == '33' || $this->Session->read('USER.Login.roles_id') == '35'){ // director & BD
+		}else if($this->Session->read('USER.Login.roles_id') == '33' || $this->Session->read('USER.Login.roles_id') == '35'
+		|| $this->Session->read('USER.Login.roles_id') == '39'){ // director & BD
 			$empCond = '';
 		}
 		
@@ -319,7 +320,7 @@ class ClientController extends AppController {
 					// save account holder list
 					$this->save_account_holder($this->Client->id);
 					// show the msg.
-					$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Client created successfully', 'default', array('class' => 'alert alert-success'));				
+					$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Client created successfully. After approval, it will be visible', 'default', array('class' => 'alert alert-warning'));				
 					$this->redirect('/client/');
 				}else{
 					// show the error msg.
@@ -536,13 +537,15 @@ class ClientController extends AppController {
 	
 	public function remark($st, $id){
 		$this->layout = 'framebox';
-		if(!empty($this->request->data)){
+		if(!empty($this->request->data)){		
 			$status = $st == 'approve' ? '0' : '1';
+			$is_approve = $st == 'approve' ? 'A' : 'R';
 			$data = array('id' => $id, 'status' => $status, 'approve_date' => $this->Functions->get_current_date(),
-			'is_approve' => 'A');		
+			'is_approve' => $is_approve);			
 			if ($this->request->is('post') && $st != '') { 
 				// update the todo
-				if($this->Client->save($data, array('validate' => false))){		
+				if($this->Client->save($data, array('validate' => false))){
+					$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Client updated successfully.', 'default', array('class' => 'alert alert-success'));				
 					$this->set('form_status', '1');
 				}
 			}
