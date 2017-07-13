@@ -875,6 +875,8 @@
 </div>
                     </div>
 					</div>
+					<input type="hidden" id="end_date" name="end_date" value="{$dob_default}">	
+
 					 <div class="form-actions">
 									<button class="btn btn-gebo" type="submit">Submit</button>
 								<a href="{$smarty.const.webroot}resume"><button type="button" class="btn">Cancel</button></a>

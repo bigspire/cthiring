@@ -158,6 +158,15 @@
 										<td><?php echo $position_data['Position']['skills'];?></td>
 											
 									</tr>
+									
+										<tr>
+										
+										<td class="tbl_column" style="width:140px;">Job Code</td>
+										<td><?php echo $position_data['Position']['job_code'];?></td>
+											
+									</tr>
+									
+									
 									<tr>
 										
 										<td class="tbl_column">No. of Openings</td>

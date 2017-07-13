@@ -174,7 +174,16 @@
 										</td>
 									</tr>
 									
-									
+							<tr class="">
+							<td width="120" class="tbl_column">Job Code	 </td>
+							<td>	
+							
+		<?php echo $this->Form->input('job_code', array('div'=> false,'type' => 'text', 'label' => false, 'class' => 'span8',  'required' => false, 'placeholder' => '',
+				'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 	
+				
+
+							</td>	
+						</tr>			
 					<tr class="">
 						<td width="120" class="tbl_column">No. of Openings <span class="f_req">*</span></td>
 						<td>

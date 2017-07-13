@@ -449,6 +449,8 @@
 </div>
 </div>
 <input type="hidden" id="tab_open" value="{$tab_open}"/>
+<input type="hidden" id="end_date" name="end_date" value="{$dob_default}">	
+
 <div class="form-actions">
 	<input class="btn btn-gebo" type="submit" value="Submit">
 	<input type="hidden" name="data[Client][webroot]" value="{$smarty.const.webroot}resume" id="webroot">
