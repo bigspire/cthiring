@@ -183,7 +183,7 @@
         .sidebar .accordion-group .active a{color:#fff}
         .sidebar .accordion-group .accordion-heading a{color:#222}
         .sidebar .accordion-inner{border-top:1px solid #ccc;background:#fafafa}	
-		.login_page{ background: url("../img/es_login.png") no-repeat;  background-position: 29% 15%;}
+		.login_page{ /*background: url("../img/es_login.png") no-repeat;  background-position: 29% 15%;*/ }
 		.sdb_h_active a {background: url("../img/bullet_green.png") no-repeat 98% center}
 
 	/* login page */

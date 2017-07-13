@@ -1,6 +1,7 @@
 
-				<div style="background:#fff;padding:10px;width:130px;margin-left:2%;margin-bottom:15px;position:absolute;top:9%">
-				<a href="http://career-tree.in" target="_blank" style=""><img src="<?php echo $this->webroot;?>img/career-tree-logo-small.png" alt="" class="retina-ready"></a>
+				<div style="background:#fff;padding:10px;margin-left:2%;margin-bottom:15px;position:absolute;top:9%">
+				<a href="http://career-tree.in" target="_blank" style="">
+				<img src="<?php echo $this->webroot;?>img/career-tree3.png" alt="" class="retina-ready"></a>
 				</div>
 
 <h1 style="margin-left:39%;color:#fff;padding-bottom:15px;font-size:44px;">Manage Hiring</h1>
