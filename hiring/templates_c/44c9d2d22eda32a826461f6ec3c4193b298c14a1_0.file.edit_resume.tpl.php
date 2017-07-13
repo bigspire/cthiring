@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-07-12 16:23:44
+/* Smarty version 3.1.29, created on 2017-07-13 15:57:30
   from "F:\xampp\htdocs\ctsvn\cthiring\hiring\templates\edit_resume.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5965ffb83f5d53_19627978',
+  'unifunc' => 'content_59674b12401813_46217131',
   'file_dependency' => 
   array (
     '44c9d2d22eda32a826461f6ec3c4193b298c14a1' => 
     array (
       0 => 'F:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\templates\\edit_resume.tpl',
-      1 => 1499775379,
+      1 => 1499941613,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5965ffb83f5d53_19627978 ($_smarty_tpl) {
+function content_59674b12401813_46217131 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'F:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -540,6 +540,9 @@ echo $_POST['interview_availability'];
 </div>
 </div>
 </div>
+<input type="hidden" id="end_date" name="end_date" value="<?php echo $_smarty_tpl->tpl_vars['dob_default']->value;?>
+">	
+
 <input type="hidden" id="tab_open" value="<?php echo $_smarty_tpl->tpl_vars['tab_open']->value;?>
 "/>
 <div class="form-actions">

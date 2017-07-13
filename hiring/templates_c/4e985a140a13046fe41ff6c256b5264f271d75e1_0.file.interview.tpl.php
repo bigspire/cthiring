@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-07-02 21:01:09
+/* Smarty version 3.1.29, created on 2017-07-13 16:15:09
   from "F:\xampp\htdocs\ctsvn\cthiring\hiring\templates\interview.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_595911bd209570_62269645',
+  'unifunc' => 'content_59674f357b3f44_77853215',
   'file_dependency' => 
   array (
     '4e985a140a13046fe41ff6c256b5264f271d75e1' => 
     array (
       0 => 'F:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\templates\\interview.tpl',
-      1 => 1499009464,
+      1 => 1499942704,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_595911bd209570_62269645 ($_smarty_tpl) {
+function content_59674f357b3f44_77853215 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'F:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -58,7 +58,7 @@ home"><i class="icon-home"></i></a>
 								<div class="srch_buttons">
 								<a class="jsRedirect toggleSearch"  href="javascript:void(0)">
 							<input type="button" value="Search" class="btn btn-success"/></a>
-							<?php if (!$_smarty_tpl->tpl_vars['ALERT_MSG']->value) {?>
+							<?php if (!$_smarty_tpl->tpl_vars['ALERT_MSG']->value && ($_SESSION['roles_id'] == '33' || $_SESSION['roles_id'] == '39')) {?>
 							<a href="interview.php?action=export&keyword=<?php echo $_smarty_tpl->tpl_vars['keyword']->value;?>
 
 								&employee=<?php echo $_smarty_tpl->tpl_vars['employee']->value;?>
@@ -129,6 +129,8 @@ $_smarty_tpl->ext->_updateScope->updateScope($_smarty_tpl, 'hide', 0);?>
 						</label>
 						<?php }?>
 						
+					
+						
 						<?php if ($_SESSION['roles_id'] == '33' || $_SESSION['roles_id'] == '38') {?>
 						<label>Branch: 
 							<select name="branch" class="input-medium" placeholder="" style="clear:left" id="ResumeLoc">
@@ -190,7 +192,17 @@ $_smarty_tpl->ext->_updateScope->updateScope($_smarty_tpl, 'hide', 0);?>
 &status=<?php echo $_smarty_tpl->tpl_vars['status']->value;?>
 " rel="tooltip" data-original-title="Sort by Ascending or Descending" class="<?php echo $_smarty_tpl->tpl_vars['sort_field_company']->value;?>
 ">Company</a></th>
-										<th width="60"><a href="interview.php?field=interview_date&order=<?php echo $_smarty_tpl->tpl_vars['order']->value;?>
+										<th width="80"><a href="interview.php?field=ac_holder&order=<?php echo $_smarty_tpl->tpl_vars['order']->value;?>
+&page=<?php echo $_GET['page'];?>
+&keyword=<?php echo $_smarty_tpl->tpl_vars['keyword']->value;?>
+&f_date=<?php echo $_smarty_tpl->tpl_vars['f_date']->value;?>
+&t_date=<?php echo $_smarty_tpl->tpl_vars['t_date']->value;?>
+&employee=<?php echo $_smarty_tpl->tpl_vars['employee']->value;?>
+&branch=<?php echo $_smarty_tpl->tpl_vars['branch']->value;?>
+&status=<?php echo $_smarty_tpl->tpl_vars['status']->value;?>
+" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="<?php echo $_smarty_tpl->tpl_vars['sort_field_ac_holder']->value;?>
+">Account Holder</a></th>						
+										<th width="80"><a href="interview.php?field=interview_date&order=<?php echo $_smarty_tpl->tpl_vars['order']->value;?>
 &page=<?php echo $_GET['page'];?>
 &keyword=<?php echo $_smarty_tpl->tpl_vars['keyword']->value;?>
 &f_date=<?php echo $_smarty_tpl->tpl_vars['f_date']->value;?>
@@ -265,6 +277,8 @@ $__foreach_item_0_saved_local_item = $_smarty_tpl->tpl_vars['item'];
 										<td><?php echo $_smarty_tpl->tpl_vars['item']->value['position'];?>
 </td>
 										<td><?php echo $_smarty_tpl->tpl_vars['item']->value['company'];?>
+</td>
+										<td><?php echo $_smarty_tpl->tpl_vars['item']->value['ac_holder'];?>
 </td>
 										<td><?php echo $_smarty_tpl->tpl_vars['item']->value['interview_date'];?>
 </td>

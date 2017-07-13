@@ -450,6 +450,8 @@
 </div>
 </div>
 </div>
+<input type="hidden" id="end_date" name="end_date" value="{$dob_default}">	
+
 <input type="hidden" id="tab_open" value="{$tab_open}"/>
 <div class="form-actions">
 

@@ -297,7 +297,7 @@ class PositionController extends AppController {
 						$this->request->data['Position']['start_date'] = $this->Functions->format_date_save($this->request->data['Position']['start_date']);
 						$this->request->data['Position']['end_date'] = $this->Functions->format_date_save($this->request->data['Position']['end_date']);
 						// save the data
-						if($this->Position->save($this->request->data['Position'])){
+						if($this->Position->save($this->request->data['Position'], array('validate' => false))){
 							// save the file name
 							$this->save_job_desc($this->Position->id);
 							// remove position coordination
