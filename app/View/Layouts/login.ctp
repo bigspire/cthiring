@@ -31,8 +31,7 @@
             <link rel="stylesheet" href="<?php echo $this->webroot;?>css/blue.css" id="link_theme" />            
         <!-- main styles -->
             <link rel="stylesheet" href="<?php echo $this->webroot;?>css/style.css" />
-			
-            <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Sans" />
+	
 		
 	
 </head>
