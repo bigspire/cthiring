@@ -124,6 +124,32 @@ $(document).ready(function() {
 	});
 	
 	
+	// retaining tabs and contents in view position 
+	if($('#success_page').val() != ''){
+		if(GetURLParameter('tab') == 'cv_status'){
+			$('.cvStatusTab').addClass('active');
+			$('.uploadTab').removeClass('active');
+			$('.sentTab').removeClass('active');
+			// for contents
+			$('.upload_row').hide();
+			$('.sent_row').hide();
+			$('.status_row').show();	
+			$('.overall_status_row').hide();
+		}else if(GetURLParameter('tab') == 'sent'){
+			// for tab
+			$('.sentTab').addClass('active');
+			$('.cvStatusTab').removeClass('active');
+			$('.uploadTab').removeClass('active');
+			// for contents
+			$('.upload_row').hide();
+			$('.sent_row').show();
+			$('.status_row').hide();
+			$('.overall_status_row').hide();
+		}
+	}
+		
+	
+	
 	/* function to switch the view resume tabs */
 	$('.restabChange').click(function(){ 
 		show_div = $(this).attr('rel');
@@ -207,7 +233,9 @@ $(document).ready(function() {
 	});
 	
 	*/
-		
+	
+
+			
 	
 	
 	/* function to switch the tabs */
@@ -216,7 +244,7 @@ $(document).ready(function() {
 		switch(show_div){
 			case 'upload_row':
 			$('.upload_row').show();
-			$('.sent_row').hide();
+			$('.sent_row').show();
 			$('.status_row').hide();
 			$('.overall_status_row').hide();
 			break;	
@@ -850,6 +878,23 @@ $(document).ready(function() {
 		}
 	}
 	
+	if($('#tskplan').val() == 1){
+			if(GetURLParameter('type') == 'P'){
+				$('.dpDiv').hide();
+				$('.ppDiv').show();
+				// for validation
+				$('.input_dp').removeClass('required');
+				$('.input_pp').addClass('required')
+			}else{
+				$('.dpDiv').show();
+				$('.ppDiv').hide();
+				// for validation
+				$('.input_dp').addClass('required');
+				$('.input_pp').removeClass('required');
+			}
+			load_task_date();
+		}
+	
 	// for fetch Degree
 	/*
 	$(".qualification_id").change(function (){ 
@@ -1180,6 +1225,18 @@ function load_colorBox(obj, size){
 			return true;
 		}else{
 			return false;
+		}
+	}
+	
+		/* function to get url vars */
+	function GetURLParameter(sParam){
+		var sPageURL = window.location.search.substring(1);
+		var sURLVariables = sPageURL.split('&');
+		for (var i = 0; i < sURLVariables.length; i++){
+			var sParameterName = sURLVariables[i].split('=');
+			if(sParameterName[0] == sParam){
+				return sParameterName[1];
+			}
 		}
 	}
 

@@ -46,7 +46,6 @@
 							
 							
 							
-						<?php echo $this->Session->flash();?>
 							
 							
 								<div class="row-fluid">
@@ -253,20 +252,19 @@
 					
 					
 					</div></div>
-	
+			<?php if($position_data['Position']['is_approve'] == 'W'):?>
+
 							<div class="form-actions">
-		<?php if($position_data['Position']['is_approve'] == 'W'):?>
 <a class="iframeBox unreadLink" rel="tooltip" title="Approve Position" href="<?php echo $this->webroot;?>position/remark/approve/<?php echo $position_data['Position']['id'];?>" val="40_50"><input type="button" value="Approve" class="btn btn btn-success"/></a>
 <a class="iframeBox unreadLink" rel="tooltip" title="Reject Position" href="<?php echo $this->webroot;?>position/remark/reject/<?php echo $position_data['Position']['id'];?>" val="40_50"><input type="button" value="Reject" class="btn btn btn-danger"/></a>
 <a href="<?php echo $this->webroot;?>position/index/pending/" rel="tooltip" title="Cancel and Back to Positions"  class="jsRedirect"><button class="btn">Cancel</button></a>
-	<?php endif; ?>
-	
-	<?php if($position_data['Position']['is_approve'] == 'A'):?>
-	<a href="<?php echo $this->webroot;?>position/" rel="tooltip" title="Back to Positions"  class="jsRedirect"><button class="btn">Back</button></a>
-	<?php endif; ?>
+
 
 						
 					</div>
+						<?php endif; ?>
+
+					
 					<?php echo $this->Form->create('Position', array('id' => 'formID','class' => 'formID')); ?>
 			
 					
@@ -318,12 +316,19 @@
 		</div>
 			
 
-			
+
+									
 					<?php if($position_data['Position']['is_approve'] == 'A'):?>	
 				
 					  <div class="row-fluid">
 						<div class="span12">
+						
+															<?php echo $this->Session->flash();?>
+
+															
+															
 							<div class="mbox">
+							
 								<div class="tabbable">
 									<div class="heading">
 									
@@ -332,13 +337,13 @@
 										<?php // $cv_sent =  $this->Functions->get_req_tab_count_new($resume_data, 'CV-Sent', 'cv_sent');?>
 
 										<?php $total = count($resume_data);?>
-										<li class="active"><a href="#mbox_inbox" class="tabChange" val="<?php echo $total;?>" rel="upload_row"  data-toggle="tab"><i class="splashy-box_add"></i>  CV Uploaded <?php if($total):?><span class="label label-info"> <?php echo $total;?></span><?php endif; ?></a></li>
+										<li class="active uploadTab"><a href="#mbox_inbox" class="tabChange" val="<?php echo $total;?>" rel="upload_row"  data-toggle="tab"><i class="splashy-box_add"></i>  CV Uploaded <?php if($total):?><span class="label label-info"> <?php echo $total;?></span><?php endif; ?></a></li>
 
-										<li><a href="#mbox_inbox" class="tabChange" val="<?php echo $cv_sent;?>" rel="sent_row"  data-toggle="tab"><i class="splashy-box_okay"></i>  CV Sent <?php if($sent_count):?><span class="label label-info"> <?php echo $sent_count;?></span><?php endif; ?></a></li>
+										<li class="sentTab"><a href="#mbox_inbox" class="tabChange" val="<?php echo $cv_sent;?>" rel="sent_row"  data-toggle="tab"><i class="splashy-box_okay"></i>  CV Sent <?php if($sent_count):?><span class="label label-info"> <?php echo $sent_count;?></span><?php endif; ?></a></li>
 									
-										<li><a href="#mbox_inbox" class="tabChange"  rel="status_row"  data-toggle="tab"><i class="splashy-box_share"></i>  CV Status</a></li>
+										<li class="cvStatusTab"><a href="#mbox_inbox" class="tabChange"  rel="status_row"  data-toggle="tab"><i class="splashy-box_share"></i>  CV Status</a></li>
 
-										<li><a href="#mbox_overall" class="tabChange"  rel="overall_status_row"  data-toggle="tab"><i class="splashy-box_new"></i>  Overall Status</a></li>
+										<li><a href="#mbox_overall" class="tabChange overAllTab"  rel="overall_status_row"  data-toggle="tab"><i class="splashy-box_new"></i>  Overall Status</a></li>
 	
 	<!--div style="float: right;  margin-right: 100px;  margin-top: 5px;">
 								<a class="jsRedirect toggleSearch" href="javascript:void(0)">
@@ -355,7 +360,7 @@
 											
 											<table data-msg_rowlink="a" class="table table_vam mbox_table dTableR cvTable dataTable stickyTable" id="dt_inbox">
 												<thead>
-													<tr class="upload_row">
+													<tr class="upload_row sent_row">
 														<th width="120">Candidate Name</th>
 														<th  width="100">Mobile</th>
 														<th  width="120">Email</th>
@@ -369,18 +374,7 @@
 														<th width="150">Action</th>
 													</tr>
 													
-													<tr class="dn sent_row">
-														<th width="120">Candidate Name</th>
-														<th  width="100">Mobile</th>
-														<th  width="120">Email</th>
-														<th  width="100">Present Location</th>
-														<th  width="75">Present CTC</th>
-														<th  width="75">Expected CTC</th>
-														<th  width="80"  class="noticePeriod">Notice Period</th>
-														<th  width="140" class="">CV Owner</th>
-														<th  width="90" class="">CV Created</th>
-														<th width="150">Action</th>
-													</tr>
+												
 													
 													
 														<tr class="dn status_row">
@@ -527,11 +521,12 @@
 							<td>	
 												
 							<?php 
-	if((strstr($resume['ReqResume']['stage_title'], 'Interview') && $resume['ReqResume']['status_title'] != 'Rejected' &&
-	$resume['ReqResume']['stage_title'] == 'Final Interview' && $resume['ReqResume']['status_title'] != 'Selected') ||
+	if((strstr($resume['ReqResume']['stage_title'], 'Interview') && ($resume['ReqResume']['status_title'] != 'Rejected'
+	&& $resume['ReqResume']['status_title'] != 'Selected')) ||
+	($resume['ReqResume']['stage_title'] == 'Final Interview' && $resume['ReqResume']['status_title'] == 'Scheduled') ||
 ($resume['ReqResume']['stage_title'] == 'Shortlist' && $resume['ReqResume']['status_title'] == 'Shortlisted') && $action != '1'
 ): 
-							$action = '1';?>						
+		$action = '1';?>						
 
 <?php $int_level = explode(' ', $resume['ReqResume']['stage_title']);
 	$int_lev = $this->Functions->get_int_level($int_level[0]);
@@ -553,12 +548,12 @@
 										<?php if($resume['ReqResume']['status_title'] == 'Shortlisted' || $resume['ReqResume']['status_title'] == 'Selected'):?>
 										<li><a  href="<?php echo $this->webroot;?>position/schedule_interview/<?php echo  $resume['Resume']['id'];?>/<?php echo $this->request->params['pass'][0];?>/" val="60_90"  class="iframeBox sepV_a cboxElement">Interview Schedule / Reschedule</a></li>
 										<?php else: ?>
-										<li><a  href="<?php echo $this->webroot;?>position/view_scheduled_interview/<?php echo  $resume['Resume']['id'];?>/<?php echo $this->request->params['pass'][0];?>/" val="60_90"  class="iframeBox sepV_a cboxElement">View Interview Schedule</a></li>
+										<li><a  href="<?php echo $this->webroot;?>position/view_interview_schedule/<?php echo  $resume['ReqResume']['id'];?>/<?php echo $int_lev_same;?>/" val="60_90"  class="iframeBox sepV_a cboxElement">View Interview Schedule</a></li>
 										<?php endif; ?>
 										
 										<?php if($resume['ReqResume']['status_title'] == 'Scheduled'):?>
-											<li><a  href="<?php echo $this->webroot;?>position/update_interview/<?php echo  $resume['Resume']['id'];?>/<?php echo $this->request->params['pass'][0];?>/shortlist/<?php echo $int_lev;?>/" val="40_60"  class="iframeBox sepV_a cboxElement"><?php echo $int_level[0];?> Interview Selected </a></li>
-											<li><a  href="<?php echo $this->webroot;?>position/update_interview/<?php echo  $resume['Resume']['id'];?>/<?php echo $this->request->params['pass'][0];?>/reject/<?php echo $int_lev;?>/" val="40_60"  class="iframeBox sepV_a cboxElement"><?php echo $int_level[0];?> Interview Rejected</a></li>
+											<li><a  href="<?php echo $this->webroot;?>position/update_interview/<?php echo  $resume['Resume']['id'];?>/<?php echo $this->request->params['pass'][0];?>/shortlist/<?php echo $int_lev_same;?>/" val="40_60"  class="iframeBox sepV_a cboxElement"><?php echo $int_level[0];?> Interview Selected </a></li>
+											<li><a  href="<?php echo $this->webroot;?>position/update_interview/<?php echo  $resume['Resume']['id'];?>/<?php echo $this->request->params['pass'][0];?>/reject/<?php echo $int_lev_same;?>/" val="40_60"  class="iframeBox sepV_a cboxElement"><?php echo $int_level[0];?> Interview Rejected</a></li>
 										<?php endif; ?>
 										</ul>
 									</div>	
@@ -629,7 +624,8 @@ $action = 1;?>
 								
 								<td>	
 												
-	<?php if($resume['ReqResume']['stage_title'] == 'Offer' && $resume['ReqResume']['status_title'] == 'Offer Accepted'):
+	<?php if($resume['ReqResume']['stage_title'] == 'Offer' && $resume['ReqResume']['status_title'] == 'Offer Accepted'
+	|| ($resume['ReqResume']['status_title'] == 'Deferred')):
 							$action = '1';?>																		
 									<div class="span1"  style="width:110px;">
 									<div class="btn-group">
@@ -639,7 +635,6 @@ $action = 1;?>
 											<li><a  href="<?php echo $this->webroot;?>position/update_joining/<?php echo  $resume['Resume']['id'];?>/<?php echo $this->request->params['pass'][0];?>/joined/" val="40_60"  class="iframeBox sepV_a cboxElement">Joined</a></li>
 											<li><a  href="<?php echo $this->webroot;?>position/update_joining/<?php echo  $resume['Resume']['id'];?>/<?php echo $this->request->params['pass'][0];?>/not_joined/" val="40_60"  class="iframeBox sepV_a cboxElement">Not Joined</a></li>
 											<li><a  href="<?php echo $this->webroot;?>position/update_joining/<?php echo  $resume['Resume']['id'];?>/<?php echo $this->request->params['pass'][0];?>/deferred/" val="40_60"  class="iframeBox sepV_a cboxElement">Deferred</a></li>
-
 										</ul>
 									</div>	
 								</div>
@@ -730,11 +725,9 @@ $action = 1;?>
 						</div>
 					</div>
 					
-					<?php if(!strstr($this->request->referer(),'index')):?>
 					<div class="form-actions">
-									<a  class="jsRedirect goback" val="<?php echo $this->request->referer();?>"  href="javascript:void(0);"><button class="btn">Back</button></a>
+	<a href="<?php echo $this->webroot;?>position/" rel="tooltip" title="Back to Positions"  class="jsRedirect"><button class="btn">Back</button></a>
 					</div>
-					<?php endif; ?>			
 								
                     </div>
 					

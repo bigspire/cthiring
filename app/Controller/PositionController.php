@@ -651,6 +651,7 @@ class PositionController extends AppController {
 					
 					// if successfully update
 					$this->set('cv_update_status', 1);
+					$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>CV sent successfully', 'default', array('class' => 'alert alert-success'));									
 				}
 			}
 		}
@@ -727,6 +728,7 @@ class PositionController extends AppController {
 			$subject_text = str_replace($tags, $template_data, $data['MailTemplate']['subject']);
 			$this->set('subject_'.$mailtemplete, $subject_text);
 			$this->set('body_'.$mailtemplete, $body_text);
+
 	}
 	
 	/* function to update the CV status */
@@ -758,6 +760,8 @@ class PositionController extends AppController {
 				if($this->ReqResumeStatus->save($data, array('validate' => false))){					
 					// if successfully update
 					$this->set('cv_update_status', 1);
+					$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>CV '.strtolower($status).' successfully', 'default', array('class' => 'alert alert-success'));									
+
 				}
 			}
 		}
@@ -792,6 +796,7 @@ class PositionController extends AppController {
 				if($this->ReqResumeStatus->save($data, array('validate' => false))){					
 					// if successfully update
 					$this->set('cv_update_status', 1);
+					$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>'.ucfirst($head_label).' successfully', 'default', array('class' => 'alert alert-success'));									
 				}
 			}
 		}
@@ -827,6 +832,8 @@ class PositionController extends AppController {
 				if($this->ReqResumeStatus->save($data, array('validate' => false))){					
 					// if successfully update
 					$this->set('cv_update_status', 1);
+					$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>'.ucfirst($head_label).' successfully', 'default', array('class' => 'alert alert-success'));									
+
 				}
 			}
 		}
@@ -869,6 +876,8 @@ class PositionController extends AppController {
 					$this->ResInterview->save($data, array('validate' => false));
 					// if successfully update
 					$this->set('cv_update_status', 1);
+					$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Interview details updated successfully', 'default', array('class' => 'alert alert-success'));									
+
 				}
 			}
 		}
@@ -930,6 +939,7 @@ class PositionController extends AppController {
 						$this->ResInterview->save($data, array('validate' => false));
 						// if successfully update
 						$this->set('cv_update_status', 1);
+						$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Interview details updated successfully', 'default', array('class' => 'alert alert-success'));											
 					}
 				}
 			}else{
@@ -938,6 +948,47 @@ class PositionController extends AppController {
 			}
 			
 		}
+	}
+	
+	/* function to show the view interview */
+	public function view_interview_schedule($id, $int_level){
+		$this->layout = 'framebox';
+		$this->loadModel('ResInterview');
+		$int_text = $this->Functions->get_level_text($int_level);
+		$options = array(				
+			
+			array('table' => 'resume',
+					'alias' => 'Resume',					
+					'type' => 'LEFT',
+					'conditions' => array('`Resume.id` = `ReqResume`.`resume_id`')
+			),
+			/*
+			array('table' => 'client_account_holder',
+					'alias' => 'CAH',					
+					'type' => 'INNER',
+					'conditions' => array('`CAH.clients_id` = `Client`.`id`')
+			),
+			array('table' => 'users',
+					'alias' => 'AH',					
+					'type' => 'INNER',
+					'conditions' => array('`CAH.users_id` = `AH`.`id`', )
+			),
+			array('table' => 'req_team',
+					'alias' => 'ReqTeam',					
+					'type' => 'INNER',
+					'conditions' => array('`ReqTeam.requirements_id` = `Position`.`id`', )
+			),
+			array('table' => 'users',
+					'alias' => 'TeamMember',					
+					'type' => 'INNER',
+					'conditions' => array('`ReqTeam.users_id` = `TeamMember`.`id`', )
+			)*/
+		);
+		$this->set('interview_level', $int_text);
+		$data = $this->ResInterview->find('all', array('fields' => array('int_date','int_duration','Resume.first_name','Resume.last_name'
+		,'InterviewStage.interview_stage'),
+		'conditions' => array('req_resume_id' => $id, 'ResInterview.stage_title' => $int_text), 'joins' => $options));
+		$this->set('interview_data', $data[0]);
 	}
 	
 
