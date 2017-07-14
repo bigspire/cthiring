@@ -381,23 +381,18 @@
 										<input type="text" tabindex="6"  name="location_#index#" id="location_#index#"  class="span8" />
 										<label for="reg_city" generated="true" class="error" id="location_Err_#index#"></label>										
 										</td>
-							</tr>			
+							</tr>				
+								<tr>
+										<td width="120" class="tbl_column">Other Vital Information (Position Specific)  <span class="f_req"></span></td>
+										<td> 
+										<textarea name="vital_#index#" tabindex="7" id="vital_#index#" cols="10" rows="3" class="span8"></textarea>
+										</td>
+							</tr>							
 								
 					</tbody>
 		  </table>
 		</div>	
-<div class="span12">
-		  <table class="table table-bordered dataTable" style="margin-bottom:0;">
-		  <tbody>
-		  <tr>
-			<td width="120" class="tbl_column">Project / Certification Details (optional) <span class="f_req"></span></td>
-				<td> 
-						<textarea name="certification" tabindex="7" id="certification" cols="10" rows="3" class="span8">{if $certification}{$certification}{else}{$smarty.post.certification}{/if}</textarea>
-				</td>
-			</tr>
-		  </tbody>
-		  </table>
-		  </div>		
+		
 								
 
 <div style="float: left;    clear: left;    margin-top: 5px;    margin-bottom: 5px;">										
@@ -420,6 +415,21 @@
   <!-- /Controls -->
 
 
+</div>
+<div class="row-fluid" style="clear:left;margin-top:10px;">
+
+<div class="span6">
+		  <table class="table table-bordered dataTable" style="margin-bottom:0;">
+		  <tbody>
+		  <tr>
+			<td width="120" class="tbl_column">Project / Certification Details (optional) <span class="f_req"></span></td>
+				<td> 
+						<textarea name="certification" tabindex="7" id="certification" cols="10" rows="3" class="span8">{if $certification}{$certification}{else}{$smarty.post.certification}{/if}</textarea>
+				</td>
+			</tr>
+		  </tbody>
+		  </table>
+		  </div>
 </div>
 
 </div>

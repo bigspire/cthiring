@@ -166,7 +166,7 @@ $smarty->assign('status', $status);
 $smarty->assign('ALERT_MSG', $alert_msg);
 $smarty->assign('SUCCESS_MSG', $success_msg);
 // assign page title
-$smarty->assign('page_title' , 'Roles - CT Hiring');  
+$smarty->assign('page_title' , 'Roles - Manage Hiring');  
 // assigning active class status to smarty menu.tpl
 $smarty->assign('setting_active','active');
 // display smarty file

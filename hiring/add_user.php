@@ -122,6 +122,7 @@ if(!empty($_POST)){
 }
 
 // query to fetch all roles. 
+$roles = array();
 $query = 'CALL get_roles()';
 try{
 	// calling mysql exe_query function
@@ -141,6 +142,7 @@ try{
 }catch(Exception $e){
 	echo 'Caught exception: ',  $e->getMessage(), "\n";
 } 
+
 
 // query to fetch location list. 
 $query = 'CALL get_branch()';
@@ -188,7 +190,7 @@ $smarty->assign('user_status', array('' => 'Select', '0' => 'Active', '1' => 'In
 $mysql->close_connection();
 
 // assign page title
-$smarty->assign('page_title' , 'Add User - CT Hiring');  
+$smarty->assign('page_title' , 'Add User - Manage Hiring');  
 // assigning active class status to smarty menu.tpl
 $smarty->assign('setting_active','active');
 // $smarty->assign('setting_active', $fun->set_menu_active('add_sharing_criteria')); 	  

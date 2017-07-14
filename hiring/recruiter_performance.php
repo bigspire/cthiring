@@ -202,7 +202,7 @@ $smarty->assign('SUCCESS_MSG', $success_msg);
 $mysql->close_connection();
 
 // assign page title
-$smarty->assign('page_title' , 'Recruiter Performance - CT Hiring');  
+$smarty->assign('page_title' , 'Recruiter Performance - Manage Hiring');  
 // assigning active class status to smarty menu.tpl
 $smarty->assign('report_active','active');
 // display smarty file

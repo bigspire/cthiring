@@ -120,7 +120,7 @@ $smarty->assign('grade_status', array('' => 'Select', '1' => 'Active', '2' => 'I
 $mysql->close_connection();
 
 // assign page title
-$smarty->assign('page_title' , 'Add Sharing Criteria - CT Hiring');  
+$smarty->assign('page_title' , 'Add Sharing Criteria - Manage Hiring');  
 // assigning active class status to smarty menu.tpl
 $smarty->assign('setting_active','active');
 // $smarty->assign('setting_active', $fun->set_menu_active('add_sharing_criteria')); 	  

@@ -77,7 +77,7 @@ $smarty->assign('years', $years);
 // closing mysql
 $mysql->close_connection();
 // assign page title
-$smarty->assign('page_title' , 'Add Incentive - CT Hiring');  
+$smarty->assign('page_title' , 'Add Incentive - Manage Hiring');  
 // assigning active class status to smarty menu.tpl
 $smarty->assign('billings_active','active');
 // $smarty->assign('setting_active', $fun->set_menu_active('add_billing')); 	  

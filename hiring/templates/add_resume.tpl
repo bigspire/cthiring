@@ -399,18 +399,7 @@
 		  </table>
 		  </div>
 		  
-		  <div class="span12">
-		  <table class="table table-bordered dataTable" style="margin-bottom:0;">
-		  <tbody>
-		  <tr>
-			<td width="120" class="tbl_column">Project / Certification Details (optional) <span class="f_req"></span></td>
-				<td> 
-						<textarea name="certification" tabindex="7" id="certification" cols="10" rows="3" class="span8">{if $certification}{$certification}{else}{$smarty.post.certification}{/if}</textarea>
-				</td>
-			</tr>
-		  </tbody>
-		  </table>
-		  </div>
+		 
 			
 								
 
@@ -433,6 +422,21 @@
   </div>
   <!-- /Controls -->
 </div>
+ <div class="row-fluid" style="clear:left;margin-top:10px;">
+
+<div class="span6">
+		  <table class="table table-bordered dataTable" style="margin-bottom:0;">
+		  <tbody>
+		  <tr>
+			<td width="120" class="tbl_column">Project / Certification Details (optional) <span class="f_req"></span></td>
+				<td> 
+						<textarea name="certification" tabindex="7" id="certification" cols="10" rows="3" class="span8">{if $certification}{$certification}{else}{$smarty.post.certification}{/if}</textarea>
+				</td>
+			</tr>
+		  </tbody>
+		  </table>
+		  </div>
+		  </div>
 </div>
 
 <div class="tab-pane" id="mbox_Consultant">

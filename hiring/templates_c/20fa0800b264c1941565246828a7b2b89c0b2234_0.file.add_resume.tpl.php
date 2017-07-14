@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-07-13 17:02:10
+/* Smarty version 3.1.29, created on 2017-07-13 17:48:24
   from "C:\xampp\htdocs\2017\ctsvn\cthiring\hiring\templates\add_resume.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_59675a3ab96c70_85649870',
+  'unifunc' => 'content_59676510476343_26645442',
   'file_dependency' => 
   array (
     '20fa0800b264c1941565246828a7b2b89c0b2234' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\templates\\add_resume.tpl',
-      1 => 1499945202,
+      1 => 1499948300,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_59675a3ab96c70_85649870 ($_smarty_tpl) {
+function content_59676510476343_26645442 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -477,22 +477,7 @@ echo 'checked';?>
 		  </table>
 		  </div>
 		  
-		  <div class="span12">
-		  <table class="table table-bordered dataTable" style="margin-bottom:0;">
-		  <tbody>
-		  <tr>
-			<td width="120" class="tbl_column">Project / Certification Details (optional) <span class="f_req"></span></td>
-				<td> 
-						<textarea name="certification" tabindex="7" id="certification" cols="10" rows="3" class="span8"><?php if ($_smarty_tpl->tpl_vars['certification']->value) {
-echo $_smarty_tpl->tpl_vars['certification']->value;
-} else {
-echo $_POST['certification'];
-}?></textarea>
-				</td>
-			</tr>
-		  </tbody>
-		  </table>
-		  </div>
+		 
 			
 								
 
@@ -515,6 +500,25 @@ echo $_POST['certification'];
   </div>
   <!-- /Controls -->
 </div>
+ <div class="row-fluid" style="clear:left;margin-top:10px;">
+
+<div class="span6">
+		  <table class="table table-bordered dataTable" style="margin-bottom:0;">
+		  <tbody>
+		  <tr>
+			<td width="120" class="tbl_column">Project / Certification Details (optional) <span class="f_req"></span></td>
+				<td> 
+						<textarea name="certification" tabindex="7" id="certification" cols="10" rows="3" class="span8"><?php if ($_smarty_tpl->tpl_vars['certification']->value) {
+echo $_smarty_tpl->tpl_vars['certification']->value;
+} else {
+echo $_POST['certification'];
+}?></textarea>
+				</td>
+			</tr>
+		  </tbody>
+		  </table>
+		  </div>
+		  </div>
 </div>
 
 <div class="tab-pane" id="mbox_Consultant">

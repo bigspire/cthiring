@@ -28,7 +28,7 @@ $module_access = $fun->check_role_access('17',$modules);
 $smarty->assign('module',$module_access);
 
 // assign page title
-$smarty->assign('page_title' , 'Account Holder Performance - CT Hiring');  
+$smarty->assign('page_title' , 'Account Holder Performance - Manage Hiring');  
 // assigning active class status to smarty menu.tpl
 $smarty->assign('report_active','active');
 // $smarty->assign('setting_active', $fun->set_menu_active('billing'));

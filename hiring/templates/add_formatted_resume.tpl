@@ -13,7 +13,7 @@
                   <div id="jCrumbs" class="breadCrumb module">
                      <ul>
                         <li>
-                           <a href="recruiter_dashboard.php"><i class="icon-home"></i></a>
+                           <a href="{$smarty.const.webroot}home"><i class="icon-home"></i></a>
                         </li>
                         <li>
                            <a href="{$smarty.const.webroot}resume">Resumes</a>
@@ -221,8 +221,9 @@
 									 <tr class="tbl_row">
 										<td width="120" class="tbl_column">Marital Status <span class="f_req"></span></td>
 										<td>
-										<input type="radio" tabindex="22" name="marital_status"{if isset($marital_status) || $smarty.post.marital_status == 1}{'checked'}{/if} value="1"> Single
-										<input type="radio" tabindex="23" name="marital_status"{if isset($marital_status) || $smarty.post.marital_status == 2}{'checked'} {/if} value="2"> Married
+										<input type="radio" tabindex="22" name="marital_status"{if $marital_status && $marital_status == '1' || $smarty.post.marital_status == '1'}{'checked'}{/if} value="1"> Single
+										<input type="radio" tabindex="23" name="marital_status"{if $marital_status && $marital_status == '2' || $smarty.post.marital_status == '2'}{'checked'} {/if} value="2"> Married
+										
 										</td>	
 									</tr>						
 									

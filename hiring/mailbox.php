@@ -174,7 +174,7 @@ $smarty->assign('current_status' , $current_status);
 $smarty->assign('ALERT_MSG', $alert_msg);
 $smarty->assign('SUCCESS_MSG', $success_msg);
 // assign page title
-$smarty->assign('page_title' , 'Mailbox - CT Hiring');  
+$smarty->assign('page_title' , 'Mailbox - Manage Hiring');  
 // assigning active class status to smarty menu.tpl
 $smarty->assign('mailbox_active','active');
  

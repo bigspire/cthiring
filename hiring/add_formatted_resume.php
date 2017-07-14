@@ -951,7 +951,7 @@ try{
 $mysql->close_connection();
 
 // assign page title
-$smarty->assign('page_title' , 'Add Fully Formatted Resume - CT Hiring');  
+$smarty->assign('page_title' , 'Add Fully Formatted Resume - Manage Hiring');  
 // assigning active class status to smarty menu.tpl
 $smarty->assign('resume_active','active');
 // $smarty->assign('setting_active', $fun->set_menu_active('add_grade'));
