@@ -82,7 +82,7 @@ $smarty->assign('id' , $_GET['id']);
 $smarty->assign('data', $data);
 
 // assign page title
-$smarty->assign('page_title' , 'View Incentive - CT Hiring');  
+$smarty->assign('page_title' , 'View Incentive - Manage Hiring');  
 // assigning active class status to smarty menu.tpl
 $smarty->assign('billings_active','active'); 
 // display smarty file

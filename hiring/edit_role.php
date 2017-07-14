@@ -250,7 +250,7 @@ $smarty->assign('status_type', array('' => 'Select', '1' => 'Active', '2' => 'In
 // closing mysql
 $mysql->close_connection();
 // assign page title
-$smarty->assign('page_title' , 'Edit Role - CT Hiring');  
+$smarty->assign('page_title' , 'Edit Role - Manage Hiring');  
 // assigning active class status to smarty menu.tpl
 $smarty->assign('setting_active','active');
 // $smarty->assign('setting_active', $fun->set_menu_active('edit_grade'));

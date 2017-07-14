@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-07-06 09:11:45
+/* Smarty version 3.1.29, created on 2017-07-14 16:03:47
   from "C:\xampp\htdocs\2017\ctsvn\cthiring\hiring\templates\add_formatted_resume.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_595db1792e87a9_35409136',
+  'unifunc' => 'content_59689e0b88c170_21072798',
   'file_dependency' => 
   array (
     '7b9debb43acd1c9656df1fbe01b897c4d462aec5' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\templates\\add_formatted_resume.tpl',
-      1 => 1499312015,
+      1 => 1500028117,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_595db1792e87a9_35409136 ($_smarty_tpl) {
+function content_59689e0b88c170_21072798 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -39,7 +39,8 @@ if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdoc
                   <div id="jCrumbs" class="breadCrumb module">
                      <ul>
                         <li>
-                           <a href="recruiter_dashboard.php"><i class="icon-home"></i></a>
+                           <a href="<?php echo @constant('webroot');?>
+home"><i class="icon-home"></i></a>
                         </li>
                         <li>
                            <a href="<?php echo @constant('webroot');?>
@@ -299,12 +300,13 @@ echo 'checked';
 									 <tr class="tbl_row">
 										<td width="120" class="tbl_column">Marital Status <span class="f_req"></span></td>
 										<td>
-										<input type="radio" tabindex="22" name="marital_status"<?php if (isset($_smarty_tpl->tpl_vars['marital_status']->value) || $_POST['marital_status'] == 1) {
+										<input type="radio" tabindex="22" name="marital_status"<?php if ($_smarty_tpl->tpl_vars['marital_status']->value && $_smarty_tpl->tpl_vars['marital_status']->value == '1' || $_POST['marital_status'] == '1') {
 echo 'checked';
 }?> value="1"> Single
-										<input type="radio" tabindex="23" name="marital_status"<?php if (isset($_smarty_tpl->tpl_vars['marital_status']->value) || $_POST['marital_status'] == 2) {
+										<input type="radio" tabindex="23" name="marital_status"<?php if ($_smarty_tpl->tpl_vars['marital_status']->value && $_smarty_tpl->tpl_vars['marital_status']->value == '2' || $_POST['marital_status'] == '2') {
 echo 'checked';?>
  <?php }?> value="2"> Married
+										
 										</td>	
 									</tr>						
 									

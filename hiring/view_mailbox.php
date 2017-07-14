@@ -60,7 +60,7 @@ $c_c = $mysql->close_connection();
 $smarty->assign('id' , $_GET['id']); 
 
 // assign page title
-$smarty->assign('page_title' , 'Mailbox - CT Hiring');  
+$smarty->assign('page_title' , 'Mailbox - Manage Hiring');  
 // assigning active class status to smarty menu.tpl
 $smarty->assign('mailbox_active','active');
  

@@ -164,7 +164,7 @@ $smarty->assign('status', $status);
 $smarty->assign('ALERT_MSG', $alert_msg);
 $smarty->assign('SUCCESS_MSG', $success_msg);
 // assign page title
-$smarty->assign('page_title' , 'Sharing Criteria - CT Hiring');  
+$smarty->assign('page_title' , 'Sharing Criteria - Manage Hiring');  
 // assigning active class status to smarty menu.tpl
 $smarty->assign('setting_active','active');
 // $smarty->assign('setting_active', $fun->set_menu_active('sharing_criteria'));	  

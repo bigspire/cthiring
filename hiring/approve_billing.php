@@ -188,7 +188,7 @@ $smarty->assign('employee' , $employee);
 $smarty->assign('ALERT_MSG', $alert_msg);
 $smarty->assign('SUCCESS_MSG', $success_msg);
 // assign page title
-$smarty->assign('page_title' , 'Approve Billing - CT Hiring');  
+$smarty->assign('page_title' , 'Approve Billing - Manage Hiring');  
 // assigning active class status to smarty menu.tpl
 $smarty->assign('billings_active','active');
  

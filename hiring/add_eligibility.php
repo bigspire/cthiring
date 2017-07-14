@@ -118,7 +118,7 @@ $smarty->assign('target', $target);
 // closing mysql
 $mysql->close_connection();
 // assign page title
-$smarty->assign('page_title' , 'Add Eligibility - CT Hiring');  
+$smarty->assign('page_title' , 'Add Eligibility - Manage Hiring');  
 // assigning active class status to smarty menu.tpl
 $smarty->assign('setting_active','active');
 // $smarty->assign('setting_active', $fun->set_menu_active('add_eligibility')); 	 	  

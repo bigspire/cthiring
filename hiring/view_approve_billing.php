@@ -122,7 +122,7 @@ $smarty->assign('id' , $_GET['id']);
 $smarty->assign('data', $data);
 
 // assign page title
-$smarty->assign('page_title' , 'View Approve Billing - CT Hiring');  
+$smarty->assign('page_title' , 'View Approve Billing - Manage Hiring');  
 // assigning active class status to smarty menu.tpl
 $smarty->assign('billings_active','active');
 // $smarty->assign('setting_active', $fun->set_menu_active('view_billing'));

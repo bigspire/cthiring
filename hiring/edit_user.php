@@ -272,7 +272,7 @@ $smarty->assign('user_status', array('' => 'Select', '0' => 'Active', '1' => 'In
 $mysql->close_connection();
 
 // assign page title
-$smarty->assign('page_title' , 'Edit User - CT Hiring');  
+$smarty->assign('page_title' , 'Edit User - Manage Hiring');  
 // assigning active class status to smarty menu.tpl
 $smarty->assign('setting_active','active');
 // $smarty->assign('setting_active', $fun->set_menu_active('edit_sharing_criteria'));	  

@@ -83,7 +83,7 @@ $smarty->assign('created_date' , $fun->convert_date_to_display($row['created_dat
 $smarty->assign('int_date' , $fun->convert_date_to_display($row['interview_date']));
 
 // assign page title
-$smarty->assign('page_title' , 'View Interview - CT Hiring');  
+$smarty->assign('page_title' , 'View Interview - Manage Hiring');  
 // assigning active class status to smarty menu.tpl
 $smarty->assign('interview_active','active');
 // $smarty->assign('setting_active', $fun->set_menu_active('view_billing'));

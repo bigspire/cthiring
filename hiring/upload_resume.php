@@ -178,7 +178,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 $mysql->close_connection();
 
 // assign page title
-$smarty->assign('page_title' , 'Upload Resume - CT Hiring');  
+$smarty->assign('page_title' , 'Upload Resume - Manage Hiring');  
 // assigning active class status to smarty menu.tpl
 $smarty->assign('resume_active','active');
 // display smarty file

@@ -206,7 +206,7 @@ try{
 // closing mysql
 $mysql->close_connection();
 // assign page title
-$smarty->assign('page_title' , 'View Template - CT Hiring');  
+$smarty->assign('page_title' , 'View Template - Manage Hiring');  
 // assigning active class status to smarty menu.tpl
 $smarty->assign('setting_active','active');
 // display smarty file
