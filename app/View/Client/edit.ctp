@@ -237,7 +237,7 @@
 						<td width="120" class="tbl_column">Status <span class="f_req">*</span></td>
 						<td>	
 					<?php echo $this->Form->input('status_#index#', array('div'=> false,'type' => 'select', 'label' => false, 
-		'class' => 'span8', 'id' => 'status_#index#', 'default' => '1', 'empty' => 'Select', 'required' => false, 'placeholder' => '', 
+		'class' => 'span8', 'id' => 'status_#index#', 'empty' => 'Select', 'required' => false, 'placeholder' => '', 
 		'style' => "clear:left", 'options' => $statusList, 'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 
 						
 						</td>	
@@ -278,7 +278,7 @@
 	if(empty($this->request->data['Contact'])):
 		$count = count($contact_list);
 	else:
-		$count = count($contact_list['Contact']['status']) - 1;
+		$count = count($contact_list['Contact']['status']);
 	endif; 
 	if(empty($this->request->data['Contact'])):
 		foreach($contact_list as $i => $contact):?>

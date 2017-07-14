@@ -144,7 +144,7 @@ class ClientController extends AppController {
 	/* function to edit the client */
 	public function edit($id){
 		// set the page title		
-		$this->set('title_for_layout', 'Edit Client - Client - CT Hiring');
+		$this->set('title_for_layout', 'Edit Client - Client - Manage Hiring');
 		if(!empty($id) && intval($id)){
 			// authorize user before action
 			$ret_value = $this->auth_action($id);
@@ -167,9 +167,9 @@ class ClientController extends AppController {
 					$this->retain_contact_list();
 					// validate the form fields
 					if ($this->Client->validates(array('fieldList' => array('client_name','city','pincode','state','res_location_id',
-					'account_holder','status'))) && $contact_validate){					
+					'account_holder'))) && $contact_validate){					
 						// save the data
-						if($this->Client->save($this->request->data['Client'])){
+						if($this->Client->save($this->request->data['Client'], array('validate' => false))){
 								// remove contact list
 							// $this->remove_contact_list($this->Client->id);
 							// remove contact list
@@ -188,6 +188,7 @@ class ClientController extends AppController {
 							$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Problem in saving the data...', 'default', array('class' => 'alert alert-error'));					
 						}
 					}else{
+						// print_r($this->Client->validationErrors);die;
 						$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Please check the validation errors...', 'default', array('class' => 'alert alert-error'));					
 					}					
 				}else{
@@ -296,7 +297,7 @@ class ClientController extends AppController {
 	public function add(){
 		$this->check_role_access(1);
 		// set the page title		
-		$this->set('title_for_layout', 'Create Client - Clients - CT Hiring');	
+		$this->set('title_for_layout', 'Create Client - Clients - Manage Hiring');	
 		$this->load_static_data();
 		$this->set('statusList', array('0' => 'Active', '1' => 'Inactive'));
 		$this->set('titleList', array('1' => 'Mr.', '2' => 'Ms.'));
@@ -311,10 +312,10 @@ class ClientController extends AppController {
 			// validate the client contacts
 			$contact_validate = $this->validate_contact();
 			// validate the form fields
-			if ($this->Client->validates(array('fieldList' => array('client_name','city','pincode','state','district',
-			'account_holder','status'))) && $contact_validate){					
+			if ($this->Client->validates(array('fieldList' => array('client_name','city','pincode','state','res_location_id',
+			'account_holder'))) && $contact_validate){					
 				// save the data
-				if($this->Client->save($this->request->data['Client'])){
+				if($this->Client->save($this->request->data['Client'], array('validate' => false))){
 					// save client contact list
 					$this->save_client_contact_list($this->Client->id);
 					// save account holder list

@@ -68,7 +68,7 @@ class LoginController extends AppController {
 					
 								$this->set_cookie('ESUSER', $this->Functions->encrypt($data['Login']['id']), '30 Days');
 								$this->set_cookie('ESUSERROLE', $this->Functions->encrypt($data['Login']['roles_id']), '30 Days');
-								$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Hi '.$data['Login']['first_name'].', Welcome to CT Hiring', 'default', array('class' => 'alert alert-success'));
+								$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Hi '.$data['Login']['first_name'].', Welcome to Manage Hiring', 'default', array('class' => 'alert alert-success'));
 
 								$this->redirect('/home/');								
 							}else{ 

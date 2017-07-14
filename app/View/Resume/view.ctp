@@ -66,7 +66,7 @@
 								<tbody>
 								<tr>
 										<td class="tbl_column">Position For</td>
-										<td></td>
+										<td><?php echo ucwords($resume_data['Position']['job_title']);?></td>
 									</tr>
 									<tr class="">
 										<td width="120" class="tbl_column">Candidate Name</td>

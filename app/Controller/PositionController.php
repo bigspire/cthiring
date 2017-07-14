@@ -38,14 +38,14 @@ class PositionController extends AppController {
 		}
 		
 		// set the page title
-		$this->set('title_for_layout', 'Positions - CT Hiring');
+		$this->set('title_for_layout', 'Positions - Manage Hiring');
 		$this->set('empList', $this->Position->get_employee_details());	
 		$this->set('locList', $this->get_loc_details());
 		$this->set('stList', array('10' => 'Planned', '1' => 'In-Process', '2' => 'On-Hold', '3' => 'Closed', '4' => 'Cancelled'));			
 		$fields = array('id','job_title','location','no_job','min_exp','max_exp','ctc_from','ctc_to','ReqStatus.title','req_status_id',
 		'Client.client_name','team_member', 'Creator.first_name','created_date','modified_date', 'count(distinct ReqResume.id) cv_sent',
 		'group_concat(ReqResume.status_title) joined','count(distinct Read.id) read_count', "group_concat(distinct ResOwner.first_name
-		SEPARATOR ', ') team_member", 'Position.created_by','Position.is_approve');
+		SEPARATOR ', ') team_member", 'Position.created_by','Position.is_approve','Position.status');
 				
 		$options = array(			
 			array('table' => 'users',
@@ -210,7 +210,7 @@ class PositionController extends AppController {
 	public function add(){ 
 		$this->check_role_access(4);
 		// set the page title		
-		$this->set('title_for_layout', 'Create Position - Positions - CT Hiring');	
+		$this->set('title_for_layout', 'Create Position - Positions - Manage Hiring');	
 		$this->load_static_data();
 		// get exp list
 		$this->set('expList', $this->Functions->get_experience());
@@ -271,7 +271,7 @@ class PositionController extends AppController {
 	/* function to edit the position */
 	public function edit($id){
 		// set the page title		
-		$this->set('title_for_layout', 'Edit Position - Positions - CT Hiring');	
+		$this->set('title_for_layout', 'Edit Position - Positions - Manage Hiring');	
 		if(!empty($id) && intval($id)){
 			// authorize user before action
 			$ret_value = $this->auth_action($id);
@@ -503,7 +503,7 @@ class PositionController extends AppController {
 	/* function to view the position */
 	public function view($id){	
 		// set the page title
-		$this->set('title_for_layout', 'View Positions - CT Hiring');
+		$this->set('title_for_layout', 'View Positions - Manage Hiring');
 		$this->set('stList', $this->get_status_details());
 		// get the team members
 		$result = $this->Position->get_team($this->Session->read('USER.Login.id'),$show);
