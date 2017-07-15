@@ -56059,39 +56059,952 @@ Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
 Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
 [main] - APP\webroot\index.php, line 118
 
+<<<<<<< HEAD
+2017-07-15 09:26:54 Debug: Notice (8): Undefined variable: home_menu in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\View\Elements\header.ctp, line 47]
+Trace:
+include - APP\View\Elements\header.ctp, line 47
+View::_evaluate() - CORE\Cake\View\View.php, line 961
+View::_render() - CORE\Cake\View\View.php, line 923
+View::_renderElement() - CORE\Cake\View\View.php, line 1217
+View::element() - CORE\Cake\View\View.php, line 418
+include - APP\View\Position\add.ctp, line 2
+View::_evaluate() - CORE\Cake\View\View.php, line 961
+View::_render() - CORE\Cake\View\View.php, line 923
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 960
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-15 09:26:54 Debug: Notice (8): Undefined variable: client_menu in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\View\Elements\header.ctp, line 55]
+Trace:
+include - APP\View\Elements\header.ctp, line 55
+View::_evaluate() - CORE\Cake\View\View.php, line 961
+View::_render() - CORE\Cake\View\View.php, line 923
+View::_renderElement() - CORE\Cake\View\View.php, line 1217
+View::element() - CORE\Cake\View\View.php, line 418
+include - APP\View\Position\add.ctp, line 2
+View::_evaluate() - CORE\Cake\View\View.php, line 961
+View::_render() - CORE\Cake\View\View.php, line 923
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 960
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-15 09:26:54 Debug: Notice (8): Undefined variable: create_client in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\View\Elements\header.ctp, line 58]
+Trace:
+include - APP\View\Elements\header.ctp, line 58
+View::_evaluate() - CORE\Cake\View\View.php, line 961
+View::_render() - CORE\Cake\View\View.php, line 923
+View::_renderElement() - CORE\Cake\View\View.php, line 1217
+View::element() - CORE\Cake\View\View.php, line 418
+include - APP\View\Position\add.ctp, line 2
+View::_evaluate() - CORE\Cake\View\View.php, line 961
+View::_render() - CORE\Cake\View\View.php, line 923
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 960
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-15 09:26:54 Debug: Notice (8): Undefined variable: approve_client in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\View\Elements\header.ctp, line 64]
+Trace:
+include - APP\View\Elements\header.ctp, line 64
+View::_evaluate() - CORE\Cake\View\View.php, line 961
+View::_render() - CORE\Cake\View\View.php, line 923
+View::_renderElement() - CORE\Cake\View\View.php, line 1217
+View::element() - CORE\Cake\View\View.php, line 418
+include - APP\View\Position\add.ctp, line 2
+View::_evaluate() - CORE\Cake\View\View.php, line 961
+View::_render() - CORE\Cake\View\View.php, line 923
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 960
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-15 09:26:54 Debug: Notice (8): Undefined variable: approve_position in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\View\Elements\header.ctp, line 86]
+Trace:
+include - APP\View\Elements\header.ctp, line 86
+View::_evaluate() - CORE\Cake\View\View.php, line 961
+View::_render() - CORE\Cake\View\View.php, line 923
+View::_renderElement() - CORE\Cake\View\View.php, line 1217
+View::element() - CORE\Cake\View\View.php, line 418
+include - APP\View\Position\add.ctp, line 2
+View::_evaluate() - CORE\Cake\View\View.php, line 961
+View::_render() - CORE\Cake\View\View.php, line 923
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 960
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-15 09:26:54 Debug: Notice (8): Undefined variable: resume_menu in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\View\Elements\header.ctp, line 96]
+Trace:
+include - APP\View\Elements\header.ctp, line 96
+View::_evaluate() - CORE\Cake\View\View.php, line 961
+View::_render() - CORE\Cake\View\View.php, line 923
+View::_renderElement() - CORE\Cake\View\View.php, line 1217
+View::element() - CORE\Cake\View\View.php, line 418
+include - APP\View\Position\add.ctp, line 2
+View::_evaluate() - CORE\Cake\View\View.php, line 961
+View::_render() - CORE\Cake\View\View.php, line 923
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 960
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-15 09:26:54 Debug: Notice (8): Undefined variable: approve_billing in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\View\Elements\header.ctp, line 132]
+Trace:
+include - APP\View\Elements\header.ctp, line 132
+View::_evaluate() - CORE\Cake\View\View.php, line 961
+View::_render() - CORE\Cake\View\View.php, line 923
+View::_renderElement() - CORE\Cake\View\View.php, line 1217
+View::element() - CORE\Cake\View\View.php, line 418
+include - APP\View\Position\add.ctp, line 2
+View::_evaluate() - CORE\Cake\View\View.php, line 961
+View::_render() - CORE\Cake\View\View.php, line 923
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 960
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-15 09:26:54 Debug: Notice (8): Undefined variable: manage_grade in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\View\Elements\header.ctp, line 202]
+Trace:
+include - APP\View\Elements\header.ctp, line 202
+View::_evaluate() - CORE\Cake\View\View.php, line 961
+View::_render() - CORE\Cake\View\View.php, line 923
+View::_renderElement() - CORE\Cake\View\View.php, line 1217
+View::element() - CORE\Cake\View\View.php, line 418
+include - APP\View\Position\add.ctp, line 2
+View::_evaluate() - CORE\Cake\View\View.php, line 961
+View::_render() - CORE\Cake\View\View.php, line 923
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 960
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-15 09:26:54 Debug: Notice (8): Undefined variable: manage_users in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\View\Elements\header.ctp, line 202]
+Trace:
+include - APP\View\Elements\header.ctp, line 202
+View::_evaluate() - CORE\Cake\View\View.php, line 961
+View::_render() - CORE\Cake\View\View.php, line 923
+View::_renderElement() - CORE\Cake\View\View.php, line 1217
+View::element() - CORE\Cake\View\View.php, line 418
+include - APP\View\Position\add.ctp, line 2
+View::_evaluate() - CORE\Cake\View\View.php, line 961
+View::_render() - CORE\Cake\View\View.php, line 923
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 960
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-15 09:26:54 Debug: Notice (8): Undefined variable: manage_roles in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\View\Elements\header.ctp, line 202]
+Trace:
+include - APP\View\Elements\header.ctp, line 202
+View::_evaluate() - CORE\Cake\View\View.php, line 961
+View::_render() - CORE\Cake\View\View.php, line 923
+View::_renderElement() - CORE\Cake\View\View.php, line 1217
+View::element() - CORE\Cake\View\View.php, line 418
+include - APP\View\Position\add.ctp, line 2
+View::_evaluate() - CORE\Cake\View\View.php, line 961
+View::_render() - CORE\Cake\View\View.php, line 923
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 960
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-15 09:26:54 Debug: Notice (8): Undefined variable: manage_mailer_template in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\View\Elements\header.ctp, line 203]
+Trace:
+include - APP\View\Elements\header.ctp, line 203
+View::_evaluate() - CORE\Cake\View\View.php, line 961
+View::_render() - CORE\Cake\View\View.php, line 923
+View::_renderElement() - CORE\Cake\View\View.php, line 1217
+View::element() - CORE\Cake\View\View.php, line 418
+include - APP\View\Position\add.ctp, line 2
+View::_evaluate() - CORE\Cake\View\View.php, line 961
+View::_render() - CORE\Cake\View\View.php, line 923
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 960
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-15 09:26:54 Debug: Notice (8): Undefined variable: manage_incentive in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\View\Elements\header.ctp, line 203]
+Trace:
+include - APP\View\Elements\header.ctp, line 203
+View::_evaluate() - CORE\Cake\View\View.php, line 961
+View::_render() - CORE\Cake\View\View.php, line 923
+View::_renderElement() - CORE\Cake\View\View.php, line 1217
+View::element() - CORE\Cake\View\View.php, line 418
+include - APP\View\Position\add.ctp, line 2
+View::_evaluate() - CORE\Cake\View\View.php, line 961
+View::_render() - CORE\Cake\View\View.php, line 923
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 960
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-15 09:26:54 Debug: Notice (8): Undefined variable: spocList in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\View\Position\add.ctp, line 65]
+Trace:
+include - APP\View\Position\add.ctp, line 65
+View::_evaluate() - CORE\Cake\View\View.php, line 961
+View::_render() - CORE\Cake\View\View.php, line 923
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 960
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-15 09:26:54 Debug: Notice (8): Undefined variable: coordList in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\View\Position\add.ctp, line 330]
+Trace:
+include - APP\View\Position\add.ctp, line 330
+View::_evaluate() - CORE\Cake\View\View.php, line 961
+View::_render() - CORE\Cake\View\View.php, line 923
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 960
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-15 09:26:54 Debug: Notice (8): Undefined variable: i in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\View\Position\add.ctp, line 374]
+Trace:
+include - APP\View\Position\add.ctp, line 374
+View::_evaluate() - CORE\Cake\View\View.php, line 961
+View::_render() - CORE\Cake\View\View.php, line 923
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 960
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-15 09:26:54 Debug: Notice (8): Undefined variable: i in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\View\Position\add.ctp, line 374]
+Trace:
+include - APP\View\Position\add.ctp, line 374
+View::_evaluate() - CORE\Cake\View\View.php, line 961
+View::_render() - CORE\Cake\View\View.php, line 923
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 960
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-15 09:26:54 Debug: Notice (8): Undefined variable: i in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\View\Position\add.ctp, line 374]
+Trace:
+include - APP\View\Position\add.ctp, line 374
+View::_evaluate() - CORE\Cake\View\View.php, line 961
+View::_render() - CORE\Cake\View\View.php, line 923
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 960
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-15 09:26:54 Debug: Notice (8): Undefined index: Position in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\View\Position\add.ctp, line 374]
+Trace:
+include - APP\View\Position\add.ctp, line 374
+View::_evaluate() - CORE\Cake\View\View.php, line 961
+View::_render() - CORE\Cake\View\View.php, line 923
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 960
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-15 09:26:54 Debug: Notice (8): Undefined variable: i in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\View\Position\add.ctp, line 375]
+Trace:
+include - APP\View\Position\add.ctp, line 375
+View::_evaluate() - CORE\Cake\View\View.php, line 961
+View::_render() - CORE\Cake\View\View.php, line 923
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 960
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-15 09:26:54 Debug: Notice (8): Undefined variable: i in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\View\Position\add.ctp, line 375]
+Trace:
+include - APP\View\Position\add.ctp, line 375
+View::_evaluate() - CORE\Cake\View\View.php, line 961
+View::_render() - CORE\Cake\View\View.php, line 923
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 960
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-15 09:26:54 Debug: Notice (8): Undefined variable: i in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\View\Position\add.ctp, line 375]
+Trace:
+include - APP\View\Position\add.ctp, line 375
+View::_evaluate() - CORE\Cake\View\View.php, line 961
+View::_render() - CORE\Cake\View\View.php, line 923
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 960
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-15 09:26:54 Debug: Notice (8): Undefined index: Position in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\View\Position\add.ctp, line 375]
+Trace:
+include - APP\View\Position\add.ctp, line 375
+View::_evaluate() - CORE\Cake\View\View.php, line 961
+View::_render() - CORE\Cake\View\View.php, line 923
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 960
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-15 09:26:54 Debug: Notice (8): Undefined variable: i in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\View\Position\add.ctp, line 376]
+Trace:
+include - APP\View\Position\add.ctp, line 376
+View::_evaluate() - CORE\Cake\View\View.php, line 961
+View::_render() - CORE\Cake\View\View.php, line 923
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 960
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-15 09:26:54 Debug: Notice (8): Undefined variable: i in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\View\Position\add.ctp, line 376]
+Trace:
+include - APP\View\Position\add.ctp, line 376
+View::_evaluate() - CORE\Cake\View\View.php, line 961
+View::_render() - CORE\Cake\View\View.php, line 923
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 960
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-15 09:26:54 Debug: Notice (8): Undefined variable: i in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\View\Position\add.ctp, line 376]
+Trace:
+include - APP\View\Position\add.ctp, line 376
+View::_evaluate() - CORE\Cake\View\View.php, line 961
+View::_render() - CORE\Cake\View\View.php, line 923
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 960
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-15 09:26:54 Debug: Notice (8): Undefined index: Position in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\View\Position\add.ctp, line 376]
+Trace:
+include - APP\View\Position\add.ctp, line 376
+View::_evaluate() - CORE\Cake\View\View.php, line 961
+View::_render() - CORE\Cake\View\View.php, line 923
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 960
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-15 09:26:54 Debug: Notice (8): Undefined variable: i in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\View\Position\add.ctp, line 378]
+Trace:
+include - APP\View\Position\add.ctp, line 378
+View::_evaluate() - CORE\Cake\View\View.php, line 961
+View::_render() - CORE\Cake\View\View.php, line 923
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 960
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-15 09:26:54 Debug: Notice (8): Undefined variable: errorData in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\View\Position\add.ctp, line 378]
+Trace:
+include - APP\View\Position\add.ctp, line 378
+View::_evaluate() - CORE\Cake\View\View.php, line 961
+View::_render() - CORE\Cake\View\View.php, line 923
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 960
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-15 09:26:54 Debug: Notice (8): Undefined variable: i in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\View\Position\add.ctp, line 378]
+Trace:
+include - APP\View\Position\add.ctp, line 378
+View::_evaluate() - CORE\Cake\View\View.php, line 961
+View::_render() - CORE\Cake\View\View.php, line 923
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 960
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-15 09:26:54 Debug: Notice (8): Undefined variable: i in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\View\Position\add.ctp, line 379]
+Trace:
+include - APP\View\Position\add.ctp, line 379
+View::_evaluate() - CORE\Cake\View\View.php, line 961
+View::_render() - CORE\Cake\View\View.php, line 923
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 960
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-15 09:26:54 Debug: Notice (8): Undefined variable: errorData in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\View\Position\add.ctp, line 379]
+Trace:
+include - APP\View\Position\add.ctp, line 379
+View::_evaluate() - CORE\Cake\View\View.php, line 961
+View::_render() - CORE\Cake\View\View.php, line 923
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 960
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-15 09:26:54 Debug: Notice (8): Undefined variable: i in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\View\Position\add.ctp, line 379]
+Trace:
+include - APP\View\Position\add.ctp, line 379
+View::_evaluate() - CORE\Cake\View\View.php, line 961
+View::_render() - CORE\Cake\View\View.php, line 923
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 960
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-15 09:26:54 Debug: Notice (8): Undefined variable: i in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\View\Position\add.ctp, line 380]
+Trace:
+include - APP\View\Position\add.ctp, line 380
+View::_evaluate() - CORE\Cake\View\View.php, line 961
+View::_render() - CORE\Cake\View\View.php, line 923
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 960
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-15 09:26:54 Debug: Notice (8): Undefined variable: errorData in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\View\Position\add.ctp, line 380]
+Trace:
+include - APP\View\Position\add.ctp, line 380
+View::_evaluate() - CORE\Cake\View\View.php, line 961
+View::_render() - CORE\Cake\View\View.php, line 923
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 960
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-15 09:26:54 Debug: Notice (8): Undefined variable: i in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\View\Position\add.ctp, line 380]
+Trace:
+include - APP\View\Position\add.ctp, line 380
+View::_evaluate() - CORE\Cake\View\View.php, line 961
+View::_render() - CORE\Cake\View\View.php, line 923
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 960
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-15 09:26:59 Debug: Notice (8): Undefined variable: format_list in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\Component\FunctionsComponent.php, line 90]
+Trace:
+FunctionsComponent::format_list_key() - APP\Controller\Component\FunctionsComponent.php, line 90
+PositionController::get_contact_list() - APP\Controller\PositionController.php, line 463
+PositionController::add() - APP\Controller\PositionController.php, line 225
+=======
 2017-07-14 21:14:17 Debug: Notice (8): Undefined variable: value in [F:\xampp\htdocs\ctsvn\cthiring\app\webroot\vendor\html2pdf\examples\res\snapshot_template.php, line 43]
 Trace:
 get_ctc_type - APP\webroot\vendor\html2pdf\examples\res\snapshot_template.php, line 43
 include - APP\webroot\vendor\html2pdf\examples\res\snapshot_template.php, line 257
 ResumeController::profile_snapshot() - APP\Controller\ResumeController.php, line 502
+>>>>>>> 5880048bc3d36bade97969f4a98fab4381d97d6e
 ReflectionMethod::invokeArgs() - [internal], line ??
 Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
 Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
 Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
 [main] - APP\webroot\index.php, line 118
 
+<<<<<<< HEAD
+2017-07-15 09:26:59 Debug: Notice (8): Uninitialized string offset: 0 in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\Position.php, line 237]
+Trace:
+Position::validate_team() - APP\Model\Position.php, line 237
+CakeValidationRule::process() - CORE\Cake\Model\Validator\CakeValidationRule.php, line 275
+CakeValidationSet::validate() - CORE\Cake\Model\Validator\CakeValidationSet.php, line 135
+ModelValidator::errors() - CORE\Cake\Model\ModelValidator.php, line 268
+ModelValidator::validates() - CORE\Cake\Model\ModelValidator.php, line 99
+Model::validates() - CORE\Cake\Model\Model.php, line 3460
+PositionController::add() - APP\Controller\PositionController.php, line 230
+=======
 2017-07-14 21:14:17 Debug: Notice (8): Undefined variable: value in [F:\xampp\htdocs\ctsvn\cthiring\app\webroot\vendor\html2pdf\examples\res\snapshot_template.php, line 43]
 Trace:
 get_ctc_type - APP\webroot\vendor\html2pdf\examples\res\snapshot_template.php, line 43
 include - APP\webroot\vendor\html2pdf\examples\res\snapshot_template.php, line 272
 ResumeController::profile_snapshot() - APP\Controller\ResumeController.php, line 502
+>>>>>>> 5880048bc3d36bade97969f4a98fab4381d97d6e
 ReflectionMethod::invokeArgs() - [internal], line ??
 Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
 Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
 Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
 [main] - APP\webroot\index.php, line 118
 
+<<<<<<< HEAD
+2017-07-15 09:26:59 Debug: Notice (8): Undefined index: page in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\Position.php, line 283]
+Trace:
+Position::validate_jobDesc() - APP\Model\Position.php, line 283
+CakeValidationRule::process() - CORE\Cake\Model\Validator\CakeValidationRule.php, line 275
+CakeValidationSet::validate() - CORE\Cake\Model\Validator\CakeValidationSet.php, line 135
+ModelValidator::errors() - CORE\Cake\Model\ModelValidator.php, line 268
+ModelValidator::validates() - CORE\Cake\Model\ModelValidator.php, line 99
+Model::validates() - CORE\Cake\Model\Model.php, line 3460
+PositionController::add() - APP\Controller\PositionController.php, line 230
+=======
 2017-07-14 21:14:17 Debug: Notice (8): Undefined variable: txt in [F:\xampp\htdocs\ctsvn\cthiring\app\webroot\vendor\html2pdf\examples\res\snapshot_template.php, line 10]
 Trace:
 check_gender - APP\webroot\vendor\html2pdf\examples\res\snapshot_template.php, line 10
 include - APP\webroot\vendor\html2pdf\examples\res\snapshot_template.php, line 309
 ResumeController::profile_snapshot() - APP\Controller\ResumeController.php, line 502
+>>>>>>> 5880048bc3d36bade97969f4a98fab4381d97d6e
 ReflectionMethod::invokeArgs() - [internal], line ??
 Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
 Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
 Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
 [main] - APP\webroot\index.php, line 118
 
+<<<<<<< HEAD
+2017-07-15 09:26:59 Debug: Notice (8): Undefined variable: home_menu in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\View\Elements\header.ctp, line 47]
+Trace:
+include - APP\View\Elements\header.ctp, line 47
+View::_evaluate() - CORE\Cake\View\View.php, line 961
+View::_render() - CORE\Cake\View\View.php, line 923
+View::_renderElement() - CORE\Cake\View\View.php, line 1217
+View::element() - CORE\Cake\View\View.php, line 418
+include - APP\View\Position\add.ctp, line 2
+View::_evaluate() - CORE\Cake\View\View.php, line 961
+View::_render() - CORE\Cake\View\View.php, line 923
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 960
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-15 09:26:59 Debug: Notice (8): Undefined variable: client_menu in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\View\Elements\header.ctp, line 55]
+Trace:
+include - APP\View\Elements\header.ctp, line 55
+View::_evaluate() - CORE\Cake\View\View.php, line 961
+View::_render() - CORE\Cake\View\View.php, line 923
+View::_renderElement() - CORE\Cake\View\View.php, line 1217
+View::element() - CORE\Cake\View\View.php, line 418
+include - APP\View\Position\add.ctp, line 2
+View::_evaluate() - CORE\Cake\View\View.php, line 961
+View::_render() - CORE\Cake\View\View.php, line 923
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 960
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-15 09:26:59 Debug: Notice (8): Undefined variable: create_client in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\View\Elements\header.ctp, line 58]
+Trace:
+include - APP\View\Elements\header.ctp, line 58
+View::_evaluate() - CORE\Cake\View\View.php, line 961
+View::_render() - CORE\Cake\View\View.php, line 923
+View::_renderElement() - CORE\Cake\View\View.php, line 1217
+View::element() - CORE\Cake\View\View.php, line 418
+include - APP\View\Position\add.ctp, line 2
+View::_evaluate() - CORE\Cake\View\View.php, line 961
+View::_render() - CORE\Cake\View\View.php, line 923
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 960
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-15 09:26:59 Debug: Notice (8): Undefined variable: approve_client in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\View\Elements\header.ctp, line 64]
+Trace:
+include - APP\View\Elements\header.ctp, line 64
+View::_evaluate() - CORE\Cake\View\View.php, line 961
+View::_render() - CORE\Cake\View\View.php, line 923
+View::_renderElement() - CORE\Cake\View\View.php, line 1217
+View::element() - CORE\Cake\View\View.php, line 418
+include - APP\View\Position\add.ctp, line 2
+View::_evaluate() - CORE\Cake\View\View.php, line 961
+View::_render() - CORE\Cake\View\View.php, line 923
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 960
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-15 09:26:59 Debug: Notice (8): Undefined variable: approve_position in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\View\Elements\header.ctp, line 86]
+Trace:
+include - APP\View\Elements\header.ctp, line 86
+View::_evaluate() - CORE\Cake\View\View.php, line 961
+View::_render() - CORE\Cake\View\View.php, line 923
+View::_renderElement() - CORE\Cake\View\View.php, line 1217
+View::element() - CORE\Cake\View\View.php, line 418
+include - APP\View\Position\add.ctp, line 2
+View::_evaluate() - CORE\Cake\View\View.php, line 961
+View::_render() - CORE\Cake\View\View.php, line 923
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 960
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-15 09:26:59 Debug: Notice (8): Undefined variable: resume_menu in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\View\Elements\header.ctp, line 96]
+Trace:
+include - APP\View\Elements\header.ctp, line 96
+View::_evaluate() - CORE\Cake\View\View.php, line 961
+View::_render() - CORE\Cake\View\View.php, line 923
+View::_renderElement() - CORE\Cake\View\View.php, line 1217
+View::element() - CORE\Cake\View\View.php, line 418
+include - APP\View\Position\add.ctp, line 2
+View::_evaluate() - CORE\Cake\View\View.php, line 961
+View::_render() - CORE\Cake\View\View.php, line 923
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 960
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-15 09:26:59 Debug: Notice (8): Undefined variable: approve_billing in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\View\Elements\header.ctp, line 132]
+Trace:
+include - APP\View\Elements\header.ctp, line 132
+View::_evaluate() - CORE\Cake\View\View.php, line 961
+View::_render() - CORE\Cake\View\View.php, line 923
+View::_renderElement() - CORE\Cake\View\View.php, line 1217
+View::element() - CORE\Cake\View\View.php, line 418
+include - APP\View\Position\add.ctp, line 2
+View::_evaluate() - CORE\Cake\View\View.php, line 961
+View::_render() - CORE\Cake\View\View.php, line 923
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 960
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-15 09:26:59 Debug: Notice (8): Undefined variable: manage_grade in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\View\Elements\header.ctp, line 202]
+Trace:
+include - APP\View\Elements\header.ctp, line 202
+View::_evaluate() - CORE\Cake\View\View.php, line 961
+View::_render() - CORE\Cake\View\View.php, line 923
+View::_renderElement() - CORE\Cake\View\View.php, line 1217
+View::element() - CORE\Cake\View\View.php, line 418
+include - APP\View\Position\add.ctp, line 2
+View::_evaluate() - CORE\Cake\View\View.php, line 961
+View::_render() - CORE\Cake\View\View.php, line 923
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 960
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-15 09:26:59 Debug: Notice (8): Undefined variable: manage_users in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\View\Elements\header.ctp, line 202]
+Trace:
+include - APP\View\Elements\header.ctp, line 202
+View::_evaluate() - CORE\Cake\View\View.php, line 961
+View::_render() - CORE\Cake\View\View.php, line 923
+View::_renderElement() - CORE\Cake\View\View.php, line 1217
+View::element() - CORE\Cake\View\View.php, line 418
+include - APP\View\Position\add.ctp, line 2
+View::_evaluate() - CORE\Cake\View\View.php, line 961
+View::_render() - CORE\Cake\View\View.php, line 923
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 960
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-15 09:26:59 Debug: Notice (8): Undefined variable: manage_roles in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\View\Elements\header.ctp, line 202]
+Trace:
+include - APP\View\Elements\header.ctp, line 202
+View::_evaluate() - CORE\Cake\View\View.php, line 961
+View::_render() - CORE\Cake\View\View.php, line 923
+View::_renderElement() - CORE\Cake\View\View.php, line 1217
+View::element() - CORE\Cake\View\View.php, line 418
+include - APP\View\Position\add.ctp, line 2
+View::_evaluate() - CORE\Cake\View\View.php, line 961
+View::_render() - CORE\Cake\View\View.php, line 923
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 960
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-15 09:26:59 Debug: Notice (8): Undefined variable: manage_mailer_template in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\View\Elements\header.ctp, line 203]
+Trace:
+include - APP\View\Elements\header.ctp, line 203
+View::_evaluate() - CORE\Cake\View\View.php, line 961
+View::_render() - CORE\Cake\View\View.php, line 923
+View::_renderElement() - CORE\Cake\View\View.php, line 1217
+View::element() - CORE\Cake\View\View.php, line 418
+include - APP\View\Position\add.ctp, line 2
+View::_evaluate() - CORE\Cake\View\View.php, line 961
+View::_render() - CORE\Cake\View\View.php, line 923
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 960
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-15 09:26:59 Debug: Notice (8): Undefined variable: manage_incentive in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\View\Elements\header.ctp, line 203]
+Trace:
+include - APP\View\Elements\header.ctp, line 203
+View::_evaluate() - CORE\Cake\View\View.php, line 961
+View::_render() - CORE\Cake\View\View.php, line 923
+View::_renderElement() - CORE\Cake\View\View.php, line 1217
+View::element() - CORE\Cake\View\View.php, line 418
+include - APP\View\Position\add.ctp, line 2
+View::_evaluate() - CORE\Cake\View\View.php, line 961
+View::_render() - CORE\Cake\View\View.php, line 923
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 960
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-15 09:26:59 Debug: Notice (8): Undefined variable: coordList in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\View\Position\add.ctp, line 330]
+Trace:
+include - APP\View\Position\add.ctp, line 330
+View::_evaluate() - CORE\Cake\View\View.php, line 961
+View::_render() - CORE\Cake\View\View.php, line 923
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 960
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-15 09:26:59 Debug: Notice (8): Undefined variable: i in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\View\Position\add.ctp, line 374]
+Trace:
+include - APP\View\Position\add.ctp, line 374
+View::_evaluate() - CORE\Cake\View\View.php, line 961
+View::_render() - CORE\Cake\View\View.php, line 923
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 960
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-15 09:26:59 Debug: Notice (8): Undefined variable: i in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\View\Position\add.ctp, line 374]
+Trace:
+include - APP\View\Position\add.ctp, line 374
+View::_evaluate() - CORE\Cake\View\View.php, line 961
+View::_render() - CORE\Cake\View\View.php, line 923
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 960
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-15 09:26:59 Debug: Notice (8): Undefined variable: i in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\View\Position\add.ctp, line 374]
+Trace:
+include - APP\View\Position\add.ctp, line 374
+View::_evaluate() - CORE\Cake\View\View.php, line 961
+View::_render() - CORE\Cake\View\View.php, line 923
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 960
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-15 09:26:59 Debug: Notice (8): Undefined index: employee_ in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\View\Position\add.ctp, line 374]
+Trace:
+include - APP\View\Position\add.ctp, line 374
+View::_evaluate() - CORE\Cake\View\View.php, line 961
+View::_render() - CORE\Cake\View\View.php, line 923
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 960
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-15 09:26:59 Debug: Notice (8): Undefined variable: i in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\View\Position\add.ctp, line 375]
+Trace:
+include - APP\View\Position\add.ctp, line 375
+View::_evaluate() - CORE\Cake\View\View.php, line 961
+View::_render() - CORE\Cake\View\View.php, line 923
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 960
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-15 09:26:59 Debug: Notice (8): Undefined variable: i in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\View\Position\add.ctp, line 375]
+Trace:
+include - APP\View\Position\add.ctp, line 375
+View::_evaluate() - CORE\Cake\View\View.php, line 961
+View::_render() - CORE\Cake\View\View.php, line 923
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 960
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-15 09:26:59 Debug: Notice (8): Undefined variable: i in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\View\Position\add.ctp, line 375]
+Trace:
+include - APP\View\Position\add.ctp, line 375
+View::_evaluate() - CORE\Cake\View\View.php, line 961
+View::_render() - CORE\Cake\View\View.php, line 923
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 960
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-15 09:26:59 Debug: Notice (8): Undefined index: coordination_ in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\View\Position\add.ctp, line 375]
+Trace:
+include - APP\View\Position\add.ctp, line 375
+View::_evaluate() - CORE\Cake\View\View.php, line 961
+View::_render() - CORE\Cake\View\View.php, line 923
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 960
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-15 09:26:59 Debug: Notice (8): Undefined variable: i in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\View\Position\add.ctp, line 376]
+Trace:
+include - APP\View\Position\add.ctp, line 376
+View::_evaluate() - CORE\Cake\View\View.php, line 961
+View::_render() - CORE\Cake\View\View.php, line 923
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 960
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-15 09:26:59 Debug: Notice (8): Undefined variable: i in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\View\Position\add.ctp, line 376]
+Trace:
+include - APP\View\Position\add.ctp, line 376
+View::_evaluate() - CORE\Cake\View\View.php, line 961
+View::_render() - CORE\Cake\View\View.php, line 923
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 960
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-15 09:26:59 Debug: Notice (8): Undefined variable: i in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\View\Position\add.ctp, line 376]
+Trace:
+include - APP\View\Position\add.ctp, line 376
+View::_evaluate() - CORE\Cake\View\View.php, line 961
+View::_render() - CORE\Cake\View\View.php, line 923
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 960
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-15 09:26:59 Debug: Notice (8): Undefined index: percent_ in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\View\Position\add.ctp, line 376]
+Trace:
+include - APP\View\Position\add.ctp, line 376
+View::_evaluate() - CORE\Cake\View\View.php, line 961
+View::_render() - CORE\Cake\View\View.php, line 923
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 960
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-15 09:26:59 Debug: Notice (8): Undefined variable: i in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\View\Position\add.ctp, line 378]
+Trace:
+include - APP\View\Position\add.ctp, line 378
+View::_evaluate() - CORE\Cake\View\View.php, line 961
+View::_render() - CORE\Cake\View\View.php, line 923
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 960
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-15 09:26:59 Debug: Notice (8): Undefined variable: errorData in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\View\Position\add.ctp, line 378]
+Trace:
+include - APP\View\Position\add.ctp, line 378
+View::_evaluate() - CORE\Cake\View\View.php, line 961
+View::_render() - CORE\Cake\View\View.php, line 923
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 960
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-15 09:26:59 Debug: Notice (8): Undefined variable: i in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\View\Position\add.ctp, line 378]
+Trace:
+include - APP\View\Position\add.ctp, line 378
+View::_evaluate() - CORE\Cake\View\View.php, line 961
+View::_render() - CORE\Cake\View\View.php, line 923
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 960
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-15 09:26:59 Debug: Notice (8): Undefined variable: i in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\View\Position\add.ctp, line 379]
+Trace:
+include - APP\View\Position\add.ctp, line 379
+View::_evaluate() - CORE\Cake\View\View.php, line 961
+View::_render() - CORE\Cake\View\View.php, line 923
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 960
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-15 09:26:59 Debug: Notice (8): Undefined variable: errorData in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\View\Position\add.ctp, line 379]
+Trace:
+include - APP\View\Position\add.ctp, line 379
+View::_evaluate() - CORE\Cake\View\View.php, line 961
+View::_render() - CORE\Cake\View\View.php, line 923
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 960
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-15 09:26:59 Debug: Notice (8): Undefined variable: i in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\View\Position\add.ctp, line 379]
+Trace:
+include - APP\View\Position\add.ctp, line 379
+View::_evaluate() - CORE\Cake\View\View.php, line 961
+View::_render() - CORE\Cake\View\View.php, line 923
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 960
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-15 09:26:59 Debug: Notice (8): Undefined variable: i in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\View\Position\add.ctp, line 380]
+Trace:
+include - APP\View\Position\add.ctp, line 380
+View::_evaluate() - CORE\Cake\View\View.php, line 961
+View::_render() - CORE\Cake\View\View.php, line 923
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 960
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-15 09:26:59 Debug: Notice (8): Undefined variable: errorData in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\View\Position\add.ctp, line 380]
+Trace:
+include - APP\View\Position\add.ctp, line 380
+View::_evaluate() - CORE\Cake\View\View.php, line 961
+View::_render() - CORE\Cake\View\View.php, line 923
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 960
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-15 09:26:59 Debug: Notice (8): Undefined variable: i in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\View\Position\add.ctp, line 380]
+Trace:
+include - APP\View\Position\add.ctp, line 380
+View::_evaluate() - CORE\Cake\View\View.php, line 961
+View::_render() - CORE\Cake\View\View.php, line 923
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 960
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+<<<<<<< HEAD
 2017-07-15 10:38:50 Debug: Notice (8): Undefined variable: show in [F:\xampp\htdocs\ctsvn\cthiring\app\Controller\PositionController.php, line 509]
 Trace:
 PositionController::view() - APP\Controller\PositionController.php, line 509
@@ -56581,3 +57494,7 @@ Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
 Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
 [main] - APP\webroot\index.php, line 118
 
+=======
+=======
+>>>>>>> 5880048bc3d36bade97969f4a98fab4381d97d6e
+>>>>>>> 7842bf5a12e9b0c91c594141f810fe8186582291
