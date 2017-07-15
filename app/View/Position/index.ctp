@@ -156,8 +156,15 @@
 						<td width=""><?php echo $req[0]['team_member'];?></td>
 						<td width=""  style="text-align:center"><a target="_blank" title="View CV Sent"  href="<?php echo $this->webroot;?>resume/?status=1&spec=<?php echo $req['Position']['id'];?>" rel="tooltip"><?php echo $req[0]['cv_sent'];?></a>
 						<td width=""  style="text-align:center"><a target="_blank" title="View Joined Resumes"  href="<?php echo $this->webroot;?>resume/?status=10&spec=<?php echo $req['Position']['id'];?>"  rel="tooltip"><?php echo $this->Functions->get_total_joined($req[0]['joined']);?></a></td>
-						<td width=""  style="text-align:center"><span rel="tooltip" title="Requirement Status: <?php echo $req['ReqStatus']['title'];?> " class="label label-<?php echo $this->Functions->get_req_status_color($req['ReqStatus']['title']);?>"><?php echo $req['ReqStatus']['title'];?></span>			
-										</td>
+						
+						<td width=""  style="text-align:center">
+						<?php if($req['Position']['status'] == 'A'):?>
+						<span rel="tooltip" title="Requirement Status: <?php echo $req['ReqStatus']['title'];?> " class="label label-<?php echo $this->Functions->get_req_status_color($req['ReqStatus']['title']);?>"><?php echo $req['ReqStatus']['title'];?></span>			
+						<?php else:?>	
+						<span title="Awaiting for Approval" rel="tooltip" class="label label-warning">Awaiting Approval</span>						
+						<?php endif; ?>
+						
+						</td>
 						<td width=""><?php echo $req['Creator']['first_name'];?></td>
 						<td width=""><?php echo $this->Functions->format_date($req['Position']['created_date']);?></td>
 						<td width=""><?php echo $this->Functions->format_date($req['Position']['modified_date']);?></td>

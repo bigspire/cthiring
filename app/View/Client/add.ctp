@@ -235,7 +235,7 @@
 						<td width="120" class="tbl_column">Status <span class="f_req">*</span></td>
 						<td>	
 					<?php echo $this->Form->input('status_#index#', array('div'=> false,'type' => 'select', 'label' => false, 
-		'class' => 'span8', 'id' => 'status_#index#', 'default' => '1', 'empty' => 'Select', 'required' => false, 'placeholder' => '', 
+		'class' => 'span8', 'id' => 'status_#index#', 'default' => '0', 'empty' => 'Select', 'required' => false, 'placeholder' => '', 
 		'style' => "clear:left", 'options' => $statusList, 'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 
 						
 						</td>	

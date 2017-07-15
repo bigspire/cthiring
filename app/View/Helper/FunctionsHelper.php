@@ -629,6 +629,29 @@ class FunctionsHelper extends AppHelper {
 		}
 		return $value;
    }
+   
+    /* function to get interview duration */
+   public function get_int_duration($time){
+		switch($time){
+			case '00:30:00':
+			$value = '30 Mins.';
+			break;
+			case '00:45:00':
+			$value = '45 Mins.';
+			break;	
+			case '01:00:00':
+			$value = '1 Hr';
+			break;	
+			case '02:00:00':
+			$value = '2 Hrs';
+			break;	
+			case '03:00:00':
+			$value = '3 Hrs';
+			break;			
+		}
+		return $value;
+   }
+   
   
 }
 ?>

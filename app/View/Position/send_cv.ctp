@@ -65,7 +65,7 @@
 			<input name="submit" class="btn btn-gebo theForm" value="Submit"  type="submit"/>
 					<a class="jsRedirect toggleSearch"  href="javascript:window.close()">
 					<input type="button" value="Cancel" id="cancel" class="btn cancel"/></a>
-					<input type="hidden" id="success_page" value="<?php echo $this->webroot;?>position/view/<?php echo $this->request->params['pass'][1]?>/"/>
+					<input type="hidden" id="success_page" value="<?php echo $this->webroot;?>position/view/<?php echo $this->request->params['pass'][1]?>/?tab=sent"/>
 			</div>
 		</div>
 	</div>

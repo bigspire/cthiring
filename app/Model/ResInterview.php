@@ -32,6 +32,11 @@ class ResInterview extends AppModel {
             'className'  => 'ReqResume',
 			'foreignKey' => 'req_resume_id'
 			
+        ),
+		'InterviewStage' => array(
+            'className'  => 'InterviewStage',
+			'foreignKey' => 'interview_stage_id'
+			
         )		
 	);
 

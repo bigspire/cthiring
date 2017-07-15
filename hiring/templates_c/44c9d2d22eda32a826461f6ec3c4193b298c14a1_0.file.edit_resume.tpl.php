@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-07-13 15:57:30
+/* Smarty version 3.1.29, created on 2017-07-14 16:04:52
   from "F:\xampp\htdocs\ctsvn\cthiring\hiring\templates\edit_resume.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_59674b12401813_46217131',
+  'unifunc' => 'content_59689e4c817183_06073271',
   'file_dependency' => 
   array (
     '44c9d2d22eda32a826461f6ec3c4193b298c14a1' => 
     array (
       0 => 'F:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\templates\\edit_resume.tpl',
-      1 => 1499941613,
+      1 => 1499947601,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_59674b12401813_46217131 ($_smarty_tpl) {
+function content_59689e4c817183_06073271 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'F:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -466,15 +466,26 @@ echo $_POST['native_location'];
 										<label for="reg_city" generated="true" class="error" id="location_Err_#index#"></label>										
 										</td>
 							</tr>			
-								<tr>
-										<td width="120" class="tbl_column">Other Vital Information (Position Specific)  <span class="f_req"></span></td>
-										<td> 
-										<textarea name="vital_#index#" tabindex="7" id="vital_#index#" cols="10" rows="3" class="span8"></textarea>
-										</td>
-							</tr>
+								
 					</tbody>
 		  </table>
-		</div>		
+		</div>	
+<div class="span12">
+		  <table class="table table-bordered dataTable" style="margin-bottom:0;">
+		  <tbody>
+		  <tr>
+			<td width="120" class="tbl_column">Project / Certification Details (optional) <span class="f_req"></span></td>
+				<td> 
+						<textarea name="certification" tabindex="7" id="certification" cols="10" rows="3" class="span8"><?php if ($_smarty_tpl->tpl_vars['certification']->value) {
+echo $_smarty_tpl->tpl_vars['certification']->value;
+} else {
+echo $_POST['certification'];
+}?></textarea>
+				</td>
+			</tr>
+		  </tbody>
+		  </table>
+		  </div>		
 								
 
 <div style="float: left;    clear: left;    margin-top: 5px;    margin-bottom: 5px;">										
