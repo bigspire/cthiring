@@ -521,8 +521,8 @@
 							<td>	
 												
 							<?php 
-	if((strstr($resume['ReqResume']['stage_title'], 'Interview') && ($resume['ReqResume']['status_title'] != 'Rejected'
-	&& $resume['ReqResume']['status_title'] != 'Selected')) ||
+	if((strstr($resume['ReqResume']['stage_title'], 'Interview') && ($resume['ReqResume']['status_title'] != 'Rejected')
+	&& ($resume['ReqResume']['status_title'] != 'Selected' && $resume['ReqResume']['stage_title'] != 'Final Interview')) ||
 	($resume['ReqResume']['stage_title'] == 'Final Interview' && $resume['ReqResume']['status_title'] == 'Scheduled') ||
 ($resume['ReqResume']['stage_title'] == 'Shortlist' && $resume['ReqResume']['status_title'] == 'Shortlisted') && $action != '1'
 ): 
