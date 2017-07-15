@@ -25682,6 +25682,7 @@ Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
 Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
 [main] - APP\webroot\index.php, line 118
 
+<<<<<<< HEAD
 2017-07-15 16:33:31 Warning: Warning (2): Missing argument 1 for ClientController::index() in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\ClientController.php, line 34]
 Trace:
 ClientController::index() - APP\Controller\ClientController.php, line 34
@@ -25858,6 +25859,107 @@ PositionController::index() - APP\Controller\PositionController.php, line 100
 ReflectionMethod::invokeArgs() - [internal], line ??
 Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
 Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+=======
+2017-07-15 16:35:56 Warning: Warning (2): htmlspecialchars() [<a href='http://php.net/function.htmlspecialchars'>function.htmlspecialchars</a>]: Invalid multibyte sequence in argument in [F:\xampp\htdocs\ctsvn\cthiring\lib\Cake\basics.php, line 231]
+Trace:
+htmlspecialchars - [internal], line ??
+h - CORE\Cake\basics.php, line 231
+FormHelper::_selectOptions() - CORE\Cake\View\Helper\FormHelper.php, line 2786
+FormHelper::select() - CORE\Cake\View\Helper\FormHelper.php, line 2132
+FormHelper::_getInput() - CORE\Cake\View\Helper\FormHelper.php, line 1087
+FormHelper::input() - CORE\Cake\View\Helper\FormHelper.php, line 1051
+include - APP\View\Position\add.ctp, line 54
+View::_evaluate() - CORE\Cake\View\View.php, line 961
+View::_render() - CORE\Cake\View\View.php, line 923
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 960
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-15 16:35:56 Warning: Warning (2): htmlspecialchars() [<a href='http://php.net/function.htmlspecialchars'>function.htmlspecialchars</a>]: Invalid multibyte sequence in argument in [F:\xampp\htdocs\ctsvn\cthiring\lib\Cake\basics.php, line 231]
+Trace:
+htmlspecialchars - [internal], line ??
+h - CORE\Cake\basics.php, line 231
+FormHelper::_selectOptions() - CORE\Cake\View\Helper\FormHelper.php, line 2786
+FormHelper::select() - CORE\Cake\View\Helper\FormHelper.php, line 2132
+FormHelper::_getInput() - CORE\Cake\View\Helper\FormHelper.php, line 1087
+FormHelper::input() - CORE\Cake\View\Helper\FormHelper.php, line 1051
+include - APP\View\Position\add.ctp, line 54
+View::_evaluate() - CORE\Cake\View\View.php, line 961
+View::_render() - CORE\Cake\View\View.php, line 923
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 960
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-15 16:35:56 Warning: Warning (2): htmlspecialchars() [<a href='http://php.net/function.htmlspecialchars'>function.htmlspecialchars</a>]: Invalid multibyte sequence in argument in [F:\xampp\htdocs\ctsvn\cthiring\lib\Cake\basics.php, line 231]
+Trace:
+htmlspecialchars - [internal], line ??
+h - CORE\Cake\basics.php, line 231
+FormHelper::_selectOptions() - CORE\Cake\View\Helper\FormHelper.php, line 2786
+FormHelper::select() - CORE\Cake\View\Helper\FormHelper.php, line 2132
+FormHelper::_getInput() - CORE\Cake\View\Helper\FormHelper.php, line 1087
+FormHelper::input() - CORE\Cake\View\Helper\FormHelper.php, line 1051
+include - APP\View\Position\add.ctp, line 54
+View::_evaluate() - CORE\Cake\View\View.php, line 961
+View::_render() - CORE\Cake\View\View.php, line 923
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 960
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-15 16:36:01 Warning: Warning (2): htmlspecialchars() [<a href='http://php.net/function.htmlspecialchars'>function.htmlspecialchars</a>]: Invalid multibyte sequence in argument in [F:\xampp\htdocs\ctsvn\cthiring\lib\Cake\basics.php, line 231]
+Trace:
+htmlspecialchars - [internal], line ??
+h - CORE\Cake\basics.php, line 231
+FormHelper::_selectOptions() - CORE\Cake\View\Helper\FormHelper.php, line 2786
+FormHelper::select() - CORE\Cake\View\Helper\FormHelper.php, line 2132
+FormHelper::_getInput() - CORE\Cake\View\Helper\FormHelper.php, line 1087
+FormHelper::input() - CORE\Cake\View\Helper\FormHelper.php, line 1051
+include - APP\View\Position\add.ctp, line 54
+View::_evaluate() - CORE\Cake\View\View.php, line 961
+View::_render() - CORE\Cake\View\View.php, line 923
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 960
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-15 16:36:01 Warning: Warning (2): htmlspecialchars() [<a href='http://php.net/function.htmlspecialchars'>function.htmlspecialchars</a>]: Invalid multibyte sequence in argument in [F:\xampp\htdocs\ctsvn\cthiring\lib\Cake\basics.php, line 231]
+Trace:
+htmlspecialchars - [internal], line ??
+h - CORE\Cake\basics.php, line 231
+FormHelper::_selectOptions() - CORE\Cake\View\Helper\FormHelper.php, line 2786
+FormHelper::select() - CORE\Cake\View\Helper\FormHelper.php, line 2132
+FormHelper::_getInput() - CORE\Cake\View\Helper\FormHelper.php, line 1087
+FormHelper::input() - CORE\Cake\View\Helper\FormHelper.php, line 1051
+include - APP\View\Position\add.ctp, line 54
+View::_evaluate() - CORE\Cake\View\View.php, line 961
+View::_render() - CORE\Cake\View\View.php, line 923
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 960
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-15 16:36:01 Warning: Warning (2): htmlspecialchars() [<a href='http://php.net/function.htmlspecialchars'>function.htmlspecialchars</a>]: Invalid multibyte sequence in argument in [F:\xampp\htdocs\ctsvn\cthiring\lib\Cake\basics.php, line 231]
+Trace:
+htmlspecialchars - [internal], line ??
+h - CORE\Cake\basics.php, line 231
+FormHelper::_selectOptions() - CORE\Cake\View\Helper\FormHelper.php, line 2786
+FormHelper::select() - CORE\Cake\View\Helper\FormHelper.php, line 2132
+FormHelper::_getInput() - CORE\Cake\View\Helper\FormHelper.php, line 1087
+FormHelper::input() - CORE\Cake\View\Helper\FormHelper.php, line 1051
+include - APP\View\Position\add.ctp, line 54
+View::_evaluate() - CORE\Cake\View\View.php, line 961
+View::_render() - CORE\Cake\View\View.php, line 923
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 960
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+>>>>>>> 4ba238b707e59042f444972b758a91edfb0d8998
 Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
 [main] - APP\webroot\index.php, line 118
 

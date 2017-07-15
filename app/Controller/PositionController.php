@@ -1030,7 +1030,7 @@ class PositionController extends AppController {
 			)
 		);
 		$loc_list = $this->Contact->find('all', array('fields' => array('id','first_name','last_name'),
-		'order' => array('first_name ASC'),'conditions' => array('status' => '1', 'is_deleted' => 'N',
+		'order' => array('first_name ASC'),'conditions' => array('status' => '0', 'is_deleted' => 'N',
 		'ClientCont.clients_id' => $id), 'joins' => $options));
 		$select .= "<option value=''>Choose SPOC</option>";
 		foreach($loc_list as $record){ 
