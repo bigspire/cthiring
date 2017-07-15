@@ -58,6 +58,7 @@ if($_SESSION['extraction'] == ''){
 	$smarty->assign('last_name', $string[$name_key+1]);
 	$smarty->assign('email', $mail);
 	$smarty->assign('mobile', $mobile);
+	$_SESSION['extraction'] = 'done';
 }
 $smarty->assign('dob_default', date('d/m/Y', strtotime('-18 years')));
 // role based validation
@@ -417,6 +418,7 @@ if(!empty($_POST)){
 
 		if(!empty($edu_id) && !empty($exp_id) && !empty($resume_id) && !empty($position_id) && !empty($req_res_id)){
 			//echo 'save data';
+			$_SESSION['extraction'] = '';
 			header('Location: ../resume/?action=created');
 		} 
 	}else{
