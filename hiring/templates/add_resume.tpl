@@ -122,6 +122,19 @@
 										<label for="reg_city" generated="true" class="error">{$year_of_expErr}{$month_of_expErr}</label>																						
 										</td>
 							</tr>
+							
+								<tr class="tbl_row">
+										<td width="120" class="tbl_column">Resume File </td>
+										<td>
+<textarea rows = "10" style="width:500px;">
+{$RESUME_DATA}
+</textarea>
+																						
+										</td>
+							</tr>
+
+									
+									
 								</tbody>
 							</table>
 						</div>

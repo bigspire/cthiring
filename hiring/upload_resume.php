@@ -155,6 +155,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 				$row = $mysql->display_result($result);
 				$last_id = $row['inserted_id'];
 				$_SESSION['resume_doc_id'] = $last_id;
+				// write the session to server
+				$_SESSION['resume_doc'] = $new_file;
 				if(empty($_SESSION['client_id']) && empty($_SESSION['req_id'])){
 					$_SESSION['client'] = $_POST['client'];
 					$_SESSION['position_for'] = $_POST['position_for'];
