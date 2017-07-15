@@ -115,11 +115,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 		$attachmenttype = pathinfo($_FILES['resume']['name']);
 		$extension = $attachmenttype['extension'];	
 		// file extensions
-		$extensions = array('doc','docx'); 
+		$extensions = array('docx'); 
 		
 		// checking the file extension is doc,docx
 		if($fun->extension_validation($extension,$extensions) == true){		
-			$attachmentuploadErr = 'Attachment must be .doc or .docx';
+			$attachmentuploadErr = 'Attachment must be .docx';
 			$test = 'error';
 		}
 		// checking the file size is less than 1 MB		
