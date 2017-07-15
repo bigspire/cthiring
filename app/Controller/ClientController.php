@@ -122,7 +122,7 @@ class ClientController extends AppController {
 		$this->set('title_for_layout', 'Clients - Manage Hiring');	
 		$fields = array('id','client_name','ResLocation.location','created_date',
 		'Creator.first_name','status',"group_concat(distinct CAH.first_name separator ', ') account_holder", 'city',
-		'count(distinct Position.id) no_pos','count(distinct CON.id) no_contact', 'modified_date', 'Client.created_by');
+		'count(distinct Position.id) no_pos','count(distinct CON.id) no_contact', 'modified_date', 'Client.created_by','Client.is_approve');
 		// for export
 		if($this->request->query['action'] == 'export'){ 
 			$data = $this->Client->find('all', array('fields' => $fields,'conditions' => 
