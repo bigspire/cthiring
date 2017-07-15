@@ -661,7 +661,7 @@ $action = 1;?>
 												
 									<td>	
 												
-	<?php if($resume['ReqResume']['status_title'] ==  'Joined' && $resume['ReqResume']['bill_ctc'] == '0.00'):
+	<?php if($resume['ReqResume']['status_title'] ==  'Joined' && ($resume['ReqResume']['bill_ctc'] == '0.00' || $resume['ReqResume']['bill_ctc'] == '')):
 							$action = '1';?>																		
 									<div class="span1"  style="width:110px;">
 									<div class="btn-group">
