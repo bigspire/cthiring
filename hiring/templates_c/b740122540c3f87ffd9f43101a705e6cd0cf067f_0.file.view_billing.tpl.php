@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-07-01 17:59:38
+/* Smarty version 3.1.29, created on 2017-07-15 20:58:15
   from "C:\xampp\htdocs\2017\ctsvn\cthiring\hiring\templates\view_billing.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_595795b28b4ab0_38964748',
+  'unifunc' => 'content_596a348f9b57b8_35683305',
   'file_dependency' => 
   array (
     'b740122540c3f87ffd9f43101a705e6cd0cf067f' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\templates\\view_billing.tpl',
-      1 => 1498911466,
+      1 => 1500132482,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_595795b28b4ab0_38964748 ($_smarty_tpl) {
+function content_596a348f9b57b8_35683305 ($_smarty_tpl) {
 ?>
 
    
@@ -81,11 +81,11 @@ home"><i class="icon-home"></i></a>
 										<td><?php echo $_smarty_tpl->tpl_vars['client_name']->value;?>
 </td>
 									</tr>	
-									<tr>
-										<td width="" class="tbl_column">CTC Offered </td>
-										<td><?php echo $_smarty_tpl->tpl_vars['ctc_offer']->value;?>
+											<tr>
+										<td width="120" class="tbl_column">Joined Date </td>
+										<td><?php echo $_smarty_tpl->tpl_vars['joined_date']->value;?>
 </td>
-									</tr>	
+									</tr>
 								</tbody>
 							</table>
 				</div>
@@ -93,6 +93,11 @@ home"><i class="icon-home"></i></a>
 				<div class="span6">
 							<table class="table table-striped table-bordered dataTable" style="">
 								<tbody>
+								<tr>
+										<td width="" class="tbl_column">CTC Offered </td>
+										<td><?php echo $_smarty_tpl->tpl_vars['ctc_offer']->value;?>
+</td>
+									</tr>
 								<tr>
 									<td class="tbl_column">Billing Amount</td>
 									<td><?php echo $_smarty_tpl->tpl_vars['billing_amount']->value;?>
@@ -105,11 +110,7 @@ home"><i class="icon-home"></i></a>
 </td>
 								</tr>	
 									
-								<tr>
-										<td width="120" class="tbl_column">Joined Date </td>
-										<td><?php echo $_smarty_tpl->tpl_vars['joined_date']->value;?>
-</td>
-									</tr>
+							
 								</tbody>
 							</table>
 					</div>

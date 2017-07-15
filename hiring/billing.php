@@ -84,7 +84,7 @@ foreach($sort_fields as $key => $b_field){
 // if no fields are set, set default sort image
 if(empty($_GET['field'])){		
 	$order = 'desc';			
-	$field = 'req_r.billing_date';			
+	$field = 'ib.created_date';			
 	$smarty->assign('sort_field_created_date', 'sorting desc');
 }	
 $smarty->assign('order', $order);
@@ -104,6 +104,7 @@ try{
 	while($obj = $mysql->display_result($result))
 	{
  		$data[] = $obj;
+		$data[$i]['created_date'] = $fun->convert_date_to_display($obj['created_date']);
  		$data[$i]['billing_date'] = $fun->convert_date_to_display($obj['billing_date']);
  		$data[$i]['status'] = $fun->format_status($obj['st_status'],$obj['st_created'],$obj['st_user'],$obj['st_modified']);
  		$i++;

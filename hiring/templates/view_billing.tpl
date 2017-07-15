@@ -51,10 +51,10 @@
 										<td width="" class="tbl_column">Client Name </td>
 										<td>{$client_name}</td>
 									</tr>	
-									<tr>
-										<td width="" class="tbl_column">CTC Offered </td>
-										<td>{$ctc_offer}</td>
-									</tr>	
+											<tr>
+										<td width="120" class="tbl_column">Joined Date </td>
+										<td>{$joined_date}</td>
+									</tr>
 								</tbody>
 							</table>
 				</div>
@@ -62,6 +62,10 @@
 				<div class="span6">
 							<table class="table table-striped table-bordered dataTable" style="">
 								<tbody>
+								<tr>
+										<td width="" class="tbl_column">CTC Offered </td>
+										<td>{$ctc_offer}</td>
+									</tr>
 								<tr>
 									<td class="tbl_column">Billing Amount</td>
 									<td>{$billing_amount}</td>
@@ -72,10 +76,7 @@
 									<td>{$billing_date}</td>
 								</tr>	
 									
-								<tr>
-										<td width="120" class="tbl_column">Joined Date </td>
-										<td>{$joined_date}</td>
-									</tr>
+							
 								</tbody>
 							</table>
 					</div>
