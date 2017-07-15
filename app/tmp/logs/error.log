@@ -25682,3 +25682,182 @@ Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
 Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
 [main] - APP\webroot\index.php, line 118
 
+2017-07-15 16:33:31 Warning: Warning (2): Missing argument 1 for ClientController::index() in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\ClientController.php, line 34]
+Trace:
+ClientController::index() - APP\Controller\ClientController.php, line 34
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-15 16:33:45 Warning: Warning (2): Missing argument 1 for ClientController::index() in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\ClientController.php, line 34]
+Trace:
+ClientController::index() - APP\Controller\ClientController.php, line 34
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-15 16:34:23 Warning: Warning (2): Missing argument 1 for ClientController::index() in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\ClientController.php, line 34]
+Trace:
+ClientController::index() - APP\Controller\ClientController.php, line 34
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-15 16:34:29 Warning: Warning (2): Missing argument 1 for PositionController::index() in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\PositionController.php, line 33]
+Trace:
+PositionController::index() - APP\Controller\PositionController.php, line 33
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-15 16:34:29 Warning: Warning (2): Missing argument 2 for PositionController::index() in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\PositionController.php, line 33]
+Trace:
+PositionController::index() - APP\Controller\PositionController.php, line 33
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-15 16:34:29 Warning: Warning (2): Missing argument 2 for AppModel::get_team_mem(), called in C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\Position.php on line 320 and defined in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\AppModel.php, line 35]
+Trace:
+AppModel::get_team_mem() - APP\Model\AppModel.php, line 35
+Position::get_team() - APP\Model\Position.php, line 320
+PositionController::index() - APP\Controller\PositionController.php, line 100
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-15 16:34:44 Warning: Warning (2): Missing argument 1 for PositionController::index() in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\PositionController.php, line 33]
+Trace:
+PositionController::index() - APP\Controller\PositionController.php, line 33
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-15 16:34:44 Warning: Warning (2): Missing argument 2 for PositionController::index() in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\PositionController.php, line 33]
+Trace:
+PositionController::index() - APP\Controller\PositionController.php, line 33
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-15 16:34:44 Warning: Warning (2): Missing argument 2 for AppModel::get_team_mem(), called in C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\Position.php on line 320 and defined in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\AppModel.php, line 35]
+Trace:
+AppModel::get_team_mem() - APP\Model\AppModel.php, line 35
+Position::get_team() - APP\Model\Position.php, line 320
+PositionController::index() - APP\Controller\PositionController.php, line 100
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-15 16:34:46 Warning: Warning (2): Missing argument 1 for ClientController::index() in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\ClientController.php, line 34]
+Trace:
+ClientController::index() - APP\Controller\ClientController.php, line 34
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-15 16:34:52 Warning: Warning (2): Missing argument 1 for ClientController::index() in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\ClientController.php, line 34]
+Trace:
+ClientController::index() - APP\Controller\ClientController.php, line 34
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-15 16:34:57 Warning: Warning (2): Missing argument 1 for ClientController::index() in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\ClientController.php, line 34]
+Trace:
+ClientController::index() - APP\Controller\ClientController.php, line 34
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-15 16:35:04 Warning: Warning (2): Missing argument 1 for ClientController::index() in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\ClientController.php, line 34]
+Trace:
+ClientController::index() - APP\Controller\ClientController.php, line 34
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-15 16:36:39 Warning: Warning (2): Missing argument 1 for PositionController::index() in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\PositionController.php, line 33]
+Trace:
+PositionController::index() - APP\Controller\PositionController.php, line 33
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-15 16:36:39 Warning: Warning (2): Missing argument 2 for PositionController::index() in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\PositionController.php, line 33]
+Trace:
+PositionController::index() - APP\Controller\PositionController.php, line 33
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-15 16:36:39 Warning: Warning (2): Missing argument 2 for AppModel::get_team_mem(), called in C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\Position.php on line 320 and defined in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\AppModel.php, line 35]
+Trace:
+AppModel::get_team_mem() - APP\Model\AppModel.php, line 35
+Position::get_team() - APP\Model\Position.php, line 320
+PositionController::index() - APP\Controller\PositionController.php, line 100
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-15 16:38:47 Warning: Warning (2): Missing argument 1 for PositionController::index() in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\PositionController.php, line 33]
+Trace:
+PositionController::index() - APP\Controller\PositionController.php, line 33
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-15 16:38:47 Warning: Warning (2): Missing argument 2 for PositionController::index() in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\PositionController.php, line 33]
+Trace:
+PositionController::index() - APP\Controller\PositionController.php, line 33
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-07-15 16:38:47 Warning: Warning (2): Missing argument 2 for AppModel::get_team_mem(), called in C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\Position.php on line 320 and defined in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\AppModel.php, line 35]
+Trace:
+AppModel::get_team_mem() - APP\Model\AppModel.php, line 35
+Position::get_team() - APP\Model\Position.php, line 320
+PositionController::index() - APP\Controller\PositionController.php, line 100
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
