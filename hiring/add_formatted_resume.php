@@ -462,12 +462,12 @@ if(!empty($_POST)){
 	
 	// array for printing correct field name in error message
 	$fieldtype = array('0', '0','0','0','0','0', '0','1','1','0', '0','0','1','1', '1','1','0','0','0','0','0');
-	$actualfield = array('first name', 'last name','email', 'mobile', 'telephone', 'dob', 'position for',
+	$actualfield = array('first name', 'last name','email', 'mobile', 'telephone', 'dob',
 						'current designation', 'total years of experience','total months of experience',
 						'present CTC','expected CTC','present CTC type','expected CTC type',
 						'notice period','gender', 'present location','nationality', 'language','address');
    $field = array('first_name' => 'first_nameErr', 'last_name' => 'last_nameErr','email' => 'emailErr',
-    'mobile' => 'mobileErr','telephone' => 'telephoneErr','dob_field' => 'dobErr', 'position_for' => 'position_forErr',
+    'mobile' => 'mobileErr','telephone' => 'telephoneErr','dob_field' => 'dobErr',
     'designation_id' => 'positionErr','year_of_exp' => 'year_of_expErr', 'month_of_exp' => 'month_of_expErr',
     'present_ctc' => 'present_ctcErr','expected_ctc' => 'expected_ctcErr',
 	'present_ctc_type' => 'present_ctc_typeErr','expected_ctc_type' => 'expected_ctc_typeErr',

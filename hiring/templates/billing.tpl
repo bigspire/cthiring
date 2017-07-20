@@ -37,8 +37,8 @@
 							<input type="button" value="Search" class="btn btn-success"/></a>
 							{if !$ALERT_MSG}
 								<a href="billing.php?action=export&keyword={$smarty.post.keyword}
-								&f_date={$f_date}&t_date={$t_date}">
-								<button type="button" val="billing.php?action=export&keyword={$smarty.post.keyword}&f_date={$f_date}&t_date={$t_date}" name="export" class="jsRedirect btn btn-warning" >Export Excel</button></a>
+								&f_date={$f_date}&t_date={$t_date}" class="jsRedirect">
+								<button type="button" val="billing.php?action=export&keyword={$smarty.post.keyword}&f_date={$f_date}&t_date={$t_date}" name="export" class="btn btn-warning" >Export Excel</button></a>
 							{/if}
 							<!-- a class="jsRedirect" data-notify-time = '3000'   href="add_billing.php">
 							<input type="button" value="Create Billing" class="btn btn-info"/></a-->	
@@ -71,8 +71,8 @@
 						
 								<label>Billing Till: <input type="text" name="t_date" value="{$t_date}" placeholder="dd/mm/yyyy" class="input-small datepick" aria-controls="dt_gal"></label>
 						
-								<label style="margin-top:18px;"><a href="billing.php" class="jsRedirect"><input value="Reset" type="button" class="btn"/></a></label>
 							<label style="margin-top:18px;"><input type="submit" value="Submit" class="btn btn-gebo" /></label>					
+							<label style="margin-top:18px;"><a href="billing.php" class="jsRedirect"><input value="Reset" type="button" class="btn"/></a></label>
 							
 							</div>
 

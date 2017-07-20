@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-06-22 12:04:04
+/* Smarty version 3.1.29, created on 2017-07-20 15:47:13
   from "C:\xampp\htdocs\2017\ctsvn\cthiring\hiring\templates\roles.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_594b64dc197992_79033384',
+  'unifunc' => 'content_59708329cfc938_34574716',
   'file_dependency' => 
   array (
     'b263e77d819af3e1265c40e4d8d098a14a918885' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\templates\\roles.tpl',
-      1 => 1498047051,
+      1 => 1500545663,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_594b64dc197992_79033384 ($_smarty_tpl) {
+function content_59708329cfc938_34574716 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -60,10 +60,10 @@ home"><i class="icon-home"></i></a>
 							<?php if (!$_smarty_tpl->tpl_vars['ALERT_MSG']->value) {?>
 								<a href="roles.php?action=export&keyword=<?php echo $_smarty_tpl->tpl_vars['keyword']->value;?>
 &status=<?php echo $_smarty_tpl->tpl_vars['status']->value;?>
-">
+" class="jsRedirect">
 								<button type="button" val="roles.php?action=export&keyword=<?php echo $_smarty_tpl->tpl_vars['keyword']->value;?>
 &status=<?php echo $_smarty_tpl->tpl_vars['status']->value;?>
-" name="export" class="jsRedirect btn btn-warning" >Export Excel</button></a>
+" name="export" class="btn btn-warning" >Export Excel</button></a>
 							<?php }?>
 							<a class="jsRedirect" data-notify-time = '3000'   href="add_role.php">
 							<input type="button" value="Create Role" class="btn btn-info"/></a>							

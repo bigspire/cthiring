@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-06-22 16:58:46
+/* Smarty version 3.1.29, created on 2017-07-20 14:47:54
   from "C:\xampp\htdocs\2017\ctsvn\cthiring\hiring\templates\view_profile.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_594ba9ee343760_03659175',
+  'unifunc' => 'content_5970754272d7a7_51160216',
   'file_dependency' => 
   array (
     'f60182f500f02054eeb19a1629a82d2d851785ce' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\templates\\view_profile.tpl',
-      1 => 1498130922,
+      1 => 1500542204,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_594ba9ee343760_03659175 ($_smarty_tpl) {
+function content_5970754272d7a7_51160216 ($_smarty_tpl) {
 ?>
 
    
@@ -113,9 +113,9 @@ home"><i class="icon-home"></i></a>
 										
 											
 											<div class="control-group">
-												<div class="controls">
+												<div class="controls">						
 												<a href="<?php echo @constant('webroot');?>
-home"><button type="button" class="btn">Back</button></a>
+home" class="jsRedirect"><button type="button" class="btn">Back</button></a>
 												</div>
 											</div>
 										</fieldset>

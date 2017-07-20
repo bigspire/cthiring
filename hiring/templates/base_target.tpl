@@ -33,8 +33,8 @@
 								<a class="jsRedirect toggleSearch"  href="javascript:void(0)">
 							<input type="button" value="Search" class="btn btn-success"/></a>
 							{if !$ALERT_MSG}
-								<a href="base_target.php?action=export&keyword={$smarty.post.keyword}">
-								<button type="button" val="base_target.php?action=export&keyword={$smarty.post.keyword}" name="export" class="jsRedirect btn btn-warning" >Export Excel</button></a>
+								<a href="base_target.php?action=export&keyword={$smarty.post.keyword}" class="jsRedirect">
+								<button type="button" val="base_target.php?action=export&keyword={$smarty.post.keyword}" name="export" class="btn btn-warning" >Export Excel</button></a>
 							{/if}
 						<a class="jsRedirect" data-notify-time = '3000'   href="add_base_target.php"><input type="button" value="Create Base Target" class="btn btn-info"/></a>							
 						</div>

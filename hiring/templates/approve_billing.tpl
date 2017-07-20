@@ -37,8 +37,8 @@
 							<input type="button" value="Search" class="btn btn-success"/></a>
 							{if !$ALERT_MSG}
 								<a href="approve_billing.php?action=export&keyword={$smarty.post.keyword}
-								&employee={$smarty.post.employee}&f_date={$f_date}&t_date={$t_date}">
-								<button type="button" val="approve_billing.php?action=export&keyword={$smarty.post.keyword}&employee={$smarty.post.employee}&f_date={$f_date}&t_date={$t_date}" name="export" class="jsRedirect btn btn-warning" >Export Excel</button></a>
+								&employee={$smarty.post.employee}&f_date={$f_date}&t_date={$t_date}" class="jsRedirect">
+								<button type="button" val="approve_billing.php?action=export&keyword={$smarty.post.keyword}&employee={$smarty.post.employee}&f_date={$f_date}&t_date={$t_date}" name="export" class="btn btn-warning" >Export Excel</button></a>
 							{/if}
 						</div>
 						
