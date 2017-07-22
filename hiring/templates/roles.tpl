@@ -31,8 +31,8 @@
 								<a class="jsRedirect toggleSearch"  href="javascript:void(0)">
 							<input type="button" value="Search" class="btn btn-success"/></a>
 							{if !$ALERT_MSG}
-								<a href="roles.php?action=export&keyword={$keyword}&status={$status}">
-								<button type="button" val="roles.php?action=export&keyword={$keyword}&status={$status}" name="export" class="jsRedirect btn btn-warning" >Export Excel</button></a>
+								<a href="roles.php?action=export&keyword={$keyword}&status={$status}" class="jsRedirect">
+								<button type="button" val="roles.php?action=export&keyword={$keyword}&status={$status}" name="export" class="btn btn-warning" >Export Excel</button></a>
 							{/if}
 							<a class="jsRedirect" data-notify-time = '3000'   href="add_role.php">
 							<input type="button" value="Create Role" class="btn btn-info"/></a>							

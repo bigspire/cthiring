@@ -15,9 +15,9 @@
                                 <li>
                                     <a href="{$smarty.const.webroot}home"><i class="icon-home"></i></a>
                                 </li>                        
-                                <li>
-                                    <a href="">Mailer Templates</a>
-                                </li>
+                                <!-- li>
+                                    <a href="mailer_template.php">Mailer Templates</a>
+                                </li-->
                                  <li>
                                   {$template}
                                 </li>

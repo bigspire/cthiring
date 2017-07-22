@@ -41,7 +41,7 @@
 						<tr class="tbl_row">
 							<td width="120" class="tbl_column">Grade <span class="f_req">*</span></td>
 							<td>										
-								<input type="text" tabindex="1" name="grade_name" id="keyword" value="{$grade_name}" class="span8 ui-autocomplete-input" autocomplete="off">
+								<input type="text" tabindex="1" name="grade_name" value="{$grade_name}" class="span8 ui-autocomplete-input" autocomplete="off">
 								<label for="reg_city" generated="true" class="error">{$grade_nameErr} </label>									
 							</td>	
 						</tr>																											

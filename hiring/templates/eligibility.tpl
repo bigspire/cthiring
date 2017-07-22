@@ -30,8 +30,8 @@
 								<a class="jsRedirect toggleSearch"  href="javascript:void(0)">
 							<input type="button" value="Search" class="btn btn-success"/></a>
 							{if !$ALERT_MSG}
-								<a href="eligibility.php?action=export&status={$status}&type={$smarty.post.type}">
-								<button type="button" val="eligibility.php?action=export&status={$status}&type={$smarty.post.type}" name="export" class="jsRedirect btn btn-warning" >Export Excel</button></a>
+								<a href="eligibility.php?action=export&status={$status}&type={$smarty.post.type}" class="jsRedirect">
+								<button type="button" val="eligibility.php?action=export&status={$status}&type={$smarty.post.type}" name="export" class="btn btn-warning" >Export Excel</button></a>
 							{/if}
 							
 							<a class="jsRedirect" data-notify-time = '3000'   href="add_eligibility.php">

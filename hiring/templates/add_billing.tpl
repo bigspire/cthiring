@@ -66,13 +66,13 @@
 									</td>
 									</tr>		
 									<tr>
-									
 									<tr>
-										<td width="120" class="tbl_column">CTC Offered <span class="f_req">*</span></td>
+										<td width="120" class="tbl_column">Joined Date <span class="f_req">*</span></td>
 										<td> 
-										<input type="text" name="ctc_offer" disabled value="{if $ctc_offer}{$ctc_offer}{else}{$smarty.post.ctc_offer}{/if}">
+										<input type="text" name="joined_date" disabled value="{if $joined_date}{$joined_date}{else}{$smarty.post.joined_date}{/if}">										
 										</td>
-									</tr>										
+									</tr>
+																			
 								</tbody>
 							</table>
 						</div>
@@ -80,26 +80,32 @@
 						<div class="span6">		
 							<table class="table table-bordered dataTable" style="margin-bottom:0;">
 								<tbody>
-							
 									<tr class="tbl_row">
-										<td width="120" class="tbl_column">Billing Amount <span class="f_req">*</span></td>
+										<td width="120" class="tbl_column">CTC Offered <span class="f_req">*</span></td>
 										<td> 
-										<input type="text" name="billing" disabled value="{if $billing_amount}{$billing_amount}{else}{$smarty.post.billing_amount}{/if}">
+										<input type="text" name="ctc_offer"  value="{$ctc_offer}">
+										<label for="reg_city" generated="true" class="error">{$ctc_offerErr}</label>									
+						
 										</td>
 									</tr>
 									<tr>
+										<td width="120" class="tbl_column">Billing Amount <span class="f_req">*</span></td>
+										<td> 
+										<input type="text" name="billing_amount"  value="{$billing_amount}">
+										<label for="reg_city" generated="true" class="error">{$billing_amountErr}</label>									
+						
+										</td>
+									</tr>
+									<tr class="tbl_row">
 										<td width="120" class="tbl_column">Billing Date <span class="f_req">*</span></td>
 										<td> 
-										<input type="text" name="billing_date"  disabled value="{if $billing_date}{$billing_date}{else}{$smarty.post.billing_date}{/if}">									
+										<input type="text" name="billing_date"  value="{$billing_date}" class="datepick">									
+										<label for="reg_city" generated="true" class="error">{$billing_dateErr}</label>									
+						
 										</td>
 									</tr>
 													
-									<tr class="tbl_row">
-										<td width="120" class="tbl_column">Joined Date <span class="f_req">*</span></td>
-										<td> 
-										<input type="text" name="joined_date" disabled value="{if $joined_date}{$joined_date}{else}{$smarty.post.joined_date}{/if}">										
-										</td>
-									</tr>
+									
 								</tbody>
 							</table>
 						</div>

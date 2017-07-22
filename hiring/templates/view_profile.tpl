@@ -81,8 +81,8 @@
 										
 											
 											<div class="control-group">
-												<div class="controls">
-												<a href="{$smarty.const.webroot}home"><button type="button" class="btn">Back</button></a>
+												<div class="controls">						
+												<a href="{$smarty.const.webroot}home" class="jsRedirect"><button type="button" class="btn">Back</button></a>
 												</div>
 											</div>
 										</fieldset>
