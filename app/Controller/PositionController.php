@@ -169,7 +169,7 @@ class PositionController extends AppController {
 		if($rec_status =='pending'){
 			$approveCond = array('Position.status' => 'I', 'Position.is_approve' => 'W');
 		}else{
-			$approveCond = array('Position.status' => 'A', 'Position.is_approve' => 'A');
+			// $approveCond = array('Position.status' => 'A', 'Position.is_approve' => 'A');
 		}
 		
 		
@@ -241,8 +241,39 @@ class PositionController extends AppController {
 					// save the file name
 					$this->save_job_desc($this->Position->id);
 					$this->Position->saveField('job_desc_file', $this->Position->id.'_'.$this->request->data['Position']['desc_file']['name']);
+					// send mail to approver
+					$sub = 'Manage Hiring - Position created by '.ucfirst($this->Session->read('USER.Login.first_name')).' '.ucfirst($this->Session->read('USER.Login.last_name'));
+					$from = ucfirst($this->Session->read('USER.Login.first_name')).' '.ucfirst($this->Session->read('USER.Login.last_name'));
+					// get leader email address
+					$leader_data = $this->Position->Creator->find('all', array('conditions' => array('roles_id' => '39'),
+					'fields' => array('Creator.id',	'Creator.first_name','Creator.last_name','Creator.email_id')));
+					// get the Business Head					
+						$options = array(								
+								array('table' => 'req_team',
+										'alias' => 'ReqTeam',					
+										'type' => 'INNER',
+										'conditions' => array('`ReqTeam.requirements_id` = `Position`.`id`', )
+								),
+								array('table' => 'users',
+										'alias' => 'TeamMember',					
+										'type' => 'INNER',
+										'conditions' => array('`ReqTeam.users_id` = `TeamMember`.`id`', )
+								)
+							);
+					$position_data = $this->Position->find('all', array('conditions' => array('Position.id' => $this->Position->id),
+					'fields' => array('Creator.id',	'Creator.first_name','Creator.last_name', 'Client.client_name',
+					"group_concat(distinct TeamMember.first_name  SEPARATOR ', ') team_member"),'joins' => $options));
+					$vars = array('from_name' => $from, 'to_name' => ucwords($leader_data[0]['Creator']['first_name'].' '.$leader_data[0]['Creator']['last_name']), 'position' => $this->request->data['Position']['job_title'],
+					'client_name' => $position_data[0]['Client']['client_name'], 'no_opening' => $this->request->data['Position']['no_job'], 'team_member' => $position_data[0][0]['team_member'],
+					'location' => $this->request->data['Position']['location']);
+					// notify superiors						
+					if(!$this->send_email($sub, 'add_position', 'noreply@managehiring.com', $leader_data[0]['Creator']['email_id'],$vars)){	
+						// show the msg.								
+						$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Problem in sending the mail for approval...', 'default', array('class' => 'alert alert-error'));				
+					}else{
+						$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Position created successfully. After approval, it will be visible', 'default', array('class' => 'alert alert-warning'));				
+					}
 					// show the msg.
-					$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Position created successfully. After approval, it will be visible', 'default', array('class' => 'alert alert-warning'));				
 					$this->redirect('/position/');
 				}else{
 					// show the error msg.
@@ -567,7 +598,7 @@ class PositionController extends AppController {
 		);
 		$fields = array('id','Client.id','job_title','job_code','education','location','no_job','min_exp','max_exp','ctc_from','ctc_to','ReqStatus.title',
 		'Client.client_name', 'Creator.first_name','created_date','modified_date', 'count(DISTINCT  ReqResume.id) cv_sent','req_status_id',
-		'group_concat(DISTINCT ReqResume.status_title) joined', 'start_date', 'end_date', //"group_concat(distinct ResOwner.first_name  SEPARATOR ', ') team_member",
+		'group_concat(ReqResume.status_title) joined', 'start_date', 'end_date', //"group_concat(distinct ResOwner.first_name  SEPARATOR ', ') team_member",
 		"group_concat(distinct AH.first_name  SEPARATOR ', ') ac_holder","group_concat(distinct TeamMember.first_name  SEPARATOR ', ') team_member2",
 		'skills','Contact.first_name','Contact.email','Contact.mobile','Contact.phone','Contact.id','FunctionArea.function',
 		'Position.created_by','Position.is_approve');
@@ -611,12 +642,49 @@ class PositionController extends AppController {
 			$status = $st == 'approve' ? 'A' : 'I';
 			$is_approve = $st == 'approve' ? 'A' : 'R';
 			$data = array('id' => $id, 'status' => $status, 'approve_date' => $this->Functions->get_current_date(),
-			'is_approve' => $is_approve);		
+			'is_approve' => $is_approve, 'remarks' =>  $this->request->data['Position']['remarks']);
+			$approve_validation = $is_approve == 'R' ? true: false;	
+			$approve_msg = $is_approve == 'R' ? 'rejected': 'approved';				
 			if ($this->request->is('post') && $st != '') { 
+				// set the validation
+				$this->Position->set($this->request->data);
+				if($is_approve == 'R'){
+					$validate = $this->Position->validates(array('fieldList' => array('remarks')));
+				}else{
+					$validate = true;
+				}
 				// update the todo
-				if($this->Position->save($data, array('validate' => false))){		
-					$this->set('form_status', '1');
-					$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Position updated successfully.', 'default', array('class' => 'alert alert-success'));				
+				if($validate){
+					if($this->Position->save($data, array('validate' => false))){	
+						$sub = 'Manage Hiring - Position '.$approve_msg.' by '.ucfirst($this->Session->read('USER.Login.first_name')).' '.ucfirst($this->Session->read('USER.Login.last_name'));
+						$from = ucfirst($this->Session->read('USER.Login.first_name')).' '.ucfirst($this->Session->read('USER.Login.last_name'));
+							$options = array(								
+									array('table' => 'req_team',
+											'alias' => 'ReqTeam',					
+											'type' => 'INNER',
+											'conditions' => array('`ReqTeam.requirements_id` = `Position`.`id`', )
+									),
+									array('table' => 'users',
+											'alias' => 'TeamMember',					
+											'type' => 'INNER',
+											'conditions' => array('`ReqTeam.users_id` = `TeamMember`.`id`', )
+									)
+								);
+						$position_data = $this->Position->find('all', array('conditions' => array('Position.id' => $id),
+						'fields' => array('Creator.email_id', 'Creator.first_name','Creator.last_name', 'Client.client_name',
+						"group_concat(distinct TeamMember.first_name  SEPARATOR ', ') team_member", 'Position.job_title',
+						'Position.no_job','Position.location'), 'joins' => $options));
+						$vars = array('from_name' => $from, 'to_name' => ucwords($position_data[0]['Creator']['first_name'].' '.$position_data[0]['Creator']['last_name']), 'position' => $position_data[0]['Position']['job_title'],
+						'client_name' => $position_data[0]['Client']['client_name'], 'no_opening' => $position_data[0]['Position']['no_job'], 'team_member' => $position_data[0][0]['team_member'],
+						'location' => $position_data[0]['Position']['location'], 'remarks' => $this->request->data['Position']['remarks'], 'approve_msg' => $approve_msg);					
+						if(!$this->send_email($sub, 'approve_position', 'noreply@managehiring.com', $position_data[0]['Creator']['email_id'],$vars)){
+							// show the msg.								
+							$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Problem in sending the mail for approval...', 'default', array('class' => 'alert alert-error'));				
+						}else{
+							$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Position '.$approve_msg.' successfully.', 'default', array('class' => 'alert alert-warning'));
+						}
+						$this->set('form_status', '1');
+					}
 
 				}
 			}

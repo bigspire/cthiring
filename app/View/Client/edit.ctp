@@ -132,7 +132,7 @@
 						<td>	
 						
 	<?php echo $this->Form->input('account_holder', array('div'=> false,'type' => 'select', 'label' => false, 
-		'class' => 'span8 chosen-select', 'multiple' => 'multiple', 'empty' => 'Select', 'required' => false, 'placeholder' => '', 
+		'class' => 'span8 chosen-select', 'multiple' => 'multiple',  'required' => false, 'placeholder' => '', 
 		'style' => "clear:left", 'options' => $userList, 'selected' => $acholderList, 'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 
 					
 

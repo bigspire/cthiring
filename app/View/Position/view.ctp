@@ -252,7 +252,7 @@
 					
 					
 					</div></div>
-			<?php if($position_data['Position']['is_approve'] == 'W'):?>
+			<?php if($position_data['Position']['is_approve'] == 'W'  && $this->Session->read('USER.Login.roles_id') == '39'):?>
 
 							<div class="form-actions">
 <a class="iframeBox unreadLink" rel="tooltip" title="Approve Position" href="<?php echo $this->webroot;?>position/remark/approve/<?php echo $position_data['Position']['id'];?>" val="40_50"><input type="button" value="Approve" class="btn btn btn-success"/></a>

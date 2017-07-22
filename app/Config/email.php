@@ -41,7 +41,7 @@ class EmailConfig {
 
 	public $default = array(
 		'transport' => 'Mail',
-		'from' => 'noreply@ct-hiring.in'
+		'from' => 'noreply@managehiring.com'
 		//'headerCharset' => 'utf-8',
 	);
 	

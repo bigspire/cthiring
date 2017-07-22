@@ -222,6 +222,13 @@ class Position extends AppModel {
                 'required' => true,
                 'message'  => 'Please select the interview duration'
             )
+        ),
+		'remarks' => array(		
+            'empty' => array(
+                'rule'     => 'notEmpty',
+                'required' => true,
+                'message'  => 'Please enter the reason to reject'
+            )
         )		
 	);
 	

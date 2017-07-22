@@ -293,19 +293,18 @@ class AppController extends Controller {
 		$Email->subject($subject);
 		$Email->to($to);
 		$Email->from($from);
-		$Email->config('default');
-		//$Email->delivery = 'smtp';
+		$Email->config('gmail');
+		$Email->delivery = 'smtp';
 		if(!empty($src)){
 			$Email->attachments($src);
 		}
-		
-		try {
+		try{
 			$Email->send();
 			return true;
-		} catch (Exception $e) {
+		}catch (Exception $e){
 			//$this->write_log($e->getMessage().$this->Functions->get_current_date());			
 			return false;
-		} 
+		}
 				
 	}
 	

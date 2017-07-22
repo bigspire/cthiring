@@ -42,9 +42,13 @@
 				<tbody> 
 				<tr class="tbl_row" >
 					<td width="120" class="tbl_column">Remarks
+					<?php if($this->request->params['pass']['0'] == 'reject'):?>
+					<span class="f_req">*</span>
+					<?php endif; ?>
+					
 					</td>
 						<td>
-					<?php echo $this->Form->input('remarks', array('div'=> false,'type' => 'text', 'label' => false, 'class' => 'span8', 'cols' => '10', 'rows' => '3',
+					<?php echo $this->Form->input('remarks', array('div'=> false,'type' => 'text', 'label' => false, 'class' => 'span8', 'cols' => '10', 'rows' => '6',
   'required' => false, 'placeholder' => '',	'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 
 
 						</td>	
