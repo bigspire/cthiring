@@ -402,7 +402,7 @@ if(!empty($_POST)){
 			'".$fun->is_white_space($mysql->real_escape_str($_POST['present_location']))."','".$fun->is_white_space($mysql->real_escape_str($_POST['native_location']))."',
  			'".$mysql->real_escape_str($_POST['notice_period'])."','".$mysql->real_escape_str($_POST['designation_id'])."',
  			'".$fun->is_white_space($mysql->real_escape_str($_POST['family']))."','".$mysql->real_escape_str($total_exp)."',
- 			'".$date."','".$modified_by."','N','".$mysql->real_escape_str($_SESSION['resume_doc_id'])."',
+ 			'".$date."','".$modified_by."','N',
  			'".$fun->is_white_space($mysql->real_escape_str($_POST['consultant']))."',
  			'".$fun->is_white_space($mysql->real_escape_str($_POST['interview_availability']))."',
 			'".$fun->is_white_space($mysql->real_escape_str($_POST['certification']))."')";

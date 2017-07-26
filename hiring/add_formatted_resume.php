@@ -161,16 +161,10 @@ if(empty($_POST)){
 		$tot = 0;
 		while($row = $mysql->display_result($result)){
 			// post of assign asset fields value
-			$total_experience = $row['experience'];
-			if($total_experience == '0'){
-				$year_of_expData[$tot] = '0';
-				$month_of_expData[$tot] = '0';
-			}else{
-				$total_yr_exp = explode(".", $total_experience);
-				$year_of_expData[$tot] = $total_yr_exp[0];
-				$month_of_expData[$tot] = $total_yr_exp[1];
-			}
-			
+			$from_year_of_expData[$tot] = $row['from_year'];
+			$from_month_of_expData[$tot] = $row['from_month'];
+			$to_year_of_expData[$tot] = $row['to_year'];
+			$to_month_of_expData[$tot] = $row['to_month'];
 			$desigData[$tot] = $row['designation_id'];
 			$areaData[$tot] = $row['skills'];
 			$companyData[$tot] = $row['company'];
@@ -185,8 +179,10 @@ if(empty($_POST)){
 			
 		$smarty->assign('desigData', $desigData);
 		$smarty->assign('areaData', $areaData);
-		$smarty->assign('year_of_expData', $year_of_expData);
-		$smarty->assign('month_of_expData', $month_of_expData);
+		$smarty->assign('from_year_of_expData', $from_year_of_expData);
+		$smarty->assign('from_month_of_expData', $from_month_of_expData);
+		$smarty->assign('to_year_of_expData', $to_year_of_expData);
+		$smarty->assign('to_month_of_expData', $to_month_of_expData);
 		$smarty->assign('companyData', $companyData);
 		$smarty->assign('company_profileData', $company_profileData);
 		$smarty->assign('worklocData', $worklocData);
@@ -367,8 +363,10 @@ if(!empty($_POST)){
 		
 		$desigData[] = $_POST['desig_'.$i];
 		$areaData[] = $_POST['area_'.$i];
-		$year_of_expData[] = $_POST['year_of_exp_'.$i];
-		$month_of_expData[] = $_POST['month_of_exp_'.$i];
+		$from_year_of_expData[] = $_POST['from_year_of_exp_'.$i];
+		$from_month_of_expData[] = $_POST['from_month_of_exp_'.$i];
+		$to_year_of_expData[] = $_POST['to_year_of_exp_'.$i];
+		$to_month_of_expData[] = $_POST['to_month_of_exp_'.$i];
 		$worklocData[] = $_POST['workloc_'.$i];
 		$companyData[] = $_POST['company_'.$i];	
 		$company_profileData[] = $_POST['company_profile_'.$i];
@@ -378,12 +376,15 @@ if(!empty($_POST)){
 		$reporting_toData[] = $_POST['reporting_to_'.$i];
 		
 		// array for printing correct field name in error message 
-		$fieldtype3 = array('1','1','1','0','0','0','0','0','0','0'); 
-		$actualfield3 = array('designation','employment year','employment month','location of work',
+		$fieldtype3 = array('1','1','1','1','1','0','0','0','0','0','0','0'); 
+		$actualfield3 = array('designation','employment from year','employment from month',
+		'employment to year','employment to month','location of work',
 		'area of specialization/expertise','company name','company profile','key responsibility',
 		'key achievement','reporting to'); 
-		$field_ar3 = array('desig_'.$i => 'desigErr', 'year_of_exp_'.$i => 'year_of_expErr',
-			'month_of_exp_'.$i => 'month_of_expErr','workloc_'.$i => 'worklocErr','area_'.$i => 'areaErr',
+		$field_ar3 = array('desig_'.$i => 'desigErr', 'from_year_of_exp_'.$i => 'from_year_of_expErr',
+			'from_month_of_exp_'.$i => 'from_month_of_expErr','to_year_of_exp_'.$i => 'to_year_of_expErr',
+			'to_month_of_exp_'.$i => 'to_month_of_expErr',
+			'workloc_'.$i => 'worklocErr','area_'.$i => 'areaErr',
 			'company_'.$i => 'companyErr','company_profile_'.$i => 'company_profileErr',
 			'key_responsibility_'.$i => 'key_responsibilityErr','key_achievement_'.$i => 'key_achievementErr',
 			'reporting_to_'.$i => 'reporting_toErr'); 
@@ -401,8 +402,10 @@ if(!empty($_POST)){
 	}
 	$smarty->assign('desigData', $desigData);
 	$smarty->assign('areaData', $areaData);
-	$smarty->assign('year_of_expData', $year_of_expData);
-	$smarty->assign('month_of_expData', $month_of_expData);
+	$smarty->assign('from_year_of_expData', $from_year_of_expData);
+	$smarty->assign('from_month_of_expData', $from_month_of_expData);
+	$smarty->assign('to_year_of_expData', $to_year_of_expData);
+	$smarty->assign('to_month_of_expData', $to_month_of_expData);
 	$smarty->assign('companyData', $companyData);
 	$smarty->assign('worklocData', $worklocData);
 	$smarty->assign('vitalData', $vitalData);
@@ -551,7 +554,7 @@ if(!empty($_POST)){
 			'".$fun->is_white_space($mysql->real_escape_str($_POST['present_location']))."','".$fun->is_white_space($mysql->real_escape_str($_POST['native_location']))."',
  			'".$mysql->real_escape_str($_POST['notice_period'])."','".$mysql->real_escape_str($_POST['designation_id'])."',
  			'".$fun->is_white_space($mysql->real_escape_str($_POST['family']))."','".$mysql->real_escape_str($total_exp)."',
- 			'".$date."','".$modified_by."','N','".$mysql->real_escape_str($_SESSION['resume_doc_id'])."',
+ 			'".$date."','".$modified_by."','N',
  			'".$fun->is_white_space($mysql->real_escape_str($_POST['personality']))."',
  			'".$fun->is_white_space($mysql->real_escape_str($_POST['interview_availability']))."',
 			'".$fun->is_white_space($mysql->real_escape_str($_POST['achievement']))."',
@@ -601,6 +604,7 @@ if(!empty($_POST)){
 			$language_id = $row['last_inserted_id'];
 		}
 		
+		/*
 		// query to add position for details
 		$query = "CALL edit_req_resume_position('".$modified_by."','".$date."',
 			'".$mysql->real_escape_str($_POST['position_for'])."','$getid')";
@@ -615,6 +619,7 @@ if(!empty($_POST)){
 		}catch(Exception $e){
 			echo 'Caught exception: ',  $e->getMessage(), "\n";
 		}
+		*/
 		
 		// query to delete education details
 		$query = "CALL delete_res_edu('$getid')";
@@ -695,7 +700,10 @@ if(!empty($_POST)){
 		
 		for($i = 0; $i < $_POST['exp_count']; $i++){
 			$desigData = $_POST['desig_'.$i];
-			$expData = $_POST['year_of_exp_'.$i].'.'.$_POST['month_of_exp_'.$i];
+			$from_year_exp = $_POST['from_year_of_exp_'.$i];
+			$from_month_exp = $_POST['from_month_of_exp_'.$i];
+			$to_year_exp = $_POST['to_year_of_exp_'.$i];
+			$to_month_exp = $_POST['to_month_of_exp_'.$i];
 			$areaData = $_POST['area_'.$i];
 			$companyData = $_POST['company_'.$i];
 			$vitalData = $_POST['vital_'.$i];
@@ -707,7 +715,10 @@ if(!empty($_POST)){
 			
 			// query to add experience details
 			$query = "CALL add_full_res_experience('$getid','".$mysql->real_escape_str($desigData)."',
-				'".$mysql->real_escape_str($expData)."',
+				'".$mysql->real_escape_str($from_month_exp)."',
+				'".$mysql->real_escape_str($from_year_exp)."',
+				'".$mysql->real_escape_str($to_month_exp)."',
+				'".$mysql->real_escape_str($to_year_exp)."',
 				'".$fun->is_white_space($mysql->real_escape_str($worklocData))."',
 				'".$fun->is_white_space($mysql->real_escape_str($areaData))."',
 				'".$fun->is_white_space($mysql->real_escape_str($companyData))."',
@@ -768,7 +779,7 @@ if(!empty($_POST)){
 				echo 'Caught exception: ',  $e->getMessage(), "\n";
 			}
 		}
-		if(!empty($edu_id) && !empty($exp_id) && !empty($train_id) && !empty($language_id) && !empty($resume_id) && !empty($position_id)){
+		if(!empty($edu_id) && !empty($exp_id) && !empty($train_id) && !empty($language_id) && !empty($resume_id)){
 			// echo 'save data';die;
 			header('Location: ../resume/?action=created');
 		} 
@@ -783,30 +794,40 @@ $smarty->assign('grade_status', array('' => 'Select', '1' => 'Active', '2' => 'I
 // smarty drop down array for type
 $smarty->assign('grade_type', array('' => 'Select', 'I' => 'Individual', 'T' => 'Team'));
 
-// smarty drop down array for experience year 
+// smarty drop down for exp month and year
+$smarty->assign('exp_month', array('1' => 'Jan', '2' => 'Feb', '3' => 'Mar', '4' => 'Apr', '5' => 'May', '6' => 'Jun',
+ '7' => 'Jul', '8' => 'Aug', '9' => 'Sep', '10' => 'Oct', '11' => 'Nov', '12' => 'Dec'));
+ 
 $exp_yr = array(); 
+for($l = date('Y'); $l >= 1950; $l--){ 
+	$exp_yr[$l] = $l; 
+}
+$smarty->assign('exp_yr', $exp_yr);
+
+// smarty drop down array for experience year 
+$total_exp_yr = array(); 
 for($l = 1; $l <= 50; $l++){ 
-$exp_yr[0] = '0 Years';
+$total_exp_yr[0] = '0 Years';
 	if($l == '1') {
-		$exp_yr[$l] = $l.' '.Year; 
+		$total_exp_yr[$l] = $l.' '.Year; 
 	}else {
-		$exp_yr[$l] = $l.' '.Years; 
+		$total_exp_yr[$l] = $l.' '.Years; 
 	}
 } 
-$smarty->assign('exp_yr', $exp_yr);
+$smarty->assign('total_exp_yr', $total_exp_yr);
+
 // smarty drop down array for experience month 
-$exp_month = array(); 
-$exp_month[0] = '0 Months';
+$total_exp_month = array(); 
+$total_exp_month[0] = '0 Months';
 
 for($l = 1; $l <= 11; $l++){
 	if($l == '1') {
-		$exp_month[$l] = $l.' '.Month;
+		$total_exp_month[$l] = $l.' '.Month;
 	}else { 
-		$exp_month[$l] = $l.' '.Months; 
+		$total_exp_month[$l] = $l.' '.Months; 
 	} 
 }
-$smarty->assign('exp_month', $exp_month);
-
+$smarty->assign('total_exp_month', $total_exp_month);
 
 // smarty drop down array for current ctc
 $smarty->assign('ctc_type', array('' => 'Select', 'T' => 'Thousand', 'L' => 'Lacs', 'C' => 'Crore'));
