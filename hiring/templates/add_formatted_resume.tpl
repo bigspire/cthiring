@@ -116,11 +116,11 @@
 										<td>
 										<select name="year_of_exp" tabindex="9" class="span4">
 										<option value="">Year</option>
-										{html_options options=$exp_yr selected=$year_of_exp}	
+										{html_options options=$total_exp_yr selected=$year_of_exp}	
 										</select>
 										<select name="month_of_exp" tabindex="10" class="inline_text span4">
 										<option value="">Month</option>
-										{html_options options=$exp_month selected=$month_of_exp}	
+										{html_options options=$total_exp_month selected=$month_of_exp}	
 										</select>
 										<label for="reg_city" generated="true" class="error">{$year_of_expErr}{$month_of_expErr}</label>																						
 										</td>			
@@ -402,20 +402,31 @@
 										</td>
 							</tr>
 								<tr>
-										<td width="120" class="tbl_column">Employment Period<span class="f_req">*</span></td>
+										<td width="120" class="tbl_column">Employment Period<span class="f_req"> *</span></td>
 										<td>
-										<select name="year_of_exp_#index#" id = "year_of_exp_#index#" tabindex="2" class="span4">
-										<option value="">Year</option>
+										<select name="from_month_of_exp_#index#" id = "from_month_of_exp_#index#" tabindex="3" class="span3">
+										<option value="">From Month</option>
+										{html_options options=$exp_month} 
+										</select>
+										<select name="from_year_of_exp_#index#" id = "from_year_of_exp_#index#" tabindex="2" class="inline_text span3">
+										<option value="">From Year</option>
 										{html_options options=$exp_yr} 
 										</select>
 										
-										<select name="month_of_exp_#index#" id = "month_of_exp_#index#" tabindex="3" class="inline_text span4">
-										<option value="">Month</option>
+										<select name="to_month_of_exp_#index#" id = "to_month_of_exp_#index#" tabindex="3" class="inline_text span3">
+										<option value="">To Month</option>
 										{html_options options=$exp_month} 
 										</select>
 										
-										<label for="reg_city" generated="true" class="error" id="year_of_expErr_#index#"></label>																						
-										<label for="reg_city" generated="true" class="error" id="month_of_expErr_#index#"></label>																						
+										<select name="to_year_of_exp_#index#" id = "to_year_of_exp_#index#" tabindex="2" class="inline_text span3">
+										<option value="">To Year</option>
+										{html_options options=$exp_yr} 
+										</select>
+										<label for="reg_city" generated="true" class="error" id="from_month_of_expErr_#index#"></label>																																
+										<label for="reg_city" generated="true" class="error" id="from_year_of_expErr_#index#"></label>																						
+										<label for="reg_city" generated="true" class="error" id="to_month_of_expErr_#index#"></label>																						
+										<label for="reg_city" generated="true" class="error" id="to_year_of_expErr_#index#"></label>																						
+										
 										</td>
 							</tr>
 							<tr class="tbl_row">
@@ -717,8 +728,10 @@
 	{for $i=0; $i < $expCount; $i++}
 		<input type="hidden" id="desigData_{$i}" name="desigData_{$i}" value="{$desigData[$i]}">
 		<input type="hidden" id="areaData_{$i}" name="areaData_{$i}" value="{$areaData[$i]}">
-		<input type="hidden" id="year_of_expData_{$i}" name="year_of_expData_{$i}" value="{$year_of_expData[$i]}">
-		<input type="hidden" id="month_of_expData_{$i}" name="month_of_expData_{$i}" value="{$month_of_expData[$i]}">
+		<input type="hidden" id="from_year_of_expData_{$i}" name="from_year_of_expData_{$i}" value="{$from_year_of_expData[$i]}">
+		<input type="hidden" id="from_month_of_expData_{$i}" name="from_month_of_expData_{$i}" value="{$from_month_of_expData[$i]}">
+		<input type="hidden" id="to_year_of_expData_{$i}" name="to_year_of_expData_{$i}" value="{$to_year_of_expData[$i]}">
+		<input type="hidden" id="to_month_of_expData_{$i}" name="to_month_of_expData_{$i}" value="{$to_month_of_expData[$i]}">
 		<input type="hidden" id="companyData_{$i}" name="companyData_{$i}" value="{$companyData[$i]}">
 		<input type="hidden" id="worklocData_{$i}" name="worklocData_{$i}" value="{$worklocData[$i]}">
 		<input type="hidden" id="vitalData_{$i}" name="vitalData_{$i}" value="{$vitalData[$i]}">
@@ -728,8 +741,10 @@
 		<input type="hidden" id="reporting_to_Data_{$i}" name="reporting_to_Data_{$i}" value="{$reporting_toData[$i]}">
 		
 		<input type="hidden" id="desig_Err_Data_{$i}"  value="{$expErr[$i]['desigErr']}">
-		<input type="hidden" id="year_of_exp_Err_Data_{$i}"  value="{$expErr[$i]['year_of_expErr']}">
-		<input type="hidden" id="month_of_exp_Err_Data_{$i}"  value="{$expErr[$i]['month_of_expErr']}">
+		<input type="hidden" id="from_year_of_exp_Err_Data_{$i}"  value="{$expErr[$i]['from_year_of_expErr']}">
+		<input type="hidden" id="from_month_of_exp_Err_Data_{$i}"  value="{$expErr[$i]['from_month_of_expErr']}">
+		<input type="hidden" id="to_year_of_exp_Err_Data_{$i}"  value="{$expErr[$i]['to_year_of_expErr']}">
+		<input type="hidden" id="to_month_of_exp_Err_Data_{$i}"  value="{$expErr[$i]['to_month_of_expErr']}">
 		<input type="hidden" id="workloc_Err_Data_{$i}"  value="{$expErr[$i]['worklocErr']}">
 		<input type="hidden" id="area_Err_Data_{$i}"  value="{$expErr[$i]['areaErr']}">
 		<input type="hidden" id="company_Err_Data_{$i}"  value="{$expErr[$i]['companyErr']}">
@@ -933,11 +948,17 @@ $(document).ready(function(){
 			if($('#areaData_'+i).length > 0){ 
 				$('#area_'+i).attr('value', $('#areaData_'+i).val());
 			}
-			if($('#year_of_expData_'+i).length > 0){ 
-				$('#year_of_exp_'+i).attr('value', $('#year_of_expData_'+i).val());
+			if($('#from_year_of_expData_'+i).length > 0){ 
+				$('#from_year_of_exp_'+i).attr('value', $('#from_year_of_expData_'+i).val());
 			}
-			if($('#month_of_expData_'+i).length > 0){ 
-				$('#month_of_exp_'+i).val( $('#month_of_expData_'+i).val());
+			if($('#from_month_of_expData_'+i).length > 0){ 
+				$('#from_month_of_exp_'+i).val( $('#from_month_of_expData_'+i).val());
+			}
+			if($('#to_year_of_expData_'+i).length > 0){ 
+				$('#to_year_of_exp_'+i).attr('value', $('#to_year_of_expData_'+i).val());
+			}
+			if($('#to_month_of_expData_'+i).length > 0){ 
+				$('#to_month_of_exp_'+i).val( $('#to_month_of_expData_'+i).val());
 			}
 			if($('#companyData_'+i).length > 0){ 
 				$('#company_'+i).val( $('#companyData_'+i).val());
@@ -962,11 +983,17 @@ $(document).ready(function(){
 			if($('#desig_Err_Data_'+i).length > 0){ 
 				$('#desigErr_'+i).html($('#desig_Err_Data_'+i).val());
 			}
-			if($('#year_of_exp_Err_Data_'+i).length > 0){ 
-				$('#year_of_expErr_'+i).html($('#year_of_exp_Err_Data_'+i).val());
+			if($('#from_year_of_exp_Err_Data_'+i).length > 0){ 
+				$('#from_year_of_expErr_'+i).html($('#from_year_of_exp_Err_Data_'+i).val());
 			}
-			if($('#month_of_exp_Err_Data_'+i).length > 0){ 
-				$('#month_of_expErr_'+i).html($('#month_of_exp_Err_Data_'+i).val());
+			if($('#from_month_of_exp_Err_Data_'+i).length > 0){ 
+				$('#from_month_of_expErr_'+i).html($('#from_month_of_exp_Err_Data_'+i).val());
+			}
+			if($('#to_year_of_exp_Err_Data_'+i).length > 0){ 
+				$('#to_year_of_expErr_'+i).html($('#to_year_of_exp_Err_Data_'+i).val());
+			}
+			if($('#to_month_of_exp_Err_Data_'+i).length > 0){ 
+				$('#to_month_of_expErr_'+i).html($('#to_month_of_exp_Err_Data_'+i).val());
 			}
 			if($('#workloc_Err_Data_'+i).length > 0){ 
 				$('#worklocErr_'+i).html($('#workloc_Err_Data_'+i).val());

@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-07-01 23:59:55
+/* Smarty version 3.1.29, created on 2017-07-24 10:21:57
   from "C:\xampp\htdocs\2017\ctsvn\cthiring\hiring\templates\approve_billing.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5957ea23749089_48252220',
+  'unifunc' => 'content_59757ceda20fc2_47752414',
   'file_dependency' => 
   array (
     '98d35c6c124046cfa0fb325a72f60608728f355f' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\templates\\approve_billing.tpl',
-      1 => 1498933727,
+      1 => 1500545759,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5957ea23749089_48252220 ($_smarty_tpl) {
+function content_59757ceda20fc2_47752414 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -68,12 +68,12 @@ home"><i class="icon-home"></i></a>
 								&employee=<?php echo $_POST['employee'];?>
 &f_date=<?php echo $_smarty_tpl->tpl_vars['f_date']->value;?>
 &t_date=<?php echo $_smarty_tpl->tpl_vars['t_date']->value;?>
-">
+" class="jsRedirect">
 								<button type="button" val="approve_billing.php?action=export&keyword=<?php echo $_POST['keyword'];?>
 &employee=<?php echo $_POST['employee'];?>
 &f_date=<?php echo $_smarty_tpl->tpl_vars['f_date']->value;?>
 &t_date=<?php echo $_smarty_tpl->tpl_vars['t_date']->value;?>
-" name="export" class="jsRedirect btn btn-warning" >Export Excel</button></a>
+" name="export" class="btn btn-warning" >Export Excel</button></a>
 							<?php }?>
 						</div>
 						
