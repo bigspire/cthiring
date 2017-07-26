@@ -504,7 +504,7 @@ class ResumeController extends AppController {
 					$html2pdf = new HTML2PDF('P', 'A4', 'fr');
 					$html2pdf->pdf->SetDisplayMode('fullpage');
 					$html2pdf->writeHTML($content, isset($_GET['vuehtml']));
-					$html2pdf->Output(ucfirst(strtolower($user_data['Resume']['first_name'])).' '.ucfirst(strtolower($user_data['Resume']['last_name'])).'_snapshot.pdf', 'D');
+					$html2pdf->Output(ucfirst(strtolower($user_data['Resume']['first_name'])).' '.ucfirst(strtolower($user_data['Resume']['last_name'])).'Snapshot.pdf', 'D');
 					// $root = WWW_ROOT.'home';
 					// echo "<script>location.href=$root></script>";								
 				}catch(HTML2PDF_exception $e){
@@ -555,14 +555,32 @@ class ResumeController extends AppController {
 						'alias' => 'ResDoc',					
 						'type' => 'LEFT',
 						'conditions' => array('`ResDoc`.`id` = `Resume`.`resume_doc_id`')
-					)
+					),
+					
+					
+				array('table' => 'res_location',
+				  'alias' => 'ResLocation2',					
+				  'type' => 'LEFT',
+				  'conditions' => array('`ResLocation2`.`id` = `Client`.`res_location_id`')
+				)
+				,	
+				array('table' => 'state',
+				  'alias' => 'State2',					
+				  'type' => 'LEFT',
+				  'conditions' => array('`State2`.`id` = `ResLocation2`.`state_id`')
+				),
+				array('table' => 'res_location',
+				  'alias' => 'ResLocation3',					
+				  'type' => 'LEFT',
+				  'conditions' => array('`ResLocation3`.`id` = `Creator`.`location_id`')
+				)
 			);
 					// get candidate details
 					// get candidate details
-					$user_data2 = $this->Resume->find('all', array('fields' => array('first_name', 'last_name','Designation.designation','education',
-					'total_exp','present_employer','exp_skills','ResLocation.location','present_ctc', 'present_ctc_type',
+					$user_data2 = $this->Resume->find('all', array('fields' => array('first_name', 'last_name','Designation.designation','education','total_exp','present_employer','exp_skills','ResLocation.location','present_ctc', 'present_ctc_type','Client.client_name','ResLocation2.location','State2.state',
 					'expected_ctc_type','expected_ctc','notice_period','dob','gender','present_location','skills',
-					'family','consultant_assess','Position.job_title','ResDoc.resume'),
+					'family','consultant_assess','Position.job_title','ResDoc.resume','address1', 'address2','mobile','mobile2','tech_expert','achievement','personality','about_company','candidate_brief',
+					'email_id','Creator.first_name','Creator.last_name','Resume.created_date'),
 					'conditions' => array('Resume.id' => $id), 'joins' => $options));
 					$user_data = $user_data2[0];
 					// get resume education details
@@ -572,20 +590,23 @@ class ResumeController extends AppController {
 					$edu_data = $data;	
 					// get resume experience details
 					$this->loadModel('ResExp');
-					$data = $this->ResExp->find('all', array('conditions' => array('resume_id' => $id), 'fields' => array('experience','work_location','skills',
-					'company','other_info','Designation.designation'), 'order' => array('ResExp.id' => 'desc')));
+					$data = $this->ResExp->find('all', array('conditions' => array('resume_id' => $id), 'fields' => array('experience','work_location','skills','company','other_info','Designation.designation','key_resp', 'key_achieve', 'reporting',
+					'company_profile','from_month','to_month','from_year','to_year'), 'order' => array('ResExp.id' => 'desc')));
 					$exp_data = $data;
+					// get resume training details
+					$this->loadModel('ResTraining');
+					$data = $this->ResTraining->find('all', array('conditions' => array('resume_id' => $id, 'ResTraining.is_deleted' => 'N'), 'fields' => array('train_desc','train_year','prog_title','location'), 'order' => array('ResTraining.id' => 'desc')));
+					$training_data = $data;
 					// get the HTML
 					ob_start();
 					include(WWW_ROOT.'/vendor/html2pdf/examples/res/autoresume_template.php');
-
 					$content = ob_get_clean();
 					$html2pdf = new HTML2PDF('P', 'A4', 'fr');
 					$html2pdf->pdf->SetDisplayMode('fullpage');
 					$html2pdf->writeHTML($content, isset($_GET['vuehtml']));
 					$html2pdf->addFont('OpenSans', 'normal', 'OpenSans.php');
 					$html2pdf->setDefaultFont('OpenSans');
-					$html2pdf->Output(ucfirst(strtolower($user_data['Resume']['first_name'])).' '.ucfirst(strtolower($user_data['Resume']['last_name'])).'_autoresume.pdf', 'D');
+					$html2pdf->Output(ucfirst(strtolower($user_data['Resume']['first_name'])).' '.ucfirst(strtolower($user_data['Resume']['last_name'])).'_Auto Resume.pdf', 'D');
 					// $root = WWW_ROOT.'home';
 					// echo "<script>location.href=$root></script>";								
 				}catch(HTML2PDF_exception $e){

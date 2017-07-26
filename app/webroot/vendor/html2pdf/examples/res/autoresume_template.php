@@ -105,8 +105,8 @@ td,th,span,p{line-height:27px;font-family: OpenSans, sans-serif;}
 	Chennai – 600030.
 	</td>
 	<td  style="width:35%">T: +91-44-490049002300<br>
-	Email: <span class="ft14">ranjeet@career-tree.in</span><br>
-	<span class="ft14">http://career-tree.in</span>
+	Email: ranjeet@career-tree.in<br>
+	http://career-tree.in
 	
 	</td>
 	
@@ -136,7 +136,7 @@ Confidential Report | <?php echo date('M Y');?><br>
 <span style="margin-left:40px;margin-top:50px;"><img src="<?php echo $img_path;?>"/></span>
 
 <p style="margin-left:250px;margin-top:200px;;" class="confiTitle">CONFIDENTIAL REPORT</p>
-<p style="margin-left:250px;margin-top:10px;font-size:33px;font-weight:bold;">M.P. MURALIDHARAN</p>
+<p style="margin-left:250px;margin-top:10px;font-size:33px;font-weight:bold;"><?php echo ucwords($user_data['Resume']['first_name']. ' '.$user_data['Resume']['last_name']);?></p>
 
   <table cellpadding="0" cellspacing="0" class="submitBy"  style="margin-left:250px;">
 <tbody>
@@ -148,15 +148,15 @@ Confidential Report | <?php echo date('M Y');?><br>
 	</tr>
 	
 	<tr>
-	<td>Global Head of Safety</td>
+	<td><?php echo ucwords($user_data['Position']['job_title']);?></td>
 	</tr>
 	
 	<tr>
-	<td>Vedanta Resources Plc</td>
+	<td><?php echo ucwords($user_data['Client']['client_name']);?></td>
 	</tr>
 	
 	<tr>
-	<td>New Delhi, India</td>
+	<td><?php echo $user_data['ResLocation2']['location'];?>, <?php echo $user_data['State2']['state'];?></td>
 	</tr>
 	
 </tbody>
@@ -173,7 +173,7 @@ Confidential Report | <?php echo date('M Y');?><br>
 	</tr>
 	
 	<tr>
-	<td>Shivani Hazari</td>
+	<td><?php echo ucwords($user_data['Creator']['first_name']. ' '.$user_data['Creator']['last_name']);?></td>
 	</tr>
 	
 	<tr>
@@ -181,7 +181,7 @@ Confidential Report | <?php echo date('M Y');?><br>
 	</tr>
 	
 	<tr>
-	<td>New Delhi, India</td>
+	<td><?php echo $user_data['ResLocation3']['location'];?>, India</td>
 	</tr>
 	
 	<tr>
@@ -196,10 +196,8 @@ Confidential Report | <?php echo date('M Y');?><br>
 
 
 <br><br> <br> <br> <br> <br><br><br> <br> <br><br> <br><br>
-<span style="font-size:14px;color:#bfbbbb;text-align:justify">The information in this report is strictly private and confidential and is based on
-information provided by the candidate. Its use should be restricted tonly those members of the 
-company's management group whare directly involved with the selection of a candidate for the
-position concerned.
+<span style="font-size:14px;color:#bfbbbb;text-align:justify">The information in this report is strictly private and confidential and is based on information provided by the candidate. Its use should be restricted tonly those members of the 
+company's management group whare directly involved with the selection of a candidate for the position concerned.
  </span>
  
   <br> <br> <br><br><br> <br>
@@ -213,25 +211,27 @@ position concerned.
    
 <br><br>
 <span class="p13 ft17" style="font-size:32px;font-weight:bold;" class="headTitle">Career Brief</span><br><br>
-<span style="font-size:22px;">M.P. MURALIDHARAN</span>
+<span style="font-size:22px;"><?php echo ucwords($user_data['Resume']['first_name']. ' '.$user_data['Resume']['first_name']);?></span>
 
 <br><br>
 <table cellpadding="0" cellspacing="0"  class="qualTable">
 <tbody><tr>
 	<td  style="width:20%">Address:</td>
-	<td>Flat no. 301, Aadi Vista Apartments, 6 – Urmi Society, Akota, Baroda – 20, India</td>
+	<td><?php echo $user_data['Resume']['address1'];?><br>
+	<?php echo $user_data['Resume']['address2'];?><br>
+	</td>
 </tr>
 <tr>
 	<td >Telephone:</td>
-	<td>91 491 255 6071</td>
+	<td><?php echo $user_data['Resume']['mobile2'];?></td>
 </tr>
 <tr>
 	<td>Mobile:</td>
-	<td>+91 97 2772 9273</td>
+	<td>	<?php echo $user_data['Resume']['mobile'];?></td>
 </tr>
 <tr>
 	<td>Email:</td>
-	<td><a href="mailto:Mpmurali1@rediffmail.com">Mpmurali1@rediffmail.com</a></td>
+	<td><a href="mailto:<?php echo $user_data['Resume']['email_id'];?>"><?php echo $user_data['Resume']['email_id'];?></a></td>
 </tr>
 </tbody>
 </table>
@@ -242,22 +242,17 @@ position concerned.
 <br><br>
 <table cellpadding="0" cellspacing="0" class="qualTable">
 <tbody>
+
+<?php foreach($edu_data as $key => $edu): ?>
+
 <tr>
-	<td style="width:20%">1994</td>
-	<td style="width:80%">Master of Engineering (Industrial Safety)</td>
+	<td style="width:20%"><?php echo $edu['ResEdu']['year_passing']; ?></td>
+	<td style="width:80%"><?php echo $edu['ResDegree']['degree']; ?>, <?php echo $edu['ResSpec']['spec']; ?></td>
 </tr>
-<tr>
-	<td>&nbsp;</td>
-	<td>Regional Engineering College, Tiruchirapalli, India (Scored 74% overall)</td>
-</tr>
-<tr>
-	<td>1988</td>
-	<td>Bachelor of Technology (Mechanical Engineering)</td>
-</tr>
-<tr>
-	<td>&nbsp;</td>
-	<td>Calicut University, India (Scored 78% with First Class Honours)</td>
-</tr>
+
+ <?php endforeach; ?>
+
+
 </tbody>
 </table>
 <br><br>
@@ -272,18 +267,17 @@ position concerned.
 	<td  style="width:20%">&nbsp;</td>
 	<td style="width:80%">&nbsp;</td>
 </tr>
+
+   <?php foreach($exp_data as $key => $exp): ?>
+   
 <tr>
 	<td>Oct 2009 – Present</td>
-	<td>L&T POWER</td>
+	<td><?php echo ucwords($exp['ResExp']['company']); ?></td>
 </tr>
-<tr>
-	<td>&nbsp;</td>
-	<td>Baroda, India</td>
-</tr>
-<tr>
-	<td>&nbsp;</td>
-	<td>Head of Environment, Health and Safety (EHS) Capability Centre</td>
-</tr>
+
+ <?php endforeach; ?>
+ 
+
 
 </tbody>
 </table>
@@ -292,6 +286,7 @@ position concerned.
 <br><br>
 <span style="font-size:32px;font-weight:bold;" class="headTitle">Career Details</span>
 
+   <?php foreach($exp_data as $key => $exp): ?>
 
 <table cellpadding="0" cellspacing="0"  class="qualTable">
 <tbody>
@@ -299,23 +294,23 @@ position concerned.
 
 <tr>
 	<td  style="width:20%">Oct 2009 – Present</td>
-	<td style="width:80%">L&T POWER</td>
+	<td style="width:80%"><?php echo ucwords($exp['ResExp']['company']); ?></td>
 </tr>
 <tr>
 	<td></td>
-	<td>Vadodara, India</td>
+	<td><?php echo ucfirst($exp['ResExp']['work_location']); ?></td>
 </tr>
 <tr>
 	<td>&nbsp;</td>
-	<td>Head of Environment, Health and Safety (EHS) Capability Centre</td>
+	<td><?php echo $exp['Designation']['designation']; ?></td>
 </tr>
 <tr>
 	<td>&nbsp;</td>
-	<td style="width:60%">Larsen & Toubro (L&T) is a technology-driven USD 11.7 billion company that infuses engineering with imagination. We offer a wide range of advanced solutions, services and products.</td>
+	<td style="width:60%"><?php echo ucfirst($exp['ResExp']['company_profile']); ?></td>
 </tr>
 <tr>
 	<td>&nbsp;</td>
-	<td>Report directly to the CEO and MD of L&T Power</td>
+	<td><?php echo $exp['Designation']['reporting']; ?></td>
 </tr>
 
 <tr>
@@ -325,9 +320,7 @@ position concerned.
 
 <tr>
 	<td>&nbsp;</td>
-	<td style="width:60%">Leading a team of 30 EHS professional spread across 10 EPC Power projects and head office at Baroda.
-Build a team of EHS resources at Capability center
-Build a team of EHS resources at all EPC sites and manufacturing</td>
+	<td style="width:60%"><?php echo $exp['ResExp']['key_resp']; ?></td>
 </tr>
 
 <tr>
@@ -337,15 +330,13 @@ Build a team of EHS resources at all EPC sites and manufacturing</td>
 
 <tr>
 	<td>&nbsp;</td>
-	<td style="width:60%">Leading a team of 30 EHS professional spread across 10 EPC Power projects and head office at Baroda.
-Build a team of EHS resources at Capability center
-Build a team of EHS resources at all EPC sites and manufacturing</td>
+	<td style="width:60%"><?php echo $exp['ResExp']['key_achieve']; ?></td>
 </tr>
 
 
 </tbody>
 </table>
-
+ <?php endforeach; ?>
 
 <br><br>
 <span style="font-size:32px;font-weight:bold;" class="headTitle">Training & Programmes</span>
@@ -354,16 +345,17 @@ Build a team of EHS resources at all EPC sites and manufacturing</td>
 <table cellpadding="0" cellspacing="0"  class="qualTable">
 <tbody>
 
-
+ <?php foreach($training_data as $key => $train): ?>
 <tr>
-	<td  style="width:20%">1995</td>
-	<td style="width:80%">Safety Audit Course</td>
+	<td  style="width:20%"><?php echo $train['ResTraining']['train_year'];?></td>
+	<td style="width:80%"><?php echo $train['ResTraining']['prog_title'];?></td>
 </tr>
 <tr>
 	<td></td>
-	<td>National Safety Council, Mumbai, India</td>
+	<td><?php echo $train['ResTraining']['train_desc'];?></td>
 </tr>
 
+ <?php endforeach; ?>
 
 
 </tbody>
@@ -373,21 +365,29 @@ Build a team of EHS resources at all EPC sites and manufacturing</td>
 
 <span style="font-size:32px;font-weight:bold;" class="headTitle">Current Compensation</span>
 <br><br>
-<span style="font-size:18px;font-weight:;">Rs 62 Lacs approximately per annum (includes ESOP)</span>
+
+<span style="font-size:18px;font-weight:;">Rs  <?php echo $user_data['Resume']['present_ctc'];?> 				
+				<?php echo get_ctc_type($user_data['Resume']['present_ctc_type']);?>  approximately per annum </span>
 
 
 <br><br><br><br>
 
 <span style="font-size:32px;font-weight:bold;" class="headTitle">Notice Period</span>
 <br><br>
-<span style="font-size:18px;font-weight:">3 Months</span>
+<span style="font-size:18px;font-weight:">
+ <?php echo get_notice($user_data['Resume']['notice_period']);?>
+</span>
 <br><br>
 
 <br><br><span style="font-size:32px;font-weight:bold;" class="headTitle">Candidate Appraisal</span>
 <table cellpadding="0" cellspacing="0"  class="qualTable">
 <tbody>
 <tr>
-	<td   style="width:90%">MP Muralidharan brings with him 23 years of exposure in the Industrial sector covering thermal power, tobacco, paper, hotels, Natural gas distribution, Airport and EPC Power. He has in the past worked with DIAL, BG Group, ITC and NTPC. He is passionate about safety and aims to develop a sustainable and interdependent level of safety culture at the organizational level.</td>
+	<td   style="width:90%">
+	
+	<?php echo $exp['Resume']['candidate_brief']; ?>
+	
+	</td>
 </tr>
 </tbody>
 </table>
@@ -397,18 +397,21 @@ Build a team of EHS resources at all EPC sites and manufacturing</td>
 <table cellpadding="0" cellspacing="0"  class="qualTable">
 <tbody>
 <tr>
-	<td   style="width:90%">MP Muralidharan brings with him 23 years of exposure in the Industrial sector covering thermal power, tobacco, paper, hotels, Natural gas distribution, Airport and EPC Power. He has in the past worked with DIAL, BG Group, ITC and NTPC. He is passionate about safety and aims to develop a sustainable and interdependent level of safety culture at the organizational level.</td>
+
+
+	<td   style="width:90%"><?php echo $exp['Resume']['tech_expert']; ?></td>
 </tr>
 </tbody>
 </table>
 
 <br><br><span style="font-size:32px;font-weight:bold;" class="headTitle">Track record of demonstrated achievements</span>
-<br><br><span style="font-size:18px;font-weight:bold;" class="headTitle">Present Achievements with L&T Power</span>
 
 <table cellpadding="0" cellspacing="0"  class="qualTable">
 <tbody>
 <tr>
-	<td   style="width:90%">MP Muralidharan brings with him 23 years of exposure in the Industrial sector covering thermal power, tobacco, paper, hotels, Natural gas distribution, Airport and EPC Power. He has in the past worked with DIAL, BG Group, ITC and NTPC. He is passionate about safety and aims to develop a sustainable and interdependent level of safety culture at the organizational level.</td>
+	<td   style="width:90%">
+	<?php echo $exp['Resume']['achievement']; ?>
+	</td>
 </tr>
 </tbody>
 </table>
@@ -418,7 +421,9 @@ Build a team of EHS resources at all EPC sites and manufacturing</td>
 <table cellpadding="0" cellspacing="0"  class="qualTable">
 <tbody>
 <tr>
-	<td   style="width:90%">MP Muralidharan brings with him 23 years of exposure in the Industrial sector covering thermal power, tobacco, paper, hotels, Natural gas distribution, Airport and EPC Power. He has in the past worked with DIAL, BG Group, ITC and NTPC. He is passionate about safety and aims to develop a sustainable and interdependent level of safety culture at the organizational level.</td>
+
+
+	<td   style="width:90%"><?php echo $exp['Resume']['personality']; ?></td>
 </tr>
 </tbody>
 </table>
@@ -429,7 +434,11 @@ Build a team of EHS resources at all EPC sites and manufacturing</td>
 <table cellpadding="0" cellspacing="0"  class="qualTable">
 <tbody>
 <tr>
-	<td   style="width:90%">MP Muralidharan brings with him 23 years of exposure in the Industrial sector covering thermal power, tobacco, paper, hotels, Natural gas distribution, Airport and EPC Power. He has in the past worked with DIAL, BG Group, ITC and NTPC. He is passionate about safety and aims to develop a sustainable and interdependent level of safety culture at the organizational level.</td>
+
+
+
+	<td   style="width:90%"><?php echo $exp['Resume']['about_company']; ?>
+	</td>
 </tr>
 </tbody>
 </table>
