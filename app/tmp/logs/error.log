@@ -36952,8 +36952,12 @@ Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
 
 =======
 >>>>>>> ca47dca151542f7faa8dda1e33fff96a9a68de65
+<<<<<<< HEAD
+2017-07-27 13:31:56 Warning: Warning (2): Missing argument 2 for AppModel::get_team_mem(), called in F:\xampp\htdocs\ctsvn\cthiring\app\Model\Resume.php on line 64 and defined in [F:\xampp\htdocs\ctsvn\cthiring\app\Model\AppModel.php, line 35]
+=======
 >>>>>>> bb5be876b213ce95d2cbf9804e913199efbcc6f1
 2017-07-27 13:41:54 Warning: Warning (2): Missing argument 2 for AppModel::get_team_mem(), called in C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\Resume.php on line 64 and defined in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\AppModel.php, line 35]
+>>>>>>> 126cc531c9bb001f6f868692a01de3ee7688a128
 Trace:
 AppModel::get_team_mem() - APP\Model\AppModel.php, line 35
 Resume::get_team() - APP\Model\Resume.php, line 64
@@ -36964,7 +36968,11 @@ Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
 Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
 [main] - APP\webroot\index.php, line 118
 
+<<<<<<< HEAD
+2017-07-27 13:40:48 Warning: Warning (2): Missing argument 2 for AppModel::get_team_mem(), called in F:\xampp\htdocs\ctsvn\cthiring\app\Model\Resume.php on line 64 and defined in [F:\xampp\htdocs\ctsvn\cthiring\app\Model\AppModel.php, line 35]
+=======
 2017-07-27 13:42:13 Warning: Warning (2): Missing argument 2 for AppModel::get_team_mem(), called in C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\Resume.php on line 64 and defined in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\AppModel.php, line 35]
+>>>>>>> 126cc531c9bb001f6f868692a01de3ee7688a128
 Trace:
 AppModel::get_team_mem() - APP\Model\AppModel.php, line 35
 Resume::get_team() - APP\Model\Resume.php, line 64
@@ -36975,6 +36983,9 @@ Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
 Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
 [main] - APP\webroot\index.php, line 118
 
+<<<<<<< HEAD
+2017-07-27 13:47:56 Warning: Warning (2): Missing argument 2 for AppModel::get_team_mem(), called in F:\xampp\htdocs\ctsvn\cthiring\app\Model\Resume.php on line 64 and defined in [F:\xampp\htdocs\ctsvn\cthiring\app\Model\AppModel.php, line 35]
+=======
 2017-07-27 13:43:06 Warning: Warning (2): Missing argument 2 for AppModel::get_team_mem(), called in C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\Resume.php on line 64 and defined in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\AppModel.php, line 35]
 Trace:
 AppModel::get_team_mem() - APP\Model\AppModel.php, line 35
@@ -37152,6 +37163,7 @@ Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
 [main] - APP\webroot\index.php, line 118
 
 2017-07-27 13:56:56 Warning: Warning (2): Missing argument 2 for AppModel::get_team_mem(), called in C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\Resume.php on line 64 and defined in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Model\AppModel.php, line 35]
+>>>>>>> 126cc531c9bb001f6f868692a01de3ee7688a128
 Trace:
 AppModel::get_team_mem() - APP\Model\AppModel.php, line 35
 Resume::get_team() - APP\Model\Resume.php, line 64
