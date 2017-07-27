@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-07-26 15:54:17
+/* Smarty version 3.1.29, created on 2017-07-27 11:18:16
   from "C:\xampp\htdocs\2017\ctsvn\cthiring\hiring\templates\add_formatted_resume.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_59786dd11d8694_98355454',
+  'unifunc' => 'content_59797ea0665f78_26152183',
   'file_dependency' => 
   array (
     '7b9debb43acd1c9656df1fbe01b897c4d462aec5' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\templates\\add_formatted_resume.tpl',
-      1 => 1501064653,
+      1 => 1501134492,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_59786dd11d8694_98355454 ($_smarty_tpl) {
+function content_59797ea0665f78_26152183 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -586,7 +586,7 @@ echo $_POST['hobby'];
 							<tr>
 										<td width="120" class="tbl_column">Key Responsibility <span class="f_req">*</span></td>
 										<td>
-										<textarea name="key_responsibility_#index#" tabindex="9" id="key_responsibility_#index#" cols="10" rows="3" class="span8"></textarea>									
+										<textarea name="key_responsibility_#index#" tabindex="9" id="key_responsibility_#index#" cols="10" rows="3" class="span8 wysiwyg1"></textarea>									
 									<label for="reg_city" generated="true" class="error" id="key_responsibilityErr_#index#"></label>
 										</td>	
 									</tr>

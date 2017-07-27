@@ -75,7 +75,7 @@ $(document).ready(function() {
 		$('.dataTables_filter').slideToggle('fast');
 	});
 	
-	/* editor */
+	/* editor for position page*/ 
 	if($('.wysiwyg').length > 0){
 		$(function(){
 			tinymce.init({
@@ -87,6 +87,22 @@ $(document).ready(function() {
 				'insertdatetime media table contextmenu paste code'
 			  ],
 			  toolbar: 'undo redo | insert | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
+			});
+		});
+	}
+	
+	/* editor for auto resume page*/
+	if($('.wysiwyg1').length > 0){
+		$(function(){
+			tinymce.init({
+			  selector: 'textarea.wysiwyg1',
+			  menubar: false,
+			  plugins: [
+				'advlist autolink lists link image charmap print preview anchor',
+				'searchreplace visualblocks code fullscreen' ,
+				'insertdatetime media table contextmenu paste code'
+			  ],
+			  toolbar: 'bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent',
 			});
 		});
 	}
