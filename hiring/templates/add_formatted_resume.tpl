@@ -231,7 +231,7 @@
 									<tr>
 										<td width="120" class="tbl_column">Technical Expertise and Domain Expertise</td>
 										<td> 
-									   <textarea name="tech_expert" tabindex="24" cols="10" rows="3" class="span8">{if $tech_expert}{$tech_expert}{else}{$smarty.post.tech_expert}{/if}</textarea>									
+									   <textarea name="tech_expert" tabindex="24" cols="10" rows="3" class="span8 wysiwyg1">{if $tech_expert}{$tech_expert}{else}{$smarty.post.tech_expert}{/if}</textarea>									
 										</td>
 									</tr>	
 									
@@ -483,7 +483,7 @@
 									<tr class="tbl_row">
 								<td width="120" class="tbl_column">Notable Achievements  <span class="f_req">*</span></td>
 								<td>
-								<textarea name="key_achievement_#index#" tabindex="10" id="key_achievement_#index#" cols="10" rows="3" class="span8"></textarea>									
+								<textarea name="key_achievement_#index#" tabindex="10" id="key_achievement_#index#" cols="10" rows="3" class="span8 wysiwyg1"></textarea>									
 								<label for="reg_city" generated="true" class="error" id="key_achievementErr_#index#"></label>
 									
 								</td>	
@@ -544,7 +544,7 @@
 									<tr>
 										<td width="120" class="tbl_column"> Description  <span class="f_req">*</span></td>
 										<td>
-										<textarea name="description_#index#" tabindex="2" id="description_#index#" cols="10" rows="3" class="span8"></textarea>									
+										<textarea name="description_#index#" tabindex="2" id="description_#index#" cols="10" rows="3" class="span8 wysiwyg1"></textarea>									
 									<label for="reg_city" generated="true" class="error" id="descriptionErr_#index#"></label>							
 										</td>		
 									</tr>
@@ -558,7 +558,7 @@
 									<tr class="tbl_row">
 										<td width="120" class="tbl_column">Program Title <span class="f_req">*</span></td>
 										<td>
-										<input type="text" tabindex="3" name="programtitle_#index#" id="programtitle_#index#" value="" class="span8">
+										<input type="text" tabindex="3" name="programtitle_#index#" id="programtitle_#index#" value="" class="span8 wysiwyg1">
 									<label for="reg_city" generated="true" class="error" id="programtitleErr_#index#"></label>
 										</td>	
 									</tr>
@@ -617,7 +617,7 @@
 									<tr class="tbl_row">
 										<td width="120" class="tbl_column">Achievements  </td>
 										<td> 
-									   <textarea name="achievement" cols="10" tabindex="3" rows="3" class="span8">{if $achievement}{$achievement}{else}{$smarty.post.achievement}{/if}</textarea>									
+									   <textarea name="achievement" cols="10" tabindex="3" rows="3" class="span8 wysiwyg1">{if $achievement}{$achievement}{else}{$smarty.post.achievement}{/if}</textarea>									
 										</td>
 									</tr>	
 									<tr class="">
@@ -635,7 +635,7 @@
 			<tr class="tbl_row">
 				<td width="120" class="tbl_column">Candidates Outlook on Company   </td>
 				<td> 
-					<textarea name="about_company" tabindex="4" cols="10" rows="3" class="span8">{if $about_company}{$about_company}{else}{$smarty.post.about_company}{/if}</textarea>									
+					<textarea name="about_company" tabindex="4" cols="10" rows="3" class="span8 wysiwyg1">{if $about_company}{$about_company}{else}{$smarty.post.about_company}{/if}</textarea>									
 					</td>
 			</tr>
 			<tr class="tbl_row">
