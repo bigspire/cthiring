@@ -475,7 +475,7 @@
 							<tr>
 										<td width="120" class="tbl_column">Key Responsibility <span class="f_req">*</span></td>
 										<td>
-										<textarea name="key_responsibility_#index#" tabindex="9" id="key_responsibility_#index#" cols="10" rows="3" class="span8"></textarea>									
+										<textarea name="key_responsibility_#index#" tabindex="9" id="key_responsibility_#index#" cols="10" rows="3" class="span8 wysiwyg1"></textarea>									
 									<label for="reg_city" generated="true" class="error" id="key_responsibilityErr_#index#"></label>
 										</td>	
 									</tr>
