@@ -410,7 +410,7 @@ if(!empty($_POST)){
 	$smarty->assign('worklocData', $worklocData);
 	$smarty->assign('vitalData', $vitalData);
 	$smarty->assign('company_profileData', $company_profileData);
-	$smarty->assign('key_responsibilityData', $key_responsibilityData);
+	$smarty->assign('key_responsibilityData', str_replace('"',"'",$key_responsibilityData));
 	$smarty->assign('key_achievementData', $key_achievementData);
 	$smarty->assign('reporting_toData', $reporting_toData);
 	$smarty->assign('expCount', $_POST['exp_count']);
