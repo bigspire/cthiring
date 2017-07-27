@@ -600,6 +600,7 @@ class ResumeController extends AppController {
 					// get the HTML
 					ob_start();
 					include(WWW_ROOT.'/vendor/html2pdf/examples/res/autoresume_template.php');
+					
 					$content = ob_get_clean();
 					$html2pdf = new HTML2PDF('P', 'A4', 'fr');
 					$html2pdf->pdf->SetDisplayMode('fullpage');

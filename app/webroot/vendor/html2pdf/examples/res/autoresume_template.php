@@ -81,7 +81,7 @@ function get_ctc_type($type){
 <style type="text/css">
 <!--
 body{font-family: OpenSans, sans-serif;}
-td,th,span,p{line-height:27px;font-family: OpenSans, sans-serif;}
+/* td,th,span,p{ line-height:27px;font-family: OpenSans, sans-serif;} */
 .submitBy td{padding:4px;font-family: OpenSans, sans-serif;}
 .confiTitle{font-size:22px;font-family: OpenSans, sans-serif;}
 .headTitle{font-family: OpenSans, sans-serif;}

@@ -11,7 +11,10 @@
  *
  * isset($_GET['vuehtml']) is not mandatory
  * it allow to display the result in the HTML format
- */
+ */	
+ date_default_timezone_set('Asia/Calcutta');
+
+ 
 
     // get the HTML
     ob_start();
