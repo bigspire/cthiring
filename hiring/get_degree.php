@@ -22,9 +22,9 @@ try{
 	if(!$result = $mysql->execute_query($query)){
 		throw new Exception('Problem in executing degree program');
 	}
-   $degree = array();
+    $degree = array();
 	while($obj = $mysql->display_result($result)){
-   	$degree[$obj['id']] = $obj['degree'];  	   
+		$degree[$obj['id']] = $obj['degree'];  	   
 	}
 	
 	// free the memory

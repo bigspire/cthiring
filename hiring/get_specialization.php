@@ -25,9 +25,9 @@ try{
 	if(!$result = $mysql->execute_query($query)){
 		throw new Exception('Problem in executing spec.');
 	}
-   $specialization = array();
+    $specialization = array();
 	while($obj = $mysql->display_result($result)){
-   	$specialization[$obj['id']] = $obj['spec'];  	   
+		$specialization[$obj['id']] = $obj['spec'];  	   
 	}
 	
 	// free the memory

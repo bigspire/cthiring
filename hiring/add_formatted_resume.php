@@ -244,7 +244,7 @@ if(empty($_POST)){
 	for($i = 0; $i < $edu; $i++){
 		$quali[] = $_POST['qualification_'.$i] ? $_POST['qualification_'.$i] : $qualificationData[$i];
 		$degree[] = $_POST['degree_'.$i] ? $_POST['degree_'.$i] : $degreeData[$i];
-		$degreeData = array();
+		$degreeD = array();
 		// smarty drop down for degree
 		$query ="CALL get_resume_degree_program('".$quali[$i]."')";
 		try{
@@ -253,7 +253,7 @@ if(empty($_POST)){
 				throw new Exception('Problem in executing degree program');
 			}
 			while($obj = $mysql->display_result($result)){
-				$degreeData[$obj['id']] = $obj['degree'];  	   
+				$degreeD[$obj['id']] = $obj['degree'];  	   
 			}
 	
 			// free the memory
@@ -261,13 +261,14 @@ if(empty($_POST)){
 			// call the next result
 			$mysql->next_query();
 		
-			$degree_data[] = $degreeData;
+			$degree_data[] = $degreeD;
 			
 		}catch(Exception $e){
 			echo 'Caught exception: ',  $e->getMessage(), "\n";
 		}
 	
-		$degree_id = $_POST['degree_'.$i] ? $_POST['degree_'.$i] : $degree[$i];
+		$degree_id = $_POST['degree_'.$i] ? $_POST['degree_'.$i] : $degreeData[$i];
+		
 		// smarty drop down for Specialization
 		$specializationData2 = array();
 		$query ="CALL get_resume_spec_degree('".$degree_id."')";
@@ -293,7 +294,7 @@ if(empty($_POST)){
 	
 		$spec[] = $_POST['specialization_'.$i] ? $_POST['specialization_'.$i] : $specializationData[$i];
 	}
-
+	
 	$smarty->assign('spec_data', $spec_data);
 	$smarty->assign('degreeData', $degree_data);
 	$smarty->assign('degree', $degree);
