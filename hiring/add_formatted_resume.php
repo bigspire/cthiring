@@ -66,6 +66,9 @@ if(empty($_POST)){
 		$_SESSION['clients_id'] = $row['clients_id'];
 		$_SESSION['position_for'] = $row['position_for'];
 		$smarty->assign('dob_field', $fun->convert_date_display($row['dob']));
+		$smarty->assign('tech_expert', str_replace('"',"'",$row['expert']));
+		$smarty->assign('achievement', str_replace('"',"'",$row['achievements']));
+		$smarty->assign('about_company', str_replace('"',"'",$row['company_details']));
 		$total_exp  = $row['total_exp'];		
 		if($total_exp == '0'){
 			$smarty->assign('year_of_exp',0);
@@ -172,7 +175,7 @@ if(empty($_POST)){
 			$worklocData[$tot] = $row['work_location'];
 			$key_responsibilityData[$tot] = str_replace('"',"'",$row['key_resp']);	
 			$reporting_toData[$tot] = $row['reporting'];	
-			$key_achievementData[$tot] = $row['key_achieve'];	
+			$key_achievementData[$tot] = str_replace('"',"'",$row['key_achieve']);	
 			$vitalData[$tot] = $row['other_info'];	
 			$tot++;
 		}
@@ -213,7 +216,7 @@ if(empty($_POST)){
 		while($row = $mysql->display_result($result)){
 			// post of assign asset fields value			
 			$train_yearData[$tot] = $row['train_year'];
-			$descriptionData[$tot] = $row['train_desc'];
+			$descriptionData[$tot] = str_replace('"',"'",$row['train_desc']);	
 			$programtitleData[$tot] = $row['prog_title'];
 			$train_locationData[$tot] = $row['location'];		
 			$tot++;
@@ -241,7 +244,7 @@ if(empty($_POST)){
 	for($i = 0; $i < $edu; $i++){
 		$quali[] = $_POST['qualification_'.$i] ? $_POST['qualification_'.$i] : $qualificationData[$i];
 		$degree[] = $_POST['degree_'.$i] ? $_POST['degree_'.$i] : $degreeData[$i];
-		$degreeData = array();
+		$degreeD = array();
 		// smarty drop down for degree
 		$query ="CALL get_resume_degree_program('".$quali[$i]."')";
 		try{
@@ -250,7 +253,7 @@ if(empty($_POST)){
 				throw new Exception('Problem in executing degree program');
 			}
 			while($obj = $mysql->display_result($result)){
-				$degreeData[$obj['id']] = $obj['degree'];  	   
+				$degreeD[$obj['id']] = $obj['degree'];  	   
 			}
 	
 			// free the memory
@@ -258,13 +261,14 @@ if(empty($_POST)){
 			// call the next result
 			$mysql->next_query();
 		
-			$degree_data[] = $degreeData;
+			$degree_data[] = $degreeD;
 			
 		}catch(Exception $e){
 			echo 'Caught exception: ',  $e->getMessage(), "\n";
 		}
 	
-		$degree_id = $_POST['degree_'.$i] ? $_POST['degree_'.$i] : $degree[$i];
+		$degree_id = $_POST['degree_'.$i] ? $_POST['degree_'.$i] : $degreeData[$i];
+		
 		// smarty drop down for Specialization
 		$specializationData2 = array();
 		$query ="CALL get_resume_spec_degree('".$degree_id."')";
@@ -290,7 +294,7 @@ if(empty($_POST)){
 	
 		$spec[] = $_POST['specialization_'.$i] ? $_POST['specialization_'.$i] : $specializationData[$i];
 	}
-
+	
 	$smarty->assign('spec_data', $spec_data);
 	$smarty->assign('degreeData', $degree_data);
 	$smarty->assign('degree', $degree);
@@ -411,7 +415,7 @@ if(!empty($_POST)){
 	$smarty->assign('vitalData', $vitalData);
 	$smarty->assign('company_profileData', $company_profileData);
 	$smarty->assign('key_responsibilityData', str_replace('"',"'",$key_responsibilityData));
-	$smarty->assign('key_achievementData', $key_achievementData);
+	$smarty->assign('key_achievementData', str_replace('"',"'",$key_achievementData));
 	$smarty->assign('reporting_toData', $reporting_toData);
 	$smarty->assign('expCount', $_POST['exp_count']);
 	$smarty->assign('expErr',$er3);
@@ -443,7 +447,7 @@ if(!empty($_POST)){
 		}
 	}
 	$smarty->assign('train_yearData', $train_yearData);
-	$smarty->assign('descriptionData', $descriptionData);
+	$smarty->assign('descriptionData', str_replace('"',"'",$descriptionData));
 	$smarty->assign('programtitleData', $programtitleData);
 	$smarty->assign('train_locationData', $train_locationData);
 	$smarty->assign('trainCount', $_POST['train_count']);
@@ -499,6 +503,17 @@ if(!empty($_POST)){
 		}
 	}
 	$smarty->assign($res_language,$language_list);
+	
+	// text area validation for tinymsc
+	if($_POST['tech_expert'] != ''){
+		$smarty->assign('tech_expert', str_replace('"',"'",$_POST['expert']));
+	}
+	if($_POST['achievement'] != ''){
+		$smarty->assign('achievement', str_replace('"',"'",$_POST['achievement']));	
+	}
+	if($_POST['about_company'] != ''){
+		$smarty->assign('about_company', str_replace('"',"'",$_POST['about_company']));
+	}
 	
 	// array for printing correct field name in error message for consultant
 	$fieldtype1 = array('0','0','0','0');
