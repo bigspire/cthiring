@@ -170,7 +170,7 @@ if(empty($_POST)){
 			$companyData[$tot] = $row['company'];
 			$company_profileData[$tot] = $row['company_profile'];
 			$worklocData[$tot] = $row['work_location'];
-			$key_responsibilityData[$tot] = $row['key_resp'];	
+			$key_responsibilityData[$tot] = str_replace('"',"'",$row['key_resp']);	
 			$reporting_toData[$tot] = $row['reporting'];	
 			$key_achievementData[$tot] = $row['key_achieve'];	
 			$vitalData[$tot] = $row['other_info'];	
