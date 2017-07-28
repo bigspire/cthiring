@@ -154,7 +154,16 @@
 										<label for="reg_city" generated="true" class="error"> {$nationalityErr} </label>								
 										</td>										
 											
-									</tr>					
+									</tr>
+										<tr class="">
+										<td width="120" class="tbl_column">Resume File </td>
+										<td>
+											<textarea rows = "10" style="width:500px;">
+											{$RESUME_DATA}
+											</textarea>
+																						
+										</td>
+									</tr>									
 								</tbody>
 							</table>
 						</div>
