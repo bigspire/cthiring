@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-06-15 11:29:59
+/* Smarty version 3.1.29, created on 2017-07-28 07:15:30
   from "F:\xampp\htdocs\ctsvn\cthiring\hiring\templates\mailer_template.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5942225f421819_54749234',
+  'unifunc' => 'content_597a973af0d8f7_99053294',
   'file_dependency' => 
   array (
     'dccdf64bbb664bdcb0bd16d8e8d95801885b78d6' => 
     array (
       0 => 'F:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\templates\\mailer_template.tpl',
-      1 => 1488604160,
+      1 => 1500741076,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5942225f421819_54749234 ($_smarty_tpl) {
+function content_597a973af0d8f7_99053294 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'F:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -42,9 +42,9 @@ if (!is_callable('smarty_function_html_options')) require_once 'F:\\xampp\\htdoc
                                     <a href="<?php echo @constant('webroot');?>
 home"><i class="icon-home"></i></a>
                                 </li>                        
-                                <li>
-                                    <a href="">Mailer Templates</a>
-                                </li>
+                                <!-- li>
+                                    <a href="mailer_template.php">Mailer Templates</a>
+                                </li-->
                                  <li>
                                   <?php echo $_smarty_tpl->tpl_vars['template']->value;?>
 

@@ -121,7 +121,7 @@ end_last_page div
 -->
 </style>
 <br>
-<?php  $img_path ='http://localhost/ctsvn/cthiring/img/career-tree-logo-large.jpg';?>
+<?php  $img_path ='http://managehiring.com/img/career-tree-logo-large.jpg';?>
 <span style="font-size: 24px;margin-left:40px; font-weight: bold">PROFILE SNAPSHOT</span>
 <span style="margin-left:90px;"><img src="<?php echo $img_path;?>"/></span>
 

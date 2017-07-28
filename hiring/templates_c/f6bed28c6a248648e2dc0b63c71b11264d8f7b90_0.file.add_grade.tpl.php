@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-07-13 13:33:06
+/* Smarty version 3.1.29, created on 2017-07-28 07:15:12
   from "F:\xampp\htdocs\ctsvn\cthiring\hiring\templates\add_grade.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5967293ad9cb60_06143259',
+  'unifunc' => 'content_597a97281d1bd8_84709069',
   'file_dependency' => 
   array (
     'f6bed28c6a248648e2dc0b63c71b11264d8f7b90' => 
     array (
       0 => 'F:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\templates\\add_grade.tpl',
-      1 => 1499258372,
+      1 => 1500741076,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5967293ad9cb60_06143259 ($_smarty_tpl) {
+function content_597a97281d1bd8_84709069 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'F:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -69,7 +69,7 @@ home"><i class="icon-home"></i></a>
 						<tr class="tbl_row">
 							<td width="120" class="tbl_column">Grade <span class="f_req">*</span></td>
 							<td>										
-								<input type="text" tabindex="1" name="grade_name" id="keyword" value="<?php echo $_smarty_tpl->tpl_vars['grade_name']->value;?>
+								<input type="text" tabindex="1" name="grade_name" value="<?php echo $_smarty_tpl->tpl_vars['grade_name']->value;?>
 " class="span8 ui-autocomplete-input" autocomplete="off">
 								<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['grade_nameErr']->value;?>
  </label>									
@@ -106,7 +106,12 @@ home"><i class="icon-home"></i></a>
 </div>
 <div class="form-actions">
 				<input name="submit" class="btn btn-gebo" value="Submit" type="submit"/>
-				<input type="button" value="Cancel" class="btn cancel_event" onclick="window.location='grade.php'">
+				<input type="hidden" name="data[Client][webroot]" value="grade.php" id="webroot">
+
+	<a href="javascript:void(0)" class="jsRedirect cancelBtn cancel_event">
+	<input type="button" value="Cancel" class="btn">
+	</a>
+
 </div>
                     </div>
 				</form>

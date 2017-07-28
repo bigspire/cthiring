@@ -17,4 +17,5 @@ $smarty->setCompileDir('templates_c');
 $smarty->setCacheDir('cache');
 $smarty->setConfigDir('configs');
 define('webroot', '../');
+define('PDF_LOGO_URL', 'http://localhost/ctsvn/cthiring/img/career-tree-logo-large.jpg');
 ?>

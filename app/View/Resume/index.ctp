@@ -31,7 +31,7 @@
 							<a class="jsRedirect toggleSearch"  href="javascript:void(0)"><input type="button" value="Search" class="homeSrch btn btn-success"/></a>
 			<?php if($this->Session->read('USER.Login.roles_id') == '33' || $this->Session->read('USER.Login.roles_id') == '39'):?>
 										
-							<a class="notify" data-notify-time = '3000' data-notify-title="In Progress!" data-notify-message="Downloading Excel... Please wait..."  href="<?php echo $this->webroot;?>resume/?action=export&<?php echo $this->Functions->get_url_vars($this->request->query);?>"><input type="button" value="Export Excel" class="btn btn-warning"/></a>
+							<a class="notify jsRedirect" data-notify-time = '3000' data-notify-title="In Progress!" data-notify-message="Downloading Excel... Please wait..."  href="<?php echo $this->webroot;?>resume/?action=export&<?php echo $this->Functions->get_url_vars($this->request->query);?>"><input type="button" value="Export Excel" class="btn btn-warning"/></a>
 								<?php endif; ?>
 								
 								
@@ -46,6 +46,22 @@
 						<div id="flashMessage" class="alert alert-success">
 						<button type="button" class="close" data-dismiss="alert-error">×</button>Resume Created Successfully</div>
 						<?php endif; ?>
+						
+						<?php if($this->request->query['action'] == 'modified'):	?>					
+						<div id="flashMessage" class="alert alert-success">
+						<button type="button" class="close" data-dismiss="alert-error">×</button>Resume Modified Successfully</div>
+						<?php endif; ?>
+
+						<?php if($this->request->query['action'] == 'auto_created'):	?>					
+						<div id="flashMessage" class="alert alert-success">
+						<button type="button" class="close" data-dismiss="alert-error">×</button>Autoresume Created Successfully</div>
+						<?php endif; ?>
+						
+						<?php if($this->request->query['action'] == 'auto_modified'):	?>					
+						<div id="flashMessage" class="alert alert-success">
+						<button type="button" class="close" data-dismiss="alert-error">×</button>Autoresume Modified Successfully</div>
+						<?php endif; ?>
+						
 						
 						
 				<?php echo $this->Session->flash();?>
@@ -197,7 +213,7 @@
 									</button>
 										<ul class="dropdown-menu">
 											<li><a href="<?php echo $this->webroot;?>hiring/edit_resume.php?id=<?php echo $res['Resume']['id'];?>">Resume</a></li>
-											<li><a href="<?php echo $this->webroot;?>hiring/add_formatted_resume.php?id=<?php echo $res['Resume']['id'];?>">Fully Formatted Resume</a></li>
+											<li><a href="<?php echo $this->webroot;?>hiring/add_formatted_resume.php?id=<?php echo $res['Resume']['id'];?>&resume=<?php echo $res['Resume']['autoresume'];?>">Fully Formatted Resume</a></li>
 
 										</ul>
 									</div>	

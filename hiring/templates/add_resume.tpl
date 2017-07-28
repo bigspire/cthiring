@@ -123,15 +123,7 @@
 										</td>
 							</tr>
 							
-								<tr class="tbl_row">
-										<td width="120" class="tbl_column">Resume File </td>
-										<td>
-<textarea rows = "10" style="width:500px;">
-{$RESUME_DATA}
-</textarea>
-																						
-										</td>
-							</tr>
+								
 
 									
 									
@@ -217,8 +209,31 @@
 									
 								</tbody>
 							</table>
+						
+						
+						
+						
 						</div>
-</div>
+
+
+		<div class="row-fluid" style="clear:left;float:left;margin-top:15px;">				
+			<div class="span12">
+	<table class="table table-bordered dataTable" style="margin-bottom:0;">
+	<tbody>
+	<tr class="tbl_row">
+									
+										<td style="margin:10px;text-align:center;">
+<textarea rows = "10" style="width:1200px;">
+{$RESUME_DATA}
+</textarea>
+																						
+										</td>
+	</tr>									
+									
+	</tbody>
+	</table>
+</div>		</div>		
+						</div>
 	
 <!-- sheepIt Form -->
 <div  class="tab-pane" id="mbox_Education">

@@ -29,7 +29,7 @@
 					
 					<div class="srch_buttons">
 				<?php if($this->Session->read('USER.Login.id') == $position_data['Position']['created_by']):?>	
-				<a rel="tooltip" title="Edit the Position Info." href="<?php echo $this->webroot;?>position/edit/<?php echo $this->request->params['pass'][0];?>" class="sepV_a" title="Edit Position">
+				<a rel="tooltip jsRedirect" title="Edit the Position Info." href="<?php echo $this->webroot;?>position/edit/<?php echo $this->request->params['pass'][0];?>" class="sepV_a" title="Edit Position">
 				<input value="Edit" type="button" class="btn btn-info"></a>
 				<?php endif; ?>	
 					
@@ -38,7 +38,7 @@
 					
 					<?php if($create_resume == '1'):?>
 					<a rel="tooltip"  title="Upload New Resume" href="<?php echo $this->webroot;?>hiring/upload_resume.php?client_id=<?php echo $position_data['Client']['id'];?>&req_id=<?php echo $this->request->params['pass'][0];?>"
-					 val="40_50"  class="iframeBox sepV_a cboxElement">
+					 val="40_50"  class="jsRedirect iframeBox sepV_a cboxElement">
 					<input value="Upload Resume" type="button" class="btn btn-warning"></a>					
 						<?php endif; ?>
 
@@ -255,8 +255,8 @@
 			<?php if($position_data['Position']['is_approve'] == 'W'  && $this->Session->read('USER.Login.roles_id') == '39'):?>
 
 							<div class="form-actions">
-<a class="iframeBox unreadLink" rel="tooltip" title="Approve Position" href="<?php echo $this->webroot;?>position/remark/approve/<?php echo $position_data['Position']['id'];?>" val="40_50"><input type="button" value="Approve" class="btn btn btn-success"/></a>
-<a class="iframeBox unreadLink" rel="tooltip" title="Reject Position" href="<?php echo $this->webroot;?>position/remark/reject/<?php echo $position_data['Position']['id'];?>" val="40_50"><input type="button" value="Reject" class="btn btn btn-danger"/></a>
+<a class="iframeBox unreadLink jsRedirect" rel="tooltip" title="Approve Position" href="<?php echo $this->webroot;?>position/remark/approve/<?php echo $position_data['Position']['id'];?>" val="40_50"><input type="button" value="Approve" class="btn btn btn-success"/></a>
+<a class="iframeBox unreadLink jsRedirect" rel="tooltip" title="Reject Position" href="<?php echo $this->webroot;?>position/remark/reject/<?php echo $position_data['Position']['id'];?>" val="40_50"><input type="button" value="Reject" class="btn btn btn-danger"/></a>
 <a href="<?php echo $this->webroot;?>position/index/pending/" rel="tooltip" title="Cancel and Back to Positions"  class="jsRedirect"><button class="btn">Cancel</button></a>
 
 

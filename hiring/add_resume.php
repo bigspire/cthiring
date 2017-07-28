@@ -48,7 +48,8 @@ if($_SESSION['extraction'] == ''){
 	// extract the candidate name
 	foreach($string as $name_key => $name){
 		$name = trim($name);
-		if($name != 'Name' && $name != 'CURRICULUM' && $name != 'VITAE' && $name != 'RESUME' && $name != '') {
+		if($name != 'Name' && $name != 'CURRICULUM' && $name != 'VITAE' && $name != 'RESUME' && $name != ''
+		&& $name != 'Mailing' && $name != 'Address' && $name != ':' && $name != '' && !is_numeric($name)){
 			break;
 		}else{
 			continue;

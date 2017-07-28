@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-07-13 16:15:09
+/* Smarty version 3.1.29, created on 2017-07-27 18:18:42
   from "F:\xampp\htdocs\ctsvn\cthiring\hiring\templates\interview.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_59674f357b3f44_77853215',
+  'unifunc' => 'content_5979e12a005b69_78736251',
   'file_dependency' => 
   array (
     '4e985a140a13046fe41ff6c256b5264f271d75e1' => 
     array (
       0 => 'F:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\templates\\interview.tpl',
-      1 => 1499942704,
+      1 => 1500741076,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_59674f357b3f44_77853215 ($_smarty_tpl) {
+function content_5979e12a005b69_78736251 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'F:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -60,21 +60,19 @@ home"><i class="icon-home"></i></a>
 							<input type="button" value="Search" class="btn btn-success"/></a>
 							<?php if (!$_smarty_tpl->tpl_vars['ALERT_MSG']->value && ($_SESSION['roles_id'] == '33' || $_SESSION['roles_id'] == '39')) {?>
 							<a href="interview.php?action=export&keyword=<?php echo $_smarty_tpl->tpl_vars['keyword']->value;?>
-
-								&employee=<?php echo $_smarty_tpl->tpl_vars['employee']->value;?>
+&employee=<?php echo $_smarty_tpl->tpl_vars['employee']->value;?>
 &f_date=<?php echo $_smarty_tpl->tpl_vars['f_date']->value;?>
 &t_date=<?php echo $_smarty_tpl->tpl_vars['t_date']->value;?>
 &branch=<?php echo $_smarty_tpl->tpl_vars['branch']->value;?>
 &current_status=<?php echo $_smarty_tpl->tpl_vars['current_status']->value;?>
-">
+" class="jsRedirect">
 							<button type="button" val="interview.php?action=export&keyword=<?php echo $_smarty_tpl->tpl_vars['keyword']->value;?>
-
-								&employee=<?php echo $_smarty_tpl->tpl_vars['employee']->value;?>
+&employee=<?php echo $_smarty_tpl->tpl_vars['employee']->value;?>
 &f_date=<?php echo $_smarty_tpl->tpl_vars['f_date']->value;?>
 &t_date=<?php echo $_smarty_tpl->tpl_vars['t_date']->value;?>
 &branch=<?php echo $_smarty_tpl->tpl_vars['branch']->value;?>
 &current_status=<?php echo $_smarty_tpl->tpl_vars['current_status']->value;?>
-" name="export" class="jsRedirect btn btn-warning" >Export</button></a></a>							
+" name="export" class="btn btn-warning" >Export</button></a></a>							
 							<?php }?>
 							</div>
 

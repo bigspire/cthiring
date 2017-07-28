@@ -7,7 +7,7 @@ Date : 07-03-2017
 
 // starting session
 session_start();
-
+$_SESSION['extraction'] = '';
 // including smarty config
 include 'configs/smartyconfig.php';
 // including Database class file

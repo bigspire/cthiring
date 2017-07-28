@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-07-12 21:59:14
+/* Smarty version 3.1.29, created on 2017-07-28 07:37:12
   from "F:\xampp\htdocs\ctsvn\cthiring\hiring\templates\add_billing.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_59664e5aa38f03_98085541',
+  'unifunc' => 'content_597a9c507cedc0_56742693',
   'file_dependency' => 
   array (
     '3dddb4cc51cddb8e6a7b30bbd331069393e4c253' => 
     array (
       0 => 'F:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\templates\\add_billing.tpl',
-      1 => 1499258372,
+      1 => 1500741076,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_59664e5aa38f03_98085541 ($_smarty_tpl) {
+function content_597a9c507cedc0_56742693 ($_smarty_tpl) {
 ?>
 
    
@@ -119,47 +119,7 @@ echo $_POST['client_name'];
 									</td>
 									</tr>		
 									<tr>
-									
 									<tr>
-										<td width="120" class="tbl_column">CTC Offered <span class="f_req">*</span></td>
-										<td> 
-										<input type="text" name="ctc_offer" disabled value="<?php if ($_smarty_tpl->tpl_vars['ctc_offer']->value) {
-echo $_smarty_tpl->tpl_vars['ctc_offer']->value;
-} else {
-echo $_POST['ctc_offer'];
-}?>">
-										</td>
-									</tr>										
-								</tbody>
-							</table>
-						</div>
-							
-						<div class="span6">		
-							<table class="table table-bordered dataTable" style="margin-bottom:0;">
-								<tbody>
-							
-									<tr class="tbl_row">
-										<td width="120" class="tbl_column">Billing Amount <span class="f_req">*</span></td>
-										<td> 
-										<input type="text" name="billing" disabled value="<?php if ($_smarty_tpl->tpl_vars['billing_amount']->value) {
-echo $_smarty_tpl->tpl_vars['billing_amount']->value;
-} else {
-echo $_POST['billing_amount'];
-}?>">
-										</td>
-									</tr>
-									<tr>
-										<td width="120" class="tbl_column">Billing Date <span class="f_req">*</span></td>
-										<td> 
-										<input type="text" name="billing_date"  disabled value="<?php if ($_smarty_tpl->tpl_vars['billing_date']->value) {
-echo $_smarty_tpl->tpl_vars['billing_date']->value;
-} else {
-echo $_POST['billing_date'];
-}?>">									
-										</td>
-									</tr>
-													
-									<tr class="tbl_row">
 										<td width="120" class="tbl_column">Joined Date <span class="f_req">*</span></td>
 										<td> 
 										<input type="text" name="joined_date" disabled value="<?php if ($_smarty_tpl->tpl_vars['joined_date']->value) {
@@ -169,6 +129,46 @@ echo $_POST['joined_date'];
 }?>">										
 										</td>
 									</tr>
+																			
+								</tbody>
+							</table>
+						</div>
+							
+						<div class="span6">		
+							<table class="table table-bordered dataTable" style="margin-bottom:0;">
+								<tbody>
+									<tr class="tbl_row">
+										<td width="120" class="tbl_column">CTC Offered <span class="f_req">*</span></td>
+										<td> 
+										<input type="text" name="ctc_offer"  value="<?php echo $_smarty_tpl->tpl_vars['ctc_offer']->value;?>
+">
+										<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['ctc_offerErr']->value;?>
+</label>									
+						
+										</td>
+									</tr>
+									<tr>
+										<td width="120" class="tbl_column">Billing Amount <span class="f_req">*</span></td>
+										<td> 
+										<input type="text" name="billing_amount"  value="<?php echo $_smarty_tpl->tpl_vars['billing_amount']->value;?>
+">
+										<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['billing_amountErr']->value;?>
+</label>									
+						
+										</td>
+									</tr>
+									<tr class="tbl_row">
+										<td width="120" class="tbl_column">Billing Date <span class="f_req">*</span></td>
+										<td> 
+										<input type="text" name="billing_date"  value="<?php echo $_smarty_tpl->tpl_vars['billing_date']->value;?>
+" class="datepick">									
+										<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['billing_dateErr']->value;?>
+</label>									
+						
+										</td>
+									</tr>
+													
+									
 								</tbody>
 							</table>
 						</div>

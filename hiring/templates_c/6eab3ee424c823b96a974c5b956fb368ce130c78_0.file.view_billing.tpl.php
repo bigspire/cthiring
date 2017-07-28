@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-06-24 15:42:34
+/* Smarty version 3.1.29, created on 2017-07-28 07:38:43
   from "F:\xampp\htdocs\ctsvn\cthiring\hiring\templates\view_billing.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_594e3b127c17a7_00912253',
+  'unifunc' => 'content_597a9cab733251_16093827',
   'file_dependency' => 
   array (
     '6eab3ee424c823b96a974c5b956fb368ce130c78' => 
     array (
       0 => 'F:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\templates\\view_billing.tpl',
-      1 => 1486527534,
+      1 => 1500741076,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_594e3b127c17a7_00912253 ($_smarty_tpl) {
+function content_597a9cab733251_16093827 ($_smarty_tpl) {
 ?>
 
    
@@ -47,7 +47,8 @@ home"><i class="icon-home"></i></a>
                                 </li>
                             
                                 <li>
-                                  Basavaraj
+								<?php echo ucwords($_smarty_tpl->tpl_vars['candidate_name']->value);?>
+
                                 </li>
                             </ul>
                         </div>
@@ -58,20 +59,15 @@ home"><i class="icon-home"></i></a>
 		<div class="span12">
 		<div class="mbox">
 			<div class="tabbable">
-								<div class="heading">
-										<ul class="nav nav-tabs">
-										<li class="active"><a class="restabChange" rel="interview"  href="#mbox_billing" data-toggle="tab"><i class="splashy-mail_light_down"></i> Billing Details </a></li>
-										<li class=""><a class="restabChange" rel="interview"  href="#mbox_co-ordination" data-toggle="tab"><i class="splashy-mail_light_down"></i>  Co-ordination </a></li>
-									</ul>
-								</div>
+								
 			<div class="tab-content" style="overflow:visible">			
-			<div class="tab-pane active" id="mbox_billing">
+			
 			<div class="span6">
 							<table class="table table-striped table-bordered dataTable" style="">
 								<tbody>
 									<tr>
 										<td width="120" class="tbl_column">Candidate Name </td>
-										<td><?php echo $_smarty_tpl->tpl_vars['candidate_name']->value;?>
+										<td><?php echo ucwords($_smarty_tpl->tpl_vars['candidate_name']->value);?>
  </td>
 									</tr>
 									
@@ -85,11 +81,11 @@ home"><i class="icon-home"></i></a>
 										<td><?php echo $_smarty_tpl->tpl_vars['client_name']->value;?>
 </td>
 									</tr>	
-									<tr>
-										<td width="" class="tbl_column">CTC Offered </td>
-										<td><?php echo $_smarty_tpl->tpl_vars['ctc_offer']->value;?>
+											<tr>
+										<td width="120" class="tbl_column">Joined Date </td>
+										<td><?php echo $_smarty_tpl->tpl_vars['joined_date']->value;?>
 </td>
-									</tr>	
+									</tr>
 								</tbody>
 							</table>
 				</div>
@@ -97,6 +93,11 @@ home"><i class="icon-home"></i></a>
 				<div class="span6">
 							<table class="table table-striped table-bordered dataTable" style="">
 								<tbody>
+								<tr>
+										<td width="" class="tbl_column">CTC Offered </td>
+										<td><?php echo $_smarty_tpl->tpl_vars['ctc_offer']->value;?>
+</td>
+									</tr>
 								<tr>
 									<td class="tbl_column">Billing Amount</td>
 									<td><?php echo $_smarty_tpl->tpl_vars['billing_amount']->value;?>
@@ -109,73 +110,14 @@ home"><i class="icon-home"></i></a>
 </td>
 								</tr>	
 									
-								<tr>
-										<td width="120" class="tbl_column">Joined Date </td>
-										<td><?php echo $_smarty_tpl->tpl_vars['joined_date']->value;?>
-</td>
-									</tr>
+							
 								</tbody>
 							</table>
 					</div>
-              </div> 
               
-              <div class="tab-pane" id="mbox_co-ordination">	
-              <?php
-$_from = $_smarty_tpl->tpl_vars['data']->value;
-if (!is_array($_from) && !is_object($_from)) {
-settype($_from, 'array');
-}
-$__foreach_item_0_saved_item = isset($_smarty_tpl->tpl_vars['item']) ? $_smarty_tpl->tpl_vars['item'] : false;
-$__foreach_item_0_saved_key = isset($_smarty_tpl->tpl_vars['key']) ? $_smarty_tpl->tpl_vars['key'] : false;
-$_smarty_tpl->tpl_vars['item'] = new Smarty_Variable();
-$_smarty_tpl->tpl_vars['key'] = new Smarty_Variable();
-$_smarty_tpl->tpl_vars['item']->_loop = false;
-foreach ($_from as $_smarty_tpl->tpl_vars['key']->value => $_smarty_tpl->tpl_vars['item']->value) {
-$_smarty_tpl->tpl_vars['item']->_loop = true;
-$__foreach_item_0_saved_local_item = $_smarty_tpl->tpl_vars['item'];
-?>
-              <div class="span12" style="margin-top:5px;margin-left:0px;"> 
-					<div class="span6">      
-							<table class="table table-striped table-bordered dataTable" style="">
-							<tbody>
-									<tr class="tbl_row">
-										<td width="120" class="tbl_column">Employee <span class="f_req"></span></td>
-										<td><?php echo ucwords($_smarty_tpl->tpl_vars['item']->value['employee']);?>
-</td>	
-									</tr>	
-									
-									<tr>
-									<td width="120" class="tbl_column">Value (% of work)<span class="f_req"></span></td>
-									<td> <?php echo $_smarty_tpl->tpl_vars['item']->value['percent'];?>
-</td>	
-									</tr>		
-																	
-								</tbody>
-							</table>
-					</div> 
-					<div class="span6">      
-							<table class="table table-striped table-bordered dataTable" style="">
-							<tbody>
-									<tr class="tbl_row">
-										<td width="120" class="tbl_column">Co-ordination Type <span class="f_req"></span></td>
-										<td><?php echo $_smarty_tpl->tpl_vars['item']->value['type'];?>
-</td>	
-									</tr>									
-								</tbody>
-							</table>
-					</div>
-					</div>
-					<?php
-$_smarty_tpl->tpl_vars['item'] = $__foreach_item_0_saved_local_item;
-}
-if ($__foreach_item_0_saved_item) {
-$_smarty_tpl->tpl_vars['item'] = $__foreach_item_0_saved_item;
-}
-if ($__foreach_item_0_saved_key) {
-$_smarty_tpl->tpl_vars['key'] = $__foreach_item_0_saved_key;
-}
-?> 
-					</div>
+              
+              	
+              
 					</div>
 					</div>  
 					</div>

@@ -32,7 +32,7 @@
 					<div class="srch_buttons">
 						<div style="text-align:right;">
 							<?php if($this->Session->read('USER.Login.id') == $client_data['Client']['created_by'] && $client_data['Client']['status'] == '1'):?>
-							<a href="<?php echo $this->webroot;?>client/edit/<?php echo $this->request->params['pass'][0];?>" class="sepV_a" title="Edit Client">
+							<a href="<?php echo $this->webroot;?>client/edit/<?php echo $this->request->params['pass'][0];?>" class="sepV_a jsRedirect" title="Edit Client">
 							<input value="Edit" type="button" class="btn btn-info"></a>
 							<?php endif; ?>
 						</div>
@@ -262,8 +262,8 @@
 					
 	<div class="form-actions">
 		<?php if($client_data['Client']['is_approve'] == 'W' && $this->Session->read('USER.Login.roles_id') == '39'):?>
-<a class="iframeBox unreadLink" rel="tooltip" title="Approve Client" href="<?php echo $this->webroot;?>client/remark/approve/<?php echo $client_data['Client']['id'];?>" val="40_50"><input type="button" value="Approve" class="btn btn btn-success"/></a>
-<a class="iframeBox unreadLink" rel="tooltip" title="Reject Client" href="<?php echo $this->webroot;?>client/remark/reject/<?php echo $client_data['Client']['id'];?>" val="40_50"><input type="button" value="Reject" class="btn btn btn-danger"/></a>
+<a class="iframeBox unreadLink jsRedirect" rel="tooltip" title="Approve Client" href="<?php echo $this->webroot;?>client/remark/approve/<?php echo $client_data['Client']['id'];?>" val="40_50"><input type="button" value="Approve" class="btn btn btn-success"/></a>
+<a class="iframeBox unreadLink jsRedirect" rel="tooltip" title="Reject Client" href="<?php echo $this->webroot;?>client/remark/reject/<?php echo $client_data['Client']['id'];?>" val="40_50"><input type="button" value="Reject" class="btn btn btn-danger"/></a>
 <a href="<?php echo $this->webroot;?>client/index/pending/" rel="tooltip" title="Cancel and Back to Clients"  class="jsRedirect"><button class="btn">Cancel</button></a>
 	<?php endif; ?>
 	

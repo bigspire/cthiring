@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-07-13 13:43:09
+/* Smarty version 3.1.29, created on 2017-07-28 06:59:18
   from "F:\xampp\htdocs\ctsvn\cthiring\hiring\templates\billing.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_59672b955ce3b4_62296319',
+  'unifunc' => 'content_597a936e6dc0a7_49522111',
   'file_dependency' => 
   array (
     '72403b4fdca9a2bdf33b3e968cb0bd02d8c28536' => 
     array (
       0 => 'F:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\templates\\billing.tpl',
-      1 => 1499258372,
+      1 => 1500741076,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_59672b955ce3b4_62296319 ($_smarty_tpl) {
+function content_597a936e6dc0a7_49522111 ($_smarty_tpl) {
 ?>
 
    
@@ -66,11 +66,11 @@ home"><i class="icon-home"></i></a>
 
 								&f_date=<?php echo $_smarty_tpl->tpl_vars['f_date']->value;?>
 &t_date=<?php echo $_smarty_tpl->tpl_vars['t_date']->value;?>
-">
+" class="jsRedirect">
 								<button type="button" val="billing.php?action=export&keyword=<?php echo $_POST['keyword'];?>
 &f_date=<?php echo $_smarty_tpl->tpl_vars['f_date']->value;?>
 &t_date=<?php echo $_smarty_tpl->tpl_vars['t_date']->value;?>
-" name="export" class="jsRedirect btn btn-warning" >Export Excel</button></a>
+" name="export" class="btn btn-warning" >Export Excel</button></a>
 							<?php }?>
 							<!-- a class="jsRedirect" data-notify-time = '3000'   href="add_billing.php">
 							<input type="button" value="Create Billing" class="btn btn-info"/></a-->	
@@ -111,8 +111,8 @@ $_smarty_tpl->ext->_updateScope->updateScope($_smarty_tpl, 'hide', 0);?>
 								<label>Billing Till: <input type="text" name="t_date" value="<?php echo $_smarty_tpl->tpl_vars['t_date']->value;?>
 " placeholder="dd/mm/yyyy" class="input-small datepick" aria-controls="dt_gal"></label>
 						
-								<label style="margin-top:18px;"><a href="billing.php" class="jsRedirect"><input value="Reset" type="button" class="btn"/></a></label>
 							<label style="margin-top:18px;"><input type="submit" value="Submit" class="btn btn-gebo" /></label>					
+							<label style="margin-top:18px;"><a href="billing.php" class="jsRedirect"><input value="Reset" type="button" class="btn"/></a></label>
 							
 							</div>
 

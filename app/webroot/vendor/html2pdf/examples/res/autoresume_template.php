@@ -132,7 +132,7 @@ Confidential Report | <?php echo date('M Y');?><br>
 
 
 
-<?php  $img_path ='http://localhost/ctsvn/cthiring/img/career-tree-logo-large.jpg';?>
+<?php  $img_path ='http://managehiring.com/img/career-tree-logo-large.jpg';?>
 <span style="margin-left:40px;margin-top:50px;"><img src="<?php echo $img_path;?>"/></span>
 
 <p style="margin-left:250px;margin-top:200px;;" class="confiTitle">CONFIDENTIAL REPORT</p>
