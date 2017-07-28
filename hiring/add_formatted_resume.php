@@ -20,46 +20,6 @@ include('classes/class.mailer.php');
 // content class
 include('classes/class.content.php');
 
-// when doc. extraction happen in first time
-if($_SESSION['extraction'] == ''){
-	// fetch the resume data
-	$uploaddir = 'uploads/resume/'; 
-	$resume_data = $fun->read_document($uploaddir.$_SESSION['resume_doc']);
-	$smarty->assign('RESUME_DATA', $resume_data);
-	// extract the mobile
-	$string = preg_replace("#[^\d{12}\s]#",'',$resume_data);
-	preg_match_all("#(\d{10})#", "$string", $found);	
-	foreach($found as $key => $phone_number) {
-	  if(strlen($phone_number[$key]) >= 10){ 
-		$mobile = $phone_number[$key];
-		break;
-	  };
-	}
-	// extract the email
-	$string = preg_split("/[\s,]+/", $resume_data);
-	foreach($string as $mail){
-		if(!filter_var($mail, FILTER_VALIDATE_EMAIL)) {
-			continue;
-		}else{
-			break;
-		}
-	}
-	// extract the candidate name
-	foreach($string as $name_key => $name){
-		$name = trim($name);
-		if($name != 'Name' && $name != 'CURRICULUM' && $name != 'VITAE' && $name != 'RESUME' && $name != '') {
-			break;
-		}else{
-			continue;
-		}
-	}
-	$smarty->assign('first_name', $string[$name_key]);
-	$smarty->assign('last_name', $string[$name_key+1]);
-	$smarty->assign('email', $mail);
-	$smarty->assign('mobile', $mobile);
-	$_SESSION['extraction'] = 'done';
-}
-
 $smarty->assign('dob_default', date('d/m/Y', strtotime('-18 years')));
 
 // role based validation
@@ -106,6 +66,7 @@ if(empty($_POST)){
 		$row = $mysql->display_result($result);
 		$_SESSION['clients_id'] = $row['clients_id'];
 		$_SESSION['position_for'] = $row['position_for'];
+		$_SESSION['resume_doc'] = $row['resume'];
 		$smarty->assign('dob_field', $fun->convert_date_display($row['dob']));
 		$smarty->assign('tech_expert', str_replace('"',"'",$row['expert']));
 		$smarty->assign('achievement', str_replace('"',"'",$row['achievements']));
@@ -837,7 +798,11 @@ if(!empty($_POST)){
 		}
 		if(!empty($edu_id) && !empty($exp_id) && !empty($train_id) && !empty($language_id) && !empty($resume_id)){
 			// echo 'save data';die;
-			header('Location: ../resume/?action=created');
+			if($_GET['resume'] != ''){
+				header('Location: ../resume/?action=auto_modified');
+			}else{
+				header('Location: ../resume/?action=auto_created');
+			}
 		} 
 	}else{
 		$smarty->assign('tab_open_resume', ($tab1 == 'fail' ? 'tab1' : ($tab2 == 'fail' ? 'tab2' : ($tab3 == 'fail' ? 'tab3' : ($tab4 == 'fail' ? 'tab4' : ($tab5 == 'fail' ? 'tab5' : ''))))));
@@ -1023,6 +988,47 @@ try{
 }catch(Exception $e){
 	echo 'Caught exception: ',  $e->getMessage(), "\n";
 } 
+
+if($_SESSION['extraction'] == ''){
+	// fetch the resume data
+	$uploaddir = 'uploads/resume/'; 
+	$resume_data = $fun->read_document($uploaddir.$_SESSION['resume_doc']);
+	$smarty->assign('RESUME_DATA', $resume_data);
+	// extract the mobile
+	$string = preg_replace("#[^\d{12}\s]#",'',$resume_data);
+	preg_match_all("#(\d{10})#", "$string", $found);	
+	foreach($found as $key => $phone_number) {
+	  if(strlen($phone_number[$key]) >= 10){ 
+		$mobile = $phone_number[$key];
+		break;
+	  };
+	}
+	// extract the email
+	$string = preg_split("/[\s,]+/", $resume_data);
+	foreach($string as $mail){
+		if(!filter_var($mail, FILTER_VALIDATE_EMAIL)) {
+			continue;
+		}else{
+			break;
+		}
+	}
+	// extract the candidate name
+	foreach($string as $name_key => $name){
+		$name = trim($name);
+		if($name != 'Name' && $name != 'CURRICULUM' && $name != 'VITAE' && $name != 'RESUME' && $name != ''
+		&& $name != 'Mailing' && $name != 'Address' && $name != ':' && $name != '' && !is_numeric($name)){
+			break;
+		}else{
+			continue;
+		}
+	}
+	$smarty->assign('first_name', $string[$name_key]);
+	$smarty->assign('last_name', $string[$name_key+1]);
+	$smarty->assign('email', $mail);
+	$smarty->assign('mobile', $mobile);
+	$_SESSION['extraction'] = 'done';
+}
+
 
 // closing mysql
 $mysql->close_connection();

@@ -153,17 +153,7 @@
 										<input type="text" tabindex="14" name="nationality" id="nationality" value="{$nationality}" class="span8 ui-autocomplete-input" autocomplete="off">							
 										<label for="reg_city" generated="true" class="error"> {$nationalityErr} </label>								
 										</td>										
-											
-									</tr>
-										<tr class="">
-										<td width="120" class="tbl_column">Resume File </td>
-										<td>
-											<textarea rows = "10" style="width:500px;">
-											{$RESUME_DATA}
-											</textarea>
-																						
-										</td>
-									</tr>									
+																		
 								</tbody>
 							</table>
 						</div>
@@ -268,6 +258,23 @@
 								</tbody>
 							</table>
 						</div>
+							<div class="row-fluid" style="clear:left;float:left;margin-top:15px;">				
+			<div class="span12">
+	<table class="table table-bordered dataTable" style="margin-bottom:0;">
+	<tbody>
+<tr class="tbl_row">
+						
+<td style="margin:10px;text-align:center;">
+<textarea rows = "10" style="width:1200px;">
+{$RESUME_DATA}
+</textarea>
+																						
+</td>
+</tr>									
+									
+	</tbody>
+	</table>
+</div>		</div>
 			</div>
 
 					
@@ -686,6 +693,7 @@
 </div>
                     </div>
 					</div>
+						
 					<input type="hidden" id="tab_open_resume" value="{$tab_open_resume}"/>
 					 <div class="form-actions">
 	<input class="btn btn-gebo" type="submit" value="Submit">

@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-07-28 12:47:39
+/* Smarty version 3.1.29, created on 2017-07-28 12:52:55
   from "C:\xampp\htdocs\2017\ctsvn\cthiring\hiring\templates\add_resume.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_597ae51301bf73_09896499',
+  'unifunc' => 'content_597ae64fdc20d2_55093142',
   'file_dependency' => 
   array (
     '20fa0800b264c1941565246828a7b2b89c0b2234' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\templates\\add_resume.tpl',
-      1 => 1501226221,
+      1 => 1501226567,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_597ae51301bf73_09896499 ($_smarty_tpl) {
+function content_597ae64fdc20d2_55093142 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -169,16 +169,7 @@ echo $_smarty_tpl->tpl_vars['month_of_expErr']->value;?>
 										</td>
 							</tr>
 							
-								<tr class="tbl_row">
-										<td width="120" class="tbl_column">Resume File </td>
-										<td>
-<textarea rows = "10" style="width:500px;">
-<?php echo $_smarty_tpl->tpl_vars['RESUME_DATA']->value;?>
-
-</textarea>
-																						
-										</td>
-							</tr>
+								
 
 									
 									
@@ -287,8 +278,32 @@ echo 'checked';?>
 									
 								</tbody>
 							</table>
+						
+						
+						
+						
 						</div>
-</div>
+
+
+		<div class="row-fluid" style="clear:left;float:left;margin-top:15px;">				
+			<div class="span12">
+	<table class="table table-bordered dataTable" style="margin-bottom:0;">
+	<tbody>
+	<tr class="tbl_row">
+									
+										<td style="margin:10px;text-align:center;">
+<textarea rows = "10" style="width:1200px;">
+<?php echo $_smarty_tpl->tpl_vars['RESUME_DATA']->value;?>
+
+</textarea>
+																						
+										</td>
+	</tr>									
+									
+	</tbody>
+	</table>
+</div>		</div>		
+						</div>
 	
 <!-- sheepIt Form -->
 <div  class="tab-pane" id="mbox_Education">

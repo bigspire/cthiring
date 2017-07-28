@@ -43,7 +43,8 @@
 							<td>										
 								<input type="text" tabindex="7" name="first_name" placeholder="First Name" id="" value="{$first_name}" class="span4 " autocomplete="off">
 								<input type="text" tabindex="7" name="last_name" placeholder="Last Name" id="" value="{$last_name}" class="inline_text span4" autocomplete="off">
-								<label for="reg_city" generated="true" class="error">{$first_nameErr} {$last_nameErr}</label>									
+								<label for="reg_city" generated="true" class="error">{$first_nameErr}</label>		
+								<label for="reg_city" generated="true" class="error">{$last_nameErr}</label>	
 							</td>	
 						</tr>			
 						
@@ -70,7 +71,7 @@
 								<option value="">Select</option>
 								{html_options options=$locations selected=$smarty.post.location}	
 							</select> 
-							<label for="reg_city" generated="true" class="error">{$roleErr}</label>											
+							<label for="reg_city" generated="true" class="error">{$locationErr}</label>											
 						</td>	
 				  </tr>		
 	  <tr class="tbl_row">
@@ -85,15 +86,8 @@
 							</select> 
 							<label for="reg_city" generated="true" class="error">{$statusErr}</label>											
 						</td>	
-				  </tr>				  
-				</tbody>
-			</table>
-		</div>
-							
-		<div class="span6">		
-			<table class="table table-bordered dataTable" style="margin-bottom:0;">
-				<tbody>	
-				 <tr class="tbl_row">
+				  </tr>	
+					<tr class="tbl_row">
 						<td width="120" class="tbl_column">Role <span class="f_req">*</span></td>
 						<td>	
 							<select name="role" class="span8"  id="PositionEmpId">
@@ -110,6 +104,14 @@
 							<input type="text" tabindex="7" name="designation" value="{$smarty.post.designation}" class="span8" autocomplete="off">									
 						</td>	
 				  </tr>
+				</tbody>
+			</table>
+		</div>
+							
+		<div class="span6">		
+			<table class="table table-bordered dataTable" style="margin-bottom:0;">
+				<tbody>	
+				 
 				    <tr class="tbl_row">
 						<td width="120" class="tbl_column">L1 </td>
 						<td>	
@@ -131,6 +133,13 @@
 							</select> 
 						</td>	
 				  </tr>	
+				  <tr class="">
+						<td width="120" class="tbl_column">Email Signature <span class="f_req">*</span></td>
+						<td>
+						<textarea name="signature" class="span8 wysiwyg1">{if $signature}{$signature}{else}{$signature}{/if}</textarea>	
+							<label for="reg_city" generated="true" class="error">{$signatureErr}</label>											
+						</td>
+				  </tr>
 								
 				</tbody>
 			</table>

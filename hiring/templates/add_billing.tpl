@@ -49,6 +49,8 @@
 													
 										<td>
 											<input type="text" name="candidate_name" disabled value="{if $candidate_name}{$candidate_name}{else}{$smarty.post.candidate_name}{/if}" class="span10" aria-controls="dt_gal">
+										<input type="hidden" name="candidate_name" value="{if $candidate_name}{$candidate_name}{else}{$smarty.post.candidate_name}{/if}" class="span10" aria-controls="dt_gal">
+										
 										</td>	
 									</tr>
 									
@@ -57,12 +59,16 @@
 										<td width="120" class="tbl_column">Position <span class="f_req">*</span></td>
 										<td>
 										<input type="text" name="position" disabled value="{if $position}{$position}{else}{$smarty.post.position}{/if}">															
+									<input type="hidden" name="position"  value="{if $position}{$position}{else}{$smarty.post.position}{/if}">															
+									
 									</td>
 									</tr>	
 									<tr class="tbl_row">
 										<td width="120" class="tbl_column">Client Name <span class="f_req">*</span></td>
 										<td>
 										<input type="text" name="client_name" disabled value="{if $client_name}{$client_name}{else}{$smarty.post.client_name}{/if}">						
+									<input type="hidden" name="client_name"  value="{if $client_name}{$client_name}{else}{$smarty.post.client_name}{/if}">						
+									
 									</td>
 									</tr>		
 									<tr>
@@ -70,6 +76,8 @@
 										<td width="120" class="tbl_column">Joined Date <span class="f_req">*</span></td>
 										<td> 
 										<input type="text" name="joined_date" disabled value="{if $joined_date}{$joined_date}{else}{$smarty.post.joined_date}{/if}">										
+										<input type="hidden" name="joined_date"  value="{if $joined_date}{$joined_date}{else}{$smarty.post.joined_date}{/if}">										
+										
 										</td>
 									</tr>
 																			

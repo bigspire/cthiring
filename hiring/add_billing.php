@@ -24,7 +24,6 @@ include('classes/class.content.php');
 $module_access = $fun->check_role_access('36',$modules);
 $smarty->assign('module',$module_access);
 
-
 if(!empty($_GET['res_id']) && !empty($_GET['req_res_id'])){
 	
 	// query to fetch approval user id. 
@@ -65,14 +64,14 @@ if(!empty($_GET['res_id']) && !empty($_GET['req_res_id'])){
 
 if($_SERVER['REQUEST_METHOD'] == 'POST'){			
 	
-	if($_POST['ctc_offer'] == ''){
+	if($_POST['ctc_offer'] == '' || $_POST['ctc_offer'] <= '0'){
 		$smarty->assign('ctc_offerErr','Please enter the ctc offered ');
 		$test = 'error';
 	}else{
 		$smarty->assign('ctc_offer',$_POST['ctc_offer']);
 	}
 	
-	if($_POST['billing_amount'] == ''){
+	if($_POST['billing_amount'] == '' || $_POST['billing_amount'] <= '0'){
 		$smarty->assign('billing_amountErr','Please enter the billing amount');
 		$test = 'error';
 	}else{
@@ -158,7 +157,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 			}
 	
 			// query to insert into database. 
-			$query = "CALL add_billing_status('".$date."','".$last_id."','".$_SESSION["approval_user_id"]."')";
+			$query = "CALL add_billing_status('".$date."','".$billing_id."','".$_SESSION["approval_user_id"]."')";
 			// Calling the function that makes the insert
 			try{
 				// calling mysql exe_query function
@@ -175,7 +174,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 			}
 		
 			// query to insert into database. 
-			$query = "CALL add_billing_users('".$last_id."', '".$_SESSION["approval_user_id"]."')";
+			$query = "CALL add_billing_users('".$billing_id."', '".$_SESSION["approval_user_id"]."')";
 			// Calling the function that makes the insert
 			try{
 				// calling mysql exe_query function
@@ -229,7 +228,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 			}catch(Exception $e){
 				echo 'Caught exception: ',  $e->getMessage(), "\n";
 			}
-		
+
 			// get billing user details
 			$user_name = ucwords($_POST['user_name']);
 			$user_email = $_POST['email_address'];
@@ -237,15 +236,10 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 			// get approval user details
 			$approval_user_name = ucwords($_POST['approval_user_name']);
 			$approval_user_email = $_POST['approval_user_email'];
-		
-			// get candidate name
-			$keyword = $_POST['keyword'];
-			$keyword_explode = explode(",", $keyword);
-			$candidate_name = $keyword_explode[0];
 			
 			// send mail to approval user
 			$sub = "CTHiring -  " .$user_name." submitted billing details!";
-			$msg = $content->get_create_billing_mail($_POST,$rows,$user_name,$approval_user_name,$candidate_name);
+			$msg = $content->get_create_billing_mail($_POST,$user_name,$approval_user_name,$candidate_name);
 			$mailer->send_mail($sub,$msg,$user_name,$user_email,$approval_user_name,$approval_user_email);
 	
 			if(!empty($last_inserted_id) && empty($test) && !empty($req_res_id) && !empty($billing_id)){ 

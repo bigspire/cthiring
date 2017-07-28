@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-07-13 14:14:32
+/* Smarty version 3.1.29, created on 2017-07-28 17:48:51
   from "C:\xampp\htdocs\2017\ctsvn\cthiring\hiring\templates\edit_user.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_596732f0b57777_73268601',
+  'unifunc' => 'content_597b2babaec459_06155456',
   'file_dependency' => 
   array (
     '1a94f9050211933cbe4d48a80946caeaad0bbb91' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\templates\\edit_user.tpl',
-      1 => 1499935469,
+      1 => 1501235766,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_596732f0b57777_73268601 ($_smarty_tpl) {
+function content_597b2babaec459_06155456 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -69,14 +69,14 @@ home"><i class="icon-home"></i></a>
 						<tr class="tbl_row">
 							<td width="120" class="tbl_column">Full Name <span class="f_req">*</span></td>
 							<td>										
-								<input type="text" tabindex="7" name="first_name" placeholder="First Name" id="" value="<?php echo $_smarty_tpl->tpl_vars['first_name']->value;?>
-" class="span4 " autocomplete="off">
-								<input type="text" tabindex="7" name="last_name" placeholder="Last Name" id="" value="<?php echo $_smarty_tpl->tpl_vars['last_name']->value;?>
+								<input type="text" tabindex="7" name="first_name" placeholder="First Name" value="<?php echo $_smarty_tpl->tpl_vars['first_name']->value;?>
+" class="span4" autocomplete="off">
+								<input type="text" tabindex="7" name="last_name" placeholder="Last Name" value="<?php echo $_smarty_tpl->tpl_vars['last_name']->value;?>
 " class="inline_text span4" autocomplete="off">
 								<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['first_nameErr']->value;?>
- <?php echo $_smarty_tpl->tpl_vars['last_nameErr']->value;?>
-</label>									
-							</td>	
+</label>		
+								<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['last_nameErr']->value;?>
+</label>	</td>	
 						</tr>			
 						
 						<tr>
@@ -124,14 +124,7 @@ home"><i class="icon-home"></i></a>
 						</td>	
 				  </tr>	
 				  
-				</tbody>
-			</table>
-		</div>
-							
-		<div class="span6">		
-			<table class="table table-bordered dataTable" style="margin-bottom:0;">
-				<tbody>	
-				 <tr class="tbl_row">
+				   <tr class="tbl_row">
 						<td width="120" class="tbl_column">Role <span class="f_req">*</span></td>
 						<td>	
 							<select name="roles_id" class="span8">
@@ -154,6 +147,15 @@ echo $_POST['designation'];
 }?>" class="span8" autocomplete="off">									
 						</td>	
 				  </tr>
+				  
+				</tbody>
+			</table>
+		</div>
+							
+		<div class="span6">		
+			<table class="table table-bordered dataTable" style="margin-bottom:0;">
+				<tbody>	
+				
 				    
 					  <tr class="tbl_row">
 						<td width="120" class="tbl_column">L1 </td>
@@ -178,6 +180,15 @@ echo $_POST['designation'];
 							</select> 
 						</td>	
 				  </tr>	
+				   <tr class="">
+						<td width="120" class="tbl_column">Email Signature <span class="f_req">*</span></td>
+						<td>
+						<textarea name="signature" class="span8 wysiwyg1"><?php echo $_smarty_tpl->tpl_vars['signature']->value;?>
+</textarea>	
+						<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['signatureErr']->value;?>
+</label>
+						</td>
+				  </tr>
 				  
 									
 				</tbody>

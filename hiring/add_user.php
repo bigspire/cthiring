@@ -35,11 +35,12 @@ if(!empty($_POST)){
 	}
 	
 	// array for printing correct field name in error message
-	$fieldtype = array('0', '0' ,'0','0','1','1','1');
-	$actualfield = array('first name','last name', 'email address', 'mobile','role','status');
-    $field = array('first_name' => 'first_nameErr','last_name' => 'last_nameErr', 'email' => 'emailErr' ,'mobile' => 'mobileErr',
-   'role' => 'roleErr','status' => 'statusErr','location' => 'locationErr');
-	$j = 0;
+	$fieldtype = array('0', '0' ,'0','0','1','1','1','0');
+	$actualfield = array('first name','last name', 'email address', 'mobile','role','status','location','email signature');
+    $field = array('first_name' => 'first_nameErr','last_name' => 'last_nameErr', 'email_id' => 'emailErr' ,
+	'mobile' => 'mobileErr','roles_id' => 'roleErr','status' => 'statusErr','location_id' => 'locationErr',
+	'signature' => 'signatureErr');
+	
 	foreach ($field as $field => $er_var){ 
 		if($_POST[$field] == ''){
 			$error_msg = $fieldtype[$j] ? ' select the ' : ' enter the ';
@@ -82,7 +83,8 @@ if(!empty($_POST)){
 						'".$fun->is_white_space($mysql->real_escape_str($_POST['designation']))."',
 						'".$mysql->real_escape_str($_POST['status'])."',
 						'".$mysql->real_escape_str($_POST['role'])."','".$mysql->real_escape_str($_SESSION['user_id'])."',
-			 			'".$date."','".$mysql->real_escape_str($_POST['location'])."')";
+			 			'".$date."','".$mysql->real_escape_str($_POST['location'])."',
+						'".$fun->is_white_space($mysql->real_escape_str($_POST['signature']))."')";
 				// Calling the function that makes the insert
 				try{
 					// calling mysql exe_query function
