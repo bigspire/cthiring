@@ -129,7 +129,7 @@
 											  <ul class="dropdown-menu">
 											  {if $module['create_resume'] eq '1'}
                                                 <li><a href="upload_resume.php" class="iframeBox unreadLink" val="40_55">Upload Resume</a></li>
-                                               {/if}
+											   {/if}
 											   {if $module['view_resume'] eq '1'}
 												<li><a href="{webroot}resume/">Search Resume {* if $resume_count *}<!-- span class="label-bub label-info white">{$resume_count}</span-->{* /if *}</a></li>
 											   {/if}

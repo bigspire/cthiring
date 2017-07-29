@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-07-15 20:35:06
+/* Smarty version 3.1.29, created on 2017-07-28 17:29:37
   from "C:\xampp\htdocs\2017\ctsvn\cthiring\hiring\templates\add_billing.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_596a2f22047f60_27629001',
+  'unifunc' => 'content_597b27293cb707_83174104',
   'file_dependency' => 
   array (
     '856b41824fe64a42b82e8f282557eeaec173a11d' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\templates\\add_billing.tpl',
-      1 => 1500131102,
+      1 => 1501243038,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_596a2f22047f60_27629001 ($_smarty_tpl) {
+function content_597b27293cb707_83174104 ($_smarty_tpl) {
 ?>
 
    
@@ -94,6 +94,12 @@ echo $_smarty_tpl->tpl_vars['candidate_name']->value;
 } else {
 echo $_POST['candidate_name'];
 }?>" class="span10" aria-controls="dt_gal">
+										<input type="hidden" name="candidate_name" value="<?php if ($_smarty_tpl->tpl_vars['candidate_name']->value) {
+echo $_smarty_tpl->tpl_vars['candidate_name']->value;
+} else {
+echo $_POST['candidate_name'];
+}?>" class="span10" aria-controls="dt_gal">
+										
 										</td>	
 									</tr>
 									
@@ -106,6 +112,12 @@ echo $_smarty_tpl->tpl_vars['position']->value;
 } else {
 echo $_POST['position'];
 }?>">															
+									<input type="hidden" name="position"  value="<?php if ($_smarty_tpl->tpl_vars['position']->value) {
+echo $_smarty_tpl->tpl_vars['position']->value;
+} else {
+echo $_POST['position'];
+}?>">															
+									
 									</td>
 									</tr>	
 									<tr class="tbl_row">
@@ -116,6 +128,12 @@ echo $_smarty_tpl->tpl_vars['client_name']->value;
 } else {
 echo $_POST['client_name'];
 }?>">						
+									<input type="hidden" name="client_name"  value="<?php if ($_smarty_tpl->tpl_vars['client_name']->value) {
+echo $_smarty_tpl->tpl_vars['client_name']->value;
+} else {
+echo $_POST['client_name'];
+}?>">						
+									
 									</td>
 									</tr>		
 									<tr>
@@ -127,6 +145,12 @@ echo $_smarty_tpl->tpl_vars['joined_date']->value;
 } else {
 echo $_POST['joined_date'];
 }?>">										
+										<input type="hidden" name="joined_date"  value="<?php if ($_smarty_tpl->tpl_vars['joined_date']->value) {
+echo $_smarty_tpl->tpl_vars['joined_date']->value;
+} else {
+echo $_POST['joined_date'];
+}?>">										
+										
 										</td>
 									</tr>
 																			

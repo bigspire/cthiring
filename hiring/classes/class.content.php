@@ -8,10 +8,9 @@ Date : 03-02-2017
 class mailContent extends fun{
 	
 /* function to print the create billing info html */
-	function get_create_billing_mail($form_data,$rows,$user_name,$approval_user_name,$candidate_name){ 
+	function get_create_billing_mail($form_data,$user_name,$approval_user_name,$candidate_name){ 
 	  $approval_user_name = ucwords($approval_user_name);
 	  $user_name = ucwords($user_name);
-	  $candidate_name = $candidate_name;
 	  $content = <<< EOD
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -41,15 +40,15 @@ class mailContent extends fun{
           
              <tr style="background:#f5f4f4;">
              	<td width="100">Candidate Name</td>
-              	<td style="color:#2a2a2a;">{$rows['candidate_name']}{$candidate_name}</td>
+              	<td style="color:#2a2a2a;">{$form_data['candidate_name']}</td>
               	<td width="100">Position</td>
-              	<td style="color:#2a2a2a;">{$rows['position']}{$_POST['position']}</td>	
+              	<td style="color:#2a2a2a;">{$form_data['position']}</td>	
              </tr>
              <tr style="background:#f5f4f4;">
               	<td width="100">Client Name</td>
-              	<td style="color:#2a2a2a;">{$rows['client_name']}{$_POST['client']}</td>
+              	<td style="color:#2a2a2a;">{$form_data['client_name']}</td>
 			  		<td width="100">Billing Amount</td>
-              	<td style="color:#2a2a2a;">{$rows['billing_amount']}{$_POST['billing_amount']}</td>
+              	<td style="color:#2a2a2a;">{$form_data['billing_amount']}</td>
              </tr>
           </table>
         
@@ -78,7 +77,7 @@ EOD;
 	}		
 	
 /* function to print the approve/reject billing info html */
-	function get_level1_billing_mail($form_data,$rows,$user_name,$approval_user_name,$candidate_name,$mail_status){ 
+	function get_level1_billing_mail($form_data,$user_name,$approval_user_name,$mail_status){ 
 	  $approval_user_name = ucwords($approval_user_name);
 	  $user_name = ucwords($user_name);
 	  $content = <<< EOD
@@ -111,15 +110,15 @@ EOD;
           
              <tr style="background:#f5f4f4;">
              	<td width="100">Candidate Name</td>
-              	<td style="color:#2a2a2a;">{$rows['candidate_name']}</td>
+              	<td style="color:#2a2a2a;">{$form_data['candidate_name']}</td>
               	<td width="100">Position</td>
-              	<td style="color:#2a2a2a;">{$rows['position']}</td>	
+              	<td style="color:#2a2a2a;">{$form_data['position']}</td>	
              </tr>
              <tr style="background:#f5f4f4;">
               	<td width="100">Client Name</td>
-              	<td style="color:#2a2a2a;">{$rows['client_name']}</td>
+              	<td style="color:#2a2a2a;">{$form_data['client_name']}</td>
 			  		<td width="100">Billing Amount</td>
-              	<td style="color:#2a2a2a;">{$rows['billing_amount']}</td>
+              	<td style="color:#2a2a2a;">{$form_data['billing_amount']}</td>
              </tr>
           </table>
         
