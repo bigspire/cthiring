@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-07-27 16:36:05
+/* Smarty version 3.1.29, created on 2017-07-28 15:10:26
   from "F:\xampp\htdocs\ctsvn\cthiring\hiring\templates\add_formatted_resume.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5979c91d4ce590_65586055',
+  'unifunc' => 'content_597b068ad76c32_79619093',
   'file_dependency' => 
   array (
     'e95c9b466e5e31f8382283f81fdd59a0418a79fe' => 
     array (
       0 => 'F:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\templates\\add_formatted_resume.tpl',
-      1 => 1501153395,
+      1 => 1501226497,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5979c91d4ce590_65586055 ($_smarty_tpl) {
+function content_597b068ad76c32_79619093 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'F:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -216,7 +216,17 @@ echo $_POST['family'];
  </label>								
 										</td>										
 											
-									</tr>					
+									</tr>
+										<tr class="">
+										<td width="120" class="tbl_column">Resume File </td>
+										<td>
+											<textarea rows = "10" style="width:500px;">
+											<?php echo $_smarty_tpl->tpl_vars['RESUME_DATA']->value;?>
+
+											</textarea>
+																						
+										</td>
+									</tr>									
 								</tbody>
 							</table>
 						</div>

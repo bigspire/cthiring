@@ -353,7 +353,7 @@ class PositionController extends AppController {
 				}else{
 					// get the position details
 					$data = $this->Position->find('all', array('fields' => array('Position.id','clients_id','client_contact_id','job_title','location','min_exp','max_exp',
-					'ctc_from','ctc_to','education','ctc_from_type','ctc_to_type','skills','no_job','start_date','end_date','function_area_id','job_desc','job_desc_file'), 
+					'ctc_from','ctc_to','education','ctc_from_type','ctc_to_type','skills','no_job','start_date','end_date','function_area_id','job_desc','job_desc_file','client_contact_id'), 
 					'conditions' => array('Position.id' => $id), 'joins' => $options));
 					$this->request->data = $data[0];
 					$this->request->data['Position']['start_date'] = $this->Functions->format_date_show($this->request->data['Position']['start_date']);
@@ -489,7 +489,7 @@ class PositionController extends AppController {
 			)
 		);
 		$con_list = $this->Contact->find('all', array('fields' => array('id',"concat(first_name,' ',last_name) uname"),
-		'order' => array('first_name ASC'),'conditions' => array('status' => '1', 'is_deleted' => 'N',
+		'order' => array('first_name ASC'),'conditions' => array('status' => 'A', 'is_deleted' => 'N',
 		'ClientCont.clients_id' => $id), 'joins' => $options));
 		$format_list = $this->Functions->format_list_key($con_list, 'Contact','id', 'uname');
 		$this->set('spocList', $format_list);
@@ -952,7 +952,7 @@ class PositionController extends AppController {
 	}
 	
 	/* function to schedule for interview */
-	public function schedule_interview($id, $pos_id){
+	public function schedule_interview($id, $pos_id, $interview_level){
 		$this->layout = 'framebox';
 		if(!empty($id) && !empty($pos_id)){
 			// get the template details
@@ -962,7 +962,13 @@ class PositionController extends AppController {
 			$int_levels = array('First Interview', 'Second Interview', 'Final Interview');
 			$this->set('int_levels', $int_levels);
 			// get interview levels
-			$int_levels = array('First Interview' => 'First Interview' , 'Second Interview' => 'Second Interview', 'Final Interview' => 'Final Interview');
+			if($interview_level == '2'){
+				$int_levels = array('Second Interview' => 'Second Interview', 'Final Interview' => 'Final Interview');
+			}else if($interview_level == '3'){
+				$int_levels = array('Final Interview' => 'Final Interview');
+			}if($interview_level == '1'){
+				$int_levels = array('First Interview' => 'First Interview' , 'Second Interview' => 'Second Interview', 'Final Interview' => 'Final Interview');
+			}
 			$this->set('int_levels', $int_levels);
 			// get interview duration
 			$int_duration = array('00:30:00' => '30 Mins.', '00:45:00' => '45 Mins.', '01:00:00' => '1 Hr', '02:00:00' => '2 Hrs', '03:00:00' => '3 Hrs');

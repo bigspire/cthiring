@@ -117,6 +117,15 @@
 										
 										
 									</tr>
+									
+									<tr>
+										
+										<td class="tbl_column">Last Modified</td>
+										<td><?php echo $this->Functions->format_date($resume_data['Resume']['modified_date']);?></td>
+											
+									</tr>
+									
+									
 										<tr>
 										
 										<td  class="tbl_column" width="120"><b>Current Status</b></td>
@@ -173,6 +182,13 @@
 										<td><?php echo $resume_data['Resume']['education'];?></td>
 											
 									</tr>
+									
+									<tr>										
+										<td  class="" width="120">Skills</td>
+										<td><?php echo $resume_data['Resume']['skills'];?></td>
+											
+									</tr>
+									
 									<?php endif; ?>	
 									
 									<?php if($resume_data['Resume']['present_employer']):?>
@@ -193,12 +209,7 @@
 									
 									
 									
-									<tr>
-										
-										<td class="tbl_column">Last Modified</td>
-										<td><?php echo $this->Functions->format_date($resume_data['Resume']['modified_date']);?></td>
-											
-									</tr>
+								
 								</tbody>
 							</table>
 							</div>

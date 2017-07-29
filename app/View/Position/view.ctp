@@ -28,7 +28,7 @@
                     </nav>
 					
 					<div class="srch_buttons">
-				<?php if($this->Session->read('USER.Login.id') == $position_data['Position']['created_by']):?>	
+				<?php if($this->Session->read('USER.Login.id') == $position_data['Position']['created_by'] && $position_data['Position']['is_approve'] == 'A'):?>	
 				<a rel="tooltip jsRedirect" title="Edit the Position Info." href="<?php echo $this->webroot;?>position/edit/<?php echo $this->request->params['pass'][0];?>" class="sepV_a" title="Edit Position">
 				<input value="Edit" type="button" class="btn btn-info"></a>
 				<?php endif; ?>	
@@ -36,7 +36,7 @@
 					<!--<a href="#"  class="sepV_a" title="Delete Position">
 					<input value="Delete" type="button" class="btn btn-danger"/></a>-->
 					
-					<?php if($create_resume == '1'):?>
+					<?php if($create_resume == '1' && $position_data['Position']['is_approve'] == 'A'):?>
 					<a rel="tooltip"  title="Upload New Resume" href="<?php echo $this->webroot;?>hiring/upload_resume.php?client_id=<?php echo $position_data['Client']['id'];?>&req_id=<?php echo $this->request->params['pass'][0];?>"
 					 val="40_50"  class="jsRedirect iframeBox sepV_a cboxElement">
 					<input value="Upload Resume" type="button" class="btn btn-warning"></a>					
@@ -255,8 +255,8 @@
 			<?php if($position_data['Position']['is_approve'] == 'W'  && $this->Session->read('USER.Login.roles_id') == '39'):?>
 
 							<div class="form-actions">
-<a class="iframeBox unreadLink jsRedirect" rel="tooltip" title="Approve Position" href="<?php echo $this->webroot;?>position/remark/approve/<?php echo $position_data['Position']['id'];?>" val="40_50"><input type="button" value="Approve" class="btn btn btn-success"/></a>
-<a class="iframeBox unreadLink jsRedirect" rel="tooltip" title="Reject Position" href="<?php echo $this->webroot;?>position/remark/reject/<?php echo $position_data['Position']['id'];?>" val="40_50"><input type="button" value="Reject" class="btn btn btn-danger"/></a>
+<a class="iframeBox unreadLink" rel="tooltip" title="Approve Position" href="<?php echo $this->webroot;?>position/remark/approve/<?php echo $position_data['Position']['id'];?>" val="40_50"><input type="button" value="Approve" class="btn btn btn-success"/></a>
+<a class="iframeBox unreadLink" rel="tooltip" title="Reject Position" href="<?php echo $this->webroot;?>position/remark/reject/<?php echo $position_data['Position']['id'];?>" val="40_50"><input type="button" value="Reject" class="btn btn btn-danger"/></a>
 <a href="<?php echo $this->webroot;?>position/index/pending/" rel="tooltip" title="Cancel and Back to Positions"  class="jsRedirect"><button class="btn">Cancel</button></a>
 
 
@@ -546,7 +546,7 @@
 										<button data-toggle="dropdown" class="btn btn-info btn-mini dropdown-toggle"><span class="caret"></span></button>
 										<ul class="dropdown-menu">
 										<?php if($resume['ReqResume']['status_title'] == 'Shortlisted' || $resume['ReqResume']['status_title'] == 'Selected'):?>
-										<li><a  href="<?php echo $this->webroot;?>position/schedule_interview/<?php echo  $resume['Resume']['id'];?>/<?php echo $this->request->params['pass'][0];?>/" val="60_90"  class="iframeBox sepV_a cboxElement">Interview Schedule / Reschedule</a></li>
+										<li><a  href="<?php echo $this->webroot;?>position/schedule_interview/<?php echo  $resume['Resume']['id'];?>/<?php echo $this->request->params['pass'][0];?>/<?php echo $int_lev;?>/" val="60_90"  class="iframeBox sepV_a cboxElement">Interview Schedule / Reschedule</a></li>
 										<?php else: ?>
 										<li><a  href="<?php echo $this->webroot;?>position/view_interview_schedule/<?php echo  $resume['ReqResume']['id'];?>/<?php echo $int_lev_same;?>/" val="60_90"  class="iframeBox sepV_a cboxElement">View Interview Schedule</a></li>
 										<?php endif; ?>
