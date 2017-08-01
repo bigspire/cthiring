@@ -1027,6 +1027,8 @@ if($_SESSION['extraction'] == ''){
 	$smarty->assign('email', $mail);
 	$smarty->assign('mobile', $mobile);
 	$_SESSION['extraction'] = 'done';
+}else{
+	$smarty->assign('RESUME_DATA', $_POST['RESUME_DATA']);
 }
 
 
