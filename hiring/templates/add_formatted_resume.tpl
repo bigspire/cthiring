@@ -265,8 +265,8 @@
 <tr class="tbl_row">
 						
 <td style="margin:10px;text-align:center;">
-<textarea rows = "10" style="width:1200px;">
-{$RESUME_DATA}
+<textarea rows = "10" style="width:1200px;" name="RESUME_DATA">
+{if $RESUME_DATA}{$RESUME_DATA}{else}{$smarty.post.RESUME_DATA}{/if}
 </textarea>
 																						
 </td>

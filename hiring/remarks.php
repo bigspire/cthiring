@@ -124,7 +124,7 @@ if($error){
 		
 		// send mail to employee
 		$sub = "CTHiring - Billing " .$mail_status.' '.ucwords($approval_user_name)."!";
-		$msg = $content->get_level1_billing_mail($_POST,$rows,$user_name,$approval_user_name,$candidate_name,$mail_status);
+		$msg = $content->get_level1_billing_mail($_POST,$rows,$user_name,$approval_user_name,$mail_status);
 		$mailer->send_mail($sub,$msg,$approval_user_name,$approval_user_email,$user_name,$user_email);
 		
 			
@@ -137,6 +137,8 @@ if($error){
 			// calling mysql fetch_result function
 			$obj = $mysql->display_result($result);
 			$level2 = $obj['level2'];
+			$level2_name = $obj['l2_name'];
+			$level2_email = $obj['email_id'];
 			// free the memory
 			$mysql->clear_result($result);
 			// call the next result
@@ -185,8 +187,8 @@ if($error){
 				
 			// send mail to level2
 			$sub = "CTHiring -  " .$user_name." submitted billing details!";
-			$msg = $content->get_create_billing_mail($_POST,$rows,$user_name,$approval_user_name,$candidate_name);
-			$mailer->send_mail($sub,$msg,$user_name,$user_email,$approval_user_name,$approval_user_email);
+			$msg = $content->get_create_billing_mail($_POST,$rows,$user_name,$level2_name,$candidate_name);
+			$mailer->send_mail($sub,$msg,$user_name,$user_email,$level2_name,$level2_email);
 				
 		}
 		

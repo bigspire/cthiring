@@ -302,6 +302,17 @@ if(empty($_POST)){
 	$smarty->assign('degree', $degree);
 	$smarty->assign('spec', $spec);
 
+if($_POST['RESUME_DATA'] == ''){
+	// fetch the resume data
+	$uploaddir = 'uploads/resume/'; 
+	$resume_data = $fun->read_document($uploaddir.$_SESSION['resume_doc']);
+	// echo $resume_data;die;
+	$smarty->assign('RESUME_DATA', $resume_data);
+	// $_SESSION['extraction'] = 'done';
+}else{
+	$smarty->assign('RESUME_DATA', $_POST['RESUME_DATA']);
+}
+
 // fetch languages
 $query = "CALL get_language()";
 try{
@@ -988,47 +999,6 @@ try{
 }catch(Exception $e){
 	echo 'Caught exception: ',  $e->getMessage(), "\n";
 } 
-
-if($_SESSION['extraction'] == ''){
-	// fetch the resume data
-	$uploaddir = 'uploads/resume/'; 
-	$resume_data = $fun->read_document($uploaddir.$_SESSION['resume_doc']);
-	$smarty->assign('RESUME_DATA', $resume_data);
-	// extract the mobile
-	$string = preg_replace("#[^\d{12}\s]#",'',$resume_data);
-	preg_match_all("#(\d{10})#", "$string", $found);	
-	foreach($found as $key => $phone_number) {
-	  if(strlen($phone_number[$key]) >= 10){ 
-		$mobile = $phone_number[$key];
-		break;
-	  };
-	}
-	// extract the email
-	$string = preg_split("/[\s,]+/", $resume_data);
-	foreach($string as $mail){
-		if(!filter_var($mail, FILTER_VALIDATE_EMAIL)) {
-			continue;
-		}else{
-			break;
-		}
-	}
-	// extract the candidate name
-	foreach($string as $name_key => $name){
-		$name = trim($name);
-		if($name != 'Name' && $name != 'CURRICULUM' && $name != 'VITAE' && $name != 'RESUME' && $name != ''
-		&& $name != 'Mailing' && $name != 'Address' && $name != ':' && $name != '' && !is_numeric($name)){
-			break;
-		}else{
-			continue;
-		}
-	}
-	$smarty->assign('first_name', $string[$name_key]);
-	$smarty->assign('last_name', $string[$name_key+1]);
-	$smarty->assign('email', $mail);
-	$smarty->assign('mobile', $mobile);
-	$_SESSION['extraction'] = 'done';
-}
-
 
 // closing mysql
 $mysql->close_connection();

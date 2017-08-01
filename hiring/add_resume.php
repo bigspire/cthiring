@@ -22,7 +22,7 @@ if(empty($_SESSION['resume_doc_id'])){
 	header('Location:page_error.php');
 }
 // when doc. extraction happen in first time
-if($_SESSION['extraction'] == ''){
+if($_SESSION['extraction'] == '' || $_POST['RESUME_DATA'] == ''){
 	// fetch the resume data
 	$uploaddir = 'uploads/resume/'; 
 	$resume_data = $fun->read_document($uploaddir.$_SESSION['resume_doc']);
@@ -60,6 +60,8 @@ if($_SESSION['extraction'] == ''){
 	$smarty->assign('email', $mail);
 	$smarty->assign('mobile', $mobile);
 	$_SESSION['extraction'] = 'done';
+}else{
+	$smarty->assign('RESUME_DATA', $_POST['RESUME_DATA']);
 }
 $smarty->assign('dob_default', date('d/m/Y', strtotime('-18 years')));
 // role based validation
