@@ -56,12 +56,12 @@ class ResumeController extends AppController {
 		$this->set('expList', $exp_list);	
 		// set keyword condition
 		if($this->params->query['keyword'] != '' && $this->params->query['report_status'] == ''){			
-			$keyCond = array("MATCH (ResLocation.location,Resume.first_name,Resume.last_name,Resume.present_employer,present_location) AGAINST ('".$this->Functions->format_search_keyword($this->params->query['keyword'])."' IN BOOLEAN MODE)");
+			$keyCond = array("MATCH (ResLocation.location,Resume.first_name,Resume.last_name,Resume.present_employer,
+			present_location,Resume.skills,ResExp.skills) AGAINST ('".$this->Functions->format_search_keyword($this->params->query['keyword'])."' IN BOOLEAN MODE)");
 		}else if($this->params->query['keyword'] != '' && $this->params->query['report_status'] != ''){
 			$keyCond = array('Client.client_name'  => $this->params->query['keyword']);
 
 		}
-		
 		// for director and BH
 		if($this->Session->read('USER.Login.roles_id') == '33' || $this->Session->read('USER.Login.roles_id') == '38'){
 			$show = 'all';
@@ -86,7 +86,7 @@ class ResumeController extends AppController {
 					'ReqResume.created_by' =>  $data,
 					'AH.users_id' => $data					
 					)
-				);
+				);			
 			}
 		}
 	
@@ -126,10 +126,10 @@ class ResumeController extends AppController {
 					)
 				);
 		}else if($this->Session->read('USER.Login.roles_id') == '30'){ // recruiter
-			$empCond = array('OR' => array(
-					'ReqResume.created_by' =>  $this->Session->read('USER.Login.id')
-					)
-			);		
+					$empCond = array('OR' => array(
+						'ReqResume.created_by' =>  $this->Session->read('USER.Login.id')
+				)
+		);		
 			//$empCond = array('ReqResumeStatus.created_by' => $this->Session->read('USER.Login.id'),
 			//'ReqResumeStatus.stage_title' => 'Validation - Account Holder', 'ReqResumeStatus.status_title' => 'Validated');		
 		}else if($this->Session->read('USER.Login.roles_id') == '33' || $this->Session->read('USER.Login.roles_id') == '35'){ // director & BD
@@ -143,7 +143,12 @@ class ResumeController extends AppController {
 						'type' => 'LEFT',
 						'conditions' => array('`ReqResume`.`resume_id` = `Resume`.`id`')
 				),
-				
+				array('table' => 'res_employer',
+						'alias' => 'ResExp',					
+						'type' => 'LEFT',
+						'conditions' => array('`ResExp`.`resume_id` = `Resume`.`id`')
+				),
+								
 				array('table' => 'requirements',
 						'alias' => 'Position',					
 						'type' => 'LEFT',
@@ -355,7 +360,7 @@ class ResumeController extends AppController {
 		'ResLocation.location', 'present_ctc','expected_ctc', 'Creator.first_name','created_date','notice_period',
 		'Resume.modified_date','ReqResume.stage_title','ReqResume.status_title','Designation.designation','present_ctc_type','expected_ctc_type',
 		'gender','marital_status','family','present_location','native_location', 'dob','consultant_assess','interview_avail','ResDoc.resume',
-		'Position.job_title');
+		'Position.job_title','Resume.skills');
 		$data2 = $this->Resume->find('all', array('fields' => $fields,'conditions' => array('Resume.id' => $id),
 		'order' => array('ReqResume.id' => 'desc'),'joins' => $options));
 		$this->set('resume_data', $data2[0]);		

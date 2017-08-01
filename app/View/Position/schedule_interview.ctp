@@ -163,6 +163,10 @@
 				</tbody>
 			</table>
 			<div class="form-actions">
+			
+			<input type="hidden" id="start_date" name="start_date" value="<?php echo date('d/m/Y');?>">
+
+
 			<input name="submit" class="btn btn-gebo theForm" value="Submit"  type="submit"/>
 					<a class="jsRedirect toggleSearch"  href="javascript:window.close()">
 					<input type="button" value="Cancel" id="cancel" class="btn cancel"/></a>

@@ -126,7 +126,7 @@
 										<?php if($client['Client']['status'] == '1'):?>
 										<span title="Inactive Client" rel="tooltip" class="label label">Inactive</span>
 										<?php elseif($client['Client']['status'] == '2'):?>
-										<span title="Awaiting for Approval" rel="tooltip" class="label label-warning">Awaiting Approval</span>
+										<span title="Awaiting for Approval" rel="tooltip" class="label label">Awaiting Approval</span>
 										<?php else:?>
 										<span title="Active Client" rel="tooltip" class="label label-success">Active</span>
 										<?php endif; ?>

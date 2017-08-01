@@ -161,7 +161,7 @@
 						<?php if($req['Position']['status'] == 'A'):?>
 						<span rel="tooltip" title="Requirement Status: <?php echo $req['ReqStatus']['title'];?> " class="label label-<?php echo $this->Functions->get_req_status_color($req['ReqStatus']['title']);?>"><?php echo $req['ReqStatus']['title'];?></span>			
 						<?php else:?>	
-						<span title="Awaiting for Approval" rel="tooltip" class="label label-warning">Awaiting Approval</span>						
+						<span title="Awaiting for Approval" rel="tooltip" class="label label">Awaiting Approval</span>						
 						<?php endif; ?>
 						
 						</td>

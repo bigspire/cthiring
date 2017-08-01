@@ -166,7 +166,7 @@ class Position extends AppModel {
             'empty' => array(
                 'rule'     => 'validate_file',
                 'required' => true,
-                'message'  => 'Please upload only doc or docx formats only'
+                'message'  => 'Please upload only docx formats only'
             )
         ),
 	
@@ -264,8 +264,7 @@ class Position extends AppModel {
 	/* function to validate the file type */
 	public function validate_file(){ 
 		if($this->data['Position']['desc_file']['name'] != ''){
-			if($this->data['Position']['desc_file']['type'] == 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
-			|| $this->data['Position']['desc_file']['type'] == 'application/msword'){			
+			if($this->data['Position']['desc_file']['type'] == 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'){			
 				return true;
 			}else{
 				return false;

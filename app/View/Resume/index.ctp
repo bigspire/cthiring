@@ -176,8 +176,8 @@
 									
 									<?php foreach($data as $res):?>
 									<tr>
-										<?php if(!empty($noHead)): $target = "target='_blank'"; endif;?>
-										<td><a <?php echo $target;?>  href="<?php echo $this->webroot;?>resume/view/<?php echo $res['Resume']['id'];?>/"><?php echo ucwords($res[0]['full_name']);?></a></td>
+										<?php // if(!empty($noHead)): $target = "target='_blank'"; endif;?>
+										<td><a target='_blank'  href="<?php echo $this->webroot;?>resume/view/<?php echo $res['Resume']['id'];?>/"><?php echo ucwords($res[0]['full_name']);?></a></td>
 										<td><?php echo $this->Functions->get_format_text($res['Resume']['mobile']);?></td>
 										<td><?php echo $this->Functions->get_format_text($res['Resume']['email_id']);?></td>
 										<!--td><?php echo $res['Resume']['present_employer'];?></td-->

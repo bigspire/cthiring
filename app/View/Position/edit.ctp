@@ -280,11 +280,13 @@
 									<td>
 <?php echo $this->Form->input('desc_file', array('div'=> false,'type' => 'file', 'label' => false, 'class' => '',  'required' => false, 'placeholder' => '',
 				'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 
-				<a href="<?php echo $this->webroot;?>position/download_doc/<?php echo $this->request->data['Position']['job_desc_file'];?>"><?php echo $this->request->data['Position']['job_desc_file'];?></a>
-<br>
+			
+	<?php if($this->request->data['Position']['job_desc_file'] != ''):?>
+			<a href="<?php echo $this->webroot;?>position/download_doc/<?php echo $this->request->data['Position']['job_desc_file'];?>"><?php echo $this->request->data['Position']['job_desc_file'];?></a>
+			<br>
 
-		<textarea   style="width:1200px" rows = "10"><?php echo trim($this->Functions->read_document(WWW_ROOT.'/uploads/jd/'.$this->request->data['Position']['job_desc_file']));?></textarea>
-
+			<textarea   style="width:1200px" rows = "10"><?php echo trim($this->Functions->read_document(WWW_ROOT.'/uploads/jd/'.$this->request->data['Position']['job_desc_file']));?></textarea>
+	<?php endif; ?>
 									</td>
 								</tr>
 							</tbody>
