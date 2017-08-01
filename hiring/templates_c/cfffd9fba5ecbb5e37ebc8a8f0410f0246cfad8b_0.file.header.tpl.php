@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-07-13 11:44:49
+/* Smarty version 3.1.29, created on 2017-07-30 20:59:25
   from "F:\xampp\htdocs\ctsvn\cthiring\hiring\templates\include\header.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_59670fd933d378_51011983',
+  'unifunc' => 'content_597dfb55768100_83896513',
   'file_dependency' => 
   array (
     'cfffd9fba5ecbb5e37ebc8a8f0410f0246cfad8b' => 
     array (
       0 => 'F:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\templates\\include\\header.tpl',
-      1 => 1499924784,
+      1 => 1501343724,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_59670fd933d378_51011983 ($_smarty_tpl) {
+function content_597dfb55768100_83896513 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -162,7 +162,7 @@ position/">Search Position <!-- span class="label-bub label-info white"></span--
 											  <ul class="dropdown-menu">
 											  <?php if ($_smarty_tpl->tpl_vars['module']->value['create_resume'] == '1') {?>
                                                 <li><a href="upload_resume.php" class="iframeBox unreadLink" val="40_55">Upload Resume</a></li>
-                                               <?php }?>
+											   <?php }?>
 											   <?php if ($_smarty_tpl->tpl_vars['module']->value['view_resume'] == '1') {?>
 												<li><a href="<?php echo webroot;?>
 resume/">Search Resume <!-- span class="label-bub label-info white"><?php echo $_smarty_tpl->tpl_vars['resume_count']->value;?>

@@ -38,7 +38,7 @@
 					
 					<?php if($create_resume == '1' && $position_data['Position']['is_approve'] == 'A'):?>
 					<a rel="tooltip"  title="Upload New Resume" href="<?php echo $this->webroot;?>hiring/upload_resume.php?client_id=<?php echo $position_data['Client']['id'];?>&req_id=<?php echo $this->request->params['pass'][0];?>"
-					 val="40_50"  class="jsRedirect iframeBox sepV_a cboxElement">
+					 val="40_50"  class="iframeBox sepV_a cboxElement">
 					<input value="Upload Resume" type="button" class="btn btn-warning"></a>					
 						<?php endif; ?>
 
@@ -136,7 +136,17 @@
 											
 									</tr>
 								
-																	
+				<tr>
+										
+										<td class="tbl_column">Status</td>
+										<td>	
+										
+										<span rel="tooltip" title="Requirement Status: <?php echo $position_data['ReqStatus']['title'];?> " class="label label-<?php echo $this->Functions->get_req_status_color($position_data['ReqStatus']['title']);?>"><?php echo $position_data['ReqStatus']['title'];?></span>	
+</td>
+											
+									</tr>
+									
+	
 								</tbody>
 							</table>
 							</div>
@@ -524,8 +534,9 @@
 	if((strstr($resume['ReqResume']['stage_title'], 'Interview') && ($resume['ReqResume']['status_title'] != 'Rejected')
 	&& ($resume['ReqResume']['status_title'] == 'Selected' && $resume['ReqResume']['stage_title'] != 'Final Interview')
 	|| ($resume['ReqResume']['status_title'] == 'Scheduled')) ||
-($resume['ReqResume']['stage_title'] == 'Shortlist' && $resume['ReqResume']['status_title'] == 'Shortlisted') && $action != '1'
-): 
+	($resume['ReqResume']['stage_title'] == 'Shortlist' && $resume['ReqResume']['status_title'] == 'Shortlisted')
+	|| ($resume['ReqResume']['status_title'] == 'Cancelled' || $resume['ReqResume']['status_title'] == 'No Show')
+	&& $action != '1'): 
 		$action = '1';?>						
 
 <?php $int_level = explode(' ', $resume['ReqResume']['stage_title']);
@@ -537,7 +548,7 @@
 									<div class="span1"  style="width:110px;">
 									<div class="btn-group">
 									
-										<?php if($resume['ReqResume']['status_title'] == 'Scheduled'):?>
+										<?php if($resume['ReqResume']['status_title'] == 'Scheduled'  || $resume['ReqResume']['status_title'] == 'Cancelled' || $resume['ReqResume']['status_title'] == 'No Show'):?>
 										<button class="btn  btn-mini btn-info" rel="tooltip" title="<?php echo $int_level[0];?> Interview Scheduled"><?php echo $int_lev_same;?> IS </button>
 										<?php else: ?>
 										<button class="btn  btn-mini btn-info" rel="tooltip" title="<?php echo $int_lev_order;?> Interview Awaiting"><?php echo $int_lev;?> IA </button>
@@ -545,7 +556,7 @@
 										
 										<button data-toggle="dropdown" class="btn btn-info btn-mini dropdown-toggle"><span class="caret"></span></button>
 										<ul class="dropdown-menu">
-										<?php if($resume['ReqResume']['status_title'] == 'Shortlisted' || $resume['ReqResume']['status_title'] == 'Selected'):?>
+										<?php if($resume['ReqResume']['status_title'] == 'Shortlisted' || $resume['ReqResume']['status_title'] == 'Selected' || $resume['ReqResume']['status_title'] == 'Cancelled' || $resume['ReqResume']['status_title'] == 'No Show'):?>
 										<li><a  href="<?php echo $this->webroot;?>position/schedule_interview/<?php echo  $resume['Resume']['id'];?>/<?php echo $this->request->params['pass'][0];?>/<?php echo $int_lev;?>/" val="60_90"  class="iframeBox sepV_a cboxElement">Interview Schedule / Reschedule</a></li>
 										<?php else: ?>
 										<li><a  href="<?php echo $this->webroot;?>position/view_interview_schedule/<?php echo  $resume['ReqResume']['id'];?>/<?php echo $int_lev_same;?>/" val="60_90"  class="iframeBox sepV_a cboxElement">View Interview Schedule</a></li>
@@ -585,6 +596,7 @@
 								<td>	
 												
 		<?php if($resume['ReqResume']['stage_title'] == 'Offer'  && $resume['ReqResume']['status_title'] == 'Offer Pending'
+		|| $resume['ReqResume']['stage_title'] == 'Offer'  && $resume['ReqResume']['status_title'] == 'Yet to Join'
 		|| $resume['ReqResume']['stage_title'] == 'Final Interview' && $resume['ReqResume']['status_title'] == 'Selected') :
 							$action = '1';?>																		
 									<div class="span1"  style="width:110px;">
@@ -707,11 +719,83 @@ $action = 1;?>
 									
 									
 									<div class="tab-pane overall_status_row dn" id="mbox_overall">											
-											
-										
 									
-							
-										</div>
+
+<?php
+$sent = $this->Functions->get_req_tab_count($status_data, 'CV-Sent', 'status');
+$shortlist = $this->Functions->get_req_tab_count($status_data, 'Shortlisted', 'status');
+$cv_reject = $this->Functions->get_req_tab_count($status_data, '', '','shorlist_reject');
+$interview =  $this->Functions->get_req_tab_count($status_data, 'First Interview-Final Interview-Second Interview', 'stage');
+$interview_not_att =  $this->Functions->get_req_tab_count($status_data, 'First Interview-Final Interview-Second Interview', 'stage', 'interview_not_att');
+$interview_reject =  $this->Functions->get_req_tab_count($status_data, 'First Interview-Final Interview-Second Interview', 'stage', 'interview_reject');
+$offer =  $this->Functions->get_req_tab_count($status_data, 'Offer','stage');
+$offer_rej =  $this->Functions->get_req_tab_count($status_data, 'OfferReject','','offer_reject');
+$joined =  $this->Functions->get_req_tab_count($status_data, 'Joined','status');
+$billing =  $this->Functions->get_req_tab_count($status_data, '','','billing');
+$yrf =  $sent - ($shortlist  + $cv_reject)
+
+?>									
+										<table data-msg_rowlink="a" class="table table_vam mbox_table dTableR cvTable dataTable stickyTable" id="dt_inbox">
+												<thead>
+												<tr class="">
+														<th width="250">Status</th>
+														<th>No. of Candidates</th>
+													
+													</tr>
+											<tbody>
+														<tr class="">
+														<td>CV Sent</td>
+														<th><?php echo $sent;?></th>
+														</tr>
+													<tr class="">
+														<td>CV Shortlisted </td>
+														<th><?php echo $shortlist;?></th>
+														</tr>
+														<tr class="">
+														<td>CV Rejected</td>
+														<th><?php echo $cv_reject;?></th>
+														</tr>
+														<tr class="">
+														<td>Feedback Awaiting</td>
+														<th><?php echo $yrf;?></th>
+														</tr>
+														<tr class="">
+														<td>Interviewed</td>
+														<th><?php echo $interview;?></td>
+														</tr>
+														
+														<tr class="">
+														<td>Interview Dropouts </td>
+														<th><?php echo $interview_not_att;?></td>
+														</tr>
+														
+														<tr class="">
+														<td>Interview Rejected </td>
+														<th><?php echo $interview_reject;?></td>
+														</tr>
+														
+														<tr class="">
+														<td>Offered </td>
+														<th><?php echo $offer;?></td>
+														</tr>
+														
+														<tr class="">
+														<td>Offer Dropouts  </td>
+														<th><?php echo $offer_rej;?></td>
+														</tr>
+														
+														<tr class="">
+														<td>Joined  </td>
+														<th><?php echo $joined;?></td>
+														</tr>
+														
+														<tr class="">
+														<td>Billed </td>
+														<th><?php echo $billing;?></td>
+														</tr>
+											</tbody>
+										</table>
+								</div>
 								
 								
 									

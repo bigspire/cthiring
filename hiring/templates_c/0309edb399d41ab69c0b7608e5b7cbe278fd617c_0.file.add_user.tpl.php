@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-07-13 13:32:24
+/* Smarty version 3.1.29, created on 2017-08-01 10:45:48
   from "F:\xampp\htdocs\ctsvn\cthiring\hiring\templates\add_user.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_596729107ff502_04426293',
+  'unifunc' => 'content_59800e849f4cf9_69872737',
   'file_dependency' => 
   array (
     '0309edb399d41ab69c0b7608e5b7cbe278fd617c' => 
     array (
       0 => 'F:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\templates\\add_user.tpl',
-      1 => 1499258372,
+      1 => 1501343724,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_596729107ff502_04426293 ($_smarty_tpl) {
+function content_59800e849f4cf9_69872737 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'F:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -74,8 +74,9 @@ home"><i class="icon-home"></i></a>
 								<input type="text" tabindex="7" name="last_name" placeholder="Last Name" id="" value="<?php echo $_smarty_tpl->tpl_vars['last_name']->value;?>
 " class="inline_text span4" autocomplete="off">
 								<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['first_nameErr']->value;?>
- <?php echo $_smarty_tpl->tpl_vars['last_nameErr']->value;?>
-</label>									
+</label>		
+								<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['last_nameErr']->value;?>
+</label>	
 							</td>	
 						</tr>			
 						
@@ -107,7 +108,7 @@ home"><i class="icon-home"></i></a>
 								<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['locations']->value,'selected'=>$_POST['location']),$_smarty_tpl);?>
 	
 							</select> 
-							<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['roleErr']->value;?>
+							<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['locationErr']->value;?>
 </label>											
 						</td>	
 				  </tr>		
@@ -126,15 +127,8 @@ home"><i class="icon-home"></i></a>
 							<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['statusErr']->value;?>
 </label>											
 						</td>	
-				  </tr>				  
-				</tbody>
-			</table>
-		</div>
-							
-		<div class="span6">		
-			<table class="table table-bordered dataTable" style="margin-bottom:0;">
-				<tbody>	
-				 <tr class="tbl_row">
+				  </tr>	
+					<tr class="tbl_row">
 						<td width="120" class="tbl_column">Role <span class="f_req">*</span></td>
 						<td>	
 							<select name="role" class="span8"  id="PositionEmpId">
@@ -154,6 +148,14 @@ home"><i class="icon-home"></i></a>
 " class="span8" autocomplete="off">									
 						</td>	
 				  </tr>
+				</tbody>
+			</table>
+		</div>
+							
+		<div class="span6">		
+			<table class="table table-bordered dataTable" style="margin-bottom:0;">
+				<tbody>	
+				 
 				    <tr class="tbl_row">
 						<td width="120" class="tbl_column">L1 </td>
 						<td>	
@@ -177,6 +179,18 @@ home"><i class="icon-home"></i></a>
 							</select> 
 						</td>	
 				  </tr>	
+				  <tr class="">
+						<td width="120" class="tbl_column">Email Signature <span class="f_req">*</span></td>
+						<td>
+						<textarea name="signature" class="span8 wysiwyg1"><?php if ($_smarty_tpl->tpl_vars['signature']->value) {
+echo $_smarty_tpl->tpl_vars['signature']->value;
+} else {
+echo $_smarty_tpl->tpl_vars['signature']->value;
+}?></textarea>	
+							<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['signatureErr']->value;?>
+</label>											
+						</td>
+				  </tr>
 								
 				</tbody>
 			</table>
@@ -187,8 +201,12 @@ home"><i class="icon-home"></i></a>
 </div>
 <div class="form-actions">
 				<input class="btn btn-gebo" type="submit" value="Submit">
-				<a href="users.php" class="cancelBtn cancel_event"><input type="button" value="Cancel" class="btn"></a>
-</div>
+				<input type="hidden" name="data[Client][webroot]" value="users.php" id="webroot">
+
+	<a href="javascript:void(0)" class="jsRedirect cancelBtn cancel_event">
+	<input type="button" value="Cancel" class="btn">
+	</a>
+			</div>
                     </div>
 				</form>
          </div>

@@ -127,9 +127,12 @@ class FunctionsHelper extends AppHelper {
 	}
 	
 	
+	
+	
 	/* function to get the req. tab counts */
 	public function get_req_tab_count($data, $str, $type, $field){
 		$split_str = explode('-', $str);
+		$count = '';
 		foreach($data as $record){
 			if($field == 'interview_not_att'){
 				if(($record['ReqResumeStatus']['stage_title'] == $split_str[0] || $record['ReqResumeStatus']['stage_title'] == $split_str[1] || $record['ReqResumeStatus']['stage_title'] == $split_str[2]) && 
@@ -166,8 +169,8 @@ class FunctionsHelper extends AppHelper {
 					$resume_id[] = $record['Resume']['id'];
 				}
 			}else if($type == 'status'){ 
-				if($record['ReqResumeStatus']['status_title'] == 'CV-Sent' && $str == 'CV-Sent'){				
-					$count++;
+				if($record['ReqResumeStatus']['status_title'] == 'CV-Sent' && $str == 'CV-Sent'){	
+					$count++; 
 				}if($record['ReqResumeStatus']['status_title'] == 'Shortlisted' && $str == 'Shortlisted'){				
 					$count++;
 				}else if($record['ReqResumeStatus']['status_title'] == $split_str[0]){ 				
