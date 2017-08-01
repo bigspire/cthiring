@@ -22,7 +22,7 @@ if(empty($_SESSION['resume_doc_id'])){
 	header('Location:page_error.php');
 }
 // when doc. extraction happen in first time
-if($_SESSION['extraction'] == ''){
+if($_SESSION['extraction'] == '' || $_POST['RESUME_DATA'] == ''){
 	// fetch the resume data
 	$uploaddir = 'uploads/resume/'; 
 	$resume_data = $fun->read_document($uploaddir.$_SESSION['resume_doc']);
