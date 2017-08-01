@@ -41,6 +41,7 @@ if(!empty($_POST)){
 	'mobile' => 'mobileErr','roles_id' => 'roleErr','status' => 'statusErr','location_id' => 'locationErr',
 	'signature' => 'signatureErr');
 	
+	$j = 0;
 	foreach ($field as $field => $er_var){ 
 		if($_POST[$field] == ''){
 			$error_msg = $fieldtype[$j] ? ' select the ' : ' enter the ';
