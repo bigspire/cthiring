@@ -239,7 +239,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 			
 			// send mail to approval user
 			$sub = "CTHiring -  " .$user_name." submitted billing details!";
-			$msg = $content->get_create_billing_mail($_POST,$user_name,$approval_user_name,$candidate_name);
+			$msg = $content->get_create_billing_mail($_POST,$obj,$user_name,$approval_user_name,$candidate_name);
 			$mailer->send_mail($sub,$msg,$user_name,$user_email,$approval_user_name,$approval_user_email);
 	
 			if(!empty($last_inserted_id) && empty($test) && !empty($req_res_id) && !empty($billing_id)){ 
