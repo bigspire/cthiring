@@ -980,7 +980,7 @@ class PositionController extends AppController {
 				$int_levels = array('Second Interview' => 'Second Interview', 'Final Interview' => 'Final Interview');
 			}else if($interview_level == '3'){
 				$int_levels = array('Final Interview' => 'Final Interview');
-			}if($interview_level == '1'){
+			}if($interview_level == '1' || $interview_level == ''){
 				$int_levels = array('First Interview' => 'First Interview' , 'Second Interview' => 'Second Interview', 'Final Interview' => 'Final Interview');
 			}
 			$this->set('int_levels', $int_levels);
