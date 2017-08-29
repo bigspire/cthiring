@@ -121,6 +121,7 @@ if(!empty($_POST)){
 	$date =  $fun->current_date();
 	if(empty($test)){
 		// query to check whether it is exist or not. 
+		/*
 		$query = "CALL check_eligibile('".$getid."', '".$_POST['ctc_from']."','".$_POST['ctc_to']."','".$_POST['type']."')";
 		// Calling the function that makes the insert
 		try{
@@ -136,7 +137,7 @@ if(!empty($_POST)){
 		}catch(Exception $e){
 			echo 'Caught exception: ',  $e->getMessage(), "\n";
 		}
-		if($row['total'] == '0'){
+		if($row['total'] == '0'){ */
 			// query to update eligibility es. 
 			$query = "CALL edit_eligibility('".$getid."','".$mysql->real_escape_str($_POST['user_type'])."',
 			'".$mysql->real_escape_str($_POST['period'])."','".$mysql->real_escape_str($_POST['ctc_from'])."',
@@ -162,10 +163,10 @@ if(!empty($_POST)){
 			}catch(Exception $e){
 				echo 'Caught exception: ',  $e->getMessage(), "\n";
 			}
-		}else{
+		/* }else{
 			$msg = "Eligibility is already exists";
 			$smarty->assign('EXIST_MSG',$msg); 
-		} 
+		} */
 	}
 }
 

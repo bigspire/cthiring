@@ -72,6 +72,7 @@ if(!empty($_POST)){
 	
 	if(empty($test)){ 
 		// query to check whether it is exist or not. 
+		/*
 		$query = "CALL check_eligibile('0', '".$_POST['ctc_from']."','".$_POST['ctc_to']."','".$_POST['types']."')";
 		// Calling the function that makes the insert
 		try{
@@ -86,8 +87,9 @@ if(!empty($_POST)){
 			$mysql->next_query();
 		}catch(Exception $e){
 			echo 'Caught exception: ',  $e->getMessage(), "\n";
-		}
+		} 
 		if($row['total'] == '0'){
+		*/
 			// query to insert base target. 
 			$query = "CALL add_eligibility('".$mysql->real_escape_str($_POST['user_type'])."','".$mysql->real_escape_str($_POST['period_type'])."',
 			'".$mysql->real_escape_str($_POST['ctc_from'])."',
@@ -111,10 +113,10 @@ if(!empty($_POST)){
 			}catch(Exception $e){
 				echo 'Caught exception: ',  $e->getMessage(), "\n";
 			}
-		}else{
+		/* }else{
 			$msg = "Eligibility is already exists";
 			$smarty->assign('EXIST_MSG',$msg); 
-		} 
+		} */
 	}
 }
 // smarty drop down array for status
