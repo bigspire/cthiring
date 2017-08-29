@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-07-11 13:17:15
+/* Smarty version 3.1.29, created on 2017-08-29 16:09:33
   from "C:\xampp\htdocs\2017\ctsvn\cthiring\hiring\templates\edit_eligibility.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_59648283527118_00797197',
+  'unifunc' => 'content_59a544650eb1d7_70683625',
   'file_dependency' => 
   array (
     'dc2c74504b45c8c62ca088c2b3d0b93397286d09' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\templates\\edit_eligibility.tpl',
-      1 => 1499759228,
+      1 => 1504003169,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_59648283527118_00797197 ($_smarty_tpl) {
+function content_59a544650eb1d7_70683625 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -67,6 +67,17 @@ home"><i class="icon-home"></i></a>
 			<table class="table table-bordered dataTable" style="margin-bottom:0;">
 				<tbody>
 						<tr class="tbl_row">
+							<td width="120" class="tbl_column">Period Type <span class="f_req">*</span></td>
+							<td>										
+							<select name="period"  tabindex="3" class="span8">
+							<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['period_type']->value,'selected'=>$_smarty_tpl->tpl_vars['period']->value),$_smarty_tpl);?>
+			    			
+							</select>
+								<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['period_typeErr']->value;?>
+</label>									
+							</td>	
+						</tr>
+						<tr>
 							<td width="120" class="tbl_column">CTC  <span class="f_req">*</span></td>
 							<td>										
 							<select name="ctc_from" tabindex="1" rel="maxDrop" class="span4 minDrop" id="minDrop">
@@ -86,7 +97,7 @@ home"><i class="icon-home"></i></a>
 </label>									
 							</td>	
 						</tr>	
-						<tr>
+						<tr class="tbl_row">
 							<td width="120" class="tbl_column">No of Resume  <span class="f_req">*</span></td>
 							<td>										
 								<input type="text" tabindex="4" name="no_resumes" value="<?php echo $_smarty_tpl->tpl_vars['no_resumes']->value;?>
@@ -95,7 +106,7 @@ home"><i class="icon-home"></i></a>
  </label>									
 							</td>	
 						</tr>
-						<tr class="tbl_row">
+						<tr>
 							<td width="120" class="tbl_column">Amount (INR) <span class="f_req">*</span></td>
 							<td>										
 								<input type="text" tabindex="4" name="amount" value="<?php echo $_smarty_tpl->tpl_vars['amount']->value;?>
@@ -110,8 +121,19 @@ home"><i class="icon-home"></i></a>
 							
 		<div class="span6">		
 			<table class="table table-bordered dataTable" style="margin-bottom:0;">
-				<tbody>	 
+				<tbody>	
 					<tr class="tbl_row">
+							<td width="120" class="tbl_column">User Type <span class="f_req">*</span></td>
+							<td>										
+							<select name="user_type" tabindex="3" class="span8">
+							<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['user']->value,'selected'=>$_smarty_tpl->tpl_vars['user_type']->value),$_smarty_tpl);?>
+			    			
+							</select>
+								<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['user_typeErr']->value;?>
+</label>									
+							</td>	
+						</tr>
+					<tr>
 							<td width="120" class="tbl_column">Type <span class="f_req">*</span></td>
 							<td>										
 							<select name="type" id="type" tabindex="3" class="span8">
@@ -123,7 +145,7 @@ home"><i class="icon-home"></i></a>
 							</td>	
 						</tr>	
 						 
-				  <tr>
+				  <tr class="tbl_row">
 						<td width="120" class="tbl_column">Status <span class="f_req">*</span></td>
 						<td>	
 						<select name=status id="status" tabindex="5" class="span8">

@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-07-20 15:47:29
+/* Smarty version 3.1.29, created on 2017-08-29 16:21:06
   from "C:\xampp\htdocs\2017\ctsvn\cthiring\hiring\templates\eligibility.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_59708339f1f261_01267626',
+  'unifunc' => 'content_59a5471ac467f4_59280092',
   'file_dependency' => 
   array (
     '18e1afa98226f9f7e2dda2100ef99a8116e00cee' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\templates\\eligibility.tpl',
-      1 => 1500545692,
+      1 => 1504003863,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_59708339f1f261_01267626 ($_smarty_tpl) {
+function content_59a5471ac467f4_59280092 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -129,6 +129,18 @@ $_smarty_tpl->ext->_updateScope->updateScope($_smarty_tpl, 'hide', 0);?>
 &status=<?php echo $_smarty_tpl->tpl_vars['status']->value;?>
 " rel="tooltip" data-original-title="Sort by Ascending or Descending" class="<?php echo $_smarty_tpl->tpl_vars['sort_field_ctc_from']->value;?>
 ">CTC</a></th>
+										<th width="100"><a href="eligibility.php?field=user_type&order=<?php echo $_smarty_tpl->tpl_vars['order']->value;?>
+&page=<?php echo $_GET['page'];?>
+&type=<?php echo $_smarty_tpl->tpl_vars['user_type']->value;?>
+&status=<?php echo $_smarty_tpl->tpl_vars['status']->value;?>
+" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="<?php echo $_smarty_tpl->tpl_vars['sort_field_user_type']->value;?>
+">User Type</a></th>
+										<th width="100"><a href="eligibility.php?field=period&order=<?php echo $_smarty_tpl->tpl_vars['order']->value;?>
+&page=<?php echo $_GET['page'];?>
+&type=<?php echo $_smarty_tpl->tpl_vars['period']->value;?>
+&status=<?php echo $_smarty_tpl->tpl_vars['status']->value;?>
+" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="<?php echo $_smarty_tpl->tpl_vars['sort_field_period']->value;?>
+">Period</a></th>
 										<th width="150"><a href="eligibility.php?field=type&order=<?php echo $_smarty_tpl->tpl_vars['order']->value;?>
 &page=<?php echo $_GET['page'];?>
 &type=<?php echo $_smarty_tpl->tpl_vars['type']->value;?>
@@ -186,6 +198,10 @@ $__foreach_item_0_saved_local_item = $_smarty_tpl->tpl_vars['item'];
 									
 									<tr>
 										<td><?php echo $_smarty_tpl->tpl_vars['item']->value['target_elig'];?>
+</td>
+										<td><?php echo $_smarty_tpl->tpl_vars['item']->value['user_type'];?>
+</td>
+										<td><?php echo $_smarty_tpl->tpl_vars['item']->value['period'];?>
 </td>
 										<td><?php echo $_smarty_tpl->tpl_vars['item']->value['type'];?>
 </td>

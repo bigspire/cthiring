@@ -115,6 +115,8 @@ try{
 		$data[$i]['type'] = $fun->display_eligibility_type($obj['type']);
  		$data[$i]['status'] = $fun->display_status($obj['status']);
  		$data[$i]['status_cls'] = $fun->status_cls($obj['status']);
+		$data[$i]['user_type'] = $fun->user_type_fun($obj['user_type']);
+		$data[$i]['period'] = $fun->period_fun($obj['period']);
  		
 		if($obj['ctc_from'] == '1'){
 			$data[$i]['target_elig'] = $obj['ctc_from'].' Lac - '.$obj['ctc_to'].' Lacs';
