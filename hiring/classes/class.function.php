@@ -141,6 +141,28 @@ class fun{
 		}	
 	}
 	
+	 // function to show period type for eligibility
+	public function period_fun($type){
+		if($type == 'D'){
+			$st = 'Daily';
+		}else if($type == 'M'){	
+	 		$st = 'Monthly';
+		}else if($type == 'H'){
+			$st = 'Half yearly';
+		}
+		return $st;
+	}
+	
+	// function to show user type for eligibility 
+	public function user_type_fun($type){
+		if($type == 'R'){
+			$st = 'Recruiter';
+		}else if($type == 'AH'){	
+	 		$st = 'Account Holder';
+		}
+		return $st;
+	}
+	
 	// function to validate string
 	public function upper_case_string($emp_name){
 		$let = ucwords($emp_name);

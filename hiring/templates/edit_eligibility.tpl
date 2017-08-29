@@ -39,6 +39,15 @@
 			<table class="table table-bordered dataTable" style="margin-bottom:0;">
 				<tbody>
 						<tr class="tbl_row">
+							<td width="120" class="tbl_column">Period Type <span class="f_req">*</span></td>
+							<td>										
+							<select name="period"  tabindex="3" class="span8">
+							{html_options options=$period_type selected=$period}			    			
+							</select>
+								<label for="reg_city" generated="true" class="error">{$period_typeErr}</label>									
+							</td>	
+						</tr>
+						<tr>
 							<td width="120" class="tbl_column">CTC  <span class="f_req">*</span></td>
 							<td>										
 							<select name="ctc_from" tabindex="1" rel="maxDrop" class="span4 minDrop" id="minDrop">
@@ -54,14 +63,14 @@
 							<label for="reg_city" generated="true" class="error">{$target_to_Err}</label>									
 							</td>	
 						</tr>	
-						<tr>
+						<tr class="tbl_row">
 							<td width="120" class="tbl_column">No of Resume  <span class="f_req">*</span></td>
 							<td>										
 								<input type="text" tabindex="4" name="no_resumes" value="{$no_resumes}" class="span8">
 								<label for="reg_city" generated="true" class="error">{$no_resumeErr} </label>									
 							</td>	
 						</tr>
-						<tr class="tbl_row">
+						<tr>
 							<td width="120" class="tbl_column">Amount (INR) <span class="f_req">*</span></td>
 							<td>										
 								<input type="text" tabindex="4" name="amount" value="{$amount}" class="span8">
@@ -74,8 +83,17 @@
 							
 		<div class="span6">		
 			<table class="table table-bordered dataTable" style="margin-bottom:0;">
-				<tbody>	 
+				<tbody>	
 					<tr class="tbl_row">
+							<td width="120" class="tbl_column">User Type <span class="f_req">*</span></td>
+							<td>										
+							<select name="user_type" tabindex="3" class="span8">
+							{html_options options=$user selected=$user_type}			    			
+							</select>
+								<label for="reg_city" generated="true" class="error">{$user_typeErr}</label>									
+							</td>	
+						</tr>
+					<tr>
 							<td width="120" class="tbl_column">Type <span class="f_req">*</span></td>
 							<td>										
 							<select name="type" id="type" tabindex="3" class="span8">
@@ -85,7 +103,7 @@
 							</td>	
 						</tr>	
 						 
-				  <tr>
+				  <tr class="tbl_row">
 						<td width="120" class="tbl_column">Status <span class="f_req">*</span></td>
 						<td>	
 						<select name=status id="status" tabindex="5" class="span8">

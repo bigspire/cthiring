@@ -1,7 +1,6 @@
 {* Purpose : To add eligibility.
    Created : Nikitasa
    Date : 29-01-2017 *}
-   
 
 			{include file='include/header.tpl'}
 			
@@ -18,8 +17,7 @@
                                 </li>
                                 <li>
                                     <a href="eligibility.php">Eligibility</a>
-                                </li>
-                            
+                                </li> 
                                 <li>
                                    Add Eligibility
                                 </li>
@@ -39,6 +37,15 @@
 			<table class="table table-bordered dataTable" style="margin-bottom:0;">
 				<tbody>
 						<tr class="tbl_row">
+							<td width="120" class="tbl_column">Period Type <span class="f_req">*</span></td>
+							<td>										
+							<select name="period_type"  tabindex="3" class="span8">
+							{html_options options=$period selected=$smarty.post.period_type}			    			
+							</select>
+								<label for="reg_city" generated="true" class="error">{$period_typeErr}</label>									
+							</td>	
+						</tr>
+						<tr>
 							<td width="120" class="tbl_column">CTC  <span class="f_req">*</span></td>
 							<td>										
 							<select name="ctc_from" tabindex="1" rel="maxDrop" class="span4 minDrop" id="minDrop">
@@ -55,17 +62,17 @@
 							
 							</td>	
 						</tr>	
-						<tr>
+						<tr class="tbl_row">
 							<td width="120" class="tbl_column">No of Resume  <span class="f_req">*</span></td>
 							<td>										
-								<input type="text" tabindex="4" name="no_resume" value="{$no_resume}" class="span8">
+								<input type="text" tabindex="4" name="no_resume" value="{$smarty.post.no_resume}" class="span8">
 								<label for="reg_city" generated="true" class="error">{$no_resumeErr} </label>									
 							</td>	
 						</tr>
-						<tr class="tbl_row">
+						<tr>
 							<td width="120" class="tbl_column">Amount (INR) <span class="f_req">*</span></td>
 							<td>										
-								<input type="text" tabindex="4" name="amount" value="{$amount}" class="span8">
+								<input type="text" tabindex="4" name="amount" value="{$smarty.post.amount}" class="span8">
 								<label for="reg_city" generated="true" class="error">{$amountErr} </label>									
 							</td>	
 						</tr>						
@@ -77,6 +84,15 @@
 			<table class="table table-bordered dataTable" style="margin-bottom:0;">
 				<tbody>	 
 					<tr class="tbl_row">
+							<td width="120" class="tbl_column">User Type <span class="f_req">*</span></td>
+							<td>										
+							<select name="user_type" tabindex="3" class="span8">
+							{html_options options=$user selected=$smarty.post.user_type}			    			
+							</select>
+								<label for="reg_city" generated="true" class="error">{$user_typeErr}</label>									
+							</td>	
+						</tr>
+					<tr>
 							<td width="120" class="tbl_column">Type <span class="f_req">*</span></td>
 							<td>										
 							<select name="types" id="types" tabindex="3" class="span8">
@@ -86,7 +102,7 @@
 							</td>	
 						</tr>	
 						 
-				  <tr>
+				  <tr class="tbl_row">
 						<td width="120" class="tbl_column">Status <span class="f_req">*</span></td>
 						<td>	
 						<select name=status id="status" tabindex="5" class="span8">

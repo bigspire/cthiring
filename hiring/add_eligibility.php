@@ -35,11 +35,25 @@ if(!empty($_POST)){
     	$test = 'error';
 	}
 	
+	// if(($_POST['types'] != '') && ($_POST['types'] != 'PC') && ($_POST['types'] != 'PI') && ($_POST['no_resume'] == '')){
+	if($_POST['types'] == 'PS' && $_POST['no_resume'] == ''){
+		$no_resumeErr = 'Please enter the no of resume';
+    	$smarty->assign('no_resumeErr',$no_resumeErr);
+    	$test = 'error';
+	}
+	
+	// if(($_POST['types'] != '') && ($_POST['types'] != 'PS') && ($_POST['amount'] == '')){
+	if(($_POST['types'] == 'PC' || $_POST['types'] == 'PI') && ($_POST['amount'] == '')){	
+		$amountErr = 'Please enter the amount';
+    	$smarty->assign('amountErr',$amountErr);
+    	$test = 'error';
+	}
+	
 	// array for printing correct field name in error message
-	$fieldtype = array('1', '1','1','0','0','1');
-	$actualfield = array('type', 'ctc from', 'ctc to', 'no of resume','amount','status');
-    $field = array('types' => 'typesErr','ctc_from' => 'target_from_Err',
-	'ctc_to' => 'target_to_Err','no_resume' => 'no_resumeErr','amount' => 'amountErr', 'status' => 'statusErr');
+	$fieldtype = array('1', '1','1','1','1','1');
+	$actualfield = array('user_type','period','type','ctc from','ctc to','status');
+    $field = array('user_type' => 'user_typeErr','period_type' => 'period_typeErr','types' => 'typesErr','ctc_from' => 'target_from_Err',
+	'ctc_to' => 'target_to_Err', 'status' => 'statusErr');
 	$j = 0;
 	foreach($field as $field => $er_var){
 		if($_POST[$field] == ''){ 
@@ -55,7 +69,8 @@ if(!empty($_POST)){
 	}
 	// assigning the date
 	$date =  $fun->current_date();
-	if(empty($test)){
+	
+	if(empty($test)){ 
 		// query to check whether it is exist or not. 
 		$query = "CALL check_eligibile('0', '".$_POST['ctc_from']."','".$_POST['ctc_to']."','".$_POST['types']."')";
 		// Calling the function that makes the insert
@@ -74,7 +89,8 @@ if(!empty($_POST)){
 		}
 		if($row['total'] == '0'){
 			// query to insert base target. 
-			$query = "CALL add_eligibility('".$mysql->real_escape_str($_POST['ctc_from'])."',
+			$query = "CALL add_eligibility('".$mysql->real_escape_str($_POST['user_type'])."','".$mysql->real_escape_str($_POST['period_type'])."',
+			'".$mysql->real_escape_str($_POST['ctc_from'])."',
 			'".$mysql->real_escape_str($_POST['ctc_to'])."',
 			'".$mysql->real_escape_str($_POST['types'])."',
 			'".$fun->is_white_space($mysql->real_escape_str($_POST['no_resume']))."',
@@ -103,12 +119,16 @@ if(!empty($_POST)){
 }
 // smarty drop down array for status
 $smarty->assign('grade_status', array('' => 'Select', '1' => 'Active', '2' => 'Inactive'));
-// smarty drop down array for type
+// smarty drop down array for type 
 $smarty->assign('type', array('' => 'Select', 'PS' => 'Profile Sending', 'PI' => 'Profile Shortlisting','PC' => 'Position Closing'));
+// smarty drop down array for period type
+$smarty->assign('period', array('' => 'Select', 'D' => 'Daily', 'M' => 'Monthly','H' => 'Half yearly'));
+// smarty drop down array for user type
+$smarty->assign('user', array('' => 'Select', 'R' => 'Recruiter', 'AH' => 'Account Holder'));
 // smarty dropdown array for no of times
 $target = array();
-for($l = '1'; $l <= '100'; $l++){
-	if($l == '1') {
+for($l = '0'; $l <= '100'; $l++){
+	if($l == '1' || $l == '0') {
 		$target[$l] = $l.' '.Lac;
 	}else{
 		$target[$l] = $l.' '.Lacs ;
