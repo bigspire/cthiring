@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-07-27 17:51:24
+/* Smarty version 3.1.29, created on 2017-08-11 15:55:31
   from "F:\xampp\htdocs\ctsvn\cthiring\hiring\templates\add_resume.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5979dac4e5f352_87037048',
+  'unifunc' => 'content_598d861bbed8e2_53269088',
   'file_dependency' => 
   array (
     '0c86b014e44c0947e63f54dd6044281fcbe00859' => 
     array (
       0 => 'F:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\templates\\add_resume.tpl',
-      1 => 1501158068,
+      1 => 1501599697,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5979dac4e5f352_87037048 ($_smarty_tpl) {
+function content_598d861bbed8e2_53269088 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'F:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -292,9 +292,12 @@ echo 'checked';?>
 	<tr class="tbl_row">
 									
 										<td style="margin:10px;text-align:center;">
-<textarea rows = "10" style="width:1200px;">
-<?php echo $_smarty_tpl->tpl_vars['RESUME_DATA']->value;?>
-
+<textarea rows = "10" style="width:1200px;" name="RESUME_DATA">
+<?php if ($_smarty_tpl->tpl_vars['RESUME_DATA']->value) {
+echo $_smarty_tpl->tpl_vars['RESUME_DATA']->value;
+} else {
+echo $_POST['RESUME_DATA'];
+}?>
 </textarea>
 																						
 										</td>

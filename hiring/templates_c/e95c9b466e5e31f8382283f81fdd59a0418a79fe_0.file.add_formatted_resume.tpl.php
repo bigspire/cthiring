@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-07-28 15:10:26
+/* Smarty version 3.1.29, created on 2017-08-11 15:21:14
   from "F:\xampp\htdocs\ctsvn\cthiring\hiring\templates\add_formatted_resume.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_597b068ad76c32_79619093',
+  'unifunc' => 'content_598d7e12d0dea8_35624067',
   'file_dependency' => 
   array (
     'e95c9b466e5e31f8382283f81fdd59a0418a79fe' => 
     array (
       0 => 'F:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\templates\\add_formatted_resume.tpl',
-      1 => 1501226497,
+      1 => 1501599697,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_597b068ad76c32_79619093 ($_smarty_tpl) {
+function content_598d7e12d0dea8_35624067 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'F:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -215,18 +215,7 @@ echo $_POST['family'];
 										<label for="reg_city" generated="true" class="error"> <?php echo $_smarty_tpl->tpl_vars['nationalityErr']->value;?>
  </label>								
 										</td>										
-											
-									</tr>
-										<tr class="">
-										<td width="120" class="tbl_column">Resume File </td>
-										<td>
-											<textarea rows = "10" style="width:500px;">
-											<?php echo $_smarty_tpl->tpl_vars['RESUME_DATA']->value;?>
-
-											</textarea>
-																						
-										</td>
-									</tr>									
+																		
 								</tbody>
 							</table>
 						</div>
@@ -369,6 +358,27 @@ echo $_POST['hobby'];
 								</tbody>
 							</table>
 						</div>
+							<div class="row-fluid" style="clear:left;float:left;margin-top:15px;">				
+			<div class="span12">
+	<table class="table table-bordered dataTable" style="margin-bottom:0;">
+	<tbody>
+<tr class="tbl_row">
+						
+<td style="margin:10px;text-align:center;">
+<textarea rows = "10" style="width:1200px;" name="RESUME_DATA">
+<?php if ($_smarty_tpl->tpl_vars['RESUME_DATA']->value) {
+echo $_smarty_tpl->tpl_vars['RESUME_DATA']->value;
+} else {
+echo $_POST['RESUME_DATA'];
+}?>
+</textarea>
+																						
+</td>
+</tr>									
+									
+	</tbody>
+	</table>
+</div>		</div>
 			</div>
 
 					
@@ -841,6 +851,7 @@ echo $_POST['candidate_brief'];
 </div>
                     </div>
 					</div>
+						
 					<input type="hidden" id="tab_open_resume" value="<?php echo $_smarty_tpl->tpl_vars['tab_open_resume']->value;?>
 "/>
 					 <div class="form-actions">
