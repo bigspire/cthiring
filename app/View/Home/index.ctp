@@ -45,7 +45,7 @@
 									
 						</div>
 						<div class="btns_state pull-right" style="margin-right:30px;">
-					<?php echo $this->Form->create('Home', array('id' => 'formID','class' => 'formID')); ?>
+					<?php echo $this->Form->create('Home', array('id' => 'formID','class' => 'formID homForm')); ?>
 
 						<div class="dataTables_filter srchBox" id="dt_gal_filter">			
 							
@@ -58,7 +58,7 @@
 						</span>	
 						</span>							
 							
-							<input type="submit" style="margin-bottom:8px;" value="Submit" class="btn btn-gebo" />
+							<input type="submit" style="margin-bottom:8px;" value="Submit" class="homSearch btn btn-gebo" />
 							
 							<a class="jsRedirect"  href="<?php echo $this->webroot;?>home/">
 							<input value="Reset" style="margin-bottom:8px;" type="button" class="btn"/>
@@ -127,7 +127,32 @@
 						
 					<div class="row-fluid">
 						<div class="span6">
-							<h3 class="heading">Daily Activity <small>Overview</small></h3>
+							<h3 class="heading">Daily Activity <small>Overview</small>
+								<div class="" style="float:right;font-size:13px;">
+									<ul class="nav nav-pills ">
+									<li class="dropdown">
+										<a  style="color: #fff !important; background-color: #206484; border-color: #999;" class="dropdown-toggle" data-toggle="dropdown" href="#">
+										
+										<?php if($this->request->query['type'] == 'req'):
+										echo 'Requirement Graph';
+										else:
+										echo 'As Is Graph ';
+										endif;
+										?>						
+										
+										<b class="caret" style="color: #fff !important;"></b></a>
+										<ul class="dropdown-menu sort-by">
+											<li><a href="<?php echo $this->webroot;?>home/?type=req&from=<?php echo $this->request->query['from'];?>&to=<?php echo $this->request->query['to'];?>" class="sort" data-sort="sl_name2">Requirement Graph</a></li>
+											<li><a href="<?php echo $this->webroot;?>home/?from=<?php echo $this->request->query['from'];?>&to=<?php echo $this->request->query['to'];?>" class="sort" data-sort="sl_date2">As Is Graph</a></li>
+
+										</ul>
+										
+										
+									</li>
+									</ul>
+									
+									</div>
+									</h3>
 							<div id="piechart" style="height:468px"></div>
 
 							

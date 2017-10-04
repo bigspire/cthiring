@@ -163,6 +163,11 @@ $(document).ready(function() {
 			$('.overall_status_row').hide();
 		}
 	}
+	
+	/* function to submit the form */
+	$('.homSearch').click(function(){
+		$('.homForm').submit();
+	});
 		
 	
 	
