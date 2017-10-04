@@ -39,9 +39,8 @@ class PositionController extends AppController {
 		
 		// set the page title
 		$this->set('title_for_layout', 'Positions - Manage Hiring');
-		$this->set('empList', $this->Position->get_employee_details());	
 		$this->set('locList', $this->get_loc_details());
-		$this->set('stList', array('10' => 'Planned', '1' => 'In-Process', '2' => 'On-Hold', '3' => 'Closed', '4' => 'Cancelled'));			
+		$this->set('stList', array('10' => 'Assigned', '1' => 'In-Process', '2' => 'On-Hold', '3' => 'Closed', '4' => 'Terminated'));			
 		$fields = array('id','job_title','location','no_job','min_exp','max_exp','ctc_from','ctc_to','ReqStatus.title','req_status_id',
 		'Client.client_name','team_member', 'Creator.first_name','created_date','modified_date', 'count(distinct ReqResume.id) cv_sent',
 		'group_concat(ReqResume.status_title) joined','count(distinct Read.id) read_count', "group_concat(distinct ResOwner.first_name
@@ -88,7 +87,7 @@ class PositionController extends AppController {
 		}
 		
 		// for director and BH
-		if($this->Session->read('USER.Login.roles_id') == '33' || $this->Session->read('USER.Login.roles_id') == '38'
+		if($this->Session->read('USER.Login.roles_id') == '33' || $this->Session->read('USER.Login.roles_id') == '35'
 		|| $this->Session->read('USER.Login.roles_id') == '39'){
 			$show = 'all';
 			$team_cond = false;
@@ -127,9 +126,9 @@ class PositionController extends AppController {
 			);
 			//$empCond = array('ReqResumeStatus.created_by' => $this->Session->read('USER.Login.id'),
 			//'ReqResumeStatus.stage_title' => 'Validation - Account Holder', 'ReqResumeStatus.status_title' => 'Validated');		
-		}else if($this->Session->read('USER.Login.roles_id') == '33' || $this->Session->read('USER.Login.roles_id') == '35'
-		|| $this->Session->read('USER.Login.roles_id') == '39'){ // director & BD
+		}else if($this->Session->read('USER.Login.roles_id') == '33' || $this->Session->read('USER.Login.roles_id') == '35'){ // director & BD
 			$empCond = '';
+			$team_cond = '';
 		}
 		
 	
@@ -154,15 +153,13 @@ class PositionController extends AppController {
 		}
 		// for employee condition
 		if($this->request->query['emp_id'] != ''){ 
-			$empCond = array('ReqResume.created_by' => $this->request->query['emp_id']);
-		}else if($this->Session->read('USER.Login.rights') != '5'){			
-			// $empCond = array('ReqResume.created_by' => $this->Session->read('USER.Login.id'));
+			$empCond = array('Position.created_by' => $this->request->query['emp_id']);
 		}
 		
 		// for status condition
 		if($this->request->query['status'] != ''){ 
 			$st = $this->request->query['status'] == '10' ? '0' : $this->request->query['status'];
-			$stCond = array('Position.req_status_id' => $st);
+			$stCond = array('Position.req_status_id' => $st, 'Position.status' => 'A');
 		}
 		
 		// show awaiting approval condition
@@ -844,6 +841,42 @@ class PositionController extends AppController {
 					$this->set('cv_update_status', 1);
 					$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>CV '.strtolower($status).' successfully', 'default', array('class' => 'alert alert-success'));									
 
+				}
+			}
+		}
+	}
+	
+	/* function to update the CV status */
+	public function verify_cv($id,$pos_id,$st){	
+		$this->layout = 'framebox';
+		$status = $st == 'approve' ? 'Validated' : 'Rejected';
+		$head_label = $st == 'approve' ? 'Validated' : 'Rejected';
+		$this->set('headLabel', $head_label);
+		// get candidate details
+		$this->loadModel('Resume');
+		$cand_data = $this->Resume->findById($id, array('fields' => 'first_name','last_name'));
+		$cand_name = ucwords($cand_data['Resume']['first_name'].' '.$cand_data['Resume']['last_name']);
+		$this->set('candidate_name', $cand_name);
+		if(!empty($id) && !empty($pos_id)){
+			// get the req. resume id
+			$this->loadModel('ReqResume');
+			$req_res_id = $this->ReqResume->find('all', array('fields' => array('ReqResume.id'), 
+			'conditions' => array('requirements_id' => $pos_id, 'resume_id' => $id)));
+			// save req resume table
+			$data = array('id' => $req_res_id[0]['ReqResume']['id'],'modified_date' => $this->Functions->get_current_date(),
+			'modified_by' => $this->Session->read('USER.Login.id'),	 'status_title' => $status);
+			// save  req resume
+			if($this->ReqResume->save($data, array('validate' => false))){		
+				// save req resume status
+				$this->loadModel('ReqResumeStatus');
+				$data = array('req_resume_id' => $req_res_id[0]['ReqResume']['id'], 'created_date' => $this->Functions->get_current_date(),
+				'created_by' => $this->Session->read('USER.Login.id'), 'stage_title' => 'Validation - Account Holder', 'status_title' => $status, 'note' => $this->request->data['Position']['note']);
+				if($this->ReqResumeStatus->save($data, array('validate' => false))){					
+					// if successfully update
+					$this->set('cv_update_status', 1);
+					$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>CV '.strtolower($status).' successfully', 'default', array('class' => 'alert alert-success'));
+					$this->redirect('/position/view/'.$pos_id.'/');	
+			
 				}
 			}
 		}

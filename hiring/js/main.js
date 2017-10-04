@@ -293,6 +293,8 @@ $(document).ready(function() {
 		$('.allRow').show();
 		// hide duplicate rows
 		$('.duplicate').hide();
+		$('.overall_status_row').hide();
+		
 	}
 	
 

@@ -105,7 +105,7 @@ class ResumeController extends AppController {
 		// for position status condition
 		if($this->request->query['spec'] != ''){ 
 			$specCond = array('Position.id' => $this->request->query['spec']);
-			$statusCond = $this->get_report_status_cond($this->request->query['status']);
+			$statusCond = $this->get_status_cond($this->request->query['status']);
 		}
 		// for report status condition
 		if($this->request->query['report_status'] != ''){ 
@@ -116,7 +116,6 @@ class ResumeController extends AppController {
 					array($this->Functions->format_date_save($start), $this->Functions->format_date_save($end_search))));
 			
 		}
-		
 			// check role based access
 		if($this->Session->read('USER.Login.roles_id') == '34'){ // account holder
 			// $empCond = array('AH.users_id' => $this->Session->read('USER.Login.id'));
@@ -134,6 +133,7 @@ class ResumeController extends AppController {
 			//'ReqResumeStatus.stage_title' => 'Validation - Account Holder', 'ReqResumeStatus.status_title' => 'Validated');		
 		}else if($this->Session->read('USER.Login.roles_id') == '33' || $this->Session->read('USER.Login.roles_id') == '35'){ // director & BD
 			$empCond = '';
+			$teamCond = '';
 		}
 		
 		
@@ -178,11 +178,8 @@ class ResumeController extends AppController {
 						)
 		);
 		// for employee condition
-		
 		if($this->request->query['emp_id'] != ''){			
 			$empCond = array('Resume.created_by' => $this->request->query['emp_id']);
-		}else if($this->Session->read('USER.Login.rights') != '5'){			
-			// $empCond = array('Resume.created_by' => $this->Session->read('USER.Login.id'));
 		}
 		
 		// for branch condition
@@ -414,6 +411,16 @@ class ResumeController extends AppController {
 		$this->loadModel('Location');
 		return $this->Location->find('list',  array('fields' => array('id','location'), 'order' => array('location ASC'),'conditions' => array('status' => 1)));
 
+	}
+	
+	/* function to view the resume */
+	public function view_doc($file){
+		$this->layout = false;
+		// fetch the resume data
+		$uploaddir = '../../hiring/uploads/resume/';
+		$resume_data = $this->Functions->read_document($uploaddir.$file);
+		$this->set('RESUME_DATA', $resume_data);
+		// extract the mobile
 	}
 	
 	/* auto complete search */	

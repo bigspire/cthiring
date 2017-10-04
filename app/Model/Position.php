@@ -316,10 +316,7 @@ class Position extends AppModel {
 		}
 	}
 	
-	/* function to get the employee details */
-	public function get_employee_details(){
-		return $this->Creator->find('list',  array('fields' => array('id','first_name'), 'order' => array('first_name ASC'),'conditions' => array('status' => 0)));
-	}
+	
 	
 	/* function to get the team members */
 	public function get_team($id){

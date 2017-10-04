@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-08-11 15:55:31
+/* Smarty version 3.1.29, created on 2017-09-21 19:12:05
   from "F:\xampp\htdocs\ctsvn\cthiring\hiring\templates\add_resume.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_598d861bbed8e2_53269088',
+  'unifunc' => 'content_59c3c1adcfb8b7_81659014',
   'file_dependency' => 
   array (
     '0c86b014e44c0947e63f54dd6044281fcbe00859' => 
     array (
       0 => 'F:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\templates\\add_resume.tpl',
-      1 => 1501599697,
+      1 => 1506001286,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_598d861bbed8e2_53269088 ($_smarty_tpl) {
+function content_59c3c1adcfb8b7_81659014 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'F:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -250,6 +250,9 @@ echo 'checked';
 										<input type="radio" tabindex="18" name="marital_status"<?php if ($_POST['marital_status'] && $_POST['marital_status'] == 2) {
 echo 'checked';?>
  <?php }?> value="2"> Married
+										<input type="radio" tabindex="18" name="marital_status"<?php if ($_POST['marital_status'] && $_POST['marital_status'] == 3) {
+echo 'checked';?>
+ <?php }?> value="3"> Separated
 										</td>	
 									</tr>
 									<tr class="tbl_row">

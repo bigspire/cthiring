@@ -5,7 +5,8 @@
                             
 							<a class="brand" href="<?php echo $this->webroot;?>home/">
 							 Manage Hiring</a>
-                            <ul class="nav user_menu pull-right">
+                           
+						   <ul class="nav user_menu pull-right">
                          
 						 <!--li class="divider-vertical hidden-phone hidden-tablet"></li>    
 							<li class="hidden-phone hidden-tablet">

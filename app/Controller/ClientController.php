@@ -33,9 +33,10 @@ class ClientController extends AppController {
 
 	public function index($status){ 
 		if($this->request->is('post')){
-			$url_vars = $this->Functions->create_url(array('keyword','from','to','status'),'Client'); 			
+			$url_vars = $this->Functions->create_url(array('keyword','from','to','status','emp_id'),'Client'); 			
 			$this->redirect('/client/?srch_status=1&'.$url_vars);				
 		}
+
 		// set date condition
 		if($this->request->query['from'] != '' || $this->request->query['to'] != ''){
 			$start = $this->request->query['from'] ? $this->request->query['from'] :  ''; //date('d/m/Y', strtotime('-3 year'));
@@ -61,7 +62,27 @@ class ClientController extends AppController {
 			$status = $this->request->query['status'] == '2' ?  '0' : $this->request->query['status'];
 			$stCond = array('Client.status' => $status);
 		}
+		
+		// for director and BH
+		if($this->Session->read('USER.Login.roles_id') == '33' || $this->Session->read('USER.Login.roles_id') == '38'
+		|| $this->Session->read('USER.Login.roles_id') == '39'){
+			$show = 'all';
+			$team_cond = false;
+		}else{
+			$team_cond = true;
+		}
+		
+		// get the team members
+		$result = $this->Client->get_team($this->Session->read('USER.Login.id'),$show);
+		if(!empty($result)){
+			$this->set('approveUser', '1');
+			// for drop down listing
+			$format_list = $this->Functions->format_dropdown($result, 'u','id','first_name', 'last_name');
+			$this->set('empList', $format_list);			
+		}
+		
 		// check role based access
+		/*
 		if($this->Session->read('USER.Login.roles_id') == '34'){ // account holder
 			$empCond = array('AH.users_id' => $this->Session->read('USER.Login.id'));
 		}else if($this->Session->read('USER.Login.roles_id') == '30'){ // recruiter
@@ -76,7 +97,15 @@ class ClientController extends AppController {
 		|| $this->Session->read('USER.Login.roles_id') == '39'){ // director & BD
 			$empCond = '';
 		}
+		*/
 		
+		
+			// for employee condition
+		if($this->request->query['emp_id'] != ''){ 
+			$empCond = array('Client.created_by' => $this->request->query['emp_id']);
+		}else if($this->Session->read('USER.Login.rights') != '5'){			
+			// $empCond = array('ReqResume.created_by' => $this->Session->read('USER.Login.id'));
+		}
 			$options = array(			
 				array('table' => 'requirements',
 						'alias' => 'Position',					
@@ -116,7 +145,7 @@ class ClientController extends AppController {
 			);
 			
 		
-		
+	
 		
 		// set the page title
 		$this->set('title_for_layout', 'Clients - Manage Hiring');	
@@ -128,6 +157,23 @@ class ClientController extends AppController {
 			$data = $this->Client->find('all', array('fields' => $fields,'conditions' => 
 			array($keyCond,$date_cond,$stCond,$empCond,$approveCond),'order' => array('created_date' => 'desc'), 
 			'group' => array('Client.id'), 'joins' => $options));
+			// get the client contacts
+			$options = array(		
+			array('table' => 'client_contact',
+				  'alias' => 'ClientCont',					
+				  'type' => 'LEFT',
+				  'conditions' => array('`ClientCont`.`contact_id` = `Contact`.`id`')
+				)
+			);
+			$this->loadModel('Contact');
+			foreach($data as $key => $record){
+				$client_contact = $this->Contact->find('all', array('fields' => array('id','title', 'first_name', 'last_name','email','mobile','Designation.designation','ContactBranch.branch'), 'conditions' => array('ClientCont.clients_id ' => $record['Client']['id'], 'Contact.status' => '0', 'Contact.is_deleted' => 'N'),'order' => array('Contact.id' => 'asc'),'joins' => $options));
+				// iterate the contact details
+				foreach($client_contact as $key2 => $client){
+					$data[$key]['Client']['contact_data'.$key2] = ucwords($client['Contact']['first_name'].' '.$client['Contact']['last_name']).'; '.$client['Contact']['email'].'; '.$client['Contact']['mobile'].'; '.$client['Designation']['designation'].'; '.$client['ContactBranch']['branch'];
+					// echo '<pre>'; print_r($data);die;
+				}
+			}			
 			$this->Excel->generate('clients', $data, $data, 'Client Report', 'ClientDetails'.date('ddmmyy'));
 		}
 		$this->paginate = array('fields' => $fields,'limit' => '25','conditions' => array($keyCond,$date_cond,$stCond,
@@ -530,11 +576,6 @@ class ClientController extends AppController {
 					'alias' => 'Creator',					
 					'type' => 'LEFT',
 					'conditions' => array('`Creator`.`id` = `Contact`.`created_by`')
-			),
-			array('table' => 'designation',
-					'alias' => 'Designation',					
-					'type' => 'LEFT',
-					'conditions' => array('`Designation`.`id` = `Contact`.`designation_id`')
 			)
 		);		
 		$contact = $this->ClientContact->find('all', array('fields' => array('Contact.id','Contact.first_name','Contact.last_name','Contact.email',

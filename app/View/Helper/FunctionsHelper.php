@@ -192,7 +192,7 @@ class FunctionsHelper extends AppHelper {
 	 /* function to show position status color */
 	 public function get_req_status_color($st){
 		switch($st){
-			case 'Planned':
+			case 'Assigned':
 			$color = 'default';
 			break;
 			case 'In-Process':
@@ -204,7 +204,7 @@ class FunctionsHelper extends AppHelper {
 			case 'Closed':
 			$color = 'success';
 			break;
-			case 'Cancelled':
+			case 'Terminated':
 			$color = 'important';
 			break;
 			case 'Forecast':

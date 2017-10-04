@@ -140,7 +140,10 @@ class Client extends AppModel {
 
 	
 
-	
+	/* function to get the team members */
+	public function get_team($id){
+		return $this->get_team_mem($id);
+	}
 	
 
 	

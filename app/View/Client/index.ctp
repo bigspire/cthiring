@@ -67,7 +67,11 @@
 						</span>	
 						</span>							
 							
-
+<?php if($approveUser):?>
+							<label>Employee: 
+						<?php echo $this->Form->input('emp_id', array('div'=> false,'type' => 'select', 'label' => false, 'class' => 'input-medium', 'empty' => 'Select', 'selected' => $this->params->query['emp_id'], 'required' => false, 'placeholder' => '', 'style' => "clear:left", 'options' => $empList)); ?> 					
+							</label>
+						<?php endif; ?>
 														
 
 						<input type="hidden" value="1" id="SearchKeywords">

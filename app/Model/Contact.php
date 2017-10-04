@@ -27,6 +27,17 @@ class Contact extends AppModel {
 	 
 	public $useTable = 'contact';
 	
+	public $belongsTo = array(		
+		'ContactBranch' => array(
+            'className'  => 'ContactBranch',
+			'foreignKey' => 'contact_branch_id'			
+        ),
+		'Designation' => array(
+            'className'  => 'Designation',
+			'foreignKey' => 'designation_id'			
+        )
+		
+	);
 	
 	  
 	

@@ -211,6 +211,12 @@ class ExcelComponent extends Component {
 					$this->sheet->setCellValueByColumnAndRow($j++,$i,ucfirst($value['Creator']['first_name']));				
 					$this->sheet->setCellValueByColumnAndRow($j++,$i,$this->format_date($value['Client']['created_date']));
 					$this->sheet->setCellValueByColumnAndRow($j++,$i,$this->format_date($value['Client']['modified_date']));
+					// client contacts to add
+					$this->sheet->setCellValueByColumnAndRow($j++,$i,$value['Client']['contact_data0']);
+					$this->sheet->setCellValueByColumnAndRow($j++,$i,$value['Client']['contact_data1']);
+					$this->sheet->setCellValueByColumnAndRow($j++,$i,$value['Client']['contact_data2']);
+					$this->sheet->setCellValueByColumnAndRow($j++,$i,$value['Client']['contact_data3']);
+					$this->sheet->setCellValueByColumnAndRow($j++,$i,$value['Client']['contact_data4']);
 					$i++;
 					$j= 0;			
 				}			

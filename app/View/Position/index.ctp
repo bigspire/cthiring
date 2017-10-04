@@ -127,13 +127,13 @@
 									<tr>
 
 										<th width="210"><?php echo $this->Paginator->sort('job_title', 'Job Title', array('escape' => false, 'direction' => 'desc', 'rel' => 'tooltip', 'title' => 'Sort by Ascending or Descending'));?></th>										
-										<th width="120"><?php echo $this->Paginator->sort('Client.client_name', 'Client', array('escape' => false, 'direction' => 'desc', 'rel' => 'tooltip', 'title' => 'Sort by Ascending or Descending'));?></th>
-										<th width="80"  style="text-align:center"><?php echo $this->Paginator->sort('no_job', 'Vacancies', array('escape' => false, 'direction' => 'desc', 'rel' => 'tooltip', 'title' => 'Sort by Ascending or Descending'));?></th>
-										<th width="75"><?php echo $this->Paginator->sort('team_member', 'Team', array('escape' => false, 'direction' => 'desc', 'rel' => 'tooltip', 'title' => 'Sort by Ascending or Descending'));?></th>
-										<th width="75"  style="text-align:center">CV Sent</th>
-										<th width="75"  style="text-align:center">Joined</th>
+										<th width="200"><?php echo $this->Paginator->sort('Client.client_name', 'Client', array('escape' => false, 'direction' => 'desc', 'rel' => 'tooltip', 'title' => 'Sort by Ascending or Descending'));?></th>
+										<th width="100"  style="text-align:center"><?php echo $this->Paginator->sort('no_job', 'Openings', array('escape' => false, 'direction' => 'desc', 'rel' => 'tooltip', 'title' => 'Sort by Ascending or Descending'));?></th>
+										<th width="150"><?php echo $this->Paginator->sort('team_member', 'Team', array('escape' => false, 'direction' => 'desc', 'rel' => 'tooltip', 'title' => 'Sort by Ascending or Descending'));?></th>
+										<th width="65"  style="text-align:center">CV Sent</th>
+										<th width="65"  style="text-align:center">Joined</th>
 										<th width="100"  style="text-align:center"><?php echo $this->Paginator->sort('status', 'Status', array('escape' => false, 'direction' => 'desc', 'rel' => 'tooltip', 'title' => 'Sort by Ascending or Descending'));?></th>
-										<th width="75"><?php echo $this->Paginator->sort('Creator.first_name', 'Created By', array('escape' => false, 'direction' => 'desc', 'rel' => 'tooltip', 'title' => 'Sort by Ascending or Descending'));?></th>
+										<th width="95"><?php echo $this->Paginator->sort('Creator.first_name', 'Created By', array('escape' => false, 'direction' => 'desc', 'rel' => 'tooltip', 'title' => 'Sort by Ascending or Descending'));?></th>
 										<th width="75"><?php echo $this->Paginator->sort('created_date', 'Created', array('escape' => false, 'direction' => 'desc', 'rel' => 'tooltip', 'title' => 'Sort by Ascending or Descending'));?></th>
 										<th width="75"><?php echo $this->Paginator->sort('modified_date', 'Modified', array('escape' => false, 'direction' => 'desc', 'rel' => 'tooltip', 'title' => 'Sort by Ascending or Descending'));?></th>
 										<th width="60" style="text-align:center">Message</th>

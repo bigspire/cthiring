@@ -49,19 +49,19 @@
 
 						<div class="dataTables_filter srchBox" id="dt_gal_filter">			
 							
-							<label> For the period:	</label>
+							<label> For the period:	&nbsp;</label>
 							 <span id="sandbox-container">
 						<span  class="input-daterange" id="datepicker">	
-							<input type="text" class="input-medium datepick" name="data[Home][from]" value="<?php echo $this->request->query['from'];?>" aria-controls="dt_gal"></label>
-							<input type="text" name="data[Home][to]" value="<?php echo $this->request->query['to'];?>" class="input-medium datepick" aria-controls="dt_gal"></label>
+							<input type="text" class="input-small datepick" name="data[Home][from]" value="<?php echo $this->request->query['from'];?>" aria-controls="dt_gal"></label>
+							<input type="text" name="data[Home][to]" value="<?php echo $this->request->query['to'];?>" class="input-small datepick" aria-controls="dt_gal"></label>
 												
 						</span>	
 						</span>							
 							
-							<input type="submit" value="Submit" class="btn-gebo" />
+							<input type="submit" style="margin-bottom:8px;" value="Submit" class="btn btn-gebo" />
 							
-							<a class="jsRedirect" href="<?php echo $this->webroot;?>home/">
-							<input value="Reset" type="button" class="btn-gebo"/>
+							<a class="jsRedirect"  href="<?php echo $this->webroot;?>home/">
+							<input value="Reset" style="margin-bottom:8px;" type="button" class="btn"/>
 							</a>
 							
 							
@@ -70,8 +70,39 @@
 						
 							</div>		
 							<h3 class="heading">Dashboard</h3>
-							
-							<div class="flexslider2">
+							<div class="row tile_count">
+            <div class="span2 tile_stats_count">
+              <span class="count_top"><i class="fa fa-user"></i> Total Positions</span>
+              <div class="count"><?php echo $POS_TAB_COUNT;?></div>
+              <span class="count_bottom"><i class="green">4% </i> From last Week</span>
+            </div>
+            <div class="span2 tile_stats_count">
+              <span class="count_top"><i class="fa fa-clock-o"></i> Total CV Sent</span>
+              <div class="count"><?php echo $CV_SENT_TAB_COUNT;?></div>
+              <span class="count_bottom"><i class="green"><i class="green icon-circle-arrow-up"></i> 3% </i> From last Week</span>
+            </div>
+            <div class="span2 tile_stats_count">
+              <span class="count_top"><i class="fa fa-user"></i> Total Shortlisted</span>
+              <div class="count green"><?php echo $CV_SHORTLIST_TAB_COUNT;?></div>
+              <span class="count_bottom"><i class="green"><i class="icon-circle-arrow-up"></i> 34% </i> From last Week</span>
+            </div>
+            <div class="span2 tile_stats_count">
+              <span class="count_top"><i class="fa fa-user"></i> Total Interviewed</span>
+              <div class="count"><?php echo $INTERVIEW_TAB_COUNT;?></div>
+              <span class="count_bottom"><i class="red"><i class="fa icon-circle-arrow-down"></i> 12% </i> From last Week</span>
+            </div>
+            <div class="span2 tile_stats_count">
+              <span class="count_top"><i class="fa fa-user"></i> Total Joined</span>
+              <div class="count"><?php echo $JOINED_TAB_COUNT; ?> </div>
+              <span class="count_bottom"><i class="green"><i class="icon-circle-arrow-up"></i> 34% </i> From last Week</span>
+            </div>
+            <div class="span1 tile_stats_count" style="width:160px;border:none;">
+              <span class="count_top"><i class="fa fa-user"></i> Total Billing</span>
+              <div class="count">₹<?php echo $BILLED_TAB_COUNT;?></div>
+              <span class="count_bottom"><i class="green"><i class="icon-circle-arrow-up"></i> 34% </i> From last Week</span>
+            </div>
+          </div>
+							<!--div class="flexslider2">
 							<ul class="slides dshb_icoNav tac  mt15">
 								<li><a rel="tooltip" target="_blank" title="Positions Created" href="<?php echo $this->webroot;?>position/"><span class="label label-info"><?php echo $POS_TAB_COUNT;?></span> <strong>Positions</strong></a></li>
 								<li><a rel="tooltip" target="_blank" title="CV Sent" href="<?php echo $this->webroot;?>resume/"><span class="label label-warning"><?php echo $CV_SENT_TAB_COUNT;?> </span> <strong>CV</strong> Sent</a></li>
@@ -87,7 +118,7 @@
 								<li><a rel="tooltip"  target="_blank" title="Candidates Billed" href="<?php echo $this->webroot;?>resume/"><span class="label label-warning"><?php echo $BILLED_TAB_COUNT;?> </span> <strong>Billed</strong></a></li>
 								<li><a rel="tooltip" target="_blank" title="Recruiter Contributions"  href="<?php echo $this->webroot;?>hiring/billing.php"><span class="label label-info">₹<?php echo $BILLED_AMT_TAB_COUNT;?></span> <strong>Contribution</strong> </a></li>
 							</ul>
-							</div>
+							</div-->
 						</div>
 					</div>
 					

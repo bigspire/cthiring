@@ -45,7 +45,7 @@ class HomeController  extends AppController {
 		$this->set('title_for_layout', 'Home - Manage Hiring');
 		// when the form is submitted for search
 		if($this->request->is('post')){
-			$url_vars = $this->Functions->create_url(array('from','to','loc','emp_id','srchSubmit','client','type'),'Home'); 			
+			$url_vars = $this->Functions->create_url(array('from','to','loc','emp_id','srchSubmit','client','type'),'Home');		
 			$this->redirect('/home/?'.$url_vars);				
 		}
 		// get the employee details
@@ -54,10 +54,10 @@ class HomeController  extends AppController {
 		$this->set('locList', $this->get_loc_details());
 		// apply date conditions
 		// for testing date changed
-		$dateFrm = date('Y-m-d', strtotime('-9 days'));
-		// $dateFrm = '2015-11-05';
-		$dateTo = date('Y-m-d');
-		// $dateTo = '2015-11-14';
+		// $dateFrm = date('Y-m-d', strtotime('-9 days'));
+		$dateFrm = '2017-06-01';
+		$dateTo = '2017-06-10';
+		// $dateTo = date('Y-m-d');
 		$start = $this->request->query['from'] ? $this->Functions->format_date_save($this->request->query['from']) : $dateFrm;
 		$end = $this->request->query['to'] ? $this->Functions->format_date_save($this->request->query['to']) : $dateTo;
 		// set date condition				
@@ -91,7 +91,6 @@ class HomeController  extends AppController {
 			$client_emp_cond = array('Client.created_by' => $this->Session->read('USER.Login.id'));
 		}
 		*/
-		
 		
 		/* for dashboard switching */
 		if($dash_type == 'rec_view' || $this->Session->read('USER.Login.roles_id') == '30'){
@@ -223,7 +222,6 @@ class HomeController  extends AppController {
 			$client_emp_cond = array('Client.created_by' => $this->Session->read('USER.Login.id'));
 			$this->set('bd_dash', 'active');
 		}
-		
 		
 		// for branch condition
 		if($this->request->query['loc'] != ''){					

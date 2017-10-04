@@ -177,6 +177,7 @@
 										<td>
 										<input type="radio" tabindex="15" name="marital_status"{if $marital_status && $marital_status == '1' || $smarty.post.marital_status == '1'}{'checked'}{/if} value="1"> Single
 										<input type="radio" tabindex="16" name="marital_status"{if $marital_status && $marital_status == '2' || $smarty.post.marital_status == '2'}{'checked'} {/if} value="2"> Married
+										<input type="radio" tabindex="16" name="marital_status"{if $marital_status && $marital_status == '3' || $smarty.post.marital_status == '3'}{'checked'} {/if} value="3"> Separated
 										</td>	
 									</tr>
 									<tr class="tbl_row">
