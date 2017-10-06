@@ -70,21 +70,49 @@
 					<td width="120" class="tbl_column">Interview Date <span class="f_req">*</span>
 					</td>
 						<td>
-						<?php echo $this->Form->input('int_date', array('div'=> false,'type' => 'text', 'label' => false, 'class' => 'span5 datepick',   'required' => false, 'placeholder' => '', 'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 					
+						<?php echo $this->Form->input('int_date', array('div'=> false,'type' => 'text', 'label' => false, 'class' => 'span3 datepick',   'required' => false,'placeholder' => '', 'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 					
 
-						<?php echo $this->Form->input('int_time', array('div'=> false,'type' => 'text', 'label' => false, 'class' => 'span3 datetimepick',   'required' => false, 'placeholder' => '', 'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 					
+						<?php echo $this->Form->input('int_time', array('div'=> false,'type' => 'text', 'label' => false, 'class' => 'span3 datetimepick', 'required' => false, 'style' => 'float:left;margin-right:5px;', 'placeholder' => '', 'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 	
+
+<?php echo $this->Form->input('int_duration', array('div'=> false,'type' => 'select', 'empty' => 'Duration', 'options' => $int_duration, 'label' => false, 'class' => 'span2',   'required' => false, 'placeholder' => '', 'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 	
+
+						
 						</td>	
 				</tr>
 				
 				<tr class="tbl_row">
-					<td width="120" class="tbl_column">Interview Duration <span class="f_req">*</span>
+					<td width="120" class="tbl_column">Interview Venue <span class="f_req">*</span>
 					</td>
 						<td>
-
-						<?php echo $this->Form->input('int_duration', array('div'=> false,'type' => 'select', 'empty' => 'Select', 'options' => $int_duration, 'label' => false, 'class' => 'span5',   'required' => false, 'placeholder' => '', 'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 					
+<?php echo $this->Form->input('venue', array('div'=> false,'type' => 'textarea', 'label' => false, 'class' => 'span8', 'required' => false, 'placeholder' => '', 'rows' => '4', 'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 	
+		
+										
 						</td>	
 				</tr>
 			
+			
+				<tr class="tbl_row">
+					<td width="120" class="tbl_column">Contact Details <span class="f_req">*</span>
+					
+					</td>
+					
+					
+						<td>
+<?php echo $this->Form->input('contact_name', array('div'=> false,'type' => 'text', 'label' => false, 'class' => 'span8', 'required' => false, 'placeholder' => 'Contact Person Name', 'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 	
+							
+<?php echo $this->Form->input('contact_no', array('div'=> false,'type' => 'text', 'label' => false, 'class' => 'span8', 'required' => false, 'placeholder' => 'Contact No.', 'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 										
+						</td>	
+				</tr>
+				
+					<tr class="tbl_row">
+					<td width="120" class="tbl_column">Additional Info 
+					</td>
+						<td>
+<?php echo $this->Form->input('additional', array('div'=> false,'type' => 'textarea', 'label' => false, 'class' => 'span8', 'required' => false, 'placeholder' => '', 'rows' => '4', 'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 	
+		
+										
+						</td>	
+				</tr>
 				
 				</tbody>
 			</table>

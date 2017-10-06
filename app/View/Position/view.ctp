@@ -611,8 +611,8 @@
 										<?php else: ?>
 										
 										
-										<span class="btn-mini alert alert-success alert-action" rel="tooltip" title="<?php echo $int_lev_order;?> Interview Awaiting" style="background-image:none;cursor:default;margin-bottom:0px;">
-										<?php echo $int_lev;?> IA  
+										<span class="btn-mini alert alert-success alert-action" rel="tooltip" title="<?php echo $int_lev_order;?> Interview Schedule Awaited" style="background-image:none;cursor:default;margin-bottom:0px;">
+										<?php echo $int_lev;?> ISA  
 										</span>
 									
 										<?php endif; ?>
@@ -624,12 +624,17 @@
 										<?php if($resume['ReqResume']['status_title'] == 'Shortlisted' || $resume['ReqResume']['status_title'] == 'Selected' || $resume['ReqResume']['status_title'] == 'Cancelled' || $resume['ReqResume']['status_title'] == 'No Show'):?>
 										<li><a  href="<?php echo $this->webroot;?>position/schedule_interview/<?php echo  $resume['Resume']['id'];?>/<?php echo $this->request->params['pass'][0];?>/<?php echo $int_lev;?>/" val="60_90"  class="iframeBox sepV_a cboxElement">Interview Schedule / Reschedule</a></li>
 										<?php else: ?>
-										<li><a  href="<?php echo $this->webroot;?>position/view_interview_schedule/<?php echo  $resume['ReqResume']['id'];?>/<?php echo $int_lev_same;?>/" val="60_90"  class="iframeBox sepV_a cboxElement">View Interview Schedule</a></li>
+										<li><a  href="<?php echo $this->webroot;?>position/view_interview_schedule/<?php echo  $resume['ReqResume']['id'];?>/<?php echo $int_lev_same;?>/" val="60_90"  class="iframeBox sepV_a cboxElement">View Interview Details</a></li>
 										<?php endif; ?>
 										
 										<?php if($resume['ReqResume']['status_title'] == 'Scheduled'):?>
-											<li><a  href="<?php echo $this->webroot;?>position/update_interview/<?php echo  $resume['Resume']['id'];?>/<?php echo $this->request->params['pass'][0];?>/shortlist/<?php echo $int_lev_same;?>/" val="40_60"  class="iframeBox sepV_a cboxElement"><?php  if($int_level[0] > 0): echo $int_level[0]; endif;?> Interview Selected </a></li>
-											<li><a  href="<?php echo $this->webroot;?>position/update_interview/<?php echo  $resume['Resume']['id'];?>/<?php echo $this->request->params['pass'][0];?>/reject/<?php echo $int_lev_same;?>/" val="40_60"  class="iframeBox sepV_a cboxElement"><?php  if($int_level[0] > 0): echo $int_level[0]; endif;?> Interview Rejected</a></li>
+										
+										<li><a  href="<?php echo $this->webroot;?>position/schedule_interview/<?php echo  $resume['Resume']['id'];?>/<?php echo $this->request->params['pass'][0];?>/<?php echo $int_lev;?>/reschedule/" val="60_90"  class="iframeBox sepV_a cboxElement">Interview Re-Schedule</a></li>
+										
+										<li class="divider"></li>
+										
+											<li><a  href="<?php echo $this->webroot;?>position/update_interview/<?php echo  $resume['Resume']['id'];?>/<?php echo $this->request->params['pass'][0];?>/shortlist/<?php echo $int_lev_same;?>/" val="40_60"  class="iframeBox sepV_a cboxElement"><?php  if($int_level[0] > 0): echo $int_level[0]; endif;?> <i class="splashy-check"></i> Interview Selected </a></li>
+											<li><a  href="<?php echo $this->webroot;?>position/update_interview/<?php echo  $resume['Resume']['id'];?>/<?php echo $this->request->params['pass'][0];?>/reject/<?php echo $int_lev_same;?>/" val="40_60"  class="iframeBox sepV_a cboxElement"><?php  if($int_level[0] > 0): echo $int_level[0]; endif;?> <i class="splashy-error_small"></i> Interview Rejected</a></li>
 										<?php endif; ?>
 										</ul>
 									</div>	

@@ -229,7 +229,29 @@ class Position extends AppModel {
                 'required' => true,
                 'message'  => 'Please enter the reason to reject'
             )
-        )		
+        ),
+		'contact_name' => array(		
+            'empty' => array(
+                'rule'     => 'notEmpty',
+                'required' => true,
+                'message'  => 'Please enter the contact person name'
+            )
+        ),
+		'contact_no' => array(		
+            'empty' => array(
+                'rule'     => 'notEmpty',
+                'required' => true,
+                'message'  => 'Please enter the contact no.'
+            )
+        ),
+			
+		'venue' => array(		
+            'empty' => array(
+                'rule'     => 'notEmpty',
+                'required' => true,
+                'message'  => 'Please enter the interview venue'
+            )
+        )
 	);
 	
 	

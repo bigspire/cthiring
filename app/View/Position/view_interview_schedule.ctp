@@ -42,7 +42,7 @@
 						</td>	
 				</tr>
 				
-				<tr class="tbl_row" >
+				<tr class="" >
 					<td width="120" class="tbl_column">Interview Level 
 					</td>
 						<td>
@@ -63,7 +63,7 @@
 						</td>	
 				</tr>
 				
-				<tr class="tbl_row" >
+				<tr class="" >
 					<td width="120" class="tbl_column">Interview Date 
 					</td>
 						<td>
@@ -81,7 +81,37 @@
 						
 						</td>	
 				</tr>
+				
+				<tr class="">
+					<td width="120" class="tbl_column">Venue 
+					</td>
+						<td>
+
+						<?php echo $interview_data['ResInterview']['venue']?>
+						
+						</td>	
+				</tr>
 			
+				<tr class="tbl_row">
+					<td width="120" class="tbl_column">Contact Details 
+					</td>
+						<td>
+
+						<?php echo $interview_data['ResInterview']['contact_name']?>, 
+						<?php echo $interview_data['ResInterview']['contact_no']?>
+						
+						</td>	
+				</tr>
+				
+				<tr class="">
+					<td width="120" class="tbl_column">Additional Info 
+					</td>
+						<td>
+
+						<?php echo $interview_data['ResInterview']['additional']?>
+						
+						</td>	
+				</tr>
 				
 				</tbody>
 			</table>

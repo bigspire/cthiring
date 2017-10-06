@@ -1033,7 +1033,7 @@ class PositionController extends AppController {
 			// retain the district
 			// validate the form fields
 			if ($this->Position->validates(array('fieldList' => array('interview_level','interview_stage_id','int_date','int_time',
-				'int_duration','subject','message','subject_client','message_client')))){	
+				'int_duration','subject','message','subject_client','message_client','contact_name','contact_no','venue')))){	
 				// get the req. resume id
 				$this->loadModel('ReqResume');
 				$req_res_id = $this->ReqResume->find('all', array('fields' => array('ReqResume.id'), 
@@ -1056,7 +1056,12 @@ class PositionController extends AppController {
 						'created_by' => $this->Session->read('USER.Login.id'), 'stage_title' => $this->request->data['Position']['interview_level'],
 						'status_title' => 'Scheduled',	'int_date' => $this->Functions->format_date_save($this->request->data['Position']['int_date']),
 						'int_duration' => $this->request->data['Position']['int_duration'], 'int_time' => $this->request->data['Position']['int_time'],
-						'interview_stage_id' => $this->request->data['Position']['interview_stage_id']);
+						'interview_stage_id' => $this->request->data['Position']['interview_stage_id'],
+						'venue' =>  $this->request->data['Position']['venue'],
+						'additional' => $this->request->data['Position']['additional'],
+						'contact_name' => $this->request->data['Position']['contact_name'],
+						'contact_no' => $this->request->data['Position']['contact_no']							
+						);
 						$this->ResInterview->save($data, array('validate' => false));
 						// if successfully update
 						$this->set('cv_update_status', 1);
@@ -1107,7 +1112,7 @@ class PositionController extends AppController {
 		);
 		$this->set('interview_level', $int_text);
 		$data = $this->ResInterview->find('all', array('fields' => array('int_date','int_duration','Resume.first_name','Resume.last_name'
-		,'InterviewStage.interview_stage'),
+		,'InterviewStage.interview_stage','venue','additional','contact_name','contact_no'),
 		'conditions' => array('req_resume_id' => $id, 'ResInterview.stage_title' => $int_text), 'joins' => $options));
 		$this->set('interview_data', $data[0]);
 	}
