@@ -422,6 +422,8 @@ if(!empty($_POST)){
 		if(!empty($edu_id) && !empty($exp_id) && !empty($resume_id) && !empty($position_id) && !empty($req_res_id)){
 			//echo 'save data';
 			$_SESSION['extraction'] = '';
+			// create snapshot pdf
+			include_once('snapshot.php');
 			header('Location: ../resume/?action=created');
 		} 
 	}else{
@@ -576,6 +578,8 @@ try{
 }catch(Exception $e){
 	echo 'Caught exception: ',  $e->getMessage(), "\n";
 } 
+
+
 
 // closing mysql
 $mysql->close_connection();
