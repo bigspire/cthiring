@@ -332,7 +332,10 @@ if(!empty($_POST)){
 			$grade_typeData = $_POST['grade_type_'.$i];
 			$year_of_passData = $_POST['year_of_pass_'.$i];
 			$universityData = $_POST['university_'.$i];
-		
+			
+			// for snapshot printing
+			$snap_edu .= $degreeData.', '.$specializationData.', '.$year_of_passData.', '.$gradeData.', '.$grade_typeData.'<br>';
+			
 			// query to add education details
 			$query = "CALL add_res_education('".$fun->is_white_space($mysql->real_escape_str($gradeData))."',
 				'".$mysql->real_escape_str($year_of_passData)."','".$fun->is_white_space($mysql->real_escape_str($collegeData))."',
@@ -386,6 +389,13 @@ if(!empty($_POST)){
 			$locationData = $_POST['location_'.$i];
 			$vitalData = $_POST['vital_'.$i];
 			
+			// for snapshot printing
+			$tot_exp_years = $_POST['year_of_exp_'.$i] == 0 ? '0' : $_POST['year_of_exp_'.$i].'.'.$_POST['month_of_exp_'.$i];
+			$expStr = $fun->check_exp($tot_exp_years);
+
+			$snap_exp .= $companyData.', '.$desigData.', '.$expStr.'<br>';
+			$snap_skill .= $vitalData.' ';
+			
 			// query to add experience details
 			$query = "CALL add_res_experience('".$mysql->real_escape_str($desigData)."','".$mysql->real_escape_str($expData)."',
 				'".$fun->is_white_space($mysql->real_escape_str($locationData))."',
@@ -424,6 +434,11 @@ if(!empty($_POST)){
 			$_SESSION['extraction'] = '';
 			// create snapshot pdf
 			include_once('snapshot.php');
+			// convert the resume doc. into pdf
+			include('vendor/ilovepdf-php-1.1.5/samples/resume.php');
+			// merge the snapshot pdf and resume pdf
+			include('vendor/ilovepdf-php-1.1.5/samples/merge_basic.php');
+
 			header('Location: ../resume/?action=created');
 		} 
 	}else{
@@ -431,6 +446,11 @@ if(!empty($_POST)){
 	}
 }
 
+// convert the resume doc. into pdf
+// include('vendor/ilovepdf-php-1.1.5/samples/resume.php');
+// merge the snapshot pdf and resume pdf
+// include('vendor/ilovepdf-php-1.1.5/samples/merge_basic.php');
+			
 // smarty drop down array for status
 $smarty->assign('grade_status', array('' => 'Select', '1' => 'Active', '2' => 'Inactive'));
 // smarty drop down array for type

@@ -683,6 +683,111 @@ class fun{
 			}
 		}
 	}
+	
+	/* function to find the min and max exp */
+   public function check_exp($value){ 		
+		if($value == '0'){
+			$str =  'Fresher';
+		}else if($value < 1 && $value != ''){			
+			$str = preg_replace('/^0./', '', $value).' Month';
+			$value = 2;
+		}else if($value >= 1){
+			$str = $value.' Year';
+		}
+		
+		if($value > 1){
+			$suffix = 's';
+		}		
+		return $str.$suffix;
+   }
+   
+    /* function to get ctc type */
+   public function get_ctc_type($type){
+		switch($type){
+			case 'K':
+			$value = 'Thousands';
+			break;
+			case 'L':
+			$value = 'Lacs';
+			break;
+			case 'C':
+			$value = 'Crore';
+			break;
+			
+		}
+		return $value;
+   }
+   
+    /* function to get ctc type */
+   public function get_notice($val){
+		switch($val){
+			case '0':
+			$value = 'Immediate';
+			break;
+			case '15':
+			$value = '15 Days';
+			break;
+			case '30':
+			$value = '30 Days';
+			break;
+			case '40':
+			$value = '45 Days';
+			break;
+			case '60':
+			$value = '2 Months';
+			break;
+			case '90':
+			$value = '3 Months';
+			break;
+			case '120':
+			$value = '4 Months';
+			break;
+			case '150':
+			$value = '5 Months';
+			break;
+			case '180':
+			$value = '6 Months';
+			break;
+			
+		}
+		return $value;
+   }
+   
+   /* function to get course type */
+   public function get_course_type($type){
+		switch($type){
+			case 'R':
+			$value = 'Regular';
+			break;
+			case 'C':
+			$value = 'Correspondence';
+			break;			
+		}
+		return $value;
+   }
+   
+    
+   /* function to check gender */
+   public function check_gender($gen){
+		if($gen == '1'){
+			$txt = 'Male';
+		}else if($gen == '2'){
+			$txt = 'Female';
+		}
+		return $txt;
+   }
+   
+   function openZip($file_to_open, $target) {
+    $zip = new ZipArchive();
+    $x = $zip->open($file_to_open);
+    if($x === true) {
+        $zip->extractTo($target);
+        $zip->close();         
+        //unlink($file_to_open);
+    } else {
+        die("There was a problem. Please try again!");
+    }
+}
 }
 
 $fun = new fun();

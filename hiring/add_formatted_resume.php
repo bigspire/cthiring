@@ -20,6 +20,7 @@ include('classes/class.mailer.php');
 // content class
 include('classes/class.content.php');
 
+
 $smarty->assign('dob_default', date('d/m/Y', strtotime('-18 years')));
 
 // role based validation
@@ -808,7 +809,11 @@ if(!empty($_POST)){
 			}
 		}
 		if(!empty($edu_id) && !empty($exp_id) && !empty($train_id) && !empty($language_id) && !empty($resume_id)){
-			// echo 'save data';die;
+			// generate auto resume doc file
+			include('vendor/PHPWord-develop/samples/template_process.php');
+			// generate the auto resume pdf file
+			include('vendor/ilovepdf-php-1.1.5/samples/office.php');
+			// once successfully created, redirect the page
 			if($_GET['resume'] != ''){
 				header('Location: ../resume/?action=auto_modified');
 			}else{

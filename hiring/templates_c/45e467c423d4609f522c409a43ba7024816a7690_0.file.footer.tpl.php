@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-06-22 19:22:53
+/* Smarty version 3.1.29, created on 2017-10-08 16:06:27
   from "F:\xampp\htdocs\ctsvn\cthiring\hiring\templates\include\footer.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_594bcbb58f60f0_94326643',
+  'unifunc' => 'content_59d9ffab8075d4_70603468',
   'file_dependency' => 
   array (
     '45e467c423d4609f522c409a43ba7024816a7690' => 
     array (
       0 => 'F:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\templates\\include\\footer.tpl',
-      1 => 1498131200,
+      1 => 1507458985,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_594bcbb58f60f0_94326643 ($_smarty_tpl) {
+function content_59d9ffab8075d4_70603468 ($_smarty_tpl) {
 ?>
 <div id="footer">
 
@@ -51,6 +51,10 @@ function content_594bcbb58f60f0_94326643 ($_smarty_tpl) {
 <!-- hidden elements width/height -->
 <?php echo '<script'; ?>
  src="js/jquery.actual.min.js"><?php echo '</script'; ?>
+>
+<!-- auto size text area -->
+<?php echo '<script'; ?>
+ src="js/autosize.min.js"><?php echo '</script'; ?>
 >
 <!-- js cookie plugin -->
 <!-- tooltips -->
@@ -147,7 +151,7 @@ function content_594bcbb58f60f0_94326643 ($_smarty_tpl) {
 >
 <!-- datatable -->                                                                                                                                                                                         
 <?php echo '<script'; ?>
- src="js/main.js"><?php echo '</script'; ?>
+ type="text/javascript" src="js/main.js"><?php echo '</script'; ?>
 >	
 <?php echo '<script'; ?>
  type="text/javascript" src="js/sheepit-jquery.sheepItPlugin-v1.1.1/jquery.sheepItPlugin.js"><?php echo '</script'; ?>

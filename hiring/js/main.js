@@ -91,7 +91,7 @@ $(document).ready(function() {
 		});
 	}
 	
-	/* editor for auto resume page*/
+	/* editor for auto resume page
 	if($('.wysiwyg1').length > 0){
 		$(function(){
 			tinymce.init({
@@ -106,6 +106,7 @@ $(document).ready(function() {
 			});
 		});
 	}
+	*/
 	
 	// for counting the text
 	/*
@@ -291,6 +292,10 @@ $(document).ready(function() {
 		
 	});
 	
+	/* auto resize */
+	if($('.wysiwyg1').length > 0){
+		autosize(document.querySelectorAll('.wysiwyg1'));
+	}
 	
 	
 	/* load when the view position started */
