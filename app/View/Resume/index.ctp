@@ -190,17 +190,19 @@
 										<td><?php echo ucfirst($res['Creator']['first_name']);?></td>
 										<td class="actionItem">
 								
-	<div class="btn-group" style="display:inline-block;float:left;margin-left:4px;">
+									<div class="btn-group" style="display:inline-block;float:left;margin-left:4px;">
 										
 									<button data-toggle="dropdown" rel="tooltip" title="Download" class="btn btn-mini dropdown-toggle"><i class="icon-download"></i> <span class="caret"></span>
 									</button>
 										<ul class="dropdown-menu">
-											<li><a href="<?php echo $this->webroot;?>resume/profile_snapshot/<?php echo $res['Resume']['id'];?>/<?php echo $res['Resume']['snapshot'];?>">Snapshot</a></li>
+										
+											<li><a href="<?php echo $this->webroot;?>resume/profile_snapshot/<?php echo $res['ResDoc']['resume'];?>">Snapshot</a></li>
 											<li><a href="<?php echo $this->webroot;?>resume/download_doc/<?php echo $res['ResDoc']['resume'];?>/">Candidate Resume</a></li>
 											<?php if($res['Resume']['autoresume']):?>
 											<li><a href="<?php echo $this->webroot;?>resume/autoresume/<?php echo $res['Resume']['id'];?>/<?php echo $res['Resume']['autoresume'];?>">Fully Formatted Resume</a></li>
 											<?php endif; ?>
-
+										<li class="divider"></li>
+<li><a class="iframeBox" val="70_100" href="<?php echo $this->webroot;?>resume/profile_snapshot/<?php echo $res['ResDoc']['resume'];?>/view/">View Resume</a></li>
 										</ul>
 									</div>
 								

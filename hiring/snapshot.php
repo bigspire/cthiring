@@ -1,7 +1,7 @@
 <?php
 include_once('classes/class.function.php');
 $tot_exp = $_POST['year_of_exp'] == 0 ? '0' : $_POST['year_of_exp'].'.'.$_POST['month_of_exp'];
-$expStr = $fun->check_exp($tot_exp);
+$expStr = $fun->show_exp_details($tot_exp);
 $pre_ctc_type = $fun->get_ctc_type($_POST['present_ctc_type']);
 $exp_ctc_type = $fun->get_ctc_type($_POST['expected_ctc_type']);
 $notice = $fun->get_notice($_POST['notice_period']);
@@ -81,7 +81,7 @@ $str = <<<EOD
       <th  class="has-text-centered">6</th>
       <td>Current Location of Work</td>
      
-      <td>$locationData</td>
+      <td>$locationDataCase</td>
     </tr>
     <tr>
       <th  class="has-text-centered">7</th>
@@ -93,7 +93,7 @@ $str = <<<EOD
       <th  class="has-text-centered">8</th>
       <td>Expected CTC</td>
      
-      <td>$_POST[expected_ctc] $exp_ctc_type Lacs Per Annum</td>
+      <td>$_POST[expected_ctc] $exp_ctc_type Per Annum</td>
     </tr>
     <tr>
       <th class="has-text-centered">9</th>
@@ -149,8 +149,9 @@ $str = <<<EOD
 </html>
 EOD;
 
+$snap_file_name = substr($_SESSION['resume_doc'], 0, strlen($_SESSION['resume_doc'])-5);
 $apikey = '5ea15ca6-ba76-423a-9214-b2194c6c427a';
 // $value = 'http://www.bigspireshowcase.com/mh/bulma.html'; // a url starting with http or an HTML string.  see example #5 if you have a long HTML string
 $result = file_get_contents("http://api.html2pdfrocket.com/pdf?apikey=" . urlencode($apikey) . "&value=" . urlencode($str).'&page');
-file_put_contents('uploads/snapshot/'.$_POST['first_name'].' '.$_POST['last_name'].'.pdf',$result);
+file_put_contents('uploads/snapshot/'.$snap_file_name.'.pdf',$result);
 ?>

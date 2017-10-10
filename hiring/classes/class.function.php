@@ -701,6 +701,29 @@ class fun{
 		return $str.$suffix;
    }
    
+   /* function to find the min and max exp */
+   public function show_exp_details($value){
+		$exp_val = explode('.', $value);
+		if($exp_val[0] == '0'){
+			return $str =  'Fresher';
+		}
+		// for years
+		if($exp_val[0] >= 1){
+			$year = $exp_val[0].' Year ';
+			if($exp_val[0] > 1){
+				$year = trim($year).'s ';
+			}
+		}
+		// for months
+		if($exp_val[1] >= 1){
+			$month = $exp_val[1].' Month';
+			if($exp_val[1] > 1){
+				$month = $month.'s';
+			}
+		}
+		return $year.$month;
+   }
+   
     /* function to get ctc type */
    public function get_ctc_type($type){
 		switch($type){

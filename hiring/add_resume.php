@@ -5,6 +5,7 @@ Created : Nikitasa
 Date : 09-03-2017
 */
 session_start();
+use Ilovepdf\Ilovepdf;
 // including smarty config
 include 'configs/smartyconfig.php';
 // including Database class file
@@ -332,9 +333,26 @@ if(!empty($_POST)){
 			$grade_typeData = $_POST['grade_type_'.$i];
 			$year_of_passData = $_POST['year_of_pass_'.$i];
 			$universityData = $_POST['university_'.$i];
-			
+			// get degree name
+			$query = "call get_degree_id('".$mysql->real_escape_str($degreeData)."')";
+			if(!$result = $mysql->execute_query($query)){
+				throw new Exception('Problem in getting degree name');
+			}
+			$row = $mysql->display_result($result);
+			$degreeStr = $row['degree'];
+			$mysql->next_query();
+			// get specialization name
+			$query = "call get_spec_id('".$mysql->real_escape_str($specializationData)."')";
+			if(!$result = $mysql->execute_query($query)){
+				throw new Exception('Problem in getting spec. name');
+			}
+			$row = $mysql->display_result($result);
+			$specStr = $row['spec'];
+			$mysql->next_query();
+			$course_type = $fun->get_course_type($grade_typeData);
+			$gradeStr = $gradeData > 10 ? $gradeData.'% of marks overall' : $gradeData.' CGPA';
 			// for snapshot printing
-			$snap_edu .= $degreeData.', '.$specializationData.', '.$year_of_passData.', '.$gradeData.', '.$grade_typeData.'<br>';
+			$snap_edu .= $degreeStr.', '.$specStr.', '.$year_of_passData.', '.$gradeStr.', '.$course_type.'<br>';
 			
 			// query to add education details
 			$query = "CALL add_res_education('".$fun->is_white_space($mysql->real_escape_str($gradeData))."',
@@ -391,9 +409,17 @@ if(!empty($_POST)){
 			
 			// for snapshot printing
 			$tot_exp_years = $_POST['year_of_exp_'.$i] == 0 ? '0' : $_POST['year_of_exp_'.$i].'.'.$_POST['month_of_exp_'.$i];
-			$expStr = $fun->check_exp($tot_exp_years);
-
-			$snap_exp .= $companyData.', '.$desigData.', '.$expStr.'<br>';
+			$expStr = $fun->show_exp_details($tot_exp_years);
+			$locationDataCase = ucwords($locationData);
+			// get the designation details
+			$query = "call get_designation_id('".$mysql->real_escape_str($desigData)."')";
+			if(!$result = $mysql->execute_query($query)){
+				throw new Exception('Problem in getting desig. name');
+			}
+			$row = $mysql->display_result($result);
+			$desigStr = $row['desig'];
+			$mysql->next_query();
+			$snap_exp .= ucwords($companyData).', '.ucwords($desigStr).', '.$expStr.'<br>';
 			$snap_skill .= $vitalData.' ';
 			
 			// query to add experience details
@@ -435,10 +461,34 @@ if(!empty($_POST)){
 			// create snapshot pdf
 			include_once('snapshot.php');
 			// convert the resume doc. into pdf
-			include('vendor/ilovepdf-php-1.1.5/samples/resume.php');
+			require_once('vendor/ilovepdf-php-1.1.5/init.php');			
+			ini_set('display_errors', '1');
+			// you can call task class directly
+			// to get your key pair, please visit https://developer.ilovepdf.com/user/projects
+			$ilovepdf = new Ilovepdf('project_public_30e4ef2596c7436ae907615a841f995b_J4pWwe338d0756271411b0769ee277075a664','secret_key_9d6d00d05185d32c499082fc7e008ba1_fovTb7e8e14419dee395103d2b71d6b7e7175');
+			// Create a new task
+			$myTaskConvertOffice = $ilovepdf->newTask('officepdf');
+			// Add files to task for upload
+			$resume_path = dirname(__FILE__).'/uploads/resume/'.$_SESSION['resume_doc'];
+			$file1 = $myTaskConvertOffice->addFile($resume_path);
+			// Execute the task
+			$myTaskConvertOffice->execute();
+			// Download the package files
+			$myTaskConvertOffice->download('uploads/resumepdf/');   
+			// include('vendor/ilovepdf-php-1.1.5/samples/resume.php');
 			// merge the snapshot pdf and resume pdf
-			include('vendor/ilovepdf-php-1.1.5/samples/merge_basic.php');
-
+			// and get the task tool
+			$myTask = $ilovepdf->newTask('merge');
+			// file var keeps info about server file id, name...
+			// it can be used latter to cancel a specific file
+			$fileA = $myTask->addFile(dirname(__FILE__).'/uploads/snapshot/'.$snap_file_name.'.pdf');
+			$fileB = $myTask->addFile(dirname(__FILE__).'/uploads/resumepdf/'.$snap_file_name.'.pdf');
+			$myTask->setOutputFilename($snap_file_name.'_{date}');
+			// process files
+			$myTask->execute();
+			// and finally download file. If no path is set, it will be downloaded on current folder
+			$myTask->download('uploads/snapshotmerged/');
+			//include('vendor/ilovepdf-php-1.1.5/samples/merge_basic.php');
 			header('Location: ../resume/?action=created');
 		} 
 	}else{
