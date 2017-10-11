@@ -6,30 +6,31 @@ include_once 'Sample_Header.php';
 
 $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor($template_path);
 
-$templateProcessor->setValue('CANDIDATE_NAME', 'Vinoth Kumar',  1,0);       
+$templateProcessor->setValue('CANDIDATE_NAME', ucwords($_POST['first_name'].' '.$_POST['last_name']),  1,0);       
 
 require_once "HTMLtoOpenXML.php";
 
 
-$templateProcessor->setValue('COMPANY_NAME', 'Infosys Technologies',  1,0);  
+$templateProcessor->setValue('COMPANY_NAME', ucwords($client_autoresume),  1,0);  
      
-$templateProcessor->setValue('COMP_LOC', 'Bangalore',  1,0); 
+$templateProcessor->setValue('COMP_LOC', ucwords($city_autoresume),  1,0); 
  
-$templateProcessor->setValue('COMP_CTRY', 'India',  1,0);       
+$templateProcessor->setValue('COMP_CTRY', ucwords($state_autoresume),  1,0);       
  
-$templateProcessor->setValue('RECRUITER_NAME', 'Praveena Elangovan',  1,0);
+$templateProcessor->setValue('RECRUITER_NAME', ucwords($recruiter),  1,0);
        
 $templateProcessor->setValue('CURRENT_DATE', date('d-M-Y'),  1,0);       
 
 
-$templateProcessor->setValue('DESIGNATION_NAME', 'Senior Safety Manager',  1,0); 
+$templateProcessor->setValue('DESIGNATION_NAME', ucwords($position_autoresume),  1,0); 
 
-$templateProcessor->setValue('CANDIDATE_ADDRESS', '#23, HRBR Layout',  1,0);    
+$templateProcessor->setValue('CANDIDATE_ADDRESS', $_POST['address'],  1,0);    
 $templateProcessor->setValue('CANDIDATE_PHONE', '************',  1,0);    
 $templateProcessor->setValue('CANDIDATE_MOBILE', '************',  1,0);    
 $templateProcessor->setValue('CANDIDATE_EMAIL', '************',  1,0);    
    
-	$templateProcessor->setValue('DATEOFBIRTH', '23',   1, 0);
+	$templateProcessor->setValue('DATEOFBIRTH', $fun->convert_date_to_display($_POST['dob_field']),   1, 0);
+	$date_day = explode('-', $_POST['dob_field']);
 	$templateProcessor->setValue('DOBUPPER', 'rd',   1, 0);
 	$templateProcessor->setValue('YEARBIRTH', 'May 1987',   1, 0);
 	$templateProcessor->setValue('NATIONALDATA', 'Indian',   1, 0);
