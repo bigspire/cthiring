@@ -6,6 +6,7 @@ Date : 26-05-2017
 */
 
 session_start();
+use Ilovepdf\Ilovepdf;
 // including smarty config
 include 'configs/smartyconfig.php';
 // including Database class file
@@ -810,9 +811,29 @@ if(!empty($_POST)){
 		}
 		if(!empty($edu_id) && !empty($exp_id) && !empty($train_id) && !empty($language_id) && !empty($resume_id)){
 			// generate auto resume doc file
+			$resume_path = dirname(__FILE__).'/uploads/autoresume/'.$_SESSION['resume_doc'];
+			$template_path = dirname(__FILE__).'/uploads/template/autoresume.docx'; 
 			include('vendor/PHPWord-develop/samples/template_process.php');
 			// generate the auto resume pdf file
-			include('vendor/ilovepdf-php-1.1.5/samples/office.php');
+			// convert the resume doc. into pdf
+			/*
+			
+			require_once('vendor/ilovepdf-php-1.1.5/init.php');			
+			ini_set('display_errors', '1');
+			// you can call task class directly
+			// to get your key pair, please visit https://developer.ilovepdf.com/user/projects
+			$ilovepdf = new Ilovepdf('project_public_30e4ef2596c7436ae907615a841f995b_J4pWwe338d0756271411b0769ee277075a664','secret_key_9d6d00d05185d32c499082fc7e008ba1_fovTb7e8e14419dee395103d2b71d6b7e7175');
+			// Create a new task
+			$myTaskConvertOffice = $ilovepdf->newTask('officepdf');
+			// Add files to task for upload
+			$file1 = $myTaskConvertOffice->addFile($resume_path);
+			$snap_file_name = substr($_SESSION['resume_doc'], 0, strlen($_SESSION['resume_doc'])-5);
+			$myTaskConvertOffice->setOutputFilename($snap_file_name.'_{date}'.'.pdf');
+			// Execute the task
+			$myTaskConvertOffice->execute();
+			// Download the package files
+			$myTaskConvertOffice->download('uploads/autoresumepdf/');   
+			*/
 			// once successfully created, redirect the page
 			if($_GET['resume'] != ''){
 				header('Location: ../resume/?action=auto_modified');

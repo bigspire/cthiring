@@ -4,7 +4,7 @@ include_once 'Sample_Header.php';
 // Template processor instance creation
 // echo date('H:i:s'), ' Creating new TemplateProcessor instance...', EOL;
 
-$templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor('C:\xampp\htdocs\ctsvn\cthiring\hiring\uploads\template/autoresume.docx');
+$templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor($template_path);
 
 $templateProcessor->setValue('CANDIDATE_NAME', 'Vinoth Kumar',  1,0);       
 
@@ -290,7 +290,9 @@ $templateProcessor->setValue('userPhone#3', '+1 428 889 775');
 */
 echo date('H:i:s'), ' Saving the result document...', EOL;
 // $templateProcessor->saveAs('results/EWKI - 2.docx');
-$templateProcessor->saveAs('C:\xampp\htdocs\ctsvn\cthiring\hiring\uploads\autoresume/new.docx');
+
+
+$templateProcessor->saveAs($resume_path);
 
 echo getEndingNotes(array('Word2007' => 'docx'));
 if (!CLI) {

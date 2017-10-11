@@ -88,7 +88,7 @@
 							<label>Employee: 
 						<?php echo $this->Form->input('emp_id', array('div'=> false,'type' => 'select', 'label' => false, 'class' => 'input-medium', 'empty' => 'Select', 'selected' => $this->params->query['emp_id'], 'required' => false, 'placeholder' => '', 'style' => "clear:left", 'options' => $empList)); ?> 					
 							</label>
-						<?php endif; ?>
+					<?php endif; ?>
 						
 						<?php if($this->Session->read('USER.Login.roles_id') == '33' || $this->Session->read('USER.Login.roles_id') == '38'):?>	
 							<label>
@@ -190,7 +190,7 @@
 										<td><?php echo ucfirst($res['Creator']['first_name']);?></td>
 										<td class="actionItem">
 								
-									<div class="btn-group" style="display:inline-block;float:left;margin-left:4px;">
+									<div class="btn-group" style="display:inline-block;float:left;margin-left:12px;">
 										
 									<button data-toggle="dropdown" rel="tooltip" title="Download" class="btn btn-mini dropdown-toggle"><i class="icon-download"></i> <span class="caret"></span>
 									</button>
@@ -202,7 +202,7 @@
 											<li><a href="<?php echo $this->webroot;?>resume/autoresume/<?php echo $res['Resume']['id'];?>/<?php echo $res['Resume']['autoresume'];?>">Fully Formatted Resume</a></li>
 											<?php endif; ?>
 										<li class="divider"></li>
-<li><a class="iframeBox" val="70_100" href="<?php echo $this->webroot;?>resume/profile_snapshot/<?php echo $res['ResDoc']['resume'];?>/view/">View Resume</a></li>
+<li><a class="iframeBox" val="70_100" href="<?php echo $this->webroot;?>resume/profile_snapshot/<?php echo $res['ResDoc']['resume'];?>/view/<?php echo $res['Resume']['modified_date'] ? strtotime($res['Resume']['modified_date']) : strtotime($res['Resume']['created_date']);?>/">View Resume</a></li>
 										</ul>
 									</div>
 								
@@ -215,7 +215,7 @@
 									</button>
 										<ul class="dropdown-menu">
 											<li><a href="<?php echo $this->webroot;?>hiring/edit_resume.php?id=<?php echo $res['Resume']['id'];?>">Resume</a></li>
-											<li><a href="<?php echo $this->webroot;?>hiring/add_formatted_resume.php?id=<?php echo $res['Resume']['id'];?>&resume=<?php echo $res['Resume']['autoresume'];?>">Fully Formatted Resume</a></li>
+											<li><a href="<?php echo $this->webroot;?>hiring/add_formatted_resume.php?id=<?php echo $res['Resume']['id'];?>&resume=<?php echo $res['Resume']['autoresume_modified'];?>">Fully Formatted Resume</a></li>
 
 										</ul>
 									</div>	

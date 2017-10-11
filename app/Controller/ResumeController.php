@@ -214,7 +214,7 @@ class ResumeController extends AppController {
 		}
 		$fields = array('id',"concat(Resume.first_name,' ',Resume.last_name) full_name",'email_id','mobile','mobile2','total_exp','education','present_employer',
 		'ResLocation.location','present_ctc','expected_ctc', 'Creator.first_name','Resume.created_date',
-		'Resume.modified_date','ReqResume.stage_title','ReqResume.status_title','ResDoc.resume','present_location','snapshot','autoresume',
+		'Resume.modified_date','ReqResume.stage_title','ReqResume.status_title','ResDoc.resume','present_location','autoresume_modified',
 		'Resume.created_by');	
 		// for export
 		if($this->request->query['action'] == 'export'){ 
@@ -424,7 +424,7 @@ class ResumeController extends AppController {
 	}
 	
 	/* auto complete search */	
-	public function search(){ 
+	public function search(){
 		$this->layout = false;		
 		$q = trim(Sanitize::escape($_GET['q']));	
 		if(!empty($q)){
@@ -452,12 +452,13 @@ class ResumeController extends AppController {
 	
 	
 	/* function to export the profile snap shot */
-	public function profile_snapshot($snap_file, $action){ 
+	public function profile_snapshot($snap_file, $action, $updated){ 
 		 $snap_exp = substr($snap_file, 0, strlen($snap_file) - 5);
+		 $pdf_date = date('m-d-Y', $updated);
 		 if($action == 'view'){
-			$this->redirect('/resume/view_resume_pdf/'.$snap_exp.'_'.date('m').'-'.date('d').'-'.date('Y').'.pdf');		
+			$this->redirect('/resume/view_resume_pdf/'.$snap_exp.'_'.$pdf_date.'.pdf');		
 		 }else{
-			$this->download_file('../../hiring/uploads/snapshotmerged/'.$snap_exp.'_'.date('m').'-'.date('d').'-'.date('Y').'.pdf');
+			$this->download_file('../../hiring/uploads/snapshotmerged/'.$snap_exp.'_'.$pdf_date.'.pdf');
 		 }
 		 die;		
 			// $id = '144515';
