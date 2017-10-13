@@ -23,6 +23,67 @@ $(document).ready(function() {
 			}); 
 	}
 	
+	/* function to change team member in add position */
+	$('.chooseReqTeam').change(function(){ 
+		var sel_txt = $(".chooseReqTeam :selected").text();
+		$('#cur_team').val(sel_txt);
+		// get the selected value
+		var sel_val = $(this).val();
+		$('#temp_team_id').attr('value', sel_val);		
+		// update the list
+		$('.chooseReqTeam').val('').trigger('chosen:updated');
+		$('.bd-example-modal-sm').modal();
+
+		/*
+		alert('ravic');
+		$('.chooseReqTeam').empty();
+		$('.chooseReqTeam').append('<option>Loading...</option>');
+		$('.chooseReqTeam').trigger("chosen:updated");
+		*/
+
+	});
+	
+	/* function to select no. of openings in add position */
+	$('.selPosReq').change(function(){
+		// get the selected value
+		var data = $('#temp_team_id').val();
+		var val = $(this).val();
+		$('#team_id').attr('value', $('#team_id').val()+','+$('#temp_team_id').val()+'-'+val);			
+		var txt = $('#cur_team').val();
+		var prev_txt = $('.noJob').html();
+		$('.noJob').html('');
+		new_txt = txt.replace(/\s+/g, '');
+		$('.noJob').html(prev_txt + ' <span id='+new_txt+' style="margin-top:2px;font-size:13px;font-weight:normal" class="tagDiv tag label label-warning">'+txt+' - '+val+' <i class="icon-adt_trash  removeTag" val="'+new_txt+'" rel="tooltip" data="'+data+'" title="remove" style="margin-top:2px;cursor:pointer"></i></span> ');
+		$(this).val('');	
+		$('#temp_team_id').val('');
+		// hide the pop up
+		$('.bd-example-modal-sm').modal('hide');
+	});
+	
+	
+	
+	$(document).on("click", ".removeTag", function(){ 
+		var id = $(this).attr('val');
+		var team_id = $(this).attr('data');
+		var sel_index = $(".removeTag").index(this);
+		$( ".removeTag" ).each(function( index ) { 
+			// remove the selected item
+			if(index == sel_index){
+				$('.tagDiv:eq('+index+')').hide();
+				var tid = $('#team_id').val().split(',');
+				var new_str = '';
+				$.each(tid, function(i, value ) { 
+					var tid_val = value.split('-');
+					if(tid_val[0] != team_id && tid_val[0] != ','){ 
+						new_str = new_str+','+value;
+					}
+				});				
+				$('#team_id').attr('value', new_str);			
+			}
+		});
+		//$('#'+id).hide();
+	});
+	
 	/* function to show the alert message for single record delete */   
 	$(".Confirm").click( function() {
 		id = this.id;	
