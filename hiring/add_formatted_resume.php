@@ -252,7 +252,7 @@ if(empty($_POST)){
 		$degree[] = $_POST['degree_'.$i] ? $_POST['degree_'.$i] : $degreeData[$i];
 		$degreeD = array();
 		// smarty drop down for degree
-		$query ="CALL get_resume_degree_program('".$quali[$i]."')";
+		$query = "CALL get_resume_degree_program('".$quali[$i]."')";
 		try{
 			// calling mysql exe_query function
 			if(!$result = $mysql->execute_query($query)){
@@ -277,7 +277,7 @@ if(empty($_POST)){
 		
 		// smarty drop down for Specialization
 		$specializationData2 = array();
-		$query ="CALL get_resume_spec_degree('".$degree_id."')";
+		$query = "CALL get_resume_spec_degree('".$degree_id."')";
 		try{
 			// calling mysql exe_query function
 			if(!$result = $mysql->execute_query($query)){
@@ -770,7 +770,8 @@ if(!empty($_POST)){
 			'".$fun->is_white_space($mysql->real_escape_str($_POST['present_ctc']))."',
 			'".$fun->is_white_space($mysql->real_escape_str($_POST['expected_ctc']))."','".$mysql->real_escape_str($_POST['present_ctc_type'])."',
 			'".$mysql->real_escape_str($_POST['expected_ctc_type'])."','".$mysql->real_escape_str($_POST['marital_status'])."',
-			'".$fun->is_white_space($mysql->real_escape_str($_POST['present_location']))."','".$fun->is_white_space($mysql->real_escape_str($_POST['native_location']))."',
+			'".$fun->is_white_space($mysql->real_escape_str($_POST['present_location']))."',
+			'".$fun->is_white_space($mysql->real_escape_str($_POST['native_location']))."',
  			'".$mysql->real_escape_str($_POST['notice_period'])."','".$mysql->real_escape_str($_POST['designation_id'])."',
  			'".$fun->is_white_space($mysql->real_escape_str($_POST['family']))."','".$mysql->real_escape_str($total_exp)."',
  			'".$date."','".$modified_by."','N',

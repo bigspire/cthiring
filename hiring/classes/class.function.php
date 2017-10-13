@@ -485,6 +485,30 @@ class fun{
 			return true;
 		}
    }
+   
+   // check for marital status filed for autoresume
+	public function marital_status($data){
+		if($data == '1'){ 
+			$text = "Single";
+		}elseif($data == '2'){ 
+			$text = "Married";
+		}elseif($data == '3'){ 
+			$text = "Separated";
+		}
+		return $text;
+    }
+	
+	// check for ctc type filed for autoresume
+	public function ctc_type($data){
+		if($data == 'T'){ 
+			$text = "Thousand";
+		}elseif($data == 'L'){ 
+			$text = "Lacs";
+		}elseif($data == 'C'){ 
+			$text = "Crore";
+		}
+		return $text;
+    }
 
    // date format conversion
 	public function convert_date($date){
