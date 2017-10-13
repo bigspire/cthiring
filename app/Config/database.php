@@ -74,10 +74,10 @@ class DATABASE_CONFIG {
 	public $default = array(
 			'datasource' => 'Database/Mysql',
 			'persistent' => false,
-			'host' => 'localhost',
+			'host' => '35.202.240.70',
 			'login' => 'root',
-			'password' => '',
-			'database' => 'cthiring_local',
+			'password' => 'commo#9!',
+			'database' => 'commodb',
 			'prefix' => '',
 			//'encoding' => 'utf8',
 		);

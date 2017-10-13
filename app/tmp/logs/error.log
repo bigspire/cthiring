@@ -2404,3 +2404,83 @@ Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
 Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
 [main] - APP\webroot\index.php, line 118
 
+2017-10-13 17:43:12 Error: Fatal Error (64): Cannot use 'String' as class name as it is reserved in [/var/www/html/cthiring/lib/Cake/Utility/String.php, line 24]
+2017-10-13 17:43:12 Error: [FatalErrorException] Cannot use 'String' as class name as it is reserved
+Stack Trace:
+#0 /var/www/html/cthiring/lib/Cake/Error/ErrorHandler.php(213): ErrorHandler::handleFatalError(64, 'Cannot use 'Str...', '/var/www/html/c...', 24)
+#1 /var/www/html/cthiring/lib/Cake/Core/App.php(933): ErrorHandler::handleError(64, 'Cannot use 'Str...', '/var/www/html/c...', 24, Array)
+#2 /var/www/html/cthiring/lib/Cake/Core/App.php(906): App::_checkFatalError()
+#3 [internal function]: App::shutdown()
+#4 {main}
+2017-10-13 17:43:12 Error: Fatal Error (64): Cannot use 'String' as class name as it is reserved in [/var/www/html/cthiring/lib/Cake/Utility/String.php, line 24]
+2017-10-13 17:43:12 Error: Fatal Error (64): Cannot use 'String' as class name as it is reserved in [/var/www/html/cthiring/lib/Cake/Utility/String.php, line 24]
+2017-10-13 17:43:12 Error: [FatalErrorException] Cannot use 'String' as class name as it is reserved
+Stack Trace:
+#0 /var/www/html/cthiring/lib/Cake/Error/ErrorHandler.php(213): ErrorHandler::handleFatalError(64, 'Cannot use 'Str...', '/var/www/html/c...', 24)
+#1 /var/www/html/cthiring/lib/Cake/Core/App.php(933): ErrorHandler::handleError(64, 'Cannot use 'Str...', '/var/www/html/c...', 24, Array)
+#2 /var/www/html/cthiring/lib/Cake/Core/App.php(906): App::_checkFatalError()
+#3 [internal function]: App::shutdown()
+#4 {main}
+2017-10-13 17:43:12 Error: [FatalErrorException] Cannot use 'String' as class name as it is reserved
+Stack Trace:
+#0 /var/www/html/cthiring/lib/Cake/Error/ErrorHandler.php(213): ErrorHandler::handleFatalError(64, 'Cannot use 'Str...', '/var/www/html/c...', 24)
+#1 /var/www/html/cthiring/lib/Cake/Core/App.php(933): ErrorHandler::handleError(64, 'Cannot use 'Str...', '/var/www/html/c...', 24, Array)
+#2 /var/www/html/cthiring/lib/Cake/Core/App.php(906): App::_checkFatalError()
+#3 [internal function]: App::shutdown()
+#4 {main}
+2017-10-13 17:43:13 Error: Fatal Error (64): Cannot use 'String' as class name as it is reserved in [/var/www/html/cthiring/lib/Cake/Utility/String.php, line 24]
+2017-10-13 17:43:13 Error: [FatalErrorException] Cannot use 'String' as class name as it is reserved
+Stack Trace:
+#0 /var/www/html/cthiring/lib/Cake/Error/ErrorHandler.php(213): ErrorHandler::handleFatalError(64, 'Cannot use 'Str...', '/var/www/html/c...', 24)
+#1 /var/www/html/cthiring/lib/Cake/Core/App.php(933): ErrorHandler::handleError(64, 'Cannot use 'Str...', '/var/www/html/c...', 24, Array)
+#2 /var/www/html/cthiring/lib/Cake/Core/App.php(906): App::_checkFatalError()
+#3 [internal function]: App::shutdown()
+#4 {main}
+2017-10-13 17:43:14 Error: Fatal Error (64): Cannot use 'String' as class name as it is reserved in [/var/www/html/cthiring/lib/Cake/Utility/String.php, line 24]
+2017-10-13 17:43:14 Error: [FatalErrorException] Cannot use 'String' as class name as it is reserved
+Stack Trace:
+#0 /var/www/html/cthiring/lib/Cake/Error/ErrorHandler.php(213): ErrorHandler::handleFatalError(64, 'Cannot use 'Str...', '/var/www/html/c...', 24)
+#1 /var/www/html/cthiring/lib/Cake/Core/App.php(933): ErrorHandler::handleError(64, 'Cannot use 'Str...', '/var/www/html/c...', 24, Array)
+#2 /var/www/html/cthiring/lib/Cake/Core/App.php(906): App::_checkFatalError()
+#3 [internal function]: App::shutdown()
+#4 {main}
+2017-10-13 18:09:38 Error: Fatal Error (64): Cannot use 'String' as class name as it is reserved in [/var/www/html/cthiring/lib/Cake/Utility/String.php, line 24]
+2017-10-13 18:09:38 Error: [FatalErrorException] Cannot use 'String' as class name as it is reserved
+Stack Trace:
+#0 /var/www/html/cthiring/lib/Cake/Error/ErrorHandler.php(213): ErrorHandler::handleFatalError(64, 'Cannot use 'Str...', '/var/www/html/c...', 24)
+#1 /var/www/html/cthiring/lib/Cake/Core/App.php(933): ErrorHandler::handleError(64, 'Cannot use 'Str...', '/var/www/html/c...', 24, Array)
+#2 /var/www/html/cthiring/lib/Cake/Core/App.php(906): App::_checkFatalError()
+#3 [internal function]: App::shutdown()
+#4 {main}
+2017-10-13 18:09:38 Error: Fatal Error (64): Cannot use 'String' as class name as it is reserved in [/var/www/html/cthiring/lib/Cake/Utility/String.php, line 24]
+2017-10-13 18:09:38 Error: [FatalErrorException] Cannot use 'String' as class name as it is reserved
+Stack Trace:
+#0 /var/www/html/cthiring/lib/Cake/Error/ErrorHandler.php(213): ErrorHandler::handleFatalError(64, 'Cannot use 'Str...', '/var/www/html/c...', 24)
+#1 /var/www/html/cthiring/lib/Cake/Core/App.php(933): ErrorHandler::handleError(64, 'Cannot use 'Str...', '/var/www/html/c...', 24, Array)
+#2 /var/www/html/cthiring/lib/Cake/Core/App.php(906): App::_checkFatalError()
+#3 [internal function]: App::shutdown()
+#4 {main}
+2017-10-13 18:09:38 Error: Fatal Error (64): Cannot use 'String' as class name as it is reserved in [/var/www/html/cthiring/lib/Cake/Utility/String.php, line 24]
+2017-10-13 18:09:38 Error: [FatalErrorException] Cannot use 'String' as class name as it is reserved
+Stack Trace:
+#0 /var/www/html/cthiring/lib/Cake/Error/ErrorHandler.php(213): ErrorHandler::handleFatalError(64, 'Cannot use 'Str...', '/var/www/html/c...', 24)
+#1 /var/www/html/cthiring/lib/Cake/Core/App.php(933): ErrorHandler::handleError(64, 'Cannot use 'Str...', '/var/www/html/c...', 24, Array)
+#2 /var/www/html/cthiring/lib/Cake/Core/App.php(906): App::_checkFatalError()
+#3 [internal function]: App::shutdown()
+#4 {main}
+2017-10-13 18:09:39 Error: Fatal Error (64): Cannot use 'String' as class name as it is reserved in [/var/www/html/cthiring/lib/Cake/Utility/String.php, line 24]
+2017-10-13 18:09:39 Error: [FatalErrorException] Cannot use 'String' as class name as it is reserved
+Stack Trace:
+#0 /var/www/html/cthiring/lib/Cake/Error/ErrorHandler.php(213): ErrorHandler::handleFatalError(64, 'Cannot use 'Str...', '/var/www/html/c...', 24)
+#1 /var/www/html/cthiring/lib/Cake/Core/App.php(933): ErrorHandler::handleError(64, 'Cannot use 'Str...', '/var/www/html/c...', 24, Array)
+#2 /var/www/html/cthiring/lib/Cake/Core/App.php(906): App::_checkFatalError()
+#3 [internal function]: App::shutdown()
+#4 {main}
+2017-10-13 18:09:39 Error: Fatal Error (64): Cannot use 'String' as class name as it is reserved in [/var/www/html/cthiring/lib/Cake/Utility/String.php, line 24]
+2017-10-13 18:09:39 Error: [FatalErrorException] Cannot use 'String' as class name as it is reserved
+Stack Trace:
+#0 /var/www/html/cthiring/lib/Cake/Error/ErrorHandler.php(213): ErrorHandler::handleFatalError(64, 'Cannot use 'Str...', '/var/www/html/c...', 24)
+#1 /var/www/html/cthiring/lib/Cake/Core/App.php(933): ErrorHandler::handleError(64, 'Cannot use 'Str...', '/var/www/html/c...', 24, Array)
+#2 /var/www/html/cthiring/lib/Cake/Core/App.php(906): App::_checkFatalError()
+#3 [internal function]: App::shutdown()
+#4 {main}
