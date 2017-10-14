@@ -158,12 +158,30 @@ for($i = 0; $i < $_POST['exp_count']; $i++){
 			$key_responsibilityData = $_POST['key_responsibility_'.$i];
 			$key_achievementData = $_POST['key_achievement_'.$i];
 			$reporting_toData = $_POST['reporting_to_'.$i];
-		
+		/*
+			$query = "CALL get_designation_details('$desigData')";
+			try{
+				// calling mysql execute query function
+				if(!$result = $mysql->execute_query($query)){ 
+					throw new Exception('Problem in fetching designation details');
+				}			
+			
+				while($row = $mysql->display_result($result)){
+					$design = $row['designation'];				
+				}
+				// free the memory
+				$mysql->clear_result($result);
+				// next query execution
+				$mysql->next_query();
+			}catch(Exception $e){
+				echo 'Caught exception: ',  $e->getMessage(), "\n";
+			}
+	*/
 		$templateProcessor->setValue('EXPCOMPANYNAME#'.$train_flag, strtoupper($companyData),   0, 0);	
 		$templateProcessor->setValue('ESTART#'.$train_flag, date('F', mktime(0, 0, 0, $from_month_exp, 10)).' '.$from_year_exp,   0, 0);
 		$templateProcessor->setValue('EEND#'.$train_flag, date('F', mktime(0, 0, 0, $to_month_exp, 10)).' '.$to_year_exp,   0, 0);
 		$templateProcessor->setValue('EXPLOCATION#'.$train_flag, $worklocData,   0, 0);
-		$templateProcessor->setValue('EXPDESIG#'.$train_flag, $desigData,   0, 0);
+		$templateProcessor->setValue('EXPDESIG#'.$train_flag, $design,   0, 0);
 		$train_flag++;
 } 
 

@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-08-01 16:22:17
+/* Smarty version 3.1.29, created on 2017-10-14 10:07:45
   from "C:\xampp\htdocs\2017\ctsvn\cthiring\hiring\templates\add_resume.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_59805d6130a041_32002584',
+  'unifunc' => 'content_59e19499887956_39768020',
   'file_dependency' => 
   array (
     '20fa0800b264c1941565246828a7b2b89c0b2234' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\templates\\add_resume.tpl',
-      1 => 1501584687,
+      1 => 1507718152,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_59805d6130a041_32002584 ($_smarty_tpl) {
+function content_59e19499887956_39768020 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -77,7 +77,9 @@ home"><i class="icon-home"></i></a>
 										<td width="120" class="tbl_column">Position For <span class="f_req">*</span></td>
 										<td>
 										<input type="text"  value="<?php echo $_smarty_tpl->tpl_vars['requirement']->value;?>
-" class="span8" disabled>
+"  class="span8" disabled>
+										<input type="hidden" value="<?php echo $_smarty_tpl->tpl_vars['requirement']->value;?>
+" name="requirement">
 										</td>
 									</tr>	
 									
@@ -250,6 +252,9 @@ echo 'checked';
 										<input type="radio" tabindex="18" name="marital_status"<?php if ($_POST['marital_status'] && $_POST['marital_status'] == 2) {
 echo 'checked';?>
  <?php }?> value="2"> Married
+										<input type="radio" tabindex="18" name="marital_status"<?php if ($_POST['marital_status'] && $_POST['marital_status'] == 3) {
+echo 'checked';?>
+ <?php }?> value="3"> Separated
 										</td>	
 									</tr>
 									<tr class="tbl_row">
