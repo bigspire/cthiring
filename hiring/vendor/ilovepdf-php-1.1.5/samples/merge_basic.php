@@ -2,7 +2,7 @@
 //include the autoloader
 //require_once('../vendor/autoload.php');
 //if manual installation has been used comment line that requires the autoload and uncomment this line:
-require_once('../init.php');
+require_once('C:\xampp\htdocs\ctsvn\cthiring\hiring\vendor\ilovepdf-php-1.1.5/init.php');
 
 use Ilovepdf\Ilovepdf;
 
@@ -16,11 +16,11 @@ $myTask = $ilovepdf->newTask('merge');
 
 // file var keeps info about server file id, name...
 // it can be used latter to cancel a specific file
-$fileA = $myTask->addFile('C:/xampp/htdocs/workouts/ilovepdf-php-1.1.5/ilovepdf-php-1.1.5/samples/files/snapshot.pdf');
-$fileB = $myTask->addFile('C:/xampp/htdocs/workouts/ilovepdf-php-1.1.5/ilovepdf-php-1.1.5/samples/files/rahula4.pdf');
+$fileA = $myTask->addFile('C:\xampp\htdocs\ctsvn\cthiring\hiring\uploads\snapshot/Anupama KR.pdf');
+$fileB = $myTask->addFile('C:\xampp\htdocs\ctsvn\cthiring\hiring\uploads\resumepdf/RAJAN JAVA RESUME(1).pdf');
 
 // process files
 $myTask->execute();
 
 // and finally download file. If no path is set, it will be downloaded on current folder
-$myTask->download();
+$myTask->download('uploads/snapshotmerged/');

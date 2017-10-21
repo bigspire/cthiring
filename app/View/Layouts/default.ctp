@@ -47,6 +47,9 @@
             <!--link rel="stylesheet" href="<?php echo $this->webroot;?>hiring/lib_cthiring/fullcalendar/fullcalendar_gebo.css" /-->
 			
 			<link rel="stylesheet" href="<?php echo $this->webroot;?>hiring/css/smoke.css" />
+			
+	<link rel="stylesheet" href="<?php echo $this->webroot;?>hiring/css/bootstrap-tagsinput.css" />
+
 
 						
 			<link rel="stylesheet" media="screen" href="<?php echo $this->webroot;?>hiring/css/datepicker/datepicker.css"/>	   
@@ -134,6 +137,9 @@
 			<!-- buttons functions -->
 			<script src="<?php echo $this->webroot;?>hiring/js/gebo_btns.js"></script>
 			
+			<script src="<?php echo $this->webroot;?>hiring/js/bootstrap-tagsinput.js"></script>
+
+						
 			<!--script src="<?php echo $this->webroot;?>hiring/js/textcounter.min.js"></script-->
 
 			

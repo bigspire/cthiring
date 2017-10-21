@@ -485,6 +485,30 @@ class fun{
 			return true;
 		}
    }
+   
+   // check for marital status filed for autoresume
+	public function marital_status($data){
+		if($data == '1'){ 
+			$text = "Single";
+		}elseif($data == '2'){ 
+			$text = "Married";
+		}elseif($data == '3'){ 
+			$text = "Separated";
+		}
+		return $text;
+    }
+	
+	// check for ctc type filed for autoresume
+	public function ctc_type($data){
+		if($data == 'T'){ 
+			$text = "Thousand";
+		}elseif($data == 'L'){ 
+			$text = "Lacs";
+		}elseif($data == 'C'){ 
+			$text = "Crore";
+		}
+		return $text;
+    }
 
    // date format conversion
 	public function convert_date($date){
@@ -701,6 +725,32 @@ class fun{
 		return $str.$suffix;
    }
    
+<<<<<<< HEAD
+=======
+   /* function to find the min and max exp */
+   public function show_exp_details($value){
+		$exp_val = explode('.', $value);
+		if($exp_val[0] == '0'){
+			return $str =  'Fresher';
+		}
+		// for years
+		if($exp_val[0] >= 1){
+			$year = $exp_val[0].' Year ';
+			if($exp_val[0] > 1){
+				$year = trim($year).'s ';
+			}
+		}
+		// for months
+		if($exp_val[1] >= 1){
+			$month = $exp_val[1].' Month';
+			if($exp_val[1] > 1){
+				$month = $month.'s';
+			}
+		}
+		return $year.$month;
+   }
+   
+>>>>>>> f1cf94f1e451666b1c26d60ec60d158732da4a1a
     /* function to get ctc type */
    public function get_ctc_type($type){
 		switch($type){
@@ -776,6 +826,21 @@ class fun{
 		}
 		return $txt;
    }
+<<<<<<< HEAD
+=======
+   
+   function openZip($file_to_open, $target) {
+    $zip = new ZipArchive();
+    $x = $zip->open($file_to_open);
+    if($x === true) {
+        $zip->extractTo($target);
+        $zip->close();         
+        //unlink($file_to_open);
+    } else {
+        die("There was a problem. Please try again!");
+    }
+}
+>>>>>>> f1cf94f1e451666b1c26d60ec60d158732da4a1a
 }
 
 $fun = new fun();

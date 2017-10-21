@@ -6,6 +6,9 @@ Date : 26-05-2017
 */
 
 session_start();
+use Ilovepdf\Ilovepdf;
+ini_set('display_errors', 1);
+
 // including smarty config
 include 'configs/smartyconfig.php';
 // including Database class file
@@ -20,6 +23,7 @@ include('classes/class.mailer.php');
 // content class
 include('classes/class.content.php');
 
+<<<<<<< HEAD
 // generate auto resume doc file
 // include('vendor/PHPWord-develop/samples/template_process.php');
 // generate the auto resume pdf file
@@ -27,12 +31,14 @@ include('vendor/ilovepdf-php-1.1.5/samples/office.php');
 
 
 
+=======
+>>>>>>> f1cf94f1e451666b1c26d60ec60d158732da4a1a
 
 $smarty->assign('dob_default', date('d/m/Y', strtotime('-18 years')));
 
 // role based validation
-$module_access = $fun->check_role_access('7',$modules);
-$smarty->assign('module',$module_access);
+// $module_access = $fun->check_role_access('7',$modules);
+// $smarty->assign('module',$module_access);
 
 $getid = $_GET['id'];
 $smarty->assign('getid',$getid);
@@ -52,7 +58,7 @@ if($getid !=''){
 		$row = $mysql->display_result($result);
 		$total = $row['id'];
 		if($total == '' || $row['created_by'] != $_SESSION['user_id']){ 
-			header('Location: ../resume/?current_status=msg');
+			//header('Location: ../resume/?current_status=msg');
 		}
 		// free the memory
 		$mysql->clear_result($result);
@@ -256,7 +262,7 @@ if(empty($_POST)){
 		$degree[] = $_POST['degree_'.$i] ? $_POST['degree_'.$i] : $degreeData[$i];
 		$degreeD = array();
 		// smarty drop down for degree
-		$query ="CALL get_resume_degree_program('".$quali[$i]."')";
+		$query = "CALL get_resume_degree_program('".$quali[$i]."')";
 		try{
 			// calling mysql exe_query function
 			if(!$result = $mysql->execute_query($query)){
@@ -281,7 +287,7 @@ if(empty($_POST)){
 		
 		// smarty drop down for Specialization
 		$specializationData2 = array();
-		$query ="CALL get_resume_spec_degree('".$degree_id."')";
+		$query = "CALL get_resume_spec_degree('".$degree_id."')";
 		try{
 			// calling mysql exe_query function
 			if(!$result = $mysql->execute_query($query)){
@@ -339,6 +345,193 @@ try{
 }catch(Exception $e){
 	echo 'Caught exception: ',  $e->getMessage(), "\n";
 }
+
+
+// smarty drop down array for status
+$smarty->assign('grade_status', array('' => 'Select', '1' => 'Active', '2' => 'Inactive'));
+// smarty drop down array for type
+$smarty->assign('grade_type', array('' => 'Select', 'I' => 'Individual', 'T' => 'Team'));
+
+// smarty drop down for exp month and year
+$smarty->assign('exp_month', array('1' => 'Jan', '2' => 'Feb', '3' => 'Mar', '4' => 'Apr', '5' => 'May', '6' => 'Jun',
+ '7' => 'Jul', '8' => 'Aug', '9' => 'Sep', '10' => 'Oct', '11' => 'Nov', '12' => 'Dec'));
+ 
+$exp_yr = array(); 
+for($l = date('Y'); $l >= 1950; $l--){ 
+	$exp_yr[$l] = $l; 
+}
+$smarty->assign('exp_yr', $exp_yr);
+
+// smarty drop down array for experience year 
+$total_exp_yr = array(); 
+for($l = 1; $l <= 50; $l++){ 
+$total_exp_yr[0] = '0 Years';
+	if($l == '1') {
+		$total_exp_yr[$l] = $l.' '.Year; 
+	}else {
+		$total_exp_yr[$l] = $l.' '.Years; 
+	}
+} 
+$smarty->assign('total_exp_yr', $total_exp_yr);
+
+// smarty drop down array for experience month 
+$total_exp_month = array(); 
+$total_exp_month[0] = '0 Months';
+
+for($l = 1; $l <= 11; $l++){
+	if($l == '1') {
+		$total_exp_month[$l] = $l.' '.Month;
+	}else { 
+		$total_exp_month[$l] = $l.' '.Months; 
+	} 
+}
+$smarty->assign('total_exp_month', $total_exp_month);
+
+// smarty drop down array for current ctc
+$smarty->assign('ctc_type', array('' => 'Select', 'T' => 'Thousand', 'L' => 'Lacs', 'C' => 'Crore'));
+
+// smarty drop down array for notice period  
+$smarty->assign('n_p' , $notice_period = array('' => 'Select','0' => 'Immediate', '15' => '15 Days', '30' => '30 Days', 
+ '45' => '45 Days', '60' => '2 Months', '90' => '3 Months', '120' => '4 Months',
+ '150' => '5 Months', '180' => '6 Months'));
+
+// query to fetch all program details. 
+$query = 'CALL get_qual_program()';
+try{
+	// calling mysql exe_query function
+	if(!$result = $mysql->execute_query($query)){
+		throw new Exception('Problem in getting program qualifications');
+	}
+	while($row = $mysql->display_result($result))
+	{
+ 		$program_name[$row['id']] = ucwords($row['program']);
+	}
+	$smarty->assign('qual',$program_name);
+	// free the memory
+	$mysql->clear_result($result);
+	// call the next result
+	$mysql->next_query();
+}catch(Exception $e){
+	echo 'Caught exception: ',  $e->getMessage(), "\n";
+}
+
+// query to fetch position details. 
+$query = 'CALL get_requirements()';
+try{
+	// calling mysql exe_query function
+	if(!$result = $mysql->execute_query($query)){
+		throw new Exception('Problem in getting requirement');
+	}
+	while($row = $mysql->display_result($result))
+	{
+ 		$requirement[$row['id']] = ucwords($row['job_title']);
+	}
+	$smarty->assign('requirement',$requirement);
+	// free the memory
+	$mysql->clear_result($result);
+	// call the next result
+	$mysql->next_query();
+}catch(Exception $e){
+	echo 'Caught exception: ',  $e->getMessage(), "\n";
+}
+
+// query to fetch client and position details. 
+$query = "CALL get_res_client_details('".$_SESSION['clients_id']."','".$_SESSION['position_for']."')";
+try{
+	// calling mysql exe_query function
+	if(!$result = $mysql->execute_query($query)){
+		throw new Exception('Problem in getting client and position details');
+	}
+	while($row = $mysql->display_result($result))
+	{	
+ 		$position = ucwords($row['job_title']).' ( '.($row['client_name']).' )';
+		$client_autoresume = $row['client_name'];
+		$position_autoresume = $row['job_title'];
+		$state_autoresume = $row['state'];
+		$city_autoresume = $row['city'];
+	}
+	
+	$smarty->assign('position',$position);
+	// free the memory
+	$mysql->clear_result($result);
+	// call the next result
+	$mysql->next_query();
+}catch(Exception $e){
+	echo 'Caught exception: ',  $e->getMessage(), "\n";
+}
+
+// smarty drop down array for grade type
+$smarty->assign('grade_drop', array('' => 'Select', 'R' => 'Regular', 'C' => 'Correspondence'));
+ 
+// smarty drop down array for year of passing 
+$year_of_pass = array(); 
+for($l = 2020; $l >= 1990; $l--){
+	$year_of_pass[$l] = $l;
+}
+$smarty->assign('year_of_pass', $year_of_pass);
+ 
+// query to fetch all employee names. 
+$query = 'CALL get_employee()';
+try{
+	// calling mysql exe_query function
+	if(!$result = $mysql->execute_query($query)){
+		throw new Exception('Problem in getting employee details');
+	}
+	while($row = $mysql->display_result($result))
+	{
+ 		$emp_name[$row['id']] = ucwords($row['emp_name']);
+	}
+	$smarty->assign('emp_name',$emp_name);
+	// free the memory
+	$mysql->clear_result($result);
+	// call the next result
+	$mysql->next_query();
+}catch(Exception $e){
+	echo 'Caught exception: ',  $e->getMessage(), "\n";
+}
+
+// query to fetch all designation. 
+$query = 'CALL get_designation()';
+try{
+	// calling mysql exe_query function
+	if(!$result = $mysql->execute_query($query)){
+		throw new Exception('Problem in getting designation details');
+	}
+	while($row = $mysql->display_result($result))
+	{
+ 		$desig_name[$row['id']] = ucwords($row['desig']);
+	}
+	$smarty->assign('desig_name',$desig_name);
+	// free the memory
+	$mysql->clear_result($result);
+	// call the next result
+	$mysql->next_query();
+}catch(Exception $e){
+	echo 'Caught exception: ',  $e->getMessage(), "\n";
+}
+
+// query to fetch all sharing type. 
+$query = 'CALL get_sharing()';
+try{
+	// calling mysql exe_query function
+	if(!$result = $mysql->execute_query($query)){
+		throw new Exception('Problem in getting type');
+	}
+	
+	while($row = $mysql->display_result($result))
+	{
+ 		$type_name[$row['id'].'-'.$row['percent']] = $row['type'];
+	}
+	$smarty->assign('type_name',$type_name);
+	// free the memory
+	$mysql->clear_result($result);
+	// call the next result
+	$mysql->next_query();
+}catch(Exception $e){
+	echo 'Caught exception: ',  $e->getMessage(), "\n";
+} 
+
+
 
 if(!empty($_POST)){
 	
@@ -587,7 +780,8 @@ if(!empty($_POST)){
 			'".$fun->is_white_space($mysql->real_escape_str($_POST['present_ctc']))."',
 			'".$fun->is_white_space($mysql->real_escape_str($_POST['expected_ctc']))."','".$mysql->real_escape_str($_POST['present_ctc_type'])."',
 			'".$mysql->real_escape_str($_POST['expected_ctc_type'])."','".$mysql->real_escape_str($_POST['marital_status'])."',
-			'".$fun->is_white_space($mysql->real_escape_str($_POST['present_location']))."','".$fun->is_white_space($mysql->real_escape_str($_POST['native_location']))."',
+			'".$fun->is_white_space($mysql->real_escape_str($_POST['present_location']))."',
+			'".$fun->is_white_space($mysql->real_escape_str($_POST['native_location']))."',
  			'".$mysql->real_escape_str($_POST['notice_period'])."','".$mysql->real_escape_str($_POST['designation_id'])."',
  			'".$fun->is_white_space($mysql->real_escape_str($_POST['family']))."','".$mysql->real_escape_str($total_exp)."',
  			'".$date."','".$modified_by."','N',
@@ -816,7 +1010,42 @@ if(!empty($_POST)){
 			}
 		}
 		if(!empty($edu_id) && !empty($exp_id) && !empty($train_id) && !empty($language_id) && !empty($resume_id)){
-			// echo 'save data';die;
+			// get recruiter nameget_recruiter_name
+			$query =  "CALL get_recruiter_name('".$mysql->real_escape_str($_SESSION['user_id'])."')";
+			if(!$result = $mysql->execute_query($query)){
+					throw new Exception('Problem in getting recruiter details');
+			}
+			$row_user = $mysql->display_result($result);
+			$recruiter = $row_user['first_name'].' '.$row_user['last_name'];
+			// free the memory
+			$mysql->clear_result($result);
+			// call the next result
+			$mysql->next_query();			
+			// generate auto resume doc file
+			$resume_path = dirname(__FILE__).'/uploads/autoresume/'.$_SESSION['resume_doc'];
+			$template_path = dirname(__FILE__).'/uploads/template/autoresume.docx'; 
+			include('vendor/PHPWord-develop/samples/template_process.php');
+			// generate the auto resume pdf file
+			// convert the resume doc. into pdf
+			/*
+			
+			require_once('vendor/ilovepdf-php-1.1.5/init.php');			
+			ini_set('display_errors', '1');
+			// you can call task class directly
+			// to get your key pair, please visit https://developer.ilovepdf.com/user/projects
+			$ilovepdf = new Ilovepdf('project_public_30e4ef2596c7436ae907615a841f995b_J4pWwe338d0756271411b0769ee277075a664','secret_key_9d6d00d05185d32c499082fc7e008ba1_fovTb7e8e14419dee395103d2b71d6b7e7175');
+			// Create a new task
+			$myTaskConvertOffice = $ilovepdf->newTask('officepdf');
+			// Add files to task for upload
+			$file1 = $myTaskConvertOffice->addFile($resume_path);
+			$snap_file_name = substr($_SESSION['resume_doc'], 0, strlen($_SESSION['resume_doc'])-5);
+			$myTaskConvertOffice->setOutputFilename($snap_file_name.'_{date}'.'.pdf');
+			// Execute the task
+			$myTaskConvertOffice->execute();
+			// Download the package files
+			$myTaskConvertOffice->download('uploads/autoresumepdf/');   
+			*/
+			// once successfully created, redirect the page
 			if($_GET['resume'] != ''){
 				header('Location: ../resume/?action=auto_modified');
 			}else{
@@ -829,184 +1058,6 @@ if(!empty($_POST)){
 	}
 }
 
-// smarty drop down array for status
-$smarty->assign('grade_status', array('' => 'Select', '1' => 'Active', '2' => 'Inactive'));
-// smarty drop down array for type
-$smarty->assign('grade_type', array('' => 'Select', 'I' => 'Individual', 'T' => 'Team'));
-
-// smarty drop down for exp month and year
-$smarty->assign('exp_month', array('1' => 'Jan', '2' => 'Feb', '3' => 'Mar', '4' => 'Apr', '5' => 'May', '6' => 'Jun',
- '7' => 'Jul', '8' => 'Aug', '9' => 'Sep', '10' => 'Oct', '11' => 'Nov', '12' => 'Dec'));
- 
-$exp_yr = array(); 
-for($l = date('Y'); $l >= 1950; $l--){ 
-	$exp_yr[$l] = $l; 
-}
-$smarty->assign('exp_yr', $exp_yr);
-
-// smarty drop down array for experience year 
-$total_exp_yr = array(); 
-for($l = 1; $l <= 50; $l++){ 
-$total_exp_yr[0] = '0 Years';
-	if($l == '1') {
-		$total_exp_yr[$l] = $l.' '.Year; 
-	}else {
-		$total_exp_yr[$l] = $l.' '.Years; 
-	}
-} 
-$smarty->assign('total_exp_yr', $total_exp_yr);
-
-// smarty drop down array for experience month 
-$total_exp_month = array(); 
-$total_exp_month[0] = '0 Months';
-
-for($l = 1; $l <= 11; $l++){
-	if($l == '1') {
-		$total_exp_month[$l] = $l.' '.Month;
-	}else { 
-		$total_exp_month[$l] = $l.' '.Months; 
-	} 
-}
-$smarty->assign('total_exp_month', $total_exp_month);
-
-// smarty drop down array for current ctc
-$smarty->assign('ctc_type', array('' => 'Select', 'T' => 'Thousand', 'L' => 'Lacs', 'C' => 'Crore'));
-
-// smarty drop down array for notice period  
-$smarty->assign('n_p' , $notice_period = array('' => 'Select','0' => 'Immediate', '15' => '15 Days', '30' => '30 Days', 
- '45' => '45 Days', '60' => '2 Months', '90' => '3 Months', '120' => '4 Months',
- '150' => '5 Months', '180' => '6 Months'));
-
-// query to fetch all program details. 
-$query = 'CALL get_qual_program()';
-try{
-	// calling mysql exe_query function
-	if(!$result = $mysql->execute_query($query)){
-		throw new Exception('Problem in getting program qualifications');
-	}
-	while($row = $mysql->display_result($result))
-	{
- 		$program_name[$row['id']] = ucwords($row['program']);
-	}
-	$smarty->assign('qual',$program_name);
-	// free the memory
-	$mysql->clear_result($result);
-	// call the next result
-	$mysql->next_query();
-}catch(Exception $e){
-	echo 'Caught exception: ',  $e->getMessage(), "\n";
-}
-
-// query to fetch position details. 
-$query = 'CALL get_requirements()';
-try{
-	// calling mysql exe_query function
-	if(!$result = $mysql->execute_query($query)){
-		throw new Exception('Problem in getting requirement');
-	}
-	while($row = $mysql->display_result($result))
-	{
- 		$requirement[$row['id']] = ucwords($row['job_title']);
-	}
-	$smarty->assign('requirement',$requirement);
-	// free the memory
-	$mysql->clear_result($result);
-	// call the next result
-	$mysql->next_query();
-}catch(Exception $e){
-	echo 'Caught exception: ',  $e->getMessage(), "\n";
-}
-
-// query to fetch client and position details. 
-$query = "CALL get_res_client_details('".$_SESSION['clients_id']."','".$_SESSION['position_for']."')";
-try{
-	// calling mysql exe_query function
-	if(!$result = $mysql->execute_query($query)){
-		throw new Exception('Problem in getting client and position details');
-	}
-	while($row = $mysql->display_result($result))
-	{
- 		$position = ucwords($row['job_title']).' ( '.($row['client_name']).' )';
-	}
-	$smarty->assign('position',$position);
-	// free the memory
-	$mysql->clear_result($result);
-	// call the next result
-	$mysql->next_query();
-}catch(Exception $e){
-	echo 'Caught exception: ',  $e->getMessage(), "\n";
-}
-
-// smarty drop down array for grade type
-$smarty->assign('grade_drop', array('' => 'Select', 'R' => 'Regular', 'C' => 'Correspondence'));
- 
-// smarty drop down array for year of passing 
-$year_of_pass = array(); 
-for($l = 2020; $l >= 1990; $l--){
-	$year_of_pass[$l] = $l;
-}
-$smarty->assign('year_of_pass', $year_of_pass);
- 
-// query to fetch all employee names. 
-$query = 'CALL get_employee()';
-try{
-	// calling mysql exe_query function
-	if(!$result = $mysql->execute_query($query)){
-		throw new Exception('Problem in getting employee details');
-	}
-	while($row = $mysql->display_result($result))
-	{
- 		$emp_name[$row['id']] = ucwords($row['emp_name']);
-	}
-	$smarty->assign('emp_name',$emp_name);
-	// free the memory
-	$mysql->clear_result($result);
-	// call the next result
-	$mysql->next_query();
-}catch(Exception $e){
-	echo 'Caught exception: ',  $e->getMessage(), "\n";
-}
-
-// query to fetch all designation. 
-$query = 'CALL get_designation()';
-try{
-	// calling mysql exe_query function
-	if(!$result = $mysql->execute_query($query)){
-		throw new Exception('Problem in getting designation details');
-	}
-	while($row = $mysql->display_result($result))
-	{
- 		$desig_name[$row['id']] = ucwords($row['desig']);
-	}
-	$smarty->assign('desig_name',$desig_name);
-	// free the memory
-	$mysql->clear_result($result);
-	// call the next result
-	$mysql->next_query();
-}catch(Exception $e){
-	echo 'Caught exception: ',  $e->getMessage(), "\n";
-}
-
-// query to fetch all sharing type. 
-$query = 'CALL get_sharing()';
-try{
-	// calling mysql exe_query function
-	if(!$result = $mysql->execute_query($query)){
-		throw new Exception('Problem in getting type');
-	}
-	
-	while($row = $mysql->display_result($result))
-	{
- 		$type_name[$row['id'].'-'.$row['percent']] = $row['type'];
-	}
-	$smarty->assign('type_name',$type_name);
-	// free the memory
-	$mysql->clear_result($result);
-	// call the next result
-	$mysql->next_query();
-}catch(Exception $e){
-	echo 'Caught exception: ',  $e->getMessage(), "\n";
-} 
 
 // closing mysql
 $mysql->close_connection();

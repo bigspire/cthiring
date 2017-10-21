@@ -30,7 +30,7 @@ class ResumeController extends AppController {
 	
 	public $components = array('Session', 'Functions', 'Excel');
 
-	public function index(){
+	public function index(){ 
 		// when the form is submitted for search
 		if($this->request->is('post')){
 			$url_vars = $this->Functions->create_url(array('keyword','from','to','min_exp','max_exp',
@@ -214,7 +214,7 @@ class ResumeController extends AppController {
 		}
 		$fields = array('id',"concat(Resume.first_name,' ',Resume.last_name) full_name",'email_id','mobile','mobile2','total_exp','education','present_employer',
 		'ResLocation.location','present_ctc','expected_ctc', 'Creator.first_name','Resume.created_date',
-		'Resume.modified_date','ReqResume.stage_title','ReqResume.status_title','ResDoc.resume','present_location','snapshot','autoresume',
+		'Resume.modified_date','ReqResume.stage_title','ReqResume.status_title','ResDoc.resume','present_location','autoresume_modified',
 		'Resume.created_by');	
 		// for export
 		if($this->request->query['action'] == 'export'){ 
@@ -424,7 +424,7 @@ class ResumeController extends AppController {
 	}
 	
 	/* auto complete search */	
-	public function search(){ 
+	public function search(){
 		$this->layout = false;		
 		$q = trim(Sanitize::escape($_GET['q']));	
 		if(!empty($q)){
@@ -443,12 +443,27 @@ class ResumeController extends AppController {
 		}
     }
 	
-	/* function to export the profile snap shot */
-	public function profile_snapshot($id, $snap_file){
+	/* function to view the resume pdf */
+	public function view_resume_pdf($file){
+		$this->layout = false;
+		$this->set('filePath', '../../hiring/uploads/snapshotmerged/'.$file);
+	}
 	
-					
+	
+	
+	/* function to export the profile snap shot */
+	public function profile_snapshot($snap_file, $action, $updated){ 
+		 $snap_exp = substr($snap_file, 0, strlen($snap_file) - 5);
+		 $pdf_date = date('m-d-Y', $updated);
+		 if($action == 'view'){
+			$this->redirect('/resume/view_resume_pdf/'.$snap_exp.'_'.$pdf_date.'.pdf');		
+		 }else{
+			$this->download_file('../../hiring/uploads/snapshotmerged/'.$snap_exp.'_'.$pdf_date.'.pdf');
+		 }
+		 die;		
 			// $id = '144515';
-
+			
+			/*
 			// create the pdf
 			if(!empty($id)){
 											
@@ -524,6 +539,7 @@ class ResumeController extends AppController {
 					exit;
 				}
 			}
+			*/
 	}
 	
 	/* function to download the file */
