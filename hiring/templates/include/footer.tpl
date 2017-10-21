@@ -17,6 +17,8 @@
 <script src="js/jquery.debouncedresize.min.js"></script>
 <!-- hidden elements width/height -->
 <script src="js/jquery.actual.min.js"></script>
+<!-- auto size text area -->
+<script src="js/autosize.min.js"></script>
 <!-- js cookie plugin -->
 <!-- tooltips -->
 <script src="lib_cthiring/qtip2/jquery.qtip.min.js"></script>
@@ -60,7 +62,7 @@
 <!-- jBreadcrumbs -->
 <script src="lib_cthiring/jBreadcrumbs/js/jquery.jBreadCrumb.1.1.min.js"></script>
 <!-- datatable -->                                                                                                                                                                                         
-<script src="js/main.js"></script>	
+<script type="text/javascript" src="js/main.js"></script>	
 <script type="text/javascript" src="js/sheepit-jquery.sheepItPlugin-v1.1.1/jquery.sheepItPlugin.js"></script>
 <a id="toTop" rel="nofollow" style="display: block;" title="Back to Top">Back to top</a>
 </body>

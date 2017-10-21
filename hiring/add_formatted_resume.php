@@ -20,6 +20,14 @@ include('classes/class.mailer.php');
 // content class
 include('classes/class.content.php');
 
+// generate auto resume doc file
+// include('vendor/PHPWord-develop/samples/template_process.php');
+// generate the auto resume pdf file
+include('vendor/ilovepdf-php-1.1.5/samples/office.php');
+
+
+
+
 $smarty->assign('dob_default', date('d/m/Y', strtotime('-18 years')));
 
 // role based validation

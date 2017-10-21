@@ -1,4 +1,13 @@
 <?php
+include_once('classes/class.function.php');
+$tot_exp = $_POST['year_of_exp'] == 0 ? '0' : $_POST['year_of_exp'].'.'.$_POST['month_of_exp'];
+$expStr = $fun->check_exp($tot_exp);
+$pre_ctc_type = $fun->get_ctc_type($_POST['present_ctc_type']);
+$exp_ctc_type = $fun->get_ctc_type($_POST['expected_ctc_type']);
+$notice = $fun->get_notice($_POST['notice_period']);
+$gen = $fun->check_gender($_POST['gender']);
+$dob = $fun->convert_date_to_display($_POST['dob']);
+
 $str = <<<EOD
 
 <!DOCTYPE html>
@@ -48,80 +57,75 @@ $str = <<<EOD
     <tr>
 	 <th class="has-text-centered">2</th>
       <td>Profile for the Position of</td>
-      <td>Software Developer</td>
+      <td>$_POST[requirement]</td>
     </tr>
     <tr>
       <th class="has-text-centered">3</th>
       <td>Total Years of Experience</td>
      
-      <td>12 Years</td>
+      <td>$expStr</td>
     </tr>
     <tr>
       <th class="has-text-centered">4</th>
-      <td>Career Highlights
-(companies, designation
-& employment period)</td>
+      <td>Career Highlights (companies, designation & employment period)</td>
      
-      <td>Infosys Technologies, Dec,2015 to Present<br>
-BigSpire Software, Jan,2013 to Dec, 2015<br></td>
+      <td>$snap_exp</td>
     </tr>
     <tr>
       <th  class="has-text-centered">5</th>
-      <td>Areas of Specialization /
-Expertise</td>
+      <td>Areas of Specialization / Expertise</td>
      
-      <td>B.Tech, Computer Science, Anna University, 2014 Passed Out, 88.5% overall.
-	  <br>C, C++, Java & SAP</td>
+      <td>$snap_edu  <br> $snap_skill</td>
     </tr>
     <tr>
       <th  class="has-text-centered">6</th>
       <td>Current Location of Work</td>
      
-      <td>Bangalore</td>
+      <td>$locationData</td>
     </tr>
     <tr>
       <th  class="has-text-centered">7</th>
       <td>Current CTC</td>
       
-      <td>8 Lacs Per Annum</td>
+      <td>$_POST[present_ctc] $pre_ctc_type Per Annum</td>
     </tr>
     <tr>
       <th  class="has-text-centered">8</th>
       <td>Expected CTC</td>
      
-      <td>10 Lacs Per Annum</td>
+      <td>$_POST[expected_ctc] $exp_ctc_type Lacs Per Annum</td>
     </tr>
     <tr>
-      <th class="has-text-centered">10</th>
+      <th class="has-text-centered">9</th>
       <td>Notice Period in the Current Organization</td>
      
-      <td>2 Months</td>
+      <td>$notice</td>
     </tr>
  
     <tr>
-      <th class="has-text-centered">11</th>
+      <th class="has-text-centered">10</th>
       <td>Date of Birth</td>
       
-      <td>13-Nov-1990</td>
+      <td>$dob</td>
+    </tr>
+    <tr>
+      <th class="has-text-centered">11</th>
+      <td>Gender</td>
+     
+      <td>$gen</td>
     </tr>
     <tr>
       <th class="has-text-centered">12</th>
-      <td>Gender</td>
-     
-      <td>Male</td>
-    </tr>
-    <tr>
-      <th class="has-text-centered">13</th>
       <td>Family (Dependents)
 </td>
      
-      <td>Father, Mother & two sisters.</td>
+      <td>$_POST[family]</td>
     </tr>
     <tr>
-      <th class="is-light has-text-centered">14</th>
+      <th class="is-light has-text-centered">13</th>
       <th class="is-light has-text-black">Consultant Assessment</th>
     
-      <td class="is-light">Interested to learn new technologies and having good experience in project managements. I highly recommend this candidate for the job.</td>
+      <td class="is-light">$_POST[consultant]</td>
     </tr>
     
   </tbody>

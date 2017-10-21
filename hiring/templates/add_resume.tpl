@@ -49,7 +49,8 @@
 						<tr class="tbl_row">
 										<td width="120" class="tbl_column">Position For <span class="f_req">*</span></td>
 										<td>
-										<input type="text"  value="{$requirement}" class="span8" disabled>
+										<input type="text"  value="{$requirement}"  class="span8" disabled>
+										<input type="hidden" value="{$requirement}" name="requirement">
 										</td>
 									</tr>	
 									

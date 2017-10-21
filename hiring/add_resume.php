@@ -332,7 +332,10 @@ if(!empty($_POST)){
 			$grade_typeData = $_POST['grade_type_'.$i];
 			$year_of_passData = $_POST['year_of_pass_'.$i];
 			$universityData = $_POST['university_'.$i];
-		
+			
+			// for snapshot printing
+			$snap_edu .= $degreeData.', '.$specializationData.', '.$year_of_passData.', '.$gradeData.', '.$grade_typeData.'<br>';
+			
 			// query to add education details
 			$query = "CALL add_res_education('".$fun->is_white_space($mysql->real_escape_str($gradeData))."',
 				'".$mysql->real_escape_str($year_of_passData)."','".$fun->is_white_space($mysql->real_escape_str($collegeData))."',
@@ -385,6 +388,13 @@ if(!empty($_POST)){
 			$companyData = $_POST['company_'.$i];
 			$locationData = $_POST['location_'.$i];
 			$vitalData = $_POST['vital_'.$i];
+			
+			// for snapshot printing
+			$tot_exp_years = $_POST['year_of_exp_'.$i] == 0 ? '0' : $_POST['year_of_exp_'.$i].'.'.$_POST['month_of_exp_'.$i];
+			$expStr = $fun->check_exp($tot_exp_years);
+
+			$snap_exp .= $companyData.', '.$desigData.', '.$expStr.'<br>';
+			$snap_skill .= $vitalData.' ';
 			
 			// query to add experience details
 			$query = "CALL add_res_experience('".$mysql->real_escape_str($desigData)."','".$mysql->real_escape_str($expData)."',
