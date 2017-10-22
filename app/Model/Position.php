@@ -263,7 +263,7 @@ class Position extends AppModel {
 	
 	/* function to validate the team members */
 	public function validate_team(){ 
-		if($this->data['Position']['team_member_req'][0] != ''){
+		if($this->data['Position']['team_id'] != ''){
 			return true;
 		}else{
 			return false;

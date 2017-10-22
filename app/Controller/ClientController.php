@@ -49,7 +49,7 @@ class ClientController extends AppController {
 		if($status =='pending'){
 			$approveCond = array('Client.status' => '2', 'Client.is_approve' => 'W');
 		}else{
-			// $approveCond = array('Client.status' => '0', 'Client.is_approve' => 'A');
+			$approveCond = array('Client.status' => '0', 'Client.is_approve' => 'A');
 		}		
 			
 		// set keyword condition
@@ -576,6 +576,11 @@ class ClientController extends AppController {
 					'alias' => 'Creator',					
 					'type' => 'LEFT',
 					'conditions' => array('`Creator`.`id` = `Contact`.`created_by`')
+			),
+			array('table' => 'designation',
+					'alias' => 'Designation',					
+					'type' => 'LEFT',
+					'conditions' => array('`Designation`.`id` = `Contact`.`designation_id`')
 			)
 		);		
 		$contact = $this->ClientContact->find('all', array('fields' => array('Contact.id','Contact.first_name','Contact.last_name','Contact.email',
