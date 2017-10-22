@@ -725,8 +725,7 @@ class fun{
 		return $str.$suffix;
    }
    
-<<<<<<< HEAD
-=======
+
    /* function to find the min and max exp */
    public function show_exp_details($value){
 		$exp_val = explode('.', $value);
@@ -750,7 +749,6 @@ class fun{
 		return $year.$month;
    }
    
->>>>>>> f1cf94f1e451666b1c26d60ec60d158732da4a1a
     /* function to get ctc type */
    public function get_ctc_type($type){
 		switch($type){
@@ -826,8 +824,7 @@ class fun{
 		}
 		return $txt;
    }
-<<<<<<< HEAD
-=======
+
    
    function openZip($file_to_open, $target) {
     $zip = new ZipArchive();
@@ -840,7 +837,7 @@ class fun{
         die("There was a problem. Please try again!");
     }
 }
->>>>>>> f1cf94f1e451666b1c26d60ec60d158732da4a1a
+
 }
 
 $fun = new fun();
