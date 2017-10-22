@@ -200,7 +200,7 @@ class ClientController extends AppController {
 			$this->load_static_data();
 				// load contact
 				$this->loadModel('Contact');
-				if (!empty($this->request->data)){  
+				if (!empty($this->request->data)){ 
 					// validates the form
 					$this->request->data['Client']['modified_by'] = $this->Session->read('USER.Login.id');
 					$this->request->data['Client']['modified_date'] = $this->Functions->get_current_date();
