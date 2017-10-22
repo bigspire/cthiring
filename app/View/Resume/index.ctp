@@ -196,13 +196,13 @@
 									</button>
 										<ul class="dropdown-menu">
 										
-											<li><a href="<?php echo $this->webroot;?>resume/profile_snapshot/<?php echo $res['ResDoc']['resume'];?>">Snapshot</a></li>
+											<li><a href="<?php echo $this->webroot;?>resume/profile_snapshot/<?php echo $res['ResDoc']['resume'];?>/<?php echo $res['Resume']['modified_date'] ? strtotime($res['Resume']['modified_date']) : strtotime($res['Resume']['created_date']);?>/">Snapshot</a></li>
 											<li><a href="<?php echo $this->webroot;?>resume/download_doc/<?php echo $res['ResDoc']['resume'];?>/">Candidate Resume</a></li>
 											<?php if($res['Resume']['autoresume']):?>
 											<li><a href="<?php echo $this->webroot;?>resume/autoresume/<?php echo $res['Resume']['id'];?>/<?php echo $res['Resume']['autoresume'];?>">Fully Formatted Resume</a></li>
 											<?php endif; ?>
 										<li class="divider"></li>
-<li><a class="iframeBox" val="70_100" href="<?php echo $this->webroot;?>resume/profile_snapshot/<?php echo $res['ResDoc']['resume'];?>/view/<?php echo $res['Resume']['modified_date'] ? strtotime($res['Resume']['modified_date']) : strtotime($res['Resume']['created_date']);?>/">View Resume</a></li>
+<li><a class="iframeBox" val="70_100" href="<?php echo $this->webroot;?>resume/profile_snapshot/<?php echo $res['ResDoc']['resume'];?>/<?php echo $res['Resume']['modified_date'] ? strtotime($res['Resume']['modified_date']) : strtotime($res['Resume']['created_date']);?>/view/">View Snapshot</a></li>
 										</ul>
 									</div>
 								

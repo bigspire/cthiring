@@ -459,12 +459,12 @@ class ResumeController extends AppController {
 	
 	
 	/* function to export the profile snap shot */
-	public function profile_snapshot($snap_file, $action, $updated){ 
+	public function profile_snapshot($snap_file, $updated, $action){ 
 		 $snap_exp = substr($snap_file, 0, strlen($snap_file) - 5);
-		 $pdf_date = date('m-d-Y', $updated);
+		 $pdf_date = date('d-m-Y', $updated);
 		 if($action == 'view'){
 			$this->redirect('/resume/view_resume_pdf/'.$snap_exp.'_'.$pdf_date.'.pdf');		
-		 }else{
+		 }else{ 
 			$this->download_file('../../hiring/uploads/snapshotmerged/'.$snap_exp.'_'.$pdf_date.'.pdf');
 		 }
 		 die;		

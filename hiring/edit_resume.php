@@ -67,6 +67,10 @@ if(empty($_POST)){
 		$row = $mysql->display_result($result);
 		$_SESSION['clients_id'] = $row['clients_id'];
 		$_SESSION['position_for'] = $row['position_for'];
+		
+	
+		
+		
 		$smarty->assign('dob_field', $fun->convert_date_display($row['dob']));
 		$total_exp  = $row['total_exp'];
 		$total_exp_yrs = explode(".", $total_exp);
@@ -355,7 +359,7 @@ if(!empty($_POST)){
 						'present CTC','expected CTC','present CTC type','expected CTC type',
 						'notice period','gender', 'present location');
    $field = array('first_name' => 'first_nameErr', 'last_name' => 'last_nameErr','email' => 'emailErr',
-    'mobile' => 'mobileErr','dob_field' => 'dobErr',
+    'mobile' => 'mobileErr','dob' => 'dobErr',
     'designation_id' => 'positionErr','year_of_exp' => 'year_of_expErr', 'month_of_exp' => 'month_of_expErr',
     'present_ctc' => 'present_ctcErr','expected_ctc' => 'expected_ctcErr',
 	'present_ctc_type' => 'present_ctc_typeErr','expected_ctc_type' => 'expected_ctc_typeErr',
@@ -395,7 +399,7 @@ if(!empty($_POST)){
 		$query = "CALL edit_res_personal('$getid','".$fun->is_white_space($mysql->real_escape_str($_POST['first_name']))."',
 			'".$fun->is_white_space($mysql->real_escape_str($_POST['last_name']))."',
 			'".$mysql->real_escape_str($_POST['email'])."','".$mysql->real_escape_str($_POST['mobile'])."',
-			'".$fun->is_white_space($mysql->real_escape_str($fun->convert_date($_POST['dob_field'])))."',
+			'".$fun->is_white_space($mysql->real_escape_str($fun->convert_date($_POST['dob'])))."',
 			'".$mysql->real_escape_str($_POST['gender'])."','".$fun->is_white_space($mysql->real_escape_str($_POST['present_ctc']))."',
 			'".$fun->is_white_space($mysql->real_escape_str($_POST['expected_ctc']))."','".$mysql->real_escape_str($_POST['present_ctc_type'])."',
 			'".$mysql->real_escape_str($_POST['expected_ctc_type'])."','".$mysql->real_escape_str($_POST['marital_status'])."',

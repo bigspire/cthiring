@@ -1,16 +1,13 @@
 <?php
 include_once('classes/class.function.php');
 $tot_exp = $_POST['year_of_exp'] == 0 ? '0' : $_POST['year_of_exp'].'.'.$_POST['month_of_exp'];
-<<<<<<< HEAD
-$expStr = $fun->check_exp($tot_exp);
-=======
 $expStr = $fun->show_exp_details($tot_exp);
->>>>>>> f1cf94f1e451666b1c26d60ec60d158732da4a1a
 $pre_ctc_type = $fun->get_ctc_type($_POST['present_ctc_type']);
 $exp_ctc_type = $fun->get_ctc_type($_POST['expected_ctc_type']);
 $notice = $fun->get_notice($_POST['notice_period']);
 $gen = $fun->check_gender($_POST['gender']);
-$dob = $fun->convert_date_to_display($_POST['dob']);
+$dob = $fun->convert_date_to_display($fun->convert_date($_POST['dob']));
+
 
 $str = <<<EOD
 
@@ -85,11 +82,8 @@ $str = <<<EOD
       <th  class="has-text-centered">6</th>
       <td>Current Location of Work</td>
      
-<<<<<<< HEAD
-      <td>$locationData</td>
-=======
+
       <td>$locationDataCase</td>
->>>>>>> f1cf94f1e451666b1c26d60ec60d158732da4a1a
     </tr>
     <tr>
       <th  class="has-text-centered">7</th>
@@ -101,11 +95,8 @@ $str = <<<EOD
       <th  class="has-text-centered">8</th>
       <td>Expected CTC</td>
      
-<<<<<<< HEAD
-      <td>$_POST[expected_ctc] $exp_ctc_type Lacs Per Annum</td>
-=======
+
       <td>$_POST[expected_ctc] $exp_ctc_type Per Annum</td>
->>>>>>> f1cf94f1e451666b1c26d60ec60d158732da4a1a
     </tr>
     <tr>
       <th class="has-text-centered">9</th>
