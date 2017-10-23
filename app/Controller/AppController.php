@@ -361,4 +361,13 @@ class AppController extends Controller {
 			die('File Not Found');
 		}
 	} 
+	
+	public function invalid_attempt() {
+		$this->Session->destroy();
+		$this->disable_cache();
+		$this->delete_cookie('ESUSER');	
+		$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert-error">&times;</button>Oops! Something went wrong!', 'default', array('class' => 'alert alert-error'));
+		$this->redirect('/');
+
+	}
 }
