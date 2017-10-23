@@ -725,6 +725,7 @@ class fun{
 		return $str.$suffix;
    }
    
+
    /* function to find the min and max exp */
    public function show_exp_details($value){
 		$exp_val = explode('.', $value);
@@ -823,6 +824,7 @@ class fun{
 		}
 		return $txt;
    }
+
    
    function openZip($file_to_open, $target) {
     $zip = new ZipArchive();
@@ -835,6 +837,7 @@ class fun{
         die("There was a problem. Please try again!");
     }
 }
+
 }
 
 $fun = new fun();

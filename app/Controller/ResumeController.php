@@ -176,6 +176,12 @@ class ResumeController extends AppController {
 						'type' => 'LEFT',
 						'conditions' => array('`ResDoc`.`id` = `Resume`.`resume_doc_id`')
 						)
+				,
+				array('table' => 'req_resume_interview',
+						'alias' => 'ResInterview',					
+						'type' => 'LEFT',
+						'conditions' => array('`ReqResume`.`id` = `ResInterview`.`req_resume_id`')
+				)
 		);
 		// for employee condition
 		if($this->request->query['emp_id'] != ''){			
@@ -199,6 +205,7 @@ class ResumeController extends AppController {
 			// set date condition
 			$int_cond = array('or' => array("DATE_FORMAT(ResInterview.int_date, '%Y-%m-%d') between ? and ?" => 
 						array($this->Functions->format_date_save($int_start), $this->Functions->format_date_save($int_end))));
+			/*
 			$options = array(			
 				array('table' => 'req_resume',
 						'alias' => 'ReqResume',					
@@ -210,7 +217,7 @@ class ResumeController extends AppController {
 						'type' => 'LEFT',
 						'conditions' => array('`ReqResume`.`id` = `ResInterview`.`req_resume_id`')
 				)
-			);
+			);*/
 		}
 		$fields = array('id',"concat(Resume.first_name,' ',Resume.last_name) full_name",'email_id','mobile','mobile2','total_exp','education','present_employer',
 		'ResLocation.location','present_ctc','expected_ctc', 'Creator.first_name','Resume.created_date',
@@ -452,12 +459,12 @@ class ResumeController extends AppController {
 	
 	
 	/* function to export the profile snap shot */
-	public function profile_snapshot($snap_file, $action, $updated){ 
+	public function profile_snapshot($snap_file, $updated, $action){ 
 		 $snap_exp = substr($snap_file, 0, strlen($snap_file) - 5);
-		 $pdf_date = date('m-d-Y', $updated);
+		 $pdf_date = date('d-m-Y', $updated);
 		 if($action == 'view'){
 			$this->redirect('/resume/view_resume_pdf/'.$snap_exp.'_'.$pdf_date.'.pdf');		
-		 }else{
+		 }else{ 
 			$this->download_file('../../hiring/uploads/snapshotmerged/'.$snap_exp.'_'.$pdf_date.'.pdf');
 		 }
 		 die;		

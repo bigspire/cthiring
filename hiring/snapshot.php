@@ -6,7 +6,8 @@ $pre_ctc_type = $fun->get_ctc_type($_POST['present_ctc_type']);
 $exp_ctc_type = $fun->get_ctc_type($_POST['expected_ctc_type']);
 $notice = $fun->get_notice($_POST['notice_period']);
 $gen = $fun->check_gender($_POST['gender']);
-$dob = $fun->convert_date_to_display($_POST['dob']);
+$dob = $fun->convert_date_to_display($fun->convert_date($_POST['dob']));
+
 
 $str = <<<EOD
 
@@ -81,6 +82,7 @@ $str = <<<EOD
       <th  class="has-text-centered">6</th>
       <td>Current Location of Work</td>
      
+
       <td>$locationDataCase</td>
     </tr>
     <tr>
@@ -93,6 +95,7 @@ $str = <<<EOD
       <th  class="has-text-centered">8</th>
       <td>Expected CTC</td>
      
+
       <td>$_POST[expected_ctc] $exp_ctc_type Per Annum</td>
     </tr>
     <tr>

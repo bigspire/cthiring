@@ -267,14 +267,15 @@
 		'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 
 	
 	
-		<div style="" class="noJob"></div>
+		<div  class="noJob"></div>
 	
 	
+	<?php 
+	echo $this->Form->input('team_id', array('div'=> false,'type' => 'hidden', 'id' => 'team_id'));
+	echo $this->Form->input('temp_team_id', array('div'=> false,'type' => 'hidden', 'id' => 'temp_team_id'));
+	echo $this->Form->input('cur_team', array('div'=> false,'type' => 'hidden', 'id' => 'cur_team'));	
+	?>
 	
-	
-	<input type="hidden" name="data[Position][team_id]" value="" id="team_id"/>
-	<input type="hidden" name="data[Position][temp_team_id]" value="" id="temp_team_id"/>
-	<input type="hidden" name="data[Position][cur_team]" value="" id="cur_team"/>
 
 					
 						</td>	

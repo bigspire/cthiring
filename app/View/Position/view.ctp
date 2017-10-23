@@ -135,17 +135,18 @@
 										<td><?php echo $position_data['Creator']['first_name'];?></td>
 											
 									</tr>
-								
-				<tr>
+			
+<?php  if($position_data['Position']['is_approve'] != 'W'):?>			
+
+		<tr>
 										
-										<td class="tbl_column">Status</td>
-										<td>	
+<td class="tbl_column">Status</td>
+	<td>	
 										
-										<span rel="tooltip" title="Requirement Status: <?php echo $position_data['ReqStatus']['title'];?> " class="label label-<?php echo $this->Functions->get_req_status_color($position_data['ReqStatus']['title']);?>"><?php echo $position_data['ReqStatus']['title'];?></span>	
+<span rel="tooltip" title="Requirement Status: <?php echo $position_data['ReqStatus']['title'];?> " class="label label-<?php echo $this->Functions->get_req_status_color($position_data['ReqStatus']['title']);?>"><?php echo $position_data['ReqStatus']['title'];?></span>	
 </td>
-											
-									</tr>
-									
+	</tr>
+	<?php endif; ?>								
 	
 								</tbody>
 							</table>
@@ -262,7 +263,7 @@
 					
 					
 					</div></div>
-			<?php if($position_data['Position']['is_approve'] == 'W'  && $this->Session->read('USER.Login.roles_id') == '39'):?>
+			<?php if($position_data['Position']['is_approve'] == 'W'):?>
 
 							<div class="form-actions">
 <a class="iframeBox unreadLink" rel="tooltip" title="Approve Position" href="<?php echo $this->webroot;?>position/remark/approve/<?php echo $position_data['Position']['id'];?>" val="40_50"><input type="button" value="Approve" class="btn btn btn-success"/></a>

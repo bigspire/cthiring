@@ -187,7 +187,7 @@
 
 							</td>	
 						</tr>				
-					<tr class="">
+					<!--tr class="">
 						<td width="120" class="tbl_column">No. of Openings <span class="f_req">*</span></td>
 						<td>
 
@@ -196,7 +196,7 @@
 		'style' => "clear:left", 'options' => array_combine(range(1,50,1),range(1,50,1)), 'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 
 																				
 						</td>
-					</tr>																		
+					</tr-->																		
 									
 					
 
@@ -211,11 +211,21 @@
 						<td width="120" class="tbl_column">Team Members <span class="f_req">*</span></td>
 						<td>	
 						
+			
 	<?php echo $this->Form->input('team_member_req', array('div'=> false,'type' => 'select', 'label' => false, 
-		'class' => 'span8 chosen-select', 'multiple' => 'multiple',  'required' => false, 'placeholder' => '', 
-		'style' => "clear:left", 'options' => $userList, 'selected' => $usersSel,
+		'class' => 'span8 chosen-select chooseReqTeam', 'empty' => 'Select', 'required' => false, 'placeholder' => '', 
+		'style' => "clear:left", 'options' => $userList,
 		'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 
-					
+	
+	
+		<div  class="noJob"></div>
+	
+	
+	<?php 
+	echo $this->Form->input('team_id', array('div'=> false,'type' => 'hidden', 'id' => 'team_id'));
+	echo $this->Form->input('temp_team_id', array('div'=> false,'type' => 'hidden', 'id' => 'temp_team_id'));
+	echo $this->Form->input('cur_team', array('div'=> false,'type' => 'hidden', 'id' => 'cur_team'));	
+	?>
 
 					
 						</td>	

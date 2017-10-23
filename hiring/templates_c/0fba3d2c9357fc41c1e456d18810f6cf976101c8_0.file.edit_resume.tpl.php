@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-10-14 11:00:20
+/* Smarty version 3.1.29, created on 2017-10-23 15:12:35
   from "C:\xampp\htdocs\2017\ctsvn\cthiring\hiring\templates\edit_resume.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_59e1a0eccdbd92_08649336',
+  'unifunc' => 'content_59edb98b5fb440_03909981',
   'file_dependency' => 
   array (
     '0fba3d2c9357fc41c1e456d18810f6cf976101c8' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\templates\\edit_resume.tpl',
-      1 => 1507718152,
+      1 => 1508751611,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_59e1a0eccdbd92_08649336 ($_smarty_tpl) {
+function content_59edb98b5fb440_03909981 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -79,6 +79,10 @@ resume">Resumes</a>
 										<td>
 										<input type="text" tabindex="3" name="position" value="<?php echo $_smarty_tpl->tpl_vars['position']->value;?>
 " class="span8" disabled>
+										<input type="hidden" value="<?php echo $_smarty_tpl->tpl_vars['position']->value;?>
+" name="requirement">
+										
+										
 										</td>
 									</tr>
 									
@@ -116,7 +120,7 @@ echo $_smarty_tpl->tpl_vars['last_nameErr']->value;?>
 									<tr>
 										<td width="120" class="tbl_column">DOB <span class="f_req">*</span></td>
 										<td> 
-										<input name="dob_field" tabindex="5" value="<?php echo $_smarty_tpl->tpl_vars['dob_field']->value;?>
+										<input name="dob" tabindex="5" value="<?php echo $_smarty_tpl->tpl_vars['dob_field']->value;?>
 "  class="datepick span8" placeholder="" type="text" id="HrEmployeeDob">										
 										<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['dobErr']->value;?>
 </label>																					

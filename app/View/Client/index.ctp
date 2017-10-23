@@ -147,7 +147,7 @@
 	<a href="<?php echo $this->webroot;?>client/edit/<?php echo $client['Client']['id'];?>/" class="btn  btn-mini"  rel="tooltip" class="sepV_a" title="Edit Company"><i class="icon-pencil"></i></a>
 	<?php endif; ?>	
 	
-	<?php if($client['Client']['is_approve'] == 'W' && $this->Session->read('USER.Login.roles_id') == '39'):?>
+	<?php if($client['Client']['is_approve'] == 'W'):?>
 	<a rel="tooltip" title="Verify Client" href="<?php echo $this->webroot;?>client/view/<?php echo $client['Client']['id'];?>/" class="btn  btn-mini"><i class="icon-edit"></i></a>
 	<?php endif; ?>									
 										

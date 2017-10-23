@@ -4,6 +4,7 @@ include_once 'Sample_Header.php';
 // Template processor instance creation
 // echo date('H:i:s'), ' Creating new TemplateProcessor instance...', EOL;
 
+
 $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor($template_path);
 
 $templateProcessor->setValue('CANDIDATE_NAME', ucwords($_POST['first_name'].' '.$_POST['last_name']),  1,0);       
@@ -257,10 +258,12 @@ for($i = 0; $i < $_POST['exp_count']; $i++){
 		$train_flag++;
 } 
 
+
+
+
+
 echo date('H:i:s'), ' Saving the result document...', EOL;
 // $templateProcessor->saveAs('results/EWKI - 2.docx');
-
-
 $templateProcessor->saveAs($resume_path);
 
 echo getEndingNotes(array('Word2007' => 'docx'));

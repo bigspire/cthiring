@@ -49,7 +49,7 @@ class ClientController extends AppController {
 		if($status =='pending'){
 			$approveCond = array('Client.status' => '2', 'Client.is_approve' => 'W');
 		}else{
-			// $approveCond = array('Client.status' => '0', 'Client.is_approve' => 'A');
+			$approveCond = array('Client.status' => '0', 'Client.is_approve' => 'A');
 		}		
 			
 		// set keyword condition
@@ -200,7 +200,7 @@ class ClientController extends AppController {
 			$this->load_static_data();
 				// load contact
 				$this->loadModel('Contact');
-				if (!empty($this->request->data)){  
+				if (!empty($this->request->data)){ 
 					// validates the form
 					$this->request->data['Client']['modified_by'] = $this->Session->read('USER.Login.id');
 					$this->request->data['Client']['modified_date'] = $this->Functions->get_current_date();
@@ -576,6 +576,11 @@ class ClientController extends AppController {
 					'alias' => 'Creator',					
 					'type' => 'LEFT',
 					'conditions' => array('`Creator`.`id` = `Contact`.`created_by`')
+			),
+			array('table' => 'designation',
+					'alias' => 'Designation',					
+					'type' => 'LEFT',
+					'conditions' => array('`Designation`.`id` = `Contact`.`designation_id`')
 			)
 		);		
 		$contact = $this->ClientContact->find('all', array('fields' => array('Contact.id','Contact.first_name','Contact.last_name','Contact.email',

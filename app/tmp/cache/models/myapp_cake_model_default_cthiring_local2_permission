@@ -1,2 +1,7 @@
+<<<<<<< HEAD:app/tmp/cache/models/myapp_cake_model_default_cthiring_local_client_account_holder
+1594970620
+a:4:{s:2:"id";a:6:{s:4:"type";s:7:"integer";s:4:"null";b:0;s:7:"default";N;s:6:"length";i:10;s:8:"unsigned";b:1;s:3:"key";s:7:"primary";}s:12:"created_date";a:4:{s:4:"type";s:8:"datetime";s:4:"null";b:0;s:7:"default";N;s:6:"length";N;}s:10:"clients_id";a:6:{s:4:"type";s:7:"integer";s:4:"null";b:0;s:7:"default";N;s:6:"length";i:10;s:8:"unsigned";b:1;s:3:"key";s:5:"index";}s:8:"users_id";a:6:{s:4:"type";s:7:"integer";s:4:"null";b:0;s:7:"default";N;s:6:"length";i:5;s:8:"unsigned";b:1;s:3:"key";s:5:"index";}}
+=======
 1594269719
 a:4:{s:2:"id";a:6:{s:4:"type";s:7:"integer";s:4:"null";b:0;s:7:"default";N;s:6:"length";i:10;s:8:"unsigned";b:1;s:3:"key";s:7:"primary";}s:12:"created_date";a:4:{s:4:"type";s:8:"datetime";s:4:"null";b:0;s:7:"default";N;s:6:"length";N;}s:10:"modules_id";a:6:{s:4:"type";s:7:"integer";s:4:"null";b:0;s:7:"default";N;s:6:"length";i:10;s:8:"unsigned";b:1;s:3:"key";s:5:"index";}s:8:"roles_id";a:6:{s:4:"type";s:7:"integer";s:4:"null";b:0;s:7:"default";N;s:6:"length";i:10;s:8:"unsigned";b:1;s:3:"key";s:5:"index";}}
+>>>>>>> 1c6d834a4b3496fde2748f2bd3924c6bccbeac74:app/tmp/cache/models/myapp_cake_model_default_cthiring_local2_permission

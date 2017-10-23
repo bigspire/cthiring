@@ -166,7 +166,7 @@ class PositionController extends AppController {
 		if($rec_status =='pending'){
 			$approveCond = array('Position.status' => 'I', 'Position.is_approve' => 'W');
 		}else{
-			// $approveCond = array('Position.status' => 'A', 'Position.is_approve' => 'A');
+			$approveCond = array('Position.status' => 'A', 'Position.is_approve' => 'A');
 		}
 		
 		
@@ -224,7 +224,7 @@ class PositionController extends AppController {
 			// $coord_validate = $this->validate_coord();
 			// validate the form fields
 			if ($this->Position->validates(array('fieldList' => array('clients_id','client_contact_id','job_title','location','max_exp',
-			'ctc_to_type','skills','no_job','team_member_req','end_date','function_area_id','status','job_desc','education')))){
+			'ctc_to_type','skills','team_member_req','end_date','function_area_id','status','job_desc','education')))){
 				// format the dates
 				$this->request->data['Position']['start_date'] = $this->Functions->format_date_save($this->request->data['Position']['start_date']);
 				$this->request->data['Position']['end_date'] = $this->Functions->format_date_save($this->request->data['Position']['end_date']);
@@ -320,7 +320,7 @@ class PositionController extends AppController {
 					// $coord_validate = $this->validate_coord();
 					// validate the form fields
 					if ($this->Position->validates(array('fieldList' => array('clients_id','client_contact_id','job_title','location','max_exp',
-					'ctc_from','ctc_to','ctc_from_type','ctc_to_type','skills','no_job','team_member_req','end_date','function_area_id','job_desc','education')))){
+					'ctc_from','ctc_to','ctc_from_type','ctc_to_type','skills','team_member_req','end_date','function_area_id','job_desc','education')))){
 						// format the dates
 						$this->request->data['Position']['start_date'] = $this->Functions->format_date_save($this->request->data['Position']['start_date']);
 						$this->request->data['Position']['end_date'] = $this->Functions->format_date_save($this->request->data['Position']['end_date']);
@@ -433,10 +433,17 @@ class PositionController extends AppController {
 	/* function to save team member */
 	public function save_team_member($id){
 		$this->loadModel('ReqTeam');
-		foreach($this->request->data['Position']['team_member_req'] as $holder){ 
-			$this->ReqTeam->create();
-			$data = array('created_by' => $this->Session->read('USER.Login.id'),'requirements_id' => $id, 'users_id' => $holder);
-			$this->ReqTeam->save($data, true, $fieldList = array('requirements_id','created_by','users_id'));
+		// parse the req. 
+		$req_no = $this->request->data['Position']['team_id'];
+		print_r($req_no );die;
+		$split_req = explode(',', $req_no);
+		foreach($split_req as $req){ 
+			$new_split_req = explode('-', $req);
+			if($new_split_req[0] != ''){
+				$this->ReqTeam->create();
+				$data = array('created_by' => $this->Session->read('USER.Login.id'),'requirements_id' => $id, 'users_id' => $new_split_req[0], 'no_req' => $new_split_req[1]);
+				$this->ReqTeam->save($data, true, $fieldList = array('requirements_id','created_by','users_id','no_req'));
+			}
 		}
 	}
 	
@@ -486,7 +493,7 @@ class PositionController extends AppController {
 			)
 		);
 		$con_list = $this->Contact->find('all', array('fields' => array('id',"concat(first_name,' ',last_name) uname"),
-		'order' => array('first_name ASC'),'conditions' => array('status' => 'A', 'is_deleted' => 'N',
+		'order' => array('first_name ASC'),'conditions' => array('Contact.status' => 'A', 'Contact.is_deleted' => 'N',
 		'ClientCont.clients_id' => $id), 'joins' => $options));
 		$format_list = $this->Functions->format_list_key($con_list, 'Contact','id', 'uname');
 		$this->set('spocList', $format_list);
@@ -1156,7 +1163,7 @@ class PositionController extends AppController {
 			)
 		);
 		$loc_list = $this->Contact->find('all', array('fields' => array('id','first_name','last_name'),
-		'order' => array('first_name ASC'),'conditions' => array('status' => '0', 'is_deleted' => 'N',
+		'order' => array('first_name ASC'),'conditions' => array('Contact.status' => '0', 'Contact.is_deleted' => 'N',
 		'ClientCont.clients_id' => $id), 'joins' => $options));
 		$select .= "<option value=''>Choose SPOC</option>";
 		foreach($loc_list as $record){ 

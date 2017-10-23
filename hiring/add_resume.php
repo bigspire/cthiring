@@ -333,6 +333,11 @@ if(!empty($_POST)){
 			$grade_typeData = $_POST['grade_type_'.$i];
 			$year_of_passData = $_POST['year_of_pass_'.$i];
 			$universityData = $_POST['university_'.$i];
+<<<<<<< HEAD
+			
+			// for snapshot printing
+			$snap_edu .= $degreeData.', '.$specializationData.', '.$year_of_passData.', '.$gradeData.', '.$grade_typeData.'<br>';
+=======
 			// get degree name
 			$query = "call get_degree_id('".$mysql->real_escape_str($degreeData)."')";
 			if(!$result = $mysql->execute_query($query)){
@@ -353,6 +358,7 @@ if(!empty($_POST)){
 			$gradeStr = $gradeData > 10 ? $gradeData.'% of marks overall' : $gradeData.' CGPA';
 			// for snapshot printing
 			$snap_edu .= $degreeStr.', '.$specStr.', '.$year_of_passData.', '.$gradeStr.', '.$course_type.'<br>';
+>>>>>>> f1cf94f1e451666b1c26d60ec60d158732da4a1a
 			
 			// query to add education details
 			$query = "CALL add_res_education('".$fun->is_white_space($mysql->real_escape_str($gradeData))."',
@@ -409,6 +415,11 @@ if(!empty($_POST)){
 			
 			// for snapshot printing
 			$tot_exp_years = $_POST['year_of_exp_'.$i] == 0 ? '0' : $_POST['year_of_exp_'.$i].'.'.$_POST['month_of_exp_'.$i];
+<<<<<<< HEAD
+			$expStr = $fun->check_exp($tot_exp_years);
+
+			$snap_exp .= $companyData.', '.$desigData.', '.$expStr.'<br>';
+=======
 			$expStr = $fun->show_exp_details($tot_exp_years);
 			$locationDataCase = ucwords($locationData);
 			// get the designation details
@@ -420,6 +431,7 @@ if(!empty($_POST)){
 			$desigStr = $row['desig'];
 			$mysql->next_query();
 			$snap_exp .= ucwords($companyData).', '.ucwords($desigStr).', '.$expStr.'<br>';
+>>>>>>> f1cf94f1e451666b1c26d60ec60d158732da4a1a
 			$snap_skill .= $vitalData.' ';
 			
 			// query to add experience details

@@ -6,6 +6,7 @@ Date : 11-05-2017
 */
 
 session_start();
+use Ilovepdf\Ilovepdf;
 // including smarty config
 include 'configs/smartyconfig.php';
 // including Database class file
@@ -66,6 +67,10 @@ if(empty($_POST)){
 		$row = $mysql->display_result($result);
 		$_SESSION['clients_id'] = $row['clients_id'];
 		$_SESSION['position_for'] = $row['position_for'];
+		
+	
+		
+		
 		$smarty->assign('dob_field', $fun->convert_date_display($row['dob']));
 		$total_exp  = $row['total_exp'];
 		$total_exp_yrs = explode(".", $total_exp);
@@ -354,7 +359,7 @@ if(!empty($_POST)){
 						'present CTC','expected CTC','present CTC type','expected CTC type',
 						'notice period','gender', 'present location');
    $field = array('first_name' => 'first_nameErr', 'last_name' => 'last_nameErr','email' => 'emailErr',
-    'mobile' => 'mobileErr','dob_field' => 'dobErr',
+    'mobile' => 'mobileErr','dob' => 'dobErr',
     'designation_id' => 'positionErr','year_of_exp' => 'year_of_expErr', 'month_of_exp' => 'month_of_expErr',
     'present_ctc' => 'present_ctcErr','expected_ctc' => 'expected_ctcErr',
 	'present_ctc_type' => 'present_ctc_typeErr','expected_ctc_type' => 'expected_ctc_typeErr',
@@ -394,7 +399,7 @@ if(!empty($_POST)){
 		$query = "CALL edit_res_personal('$getid','".$fun->is_white_space($mysql->real_escape_str($_POST['first_name']))."',
 			'".$fun->is_white_space($mysql->real_escape_str($_POST['last_name']))."',
 			'".$mysql->real_escape_str($_POST['email'])."','".$mysql->real_escape_str($_POST['mobile'])."',
-			'".$fun->is_white_space($mysql->real_escape_str($fun->convert_date($_POST['dob_field'])))."',
+			'".$fun->is_white_space($mysql->real_escape_str($fun->convert_date($_POST['dob'])))."',
 			'".$mysql->real_escape_str($_POST['gender'])."','".$fun->is_white_space($mysql->real_escape_str($_POST['present_ctc']))."',
 			'".$fun->is_white_space($mysql->real_escape_str($_POST['expected_ctc']))."','".$mysql->real_escape_str($_POST['present_ctc_type'])."',
 			'".$mysql->real_escape_str($_POST['expected_ctc_type'])."','".$mysql->real_escape_str($_POST['marital_status'])."',
@@ -456,7 +461,28 @@ if(!empty($_POST)){
 			$grade_typeData = $_POST['grade_type_'.$i];
 			$year_of_passData = $_POST['year_of_pass_'.$i];
 			$universityData = $_POST['university_'.$i];
-		
+			
+			// get degree name
+			$query = "call get_degree_id('".$mysql->real_escape_str($degreeData)."')";
+			if(!$result = $mysql->execute_query($query)){
+				throw new Exception('Problem in getting degree name');
+			}
+			$row = $mysql->display_result($result);
+			$degreeStr = $row['degree'];
+			$mysql->next_query();
+			// get specialization name
+			$query = "call get_spec_id('".$mysql->real_escape_str($specializationData)."')";
+			if(!$result = $mysql->execute_query($query)){
+				throw new Exception('Problem in getting spec. name');
+			}
+			$row = $mysql->display_result($result);
+			$specStr = $row['spec'];
+			$mysql->next_query();
+			$course_type = $fun->get_course_type($grade_typeData);
+			$gradeStr = $gradeData > 10 ? $gradeData.'% of marks overall' : $gradeData.' CGPA';
+			// for snapshot printing
+			$snap_edu .= $degreeStr.', '.$specStr.', '.$year_of_passData.', '.$gradeStr.', '.$course_type.'<br>';
+			
 			// query to add education details
 			$query = "CALL add_res_education('".$fun->is_white_space($mysql->real_escape_str($gradeData))."',
 				'".$mysql->real_escape_str($year_of_passData)."','".$fun->is_white_space($mysql->real_escape_str($collegeData))."',
@@ -522,6 +548,21 @@ if(!empty($_POST)){
 			$locationData = $_POST['location_'.$i];
 			$vitalData = $_POST['vital_'.$i];
 			
+			// for snapshot printing
+			$tot_exp_years = $_POST['year_of_exp_'.$i] == 0 ? '0' : $_POST['year_of_exp_'.$i].'.'.$_POST['month_of_exp_'.$i];
+			$expStr = $fun->show_exp_details($tot_exp_years);
+			$locationDataCase = ucwords($locationData);
+			// get the designation details
+			$query = "call get_designation_id('".$mysql->real_escape_str($desigData)."')";
+			if(!$result = $mysql->execute_query($query)){
+				throw new Exception('Problem in getting desig. name');
+			}
+			$row = $mysql->display_result($result);
+			$desigStr = $row['desig'];
+			$mysql->next_query();
+			$snap_exp .= ucwords($companyData).', '.ucwords($desigStr).', '.$expStr.'<br>';
+			$snap_skill .= $vitalData.' ';
+			
 			// query to add experience details
 			$query = "CALL add_res_experience('".$mysql->real_escape_str($desigData)."','".$mysql->real_escape_str($expData)."',
 				'".$fun->is_white_space($mysql->real_escape_str($locationData))."',
@@ -542,6 +583,36 @@ if(!empty($_POST)){
 		}
 		if(!empty($edu_id) && !empty($exp_id) && !empty($resume_id)){
 			// echo 'save data';die;
+			// create snapshot pdf
+			include_once('snapshot.php');
+			// convert the resume doc. into pdf
+			require_once('vendor/ilovepdf-php-1.1.5/init.php');			
+			ini_set('display_errors', '1');
+			// you can call task class directly
+			// to get your key pair, please visit https://developer.ilovepdf.com/user/projects
+			$ilovepdf = new Ilovepdf('project_public_30e4ef2596c7436ae907615a841f995b_J4pWwe338d0756271411b0769ee277075a664','secret_key_9d6d00d05185d32c499082fc7e008ba1_fovTb7e8e14419dee395103d2b71d6b7e7175');
+			// Create a new task
+			$myTaskConvertOffice = $ilovepdf->newTask('officepdf');
+			// Add files to task for upload
+			$resume_path = dirname(__FILE__).'/uploads/resume/'.$_SESSION['resume_doc'];
+			$file1 = $myTaskConvertOffice->addFile($resume_path);
+			// Execute the task
+			$myTaskConvertOffice->execute();
+			// Download the package files
+			$myTaskConvertOffice->download('uploads/resumepdf/');   
+			// include('vendor/ilovepdf-php-1.1.5/samples/resume.php');
+			// merge the snapshot pdf and resume pdf
+			// and get the task tool
+			$myTask = $ilovepdf->newTask('merge');
+			// file var keeps info about server file id, name...
+			// it can be used latter to cancel a specific file
+			$fileA = $myTask->addFile(dirname(__FILE__).'/uploads/snapshot/'.$snap_file_name.'.pdf');
+			$fileB = $myTask->addFile(dirname(__FILE__).'/uploads/resumepdf/'.$snap_file_name.'.pdf');
+			$myTask->setOutputFilename($snap_file_name.'_{date}');
+			// process files
+			$myTask->execute();
+			// and finally download file. If no path is set, it will be downloaded on current folder
+			$myTask->download('uploads/snapshotmerged/');
 			header('Location: ../resume/?action=modified');
 
 		} 
