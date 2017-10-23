@@ -82,7 +82,7 @@
 									<tr>
 										<td width="120" class="tbl_column">DOB <span class="f_req">*</span></td>
 										<td> 
-										<input name="dob" tabindex="5" value="{$dob_field}"  class="datepick span8" placeholder="" type="text" id="HrEmployeeDob">										
+										<input name="dob_field" tabindex="5" value="{$dob_field}"  class="datepick span8" placeholder="" type="text" id="HrEmployeeDob">										
 										<label for="reg_city" generated="true" class="error">{$dobErr}</label>																					
 										</td>
 									</tr>	

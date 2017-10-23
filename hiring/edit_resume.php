@@ -68,14 +68,15 @@ if(empty($_POST)){
 		$_SESSION['clients_id'] = $row['clients_id'];
 		$_SESSION['position_for'] = $row['position_for'];
 		
-	
-		
-		
 		$smarty->assign('dob_field', $fun->convert_date_display($row['dob']));
 		$total_exp  = $row['total_exp'];
 		$total_exp_yrs = explode(".", $total_exp);
+		
 		if($total_exp == '0'){
 			$smarty->assign('year_of_exp',0);
+			$smarty->assign('month_of_exp',0);
+		}else if(empty($total_exp_yrs[1])){
+			$smarty->assign('year_of_exp',$total_exp_yrs[0]);
 			$smarty->assign('month_of_exp',0);
 		}else{
 			$smarty->assign('year_of_exp',$total_exp_yrs[0]);
@@ -100,19 +101,19 @@ if(empty($_POST)){
 		if(!$result = $mysql->execute_query($query)){ 
 			throw new Exception('Problem in executing get resume education');
 		}
-		$tot = 0;
+		$edu_tot = 0;
 		while($row = $mysql->display_result($result)){
 
 			// post of assign asset fields value
-			$collegeData[$tot] = $row['college'];
-			$qualificationData[$tot] = $row['resume_program_id'];
-			$specializationData[$tot] = $row['resume_spec_id'];
-			$degreeData[$tot] = $row['resume_degree_id'];
-			$gradeData[$tot] = $row['percent_mark'];
-			$grade_typeData[$tot] = $row['course_type'];
-			$year_of_passData[$tot] = $row['year_passing'];
-			$universityData[$tot] = $row['university'];
-			$tot++;
+			$collegeData[$edu_tot] = $row['college'];
+			$qualificationData[$edu_tot] = $row['resume_program_id'];
+			$specializationData[$edu_tot] = $row['resume_spec_id'];
+			$degreeData[$edu_tot] = $row['resume_degree_id'];
+			$gradeData[$edu_tot] = $row['percent_mark'];
+			$grade_typeData[$edu_tot] = $row['course_type'];
+			$year_of_passData[$edu_tot] = $row['year_passing'];
+			$universityData[$edu_tot] = $row['university'];
+			$edu_tot++;
 		}	
 		
 		$smarty->assign('collegeData', $collegeData);
@@ -123,9 +124,9 @@ if(empty($_POST)){
 		$smarty->assign('qualificationData', $qualificationData);
 		$smarty->assign('specializationData', $specializationData);
 		$smarty->assign('degreeData', $degreeData);
-		$smarty->assign('eduCount', $tot);
+		$smarty->assign('eduCount', $edu_tot);
 		
-		$smarty->assign('totCount_edu', $tot);
+		$smarty->assign('totCount_edu', $edu_tot);
 		
 		// free the memory
 		$mysql->clear_result($result);
@@ -168,6 +169,7 @@ if(empty($_POST)){
 		$smarty->assign('month_of_expData', $month_of_expData);
 		$smarty->assign('companyData', $companyData);
 		$smarty->assign('locationData', $locationData);
+		$smarty->assign('vitalData', $vitalData);
 		$smarty->assign('expCount', $tot);
 
 		$smarty->assign('totCount_exp', $tot);
@@ -181,7 +183,7 @@ if(empty($_POST)){
 	}
 }
 
-$edu = $_POST['edu_count'] ? $_POST['edu_count'] : $tot;
+$edu = $_POST['edu_count'] ? $_POST['edu_count'] : $edu_tot;
 // post of education fields value
 for($i = 0; $i < $edu; $i++){
 	$quali[] = $_POST['qualification_'.$i] ? $_POST['qualification_'.$i] : $qualificationData[$i];
@@ -359,7 +361,7 @@ if(!empty($_POST)){
 						'present CTC','expected CTC','present CTC type','expected CTC type',
 						'notice period','gender', 'present location');
    $field = array('first_name' => 'first_nameErr', 'last_name' => 'last_nameErr','email' => 'emailErr',
-    'mobile' => 'mobileErr','dob' => 'dobErr',
+    'mobile' => 'mobileErr','dob_field' => 'dobErr',
     'designation_id' => 'positionErr','year_of_exp' => 'year_of_expErr', 'month_of_exp' => 'month_of_expErr',
     'present_ctc' => 'present_ctcErr','expected_ctc' => 'expected_ctcErr',
 	'present_ctc_type' => 'present_ctc_typeErr','expected_ctc_type' => 'expected_ctc_typeErr',
@@ -399,7 +401,7 @@ if(!empty($_POST)){
 		$query = "CALL edit_res_personal('$getid','".$fun->is_white_space($mysql->real_escape_str($_POST['first_name']))."',
 			'".$fun->is_white_space($mysql->real_escape_str($_POST['last_name']))."',
 			'".$mysql->real_escape_str($_POST['email'])."','".$mysql->real_escape_str($_POST['mobile'])."',
-			'".$fun->is_white_space($mysql->real_escape_str($fun->convert_date($_POST['dob'])))."',
+			'".$fun->is_white_space($mysql->real_escape_str($fun->convert_date($_POST['dob_field'])))."',
 			'".$mysql->real_escape_str($_POST['gender'])."','".$fun->is_white_space($mysql->real_escape_str($_POST['present_ctc']))."',
 			'".$fun->is_white_space($mysql->real_escape_str($_POST['expected_ctc']))."','".$mysql->real_escape_str($_POST['present_ctc_type'])."',
 			'".$mysql->real_escape_str($_POST['expected_ctc_type'])."','".$mysql->real_escape_str($_POST['marital_status'])."',
@@ -616,6 +618,8 @@ if(!empty($_POST)){
 			header('Location: ../resume/?action=modified');
 
 		} 
+	}else{
+		$smarty->assign('tab_open', ($tab1 == 'fail' ? 'tab1' : ($tab2 == 'fail' ? 'tab2' : ($tab3 == 'fail' ? 'tab3' : 'tab4' ))));
 	}
 }
 
