@@ -49,7 +49,7 @@
                     <div class="navbar-inner">
                         <div class="container-fluid">
                             
-							<a class="brand" href="recruiter_dashboard.php">
+							<a class="brand" href="{$smarty.const.webroot}home">
 							 Manage Hiring </a>
                             <ul class="nav user_menu pull-right">
                          

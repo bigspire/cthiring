@@ -27,8 +27,8 @@ include('classes/class.content.php');
 $smarty->assign('dob_default', date('d/m/Y', strtotime('-18 years')));
 
 // role based validation
-// $module_access = $fun->check_role_access('7',$modules);
-// $smarty->assign('module',$module_access);
+$module_access = $fun->check_role_access('7',$modules);
+$smarty->assign('module',$module_access);
 
 $getid = $_GET['id'];
 $smarty->assign('getid',$getid);
