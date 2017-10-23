@@ -412,13 +412,10 @@ if(!empty($_POST)){
 			
 			// for snapshot printing
 			$tot_exp_years = $_POST['year_of_exp_'.$i] == 0 ? '0' : $_POST['year_of_exp_'.$i].'.'.$_POST['month_of_exp_'.$i];
-<<<<<<< HEAD
 
-=======
-			$expStr = $fun->check_exp($tot_exp_years);
 
-			$snap_exp .= $companyData.', '.$desigData.', '.$expStr.'<br>';
->>>>>>> aa2af8c75b9173a852638f953f6b6c276e85f244
+		
+
 			$expStr = $fun->show_exp_details($tot_exp_years);
 			$locationDataCase = ucwords($locationData);
 			// get the designation details
