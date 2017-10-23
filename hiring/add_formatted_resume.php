@@ -23,22 +23,12 @@ include('classes/class.mailer.php');
 // content class
 include('classes/class.content.php');
 
-<<<<<<< HEAD
-// generate auto resume doc file
-// include('vendor/PHPWord-develop/samples/template_process.php');
-// generate the auto resume pdf file
-include('vendor/ilovepdf-php-1.1.5/samples/office.php');
-
-
-
-=======
->>>>>>> f1cf94f1e451666b1c26d60ec60d158732da4a1a
 
 $smarty->assign('dob_default', date('d/m/Y', strtotime('-18 years')));
 
 // role based validation
-// $module_access = $fun->check_role_access('7',$modules);
-// $smarty->assign('module',$module_access);
+$module_access = $fun->check_role_access('7',$modules);
+$smarty->assign('module',$module_access);
 
 $getid = $_GET['id'];
 $smarty->assign('getid',$getid);
@@ -1026,9 +1016,7 @@ if(!empty($_POST)){
 			$template_path = dirname(__FILE__).'/uploads/template/autoresume.docx'; 
 			include('vendor/PHPWord-develop/samples/template_process.php');
 			// generate the auto resume pdf file
-			// convert the resume doc. into pdf
-			/*
-			
+			// convert the resume doc. into pdf			
 			require_once('vendor/ilovepdf-php-1.1.5/init.php');			
 			ini_set('display_errors', '1');
 			// you can call task class directly
@@ -1044,7 +1032,7 @@ if(!empty($_POST)){
 			$myTaskConvertOffice->execute();
 			// Download the package files
 			$myTaskConvertOffice->download('uploads/autoresumepdf/');   
-			*/
+			
 			// once successfully created, redirect the page
 			if($_GET['resume'] != ''){
 				header('Location: ../resume/?action=auto_modified');

@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-07-13 14:56:13
+/* Smarty version 3.1.29, created on 2017-10-23 12:23:55
   from "C:\xampp\htdocs\2017\ctsvn\cthiring\hiring\templates\mailbox.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_59673cb5501831_70126178',
+  'unifunc' => 'content_59ed920343bda7_39756521',
   'file_dependency' => 
   array (
     '00d477005a4f3f1cd4d830fb0002b32dff223f52' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\templates\\mailbox.tpl',
-      1 => 1499937963,
+      1 => 1508741627,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_59673cb5501831_70126178 ($_smarty_tpl) {
+function content_59ed920343bda7_39756521 ($_smarty_tpl) {
 ?>
 
    
@@ -91,11 +91,14 @@ $_smarty_tpl->ext->_updateScope->updateScope($_smarty_tpl, 'hide', 0);?>
 							
 								<label style="margin-left:0;">Keyword: <input type="text" placeholder="Candidate Name or Client Name" name="keyword" id="keyword" value="<?php echo $_smarty_tpl->tpl_vars['keyword']->value;?>
 " class="input-large" aria-controls="dt_gal"></label>
-								<label>From: <input type="text" class="input-small datepick" name="f_date" placeholder="dd/mm/yyyy" value="<?php echo $_smarty_tpl->tpl_vars['f_date']->value;?>
+								
+								<span id="sandbox-container">
+						<span  class="input-daterange" id="datepicker">	
+						<label>From: <input type="text" class="input-small datepick" name="f_date" placeholder="dd/mm/yyyy" style="width:70px;"  value="<?php echo $_smarty_tpl->tpl_vars['f_date']->value;?>
 " aria-controls="dt_gal"></label>
-						
-								<label>Till: <input type="text" name="t_date" value="<?php echo $_smarty_tpl->tpl_vars['t_date']->value;?>
-" placeholder="dd/mm/yyyy" class="input-small datepick" aria-controls="dt_gal"></label>
+						<label>Till: <input type="text" name="t_date" placeholder="dd/mm/yyyy" value="<?php echo $_smarty_tpl->tpl_vars['t_date']->value;?>
+" style="width:70px;"  class="input-small datepick" aria-controls="dt_gal"></label>						
+						</span></span>
 						
 								<label style="margin-top:18px;"><input type="submit" value="Submit" class="btn btn-gebo" /></label>					
 							<label style="margin-top:18px;"><a href="mailbox.php" class="jsRedirect"><input value="Reset" type="button" class="btn"/></a></label>

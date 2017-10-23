@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-07-24 10:21:57
+/* Smarty version 3.1.29, created on 2017-10-23 12:08:40
   from "C:\xampp\htdocs\2017\ctsvn\cthiring\hiring\templates\approve_billing.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_59757ceda20fc2_47752414',
+  'unifunc' => 'content_59ed8e708fd5d2_84067247',
   'file_dependency' => 
   array (
     '98d35c6c124046cfa0fb325a72f60608728f355f' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\templates\\approve_billing.tpl',
-      1 => 1500545759,
+      1 => 1508740704,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_59757ceda20fc2_47752414 ($_smarty_tpl) {
+function content_59ed8e708fd5d2_84067247 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -105,10 +105,15 @@ $_smarty_tpl->ext->_updateScope->updateScope($_smarty_tpl, 'hide', 0);?>
  dataTables_filter srchBox reset_show" style="float:left;" id="dt_gal_filter">
 						<label style="margin-left:0;">Keyword: <input type="text" placeholder="Candidate Name or Client Name" name="keyword" id ="keyword" value="<?php echo $_smarty_tpl->tpl_vars['keyword']->value;?>
 " class="input-large" aria-controls="dt_gal"></label>	
-						<label>Billing Till: <input type="text" name="t_date" value="<?php echo $_smarty_tpl->tpl_vars['t_date']->value;?>
-" placeholder="dd/mm/yyyy" class="input-small datepick" aria-controls="dt_gal"></label>
-						<label>Billing From: <input type="text" class="input-small datepick" name="f_date" placeholder="dd/mm/yyyy" value="<?php echo $_smarty_tpl->tpl_vars['f_date']->value;?>
+						
+						<span id="sandbox-container">
+						<span  class="input-daterange" id="datepicker">	
+						<label>Billing From: <input type="text" class="input-small datepick" name="f_date" placeholder="dd/mm/yyyy" style="width:70px;"  value="<?php echo $_smarty_tpl->tpl_vars['f_date']->value;?>
 " aria-controls="dt_gal"></label>
+						<label>Billing Till: <input type="text" name="t_date" placeholder="dd/mm/yyyy" value="<?php echo $_smarty_tpl->tpl_vars['t_date']->value;?>
+" style="width:70px;"  class="input-small datepick" aria-controls="dt_gal"></label>						
+						</span></span>
+						
 						<label>Employee: 
 						<select name="employee" class="input-medium" placeholder="" style="clear:left" id="BillingEmpId">
 						<option value="">Select</option>
