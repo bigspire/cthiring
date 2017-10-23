@@ -52,6 +52,11 @@ class FunctionsComponent extends Component {
 		}
 	}
 	
+	/* function to filter the file */
+	public function filter_file($snap_file_name){
+		return str_replace(array('.','_','-','(',')',' '), '', $snap_file_name);
+	}	
+	
 	/* validate email */
 	public function email_validation($email){
 		if(!empty($email) && !filter_var($email, FILTER_VALIDATE_EMAIL)){

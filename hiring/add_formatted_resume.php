@@ -1027,7 +1027,7 @@ if(!empty($_POST)){
 			// Add files to task for upload
 			$file1 = $myTaskConvertOffice->addFile($resume_path);
 			$snap_file_name = substr($_SESSION['resume_doc'], 0, strlen($_SESSION['resume_doc'])-5);
-			$myTaskConvertOffice->setOutputFilename($snap_file_name.'_{date}'.'.pdf');
+			$myTaskConvertOffice->setOutputFilename($fun->filter_file($snap_file_name).'_{date}'.'.pdf');
 			// Execute the task
 			$myTaskConvertOffice->execute();
 			// Download the package files
