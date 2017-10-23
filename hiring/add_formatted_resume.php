@@ -75,12 +75,17 @@ if(empty($_POST)){
 		$smarty->assign('tech_expert', str_replace('"',"'",$row['expert']));
 		$smarty->assign('achievement', str_replace('"',"'",$row['achievements']));
 		$smarty->assign('about_company', str_replace('"',"'",$row['company_details']));
-		$total_exp  = $row['total_exp'];		
+		
+		$total_exp  = $row['total_exp'];
+		$total_exp_yrs = explode(".", $total_exp);
+		
 		if($total_exp == '0'){
 			$smarty->assign('year_of_exp',0);
 			$smarty->assign('month_of_exp',0);
+		}else if(empty($total_exp_yrs[1])){
+			$smarty->assign('year_of_exp',$total_exp_yrs[0]);
+			$smarty->assign('month_of_exp',0);
 		}else{
-			$total_exp_yrs = explode(".", $total_exp);
 			$smarty->assign('year_of_exp',$total_exp_yrs[0]);
 			$smarty->assign('month_of_exp',$total_exp_yrs[1]);
 		}
