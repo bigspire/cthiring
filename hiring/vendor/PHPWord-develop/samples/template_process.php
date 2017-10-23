@@ -119,6 +119,7 @@ $templateProcessor->setValue('CANDIDATE_EMAIL', $_POST['email'],  1,0);
 
 $templateProcessor->cloneRow('EDUYR', $_POST['edu_count']);
 $train_flag = 1;
+$train_flag2 = 1;
 for($i = 0; $i < $_POST['edu_count']; $i++){
 			$collegeData = $_POST['college_'.$i];
 			$specializationData = $_POST['specialization_'.$i];
@@ -143,6 +144,11 @@ for($i = 0; $i < $_POST['edu_count']; $i++){
 				while($row = $mysql->display_result($result)){
 					$deg = $row['degree'];
 					$spc = $row['spec'];
+					
+					$templateProcessor->setValue('DEGREE#'.$train_flag2, $deg,   0, 0);
+					$templateProcessor->setValue('SPEC#'.$train_flag2, $spc,   0, 0);
+					
+					$train_flag2++;
 				}
 				// free the memory
 				$mysql->clear_result($result);
@@ -150,15 +156,12 @@ for($i = 0; $i < $_POST['edu_count']; $i++){
 				$mysql->next_query();
 			}catch(Exception $e){
 				echo 'Caught exception: ',  $e->getMessage(), "\n";
-			}
-			
-		$templateProcessor->setValue('EDUYR#'.$train_flag, $year_of_passData,   0, 0);
-		$templateProcessor->setValue('DEGREE#'.$train_flag, $deg,   0, 0);
-		$templateProcessor->setValue('SPEC#'.$train_flag, $spc,   0, 0);
-		$templateProcessor->setValue('COLLEGE#'.$train_flag, $collegeData,   0, 0);
-		$templateProcessor->setValue('LOCATION#'.$train_flag, $loactionData,   0, 0);
-		$templateProcessor->setValue('MARKS#'.$train_flag, $gradeData.$type.' overall',   0, 0);
-		$train_flag++;
+			}	
+			$templateProcessor->setValue('EDUYR#'.$train_flag, $year_of_passData,   0, 0);
+			$templateProcessor->setValue('COLLEGE#'.$train_flag, $collegeData,   0, 0);
+			$templateProcessor->setValue('LOCATION#'.$train_flag, $loactionData,   0, 0);
+			$templateProcessor->setValue('MARKS#'.$train_flag, $gradeData.$type.' overall',   0, 0);
+			$train_flag++;
 } 
 
 // to retain experience details 

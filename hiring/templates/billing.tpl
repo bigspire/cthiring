@@ -67,9 +67,12 @@
 							<div class="{$hide} dataTables_filter srchBox" style="float:left;" id="dt_gal_filter">
 							
 								<label style="margin-left:0;">Keyword: <input type="text" placeholder="Candidate Name or Client Name" name="keyword" id="keyword" value="{$keyword}" class="input-large" aria-controls="dt_gal"></label>
-								<label>Billing From: <input type="text" class="input-small datepick" name="f_date" placeholder="dd/mm/yyyy" value="{$f_date}" aria-controls="dt_gal"></label>
-						
-								<label>Billing Till: <input type="text" name="t_date" value="{$t_date}" placeholder="dd/mm/yyyy" class="input-small datepick" aria-controls="dt_gal"></label>
+								
+								<span id="sandbox-container">
+						<span  class="input-daterange" id="datepicker">	
+						<label>Billing From: <input type="text" class="input-small datepick" name="f_date" placeholder="dd/mm/yyyy" style="width:70px;"  value="{$f_date}" aria-controls="dt_gal"></label>
+						<label>Billing Till: <input type="text" name="t_date" placeholder="dd/mm/yyyy" value="{$t_date}" style="width:70px;"  class="input-small datepick" aria-controls="dt_gal"></label>						
+						</span></span>
 						
 							<label style="margin-top:18px;"><input type="submit" value="Submit" class="btn btn-gebo" /></label>					
 							<label style="margin-top:18px;"><a href="billing.php" class="jsRedirect"><input value="Reset" type="button" class="btn"/></a></label>

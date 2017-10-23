@@ -620,14 +620,14 @@
 										</td>
 										<td>
 <textarea placeholder="" name="personality" tabindex="1" cols="10" rows="3" class="span8">{if $personality}{$personality}{else}{$smarty.post.personality}{/if}</textarea>
-										<label for="reg_city" generated="true" class="error">{$personalityErr} </label>	
+										<label for="reg_city" generated="true" class="error">{$personalityErr}</label>	
 										</td>	
 									</tr>	
 									<tr class="">
 										<td width="120" class="tbl_column">Interview Availability <span class="f_req">*</span></td>
 										<td>
 <textarea placeholder="" name="interview_availability" tabindex="2" cols="10" rows="3" class="span8">{if $interview_availability}{$interview_availability}{else}{$smarty.post.interview_availability}{/if}</textarea>
-<label for="reg_city" generated="true" class="error">{$interview_availabilityErr} </label>	
+<label for="reg_city" generated="true" class="error">{$interview_availabilityErr}</label>	
 										</td>	
 									</tr>		
 									<tr class="tbl_row">
@@ -658,14 +658,14 @@
 				<td width="120" class="tbl_column">Relevant Exposure <span class="f_req">*</span></td>
 				<td> 
 					<textarea name="relevant_exposure" tabindex="4" cols="10" rows="3" class="span8">{if $relevant_exposure}{$relevant_exposure}{else}{$smarty.post.relevant_exposure}{/if}</textarea>									
-					<label for="reg_city" generated="true" class="error">{$relevant_exposureErr} </label>	
+					<label for="reg_city" generated="true" class="error">{$relevant_exposureErr}</label>	
 					</td>
 			</tr>
 			<tr class="tbl_row">
 				<td width="120" class="tbl_column">Credentials considered for Shortlisting <span class="f_req">*</span></td>
 				<td> 
 					<textarea name="credential_shortlisting" tabindex="4" cols="10" rows="3" class="span8">{if $credential_shortlisting}{$credential_shortlisting}{else}{$smarty.post.credential_shortlisting}{/if}</textarea>									
-					<label for="reg_city" generated="true" class="error">{$credential_shortlistingErr} </label>	
+					<label for="reg_city" generated="true" class="error">{$credential_shortlistingErr}</label>	
 					</td>
 			</tr>
 				

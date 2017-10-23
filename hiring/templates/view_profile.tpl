@@ -78,6 +78,24 @@
 													</div>
 												</div>
 											</div>
+											
+											<div class="control-group formSep">
+												<label for="u_password" class="control-label">L1</label>
+												<div class="controls">
+													<div class="sepH_b">
+														<input type="text"  class="input-xlarge" value="{$profile_data['level1']}" disabled/>
+													</div>
+												</div>
+											</div>
+											
+											<div class="control-group formSep">
+												<label for="u_password" class="control-label">L2</label>
+												<div class="controls">
+													<div class="sepH_b">
+														<input type="text"  class="input-xlarge" value="{$profile_data['level2']}" disabled/>
+													</div>
+												</div>
+											</div>
 										
 											
 											<div class="control-group">

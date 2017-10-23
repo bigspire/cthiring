@@ -1016,9 +1016,7 @@ if(!empty($_POST)){
 			$template_path = dirname(__FILE__).'/uploads/template/autoresume.docx'; 
 			include('vendor/PHPWord-develop/samples/template_process.php');
 			// generate the auto resume pdf file
-			// convert the resume doc. into pdf
-			/*
-			
+			// convert the resume doc. into pdf			
 			require_once('vendor/ilovepdf-php-1.1.5/init.php');			
 			ini_set('display_errors', '1');
 			// you can call task class directly
@@ -1034,7 +1032,7 @@ if(!empty($_POST)){
 			$myTaskConvertOffice->execute();
 			// Download the package files
 			$myTaskConvertOffice->download('uploads/autoresumepdf/');   
-			*/
+			
 			// once successfully created, redirect the page
 			if($_GET['resume'] != ''){
 				header('Location: ../resume/?action=auto_modified');
