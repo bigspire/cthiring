@@ -11,8 +11,7 @@ class FunctionsHelper extends AppHelper {
 	/* function used to format the date */
 	public function format_date($date){ 
 		if(!empty($date) && $date!= '0000-00-00' && $date!= '0000-00-00 00:00:00'){
-			$date =  explode("[-: ]", $date);
-			return date('d-M-Y',mktime($date[3],$date[4],$date[5],$date[1],$date[2],$date[0]));
+			return date('d-M-Y',strtotime($date));
 		}
 	}
 	

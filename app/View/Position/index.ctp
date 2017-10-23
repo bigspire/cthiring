@@ -148,7 +148,7 @@
 									<?php foreach($data as $req):?>
 									<tr>
 										<?php if(!empty($noHead)): $target = "target='_blank'"; endif;?>
-										<td width=""><a <?php echo $target;?> href="<?php echo $this->webroot;?>position/view/<?php echo $req['Position']['id'];?>/"><?php echo ucwords($req['Position']['job_title']);?></a></td>
+										<td width=""><a <?php echo $target;?> href="<?php echo $this->webroot;?>position/view/<?php echo $req['Position']['id'];?>/<?php echo $req[0]['st_id'];?>/"><?php echo ucwords($req['Position']['job_title']);?></a></td>
 										<td width="" ><?php echo $req['Client']['client_name'];?></td>
 										<td   style="text-align:center" width=""><?php echo $req['Position']['no_job'];?></td>
 										
@@ -183,7 +183,7 @@
 	<?php endif; ?>	
 	
 	<?php if($req['Position']['is_approve'] == 'W'):?>
-	<a rel="tooltip"  title="Verify" href="<?php echo $this->webroot;?>position/view/<?php echo $req['Position']['id'];?>/" class="btn  btn-mini"><i class="icon-edit"></i></a>
+	<a rel="tooltip"  title="Verify" href="<?php echo $this->webroot;?>position/view/<?php echo $req['Position']['id'];?>/<?php echo $req[0]['st_id'];?>/" class="btn  btn-mini"><i class="icon-edit"></i></a>
 	<?php endif; ?>		
 	
 	
