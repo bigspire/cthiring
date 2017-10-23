@@ -334,9 +334,6 @@ if(!empty($_POST)){
 			$year_of_passData = $_POST['year_of_pass_'.$i];
 			$universityData = $_POST['university_'.$i];
 
-			
-			// for snapshot printing
-			$snap_edu .= $degreeData.', '.$specializationData.', '.$year_of_passData.', '.$gradeData.', '.$grade_typeData.'<br>';
 
 			// get degree name
 			$query = "call get_degree_id('".$mysql->real_escape_str($degreeData)."')";
@@ -415,9 +412,10 @@ if(!empty($_POST)){
 			
 			// for snapshot printing
 			$tot_exp_years = $_POST['year_of_exp_'.$i] == 0 ? '0' : $_POST['year_of_exp_'.$i].'.'.$_POST['month_of_exp_'.$i];
-			$expStr = $fun->check_exp($tot_exp_years);
 
-			$snap_exp .= $companyData.', '.$desigData.', '.$expStr.'<br>';
+
+		
+
 			$expStr = $fun->show_exp_details($tot_exp_years);
 			$locationDataCase = ucwords($locationData);
 			// get the designation details
