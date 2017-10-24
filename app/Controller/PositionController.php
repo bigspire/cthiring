@@ -478,12 +478,15 @@ class PositionController extends AppController {
 		$split_req = explode(',', $req_no);
 		foreach($split_req as $req){ 
 			$new_split_req = explode('-', $req);
+			$this->request->data['Position']['no_job'] += $new_split_req[1];
 			if($new_split_req[0] != ''){
 				$this->ReqTeam->create();
 				$data = array('created_by' => $this->Session->read('USER.Login.id'),'requirements_id' => $id, 'users_id' => $new_split_req[0], 'no_req' => $new_split_req[1]);
 				$this->ReqTeam->save($data, true, $fieldList = array('requirements_id','created_by','users_id','no_req'));
 			}
 		}
+		$this->Position->id = $id;
+		$this->Position->saveField('no_job',$this->request->data['Position']['no_job']);
 	}
 	
 	
@@ -812,7 +815,7 @@ class PositionController extends AppController {
 							}
 							
 						}			
-						$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Position '.$st_msg.' successfully', 'default', array('class' => 'alert alert-success'));
+						
 					}else{
 						$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert-error">&times;</button>Problem in updating the status', 'default', array('class' => 'alert alert-error'));		
 					}

@@ -193,13 +193,15 @@
 										<ul class="dropdown-menu filter">
 											<li class="active"><a href="javascript:void(0)" id="filter-none2">All</a></li>
 											
-											<li><a href="javascript:void(0)" id="filter-1">Validation - Recruiter - Pending</a></li>
-											<li><a href="javascript:void(0)" id="filter-2">Validation - Account Holder - Pending</a></li>
-											<li><a href="javascript:void(0)" id="filter-3">Validation - Account Holder - Rejected</a></li>
-											<li><a href="javascript:void(0)" id="filter-4">Shortlist - CV-Sent</a></li>
-											<li><a href="javascript:void(0)" id="filter-5">Shortlist - Shortlisted</a></li>
-											<li><a href="javascript:void(0)" id="filter-6">Shortlist - YRF</a></li>
-											<li><a href="javascript:void(0)" id="filter-7">Shortlist - Rejected</a></li>
+											<li><a href="javascript:void(0)" id="filter-1">AH Pending</a></li>
+											<li><a href="javascript:void(0)" id="filter-2">AH Rejected</a></li>
+											<li><a href="javascript:void(0)" id="filter-3">AH Validated</a></li>
+											<li><a href="javascript:void(0)" id="filter-4">CV Sent</a></li>
+											<li><a href="javascript:void(0)" id="filter-5">CV Shortlisted</a></li>
+											<li><a href="javascript:void(0)" id="filter-6">CV Rejected</a></li>
+											<li><a href="javascript:void(0)" id="filter-7">CV On Hold</a></li>
+											
+											
 										</ul>
 									</li>
 								</ul>
@@ -209,9 +211,9 @@
 							<?php foreach($resume_data as $data):?>
 								<li>
 <span class="s_color sl_date2" style="font-size:12px;color:#b2abab;"><?php echo date('d,M', strtotime($data['ReqResume']['modified_date']));?>, </span>
-<span class="label label-<?php echo $this->Functions->get_res_status_color($data['ReqResume']['status_title']);?> pull-right sl_status2"><?php echo $data['ReqResume']['stage_title'];?> - <?php echo $data['ReqResume']['status_title'];?></span>
+<span class="label label-<?php echo $this->Functions->get_res_status_color($data['ReqResume']['status_title']);?> pull-right sl_status2"><?php echo $this->Functions->get_status_crisp($data['ReqResume']['stage_title'], $data['ReqResume']['status_title']);?></span>
 <a target="_blank" href="<?php echo $this->webroot;?>resume/view/<?php echo $data['Resume']['id'];?>" class="sl_name2"><?php echo $data[0]['full_name'];?></a><br />
-<small class="s_color sl_email2"><?php echo $data['Resume']['email_id'];?></small>
+<small class="s_color sl_email2"> <?php echo $data['Resume']['email_id'];?> <i class="splashy-bullet_blue_small"></i> <?php echo $data['Resume']['mobile'];?></small>
 
 							</li>							
 							<?php endforeach; ?>
@@ -241,15 +243,10 @@
 										<a class="dropdown-toggle" data-toggle="dropdown" href="#">Show <b class="caret"></b></a>
 										<ul class="dropdown-menu filter">
 											<li class="active"><a href="javascript:void(0)" id="filter-none">All</a></li>				
-											<li><a href="javascript:void(0)" id="filter-8">Pending	</a></li>
-											<li><a href="javascript:void(0)" id="filter-9">Scheduled</a></li>
-											<li><a href="javascript:void(0)" id="filter-16">Re-Scheduled</a></li>
-											<li><a href="javascript:void(0)" id="filter-10">Selected	</a></li>
-											<li><a href="javascript:void(0)" id="filter-11">Rejected	</a></li>
-											<li><a href="javascript:void(0)" id="filter-12">YRF	</a></li>
-											<li><a href="javascript:void(0)" id="filter-13">Cancelled	</a></li>
-											<li><a href="javascript:void(0)" id="filter-14">No Show	</a></li>
-											<li><a href="javascript:void(0)" id="filter-15">OnHold	</a></li>
+											<li><a href="javascript:void(0)" id="filter-11">Interview Scheduled</a></li>
+											<li><a href="javascript:void(0)" id="filter-12">Interview Selected</a></li>
+											<li><a href="javascript:void(0)" id="filter-13">Interview Rejected</a></li>
+											<li><a href="javascript:void(0)" id="filter-14">Interview Re-Scheduled</a></li>
 										</ul>
 									</li>
 								</ul>
@@ -259,9 +256,9 @@
 								<li>
 <span class="s_color sl_date" style="font-size:12px;color:#b2abab;"><?php echo date('d,M', strtotime($data['ReqResume']['modified_date']));?>, </span>
 									<span class="label label-<?php echo $this->Functions->get_int_status_color($data['ReqResume']['status_title']);?> pull-right">
-									<?php echo $data['ReqResume']['stage_title'];?> - <span class="sl_status"><?php echo $data['ReqResume']['status_title'];?></span></span>
+									<span class="sl_status"><?php echo $this->Functions->get_status_crisp($data['ReqResume']['stage_title'], $data['ReqResume']['status_title']);?></span></span>
 									<a target="_blank" href="<?php echo $this->webroot;?>resume/view/<?php echo $data['Resume']['id'];?>" class="sl_name"><?php echo $data[0]['full_name'];?></a><br />
-									<small class="s_color sl_email"><?php echo $data['Resume']['email_id'];?></small>
+									<small class="s_color sl_email"><?php echo $data['Resume']['email_id'];?> <i class="splashy-bullet_blue_small"></i> <?php echo $data['Resume']['mobile'];?></small>
 								</li>
 								
 								<?php endforeach; ?>
@@ -368,13 +365,10 @@
 										<ul class="dropdown-menu filter">									
 										
 											<li class="active"><a href="javascript:void(0)" id="filter-none3">All</a></li>
-											<li><a href="javascript:void(0)" id="filter-17">Not Interested</a></li>
-											<li><a href="javascript:void(0)" id="filter-18">Offer Accepted</a></li>
-											<li><a href="javascript:void(0)" id="filter-19">Offer Made</a></li>
-											<li><a href="javascript:void(0)" id="filter-20">Offer Pending</a></li>
-											<li><a href="javascript:void(0)" id="filter-21">Quit</a></li>
-											<li><a href="javascript:void(0)" id="filter-22">Rejected</a></li>
-											<li><a href="javascript:void(0)" id="filter-23">Yet to Join</a></li>
+											<li><a href="javascript:void(0)" id="filter-21">Offer Pending</a></li>
+											<li><a href="javascript:void(0)" id="filter-22">Offer Accepted</a></li>
+											<li><a href="javascript:void(0)" id="filter-23">Offer Rejected</a></li>
+											
 										</ul>
 									</li>
 								</ul>
@@ -385,9 +379,9 @@
 								<li>
 								<span class="s_color sl_date3" style="font-size:12px;color:#b2abab;"><?php echo date('d,M', strtotime($data['ReqResume']['modified_date']));?>, </span>
 									<span class="label label-<?php echo $this->Functions->get_offer_status_color($data['ReqResume']['status_title']);?> pull-right">
-									<?php echo $data['ReqResume']['stage_title'];?> - <span class="sl_status3"><?php echo $data['ReqResume']['status_title'];?></span></span>
+									<span class="sl_status3"><?php echo $this->Functions->get_status_crisp($data['ReqResume']['stage_title'], $data['ReqResume']['status_title']);?></span></span>
 									<a target="_blank"  href="<?php echo $this->webroot;?>resume/view/<?php echo $data['Resume']['id'];?>" class="sl_name3"><?php echo $data[0]['full_name'];?></a><br />
-									<small class="s_color sl_email3"><?php echo $data['Resume']['email_id'];?></small>
+									<small class="s_color sl_email3"><?php echo $data['Resume']['email_id'];?> <i class="splashy-bullet_blue_small"></i> <?php echo $data['Resume']['mobile'];?></small>
 								</li>							
 							<?php endforeach; ?>
 							
@@ -416,8 +410,8 @@
 										<a class="dropdown-toggle" data-toggle="dropdown" href="#">Show <b class="caret"></b></a>
 										<ul class="dropdown-menu filter">
 											<li class="active"><a href="javascript:void(0)" id="filter-none4">All</a></li>
-											<li><a href="javascript:void(0)" id="filter-24">Joined	</a></li>
-											<li><a href="javascript:void(0)" id="filter-25">Quit	</a></li>
+											<li><a href="javascript:void(0)" id="filter-24">Joined</a></li>
+											<li><a href="javascript:void(0)" id="filter-25">Not Joined</a></li>
 										</ul>
 									</li>
 								</ul>
@@ -427,9 +421,9 @@
 								<li>
 							<span class="s_color sl_date4" style="font-size:12px;color:#b2abab;"><?php echo date('d,M', strtotime($data['ReqResume']['modified_date']));?>, </span>
 									<span class="label label-<?php echo $this->Functions->get_join_status_color($data['ReqResume']['status_title']);?> pull-right">
-									<?php echo $data['ReqResume']['stage_title'];?> - <span class="sl_status4"><?php echo $data['ReqResume']['status_title'];?></span></span>
+									 <span class="sl_status4"><?php echo $this->Functions->get_status_crisp($data['ReqResume']['stage_title'], $data['ReqResume']['status_title']);?></span></span>
 									<a target="_blank" href="<?php echo $this->webroot;?>resume/view/<?php echo $data['Resume']['id'];?>" class="sl_name4"><?php echo $data[0]['full_name'];?></a><br />
-									<small class="s_color sl_email4"><?php echo $data['Resume']['email_id'];?></small>
+									<small class="s_color sl_email4"><?php echo $data['Resume']['email_id'];?> <i class="splashy-bullet_blue_small"></i> <?php echo $data['Resume']['mobile'];?></small>
 								</li>							
 							<?php endforeach; ?>
 								

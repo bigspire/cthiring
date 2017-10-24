@@ -262,8 +262,8 @@
 					
 	<div class="form-actions">
 		<?php if($client_data['Client']['is_approve'] == 'W'):?>
-<a class="iframeBox unreadLink" rel="tooltip" title="Approve Client" href="<?php echo $this->webroot;?>client/remark/approve/<?php echo $client_data['Client']['id'];?>" val="40_50"><input type="button" value="Approve" class="btn btn btn-success"/></a>
-<a class="iframeBox unreadLink" rel="tooltip" title="Reject Client" href="<?php echo $this->webroot;?>client/remark/reject/<?php echo $client_data['Client']['id'];?>" val="40_50"><input type="button" value="Reject" class="btn btn btn-danger"/></a>
+<a class="iframeBox unreadLink" rel="tooltip" title="Approve Client" href="<?php echo $this->webroot;?>client/remark/<?php echo $client_data['Client']['id'];?>/<?php echo $this->request->params['pass'][1];?>/<?php echo $client_data['Client']['created_by'];?>/A/" val="40_50"><input type="button" value="Approve" class="btn btn btn-success"/></a>
+<a class="iframeBox unreadLink" rel="tooltip" title="Reject Client" href="<?php echo $this->webroot;?>client/remark/<?php echo $client_data['Client']['id'];?>/<?php echo $this->request->params['pass'][1];?>/<?php echo $client_data['Client']['created_by'];?>/R/" val="40_50"><input type="button" value="Reject" class="btn btn btn-danger"/></a>
 <a href="<?php echo $this->webroot;?>client/index/pending/" rel="tooltip" title="Cancel and Back to Clients"  class="jsRedirect"><button class="btn">Cancel</button></a>
 	<?php endif; ?>
 	
