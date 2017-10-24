@@ -262,8 +262,9 @@ class Position extends AppModel {
 	
 	
 	/* function to validate the team members */
-	public function validate_team(){ 
-		if($this->data['Position']['team_id'] != ''){
+	public function validate_team(){
+		$team = str_replace(',','',$this->data['Position']['team_id']);
+		if(trim($this->data['Position']['team_id']) != ''){
 			return true;
 		}else{
 			return false;
@@ -341,8 +342,8 @@ class Position extends AppModel {
 	
 	
 	/* function to get the team members */
-	public function get_team($id){
-		return $this->get_team_mem($id);
+	public function get_team($id, $show){
+		return $this->get_team_mem($id, $show);
 	}
 	
 	

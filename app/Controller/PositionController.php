@@ -43,7 +43,7 @@ class PositionController extends AppController {
 		$this->set('stList', array('10' => 'Assigned', '1' => 'In-Process', '2' => 'On-Hold', '3' => 'Closed', '4' => 'Terminated'));			
 		$fields = array('id','job_title','location','no_job','min_exp','max_exp','ctc_from','ctc_to','ReqStatus.title','req_status_id',
 		'Client.client_name','team_member', 'Creator.first_name','created_date','modified_date', 'count(distinct ReqResume.id) cv_sent',
-		'group_concat(ReqResume.status_title) joined','count(distinct Read.id) read_count', "group_concat(distinct ResOwner.first_name
+		'group_concat(ReqResume.status_title) joined','count(distinct Read.id) read_count', "group_concat(distinct TeamMember.first_name
 		SEPARATOR ', ') team_member", 'Position.created_by','Position.is_approve','Position.status', "max(PositionStatus.id) st_id");
 				
 		$options = array(			
@@ -74,6 +74,12 @@ class PositionController extends AppController {
 					'alias' => 'ReqTeam',					
 					'type' => 'LEFT',
 					'conditions' => array('`ReqTeam`.`requirements_id` = `Position`.`id`')
+			)
+			,
+			array('table' => 'users',
+					'alias' => 'TeamMember',					
+					'type' => 'LEFT',
+					'conditions' => array('`ReqTeam`.`users_id` = `TeamMember`.`id`')
 			),
 			array('table' => 'req_approval_status',
 					'alias' => 'PositionStatus',					
@@ -91,35 +97,44 @@ class PositionController extends AppController {
 						 array($this->Functions->format_date_save($start), $this->Functions->format_date_save($end_search))));
 		}
 		
-		// for director and BH
-		if($this->Session->read('USER.Login.roles_id') == '33' || $this->Session->read('USER.Login.roles_id') == '35'
+		// for director and BH		
+		if($this->Session->read('USER.Login.roles_id') == '33' || $this->Session->read('USER.Login.roles_id') == '38'
 		|| $this->Session->read('USER.Login.roles_id') == '39'){
 			$show = 'all';
-			$team_cond = false;
+			// $team_cond = false;
 		}else{
-			$team_cond = true;
+			$show = '1';
+			// $team_cond = true;
 		}
+		
+		$team_cond = true;
 		
 		// get the team members
 		$result = $this->Position->get_team($this->Session->read('USER.Login.id'),$show);
+		$data[] =  $this->Session->read('USER.Login.id');
+
 		if(!empty($result)){
 			$this->set('approveUser', '1');
 			// for drop down listing
 			$format_list = $this->Functions->format_dropdown($result, 'u','id','first_name', 'last_name');
 			$this->set('empList', $format_list);
-			$data[] =  $this->Session->read('USER.Login.id');
 			foreach($result as $rec){
 				$data[] =  $rec['u']['id'];
-			}
-			if($team_cond){
+			}			
+		}
+		
+		if($team_cond){
 				$teamCond = array('OR' => array(
 					'ReqResume.created_by' =>  $data,
 					'ReqTeam.users_id' => $data,
-					'AH.users_id' => $data					
-					)
-				);
-			}
+					'AH.users_id' => $data,
+					'Position.created_by' => $data						
+				)
+			);
 		}
+		
+		/*
+		
 		// check role based access
 		if($this->Session->read('USER.Login.roles_id') == '34'){ // account holder
 			$empCond = array('AH.users_id' => $this->Session->read('USER.Login.id'));
@@ -136,8 +151,8 @@ class PositionController extends AppController {
 			$team_cond = '';
 		}
 		
+		*/
 	
-		
 		// set keyword condition
 		if($this->params->query['keyword'] != ''){
 			$keyCond = array("MATCH (Client.client_name,job_title,Creator.first_name) AGAINST ('".$this->Functions->format_search_keyword($this->params->query['keyword'])."' IN BOOLEAN MODE)"); 
@@ -517,11 +532,17 @@ class PositionController extends AppController {
 	/* function to get the team members list */
 	public function get_team_member_list($id){
 		$this->loadModel('ReqTeam');
-		$team_member = $this->ReqTeam->find('all', array('fields' => array('users_id'), 'conditions' => array('requirements_id' => $id)));
+		$team_member = $this->ReqTeam->find('all', array('fields' => array('users_id','no_req'), 'conditions' => array('requirements_id' => $id)));
 		foreach($team_member as $record){
 			$users[] = $record['ReqTeam']['users_id'];
+			$no_pos[] = $record['ReqTeam']['no_req'];
 		}
 		$this->set('usersSel', $users);
+		$this->set('noPositions', $no_pos);
+		// get team member info
+		$data = $this->Position->Creator->find('all', array('fields' => array('Creator.first_name','Creator.last_name','Creator.id'),
+		'conditions' => array('Creator.id' => $users)));
+		$this->set('teamData', $data);
 	}
 	
 	/* function to load the contacts */

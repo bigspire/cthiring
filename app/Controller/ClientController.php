@@ -64,13 +64,17 @@ class ClientController extends AppController {
 		}
 		
 		// for director and BH
+		/
 		if($this->Session->read('USER.Login.roles_id') == '33' || $this->Session->read('USER.Login.roles_id') == '38'
 		|| $this->Session->read('USER.Login.roles_id') == '39'){
 			$show = 'all';
-			$team_cond = false;
+			// $team_cond = false;
 		}else{
-			$team_cond = true;
+			$show = '1';
+			// $team_cond = true;
 		}
+		
+		$team_cond = true;
 		
 		// get the team members
 		$result = $this->Client->get_team($this->Session->read('USER.Login.id'),$show);

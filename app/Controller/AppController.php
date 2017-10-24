@@ -95,7 +95,7 @@ class AppController extends Controller {
 		$options = array(		
 			array('table' => 'client_status',
 					'alias' => 'ClientStatus',					
-					'type' => 'LEFT',
+					'type' => 'INNER',
 					'conditions' => array('`ClientStatus`.`clients_id` = `Client`.`id`',
 					'ClientStatus.users_id' => $this->Session->read('USER.Login.id'))
 			)
@@ -110,7 +110,7 @@ class AppController extends Controller {
 		$options = array(		
 			array('table' => 'req_approval_status',
 					'alias' => 'PositionStatus',					
-					'type' => 'LEFT',
+					'type' => 'INNER',
 					'conditions' => array('`PositionStatus`.`requirements_id` = `Position`.`id`',
 					'PositionStatus.users_id' => $this->Session->read('USER.Login.id'))
 			)

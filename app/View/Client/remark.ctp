@@ -26,7 +26,7 @@
 	
 			<h4>
 			
-		<?php if($this->request->params['pass'][0] == 'approve'):?>
+			<?php if($this->request->params['pass'][3] == 'A'):?>
 			Approve Client
 			<?php else:?>
 			Reject Client
@@ -42,7 +42,7 @@
 				<tbody> 
 				<tr class="tbl_row" >
 					<td width="120" class="tbl_column">Remarks
-					<?php if($this->request->params['pass']['0'] == 'reject'):?>
+				<?php if($this->request->params['pass'][3] == 'R'):?>
 					<span class="f_req">*</span>
 					<?php endif; ?>
 					
@@ -60,7 +60,7 @@
 					<a class="jsRedirect toggleSearch"  href="javascript:window.close()">
 					<input type="button" value="Cancel" id="cancel" class="btn cancel"/></a>
 					<input type="hidden" id="success_page" value="<?php echo $this->webroot;?>client/index/pending/"/>
-					<input type="hidden" id="action" value="<?php echo $this->request->params['pass'][1];?>"/>
+					<input type="hidden" id="action" value="<?php echo $this->request->params['pass'][3];?>"/>
 			</div>
 		</div>
 	</div>
