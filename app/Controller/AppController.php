@@ -92,14 +92,30 @@ class AppController extends Controller {
 	/* get unread count for the approve client */
 	public function get_approve_client_count(){
 		$this->loadModel('Client');
-		$count = $this->Client->find('count', array('conditions' => array('Client.status' => '2','Client.is_approve' => 'W'),	'group' => array('Client.id')));
+		$options = array(		
+			array('table' => 'client_status',
+					'alias' => 'ClientStatus',					
+					'type' => 'LEFT',
+					'conditions' => array('`ClientStatus`.`clients_id` = `Client`.`id`',
+					'ClientStatus.users_id' => $this->Session->read('USER.Login.id'))
+			)
+		);
+		$count = $this->Client->find('count', array('conditions' => array('Client.status' => '2','Client.is_approve' => 'W'),	'group' => array('Client.id'), 'joins' => $options));
 		$this->set('APPR_CLIENT_COUNT', $count);
 	}	
 
 	/* get unread count for the approve client */
 	public function get_approve_req_count(){
 		$this->loadModel('Position');
-		$count = $this->Position->find('count', array('conditions' => array('Position.status' => 'I','Position.is_approve' => 'W'),	'group' => array('Position.id')));
+		$options = array(		
+			array('table' => 'req_approval_status',
+					'alias' => 'PositionStatus',					
+					'type' => 'LEFT',
+					'conditions' => array('`PositionStatus`.`requirements_id` = `Position`.`id`',
+					'PositionStatus.users_id' => $this->Session->read('USER.Login.id'))
+			)
+		);
+		$count = $this->Position->find('count', array('conditions' => array('Position.status' => 'I','Position.is_approve' => 'W'),	'group' => array('Position.id'), 'joins' => $options));
 		$this->set('APPR_REQ_COUNT', $count);
 	}		
 	
