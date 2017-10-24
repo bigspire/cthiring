@@ -478,6 +478,7 @@ if(!empty($_POST)){
 			// Add files to task for upload
 			$resume_path = dirname(__FILE__).'/uploads/resume/'.$_SESSION['resume_doc'];
 			$file1 = $myTaskConvertOffice->addFile($resume_path);
+			$myTaskConvertOffice->setOutputFilename($snap_file_name);
 			// Execute the task
 			$myTaskConvertOffice->execute();
 			// Download the package files

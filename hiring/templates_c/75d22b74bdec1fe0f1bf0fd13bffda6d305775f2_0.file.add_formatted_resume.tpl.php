@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-10-08 16:47:18
+/* Smarty version 3.1.29, created on 2017-10-23 18:04:55
   from "C:\xampp\htdocs\ctsvn\cthiring\hiring\templates\add_formatted_resume.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_59da093e14ad40_90526786',
+  'unifunc' => 'content_59ede1ef308c37_71393569',
   'file_dependency' => 
   array (
     '75d22b74bdec1fe0f1bf0fd13bffda6d305775f2' => 
     array (
       0 => 'C:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\templates\\add_formatted_resume.tpl',
-      1 => 1506001266,
+      1 => 1508754772,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_59da093e14ad40_90526786 ($_smarty_tpl) {
+function content_59ede1ef308c37_71393569 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -743,7 +743,7 @@ echo $_smarty_tpl->tpl_vars['personality']->value;
 echo $_POST['personality'];
 }?></textarea>
 										<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['personalityErr']->value;?>
- </label>	
+</label>	
 										</td>	
 									</tr>	
 									<tr class="">
@@ -755,7 +755,7 @@ echo $_smarty_tpl->tpl_vars['interview_availability']->value;
 echo $_POST['interview_availability'];
 }?></textarea>
 <label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['interview_availabilityErr']->value;?>
- </label>	
+</label>	
 										</td>	
 									</tr>		
 									<tr class="tbl_row">
@@ -803,7 +803,7 @@ echo $_smarty_tpl->tpl_vars['relevant_exposure']->value;
 echo $_POST['relevant_exposure'];
 }?></textarea>									
 					<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['relevant_exposureErr']->value;?>
- </label>	
+</label>	
 					</td>
 			</tr>
 			<tr class="tbl_row">
@@ -815,7 +815,7 @@ echo $_smarty_tpl->tpl_vars['credential_shortlisting']->value;
 echo $_POST['credential_shortlisting'];
 }?></textarea>									
 					<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['credential_shortlistingErr']->value;?>
- </label>	
+</label>	
 					</td>
 			</tr>
 				

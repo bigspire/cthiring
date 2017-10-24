@@ -463,9 +463,9 @@ class ResumeController extends AppController {
 		 $snap_exp = substr($snap_file, 0, strlen($snap_file) - 5);
 		 $pdf_date = date('d-m-Y', $updated);
 		 if($action == 'view'){
-			$this->redirect('/resume/view_resume_pdf/'.$snap_exp.'_'.$pdf_date.'.pdf');		
+			$this->redirect('/resume/view_resume_pdf/'.$this->Functions->filter_file($snap_exp).'_'.$pdf_date.'.pdf');		
 		 }else{ 
-			$this->download_file('../../hiring/uploads/snapshotmerged/'.$snap_exp.'_'.$pdf_date.'.pdf');
+			$this->download_file('../../hiring/uploads/snapshotmerged/'.$this->Functions->filter_file($snap_exp).'_'.$pdf_date.'.pdf');
 		 }
 		 die;		
 			// $id = '144515';
@@ -555,8 +555,25 @@ class ResumeController extends AppController {
 		 die;
 	}
 	
-	/* function to export the profile snap shot */
-	public function autoresume($id){
+	
+	/* function to view the auto pdf */
+	public function view_auto_pdf($file){
+		$this->layout = false;
+		$this->set('filePath', '../../hiring/uploads/autoresumepdf/'.$file);
+	}
+	
+	/* function to download the autoresume */
+	public function autoresume($file, $updated, $action){ 
+		 $snap_exp = substr($file, 0, strlen($file) - 5);
+		 $pdf_date = date('d-m-Y', $updated);
+		 if($action == 'view'){
+			$this->redirect('/resume/view_auto_pdf/'.$this->Functions->filter_file($snap_exp).'_'.$pdf_date.'.pdf');		
+		 }else{ 
+			$this->download_file('../../hiring/uploads/autoresumepdf/'.$this->Functions->filter_file($snap_exp).'_'.$pdf_date.'.pdf');
+		 }
+		 die;	
+	/*
+	
 			// create the pdf
 			if(!empty($id)){											
 				// convert to PDF
@@ -650,6 +667,8 @@ class ResumeController extends AppController {
 					exit;
 				}
 			}
+			
+			*/
 	}
 	
 	// check the role permissions
