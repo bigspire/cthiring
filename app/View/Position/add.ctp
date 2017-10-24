@@ -24,7 +24,7 @@
 			
 	<?php echo $this->Form->create('Position', array('id' => '', 'class' => 'formID', 'enctype' => 'multipart/form-data')); ?>
 			
-							<?php echo $this->Session->flash();?>
+	<?php echo $this->Session->flash();?>
 
 			
 	<div class="box">

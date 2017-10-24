@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-10-22 13:09:30
+/* Smarty version 3.1.29, created on 2017-10-24 13:19:45
   from "C:\xampp\htdocs\ctsvn\cthiring\hiring\templates\view_profile.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_59ec4b32b6a415_76445897',
+  'unifunc' => 'content_59eef0990515c5_45879008',
   'file_dependency' => 
   array (
     '8a53f1b2a57495f5cfb2e4f041e9d88ebab902e6' => 
     array (
       0 => 'C:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\templates\\view_profile.tpl',
-      1 => 1500741076,
+      1 => 1508754772,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_59ec4b32b6a415_76445897 ($_smarty_tpl) {
+function content_59eef0990515c5_45879008 ($_smarty_tpl) {
 ?>
 
    
@@ -106,6 +106,26 @@ home"><i class="icon-home"></i></a>
 												<div class="controls">
 													<div class="sepH_b">
 														<input type="text"  class="input-xlarge" value="<?php echo $_smarty_tpl->tpl_vars['profile_data']->value['position'];?>
+" disabled/>
+													</div>
+												</div>
+											</div>
+											
+											<div class="control-group formSep">
+												<label for="u_password" class="control-label">L1</label>
+												<div class="controls">
+													<div class="sepH_b">
+														<input type="text"  class="input-xlarge" value="<?php echo $_smarty_tpl->tpl_vars['profile_data']->value['level1'];?>
+" disabled/>
+													</div>
+												</div>
+											</div>
+											
+											<div class="control-group formSep">
+												<label for="u_password" class="control-label">L2</label>
+												<div class="controls">
+													<div class="sepH_b">
+														<input type="text"  class="input-xlarge" value="<?php echo $_smarty_tpl->tpl_vars['profile_data']->value['level2'];?>
 " disabled/>
 													</div>
 												</div>

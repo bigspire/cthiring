@@ -137,7 +137,7 @@ class AppController extends Controller {
 		$permissions = $this->Permission->find('all', array('fields' => array('modules_id'), 'conditions' => array('roles_id' => $this->Session->read('USER.Login.roles_id'))));	
 		//echo "<pre>"; print_r($module_list);
 		$modules = $this->Permission->Module->find('all', array('fields' => array('id'), 'conditions' => array('status' => 'A'), 'order' => array('module_name' => 'asc')));
-		//echo '<pre>'; print_r($permissions);
+		
 		foreach($permissions as $per){
 			$format_per[] = $per['Permission']['modules_id'];
 		}
@@ -149,6 +149,7 @@ class AppController extends Controller {
 				$this->redirect('/home/');	
 			}
 		}
+	
 		// check the all module exists in the list
 		foreach($modules as $key => $module){
 			// check the user module exists in the database module list
