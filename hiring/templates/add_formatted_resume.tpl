@@ -614,20 +614,57 @@
 <div class="tab-pane" id="box_Consultant">
 <div class="span6">
 			<table class="table table-bordered dataTable" style="margin-bottom:0;">
-						<tbody>						
+						<tbody>		
+									<tr class="tbl_row">
+									<td width="120" class="tbl_column">Candidates Outlook on Company   </td>
+									<td> 
+										<textarea name="about_company" tabindex="4" cols="10" rows="3" class="span8 wysiwyg1">{if $about_company}{$about_company}{else}{$smarty.post.about_company}{/if}</textarea>									
+									</td>
+									</tr>
+			
 									<tr class="tbl_row">
 										<td width="120" class="tbl_column">Candidates Personality <span class="f_req">*</span>
 										</td>
 										<td>
-<textarea placeholder="" name="personality" tabindex="1" cols="10" rows="3" class="span8">{if $personality}{$personality}{else}{$smarty.post.personality}{/if}</textarea>
+											<textarea placeholder="" name="personality" tabindex="1" cols="10" rows="3" class="span8">{if $personality}{$personality}{else}{$smarty.post.personality}{/if}</textarea>
 										<label for="reg_city" generated="true" class="error">{$personalityErr}</label>	
 										</td>	
-									</tr>	
-									<tr class="">
+									</tr>
+									<tr class="tbl_row">
+									<td width="120" class="tbl_column">Relevant Exposure <span class="f_req">*</span></td>
+									<td> 
+									<textarea name="relevant_exposure" tabindex="4" cols="10" rows="3" class="span8">{if $relevant_exposure}{$relevant_exposure}{else}{$smarty.post.relevant_exposure}{/if}</textarea>									
+									<label for="reg_city" generated="true" class="error">{$relevant_exposureErr}</label>	
+									</td>
+									</tr>
+									
+									<tr class="tbl_row">
+				<td width="120" class="tbl_column">Credentials considered for Shortlisting <span class="f_req">*</span></td>
+				<td> 
+					<textarea name="credential_shortlisting" tabindex="4" cols="10" rows="3" class="span8">{if $credential_shortlisting}{$credential_shortlisting}{else}{$smarty.post.credential_shortlisting}{/if}</textarea>									
+					<label for="reg_city" generated="true" class="error">{$credential_shortlistingErr}</label>	
+					</td>
+			</tr>
+			<tr class="">
+									<td width="120" class="tbl_column">Any other vital inputs for the interview  </td>
+									<td> 
+										<textarea name="vital_info_interview" tabindex="4" cols="10" rows="3" class="span8">{if $vital_info_interview}{$vital_info_interview}{else}{$smarty.post.vital_info_interview}{/if}</textarea>									
+									</td>
+									</tr>
+			
+									
+									</tbody>
+			</table>
+</div>
+<div class="span6">	
+	<table class="table table-bordered dataTable" style="margin-bottom:0;">
+		<tbody>	
+			
+			<tr class="">
 										<td width="120" class="tbl_column">Interview Availability <span class="f_req">*</span></td>
 										<td>
-<textarea placeholder="" name="interview_availability" tabindex="2" cols="10" rows="3" class="span8">{if $interview_availability}{$interview_availability}{else}{$smarty.post.interview_availability}{/if}</textarea>
-<label for="reg_city" generated="true" class="error">{$interview_availabilityErr}</label>	
+											<textarea placeholder="" name="interview_availability" tabindex="2" cols="10" rows="3" class="span8">{if $interview_availability}{$interview_availability}{else}{$smarty.post.interview_availability}{/if}</textarea>
+											<label for="reg_city" generated="true" class="error">{$interview_availabilityErr}</label>	
 										</td>	
 									</tr>		
 									<tr class="tbl_row">
@@ -636,38 +673,8 @@
 									   <textarea name="achievement" cols="10" tabindex="3" rows="3" class="span8 wysiwyg1">{if $achievement}{$achievement}{else}{$smarty.post.achievement}{/if}</textarea>									
 										</td>
 									</tr>	
-									<tr class="">
-									<td width="120" class="tbl_column">Any other vital inputs for the interview  </td>
-									<td> 
-										<textarea name="vital_info_interview" tabindex="4" cols="10" rows="3" class="span8">{if $vital_info_interview}{$vital_info_interview}{else}{$smarty.post.vital_info_interview}{/if}</textarea>									
-									</td>
-									</tr>
-									</tbody>
-			</table>
-</div>
-<div class="span6">	
-	<table class="table table-bordered dataTable" style="margin-bottom:0;">
-		<tbody>	
-			<tr class="tbl_row">
-				<td width="120" class="tbl_column">Candidates Outlook on Company   </td>
-				<td> 
-					<textarea name="about_company" tabindex="4" cols="10" rows="3" class="span8 wysiwyg1">{if $about_company}{$about_company}{else}{$smarty.post.about_company}{/if}</textarea>									
-					</td>
-			</tr>
-			<tr class="tbl_row">
-				<td width="120" class="tbl_column">Relevant Exposure <span class="f_req">*</span></td>
-				<td> 
-					<textarea name="relevant_exposure" tabindex="4" cols="10" rows="3" class="span8">{if $relevant_exposure}{$relevant_exposure}{else}{$smarty.post.relevant_exposure}{/if}</textarea>									
-					<label for="reg_city" generated="true" class="error">{$relevant_exposureErr}</label>	
-					</td>
-			</tr>
-			<tr class="tbl_row">
-				<td width="120" class="tbl_column">Credentials considered for Shortlisting <span class="f_req">*</span></td>
-				<td> 
-					<textarea name="credential_shortlisting" tabindex="4" cols="10" rows="3" class="span8">{if $credential_shortlisting}{$credential_shortlisting}{else}{$smarty.post.credential_shortlisting}{/if}</textarea>									
-					<label for="reg_city" generated="true" class="error">{$credential_shortlistingErr}</label>	
-					</td>
-			</tr>
+									
+			
 				
 			<tr>
 				<td width="120" class="tbl_column">Candidate Brief </td>
