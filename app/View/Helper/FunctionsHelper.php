@@ -438,6 +438,8 @@ class FunctionsHelper extends AppHelper {
 			$txt = 'Single';
 		}else if($st == '2'){
 			$txt = 'Married';
+		}else if($st == '3'){
+			$txt = 'Separated';
 		}
 		return $txt;
    }

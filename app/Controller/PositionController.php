@@ -307,7 +307,7 @@ class PositionController extends AppController {
 								// show the msg.								
 								$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Problem in sending the mail for approval...', 'default', array('class' => 'alert alert-error'));				
 							}else{
-								$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Position created successfully. After approval, it will be visible', 'default', array('class' => 'alert alert-warning'));				
+								$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Position Created Successfully. After approval, it will be visible', 'default', array('class' => 'alert alert-warning'));				
 							}
 						}
 					}else{
@@ -392,7 +392,7 @@ class PositionController extends AppController {
 							// save team members list
 							$this->save_team_member($this->Position->id);
 							// show the msg.
-							$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Position modified successfully', 'default', array('class' => 'alert alert-success'));				
+							$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Position Modified Successfully', 'default', array('class' => 'alert alert-success'));				
 							$this->redirect('/position/');
 						}else{
 							// show the error msg.
@@ -831,7 +831,7 @@ class PositionController extends AppController {
 									// show the msg.								
 									$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Problem in sending the mail for approval...', 'default', array('class' => 'alert alert-error'));				
 								}else{
-									$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Position '.$approve_msg.' successfully.', 'default', array('class' => 'alert alert-warning'));
+									$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Position '.ucfirst($approve_msg).' Successfully.', 'default', array('class' => 'alert alert-warning'));
 								}
 							}
 							
@@ -907,7 +907,7 @@ class PositionController extends AppController {
 					
 					// if successfully update
 					$this->set('cv_update_status', 1);
-					$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>CV sent successfully', 'default', array('class' => 'alert alert-success'));									
+					$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>CV Sent Successfully', 'default', array('class' => 'alert alert-success'));									
 				}
 			}
 		}
@@ -1016,7 +1016,7 @@ class PositionController extends AppController {
 				if($this->ReqResumeStatus->save($data, array('validate' => false))){					
 					// if successfully update
 					$this->set('cv_update_status', 1);
-					$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>CV '.strtolower($status).' successfully', 'default', array('class' => 'alert alert-success'));									
+					$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>CV '.$status.' Successfully', 'default', array('class' => 'alert alert-success'));									
 
 				}
 			}
@@ -1051,7 +1051,7 @@ class PositionController extends AppController {
 				if($this->ReqResumeStatus->save($data, array('validate' => false))){					
 					// if successfully update
 					$this->set('cv_update_status', 1);
-					$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>CV '.strtolower($status).' successfully', 'default', array('class' => 'alert alert-success'));
+					$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>CV '.$status.' Successfully', 'default', array('class' => 'alert alert-success'));
 					$this->redirect('/position/view/'.$pos_id.'/');	
 			
 				}
@@ -1088,7 +1088,7 @@ class PositionController extends AppController {
 				if($this->ReqResumeStatus->save($data, array('validate' => false))){					
 					// if successfully update
 					$this->set('cv_update_status', 1);
-					$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>'.ucfirst($head_label).' successfully', 'default', array('class' => 'alert alert-success'));									
+					$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>'.ucfirst($head_label).' Successfully', 'default', array('class' => 'alert alert-success'));									
 				}
 			}
 		}
@@ -1124,7 +1124,7 @@ class PositionController extends AppController {
 				if($this->ReqResumeStatus->save($data, array('validate' => false))){					
 					// if successfully update
 					$this->set('cv_update_status', 1);
-					$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>'.ucfirst($head_label).' successfully', 'default', array('class' => 'alert alert-success'));									
+					$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>'.ucfirst($head_label).' Successfully', 'default', array('class' => 'alert alert-success'));									
 
 				}
 			}
@@ -1168,7 +1168,7 @@ class PositionController extends AppController {
 					$this->ResInterview->save($data, array('validate' => false));
 					// if successfully update
 					$this->set('cv_update_status', 1);
-					$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Interview details updated successfully', 'default', array('class' => 'alert alert-success'));									
+					$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Interview Details Updated Successfully', 'default', array('class' => 'alert alert-success'));									
 
 				}
 			}
@@ -1242,7 +1242,7 @@ class PositionController extends AppController {
 						$this->ResInterview->save($data, array('validate' => false));
 						// if successfully update
 						$this->set('cv_update_status', 1);
-						$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Interview details updated successfully', 'default', array('class' => 'alert alert-success'));											
+						$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Interview Details Updated Successfully', 'default', array('class' => 'alert alert-success'));											
 					}
 				}
 			}else{

@@ -381,8 +381,8 @@
 														<th  width="80"  class="noticePeriod">Notice</th>
 														<th  width="140" class="">CV Owner</th>
 														<th  width="90" class="">CV Created</th>
-														<th style="text-align:center"  width="150" class="upload_row">Action</th>
-														<th style="text-align:center" width="150">Download</th>
+														<th style="text-align:center"  width="75" class="upload_row">Action</th>
+														<th style="text-align:center" width="75">Download</th>
 													</tr>
 													
 												
@@ -481,36 +481,22 @@
 														
 															<td class="actionItem" style="text-align:center">
 															
-															<a  rel="tooltip" title="View Resume" class="iframeBox" style="margin-right:5px" val="80_80" href="<?php echo $this->webroot;?>resume/view_doc/<?php echo $resume['ResDoc']['resume']; ?>/"><i  class="splashy-documents_okay"></i></a> 
+													
 															
 															
-														<div class="btn-group" style="display:inline-block;">
-															<!--a href="edit_resume.php" style="margin-left:5px;margin-right:5px" rel="tooltip" class="sepV_a" title="Edit"><i class="icon-pencil"></i></a-->
-															<!-- <a href="#"  style="margin-right:5px"  id="smoke_confirm" rel="tooltip" class="confirm"   title="Delete"><i class="icon-trash"></i></a> -->
-															<!--a href="add_formatted_resume.php" style="margin-right:5px"  rel="tooltip"  title="Create Fully Formatted Resume">
-															<img src="<?php echo $this->webroot;?>img/gCons/add-item.png" width="18" height="18" style="padding-bottom: 5px;">
-															</a-->
-															
-															
-															
-														<span rel="tooltip" class=""  data-toggle="dropdown" data-original-title="Download"><a href="#"><i  class="splashy-document_letter_download"></i>					</span></a>
+													
+														
+														
+															<?php if($resume['ResDoc']['resume'] == ''):?>
 																
 																
-															
-															<ul style="margin-left:-75px;" class="dropdown-menu">
-															
-																<?php if($resume['ResDoc']['resume'] == ''):?>
-																
-																
-																<li><a class="notify" data-notify-time = '7000' data-notify-title="In Progress!" data-notify-message="Downloading Resume... Please wait..."   href="<?php echo $this->webroot;?>hc/download/<?php echo $resume['Resume']['id']; ?>">Candidate Resume</a></li>
+																<a rel="tooltip" title="Download" class="notify" data-notify-time = '7000' data-notify-title="In Progress!" data-notify-message="Downloading Resume... Please wait..."   href="<?php echo $this->webroot;?>hc/download/<?php echo $resume['Resume']['id']; ?>"><i  class="splashy-document_letter_download"></i></a>
 																<?php else:?>
-																<li><a class="notify" data-notify-time = '3000' data-notify-title="In Progress!" data-notify-message="Downloading Resume... Please wait..."   href="<?php echo $this->webroot;?>resume/download_doc/<?php echo $resume['ResDoc']['resume']; ?>">Candidate Resume</a></li>
+																<a rel="tooltip" title="Download"  class="notify" data-notify-time = '3000' data-notify-title="In Progress!" data-notify-message="Downloading Resume... Please wait..."   href="<?php echo $this->webroot;?>resume/download_doc/<?php echo $resume['ResDoc']['resume']; ?>"><i  class="splashy-document_letter_download"></i></a>
 																<?php endif; ?>
 																
-																<li><a href="<?php echo $this->webroot;?>resume/profile_snapshot/<?php echo $resume['Resume']['id']; ?>">Snapshot</a></li>
-																
-															</ul>
-														</div>											
+															
+																									
 														</td>
 														
 														

@@ -125,10 +125,10 @@ $str = <<<EOD
       <td>$_POST[family]</td>
     </tr>
     <tr>
-      <th class="is-light has-text-centered">13</th>
-      <th class="is-light has-text-black">Consultant Assessment</th>
+      <th class="has-text-centered">13</th>
+      <th class="">Consultant Assessment</th>
     
-      <td class="is-light">$_POST[consultant]</td>
+      <td>$_POST[consultant]</td>
     </tr>
     
   </tbody>

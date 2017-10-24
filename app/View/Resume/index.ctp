@@ -186,7 +186,7 @@
 										<!--td><?php echo $res['Resume']['education'];?></td-->
 										<!--td><?php if(!empty($res['Resume']['present_ctc'])): echo $res['Resume']['present_ctc'].' L'; endif; ?></td>
 										<td><?php if(!empty($res['Resume']['expected_ctc'])): echo $res['Resume']['expected_ctc'].' L'; endif; ?></td-->
-										<td><?php echo $res['ReqResume']['stage_title'];?> - <?php echo $res['ReqResume']['status_title'];?></td>
+										<td><?php echo $this->Functions->get_status_crisp($res['ReqResume']['stage_title'],$res['ReqResume']['status_title']);?></td>
 										<td><?php echo ucfirst($res['Creator']['first_name']);?></td>
 										<td class="actionItem">
 								
