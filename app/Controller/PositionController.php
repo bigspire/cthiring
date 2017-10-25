@@ -218,7 +218,7 @@ class PositionController extends AppController {
 		'order' => array('created_date' => 'desc'),	'group' => array('Position.id'), 'joins' => $options);
 		$data = $this->paginate('Position');
 		$this->set('data', $data);
-		if(empty($data)){
+		if(empty($data) && !empty($this->request->data)){
 			$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Oops! No Positions Found!', 'default', array('class' => 'alert alert-info'));
 		}
 		
@@ -739,7 +739,7 @@ class PositionController extends AppController {
 				// update the todo
 				if($validate){
 					$this->loadModel('PositionStatus');
-					$data = array('modified_date' => $this->Functions->get_current_date(), 'modified_by' => $this->Session->read('USER.Login.id'), 'remarks' => $this->request->query['remarks'], 'status' => $status);
+					$data = array('modified_date' => $this->Functions->get_current_date(), 'modified_by' => $this->Session->read('USER.Login.id'), 'remarks' => $this->request->data['Position']['remarks'], 'status' => $status);
 					$this->PositionStatus->id = $st_id;
 					$st_msg = $status == 'A' ? 'approved' : 'rejected';
 					// make sure not duplicate status exists
@@ -762,6 +762,8 @@ class PositionController extends AppController {
 										)
 							);
 							
+						$approve_msg = $status == 'R' ? 'Rejected': 'Approved';	
+						
 						$position_data = $this->Position->find('all', array('conditions' => array('Position.id' => $req_id),'fields' => array( 'Client.client_name',	"group_concat(distinct TeamMember.first_name  SEPARATOR ', ') team_member"),'joins' => $options));
 						
 						$from = ucfirst($user_data['Creator']['first_name']).' '.ucfirst($user_data['Creator']['last_name']);
@@ -791,7 +793,8 @@ class PositionController extends AppController {
 									$this->PositionStatus->id = '';						
 									// make sure not duplicate status exists
 									$this->check_duplicate_status($req_id, $approval_data['Approve']['level2'], 0);						
-									if($this->PositionStatus->save($data, true, $fieldList = array('requirements_id','created_date','users_id'))){	
+									if($this->PositionStatus->save($data, true, $fieldList = array('requirements_id','created_date','users_id'))){
+										$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Position '.$approve_msg.' successfully.', 'default', array('class' => 'alert alert-success'));
 																	
 									}else{
 										$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Problem in saving superior status...', 'default', array('class' => 'alert alert-error'));
