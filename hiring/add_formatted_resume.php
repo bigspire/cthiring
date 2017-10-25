@@ -7,7 +7,7 @@ Date : 26-05-2017
 
 session_start();
 use Ilovepdf\Ilovepdf;
-ini_set('display_errors', 1);
+ini_set('display_errors', 0);
 
 // including smarty config
 include 'configs/smartyconfig.php';

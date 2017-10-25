@@ -689,7 +689,7 @@ class ClientController extends AppController {
 						$vars = array('to_name' =>  ucwords($creator_data[0]['Creator']['first_name'].' '.$creator_data[0]['Creator']['last_name']), 'from_name' => $from, 'client_name' => $creator_data[0]['Client']['client_name'], 'city' => $creator_data[0]['Client']['city'],'account_holder' => $ac_holder[0][0]['account_holder'], 'approve_msg' => $approve_msg, 'remarks' => $this->request->data['Client']['remarks']);
 										
 						// notify employee						
-						if(!$this->send_email('Manage Hiring - Client '.$st_msg.' by '.ucfirst($this->Session->read('USER.Login.first_name')).' '.ucfirst($this->Session->read('USER.Login.last_name')), 'add_client', 'noreply@managehiring.com', $creator_data[0]['Creator']['email_id'],$vars)){		
+						if(!$this->send_email('Manage Hiring - Client '.$st_msg.' by '.ucfirst($this->Session->read('USER.Login.first_name')).' '.ucfirst($this->Session->read('USER.Login.last_name')), 'approve_client', 'noreply@managehiring.com', $creator_data[0]['Creator']['email_id'],$vars)){		
 							// show the msg.								
 							$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Problem in sending the mail to user...', 'default', array('class' => 'alert alert-error'));				
 						}else{
