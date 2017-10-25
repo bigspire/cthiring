@@ -300,7 +300,7 @@
 								<td width="120" class="tbl_column">% of Marks / Grade <span class="f_req"></span></td>
 								<td> 
 									<input type="text" tabindex="5" name="grade_#index#" id="grade_#index#" value="{$grade}" class="span4" >
-									<select name="grade_type_#index#" class="inline_text span4"  id="grade_type_#index#">
+									<select name="grade_type_#index#" tabindex="6" class="inline_text span4"  id="grade_type_#index#">
 										{html_options options=$grade_drop} 
 									</select>
 								</td>
@@ -308,7 +308,7 @@
 							<tr class="tbl_row">
 							<td width="120" class="tbl_column">Year of Passing <span class="f_req">*</span></td>										
 								<td>
-									<select name="year_of_pass_#index#" id="year_of_pass_#index#" tabindex="6" class="span8">
+									<select name="year_of_pass_#index#" id="year_of_pass_#index#" tabindex="7" class="span8">
 									<option value="">Year</option>
 										{html_options options=$year_of_pass} 
 									</select>
@@ -318,7 +318,7 @@
 							<tr>
 								<td width="120" class="tbl_column">University <span class="f_req"></span></td>
 								<td> 
-									<input type="text" tabindex="7" name="university_#index#" id="university_#index#" class="span8" >										
+									<input type="text" tabindex="8" name="university_#index#" id="university_#index#" class="span8" >										
 								</td>
 							</tr>
 							

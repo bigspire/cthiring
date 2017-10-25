@@ -241,6 +241,17 @@ $smarty->assign('degreeData', $degree_data);
 $smarty->assign('degree', $degree);
 $smarty->assign('spec', $spec);
 
+if($_POST['RESUME_DATA'] == ''){
+	// fetch the resume data
+	$uploaddir = 'uploads/resume/'; 
+	$resume_data = $fun->read_document($uploaddir.$_SESSION['resume_doc']);
+	// echo $resume_data;die;
+	$smarty->assign('RESUME_DATA', $resume_data);
+	// $_SESSION['extraction'] = 'done';
+}else{
+	$smarty->assign('RESUME_DATA', $_POST['RESUME_DATA']);
+}
+
 if(!empty($_POST)){
 	
 	// post of education fields value
@@ -748,7 +759,7 @@ $smarty->assign('grade_drop', array('' => 'Select', 'R' => 'Regular', 'C' => 'Co
  
 // smarty drop down array for year of passing 
 $year_of_pass = array(); 
-for($l = 2020; $l >= 1990; $l--){
+for($l = date('Y'); $l >= 1990; $l--){
 	$year_of_pass[$l] = $l;
 }
 $smarty->assign('year_of_pass', $year_of_pass);
