@@ -157,5 +157,12 @@ $snap_file_name = $fun->filter_file($snap_file_name);
 $apikey = '5ea15ca6-ba76-423a-9214-b2194c6c427a';
 // $value = 'http://www.bigspireshowcase.com/mh/bulma.html'; // a url starting with http or an HTML string.  see example #5 if you have a long HTML string
 $result = file_get_contents("http://api.html2pdfrocket.com/pdf?apikey=" . urlencode($apikey) . "&value=" . urlencode($str).'&page');
+try{
+	if(!$result){
+		throw new Exception('Time out! Unable to create resume pdf');
+	}			
+}catch(Exception $e){
+	echo 'Caught exception: ',  $e->getMessage(), "\n";
+}	
 file_put_contents('uploads/snapshot/'.$snap_file_name.'.pdf',$result);
 ?>

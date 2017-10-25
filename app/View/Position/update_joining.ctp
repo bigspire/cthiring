@@ -35,10 +35,28 @@
 						<?php echo $this->Form->input('candidate', array('div'=> false,'type' => 'text', 'label' => false, 'class' => 'input-large', 'readonly' => 'readonly', 'value' => $candidate_name,   'required' => false, 'placeholder' => '')); ?> 					
 						</td>	
 				</tr>
+	<?php if(!$validation):?>			
+				<tr class="tbl_row" >
+					<td width="120" class="tbl_column"><?php echo $field_label;?> <span class="f_req">*</span>
+					</td>
+						<td>
+						<?php echo $this->Form->input($field_name, array('div'=> false,'type' => 'text', 'label' => false, 'class' => 'input-large datepick',  'required' => false, 'placeholder' => '',
+						'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 					
+						</td>	
+				</tr>
+				
+				
+	<?php endif; ?>			
 				
 				
 				<tr class="tbl_row" >
 					<td width="120" class="tbl_column">Remarks
+					
+					<?php if($validation):?>
+					<span class="f_req">*</span>
+					<?php endif; ?>
+					
+					
 					</td>
 						<td>
 					<?php echo $this->Form->input('note', array('div'=> false,'type' => 'text', 'label' => false, 'class' => 'span8', 'cols' => '10', 'rows' => '3',
@@ -53,6 +71,10 @@
 					<a class="jsRedirect toggleSearch"  href="javascript:window.close()">
 					<input type="button" value="Cancel" id="cancel" class="btn cancel"/></a>
 					<input type="hidden" id="success_page" value="<?php echo $this->webroot;?>position/view/<?php echo $this->request->params['pass'][1]?>/?tab=cv_status"/>
+					
+					<?php if($field_name == 'plan_join_date'):?>
+					<input type="hidden" id="start_date" name="start_date" value="<?php echo date('d/m/Y');?>">
+					<?php endif; ?>
 			</div>
 		</div>
 	</div>

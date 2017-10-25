@@ -407,12 +407,11 @@
 													
 	<?php if($resume['ReqResume']['stage_title'] != 'Validation - Recruiter' && $resume['ReqResume']['stage_title'] != 'Validation - Account Holder'):?>
 	<?php $row_type = 'sent_row';
-	else:
-	$row_type = 'upload_row';
+	
 	endif; ?>
 		
 													
-													<tr class="<?php echo $row_type;?>">
+													<tr class="upload_row <?php echo $row_type;?>">
 														<td>														
 														<a target="_blank" href="<?php echo $this->webroot;?>resume/view/<?php echo $resume['Resume']['id'];?>/"><?php echo ucwords($resume['Resume']['first_name'].' '.$resume['Resume']['last_name']);?></a>
 															<span style="font-size:9px">(<?php echo $resume['ReqResume']['stage_title'];?> <?php echo $resume['ReqResume']['status_title'];?>)</span>
@@ -460,7 +459,7 @@
 												<ul style="margin-left:-35px;" class="dropdown-menu">
 															
 									<li><a href="<?php echo $this->webroot;?>position/verify_cv/<?php echo $resume['Resume']['id']; ?>/<?php echo $this->request->params['pass'][0];?>/approve/"><i class="splashy-check"></i> Approve</a></li>
-									<li><a href="<?php echo $this->webroot;?>position/verify_cv/<?php echo $resume['Resume']['id']; ?>/<?php echo $this->request->params['pass'][0];?>/reject/"><i class="splashy-error_small"></i> Reject</a></li>
+									<li><a val="40_60"  class="iframeBox sepV_a cboxElement" href="<?php echo $this->webroot;?>position/verify_cv/<?php echo $resume['Resume']['id']; ?>/<?php echo $this->request->params['pass'][0];?>/reject/"><i class="splashy-error_small"></i> Reject</a></li>
 															</ul>		
 														</div>	
 																
@@ -663,8 +662,8 @@
 										<span data-toggle="dropdown" style="padding-top:1px;margin-left:1px;border:1px solid #fbfcbd" class=" dropdown-toggle  alert-action"><span class="caret" style="margin-top:7px;"></span></span>
 										
 										<ul class="dropdown-menu">
-											<li><a  href="<?php echo $this->webroot;?>position/update_offer/<?php echo  $resume['Resume']['id'];?>/<?php echo $this->request->params['pass'][0];?>/offer_accept/" val="40_60"  class="iframeBox sepV_a cboxElement">Accepted</a></li>
-											<li><a  href="<?php echo $this->webroot;?>position/update_offer/<?php echo  $resume['Resume']['id'];?>/<?php echo $this->request->params['pass'][0];?>/offer_decline/" val="40_60"  class="iframeBox sepV_a cboxElement">Declined</a></li>
+											<li><a  href="<?php echo $this->webroot;?>position/update_offer/<?php echo  $resume['Resume']['id'];?>/<?php echo $this->request->params['pass'][0];?>/offer_accept/" val="40_60"  class="iframeBox sepV_a cboxElement"><i class="splashy-check"></i> Accepted</a></li>
+											<li><a  href="<?php echo $this->webroot;?>position/update_offer/<?php echo  $resume['Resume']['id'];?>/<?php echo $this->request->params['pass'][0];?>/offer_decline/" val="40_60"  class="iframeBox sepV_a cboxElement"><i class="splashy-error_small"></i> Declined</a></li>
 										</ul>
 									</div>	
 										
