@@ -254,13 +254,6 @@ class Position extends AppModel {
         )
 	);
 	
-	
-	
-	
-	
-	
-	
-	
 	/* function to validate the team members */
 	public function validate_team(){
 		$team = str_replace(',','',$this->data['Position']['team_id']);

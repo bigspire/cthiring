@@ -64,7 +64,7 @@ class ClientController extends AppController {
 		}
 		
 		// for director and BH
-		/
+		
 		if($this->Session->read('USER.Login.roles_id') == '33' || $this->Session->read('USER.Login.roles_id') == '38'
 		|| $this->Session->read('USER.Login.roles_id') == '39'){
 			$show = 'all';

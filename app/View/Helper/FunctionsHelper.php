@@ -34,11 +34,14 @@ class FunctionsHelper extends AppHelper {
 	}
 	
 	/* function to get total joined */
-	public function get_total_joined($join){
+	public function get_total_joined($join,$req_res_id){
 		$split_join = explode(',',$join);
-		foreach($split_join as $detail){
-			if($detail == 'Joined'){
+		$split_res = explode(',',$req_res_id);
+		foreach($split_join as $key => $detail){
+			// remove the duplicates
+			if($detail == 'Joined' && !in_array($split_res[$key], $exist)){
 				$count++;
+				$exist[] = $split_res[$key];
 			}
 		}
 		return $count;

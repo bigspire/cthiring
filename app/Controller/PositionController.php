@@ -42,7 +42,7 @@ class PositionController extends AppController {
 		$this->set('locList', $this->get_loc_details());
 		$this->set('stList', array('10' => 'Assigned', '1' => 'In-Process', '2' => 'On-Hold', '3' => 'Closed', '4' => 'Terminated'));			
 		$fields = array('id','job_title','location','no_job','min_exp','max_exp','ctc_from','ctc_to','ReqStatus.title','req_status_id',
-		'Client.client_name','team_member', 'Creator.first_name','created_date','modified_date', 'count(distinct ReqResume.id) cv_sent',
+		'Client.client_name','team_member', 'Creator.first_name','created_date','modified_date', 'count(distinct ReqResume.id) cv_sent','group_concat(ReqResume.id) req_resume_id', 
 		'group_concat(ReqResume.status_title) joined','count(distinct Read.id) read_count', "group_concat(distinct TeamMember.first_name
 		SEPARATOR ', ') team_member", 'Position.created_by','Position.is_approve','Position.status', "max(PositionStatus.id) st_id");
 				
@@ -886,8 +886,10 @@ class PositionController extends AppController {
 		if(!empty($res_id) && !empty($pos_id)){
 			// get the template details
 			$this->get_template_details($res_id,$pos_id, '1');
-
+			
 		}
+
+		// when the form submitted
 		if(!empty($this->request->data)){
 			// get the req. resume id
 			$this->loadModel('ReqResume');
@@ -903,11 +905,38 @@ class PositionController extends AppController {
 				$data = array('req_resume_id' => $req_res_id[0]['ReqResume']['id'], 'created_date' => $this->Functions->get_current_date(),
 				'created_by' => $this->Session->read('USER.Login.id'), 'stage_title' => 'Shortlist', 'status_title' => 'CV-Sent');
 				if($this->ReqResumeStatus->save($data, array('validate' => false))){
+					// get mail contents
+					$body = $this->get_template_details($res_id,$pos_id, '1');					
+					// get the resume details
+					$options = array(								
+							array('table' => 'resume_doc',
+									'alias' => 'ResDoc',					
+									'type' => 'INNER',
+									'conditions' => array('`ResDoc.id` = `Resume`.`resume_doc_id`', )
+								)
+						);
+					$resume_data = $this->ReqResume->Resume->find('all', array('conditions' => array('Resume.id' => $res_id),
+					'fields' => array('ResDoc.resume'),	'joins' => $options));
+					$resume_path = '../../hiring/uploads/snapshotmerged/'.$resume_data[0]['ResDoc']['resume'];
+					// get contact details		
+					$client_data = $this->ReqResume->Position->findById($pos_id, array('fields' => 'client_contact_id','job_title','location'));
+					$this->loadModel('Contact');
+					$contact_data = $this->Contact->findById($client_data['Position']['client_contact_id'], array('fields' => 'Contact.first_name','Contact.last_name','Contact.email'));
+					$sub = 'Manage Hiring - Resume sent by '.ucfirst($this->Session->read('USER.Login.first_name')).' '.ucfirst($this->Session->read('USER.Login.last_name'));
+					$from = ucfirst($this->Session->read('USER.Login.first_name')).' '.ucfirst($this->Session->read('USER.Login.last_name'));
+					$to_name = $contact_data[0]['Contact']['first_name'].' '.$contact_data[0]['Contact']['last_name'];
 					// send mail to client 
-					
+					$contact_data[0]['Contact']['email'] = 'testing7@bigspire.com'; // for testing
+					$vars = array('from_name' => $from, 'to_name' => ucwords($to_name), 'position' => $this->request->data['Position']['job_title'],'msg'=> $body, 'location' => $this->request->data['Position']['location']);
+					if(!$this->send_email($sub, 'send_cv', $this->Session->read('USER.Login.email_id'), $contact_data[0]['Contact']['email'],$vars, $attach)){	
+						// show the msg.								
+						$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Problem in sending the mail to client...', 'default', array('class' => 'alert alert-error'));				
+					}else{
+						$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>CV Sent', 'default', array('class' => 'alert alert-warning'));				
+					}
 					// if successfully update
 					$this->set('cv_update_status', 1);
-					$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>CV Sent Successfully', 'default', array('class' => 'alert alert-success'));									
+					// $this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>CV Sent Successfully', 'default', array('class' => 'alert alert-success'));									
 				}
 			}
 		}
