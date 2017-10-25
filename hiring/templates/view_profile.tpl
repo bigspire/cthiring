@@ -80,6 +80,15 @@
 											</div>
 											
 											<div class="control-group formSep">
+												<label for="u_password" class="control-label">Signature</label>
+												<div class="controls">
+													<div class="sepH_b">
+														<textarea  class="input-xlarge" disabled/>{$profile_data['signature']}</textarea>
+													</div>
+												</div>
+											</div>
+											
+											<div class="control-group formSep">
 												<label for="u_password" class="control-label">L1</label>
 												<div class="controls">
 													<div class="sepH_b">

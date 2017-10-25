@@ -133,7 +133,7 @@ try{
 	
 	// create,update,delete message validation
 	if($_GET['status'] == 'deleted' || $_GET['status'] == 'created' || $_GET['status'] == 'updated'){
- 	 $success_msg = 'Base Target ' . $_GET['status'] . ' successfully';
+ 	 $success_msg = 'Base Target ' . ucfirst($_GET['status']) . ' Successfully';
 	}else if($_GET['current_status'] == 'msg'){
 		$success_msg = 'This record is not available in our database';
 	}

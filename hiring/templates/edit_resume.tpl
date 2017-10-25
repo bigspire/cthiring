@@ -206,6 +206,24 @@
 								</tbody>
 							</table>
 						</div>
+						
+						<div class="row-fluid" style="clear:left;float:left;margin-top:15px;">				
+			<div class="span12">
+	<table class="table table-bordered dataTable" style="margin-bottom:0;">
+	<tbody>
+<tr class="tbl_row">
+						
+<td style="margin:10px;text-align:center;">
+<textarea rows = "10" style="width:1200px;" name="RESUME_DATA">
+{if $RESUME_DATA}{$RESUME_DATA}{else}{$smarty.post.RESUME_DATA}{/if}
+</textarea>
+																						
+</td>
+</tr>									
+									
+	</tbody>
+	</table>
+</div>		</div>
 </div>
 	
 <!-- sheepIt Form -->
@@ -268,7 +286,7 @@
 								<td width="120" class="tbl_column">% of Marks / Grade <span class="f_req"></span></td>
 								<td> 
 									<input type="text" tabindex="5" name="grade_#index#" id="grade_#index#" class="span4" >
-									<select name="grade_type_#index#" class="inline_text span4"  id="grade_type_#index#">
+									<select name="grade_type_#index#" class="inline_text span4" tabindex="6" id="grade_type_#index#">
 										{html_options options=$grade_drop} 
 									</select>
 								</td>
@@ -276,7 +294,7 @@
 							<tr class="tbl_row">
 							<td width="120" class="tbl_column">Year of Passing <span class="f_req">*</span></td>										
 								<td>
-									<select name="year_of_pass_#index#" id="year_of_pass_#index#" tabindex="6" class="span8">
+									<select name="year_of_pass_#index#" id="year_of_pass_#index#" tabindex="7" class="span8">
 									<option value="">Year</option>
 										{html_options options=$year_of_pass} 
 									</select>
@@ -286,7 +304,7 @@
 							<tr>
 								<td width="120" class="tbl_column">University <span class="f_req"></span></td>
 								<td> 
-									<input type="text" tabindex="7" name="university_#index#" id="university_#index#" class="span8" >										
+									<input type="text" tabindex="8" name="university_#index#" id="university_#index#" class="span8" >										
 								</td>
 							</tr>
 							

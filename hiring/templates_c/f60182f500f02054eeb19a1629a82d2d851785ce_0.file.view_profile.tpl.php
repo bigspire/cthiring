@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-10-23 13:03:45
+/* Smarty version 3.1.29, created on 2017-10-25 09:46:41
   from "C:\xampp\htdocs\2017\ctsvn\cthiring\hiring\templates\view_profile.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_59ed9b59909387_55842480',
+  'unifunc' => 'content_59f01029492b86_45863472',
   'file_dependency' => 
   array (
     'f60182f500f02054eeb19a1629a82d2d851785ce' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\templates\\view_profile.tpl',
-      1 => 1508744001,
+      1 => 1508904999,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_59ed9b59909387_55842480 ($_smarty_tpl) {
+function content_59f01029492b86_45863472 ($_smarty_tpl) {
 ?>
 
    
@@ -107,6 +107,16 @@ home"><i class="icon-home"></i></a>
 													<div class="sepH_b">
 														<input type="text"  class="input-xlarge" value="<?php echo $_smarty_tpl->tpl_vars['profile_data']->value['position'];?>
 " disabled/>
+													</div>
+												</div>
+											</div>
+											
+											<div class="control-group formSep">
+												<label for="u_password" class="control-label">Signature</label>
+												<div class="controls">
+													<div class="sepH_b">
+														<textarea  class="input-xlarge" disabled/><?php echo $_smarty_tpl->tpl_vars['profile_data']->value['signature'];?>
+</textarea>
 													</div>
 												</div>
 											</div>

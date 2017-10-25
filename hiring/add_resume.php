@@ -591,7 +591,7 @@ $smarty->assign('grade_drop', array('' => 'Select', 'R' => 'Regular', 'C' => 'Co
  
 // smarty drop down array for year of passing 
 $year_of_pass = array(); 
-for($l = 2020; $l >= 1990; $l--){
+for($l = date('Y'); $l >= 1990; $l--){
 	$year_of_pass[$l] = $l;
 }
 $smarty->assign('year_of_pass', $year_of_pass);

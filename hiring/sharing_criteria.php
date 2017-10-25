@@ -134,7 +134,7 @@ try{
 	
 	// create,update,delete message validation
 	if($_GET['status'] == 'created' || $_GET['status'] == 'updated'){
- 	 	$success_msg = 'Sharing Criteria ' . $_GET['status'] . ' successfully';
+ 	 	$success_msg = 'Sharing Criteria ' . ucfirst($_GET['status']) . ' Successfully';
 	}else if($_GET['current_status'] == 'msg'){
 		$success_msg = 'This record is not available in our database';
 	}
