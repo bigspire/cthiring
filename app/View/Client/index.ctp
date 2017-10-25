@@ -148,7 +148,7 @@
 	<?php endif; ?>	
 	
 	<?php if($client['Client']['is_approve'] == 'W'):?>
-	<a rel="tooltip" title="Verify Client" href="<?php echo $this->webroot;?>client/view/<?php echo $client['Client']['id'];?>/" class="btn  btn-mini"><i class="icon-edit"></i></a>
+	<a rel="tooltip" title="Verify Client" href="<?php echo $this->webroot;?>client/view/<?php echo $client['Client']['id'];?>/<?php echo $client[0]['st_id'];?>/<?php echo $client['Client']['created_by'];?>/" class="btn  btn-mini"><i class="icon-edit"></i></a>
 	<?php endif; ?>									
 										
 										

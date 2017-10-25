@@ -32,9 +32,9 @@
 									<div class="w-box-content">
 										<div class="tabbable clearfix">
 											<ul class="nav nav-tabs" style="float:left;margin-left:15px;">
-												<li class="active"><a href="#tab1" data-toggle="tab">Interview Details</a></li>
-												<li class=""><a href="#tab2" data-toggle="tab">Interview Confirmation to Candidate</a></li>
-												<li><a href="#tab3" data-toggle="tab">Interview Confirmation to Clients</a></li>
+												<li class="active"><a href="#tab1" data-toggle="tab" style="font-size:13px;">Interview Details</a></li>
+												<li class=""><a href="#tab2" data-toggle="tab" style="font-size:13px;">Interview Confirmation to Candidate</a></li>
+												<li><a href="#tab3" data-toggle="tab" style="font-size:13px;">Interview Confirmation to Clients</a></li>
 											</ul>
 											<div class="tab-content">
 											
@@ -146,7 +146,7 @@
 					</td>
 						<td>
 					<?php echo $this->Form->input('message_client', array('div'=> false,'type' => 'text', 'label' => false, 
-					'class' => 'span10 wysiwyg',  'cols' => '6', 'style' => 'height:120px', 
+					'class' => 'span10 wysiwyg',  'cols' => '6', 'style' => 'height:180px', 
 					'required' => false, 'placeholder' => '', 'value' => $body_3, 
 					'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 
 
@@ -182,11 +182,11 @@
 					</td>
 						<td>
 					<?php echo $this->Form->input('message', array('div'=> false,'type' => 'text', 'label' => false, 
-					'class' => 'span10 wysiwyg',  'cols' => '6', 'style' => 'height:120px', 
+					'class' => 'span10 wysiwyg',  'cols' => '6', 'style' => 'height:180px', 
 					'required' => false, 'placeholder' => '', 'value' => $body_2, 
 					'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 
 
-						</td>	
+					</td>	
 				</tr>
 				</tbody>
 			</table>

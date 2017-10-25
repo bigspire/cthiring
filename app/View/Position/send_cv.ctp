@@ -53,7 +53,7 @@
 					</td>
 						<td>
 					<?php echo $this->Form->input('message', array('div'=> false,'type' => 'text', 'label' => false, 
-					'class' => 'span10 wysiwyg',  'cols' => '6', 'style' => 'height:120px', 
+					'class' => 'span10 wysiwyg',  'cols' => '6', 'style' => 'height:180px;font-size:11px;', 
 					'required' => false, 'placeholder' => '', 'value' => $body_1, 
 					'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 
 
