@@ -191,7 +191,7 @@ class ClientController extends AppController {
 		'order' => array('created_date' => 'desc'),	'group' => array('Client.id'), 'joins' => $options);
 		$data = $this->paginate('Client');
 		$this->set('data', $data);
-		if(empty($data)){
+		if(empty($data) && !empty($this->request->data)){
 			$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Oops! No Clients Found!', 'default', array('class' => 'alert alert-info'));
 		}
 	}
@@ -655,8 +655,10 @@ class ClientController extends AppController {
 			$data = array('id' => $id, 'status' => $status, 'approve_date' => $this->Functions->get_current_date(),
 			'is_approve' => $is_approve, 'remarks' =>  $this->request->data['Client']['remarks']);	
 			$approve_validation = $is_approve == 'R' ? true: false;	
-			$approve_msg = $is_approve == 'R' ? 'rejected': 'approved';	
 			*/
+			
+			$approve_msg = $status == 'R' ? 'Rejected': 'Approved';	
+
 			if($this->request->is('post') && $st_id != ''){
 				// set the validation
 				$this->Client->set($this->request->data);
@@ -668,16 +670,13 @@ class ClientController extends AppController {
 				// update the todo
 				if($validate){
 					$this->loadModel('ClientStatus');
-					$data = array('modified_date' => $this->Functions->get_current_date(), 'modified_by' => $this->Session->read('USER.Login.id'), 'remarks' => $this->request->query['remarks'], 'status' => $status);
+					$data = array('modified_date' => $this->Functions->get_current_date(), 'modified_by' => $this->Session->read('USER.Login.id'), 'remarks' => $this->request->data['Client']['remarks'], 'status' => $status);
 					$this->ClientStatus->id = $st_id;
 					$st_msg = $status == 'A' ? 'approved' : 'rejected';
 					// make sure not duplicate status exists
 					$this->check_duplicate_status($id, $this->Session->read('USER.Login.id'), 1);
 					// save the position status
 					if($this->ClientStatus->save($data, true, $fieldList = array('modified_by','modified_date','remarks','status'))){
-						// get user data
-						$user_data = $this->Client->Creator->find('all', array('conditions' => array('Creator.id' => $user_id),'fields' => array('Creator.id',	'Creator.first_name','Creator.last_name','Creator.email_id')));
-						
 						
 						$sub = 'Manage Hiring - Client '.$approve_msg.' by '.ucfirst($this->Session->read('USER.Login.first_name')).' '.ucfirst($this->Session->read('USER.Login.last_name'));
 						
@@ -690,11 +689,11 @@ class ClientController extends AppController {
 						$vars = array('to_name' =>  ucwords($creator_data[0]['Creator']['first_name'].' '.$creator_data[0]['Creator']['last_name']), 'from_name' => $from, 'client_name' => $creator_data[0]['Client']['client_name'], 'city' => $creator_data[0]['Client']['city'],'account_holder' => $ac_holder[0][0]['account_holder'], 'approve_msg' => $approve_msg, 'remarks' => $this->request->data['Client']['remarks']);
 										
 						// notify employee						
-						if(!$this->send_email('Manage Hiring - Client '.$st_msg.' by '.ucfirst($this->Session->read('USER.Login.first_name')).' '.ucfirst($this->Session->read('USER.Login.last_name')), 'add_position', 'noreply@managehiring.com', $user_data['Creator']['email_id'],$vars)){		
+						if(!$this->send_email('Manage Hiring - Client '.$st_msg.' by '.ucfirst($this->Session->read('USER.Login.first_name')).' '.ucfirst($this->Session->read('USER.Login.last_name')), 'add_client', 'noreply@managehiring.com', $creator_data[0]['Creator']['email_id'],$vars)){		
 							// show the msg.								
 							$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Problem in sending the mail to user...', 'default', array('class' => 'alert alert-error'));				
 						}else{
-							
+							$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Client '.$approve_msg.' Successfully.', 'default', array('class' => 'alert alert-success'));
 						}
 						
 						// get the superiors
@@ -750,7 +749,7 @@ class ClientController extends AppController {
 									// show the msg.								
 									$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Problem in sending the mail for approval...', 'default', array('class' => 'alert alert-error'));				
 								}else{
-									$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Client '.$approve_msg.' successfully.', 'default', array('class' => 'alert alert-warning'));
+									$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Client '.$approve_msg.' successfully.', 'default', array('class' => 'alert alert-success'));
 								}
 							}
 							
