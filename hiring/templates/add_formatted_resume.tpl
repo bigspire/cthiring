@@ -446,7 +446,7 @@
 										</td>
 							</tr>
 							<tr class="tbl_row">
-										<td width="120" class="tbl_column">Location of work <span class="f_req">*</span></td>
+										<td width="120" class="tbl_column">Location of Work <span class="f_req">*</span></td>
 										<td> 
 										<input type="text"  tabindex="4" name="workloc_#index#" id="workloc_#index#" value="" class="span8" />										
 										<label for="reg_city" generated="true" class="error" id="worklocErr_#index#"></label>										
