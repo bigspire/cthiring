@@ -39,6 +39,10 @@
 				
 				<tr class="tbl_row" >
 					<td width="120" class="tbl_column">Remarks
+					
+					<?php if(!$validation):?>
+					<span class="f_req">*</span>
+					<?php endif; ?>
 					</td>
 						<td>
 					<?php echo $this->Form->input('note', array('div'=> false,'type' => 'text', 'label' => false, 'class' => 'span8', 'cols' => '10', 'rows' => '3',

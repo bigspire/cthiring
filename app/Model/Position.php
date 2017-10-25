@@ -251,6 +251,46 @@ class Position extends AppModel {
                 'required' => true,
                 'message'  => 'Please enter the interview venue'
             )
+        ),
+		'note' => array(		
+            'empty' => array(
+                'rule'     => 'notEmpty',
+                'required' => true,
+                'message'  => 'Please enter the reason'
+            )
+        ),
+		'ctc_offer' => array(		
+            'empty' => array(
+                'rule'     => 'notEmpty',
+                'required' => true,
+                'message'  => 'Please enter the offered CTC'
+            ),
+			 'numeric' => array(
+                'rule'     => 'numeric',
+                'required' => true,
+                'message'  => 'Please enter numeric values only'
+            )
+        ),
+		'date_offer' => array(		
+            'empty' => array(
+                'rule'     => 'notEmpty',
+                'required' => true,
+                'message'  => 'Please select the offered date'
+            )
+        ),
+		'joined_on' => array(		
+            'empty' => array(
+                'rule'     => 'notEmpty',
+                'required' => true,
+                'message'  => 'Please select the joining date'
+            )
+        ),
+		'plan_join_date' => array(		
+            'empty' => array(
+                'rule'     => 'notEmpty',
+                'required' => true,
+                'message'  => 'Please select the plan join date'
+            )
         )
 	);
 	

@@ -231,6 +231,16 @@ $(document).ready(function() {
 			$('.sent_row').show();
 			$('.status_row').hide();
 			$('.overall_status_row').hide();
+		}else if(GetURLParameter('tab') == 'upload_status'){
+			// for tab
+			$('.uploadTab').addClass('active');
+			$('.cvStatusTab').removeClass('active');
+			$('.sentTab').removeClass('active');
+			// for contents
+			$('.upload_row').show();
+			$('.sent_row').show();
+			$('.status_row').hide();
+			$('.overall_status_row').hide();
 		}
 	}
 	

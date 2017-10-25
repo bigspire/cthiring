@@ -10,7 +10,7 @@
 		<?php
 		if($this->request->query['cv_update_status'] == '1'):?>					
 		<div id="flashMessage" class="alert alert-success">
-		<button type="button" class="close" data-dismiss="alert-success">×</button>CV Sent Successfully</div>
+		<button type="button" class="close" data-dismiss="alert-success">×</button>Updated Successfully</div>
 		Redirecting now...
 		<?php endif; ?>	
 
@@ -39,6 +39,11 @@
 				
 				<tr class="tbl_row" >
 					<td width="120" class="tbl_column">Remarks
+					
+					<?php if(!$validation):?>
+					<span class="f_req">*</span>
+					<?php endif; ?>
+					
 					</td>
 						<td>
 					<?php echo $this->Form->input('note', array('div'=> false,'type' => 'text', 'label' => false, 'class' => 'span8', 'cols' => '10', 'rows' => '3',

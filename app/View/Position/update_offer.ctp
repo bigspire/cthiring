@@ -35,10 +35,35 @@
 						<?php echo $this->Form->input('candidate', array('div'=> false,'type' => 'text', 'label' => false, 'class' => 'input-large', 'readonly' => 'readonly', 'value' => $candidate_name,   'required' => false, 'placeholder' => '')); ?> 					
 						</td>	
 				</tr>
+			
+	<?php if($validation):?>			
+				<tr class="tbl_row" >
+					<td width="120" class="tbl_column">Offered Date <span class="f_req">*</span>
+					</td>
+						<td>
+						<?php echo $this->Form->input('date_offer', array('div'=> false,'type' => 'text', 'label' => false, 'class' => 'input-large datepick',  'required' => false, 'placeholder' => '',
+						'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 					
+						</td>	
+				</tr>
+				
+				<tr class="tbl_row" >
+					<td width="120" class="tbl_column">Offered CTC  <span class="f_req">*</span>
+					</td>
+						<td>
+						<?php echo $this->Form->input('ctc_offer', array('div'=> false,'type' => 'text', 'label' => false, 'class' => 'input-large', 'placeholder' => 'Write Full Value', 'required' => false, 'placeholder' => '', 'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 					
+						</td>	
+				</tr>
+	<?php endif; ?>			
 				
 				
 				<tr class="tbl_row" >
 					<td width="120" class="tbl_column">Remarks
+					
+					<?php if(!$validation):?>
+					<span class="f_req">*</span>
+					<?php endif; ?>
+					
+					
 					</td>
 						<td>
 					<?php echo $this->Form->input('note', array('div'=> false,'type' => 'text', 'label' => false, 'class' => 'span8', 'cols' => '10', 'rows' => '3',
@@ -49,6 +74,8 @@
 				</tbody>
 			</table>
 			<div class="form-actions">
+						<input type="hidden" id="start_date" name="start_date" value="<?php echo date('d/m/Y');?>">
+
 			<input name="submit" class="btn btn-gebo theForm" value="Submit"  type="submit"/>
 					<a class="jsRedirect toggleSearch"  href="javascript:window.close()">
 					<input type="button" value="Cancel" id="cancel" class="btn cancel"/></a>
