@@ -154,7 +154,7 @@ if(!empty($_POST)){
    
    }
    if(!empty($affected_rows) || !empty($inserted_id)){
-		$success_msg = 'Template created successfully! ';
+		$success_msg = 'Template Modified successfully! ';
 		$smarty->assign('SUCCESS_MSG', $success_msg);		
 	}
 }
