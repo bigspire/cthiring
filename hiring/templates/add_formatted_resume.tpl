@@ -626,8 +626,8 @@
 										<td width="120" class="tbl_column">Candidates Personality <span class="f_req">*</span>
 										</td>
 										<td>
-											<textarea placeholder="" name="personality" tabindex="2" cols="10" rows="3" class="span8">{if $personality}{$personality}{else}{$smarty.post.personality}{/if}</textarea>
-										<label for="reg_city" generated="true" class="error">{$personalityErr}</label>	
+<textarea placeholder="" name="personality" tabindex="2" cols="10" rows="3" class="span8">{if $personality}{$personality}{else}{$smarty.post.personality}{/if}</textarea>
+<label for="reg_city" generated="true" class="error">{$personalityErr}</label>	
 										</td>	
 									</tr>
 									<tr class="tbl_row">

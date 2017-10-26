@@ -663,7 +663,7 @@ class PositionController extends AppController {
 					'conditions' => array('`ReqTeam.users_id` = `TeamMember`.`id`', )
 			)
 		);
-		$fields = array('id','Client.id','job_title','job_code','education','location','no_job','min_exp','max_exp','ctc_from','ctc_to','ReqStatus.title',
+		$fields = array('id','Client.id','job_title','job_code','education','location','no_job','min_exp','max_exp','ctc_from','ctc_to','ReqStatus.title','job_desc',
 		'Client.client_name', 'Creator.first_name','created_date','modified_date', 'count(DISTINCT  ReqResume.id) cv_sent','req_status_id',
 		'group_concat(ReqResume.status_title) joined', 'start_date', 'end_date', //"group_concat(distinct ResOwner.first_name  SEPARATOR ', ') team_member",
 		"group_concat(distinct AH.first_name  SEPARATOR ', ') ac_holder","group_concat(distinct TeamMember.first_name  SEPARATOR ', ') team_member2",
@@ -766,16 +766,16 @@ class PositionController extends AppController {
 						
 						$position_data = $this->Position->find('all', array('conditions' => array('Position.id' => $req_id),'fields' => array( 'Client.client_name',	"group_concat(distinct TeamMember.first_name  SEPARATOR ', ') team_member"),'joins' => $options));
 						
-						$from = ucfirst($user_data['Creator']['first_name']).' '.ucfirst($user_data['Creator']['last_name']);
+						$from = ucfirst($user_data[0]['Creator']['first_name']).' '.ucfirst($user_data[0]['Creator']['last_name']);
 						
 						$vars = array('to_name' => $from, 'from_name' => ucwords($this->Session->read('USER.Login.first_name').' '.$this->Session->read('USER.Login.last_name')), 'position' => $this->request->data['Position']['job_title'],'client_name' => $position_data[0]['Client']['client_name'], 'no_opening' => $this->request->data['Position']['no_job'], 'team_member' => $position_data[0][0]['team_member'],'location' => $this->request->data['Position']['location']);					
 										
 						// notify employee						
-						if(!$this->send_email('Manage Hiring - Position '.$st_msg.' by '.ucfirst($this->Session->read('USER.Login.first_name')).' '.ucfirst($this->Session->read('USER.Login.last_name')), 'add_position', 'noreply@managehiring.com', $user_data['Creator']['email_id'],$vars)){		
+						if(!$this->send_email('Manage Hiring - Position '.$st_msg.' by '.ucfirst($this->Session->read('USER.Login.first_name')).' '.ucfirst($this->Session->read('USER.Login.last_name')), 'approve_position', 'noreply@managehiring.com', $user_data[0]['Creator']['email_id'],$vars)){		
 							// show the msg.								
 							$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Problem in sending the mail to user...', 'default', array('class' => 'alert alert-error'));				
 						}else{
-							
+							$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Position '.$approve_msg.' successfully.', 'default', array('class' => 'alert alert-success'));
 						}
 						
 						// get the superiors

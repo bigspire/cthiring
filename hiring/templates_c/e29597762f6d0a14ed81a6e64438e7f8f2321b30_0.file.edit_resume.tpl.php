@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-10-24 21:04:37
+/* Smarty version 3.1.29, created on 2017-10-25 17:08:58
   from "C:\xampp\htdocs\ctsvn\cthiring\hiring\templates\edit_resume.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_59ef5d8dc19fb7_67864380',
+  'unifunc' => 'content_59f077d25ae861_82367090',
   'file_dependency' => 
   array (
     'e29597762f6d0a14ed81a6e64438e7f8f2321b30' => 
     array (
       0 => 'C:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\templates\\edit_resume.tpl',
-      1 => 1508859211,
+      1 => 1508907597,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_59ef5d8dc19fb7_67864380 ($_smarty_tpl) {
+function content_59f077d25ae861_82367090 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -285,6 +285,28 @@ echo $_POST['native_location'];
 								</tbody>
 							</table>
 						</div>
+						
+						<div class="row-fluid" style="clear:left;float:left;margin-top:15px;">				
+			<div class="span12">
+	<table class="table table-bordered dataTable" style="margin-bottom:0;">
+	<tbody>
+<tr class="tbl_row">
+						
+<td style="margin:10px;text-align:center;">
+<textarea rows = "10" style="width:1200px;" name="RESUME_DATA">
+<?php if ($_smarty_tpl->tpl_vars['RESUME_DATA']->value) {
+echo $_smarty_tpl->tpl_vars['RESUME_DATA']->value;
+} else {
+echo $_POST['RESUME_DATA'];
+}?>
+</textarea>
+																						
+</td>
+</tr>									
+									
+	</tbody>
+	</table>
+</div>		</div>
 </div>
 	
 <!-- sheepIt Form -->
@@ -350,7 +372,7 @@ echo $_POST['native_location'];
 								<td width="120" class="tbl_column">% of Marks / Grade <span class="f_req"></span></td>
 								<td> 
 									<input type="text" tabindex="5" name="grade_#index#" id="grade_#index#" class="span4" >
-									<select name="grade_type_#index#" class="inline_text span4"  id="grade_type_#index#">
+									<select name="grade_type_#index#" class="inline_text span4" tabindex="6" id="grade_type_#index#">
 										<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['grade_drop']->value),$_smarty_tpl);?>
  
 									</select>
@@ -359,7 +381,7 @@ echo $_POST['native_location'];
 							<tr class="tbl_row">
 							<td width="120" class="tbl_column">Year of Passing <span class="f_req">*</span></td>										
 								<td>
-									<select name="year_of_pass_#index#" id="year_of_pass_#index#" tabindex="6" class="span8">
+									<select name="year_of_pass_#index#" id="year_of_pass_#index#" tabindex="7" class="span8">
 									<option value="">Year</option>
 										<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['year_of_pass']->value),$_smarty_tpl);?>
  
@@ -370,7 +392,7 @@ echo $_POST['native_location'];
 							<tr>
 								<td width="120" class="tbl_column">University <span class="f_req"></span></td>
 								<td> 
-									<input type="text" tabindex="7" name="university_#index#" id="university_#index#" class="span8" >										
+									<input type="text" tabindex="8" name="university_#index#" id="university_#index#" class="span8" >										
 								</td>
 							</tr>
 							

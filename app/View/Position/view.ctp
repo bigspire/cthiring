@@ -238,10 +238,10 @@
 									<tr>
 								<td width="120" class="tbl_column">Attachment </td>
 									<td>
-										<a class="notify" data-notify-time = '7000' data-notify-title="In Progress!"
+										<!--a class="notify" data-notify-time = '7000' data-notify-title="In Progress!"
 										data-notify-message="Downloading JD... Please wait..."   
 										href="<?php echo $this->webroot;?>hc/download/<?php echo $position_data['Position']['id']; ?>/jd/">
-										Download</a>
+										Download</a-->
 									</td>
 								</tr>
 								</tbody>
