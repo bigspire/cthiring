@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-07-13 14:16:01
+/* Smarty version 3.1.29, created on 2017-10-26 18:37:42
   from "C:\xampp\htdocs\2017\ctsvn\cthiring\hiring\templates\edit_grade.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_596733498cb708_20350226',
+  'unifunc' => 'content_59f1de1ef0e5a0_49369863',
   'file_dependency' => 
   array (
     'f2c0aaca68ae3427aa28ae23a81e33d750bf2084' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\templates\\edit_grade.tpl',
-      1 => 1499935553,
+      1 => 1500546175,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_596733498cb708_20350226 ($_smarty_tpl) {
+function content_59f1de1ef0e5a0_49369863 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -69,7 +69,7 @@ home"><i class="icon-home"></i></a>
 						<tr class="tbl_row">
 							<td width="120" class="tbl_column">Grade <span class="f_req">*</span></td>
 							<td>										
-								<input type="text" tabindex="1" name="grade" id="keyword" value="<?php echo $_smarty_tpl->tpl_vars['grade']->value;?>
+								<input type="text" tabindex="1" name="grade" value="<?php echo $_smarty_tpl->tpl_vars['grade']->value;?>
 " class="span8 ui-autocomplete-input" autocomplete="off">
 								<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['grade_nameErr']->value;?>
 </label>									

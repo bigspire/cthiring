@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-10-25 10:18:34
+/* Smarty version 3.1.29, created on 2017-10-25 15:25:49
   from "C:\xampp\htdocs\2017\ctsvn\cthiring\hiring\templates\add_formatted_resume.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_59f017a2ae89f9_51745664',
+  'unifunc' => 'content_59f05fa5b4db47_92639400',
   'file_dependency' => 
   array (
     '7b9debb43acd1c9656df1fbe01b897c4d462aec5' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\templates\\add_formatted_resume.tpl',
-      1 => 1508906909,
+      1 => 1508925021,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_59f017a2ae89f9_51745664 ($_smarty_tpl) {
+function content_59f05fa5b4db47_92639400 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -563,7 +563,7 @@ echo $_POST['RESUME_DATA'];
 										</td>
 							</tr>
 							<tr class="tbl_row">
-										<td width="120" class="tbl_column">Location of work <span class="f_req">*</span></td>
+										<td width="120" class="tbl_column">Location of Work <span class="f_req">*</span></td>
 										<td> 
 										<input type="text"  tabindex="4" name="workloc_#index#" id="workloc_#index#" value="" class="span8" />										
 										<label for="reg_city" generated="true" class="error" id="worklocErr_#index#"></label>										
