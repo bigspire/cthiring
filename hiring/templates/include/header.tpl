@@ -281,6 +281,16 @@
 													</ul>
 												</li>
 											{/if}
+											
+											{if $module['manage_designation'] eq '1'}
+	
+												<li><a href="designation.php">Designation </a></li>
+											{/if}
+											
+											{if $module['manage_contact_branch'] eq '1'}
+	
+												<li><a href="contact_branch.php">Contact Branch</a></li>
+											{/if}
                                             </ul>
                                         </li>
 										{/if}

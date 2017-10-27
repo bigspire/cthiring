@@ -116,6 +116,12 @@ class fun{
 					case 37:					
 					$mod['approve_billing'] = 1;
 					break;
+					case 38:					
+					$mod['manage_designation'] = 1;
+					break;
+					case 39:					
+					$mod['manage_contact_branch'] = 1;
+					break;
 				}				
 			}
 		}
