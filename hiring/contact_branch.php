@@ -168,7 +168,7 @@ $smarty->assign('ALERT_MSG', $alert_msg);
 $smarty->assign('SUCCESS_MSG', $success_msg);
 
 // assign page title
-$smarty->assign('page_title' , 'Contact Branch - Manage Hiring');  
+$smarty->assign('page_title' , 'Branch - Manage Hiring');  
 // assigning active class status to smarty menu.tpl
 $smarty->assign('setting_active','active');
 // display smarty file

@@ -248,6 +248,17 @@
                                             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
 											<i class="icon-cog icon-white"></i> Settings <b class="caret"></b></a>
                                           <ul class="dropdown-menu">
+										  
+										  {if $module['manage_contact_branch'] eq '1'}
+	
+												<li><a href="contact_branch.php">Branch</a></li>
+											{/if}
+											
+											{if $module['manage_designation'] eq '1'}
+	
+												<li><a href="designation.php">Designation </a></li>
+											{/if}
+											
 											{if $module['manage_grade'] eq '1'}
                                                 <li><a href="grade.php">Grade {if $grade_count}<span class="label-bub label-info white">{$grade_count}</span>{/if}</a></li>
 											{/if}
@@ -281,16 +292,7 @@
 													</ul>
 												</li>
 											{/if}
-											
-											{if $module['manage_designation'] eq '1'}
-	
-												<li><a href="designation.php">Designation </a></li>
-											{/if}
-											
-											{if $module['manage_contact_branch'] eq '1'}
-	
-												<li><a href="contact_branch.php">Branch</a></li>
-											{/if}
+
                                             </ul>
                                         </li>
 										{/if}

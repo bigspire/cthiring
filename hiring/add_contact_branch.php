@@ -96,7 +96,7 @@ $smarty->assign('branch_status', array('' => 'Select', '1' => 'Active', '2' => '
 // closing mysql
 $mysql->close_connection();
 // assign page title
-$smarty->assign('page_title' , 'Add Contact Branch - Manage Hiring');  
+$smarty->assign('page_title' , 'Add Branch - Manage Hiring');  
 // assigning active class status to smarty menu.tpl
 $smarty->assign('setting_active','active');	  
 // display smarty file
