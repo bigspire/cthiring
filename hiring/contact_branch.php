@@ -129,9 +129,9 @@ try{
 		include('classes/class.excel.php');
 		$excelObj = new libExcel();
 		// function to print the excel header
-      $excelObj->printHeader($header = array('Contact Branch','Status','Created Date','Modified Date') ,$col = array('A','B','C','D'));  
+      $excelObj->printHeader($header = array('Branch','Status','Created Date','Modified Date') ,$col = array('A','B','C','D'));  
 		// function to print the excel data
-		$excelObj->printCell($data, $count,$col = array('A','B','C','D'), $field = array('branch','status','created_date','modified_date'),'Contact Branch'.$current_date);
+		$excelObj->printCell($data, $count,$col = array('A','B','C','D'), $field = array('branch','status','created_date','modified_date'),'Branch_'.$current_date);
 	}	
 	
 	// create,update,delete message validation
