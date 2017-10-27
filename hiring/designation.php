@@ -102,8 +102,8 @@ if($search_key = array_search($_GET['field'], $sort_fields)){
 }
 
 // fetch all records
-echo $query =  "CALL list_designation('".$keyword."','".$status."','$start','$limit','".$field."','".$order."','".$_GET['action']."')";
-die;try{
+$query =  "CALL list_designation('".$keyword."','".$status."','$start','$limit','".$field."','".$order."','".$_GET['action']."')";
+try{
 	if(!$result = $mysql->execute_query($query)){
 		throw new Exception('Problem in executing list grade page');
 	}
