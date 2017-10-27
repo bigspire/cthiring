@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-10-27 12:26:01
+/* Smarty version 3.1.29, created on 2017-10-27 18:55:46
   from "C:\xampp\htdocs\ctsvn\cthiring\hiring\templates\include\header.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_59f2d88132e199_20079167',
+  'unifunc' => 'content_59f333da923fc4_72230598',
   'file_dependency' => 
   array (
     '2cc32a09905a93cae1ddf68e0518ebdd3aca7f41' => 
     array (
       0 => 'C:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\templates\\include\\header.tpl',
-      1 => 1509087305,
+      1 => 1509110738,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_59f2d88132e199_20079167 ($_smarty_tpl) {
+function content_59f333da923fc4_72230598 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -31,6 +31,8 @@ function content_59f2d88132e199_20079167 ($_smarty_tpl) {
 	   
 	    <!-- Bootstrap framework -->
             <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
+			
+
             <link rel="stylesheet" href="bootstrap/css/bootstrap-responsive.min.css" />
         <!-- gebo blue theme-->
             <link rel="stylesheet" href="css/blue.css" id="link_theme" />            
@@ -53,6 +55,9 @@ function content_59f2d88132e199_20079167 ($_smarty_tpl) {
             <link rel="stylesheet" href="css/smoke.css" />
 			 <!-- splashy icons -->
             <link rel="stylesheet" href="img/splashy/splashy.css"  />
+			
+			<link rel="stylesheet" href="vendor/node_modules/bootstrap-rating/bootstrap-rating.css"  />
+			
 
 			<!-- colorbox -->
 	<link rel="stylesheet" href="css/colorbox/colorbox.css">
@@ -288,6 +293,17 @@ resume/">Search Resume <!-- span class="label-bub label-info white"><?php echo $
                                             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
 											<i class="icon-cog icon-white"></i> Settings <b class="caret"></b></a>
                                           <ul class="dropdown-menu">
+										  
+										  <?php if ($_smarty_tpl->tpl_vars['module']->value['manage_contact_branch'] == '1') {?>
+	
+												<li><a href="contact_branch.php">Branch</a></li>
+											<?php }?>
+											
+											<?php if ($_smarty_tpl->tpl_vars['module']->value['manage_designation'] == '1') {?>
+	
+												<li><a href="designation.php">Designation </a></li>
+											<?php }?>
+											
 											<?php if ($_smarty_tpl->tpl_vars['module']->value['manage_grade'] == '1') {?>
                                                 <li><a href="grade.php">Grade <?php if ($_smarty_tpl->tpl_vars['grade_count']->value) {?><span class="label-bub label-info white"><?php echo $_smarty_tpl->tpl_vars['grade_count']->value;?>
 </span><?php }?></a></li>
@@ -324,16 +340,7 @@ resume/">Search Resume <!-- span class="label-bub label-info white"><?php echo $
 													</ul>
 												</li>
 											<?php }?>
-											
-											<?php if ($_smarty_tpl->tpl_vars['module']->value['manage_designation'] == '1') {?>
-	
-												<li><a href="designation.php">Designation </a></li>
-											<?php }?>
-											
-											<?php if ($_smarty_tpl->tpl_vars['module']->value['manage_contact_branch'] == '1') {?>
-	
-												<li><a href="contact_branch.php">Branch</a></li>
-											<?php }?>
+
                                             </ul>
                                         </li>
 										<?php }?>

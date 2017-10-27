@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-10-08 16:47:18
+/* Smarty version 3.1.29, created on 2017-10-27 17:31:57
   from "C:\xampp\htdocs\ctsvn\cthiring\hiring\templates\include\footer.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_59da093e50e277_01701469',
+  'unifunc' => 'content_59f320352d6959_80671642',
   'file_dependency' => 
   array (
     '38941783e971e833f9a561f8b7944945bad5450e' => 
     array (
       0 => 'C:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\templates\\include\\footer.tpl',
-      1 => 1507458985,
+      1 => 1509105713,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_59da093e50e277_01701469 ($_smarty_tpl) {
+function content_59f320352d6959_80671642 ($_smarty_tpl) {
 ?>
 <div id="footer">
 
@@ -29,6 +29,7 @@ function content_59da093e50e277_01701469 ($_smarty_tpl) {
 		
 </p>		
 </div>
+
 	
 <?php echo '<script'; ?>
  src="js/jquery.min.js"><?php echo '</script'; ?>
@@ -149,7 +150,12 @@ function content_59da093e50e277_01701469 ($_smarty_tpl) {
 <?php echo '<script'; ?>
  src="lib_cthiring/jBreadcrumbs/js/jquery.jBreadCrumb.1.1.min.js"><?php echo '</script'; ?>
 >
-<!-- datatable -->                                                                                                                                                                                         
+<!-- datatable --> 
+
+<?php echo '<script'; ?>
+ src="vendor/node_modules/bootstrap-rating/bootstrap-rating.min.js"><?php echo '</script'; ?>
+>
+                                                                                                                                                                                        
 <?php echo '<script'; ?>
  type="text/javascript" src="js/main.js"><?php echo '</script'; ?>
 >	

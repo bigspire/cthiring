@@ -1065,6 +1065,18 @@ $(document).ready(function() {
 		$('.stickyTable').stickyTableHeaders();
 	}
 	
+	/* for star rating */
+	  $('.rating').each(function () {
+          $(' <span class="label label-default dn"></span>')
+            .text($(this).val() || ' ')
+            .insertAfter(this);
+        });
+        $('.rating').on('change', function () {
+          $(this).next('.label').text($(this).val()).show();
+      });
+	  
+	
+
 	/* for changing the dashboard view */
 	$('.dash_view').click(function(){
 		location.href = $(this).attr('rel');

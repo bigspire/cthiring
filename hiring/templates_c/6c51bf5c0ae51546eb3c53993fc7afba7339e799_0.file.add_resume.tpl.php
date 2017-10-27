@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-10-25 12:39:42
+/* Smarty version 3.1.29, created on 2017-10-27 19:12:56
   from "C:\xampp\htdocs\ctsvn\cthiring\hiring\templates\add_resume.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_59f038b6c25964_69807770',
+  'unifunc' => 'content_59f337e0675f33_15909585',
   'file_dependency' => 
   array (
     '6c51bf5c0ae51546eb3c53993fc7afba7339e799' => 
     array (
       0 => 'C:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\templates\\add_resume.tpl',
-      1 => 1508907597,
+      1 => 1509111774,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_59f038b6c25964_69807770 ($_smarty_tpl) {
+function content_59f337e0675f33_15909585 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -559,20 +559,20 @@ echo $_POST['certification'];
 </div>
 
 <div class="tab-pane" id="mbox_Consultant">
-<div class="span12">
+<div class="span6">
 			<table class="table table-bordered dataTable" style="margin-bottom:0;">
 						<tbody>
 									<tr class="tbl_row">
 										<td width="120" class="tbl_column">Consultant Assessment <span class="f_req"></span></td>
 										<td>
-<textarea placeholder="" name="consultant" tabindex="1" id="consultant" cols="10" rows="3" class="span10"><?php echo $_POST['consultant'];?>
+<textarea placeholder="" name="consultant" tabindex="1" id="consultant" cols="10" rows="3" class="span10 wysiwyg1"><?php echo $_POST['consultant'];?>
 </textarea>
 										</td>	
 									</tr>	
 									<tr class="">
 										<td width="120" class="tbl_column">Interview Availability </td>
 										<td>
-<textarea placeholder="" name="interview_availability" tabindex="2" id="interview_availability" cols="10" rows="3" class="span10"><?php echo $_POST['interview_availability'];?>
+<textarea placeholder="" name="interview_availability" tabindex="2" id="interview_availability" cols="10" rows="3" class="span10 wysiwyg1"><?php echo $_POST['interview_availability'];?>
 </textarea>
 										<!--label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['interview_availabilityErr']->value;?>
 </label-->
@@ -581,6 +581,42 @@ echo $_POST['certification'];
 								</tbody>
 							</table>
 						</div>
+						
+						<div class="span6">
+			<table class="table table-bordered dataTable" style="margin-bottom:0;">
+						<tbody>
+									<tr class="tbl_row">
+										<td width="120" class="tbl_column">Assess Technical Skills <span class="f_req"></span></td>
+										<td>
+	<ul class="ratingList">
+ <li> PHP <input type="hidden" class="rating" data-fractions="2"/></li>
+<li> MySQL <input type="hidden" class="rating" data-fractions="2"/></li>
+<li> Smarty  <input type="hidden" class="rating" data-fractions="2"/></li>
+ <li>Java  <input type="hidden" class="rating" data-fractions="2"/></li>
+ </ul>
+    <!-- Custom CSS -->
+ 
+										</td>	
+									</tr>	
+									<tr class="">
+										<td width="120" class="tbl_column">Assess Behavioural Skills </td>
+										<td>
+<ul class="ratingList">
+  <li>Communication <input type="hidden" class="rating" data-fractions="2"/> </li>
+ <li>Attitude <input type="hidden" class="rating" data-fractions="2"/></li>
+ <li>GK  <input type="hidden" class="rating" data-fractions="2"/></li>
+<li> Team Worker  <input type="hidden" class="rating" data-fractions="2"/></li>
+</ul>
+ 
+										<!--label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['interview_availabilityErr']->value;?>
+</label-->
+										</td>	
+									</tr>													
+								</tbody>
+							</table>
+						</div>
+						
+						
 						<input type="hidden" id="edu_count" name="edu_count" value="<?php echo $_smarty_tpl->tpl_vars['eduCount']->value;?>
 ">
 						<input type="hidden" id="exp_count" name="exp_count" value="<?php echo $_smarty_tpl->tpl_vars['expCount']->value;?>

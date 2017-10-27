@@ -470,25 +470,60 @@
 </div>
 
 <div class="tab-pane" id="mbox_Consultant">
-<div class="span12">
+<div class="span6">
 			<table class="table table-bordered dataTable" style="margin-bottom:0;">
 						<tbody>
 									<tr class="tbl_row">
 										<td width="120" class="tbl_column">Consultant Assessment <span class="f_req"></span></td>
 										<td>
-<textarea placeholder="" name="consultant" tabindex="1" id="consultant" cols="10" rows="3" class="span10">{$smarty.post.consultant}</textarea>
+<textarea placeholder="" name="consultant" tabindex="1" id="consultant" cols="10" rows="3" class="span10 wysiwyg1">{$smarty.post.consultant}</textarea>
 										</td>	
 									</tr>	
 									<tr class="">
 										<td width="120" class="tbl_column">Interview Availability </td>
 										<td>
-<textarea placeholder="" name="interview_availability" tabindex="2" id="interview_availability" cols="10" rows="3" class="span10">{$smarty.post.interview_availability}</textarea>
+<textarea placeholder="" name="interview_availability" tabindex="2" id="interview_availability" cols="10" rows="3" class="span10 wysiwyg1">{$smarty.post.interview_availability}</textarea>
 										<!--label for="reg_city" generated="true" class="error">{$interview_availabilityErr}</label-->
 										</td>	
 									</tr>													
 								</tbody>
 							</table>
 						</div>
+						
+						<div class="span6">
+			<table class="table table-bordered dataTable" style="margin-bottom:0;">
+						<tbody>
+									<tr class="tbl_row">
+										<td width="120" class="tbl_column">Assess Technical Skills <span class="f_req"></span></td>
+										<td>
+	<ul class="ratingList">
+ <li> PHP <input type="hidden" class="rating" data-fractions="2"/></li>
+<li> MySQL <input type="hidden" class="rating" data-fractions="2"/></li>
+<li> Smarty  <input type="hidden" class="rating" data-fractions="2"/></li>
+ <li>Java  <input type="hidden" class="rating" data-fractions="2"/></li>
+ </ul>
+    <!-- Custom CSS -->
+ 
+										</td>	
+									</tr>	
+									<tr class="">
+										<td width="120" class="tbl_column">Assess Behavioural Skills </td>
+										<td>
+<ul class="ratingList">
+  <li>Communication <input type="hidden" class="rating" data-fractions="2"/> </li>
+ <li>Attitude <input type="hidden" class="rating" data-fractions="2"/></li>
+ <li>GK  <input type="hidden" class="rating" data-fractions="2"/></li>
+<li> Team Worker  <input type="hidden" class="rating" data-fractions="2"/></li>
+</ul>
+ 
+										<!--label for="reg_city" generated="true" class="error">{$interview_availabilityErr}</label-->
+										</td>	
+									</tr>													
+								</tbody>
+							</table>
+						</div>
+						
+						
 						<input type="hidden" id="edu_count" name="edu_count" value="{$eduCount}">
 						<input type="hidden" id="exp_count" name="exp_count" value="{$expCount}">	
 <input type="hidden" id="add_resume" name="add_resume" value="{$smarty.post.add_resume}">	

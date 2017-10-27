@@ -7,6 +7,8 @@
 	   
 	    <!-- Bootstrap framework -->
             <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
+			
+
             <link rel="stylesheet" href="bootstrap/css/bootstrap-responsive.min.css" />
         <!-- gebo blue theme-->
             <link rel="stylesheet" href="css/blue.css" id="link_theme" />            
@@ -29,6 +31,9 @@
             <link rel="stylesheet" href="css/smoke.css" />
 			 <!-- splashy icons -->
             <link rel="stylesheet" href="img/splashy/splashy.css"  />
+			
+			<link rel="stylesheet" href="vendor/node_modules/bootstrap-rating/bootstrap-rating.css"  />
+			
 
 			<!-- colorbox -->
 	<link rel="stylesheet" href="css/colorbox/colorbox.css">

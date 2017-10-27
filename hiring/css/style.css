@@ -979,3 +979,5 @@ line-height: 18px;padding: 3px 15px;background-color:#eaeeef !important; backgro
 }
 .alert-action{background:#ffffbf !important;border:1px solid #fbfcbd;}
 .dash_view{font-family:'Open Sans', sans-serif}
+
+.ratingList li{margin:2px 0px 2px 0px;list-style-type:none;}
