@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-10-25 15:25:49
+/* Smarty version 3.1.29, created on 2017-10-27 08:41:30
   from "C:\xampp\htdocs\2017\ctsvn\cthiring\hiring\templates\add_formatted_resume.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_59f05fa5b4db47_92639400',
+  'unifunc' => 'content_59f2a3e24f7fe3_78206421',
   'file_dependency' => 
   array (
     '7b9debb43acd1c9656df1fbe01b897c4d462aec5' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\templates\\add_formatted_resume.tpl',
-      1 => 1508925021,
+      1 => 1509024447,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_59f05fa5b4db47_92639400 ($_smarty_tpl) {
+function content_59f2a3e24f7fe3_78206421 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -748,12 +748,12 @@ echo $_POST['about_company'];
 										<td width="120" class="tbl_column">Candidates Personality <span class="f_req">*</span>
 										</td>
 										<td>
-											<textarea placeholder="" name="personality" tabindex="2" cols="10" rows="3" class="span8"><?php if ($_smarty_tpl->tpl_vars['personality']->value) {
+<textarea placeholder="" name="personality" tabindex="2" cols="10" rows="3" class="span8"><?php if ($_smarty_tpl->tpl_vars['personality']->value) {
 echo $_smarty_tpl->tpl_vars['personality']->value;
 } else {
 echo $_POST['personality'];
 }?></textarea>
-										<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['personalityErr']->value;?>
+<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['personalityErr']->value;?>
 </label>	
 										</td>	
 									</tr>

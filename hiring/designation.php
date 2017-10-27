@@ -166,15 +166,6 @@ $smarty->assign('keyword' , $keyword);
 $smarty->assign('status', $status);	
 $smarty->assign('ALERT_MSG', $alert_msg);
 $smarty->assign('SUCCESS_MSG', $success_msg);
-
-$smarty->assign('data', $data);
-$smarty->assign('page' , $page); 
-$smarty->assign('total_pages' , $total_pages); 	
-$smarty->assign('keyword' , $keyword); 	
-$smarty->assign('f_date', $f_date);
-$smarty->assign('t_date', $t_date);
-$smarty->assign('ALERT_MSG', $alert_msg);
-$smarty->assign('SUCCESS_MSG', $success_msg);
 // assign page title
 $smarty->assign('page_title' , 'Designation - Manage Hiring');  
 // assigning active class status to smarty menu.tpl

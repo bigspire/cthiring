@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-10-26 18:51:27
+/* Smarty version 3.1.29, created on 2017-10-27 11:05:46
   from "C:\xampp\htdocs\2017\ctsvn\cthiring\hiring\templates\designation.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_59f1e15739d3b8_66196554',
+  'unifunc' => 'content_59f2c5b2763e79_62192346',
   'file_dependency' => 
   array (
     '5bfd9df115bdc923826a180c274fea729b6219b2' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\templates\\designation.tpl',
-      1 => 1509024082,
+      1 => 1509082537,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,8 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_59f1e15739d3b8_66196554 ($_smarty_tpl) {
+function content_59f2c5b2763e79_62192346 ($_smarty_tpl) {
+if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
    
@@ -92,7 +93,7 @@ home"><i class="icon-home"></i></a>
 							</div>
 						<?php }?>
 						
-						<?php if ($_smarty_tpl->tpl_vars['keyword']->value) {?>
+						<?php if ($_smarty_tpl->tpl_vars['keyword']->value || $_smarty_tpl->tpl_vars['status']->value >= '0') {?>
 						  <?php $_smarty_tpl->tpl_vars['hide'] = new Smarty_Variable('', null);
 $_smarty_tpl->ext->_updateScope->updateScope($_smarty_tpl, 'hide', 0);?>
 						<?php } else { ?>
@@ -103,10 +104,15 @@ $_smarty_tpl->ext->_updateScope->updateScope($_smarty_tpl, 'hide', 0);?>
 							<div class="<?php echo $_smarty_tpl->tpl_vars['hide']->value;?>
  dataTables_filter srchBox" style="float:left;" id="dt_gal_filter">
 							
-								<label style="margin-left:0;">Keyword: <input type="text" placeholder="Candidate Name or Client Name" name="keyword" id="keyword" value="<?php echo $_smarty_tpl->tpl_vars['keyword']->value;?>
+								<label style="margin-left:0;">Keyword: <input type="text" placeholder="Designation Name" name="keyword" id="keyword" value="<?php echo $_smarty_tpl->tpl_vars['keyword']->value;?>
 " class="input-large" aria-controls="dt_gal"></label>
 								
-						
+						<label>Status: 
+							<select name="status" class="input-small" style="clear:left" id="ClientStatus">
+								<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['status_type']->value,'selected'=>$_smarty_tpl->tpl_vars['status']->value),$_smarty_tpl);?>
+
+							</select> 
+							</label>
 							<label style="margin-top:18px;"><input type="submit" value="Submit" class="btn btn-gebo" /></label>					
 							<label style="margin-top:18px;"><a href="designation.php" class="jsRedirect"><input value="Reset" type="button" class="btn"/></a></label>
 							
