@@ -39,7 +39,7 @@ class LoginController extends AppController {
 				$this->request->data['Login']['email'] = trim($this->request->data['Login']['email']);
 				$this->Login->set($this->request->data);					
 				if ($this->Login->validates(array('fieldList' => array('email', 'mypassword')))) {					
-					$data = $this->Login->find('first', array('fields' => array('first_name','email_id','id','status','last_login','rights','roles_id'),'conditions' =>array('email_id' => $this->request->data['Login']['email'],
+					$data = $this->Login->find('first', array('fields' => array('first_name','email_id','id','status','last_login','rights','roles_id','theme'),'conditions' =>array('email_id' => $this->request->data['Login']['email'],
 					'is_deleted' => 'N', 'status' => '0')));
 					// when success login attempt
 					if($data['Login']['id'] != ''){
@@ -60,7 +60,11 @@ class LoginController extends AppController {
 							if($res){						
 								$this->Session->write('USER', $data);
 								
-								$this->Session->write('WELCOME', 1);
+								// $this->Session->write('WELCOME', 1);
+								
+								// update the theme
+								$theme = $this->Session->read('USER.Login.theme');
+								$this->Session->write('theme', $theme);
 								// save the last login
 								$this->Login->id = $data['Login']['id'];
 								$this->Login->saveField('last_login', $this->Functions->get_current_date());
@@ -68,7 +72,7 @@ class LoginController extends AppController {
 					
 								$this->set_cookie('ESUSER', $this->Functions->encrypt($data['Login']['id']), '30 Days');
 								$this->set_cookie('ESUSERROLE', $this->Functions->encrypt($data['Login']['roles_id']), '30 Days');
-								$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Hi '.$data['Login']['first_name'].', Welcome to Manage Hiring', 'default', array('class' => 'alert alert-success'));
+								// $this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Hi '.$data['Login']['first_name'].', Welcome to Manage Hiring', 'default', array('class' => 'alert alert-success'));
 
 								$this->redirect('/home/');								
 							}else{ 
