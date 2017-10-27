@@ -22,6 +22,8 @@ include('classes/class.function.php');
 include('classes/class.paging.php');
 // add menu count
 include('menu_count.php');
+// add menu count
+// include('get_theme.php');
 
 // role based validation
 $module_access = $fun->check_role_access('40',$modules);

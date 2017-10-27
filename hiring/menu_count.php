@@ -14,6 +14,7 @@ $_SESSION['user_id'] = $fun->decrypt($_COOKIE['CakeCookie']['ESUSER']);
 if($_SESSION['user_id'] == ''){
 	header('Location: ../cthiring/');
 }
+
 // get user name
 $query = "call get_employee_by_id('".$_SESSION['user_id']."')";
 try{
@@ -227,6 +228,12 @@ try{
 }catch(Exception $e){
 	echo 'Caught exception: ',  $e->getMessage(), "\n";
 }
+
+
+
+
+
+
 /*
 // assign smarty for module names
 foreach($modules as $key => $record){

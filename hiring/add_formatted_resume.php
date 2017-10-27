@@ -677,13 +677,13 @@ if(!empty($_POST)){
 	}
 	
 	// array for printing correct field name in error message
-	$fieldtype = array('0', '0','0','0','0','0', '0','1','1','0', '0','0','1','1', '1','1','0','0','0','0','0');
+	$fieldtype = array('0', '0','0','0','0', '0','1','1','0', '0','0','1','1', '1','1','0','0','0','0','0');
 	$actualfield = array('first name', 'last name','email', 'mobile', 'telephone', 'dob',
 						'current designation', 'total years of experience','total months of experience',
 						'present CTC','expected CTC','present CTC type','expected CTC type',
 						'notice period','gender', 'present location','nationality', 'language','address');
    $field = array('first_name' => 'first_nameErr', 'last_name' => 'last_nameErr','email' => 'emailErr',
-    'mobile' => 'mobileErr','telephone' => 'telephoneErr','dob_field' => 'dobErr',
+    'mobile' => 'mobileErr','dob_field' => 'dobErr',
     'designation_id' => 'positionErr','year_of_exp' => 'year_of_expErr', 'month_of_exp' => 'month_of_expErr',
     'present_ctc' => 'present_ctcErr','expected_ctc' => 'expected_ctcErr',
 	'present_ctc_type' => 'present_ctc_typeErr','expected_ctc_type' => 'expected_ctc_typeErr',
@@ -730,16 +730,16 @@ if(!empty($_POST)){
 	$field1 = array('personality' => 'personalityErr','interview_availability' => 'interview_availabilityErr',
 		'credential_shortlisting' => 'credential_shortlistingErr', 'relevant_exposure' => 'relevant_exposureErr');
 	$j = 0;
-	foreach ($field1 as $field => $er_var){ 
-		if($_POST[$field] == ''){
+	foreach ($field1 as $field1 => $er_var){ 
+		if($_POST[$field1] == ''){
 			$error_msg1 = $fieldtype1[$j] ? ' select the ' : ' enter the ';
 			$actual_field1 =  $actualfield1[$j];
-			$er1[$er_var] = 'Please'. $error_msg .$actual_field1;
+			$er1[$er_var] = 'Please'. $error_msg1 .$actual_field1;
 			$test = 'error';
 			$tab5 = 'fail';
 			$smarty->assign($er_var,$er1[$er_var]);
 		}else{
-			$smarty->assign($field1,$_POST[$field]);
+			$smarty->assign($field1,$_POST[$field1]);
 		}
 			$j++;
 	}

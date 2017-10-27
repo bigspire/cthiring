@@ -537,7 +537,7 @@ class FunctionsHelper extends AppHelper {
    /* function to get ctc type */
    public function get_ctc_type($type){
 		switch($type){
-			case 'K':
+			case 'T':
 			$value = 'Thousands';
 			break;
 			case 'L':

@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-10-27 11:33:13
+/* Smarty version 3.1.29, created on 2017-10-27 19:00:40
   from "C:\xampp\htdocs\2017\ctsvn\cthiring\hiring\templates\contact_branch.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_59f2cc2185fdc5_98197895',
+  'unifunc' => 'content_59f3350029da08_14564587',
   'file_dependency' => 
   array (
     'be730a1f96566857b0d3902c7874b537ab4755f5' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\templates\\contact_branch.tpl',
-      1 => 1509084187,
+      1 => 1509110977,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_59f2cc2185fdc5_98197895 ($_smarty_tpl) {
+function content_59f3350029da08_14564587 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -66,12 +66,10 @@ home"><i class="icon-home"></i></a>
 							<?php if (!$_smarty_tpl->tpl_vars['ALERT_MSG']->value) {?>
 								<a href="contact_branch.php?action=export&keyword=<?php echo $_POST['keyword'];?>
 
-								&f_date=<?php echo $_smarty_tpl->tpl_vars['f_date']->value;?>
-&t_date=<?php echo $_smarty_tpl->tpl_vars['t_date']->value;?>
+								&status=<?php echo $_smarty_tpl->tpl_vars['status']->value;?>
 " class="jsRedirect">
 								<button type="button" val="contact_branch.php?action=export&keyword=<?php echo $_POST['keyword'];?>
-&f_date=<?php echo $_smarty_tpl->tpl_vars['f_date']->value;?>
-&t_date=<?php echo $_smarty_tpl->tpl_vars['t_date']->value;?>
+&status=<?php echo $_smarty_tpl->tpl_vars['status']->value;?>
 " name="export" class="btn btn-warning" >Export Excel</button></a>
 							<?php }?>
 							<a class="jsRedirect" data-notify-time = '3000'   href="add_contact_branch.php">
@@ -140,15 +138,13 @@ $_smarty_tpl->ext->_updateScope->updateScope($_smarty_tpl, 'hide', 0);?>
 										<th width="80"><a href="contact_branch.php?field=created_date&order=<?php echo $_smarty_tpl->tpl_vars['order']->value;?>
 &page=<?php echo $_GET['page'];?>
 &keyword=<?php echo $_smarty_tpl->tpl_vars['keyword']->value;?>
-&f_date=<?php echo $_smarty_tpl->tpl_vars['f_date']->value;?>
-&t_date=<?php echo $_smarty_tpl->tpl_vars['t_date']->value;?>
+&status=<?php echo $_smarty_tpl->tpl_vars['status']->value;?>
 " class="<?php echo $_smarty_tpl->tpl_vars['sort_field_created_date']->value;?>
 ">Created Date</a></th>
 										<th width="80"><a href="contact_branch.php?field=modified_date&order=<?php echo $_smarty_tpl->tpl_vars['order']->value;?>
 &page=<?php echo $_GET['page'];?>
 &keyword=<?php echo $_smarty_tpl->tpl_vars['keyword']->value;?>
-&f_date=<?php echo $_smarty_tpl->tpl_vars['f_date']->value;?>
-&t_date=<?php echo $_smarty_tpl->tpl_vars['t_date']->value;?>
+&status=<?php echo $_smarty_tpl->tpl_vars['status']->value;?>
 " class="<?php echo $_smarty_tpl->tpl_vars['sort_field_modified_date']->value;?>
 ">Modified Date</a></th>									
 										<th width="10" style="text-align:center">Actions</th>
