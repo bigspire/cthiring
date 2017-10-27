@@ -78,10 +78,10 @@
 									</tr>	
 									
 									<tr>
-										<td width="120" class="tbl_column">Telephone <span class="f_req">*</span></td>
+										<td width="120" class="tbl_column">Telephone <span class="f_req"></span></td>
 										<td>
-										<input type="text" tabindex="5" name="telephone" value="{$telephone}" class="span8">
-										<label for="reg_city" generated="true" class="error">{$telephoneErr}</label>	</td>	
+										<input type="text" tabindex="5" name="telephone" value="{if $telephone}{$telephone}{else}{$smarty.post.telephone}{/if}" class="span8">
+										<!--label for="reg_city" generated="true" class="error">{$telephoneErr}</label-->	</td>	
 									</tr>								
 									<tr class="tbl_row">
 										<td width="120" class="tbl_column">DOB <span class="f_req">*</span></td>
@@ -122,7 +122,8 @@
 										<option value="">Month</option>
 										{html_options options=$total_exp_month selected=$month_of_exp}	
 										</select>
-										<label for="reg_city" generated="true" class="error">{$year_of_expErr}{$month_of_expErr}</label>																						
+										<label for="reg_city" generated="true" class="error">{$year_of_expErr}</label>	
+<label for="reg_city" generated="true" class="error">{$month_of_expErr}</label>										
 										</td>			
 									</tr>	
 

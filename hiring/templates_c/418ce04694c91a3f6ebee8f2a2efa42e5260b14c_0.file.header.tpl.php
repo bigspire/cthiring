@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-10-27 12:52:09
+/* Smarty version 3.1.29, created on 2017-10-27 16:30:44
   from "C:\xampp\htdocs\2017\ctsvn\cthiring\hiring\templates\include\header.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_59f2dea1936770_42547943',
+  'unifunc' => 'content_59f311dc6d08f5_58479334',
   'file_dependency' => 
   array (
     '418ce04694c91a3f6ebee8f2a2efa42e5260b14c' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\templates\\include\\header.tpl',
-      1 => 1509088923,
+      1 => 1509102040,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_59f2dea1936770_42547943 ($_smarty_tpl) {
+function content_59f311dc6d08f5_58479334 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -33,7 +33,8 @@ function content_59f2dea1936770_42547943 ($_smarty_tpl) {
             <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
             <link rel="stylesheet" href="bootstrap/css/bootstrap-responsive.min.css" />
         <!-- gebo blue theme-->
-            <link rel="stylesheet" href="css/blue.css" id="link_theme" />            
+            <link rel="stylesheet" href="css/<?php echo $_SESSION['theme'];?>
+.css" id="link_theme" />            
         <!-- main styles -->
             <link rel="stylesheet" href="css/style.css" />
         <!-- tooltips-->
@@ -91,7 +92,23 @@ home">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo ucfirst($_smarty_tpl->tpl_vars['user_name']->value);?>
  <span class="caret"></span></a>
                                     <ul class="dropdown-menu">
-																			<li class="divider"></li>
+									
+									<li>
+							<div class="style_switcher">
+								<div class="sepH_c">
+									<p>Colors:</p>
+									<div class="clearfix colorDiv">							
+										<a href="get_theme.php?col=blue" class="style_item jQclr blue_theme"  title="blue">blue</a>
+										<a href="get_theme.php?col=dark" class="style_item jQclr dark_theme"  title="dark">dark</a>
+										<a href="get_theme.php?col=green" class="style_item jQclr green_theme style_active" title="green">green</a>
+										<a href="get_theme.php?col=brown" class="style_item jQclr brown_theme"  title="brown">brown</a>
+										<a href="get_theme.php?col=eastern_blue" class="style_item jQclr eastern_blue_theme"  title="eastern_blue">eastern blue</a>
+										<a href="get_theme.php?col=tamarillo" class="style_item jQclr tamarillo_theme"  title="tamarillo">tamarillo</a>
+									</div>
+								</div>
+							</div>
+									</li>
+								<li class="divider"></li>
 
 										<li><a href="view_profile.php">View Profile</a></li>
 

@@ -33,10 +33,10 @@ $str = <<<EOD
 	<table class="table content box is-radius" style="clear:left;">
   <thead >
     <tr  class="is-selected">
-      <th class=" has-text-centered"width="10%">S. No</th>
-      <th class="" width="30%">Parameter</th>
+      <th class=" has-text-centered"width="5%">S.No</th>
+      <th class="" width="25%">Criteria</th>
      
-      <th class="" width="60%">Details</th>
+      <th class="" width="70%">Candidate Credentials</th>
     </tr>
   </thead>
   <tfoot>
@@ -48,84 +48,96 @@ $str = <<<EOD
     </tr>
   </tfoot>
   <tbody>
+  <tr>
+	 <th class="has-text-centered">1</th>
+      <td>Profile for the Position of</td>
+      <td>$_POST[requirement]</td>
+    </tr>
+	
     <tr >
-      <th class="has-text-centered">1</th>
+      <th class="has-text-centered">2</th>
       <td>Name of the Candidate
       </td>
      
       <td>$_POST[first_name] $_POST[last_name]</td>
     </tr>
-    <tr>
-	 <th class="has-text-centered">2</th>
-      <td>Profile for the Position of</td>
-      <td>$_POST[requirement]</td>
-    </tr>
-    <tr>
+    
+	<tr>
       <th class="has-text-centered">3</th>
+      <td>Gender</td>
+      <td>$gen</td>
+    </tr>
+	
+	<tr>
+      <th class="has-text-centered">4</th>
+      <td>Qualification</td>
+     
+      <td>$snap_edu</td>
+    </tr>
+	
+	<tr>
+      <th class="has-text-centered">5</th>
+      <td>Career Highlights</td>
+     
+      <td>$snap_exp</td>
+    </tr>
+	
+	 <tr>
+      <th  class="has-text-centered">6</th>
+      <td>Areas of Specialization / Expertise</td>
+     
+      <td>$snap_skill</td>
+    </tr>
+	
+    <tr>
+      <th class="has-text-centered">7</th>
       <td>Total Years of Experience</td>
      
       <td>$expStr</td>
     </tr>
-    <tr>
-      <th class="has-text-centered">4</th>
-      <td>Career Highlights (companies, designation & employment period)</td>
-     
-      <td>$snap_exp</td>
-    </tr>
-    <tr>
-      <th  class="has-text-centered">5</th>
-      <td>Areas of Specialization / Expertise</td>
-     
-      <td>$snap_edu  <br> $snap_skill</td>
-    </tr>
-    <tr>
-      <th  class="has-text-centered">6</th>
-      <td>Current Location of Work</td>
-     
-
-      <td>$locationDataCase</td>
-    </tr>
-    <tr>
-      <th  class="has-text-centered">7</th>
-      <td>Current CTC</td>
-      
-      <td>$_POST[present_ctc] $pre_ctc_type Per Annum</td>
-    </tr>
+    
+	
+  
     <tr>
       <th  class="has-text-centered">8</th>
+      <td>Current Location of Work</td>
+      <td>$locationDataCase</td>
+    </tr>
+	
+    <tr>
+      <th  class="has-text-centered">9</th>
+      <td>Current CTC</td>
+      <td>$_POST[present_ctc] $pre_ctc_type Per Annum</td>
+    </tr>
+	
+    <tr>
+      <th  class="has-text-centered">10</th>
       <td>Expected CTC</td>
-     
-
       <td>$_POST[expected_ctc] $exp_ctc_type Per Annum</td>
     </tr>
+	
     <tr>
-      <th class="has-text-centered">9</th>
-      <td>Notice Period in the Current Organization</td>
-     
+      <th class="has-text-centered">11</th>
+      <td>Notice Period</td>
       <td>$notice</td>
     </tr>
  
     <tr>
-      <th class="has-text-centered">10</th>
+      <th class="has-text-centered">12</th>
       <td>Date of Birth</td>
-      
       <td>$dob</td>
     </tr>
-    <tr>
-      <th class="has-text-centered">11</th>
-      <td>Gender</td>
-     
-      <td>$gen</td>
-    </tr>
-    <tr>
-      <th class="has-text-centered">12</th>
+	
+	<tr>
+      <th class="has-text-centered">13</th>
       <td>Family (Dependents)
-</td>
-     
+	</td>
       <td>$_POST[family]</td>
     </tr>
+	
+    
     <tr>
-      <th class="has-text-centered">13</th>
+      <th class="has-text-centered">14</th>
       <th class="">Consultant Assessment</th>
     
       <td>$_POST[consultant]</td>
@@ -138,7 +150,7 @@ $str = <<<EOD
   <div class="container is-light">
     <div class="level-item content has-text-centered">
       <p>
-        <strong>Powered</strong> by <a class="is-danger" href="http://career-tree.in">CareerTree HR Solutions Private Limited</a>. 
+        <strong>Created</strong> by <a class="is-danger" href="http://career-tree.in">CareerTree HR Solutions Private Limited</a>. 
       </p>     
     </div>
   </div>
