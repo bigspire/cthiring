@@ -28,7 +28,8 @@
             <link rel="stylesheet" href="<?php echo $this->webroot;?>hiring/bootstrap/css/bootstrap.min.css" />
             <link rel="stylesheet" href="<?php echo $this->webroot;?>hiring/bootstrap/css/bootstrap-responsive.min.css" />
         <!-- gebo blue theme-->
-            <link rel="stylesheet" href="<?php echo $this->webroot;?>hiring/css/blue.css" id="link_theme" />
+		<?php $theme = $this->Session->read('theme') ? $this->Session->read('theme') : 'blue'; ?>
+            <link rel="stylesheet" href="<?php echo $this->webroot;?>hiring/css/<?php echo $theme;?>.css" id="link_theme" />
         <!-- breadcrumbs-->
             <link rel="stylesheet" href="<?php echo $this->webroot;?>hiring/lib_cthiring/jBreadcrumbs/css/BreadCrumb.css" />
         <!-- tooltips-->

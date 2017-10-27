@@ -129,7 +129,7 @@ class AppController extends Controller {
 			return true;
 		}else if($this->Cookie->read('ESUSER') != ''){
 			$this->loadModel('Login');
-			$data = $this->Login->find('first', array('fields' => array('first_name','email_id','id','status','last_login','rights','roles_id'),'conditions' =>array('Login.id' => $this->Functions->decrypt($this->Cookie->read('ESUSER')), 'is_deleted' => 'N', 'status' => '0')));					
+			$data = $this->Login->find('first', array('fields' => array('first_name','email_id','id','status','last_login','rights','roles_id','theme'),'conditions' =>array('Login.id' => $this->Functions->decrypt($this->Cookie->read('ESUSER')), 'is_deleted' => 'N', 'status' => '0')));					
 			if(empty($data)){
 					$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Invalid Attempt', 'default', array('class' => 'alert  alert-login'));				
 					$this->redirect('/');
