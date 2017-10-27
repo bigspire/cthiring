@@ -37,8 +37,8 @@
 							<input type="button" value="Search" class="btn btn-success"/></a>
 							{if !$ALERT_MSG}
 								<a href="designation.php?action=export&keyword={$smarty.post.keyword}
-								&f_date={$f_date}&t_date={$t_date}" class="jsRedirect">
-								<button type="button" val="designation.php?action=export&keyword={$smarty.post.keyword}&f_date={$f_date}&t_date={$t_date}" name="export" class="btn btn-warning" >Export Excel</button></a>
+								&status={$status}" class="jsRedirect">
+								<button type="button" val="designation.php?action=export&keyword={$smarty.post.keyword}&status={$status}" name="export" class="btn btn-warning" >Export Excel</button></a>
 							{/if}
 							<a class="jsRedirect" data-notify-time = '3000'   href="add_designation.php">
 							<input type="button" value="Create Designation" class="btn btn-info"/></a>	
@@ -89,8 +89,8 @@
 									<tr>
 										<th width="180"><a href="designation.php?field=designation&order={$order}&page={$smarty.get.page}&keyword={$keyword}&f_date={$f_date}&t_date={$t_date}" class="{$sort_field_designation}">Designation</a></th>
 										<th width="80">Status</a></th>
-										<th width="80"><a href="designation.php?field=created_date&order={$order}&page={$smarty.get.page}&keyword={$keyword}&f_date={$f_date}&t_date={$t_date}" class="{$sort_field_created_date}">Created Date</a></th>
-										<th width="80"><a href="designation.php?field=modified_date&order={$order}&page={$smarty.get.page}&keyword={$keyword}&f_date={$f_date}&t_date={$t_date}" class="{$sort_field_modified_date}">Modified Date</a></th>									
+										<th width="80"><a href="designation.php?field=created_date&order={$order}&page={$smarty.get.page}&keyword={$keyword}&status={$status}" class="{$sort_field_created_date}">Created Date</a></th>
+										<th width="80"><a href="designation.php?field=modified_date&order={$order}&page={$smarty.get.page}&keyword={$keyword}&status={$status}" class="{$sort_field_modified_date}">Modified Date</a></th>									
 										<th width="10" style="text-align:center">Actions</th>
 									</tr>
 								</thead>
