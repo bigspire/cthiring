@@ -20,10 +20,26 @@
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo $this->Session->read('USER.Login.first_name');?> <span class="caret"></span></a>
                                     <ul class="dropdown-menu">
+									
+									<li>
+							<div class="style_switcher">
+								<div class="sepH_c">
+									<p>Colors:</p>
+									<div class="clearfix colorDiv">
+										<a href="javascript:void(0)" class="style_item jQclr blue_theme" title="blue">blue</a>
+										<a href="javascript:void(0)" class="style_item jQclr dark_theme" title="dark">dark</a>
+										<a href="javascript:void(0)" class="style_item jQclr green_theme style_active" title="green">green</a>
+										<a href="javascript:void(0)" class="style_item jQclr brown_theme" title="brown">brown</a>
+										<a href="javascript:void(0)" class="style_item jQclr eastern_blue_theme" title="eastern_blue">eastern blue</a>
+										<a href="javascript:void(0)" class="style_item jQclr tamarillo_theme" title="tamarillo">tamarillo</a>
+									</div>
+								</div>
+							</div>
+									</li>
 																			<li class="divider"></li>
-
+	
 										<li><a href="<?php echo $this->webroot;?>hiring/view_profile.php">View Profile</a></li>
-
+				
 										<li><a href="<?php echo $this->webroot;?>login/logout/">Log Out</a></li>
                                     </ul>
                                 </li>
@@ -206,6 +222,10 @@
                                             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
 											<i class="icon-cog icon-white"></i> Settings <b class="caret"></b></a>
                                           <ul class="dropdown-menu">
+										  <?php if($manage_branch == '1'):?> 
+                                                <li><a href="<?php echo $this->webroot;?>hiring/branch.php">Branch <!--span class="label-bub label-info white">102</span--></a></li>
+												<?php endif; ?>	
+												
 										   <?php if($manage_grade == '1'):?> 
                                                 <li><a href="<?php echo $this->webroot;?>hiring/grade.php">Grade <!--span class="label-bub label-info white">102</span--></a></li>
 												<?php endif; ?>	

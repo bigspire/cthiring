@@ -17,7 +17,7 @@
 						<?php if($this->Session->read('USER.Login.roles_id') == '30'): ?>
 						<?php $margin = ''; ?>
 						<?php else: ?>
-						<?php $margin = 'margin-right:50px';?>
+						<?php // $margin = 'margin-right:50px';?>
 						<?php endif; ?>
 						
 						<div class="btns_state pull-right" style="clear:left;<?php echo $margin;?>">
@@ -41,10 +41,10 @@
 										
 									</div>
 									
-									
-									
 						</div>
-						<div class="btns_state pull-right" style="margin-right:30px;">
+						
+						
+						<div class="btns_state pull-right" style="margin-right:12px;">
 					<?php echo $this->Form->create('Home', array('id' => 'formID','class' => 'formID homForm')); ?>
 
 						<div class="dataTables_filter srchBox" id="dt_gal_filter">			
@@ -52,16 +52,18 @@
 							<label> For the period:	&nbsp;</label>
 							 <span id="sandbox-container">
 						<span  class="input-daterange" id="datepicker">	
-							<input type="text" class="input-small datepick" name="data[Home][from]" value="<?php echo $this->request->query['from'];?>" aria-controls="dt_gal"></label>
-							<input type="text" name="data[Home][to]" value="<?php echo $this->request->query['to'];?>" class="input-small datepick" aria-controls="dt_gal"></label>
+						
+							<input type="text" class="input-small datepick" name="data[Home][from]" value="<?php echo $this->request->query['from'];?>" aria-controls="dt_gal">
+							
+							<input type="text" name="data[Home][to]"  style="margin-left:3px;" value="<?php echo $this->request->query['to'];?>" class="input-small datepick" aria-controls="dt_gal">
 												
 						</span>	
 						</span>							
 							
-							<input type="submit" style="margin-bottom:8px;" value="Submit" class="homSearch btn btn-gebo" />
+							<input type="submit" style="margin-bottom:8px;margin-left:3px;" value="Submit" class="homSearch btn btn-gebo" />
 							
 							<a class="jsRedirect"  href="<?php echo $this->webroot;?>home/">
-							<input value="Reset" style="margin-bottom:8px;" type="button" class="btn"/>
+							<input value="Reset" style="margin-bottom:8px;margin-left:3px;" type="button" class="btn"/>
 							</a>
 							
 							

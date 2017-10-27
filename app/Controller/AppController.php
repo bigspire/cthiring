@@ -264,6 +264,9 @@ class AppController extends Controller {
 					case 39:					
 					$this->set('approve_client', 1);
 					break;
+					case 40:					
+					$this->set('manage_branch', 1);
+					break;
 				}				
 			}
 		}
