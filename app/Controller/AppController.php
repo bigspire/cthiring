@@ -267,6 +267,9 @@ class AppController extends Controller {
 					case 40:					
 					$this->set('manage_branch', 1);
 					break;
+					case 41:					
+					$this->set('manage_desig', 1);
+					break;
 				}				
 			}
 		}
