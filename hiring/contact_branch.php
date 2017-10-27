@@ -136,7 +136,7 @@ try{
 	
 	// create,update,delete message validation
 	if($_GET['status'] == 'deleted' || $_GET['status'] == 'created' || $_GET['status'] == 'updated'){
- 	 $success_msg = 'Contact Branch ' . ucfirst($_GET['status']) . ' Successfully';
+ 	 $success_msg = 'Branch ' . ucfirst($_GET['status']) . ' Successfully';
 	}else if($_GET['current_status'] == 'msg'){
 		$success_msg = 'This record is not available in our database';
 	}
