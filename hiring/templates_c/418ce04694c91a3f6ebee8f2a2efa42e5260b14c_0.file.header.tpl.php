@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-10-27 11:31:57
+/* Smarty version 3.1.29, created on 2017-10-27 12:52:09
   from "C:\xampp\htdocs\2017\ctsvn\cthiring\hiring\templates\include\header.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_59f2cbd5ccf491_96569391',
+  'unifunc' => 'content_59f2dea1936770_42547943',
   'file_dependency' => 
   array (
     '418ce04694c91a3f6ebee8f2a2efa42e5260b14c' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\templates\\include\\header.tpl',
-      1 => 1509084114,
+      1 => 1509088923,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_59f2cbd5ccf491_96569391 ($_smarty_tpl) {
+function content_59f2dea1936770_42547943 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -288,6 +288,17 @@ resume/">Search Resume <!-- span class="label-bub label-info white"><?php echo $
                                             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
 											<i class="icon-cog icon-white"></i> Settings <b class="caret"></b></a>
                                           <ul class="dropdown-menu">
+										  
+										  <?php if ($_smarty_tpl->tpl_vars['module']->value['manage_contact_branch'] == '1') {?>
+	
+												<li><a href="contact_branch.php">Branch</a></li>
+											<?php }?>
+											
+											<?php if ($_smarty_tpl->tpl_vars['module']->value['manage_designation'] == '1') {?>
+	
+												<li><a href="designation.php">Designation </a></li>
+											<?php }?>
+											
 											<?php if ($_smarty_tpl->tpl_vars['module']->value['manage_grade'] == '1') {?>
                                                 <li><a href="grade.php">Grade <?php if ($_smarty_tpl->tpl_vars['grade_count']->value) {?><span class="label-bub label-info white"><?php echo $_smarty_tpl->tpl_vars['grade_count']->value;?>
 </span><?php }?></a></li>
@@ -324,16 +335,7 @@ resume/">Search Resume <!-- span class="label-bub label-info white"><?php echo $
 													</ul>
 												</li>
 											<?php }?>
-											
-											<?php if ($_smarty_tpl->tpl_vars['module']->value['manage_designation'] == '1') {?>
-	
-												<li><a href="designation.php">Designation </a></li>
-											<?php }?>
-											
-											<?php if ($_smarty_tpl->tpl_vars['module']->value['manage_contact_branch'] == '1') {?>
-	
-												<li><a href="contact_branch.php">Branch</a></li>
-											<?php }?>
+
                                             </ul>
                                         </li>
 										<?php }?>
