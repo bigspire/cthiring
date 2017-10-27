@@ -223,7 +223,11 @@
 											<i class="icon-cog icon-white"></i> Settings <b class="caret"></b></a>
                                           <ul class="dropdown-menu">
 										  <?php if($manage_branch == '1'):?> 
-                                                <li><a href="<?php echo $this->webroot;?>hiring/branch.php">Branch <!--span class="label-bub label-info white">102</span--></a></li>
+                                                <li><a href="<?php echo $this->webroot;?>hiring/contact_branch.php">Branch <!--span class="label-bub label-info white">102</span--></a></li>
+												<?php endif; ?>	
+											
+											<?php if($manage_desig == '1'):?> 
+                                                <li><a href="<?php echo $this->webroot;?>hiring/designation.php">Designation <!--span class="label-bub label-info white">102</span--></a></li>
 												<?php endif; ?>	
 												
 										   <?php if($manage_grade == '1'):?> 
