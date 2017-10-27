@@ -20,10 +20,14 @@ include('classes/class.mailer.php');
 // content class
 include('classes/class.content.php');
 
+// role based validation
+$module_access = $fun->check_role_access('40',$modules);
+$smarty->assign('module',$module_access);
+
 if(!empty($_POST)){	
 	// array for printing correct field name in error message
 	$fieldtype = array('0', '1');
-	$actualfield = array('contact branch ', 'status');
+	$actualfield = array('branch ', 'status');
    $field = array('branch' => 'branchErr', 'status' => 'statusErr');
 	$j = 0;
 	foreach ($field as $field => $er_var){ 
@@ -81,7 +85,7 @@ if(!empty($_POST)){
 				echo 'Caught exception: ',  $e->getMessage(), "\n";
 			}
 		}else{
-			$msg = "Contact Branch already exists";
+			$msg = "Branch already exists";
 			$smarty->assign('EXIST_MSG',$msg); 
 		} 
 	}

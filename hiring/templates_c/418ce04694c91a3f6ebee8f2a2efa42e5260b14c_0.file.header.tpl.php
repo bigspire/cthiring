@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-10-26 17:10:29
+/* Smarty version 3.1.29, created on 2017-10-27 11:31:57
   from "C:\xampp\htdocs\2017\ctsvn\cthiring\hiring\templates\include\header.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_59f1c9ad26e7c4_26268411',
+  'unifunc' => 'content_59f2cbd5ccf491_96569391',
   'file_dependency' => 
   array (
     '418ce04694c91a3f6ebee8f2a2efa42e5260b14c' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\templates\\include\\header.tpl',
-      1 => 1509018026,
+      1 => 1509084114,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_59f1c9ad26e7c4_26268411 ($_smarty_tpl) {
+function content_59f2cbd5ccf491_96569391 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -332,7 +332,7 @@ resume/">Search Resume <!-- span class="label-bub label-info white"><?php echo $
 											
 											<?php if ($_smarty_tpl->tpl_vars['module']->value['manage_contact_branch'] == '1') {?>
 	
-												<li><a href="contact_branch.php">Contact Branch</a></li>
+												<li><a href="contact_branch.php">Branch</a></li>
 											<?php }?>
                                             </ul>
                                         </li>

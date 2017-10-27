@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-10-27 10:50:40
+/* Smarty version 3.1.29, created on 2017-10-27 11:35:33
   from "C:\xampp\htdocs\2017\ctsvn\cthiring\hiring\templates\edit_contact_branch.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_59f2c2281bf365_28622936',
+  'unifunc' => 'content_59f2ccada8e831_63621231',
   'file_dependency' => 
   array (
     '4a3889e15167008ee51e2e219f6080d1f9f02be5' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\templates\\edit_contact_branch.tpl',
-      1 => 1509076391,
+      1 => 1509084082,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_59f2c2281bf365_28622936 ($_smarty_tpl) {
+function content_59f2ccada8e831_63621231 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -44,11 +44,11 @@ if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdoc
 home"><i class="icon-home"></i></a>
                                 </li>
                                 <li>
-                                    <a href="contact_branch.php">Contact Branch</a>
+                                    <a href="contact_branch.php">Branch</a>
                                 </li>
                             
                                 <li>
-                                   Edit Contact Branch
+                                   Edit Branch
                                 </li>
                             </ul>
                         </div>
@@ -60,14 +60,14 @@ home"><i class="icon-home"></i></a>
 <form action="" id="formID" class="formID" method="post" accept-charset="utf-8">
 	<div class="box">
 		<div class="box-title mb5">
-			<h4><i class="icon-list"></i> Contact Branch Details </h4>
+			<h4><i class="icon-list"></i> Branch Details </h4>
 		</div>
 		<div class="row-fluid">
 		<div class="span6">
 			<table class="table table-bordered dataTable" style="margin-bottom:0;">
 				<tbody>
 						<tr class="tbl_row">
-							<td width="120" class="tbl_column">Contact Branch <span class="f_req">*</span></td>
+							<td width="120" class="tbl_column">Branch <span class="f_req">*</span></td>
 							<td>										
 								<input type="text" tabindex="1" name="branch" value="<?php echo $_smarty_tpl->tpl_vars['branch']->value;?>
 " class="span8 ui-autocomplete-input" autocomplete="off">

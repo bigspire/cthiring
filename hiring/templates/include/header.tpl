@@ -289,7 +289,7 @@
 											
 											{if $module['manage_contact_branch'] eq '1'}
 	
-												<li><a href="contact_branch.php">Contact Branch</a></li>
+												<li><a href="contact_branch.php">Branch</a></li>
 											{/if}
                                             </ul>
                                         </li>

@@ -19,7 +19,7 @@ include('classes/class.function.php');
 include('menu_count.php');
 
 // role based validation
-$module_access = $fun->check_role_access('30',$modules);
+$module_access = $fun->check_role_access('40',$modules);
 $smarty->assign('module',$module_access);
 
 $getid = $_GET['id'];
@@ -78,7 +78,7 @@ if(!empty($_POST)){
 	// Validating the required fields  
 	// array for printing correct field name in error message
 	$fieldtype = array('0', '1');
-	$actualfield = array('contact branch','status');
+	$actualfield = array('branch','status');
    $field = array('branch' => 'branchErr', 'status' => 'statusErr');
 	$j = 0;
 	foreach ($field as $field => $er_var){ 
@@ -136,7 +136,7 @@ if(!empty($_POST)){
 				die;
 			}
 		}else{
-			$msg = "Contact Branch already exists";
+			$msg = "Branch already exists";
 			$smarty->assign('EXIST_MSG',$msg); 
 		} 
 	}

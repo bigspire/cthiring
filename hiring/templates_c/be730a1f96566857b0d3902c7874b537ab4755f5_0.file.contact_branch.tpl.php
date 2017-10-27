@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-10-27 11:07:18
+/* Smarty version 3.1.29, created on 2017-10-27 11:33:13
   from "C:\xampp\htdocs\2017\ctsvn\cthiring\hiring\templates\contact_branch.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_59f2c60edf89e8_89015324',
+  'unifunc' => 'content_59f2cc2185fdc5_98197895',
   'file_dependency' => 
   array (
     'be730a1f96566857b0d3902c7874b537ab4755f5' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\templates\\contact_branch.tpl',
-      1 => 1509082635,
+      1 => 1509084187,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_59f2c60edf89e8_89015324 ($_smarty_tpl) {
+function content_59f2cc2185fdc5_98197895 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -50,11 +50,11 @@ if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdoc
 home"><i class="icon-home"></i></a>
                                 </li>
                                 <li>
-                                    <a href="contact_branch.php">Contact Branch</a>
+                                    <a href="contact_branch.php">Branch</a>
                                 </li>
                             
                                 <li>
-                                   Search Contact Branch
+                                   Search Branch
                                 </li>
                             </ul>
                         </div>
@@ -75,7 +75,7 @@ home"><i class="icon-home"></i></a>
 " name="export" class="btn btn-warning" >Export Excel</button></a>
 							<?php }?>
 							<a class="jsRedirect" data-notify-time = '3000'   href="add_contact_branch.php">
-							<input type="button" value="Create Contact Branch" class="btn btn-info"/></a>	
+							<input type="button" value="Create Branch" class="btn btn-info"/></a>	
 						</div>
 						
 						<?php if ($_smarty_tpl->tpl_vars['SUCCESS_MSG']->value) {?>
@@ -93,9 +93,8 @@ home"><i class="icon-home"></i></a>
 
 							</div>
 						<?php }?>
-						<?php echo $_smarty_tpl->tpl_vars['status']->value;?>
-
-						<?php if ($_smarty_tpl->tpl_vars['keyword']->value || $_smarty_tpl->tpl_vars['status']->value) {?>
+						
+						<?php if ($_smarty_tpl->tpl_vars['keyword']->value) {?>
 						  <?php $_smarty_tpl->tpl_vars['hide'] = new Smarty_Variable('', null);
 $_smarty_tpl->ext->_updateScope->updateScope($_smarty_tpl, 'hide', 0);?>
 						<?php } else { ?>
@@ -107,7 +106,7 @@ $_smarty_tpl->ext->_updateScope->updateScope($_smarty_tpl, 'hide', 0);?>
 							<div class="<?php echo $_smarty_tpl->tpl_vars['hide']->value;?>
  dataTables_filter srchBox" style="float:left;" id="dt_gal_filter">
 							
-								<label style="margin-left:0;">Keyword: <input type="text" placeholder="Contact Branch Name" name="keyword" id="keyword" value="<?php echo $_smarty_tpl->tpl_vars['keyword']->value;?>
+								<label style="margin-left:0;">Keyword: <input type="text" placeholder="Branch Name" name="keyword" id="keyword" value="<?php echo $_smarty_tpl->tpl_vars['keyword']->value;?>
 " class="input-large" aria-controls="dt_gal"></label>
 								<label>Status: 
 							<select name="status" class="input-small" style="clear:left" id="ClientStatus">
@@ -136,7 +135,7 @@ $_smarty_tpl->ext->_updateScope->updateScope($_smarty_tpl, 'hide', 0);?>
 &f_date=<?php echo $_smarty_tpl->tpl_vars['f_date']->value;?>
 &t_date=<?php echo $_smarty_tpl->tpl_vars['t_date']->value;?>
 " class="<?php echo $_smarty_tpl->tpl_vars['sort_field_branch']->value;?>
-">Contact Branch</a></th>
+">Branch</a></th>
 										<th width="80">Status</a></th>
 										<th width="80"><a href="contact_branch.php?field=created_date&order=<?php echo $_smarty_tpl->tpl_vars['order']->value;?>
 &page=<?php echo $_GET['page'];?>

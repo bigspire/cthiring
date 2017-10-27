@@ -23,11 +23,11 @@
                                     <a href="{$smarty.const.webroot}home"><i class="icon-home"></i></a>
                                 </li>
                                 <li>
-                                    <a href="contact_branch.php">Contact Branch</a>
+                                    <a href="contact_branch.php">Branch</a>
                                 </li>
                             
                                 <li>
-                                   Search Contact Branch
+                                   Search Branch
                                 </li>
                             </ul>
                         </div>
@@ -42,7 +42,7 @@
 								<button type="button" val="contact_branch.php?action=export&keyword={$smarty.post.keyword}&f_date={$f_date}&t_date={$t_date}" name="export" class="btn btn-warning" >Export Excel</button></a>
 							{/if}
 							<a class="jsRedirect" data-notify-time = '3000'   href="add_contact_branch.php">
-							<input type="button" value="Create Contact Branch" class="btn btn-info"/></a>	
+							<input type="button" value="Create Branch" class="btn btn-info"/></a>	
 						</div>
 						
 						{if $SUCCESS_MSG}
@@ -59,7 +59,7 @@
 							</div>
 						{/if}
 						
-						{if $keyword || $status}
+						{if $keyword}
 						  {assign var=hide value=''}
 						{else}
 							{assign var=hide value=dn}
@@ -68,7 +68,7 @@
 							<form action="" id="formID" name="searchFrm" class="formID" method="post" accept-charset="utf-8"><div style="display:none;"><input type="hidden" name="_method" value="POST"/></div>	
 							<div class="{$hide} dataTables_filter srchBox" style="float:left;" id="dt_gal_filter">
 							
-								<label style="margin-left:0;">Keyword: <input type="text" placeholder="Contact Branch Name" name="keyword" id="keyword" value="{$keyword}" class="input-large" aria-controls="dt_gal"></label>
+								<label style="margin-left:0;">Keyword: <input type="text" placeholder="Branch Name" name="keyword" id="keyword" value="{$keyword}" class="input-large" aria-controls="dt_gal"></label>
 								<label>Status: 
 							<select name="status" class="input-small" style="clear:left" id="ClientStatus">
 								{html_options options=$status_type selected=$status}
@@ -89,7 +89,7 @@
 							<table class="table table-striped table-bordered dataTable stickyTable">
 								<thead>
 									<tr>
-										<th width="180"><a href="contact_branch.php?field=branch&order={$order}&page={$smarty.get.page}&keyword={$keyword}&f_date={$f_date}&t_date={$t_date}" class="{$sort_field_branch}">Contact Branch</a></th>
+										<th width="180"><a href="contact_branch.php?field=branch&order={$order}&page={$smarty.get.page}&keyword={$keyword}&f_date={$f_date}&t_date={$t_date}" class="{$sort_field_branch}">Branch</a></th>
 										<th width="80">Status</a></th>
 										<th width="80"><a href="contact_branch.php?field=created_date&order={$order}&page={$smarty.get.page}&keyword={$keyword}&f_date={$f_date}&t_date={$t_date}" class="{$sort_field_created_date}">Created Date</a></th>
 										<th width="80"><a href="contact_branch.php?field=modified_date&order={$order}&page={$smarty.get.page}&keyword={$keyword}&f_date={$f_date}&t_date={$t_date}" class="{$sort_field_modified_date}">Modified Date</a></th>									

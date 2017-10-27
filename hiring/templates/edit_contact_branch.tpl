@@ -17,11 +17,11 @@
                                     <a href="{$smarty.const.webroot}home"><i class="icon-home"></i></a>
                                 </li>
                                 <li>
-                                    <a href="contact_branch.php">Contact Branch</a>
+                                    <a href="contact_branch.php">Branch</a>
                                 </li>
                             
                                 <li>
-                                   Edit Contact Branch
+                                   Edit Branch
                                 </li>
                             </ul>
                         </div>
@@ -32,14 +32,14 @@
 <form action="" id="formID" class="formID" method="post" accept-charset="utf-8">
 	<div class="box">
 		<div class="box-title mb5">
-			<h4><i class="icon-list"></i> Contact Branch Details </h4>
+			<h4><i class="icon-list"></i> Branch Details </h4>
 		</div>
 		<div class="row-fluid">
 		<div class="span6">
 			<table class="table table-bordered dataTable" style="margin-bottom:0;">
 				<tbody>
 						<tr class="tbl_row">
-							<td width="120" class="tbl_column">Contact Branch <span class="f_req">*</span></td>
+							<td width="120" class="tbl_column">Branch <span class="f_req">*</span></td>
 							<td>										
 								<input type="text" tabindex="1" name="branch" value="{$branch}" class="span8 ui-autocomplete-input" autocomplete="off">
 								<label for="reg_city" generated="true" class="error">{$branchErr}</label>									

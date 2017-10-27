@@ -58,7 +58,7 @@
 							</div>
 						{/if}
 						
-						{if $keyword || $status}
+						{if $keyword}
 						  {assign var=hide value=''}
 						{else}
 							{assign var=hide value=dn}
