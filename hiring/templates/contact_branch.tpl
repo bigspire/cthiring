@@ -58,7 +58,7 @@
 								{$ALERT_MSG}
 							</div>
 						{/if}
-						{$status}
+						
 						{if $keyword || $status}
 						  {assign var=hide value=''}
 						{else}
