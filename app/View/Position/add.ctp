@@ -166,13 +166,19 @@
 
 				  </tr>	
 				  
-				  <tr  class="tbl_row">
-										<td width="120" class="tbl_column">Key Skills <span class="f_req">*</span></td>
+				<tr  class="tbl_row">
+										<td width="120" class="tbl_column">Technical Skills <span class="f_req">*</span></td>
 										<td> 
-<?php echo $this->Form->input('skills', array('div'=> false,'type' => 'text', 'label' => false, 'class' => 'span8', 'cols' => '10', 'rows' => '3',
-  'required' => false, 'placeholder' => '',	'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 
+<?php echo $this->Form->input('tech_skill', array('div'=> false, 'data-role' => 'tagsinput', 'type' => 'text', 'multiple' => 'multiple', 'label' => false, 'class' => 'span8 tagInput', 'required' => false, 'placeholder' => '',	'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 
 										</td>
-									</tr>
+				</tr>
+					
+				<tr  class="">
+										<td width="120" class="tbl_column">Behavioural Skills <span class="f_req">*</span></td>
+										<td> 
+<?php echo $this->Form->input('behav_skill', array('div'=> false,'type' => 'text', 'label' => false, 'class' => 'span8 tagInput', 'required' => false, 'placeholder' => '', 'data-role' => 'tagsinput',	'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 
+										</td>
+				</tr>
 									
 							<tr class="">
 							<td width="120" class="tbl_column">Job Code	 </td>

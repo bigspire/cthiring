@@ -164,8 +164,15 @@
 									
 									<tr>
 										
-										<td class="tbl_column" style="width:140px;">Key Skills</td>
-										<td><?php echo $position_data['Position']['skills'];?></td>
+										<td class="tbl_column" style="width:140px;">Technical Skills</td>
+										<td><?php echo $position_data['Position']['tech_skill'] ? $position_data['Position']['tech_skill'] :$position_data['Position']['skills'];?></td>
+											
+									</tr>
+									
+									<tr>
+										
+										<td class="tbl_column" style="width:140px;">Behavioural Skills</td>
+										<td><?php echo $position_data['Position']['behav_skill'];?></td>
 											
 									</tr>
 									

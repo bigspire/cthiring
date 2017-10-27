@@ -244,7 +244,7 @@ class PositionController extends AppController {
 			// validate the client contacts
 			// $coord_validate = $this->validate_coord();
 			// validate the form fields
-			if ($this->Position->validates(array('fieldList' => array('clients_id','client_contact_id','job_title','location','max_exp','ctc_to_type','skills','team_member_req','end_date','function_area_id','status','job_desc','education')))){
+			if ($this->Position->validates(array('fieldList' => array('clients_id','client_contact_id','job_title','location','max_exp','ctc_to_type','skills','team_member_req','end_date','function_area_id','status','job_desc','education','tech_skill','behav_skill')))){
 				// format the dates
 				$this->request->data['Position']['start_date'] = $this->Functions->format_date_save($this->request->data['Position']['start_date']);
 				$this->request->data['Position']['end_date'] = $this->Functions->format_date_save($this->request->data['Position']['end_date']);
@@ -254,7 +254,7 @@ class PositionController extends AppController {
 					// save position coordination
 					// $this->save_position_coodination($this->Position->id);
 					// save team members list
-					$this->save_team_member($this->Position->id);					
+					$team_members = $this->save_team_member($this->Position->id);					
 					// save the file name
 					$this->save_job_desc($this->Position->id);
 					$this->Position->saveField('job_desc_file', $this->Position->id.'_'.$this->request->data['Position']['desc_file']['name']);
@@ -262,68 +262,72 @@ class PositionController extends AppController {
 					$sub = 'Manage Hiring - Position created by '.ucfirst($this->Session->read('USER.Login.first_name')).' '.ucfirst($this->Session->read('USER.Login.last_name'));
 					$from = ucfirst($this->Session->read('USER.Login.first_name')).' '.ucfirst($this->Session->read('USER.Login.last_name'));
 					// get the superiors
-					$this->loadModel('Approve');
-					$approval_data = $this->Approve->find('first', array('fields' => array('level1'), 'conditions'=> array('Approve.users_id' => $this->Session->read('USER.Login.id'))));					
-														
-					// get leader email address
-					$leader_data = $this->Position->Creator->find('all', array('conditions' => array('Creator.id' => $approval_data['Approve']['level1']),
-					'fields' => array('Creator.id',	'Creator.first_name','Creator.last_name','Creator.email_id')));
-					
-					// if leader found
-					if(!empty($leader_data)){
-						$this->loadModel('PositionStatus');
-						// make sure not duplicate status exists
-						$this->check_duplicate_status($this->Position->id, $approval_data['Approve']['level1']);			
-						// save req. status data
-						$data = array('requirements_id' => $this->Position->id, 'created_date' => $this->Functions->get_current_date(), 'users_id' => $approval_data['Approve']['level1']);
-						if($this->PositionStatus->save($data, true, $fieldList = array('requirements_id','created_date','users_id'))){						
-							/*
-							// save adv. users
-							$this->loadModel('PositionUser');
-							$req_user_data = array('requirements_id' => $this->Position->id, 'users_id' => $approval_data['Approve']['level1']);							
-							$this->PositionUser->id = '';
-							$this->PositionUser->save($req_user_data, true, $fieldList = array('requirements_id','users_id'));
-							*/
-							$options = array(								
-								array('table' => 'req_team',
-										'alias' => 'ReqTeam',					
-										'type' => 'INNER',
-										'conditions' => array('`ReqTeam.requirements_id` = `Position`.`id`', )
-								),
-								array('table' => 'users',
-										'alias' => 'TeamMember',					
-										'type' => 'INNER',
-										'conditions' => array('`ReqTeam.users_id` = `TeamMember`.`id`', )
-								)
-							);
-					
-							$position_data = $this->Position->find('all', array('conditions' => array('Position.id' => $this->Position->id),'fields' => array( 'Client.client_name',	"group_concat(distinct TeamMember.first_name  SEPARATOR ', ') team_member"),'joins' => $options));
+					$this->loadModel('Approve');					
+					// iterate the team members
+					foreach($team_members as $team_id){					
+						$approval_data = $this->Approve->find('first', array('fields' => array('level1'), 'conditions'=> array('Approve.users_id' => $team_id)));					
+															
+						// get leader email address
+						$leader_data = $this->Position->Creator->find('all', array('conditions' => array('Creator.id' => $approval_data['Approve']['level1']),
+						'fields' => array('Creator.id',	'Creator.first_name','Creator.last_name','Creator.email_id')));
+						
+						// if leader found
+						if(!empty($leader_data)){
+							$this->loadModel('PositionStatus');
+							// make sure not duplicate status exists
+							$this->check_duplicate_status($this->Position->id, $approval_data['Approve']['level1']);			
+							// save req. status data
+							$data = array('requirements_id' => $this->Position->id, 'created_date' => $this->Functions->get_current_date(), 'users_id' => $approval_data['Approve']['level1'], 'member_id' => $team_id, 'is_approve' => 'W');
+							if($this->PositionStatus->save($data, true, $fieldList = array('requirements_id','created_date','users_id', 'member_id'))){						
+								/*
+								// save adv. users
+								$this->loadModel('PositionUser');
+								$req_user_data = array('requirements_id' => $this->Position->id, 'users_id' => $approval_data['Approve']['level1']);							
+								$this->PositionUser->id = '';
+								$this->PositionUser->save($req_user_data, true, $fieldList = array('requirements_id','users_id'));
+								*/
+								$options = array(								
+									array('table' => 'req_team',
+											'alias' => 'ReqTeam',					
+											'type' => 'INNER',
+											'conditions' => array('`ReqTeam.requirements_id` = `Position`.`id`', )
+									),
+									array('table' => 'users',
+											'alias' => 'TeamMember',					
+											'type' => 'INNER',
+											'conditions' => array('`ReqTeam.users_id` = `TeamMember`.`id`', )
+									)
+								);
+						
+								$position_data = $this->Position->find('all', array('conditions' => array('Position.id' => $this->Position->id),'fields' => array( 'Client.client_name',	"group_concat(distinct TeamMember.first_name  SEPARATOR ', ') team_member"),'joins' => $options));
 
-							$vars = array('from_name' => $from, 'to_name' => ucwords($leader_data[0]['Creator']['first_name'].' '.$leader_data[0]['Creator']['last_name']), 'position' => $this->request->data['Position']['job_title'],'client_name' => $position_data[0]['Client']['client_name'], 'no_opening' => $this->request->data['Position']['no_job'], 'team_member' => $position_data[0][0]['team_member'],
-							'location' => $this->request->data['Position']['location']);
-													
-							// notify superiors						
-							if(!$this->send_email($sub, 'add_position', 'noreply@managehiring.com', $leader_data[0]['Creator']['email_id'],$vars)){	
-								// show the msg.								
-								$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Problem in sending the mail for approval...', 'default', array('class' => 'alert alert-error'));				
-							}else{
-								$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Position Created Successfully. After approval, it will be visible', 'default', array('class' => 'alert alert-warning'));				
+								$vars = array('from_name' => $from, 'to_name' => ucwords($leader_data[0]['Creator']['first_name'].' '.$leader_data[0]['Creator']['last_name']), 'position' => $this->request->data['Position']['job_title'],'client_name' => $position_data[0]['Client']['client_name'], 'no_opening' => $this->request->data['Position']['no_job'], 'team_member' => $position_data[0][0]['team_member'],
+								'location' => $this->request->data['Position']['location']);
+														
+								// notify superiors						
+								if(!$this->send_email($sub, 'add_position', 'noreply@managehiring.com', $leader_data[0]['Creator']['email_id'],$vars)){	
+									// show the msg.								
+									$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Problem in sending the mail for approval...', 'default', array('class' => 'alert alert-error'));				
+								}else{
+									$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Position Created Successfully. After approval, it will be visible', 'default', array('class' => 'alert alert-warning'));				
+								}
 							}
-						}
-					}else{
-						$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>You have no superior to approve your request', 'default', array('class' => 'alert alert-info'));
-					}								
-					// show the msg.
+						}else{
+							$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>You have no superior to approve your request', 'default', array('class' => 'alert alert-info'));
+						}				
+					}				
+					
 					$this->redirect('/position/');
 				}else{
-					// show the error msg.
-					$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Problem in saving the data...', 'default', array('class' => 'alert alert-error'));					
-				}
+						// show the error msg.
+						$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Problem in saving the data...', 'default', array('class' => 'alert alert-error'));					
+					}		
 			}else{
 				// print_r($this->Position->validationErrors);die;
 				$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Please check the validation errors...', 'default', array('class' => 'alert alert-error'));					
-			}			
-		}				
+			}
+
+		}
 	}
 	
 
@@ -375,7 +379,7 @@ class PositionController extends AppController {
 					// $coord_validate = $this->validate_coord();
 					// validate the form fields
 					if ($this->Position->validates(array('fieldList' => array('clients_id','client_contact_id','job_title','location','max_exp',
-					'ctc_from','ctc_to','ctc_from_type','ctc_to_type','skills','team_member_req','end_date','function_area_id','job_desc','education')))){
+					'ctc_from','ctc_to','ctc_from_type','ctc_to_type','skills','team_member_req','end_date','function_area_id','job_desc','education','tech_skill','behav_skill')))){
 						// format the dates
 						$this->request->data['Position']['start_date'] = $this->Functions->format_date_save($this->request->data['Position']['start_date']);
 						$this->request->data['Position']['end_date'] = $this->Functions->format_date_save($this->request->data['Position']['end_date']);
@@ -495,13 +499,15 @@ class PositionController extends AppController {
 			$new_split_req = explode('-', $req);
 			$this->request->data['Position']['no_job'] += $new_split_req[1];
 			if($new_split_req[0] != ''){
+				$member_id[] = $new_split_req[0];
 				$this->ReqTeam->create();
-				$data = array('created_by' => $this->Session->read('USER.Login.id'),'requirements_id' => $id, 'users_id' => $new_split_req[0], 'no_req' => $new_split_req[1]);
-				$this->ReqTeam->save($data, true, $fieldList = array('requirements_id','created_by','users_id','no_req'));
+				$data = array('created_by' => $this->Session->read('USER.Login.id'),'requirements_id' => $id, 'users_id' => $new_split_req[0], 'no_req' => $new_split_req[1], 'is_approve' => 'W');
+				$this->ReqTeam->save($data, true, $fieldList = array('requirements_id','created_by','users_id','no_req','is_approve'));
 			}
 		}
 		$this->Position->id = $id;
 		$this->Position->saveField('no_job',$this->request->data['Position']['no_job']);
+		return $member_id;
 	}
 	
 	
@@ -668,7 +674,7 @@ class PositionController extends AppController {
 		'group_concat(ReqResume.status_title) joined', 'start_date', 'end_date', //"group_concat(distinct ResOwner.first_name  SEPARATOR ', ') team_member",
 		"group_concat(distinct AH.first_name  SEPARATOR ', ') ac_holder","group_concat(distinct TeamMember.first_name  SEPARATOR ', ') team_member2",
 		'skills','Contact.first_name','Contact.email','Contact.mobile','Contact.phone','Contact.id','FunctionArea.function',
-		'Position.created_by','Position.is_approve');
+		'Position.created_by','Position.is_approve','tech_skill','behav_skill');
 		$data = $this->Position->find('all', array('fields' => $fields,'conditions' => array('Position.id' => $id), 'joins' => $options));
 		$this->set('position_data', $data[0]);
 		// get the resume details
@@ -739,13 +745,13 @@ class PositionController extends AppController {
 				// update the todo
 				if($validate){
 					$this->loadModel('PositionStatus');
-					$data = array('modified_date' => $this->Functions->get_current_date(), 'modified_by' => $this->Session->read('USER.Login.id'), 'remarks' => $this->request->data['Position']['remarks'], 'status' => $status);
+					$data = array('modified_date' => $this->Functions->get_current_date(), 'modified_by' => $this->Session->read('USER.Login.id'), 'remarks' => $this->request->data['Position']['remarks'], 'status' => $status, 'is_approve' => $status);
 					$this->PositionStatus->id = $st_id;
 					$st_msg = $status == 'A' ? 'approved' : 'rejected';
 					// make sure not duplicate status exists
 					$this->check_duplicate_status($req_id, $this->Session->read('USER.Login.id'), 1);
 					// save the position status
-					if($this->PositionStatus->save($data, true, $fieldList = array('modified_by','modified_date','remarks','status'))){
+					if($this->PositionStatus->save($data, true, $fieldList = array('modified_by','modified_date','remarks','status','is_approve'))){
 						// get user data
 						$user_data = $this->Position->Creator->find('all', array('conditions' => array('Creator.id' => $user_id),'fields' => array('Creator.id',	'Creator.first_name','Creator.last_name','Creator.email_id')));
 						
@@ -781,19 +787,22 @@ class PositionController extends AppController {
 						// get the superiors
 						$this->loadModel('Approve');
 						// if record approved
-						if($status == 'A'){					
-							$approval_data = $this->Approve->find('first', array('fields' => array('level2'), 'conditions'=> array('Approve.users_id' => $user_id)));
+						if($status == 'A'){
+							// get the member id to find the L2
+							$member_data = $this->PositionStatus->find('first', array('fields' => array('member_id'), 'conditions'=> array('PositionStatus.id' => $st_id)));
+							// get the team member user id							
+							$approval_data = $this->Approve->find('first', array('fields' => array('level2'), 'conditions'=> array('Approve.users_id' => $member_data['PositionStatus']['member_id'])));
 							// make sure level 2 is not empty
 							if(!empty($approval_data['Approve']['level2'])){
 								// check level 2 is not empty and its not the same user
 								if($approval_data['Approve']['level2'] != $this->Session->read('USER.Login.id')){ 	
 									// get superior level 2 details				
-									$data = array('requirements_id' => $req_id, 'created_date' => $this->Functions->get_current_date(), 'users_id' => $approval_data['Approve']['level2']);
+									$data = array('requirements_id' => $req_id, 'created_date' => $this->Functions->get_current_date(), 'users_id' => $approval_data['Approve']['level2'], 'is_approve' => 'W');
 									// save leve 2 if found
 									$this->PositionStatus->id = '';						
 									// make sure not duplicate status exists
 									$this->check_duplicate_status($req_id, $approval_data['Approve']['level2'], 0);						
-									if($this->PositionStatus->save($data, true, $fieldList = array('requirements_id','created_date','users_id'))){
+									if($this->PositionStatus->save($data, true, $fieldList = array('requirements_id','created_date','users_id','is_approve'))){
 										$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Position '.$approve_msg.' successfully.', 'default', array('class' => 'alert alert-success'));
 																	
 									}else{
@@ -817,7 +826,9 @@ class PositionController extends AppController {
 						}else{
 							// update  status
 							$this->Position->id = $req_id;
-							$this->Position->saveField('is_approve', 'R');								
+							// $this->Position->saveField('is_approve', 'R');
+							
+							/*
 							$approval_data = $this->Approve->find('first', array('fields' => array('level1','level2'), 'conditions'=> array('Approve.users_id' => $user_id)));
 							if($approval_data['Approve']['level1'] == $this->Session->read('USER.Login.id')){
 								$mail_user = $approval_data['Approve']['level2'];
@@ -837,6 +848,7 @@ class PositionController extends AppController {
 									$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Position '.ucfirst($approve_msg).' Successfully.', 'default', array('class' => 'alert alert-warning'));
 								}
 							}
+							*/
 							
 						}			
 						

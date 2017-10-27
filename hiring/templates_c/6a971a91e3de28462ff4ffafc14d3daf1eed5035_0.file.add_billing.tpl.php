@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-10-24 21:37:21
+/* Smarty version 3.1.29, created on 2017-10-25 19:43:19
   from "C:\xampp\htdocs\ctsvn\cthiring\hiring\templates\add_billing.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_59ef653950fa76_24952705',
+  'unifunc' => 'content_59f09bff6a1a50_34187166',
   'file_dependency' => 
   array (
     '6a971a91e3de28462ff4ffafc14d3daf1eed5035' => 
     array (
       0 => 'C:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\templates\\add_billing.tpl',
-      1 => 1501343724,
+      1 => 1508918448,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_59ef653950fa76_24952705 ($_smarty_tpl) {
+function content_59f09bff6a1a50_34187166 ($_smarty_tpl) {
 ?>
 
    
@@ -207,9 +207,11 @@ echo $_POST['joined_date'];
 ">
 					 <div class="form-actions">
 					 			<input name="submit" class="btn btn-gebo submit" value="Submit" type="submit"/>
-								<a href="billing.php">
-									<button type="button" val="billing.php" class="btn Cancel cancel_event">Cancel</button>
-								</a>
+													
+								<input type="hidden" name="bill_can" value="billing.php" id="webroot">
+	<a href="javascript:void(0)" class="jsRedirect cancel_event">
+	<input type="button" value="Cancel" class="btn">
+	</a>
 				 </div>
 		</form>
                

@@ -250,6 +250,17 @@ $(document).ready(function() {
 	});
 		
 	
+	/* tag inputs for keywords */
+	if($('.tagInput').length > 0){
+		$('.tagInput').tagsinput({
+		  /*
+		  tagClass: function(item) {
+			return (item.length > 10 ? 'big' : 'small');
+		  }
+		  */
+		});
+	}
+
 	
 	/* function to switch the view resume tabs */
 	$('.restabChange').click(function(){ 

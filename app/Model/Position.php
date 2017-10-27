@@ -114,13 +114,7 @@ class Position extends AppModel {
                 'message'  => 'Please select all values'
             )
         ),
-		'skills' => array(		
-            'empty' => array(
-                'rule'     => 'notEmpty',
-                'required' => true,
-                'message'  => 'Please enter the key skills'
-            )
-        ),	
+			
 		'no_job' => array(		
             'empty' => array(
                 'rule'     => 'notEmpty',
@@ -291,7 +285,22 @@ class Position extends AppModel {
                 'required' => true,
                 'message'  => 'Please select the plan join date'
             )
+        ),
+		'tech_skill' => array(		
+            'empty' => array(
+                'rule'     => 'notEmpty',
+                'required' => true,
+                'message'  => 'Please enter the technical skils'
+            )
         )
+		,
+		'behav_skill' => array(		
+            'empty' => array(
+                'rule'     => 'notEmpty',
+                'required' => true,
+                'message'  => 'Please enter the behavioural skills'
+            )
+        ),
 	);
 	
 	/* function to validate the team members */
