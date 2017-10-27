@@ -2,7 +2,7 @@
 /* 
    Purpose : To list and search contact branch..
 	Created : Nikitasa
-	Date : 326-10-2017
+	Date : 27-10-2017
 */
 
 //unset session
@@ -24,27 +24,35 @@ include('classes/class.paging.php');
 include('menu_count.php');
 
 // role based validation
-$module_access = $fun->check_role_access('41',$modules);
+$module_access = $fun->check_role_access('40',$modules);
 $smarty->assign('module',$module_access);
 
 $keyword = $_POST['keyword'] ? $_POST['keyword'] : $_GET['keyword'];
-$f_date = $_POST['f_date'] ? $_POST['f_date'] : $_GET['f_date'];  
-$t_date = $_POST['t_date'] ? $_POST['t_date'] : $_GET['t_date']; 
-$from_date = $fun->convert_date($f_date);
-$to_date = $fun->convert_date($t_date);
 
+// to display the data using status filter
+if(isset($_POST['status'])){
+	$status = $_POST['status'];
+}else if(isset($_GET['status'])){
+	$status = $_GET['status'];
+}else{
+	$status = '1';
+}
 //post url for paging
 if($_POST){
 	$post_url .= '&keyword='.$keyword;
-	$post_url .= '&f_date='.$f_date;
-	$post_url .= '&t_date='.$t_date;
+	$post_url .= '&status='.$status;
+}
+
+// for export
+if($_GET['action'] == 'export'){
+	$status = $_GET['status']; 
 }
 
 // count the total no. of records
-$query = "CALL list_billing('".$keyword."','".$_SESSION['user_id']."','".$from_date."','".$to_date."','0','0','','','".$_GET['action']."')";
+$query = "CALL list_contact_branch('".$keyword."','".$status."','0','0','','','".$_GET['action']."')";
 try{
 	if(!$result = $mysql->execute_query($query)){
-		throw new Exception('Problem in executing list billing page');
+		throw new Exception('Problem in executing list contact branch page');
 	}
 
 	// fetch result
@@ -69,8 +77,8 @@ try{
 
 // set the condition to check ascending or descending order		
 $order = ($_GET['order'] == 'desc') ? 'asc' :  'desc';	
-$sort_fields = array('1' => 'job_title','client_name','billing_amount','billing_date','candidate_name');
-$org_fields = array('1' => 'job_title','client_name','billing_amount','billing_date','candidate_name');
+$sort_fields = array('1' => 'branch','status','created_date','modified_date');
+$org_fields = array('1' => 'branch','status','created_date','modified_date');
 
 // to set the sorting image
 foreach($sort_fields as $key => $b_field){
@@ -84,8 +92,8 @@ foreach($sort_fields as $key => $b_field){
 // if no fields are set, set default sort image
 if(empty($_GET['field'])){		
 	$order = 'desc';			
-	$field = 'ib.created_date';			
-	$smarty->assign('sort_field_created_date', 'sorting desc');
+	$field = 'created_date';			
+	$smarty->assign('sort_field_created', 'sorting desc');
 }	
 $smarty->assign('order', $order);
 // set the original field for the sql query
@@ -94,19 +102,21 @@ if($search_key = array_search($_GET['field'], $sort_fields)){
 }
 
 // fetch all records
-$query =  "CALL list_billing('".$keyword."','".$_SESSION['user_id']."','".$from_date."','".$to_date."','$start','$limit','".$field."','".$order."','".$_GET['action']."')";
+$query =  "CALL list_contact_branch('".$keyword."','".$status."','$start','$limit','".$field."','".$order."','".$_GET['action']."')";
 try{
 	if(!$result = $mysql->execute_query($query)){
-		throw new Exception('Problem in executing list billing page');
+		throw new Exception('Problem in executing list contact branch page');
 	}
 	// calling mysql fetch_result function
 	$i = '0';
 	while($obj = $mysql->display_result($result))
 	{
  		$data[] = $obj;
-		$data[$i]['created_date'] = $fun->convert_date_to_display($obj['created_date']);
- 		$data[$i]['billing_date'] = $fun->convert_date_to_display($obj['billing_date']);
- 		$data[$i]['status'] = $fun->format_status($obj['st_status'],$obj['st_created'],$obj['st_user'],$obj['st_modified']);
+ 		$data[$i]['branch'] = $fun->upper_case_string($obj['branch']);
+ 		$data[$i]['status'] = $fun->display_status($obj['status']);
+ 		$data[$i]['status_cls'] = $fun->status_cls($obj['status']);
+ 		$data[$i]['created_date'] = $fun->convert_date_to_display($obj['created_date']);
+ 		$data[$i]['modified_date'] = $fun->convert_date_to_display($obj['modified_date']);
  		$i++;
  		$pno[]=$paging->print_no();
  		$smarty->assign('pno',$pno);
@@ -119,14 +129,16 @@ try{
 		include('classes/class.excel.php');
 		$excelObj = new libExcel();
 		// function to print the excel header
-      $excelObj->printHeader($header = array('Position','Client Name','Billing Amount','Candidate Name','Billing Date',) ,$col = array('A','B','C','D','E'));  
+      $excelObj->printHeader($header = array('Contact Branch','Status','Created Date','Modified Date') ,$col = array('A','B','C','D'));  
 		// function to print the excel data
-		$excelObj->printCell($data, $count,$col = array('A','B','C','D','E'), $field = array('job_title','client_name','billing_amount','candidate_name',),'Billing_'.$current_date);
+		$excelObj->printCell($data, $count,$col = array('A','B','C','D'), $field = array('branch','status','created_date','modified_date'),'Contact Branch'.$current_date);
 	}	
 	
-	// create validation
-	if($_GET['status'] == 'created'){
- 	 $success_msg = 'Billing ' . ucfirst($_GET['status']) . ' Successfully';
+	// create,update,delete message validation
+	if($_GET['status'] == 'deleted' || $_GET['status'] == 'created' || $_GET['status'] == 'updated'){
+ 	 $success_msg = 'Contact Branch ' . ucfirst($_GET['status']) . ' Successfully';
+	}else if($_GET['current_status'] == 'msg'){
+		$success_msg = 'This record is not available in our database';
 	}
 
 	// validating pagination
@@ -134,8 +146,6 @@ try{
 
 	// free the memory
 	$mysql->clear_result($result);
-	// call the next result
-	$mysql->next_query();
 }catch(Exception $e){
 	echo 'Caught exception: ',  $e->getMessage(), "\n";
 }
@@ -144,22 +154,23 @@ try{
 $c_c = $mysql->close_connection();
 $paging->posturl($post_url);
 
+// smarty drop down array for status
+$smarty->assign('status_type', array('' => 'All Status', '1' => 'Active', '2' => 'Inactive'));
+
 // assign smarty variables here
 $smarty->assign('page_links',$paging->print_link_frontend());
-
 $smarty->assign('data', $data);
 $smarty->assign('page' , $page); 
 $smarty->assign('total_pages' , $total_pages); 	
-$smarty->assign('keyword' , $keyword); 	
-$smarty->assign('f_date', $f_date);
-$smarty->assign('t_date', $t_date);
+$smarty->assign('keyword' , $keyword); 
+$smarty->assign('status', $status);	
 $smarty->assign('ALERT_MSG', $alert_msg);
 $smarty->assign('SUCCESS_MSG', $success_msg);
+
 // assign page title
 $smarty->assign('page_title' , 'Contact Branch - Manage Hiring');  
 // assigning active class status to smarty menu.tpl
 $smarty->assign('setting_active','active');
-// $smarty->assign('setting_active', $fun->set_menu_active('billing'));
 // display smarty file
 $smarty->display('contact_branch.tpl');
 ?>

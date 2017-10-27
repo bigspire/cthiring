@@ -271,7 +271,7 @@ class fun{
 	
 	// function to validate database created_date field 
 	public function convert_date_to_display($created_date){
-		if(($created_date != '') && ($created_date != '0000-00-00')){
+		if(($created_date != '') && ($created_date != '0000-00-00') && ($created_date != '0000-00-00 00:00:00')){
 			$c_d = date('d-M-Y', strtotime($created_date));
 			return $c_d;
 		}
@@ -279,7 +279,7 @@ class fun{
 	
 	// function to validate database created_date field 
 	public function convert_date_db($created_date){
-		if(($created_date != '') && ($created_date != '0000-00-00')){
+		if(($created_date != '') && ($created_date != '0000-00-00') && ($created_date != '0000-00-00 00:00:00')){
 			$c_d = date('Y-m-d', strtotime($created_date));
 			return $c_d;
 		}

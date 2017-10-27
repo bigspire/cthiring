@@ -58,7 +58,7 @@
 							</div>
 						{/if}
 						
-						{if $keyword}
+						{if $keyword || $status}
 						  {assign var=hide value=''}
 						{else}
 							{assign var=hide value=dn}
@@ -66,9 +66,13 @@
 							<form action="" id="formID" name="searchFrm" class="formID" method="post" accept-charset="utf-8"><div style="display:none;"><input type="hidden" name="_method" value="POST"/></div>	
 							<div class="{$hide} dataTables_filter srchBox" style="float:left;" id="dt_gal_filter">
 							
-								<label style="margin-left:0;">Keyword: <input type="text" placeholder="Candidate Name or Client Name" name="keyword" id="keyword" value="{$keyword}" class="input-large" aria-controls="dt_gal"></label>
+								<label style="margin-left:0;">Keyword: <input type="text" placeholder="Designation Name" name="keyword" id="keyword" value="{$keyword}" class="input-large" aria-controls="dt_gal"></label>
 								
-						
+						<label>Status: 
+							<select name="status" class="input-small" style="clear:left" id="ClientStatus">
+								{html_options options=$status_type selected=$status}
+							</select> 
+							</label>
 							<label style="margin-top:18px;"><input type="submit" value="Submit" class="btn btn-gebo" /></label>					
 							<label style="margin-top:18px;"><a href="designation.php" class="jsRedirect"><input value="Reset" type="button" class="btn"/></a></label>
 							
