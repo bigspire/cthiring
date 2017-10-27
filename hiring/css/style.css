@@ -686,7 +686,7 @@
 		.style_switcher .tamarillo_theme {background:#af2c36}
 		.style_active {border-color:#6fd05b}
 		.style_switcher label {color:#fff}
-		.style_switcher .colorDiv a {clear:none;}
+		.style_switcher .colorDiv a {clear:none;padding-right:0px;float:left;}
 		
 	/* media queries */
 

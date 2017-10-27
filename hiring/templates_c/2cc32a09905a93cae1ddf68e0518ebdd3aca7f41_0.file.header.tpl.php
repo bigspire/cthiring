@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-10-23 17:23:38
+/* Smarty version 3.1.29, created on 2017-10-27 12:26:01
   from "C:\xampp\htdocs\ctsvn\cthiring\hiring\templates\include\header.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_59edd842522986_83895454',
+  'unifunc' => 'content_59f2d88132e199_20079167',
   'file_dependency' => 
   array (
     '2cc32a09905a93cae1ddf68e0518ebdd3aca7f41' => 
     array (
       0 => 'C:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\templates\\include\\header.tpl',
-      1 => 1508754772,
+      1 => 1509087305,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_59edd842522986_83895454 ($_smarty_tpl) {
+function content_59f2d88132e199_20079167 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -323,6 +323,16 @@ resume/">Search Resume <!-- span class="label-bub label-info white"><?php echo $
 														<!--li><a href="bonus_share.php">Bonus Share</a></li-->														
 													</ul>
 												</li>
+											<?php }?>
+											
+											<?php if ($_smarty_tpl->tpl_vars['module']->value['manage_designation'] == '1') {?>
+	
+												<li><a href="designation.php">Designation </a></li>
+											<?php }?>
+											
+											<?php if ($_smarty_tpl->tpl_vars['module']->value['manage_contact_branch'] == '1') {?>
+	
+												<li><a href="contact_branch.php">Branch</a></li>
 											<?php }?>
                                             </ul>
                                         </li>
