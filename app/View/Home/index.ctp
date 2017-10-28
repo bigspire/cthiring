@@ -26,14 +26,14 @@
 									<div  class="btn-group clearfix sepH_a">
 									
 									<?php if($this->Session->read('USER.Login.roles_id') == '34'): ?>
-										<button rel="<?php echo $this->webroot;?>home/index/ac_view/" class="dash_view btn <?php echo $ac_dash;?>">Account Holder View</button>
-										<button rel="<?php echo $this->webroot;?>home/index/rec_view/" class="dash_view btn <?php echo $rec_dash;?>">Recruiter View</button>
+										<button val="<?php echo $this->webroot;?>home/index/ac_view/" rel="tooltip" title="<?php echo $this->Functions->show_view_detail('ac_view',$ac_dash,$rec_dash,$bd_dash);?>" class="dash_view btn <?php echo $ac_dash;?>">Account Holder</button>
+										<button val="<?php echo $this->webroot;?>home/index/rec_view/" rel="tooltip" title="<?php echo $this->Functions->show_view_detail('rec_view', $ac_dash,$rec_dash,$bd_dash);?>" class="dash_view btn <?php echo $rec_dash;?>">Recruiter</button>
 									
 									<?php elseif($this->Session->read('USER.Login.roles_id') == '33' || $this->Session->read('USER.Login.roles_id') == '35'  || $this->Session->read('USER.Login.roles_id') == '26'
 									 || $this->Session->read('USER.Login.roles_id') == '39'): ?>
-									<button rel="<?php echo $this->webroot;?>home/index/bd_view/" class="dash_view btn <?php echo $bd_dash;?>">Biz. Developer View</button>
-									<button rel="<?php echo $this->webroot;?>home/index/rec_view/" class="dash_view btn <?php echo $rec_dash;?>">Recruiter View</button>
-									<button rel="<?php echo $this->webroot;?>home/index/ac_view/" class="dash_view btn <?php echo $ac_dash;?>">Account Holder View</button>
+									<button val="<?php echo $this->webroot;?>home/index/bd_view/" rel="tooltip" title="<?php echo $this->Functions->show_view_detail('bd_view',$ac_dash,$rec_dash,$bd_dash);?>" class="dash_view btn <?php echo $bd_dash;?>">Biz. Development</button>
+									<button val="<?php echo $this->webroot;?>home/index/rec_view/" rel="tooltip" title="<?php echo $this->Functions->show_view_detail('rec_view', $ac_dash,$rec_dash,$bd_dash);?>" class="dash_view btn <?php echo $rec_dash;?>">Recruiter</button>
+									<button val="<?php echo $this->webroot;?>home/index/ac_view/" rel="tooltip" title="<?php echo $this->Functions->show_view_detail('ac_view',$ac_dash,$rec_dash,$bd_dash);?>" class="dash_view btn <?php echo $ac_dash;?>">Account Holder</button>
 
 									
 									<?php endif; ?>
@@ -103,7 +103,61 @@
               <div class="count">₹<?php echo $BILLED_TAB_COUNT;?></div>
               <span class="count_bottom"><i class="green"><i class="icon-circle-arrow-up"></i> 34% </i> From last Week</span>
             </div>
-          </div>
+			
+			<ul id="clickme" style="top:180px;right:30px;position:absolute" class="icon_list_a clearfix">
+			<li rel="tooltip" id="tipDiv"  title="Show More.."   style="cursor: pointer;margin-top:3px;"><i id="moreID" style="margin-top:1px;" class="splashy-arrow_state_blue_expanded"></i></li>
+			</ul>
+			
+			
+			  </div>
+			  
+			
+			
+			
+		  <div class="row tile_count extraHome dn">
+		    <div class="span2 tile_stats_count">
+              <span class="count_top"><i class="fa fa-user"></i> Awaiting Feedback</span>
+              <div class="count"><?php echo $CV_WAITING_TAB_COUNT;?></div>
+              <span class="count_bottom"><i class="green"><i class="icon-circle-arrow-up"></i> 34% </i> From last Week</span>
+            </div>
+		  <div class="span2 tile_stats_count">
+              <span class="count_top"><i class="fa fa-user"></i> CV Rejected</span>
+              <div class="count"><?php echo $CV_REJECT_TAB_COUNT;?></div>
+              <span class="count_bottom"><i class="green">4% </i> From last Week</span>
+            </div>
+			
+            <!--div class="span2 tile_stats_count">
+              <span class="count_top"><i class="fa fa-clock-o"></i> Interview Dropouts</span>
+              <div class="count"><?php echo $INTERVIEW_DROP_TAB_COUNT ? $INTERVIEW_DROP_TAB_COUNT : 0;?></div>
+              <span class="count_bottom"><i class="green"><i class="green icon-circle-arrow-up"></i> 3% </i> From last Week</span>
+            </div-->
+            <div class="span2 tile_stats_count">
+              <span class="count_top"><i class="fa fa-user"></i> Interview Rejected</span>
+              <div class="count green"><?php echo $INTERVIEW_REJ_TAB_COUNT ? $INTERVIEW_REJ_TAB_COUNT : 0;?></div>
+              <span class="count_bottom"><i class="green"><i class="icon-circle-arrow-up"></i> 34% </i> From last Week</span>
+            </div>
+			
+            <div class="span2 tile_stats_count">
+              <span class="count_top"><i class="fa fa-user"></i> Total Offered</span>
+              <div class="count"><?php echo $OFFER_TAB_COUNT;?></div>
+              <span class="count_bottom"><i class="red"><i class="fa icon-circle-arrow-down"></i> 12% </i> From last Week</span>
+            </div>
+			
+			<div class="span2 tile_stats_count">
+              <span class="count_top"><i class="fa fa-user"></i> Offer Rejected</span>
+              <div class="count"><?php echo $OFFER_REJ_TAB_COUNT;?></div>
+              <span class="count_bottom"><i class="red"><i class="fa icon-circle-arrow-down"></i> 12% </i> From last Week</span>
+            </div>
+			
+			
+            <div class="span2 tile_stats_count"  style="width:160px;border:none;">
+              <span class="count_top"><i class="fa fa-user"></i> Candidates Billed</span>
+              <div class="count"><?php echo $BILLED_TAB_COUNT; ?> </div>
+              <span class="count_bottom"><i class="green"><i class="icon-circle-arrow-up"></i> 34% </i> From last Week</span>
+            </div>
+          
+			</div>
+			
 							<!--div class="flexslider2">
 							<ul class="slides dshb_icoNav tac  mt15">
 								<li><a rel="tooltip" target="_blank" title="Positions Created" href="<?php echo $this->webroot;?>position/"><span class="label label-info"><?php echo $POS_TAB_COUNT;?></span> <strong>Positions</strong></a></li>

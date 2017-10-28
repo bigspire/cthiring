@@ -893,7 +893,7 @@ select, input[type="file"]{height:24px !important}
 .btn-mini{padding:2px 6px !important}
 input, textarea, select, .uneditable-input{font-size:12px !important; font-family:'Open Sans', sans-serif}
 .input-prepend .add-on, .input-append .add-on{height:14px !important}
-.btn.active, .btn:active{background:#BCDEEE}
+/* .btn.active, .btn:active{background:#BCDEEE}*/
 /* delete confirmation*/
 #popup_container { min-width: 300px; max-width: 600px; background: url(../img/alertOpacityOverlay.png) repeat; -moz-border-radius: 5px; -webkit-border-radius: 5px; border-radius: 5px; }
 #popup_title { text-align: center; background: url(../img/leftNavBg.png) repeat-x; border-bottom: 1px solid #d5d5d5; cursor: default; padding: 9px 0 9px 0px; margin: 0em; height: 20px; }
