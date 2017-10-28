@@ -141,12 +141,12 @@
 										<td>	
 										
 										<input type="text" tabindex="10" name="present_ctc" value="{$present_ctc}" placeholder="Present"  class="span2"/>										
-										<select class="span3"  tabindex="11"  name="present_ctc_type">
+										<select class="span2"  tabindex="11"  name="present_ctc_type">
 										{html_options options=$ctc_type selected=$smarty.post.present_ctc_type}
 										</select> 
 											
 										<input type="text" tabindex="12" name="expected_ctc" value="{$expected_ctc}" placeholder="Expected"  class="span2"/>	
-										<select  class="span3" tabindex="13"  name="expected_ctc_type">
+										<select  class="span2" tabindex="13"  name="expected_ctc_type">
 										{html_options options=$ctc_type selected=$smarty.post.expected_ctc_type}
 										</select>			
 										<span class="f_req">*</span>		
@@ -377,22 +377,22 @@
 								<tr>
 										<td width="120" class="tbl_column">Employment Period<span class="f_req"> *</span></td>
 										<td>
-										<select name="from_month_of_exp_#index#" id = "from_month_of_exp_#index#" tabindex="3" class="span3">
-										<option value="">From Month</option>
+										<select name="from_month_of_exp_#index#" id = "from_month_of_exp_#index#" tabindex="3" class="span2">
+										<option value="">From</option>
 										{html_options options=$exp_month} 
 										</select>
-										<select name="from_year_of_exp_#index#" id = "from_year_of_exp_#index#" tabindex="2" class="inline_text span3">
-										<option value="">From Year</option>
+										<select name="from_year_of_exp_#index#" id = "from_year_of_exp_#index#" tabindex="2" class="inline_text span2">
+										<option value="">From</option>
 										{html_options options=$exp_yr} 
 										</select>
 										
-										<select name="to_month_of_exp_#index#" id = "to_month_of_exp_#index#" tabindex="3" class="inline_text span3">
-										<option value="">To Month</option>
+										<select name="to_month_of_exp_#index#" id = "to_month_of_exp_#index#" tabindex="3" class="inline_text span2">
+										<option value="">To</option>
 										{html_options options=$exp_month} 
 										</select>
 										
-										<select name="to_year_of_exp_#index#" id = "to_year_of_exp_#index#" tabindex="2" class="inline_text span3">
-										<option value="">To Year</option>
+										<select name="to_year_of_exp_#index#" id = "to_year_of_exp_#index#" tabindex="2" class="inline_text span2">
+										<option value="">To</option>
 										{html_options options=$exp_yr} 
 										</select>
 										<label for="reg_city" generated="true" class="error" id="from_month_of_expErr_#index#"></label>																																
@@ -471,9 +471,9 @@
 		  <table class="table table-bordered dataTable" style="margin-bottom:0;">
 		  <tbody>
 		  <tr>
-			<td width="120" class="tbl_column">Project / Certification Details (optional) <span class="f_req"></span></td>
+			<td width="133" class="tbl_column">Project / Certification Details (optional) <span class="f_req"></span></td>
 				<td> 
-						<textarea name="certification" tabindex="7" id="certification" cols="10" rows="3" class="span8">{if $certification}{$certification}{else}{$smarty.post.certification}{/if}</textarea>
+						<textarea name="certification" tabindex="7" id="certification" cols="10" rows="3" class="span8 wysiwyg1">{if $certification}{$certification}{else}{$smarty.post.certification}{/if}</textarea>
 				</td>
 			</tr>
 		  </tbody>
@@ -493,9 +493,15 @@
 										</td>	
 									</tr>	
 									<tr class="">
-										<td width="120" class="tbl_column">Interview Availability </td>
+										<td width="120" class="tbl_column">Rate Behavioural Skills </td>
 										<td>
-<textarea placeholder="" name="interview_availability" tabindex="2" id="interview_availability" cols="10" rows="3" class="span10 wysiwyg1">{$smarty.post.interview_availability}</textarea>
+<ul class="ratingList">
+  <li>Communication <input type="hidden" class="rating" data-fractions="2"/> </li>
+ <li>Attitude <input type="hidden" class="rating" data-fractions="2"/></li>
+ <li>GK  <input type="hidden" class="rating" data-fractions="2"/></li>
+<li> Team Worker  <input type="hidden" class="rating" data-fractions="2"/></li>
+</ul>
+ 
 										<!--label for="reg_city" generated="true" class="error">{$interview_availabilityErr}</label-->
 										</td>	
 									</tr>													
@@ -507,7 +513,7 @@
 			<table class="table table-bordered dataTable" style="margin-bottom:0;">
 						<tbody>
 									<tr class="tbl_row">
-										<td width="120" class="tbl_column">Assess Technical Skills <span class="f_req"></span></td>
+										<td width="120" class="tbl_column">Rate Technical Skills <span class="f_req"></span></td>
 										<td>
 	<ul class="ratingList">
  <li> PHP <input type="hidden" class="rating" data-fractions="2"/></li>
@@ -520,15 +526,9 @@
 										</td>	
 									</tr>	
 									<tr class="">
-										<td width="120" class="tbl_column">Assess Behavioural Skills </td>
+										<td width="120" class="tbl_column">Interview Availability </td>
 										<td>
-<ul class="ratingList">
-  <li>Communication <input type="hidden" class="rating" data-fractions="2"/> </li>
- <li>Attitude <input type="hidden" class="rating" data-fractions="2"/></li>
- <li>GK  <input type="hidden" class="rating" data-fractions="2"/></li>
-<li> Team Worker  <input type="hidden" class="rating" data-fractions="2"/></li>
-</ul>
- 
+<textarea placeholder="" name="interview_availability" tabindex="2" id="interview_availability" cols="10" rows="3" class="span10 wysiwyg1">{$smarty.post.interview_availability}</textarea>
 										<!--label for="reg_city" generated="true" class="error">{$interview_availabilityErr}</label-->
 										</td>	
 									</tr>													

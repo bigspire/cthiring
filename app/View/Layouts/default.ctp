@@ -28,8 +28,11 @@
             <link rel="stylesheet" href="<?php echo $this->webroot;?>hiring/bootstrap/css/bootstrap.min.css" />
             <link rel="stylesheet" href="<?php echo $this->webroot;?>hiring/bootstrap/css/bootstrap-responsive.min.css" />
         <!-- gebo blue theme-->
-		<?php $theme = $this->Session->read('theme') ? $this->Session->read('theme') : 'blue'; ?>
+			 
+			<?php if($this->params['controller'] != 'login'):
+			$theme =  $_GET['color']  ?  $_GET['color'] :  $_COOKIE['CakeCookie']['THEME']; ?>
             <link rel="stylesheet" href="<?php echo $this->webroot;?>hiring/css/<?php echo $theme;?>.css" id="link_theme" />
+			<?php endif; ?>
         <!-- breadcrumbs-->
             <link rel="stylesheet" href="<?php echo $this->webroot;?>hiring/lib_cthiring/jBreadcrumbs/css/BreadCrumb.css" />
         <!-- tooltips-->

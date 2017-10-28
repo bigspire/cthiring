@@ -26,12 +26,12 @@
 								<div class="sepH_c">
 									<p>Colors:</p>
 									<div class="clearfix colorDiv">
-										<a href="javascript:void(0)" class="style_item jQclr blue_theme" title="blue">blue</a>
-										<a href="javascript:void(0)" class="style_item jQclr dark_theme" title="dark">dark</a>
-										<a href="javascript:void(0)" class="style_item jQclr green_theme style_active" title="green">green</a>
-										<a href="javascript:void(0)" class="style_item jQclr brown_theme" title="brown">brown</a>
-										<a href="javascript:void(0)" class="style_item jQclr eastern_blue_theme" title="eastern_blue">eastern blue</a>
-										<a href="javascript:void(0)" class="style_item jQclr tamarillo_theme" title="tamarillo">tamarillo</a>
+										<a href="<?php echo $this->webroot?>hiring/get_theme.php?col=blue" class="style_item jQclr blue_theme"  title="blue">blue</a>
+										<a href="<?php echo $this->webroot?>hiring/get_theme.php?col=dark" class="style_item jQclr dark_theme"  title="dark">dark</a>
+										<a href="<?php echo $this->webroot?>hiring/get_theme.php?col=green" class="style_item jQclr green_theme style_active" title="green">green</a>
+										<a href="<?php echo $this->webroot?>hiring/get_theme.php?col=brown" class="style_item jQclr brown_theme"  title="brown">brown</a>
+										<a href="<?php echo $this->webroot?>hiring/get_theme.php?col=eastern_blue" class="style_item jQclr eastern_blue_theme"  title="eastern_blue">eastern blue</a>
+										<a href="<?php echo $this->webroot?>hiring/get_theme.php?col=tamarillo" class="style_item jQclr tamarillo_theme"  title="tamarillo">tamarillo</a>
 									</div>
 								</div>
 							</div>

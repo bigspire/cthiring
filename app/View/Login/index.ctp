@@ -1,10 +1,12 @@
-
+<style>
+    body{background: #fefefe}
+</style>
 				<div style="background:#fff;padding:10px;margin-left:2%;margin-bottom:15px;position:absolute;top:9%">
 				<a href="http://career-tree.in" target="_blank" style="">
 				<img src="<?php echo $this->webroot;?>img/career-tree3.png" alt="" class="retina-ready"></a>
 				</div>
 
-<h1 style="margin-left:39%;color:#fff;padding-bottom:15px;font-size:44px;">Manage Hiring</h1>
+<h1 style="margin-left:41%;padding-bottom:15px;font-size:34px;">Manage <span style="color:#ef4c23;">Hiring</span></h1><br>
 		<div class="login_box">
 			<?php echo $this->Form->create('Login', array('id' => 'login_form', 'class' => 'formID')); ?>
 

@@ -350,7 +350,7 @@
 								<tr class="tbl_row">
 									<td width="120" class="tbl_column">Job Description <span class="f_req">*</span></td>										
 									<td>
-<?php echo $this->Form->input('job_desc', array('div'=> false,'type' => 'text', 'label' => false, 'class' => 'span10 wysiwyg', 'cols' => '10', 'style' => 'height:250px' , 'rows' => '3',
+<?php echo $this->Form->input('job_desc', array('div'=> false,'type' => 'text', 'label' => false, 'class' => 'span10 wysiwyg', 'cols' => '10', 'style' => "height:250px;", 'rows' => '3',
   'required' => false, 'placeholder' => 'Enter job description here',	'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 
 
 									<br>

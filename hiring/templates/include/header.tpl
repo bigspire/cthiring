@@ -11,7 +11,7 @@
 
             <link rel="stylesheet" href="bootstrap/css/bootstrap-responsive.min.css" />
         <!-- gebo blue theme-->
-            <link rel="stylesheet" href="css/{$smarty.session.theme}.css" id="link_theme" />            
+            <link rel="stylesheet" href="css/{$THEME}.css" id="link_theme" />            
         <!-- main styles -->
             <link rel="stylesheet" href="css/style.css" />
         <!-- tooltips-->

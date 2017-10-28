@@ -1097,15 +1097,44 @@ class HomeController  extends AppController {
 			$this->Home->set($this->request->data);
 			// validate file		
 			if($this->Home->validates(array('fieldList' => array('message')))){
-				$sub = 'Hirecraft - Feedback received from '.ucfirst($this->Session->read('USER.Login.first_name')).' '.ucfirst($this->Session->read('USER.Login.last_name'));
+				$sub = 'Manage Hiring - Feedback received from '.ucfirst($this->Session->read('USER.Login.first_name')).' '.ucfirst($this->Session->read('USER.Login.last_name'));
 				$from = ucfirst($this->Session->read('USER.Login.first_name')).' '.ucfirst($this->Session->read('USER.Login.last_name'));
 				$vars = array('from_name' => $from, 'message' => $this->request->data['Home']['message']);
 				// notify superiors						
-				if(!$this->send_email($sub, 'feedback', 'noreply@ct-hiring.in', 'ravi@bigspire.com',$vars)){	
+				if(!$this->send_email($sub, 'feedback', 'noreply@managehiring.in', 'ravi@bigspire.com',$vars)){	
 					// show the msg.								
 					$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Problem in sending the mail to admin...', 'default', array('class' => 'alert alert-error'));				
 				}else{
 					$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Thanks for feedback. Feedback sent successfully!', 'default', array('class' => 'alert alert-success'));
+					unset($this->request->data);
+				}				
+			}
+		}
+	}
+	
+	/* function to save a bug  */
+	public function report_bug(){
+		$this->set('noHead', '1');
+		if ($this->request->is('post')){
+			// validates the form
+			$this->Home->set($this->request->data);
+			// validate file		
+			if($this->Home->validates(array('fieldList' => array('subject','message')))){
+				$sub = 'Manage Hiring - Report a bug received from '.ucfirst($this->Session->read('USER.Login.first_name')).' '.ucfirst($this->Session->read('USER.Login.last_name'));
+				$from = ucfirst($this->Session->read('USER.Login.first_name')).' '.ucfirst($this->Session->read('USER.Login.last_name'));
+				$vars = array('from_name' => $from, 'message' => $this->request->data['Home']['message'],'subject' => $this->request->data['Home']['subject']);
+				// save the attachment
+				if(!empty($this->request->data['Home']['attachment']['tmp_name'])){
+					$src = $this->request->data['Home']['attachment']['tmp_name'];
+					$dest = 'uploads/message/'.time().'_'.$this->request->data['Home']['attachment']['name'];
+					$this->upload_file($src, $dest);
+				}
+				// notify superiors						
+				if(!$this->send_email($sub, 'report_bug', 'noreply@managehiring.in', 'ravi@bigspire.com',$vars, $dest)){	
+					// show the msg.								
+					$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Problem in sending the mail to admin...', 'default', array('class' => 'alert alert-error'));				
+				}else{
+					$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Thanks for reporting a bug. Details sent to admin successfully!', 'default', array('class' => 'alert alert-success'));
 					unset($this->request->data);
 				}				
 			}

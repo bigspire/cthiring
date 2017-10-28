@@ -61,10 +61,10 @@ class LoginController extends AppController {
 								$this->Session->write('USER', $data);
 								
 								// $this->Session->write('WELCOME', 1);
+								$theme = $data['Login']['theme'] ? $data['Login']['theme'] : 'blue'; 
+								// update the theme in cookie
+								$this->set_cookie('THEME', $theme, '30 Days');
 								
-								// update the theme
-								$theme = $this->Session->read('USER.Login.theme');
-								$this->Session->write('theme', $theme);
 								// save the last login
 								$this->Login->id = $data['Login']['id'];
 								$this->Login->saveField('last_login', $this->Functions->get_current_date());
@@ -185,6 +185,7 @@ class LoginController extends AppController {
 		$this->delete_cookie('ESUSER');
 		$this->delete_cookie('ESUSERROLE');
 		$this->disable_cache();		
+		$this->delete_cookie('THEME');
 		$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>You have successfully signed off', 'default', array('class' => 'alert alert-success alert-login'));
 		$this->redirect('/');
 
