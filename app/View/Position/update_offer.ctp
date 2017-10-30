@@ -32,7 +32,7 @@
 					<td width="120" class="tbl_column">Candidate Name
 					</td>
 						<td>
-						<?php echo $this->Form->input('candidate', array('div'=> false,'type' => 'text', 'label' => false, 'class' => 'input-large', 'readonly' => 'readonly', 'value' => $candidate_name,   'required' => false, 'placeholder' => '')); ?> 					
+						<?php echo $this->Form->input('candidate', array('div'=> false,'type' => 'text', 'label' => false, 'class' => 'span8', 'readonly' => 'readonly', 'value' => $candidate_name,   'required' => false, 'placeholder' => '')); ?> 					
 						</td>	
 				</tr>
 			
@@ -41,7 +41,7 @@
 					<td width="120" class="tbl_column">Offered Date <span class="f_req">*</span>
 					</td>
 						<td>
-						<?php echo $this->Form->input('date_offer', array('div'=> false,'type' => 'text', 'label' => false, 'class' => 'input-large datepick',  'required' => false, 'placeholder' => '',
+						<?php echo $this->Form->input('date_offer', array('div'=> false,'type' => 'text', 'label' => false, 'class' => 'span8 datepick',  'required' => false, 'placeholder' => '',
 						'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 					
 						</td>	
 				</tr>
@@ -50,7 +50,7 @@
 					<td width="120" class="tbl_column">Offered CTC  <span class="f_req">*</span>
 					</td>
 						<td>
-						<?php echo $this->Form->input('ctc_offer', array('div'=> false,'type' => 'text', 'label' => false, 'class' => 'input-large', 'placeholder' => 'Write Full Value', 'required' => false, 'placeholder' => '', 'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 					
+						<?php echo $this->Form->input('ctc_offer', array('div'=> false,'type' => 'text', 'label' => false, 'class' => 'span8', 'placeholder' => 'Write Full Value', 'required' => false, 'placeholder' => '', 'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 					
 						</td>	
 				</tr>
 	<?php endif; ?>			
@@ -82,7 +82,7 @@
 					
 					</td>
 						<td>
-					<?php echo $this->Form->input('note', array('div'=> false,'type' => 'text', 'label' => false, 'class' => 'span8', 'cols' => '10', 'rows' => '3',
+					<?php echo $this->Form->input('note', array('div'=> false,'type' => 'text', 'label' => false, 'class' => 'span8',  'rows' => '3',
   'required' => false, 'placeholder' => '',	'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 
 
 						</td>	

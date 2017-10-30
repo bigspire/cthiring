@@ -51,6 +51,22 @@
 						</td>	
 				</tr>
 				
+					<?php if($reschedule):?>
+				
+				<tr class="">
+					<td width="120" class="">Reason for Re-Schedule <span class="f_req">*</span>
+					</td>
+						<td>
+					<?php echo $this->Form->input('reason_id', array('div'=> false,'type' => 'select', 'label' => false, 
+		'class' => 'span8', 'id' => '', 'empty' => 'Select', 'required' => false, 'placeholder' => '', 
+		'style' => "clear:left", 'options' => $rejectList, 'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 
+							
+ 					
+						</td>	
+				</tr>
+				
+					<?php endif; ?>
+				
 				<tr class="tbl_row" >
 					<td width="120" class="tbl_column">Interview Level <span class="f_req">*</span>
 					</td>

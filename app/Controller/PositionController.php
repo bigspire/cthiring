@@ -1014,18 +1014,28 @@ class PositionController extends AppController {
 				'alias' => 'Contact',					
 				'type' => 'LEFT',
 				'conditions' => array('`Contact`.`id` = `Position`.`client_contact_id`')
+				)	
+				,
+			array(
+				'table' => 'users',
+				'alias' => 'Recruiter',					
+				'type' => 'LEFT',
+				'conditions' => array('`Recruiter`.`id` = `Resume`.`created_by`')
 				)
+			
 			);
 			$fields = array('Resume.first_name','Resume.last_name','Resume.email_id','Resume.mobile','Resume.mobile2','Resume.total_exp','Resume.education','Resume.present_employer',
 			'ResLocation.location', 'Resume.present_ctc','Resume.expected_ctc', 'Creator.first_name','Resume.created_date','Resume.notice_period',
 			'Resume.modified_date','ReqResume.stage_title','ReqResume.status_title','Designation.designation','Resume.present_ctc_type','Resume.expected_ctc_type',
 			'Resume.gender','Resume.marital_status','Resume.family','Resume.present_location','Resume.native_location', 'Resume.dob','Resume.consultant_assess',
 			'Resume.interview_avail','ResDoc.resume','Position.job_title','Position.location','Position.job_desc','Contact.first_name'
-			,'Contact.mobile');
+			,'Contact.mobile','Recruiter.first_name','Recruiter.last_name','Client.client_name','Recruiter.signature');
 			$cand_data = $this->Position->find('all', array('fields' => $fields,'conditions' => array('Resume.id' => $res_id),
 			'joins' => $options));
 			// print_r($cand_data);
 			$cand_name = ucwords($cand_data[0]['Resume']['first_name'].' '.$cand_data[0]['Resume']['last_name']);
+			$rec_name = ucwords($cand_data[0]['Recruiter']['first_name'].' '.$cand_data[0]['Recruiter']['last_name']);
+			$signature = $cand_data[0]['Recruiter']['signature'];
 			$this->set('candidate_name', $cand_name);
 			// get resume education details
 			$this->loadModel('ResEdu');
@@ -1039,9 +1049,11 @@ class PositionController extends AppController {
 			$this->loadModel('MailTemplate');
 			$data = $this->MailTemplate->findById($mailtemplete, array('fields' => 'subject','message'));
 			$loc = $cand_data[0]['ResLoc']['location'] ? $cand_data[0]['ResLoc']['location'] : $cand_data[0]['Resume']['present_location'];
-			$tags = array('[candidate_name]','[mobile]','[email_id]','[position]','[address]','[location]','[designation]','[experience]',	'[client]','[client_contact_name]','[client_contact_no]','[job_location]','[job_desc]','[function]','[today_date]');
+			$tags = array('[candidate_name]','[mobile]','[email_id]','[position]','[address]','[location]','[designation]','[experience]',	'[client]','[client_contact_name]','[client_contact_no]','[job_location]','[job_desc]','[function]','[today_date]','[recruiter_name]',
+			'[signature]');
 			$template_data = array($cand_name,$cand_data[0]['Resume']['mobile'],$cand_data[0]['Resume']['email_id'], 
-			$cand_data[0]['Position']['job_title'],	$cand_data[0]['Position']['address1']. '<br>'.$cand_data[0]['Position']['address2'],$loc,	$cand_data[0]['Designation']['designation'],$this->Functions->check_exp($cand_data[0]['Position']['total_exp']),	$cand_data[0]['Client']['client_name'],$cand_data[0]['Contact']['first_name'],$cand_data[0]['Contact']['mobile'],	$cand_data[0]['Position']['location'],$cand_data[0]['Position']['job_desc'],$cand_data[0]['FunctionArea']['function'],	date('d-M, Y'));
+			$cand_data[0]['Position']['job_title'],	$cand_data[0]['Position']['address1']. '<br>'.$cand_data[0]['Position']['address2'],$loc,	$cand_data[0]['Designation']['designation'],$this->Functions->check_exp($cand_data[0]['Position']['total_exp']),	$cand_data[0]['Client']['client_name'],$cand_data[0]['Contact']['first_name'],$cand_data[0]['Contact']['mobile'],	$cand_data[0]['Position']['location'],$cand_data[0]['Position']['job_desc'],$cand_data[0]['FunctionArea']['function'],	date('d-M, Y'),
+			$rec_name, $signature);
 			$body_text = str_replace($tags, $template_data, $data['MailTemplate']['message']);
 			$subject_text = str_replace($tags, $template_data, $data['MailTemplate']['subject']);
 			$this->set('subject_'.$mailtemplete, $subject_text);
@@ -1064,7 +1076,7 @@ class PositionController extends AppController {
 		$cand_name = ucwords($cand_data['Resume']['first_name'].' '.$cand_data['Resume']['last_name']);
 		$this->set('candidate_name', $cand_name);
 		// get rejection status drop down
-		$this->get_reject_drop('cv_reject');
+		$this->get_reject_drop('Screening');
 		if(!empty($this->request->data)){
 			// set the validation
 			$this->Position->set($this->request->data);
@@ -1099,16 +1111,11 @@ class PositionController extends AppController {
 	}
 	
 	/* function to get the reject reason */
-	public function get_reject_drop($action){
-		/*
-		switch($action){
-			case 'cv_reject';
-			break;
-		}
-		*/
+	public function get_reject_drop($action, $action2){		
 		$this->loadModel('Reason');
+		$types = array($action,$action2);
 		$reason_list = $this->Reason->find('list', array('fields' => array('id','reason'), 
-		'order' => array('reason ASC'),'conditions' => array('status' => '1')));
+		'order' => array('reason ASC'),'conditions' => array('status' => '1', 'type' => $types)));
 		$this->set('rejectList', $reason_list);
 	}
 	
@@ -1124,7 +1131,7 @@ class PositionController extends AppController {
 		$cand_name = ucwords($cand_data['Resume']['first_name'].' '.$cand_data['Resume']['last_name']);
 		$this->set('candidate_name', $cand_name);
 		// get rejection status drop down
-		$this->get_reject_drop('cv_verify');
+		$this->get_reject_drop('Screening');
 		// when th form is submitted
 		if(!empty($id) && !empty($pos_id)){
 			// set the validation
@@ -1178,7 +1185,7 @@ class PositionController extends AppController {
 		$cand_name = ucwords($cand_data['Resume']['first_name'].' '.$cand_data['Resume']['last_name']);
 		$this->set('candidate_name', $cand_name);
 		// get rejection status drop down
-		$this->get_reject_drop('cv_verify');
+		$this->get_reject_drop('Offer Candiate Reject','Offer Client Reject');
 		if(!empty($this->request->data)){
 			// set the validation
 			$this->Position->set($this->request->data);
@@ -1222,10 +1229,15 @@ class PositionController extends AppController {
 		// set the label
 		if($st == 'joined'){
 			$this->set('field_label', 'Joined On');
-			$this->set('field_name', 'joined_on');			
+			$this->set('field_name', 'joined_on');				
 		}else if($st == 'deferred'){
 			$this->set('field_label', 'New Joining Date');
 			$this->set('field_name', 'plan_join_date');
+			// get rejection status drop down
+			$this->get_reject_drop('Joining Deferred');
+		}else if($st == 'not_joined'){
+			// get rejection status drop down
+			$this->get_reject_drop('Candidate Not Joined','Client Not Joined');	
 		}
 		$this->set('valid_st', $st);
 
@@ -1234,8 +1246,7 @@ class PositionController extends AppController {
 		$cand_data = $this->Resume->findById($id, array('fields' => 'first_name','last_name'));
 		$cand_name = ucwords($cand_data['Resume']['first_name'].' '.$cand_data['Resume']['last_name']);
 		$this->set('candidate_name', $cand_name);
-		// get rejection status drop down
-		$this->get_reject_drop('cv_verify');
+		
 		if(!empty($this->request->data)){
 			// set the validation
 			$this->Position->set($this->request->data);
@@ -1288,7 +1299,7 @@ class PositionController extends AppController {
 		$cand_name = ucwords($cand_data['Resume']['first_name'].' '.$cand_data['Resume']['last_name']);
 		$this->set('candidate_name', $cand_name);
 		// get rejection status drop down
-		$this->get_reject_drop('cv_verify');
+		$this->get_reject_drop('Interview Reject');
 		// when the form submitted
 		if(!empty($this->request->data)){		
 			// set the validation
@@ -1331,7 +1342,7 @@ class PositionController extends AppController {
 	}
 	
 	/* function to schedule for interview */
-	public function schedule_interview($id, $pos_id, $req_res_id,$interview_level){
+	public function schedule_interview($id, $pos_id, $req_res_id,$interview_level,$schedule_type){
 		$this->layout = 'framebox';
 		if(!empty($id) && !empty($pos_id)){
 			// get the template details
@@ -1348,6 +1359,14 @@ class PositionController extends AppController {
 			}if($interview_level == '1' || $interview_level == ''){
 				$int_levels = array('First Interview' => 'First Interview' , 'Second Interview' => 'Second Interview', 'Final Interview' => 'Final Interview');
 			}
+			// for reschedule
+			if($schedule_type == 'reschedule'){
+				// get rejection status drop down
+				$this->get_reject_drop('Interview Reschedule');
+				$reason_id = 'reason_id';
+				$this->set('reschedule', 1);
+			}
+			
 			$this->set('int_levels', $int_levels);
 			// get interview duration
 			$int_duration = array('00:30:00' => '30 Mins.', '00:45:00' => '45 Mins.', '01:00:00' => '1 Hr', '02:00:00' => '2 Hrs', '03:00:00' => '3 Hrs');
@@ -1365,7 +1384,7 @@ class PositionController extends AppController {
 			// retain the district
 			// validate the form fields
 			if ($this->Position->validates(array('fieldList' => array('interview_level','interview_stage_id','int_date','int_time',
-				'int_duration','subject','message','subject_client','message_client','contact_name','contact_no','venue')))){	
+				'int_duration','subject','message','subject_client','message_client','contact_name','contact_no','venue', $reason_id)))){	
 				// get the req. resume id
 				$this->loadModel('ReqResume');
 				//$req_res_id = $this->ReqResume->find('all', array('fields' => array('ReqResume.id'), 
@@ -1388,7 +1407,7 @@ class PositionController extends AppController {
 						'status_title' => 'Scheduled',	'int_date' => $this->Functions->format_date_save($this->request->data['Position']['int_date']),
 						'int_duration' => $this->request->data['Position']['int_duration'], 'int_time' => $this->request->data['Position']['int_time'],
 						'interview_stage_id' => $this->request->data['Position']['interview_stage_id'],
-						'venue' =>  $this->request->data['Position']['venue'],
+						'venue' =>  $this->request->data['Position']['venue'],'reason_id' =>  $this->request->data['Position']['reason_id'],
 						'additional' => $this->request->data['Position']['additional'],
 						'contact_name' => $this->request->data['Position']['contact_name'],
 						'contact_no' => $this->request->data['Position']['contact_no']							
@@ -1430,8 +1449,12 @@ class PositionController extends AppController {
 						// parse the file name			
 						$updated = $resume_data[0]['Resume']['modified_date'] ? $resume_data[0]['Resume']['modified_date'] : $resume_data[0]['Resume']['created_date'];
 						$snap_file = substr($resume_data[0]['ResDoc']['resume'], 0, strlen($resume_data[0]['ResDoc']['resume']) - 5);
-						$pdf_date = date('d-m-Y', strtotime($updated));				
+						$pdf_date = date('d-m-Y', strtotime($updated));	
+						// check the file exists
 						$resume_path = '../../hiring/uploads/snapshotmerged/'.$this->Functions->filter_file($snap_file).'_'.$pdf_date.'.pdf';
+						if(!file_exists($resume_path)){
+							$resume_path = '';
+						}
 						// get contact details		
 						$client_data = $this->ReqResume->Position->findById($pos_id, array('fields' => 'client_contact_id','job_title','location'));
 						$this->loadModel('Contact');

@@ -33,7 +33,7 @@
 					<td width="120" class="tbl_column">Candidate Name
 					</td>
 						<td>
-						<?php echo $this->Form->input('candidate', array('div'=> false,'type' => 'text', 'label' => false, 'class' => 'input-large', 'readonly' => 'readonly', 'value' => $candidate_name,   'required' => false, 'placeholder' => '')); ?> 					
+						<?php echo $this->Form->input('candidate', array('div'=> false,'type' => 'text', 'label' => false, 'class' => 'span8', 'readonly' => 'readonly', 'value' => $candidate_name,   'required' => false, 'placeholder' => '')); ?> 					
 						</td>	
 				</tr>
 	<?php if(!$validation):?>			
@@ -41,7 +41,7 @@
 					<td width="120" class="tbl_column"><?php echo $field_label;?> <span class="f_req">*</span>
 					</td>
 						<td>
-						<?php echo $this->Form->input($field_name, array('div'=> false,'type' => 'text', 'label' => false, 'class' => 'input-large datepick',  'required' => false, 'placeholder' => '',
+						<?php echo $this->Form->input($field_name, array('div'=> false,'type' => 'text', 'label' => false, 'class' => 'span8 datepick',  'required' => false, 'placeholder' => '',
 						'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 					
 						</td>	
 				</tr>
@@ -74,7 +74,7 @@
 					
 					</td>
 						<td>
-					<?php echo $this->Form->input('note', array('div'=> false,'type' => 'text', 'label' => false, 'class' => 'span8', 'cols' => '10', 'rows' => '3',
+					<?php echo $this->Form->input('note', array('div'=> false,'type' => 'text', 'label' => false, 'class' => 'span8',  'rows' => '3',
   'required' => false, 'placeholder' => '',	'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 
 
 						</td>	

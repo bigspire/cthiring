@@ -335,24 +335,24 @@
 								<h3 class="pull-right label label-warning"><a href="<?php echo $this->webroot;?>client/"  style="color:#ffffff;">View All</a></h3>
 								<!--span class="pull-right label label-important">5 New </span-->
 							</div>
-							<table class="tableFix table table-striped table-bordered ">
-								<thead class="theadFix">
+							<table class="table table-striped table-bordered ">
+								<thead class="">
 									<tr>
-										<th style="width:192px" class="essential persist">Client</th>
-										<th style="width:120px"  class="optional">Location</th>
-										<th width=""  style="width:100px"  class="optional">Account Holder</th> 
-										<th width=""  style="width:100px"  class="optional">Created Date</th>
-										<th width=""  style="width:100px"  class="essential" style="text-align:center">No. Positions</th>
+										<th class="">Client</th>
+										<th  class="optional">Location</th>
+										<th class="optional">Account Holder</th> 
+										<th  class="optional">Created Date</th>
+										<th  class="essential" style="text-align:center">No. Positions</th>
 									</tr>
 								</thead>
-								<tbody class="tbodyFix">
+								<tbody class="">
 								<?php foreach($client_data as $data):?>
 									<tr>
-										<td width="180" style="width:192px"><a  target="_blank" href="<?php echo $this->webroot;?>client/view/<?php echo $data['Client']['id'];?>"><?php echo $data['Client']['client_name'];?></a></td>
-										<td width="120" style="width:120px"><?php echo $data['ResLocation']['location'];?></td>
-										<td width="100" style="width:100px"><?php echo $data['Creator']['first_name'];?></td>
-										<td width="100" style="width:100px"><?php echo $this->Functions->format_date($data['Client']['created_date']);?></td>
-										<td  width="100" style="width:80px;text-align:center"><a target="_blank"  href="<?php echo $this->webroot;?>position/?keyword=<?php echo $data['Client']['client_name'];?>"><?php echo $data[0]['req_count'];?></a></td>										
+										<td ><a  target="_blank" href="<?php echo $this->webroot;?>client/view/<?php echo $data['Client']['id'];?>"><?php echo $data['Client']['client_name'];?></a></td>
+										<td ><?php echo $data['ResLocation']['location'];?></td>
+										<td><?php echo $data['Creator']['first_name'];?></td>
+										<td><?php echo $this->Functions->format_date($data['Client']['created_date']);?></td>
+										<td  width="100" style="text-align:center"><a target="_blank"  href="<?php echo $this->webroot;?>position/?keyword=<?php echo $data['Client']['client_name'];?>"><?php echo $data[0]['req_count'];?></a></td>										
 									</tr>
 								<?php endforeach; ?>	
 								</tbody>
@@ -366,25 +366,25 @@
 								<h3 class="pull-right label label-warning"><a href="<?php echo $this->webroot;?>position/"  style="color:#ffffff;">View All</a></h3>
 							<!--span class="pull-right label label-important">3 New</span-->
 							</div>
-							<table class="tableFix table table-striped table-bordered ">
-								<thead class="theadFix">
+							<table class="table table-striped table-bordered">
+								<thead class="">
 									<tr>
-										<th style="width:170px" class="optional">Job Title</th>
-										<th style="width:140px"  class="essential persist">Client</th>
-										<th style="width:100px" class="optional">Status</th>
-										<th style="width:100px" class="optional">Created Date</th>
-										<th style="width:100px" class="essential" style="text-align:center">CV Sent</th>
+										<th class="optional">Job Title</th>
+										<th  class="essential persist">Client</th>
+										<th class="optional">Status</th>
+										<th class="optional">Created Date</th>
+										<th class="essential" style="text-align:center">CV Sent</th>
 										<!--th class="essential">Action</th-->
 									</tr>
 								</thead>
-								<tbody class="tbodyFix">
+								<tbody class="">
 								<?php foreach($position_data as $data):?>
 									<tr>
-										<td style="width:180px"><a target="_blank"  href="<?php echo $this->webroot;?>position/view/<?php echo $data['Position']['id'];?>"><?php echo $data['Position']['job_title'];?></a></td>
-										<td style="width:140px"><?php echo $data['Client']['client_name'];?></td>
-										<td  style="width:100px"><span class="label label-<?php echo $this->Functions->get_req_status_color($data['ReqStatus']['title']);?>"><?php echo $data['ReqStatus']['title'];?></span></td>
-										<td  style="width:100px"><?php echo $this->Functions->format_date($data['Position']['created_date']);?></td>
-										<td style="width:100px;text-align:center"><a target="_blank"  href="<?php echo $this->webroot;?>resume/?status=1"><?php echo $data[0]['cv_sent'];?></a></td>
+										<td><a target="_blank"  href="<?php echo $this->webroot;?>position/view/<?php echo $data['Position']['id'];?>"><?php echo $data['Position']['job_title'];?></a></td>
+										<td><?php echo $data['Client']['client_name'];?></td>
+										<td><span class="label label-<?php echo $this->Functions->get_req_status_color($data['ReqStatus']['title']);?>"><?php echo $data['ReqStatus']['title'];?></span></td>
+										<td><?php echo $this->Functions->format_date($data['Position']['created_date']);?></td>
+										<td style="text-align:center"><a target="_blank"  href="<?php echo $this->webroot;?>resume/?status=1"><?php echo $data[0]['cv_sent'];?></a></td>
 										
 									</tr>
 									<?php endforeach; ?>	
