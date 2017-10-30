@@ -241,6 +241,12 @@ class ResumeController extends AppController {
 		if(empty($data)){
 			$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Oops! No Resumes Found!', 'default', array('class' => 'alert alert-info'));
 		}
+		// downlod the pdf 
+		if(!empty($this->request->query['download'])){
+			$this->set('file_download',$this->request->query['download']);
+		}else{
+			$this->set('file_download','');
+		}
 		
 		
 	}
@@ -364,7 +370,7 @@ class ResumeController extends AppController {
 		'ResLocation.location', 'present_ctc','expected_ctc', 'Creator.first_name','created_date','notice_period',
 		'Resume.modified_date','ReqResume.stage_title','ReqResume.status_title','Designation.designation','present_ctc_type','expected_ctc_type',
 		'gender','marital_status','family','present_location','native_location', 'dob','consultant_assess','interview_avail','ResDoc.resume',
-		'Position.job_title','Resume.skills');
+		'Position.job_title','Resume.skills','Resume.created_by');
 		$data2 = $this->Resume->find('all', array('fields' => $fields,'conditions' => array('Resume.id' => $id),
 		'order' => array('ReqResume.id' => 'desc'),'joins' => $options));
 		$this->set('resume_data', $data2[0]);		
@@ -548,6 +554,13 @@ class ResumeController extends AppController {
 			}
 			*/
 	}
+	
+	/* function to download the file */
+	public function download_snap($file){
+		 $this->download_file('../../hiring/uploads/snapshotmerged/'.$file);
+		 die;
+	}
+	
 	
 	/* function to download the file */
 	public function download_doc($file){

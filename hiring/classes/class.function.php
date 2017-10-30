@@ -349,6 +349,19 @@ class fun{
 		return $st;
 	}
 	
+		/* function used to upload the image */
+	function  upload_file($src, $dest){	
+		if(!empty($src)){			
+			// copy the file to the image path			
+			if(!copy($src, $dest)){
+				echo 'failed to copy the file';
+			}else{				
+				return 1;
+			}
+		}
+	}
+	
+	
 	// interview status colour field validation
 	public function interview_status_cls($status){
 		if($status == 'Scheduled' || $status == 'Re-Scheduled'){

@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-10-28 18:31:42
+/* Smarty version 3.1.29, created on 2017-10-30 17:42:47
   from "C:\xampp\htdocs\ctsvn\cthiring\hiring\templates\add_resume.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_59f47fb6466240_66792950',
+  'unifunc' => 'content_59f7173fa5c3a4_72642384',
   'file_dependency' => 
   array (
     '6c51bf5c0ae51546eb3c53993fc7afba7339e799' => 
     array (
       0 => 'C:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\templates\\add_resume.tpl',
-      1 => 1509195693,
+      1 => 1509365528,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_59f47fb6466240_66792950 ($_smarty_tpl) {
+function content_59f7173fa5c3a4_72642384 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -73,6 +73,8 @@ home"><i class="icon-home"></i></a>
 <div class="span6">
 			<table class="table table-bordered dataTable" style="margin-bottom:0;">
 						<tbody>
+						
+						
 						<tr class="tbl_row">
 										<td width="120" class="tbl_column">Position For <span class="f_req">*</span></td>
 										<td>
@@ -165,9 +167,11 @@ echo $_smarty_tpl->tpl_vars['last_nameErr']->value;?>
 										<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['tot_exp_month']->value,'selected'=>$_POST['month_of_exp']),$_smarty_tpl);?>
 	
 										</select>
-										<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['year_of_expErr']->value;
-echo $_smarty_tpl->tpl_vars['month_of_expErr']->value;?>
-</label>																						
+										<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['year_of_expErr']->value;?>
+</label>	
+										<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['month_of_expErr']->value;?>
+</label>	
+									
 										</td>
 							</tr>
 							
@@ -290,27 +294,7 @@ echo 'checked';?>
 						</div>
 
 
-		<div class="row-fluid" style="clear:left;float:left;margin-top:15px;">				
-			<div class="span12">
-	<table class="table table-bordered dataTable" style="margin-bottom:0;">
-	<tbody>
-	<tr class="tbl_row">
-									
-										<td style="margin:10px;text-align:center;">
-<textarea rows = "10" style="width:1200px;" name="RESUME_DATA">
-<?php if ($_smarty_tpl->tpl_vars['RESUME_DATA']->value) {
-echo $_smarty_tpl->tpl_vars['RESUME_DATA']->value;
-} else {
-echo $_POST['RESUME_DATA'];
-}?>
-</textarea>
-																						
-										</td>
-	</tr>									
-									
-	</tbody>
-	</table>
-</div>		</div>		
+			
 						</div>
 	
 <!-- sheepIt Form -->
@@ -521,7 +505,7 @@ echo $_POST['RESUME_DATA'];
 								<tr>
 										<td width="120" class="tbl_column">Other Vital Information (Position Specific)  <span class="f_req"></span></td>
 										<td> 
-										<textarea name="vital_#index#" tabindex="7" id="vital_#index#" cols="10" rows="3" class="span8"></textarea>
+										<textarea name="vital_#index#" tabindex="7" id="vital_#index#" cols="10" rows="3" class="span8 wysiwyg1"></textarea>
 										</td>
 							</tr>
 			
@@ -577,6 +561,46 @@ echo $_POST['certification'];
 <div class="span6">
 			<table class="table table-bordered dataTable" style="margin-bottom:0;">
 						<tbody>
+						
+					<tr class="tbl_row">
+										<td width="120" class="tbl_column">Rate Technical Skills <span class="f_req"></span></td>
+										<td>
+<ul class="ratingList">
+<?php
+$_from = $_smarty_tpl->tpl_vars['tsData']->value;
+if (!is_array($_from) && !is_object($_from)) {
+settype($_from, 'array');
+}
+$__foreach_ts_data_0_saved_item = isset($_smarty_tpl->tpl_vars['ts_data']) ? $_smarty_tpl->tpl_vars['ts_data'] : false;
+$_smarty_tpl->tpl_vars['ts_data'] = new Smarty_Variable();
+$_smarty_tpl->tpl_vars['ts_data']->_loop = false;
+foreach ($_from as $_smarty_tpl->tpl_vars['ts_data']->key => $_smarty_tpl->tpl_vars['ts_data']->value) {
+$_smarty_tpl->tpl_vars['ts_data']->_loop = true;
+$__foreach_ts_data_0_saved_local_item = $_smarty_tpl->tpl_vars['ts_data'];
+if ($_smarty_tpl->tpl_vars['ts_data']->value) {?>
+  <li><input class="span8" readonly="readonly" placeholder="" name="ts[]" value="<?php echo $_smarty_tpl->tpl_vars['ts_data']->value;?>
+" type="text">   
+  <input name="tsr[]" type="hidden" value="<?php echo $_smarty_tpl->tpl_vars['tsrData']->value[$_smarty_tpl->tpl_vars['ts_data']->key];?>
+"  class="rating" data-fractions="2"/> <span class="label label-info dn"><?php echo $_smarty_tpl->tpl_vars['tsrData']->value[$_smarty_tpl->tpl_vars['ts_data']->key];?>
+</span></li>
+  <?php }
+$_smarty_tpl->tpl_vars['ts_data'] = $__foreach_ts_data_0_saved_local_item;
+}
+if ($__foreach_ts_data_0_saved_item) {
+$_smarty_tpl->tpl_vars['ts_data'] = $__foreach_ts_data_0_saved_item;
+}
+?> 
+
+
+
+</ul>
+ 
+    <!-- Custom CSS -->
+ 
+										</td>	
+									</tr>	
+									
+									
 									<tr class="tbl_row">
 										<td width="120" class="tbl_column">Consultant Assessment <span class="f_req"></span></td>
 										<td>
@@ -584,20 +608,7 @@ echo $_POST['certification'];
 </textarea>
 										</td>	
 									</tr>	
-									<tr class="">
-										<td width="120" class="tbl_column">Rate Behavioural Skills </td>
-										<td>
-<ul class="ratingList">
-  <li>Communication <input type="hidden" class="rating" data-fractions="2"/> </li>
- <li>Attitude <input type="hidden" class="rating" data-fractions="2"/></li>
- <li>GK  <input type="hidden" class="rating" data-fractions="2"/></li>
-<li> Team Worker  <input type="hidden" class="rating" data-fractions="2"/></li>
-</ul>
- 
-										<!--label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['interview_availabilityErr']->value;?>
-</label-->
-										</td>	
-									</tr>													
+																						
 								</tbody>
 							</table>
 						</div>
@@ -605,19 +616,46 @@ echo $_POST['certification'];
 						<div class="span6">
 			<table class="table table-bordered dataTable" style="margin-bottom:0;">
 						<tbody>
-									<tr class="tbl_row">
-										<td width="120" class="tbl_column">Rate Technical Skills <span class="f_req"></span></td>
+									<tr class="">
+										<td width="120" class="tbl_column">Rate Behavioural Skills </td>
 										<td>
-	<ul class="ratingList">
- <li> PHP <input type="hidden" class="rating" data-fractions="2"/></li>
-<li> MySQL <input type="hidden" class="rating" data-fractions="2"/></li>
-<li> Smarty  <input type="hidden" class="rating" data-fractions="2"/></li>
- <li>Java  <input type="hidden" class="rating" data-fractions="2"/></li>
- </ul>
-    <!-- Custom CSS -->
+<ul class="ratingList">
  
+ <?php
+$_from = $_smarty_tpl->tpl_vars['bsData']->value;
+if (!is_array($_from) && !is_object($_from)) {
+settype($_from, 'array');
+}
+$__foreach_bs_data_1_saved_item = isset($_smarty_tpl->tpl_vars['bs_data']) ? $_smarty_tpl->tpl_vars['bs_data'] : false;
+$_smarty_tpl->tpl_vars['bs_data'] = new Smarty_Variable();
+$_smarty_tpl->tpl_vars['bs_data']->_loop = false;
+foreach ($_from as $_smarty_tpl->tpl_vars['bs_data']->key => $_smarty_tpl->tpl_vars['bs_data']->value) {
+$_smarty_tpl->tpl_vars['bs_data']->_loop = true;
+$__foreach_bs_data_1_saved_local_item = $_smarty_tpl->tpl_vars['bs_data'];
+if ($_smarty_tpl->tpl_vars['bs_data']->value) {?>
+  <li><input class="span8" readonly="readonly" placeholder="" name="bs[]" value="<?php echo $_smarty_tpl->tpl_vars['bs_data']->value;?>
+" type="text">   
+  <input name="bsr[]" type="hidden" value="<?php echo $_smarty_tpl->tpl_vars['bsrData']->value[$_smarty_tpl->tpl_vars['bs_data']->key];?>
+"  class="rating" data-fractions="2"/> <span class="label label-info dn"><?php echo $_smarty_tpl->tpl_vars['bsrData']->value[$_smarty_tpl->tpl_vars['bs_data']->key];?>
+</span> </li>
+  <?php }
+$_smarty_tpl->tpl_vars['bs_data'] = $__foreach_bs_data_1_saved_local_item;
+}
+if ($__foreach_bs_data_1_saved_item) {
+$_smarty_tpl->tpl_vars['bs_data'] = $__foreach_bs_data_1_saved_item;
+}
+?> 
+
+ 
+ 
+</ul>
+ 
+										<!--label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['interview_availabilityErr']->value;?>
+</label-->
 										</td>	
-									</tr>	
+									</tr>
+
+									
 									<tr class="">
 										<td width="120" class="tbl_column">Interview Availability </td>
 										<td>
@@ -660,6 +698,31 @@ resume" id="webroot">
 	</div>
 	</div>
 	</form>
+	
+	
+	<div class="row-fluid" style="clear:left;float:left;margin-top:15px;">				
+			<div class="span12">
+			<h3 class="heading">Candidate Resume</h3>
+	<table class="table table-bordered dataTable" style="margin-bottom:0;">
+	<tbody>
+	<tr class="tbl_row">
+									
+										<td style="margin:10px;text-align:center;">
+<textarea  class="span12" style="height:300px" name="RESUME_DATA">
+<?php if ($_smarty_tpl->tpl_vars['RESUME_DATA']->value) {
+echo $_smarty_tpl->tpl_vars['RESUME_DATA']->value;
+} else {
+echo $_POST['RESUME_DATA'];
+}?>
+</textarea>
+																						
+										</td>
+	</tr>									
+									
+	</tbody>
+	</table>
+</div>		</div>	
+
      </div>
      </div> 
 		</div>
@@ -968,6 +1031,8 @@ $(document).ready(function(){
 		   continuousIndex: true,
 		   afterAdd: function(source, newForm) {
 			 $('#exp_count').attr('value',source.getFormsCount());
+			 // for auto resize text area
+			 autosize(document.querySelectorAll('.wysiwyg1'));
 		   },
 		   afterRemoveCurrent: function(source) {		
 			 $('#exp_count').attr('value',source.getFormsCount());

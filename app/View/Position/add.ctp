@@ -261,7 +261,7 @@
 																	
 				
 				  <tr class="">
-						<td width="120" class="tbl_column">Team Members <span class="f_req">*</span></td>
+						<td width="120" class="tbl_column">Recruiters <span class="f_req">*</span></td>
 						<td>	
 				
 

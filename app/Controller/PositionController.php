@@ -257,7 +257,7 @@ class PositionController extends AppController {
 					$team_members = $this->save_team_member($this->Position->id);					
 					// save the file name
 					$this->save_job_desc($this->Position->id);
-					$this->Position->saveField('job_desc_file', $this->Position->id.'_'.$this->request->data['Position']['desc_file']['name']);
+					// $this->Position->saveField('job_desc_file', $this->Position->id.'_'.$this->request->data['Position']['desc_file']['name']);
 					// send mail to approver
 					$sub = 'Manage Hiring - Position created by '.ucfirst($this->Session->read('USER.Login.first_name')).' '.ucfirst($this->Session->read('USER.Login.last_name'));
 					$from = ucfirst($this->Session->read('USER.Login.first_name')).' '.ucfirst($this->Session->read('USER.Login.last_name'));
@@ -313,7 +313,7 @@ class PositionController extends AppController {
 								}
 							}
 						}else{
-							$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>You have no superior to approve your request', 'default', array('class' => 'alert alert-info'));
+							$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Recruiter has no superior to approve your request', 'default', array('class' => 'alert alert-info'));
 						}				
 					}				
 					
@@ -409,7 +409,8 @@ class PositionController extends AppController {
 				}else{
 					// get the position details
 					$data = $this->Position->find('all', array('fields' => array('Position.id','clients_id','client_contact_id','job_title','location','min_exp','max_exp',
-					'ctc_from','ctc_to','education','ctc_from_type','ctc_to_type','skills','no_job','start_date','end_date','function_area_id','job_desc','job_desc_file','client_contact_id'), 
+					'ctc_from','ctc_to','education','ctc_from_type','ctc_to_type','skills','no_job','start_date','end_date','function_area_id','job_desc','job_desc_file','client_contact_id',
+					'tech_skill','behav_skill'), 
 					'conditions' => array('Position.id' => $id), 'joins' => $options));
 					$this->request->data = $data[0];
 					$this->request->data['Position']['start_date'] = $this->Functions->format_date_show($this->request->data['Position']['start_date']);
@@ -698,7 +699,7 @@ class PositionController extends AppController {
 			)
 		);		
 		$data = $this->Position->ReqResume->find('all', array('fields' => array('Resume.id','Resume.first_name',
-		'Resume.last_name','ReqResume.status_title','ReqResume.stage_title',
+		'Resume.last_name','ReqResume.status_title','ReqResume.stage_title','Resume.created_date','Resume.modified_date',
 		'ReqResume.created_date','Resume.mobile','Resume.email_id','Resume.present_ctc','Resume.expected_ctc',
 		'Resume.notice_period','ResLoc.location','Creator.first_name','ReqResume.modified_date','ReqResume.bill_ctc','ResDoc.resume',
 		'Resume.present_location','Resume.present_ctc_type','Resume.expected_ctc_type', 'ReqResume.id'),
@@ -948,10 +949,12 @@ class PositionController extends AppController {
 					// send mail to client 
 					$contact_data['Contact']['email'] = 'testing7@bigspire.com'; // for testing
 					$vars = array('from_name' => $from, 'to_name' => ucwords($to_name), 'position' => $this->request->data['Position']['job_title'],'msg'=> $split_msg[0], 'location' => $this->request->data['Position']['location']);
+					// save the mail box
+					$this->save_mail_box($split_msg[1], $split_msg[0], $req_res_id);
 					if(!$this->send_email($split_msg[1], 'send_cv', $this->Session->read('USER.Login.email_id'), $contact_data['Contact']['email'],$vars, $resume_path)){	
 						// show the msg.								
 						$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Problem in sending the mail to client...', 'default', array('class' => 'alert alert-error'));				
-					}else{
+					}else{						
 						$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>CV Sent Successfully', 'default', array('class' => 'alert alert-success'));			
 					}
 					// if successfully update
@@ -960,6 +963,22 @@ class PositionController extends AppController {
 				}
 			}
 		}
+	}
+	
+
+
+	/* function to save the mail box */
+	public function save_mail_box($sub, $msg, $req_res_id){
+		$this->loadModel('MailBox');
+		$data = array('id' => $req_res_id,'created_date' => $this->Functions->get_current_date(),
+		'created_by' => $this->Session->read('USER.Login.id'), 'req_resume_id' => $req_res_id, 'subject' => $sub, 'message' => $msg);
+		// save  mail box resume
+		if($this->MailBox->save($data, array('validate' => false))){
+			
+		}else{
+			$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Problem in saving mail box', 'default', array('class' => 'alert alert-success'));									
+			die;
+		}		
 	}
 	
 	/* function to get the template details */
@@ -1032,9 +1051,10 @@ class PositionController extends AppController {
 	}
 	
 	/* function to update the CV status */
-	public function update_cv($id,$pos_id,$st){
+	public function update_cv($id,$pos_id,$req_res_id,$st){
 		$this->layout = 'framebox';
 		$status = $st == 'shortlist' ? 'Shortlisted' : 'Rejected';
+		$this->set('status', $status);
 		$this->set('validation', $st != 'shortlist' ? 0 : 1);
 		$head_label = $st == 'shortlist' ? 'Shortlist CV' : 'Reject CV';
 		$this->set('headLabel', $head_label);
@@ -1043,11 +1063,13 @@ class PositionController extends AppController {
 		$cand_data = $this->Resume->findById($id, array('fields' => 'first_name','last_name'));
 		$cand_name = ucwords($cand_data['Resume']['first_name'].' '.$cand_data['Resume']['last_name']);
 		$this->set('candidate_name', $cand_name);
+		// get rejection status drop down
+		$this->get_reject_drop('cv_reject');
 		if(!empty($this->request->data)){
 			// set the validation
 			$this->Position->set($this->request->data);
-			if($st != 'approve'){
-				$validate = $this->Position->validates(array('fieldList' => array('note')));
+			if($st == 'cv_reject'){
+				$validate = $this->Position->validates(array('fieldList' => array('reason_id')));
 			}else{
 				$validate = true;
 			}
@@ -1055,16 +1077,16 @@ class PositionController extends AppController {
 			if($validate){
 				// get the req. resume id
 				$this->loadModel('ReqResume');
-				$req_res_id = $this->ReqResume->find('all', array('fields' => array('ReqResume.id'), 
-				'conditions' => array('requirements_id' => $pos_id, 'resume_id' => $id)));
+				//$req_res_id = $this->ReqResume->find('all', array('fields' => array('ReqResume.id'), 
+				//'conditions' => array('requirements_id' => $pos_id, 'resume_id' => $id)));
 				// save req resume table
-				$data = array('id' => $req_res_id[0]['ReqResume']['id'],'modified_date' => $this->Functions->get_current_date(),
+				$data = array('id' => $req_res_id,'modified_date' => $this->Functions->get_current_date(),
 				'modified_by' => $this->Session->read('USER.Login.id'),	 'status_title' => $status);
 				// save  req resume
 				if($this->ReqResume->save($data, array('validate' => false))){		
 					// save req resume status
 					$this->loadModel('ReqResumeStatus');
-					$data = array('req_resume_id' => $req_res_id[0]['ReqResume']['id'], 'created_date' => $this->Functions->get_current_date(),'created_by' => $this->Session->read('USER.Login.id'), 'stage_title' => 'Shortlist', 'status_title' => $status,	'note' => $this->request->data['Position']['note']);
+					$data = array('req_resume_id' => $req_res_id, 'created_date' => $this->Functions->get_current_date(),'created_by' => $this->Session->read('USER.Login.id'),'stage_title' => 'Shortlist',  'status_title' => $status,	'reason_id' => $this->request->data['Position']['reason_id'],'note' => $this->request->data['Position']['note']);
 					if($this->ReqResumeStatus->save($data, array('validate' => false))){					
 						// if successfully update
 						$this->set('cv_update_status', 1);
@@ -1076,25 +1098,39 @@ class PositionController extends AppController {
 		}
 	}
 	
-	
+	/* function to get the reject reason */
+	public function get_reject_drop($action){
+		/*
+		switch($action){
+			case 'cv_reject';
+			break;
+		}
+		*/
+		$this->loadModel('Reason');
+		$reason_list = $this->Reason->find('list', array('fields' => array('id','reason'), 
+		'order' => array('reason ASC'),'conditions' => array('status' => '1')));
+		$this->set('rejectList', $reason_list);
+	}
 	
 	/* function to update the CV status */
 	public function verify_cv($id,$pos_id,$st){	
 		$this->layout = 'framebox';
 		$status = $st == 'approve' ? 'Validated' : 'Rejected';
 		$head_label = $st == 'approve' ? 'Validated' : 'Rejected';
-		$this->set('headLabel', 'CV '.$head_label);
 		$this->set('validation', $st != 'approve' ? 0 : 1);
 		// get candidate details
 		$this->loadModel('Resume');
 		$cand_data = $this->Resume->findById($id, array('fields' => 'first_name','last_name'));
 		$cand_name = ucwords($cand_data['Resume']['first_name'].' '.$cand_data['Resume']['last_name']);
 		$this->set('candidate_name', $cand_name);
+		// get rejection status drop down
+		$this->get_reject_drop('cv_verify');
+		// when th form is submitted
 		if(!empty($id) && !empty($pos_id)){
 			// set the validation
 			$this->Position->set($this->request->data);
 			if($st != 'approve'){
-				$validate = $this->Position->validates(array('fieldList' => array('note')));
+				$validate = $this->Position->validates(array('fieldList' => array('reason_id')));
 			}else{
 				$validate = true;
 			}
@@ -1112,14 +1148,15 @@ class PositionController extends AppController {
 					// save req resume status
 					$this->loadModel('ReqResumeStatus');
 					$data = array('req_resume_id' => $req_res_id[0]['ReqResume']['id'], 'created_date' => $this->Functions->get_current_date(),
-					'created_by' => $this->Session->read('USER.Login.id'), 'stage_title' => 'Validation - Account Holder', 'status_title' => $status, 'note' => $this->request->data['Position']['note']);
+					'created_by' => $this->Session->read('USER.Login.id'), 'stage_title' => 'Validation - Account Holder', 'status_title' => $status, 'reason_id' => $this->request->data['Position']['reason_id'], 'note' => $this->request->data['Position']['note']);
 					if($this->ReqResumeStatus->save($data, array('validate' => false))){					
 						// if successfully update
 						if($st != 'approve'){
 							$this->set('cv_update_status', 1);
+							$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>CV '.$status.' Successfully', 'default', array('class' => 'alert alert-success'));	
 						}else{						
 							$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>CV '.$status.' Successfully', 'default', array('class' => 'alert alert-success'));						
-							$this->redirect('/position/view/'.$pos_id.'/');	
+							$this->redirect('/position/view/'.$pos_id.'#update');	
 						}
 				
 					}
@@ -1129,7 +1166,7 @@ class PositionController extends AppController {
 	}
 	
 	/* function to update offer */
-	public function update_offer($id,$pos_id,$st){
+	public function update_offer($id,$pos_id,$req_res_id,$st){
 		$this->layout = 'framebox';
 		$status = $st == 'offer_accept' ? 'Offer Accepted' : 'Declined';
 		$this->set('validation', $st == 'offer_accept' ? 1 : 0);
@@ -1140,11 +1177,13 @@ class PositionController extends AppController {
 		$cand_data = $this->Resume->findById($id, array('fields' => 'first_name','last_name'));
 		$cand_name = ucwords($cand_data['Resume']['first_name'].' '.$cand_data['Resume']['last_name']);
 		$this->set('candidate_name', $cand_name);
+		// get rejection status drop down
+		$this->get_reject_drop('cv_verify');
 		if(!empty($this->request->data)){
 			// set the validation
 			$this->Position->set($this->request->data);
 			if($st != 'offer_accept'){
-				$validate = $this->Position->validates(array('fieldList' => array('note')));
+				$validate = $this->Position->validates(array('fieldList' => array('reason_id')));
 			}else{
 				$validate = $this->Position->validates(array('fieldList' => array('ctc_offer','date_offer')));
 			}
@@ -1152,16 +1191,16 @@ class PositionController extends AppController {
 			if($validate){
 				// get the req. resume id
 				$this->loadModel('ReqResume');
-				$req_res_id = $this->ReqResume->find('all', array('fields' => array('ReqResume.id'), 
-				'conditions' => array('requirements_id' => $pos_id, 'resume_id' => $id)));
+				//$req_res_id = $this->ReqResume->find('all', array('fields' => array('ReqResume.id'), 
+				//'conditions' => array('requirements_id' => $pos_id, 'resume_id' => $id)));
 				// save req resume table
-				$data = array('id' => $req_res_id[0]['ReqResume']['id'],'modified_date' => $this->Functions->get_current_date(),'ctc_offer' => $this->request->data['Position']['ctc_offer'],'date_offer'=> $this->Functions->format_date_save($this->request->data['Position']['date_offer']),
+				$data = array('id' => $req_res_id,'modified_date' => $this->Functions->get_current_date(),'ctc_offer' => $this->request->data['Position']['ctc_offer'],'date_offer'=> $this->Functions->format_date_save($this->request->data['Position']['date_offer']),
 				'modified_by' => $this->Session->read('USER.Login.id'), 'stage_title' => 'Offer', 'status_title' => $status);
 				// save  req resume
 				if($this->ReqResume->save($data, array('validate' => false))){		
 					// save req resume status
 					$this->loadModel('ReqResumeStatus');
-					$data = array('req_resume_id' => $req_res_id[0]['ReqResume']['id'], 'created_date' => $this->Functions->get_current_date(),	'created_by' => $this->Session->read('USER.Login.id'), 'stage_title' => 'Offer', 'status_title' => $status, 'note' => $this->request->data['Position']['note']);
+					$data = array('req_resume_id' => $req_res_id, 'created_date' => $this->Functions->get_current_date(),	'created_by' => $this->Session->read('USER.Login.id'), 'reason_id' => $this->request->data['Position']['reason_id'], 'stage_title' => 'Offer', 'status_title' => $status, 'note' => $this->request->data['Position']['note']);
 					if($this->ReqResumeStatus->save($data, array('validate' => false))){					
 						// if successfully update
 						$this->set('cv_update_status', 1);
@@ -1174,7 +1213,7 @@ class PositionController extends AppController {
 	
 	
 	/* function to update joining */
-	public function update_joining($id,$pos_id,$st){
+	public function update_joining($id,$pos_id,$req_res_id,$st){
 		$this->layout = 'framebox';
 		$status = ($st == 'joined' ? 'Joined' : ($st == 'not_joined' ?  'Not Joined' : 'Deferred'));
 		$this->set('validation', $st == 'not_joined' ? 1 : 0);
@@ -1185,45 +1224,49 @@ class PositionController extends AppController {
 			$this->set('field_label', 'Joined On');
 			$this->set('field_name', 'joined_on');			
 		}else if($st == 'deferred'){
-			$this->set('field_label', 'Plan Join Date');
+			$this->set('field_label', 'New Joining Date');
 			$this->set('field_name', 'plan_join_date');
 		}
+		$this->set('valid_st', $st);
+
 		// get candidate details
 		$this->loadModel('Resume');
 		$cand_data = $this->Resume->findById($id, array('fields' => 'first_name','last_name'));
 		$cand_name = ucwords($cand_data['Resume']['first_name'].' '.$cand_data['Resume']['last_name']);
 		$this->set('candidate_name', $cand_name);
+		// get rejection status drop down
+		$this->get_reject_drop('cv_verify');
 		if(!empty($this->request->data)){
 			// set the validation
 			$this->Position->set($this->request->data);
 			if($st == 'not_joined'){				
-				$validate = $this->Position->validates(array('fieldList' => array('note')));
+				$validate = $this->Position->validates(array('fieldList' => array('reason_id')));
 			}else if($st == 'joined'){
 				$validate = $this->Position->validates(array('fieldList' => array('joined_on')));
 			}else if($st == 'deferred'){
-				$validate = $this->Position->validates(array('fieldList' => array('plan_join_date')));
+				$validate = $this->Position->validates(array('fieldList' => array('plan_join_date','reason_id')));
 			}
 			// if validation pass
 			if($validate){
 				// get the req. resume id
 				$this->loadModel('ReqResume');
-				$req_res_id = $this->ReqResume->find('all', array('fields' => array('ReqResume.id'), 
-				'conditions' => array('requirements_id' => $pos_id, 'resume_id' => $id)));
+				//$req_res_id = $this->ReqResume->find('all', array('fields' => array('ReqResume.id'), 
+				//'conditions' => array('requirements_id' => $pos_id, 'resume_id' => $id)));
 				// save req resume table
-				$data = array('id' => $req_res_id[0]['ReqResume']['id'],'modified_date' => $this->Functions->get_current_date(), 'joined_on' => $this->Functions->format_date_save($this->request->data['Position']['joined_on']),
+				$data = array('id' => $req_res_id,'modified_date' => $this->Functions->get_current_date(), 'joined_on' => $this->Functions->format_date_save($this->request->data['Position']['joined_on']),
 				'plan_join_date' => $this->Functions->format_date_save($this->request->data['Position']['plan_join_date']),
 				'modified_by' => $this->Session->read('USER.Login.id'), 'stage_title' => 'Joining', 'status_title' => $status);
 				// save  req resume
 				if($this->ReqResume->save($data, array('validate' => false))){		
 					// save req resume status
 					$this->loadModel('ReqResumeStatus');
-					$data = array('req_resume_id' => $req_res_id[0]['ReqResume']['id'], 'created_date' => $this->Functions->get_current_date(),
-					'created_by' => $this->Session->read('USER.Login.id'), 'stage_title' => 'Joining', 'status_title' => $status,
+					$data = array('req_resume_id' => $req_res_id, 'created_date' => $this->Functions->get_current_date(),
+					'created_by' => $this->Session->read('USER.Login.id'),'reason_id' => $this->request->data['Position']['reason_id'],  'stage_title' => 'Joining', 'status_title' => $status,
 					'note' => $this->request->data['Position']['note']);
 					if($this->ReqResumeStatus->save($data, array('validate' => false))){					
 						// if successfully update
 						$this->set('cv_update_status', 1);
-						$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>'.ucfirst($head_label).' Successfully', 'default', array('class' => 'alert alert-success'));									
+						$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>'.ucfirst($head_label).' Successfully', 'default', array('class' => 'alert alert-success'));
 
 					}
 				}
@@ -1233,7 +1276,7 @@ class PositionController extends AppController {
 	
 	
 	/* function to update the interview interview */		
-	public function update_interview($id,$pos_id,$st,$int_level){
+	public function update_interview($id,$pos_id,$req_res_id,$st,$int_level){
 		$this->layout = 'framebox';
 		$status = $st == 'shortlist' ? 'Selected' : 'Rejected';
 		$this->set('validation', $st == 'shortlist' ? 1 : 0);
@@ -1244,12 +1287,14 @@ class PositionController extends AppController {
 		$cand_data = $this->Resume->findById($id, array('fields' => 'first_name','last_name'));
 		$cand_name = ucwords($cand_data['Resume']['first_name'].' '.$cand_data['Resume']['last_name']);
 		$this->set('candidate_name', $cand_name);
+		// get rejection status drop down
+		$this->get_reject_drop('cv_verify');
 		// when the form submitted
 		if(!empty($this->request->data)){		
 			// set the validation
 			$this->Position->set($this->request->data);
 			if($status == 'Rejected'){
-				$validate = $this->Position->validates(array('fieldList' => array('note')));
+				$validate = $this->Position->validates(array('fieldList' => array('reason_id')));
 			}else{
 				$validate = true;
 			}
@@ -1257,25 +1302,25 @@ class PositionController extends AppController {
 			if($validate){			
 				// get the req. resume id
 				$this->loadModel('ReqResume');
-				$req_res_id = $this->ReqResume->find('all', array('fields' => array('ReqResume.id'), 
-				'conditions' => array('requirements_id' => $pos_id, 'resume_id' => $id)));
+				//$req_res_id = $this->ReqResume->find('all', array('fields' => array('ReqResume.id'), 
+				//'conditions' => array('requirements_id' => $pos_id, 'resume_id' => $id)));
 				// save req resume table
-				$data = array('id' => $req_res_id[0]['ReqResume']['id'],'modified_date' => $this->Functions->get_current_date(),
+				$data = array('id' => $req_res_id,'modified_date' => $this->Functions->get_current_date(),
 				'modified_by' => $this->Session->read('USER.Login.id'),	 'status_title' => $status);
 				// save  req resume
 				if($this->ReqResume->save($data, array('validate' => false))){		
 					// save req resume status
 					$this->loadModel('ReqResumeStatus');
-					$data = array('req_resume_id' => $req_res_id[0]['ReqResume']['id'], 'created_date' => $this->Functions->get_current_date(),	'created_by' => $this->Session->read('USER.Login.id'), 'stage_title' => $this->Functions->get_level_text($int_level),	'status_title' => $status, 'note' => $this->request->data['Position']['note']);
+					$data = array('req_resume_id' => $req_res_id, 'created_date' => $this->Functions->get_current_date(),	'created_by' => $this->Session->read('USER.Login.id'), 'stage_title' => $this->Functions->get_level_text($int_level),	'status_title' => $status, 'note' => $this->request->data['Position']['note'],'reason_id' => $this->request->data['Position']['reason_id']);
 					if($this->ReqResumeStatus->save($data, array('validate' => false))){
 						// save interview status
 						$this->loadModel('ResInterview');
-						$interview_id = $this->ResInterview->find('all', array('conditions' => array('ResInterview.req_resume_id' => $req_res_id[0]['ReqResume']['id'],
+						$interview_id = $this->ResInterview->find('all', array('conditions' => array('ResInterview.req_resume_id' => $req_res_id,
 						'ResInterview.stage_title' => $this->Functions->get_level_text($int_level))));
-						$data = array('id' => $interview_id[0]['ResInterview']['id'], 'req_resume_id' => $req_res_id[0]['ReqResume']['id'], 'modified_date' => $this->Functions->get_current_date(),
+						$data = array('id' => $interview_id[0]['ResInterview']['id'],'reason_id' => $this->request->data['Position']['reason_id'],  'req_resume_id' => $req_res_id, 'modified_date' => $this->Functions->get_current_date(),
 						'modified_by' => $this->Session->read('USER.Login.id'), 'status_title' => $status);
-						$this->ResInterview->save($data, array('validate' => false));
-						// if successfully update
+						$this->ResInterview->save($data, array('validate' => false));					
+					
 						$this->set('cv_update_status', 1);
 						$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Interview Details Updated Successfully', 'default', array('class' => 'alert alert-success'));									
 
@@ -1361,6 +1406,8 @@ class PositionController extends AppController {
 						// send mail to client 
 						$resume_data['Resume']['email_id'] = 'testing7@bigspire.com'; // for testing
 						$vars = array('from_name' => $from, 'to_name' => ucwords($to_name), 'msg'=> $candidate_msg_split[0]);
+						// save the mail box
+						$this->save_mail_box($candidate_msg_split[1], $candidate_msg_split[0], $req_res_id);
 						// send mail
 						if(!$this->send_email($candidate_msg_split[1], 'send_interview', $this->Session->read('USER.Login.email_id'), $resume_data['Resume']['email_id'], $vars)){	
 							// show the msg.								
@@ -1395,6 +1442,8 @@ class PositionController extends AppController {
 						// send mail to client 
 						$contact_data['Contact']['email'] = 'testing7@bigspire.com'; // for testing
 						$vars = array('from_name' => $from, 'to_name' => ucwords($to_name),'msg'=> $client_msg_split[0]);
+						// save the mail box
+						$this->save_mail_box($client_msg_split[1], $client_msg_split[0], $req_res_id);
 						// send mail
 						if(!$this->send_email($client_msg_split[1], 'confirm_interview', $this->Session->read('USER.Login.email_id'), $contact_data['Contact']['email'], $vars, $resume_path)){	
 							// show the msg.								

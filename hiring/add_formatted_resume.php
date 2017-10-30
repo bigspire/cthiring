@@ -7,7 +7,7 @@ Date : 26-05-2017
 
 session_start();
 use Ilovepdf\Ilovepdf;
-ini_set('display_errors', 0);
+// ini_set('display_errors', 0);
 
 // including smarty config
 include 'configs/smartyconfig.php';
@@ -1023,7 +1023,7 @@ if(!empty($_POST)){
 			// generate the auto resume pdf file
 			// convert the resume doc. into pdf			
 			require_once('vendor/ilovepdf-php-1.1.5/init.php');			
-			ini_set('display_errors', '1');
+			// ini_set('display_errors', '1');
 			// you can call task class directly
 			// to get your key pair, please visit https://developer.ilovepdf.com/user/projects
 			$ilovepdf = new Ilovepdf('project_public_30e4ef2596c7436ae907615a841f995b_J4pWwe338d0756271411b0769ee277075a664','secret_key_9d6d00d05185d32c499082fc7e008ba1_fovTb7e8e14419dee395103d2b71d6b7e7175');

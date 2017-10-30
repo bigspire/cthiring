@@ -979,6 +979,9 @@ line-height: 18px;padding: 3px 15px;background-color:#eaeeef !important; backgro
 }
 .alert-action{background:#ffffbf !important;border:1px solid #fbfcbd;}
 .dash_view{font-family:'Open Sans', sans-serif}
-
+ul.ratingList{margin:0px !important;}
 .ratingList li{margin:2px 0px 2px 0px;list-style-type:none;}
+.ratingList li input{margin-right:10px;}
 .wysiwygCls p{}
+.legendView{background-image:none !important;cursor:default !important;margin-bottom:0px !important;text-align:center !important;font-weight:bold;}
+.rating-symbol{font-size:15px !important;}

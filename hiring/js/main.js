@@ -228,6 +228,12 @@ $(document).ready(function() {
 		
 	});
 	
+	if($('#file_download').length > 0){ 
+		if($('#file_download').val() != ''){ 
+			$.sticky("Great! Resume Snapshot Downloaded Successfully!", {autoclose : 5000, position: "top-right", type: "st-success" });
+			location.href = $('#file_download').attr('rel')+$('#file_download').val();
+		}
+	}
 	
 	// retaining tabs and contents in view position 
 	if($('#success_page').val() != ''){
@@ -277,6 +283,7 @@ $(document).ready(function() {
 			return (item.length > 10 ? 'big' : 'small');
 		  }
 		  */
+		   maxTags: 7
 		});
 	}
 
@@ -1085,12 +1092,20 @@ $(document).ready(function() {
 	}
 	
 	/* for star rating */
-	  $('.rating').each(function () {
-          $(' <span class="label label-default dn"></span>')
+	   $('.rating').each(function (){   
+			if($(this).next('.label').text() != ''){ 
+				$(this).next('.label').text($(this).val()).show();
+			}
+		});
+		
+		/*
+		$(' <span class="label label-default dn"></span>')
             .text($(this).val() || ' ')
             .insertAfter(this);
         });
-        $('.rating').on('change', function () {
+		*/
+		
+      $('.rating').on('change', function () {
           $(this).next('.label').text($(this).val()).show();
       });
 	  
