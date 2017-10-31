@@ -21,7 +21,7 @@
                                 </li>
                             
                                 <li>
-                                   <?php echo $position_data['Position']['job_title'];?>
+                                   <?php echo ucwords($position_data['Position']['job_title']);?>
                                 </li>
                             </ul>
                         </div>
@@ -93,13 +93,13 @@
 									<tr>
 										
 										<td width="120" class="tbl_column">Job Title</td>
-										<td><?php echo $position_data['Position']['job_title'];?></td>
+										<td><?php echo ucwords($position_data['Position']['job_title']);?></td>
 											
 									</tr>
 									<tr>
 										
 										<td width="120" class="tbl_column">Job Location </td>
-										<td><?php echo $position_data['Position']['location'];?></td>
+										<td><?php echo ucfirst($position_data['Position']['location']);?></td>
 											
 									</tr>
 									<tr>
@@ -216,13 +216,15 @@
 											
 									</tr>
 									
+									<?php if($position_data['Position']['modified_date']):?>
 										<tr>
 										
 										<td class="tbl_column">Modified On</td>
-										<td><?php echo $this->Functions->format_date($position_data['Position']['created_date']);?></td>
+										<td><?php echo $this->Functions->format_date($position_data['Position']['modified_date']);?></td>
 											
 									</tr>
 									
+									<?php endif; ?>
 									
 								</tbody>
 							</table>
@@ -245,10 +247,14 @@
 									<tr>
 								<td width="120" class="tbl_column">Attachment </td>
 									<td>
-										<!--a class="notify" data-notify-time = '7000' data-notify-title="In Progress!"
-										data-notify-message="Downloading JD... Please wait..."   
-										href="<?php echo $this->webroot;?>hc/download/<?php echo $position_data['Position']['id']; ?>/jd/">
-										Download</a-->
+										
+	<?php if($position_data['Position']['job_desc_file'] != ''):?>
+			<a href="<?php echo $this->webroot;?>position/download_doc/<?php echo $position_data['Position']['job_desc_file'];?>"><?php echo $position_data['Position']['job_desc_file'];?></a>
+			<br>
+
+			<textarea   class="span12" rows = "10"><?php echo trim($this->Functions->read_document(WWW_ROOT.'/uploads/jd/'.$position_data['Position']['job_desc_file']));?></textarea>
+	<?php endif; ?>									
+										
 									</td>
 								</tr>
 								</tbody>

@@ -81,7 +81,7 @@
 										<tr>
 										
 										<td class="tbl_column">Created By</td>
-										<td><?php echo $client_data['Creator']['first_name'];?></td>
+										<td><?php echo $client_data['Creator']['first_name'].' '.$client_data['Creator']['last_name'];?></td>
 											
 									</tr>	
 									
@@ -123,10 +123,13 @@
 										<td><?php echo $client_data['Client']['pincode'];?></td>
 											
 									</tr>
-								<tr>
+									
+							<?php if($client_data['Modifier']['first_name']):?>
+									
+									<tr>
 										
 										<td class="tbl_column">Modified By</td>
-										<td><?php echo $client_data['Modifier']['first_name'];?></td>
+										<td><?php echo $client_data['Modifier']['first_name'].' '.$client_data['Modifier']['last_name'];?></td>
 											
 									</tr>	
 									
@@ -135,7 +138,9 @@
 										<td class="tbl_column">Modified</td>
 										<td><?php echo $this->Functions->format_date($client_data['Client']['modified_date']);?></td>
 											
-									</tr>	
+									</tr>
+
+						<?php endif; ?>
 									
 								<tr>
 										
@@ -179,12 +184,12 @@
 											<table data-msg_rowlink="a" class="table table_vam mbox_table dTableR" id="dt_inbox">
 												<thead>
 													<tr>
-														<th width="120">First Name</th>
-														<th  width="70">Last Name</th>
-														<th  width="120">Designation</th>
+														<th width="120">Name</th>
 														<th  width="120">Email</th>
-														<th  width="80">Phone</th>
 														<th  width="80">Mobile</th>
+														<th  width="120">Designation</th>
+														<th  width="80">Landline</th>
+														<th  width="80">Branch</th>
 														<th  width="95">Created By</th>
 														<th  width="75">Created</th>
 													</tr>
@@ -193,14 +198,16 @@
 													
 												<?php foreach($contact_data as $contact):?>
 												<tr>
-														<td><?php echo $contact['Contact']['first_name'];?></td>
-														<td><?php echo $contact['Contact']['last_name'];?></td>
-														<td><?php echo $contact['Designation']['designation'];?></td>
-
+														<td><?php echo $this->Functions->get_contact_title($contact['Contact']['title']);?> <?php echo $contact['Contact']['first_name'];?> <?php echo $contact['Contact']['last_name'];?></td>
 														<td><?php echo $this->Functions->get_format_text($contact['Contact']['email']);?></td>
-														<td><?php echo $this->Functions->get_format_text($contact['Contact']['phone']);?></td>
 														<td><?php echo $this->Functions->get_format_text($contact['Contact']['mobile']);?></td>
-														<td><?php echo $contact['Creator']['first_name'];?></td>
+														<td><?php echo $contact['Designation']['designation'];?></td>
+														
+														<td><?php echo $this->Functions->get_format_text($contact['Contact']['phone']);?></td>
+														<td><?php echo $contact['ContactBranch']['branch'];?></td>
+
+														
+														<td><?php echo $contact['Creator']['first_name'];?> <?php echo $contact['Creator']['last_name'];?></td>
 														<td><?php echo $this->Functions->format_date($contact['Contact']['created_date']);?></td>
 													</tr>
 												<?php endforeach; ?>

@@ -309,7 +309,7 @@ class PositionController extends AppController {
 									// show the msg.								
 									$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Problem in sending the mail for approval...', 'default', array('class' => 'alert alert-error'));				
 								}else{
-									$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Position Created Successfully. After approval, it will be visible', 'default', array('class' => 'alert alert-warning'));				
+									$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Position Created Successfully. After approval, it will be visible', 'default', array('class' => 'alert alert-info'));				
 								}
 							}
 						}else{
@@ -782,7 +782,7 @@ class PositionController extends AppController {
 							// show the msg.								
 							$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Problem in sending the mail to user...', 'default', array('class' => 'alert alert-error'));				
 						}else{
-							$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Position '.$approve_msg.' successfully.', 'default', array('class' => 'alert alert-success'));
+							$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Position '.$approve_msg.' Successfully.', 'default', array('class' => 'alert alert-success'));
 						}
 						
 						// get the superiors
@@ -804,8 +804,7 @@ class PositionController extends AppController {
 									// make sure not duplicate status exists
 									$this->check_duplicate_status($req_id, $approval_data['Approve']['level2'], 0);						
 									if($this->PositionStatus->save($data, true, $fieldList = array('requirements_id','created_date','users_id','is_approve'))){
-										$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Position '.$approve_msg.' successfully.', 'default', array('class' => 'alert alert-success'));
-																	
+										$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Position '.$approve_msg.' Successfully.', 'default', array('class' => 'alert alert-success'));																	
 									}else{
 										$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Problem in saving superior status...', 'default', array('class' => 'alert alert-error'));
 									}
@@ -826,7 +825,7 @@ class PositionController extends AppController {
 							
 						}else{
 							// update  status
-							$this->Position->id = $req_id;
+							// $this->Position->id = $req_id;
 							// $this->Position->saveField('is_approve', 'R');
 							
 							/*
@@ -856,6 +855,7 @@ class PositionController extends AppController {
 					}else{
 						$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert-error">&times;</button>Problem in updating the status', 'default', array('class' => 'alert alert-error'));		
 					}
+					$this->set('action_status', $approve_msg);
 					$this->set('form_status', '1');
 					/*
 					if($this->Position->save($data, array('validate' => false))){	

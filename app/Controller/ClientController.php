@@ -402,7 +402,7 @@ class ClientController extends AppController {
 					*/					
 					
 					// get the Business Head
-					$leader_data = $this->Client->Creator->find('all', array('conditions' => array('roles_id' => '39'), 'fields' => array('Creator.id',	'Creator.first_name','Creator.last_name', 'Creator.email_id')));
+					$leader_data = $this->Client->Creator->find('all', array('conditions' => array('roles_id' => '35'), 'fields' => array('Creator.id',	'Creator.first_name','Creator.last_name', 'Creator.email_id')));
 					
 					// get account holder name				
 					
@@ -425,7 +425,7 @@ class ClientController extends AppController {
 						// save the client status
 						if($this->ClientStatus->save($data, true, $fieldList = array('clients_id','created_date','users_id'))){
 						
-							$ac_holder = $this->ClientAccountHolder->find('all', array('fields' => array("group_concat(User.first_name separator ', ') account_holder"), 'order' => array('User.first_name ASC'), 'conditions' => array('ClientAccountHolder.clients_id' => $this->Client->id, 'User.is_deleted' => 'N'), 'group' => array('User.id')));
+							$ac_holder = $this->ClientAccountHolder->find('all', array('fields' => array("group_concat(User.first_name separator ', ') account_holder"), 'order' => array('User.first_name ASC'), 'conditions' => array('ClientAccountHolder.clients_id' => $this->Client->id, 'User.is_deleted' => 'N')));
 							
 							$vars = array('from_name' => $from, 'to_name' => ucwords($leader_data[0]['Creator']['first_name'].' '.$leader_data[0]['Creator']['last_name']), 'client_name' => $this->request->data['Client']['client_name'], 'city' => $this->request->data['Client']['city'],'account_holder' => $ac_holder[0][0]['account_holder']);
 													
@@ -434,7 +434,7 @@ class ClientController extends AppController {
 								// show the msg.								
 								$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Problem in sending the mail for approval...', 'default', array('class' => 'alert alert-error'));				
 							}else{
-								$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Client created successfully. After approval, it will be visible!', 'default', array('class' => 'alert alert-warning'));
+								$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Client created successfully. After approval, it will be visible!', 'default', array('class' => 'alert alert-info'));
 							}
 						}
 					}else{
@@ -614,9 +614,9 @@ class ClientController extends AppController {
 				  'conditions' => array('`Modifier`.`id` = `Client`.`modified_by`')
 			)
 		);
-		$fields = array('id','client_name','phone','ResLocation.location','address','created_date','Creator.first_name',
+		$fields = array('id','client_name','phone','ResLocation.location','address','created_date','Creator.first_name','Creator.last_name',
 		'address','status','door_no','street_name','area_name','city','modified_date','pincode','State.state',
-		'Modifier.first_name','is_approve','Client.created_by');
+		'Modifier.first_name','is_approve','Client.created_by','Modifier.last_name',);
 		$data = $this->Client->find('all', array('fields' => $fields,'conditions' => array('Client.id' => $id),
 		'joins' => $options));
 		$this->set('client_data', $data[0]);
@@ -624,7 +624,7 @@ class ClientController extends AppController {
 		$this->loadModel('ClientAccountHolder');
 		$ac_holder = $this->ClientAccountHolder->find('all', array('fields' => array("group_concat(User.first_name separator ', ') account_holder"),
 		'order' => array('User.first_name ASC'), 'conditions' => array('ClientAccountHolder.clients_id' => $id, 
-		'User.is_deleted' => 'N'), 'group' => array('User.id')));
+		'User.is_deleted' => 'N')));
 		$this->set('accountList', $ac_holder[0][0]['account_holder']);
 		// get the client contacts
 		$this->loadModel('ClientContact');
@@ -638,11 +638,16 @@ class ClientController extends AppController {
 					'alias' => 'Designation',					
 					'type' => 'LEFT',
 					'conditions' => array('`Designation`.`id` = `Contact`.`designation_id`')
+			),
+			array('table' => 'contact_branch',
+					'alias' => 'ContactBranch',					
+					'type' => 'LEFT',
+					'conditions' => array('`ContactBranch`.`id` = `Contact`.`contact_branch_id`')
 			)
 		);		
 		$contact = $this->ClientContact->find('all', array('fields' => array('Contact.id','Contact.first_name','Contact.last_name','Contact.email',
-		'Contact.phone','Contact.mobile','Contact.created_date','Creator.first_name','Designation.designation'), 
-		'conditions' => array('clients_id' => $id), 'order' => array('Contact.created_date' => 'desc'),
+		'Contact.phone','Contact.mobile','Contact.created_date','Creator.first_name', 'Creator.last_name','Designation.designation','Contact.title','ContactBranch.branch'), 
+		'conditions' => array('clients_id' => $id, 'Contact.status' => '0'), 'order' => array('Contact.created_date' => 'desc'),
 		'joins' => $options));
 		$this->set('contact_data', $contact);
 		// get the clients requirements
@@ -694,9 +699,9 @@ class ClientController extends AppController {
 						$creator_data = $this->Client->find('all', array('conditions' => array('Client.id' => $id), 'fields' => array('Client.client_name', 'Client.city','Creator.first_name','Creator.last_name', 'Creator.email_id')));
 						// get account holder name
 						$this->loadModel('ClientAccountHolder');
-						$ac_holder = $this->ClientAccountHolder->find('all', array('fields' => array("group_concat(User.first_name separator ', ') account_holder"), 'order' => array('User.first_name ASC'), 'conditions' => array('ClientAccountHolder.clients_id' => $id, 'User.is_deleted' => 'N'), 'group' => array('User.id')));
+						$ac_holder = $this->ClientAccountHolder->find('all', array('fields' => array("group_concat(User.first_name separator ', ') account_holder"), 'order' => array('User.first_name ASC'), 'conditions' => array('ClientAccountHolder.clients_id' => $id, 'User.is_deleted' => 'N')));
 						$vars = array('to_name' =>  ucwords($creator_data[0]['Creator']['first_name'].' '.$creator_data[0]['Creator']['last_name']), 'from_name' => $from, 'client_name' => $creator_data[0]['Client']['client_name'], 'city' => $creator_data[0]['Client']['city'],'account_holder' => $ac_holder[0][0]['account_holder'], 'approve_msg' => $approve_msg, 'remarks' => $this->request->data['Client']['remarks']);
-										
+						$this->set('action_status', $approve_msg);
 						// notify employee						
 						if(!$this->send_email('Manage Hiring - Client '.$st_msg.' by '.ucfirst($this->Session->read('USER.Login.first_name')).' '.ucfirst($this->Session->read('USER.Login.last_name')), 'approve_client', 'noreply@managehiring.com', $creator_data[0]['Creator']['email_id'],$vars)){		
 							// show the msg.								
@@ -704,6 +709,10 @@ class ClientController extends AppController {
 						}else{
 							$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Client '.$approve_msg.' Successfully.', 'default', array('class' => 'alert alert-success'));
 						}
+						// update the client
+						$this->Client->id = $id;
+						$this->Client->saveField('is_approve', $status);
+						$this->Client->saveField('status', $status == 'A' ? 0 : 2);
 						
 						$this->set('form_status', '1');		
 					}else{

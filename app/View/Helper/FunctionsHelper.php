@@ -705,5 +705,18 @@ class FunctionsHelper extends AppHelper {
 		}
 		return $title;
 	}
+	
+	/* function to get the title */
+	public function get_contact_title($title){
+		switch($title){
+			case '1':
+			$value = 'Mr.';
+			break;
+			case '2':
+			$value = 'Ms.';			
+			break;			
+		}
+		return $value;
+	}
 }
 ?>
