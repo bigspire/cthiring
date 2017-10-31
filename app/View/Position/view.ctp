@@ -165,14 +165,16 @@
 									<tr>
 										
 										<td class="tbl_column" style="width:140px;">Technical Skills</td>
-										<td><?php echo $position_data['Position']['tech_skill'] ? $position_data['Position']['tech_skill'] :$position_data['Position']['skills'];?></td>
+										<td><?php $skill = $position_data['Position']['tech_skill'] ? $position_data['Position']['tech_skill'] :$position_data['Position']['skills'];?>
+										<?php echo ucwords(str_replace(',', ', ',$skill));?>
+										</td>
 											
 									</tr>
 									
 									<tr>
 										
 										<td class="tbl_column" style="width:140px;">Behavioural Skills</td>
-										<td><?php echo $position_data['Position']['behav_skill'];?></td>
+										<td><?php echo ucwords(str_replace(',', ', ',$position_data['Position']['behav_skill']));?></td>
 											
 									</tr>
 									
@@ -239,7 +241,7 @@
 									<tr>
 										<td  class="tbl_column"width="120">Job Description</td>
 										<td>
-									<?php echo strip_tags($position_data['Position']['job_desc'], '<br>');?>	
+									<?php echo nl2br(strip_tags($position_data['Position']['job_desc'], '<br>'));?>	
 										
 
 			<br></td>
@@ -253,6 +255,8 @@
 			<br>
 
 			<textarea   class="span12" rows = "10"><?php echo trim($this->Functions->read_document(WWW_ROOT.'/uploads/jd/'.$position_data['Position']['job_desc_file']));?></textarea>
+	<?php else: ?>	
+	No file attached.
 	<?php endif; ?>									
 										
 									</td>
@@ -848,7 +852,7 @@ $yrf =  $sent - ($shortlist  + $cv_reject)
 														</tr>
 														<tr class="">
 														<td>Feedback Awaiting</td>
-														<th><?php echo $yrf;?></th>
+														<th><?php echo $yrf > 0 ? $yrf : '';?></th>
 														</tr>
 														<tr class="">
 														<td>Interviewed</td>

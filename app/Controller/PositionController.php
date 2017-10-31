@@ -675,7 +675,7 @@ class PositionController extends AppController {
 		'group_concat(ReqResume.status_title) joined', 'start_date', 'end_date', //"group_concat(distinct ResOwner.first_name  SEPARATOR ', ') team_member",
 		"group_concat(distinct AH.first_name  SEPARATOR ', ') ac_holder","group_concat(distinct TeamMember.first_name  SEPARATOR ', ') team_member2",
 		'skills','Contact.first_name','Contact.email','Contact.mobile','Contact.phone','Contact.id','FunctionArea.function',
-		'Position.created_by','Position.is_approve','tech_skill','behav_skill');
+		'Position.created_by','Position.is_approve','tech_skill','behav_skill','job_desc_file');
 		$data = $this->Position->find('all', array('fields' => $fields,'conditions' => array('Position.id' => $id), 'joins' => $options));
 		$this->set('position_data', $data[0]);
 		// get the resume details
@@ -810,24 +810,39 @@ class PositionController extends AppController {
 									}
 								}else{
 									// update status if l2 approved
+									
 									$this->Position->id = $req_id;
 									$this->Position->saveField('is_approve', 'A');
 									$this->Position->saveField('status', 'A');	
-									$this->Position->saveField('req_status_id', '0');									
+									$this->Position->saveField('req_status_id', '0');
+									
+									// approve the member
+									$this->PositionStatus->id = $st_id;
+									$this->PositionStatus->saveField('member_approve', 'A');	
+									
 								}
 							}else{
 								// update  status
+								
 								$this->Position->id = $req_id;
 								$this->Position->saveField('is_approve', 'A');
 								$this->Position->saveField('status', 'A');
-								$this->Position->saveField('req_status_id', '0');									
+								$this->Position->saveField('req_status_id', '0');	
+									
+								
+								// approve the member
+								$this->PositionStatus->id = $st_id;
+								$this->PositionStatus->saveField('member_approve', 'A');
 							}
 							
 						}else{
 							// update  status
-							// $this->Position->id = $req_id;
-							// $this->Position->saveField('is_approve', 'R');
+							$this->Position->id = $req_id;
+							$this->Position->saveField('is_approve', 'R');
 							
+							$this->PositionStatus->id = $st_id;
+							$this->PositionStatus->saveField('member_approve', 'R');
+								
 							/*
 							$approval_data = $this->Approve->find('first', array('fields' => array('level1','level2'), 'conditions'=> array('Approve.users_id' => $user_id)));
 							if($approval_data['Approve']['level1'] == $this->Session->read('USER.Login.id')){
