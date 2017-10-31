@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-10-27 17:19:03
+/* Smarty version 3.1.29, created on 2017-10-31 12:03:24
   from "C:\xampp\htdocs\2017\ctsvn\cthiring\hiring\templates\add_formatted_resume.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_59f31d2fd57cd9_92836985',
+  'unifunc' => 'content_59f81934315dd6_57535524',
   'file_dependency' => 
   array (
     '7b9debb43acd1c9656df1fbe01b897c4d462aec5' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\templates\\add_formatted_resume.tpl',
-      1 => 1509104941,
+      1 => 1509423989,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_59f31d2fd57cd9_92836985 ($_smarty_tpl) {
+function content_59f81934315dd6_57535524 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -364,27 +364,7 @@ echo $_POST['hobby'];
 								</tbody>
 							</table>
 						</div>
-							<div class="row-fluid" style="clear:left;float:left;margin-top:15px;">				
-			<div class="span12">
-	<table class="table table-bordered dataTable" style="margin-bottom:0;">
-	<tbody>
-<tr class="tbl_row">
 						
-<td style="margin:10px;text-align:center;">
-<textarea rows = "10" style="width:1200px;" name="RESUME_DATA">
-<?php if ($_smarty_tpl->tpl_vars['RESUME_DATA']->value) {
-echo $_smarty_tpl->tpl_vars['RESUME_DATA']->value;
-} else {
-echo $_POST['RESUME_DATA'];
-}?>
-</textarea>
-																						
-</td>
-</tr>									
-									
-	</tbody>
-	</table>
-</div>		</div>
 			</div>
 
 					
@@ -606,7 +586,7 @@ echo $_POST['RESUME_DATA'];
 								<tr class="tbl_row">
 										<td width="120" class="tbl_column">Other Vital Information (Position Specific)  <span class="f_req"></span></td>
 										<td> 
-										<textarea   placeholder="" name="vital_#index#" tabindex="8" id="vital_#index#" cols="10" rows="3" class="span8"></textarea>
+										<textarea   placeholder="" name="vital_#index#" tabindex="8" id="vital_#index#" cols="10" rows="3" class="span8 wysiwyg1"></textarea>
 										</td>
 							</tr>
 							<tr>
@@ -879,6 +859,29 @@ resume" id="webroot">
 					</form>
          	
 				
+
+	<div class="row-fluid" style="clear:left;float:left;margin-top:15px;">				
+			<div class="span12">
+			<h3 class="heading">Candidate Resume</h3>
+	<table class="table table-bordered dataTable" style="margin-bottom:0;">
+	<tbody>
+	<tr class="tbl_row">
+									
+										<td style="margin:10px;text-align:center;">
+<textarea  class="span12" style="height:300px" name="RESUME_DATA">
+<?php if ($_smarty_tpl->tpl_vars['RESUME_DATA']->value) {
+echo $_smarty_tpl->tpl_vars['RESUME_DATA']->value;
+} else {
+echo $_POST['RESUME_DATA'];
+}?>
+</textarea>
+																						
+										</td>
+	</tr>									
+									
+	</tbody>
+	</table>
+</div>		</div>
 
                 </div>
             </div> 
@@ -1276,6 +1279,8 @@ $(document).ready(function(){
 		   continuousIndex: true,
 		   afterAdd: function(source, newForm) {
 			 $('#exp_count').attr('value',source.getFormsCount());
+			  // for auto resize text area
+			 autosize(document.querySelectorAll('.wysiwyg1'));
 		   },
 		   afterRemoveCurrent: function(source) {		
 			 $('#exp_count').attr('value',source.getFormsCount());

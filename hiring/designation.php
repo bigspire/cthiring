@@ -155,7 +155,7 @@ $c_c = $mysql->close_connection();
 $paging->posturl($post_url);
 
 // smarty drop down array for status
-$smarty->assign('status_type', array('' => 'All Status', '1' => 'Active', '2' => 'Inactive'));
+$smarty->assign('status_type', array('0' => 'All Status', '1' => 'Active', '2' => 'Inactive'));
 
 // assign smarty variables here
 $smarty->assign('page_links',$paging->print_link_frontend());

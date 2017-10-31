@@ -311,8 +311,10 @@ if(!empty($_POST)){
 		
 		$desigData[] = $_POST['desig_'.$i];
 		$areaData[] = $_POST['area_'.$i];
-		$year_of_expData[] = $_POST['year_of_exp_'.$i];
-		$month_of_expData[] = $_POST['month_of_exp_'.$i];
+		$from_year_of_expData[] = $_POST['from_year_of_exp_'.$i];
+		$from_month_of_expData[] = $_POST['from_month_of_exp_'.$i];
+		$to_year_of_expData[] = $_POST['to_year_of_exp_'.$i];
+		$to_month_of_expData[] = $_POST['to_month_of_exp_'.$i];
 		$companyData[] = $_POST['company_'.$i];
 		$locationData[] = $_POST['location_'.$i];
 		$vitalData[] = $_POST['vital_'.$i];
@@ -360,8 +362,10 @@ if(!empty($_POST)){
 
 	$smarty->assign('desigData', $desigData);
 	$smarty->assign('areaData', $areaData);
-	$smarty->assign('year_of_expData', $year_of_expData);
-	$smarty->assign('month_of_expData', $month_of_expData);
+	$smarty->assign('from_year_of_expData', $from_year_of_expData);
+	$smarty->assign('from_month_of_expData', $from_month_of_expData);
+	$smarty->assign('to_year_of_expData', $to_year_of_expData);
+	$smarty->assign('to_month_of_expData', $to_month_of_expData);
 	$smarty->assign('companyData', $companyData);
 	$smarty->assign('locationData', $locationData);
 	$smarty->assign('vitalData', $vitalData);
