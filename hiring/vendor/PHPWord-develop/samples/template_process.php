@@ -40,7 +40,9 @@ $templateProcessor->setValue('CANDIDATE_EMAIL', $_POST['email'],  1,0);
 	$templateProcessor->setValue('NATIONALDATA', ucfirst($_POST['nationality']),   1, 0);
 // to retain candidate marital status field 
 	$templateProcessor->setValue('MARITAL', $fun->marital_status($_POST['marital_status']),   1, 0);
-	
+// to retain relevant exposure
+$templateProcessor->setValue('RELEVANTEXPOSURE', $_POST['relevant_exposure'],   1, 0);
+
 // to retain candidate language field 
 		// fetch language by id
 		$query = "CALL get_language_details('$getid')";

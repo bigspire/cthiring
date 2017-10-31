@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-10-27 16:30:44
+/* Smarty version 3.1.29, created on 2017-10-31 09:58:47
   from "C:\xampp\htdocs\2017\ctsvn\cthiring\hiring\templates\include\header.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_59f311dc6d08f5_58479334',
+  'unifunc' => 'content_59f7fbffa1d583_07005336',
   'file_dependency' => 
   array (
     '418ce04694c91a3f6ebee8f2a2efa42e5260b14c' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\templates\\include\\header.tpl',
-      1 => 1509102040,
+      1 => 1509423989,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_59f311dc6d08f5_58479334 ($_smarty_tpl) {
+function content_59f7fbffa1d583_07005336 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -31,9 +31,11 @@ function content_59f311dc6d08f5_58479334 ($_smarty_tpl) {
 	   
 	    <!-- Bootstrap framework -->
             <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
+			
+
             <link rel="stylesheet" href="bootstrap/css/bootstrap-responsive.min.css" />
         <!-- gebo blue theme-->
-            <link rel="stylesheet" href="css/<?php echo $_SESSION['theme'];?>
+            <link rel="stylesheet" href="css/<?php echo $_smarty_tpl->tpl_vars['THEME']->value;?>
 .css" id="link_theme" />            
         <!-- main styles -->
             <link rel="stylesheet" href="css/style.css" />
@@ -54,6 +56,9 @@ function content_59f311dc6d08f5_58479334 ($_smarty_tpl) {
             <link rel="stylesheet" href="css/smoke.css" />
 			 <!-- splashy icons -->
             <link rel="stylesheet" href="img/splashy/splashy.css"  />
+			
+			<link rel="stylesheet" href="vendor/node_modules/bootstrap-rating/bootstrap-rating.css"  />
+			
 
 			<!-- colorbox -->
 	<link rel="stylesheet" href="css/colorbox/colorbox.css">

@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-10-12 12:45:02
+/* Smarty version 3.1.29, created on 2017-10-31 09:58:47
   from "C:\xampp\htdocs\2017\ctsvn\cthiring\hiring\templates\include\footer.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_59df1676570174_73369210',
+  'unifunc' => 'content_59f7fbffa9a5a8_85754343',
   'file_dependency' => 
   array (
     '884db102a25bdd998667f723fc832ca34c479084' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\templates\\include\\footer.tpl',
-      1 => 1507718152,
+      1 => 1509423989,
       2 => 'file',
     ),
   ),
@@ -19,16 +19,17 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_59df1676570174_73369210 ($_smarty_tpl) {
+function content_59f7fbffa9a5a8_85754343 ($_smarty_tpl) {
 ?>
 <div id="footer">
 
 <p><span>Copyright © 2016 Career Tree. Powered by <a  class="theme_link" href="http://bigspire.com" target="_blank" title="BigSpire Software">BigSpire</a></span>
 		
-<span style="float:right;margin-right:20px;"><a href="javascript:void(0)" val="50_50" class="theme_link">Feedback</a> <span class="font-grey-4">|</span> <a  class="theme_link" href="javascript:void(0)">Report Bug</a> </span>
+<span style="float:right;margin-right:20px;"><a href="javascript:void(0)" val="50_50" class="theme_link">Feedback / Suggestions</a> <span class="font-grey-4">|</span> <a  class="theme_link"  val="50_50"  href="javascript:void(0)">Report a Bug</a> </span>
 		
 </p>		
 </div>
+
 	
 <?php echo '<script'; ?>
  src="js/jquery.min.js"><?php echo '</script'; ?>
@@ -149,7 +150,12 @@ function content_59df1676570174_73369210 ($_smarty_tpl) {
 <?php echo '<script'; ?>
  src="lib_cthiring/jBreadcrumbs/js/jquery.jBreadCrumb.1.1.min.js"><?php echo '</script'; ?>
 >
-<!-- datatable -->                                                                                                                                                                                         
+<!-- datatable --> 
+
+<?php echo '<script'; ?>
+ src="vendor/node_modules/bootstrap-rating/bootstrap-rating.min.js"><?php echo '</script'; ?>
+>
+                                                                                                                                                                                        
 <?php echo '<script'; ?>
  type="text/javascript" src="js/main.js"><?php echo '</script'; ?>
 >	
