@@ -76,32 +76,32 @@
             <div class="span2 tile_stats_count">
               <span class="count_top"><i class="fa fa-user"></i> Total Positions</span>
               <div class="count"><?php echo $POS_TAB_COUNT;?></div>
-              <span class="count_bottom"><i class="green">4% </i> From last Week</span>
+              <!--span class="count_bottom"><i class="green">4% </i> From last Week</span-->
             </div>
             <div class="span2 tile_stats_count">
               <span class="count_top"><i class="fa fa-clock-o"></i> Total CV Sent</span>
               <div class="count"><?php echo $CV_SENT_TAB_COUNT;?></div>
-              <span class="count_bottom"><i class="green"><i class="green icon-circle-arrow-up"></i> 3% </i> From last Week</span>
+              <!--span class="count_bottom"><i class="green"><i class="green icon-circle-arrow-up"></i> 3% </i> From last Week</span-->
             </div>
             <div class="span2 tile_stats_count">
               <span class="count_top"><i class="fa fa-user"></i> Total Shortlisted</span>
               <div class="count green"><?php echo $CV_SHORTLIST_TAB_COUNT;?></div>
-              <span class="count_bottom"><i class="green"><i class="icon-circle-arrow-up"></i> 34% </i> From last Week</span>
+              <!--span class="count_bottom"><i class="green"><i class="icon-circle-arrow-up"></i> 34% </i> From last Week</span-->
             </div>
             <div class="span2 tile_stats_count">
               <span class="count_top"><i class="fa fa-user"></i> Total Interviewed</span>
               <div class="count"><?php echo $INTERVIEW_TAB_COUNT;?></div>
-              <span class="count_bottom"><i class="red"><i class="fa icon-circle-arrow-down"></i> 12% </i> From last Week</span>
+              <!--span class="count_bottom"><i class="red"><i class="fa icon-circle-arrow-down"></i> 12% </i> From last Week</span-->
             </div>
             <div class="span2 tile_stats_count">
               <span class="count_top"><i class="fa fa-user"></i> Total Joined</span>
               <div class="count"><?php echo $JOINED_TAB_COUNT; ?> </div>
-              <span class="count_bottom"><i class="green"><i class="icon-circle-arrow-up"></i> 34% </i> From last Week</span>
+              <!--span class="count_bottom"><i class="green"><i class="icon-circle-arrow-up"></i> 34% </i> From last Week</span-->
             </div>
             <div class="span1 tile_stats_count" style="width:160px;border:none;">
               <span class="count_top"><i class="fa fa-user"></i> Total Billing</span>
               <div class="count">₹<?php echo $BILLED_TAB_COUNT;?></div>
-              <span class="count_bottom"><i class="green"><i class="icon-circle-arrow-up"></i> 34% </i> From last Week</span>
+              <!--span class="count_bottom"><i class="green"><i class="icon-circle-arrow-up"></i> 34% </i> From last Week</span-->
             </div>
 			
 			<ul id="clickme" style="top:180px;right:30px;position:absolute" class="icon_list_a clearfix">
@@ -118,12 +118,12 @@
 		    <div class="span2 tile_stats_count">
               <span class="count_top"><i class="fa fa-user"></i> Awaiting Feedback</span>
               <div class="count"><?php echo $CV_WAITING_TAB_COUNT;?></div>
-              <span class="count_bottom"><i class="green"><i class="icon-circle-arrow-up"></i> 34% </i> From last Week</span>
+              <!--span class="count_bottom"><i class="green"><i class="icon-circle-arrow-up"></i> 34% </i> From last Week</span-->
             </div>
 		  <div class="span2 tile_stats_count">
               <span class="count_top"><i class="fa fa-user"></i> CV Rejected</span>
               <div class="count"><?php echo $CV_REJECT_TAB_COUNT;?></div>
-              <span class="count_bottom"><i class="green">4% </i> From last Week</span>
+              <!--span class="count_bottom"><i class="green">4% </i> From last Week</span-->
             </div>
 			
             <!--div class="span2 tile_stats_count">
@@ -131,48 +131,49 @@
               <div class="count"><?php echo $INTERVIEW_DROP_TAB_COUNT ? $INTERVIEW_DROP_TAB_COUNT : 0;?></div>
               <span class="count_bottom"><i class="green"><i class="green icon-circle-arrow-up"></i> 3% </i> From last Week</span>
             </div-->
+			
             <div class="span2 tile_stats_count">
               <span class="count_top"><i class="fa fa-user"></i> Interview Rejected</span>
               <div class="count green"><?php echo $INTERVIEW_REJ_TAB_COUNT ? $INTERVIEW_REJ_TAB_COUNT : 0;?></div>
-              <span class="count_bottom"><i class="green"><i class="icon-circle-arrow-up"></i> 34% </i> From last Week</span>
+              <!--span class="count_bottom"><i class="green"><i class="icon-circle-arrow-up"></i> 34% </i> From last Week</span-->
             </div>
 			
             <div class="span2 tile_stats_count">
               <span class="count_top"><i class="fa fa-user"></i> Total Offered</span>
               <div class="count"><?php echo $OFFER_TAB_COUNT;?></div>
-              <span class="count_bottom"><i class="red"><i class="fa icon-circle-arrow-down"></i> 12% </i> From last Week</span>
+              <!--span class="count_bottom"><i class="red"><i class="fa icon-circle-arrow-down"></i> 12% </i> From last Week</span-->
             </div>
 			
 			<div class="span2 tile_stats_count">
               <span class="count_top"><i class="fa fa-user"></i> Offer Rejected</span>
               <div class="count"><?php echo $OFFER_REJ_TAB_COUNT;?></div>
-              <span class="count_bottom"><i class="red"><i class="fa icon-circle-arrow-down"></i> 12% </i> From last Week</span>
+              <!--span class="count_bottom"><i class="red"><i class="fa icon-circle-arrow-down"></i> 12% </i> From last Week</span-->
             </div>
 			
 			
             <div class="span2 tile_stats_count"  style="width:160px;border:none;">
               <span class="count_top"><i class="fa fa-user"></i> Candidates Billed</span>
               <div class="count"><?php echo $BILLED_TAB_COUNT; ?> </div>
-              <span class="count_bottom"><i class="green"><i class="icon-circle-arrow-up"></i> 34% </i> From last Week</span>
+              <!--span class="count_bottom"><i class="green"><i class="icon-circle-arrow-up"></i> 34% </i> From last Week</span-->
             </div>
           
 			</div>
 			
 							<!--div class="flexslider2">
 							<ul class="slides dshb_icoNav tac  mt15">
-								<li><a rel="tooltip" target="_blank" title="Positions Created" href="<?php echo $this->webroot;?>position/"><span class="label label-info"><?php echo $POS_TAB_COUNT;?></span> <strong>Positions</strong></a></li>
-								<li><a rel="tooltip" target="_blank" title="CV Sent" href="<?php echo $this->webroot;?>resume/"><span class="label label-warning"><?php echo $CV_SENT_TAB_COUNT;?> </span> <strong>CV</strong> Sent</a></li>
-								<li><a rel="tooltip" target="_blank" title="CV Awaiting Feedback" href="<?php echo $this->webroot;?>resume/"><span class="label label"><?php echo $CV_WAITING_TAB_COUNT;?></span> <strong>Awaiting</strong></a></li>
-								<li><a rel="tooltip" target="_blank" title="CV Shortlisted" href="<?php echo $this->webroot;?>resume/"><span class="label label-success"><?php echo $CV_SHORTLIST_TAB_COUNT;?> </span> <strong>Shortlisted</strong></a></li>
-								<li><a rel="tooltip" target="_blank" title="CV Rejected" href="<?php echo $this->webroot;?>resume/"><span class="label label-important"><?php echo $CV_REJECT_TAB_COUNT;?> </span> <strong>CV Rejected</strong></a></li>
-								<li><a rel="tooltip" target="_blank" title="Interview Scheduled" href="<?php echo $this->webroot;?>hiring/interview.php"><span class="label label-warning" ><?php echo $INTERVIEW_TAB_COUNT;?> </span> <strong>Scheduled </strong></a></li>
-								<li><a rel="tooltip" target="_blank" title="Interview Dropouts" href="<?php echo $this->webroot;?>hiring/interview.php"><span class="label label-info"><?php echo $INTERVIEW_DROP_TAB_COUNT ? $INTERVIEW_DROP_TAB_COUNT : 0;?></span><strong>Dropouts</strong></a></li>
-								<li><a rel="tooltip" target="_blank" title="Interview Rejected" href="<?php echo $this->webroot;?>hiring/interview.php"><span class="label label-success"><?php echo $INTERVIEW_REJ_TAB_COUNT ? $INTERVIEW_REJ_TAB_COUNT : 0;?></span><strong>Rejected</strong></a></li>
-								<li><a rel="tooltip" target="_blank" title="Offers Made" href="<?php echo $this->webroot;?>resume/"><span class="label label-danger"><?php echo $OFFER_TAB_COUNT;?></span> <strong>Offered</strong></a></li>
-								<li><a rel="tooltip" target="_blank" title="Offer Dropouts" href="<?php echo $this->webroot;?>resume/"><span class="label label-info"><?php echo $OFFER_REJ_TAB_COUNT;?> </span> <strong>Dropouts</strong></a></li>
-								<li><a rel="tooltip" target="_blank" title="Candidates Joined" href="<?php echo $this->webroot;?>resume/"><span class="label label-success"><?php echo $JOINED_TAB_COUNT; ?> </span><strong> Joined</strong></a></li>
-								<li><a rel="tooltip"  target="_blank" title="Candidates Billed" href="<?php echo $this->webroot;?>resume/"><span class="label label-warning"><?php echo $BILLED_TAB_COUNT;?> </span> <strong>Billed</strong></a></li>
-								<li><a rel="tooltip" target="_blank" title="Recruiter Contributions"  href="<?php echo $this->webroot;?>hiring/billing.php"><span class="label label-info">₹<?php echo $BILLED_AMT_TAB_COUNT;?></span> <strong>Contribution</strong> </a></li>
+								<li><a rel="tooltip"  title="Positions Created" href="<?php echo $this->webroot;?>position/"><span class="label label-info"><?php echo $POS_TAB_COUNT;?></span> <strong>Positions</strong></a></li>
+								<li><a rel="tooltip"  title="CV Sent" href="<?php echo $this->webroot;?>resume/"><span class="label label-warning"><?php echo $CV_SENT_TAB_COUNT;?> </span> <strong>CV</strong> Sent</a></li>
+								<li><a rel="tooltip"  title="CV Awaiting Feedback" href="<?php echo $this->webroot;?>resume/"><span class="label label"><?php echo $CV_WAITING_TAB_COUNT;?></span> <strong>Awaiting</strong></a></li>
+								<li><a rel="tooltip"  title="CV Shortlisted" href="<?php echo $this->webroot;?>resume/"><span class="label label-success"><?php echo $CV_SHORTLIST_TAB_COUNT;?> </span> <strong>Shortlisted</strong></a></li>
+								<li><a rel="tooltip"  title="CV Rejected" href="<?php echo $this->webroot;?>resume/"><span class="label label-important"><?php echo $CV_REJECT_TAB_COUNT;?> </span> <strong>CV Rejected</strong></a></li>
+								<li><a rel="tooltip"  title="Interview Scheduled" href="<?php echo $this->webroot;?>hiring/interview.php"><span class="label label-warning" ><?php echo $INTERVIEW_TAB_COUNT;?> </span> <strong>Scheduled </strong></a></li>
+								<li><a rel="tooltip"  title="Interview Dropouts" href="<?php echo $this->webroot;?>hiring/interview.php"><span class="label label-info"><?php echo $INTERVIEW_DROP_TAB_COUNT ? $INTERVIEW_DROP_TAB_COUNT : 0;?></span><strong>Dropouts</strong></a></li>
+								<li><a rel="tooltip"  title="Interview Rejected" href="<?php echo $this->webroot;?>hiring/interview.php"><span class="label label-success"><?php echo $INTERVIEW_REJ_TAB_COUNT ? $INTERVIEW_REJ_TAB_COUNT : 0;?></span><strong>Rejected</strong></a></li>
+								<li><a rel="tooltip"  title="Offers Made" href="<?php echo $this->webroot;?>resume/"><span class="label label-danger"><?php echo $OFFER_TAB_COUNT;?></span> <strong>Offered</strong></a></li>
+								<li><a rel="tooltip"  title="Offer Dropouts" href="<?php echo $this->webroot;?>resume/"><span class="label label-info"><?php echo $OFFER_REJ_TAB_COUNT;?> </span> <strong>Dropouts</strong></a></li>
+								<li><a rel="tooltip"  title="Candidates Joined" href="<?php echo $this->webroot;?>resume/"><span class="label label-success"><?php echo $JOINED_TAB_COUNT; ?> </span><strong> Joined</strong></a></li>
+								<li><a rel="tooltip"   title="Candidates Billed" href="<?php echo $this->webroot;?>resume/"><span class="label label-warning"><?php echo $BILLED_TAB_COUNT;?> </span> <strong>Billed</strong></a></li>
+								<li><a rel="tooltip"  title="Recruiter Contributions"  href="<?php echo $this->webroot;?>hiring/billing.php"><span class="label label-info">₹<?php echo $BILLED_AMT_TAB_COUNT;?></span> <strong>Contribution</strong> </a></li>
 							</ul>
 							</div-->
 						</div>
@@ -268,7 +269,7 @@
 								<li>
 <span class="s_color sl_date2" style="font-size:12px;color:#b2abab;"><?php echo date('d,M', strtotime($data['ReqResume']['modified_date']));?>, </span>
 <span class="label label-<?php echo $this->Functions->get_res_status_color($data['ReqResume']['status_title']);?> pull-right sl_status2"><?php echo $this->Functions->get_status_crisp($data['ReqResume']['stage_title'], $data['ReqResume']['status_title']);?></span>
-<a target="_blank" href="<?php echo $this->webroot;?>resume/view/<?php echo $data['Resume']['id'];?>" class="sl_name2"><?php echo $data[0]['full_name'];?></a><br />
+<a  href="<?php echo $this->webroot;?>resume/view/<?php echo $data['Resume']['id'];?>" class="sl_name2"><?php echo $data[0]['full_name'];?></a><br />
 <small class="s_color sl_email2"> <?php echo $data['Resume']['email_id'];?> <i class="splashy-bullet_blue_small"></i> <?php echo $data['Resume']['mobile'];?></small>
 
 							</li>							
@@ -313,7 +314,7 @@
 <span class="s_color sl_date" style="font-size:12px;color:#b2abab;"><?php echo date('d,M', strtotime($data['ReqResume']['modified_date']));?>, </span>
 									<span class="label label-<?php echo $this->Functions->get_int_status_color($data['ReqResume']['status_title']);?> pull-right">
 									<span class="sl_status"><?php echo $this->Functions->get_status_crisp($data['ReqResume']['stage_title'], $data['ReqResume']['status_title']);?></span></span>
-									<a target="_blank" href="<?php echo $this->webroot;?>resume/view/<?php echo $data['Resume']['id'];?>" class="sl_name"><?php echo $data[0]['full_name'];?></a><br />
+									<a  href="<?php echo $this->webroot;?>resume/view/<?php echo $data['Resume']['id'];?>" class="sl_name"><?php echo $data[0]['full_name'];?></a><br />
 									<small class="s_color sl_email"><?php echo $data['Resume']['email_id'];?> <i class="splashy-bullet_blue_small"></i> <?php echo $data['Resume']['mobile'];?></small>
 								</li>
 								
@@ -348,11 +349,11 @@
 								<tbody class="">
 								<?php foreach($client_data as $data):?>
 									<tr>
-										<td ><a  target="_blank" href="<?php echo $this->webroot;?>client/view/<?php echo $data['Client']['id'];?>"><?php echo $data['Client']['client_name'];?></a></td>
+										<td ><a   href="<?php echo $this->webroot;?>client/view/<?php echo $data['Client']['id'];?>"><?php echo $data['Client']['client_name'];?></a></td>
 										<td ><?php echo $data['ResLocation']['location'];?></td>
 										<td><?php echo $data['Creator']['first_name'];?></td>
 										<td><?php echo $this->Functions->format_date($data['Client']['created_date']);?></td>
-										<td  width="100" style="text-align:center"><a target="_blank"  href="<?php echo $this->webroot;?>position/?keyword=<?php echo $data['Client']['client_name'];?>"><?php echo $data[0]['req_count'];?></a></td>										
+										<td  width="100" style="text-align:center"><a   href="<?php echo $this->webroot;?>position/?keyword=<?php echo $data['Client']['client_name'];?>"><?php echo $data[0]['req_count'];?></a></td>										
 									</tr>
 								<?php endforeach; ?>	
 								</tbody>
@@ -380,11 +381,11 @@
 								<tbody class="">
 								<?php foreach($position_data as $data):?>
 									<tr>
-										<td><a target="_blank"  href="<?php echo $this->webroot;?>position/view/<?php echo $data['Position']['id'];?>"><?php echo $data['Position']['job_title'];?></a></td>
+										<td><a   href="<?php echo $this->webroot;?>position/view/<?php echo $data['Position']['id'];?>"><?php echo $data['Position']['job_title'];?></a></td>
 										<td><?php echo $data['Client']['client_name'];?></td>
 										<td><span class="label label-<?php echo $this->Functions->get_req_status_color($data['ReqStatus']['title']);?>"><?php echo $data['ReqStatus']['title'];?></span></td>
 										<td><?php echo $this->Functions->format_date($data['Position']['created_date']);?></td>
-										<td style="text-align:center"><a target="_blank"  href="<?php echo $this->webroot;?>resume/?status=1"><?php echo $data[0]['cv_sent'];?></a></td>
+										<td style="text-align:center"><a   href="<?php echo $this->webroot;?>resume/?status=1"><?php echo $data[0]['cv_sent'];?></a></td>
 										
 									</tr>
 									<?php endforeach; ?>	
@@ -436,7 +437,7 @@
 								<span class="s_color sl_date3" style="font-size:12px;color:#b2abab;"><?php echo date('d,M', strtotime($data['ReqResume']['modified_date']));?>, </span>
 									<span class="label label-<?php echo $this->Functions->get_offer_status_color($data['ReqResume']['status_title']);?> pull-right">
 									<span class="sl_status3"><?php echo $this->Functions->get_status_crisp($data['ReqResume']['stage_title'], $data['ReqResume']['status_title']);?></span></span>
-									<a target="_blank"  href="<?php echo $this->webroot;?>resume/view/<?php echo $data['Resume']['id'];?>" class="sl_name3"><?php echo $data[0]['full_name'];?></a><br />
+									<a   href="<?php echo $this->webroot;?>resume/view/<?php echo $data['Resume']['id'];?>" class="sl_name3"><?php echo $data[0]['full_name'];?></a><br />
 									<small class="s_color sl_email3"><?php echo $data['Resume']['email_id'];?> <i class="splashy-bullet_blue_small"></i> <?php echo $data['Resume']['mobile'];?></small>
 								</li>							
 							<?php endforeach; ?>
@@ -478,7 +479,7 @@
 							<span class="s_color sl_date4" style="font-size:12px;color:#b2abab;"><?php echo date('d,M', strtotime($data['ReqResume']['modified_date']));?>, </span>
 									<span class="label label-<?php echo $this->Functions->get_join_status_color($data['ReqResume']['status_title']);?> pull-right">
 									 <span class="sl_status4"><?php echo $this->Functions->get_status_crisp($data['ReqResume']['stage_title'], $data['ReqResume']['status_title']);?></span></span>
-									<a target="_blank" href="<?php echo $this->webroot;?>resume/view/<?php echo $data['Resume']['id'];?>" class="sl_name4"><?php echo $data[0]['full_name'];?></a><br />
+									<a  href="<?php echo $this->webroot;?>resume/view/<?php echo $data['Resume']['id'];?>" class="sl_name4"><?php echo $data[0]['full_name'];?></a><br />
 									<small class="s_color sl_email4"><?php echo $data['Resume']['email_id'];?> <i class="splashy-bullet_blue_small"></i> <?php echo $data['Resume']['mobile'];?></small>
 								</li>							
 							<?php endforeach; ?>
@@ -521,7 +522,7 @@
 									foreach($DATE_COUNT as $req_key =>  $date): 
 									foreach($CV_JOIN_DATA[$req_key] as $graph_data):?>
 										<tr class="graphRow cv_join_row_<?php echo $date;?>">
-											<td><a target="_blank" href="<?php echo $this->webroot;?>resume/view/<?php echo $graph_data['Resume']['id'];?>/"><?php echo ucwords($graph_data['Resume']['first_name'].' '.$graph_data['Resume']['last_name']);?></a></td>
+											<td><a  href="<?php echo $this->webroot;?>resume/view/<?php echo $graph_data['Resume']['id'];?>/"><?php echo ucwords($graph_data['Resume']['first_name'].' '.$graph_data['Resume']['last_name']);?></a></td>
 											<td> 
 												<?php echo $graph_data['Client']['client_name'];?>
 											</td>
@@ -550,7 +551,7 @@
 									foreach($DATE_COUNT as $req_key =>  $date): 
 									foreach($CV_BILL_DATA[$req_key] as $graph_data):?>
 										<tr class="graphRow cv_bill_row_<?php echo $date;?>">
-											<td><a target="_blank" href="<?php echo $this->webroot;?>resume/view/<?php echo $graph_data['Resume']['id'];?>/"><?php echo ucwords($graph_data['Resume']['first_name'].' '.$graph_data['Resume']['last_name']);?></a></td>
+											<td><a  href="<?php echo $this->webroot;?>resume/view/<?php echo $graph_data['Resume']['id'];?>/"><?php echo ucwords($graph_data['Resume']['first_name'].' '.$graph_data['Resume']['last_name']);?></a></td>
 											<td> 
 												<?php echo $graph_data['Client']['client_name'];?>
 											</td>
@@ -579,7 +580,7 @@
 									foreach($DATE_COUNT as $req_key =>  $date): 
 									foreach($CV_INT_DROP_DATA[$req_key] as $graph_data):?>
 										<tr class="graphRow cv_interview_drop_row_<?php echo $date;?>">
-											<td><a target="_blank" href="<?php echo $this->webroot;?>resume/view/<?php echo $graph_data['Resume']['id'];?>/"><?php echo ucwords($graph_data['Resume']['first_name'].' '.$graph_data['Resume']['last_name']);?></a></td>
+											<td><a  href="<?php echo $this->webroot;?>resume/view/<?php echo $graph_data['Resume']['id'];?>/"><?php echo ucwords($graph_data['Resume']['first_name'].' '.$graph_data['Resume']['last_name']);?></a></td>
 											<td> 
 												<?php echo $graph_data['Client']['client_name'];?>
 											</td>
@@ -611,7 +612,7 @@
 									foreach($DATE_COUNT as $req_key =>  $date): 
 									foreach($CV_INT_REJECT_DATA[$req_key] as $graph_data):?>
 										<tr class="graphRow cv_interview_reject_row_<?php echo $date;?>">
-											<td><a target="_blank" href="<?php echo $this->webroot;?>resume/view/<?php echo $graph_data['Resume']['id'];?>/"><?php echo ucwords($graph_data['Resume']['first_name'].' '.$graph_data['Resume']['last_name']);?></a></td>
+											<td><a href="<?php echo $this->webroot;?>resume/view/<?php echo $graph_data['Resume']['id'];?>/"><?php echo ucwords($graph_data['Resume']['first_name'].' '.$graph_data['Resume']['last_name']);?></a></td>
 											<td> 
 												<?php echo $graph_data['Client']['client_name'];?>
 											</td>
@@ -643,7 +644,7 @@
 									foreach($DATE_COUNT as $req_key =>  $date): 
 									foreach($CV_OFFER_DATA[$req_key] as $graph_data):?>
 										<tr class="graphRow cv_offer_row_<?php echo $date;?>">
-											<td><a target="_blank" href="<?php echo $this->webroot;?>resume/view/<?php echo $graph_data['Resume']['id'];?>/"><?php echo ucwords($graph_data['Resume']['first_name'].' '.$graph_data['Resume']['last_name']);?></a></td>
+											<td><a  href="<?php echo $this->webroot;?>resume/view/<?php echo $graph_data['Resume']['id'];?>/"><?php echo ucwords($graph_data['Resume']['first_name'].' '.$graph_data['Resume']['last_name']);?></a></td>
 											<td> 
 												<?php echo $graph_data['Client']['client_name'];?>
 											</td>
@@ -676,7 +677,7 @@
 									foreach($DATE_COUNT as $req_key =>  $date): 
 									foreach($CV_OFFER_REJECT_DATA[$req_key] as $graph_data):?>
 										<tr class="graphRow cv_offer_reject_row_<?php echo $date;?>">
-											<td><a target="_blank" href="<?php echo $this->webroot;?>resume/view/<?php echo $graph_data['Resume']['id'];?>/"><?php echo ucwords($graph_data['Resume']['first_name'].' '.$graph_data['Resume']['last_name']);?></a></td>
+											<td><a  href="<?php echo $this->webroot;?>resume/view/<?php echo $graph_data['Resume']['id'];?>/"><?php echo ucwords($graph_data['Resume']['first_name'].' '.$graph_data['Resume']['last_name']);?></a></td>
 											<td> 
 												<?php echo $graph_data['Client']['client_name'];?>
 											</td>
@@ -708,7 +709,7 @@
 									foreach($DATE_COUNT as $req_key =>  $date): 
 									foreach($CV_INTERVIEW_DATA[$req_key] as $graph_data):?>
 										<tr class="graphRow cv_interview_row_<?php echo $date;?>">
-											<td><a target="_blank" href="<?php echo $this->webroot;?>resume/view/<?php echo $graph_data['Resume']['id'];?>/"><?php echo ucwords($graph_data['Resume']['first_name'].' '.$graph_data['Resume']['last_name']);?></a></td>
+											<td><a  href="<?php echo $this->webroot;?>resume/view/<?php echo $graph_data['Resume']['id'];?>/"><?php echo ucwords($graph_data['Resume']['first_name'].' '.$graph_data['Resume']['last_name']);?></a></td>
 											
 											<td> 
 												<?php echo $graph_data['Client']['client_name'];?>
@@ -741,7 +742,7 @@
 									foreach($DATE_COUNT as $req_key =>  $date): 
 									foreach($CV_WAITING_DATA[$req_key] as $graph_data):?>
 										<tr class="graphRow cv_waiting_row_<?php echo $date;?>">
-											<td><a target="_blank" href="<?php echo $this->webroot;?>resume/view/<?php echo $graph_data['Resume']['id'];?>/"><?php echo ucwords($graph_data['Resume']['first_name'].' '.$graph_data['Resume']['last_name']);?></a></td>
+											<td><a  href="<?php echo $this->webroot;?>resume/view/<?php echo $graph_data['Resume']['id'];?>/"><?php echo ucwords($graph_data['Resume']['first_name'].' '.$graph_data['Resume']['last_name']);?></a></td>
 											<td> 
 												<?php echo $graph_data['Client']['client_name'];?>
 											</td>
@@ -769,7 +770,7 @@
 									foreach($DATE_COUNT as $req_key =>  $date): 
 									foreach($CV_SHORTLIST_DATA[$req_key] as $graph_data):?>
 										<tr class="graphRow cv_shortlist_row_<?php echo $date;?>">
-											<td><a target="_blank" href="<?php echo $this->webroot;?>resume/view/<?php echo $graph_data['Resume']['id'];?>/"><?php echo ucwords($graph_data['Resume']['first_name'].' '.$graph_data['Resume']['last_name']);?></a></td>
+											<td><a  href="<?php echo $this->webroot;?>resume/view/<?php echo $graph_data['Resume']['id'];?>/"><?php echo ucwords($graph_data['Resume']['first_name'].' '.$graph_data['Resume']['last_name']);?></a></td>
 											<td> 
 												<?php echo $graph_data['Client']['client_name'];?>
 											</td>
@@ -796,7 +797,7 @@
 									foreach($DATE_COUNT as $req_key =>  $date): 
 									foreach($CV_REJECT_DATA[$req_key] as $graph_data):?>
 										<tr class="graphRow cv_reject_row_<?php echo $date;?>">
-											<td><a target="_blank" href="<?php echo $this->webroot;?>resume/view/<?php echo $graph_data['Resume']['id'];?>/"><?php echo ucwords($graph_data['Resume']['first_name'].' '.$graph_data['Resume']['last_name']);?></a></td>
+											<td><a  href="<?php echo $this->webroot;?>resume/view/<?php echo $graph_data['Resume']['id'];?>/"><?php echo ucwords($graph_data['Resume']['first_name'].' '.$graph_data['Resume']['last_name']);?></a></td>
 											<td> 
 												<?php echo $graph_data['Client']['client_name'];?>
 											</td>
@@ -824,7 +825,7 @@
 									foreach($DATE_COUNT as $req_key =>  $date): 
 									foreach($CV_SENT_DATA[$req_key] as $graph_data):?>
 										<tr class="graphRow cv_sent_row_<?php echo $date;?>">
-											<td><a target="_blank" href="<?php echo $this->webroot;?>resume/view/<?php echo $graph_data['Resume']['id'];?>/"><?php echo ucwords($graph_data['Resume']['first_name'].' '.$graph_data['Resume']['last_name']);?></a></td>
+											<td><a  href="<?php echo $this->webroot;?>resume/view/<?php echo $graph_data['Resume']['id'];?>/"><?php echo ucwords($graph_data['Resume']['first_name'].' '.$graph_data['Resume']['last_name']);?></a></td>
 											<td> 
 												<?php echo $graph_data['Client']['client_name'];?>
 											</td>
@@ -852,7 +853,7 @@
 									foreach($DATE_COUNT as $req_key =>  $date): 
 									foreach($REQ_DATA[$req_key] as $graph_data):?>
 										<tr class="graphRow req_row_<?php echo $date;?>">
-											<td><a target="_blank" href="<?php echo $this->webroot;?>position/view/<?php echo $graph_data['Home']['id'];?>/"><?php echo $graph_data['Home']['job_title'];?></a></td>
+											<td><a  href="<?php echo $this->webroot;?>position/view/<?php echo $graph_data['Home']['id'];?>/"><?php echo $graph_data['Home']['job_title'];?></a></td>
 											<td> 
 												<?php echo $graph_data['Client']['client_name'];?>
 											</td>

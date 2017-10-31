@@ -138,7 +138,7 @@
 		textarea, input {outline: none}
 
 	/* header */
-		.navbar .brand {width: 100px;padding-bottom:0;padding-top:0;font: 100 15px/30px 'PT Sans', sans-serif;text-decoration:none;color: #fff}
+		.navbar .brand {width: 100px;padding-bottom:0;font-weight:bold;padding-top:0;margin-top:6px;font-size: 14px;text-decoration:none;color: #fff}
 		.navbar .brand i {margin-top:5px}
         .navbar .caret {opacity: .6;filter: alpha(opacity=60)}
 		.navbar .user_menu {margin-left: 0}
@@ -966,7 +966,7 @@ line-height: 18px;padding: 3px 15px;background-color:#eaeeef !important; backgro
 }
 
 .tile_count .tile_stats_count {
-    border-right: 2px solid #ADB2B5;
+    border-right: 1px dashed #ADB2B5;
     padding: 0 10px 0 20px;
     position: relative;
 	

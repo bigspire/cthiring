@@ -633,7 +633,7 @@
 										
 										<?php if($resume['ReqResume']['status_title'] == 'Scheduled'):?>
 										
-										<li><a  href="<?php echo $this->webroot;?>position/schedule_interview/<?php echo  $resume['Resume']['id'];?>/<?php echo $this->request->params['pass'][0];?>/<?php echo $resume['ReqResume']['id'];?>/<?php echo $int_lev;?>/reschedule/" val="65_90"  class="iframeBox sepV_a cboxElement">Interview Re-Schedule</a></li>
+										<li><a  href="<?php echo $this->webroot;?>position/schedule_interview/<?php echo  $resume['Resume']['id'];?>/<?php echo $this->request->params['pass'][0];?>/<?php echo $resume['ReqResume']['id'];?>/<?php echo $int_lev_same;?>/reschedule/" val="65_90"  class="iframeBox sepV_a cboxElement">Interview Re-Schedule</a></li>
 										
 										<li class="divider"></li>
 										

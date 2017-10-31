@@ -167,6 +167,12 @@ class PositionController extends AppController {
 			//unset($date_cond);
 			
 		}
+		
+		// for client condition
+		if($this->request->query['client_id'] != ''){
+			$clientCond = array('Position.clients_id' => $this->request->query['client_id']);
+		}
+		
 		// for branch condition
 		if($this->request->query['loc'] != ''){ 
 			$branchCond = array('Creator.location_id' => $this->request->query['loc']);
@@ -185,7 +191,7 @@ class PositionController extends AppController {
 		// show awaiting approval condition
 		if($rec_status =='pending'){
 			// $approveCond = array('Position.status' => 'I', 'Position.is_approve' => 'W');
-			$approveCond = array('PositionStatus.users_id' => $this->Session->read('USER.Login.id'),					'PositionStatus.status' => 'W');
+			$approveCond = array('PositionStatus.users_id' => $this->Session->read('USER.Login.id'),'PositionStatus.status' => 'W');
 		}else{
 			$approveCond = array('Position.status' => 'A', 'Position.is_approve' => 'A');
 		}
@@ -209,12 +215,12 @@ class PositionController extends AppController {
 		// for export
 		if($this->request->query['action'] == 'export'){
 			$data = $this->Position->find('all', array('fields' => $fields,'conditions' => 
-			array($keyCond,$date_cond,$branchCond,$empCond,$stCond,$teamCond,$contactCond), 
+			array($keyCond,$date_cond,$branchCond,$empCond,$stCond,$teamCond,$contactCond,$clientCond), 
 			'order' => array('created_date' => 'desc'), 'group' => array('Position.id'), 'joins' => $options));
 			$this->Excel->generate('positions', $data, $data, 'Report', 'Position');
 		}
 		
-		$this->paginate = array('fields' => $fields,'limit' => '25','conditions' => array($keyCond,$approveCond,$date_cond,$branchCond,$empCond,$stCond,$contactCond,$teamCond),
+		$this->paginate = array('fields' => $fields,'limit' => '25','conditions' => array($keyCond,$approveCond,$date_cond,$branchCond,$empCond,$stCond,$contactCond,$teamCond,$clientCond),
 		'order' => array('created_date' => 'desc'),	'group' => array('Position.id'), 'joins' => $options);
 		$data = $this->paginate('Position');
 		$this->set('data', $data);

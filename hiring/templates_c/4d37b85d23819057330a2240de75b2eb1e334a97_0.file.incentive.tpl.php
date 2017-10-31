@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-10-22 13:10:22
+/* Smarty version 3.1.29, created on 2017-10-31 19:25:31
   from "C:\xampp\htdocs\ctsvn\cthiring\hiring\templates\incentive.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_59ec4b66c03131_78298739',
+  'unifunc' => 'content_59f880d32ef6c9_78991809',
   'file_dependency' => 
   array (
     '4d37b85d23819057330a2240de75b2eb1e334a97' => 
     array (
       0 => 'C:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\templates\\incentive.tpl',
-      1 => 1498131200,
+      1 => 1509456750,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_59ec4b66c03131_78298739 ($_smarty_tpl) {
+function content_59f880d32ef6c9_78991809 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -67,8 +67,11 @@ home"><i class="icon-home"></i></a>
 &t_date=<?php echo $_smarty_tpl->tpl_vars['t_date']->value;?>
 " name="export" class="jsRedirect btn btn-warning" >Export</button></a></a>							
 							<?php }?>	
+							 
+							<?php if ($_smarty_tpl->tpl_vars['module']->value['create_incentive'] == '1') {?>
 							<a class="jsRedirect" data-notify-time = '3000'   href="add_incentive.php">
-							<input type="button" value="Create Incentive" class="btn btn-info"/></a>					
+							<input type="button" value="Create Incentive" class="btn btn-info"/></a>
+							<?php }?>
 							</div>
 
 				 	<?php if ($_smarty_tpl->tpl_vars['ALERT_MSG']->value) {?>

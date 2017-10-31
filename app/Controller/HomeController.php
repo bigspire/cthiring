@@ -54,7 +54,7 @@ class HomeController  extends AppController {
 		$this->set('locList', $this->get_loc_details());
 		// apply date conditions
 		// for testing date changed
-		$dateFrm = date('Y-m-d', strtotime('-9 days'));
+		$dateFrm = date('Y-m-d', strtotime('-6 days'));
 		//$dateFrm = '2017-06-01';
 		//$dateTo = '2017-06-10';
 		$dateTo = date('Y-m-d');
