@@ -23,12 +23,22 @@ include('classes/class.mailer.php');
 // content class
 include('classes/class.content.php');
 
+<<<<<<< HEAD
+// generate auto resume doc file
+// include('vendor/PHPWord-develop/samples/template_process.php');
+// generate the auto resume pdf file
+include('vendor/ilovepdf-php-1.1.5/samples/office.php');
+
+
+
+=======
+>>>>>>> f1cf94f1e451666b1c26d60ec60d158732da4a1a
 
 $smarty->assign('dob_default', date('d/m/Y', strtotime('-18 years')));
 
 // role based validation
-$module_access = $fun->check_role_access('7',$modules);
-$smarty->assign('module',$module_access);
+// $module_access = $fun->check_role_access('7',$modules);
+// $smarty->assign('module',$module_access);
 
 $getid = $_GET['id'];
 $smarty->assign('getid',$getid);
@@ -48,7 +58,7 @@ if($getid !=''){
 		$row = $mysql->display_result($result);
 		$total = $row['id'];
 		if($total == '' || $row['created_by'] != $_SESSION['user_id']){ 
-			header('Location: ../resume/?current_status=msg');
+			//header('Location: ../resume/?current_status=msg');
 		}
 		// free the memory
 		$mysql->clear_result($result);

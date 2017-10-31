@@ -13,7 +13,7 @@ define('Database', 'cthiringdata');
 */
 define('Host', '35.202.182.147');
 define('Username', 'root');
-define('Password', 'coma#9!');
+define('Password', 'como#9!');
 define('Database', 'mhdata');
 
 ?>
