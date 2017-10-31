@@ -43,23 +43,32 @@
 						</div>
 						
 						<?php if($this->request->query['action'] == 'created'):	?>					
-						<div id="flashMessage" class="alert alert-success">
-						<button type="button" class="close" data-dismiss="alert-error">×</button>Resume Created Successfully</div>
+						<div class="alert alert-success">
+								<a class="close" data-dismiss="alert">×</a>
+								 Resume Created Successfully
+								 </div>
 						<?php endif; ?>
 						
-						<?php if($this->request->query['action'] == 'modified'):	?>					
-						<div id="flashMessage" class="alert alert-success">
-						<button type="button" class="close" data-dismiss="alert-error">×</button>Resume Modified Successfully</div>
+						<?php if($this->request->query['action'] == 'modified'):	?>
+							<div class="alert alert-success">
+								<a class="close" data-dismiss="alert">×</a>
+								 Resume Modified Successfully
+								 </div>						
+					
 						<?php endif; ?>
 
 						<?php if($this->request->query['action'] == 'auto_created'):	?>					
-						<div id="flashMessage" class="alert alert-success">
-						<button type="button" class="close" data-dismiss="alert-error">×</button>Autoresume Created Successfully</div>
+						<div class="alert alert-success">
+								<a class="close" data-dismiss="alert">×</a>
+								 AutoResume Created Successfully
+								 </div>	
 						<?php endif; ?>
 						
 						<?php if($this->request->query['action'] == 'auto_modified'):	?>					
-						<div id="flashMessage" class="alert alert-success">
-						<button type="button" class="close" data-dismiss="alert-error">×</button>Autoresume Modified Successfully</div>
+						<div class="alert alert-success">
+								<a class="close" data-dismiss="alert">×</a>
+								 AutoResume Modified Successfully
+								 </div>	
 						<?php endif; ?>
 						
 						
@@ -164,7 +173,7 @@
 										<th width="50"><?php echo $this->Paginator->sort('expected_ctc', 'Expected CTC', array('escape' => false, 'direction' => 'desc'));?></th-->
 										<th width="120"><?php echo $this->Paginator->sort('status', 'Current Status', array('escape' => false, 'direction' => 'desc'));?></th>
 										<th width="75"><?php echo $this->Paginator->sort('Creator.first_name', 'Created By', array('escape' => false, 'direction' => 'desc'));?></th>
-										<th width="80" style="text-align:center">Actions</th>
+										<th width="90" style="text-align:center">Actions</th>
 										<th width="75"><?php echo $this->Paginator->sort('created_date', 'Created', array('escape' => false, 'direction' => 'desc'));?></th>
 										<th width="75"><?php echo $this->Paginator->sort('modified_date', 'Modified', array('escape' => false, 'direction' => 'desc'));?></th>
 										
@@ -177,7 +186,7 @@
 									<?php foreach($data as $res):?>
 									<tr>
 										<?php // if(!empty($noHead)): $target = "target='_blank'"; endif;?>
-										<td><a target='_blank'  href="<?php echo $this->webroot;?>resume/view/<?php echo $res['Resume']['id'];?>/"><?php echo ucwords($res[0]['full_name']);?></a></td>
+										<td><a  href="<?php echo $this->webroot;?>resume/view/<?php echo $res['Resume']['id'];?>/"><?php echo ucwords($res[0]['full_name']);?></a></td>
 										<td><?php echo $this->Functions->get_format_text($res['Resume']['mobile']);?></td>
 										<td><?php echo $this->Functions->get_format_text($res['Resume']['email_id']);?></td>
 										<!--td><?php echo $res['Resume']['present_employer'];?></td-->
@@ -242,7 +251,7 @@
 						
 												
                       
-					
+					<input type="hidden" id="file_download" rel="<?php echo $this->webroot;?>resume/download_snap/" value="<?php echo $file_download;?>"/>
                         
 					
 					</div>

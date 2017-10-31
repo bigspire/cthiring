@@ -28,8 +28,11 @@
             <link rel="stylesheet" href="<?php echo $this->webroot;?>hiring/bootstrap/css/bootstrap.min.css" />
             <link rel="stylesheet" href="<?php echo $this->webroot;?>hiring/bootstrap/css/bootstrap-responsive.min.css" />
         <!-- gebo blue theme-->
-		<?php $theme = $this->Session->read('theme') ? $this->Session->read('theme') : 'blue'; ?>
+			 
+			<?php if($this->params['controller'] != 'login'):
+			$theme =  $_GET['color']  ?  $_GET['color'] :  $_COOKIE['CakeCookie']['THEME']; ?>
             <link rel="stylesheet" href="<?php echo $this->webroot;?>hiring/css/<?php echo $theme;?>.css" id="link_theme" />
+			<?php endif; ?>
         <!-- breadcrumbs-->
             <link rel="stylesheet" href="<?php echo $this->webroot;?>hiring/lib_cthiring/jBreadcrumbs/css/BreadCrumb.css" />
         <!-- tooltips-->
@@ -38,6 +41,9 @@
             <link rel="stylesheet" href="<?php echo $this->webroot;?>hiring/lib_cthiring/colorbox/colorbox.css" />    
         <!-- code prettify -->
             <link rel="stylesheet" href="<?php echo $this->webroot;?>hiring/lib_cthiring/google-code-prettify/prettify.css" />    
+			
+			<link rel="stylesheet" href="<?php echo $this->webroot;?>hiring/css/gritter/jquery.gritter.css" />    
+
         <!-- notifications -->
             <link rel="stylesheet" href="<?php echo $this->webroot;?>hiring/lib_cthiring/sticky/sticky.css" />    
         <!-- splashy icons -->
@@ -155,6 +161,12 @@
 					setTimeout('$("html").removeClass("js")',1000);
 				});
 			</script>
+			
+			<script type="text/javascript" src="<?php echo $this->webroot;?>hiring/lib_cthiring/sticky/sticky.min.js"></script>
+			
+			<script src="<?php echo $this->webroot;?>hiring/js/gritter/jquery.gritter.min.js"></script>
+
+			
 			<script type="text/javascript" src="<?php echo $this->webroot;?>hiring/lib_cthiring/chosen/chosen.jquery.min.js"></script>
 			<script src="<?php echo $this->webroot;?>hiring/js/smoke.min.js"></script>
 			<script type="text/javascript" src="<?php echo $this->webroot;?>hiring/js/jquery.autocomplete.min.js"></script>

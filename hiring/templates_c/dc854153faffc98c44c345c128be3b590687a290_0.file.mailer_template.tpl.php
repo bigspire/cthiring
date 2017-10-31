@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-10-22 13:56:04
+/* Smarty version 3.1.29, created on 2017-10-30 21:39:19
   from "C:\xampp\htdocs\ctsvn\cthiring\hiring\templates\mailer_template.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_59ec561c49ed60_56188210',
+  'unifunc' => 'content_59f74eafd0bb49_65165898',
   'file_dependency' => 
   array (
     'dc854153faffc98c44c345c128be3b590687a290' => 
     array (
       0 => 'C:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\templates\\mailer_template.tpl',
-      1 => 1500741076,
+      1 => 1509379758,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_59ec561c49ed60_56188210 ($_smarty_tpl) {
+function content_59f74eafd0bb49_65165898 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -129,7 +129,7 @@ echo nl2br($_smarty_tpl->tpl_vars['message']->value);
 										<br>
 										<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['messageErr']->value;?>
 </label>
-										
+										<h3>Tags</h3>
 										<?php
 $_from = $_smarty_tpl->tpl_vars['data']->value;
 if (!is_array($_from) && !is_object($_from)) {
@@ -145,7 +145,7 @@ $_smarty_tpl->tpl_vars['item']->_loop = true;
 $__foreach_item_0_saved_local_item = $_smarty_tpl->tpl_vars['item'];
 ?>
 										<a href="javascript:void(0)"  rel="<?php echo $_smarty_tpl->tpl_vars['item']->value['tag'];?>
-" rel="tooltip"  class="btn tag_name btn-mini btn-info" title="<?php echo $_smarty_tpl->tpl_vars['item']->value['tag_desc'];?>
+" rel="tooltip"  style="margin-top:8px" class="btn tag_name btn-mini btn-info" title="<?php echo $_smarty_tpl->tpl_vars['item']->value['tag_desc'];?>
 "><?php echo $_smarty_tpl->tpl_vars['item']->value['tag_name'];?>
 </a>
 										<?php

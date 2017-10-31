@@ -690,6 +690,20 @@ class FunctionsHelper extends AppHelper {
 		return $value;
    }
    
-  
+	/* function to show the title in dash */
+	public function show_view_detail($cur_view,$ac_dash,$rec_dash,$bd_dash){ 
+		switch($cur_view){
+			case 'bd_view':
+			$title = ($bd_dash == 'active') ? 'You are in BD Dashboard' : 'Click to BD Dashboard';
+			break;
+			case 'ac_view':
+			$title = ($ac_dash == 'active') ? 'You are in AH Dashboard' : 'Click to AH Dashboard';
+			break;
+			case 'rec_view':
+			$title = ($rec_dash == 'active') ? 'You are in Recruiter Dashboard' : 'Click to Recruiter Dashboard';
+			break;			
+		}
+		return $title;
+	}
 }
 ?>

@@ -52,12 +52,19 @@ class Home extends AppModel {
             'empty' => array(
                 'rule'     => 'notEmpty',
                 'required' => true,
-                'message'  => 'Please enter the feedback'
+                'message'  => 'Please enter the message'
             ),
 			'length' => array(
                 'rule'     => array('minLength', '10'),
                 'required' => true,
-                'message'  => 'Feedback seems to be too small'
+                'message'  => 'Message seems to be too small'
+            )
+		),
+		'subject' => array(		
+            'empty' => array(
+                'rule'     => 'notEmpty',
+                'required' => true,
+                'message'  => 'Please enter the subject of the issue'
             )
 		)
 	);

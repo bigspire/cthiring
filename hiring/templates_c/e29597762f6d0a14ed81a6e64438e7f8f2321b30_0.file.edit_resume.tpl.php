@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-10-25 17:08:58
+/* Smarty version 3.1.29, created on 2017-10-30 18:45:50
   from "C:\xampp\htdocs\ctsvn\cthiring\hiring\templates\edit_resume.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_59f077d25ae861_82367090',
+  'unifunc' => 'content_59f72606363666_84525818',
   'file_dependency' => 
   array (
     'e29597762f6d0a14ed81a6e64438e7f8f2321b30' => 
     array (
       0 => 'C:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\templates\\edit_resume.tpl',
-      1 => 1508907597,
+      1 => 1509369339,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_59f077d25ae861_82367090 ($_smarty_tpl) {
+function content_59f72606363666_84525818 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -120,7 +120,7 @@ echo $_smarty_tpl->tpl_vars['last_nameErr']->value;?>
 									<tr>
 										<td width="120" class="tbl_column">DOB <span class="f_req">*</span></td>
 										<td> 
-										<input name="dob" tabindex="5" value="<?php echo $_smarty_tpl->tpl_vars['dob_field']->value;?>
+										<input name="dob" tabindex="5" value="<?php echo $_smarty_tpl->tpl_vars['dob']->value;?>
 "  class="datepick span8" placeholder="" type="text" id="HrEmployeeDob">										
 										<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['dobErr']->value;?>
 </label>																					
@@ -155,17 +155,19 @@ echo $_smarty_tpl->tpl_vars['last_nameErr']->value;?>
 										<td>
 										<select name="year_of_exp" tabindex="8" class="span4">
 										<option value="">Year</option>
-										<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['exp_yr']->value,'selected'=>$_smarty_tpl->tpl_vars['year_of_exp']->value),$_smarty_tpl);?>
+										<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['tot_exp_yr']->value,'selected'=>$_smarty_tpl->tpl_vars['year_of_exp']->value),$_smarty_tpl);?>
 	
 										</select>
 										<select name="month_of_exp" tabindex="9" class="inline_text span4">
 										<option value="">Month</option>
-										<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['exp_month']->value,'selected'=>$_smarty_tpl->tpl_vars['month_of_exp']->value),$_smarty_tpl);?>
+										<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['tot_exp_month']->value,'selected'=>$_smarty_tpl->tpl_vars['month_of_exp']->value),$_smarty_tpl);?>
 	
 										</select>
-										<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['year_of_expErr']->value;
-echo $_smarty_tpl->tpl_vars['month_of_expErr']->value;?>
-</label>																						
+										<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['year_of_expErr']->value;?>
+</label>	
+										<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['month_of_expErr']->value;?>
+</label>	
+										
 										</td>
 							</tr>
 								</tbody>
@@ -182,14 +184,14 @@ echo $_smarty_tpl->tpl_vars['month_of_expErr']->value;?>
 										
 										<input type="text"  tabindex="10" name="present_ctc" value="<?php echo $_smarty_tpl->tpl_vars['present_ctc']->value;?>
 " placeholder="Present"  class="span2"/>										
-										<select class="span3"   name="present_ctc_type">
+										<select class="span2"   name="present_ctc_type">
 										<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['ctc_type']->value,'selected'=>$_smarty_tpl->tpl_vars['present_ctc_type']->value),$_smarty_tpl);?>
 
 										</select> 
 											
 										<input type="text" tabindex="11" name="expected_ctc" value="<?php echo $_smarty_tpl->tpl_vars['expected_ctc']->value;?>
 " placeholder="Expected"  class="span2"/>	
-										<select  class="span3"  name="expected_ctc_type">
+										<select  class="span2"  name="expected_ctc_type">
 										<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['ctc_type']->value,'selected'=>$_smarty_tpl->tpl_vars['expected_ctc_type']->value),$_smarty_tpl);?>
 
 										</select>			
@@ -286,27 +288,7 @@ echo $_POST['native_location'];
 							</table>
 						</div>
 						
-						<div class="row-fluid" style="clear:left;float:left;margin-top:15px;">				
-			<div class="span12">
-	<table class="table table-bordered dataTable" style="margin-bottom:0;">
-	<tbody>
-<tr class="tbl_row">
 						
-<td style="margin:10px;text-align:center;">
-<textarea rows = "10" style="width:1200px;" name="RESUME_DATA">
-<?php if ($_smarty_tpl->tpl_vars['RESUME_DATA']->value) {
-echo $_smarty_tpl->tpl_vars['RESUME_DATA']->value;
-} else {
-echo $_POST['RESUME_DATA'];
-}?>
-</textarea>
-																						
-</td>
-</tr>									
-									
-	</tbody>
-	</table>
-</div>		</div>
 </div>
 	
 <!-- sheepIt Form -->
@@ -448,21 +430,35 @@ echo $_POST['RESUME_DATA'];
 										</td>
 							</tr>
 								<tr>
-										<td width="120" class="tbl_column">Employment Period<span class="f_req">*</span></td>
+										<td width="120" class="tbl_column">Employment Period<span class="f_req"> *</span></td>
 										<td>
-										<select name="year_of_exp_#index#" tabindex="2" id = "year_of_exp_#index#" tabindex="18" class="span4">
-										<option value="">Year</option>
-										<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['exp_yr']->value),$_smarty_tpl);?>
- 
-
-										</select>
-										<select name="month_of_exp_#index#" id = "month_of_exp_#index#" tabindex="3" class="inline_text span4">
-										<option value="">Month</option>
+										<select name="from_month_of_exp_#index#" id = "from_month_of_exp_#index#" tabindex="3" class="span2">
+										<option value="">From</option>
 										<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['exp_month']->value),$_smarty_tpl);?>
  
-
 										</select>
-										<label for="reg_city" generated="true" class="error" id="year_of_exp_Err_#index#"></label>																						
+										<select name="from_year_of_exp_#index#" id = "from_year_of_exp_#index#" tabindex="2" class="inline_text span2">
+										<option value="">From</option>
+										<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['exp_yr']->value),$_smarty_tpl);?>
+ 
+										</select>
+										
+										<select name="to_month_of_exp_#index#" id = "to_month_of_exp_#index#" tabindex="3" class="inline_text span2">
+										<option value="">To</option>
+										<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['exp_month']->value),$_smarty_tpl);?>
+ 
+										</select>
+										
+										<select name="to_year_of_exp_#index#" id = "to_year_of_exp_#index#" tabindex="2" class="inline_text span2">
+										<option value="">To</option>
+										<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['exp_yr']->value),$_smarty_tpl);?>
+ 
+										</select>
+										<label for="reg_city" generated="true" class="error" id="from_month_of_expErr_#index#"></label>																																
+										<label for="reg_city" generated="true" class="error" id="from_year_of_expErr_#index#"></label>																						
+										<label for="reg_city" generated="true" class="error" id="to_month_of_expErr_#index#"></label>																						
+										<label for="reg_city" generated="true" class="error" id="to_year_of_expErr_#index#"></label>																						
+										
 										</td>
 							</tr>
 							
@@ -498,7 +494,7 @@ echo $_POST['RESUME_DATA'];
 								<tr>
 										<td width="120" class="tbl_column">Other Vital Information (Position Specific)  <span class="f_req"></span></td>
 										<td> 
-										<textarea name="vital_#index#" tabindex="7" id="vital_#index#" cols="10" rows="3" class="span8"></textarea>
+										<textarea name="vital_#index#" tabindex="7" id="vital_#index#" cols="10" rows="3" class="span8 wysiwyg1"></textarea>
 										</td>
 							</tr>							
 								
@@ -535,9 +531,9 @@ echo $_POST['RESUME_DATA'];
 		  <table class="table table-bordered dataTable" style="margin-bottom:0;">
 		  <tbody>
 		  <tr>
-			<td width="120" class="tbl_column">Project / Certification Details (optional) <span class="f_req"></span></td>
+			<td width="133" class="tbl_column">Project / Certification Details (optional) <span class="f_req"></span></td>
 				<td> 
-						<textarea name="certification" tabindex="7" id="certification" cols="10" rows="3" class="span8"><?php if ($_smarty_tpl->tpl_vars['certification']->value) {
+						<textarea name="certification" tabindex="7" id="certification" cols="10" rows="3" class="span8 wysiwyg1"><?php if ($_smarty_tpl->tpl_vars['certification']->value) {
 echo $_smarty_tpl->tpl_vars['certification']->value;
 } else {
 echo $_POST['certification'];
@@ -551,23 +547,129 @@ echo $_POST['certification'];
 
 </div>
 <div class="tab-pane" id="mbox_Consultant">
-<div class="span12">
+<div class="span6">
 			<table class="table table-bordered dataTable" style="margin-bottom:0;">
 						<tbody>
+						
+						<tr class="tbl_row">
+										<td width="120" class="tbl_column">Rate Technical Skills <span class="f_req"></span></td>
+										<td>
+<ul class="ratingList"> 
+<?php
+$_from = $_smarty_tpl->tpl_vars['tsData']->value;
+if (!is_array($_from) && !is_object($_from)) {
+settype($_from, 'array');
+}
+$__foreach_ts_data_0_saved_item = isset($_smarty_tpl->tpl_vars['ts_data']) ? $_smarty_tpl->tpl_vars['ts_data'] : false;
+$_smarty_tpl->tpl_vars['ts_data'] = new Smarty_Variable();
+$_smarty_tpl->tpl_vars['ts_data']->_loop = false;
+foreach ($_from as $_smarty_tpl->tpl_vars['ts_data']->key => $_smarty_tpl->tpl_vars['ts_data']->value) {
+$_smarty_tpl->tpl_vars['ts_data']->_loop = true;
+$__foreach_ts_data_0_saved_local_item = $_smarty_tpl->tpl_vars['ts_data'];
+if ($_smarty_tpl->tpl_vars['ts_data']->value) {?>
+  <li><input class="span8" readonly="readonly" placeholder="" name="ts[]" value="<?php if ($_POST) {
+echo $_smarty_tpl->tpl_vars['ts_data']->value;
+} else {
+echo $_smarty_tpl->tpl_vars['ts_data']->key;
+}?>" type="text">   
+  <input name="tsr[]" type="hidden" value="<?php if ($_POST) {
+echo $_smarty_tpl->tpl_vars['tsrData']->value[$_smarty_tpl->tpl_vars['ts_data']->key];
+} else {
+echo $_smarty_tpl->tpl_vars['tsData']->value[$_smarty_tpl->tpl_vars['ts_data']->key];
+}?>"  class="rating" data-fractions="2"/> <span class="label label-info dn"><?php if ($_POST) {
+echo $_smarty_tpl->tpl_vars['tsrData']->value[$_smarty_tpl->tpl_vars['ts_data']->key];
+} else {
+echo $_smarty_tpl->tpl_vars['tsData']->value[$_smarty_tpl->tpl_vars['ts_data']->key];
+}?></span></li>
+  <?php }
+$_smarty_tpl->tpl_vars['ts_data'] = $__foreach_ts_data_0_saved_local_item;
+}
+if ($__foreach_ts_data_0_saved_item) {
+$_smarty_tpl->tpl_vars['ts_data'] = $__foreach_ts_data_0_saved_item;
+}
+?> 
+
+
+
+</ul>
+ 
+    <!-- Custom CSS -->
+ 
+										</td>	
+									</tr>	
+									
 									<tr class="tbl_row">
 										<td width="120" class="tbl_column">Consultant Assessment <span class="f_req"></span></td>
 										<td>
-<textarea placeholder="" name="consultant" tabindex="1" id="consultant" cols="10" rows="3" class="span10"><?php if ($_smarty_tpl->tpl_vars['consultant']->value) {
+<textarea placeholder="" name="consultant" tabindex="1" id="consultant" cols="10" rows="3" class="span10 wysiwyg1"><?php if ($_smarty_tpl->tpl_vars['consultant']->value) {
 echo $_smarty_tpl->tpl_vars['consultant']->value;
 } else {
 echo $_POST['consultant'];
 }?></textarea>
 										</td>	
 									</tr>	
+																						
+								</tbody>
+							</table>
+						</div>
+						
+						<div class="span6">
+			<table class="table table-bordered dataTable" style="margin-bottom:0;">
+						<tbody>
+						
+						<tr class="tbl_row">
+										<td width="120" class="tbl_column">Rate Behavioural Skills </td>
+										<td>
+<ul class="ratingList">
+ 
+ <?php
+$_from = $_smarty_tpl->tpl_vars['bsData']->value;
+if (!is_array($_from) && !is_object($_from)) {
+settype($_from, 'array');
+}
+$__foreach_bs_data_1_saved_item = isset($_smarty_tpl->tpl_vars['bs_data']) ? $_smarty_tpl->tpl_vars['bs_data'] : false;
+$_smarty_tpl->tpl_vars['bs_data'] = new Smarty_Variable();
+$_smarty_tpl->tpl_vars['bs_data']->_loop = false;
+foreach ($_from as $_smarty_tpl->tpl_vars['bs_data']->key => $_smarty_tpl->tpl_vars['bs_data']->value) {
+$_smarty_tpl->tpl_vars['bs_data']->_loop = true;
+$__foreach_bs_data_1_saved_local_item = $_smarty_tpl->tpl_vars['bs_data'];
+if ($_smarty_tpl->tpl_vars['bs_data']->value) {?>
+  <li><input class="span8" readonly="readonly" placeholder="" name="bs[]" value="<?php if ($_POST) {
+echo $_smarty_tpl->tpl_vars['bs_data']->value;
+} else {
+echo $_smarty_tpl->tpl_vars['bs_data']->key;
+}?>" type="text">   
+  <input name="bsr[]" type="hidden" value="<?php if ($_POST) {
+echo $_smarty_tpl->tpl_vars['bsrData']->value[$_smarty_tpl->tpl_vars['bs_data']->key];
+} else {
+echo $_smarty_tpl->tpl_vars['bsData']->value[$_smarty_tpl->tpl_vars['bs_data']->key];
+}?>"  class="rating" data-fractions="2"/> <span class="label label-info dn"><?php if ($_POST) {
+echo $_smarty_tpl->tpl_vars['bsrData']->value[$_smarty_tpl->tpl_vars['bs_data']->key];
+} else {
+echo $_smarty_tpl->tpl_vars['bsData']->value[$_smarty_tpl->tpl_vars['bs_data']->key];
+}?></span> </li>
+  <?php }
+$_smarty_tpl->tpl_vars['bs_data'] = $__foreach_bs_data_1_saved_local_item;
+}
+if ($__foreach_bs_data_1_saved_item) {
+$_smarty_tpl->tpl_vars['bs_data'] = $__foreach_bs_data_1_saved_item;
+}
+?> 
+
+ 
+ 
+</ul>
+ 
+										<!--label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['interview_availabilityErr']->value;?>
+</label-->
+										</td>	
+									</tr>
+
+								
 									<tr class="">
 										<td width="120" class="tbl_column">Interview Availability </td>
 										<td>
-<textarea placeholder="" name="interview_availability" tabindex="2"  cols="10" rows="3" class="span10"><?php if ($_smarty_tpl->tpl_vars['interview_availability']->value) {
+<textarea placeholder="" name="interview_availability" tabindex="2"  cols="10" rows="3" class="span10 wysiwyg1"><?php if ($_smarty_tpl->tpl_vars['interview_availability']->value) {
 echo $_smarty_tpl->tpl_vars['interview_availability']->value;
 } else {
 echo $_POST['interview_availability'];
@@ -577,6 +679,8 @@ echo $_POST['interview_availability'];
 								</tbody>
 							</table>
 						</div>
+						
+						
 						<input type="hidden" id="edu_count" name="edu_count" value="<?php echo $_smarty_tpl->tpl_vars['eduCount']->value;?>
 ">
 						<input type="hidden" id="exp_count" name="exp_count" value="<?php echo $_smarty_tpl->tpl_vars['expCount']->value;?>
@@ -612,6 +716,32 @@ resume" id="webroot">
 	</div>
 	</div>
 	</form>
+	
+	
+	<div class="row-fluid" style="clear:left;float:left;margin-top:15px;">				
+			<div class="span12">
+			<h3 class="heading">Candidate Resume</h3>
+	<table class="table table-bordered dataTable" style="margin-bottom:0;">
+	<tbody>
+	<tr class="tbl_row">
+									
+										<td style="margin:10px;text-align:center;">
+<textarea  class="span12" style="height:300px" name="RESUME_DATA">
+<?php if ($_smarty_tpl->tpl_vars['RESUME_DATA']->value) {
+echo $_smarty_tpl->tpl_vars['RESUME_DATA']->value;
+} else {
+echo $_POST['RESUME_DATA'];
+}?>
+</textarea>
+																						
+										</td>
+	</tr>									
+									
+	</tbody>
+	</table>
+</div>		</div>
+
+
      </div>
      </div> 
 		</div>
@@ -700,14 +830,27 @@ for ($_foo=true;$_smarty_tpl->tpl_vars['i']->value < $_smarty_tpl->tpl_vars['exp
 " name="areaData_<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
 " value="<?php echo $_smarty_tpl->tpl_vars['areaData']->value[$_smarty_tpl->tpl_vars['i']->value];?>
 ">
-		<input type="hidden" id="year_of_expData_<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
-" name="year_of_expData_<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
-" value="<?php echo $_smarty_tpl->tpl_vars['year_of_expData']->value[$_smarty_tpl->tpl_vars['i']->value];?>
+		<input type="hidden" id="from_year_of_expData_<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
+" name="from_year_of_expData_<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
+" value="<?php echo $_smarty_tpl->tpl_vars['from_year_of_expData']->value[$_smarty_tpl->tpl_vars['i']->value];?>
 ">
-		<input type="hidden" id="month_of_expData_<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
-" name="month_of_expData_<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
-" value="<?php echo $_smarty_tpl->tpl_vars['month_of_expData']->value[$_smarty_tpl->tpl_vars['i']->value];?>
+		<input type="hidden" id="from_month_of_expData_<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
+" name="from_month_of_expData_<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
+" value="<?php echo $_smarty_tpl->tpl_vars['from_month_of_expData']->value[$_smarty_tpl->tpl_vars['i']->value];?>
 ">
+		<input type="hidden" id="to_year_of_expData_<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
+" name="to_year_of_expData_<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
+" value="<?php echo $_smarty_tpl->tpl_vars['to_year_of_expData']->value[$_smarty_tpl->tpl_vars['i']->value];?>
+">
+		<input type="hidden" id="to_month_of_expData_<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
+" name="to_month_of_expData_<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
+" value="<?php echo $_smarty_tpl->tpl_vars['to_month_of_expData']->value[$_smarty_tpl->tpl_vars['i']->value];?>
+">
+		
+		<!--<input type="hidden" id="current_locData_<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
+" name="current_locData_<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
+" value="<?php echo $_smarty_tpl->tpl_vars['current_locData']->value[$_smarty_tpl->tpl_vars['i']->value];?>
+">-->
 		<input type="hidden" id="companyData_<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
 " name="companyData_<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
 " value="<?php echo $_smarty_tpl->tpl_vars['companyData']->value[$_smarty_tpl->tpl_vars['i']->value];?>
@@ -724,9 +867,19 @@ for ($_foo=true;$_smarty_tpl->tpl_vars['i']->value < $_smarty_tpl->tpl_vars['exp
 		<input type="hidden" id="desig_Err_Data_<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
 "  value="<?php echo $_smarty_tpl->tpl_vars['expErr']->value[$_smarty_tpl->tpl_vars['i']->value]['desigErr'];?>
 ">
-		<input type="hidden" id="year_of_exp_Err_Data_<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
-"  value="<?php echo $_smarty_tpl->tpl_vars['expErr']->value[$_smarty_tpl->tpl_vars['i']->value]['year_of_expErr'];?>
+		<input type="hidden" id="from_year_of_exp_Err_Data_<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
+"  value="<?php echo $_smarty_tpl->tpl_vars['expErr']->value[$_smarty_tpl->tpl_vars['i']->value]['from_year_of_expErr'];?>
 ">
+		<input type="hidden" id="from_month_of_exp_Err_Data_<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
+"  value="<?php echo $_smarty_tpl->tpl_vars['expErr']->value[$_smarty_tpl->tpl_vars['i']->value]['from_month_of_expErr'];?>
+">
+		<input type="hidden" id="to_year_of_exp_Err_Data_<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
+"  value="<?php echo $_smarty_tpl->tpl_vars['expErr']->value[$_smarty_tpl->tpl_vars['i']->value]['to_year_of_expErr'];?>
+">
+		<input type="hidden" id="to_month_of_exp_Err_Data_<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
+"  value="<?php echo $_smarty_tpl->tpl_vars['expErr']->value[$_smarty_tpl->tpl_vars['i']->value]['to_month_of_expErr'];?>
+">
+		
 		<input type="hidden" id="area_Err_Data_<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
 "  value="<?php echo $_smarty_tpl->tpl_vars['expErr']->value[$_smarty_tpl->tpl_vars['i']->value]['areaErr'];?>
 ">
@@ -893,6 +1046,8 @@ $(document).ready(function(){
 		   continuousIndex: true,
 		   afterAdd: function(source, newForm) {
 			 $('#exp_count').attr('value',source.getFormsCount());
+			  // for auto resize text area
+			 autosize(document.querySelectorAll('.wysiwyg1'));
 		   },
 		   afterRemoveCurrent: function(source) {		
 			 $('#exp_count').attr('value',source.getFormsCount());
@@ -914,11 +1069,17 @@ $(document).ready(function(){
 			if($('#areaData_'+i).length > 0){ 
 				$('#area_'+i).attr('value', $('#areaData_'+i).val());
 			}
-			if($('#year_of_expData_'+i).length > 0){ 
-				$('#year_of_exp_'+i).attr('value', $('#year_of_expData_'+i).val());
+		    if($('#from_year_of_expData_'+i).length > 0){ 
+				$('#from_year_of_exp_'+i).attr('value', $('#from_year_of_expData_'+i).val());
 			}
-			if($('#month_of_expData_'+i).length > 0){ 
-				$('#month_of_exp_'+i).val( $('#month_of_expData_'+i).val());
+			if($('#from_month_of_expData_'+i).length > 0){ 
+				$('#from_month_of_exp_'+i).val( $('#from_month_of_expData_'+i).val());
+			}
+			if($('#to_year_of_expData_'+i).length > 0){ 
+				$('#to_year_of_exp_'+i).attr('value', $('#to_year_of_expData_'+i).val());
+			}
+			if($('#to_month_of_expData_'+i).length > 0){ 
+				$('#to_month_of_exp_'+i).val( $('#to_month_of_expData_'+i).val());
 			}
 			if($('#companyData_'+i).length > 0){ 
 				$('#company_'+i).val( $('#companyData_'+i).val());
@@ -934,8 +1095,17 @@ $(document).ready(function(){
 			if($('#desig_Err_Data_'+i).length > 0){ 
 				$('#desig_Err_'+i).html($('#desig_Err_Data_'+i).val());
 			}
-			if($('#year_of_exp_Err_Data_'+i).length > 0){ 
-				$('#year_of_exp_Err_'+i).html($('#year_of_exp_Err_Data_'+i).val());
+			if($('#from_year_of_exp_Err_Data_'+i).length > 0){ 
+				$('#from_year_of_expErr_'+i).html($('#from_year_of_exp_Err_Data_'+i).val());
+			}
+			if($('#from_month_of_exp_Err_Data_'+i).length > 0){ 
+				$('#from_month_of_expErr_'+i).html($('#from_month_of_exp_Err_Data_'+i).val());
+			}
+			if($('#to_year_of_exp_Err_Data_'+i).length > 0){ 
+				$('#to_year_of_expErr_'+i).html($('#to_year_of_exp_Err_Data_'+i).val());
+			}
+			if($('#to_month_of_exp_Err_Data_'+i).length > 0){ 
+				$('#to_month_of_expErr_'+i).html($('#to_month_of_exp_Err_Data_'+i).val());
 			}
 			/*if($('#current_loc_Err_Data_'+i).length > 0){ 
 				$('#current_loc_Err_'+i).html($('#current_loc_Err_Data_'+i).val());

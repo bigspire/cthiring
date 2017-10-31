@@ -26,14 +26,14 @@
 									<div  class="btn-group clearfix sepH_a">
 									
 									<?php if($this->Session->read('USER.Login.roles_id') == '34'): ?>
-										<button rel="<?php echo $this->webroot;?>home/index/ac_view/" class="dash_view btn <?php echo $ac_dash;?>">Account Holder View</button>
-										<button rel="<?php echo $this->webroot;?>home/index/rec_view/" class="dash_view btn <?php echo $rec_dash;?>">Recruiter View</button>
+										<button val="<?php echo $this->webroot;?>home/index/ac_view/" rel="tooltip" title="<?php echo $this->Functions->show_view_detail('ac_view',$ac_dash,$rec_dash,$bd_dash);?>" class="dash_view btn <?php echo $ac_dash;?>">Account Holder</button>
+										<button val="<?php echo $this->webroot;?>home/index/rec_view/" rel="tooltip" title="<?php echo $this->Functions->show_view_detail('rec_view', $ac_dash,$rec_dash,$bd_dash);?>" class="dash_view btn <?php echo $rec_dash;?>">Recruiter</button>
 									
 									<?php elseif($this->Session->read('USER.Login.roles_id') == '33' || $this->Session->read('USER.Login.roles_id') == '35'  || $this->Session->read('USER.Login.roles_id') == '26'
 									 || $this->Session->read('USER.Login.roles_id') == '39'): ?>
-									<button rel="<?php echo $this->webroot;?>home/index/bd_view/" class="dash_view btn <?php echo $bd_dash;?>">Biz. Developer View</button>
-									<button rel="<?php echo $this->webroot;?>home/index/rec_view/" class="dash_view btn <?php echo $rec_dash;?>">Recruiter View</button>
-									<button rel="<?php echo $this->webroot;?>home/index/ac_view/" class="dash_view btn <?php echo $ac_dash;?>">Account Holder View</button>
+									<button val="<?php echo $this->webroot;?>home/index/bd_view/" rel="tooltip" title="<?php echo $this->Functions->show_view_detail('bd_view',$ac_dash,$rec_dash,$bd_dash);?>" class="dash_view btn <?php echo $bd_dash;?>">Biz. Development</button>
+									<button val="<?php echo $this->webroot;?>home/index/rec_view/" rel="tooltip" title="<?php echo $this->Functions->show_view_detail('rec_view', $ac_dash,$rec_dash,$bd_dash);?>" class="dash_view btn <?php echo $rec_dash;?>">Recruiter</button>
+									<button val="<?php echo $this->webroot;?>home/index/ac_view/" rel="tooltip" title="<?php echo $this->Functions->show_view_detail('ac_view',$ac_dash,$rec_dash,$bd_dash);?>" class="dash_view btn <?php echo $ac_dash;?>">Account Holder</button>
 
 									
 									<?php endif; ?>
@@ -103,7 +103,61 @@
               <div class="count">₹<?php echo $BILLED_TAB_COUNT;?></div>
               <span class="count_bottom"><i class="green"><i class="icon-circle-arrow-up"></i> 34% </i> From last Week</span>
             </div>
-          </div>
+			
+			<ul id="clickme" style="top:180px;right:30px;position:absolute" class="icon_list_a clearfix">
+			<li rel="tooltip" id="tipDiv"  title="Show More.."   style="cursor: pointer;margin-top:3px;"><i id="moreID" style="margin-top:1px;" class="splashy-arrow_state_blue_expanded"></i></li>
+			</ul>
+			
+			
+			  </div>
+			  
+			
+			
+			
+		  <div class="row tile_count extraHome dn">
+		    <div class="span2 tile_stats_count">
+              <span class="count_top"><i class="fa fa-user"></i> Awaiting Feedback</span>
+              <div class="count"><?php echo $CV_WAITING_TAB_COUNT;?></div>
+              <span class="count_bottom"><i class="green"><i class="icon-circle-arrow-up"></i> 34% </i> From last Week</span>
+            </div>
+		  <div class="span2 tile_stats_count">
+              <span class="count_top"><i class="fa fa-user"></i> CV Rejected</span>
+              <div class="count"><?php echo $CV_REJECT_TAB_COUNT;?></div>
+              <span class="count_bottom"><i class="green">4% </i> From last Week</span>
+            </div>
+			
+            <!--div class="span2 tile_stats_count">
+              <span class="count_top"><i class="fa fa-clock-o"></i> Interview Dropouts</span>
+              <div class="count"><?php echo $INTERVIEW_DROP_TAB_COUNT ? $INTERVIEW_DROP_TAB_COUNT : 0;?></div>
+              <span class="count_bottom"><i class="green"><i class="green icon-circle-arrow-up"></i> 3% </i> From last Week</span>
+            </div-->
+            <div class="span2 tile_stats_count">
+              <span class="count_top"><i class="fa fa-user"></i> Interview Rejected</span>
+              <div class="count green"><?php echo $INTERVIEW_REJ_TAB_COUNT ? $INTERVIEW_REJ_TAB_COUNT : 0;?></div>
+              <span class="count_bottom"><i class="green"><i class="icon-circle-arrow-up"></i> 34% </i> From last Week</span>
+            </div>
+			
+            <div class="span2 tile_stats_count">
+              <span class="count_top"><i class="fa fa-user"></i> Total Offered</span>
+              <div class="count"><?php echo $OFFER_TAB_COUNT;?></div>
+              <span class="count_bottom"><i class="red"><i class="fa icon-circle-arrow-down"></i> 12% </i> From last Week</span>
+            </div>
+			
+			<div class="span2 tile_stats_count">
+              <span class="count_top"><i class="fa fa-user"></i> Offer Rejected</span>
+              <div class="count"><?php echo $OFFER_REJ_TAB_COUNT;?></div>
+              <span class="count_bottom"><i class="red"><i class="fa icon-circle-arrow-down"></i> 12% </i> From last Week</span>
+            </div>
+			
+			
+            <div class="span2 tile_stats_count"  style="width:160px;border:none;">
+              <span class="count_top"><i class="fa fa-user"></i> Candidates Billed</span>
+              <div class="count"><?php echo $BILLED_TAB_COUNT; ?> </div>
+              <span class="count_bottom"><i class="green"><i class="icon-circle-arrow-up"></i> 34% </i> From last Week</span>
+            </div>
+          
+			</div>
+			
 							<!--div class="flexslider2">
 							<ul class="slides dshb_icoNav tac  mt15">
 								<li><a rel="tooltip" target="_blank" title="Positions Created" href="<?php echo $this->webroot;?>position/"><span class="label label-info"><?php echo $POS_TAB_COUNT;?></span> <strong>Positions</strong></a></li>
@@ -281,24 +335,24 @@
 								<h3 class="pull-right label label-warning"><a href="<?php echo $this->webroot;?>client/"  style="color:#ffffff;">View All</a></h3>
 								<!--span class="pull-right label label-important">5 New </span-->
 							</div>
-							<table class="tableFix table table-striped table-bordered ">
-								<thead class="theadFix">
+							<table class="table table-striped table-bordered ">
+								<thead class="">
 									<tr>
-										<th style="width:192px" class="essential persist">Client</th>
-										<th style="width:120px"  class="optional">Location</th>
-										<th width=""  style="width:100px"  class="optional">Account Holder</th> 
-										<th width=""  style="width:100px"  class="optional">Created Date</th>
-										<th width=""  style="width:100px"  class="essential" style="text-align:center">No. Positions</th>
+										<th class="">Client</th>
+										<th  class="optional">Location</th>
+										<th class="optional">Account Holder</th> 
+										<th  class="optional">Created Date</th>
+										<th  class="essential" style="text-align:center">No. Positions</th>
 									</tr>
 								</thead>
-								<tbody class="tbodyFix">
+								<tbody class="">
 								<?php foreach($client_data as $data):?>
 									<tr>
-										<td width="180" style="width:192px"><a  target="_blank" href="<?php echo $this->webroot;?>client/view/<?php echo $data['Client']['id'];?>"><?php echo $data['Client']['client_name'];?></a></td>
-										<td width="120" style="width:120px"><?php echo $data['ResLocation']['location'];?></td>
-										<td width="100" style="width:100px"><?php echo $data['Creator']['first_name'];?></td>
-										<td width="100" style="width:100px"><?php echo $this->Functions->format_date($data['Client']['created_date']);?></td>
-										<td  width="100" style="width:80px;text-align:center"><a target="_blank"  href="<?php echo $this->webroot;?>position/?keyword=<?php echo $data['Client']['client_name'];?>"><?php echo $data[0]['req_count'];?></a></td>										
+										<td ><a  target="_blank" href="<?php echo $this->webroot;?>client/view/<?php echo $data['Client']['id'];?>"><?php echo $data['Client']['client_name'];?></a></td>
+										<td ><?php echo $data['ResLocation']['location'];?></td>
+										<td><?php echo $data['Creator']['first_name'];?></td>
+										<td><?php echo $this->Functions->format_date($data['Client']['created_date']);?></td>
+										<td  width="100" style="text-align:center"><a target="_blank"  href="<?php echo $this->webroot;?>position/?keyword=<?php echo $data['Client']['client_name'];?>"><?php echo $data[0]['req_count'];?></a></td>										
 									</tr>
 								<?php endforeach; ?>	
 								</tbody>
@@ -312,25 +366,25 @@
 								<h3 class="pull-right label label-warning"><a href="<?php echo $this->webroot;?>position/"  style="color:#ffffff;">View All</a></h3>
 							<!--span class="pull-right label label-important">3 New</span-->
 							</div>
-							<table class="tableFix table table-striped table-bordered ">
-								<thead class="theadFix">
+							<table class="table table-striped table-bordered">
+								<thead class="">
 									<tr>
-										<th style="width:170px" class="optional">Job Title</th>
-										<th style="width:140px"  class="essential persist">Client</th>
-										<th style="width:100px" class="optional">Status</th>
-										<th style="width:100px" class="optional">Created Date</th>
-										<th style="width:100px" class="essential" style="text-align:center">CV Sent</th>
+										<th class="optional">Job Title</th>
+										<th  class="essential persist">Client</th>
+										<th class="optional">Status</th>
+										<th class="optional">Created Date</th>
+										<th class="essential" style="text-align:center">CV Sent</th>
 										<!--th class="essential">Action</th-->
 									</tr>
 								</thead>
-								<tbody class="tbodyFix">
+								<tbody class="">
 								<?php foreach($position_data as $data):?>
 									<tr>
-										<td style="width:180px"><a target="_blank"  href="<?php echo $this->webroot;?>position/view/<?php echo $data['Position']['id'];?>"><?php echo $data['Position']['job_title'];?></a></td>
-										<td style="width:140px"><?php echo $data['Client']['client_name'];?></td>
-										<td  style="width:100px"><span class="label label-<?php echo $this->Functions->get_req_status_color($data['ReqStatus']['title']);?>"><?php echo $data['ReqStatus']['title'];?></span></td>
-										<td  style="width:100px"><?php echo $this->Functions->format_date($data['Position']['created_date']);?></td>
-										<td style="width:100px;text-align:center"><a target="_blank"  href="<?php echo $this->webroot;?>resume/?status=1"><?php echo $data[0]['cv_sent'];?></a></td>
+										<td><a target="_blank"  href="<?php echo $this->webroot;?>position/view/<?php echo $data['Position']['id'];?>"><?php echo $data['Position']['job_title'];?></a></td>
+										<td><?php echo $data['Client']['client_name'];?></td>
+										<td><span class="label label-<?php echo $this->Functions->get_req_status_color($data['ReqStatus']['title']);?>"><?php echo $data['ReqStatus']['title'];?></span></td>
+										<td><?php echo $this->Functions->format_date($data['Position']['created_date']);?></td>
+										<td style="text-align:center"><a target="_blank"  href="<?php echo $this->webroot;?>resume/?status=1"><?php echo $data[0]['cv_sent'];?></a></td>
 										
 									</tr>
 									<?php endforeach; ?>	

@@ -54,7 +54,7 @@ if($getid !=''){
 	}catch(Exception $e){
 		echo 'Caught exception: ',  $e->getMessage(), "\n";
 	}
-}
+	
 
 // get database values
 if(empty($_POST)){
@@ -67,10 +67,16 @@ if(empty($_POST)){
 		$row = $mysql->display_result($result);
 		$_SESSION['clients_id'] = $row['clients_id'];
 		$_SESSION['position_for'] = $row['position_for'];
-		
+		$_SESSION['resume_doc'] = $row['resume'];
 		$smarty->assign('dob', $fun->convert_date_display($row['dob_field']));
 		$total_exp  = $row['total_exp'];
 		$total_exp_yrs = explode(".", $total_exp);
+		// get skills
+		$tech_skill  = unserialize($row['tech_skill_rate']);
+		$behav_skill  = unserialize($row['behav_skill_rate']);
+		$smarty->assign('tsData', $tech_skill);
+		$smarty->assign('bsData', $behav_skill);
+		
 		
 		if($total_exp == '0'){
 			$smarty->assign('year_of_exp',0);
@@ -180,6 +186,10 @@ if(empty($_POST)){
 	}
 }
 
+
+}
+
+
 $edu = $_POST['edu_count'] ? $_POST['edu_count'] : $edu_tot;
 // post of education fields value
 for($i = 0; $i < $edu; $i++){
@@ -250,6 +260,13 @@ if($_POST['RESUME_DATA'] == ''){
 }
 
 if(!empty($_POST)){
+		// for retaining skills and rating
+	$smarty->assign('tsrData', $_POST['tsr']);
+	$smarty->assign('bsrData', $_POST['bsr']);
+	
+	$smarty->assign('tsData', $_POST['ts']);
+	$smarty->assign('bsData', $_POST['bs']);
+	
 	
 	// post of education fields value
 	for($i = 0; $i < $_POST['edu_count']; $i++){
@@ -410,6 +427,20 @@ if(!empty($_POST)){
 	
 	// save all the data
 	if($test != 'error'){
+		// for saving purpose of tech skills
+		foreach($_POST['ts'] as $key => $ts){
+			if($ts){
+				$ts_data[$ts] = $_POST['tsr'][$key];
+			}
+		}
+		// for saving purpose of behav skills
+		foreach($_POST['bs'] as $key => $bs){
+			if($bs){
+				$bs_data[$bs] = $_POST['bsr'][$key];
+			}
+		}
+		$tech_skill = serialize($ts_data);
+		$behav_skill = serialize($bs_data);
 		// query to add personal details
 		$query = "CALL edit_res_personal('$getid','".$fun->is_white_space($mysql->real_escape_str($_POST['first_name']))."',
 			'".$fun->is_white_space($mysql->real_escape_str($_POST['last_name']))."',
@@ -424,7 +455,8 @@ if(!empty($_POST)){
  			'".$date."','".$modified_by."','N',
  			'".$fun->is_white_space($mysql->real_escape_str($_POST['consultant']))."',
  			'".$fun->is_white_space($mysql->real_escape_str($_POST['interview_availability']))."',
-			'".$fun->is_white_space($mysql->real_escape_str($_POST['certification']))."')";
+			'".$fun->is_white_space($mysql->real_escape_str($_POST['certification']))."',
+			'".$tech_skill."','".$behav_skill."')";
 		try{
 			if(!$result = $mysql->execute_query($query)){
 				throw new Exception('Problem in adding personal details');
@@ -581,7 +613,7 @@ if(!empty($_POST)){
 			$desigStr = $row['desig'];
 			$mysql->next_query();
 			$snap_exp .= ucwords($companyData).', '.ucwords($desigStr).', '.$expStr.', '.ucfirst($locationData).'<br>';
-			$snap_skill .= $vitalData.' ';
+			$snap_skill .= $areaData.' ';
 			
 			// query to add experience details
 			$query = "CALL add_res_experience('".$mysql->real_escape_str($desigData)."',
@@ -609,6 +641,37 @@ if(!empty($_POST)){
 			// echo 'save data';die;
 			// create snapshot pdf
 			include_once('snapshot.php');
+			// hide the contact details in the resume
+			// get recruiter nameget_recruiter_name
+			$query =  "CALL get_recruiter_name('".$mysql->real_escape_str($_SESSION['user_id'])."')";
+			if(!$result = $mysql->execute_query($query)){
+					throw new Exception('Problem in getting recruiter details');
+			}
+			$row_user = $mysql->display_result($result);
+			$recruiter = $row_user['first_name'].' '.$row_user['last_name'];
+			// free the memory
+			$mysql->clear_result($result);
+			// call the next result
+			$mysql->next_query();		
+			// generate auto resume doc file
+			$resume_path = dirname(__FILE__).'/uploads/resume/'.$_SESSION['resume_doc'];
+			$template_path = dirname(__FILE__).'/uploads/template/'.$_SESSION['resume_doc']; 
+			// duplicate the file for template creation
+			$fun->upload_file($resume_path,$template_path);
+			$email = $_POST['email'];
+			$mobile1 = $_POST['mobile'];	
+			$mobile_len = strlen($_POST['mobile']); 			
+			if($mobile_len >= 12){
+				$mobile2 = substr($_POST['mobile'], 2, $mobile_len);
+				$mobile3 = substr($_POST['mobile'], 1, $mobile_len); 
+				$mobile4 = '+91 '.substr($_POST['mobile'], 2, $mobile_len);
+				$mobile5 = '+91-'.substr($_POST['mobile'], 2, $mobile_len); 
+				$mobile6 = '91 '.substr($_POST['mobile'], 2, $mobile_len); 
+				$mobile7 = '91-'.substr($_POST['mobile'], 2, $mobile_len);
+			}
+			include('vendor/PHPWord-develop/samples/template_process2.php');			
+			// remove the file
+			unlink($template_path);
 			// convert the resume doc. into pdf
 			require_once('vendor/ilovepdf-php-1.1.5/init.php');			
 			ini_set('display_errors', '1');
@@ -637,7 +700,11 @@ if(!empty($_POST)){
 			$myTask->execute();
 			// and finally download file. If no path is set, it will be downloaded on current folder
 			$myTask->download('uploads/snapshotmerged/');
-			header('Location: ../resume/?action=modified');
+			// unset the sessions
+			unset($_SESSION['position_for']);
+			unset($_SESSION['resume_doc']);
+			unset($_SESSION['clients_id']);
+			header('Location: ../resume?action=modified&download='.$snap_file_name.'_'.date('d-m-Y').'.pdf');
 
 		} 
 	}else{

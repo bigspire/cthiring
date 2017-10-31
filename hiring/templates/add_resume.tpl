@@ -46,6 +46,8 @@
 <div class="span6">
 			<table class="table table-bordered dataTable" style="margin-bottom:0;">
 						<tbody>
+						
+						
 						<tr class="tbl_row">
 										<td width="120" class="tbl_column">Position For <span class="f_req">*</span></td>
 										<td>
@@ -120,7 +122,9 @@
 										<option value="">Month</option>
 										{html_options options=$tot_exp_month selected=$smarty.post.month_of_exp}	
 										</select>
-										<label for="reg_city" generated="true" class="error">{$year_of_expErr}{$month_of_expErr}</label>																						
+										<label for="reg_city" generated="true" class="error">{$year_of_expErr}</label>	
+										<label for="reg_city" generated="true" class="error">{$month_of_expErr}</label>	
+									
 										</td>
 							</tr>
 							
@@ -141,12 +145,12 @@
 										<td>	
 										
 										<input type="text" tabindex="10" name="present_ctc" value="{$present_ctc}" placeholder="Present"  class="span2"/>										
-										<select class="span3"  tabindex="11"  name="present_ctc_type">
+										<select class="span2"  tabindex="11"  name="present_ctc_type">
 										{html_options options=$ctc_type selected=$smarty.post.present_ctc_type}
 										</select> 
 											
 										<input type="text" tabindex="12" name="expected_ctc" value="{$expected_ctc}" placeholder="Expected"  class="span2"/>	
-										<select  class="span3" tabindex="13"  name="expected_ctc_type">
+										<select  class="span2" tabindex="13"  name="expected_ctc_type">
 										{html_options options=$ctc_type selected=$smarty.post.expected_ctc_type}
 										</select>			
 										<span class="f_req">*</span>		
@@ -218,23 +222,7 @@
 						</div>
 
 
-		<div class="row-fluid" style="clear:left;float:left;margin-top:15px;">				
-			<div class="span12">
-	<table class="table table-bordered dataTable" style="margin-bottom:0;">
-	<tbody>
-	<tr class="tbl_row">
-									
-										<td style="margin:10px;text-align:center;">
-<textarea rows = "10" style="width:1200px;" name="RESUME_DATA">
-{if $RESUME_DATA}{$RESUME_DATA}{else}{$smarty.post.RESUME_DATA}{/if}
-</textarea>
-																						
-										</td>
-	</tr>									
-									
-	</tbody>
-	</table>
-</div>		</div>		
+			
 						</div>
 	
 <!-- sheepIt Form -->
@@ -377,22 +365,22 @@
 								<tr>
 										<td width="120" class="tbl_column">Employment Period<span class="f_req"> *</span></td>
 										<td>
-										<select name="from_month_of_exp_#index#" id = "from_month_of_exp_#index#" tabindex="3" class="span3">
-										<option value="">From Month</option>
+										<select name="from_month_of_exp_#index#" id = "from_month_of_exp_#index#" tabindex="3" class="span2">
+										<option value="">From</option>
 										{html_options options=$exp_month} 
 										</select>
-										<select name="from_year_of_exp_#index#" id = "from_year_of_exp_#index#" tabindex="2" class="inline_text span3">
-										<option value="">From Year</option>
+										<select name="from_year_of_exp_#index#" id = "from_year_of_exp_#index#" tabindex="2" class="inline_text span2">
+										<option value="">From</option>
 										{html_options options=$exp_yr} 
 										</select>
 										
-										<select name="to_month_of_exp_#index#" id = "to_month_of_exp_#index#" tabindex="3" class="inline_text span3">
-										<option value="">To Month</option>
+										<select name="to_month_of_exp_#index#" id = "to_month_of_exp_#index#" tabindex="3" class="inline_text span2">
+										<option value="">To</option>
 										{html_options options=$exp_month} 
 										</select>
 										
-										<select name="to_year_of_exp_#index#" id = "to_year_of_exp_#index#" tabindex="2" class="inline_text span3">
-										<option value="">To Year</option>
+										<select name="to_year_of_exp_#index#" id = "to_year_of_exp_#index#" tabindex="2" class="inline_text span2">
+										<option value="">To</option>
 										{html_options options=$exp_yr} 
 										</select>
 										<label for="reg_city" generated="true" class="error" id="from_month_of_expErr_#index#"></label>																																
@@ -434,7 +422,7 @@
 								<tr>
 										<td width="120" class="tbl_column">Other Vital Information (Position Specific)  <span class="f_req"></span></td>
 										<td> 
-										<textarea name="vital_#index#" tabindex="7" id="vital_#index#" cols="10" rows="3" class="span8"></textarea>
+										<textarea name="vital_#index#" tabindex="7" id="vital_#index#" cols="10" rows="3" class="span8 wysiwyg1"></textarea>
 										</td>
 							</tr>
 			
@@ -471,9 +459,9 @@
 		  <table class="table table-bordered dataTable" style="margin-bottom:0;">
 		  <tbody>
 		  <tr>
-			<td width="120" class="tbl_column">Project / Certification Details (optional) <span class="f_req"></span></td>
+			<td width="133" class="tbl_column">Project / Certification Details (optional) <span class="f_req"></span></td>
 				<td> 
-						<textarea name="certification" tabindex="7" id="certification" cols="10" rows="3" class="span8">{if $certification}{$certification}{else}{$smarty.post.certification}{/if}</textarea>
+						<textarea name="certification" tabindex="7" id="certification" cols="10" rows="3" class="span8 wysiwyg1">{if $certification}{$certification}{else}{$smarty.post.certification}{/if}</textarea>
 				</td>
 			</tr>
 		  </tbody>
@@ -483,25 +471,78 @@
 </div>
 
 <div class="tab-pane" id="mbox_Consultant">
-<div class="span12">
+<div class="span6">
 			<table class="table table-bordered dataTable" style="margin-bottom:0;">
 						<tbody>
+						
+					<tr class="tbl_row">
+										<td width="120" class="tbl_column">Rate Technical Skills <span class="f_req"></span></td>
+										<td>
+<ul class="ratingList">
+{foreach $tsData as $ts_data}
+{if $ts_data}
+  <li><input class="span8" readonly="readonly" placeholder="" name="ts[]" value="{$ts_data}" type="text">   
+  <input name="tsr[]" type="hidden" value="{$tsrData[$ts_data@key]}"  class="rating" data-fractions="2"/> <span class="label label-info dn">{$tsrData[$ts_data@key]}</span></li>
+  {/if}
+{/foreach} 
+
+
+
+</ul>
+ 
+    <!-- Custom CSS -->
+ 
+										</td>	
+									</tr>	
+									
+									
 									<tr class="tbl_row">
 										<td width="120" class="tbl_column">Consultant Assessment <span class="f_req"></span></td>
 										<td>
-<textarea placeholder="" name="consultant" tabindex="1" id="consultant" cols="10" rows="3" class="span10">{$smarty.post.consultant}</textarea>
+<textarea placeholder="" name="consultant" tabindex="1" id="consultant" cols="10" rows="3" class="span10 wysiwyg1">{$smarty.post.consultant}</textarea>
 										</td>	
 									</tr>	
+																						
+								</tbody>
+							</table>
+						</div>
+						
+						<div class="span6">
+			<table class="table table-bordered dataTable" style="margin-bottom:0;">
+						<tbody>
+									<tr class="">
+										<td width="120" class="tbl_column">Rate Behavioural Skills </td>
+										<td>
+<ul class="ratingList">
+ 
+ {foreach $bsData as $bs_data}
+{if $bs_data}
+  <li><input class="span8" readonly="readonly" placeholder="" name="bs[]" value="{$bs_data}" type="text">   
+  <input name="bsr[]" type="hidden" value="{$bsrData[$bs_data@key]}"  class="rating" data-fractions="2"/> <span class="label label-info dn">{$bsrData[$bs_data@key]}</span> </li>
+  {/if}
+{/foreach} 
+
+ 
+ 
+</ul>
+ 
+										<!--label for="reg_city" generated="true" class="error">{$interview_availabilityErr}</label-->
+										</td>	
+									</tr>
+
+									
 									<tr class="">
 										<td width="120" class="tbl_column">Interview Availability </td>
 										<td>
-<textarea placeholder="" name="interview_availability" tabindex="2" id="interview_availability" cols="10" rows="3" class="span10">{$smarty.post.interview_availability}</textarea>
+<textarea placeholder="" name="interview_availability" tabindex="2" id="interview_availability" cols="10" rows="3" class="span10 wysiwyg1">{$smarty.post.interview_availability}</textarea>
 										<!--label for="reg_city" generated="true" class="error">{$interview_availabilityErr}</label-->
 										</td>	
 									</tr>													
 								</tbody>
 							</table>
 						</div>
+						
+						
 						<input type="hidden" id="edu_count" name="edu_count" value="{$eduCount}">
 						<input type="hidden" id="exp_count" name="exp_count" value="{$expCount}">	
 <input type="hidden" id="add_resume" name="add_resume" value="{$smarty.post.add_resume}">	
@@ -524,6 +565,27 @@
 	</div>
 	</div>
 	</form>
+	
+	
+	<div class="row-fluid" style="clear:left;float:left;margin-top:15px;">				
+			<div class="span12">
+			<h3 class="heading">Candidate Resume</h3>
+	<table class="table table-bordered dataTable" style="margin-bottom:0;">
+	<tbody>
+	<tr class="tbl_row">
+									
+										<td style="margin:10px;text-align:center;">
+<textarea  class="span12" style="height:300px" name="RESUME_DATA">
+{if $RESUME_DATA}{$RESUME_DATA}{else}{$smarty.post.RESUME_DATA}{/if}
+</textarea>
+																						
+										</td>
+	</tr>									
+									
+	</tbody>
+	</table>
+</div>		</div>	
+
      </div>
      </div> 
 		</div>
@@ -726,6 +788,8 @@ $(document).ready(function(){
 		   continuousIndex: true,
 		   afterAdd: function(source, newForm) {
 			 $('#exp_count').attr('value',source.getFormsCount());
+			 // for auto resize text area
+			 autosize(document.querySelectorAll('.wysiwyg1'));
 		   },
 		   afterRemoveCurrent: function(source) {		
 			 $('#exp_count').attr('value',source.getFormsCount());

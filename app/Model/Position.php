@@ -126,7 +126,7 @@ class Position extends AppModel {
             'empty' => array(
                 'rule'     => 'validate_team',
                 'required' => true,
-                'message'  => 'Please select the team members'
+                'message'  => 'Please select the recruiters'
             )
         ),
 		'end_date' => array(		
@@ -190,7 +190,7 @@ class Position extends AppModel {
             'empty' => array(
                 'rule'     => 'notEmpty',
                 'required' => true,
-                'message'  => 'Please select the interview stage'
+                'message'  => 'Please select the interview mode'
             )
         ),
 	
@@ -283,7 +283,7 @@ class Position extends AppModel {
             'empty' => array(
                 'rule'     => 'notEmpty',
                 'required' => true,
-                'message'  => 'Please select the plan join date'
+                'message'  => 'Please select the new joining date'
             )
         ),
 		'tech_skill' => array(		
@@ -299,6 +299,14 @@ class Position extends AppModel {
                 'rule'     => 'notEmpty',
                 'required' => true,
                 'message'  => 'Please enter the behavioural skills'
+            )
+        )
+		,
+		'reason_id' => array(		
+            'empty' => array(
+                'rule'     => 'notEmpty',
+                'required' => true,
+                'message'  => 'Please select the reason'
             )
         ),
 	);

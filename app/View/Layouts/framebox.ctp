@@ -60,11 +60,12 @@
 	</script>
 	<?php endif; ?>
 
+	
 	<?php if($cv_update_status == '1'): ?>
 
 	<script type="text/javascript">
-	$(document).ready(function(){
-		self.parent.location.href = jQuery('#success_page').val()
+	$(document).ready(function(){ 
+		self.parent.location.href = jQuery('#success_page').val();
 		parent.jQuery("#cboxClose").click();
 	});
 

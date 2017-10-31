@@ -141,7 +141,7 @@ class AppController extends Controller {
 			// echo "<script>location.href=$this->webroot</script>";
 			$this->redirect('/');
 		}else{
-			$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Session got expired', 'default', array('class' => 'alert alert-login'));
+			$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Session got expired', 'default', array('class' => 'alert alert-login'));			
 			$this->delete_cookie('ESUSER');	
 			$this->redirect('/');
 		}
@@ -279,7 +279,6 @@ class AppController extends Controller {
 	/* function to set the menu active */
 	public function front_active_menus(){ 
 		$this->set($this->request->params['controller'].'_menu', 'active');
-		
 	}
 	
 	/* function to delete cookie */

@@ -36,12 +36,7 @@ if($_GET['col'] != ''){
 		// calling mysql exe_query function
 		if(!$result = $mysql->execute_query($query)){
 			throw new Exception('Problem in executing edit theme');
-		}
-		$row = $mysql->display_result($result);
-		$last_id = $row['affected_rows'];
-		if(!empty($last_id)){
-			
-		}
+		}		
 		// free the memory
 		$mysql->clear_result($result);
 		// call the next result
@@ -61,12 +56,25 @@ if($_SESSION['theme'] == ''){
 			throw new Exception('Problem in executing theme');
 		}
 		$theme_data = $mysql->display_result($result);
+		
 		$_SESSION['theme'] = $theme_data['theme'];
+		
+		// set the cookie for cake pages
+		setcookie("CakeCookie[THEME]", $theme_data['theme'],time()+60*60*24*30, '/');
+
+
+		/*
+		$domain = ($_SERVER['HTTP_HOST'] != 'localhost') ? $_SERVER['HTTP_HOST'] : false;
+		setcookie('THEME', $theme_data['theme'], time()+60*60*24*30, '~/', $domain, false);
+		*/
+		
 		// free the memory
 		$mysql->clear_result($result);
 		// call the next result
 		$mysql->next_query();
-		header('Location: ' . $_SERVER['HTTP_REFERER']);
+		$chk = strstr($_SERVER['HTTP_REFERER'], '?');
+		$separator = $chk != '' ? '&' : '?';
+		header('Location: ' . $_SERVER['HTTP_REFERER'].$separator.'color='.$theme_data['theme']);
 	}catch(Exception $e){
 		echo 'Caught exception: ',  $e->getMessage(), "\n";
 	}

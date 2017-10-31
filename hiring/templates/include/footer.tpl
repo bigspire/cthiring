@@ -2,10 +2,11 @@
 
 <p><span>Copyright © 2016 Career Tree. Powered by <a  class="theme_link" href="http://bigspire.com" target="_blank" title="BigSpire Software">BigSpire</a></span>
 		
-<span style="float:right;margin-right:20px;"><a href="javascript:void(0)" val="50_50" class="theme_link">Feedback</a> <span class="font-grey-4">|</span> <a  class="theme_link" href="javascript:void(0)">Report Bug</a> </span>
+<span style="float:right;margin-right:20px;"><a href="javascript:void(0)" val="50_50" class="theme_link">Feedback / Suggestions</a> <span class="font-grey-4">|</span> <a  class="theme_link"  val="50_50"  href="javascript:void(0)">Report a Bug</a> </span>
 		
 </p>		
 </div>
+
 	
 <script src="js/jquery.min.js"></script>		
 <!-- main bootstrap js -->
@@ -61,7 +62,10 @@
 <script src="js/smoke.min.js"></script>
 <!-- jBreadcrumbs -->
 <script src="lib_cthiring/jBreadcrumbs/js/jquery.jBreadCrumb.1.1.min.js"></script>
-<!-- datatable -->                                                                                                                                                                                         
+<!-- datatable --> 
+
+<script src="vendor/node_modules/bootstrap-rating/bootstrap-rating.min.js"></script>
+                                                                                                                                                                                        
 <script type="text/javascript" src="js/main.js"></script>	
 <script type="text/javascript" src="js/sheepit-jquery.sheepItPlugin-v1.1.1/jquery.sheepItPlugin.js"></script>
 <a id="toTop" rel="nofollow" style="display: block;" title="Back to Top">Back to top</a>

@@ -123,8 +123,8 @@
 										<td><a rel="tooltip" title="Click to view the details" href="<?php echo $this->webroot;?>client/view/<?php echo $client['Client']['id'];?>/<?php echo $client[0]['st_id'];?>/<?php echo $client['Client']['created_by'];?>"><?php echo ucwords($client['Client']['client_name']);?></a></td>
 										<td><?php echo $client['Client']['city'];?></td>
 										<td><?php echo ucfirst($client['ResLocation']['location']);?></td>
-										<td style="text-align:center"><a rel="tooltip" title="Click to view the Requirements" target="_blank" href="<?php echo $this->webroot;?>position/index/?keyword=<?php echo $client['Client']['client_name'];?>"><?php echo $client[0]['no_pos'];?></a></td>
-										<td style="text-align:center"><a rel="tooltip" title="Click to view the Contacts" target="_blank" href="<?php echo $this->webroot;?>client/view/<?php echo $client['Client']['id'];?>/"><?php echo $client[0]['no_contact'];?></a></td>
+										<td style="text-align:center"><a rel="tooltip" title="Click to view the Requirements"  href="<?php echo $this->webroot;?>position/index/?keyword=<?php echo $client['Client']['client_name'];?>"><?php echo $client[0]['no_pos'];?></a></td>
+										<td style="text-align:center"><?php echo $client[0]['no_contact'];?></td>
 										<td><?php echo $client[0]['account_holder'];?></td>
 										<td style="text-align:center">
 										<?php if($client['Client']['status'] == '1'):?>
