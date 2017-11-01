@@ -78,7 +78,7 @@ class DATABASE_CONFIG {
 			'host' => '35.202.182.147',
 			'login' => 'root',
 			'password' => 'como#9!',
-			'database' => 'mhdata',
+			'database' => 'mhlive',
 //=======
 //			'host' => 'localhost',
 //			'login' => 'root',

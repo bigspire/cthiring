@@ -16,6 +16,6 @@ define('Database', 'cthiringdata');
 define('Host', '35.202.182.147');
 define('Username', 'root');
 define('Password', 'como#9!');
-define('Database', 'mhdata');
+define('Database', 'mhlive');
 
 ?>
