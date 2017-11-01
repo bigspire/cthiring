@@ -158,7 +158,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 				$_SESSION['resume_doc_id'] = $last_id;
 				// write the session to server
 				$_SESSION['resume_doc'] = $new_file;
-				/*
+				
 				if(empty($_SESSION['client_id']) && empty($_SESSION['req_id'])){
 					$_SESSION['client'] = $_POST['client'];
 					$_SESSION['position_for'] = $_POST['position_for'];
@@ -166,9 +166,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 					$_SESSION['client'] = $_SESSION['client_id'];
 					$_SESSION['position_for'] = $_SESSION['req_id'];
 				}
-				*/
-				$_SESSION['client'] = $_POST['client'];
-				$_SESSION['position_for'] = $_POST['position_for'];
+				
+				// $_SESSION['client'] = $_POST['client'];
+				// $_SESSION['position_for'] = $_POST['position_for'];
 				// call the next result
 				$mysql->next_query();
 			}catch(Exception $e){
