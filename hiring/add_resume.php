@@ -560,14 +560,13 @@ if(!empty($_POST)){
 			unlink($template_path);
 			// convert the resume doc. into pdf
 			require_once('vendor/ilovepdf-php-1.1.5/init.php');			
-			ini_set('display_errors', '1');
 			// you can call task class directly
 			// to get your key pair, please visit https://developer.ilovepdf.com/user/projects
 			$ilovepdf = new Ilovepdf('project_public_30e4ef2596c7436ae907615a841f995b_J4pWwe338d0756271411b0769ee277075a664','secret_key_9d6d00d05185d32c499082fc7e008ba1_fovTb7e8e14419dee395103d2b71d6b7e7175');
 			// Create a new task
 			$myTaskConvertOffice = $ilovepdf->newTask('officepdf');
 			// Add files to task for upload
-			$resume_path = dirname(__FILE__).'/uploads/resume/'.$_SESSION['resume_doc'];
+			// $resume_path = dirname(__FILE__).'/uploads/resume/'.$_SESSION['resume_doc'];
 			$file1 = $myTaskConvertOffice->addFile($resume_path);
 			$myTaskConvertOffice->setOutputFilename($snap_file_name);
 			// Execute the task
