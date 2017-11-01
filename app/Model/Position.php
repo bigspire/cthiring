@@ -114,13 +114,7 @@ class Position extends AppModel {
                 'message'  => 'Please select all values'
             )
         ),
-		'skills' => array(		
-            'empty' => array(
-                'rule'     => 'notEmpty',
-                'required' => true,
-                'message'  => 'Please enter the key skills'
-            )
-        ),	
+			
 		'no_job' => array(		
             'empty' => array(
                 'rule'     => 'notEmpty',
@@ -132,7 +126,7 @@ class Position extends AppModel {
             'empty' => array(
                 'rule'     => 'validate_team',
                 'required' => true,
-                'message'  => 'Please select the team members'
+                'message'  => 'Please select the recruiters'
             )
         ),
 		'end_date' => array(		
@@ -196,7 +190,7 @@ class Position extends AppModel {
             'empty' => array(
                 'rule'     => 'notEmpty',
                 'required' => true,
-                'message'  => 'Please select the interview stage'
+                'message'  => 'Please select the interview mode'
             )
         ),
 	
@@ -251,19 +245,76 @@ class Position extends AppModel {
                 'required' => true,
                 'message'  => 'Please enter the interview venue'
             )
+        ),
+		'note' => array(		
+            'empty' => array(
+                'rule'     => 'notEmpty',
+                'required' => true,
+                'message'  => 'Please enter the reason'
+            )
+        ),
+		'ctc_offer' => array(		
+            'empty' => array(
+                'rule'     => 'notEmpty',
+                'required' => true,
+                'message'  => 'Please enter the offered CTC'
+            ),
+			 'numeric' => array(
+                'rule'     => 'numeric',
+                'required' => true,
+                'message'  => 'Please enter numeric values only'
+            )
+        ),
+		'date_offer' => array(		
+            'empty' => array(
+                'rule'     => 'notEmpty',
+                'required' => true,
+                'message'  => 'Please select the offered date'
+            )
+        ),
+		'joined_on' => array(		
+            'empty' => array(
+                'rule'     => 'notEmpty',
+                'required' => true,
+                'message'  => 'Please select the joining date'
+            )
+        ),
+		'plan_join_date' => array(		
+            'empty' => array(
+                'rule'     => 'notEmpty',
+                'required' => true,
+                'message'  => 'Please select the new joining date'
+            )
+        ),
+		'tech_skill' => array(		
+            'empty' => array(
+                'rule'     => 'notEmpty',
+                'required' => true,
+                'message'  => 'Please enter the technical skils'
+            )
         )
+		,
+		'behav_skill' => array(		
+            'empty' => array(
+                'rule'     => 'notEmpty',
+                'required' => true,
+                'message'  => 'Please enter the behavioural skills'
+            )
+        )
+		,
+		'reason_id' => array(		
+            'empty' => array(
+                'rule'     => 'notEmpty',
+                'required' => true,
+                'message'  => 'Please select the reason'
+            )
+        ),
 	);
 	
-	
-	
-	
-	
-	
-	
-	
 	/* function to validate the team members */
-	public function validate_team(){ 
-		if($this->data['Position']['team_member_req'][0] != ''){
+	public function validate_team(){
+		$team = str_replace(',','',$this->data['Position']['team_id']);
+		if(trim($this->data['Position']['team_id']) != ''){
 			return true;
 		}else{
 			return false;
@@ -341,8 +392,8 @@ class Position extends AppModel {
 	
 	
 	/* function to get the team members */
-	public function get_team($id){
-		return $this->get_team_mem($id);
+	public function get_team($id, $show){
+		return $this->get_team_mem($id, $show);
 	}
 	
 	

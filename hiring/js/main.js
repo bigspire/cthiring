@@ -49,11 +49,19 @@ $(document).ready(function() {
 		var data = $('#temp_team_id').val();
 		var val = $(this).val();
 		$('#team_id').attr('value', $('#team_id').val()+','+$('#temp_team_id').val()+'-'+val);			
-		var txt = $('#cur_team').val();
-		var prev_txt = $('.noJob').html();
-		$('.noJob').html('');
+		var txt = $('#cur_team').val();			
 		new_txt = txt.replace(/\s+/g, '');
-		$('.noJob').html(prev_txt + ' <span id='+new_txt+' style="margin-top:2px;font-size:13px;font-weight:normal" class="tagDiv tag label label-warning">'+txt+' - '+val+' <i class="icon-adt_trash  removeTag" val="'+new_txt+'" rel="tooltip" data="'+data+'" title="remove" style="margin-top:2px;cursor:pointer"></i></span> ');
+		// for edit position page
+		if($('#page').val() == 'edit_position' && $('#pos_default').val() == '1'){			
+			$('#pos_default').val('0');
+			$('.noJob').html('');
+			$('.noJob').append(' <span id='+new_txt+' style="margin-top:2px;font-size:13px;font-weight:normal" class="tagDiv tag label label-warning">'+txt+' - '+val+' <i class="icon-adt_trash  removeTag" val="'+new_txt+'" rel="tooltip" data="'+data+'" title="remove" style="margin-top:2px;cursor:pointer"></i></span> ');
+		}else{
+			var prev_txt = $('.noJob').html();
+			$('.noJob').html('');
+			$('.noJob').html(prev_txt + ' <span id='+new_txt+' style="margin-top:2px;font-size:13px;font-weight:normal" class="tagDiv tag label label-warning">'+txt+' - '+val+' <i class="icon-adt_trash  removeTag" val="'+new_txt+'" rel="tooltip" data="'+data+'" title="remove" style="margin-top:2px;cursor:pointer"></i></span> ');
+		}
+		
 		$(this).val('');	
 		$('#temp_team_id').val('');
 		// hide the pop up
@@ -130,7 +138,22 @@ $(document).ready(function() {
 				});
 	});		
 		
-	
+	$( "#clickme" ).click(function() {
+	  $( ".extraHome" ).slideToggle( 600, function() {
+		if($(this).is(':visible')){
+			$('#moreID').addClass('splashy-arrow_state_blue_collapsed');
+			$('#moreID').removeClass('splashy-arrow_state_blue_expanded');
+			$('#tipDiv').attr('data-original-title', 'Show Less');	
+			
+		}else{
+			$('#moreID').addClass('splashy-arrow_state_blue_expanded');
+			$('#moreID').removeClass('splashy-arrow_state_blue_collapsed');
+			$('#tipDiv').attr('data-original-title', 'Show More');
+		}
+	  });
+	});
+
+
 	/* for search open/close */
 	$('.toggleSearch').click(function(){ 
 		$('.dataTables_filter').slideToggle('fast');
@@ -141,13 +164,17 @@ $(document).ready(function() {
 		$(function(){
 			tinymce.init({
 			  selector: 'textarea.wysiwyg',
+			  body_class: 'wysiwygCls',
+			  content_style: "@import url('https://fonts.googleapis.com/css?family=Open+Sans'); .wysiwygCls p {font-family:'Open Sans', sans-serif !important;font-size:12px !important;color:#555;line-height:18px;}",
+			  theme: 'modern',
+			  branding: false,
 			  menubar: false,
 			  plugins: [
 				'advlist autolink lists link image charmap print preview anchor',
 				'searchreplace visualblocks code fullscreen' ,
 				'insertdatetime media table contextmenu paste code'
 			  ],
-			  toolbar: 'undo redo | insert | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
+			  toolbar: 'undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent',
 			});
 		});
 	}
@@ -201,6 +228,12 @@ $(document).ready(function() {
 		
 	});
 	
+	if($('#file_download').length > 0){ 
+		if($('#file_download').val() != ''){ 
+			$.sticky("Great! Resume Snapshot Downloaded Successfully!", {autoclose : 5000, position: "top-right", type: "st-success" });
+			location.href = $('#file_download').attr('rel')+$('#file_download').val();
+		}
+	}
 	
 	// retaining tabs and contents in view position 
 	if($('#success_page').val() != ''){
@@ -223,6 +256,16 @@ $(document).ready(function() {
 			$('.sent_row').show();
 			$('.status_row').hide();
 			$('.overall_status_row').hide();
+		}else if(GetURLParameter('tab') == 'upload_status'){
+			// for tab
+			$('.uploadTab').addClass('active');
+			$('.cvStatusTab').removeClass('active');
+			$('.sentTab').removeClass('active');
+			// for contents
+			$('.upload_row').show();
+			$('.sent_row').show();
+			$('.status_row').hide();
+			$('.overall_status_row').hide();
 		}
 	}
 	
@@ -232,6 +275,18 @@ $(document).ready(function() {
 	});
 		
 	
+	/* tag inputs for keywords */
+	if($('.tagInput').length > 0){
+		$('.tagInput').tagsinput({
+		  /*
+		  tagClass: function(item) {
+			return (item.length > 10 ? 'big' : 'small');
+		  }
+		  */
+		   maxTags: 7
+		});
+	}
+
 	
 	/* function to switch the view resume tabs */
 	$('.restabChange').click(function(){ 
@@ -1036,9 +1091,29 @@ $(document).ready(function() {
 		$('.stickyTable').stickyTableHeaders();
 	}
 	
+	/* for star rating */
+	   $('.rating').each(function (){   
+			if($(this).next('.label').text() != ''){ 
+				$(this).next('.label').text($(this).val()).show();
+			}
+		});
+		
+		/*
+		$(' <span class="label label-default dn"></span>')
+            .text($(this).val() || ' ')
+            .insertAfter(this);
+        });
+		*/
+		
+      $('.rating').on('change', function () {
+          $(this).next('.label').text($(this).val()).show();
+      });
+	  
+	
+
 	/* for changing the dashboard view */
 	$('.dash_view').click(function(){
-		location.href = $(this).attr('rel');
+		location.href = $(this).attr('val');
 	});
 	
 	/* for status alert options */

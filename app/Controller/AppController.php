@@ -92,14 +92,30 @@ class AppController extends Controller {
 	/* get unread count for the approve client */
 	public function get_approve_client_count(){
 		$this->loadModel('Client');
-		$count = $this->Client->find('count', array('conditions' => array('Client.status' => '2','Client.is_approve' => 'W'),	'group' => array('Client.id')));
+		$options = array(		
+			array('table' => 'client_status',
+					'alias' => 'ClientStatus',					
+					'type' => 'INNER',
+					'conditions' => array('`ClientStatus`.`clients_id` = `Client`.`id`',
+					'ClientStatus.users_id' => $this->Session->read('USER.Login.id'))
+			)
+		);
+		$count = $this->Client->find('count', array('conditions' => array('Client.status' => '2','Client.is_approve' => 'W'),	'group' => array('Client.id'), 'joins' => $options));
 		$this->set('APPR_CLIENT_COUNT', $count);
 	}	
 
 	/* get unread count for the approve client */
 	public function get_approve_req_count(){
 		$this->loadModel('Position');
-		$count = $this->Position->find('count', array('conditions' => array('Position.status' => 'I','Position.is_approve' => 'W'),	'group' => array('Position.id')));
+		$options = array(		
+			array('table' => 'req_approval_status',
+					'alias' => 'PositionStatus',					
+					'type' => 'INNER',
+					'conditions' => array('`PositionStatus`.`requirements_id` = `Position`.`id`',
+					'PositionStatus.users_id' => $this->Session->read('USER.Login.id'))
+			)
+		);
+		$count = $this->Position->find('count', array('conditions' => array('Position.status' => 'I','Position.is_approve' => 'W'),	'group' => array('Position.id'), 'joins' => $options));
 		$this->set('APPR_REQ_COUNT', $count);
 	}		
 	
@@ -113,7 +129,7 @@ class AppController extends Controller {
 			return true;
 		}else if($this->Cookie->read('ESUSER') != ''){
 			$this->loadModel('Login');
-			$data = $this->Login->find('first', array('fields' => array('first_name','email_id','id','status','last_login','rights','roles_id'),'conditions' =>array('Login.id' => $this->Functions->decrypt($this->Cookie->read('ESUSER')), 'is_deleted' => 'N', 'status' => '0')));					
+			$data = $this->Login->find('first', array('fields' => array('first_name','email_id','id','status','last_login','rights','roles_id','theme'),'conditions' =>array('Login.id' => $this->Functions->decrypt($this->Cookie->read('ESUSER')), 'is_deleted' => 'N', 'status' => '0')));					
 			if(empty($data)){
 					$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Invalid Attempt', 'default', array('class' => 'alert  alert-login'));				
 					$this->redirect('/');
@@ -125,7 +141,7 @@ class AppController extends Controller {
 			// echo "<script>location.href=$this->webroot</script>";
 			$this->redirect('/');
 		}else{
-			$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Session got expired', 'default', array('class' => 'alert alert-login'));
+			$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Session got expired', 'default', array('class' => 'alert alert-login'));			
 			$this->delete_cookie('ESUSER');	
 			$this->redirect('/');
 		}
@@ -137,7 +153,7 @@ class AppController extends Controller {
 		$permissions = $this->Permission->find('all', array('fields' => array('modules_id'), 'conditions' => array('roles_id' => $this->Session->read('USER.Login.roles_id'))));	
 		//echo "<pre>"; print_r($module_list);
 		$modules = $this->Permission->Module->find('all', array('fields' => array('id'), 'conditions' => array('status' => 'A'), 'order' => array('module_name' => 'asc')));
-		//echo '<pre>'; print_r($permissions);
+		
 		foreach($permissions as $per){
 			$format_per[] = $per['Permission']['modules_id'];
 		}
@@ -149,6 +165,7 @@ class AppController extends Controller {
 				$this->redirect('/home/');	
 			}
 		}
+	
 		// check the all module exists in the list
 		foreach($modules as $key => $module){
 			// check the user module exists in the database module list
@@ -247,6 +264,12 @@ class AppController extends Controller {
 					case 39:					
 					$this->set('approve_client', 1);
 					break;
+					case 40:					
+					$this->set('manage_branch', 1);
+					break;
+					case 41:					
+					$this->set('manage_desig', 1);
+					break;
 				}				
 			}
 		}
@@ -256,7 +279,6 @@ class AppController extends Controller {
 	/* function to set the menu active */
 	public function front_active_menus(){ 
 		$this->set($this->request->params['controller'].'_menu', 'active');
-		
 	}
 	
 	/* function to delete cookie */
@@ -361,4 +383,13 @@ class AppController extends Controller {
 			die('File Not Found');
 		}
 	} 
+	
+	public function invalid_attempt() {
+		$this->Session->destroy();
+		$this->disable_cache();
+		$this->delete_cookie('ESUSER');	
+		$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert-error">&times;</button>Oops! Something went wrong!', 'default', array('class' => 'alert alert-error'));
+		$this->redirect('/');
+
+	}
 }

@@ -8,7 +8,7 @@
             <div class="row-fluid">
 				 <div class="span12">
 		<?php
-		if($this->request->query['cv_update_status'] == '1'):?>					
+		if($cv_update_status == '1'):?>					
 		<div id="flashMessage" class="alert alert-success">
 		<button type="button" class="close" data-dismiss="alert-success">×</button>CV Sent Successfully</div>
 		Redirecting now...
@@ -16,7 +16,7 @@
 			
 				
 		<?php
-		if($this->request->query['cv_update_status'] != '1'):?>					
+		if($cv_update_status == ''):?>					
 <?php echo $this->Form->create('Position', array('id' => '', 'class' => 'formID')); ?>
 	<div class="box">
 	<div class="box-title mb5">
@@ -53,7 +53,7 @@
 					</td>
 						<td>
 					<?php echo $this->Form->input('message', array('div'=> false,'type' => 'text', 'label' => false, 
-					'class' => 'span10 wysiwyg',  'cols' => '6', 'style' => 'height:120px', 
+					'class' => 'span10 wysiwyg',  'cols' => '6', 'style' => 'height:180px;font-size:11px;', 
 					'required' => false, 'placeholder' => '', 'value' => $body_1, 
 					'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 
 
@@ -61,17 +61,19 @@
 				</tr>
 				</tbody>
 			</table>
+				
+					
 			<div class="form-actions">
 			<input name="submit" class="btn btn-gebo theForm" value="Submit"  type="submit"/>
 					<a class="jsRedirect toggleSearch"  href="javascript:window.close()">
-					<input type="button" value="Cancel" id="cancel" class="btn cancel"/></a>
-					<input type="hidden" id="success_page" value="<?php echo $this->webroot;?>position/view/<?php echo $this->request->params['pass'][1]?>/?tab=sent"/>
+				<input type="button" value="Cancel" id="cancel" class="btn cancel"/></a>
 			</div>
 		</div>
 	</div>
 </div>
 </form>
 <?php endif; ?>	
+					<input type="hidden" id="success_page" value="<?php echo $this->webroot;?>position/view/<?php echo $this->request->params['pass'][1]?>/?tab=cv_status"/>
 
   </div>
 </div>

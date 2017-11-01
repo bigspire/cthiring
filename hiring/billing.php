@@ -126,7 +126,7 @@ try{
 	
 	// create validation
 	if($_GET['status'] == 'created'){
- 	 $success_msg = 'Billing ' . $_GET['status'] . ' successfully';
+ 	 $success_msg = 'Billing ' . ucfirst($_GET['status']) . ' Successfully';
 	}
 
 	// validating pagination

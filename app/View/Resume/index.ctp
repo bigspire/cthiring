@@ -43,23 +43,32 @@
 						</div>
 						
 						<?php if($this->request->query['action'] == 'created'):	?>					
-						<div id="flashMessage" class="alert alert-success">
-						<button type="button" class="close" data-dismiss="alert-error">×</button>Resume Created Successfully</div>
+						<div class="alert alert-success">
+								<a class="close" data-dismiss="alert">×</a>
+								 Resume Created Successfully
+								 </div>
 						<?php endif; ?>
 						
-						<?php if($this->request->query['action'] == 'modified'):	?>					
-						<div id="flashMessage" class="alert alert-success">
-						<button type="button" class="close" data-dismiss="alert-error">×</button>Resume Modified Successfully</div>
+						<?php if($this->request->query['action'] == 'modified'):	?>
+							<div class="alert alert-success">
+								<a class="close" data-dismiss="alert">×</a>
+								 Resume Modified Successfully
+								 </div>						
+					
 						<?php endif; ?>
 
 						<?php if($this->request->query['action'] == 'auto_created'):	?>					
-						<div id="flashMessage" class="alert alert-success">
-						<button type="button" class="close" data-dismiss="alert-error">×</button>Autoresume Created Successfully</div>
+						<div class="alert alert-success">
+								<a class="close" data-dismiss="alert">×</a>
+								 AutoResume Created Successfully
+								 </div>	
 						<?php endif; ?>
 						
 						<?php if($this->request->query['action'] == 'auto_modified'):	?>					
-						<div id="flashMessage" class="alert alert-success">
-						<button type="button" class="close" data-dismiss="alert-error">×</button>Autoresume Modified Successfully</div>
+						<div class="alert alert-success">
+								<a class="close" data-dismiss="alert">×</a>
+								 AutoResume Modified Successfully
+								 </div>	
 						<?php endif; ?>
 						
 						
@@ -164,7 +173,7 @@
 										<th width="50"><?php echo $this->Paginator->sort('expected_ctc', 'Expected CTC', array('escape' => false, 'direction' => 'desc'));?></th-->
 										<th width="120"><?php echo $this->Paginator->sort('status', 'Current Status', array('escape' => false, 'direction' => 'desc'));?></th>
 										<th width="75"><?php echo $this->Paginator->sort('Creator.first_name', 'Created By', array('escape' => false, 'direction' => 'desc'));?></th>
-										<th width="80" style="text-align:center">Actions</th>
+										<th width="90" style="text-align:center">Actions</th>
 										<th width="75"><?php echo $this->Paginator->sort('created_date', 'Created', array('escape' => false, 'direction' => 'desc'));?></th>
 										<th width="75"><?php echo $this->Paginator->sort('modified_date', 'Modified', array('escape' => false, 'direction' => 'desc'));?></th>
 										
@@ -177,7 +186,7 @@
 									<?php foreach($data as $res):?>
 									<tr>
 										<?php // if(!empty($noHead)): $target = "target='_blank'"; endif;?>
-										<td><a target='_blank'  href="<?php echo $this->webroot;?>resume/view/<?php echo $res['Resume']['id'];?>/"><?php echo ucwords($res[0]['full_name']);?></a></td>
+										<td><a  href="<?php echo $this->webroot;?>resume/view/<?php echo $res['Resume']['id'];?>/"><?php echo ucwords($res[0]['full_name']);?></a></td>
 										<td><?php echo $this->Functions->get_format_text($res['Resume']['mobile']);?></td>
 										<td><?php echo $this->Functions->get_format_text($res['Resume']['email_id']);?></td>
 										<!--td><?php echo $res['Resume']['present_employer'];?></td-->
@@ -186,7 +195,7 @@
 										<!--td><?php echo $res['Resume']['education'];?></td-->
 										<!--td><?php if(!empty($res['Resume']['present_ctc'])): echo $res['Resume']['present_ctc'].' L'; endif; ?></td>
 										<td><?php if(!empty($res['Resume']['expected_ctc'])): echo $res['Resume']['expected_ctc'].' L'; endif; ?></td-->
-										<td><?php echo $res['ReqResume']['stage_title'];?> - <?php echo $res['ReqResume']['status_title'];?></td>
+										<td><?php echo $this->Functions->get_status_crisp($res['ReqResume']['stage_title'],$res['ReqResume']['status_title']);?></td>
 										<td><?php echo ucfirst($res['Creator']['first_name']);?></td>
 										<td class="actionItem">
 								
@@ -196,13 +205,19 @@
 									</button>
 										<ul class="dropdown-menu">
 										
-											<li><a href="<?php echo $this->webroot;?>resume/profile_snapshot/<?php echo $res['ResDoc']['resume'];?>">Snapshot</a></li>
+											<li><a href="<?php echo $this->webroot;?>resume/profile_snapshot/<?php echo $res['ResDoc']['resume'];?>/<?php echo $res['Resume']['modified_date'] ? strtotime($res['Resume']['modified_date']) : strtotime($res['Resume']['created_date']);?>/">Snapshot</a></li>
 											<li><a href="<?php echo $this->webroot;?>resume/download_doc/<?php echo $res['ResDoc']['resume'];?>/">Candidate Resume</a></li>
-											<?php if($res['Resume']['autoresume']):?>
-											<li><a href="<?php echo $this->webroot;?>resume/autoresume/<?php echo $res['Resume']['id'];?>/<?php echo $res['Resume']['autoresume'];?>">Fully Formatted Resume</a></li>
+											<?php if($res['Resume']['autoresume_modified']):?>
+											<li><a href="<?php echo $this->webroot;?>resume/autoresume/<?php echo $res['ResDoc']['resume'];?>/<?php echo strtotime($res['Resume']['autoresume_modified']);?>">Fully Formatted Resume</a></li>
 											<?php endif; ?>
 										<li class="divider"></li>
-<li><a class="iframeBox" val="70_100" href="<?php echo $this->webroot;?>resume/profile_snapshot/<?php echo $res['ResDoc']['resume'];?>/view/<?php echo $res['Resume']['modified_date'] ? strtotime($res['Resume']['modified_date']) : strtotime($res['Resume']['created_date']);?>/">View Resume</a></li>
+			
+			<li><a class="iframeBox" val="70_100" href="<?php echo $this->webroot;?>resume/profile_snapshot/<?php echo $res['ResDoc']['resume'];?>/<?php echo $res['Resume']['modified_date'] ? strtotime($res['Resume']['modified_date']) : strtotime($res['Resume']['created_date']);?>/view/">View Snapshot</a></li>
+
+			<?php if($res['Resume']['autoresume_modified']):?>
+			<li><a class="iframeBox" val="70_100"  href="<?php echo $this->webroot;?>resume/autoresume/<?php echo $res['ResDoc']['resume'];?>/<?php echo strtotime($res['Resume']['autoresume_modified']);?>/view/">View Formatted Resume</a></li>
+			<?php endif; ?>
+											
 										</ul>
 									</div>
 								
@@ -236,7 +251,7 @@
 						
 												
                       
-					
+					<input type="hidden" id="file_download" rel="<?php echo $this->webroot;?>resume/download_snap/" value="<?php echo $file_download;?>"/>
                         
 					
 					</div>

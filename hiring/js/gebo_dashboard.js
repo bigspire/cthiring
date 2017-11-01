@@ -479,7 +479,7 @@
 				$('ul.filter li').removeClass('active');
 				$(this).parent('li').addClass('active');
 				userList.filter(function(item) {
-					if (item.values().sl_status2 == "Validation - Recruiter - Pending") {
+					if (item.values().sl_status2 == "AH Pending") {
 						return true;
 					} else {
 						return false;
@@ -493,7 +493,7 @@
 				$('ul.filter li').removeClass('active');
 				$(this).parent('li').addClass('active');
 				userList.filter(function(item) {
-					if (item.values().sl_status2 == "Validation - Account Holder - Pending") {
+					if (item.values().sl_status2 == "AH Rejected") {
 						return true;
 					} else {
 						return false;
@@ -506,7 +506,7 @@
 				$('ul.filter li').removeClass('active');
 				$(this).parent('li').addClass('active');
 				userList.filter(function(item) {
-					if (item.values().sl_status2 == "Validation - Account Holder - Rejected") {
+					if (item.values().sl_status2 == "AH Validated") {
 						return true;
 					} else {
 						return false;
@@ -519,7 +519,7 @@
 				$('ul.filter li').removeClass('active');
 				$(this).parent('li').addClass('active');
 				userList.filter(function(item) {
-					if (item.values().sl_status2 == "Shortlist - CV-Sent") {
+					if (item.values().sl_status2 == "CV Sent") {
 						return true;
 					} else {
 						return false;
@@ -532,7 +532,7 @@
 				$('ul.filter li').removeClass('active');
 				$(this).parent('li').addClass('active');
 				userList.filter(function(item) {
-					if (item.values().sl_status2 == "Shortlist - Shortlisted") {
+					if (item.values().sl_status2 == "CV Shortlisted") {
 						return true;
 					} else {
 						return false;
@@ -545,7 +545,7 @@
 				$('ul.filter li').removeClass('active');
 				$(this).parent('li').addClass('active');
 				userList.filter(function(item) {
-					if (item.values().sl_status2 == "Shortlist - YRF") {
+					if (item.values().sl_status2 == "CV Rejected") {
 						return true;
 					} else {
 						return false;
@@ -558,7 +558,7 @@
 				$('ul.filter li').removeClass('active');
 				$(this).parent('li').addClass('active');
 				userList.filter(function(item) {
-					if (item.values().sl_status2 == "Shortlist - Rejected") {
+					if (item.values().sl_status2 == "CV On Hold") {
 						return true;
 					} else {
 						return false;

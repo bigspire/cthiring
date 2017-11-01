@@ -116,6 +116,12 @@ class fun{
 					case 37:					
 					$mod['approve_billing'] = 1;
 					break;
+					case 38:					
+					$mod['manage_designation'] = 1;
+					break;
+					case 39:					
+					$mod['manage_contact_branch'] = 1;
+					break;
 				}				
 			}
 		}
@@ -265,7 +271,7 @@ class fun{
 	
 	// function to validate database created_date field 
 	public function convert_date_to_display($created_date){
-		if(($created_date != '') && ($created_date != '0000-00-00')){
+		if(($created_date != '') && ($created_date != '0000-00-00') && ($created_date != '0000-00-00 00:00:00')){
 			$c_d = date('d-M-Y', strtotime($created_date));
 			return $c_d;
 		}
@@ -273,7 +279,7 @@ class fun{
 	
 	// function to validate database created_date field 
 	public function convert_date_db($created_date){
-		if(($created_date != '') && ($created_date != '0000-00-00')){
+		if(($created_date != '') && ($created_date != '0000-00-00') && ($created_date != '0000-00-00 00:00:00')){
 			$c_d = date('Y-m-d', strtotime($created_date));
 			return $c_d;
 		}
@@ -342,6 +348,19 @@ class fun{
 		}
 		return $st;
 	}
+	
+		/* function used to upload the image */
+	function  upload_file($src, $dest){	
+		if(!empty($src)){			
+			// copy the file to the image path			
+			if(!copy($src, $dest)){
+				echo 'failed to copy the file';
+			}else{				
+				return 1;
+			}
+		}
+	}
+	
 	
 	// interview status colour field validation
 	public function interview_status_cls($status){
@@ -534,6 +553,12 @@ class fun{
 			return true;
 		}
 	}
+	
+	/* function to filter the file */
+	public function filter_file($snap_file_name){
+		return str_replace(array('.','_','-','(',')',' '), '', $snap_file_name);
+	}	
+	
 	// check the  file is not empty
    public function not_empty($filename){
 		if(!empty($filename)){
@@ -725,8 +750,7 @@ class fun{
 		return $str.$suffix;
    }
    
-<<<<<<< HEAD
-=======
+
    /* function to find the min and max exp */
    public function show_exp_details($value){
 		$exp_val = explode('.', $value);
@@ -750,11 +774,10 @@ class fun{
 		return $year.$month;
    }
    
->>>>>>> f1cf94f1e451666b1c26d60ec60d158732da4a1a
     /* function to get ctc type */
    public function get_ctc_type($type){
 		switch($type){
-			case 'K':
+			case 'T':
 			$value = 'Thousands';
 			break;
 			case 'L':
@@ -826,8 +849,7 @@ class fun{
 		}
 		return $txt;
    }
-<<<<<<< HEAD
-=======
+
    
    function openZip($file_to_open, $target) {
     $zip = new ZipArchive();
@@ -840,7 +862,7 @@ class fun{
         die("There was a problem. Please try again!");
     }
 }
->>>>>>> f1cf94f1e451666b1c26d60ec60d158732da4a1a
+
 }
 
 $fun = new fun();

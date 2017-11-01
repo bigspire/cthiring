@@ -141,9 +141,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 	
 	if(empty($test)){
 		//update the attached file
-		if(!empty($_FILES['resume']['name'])){
-			$new_file = $_FILES['resume']['name'];
+		if(!empty($_FILES['resume']['name'])){			
 			// upload the file
+			$prefix = substr(time(), 2,5).rand(1000,10000000).'_';
+			$new_file = $prefix.$_FILES['resume']['name'];
 			$path = $uploaddir.$new_file;
 			move_uploaded_file($_FILES['resume']['tmp_name'], $path);
 			// query to update the file
@@ -157,6 +158,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 				$_SESSION['resume_doc_id'] = $last_id;
 				// write the session to server
 				$_SESSION['resume_doc'] = $new_file;
+				/*
 				if(empty($_SESSION['client_id']) && empty($_SESSION['req_id'])){
 					$_SESSION['client'] = $_POST['client'];
 					$_SESSION['position_for'] = $_POST['position_for'];
@@ -164,6 +166,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 					$_SESSION['client'] = $_SESSION['client_id'];
 					$_SESSION['position_for'] = $_SESSION['req_id'];
 				}
+				*/
+				$_SESSION['client'] = $_POST['client'];
+				$_SESSION['position_for'] = $_POST['position_for'];
 				// call the next result
 				$mysql->next_query();
 			}catch(Exception $e){

@@ -11,8 +11,7 @@ class FunctionsHelper extends AppHelper {
 	/* function used to format the date */
 	public function format_date($date){ 
 		if(!empty($date) && $date!= '0000-00-00' && $date!= '0000-00-00 00:00:00'){
-			$date =  explode("[-: ]", $date);
-			return date('d-M-Y',mktime($date[3],$date[4],$date[5],$date[1],$date[2],$date[0]));
+			return date('d-M-Y',strtotime($date));
 		}
 	}
 	
@@ -35,11 +34,14 @@ class FunctionsHelper extends AppHelper {
 	}
 	
 	/* function to get total joined */
-	public function get_total_joined($join){
+	public function get_total_joined($join,$req_res_id){
 		$split_join = explode(',',$join);
-		foreach($split_join as $detail){
-			if($detail == 'Joined'){
+		$split_res = explode(',',$req_res_id);
+		foreach($split_join as $key => $detail){
+			// remove the duplicates
+			if($detail == 'Joined' && !in_array($split_res[$key], $exist)){
 				$count++;
+				$exist[] = $split_res[$key];
 			}
 		}
 		return $count;
@@ -392,6 +394,37 @@ class FunctionsHelper extends AppHelper {
 		
    }
    
+   /* function to show the status in crisp */ 
+   public function  get_status_crisp($stage, $status){
+		$short_stage = explode(' ', $stage);
+		if($stage == 'Validation - Account Holder' && $status == 'Pending'){
+			$new_status = 'AH Pending';
+		}else if($stage == 'Validation - Account Holder' && $status == 'Rejected'){
+			$new_status = 'AH Rejected';
+		}else if($stage == 'Validation - Account Holder' && $status == 'Validated'){
+			$new_status = 'AH Validated';
+		}else if($stage == 'Shortlist' && $status == 'Shortlisted'){
+			$new_status = 'CV Shortlisted';
+		}else if($stage == 'Shortlist' && $status == 'CV-Sent'){
+			$new_status = 'CV Sent';
+		}else if($stage == 'Shortlist' && $status == 'Rejected'){
+			$new_status = 'CV Rejected';
+		}else if($stage == 'Shortlist' && $status == 'OnHold'){
+			$new_status = 'CV On Hold';
+		}else if($short_stage[1] == 'Interview'){
+			$new_status =  'Interview '.$status;
+		}else if($short_stage[0] == 'Offer'){
+			$new_status =  'Offer '.$status;
+		}else if($stage == 'Joining' && $status == 'Joined'){
+			$new_status = 'Joined';
+		}else if($stage == 'Joining' && $status == 'Not Joined'){
+			$new_status = 'Not Joined';
+		}else{
+			$new_status =  $stage.' - '.$status;
+		}
+		return $new_status;
+   }
+   
    /* function to check gender */
    public function check_gender($gen){
 		if($gen == '1'){
@@ -408,6 +441,8 @@ class FunctionsHelper extends AppHelper {
 			$txt = 'Single';
 		}else if($st == '2'){
 			$txt = 'Married';
+		}else if($st == '3'){
+			$txt = 'Separated';
 		}
 		return $txt;
    }
@@ -502,7 +537,7 @@ class FunctionsHelper extends AppHelper {
    /* function to get ctc type */
    public function get_ctc_type($type){
 		switch($type){
-			case 'K':
+			case 'T':
 			$value = 'Thousands';
 			break;
 			case 'L':
@@ -655,6 +690,33 @@ class FunctionsHelper extends AppHelper {
 		return $value;
    }
    
-  
+	/* function to show the title in dash */
+	public function show_view_detail($cur_view,$ac_dash,$rec_dash,$bd_dash){ 
+		switch($cur_view){
+			case 'bd_view':
+			$title = ($bd_dash == 'active') ? 'You are in BD Dashboard' : 'Click to BD Dashboard';
+			break;
+			case 'ac_view':
+			$title = ($ac_dash == 'active') ? 'You are in AH Dashboard' : 'Click to AH Dashboard';
+			break;
+			case 'rec_view':
+			$title = ($rec_dash == 'active') ? 'You are in Recruiter Dashboard' : 'Click to Recruiter Dashboard';
+			break;			
+		}
+		return $title;
+	}
+	
+	/* function to get the title */
+	public function get_contact_title($title){
+		switch($title){
+			case '1':
+			$value = 'Mr.';
+			break;
+			case '2':
+			$value = 'Ms.';			
+			break;			
+		}
+		return $value;
+	}
 }
 ?>

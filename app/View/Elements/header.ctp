@@ -20,10 +20,26 @@
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo $this->Session->read('USER.Login.first_name');?> <span class="caret"></span></a>
                                     <ul class="dropdown-menu">
+									
+									<li>
+							<div class="style_switcher">
+								<div class="sepH_c">
+									<p>Colors:</p>
+									<div class="clearfix colorDiv">
+										<a href="<?php echo $this->webroot?>hiring/get_theme.php?col=blue" class="style_item jQclr blue_theme"  title="blue">blue</a>
+										<a href="<?php echo $this->webroot?>hiring/get_theme.php?col=dark" class="style_item jQclr dark_theme"  title="dark">dark</a>
+										<a href="<?php echo $this->webroot?>hiring/get_theme.php?col=green" class="style_item jQclr green_theme style_active" title="green">green</a>
+										<a href="<?php echo $this->webroot?>hiring/get_theme.php?col=brown" class="style_item jQclr brown_theme"  title="brown">brown</a>
+										<a href="<?php echo $this->webroot?>hiring/get_theme.php?col=eastern_blue" class="style_item jQclr eastern_blue_theme"  title="eastern_blue">eastern blue</a>
+										<a href="<?php echo $this->webroot?>hiring/get_theme.php?col=tamarillo" class="style_item jQclr tamarillo_theme"  title="tamarillo">tamarillo</a>
+									</div>
+								</div>
+							</div>
+									</li>
 																			<li class="divider"></li>
-
+	
 										<li><a href="<?php echo $this->webroot;?>hiring/view_profile.php">View Profile</a></li>
-
+				
 										<li><a href="<?php echo $this->webroot;?>login/logout/">Log Out</a></li>
                                     </ul>
                                 </li>
@@ -53,7 +69,15 @@
                                               
 											</ul-->
                                         </li>
-										  <li class="dropdown <?php echo $client_menu ?>">
+										
+										<?php 
+										if($APPR_CLIENT_COUNT > 0):
+										$active2 = 'active2';
+										else:
+										$active2 = '';
+										endif;
+										?>
+										  <li class="dropdown <?php echo $client_menu ?> <?php echo $active2;?>">
                                             <a data-toggle="dropdown" class="dropdown-toggle " href="#"><i class="icon-user icon-white"></i> Clients <!--span class="label-bub label-info bubble">1</span--><b class="caret"></b></a>
 											  <ul class="dropdown-menu">
 											  <?php if($create_client == '1'):?>
@@ -75,7 +99,15 @@
                                             </ul>
                                           </li>
 										  
-										  <li class="dropdown <?php echo $position_menu ?>">
+										<?php 
+										if($APPR_REQ_COUNT > 0):
+										$active2 = 'active2';
+										else:
+										$active2 = '';
+										endif;
+										?>
+										
+										  <li class="dropdown <?php echo $position_menu ?> <?php echo $active2;?>">
                                             <a  data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icon-list-alt icon-white"></i> Positions <!--span class="label-bub label-info bubble">14</span--><b class="caret"></b></a>
                                              <ul class="dropdown-menu">
                                                  <?php if($create_position == '1'):?>
@@ -206,6 +238,14 @@
                                             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
 											<i class="icon-cog icon-white"></i> Settings <b class="caret"></b></a>
                                           <ul class="dropdown-menu">
+										  <?php if($manage_branch == '1'):?> 
+                                                <li><a href="<?php echo $this->webroot;?>hiring/contact_branch.php">Branch <!--span class="label-bub label-info white">102</span--></a></li>
+												<?php endif; ?>	
+											
+											<?php if($manage_desig == '1'):?> 
+                                                <li><a href="<?php echo $this->webroot;?>hiring/designation.php">Designation <!--span class="label-bub label-info white">102</span--></a></li>
+												<?php endif; ?>	
+												
 										   <?php if($manage_grade == '1'):?> 
                                                 <li><a href="<?php echo $this->webroot;?>hiring/grade.php">Grade <!--span class="label-bub label-info white">102</span--></a></li>
 												<?php endif; ?>	

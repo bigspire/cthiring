@@ -50,6 +50,9 @@
 										<td width="120" class="tbl_column">Position For <span class="f_req">*</span></td>
 										<td>
 										<input type="text" tabindex="3" name="position" value="{$position}" class="span8" disabled>
+										<input type="hidden" value="{$position}" name="requirement">
+										
+										
 										</td>
 									</tr>
 									
@@ -79,7 +82,7 @@
 									<tr>
 										<td width="120" class="tbl_column">DOB <span class="f_req">*</span></td>
 										<td> 
-										<input name="dob_field" tabindex="5" value="{$dob_field}"  class="datepick span8" placeholder="" type="text" id="HrEmployeeDob">										
+										<input name="dob" tabindex="5" value="{$dob}"  class="datepick span8" placeholder="" type="text" id="HrEmployeeDob">										
 										<label for="reg_city" generated="true" class="error">{$dobErr}</label>																					
 										</td>
 									</tr>	
@@ -108,13 +111,15 @@
 										<td>
 										<select name="year_of_exp" tabindex="8" class="span4">
 										<option value="">Year</option>
-										{html_options options=$exp_yr selected=$year_of_exp}	
+										{html_options options=$tot_exp_yr selected=$year_of_exp}	
 										</select>
 										<select name="month_of_exp" tabindex="9" class="inline_text span4">
 										<option value="">Month</option>
-										{html_options options=$exp_month selected=$month_of_exp}	
+										{html_options options=$tot_exp_month selected=$month_of_exp}	
 										</select>
-										<label for="reg_city" generated="true" class="error">{$year_of_expErr}{$month_of_expErr}</label>																						
+										<label for="reg_city" generated="true" class="error">{$year_of_expErr}</label>	
+										<label for="reg_city" generated="true" class="error">{$month_of_expErr}</label>	
+										
 										</td>
 							</tr>
 								</tbody>
@@ -130,12 +135,12 @@
 										<td>	
 										
 										<input type="text"  tabindex="10" name="present_ctc" value="{$present_ctc}" placeholder="Present"  class="span2"/>										
-										<select class="span3"   name="present_ctc_type">
+										<select class="span2"   name="present_ctc_type">
 										{html_options options=$ctc_type selected=$present_ctc_type}
 										</select> 
 											
 										<input type="text" tabindex="11" name="expected_ctc" value="{$expected_ctc}" placeholder="Expected"  class="span2"/>	
-										<select  class="span3"  name="expected_ctc_type">
+										<select  class="span2"  name="expected_ctc_type">
 										{html_options options=$ctc_type selected=$expected_ctc_type}
 										</select>			
 										<span class="f_req">*</span>		
@@ -203,6 +208,8 @@
 								</tbody>
 							</table>
 						</div>
+						
+						
 </div>
 	
 <!-- sheepIt Form -->
@@ -265,7 +272,7 @@
 								<td width="120" class="tbl_column">% of Marks / Grade <span class="f_req"></span></td>
 								<td> 
 									<input type="text" tabindex="5" name="grade_#index#" id="grade_#index#" class="span4" >
-									<select name="grade_type_#index#" class="inline_text span4"  id="grade_type_#index#">
+									<select name="grade_type_#index#" class="inline_text span4" tabindex="6" id="grade_type_#index#">
 										{html_options options=$grade_drop} 
 									</select>
 								</td>
@@ -273,7 +280,7 @@
 							<tr class="tbl_row">
 							<td width="120" class="tbl_column">Year of Passing <span class="f_req">*</span></td>										
 								<td>
-									<select name="year_of_pass_#index#" id="year_of_pass_#index#" tabindex="6" class="span8">
+									<select name="year_of_pass_#index#" id="year_of_pass_#index#" tabindex="7" class="span8">
 									<option value="">Year</option>
 										{html_options options=$year_of_pass} 
 									</select>
@@ -283,7 +290,7 @@
 							<tr>
 								<td width="120" class="tbl_column">University <span class="f_req"></span></td>
 								<td> 
-									<input type="text" tabindex="7" name="university_#index#" id="university_#index#" class="span8" >										
+									<input type="text" tabindex="8" name="university_#index#" id="university_#index#" class="span8" >										
 								</td>
 							</tr>
 							
@@ -338,19 +345,31 @@
 										</td>
 							</tr>
 								<tr>
-										<td width="120" class="tbl_column">Employment Period<span class="f_req">*</span></td>
+										<td width="120" class="tbl_column">Employment Period<span class="f_req"> *</span></td>
 										<td>
-										<select name="year_of_exp_#index#" tabindex="2" id = "year_of_exp_#index#" tabindex="18" class="span4">
-										<option value="">Year</option>
-										{html_options options=$exp_yr} 
-
-										</select>
-										<select name="month_of_exp_#index#" id = "month_of_exp_#index#" tabindex="3" class="inline_text span4">
-										<option value="">Month</option>
+										<select name="from_month_of_exp_#index#" id = "from_month_of_exp_#index#" tabindex="3" class="span2">
+										<option value="">From</option>
 										{html_options options=$exp_month} 
-
 										</select>
-										<label for="reg_city" generated="true" class="error" id="year_of_exp_Err_#index#"></label>																						
+										<select name="from_year_of_exp_#index#" id = "from_year_of_exp_#index#" tabindex="2" class="inline_text span2">
+										<option value="">From</option>
+										{html_options options=$exp_yr} 
+										</select>
+										
+										<select name="to_month_of_exp_#index#" id = "to_month_of_exp_#index#" tabindex="3" class="inline_text span2">
+										<option value="">To</option>
+										{html_options options=$exp_month} 
+										</select>
+										
+										<select name="to_year_of_exp_#index#" id = "to_year_of_exp_#index#" tabindex="2" class="inline_text span2">
+										<option value="">To</option>
+										{html_options options=$exp_yr} 
+										</select>
+										<label for="reg_city" generated="true" class="error" id="from_month_of_expErr_#index#"></label>																																
+										<label for="reg_city" generated="true" class="error" id="from_year_of_expErr_#index#"></label>																						
+										<label for="reg_city" generated="true" class="error" id="to_month_of_expErr_#index#"></label>																						
+										<label for="reg_city" generated="true" class="error" id="to_year_of_expErr_#index#"></label>																						
+										
 										</td>
 							</tr>
 							
@@ -386,7 +405,7 @@
 								<tr>
 										<td width="120" class="tbl_column">Other Vital Information (Position Specific)  <span class="f_req"></span></td>
 										<td> 
-										<textarea name="vital_#index#" tabindex="7" id="vital_#index#" cols="10" rows="3" class="span8"></textarea>
+										<textarea name="vital_#index#" tabindex="7" id="vital_#index#" cols="10" rows="3" class="span8 wysiwyg1"></textarea>
 										</td>
 							</tr>							
 								
@@ -423,9 +442,9 @@
 		  <table class="table table-bordered dataTable" style="margin-bottom:0;">
 		  <tbody>
 		  <tr>
-			<td width="120" class="tbl_column">Project / Certification Details (optional) <span class="f_req"></span></td>
+			<td width="133" class="tbl_column">Project / Certification Details (optional) <span class="f_req"></span></td>
 				<td> 
-						<textarea name="certification" tabindex="7" id="certification" cols="10" rows="3" class="span8">{if $certification}{$certification}{else}{$smarty.post.certification}{/if}</textarea>
+						<textarea name="certification" tabindex="7" id="certification" cols="10" rows="3" class="span8 wysiwyg1">{if $certification}{$certification}{else}{$smarty.post.certification}{/if}</textarea>
 				</td>
 			</tr>
 		  </tbody>
@@ -435,24 +454,77 @@
 
 </div>
 <div class="tab-pane" id="mbox_Consultant">
-<div class="span12">
+<div class="span6">
 			<table class="table table-bordered dataTable" style="margin-bottom:0;">
 						<tbody>
+						
+						<tr class="tbl_row">
+										<td width="120" class="tbl_column">Rate Technical Skills <span class="f_req"></span></td>
+										<td>
+<ul class="ratingList"> 
+{foreach $tsData as $ts_data}
+{if $ts_data}
+  <li><input class="span8" readonly="readonly" placeholder="" name="ts[]" value="{if $smarty.post}{$ts_data}{else}{$ts_data@key}{/if}" type="text">   
+  <input name="tsr[]" type="hidden" value="{if $smarty.post}{$tsrData[$ts_data@key]}{else}{$tsData[$ts_data@key]}{/if}"  class="rating" data-fractions="2"/> <span class="label label-info dn">{if $smarty.post}{$tsrData[$ts_data@key]}{else}{$tsData[$ts_data@key]}{/if}</span></li>
+  {/if}
+{/foreach} 
+
+
+
+</ul>
+ 
+    <!-- Custom CSS -->
+ 
+										</td>	
+									</tr>	
+									
 									<tr class="tbl_row">
 										<td width="120" class="tbl_column">Consultant Assessment <span class="f_req"></span></td>
 										<td>
-<textarea placeholder="" name="consultant" tabindex="1" id="consultant" cols="10" rows="3" class="span10">{if $consultant}{$consultant}{else}{$smarty.post.consultant}{/if}</textarea>
+<textarea placeholder="" name="consultant" tabindex="1" id="consultant" cols="10" rows="3" class="span10 wysiwyg1">{if $consultant}{$consultant}{else}{$smarty.post.consultant}{/if}</textarea>
 										</td>	
 									</tr>	
+																						
+								</tbody>
+							</table>
+						</div>
+						
+						<div class="span6">
+			<table class="table table-bordered dataTable" style="margin-bottom:0;">
+						<tbody>
+						
+						<tr class="tbl_row">
+										<td width="120" class="tbl_column">Rate Behavioural Skills </td>
+										<td>
+<ul class="ratingList">
+ 
+ {foreach $bsData as $bs_data}
+{if $bs_data}
+  <li><input class="span8" readonly="readonly" placeholder="" name="bs[]" value="{if $smarty.post}{$bs_data}{else}{$bs_data@key}{/if}" type="text">   
+  <input name="bsr[]" type="hidden" value="{if $smarty.post}{$bsrData[$bs_data@key]}{else}{$bsData[$bs_data@key]}{/if}"  class="rating" data-fractions="2"/> <span class="label label-info dn">{if $smarty.post}{$bsrData[$bs_data@key]}{else}{$bsData[$bs_data@key]}{/if}</span> </li>
+  {/if}
+{/foreach} 
+
+ 
+ 
+</ul>
+ 
+										<!--label for="reg_city" generated="true" class="error">{$interview_availabilityErr}</label-->
+										</td>	
+									</tr>
+
+								
 									<tr class="">
 										<td width="120" class="tbl_column">Interview Availability </td>
 										<td>
-<textarea placeholder="" name="interview_availability" tabindex="2"  cols="10" rows="3" class="span10">{if $interview_availability}{$interview_availability}{else}{$smarty.post.interview_availability}{/if}</textarea>
+<textarea placeholder="" name="interview_availability" tabindex="2"  cols="10" rows="3" class="span10 wysiwyg1">{if $interview_availability}{$interview_availability}{else}{$smarty.post.interview_availability}{/if}</textarea>
 										</td>	
 									</tr>													
 								</tbody>
 							</table>
 						</div>
+						
+						
 						<input type="hidden" id="edu_count" name="edu_count" value="{$eduCount}">
 						<input type="hidden" id="exp_count" name="exp_count" value="{$expCount}">
 						<input type="hidden" id="totCount_edu" name="totCount_edu" value="{$totCount_edu}">	
@@ -480,6 +552,28 @@
 	</div>
 	</div>
 	</form>
+	
+	
+	<div class="row-fluid" style="clear:left;float:left;margin-top:15px;">				
+			<div class="span12">
+			<h3 class="heading">Candidate Resume</h3>
+	<table class="table table-bordered dataTable" style="margin-bottom:0;">
+	<tbody>
+	<tr class="tbl_row">
+									
+										<td style="margin:10px;text-align:center;">
+<textarea  class="span12" style="height:300px" name="RESUME_DATA">
+{if $RESUME_DATA}{$RESUME_DATA}{else}{$smarty.post.RESUME_DATA}{/if}
+</textarea>
+																						
+										</td>
+	</tr>									
+									
+	</tbody>
+	</table>
+</div>		</div>
+
+
      </div>
      </div> 
 		</div>
@@ -511,14 +605,22 @@
 		
 		<input type="hidden" id="desigData_{$i}" name="desigData_{$i}" value="{$desigData[$i]}">
 		<input type="hidden" id="areaData_{$i}" name="areaData_{$i}" value="{$areaData[$i]}">
-		<input type="hidden" id="year_of_expData_{$i}" name="year_of_expData_{$i}" value="{$year_of_expData[$i]}">
-		<input type="hidden" id="month_of_expData_{$i}" name="month_of_expData_{$i}" value="{$month_of_expData[$i]}">
+		<input type="hidden" id="from_year_of_expData_{$i}" name="from_year_of_expData_{$i}" value="{$from_year_of_expData[$i]}">
+		<input type="hidden" id="from_month_of_expData_{$i}" name="from_month_of_expData_{$i}" value="{$from_month_of_expData[$i]}">
+		<input type="hidden" id="to_year_of_expData_{$i}" name="to_year_of_expData_{$i}" value="{$to_year_of_expData[$i]}">
+		<input type="hidden" id="to_month_of_expData_{$i}" name="to_month_of_expData_{$i}" value="{$to_month_of_expData[$i]}">
+		
+		<!--<input type="hidden" id="current_locData_{$i}" name="current_locData_{$i}" value="{$current_locData[$i]}">-->
 		<input type="hidden" id="companyData_{$i}" name="companyData_{$i}" value="{$companyData[$i]}">
 		<input type="hidden" id="locationData_{$i}" name="locationData_{$i}" value="{$locationData[$i]}">
 		<input type="hidden" id="vitalData_{$i}" name="vitalData_{$i}" value="{$vitalData[$i]}">
 		
 		<input type="hidden" id="desig_Err_Data_{$i}"  value="{$expErr[$i]['desigErr']}">
-		<input type="hidden" id="year_of_exp_Err_Data_{$i}"  value="{$expErr[$i]['year_of_expErr']}">
+		<input type="hidden" id="from_year_of_exp_Err_Data_{$i}"  value="{$expErr[$i]['from_year_of_expErr']}">
+		<input type="hidden" id="from_month_of_exp_Err_Data_{$i}"  value="{$expErr[$i]['from_month_of_expErr']}">
+		<input type="hidden" id="to_year_of_exp_Err_Data_{$i}"  value="{$expErr[$i]['to_year_of_expErr']}">
+		<input type="hidden" id="to_month_of_exp_Err_Data_{$i}"  value="{$expErr[$i]['to_month_of_expErr']}">
+		
 		<input type="hidden" id="area_Err_Data_{$i}"  value="{$expErr[$i]['areaErr']}">
 		<input type="hidden" id="location_Err_Data_{$i}"  value="{$expErr[$i]['locationErr']}">
 		<input type="hidden" id="company_Err_Data_{$i}"  value="{$expErr[$i]['companyErr']}">
@@ -673,6 +775,8 @@ $(document).ready(function(){
 		   continuousIndex: true,
 		   afterAdd: function(source, newForm) {
 			 $('#exp_count').attr('value',source.getFormsCount());
+			  // for auto resize text area
+			 autosize(document.querySelectorAll('.wysiwyg1'));
 		   },
 		   afterRemoveCurrent: function(source) {		
 			 $('#exp_count').attr('value',source.getFormsCount());
@@ -694,11 +798,17 @@ $(document).ready(function(){
 			if($('#areaData_'+i).length > 0){ 
 				$('#area_'+i).attr('value', $('#areaData_'+i).val());
 			}
-			if($('#year_of_expData_'+i).length > 0){ 
-				$('#year_of_exp_'+i).attr('value', $('#year_of_expData_'+i).val());
+		    if($('#from_year_of_expData_'+i).length > 0){ 
+				$('#from_year_of_exp_'+i).attr('value', $('#from_year_of_expData_'+i).val());
 			}
-			if($('#month_of_expData_'+i).length > 0){ 
-				$('#month_of_exp_'+i).val( $('#month_of_expData_'+i).val());
+			if($('#from_month_of_expData_'+i).length > 0){ 
+				$('#from_month_of_exp_'+i).val( $('#from_month_of_expData_'+i).val());
+			}
+			if($('#to_year_of_expData_'+i).length > 0){ 
+				$('#to_year_of_exp_'+i).attr('value', $('#to_year_of_expData_'+i).val());
+			}
+			if($('#to_month_of_expData_'+i).length > 0){ 
+				$('#to_month_of_exp_'+i).val( $('#to_month_of_expData_'+i).val());
 			}
 			if($('#companyData_'+i).length > 0){ 
 				$('#company_'+i).val( $('#companyData_'+i).val());
@@ -714,8 +824,17 @@ $(document).ready(function(){
 			if($('#desig_Err_Data_'+i).length > 0){ 
 				$('#desig_Err_'+i).html($('#desig_Err_Data_'+i).val());
 			}
-			if($('#year_of_exp_Err_Data_'+i).length > 0){ 
-				$('#year_of_exp_Err_'+i).html($('#year_of_exp_Err_Data_'+i).val());
+			if($('#from_year_of_exp_Err_Data_'+i).length > 0){ 
+				$('#from_year_of_expErr_'+i).html($('#from_year_of_exp_Err_Data_'+i).val());
+			}
+			if($('#from_month_of_exp_Err_Data_'+i).length > 0){ 
+				$('#from_month_of_expErr_'+i).html($('#from_month_of_exp_Err_Data_'+i).val());
+			}
+			if($('#to_year_of_exp_Err_Data_'+i).length > 0){ 
+				$('#to_year_of_expErr_'+i).html($('#to_year_of_exp_Err_Data_'+i).val());
+			}
+			if($('#to_month_of_exp_Err_Data_'+i).length > 0){ 
+				$('#to_month_of_expErr_'+i).html($('#to_month_of_exp_Err_Data_'+i).val());
 			}
 			/*if($('#current_loc_Err_Data_'+i).length > 0){ 
 				$('#current_loc_Err_'+i).html($('#current_loc_Err_Data_'+i).val());

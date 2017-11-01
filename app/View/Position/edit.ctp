@@ -169,13 +169,26 @@
 						</td>	
 
 				  </tr>
-				  <tr  class="tbl_row">
+				  <!--tr  class="tbl_row">
 										<td width="120" class="tbl_column">Key Skills <span class="f_req">*</span></td>
 										<td> 
-<?php echo $this->Form->input('skills', array('div'=> false,'type' => 'text', 'label' => false, 'class' => 'span8', 'cols' => '10', 'rows' => '3',
-  'required' => false, 'placeholder' => '',	'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 
+<?php // echo $this->Form->input('skills', array('div'=> false,'type' => 'text', 'label' => false, 'class' => 'span8', 'cols' => '10', 'rows' => '3',  'required' => false, 'placeholder' => '',	'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 
 										</td>
-									</tr>
+				</tr-->
+									
+								<tr  class="tbl_row">
+										<td width="120" class="tbl_column">Technical Skills <span class="f_req">*</span></td>
+										<td> 
+<?php echo $this->Form->input('tech_skill', array('div'=> false, 'data-role' => 'tagsinput', 'type' => 'text', 'multiple' => 'multiple', 'label' => false, 'class' => 'span8 tagInput', 'required' => false, 'placeholder' => '',	'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 
+										</td>
+				</tr>
+					
+				<tr  class="">
+										<td width="120" class="tbl_column">Behavioural Skills <span class="f_req">*</span></td>
+										<td> 
+<?php echo $this->Form->input('behav_skill', array('div'=> false,'type' => 'text', 'label' => false, 'class' => 'span8 tagInput', 'required' => false, 'placeholder' => '', 'data-role' => 'tagsinput',	'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 
+										</td>
+				</tr>					
 									
 						<tr class="">
 							<td width="120" class="tbl_column">Job Code	 </td>
@@ -187,7 +200,7 @@
 
 							</td>	
 						</tr>				
-					<tr class="">
+					<!--tr class="">
 						<td width="120" class="tbl_column">No. of Openings <span class="f_req">*</span></td>
 						<td>
 
@@ -196,26 +209,106 @@
 		'style' => "clear:left", 'options' => array_combine(range(1,50,1),range(1,50,1)), 'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 
 																				
 						</td>
-					</tr>																		
+					</tr-->																		
 									
 					
 
 			
 
 							
-						
+						<!-- Small modal -->
+
+<div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content" style="margin:25px;">
+     No. of Openings:  <select name="data[Position][req]" style="margin-left:100px" class="selPosReq span4" placeholder="" style="clear:left">
+<option value="">Min.</option>
+<option value="1">1 </option>
+<option value="2">2 </option>
+<option value="3">3 </option>
+<option value="4">4 </option>
+<option value="5">5 </option>
+<option value="6">6 </option>
+<option value="7">7 </option>
+<option value="8">8 </option>
+<option value="9">9 </option>
+<option value="10">10 </option>
+<option value="11">11 </option>
+<option value="12">12 </option>
+<option value="13">13 </option>
+<option value="14">14 </option>
+<option value="15">15 </option>
+<option value="16">16 </option>
+<option value="17">17 </option>
+<option value="18">18 </option>
+<option value="19">19 </option>
+<option value="20">20 </option>
+<option value="21">21 </option>
+<option value="22">22 </option>
+<option value="23">23 </option>
+<option value="24">24 </option>
+<option value="25">25 </option>
+<option value="26">26 </option>
+<option value="27">27 </option>
+<option value="28">28 </option>
+<option value="29">29 </option>
+<option value="30">30 </option>
+<option value="31">31 </option>
+<option value="32">32 </option>
+<option value="33">33 </option>
+<option value="34">34 </option>
+<option value="35">35 </option>
+<option value="36">36 </option>
+<option value="37">37 </option>
+<option value="38">38 </option>
+<option value="39">39 </option>
+<option value="40">40 </option>
+<option value="41">41 </option>
+<option value="42">42 </option>
+<option value="43">43 </option>
+<option value="44">44 </option>
+<option value="45">45 </option>
+<option value="46">46 </option>
+<option value="47">47 </option>
+<option value="48">48 </option>
+<option value="49">49 </option>
+<option value="50">50 </option>
+</select>
+    </div>
+  </div>
+</div>						
 																	
 					
 				  
 				  <tr class="">
-						<td width="120" class="tbl_column">Team Members <span class="f_req">*</span></td>
+						<td width="120" class="tbl_column">Recruiters <span class="f_req">*</span></td>
 						<td>	
 						
+			
 	<?php echo $this->Form->input('team_member_req', array('div'=> false,'type' => 'select', 'label' => false, 
-		'class' => 'span8 chosen-select', 'multiple' => 'multiple',  'required' => false, 'placeholder' => '', 
-		'style' => "clear:left", 'options' => $userList, 'selected' => $usersSel,
+		'class' => 'span8 chosen-select chooseReqTeam', 'empty' => 'Select', 'required' => false, 'placeholder' => '', 
+		'style' => "clear:left", 'options' => $userList,
 		'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 
-					
+	
+	
+	<div class="noJob"> 
+	<?php
+	foreach($teamData as $key => $team):?>
+	<span id="" style="margin-top:2px;font-size:13px;font-weight:normal" class="tagDiv tag label label-warning"><?php echo $team['Creator']['first_name'].' '.$team['Creator']['last_name'];?> - <?php echo $noPositions[$key];?> <i class="icon-adt_trash  removeTag" val="" rel="tooltip" data="96" title="remove" style="margin-top:2px;cursor:pointer"></i></span>
+	<?php $pos_str .= $team['Creator']['id'].'-'.$noPositions[$key].',';?>
+	<?php endforeach;?>
+	</div>
+	
+	
+		<div  class="noJob"></div>
+	
+	
+	<?php 
+	echo $this->Form->input('team_id', array('div'=> false,'type' => 'hidden', 'id' => 'team_id', 'value' => $pos_str));
+	echo $this->Form->input('temp_team_id', array('div'=> false,'type' => 'hidden', 'id' => 'temp_team_id'));
+	echo $this->Form->input('cur_team', array('div'=> false,'type' => 'hidden', 'id' => 'cur_team'));
+	
+	?>
 
 					
 						</td>	
@@ -285,7 +378,7 @@
 			<a href="<?php echo $this->webroot;?>position/download_doc/<?php echo $this->request->data['Position']['job_desc_file'];?>"><?php echo $this->request->data['Position']['job_desc_file'];?></a>
 			<br>
 
-			<textarea   style="width:1200px" rows = "10"><?php echo trim($this->Functions->read_document(WWW_ROOT.'/uploads/jd/'.$this->request->data['Position']['job_desc_file']));?></textarea>
+			<textarea   class="span12" rows = "10"><?php echo trim($this->Functions->read_document(WWW_ROOT.'/uploads/jd/'.$this->request->data['Position']['job_desc_file']));?></textarea>
 	<?php endif; ?>
 									</td>
 								</tr>
@@ -401,7 +494,8 @@
 		<input type="hidden" id="coordErr_<?php echo $i;?>" value="<?php echo $errorData[$i]['coord'];?>"-->				
 <?php // endfor;?>
 
-<?php echo $this->Form->input('page', array('type' => 'hidden',   'value' => 'edit_position')); ?>
+<?php echo $this->Form->input('page', array('id' => 'page', 'type' => 'hidden',   'value' => 'edit_position')); ?>
+<?php echo $this->Form->input('pos_default', array('type' => 'hidden',  'value' => '1', 'id' => 'pos_default')); ?>
 
 <?php echo $this->Form->input('webroot', array('type' => 'hidden', 'value' => $this->webroot.'position/', 'id' => 'webroot')); ?>
 

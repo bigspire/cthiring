@@ -59,7 +59,11 @@
 </div>
 <div class="form-actions">
 				<input name="submit" class="btn btn-gebo" value="Submit" type="submit"/>
-				<a href="incentive.php"><button type="button" class="btn cancel_event">Cancel</button></a>
+					<input type="hidden" name="data[Client][webroot]" value="incentive.php" id="webroot">
+
+	<a href="javascript:void(0)" class="jsRedirect cancelBtn cancel_event">
+	<input type="button" value="Cancel" class="btn">
+	</a>
 </div>
                     </div>
 				</form>

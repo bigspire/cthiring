@@ -24,7 +24,7 @@
 			
 	<?php echo $this->Form->create('Position', array('id' => '', 'class' => 'formID', 'enctype' => 'multipart/form-data')); ?>
 			
-							<?php echo $this->Session->flash();?>
+	<?php echo $this->Session->flash();?>
 
 			
 	<div class="box">
@@ -166,13 +166,19 @@
 
 				  </tr>	
 				  
-				  <tr  class="tbl_row">
-										<td width="120" class="tbl_column">Key Skills <span class="f_req">*</span></td>
+				<tr  class="tbl_row">
+										<td width="120" class="tbl_column">Technical Skills <span class="f_req">*</span></td>
 										<td> 
-<?php echo $this->Form->input('skills', array('div'=> false,'type' => 'text', 'label' => false, 'class' => 'span8', 'cols' => '10', 'rows' => '3',
-  'required' => false, 'placeholder' => '',	'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 
+<?php echo $this->Form->input('tech_skill', array('div'=> false, 'data-role' => 'tagsinput', 'type' => 'text', 'multiple' => 'multiple', 'label' => false, 'class' => 'span8 tagInput', 'required' => false, 'placeholder' => '',	'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 
 										</td>
-									</tr>
+				</tr>
+					
+				<tr  class="">
+										<td width="120" class="tbl_column">Behavioural Skills <span class="f_req">*</span></td>
+										<td> 
+<?php echo $this->Form->input('behav_skill', array('div'=> false,'type' => 'text', 'label' => false, 'class' => 'span8 tagInput', 'required' => false, 'placeholder' => '', 'data-role' => 'tagsinput',	'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 
+										</td>
+				</tr>
 									
 							<tr class="">
 							<td width="120" class="tbl_column">Job Code	 </td>
@@ -255,7 +261,7 @@
 																	
 				
 				  <tr class="">
-						<td width="120" class="tbl_column">Team Members <span class="f_req">*</span></td>
+						<td width="120" class="tbl_column">Recruiters <span class="f_req">*</span></td>
 						<td>	
 				
 
@@ -267,14 +273,15 @@
 		'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 
 	
 	
-		<div style="" class="noJob"></div>
+		<div  class="noJob"></div>
 	
 	
+	<?php 
+	echo $this->Form->input('team_id', array('div'=> false,'type' => 'hidden', 'id' => 'team_id'));
+	echo $this->Form->input('temp_team_id', array('div'=> false,'type' => 'hidden', 'id' => 'temp_team_id'));
+	echo $this->Form->input('cur_team', array('div'=> false,'type' => 'hidden', 'id' => 'cur_team'));	
+	?>
 	
-	
-	<input type="hidden" name="data[Position][team_id]" value="" id="team_id"/>
-	<input type="hidden" name="data[Position][temp_team_id]" value="" id="temp_team_id"/>
-	<input type="hidden" name="data[Position][cur_team]" value="" id="cur_team"/>
 
 					
 						</td>	
@@ -343,7 +350,7 @@
 								<tr class="tbl_row">
 									<td width="120" class="tbl_column">Job Description <span class="f_req">*</span></td>										
 									<td>
-<?php echo $this->Form->input('job_desc', array('div'=> false,'type' => 'text', 'label' => false, 'class' => 'span10 wysiwyg', 'cols' => '10', 'style' => 'height:250px' , 'rows' => '3',
+<?php echo $this->Form->input('job_desc', array('div'=> false,'type' => 'text', 'label' => false, 'class' => 'span10 wysiwyg', 'cols' => '10', 'style' => "height:250px;", 'rows' => '3',
   'required' => false, 'placeholder' => 'Enter job description here',	'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 
 
 									<br>

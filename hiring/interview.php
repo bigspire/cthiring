@@ -18,7 +18,6 @@ include('classes/class.function.php');
 include('classes/class.paging.php');
 // add menu count
 include('menu_count.php');
-
 // role based validation
 $module_access = $fun->check_role_access('10',$modules);
 $smarty->assign('module',$module_access);
@@ -61,19 +60,16 @@ if($_POST){
 		$result = $mysql->execute_query($sql);		
 		while($row = $mysql->display_result($result)){
 			$emp_name[$row['id']] = ucwords($row['first_name'].' '.$row['last_name']);
+			// concatenate the list of team members
+			$id_str .=  $row['id'].', ';
 		}
+	
 		// if not director or BH
 		if(!empty($emp_name)){
-			$smarty->assign('approveUser', '1');		
-			foreach($result as $rec){
-				// concatenate the list of team members
-				$id_str .=  $rec['u']['id'].' , ';
-			}
+			$smarty->assign('approveUser', '1');	
 			if($team_cond){
-				$cond .= 'or ( rr.created_by in('.$id_str.')';
-				$cond .= 'or ah.users_id in('.$id_str.')
-				)';
-				
+				$cond .= 'or ( rr.created_by in('.substr($id_str, 0, strlen($id_str)-2).')';
+				$cond .= ' or cah2.users_id in('.substr($id_str, 0, strlen($id_str)-2).')))';				
 			}
 			$smarty->assign('emp_name',$emp_name);
 		}
@@ -136,6 +132,7 @@ if($search_key = array_search($_GET['field'], $sort_fields)){
 
 // fetch all records
 $query =  "CALL list_interview('".$_SESSION['user_id']."','".$_SESSION['roles_id']."','".$keyword."','".$employee."','".$branch."','".$fun->get_status_cond($current_status)."','".$from_date."','".$to_date."','$start','$limit','".$field."','".$order."','".$_GET['action']."', '".$cond."')";
+
 try{
 	if(!$result = $mysql->execute_query($query)){
 		throw new Exception('Problem in executing list interview page');
@@ -167,7 +164,7 @@ try{
 
 	// approve or reject validation
 	if($_GET['status'] == 'Approved' || $_GET['status'] == 'Rejected'){
- 		$success_msg = 'Billing ' . $_GET['status'] . ' successfully';
+ 		$success_msg = 'Billing ' . ucfirst($_GET['status']) . ' Successfully';
 	}
 
 	// validating pagination

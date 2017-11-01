@@ -11,6 +11,8 @@ define('Username', 'cthireuser');
 define('Password', 'hire39R23!');
 define('Database', 'cthiringdata');
 */
+		
+			
 define('Host', '35.202.182.147');
 define('Username', 'root');
 define('Password', 'como#9!');

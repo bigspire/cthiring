@@ -21,7 +21,7 @@
                                 </li>
                             
                                 <li>
-                                   <?php echo $position_data['Position']['job_title'];?>
+                                   <?php echo ucwords($position_data['Position']['job_title']);?>
                                 </li>
                             </ul>
                         </div>
@@ -93,13 +93,13 @@
 									<tr>
 										
 										<td width="120" class="tbl_column">Job Title</td>
-										<td><?php echo $position_data['Position']['job_title'];?></td>
+										<td><?php echo ucwords($position_data['Position']['job_title']);?></td>
 											
 									</tr>
 									<tr>
 										
 										<td width="120" class="tbl_column">Job Location </td>
-										<td><?php echo $position_data['Position']['location'];?></td>
+										<td><?php echo ucfirst($position_data['Position']['location']);?></td>
 											
 									</tr>
 									<tr>
@@ -135,17 +135,18 @@
 										<td><?php echo $position_data['Creator']['first_name'];?></td>
 											
 									</tr>
-								
-				<tr>
+			
+<?php  if($position_data['Position']['is_approve'] != 'W'):?>			
+
+		<tr>
 										
-										<td class="tbl_column">Status</td>
-										<td>	
+<td class="tbl_column">Status</td>
+	<td>	
 										
-										<span rel="tooltip" title="Requirement Status: <?php echo $position_data['ReqStatus']['title'];?> " class="label label-<?php echo $this->Functions->get_req_status_color($position_data['ReqStatus']['title']);?>"><?php echo $position_data['ReqStatus']['title'];?></span>	
+<span rel="tooltip" title="Requirement Status: <?php echo $position_data['ReqStatus']['title'];?> " class="label label-<?php echo $this->Functions->get_req_status_color($position_data['ReqStatus']['title']);?>"><?php echo $position_data['ReqStatus']['title'];?></span>	
 </td>
-											
-									</tr>
-									
+	</tr>
+	<?php endif; ?>								
 	
 								</tbody>
 							</table>
@@ -163,8 +164,17 @@
 									
 									<tr>
 										
-										<td class="tbl_column" style="width:140px;">Key Skills</td>
-										<td><?php echo $position_data['Position']['skills'];?></td>
+										<td class="tbl_column" style="width:140px;">Technical Skills</td>
+										<td><?php $skill = $position_data['Position']['tech_skill'] ? $position_data['Position']['tech_skill'] :$position_data['Position']['skills'];?>
+										<?php echo ucwords(str_replace(',', ', ',$skill));?>
+										</td>
+											
+									</tr>
+									
+									<tr>
+										
+										<td class="tbl_column" style="width:140px;">Behavioural Skills</td>
+										<td><?php echo ucwords(str_replace(',', ', ',$position_data['Position']['behav_skill']));?></td>
 											
 									</tr>
 									
@@ -185,7 +195,7 @@
 									
 										<tr>
 										
-										<td class="tbl_column">Team Members</td>
+										<td class="tbl_column">Recruiters</td>
 										<td><?php echo $position_data[0]['team_member2'];?></td>
 											
 									</tr>
@@ -208,13 +218,15 @@
 											
 									</tr>
 									
+									<?php if($position_data['Position']['modified_date']):?>
 										<tr>
 										
 										<td class="tbl_column">Modified On</td>
-										<td><?php echo $this->Functions->format_date($position_data['Position']['created_date']);?></td>
+										<td><?php echo $this->Functions->format_date($position_data['Position']['modified_date']);?></td>
 											
 									</tr>
 									
+									<?php endif; ?>
 									
 								</tbody>
 							</table>
@@ -229,7 +241,7 @@
 									<tr>
 										<td  class="tbl_column"width="120">Job Description</td>
 										<td>
-									<?php echo $position_data['Position']['job_desc'];?>	
+									<?php echo nl2br(strip_tags($position_data['Position']['job_desc'], '<br>'));?>	
 										
 
 			<br></td>
@@ -237,10 +249,16 @@
 									<tr>
 								<td width="120" class="tbl_column">Attachment </td>
 									<td>
-										<a class="notify" data-notify-time = '7000' data-notify-title="In Progress!"
-										data-notify-message="Downloading JD... Please wait..."   
-										href="<?php echo $this->webroot;?>hc/download/<?php echo $position_data['Position']['id']; ?>/jd/">
-										Download</a>
+										
+	<?php if($position_data['Position']['job_desc_file'] != ''):?>
+			<a href="<?php echo $this->webroot;?>position/download_doc/<?php echo $position_data['Position']['job_desc_file'];?>"><?php echo $position_data['Position']['job_desc_file'];?></a>
+			<br>
+
+			<textarea   class="span12" rows = "10"><?php echo trim($this->Functions->read_document(WWW_ROOT.'/uploads/jd/'.$position_data['Position']['job_desc_file']));?></textarea>
+	<?php else: ?>	
+	No file attached.
+	<?php endif; ?>									
+										
 									</td>
 								</tr>
 								</tbody>
@@ -262,11 +280,11 @@
 					
 					
 					</div></div>
-			<?php if($position_data['Position']['is_approve'] == 'W'  && $this->Session->read('USER.Login.roles_id') == '39'):?>
+			<?php if($position_data['Position']['is_approve'] == 'W'):?>
 
 							<div class="form-actions">
-<a class="iframeBox unreadLink" rel="tooltip" title="Approve Position" href="<?php echo $this->webroot;?>position/remark/approve/<?php echo $position_data['Position']['id'];?>" val="40_50"><input type="button" value="Approve" class="btn btn btn-success"/></a>
-<a class="iframeBox unreadLink" rel="tooltip" title="Reject Position" href="<?php echo $this->webroot;?>position/remark/reject/<?php echo $position_data['Position']['id'];?>" val="40_50"><input type="button" value="Reject" class="btn btn btn-danger"/></a>
+<a class="iframeBox unreadLink" rel="tooltip" title="Approve Position" href="<?php echo $this->webroot;?>position/remark/<?php echo $position_data['Position']['id'];?>/<?php echo $this->request->params['pass'][1];?>/<?php echo $position_data['Position']['created_by'];?>/A/" val="40_50"><input type="button" value="Approve" class="btn btn btn-success"/></a>
+<a class="iframeBox unreadLink" rel="tooltip" title="Reject Position" href="<?php echo $this->webroot;?>position/remark/<?php echo $position_data['Position']['id'];?>/<?php echo $this->request->params['pass'][1];?>/<?php echo $position_data['Position']['created_by'];?>/R/" val="40_50"><input type="button" value="Reject" class="btn btn btn-danger"/></a>
 <a href="<?php echo $this->webroot;?>position/index/pending/" rel="tooltip" title="Cancel and Back to Positions"  class="jsRedirect"><button class="btn">Cancel</button></a>
 
 
@@ -333,8 +351,8 @@
 					  <div class="row-fluid">
 						<div class="span12">
 						
-															<?php echo $this->Session->flash();?>
-
+					<?php echo $this->Session->flash();?>
+<span id="update"></span>
 															
 															
 							<div class="mbox">
@@ -380,8 +398,8 @@
 														<th  width="80"  class="noticePeriod">Notice</th>
 														<th  width="140" class="">CV Owner</th>
 														<th  width="90" class="">CV Created</th>
-														<th style="text-align:center"  width="150" class="upload_row">Action</th>
-														<th style="text-align:center" width="150">Download</th>
+														<th style="text-align:center"  width="75" class="upload_row">Action</th>
+														<th style="text-align:center" width="75">Download</th>
 													</tr>
 													
 												
@@ -406,12 +424,11 @@
 													
 	<?php if($resume['ReqResume']['stage_title'] != 'Validation - Recruiter' && $resume['ReqResume']['stage_title'] != 'Validation - Account Holder'):?>
 	<?php $row_type = 'sent_row';
-	else:
-	$row_type = 'upload_row';
+	
 	endif; ?>
 		
 													
-													<tr class="<?php echo $row_type;?>">
+													<tr class="upload_row <?php echo $row_type;?>">
 														<td>														
 														<a target="_blank" href="<?php echo $this->webroot;?>resume/view/<?php echo $resume['Resume']['id'];?>/"><?php echo ucwords($resume['Resume']['first_name'].' '.$resume['Resume']['last_name']);?></a>
 															<span style="font-size:9px">(<?php echo $resume['ReqResume']['stage_title'];?> <?php echo $resume['ReqResume']['status_title'];?>)</span>
@@ -446,7 +463,7 @@
 			<?php if($resume['ReqResume']['stage_title'] == 'Validation - Account Holder' &&
 										$resume['ReqResume']['status_title'] == 'Validated'):?>
 															
-					<span rel="tooltip" style="cursor:pointer" data-original-title="Send CV"><a href="<?php echo $this->webroot;?>position/send_cv/<?php echo $resume['Resume']['id']; ?>/<?php echo $this->request->params['pass'][0];?>/" val="60_90"  class="iframeBox"><i class="splashy-arrow_medium_upper_right"></i></a></span>
+					<span rel="tooltip" style="cursor:pointer" data-original-title="Send CV"><a href="<?php echo $this->webroot;?>position/send_cv/<?php echo $resume['Resume']['id']; ?>/<?php echo $this->request->params['pass'][0];?>/<?php echo $resume['ReqResume']['id']; ?>/" val="65_90"  class="iframeBox"><i class="splashy-arrow_medium_upper_right"></i></a></span>
 																
 																
 										<?php elseif($resume['ReqResume']['stage_title'] == 'Validation - Account Holder' &&
@@ -458,8 +475,8 @@
 													
 												<ul style="margin-left:-35px;" class="dropdown-menu">
 															
-									<li><a href="<?php echo $this->webroot;?>position/verify_cv/<?php echo $resume['Resume']['id']; ?>/<?php echo $this->request->params['pass'][0];?>/approve/"><i class="splashy-check"></i> Approve</a></li>
-									<li><a href="<?php echo $this->webroot;?>position/verify_cv/<?php echo $resume['Resume']['id']; ?>/<?php echo $this->request->params['pass'][0];?>/reject/"><i class="splashy-error_small"></i> Reject</a></li>
+									<li><a class="notify" data-notify-time = '3000' data-notify-title="In Progress!" data-notify-message="Validating CV.. Pls wait.." href="<?php echo $this->webroot;?>position/verify_cv/<?php echo $resume['Resume']['id']; ?>/<?php echo $this->request->params['pass'][0];?>/approve/"><i class="splashy-check"></i> Approve</a></li>
+									<li><a val="40_60"  class="iframeBox sepV_a cboxElement" href="<?php echo $this->webroot;?>position/verify_cv/<?php echo $resume['Resume']['id']; ?>/<?php echo $this->request->params['pass'][0];?>/reject/"><i class="splashy-error_small"></i> Reject</a></li>
 															</ul>		
 														</div>	
 																
@@ -480,36 +497,23 @@
 														
 															<td class="actionItem" style="text-align:center">
 															
-															<a  rel="tooltip" title="View Resume" class="iframeBox" style="margin-right:5px" val="80_80" href="<?php echo $this->webroot;?>resume/view_doc/<?php echo $resume['ResDoc']['resume']; ?>/"><i  class="splashy-documents_okay"></i></a> 
+													
 															
 															
-														<div class="btn-group" style="display:inline-block;">
-															<!--a href="edit_resume.php" style="margin-left:5px;margin-right:5px" rel="tooltip" class="sepV_a" title="Edit"><i class="icon-pencil"></i></a-->
-															<!-- <a href="#"  style="margin-right:5px"  id="smoke_confirm" rel="tooltip" class="confirm"   title="Delete"><i class="icon-trash"></i></a> -->
-															<!--a href="add_formatted_resume.php" style="margin-right:5px"  rel="tooltip"  title="Create Fully Formatted Resume">
-															<img src="<?php echo $this->webroot;?>img/gCons/add-item.png" width="18" height="18" style="padding-bottom: 5px;">
-															</a-->
-															
-															
-															
-														<span rel="tooltip" class=""  data-toggle="dropdown" data-original-title="Download"><a href="#"><i  class="splashy-document_letter_download"></i>					</span></a>
+													
+														
+														
+															<?php if($resume['ResDoc']['resume'] == ''):?>
 																
 																
-															
-															<ul style="margin-left:-75px;" class="dropdown-menu">
-															
-																<?php if($resume['ResDoc']['resume'] == ''):?>
-																
-																
-																<li><a class="notify" data-notify-time = '7000' data-notify-title="In Progress!" data-notify-message="Downloading Resume... Please wait..."   href="<?php echo $this->webroot;?>hc/download/<?php echo $resume['Resume']['id']; ?>">Candidate Resume</a></li>
+																<a rel="tooltip" title="Download" class="notify" data-notify-time = '7000' data-notify-title="In Progress!" data-notify-message="Downloading Resume... Please wait..."   href="<?php echo $this->webroot;?>hc/download/<?php echo $resume['Resume']['id']; ?>"><i  class="splashy-document_letter_download"></i></a>
 																<?php else:?>
-																<li><a class="notify" data-notify-time = '3000' data-notify-title="In Progress!" data-notify-message="Downloading Resume... Please wait..."   href="<?php echo $this->webroot;?>resume/download_doc/<?php echo $resume['ResDoc']['resume']; ?>">Candidate Resume</a></li>
+													<?php $date = $resume['Resume']['modified_date'] ? $resume['Resume']['modified_date']: $resume['Resume']['created_date']?>
+																<a rel="tooltip" title="Download"  class="notify" data-notify-time = '3000' data-notify-title="In Progress!" data-notify-message="Downloading Resume... Please wait..."   href="<?php echo $this->webroot;?>resume/profile_snapshot/<?php echo $resume['ResDoc']['resume']; ?>/<?php echo strtotime($date);?>"><i  class="splashy-document_letter_download"></i></a>
 																<?php endif; ?>
 																
-																<li><a href="<?php echo $this->webroot;?>resume/profile_snapshot/<?php echo $resume['Resume']['id']; ?>">Snapshot</a></li>
-																
-															</ul>
-														</div>											
+															
+																									
 														</td>
 														
 														
@@ -544,7 +548,7 @@
 									
 									<div class="btn-group">
 									
-										<span class="btn-mini alert alert-success alert-action" rel="tooltip" title="CV Feedback Awaiting"  style="background-image:none;cursor:default;margin-bottom:0px;">
+										<span class="btn-mini alert alert-success alert-action legendView" rel="tooltip" title="CV Feedback Awaiting"  style="">
 										FA  
 										</span>
 										
@@ -554,15 +558,15 @@
 										
 										
 										<ul class="dropdown-menu">
-	<li><a  href="<?php echo $this->webroot;?>position/update_cv/<?php echo  $resume['Resume']['id'];?>/<?php echo $this->request->params['pass'][0];?>/shortlist/" val="40_60"  class="iframeBox sepV_a cboxElement">Shortlisted</a></li>
-	<li><a  href="<?php echo $this->webroot;?>position/update_cv/<?php echo  $resume['Resume']['id'];?>/<?php echo $this->request->params['pass'][0];?>/<?php echo $this->request->params['pass'][0];?>/cv_reject/" val="40_60"  class="iframeBox sepV_a cboxElement">Rejected</a></li>
+	<li><a  href="<?php echo $this->webroot;?>position/update_cv/<?php echo  $resume['Resume']['id'];?>/<?php echo $this->request->params['pass'][0];?>/<?php echo  $resume['ReqResume']['id'];?>/shortlist/" val="40_60"  class="iframeBox sepV_a cboxElement"><i class="splashy-check"></i> Shortlisted</a></li>
+	<li><a  href="<?php echo $this->webroot;?>position/update_cv/<?php echo  $resume['Resume']['id'];?>/<?php echo $this->request->params['pass'][0];?>/<?php echo  $resume['ReqResume']['id'];?>/cv_reject/" val="40_60"  class="iframeBox sepV_a cboxElement"><i class="splashy-error_small"></i> Rejected</a></li>
 										</ul>
 									</div>	
 								
 	<?php elseif($resume['ReqResume']['stage_title'] == 'Shortlist' && $resume['ReqResume']['status_title'] == 'Rejected'):
 							?>
 							
-<span class="btn btn-mini alert alert-danger" rel="tooltip" title="CV Rejected" style="background-image:none;cursor:default;margin-bottom:0px;text-align:center;">
+<span class="btn btn-mini alert alert-danger legendView" rel="tooltip" title="CV Rejected" style="">
                 R
             </span>									
 									
@@ -572,7 +576,7 @@
 || $resume['ReqResume']['stage_title'] == 'Joining'):
 ?>
 								
-<span class="btn btn-mini alert alert-success" rel="tooltip" title="CV Shortlisted" style="background-image:none;cursor:default;margin-bottom:0px;">
+<span class="btn btn-mini alert alert-success legendView" rel="tooltip" title="CV Shortlisted" style="">
                 S
             </span>									
 									
@@ -604,14 +608,14 @@
 									
 										<?php if($resume['ReqResume']['status_title'] == 'Scheduled'  || $resume['ReqResume']['status_title'] == 'Cancelled' || $resume['ReqResume']['status_title'] == 'No Show'):?>
 										
-										<span class="btn-mini alert alert-success alert-action" rel="tooltip" title="<?php echo $int_level[0];?> Interview Scheduled" style="background-image:none;cursor:default;margin-bottom:0px;">
+										<span class="btn-mini alert alert-success alert-action legendView" rel="tooltip" title="<?php echo $int_level[0];?> Interview Scheduled" style="">
 										<?php echo $int_lev_same;?> IS 
 										</span>	
 		
 										<?php else: ?>
 										
 										
-										<span class="btn-mini alert alert-success alert-action" rel="tooltip" title="<?php echo $int_lev_order;?> Interview Schedule Awaited" style="background-image:none;cursor:default;margin-bottom:0px;">
+										<span class="btn-mini alert alert-success alert-action legendView" rel="tooltip" title="<?php echo $int_lev_order;?> Interview Schedule Awaited" style="">
 										<?php echo $int_lev;?> ISA  
 										</span>
 									
@@ -622,19 +626,19 @@
 										
 										<ul class="dropdown-menu">
 										<?php if($resume['ReqResume']['status_title'] == 'Shortlisted' || $resume['ReqResume']['status_title'] == 'Selected' || $resume['ReqResume']['status_title'] == 'Cancelled' || $resume['ReqResume']['status_title'] == 'No Show'):?>
-										<li><a  href="<?php echo $this->webroot;?>position/schedule_interview/<?php echo  $resume['Resume']['id'];?>/<?php echo $this->request->params['pass'][0];?>/<?php echo $int_lev;?>/" val="60_90"  class="iframeBox sepV_a cboxElement">Interview Schedule / Reschedule</a></li>
+										<li><a  href="<?php echo $this->webroot;?>position/schedule_interview/<?php echo  $resume['Resume']['id'];?>/<?php echo $this->request->params['pass'][0];?>/<?php echo $resume['ReqResume']['id'];?>/<?php echo $int_lev;?>/" val="65_90"  class="iframeBox sepV_a cboxElement">Interview Schedule / Reschedule</a></li>
 										<?php else: ?>
-										<li><a  href="<?php echo $this->webroot;?>position/view_interview_schedule/<?php echo  $resume['ReqResume']['id'];?>/<?php echo $int_lev_same;?>/" val="60_90"  class="iframeBox sepV_a cboxElement">View Interview Details</a></li>
+										<li><a  href="<?php echo $this->webroot;?>position/view_interview_schedule/<?php echo  $resume['ReqResume']['id'];?>/<?php echo $int_lev_same;?>/" val="65_90"  class="iframeBox sepV_a cboxElement">View Interview Details</a></li>
 										<?php endif; ?>
 										
 										<?php if($resume['ReqResume']['status_title'] == 'Scheduled'):?>
 										
-										<li><a  href="<?php echo $this->webroot;?>position/schedule_interview/<?php echo  $resume['Resume']['id'];?>/<?php echo $this->request->params['pass'][0];?>/<?php echo $int_lev;?>/reschedule/" val="60_90"  class="iframeBox sepV_a cboxElement">Interview Re-Schedule</a></li>
+										<li><a  href="<?php echo $this->webroot;?>position/schedule_interview/<?php echo  $resume['Resume']['id'];?>/<?php echo $this->request->params['pass'][0];?>/<?php echo $resume['ReqResume']['id'];?>/<?php echo $int_lev_same;?>/reschedule/" val="65_90"  class="iframeBox sepV_a cboxElement">Interview Re-Schedule</a></li>
 										
 										<li class="divider"></li>
 										
-											<li><a  href="<?php echo $this->webroot;?>position/update_interview/<?php echo  $resume['Resume']['id'];?>/<?php echo $this->request->params['pass'][0];?>/shortlist/<?php echo $int_lev_same;?>/" val="40_60"  class="iframeBox sepV_a cboxElement"><?php  if($int_level[0] > 0): echo $int_level[0]; endif;?> <i class="splashy-check"></i> Interview Selected </a></li>
-											<li><a  href="<?php echo $this->webroot;?>position/update_interview/<?php echo  $resume['Resume']['id'];?>/<?php echo $this->request->params['pass'][0];?>/reject/<?php echo $int_lev_same;?>/" val="40_60"  class="iframeBox sepV_a cboxElement"><?php  if($int_level[0] > 0): echo $int_level[0]; endif;?> <i class="splashy-error_small"></i> Interview Rejected</a></li>
+											<li><a  href="<?php echo $this->webroot;?>position/update_interview/<?php echo  $resume['Resume']['id'];?>/<?php echo $this->request->params['pass'][0];?>/<?php echo  $resume['ReqResume']['id'];?>/shortlist/<?php echo $int_lev_same;?>/" val="40_60"  class="iframeBox sepV_a cboxElement"><?php  if($int_level[0] > 0): echo $int_level[0]; endif;?> <i class="splashy-check"></i> Interview Selected </a></li>
+											<li><a  href="<?php echo $this->webroot;?>position/update_interview/<?php echo  $resume['Resume']['id'];?>/<?php echo $this->request->params['pass'][0];?>/<?php echo  $resume['ReqResume']['id'];?>/reject/<?php echo $int_lev_same;?>/" val="40_60"  class="iframeBox sepV_a cboxElement"><?php  if($int_level[0] > 0): echo $int_level[0]; endif;?> <i class="splashy-error_small"></i> Interview Rejected</a></li>
 										<?php endif; ?>
 										</ul>
 									</div>	
@@ -642,7 +646,7 @@
 <?php elseif((strstr($resume['ReqResume']['stage_title'], 'Interview') && $resume['ReqResume']['status_title'] == 'Selected')
 || (strstr($resume['ReqResume']['stage_title'], 'Interview') && $resume['ReqResume']['status_title'] == 'Qualified')
 || ($resume['ReqResume']['stage_title'] == 'Offer' || $resume['ReqResume']['stage_title'] == 'Joining') && $action != '1'):?>
-<span class="btn btn-mini alert alert-success" rel="tooltip" title="Interview Selected" style="background-image:none;cursor:default;margin-bottom:0px;text-align:center;">
+<span class="btn btn-mini alert alert-success legendView" rel="tooltip" title="Interview Selected" style="">
                S
             </span>									
 									
@@ -651,7 +655,7 @@
 <?php elseif(strstr($resume['ReqResume']['stage_title'], 'Interview') && $resume['ReqResume']['status_title'] == 'Rejected'	 && $action != '1'):
 							$action = 1;?>
 							
-<span class="btn btn-mini alert alert-danger" rel="tooltip" title="Interview Rejected" style="background-image:none;cursor:default;margin-bottom:0px;text-align:center;">
+<span class="btn btn-mini alert alert-danger legendView" rel="tooltip" title="Interview Rejected" style="">
                R
             </span>									
 									
@@ -669,15 +673,15 @@
 							$action = '1';?>																		
 									
 									<div class="btn-group">	
-									<span class="btn-mini alert alert-success alert-action" rel="tooltip" title="Offer Pending"  style="background-image:none;cursor:default;margin-bottom:0px;">
+									<span class="btn-mini alert alert-success alert-action legendView" rel="tooltip" title="Offer Pending"  style="">
 										OP  
 										</span>
 										
 										<span data-toggle="dropdown" style="padding-top:1px;margin-left:1px;border:1px solid #fbfcbd" class=" dropdown-toggle  alert-action"><span class="caret" style="margin-top:7px;"></span></span>
 										
 										<ul class="dropdown-menu">
-											<li><a  href="<?php echo $this->webroot;?>position/update_offer/<?php echo  $resume['Resume']['id'];?>/<?php echo $this->request->params['pass'][0];?>/offer_accept/" val="40_60"  class="iframeBox sepV_a cboxElement">Accepted</a></li>
-											<li><a  href="<?php echo $this->webroot;?>position/update_offer/<?php echo  $resume['Resume']['id'];?>/<?php echo $this->request->params['pass'][0];?>/offer_decline/" val="40_60"  class="iframeBox sepV_a cboxElement">Declined</a></li>
+											<li><a  href="<?php echo $this->webroot;?>position/update_offer/<?php echo  $resume['Resume']['id'];?>/<?php echo $this->request->params['pass'][0];?>/<?php echo  $resume['ReqResume']['id'];?>/offer_accept/" val="40_70"  class="iframeBox sepV_a cboxElement"><i class="splashy-check"></i> Accepted</a></li>
+											<li><a  href="<?php echo $this->webroot;?>position/update_offer/<?php echo  $resume['Resume']['id'];?>/<?php echo $this->request->params['pass'][0];?>/<?php echo  $resume['ReqResume']['id'];?>/offer_decline/" val="40_60"  class="iframeBox sepV_a cboxElement"><i class="splashy-error_small"></i> Declined</a></li>
 										</ul>
 									</div>	
 										
@@ -693,7 +697,7 @@
 							?>
 							
 								
-<span class="btn btn-mini alert alert-danger" rel="tooltip" title="Offer Declined" style="background-image:none;cursor:default;margin-bottom:0px;padding:4px 7px 4px 9px;text-align:center;">
+<span class="btn btn-mini alert alert-danger legendView" rel="tooltip" title="Offer Declined" style="">
                 D <?php // echo ucfirst($resume['ReqResume']['status_title']);?>	
 				
             </span>									
@@ -703,7 +707,7 @@
 $action = 1;?>
 								
 								
-<span class="btn btn-mini alert alert-success" rel="tooltip" title="Offer Accepted" style="background-image:none;cursor:default;margin-bottom:0px;padding:4px 7px 4px 9px;text-align:center;">
+<span class="btn btn-mini alert alert-success legendView" rel="tooltip" title="Offer Accepted" style="">
                OA
             </span>									
 									
@@ -719,8 +723,8 @@ $action = 1;?>
 							$action = '1';?>																		
 									
 									<div class="btn-group">
-									
-										<span class="btn-mini alert alert-success alert-action" rel="tooltip" title="Joining Awaiting"   style="background-image:none;cursor:default;margin-bottom:0px;">
+									<?php $st_title = $resume['ReqResume']['status_title'] == 'Deferred' ? 'Deferred' : 'Awaiting';?>
+										<span class="btn-mini alert alert-success alert-action" rel="tooltip" title="Joining <?php echo $st_title;?>"   style="background-image:none;cursor:default;margin-bottom:0px;">
 										JA  
 										</span>
 										
@@ -728,9 +732,9 @@ $action = 1;?>
 										
 									
 										<ul class="dropdown-menu">
-											<li><a  href="<?php echo $this->webroot;?>position/update_joining/<?php echo  $resume['Resume']['id'];?>/<?php echo $this->request->params['pass'][0];?>/joined/" val="40_60"  class="iframeBox sepV_a cboxElement">Joined</a></li>
-											<li><a  href="<?php echo $this->webroot;?>position/update_joining/<?php echo  $resume['Resume']['id'];?>/<?php echo $this->request->params['pass'][0];?>/not_joined/" val="40_60"  class="iframeBox sepV_a cboxElement">Not Joined</a></li>
-											<li><a  href="<?php echo $this->webroot;?>position/update_joining/<?php echo  $resume['Resume']['id'];?>/<?php echo $this->request->params['pass'][0];?>/deferred/" val="40_60"  class="iframeBox sepV_a cboxElement">Deferred</a></li>
+											<li><a  href="<?php echo $this->webroot;?>position/update_joining/<?php echo  $resume['Resume']['id'];?>/<?php echo $this->request->params['pass'][0];?>/<?php echo  $resume['ReqResume']['id'];?>/joined/" val="40_60"  class="iframeBox sepV_a cboxElement">Joined</a></li>
+											<li><a  href="<?php echo $this->webroot;?>position/update_joining/<?php echo  $resume['Resume']['id'];?>/<?php echo $this->request->params['pass'][0];?>/<?php echo  $resume['ReqResume']['id'];?>/not_joined/" val="40_70"  class="iframeBox sepV_a cboxElement">Not Joined</a></li>
+											<li><a  href="<?php echo $this->webroot;?>position/update_joining/<?php echo  $resume['Resume']['id'];?>/<?php echo $this->request->params['pass'][0];?>/<?php echo  $resume['ReqResume']['id'];?>/deferred/" val="40_70"  class="iframeBox sepV_a cboxElement">Deferred</a></li>
 										</ul>
 									</div>	
 								
@@ -738,7 +742,7 @@ $action = 1;?>
 							?>
 							
 								
-<span class="btn btn-mini alert alert-danger" rel="tooltip" title="Candidate Not Joined" style="background-image:none;cursor:default;margin-bottom:0px;padding:4px 7px 4px 9px;text-align:center;">
+<span class="btn btn-mini alert alert-danger legendView" rel="tooltip" title="Candidate Not Joined" style="">
                NJ
             </span>									
 									
@@ -746,7 +750,7 @@ $action = 1;?>
 <?php elseif($resume['ReqResume']['stage_title'] == 'Joining' && $resume['ReqResume']['status_title'] == 'Joined'):?>
 								
 								
-<span class="btn btn-mini alert alert-success" rel="tooltip" title="Candidate Joined" style="background-image:none;cursor:default;margin-bottom:0px;padding:4px 7px 4px 9px;text-align:center;">
+<span class="btn btn-mini alert alert-success legendView" rel="tooltip" title="Candidate Joined" style="">
                J
             </span>									
 									
@@ -762,7 +766,7 @@ $action = 1;?>
 									
 									<div class="btn-group">
 										
-										<span class="btn-mini alert alert-success alert-action" rel="tooltip" title="Billing Awaiting"   style="background-image:none;cursor:default;margin-bottom:0px;">
+										<span class="btn-mini alert alert-success alert-action legendView" rel="tooltip" title="Billing Awaiting"   style="">
 										BA  
 										</span>
 										
@@ -779,7 +783,7 @@ $action = 1;?>
 <?php elseif($resume['ReqResume']['status_title'] == 'Joined'  && $resume['ReqResume']['bill_ctc'] != '0.00'):?>
 								
 								
-<span class="btn btn-mini alert alert-success" rel="tooltip" title="Candidate Billed (₹<?php echo $resume['ReqResume']['bill_ctc'];?>)" style="background-image:none;cursor:default;margin-bottom:0px;padding:4px 7px 4px 9px;text-align:center;">
+<span class="btn btn-mini alert alert-success legendView" rel="tooltip" title="Candidate Billed (₹<?php echo $resume['ReqResume']['bill_ctc'];?>)" style="">
                 B
             </span>									
 									
@@ -848,7 +852,7 @@ $yrf =  $sent - ($shortlist  + $cv_reject)
 														</tr>
 														<tr class="">
 														<td>Feedback Awaiting</td>
-														<th><?php echo $yrf;?></th>
+														<th><?php echo $yrf > 0 ? $yrf : '';?></th>
 														</tr>
 														<tr class="">
 														<td>Interviewed</td>

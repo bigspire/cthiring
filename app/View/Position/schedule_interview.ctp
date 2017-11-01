@@ -8,15 +8,16 @@
             <div class="row-fluid">
 				 <div class="span12">
 		<?php
-		if($this->request->query['cv_update_status'] == '1'):?>					
+		if($cv_update_status == '1'):?>					
 		<div id="flashMessage" class="alert alert-success">
 		<button type="button" class="close" data-dismiss="alert-success">×</button>Interview Scheduled Successfully</div>
 		Redirecting now...
 		<?php endif; ?>		 		
 			
 				
+		
 		<?php
-		if($this->request->query['cv_update_status'] != '1'):?>					
+		if($cv_update_status == ''):?>					
 <?php echo $this->Form->create('Position', array('id' => '', 'class' => 'formID')); ?>
 <div class="box">
 	<div class="box-title mb5">
@@ -32,9 +33,9 @@
 									<div class="w-box-content">
 										<div class="tabbable clearfix">
 											<ul class="nav nav-tabs" style="float:left;margin-left:15px;">
-												<li class="active"><a href="#tab1" data-toggle="tab">Interview Details</a></li>
-												<li class=""><a href="#tab2" data-toggle="tab">Interview Confirmation to Candidate</a></li>
-												<li><a href="#tab3" data-toggle="tab">Interview Confirmation to Clients</a></li>
+												<li class="active"><a href="#tab1" data-toggle="tab" style="font-size:13px;">Interview Details</a></li>
+												<li class=""><a href="#tab2" data-toggle="tab" style="font-size:13px;">Interview Confirmation to Candidate</a></li>
+												<li><a href="#tab3" data-toggle="tab" style="font-size:13px;">Interview Confirmation to Clients</a></li>
 											</ul>
 											<div class="tab-content">
 											
@@ -50,6 +51,22 @@
 						</td>	
 				</tr>
 				
+					<?php if($reschedule):?>
+				
+				<tr class="">
+					<td width="120" class="">Reason for Re-Schedule <span class="f_req">*</span>
+					</td>
+						<td>
+					<?php echo $this->Form->input('reason_id', array('div'=> false,'type' => 'select', 'label' => false, 
+		'class' => 'span8', 'id' => '', 'empty' => 'Select', 'required' => false, 'placeholder' => '', 
+		'style' => "clear:left", 'options' => $rejectList, 'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 
+							
+ 					
+						</td>	
+				</tr>
+				
+					<?php endif; ?>
+				
 				<tr class="tbl_row" >
 					<td width="120" class="tbl_column">Interview Level <span class="f_req">*</span>
 					</td>
@@ -59,7 +76,7 @@
 				</tr>
 				
 				<tr class="tbl_row" >
-					<td width="120" class="tbl_column">Interview Stage <span class="f_req">*</span>
+					<td width="120" class="tbl_column">Interview Mode <span class="f_req">*</span>
 					</td>
 						<td>
 		<?php echo $this->Form->input('interview_stage_id', array('div'=> false,'type' => 'radio',  'label' => false, 'style' => 'margin:4px 2px', 'class' => 'input-xlarge',  'options' => $stageList, 'separator' => ' ',  'required' => false, 'placeholder' => '', 'legend' => false, 'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?>
@@ -120,7 +137,7 @@
 			<input name="submit" class="btn btn-gebo theForm" value="Submit"  type="submit"/>
 					<a class="jsRedirect toggleSearch"  href="javascript:window.close()">
 					<input type="button" value="Cancel" id="cancel" class="btn cancel"/></a>
-					<input type="hidden" id="success_page" value="<?php echo $this->webroot;?>position/view/<?php echo $this->request->params['pass'][1]?>/?tab=cv_status"/>
+					
 			</div>
 		
 												</div>
@@ -146,7 +163,7 @@
 					</td>
 						<td>
 					<?php echo $this->Form->input('message_client', array('div'=> false,'type' => 'text', 'label' => false, 
-					'class' => 'span10 wysiwyg',  'cols' => '6', 'style' => 'height:120px', 
+					'class' => 'span10 wysiwyg',  'cols' => '6', 'style' => 'height:180px', 
 					'required' => false, 'placeholder' => '', 'value' => $body_3, 
 					'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 
 
@@ -182,11 +199,11 @@
 					</td>
 						<td>
 					<?php echo $this->Form->input('message', array('div'=> false,'type' => 'text', 'label' => false, 
-					'class' => 'span10 wysiwyg',  'cols' => '6', 'style' => 'height:120px', 
+					'class' => 'span10 wysiwyg',  'cols' => '6', 'style' => 'height:180px', 
 					'required' => false, 'placeholder' => '', 'value' => $body_2, 
 					'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 
 
-						</td>	
+					</td>	
 				</tr>
 				</tbody>
 			</table>
@@ -215,6 +232,7 @@
 </form>
 <?php endif; ?>	
 
+<input type="hidden" id="success_page" value="<?php echo $this->webroot;?>position/view/<?php echo $this->request->params['pass'][1]?>/?tab=cv_status"/>
   </div>
 </div>
 </div> 

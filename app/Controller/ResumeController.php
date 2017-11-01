@@ -176,6 +176,12 @@ class ResumeController extends AppController {
 						'type' => 'LEFT',
 						'conditions' => array('`ResDoc`.`id` = `Resume`.`resume_doc_id`')
 						)
+				,
+				array('table' => 'req_resume_interview',
+						'alias' => 'ResInterview',					
+						'type' => 'LEFT',
+						'conditions' => array('`ReqResume`.`id` = `ResInterview`.`req_resume_id`')
+				)
 		);
 		// for employee condition
 		if($this->request->query['emp_id'] != ''){			
@@ -199,6 +205,7 @@ class ResumeController extends AppController {
 			// set date condition
 			$int_cond = array('or' => array("DATE_FORMAT(ResInterview.int_date, '%Y-%m-%d') between ? and ?" => 
 						array($this->Functions->format_date_save($int_start), $this->Functions->format_date_save($int_end))));
+			/*
 			$options = array(			
 				array('table' => 'req_resume',
 						'alias' => 'ReqResume',					
@@ -210,7 +217,7 @@ class ResumeController extends AppController {
 						'type' => 'LEFT',
 						'conditions' => array('`ReqResume`.`id` = `ResInterview`.`req_resume_id`')
 				)
-			);
+			);*/
 		}
 		$fields = array('id',"concat(Resume.first_name,' ',Resume.last_name) full_name",'email_id','mobile','mobile2','total_exp','education','present_employer',
 		'ResLocation.location','present_ctc','expected_ctc', 'Creator.first_name','Resume.created_date',
@@ -233,6 +240,12 @@ class ResumeController extends AppController {
 		$this->set('data', $data);
 		if(empty($data)){
 			$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Oops! No Resumes Found!', 'default', array('class' => 'alert alert-info'));
+		}
+		// downlod the pdf 
+		if(!empty($this->request->query['download'])){
+			$this->set('file_download',$this->request->query['download']);
+		}else{
+			$this->set('file_download','');
 		}
 		
 		
@@ -357,7 +370,7 @@ class ResumeController extends AppController {
 		'ResLocation.location', 'present_ctc','expected_ctc', 'Creator.first_name','created_date','notice_period',
 		'Resume.modified_date','ReqResume.stage_title','ReqResume.status_title','Designation.designation','present_ctc_type','expected_ctc_type',
 		'gender','marital_status','family','present_location','native_location', 'dob','consultant_assess','interview_avail','ResDoc.resume',
-		'Position.job_title','Resume.skills');
+		'Position.job_title','Resume.skills','Resume.created_by');
 		$data2 = $this->Resume->find('all', array('fields' => $fields,'conditions' => array('Resume.id' => $id),
 		'order' => array('ReqResume.id' => 'desc'),'joins' => $options));
 		$this->set('resume_data', $data2[0]);		
@@ -452,13 +465,13 @@ class ResumeController extends AppController {
 	
 	
 	/* function to export the profile snap shot */
-	public function profile_snapshot($snap_file, $action, $updated){ 
+	public function profile_snapshot($snap_file, $updated, $action){ 
 		 $snap_exp = substr($snap_file, 0, strlen($snap_file) - 5);
-		 $pdf_date = date('m-d-Y', $updated);
+		 $pdf_date = date('d-m-Y', $updated);
 		 if($action == 'view'){
-			$this->redirect('/resume/view_resume_pdf/'.$snap_exp.'_'.$pdf_date.'.pdf');		
-		 }else{
-			$this->download_file('../../hiring/uploads/snapshotmerged/'.$snap_exp.'_'.$pdf_date.'.pdf');
+			$this->redirect('/resume/view_resume_pdf/'.$this->Functions->filter_file($snap_exp).'_'.$pdf_date.'.pdf');		
+		 }else{ 
+			$this->download_file('../../hiring/uploads/snapshotmerged/'.$this->Functions->filter_file($snap_exp).'_'.$pdf_date.'.pdf');
 		 }
 		 die;		
 			// $id = '144515';
@@ -543,13 +556,37 @@ class ResumeController extends AppController {
 	}
 	
 	/* function to download the file */
+	public function download_snap($file){
+		 $this->download_file('../../hiring/uploads/snapshotmerged/'.$file);
+		 die;
+	}
+	
+	
+	/* function to download the file */
 	public function download_doc($file){
 		 $this->download_file('../../hiring/uploads/resume/'.$file);
 		 die;
 	}
 	
-	/* function to export the profile snap shot */
-	public function autoresume($id){
+	
+	/* function to view the auto pdf */
+	public function view_auto_pdf($file){
+		$this->layout = false;
+		$this->set('filePath', '../../hiring/uploads/autoresumepdf/'.$file);
+	}
+	
+	/* function to download the autoresume */
+	public function autoresume($file, $updated, $action){ 
+		 $snap_exp = substr($file, 0, strlen($file) - 5);
+		 $pdf_date = date('d-m-Y', $updated);
+		 if($action == 'view'){
+			$this->redirect('/resume/view_auto_pdf/'.$this->Functions->filter_file($snap_exp).'_'.$pdf_date.'.pdf');		
+		 }else{ 
+			$this->download_file('../../hiring/uploads/autoresumepdf/'.$this->Functions->filter_file($snap_exp).'_'.$pdf_date.'.pdf');
+		 }
+		 die;	
+	/*
+	
 			// create the pdf
 			if(!empty($id)){											
 				// convert to PDF
@@ -643,6 +680,8 @@ class ResumeController extends AppController {
 					exit;
 				}
 			}
+			
+			*/
 	}
 	
 	// check the role permissions

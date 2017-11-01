@@ -78,10 +78,10 @@
 									</tr>	
 									
 									<tr>
-										<td width="120" class="tbl_column">Telephone <span class="f_req">*</span></td>
+										<td width="120" class="tbl_column">Telephone <span class="f_req"></span></td>
 										<td>
-										<input type="text" tabindex="5" name="telephone" value="{$telephone}" class="span8">
-										<label for="reg_city" generated="true" class="error">{$telephoneErr}</label>	</td>	
+										<input type="text" tabindex="5" name="telephone" value="{if $telephone}{$telephone}{else}{$smarty.post.telephone}{/if}" class="span8">
+										<!--label for="reg_city" generated="true" class="error">{$telephoneErr}</label-->	</td>	
 									</tr>								
 									<tr class="tbl_row">
 										<td width="120" class="tbl_column">DOB <span class="f_req">*</span></td>
@@ -122,7 +122,8 @@
 										<option value="">Month</option>
 										{html_options options=$total_exp_month selected=$month_of_exp}	
 										</select>
-										<label for="reg_city" generated="true" class="error">{$year_of_expErr}{$month_of_expErr}</label>																						
+										<label for="reg_city" generated="true" class="error">{$year_of_expErr}</label>	
+<label for="reg_city" generated="true" class="error">{$month_of_expErr}</label>										
 										</td>			
 									</tr>	
 
@@ -258,23 +259,7 @@
 								</tbody>
 							</table>
 						</div>
-							<div class="row-fluid" style="clear:left;float:left;margin-top:15px;">				
-			<div class="span12">
-	<table class="table table-bordered dataTable" style="margin-bottom:0;">
-	<tbody>
-<tr class="tbl_row">
 						
-<td style="margin:10px;text-align:center;">
-<textarea rows = "10" style="width:1200px;" name="RESUME_DATA">
-{if $RESUME_DATA}{$RESUME_DATA}{else}{$smarty.post.RESUME_DATA}{/if}
-</textarea>
-																						
-</td>
-</tr>									
-									
-	</tbody>
-	</table>
-</div>		</div>
 			</div>
 
 					
@@ -296,8 +281,16 @@
 										</select>						
 										<label for="reg_city" generated="true" class="error" id="qualification_Err_#index#"></label></td>	
 									</tr>
-									
 									<tr>
+										<td width="120" class="tbl_column">Degree <span class="f_req">*</span></td>
+										<td> 
+					<select name="degree_#index#" tabindex="2" class="span8 degree_id"  id="degree_#index#">
+					<option value="">Select</option>
+					</select>
+					<label for="reg_city" generated="true" class="error" id="degree_Err_#index#"></label>										
+				</td>	
+									</tr>
+									<tr class="tbl_row">
 										<td width="120" class="tbl_column"> Specialization <span class="f_req">*</span></td>
 										<td> 
 					<select name="specialization_#index#" tabindex="3" class="span8"  id="specialization_#index#">	
@@ -307,20 +300,14 @@
 					<label for="reg_city" generated="true" class="error" id="specialization_Err_#index#"></label>										
 				</td>	
 									</tr>
-						         <tr class="tbl_row">
+						         <tr>
 										<td width="120" class="tbl_column">University <span class="f_req"></span></td>
 										<td> 
-									<input type="text" tabindex="5" name="university_#index#" id="university_#index#" class="span8" >										
+									<input type="text" tabindex="4" name="university_#index#" id="university_#index#" class="span8" >										
 								</td>	
 									</tr>
 	
-										<tr>
-										<td width="120" class="tbl_column">Location <span class="f_req">*</span></td>
-										<td>
-										<input type="text" tabindex="8" name="location_#index#" id="location_#index#" value="" class="span8">
-									<label for="reg_city" generated="true" class="error" id="locationErr_#index#"> </label> 
-										</td>	
-										</tr>	
+											
 									</tr>
 								</tbody>
 							</table>
@@ -328,28 +315,26 @@
 							<div class="span6">
 			<table class="table table-bordered dataTable" style="margin-bottom:0;">
 						<tbody>
-									<tr class="tbl_row">
-										<td width="120" class="tbl_column">Degree <span class="f_req">*</span></td>
-										<td> 
-					<select name="degree_#index#" tabindex="2" class="span8 degree_id"  id="degree_#index#">
-					<option value="">Select</option>
-					</select>
-					<label for="reg_city" generated="true" class="error" id="degree_Err_#index#"></label>										
-				</td>	
-									</tr>
+									<tr  class="tbl_row">
+										<td width="120" class="tbl_column">Location <span class="f_req">*</span></td>
+										<td>
+										<input type="text" tabindex="5" name="location_#index#" id="location_#index#" value="" class="span8">
+									<label for="reg_city" generated="true" class="error" id="locationErr_#index#"> </label> 
+										</td>	
+										</tr>
 									
 									<tr>
 										<td width="120" class="tbl_column"> College <span class="f_req"></span></td>
 										<td> 
-					<input type="text" tabindex="4" name="college_#index#" id="college_#index#" class="span8" >										
+					<input type="text" tabindex="6" name="college_#index#" id="college_#index#" class="span8" >										
 					<label for="reg_city" generated="true" class="error">{$collegeErr}</labe>									
 				</td>		
 									</tr>
 									<tr class="tbl_row">
 										<td width="120" class="tbl_column"> % of Marks  <span class="f_req">*</span></td>
 										<td> 
-									<input type="text" tabindex="6" name="grade_#index#" id="grade_#index#" value="{$grade}" class="span4" >
-									<select name="grade_type_#index#" tabindex="7" class="inline_text span4"  id="grade_type_#index#">
+									<input type="text" tabindex="7" name="grade_#index#" id="grade_#index#" value="{$grade}" class="span4" >
+									<select name="grade_type_#index#" tabindex="8" class="inline_text span4"  id="grade_type_#index#">
 										{html_options options=$grade_drop} 
 									</select>
 									<label for="reg_city" generated="true" class="error" id="gradeErr_#index#"></label>	
@@ -446,7 +431,7 @@
 										</td>
 							</tr>
 							<tr class="tbl_row">
-										<td width="120" class="tbl_column">Location of work <span class="f_req">*</span></td>
+										<td width="120" class="tbl_column">Location of Work <span class="f_req">*</span></td>
 										<td> 
 										<input type="text"  tabindex="4" name="workloc_#index#" id="workloc_#index#" value="" class="span8" />										
 										<label for="reg_city" generated="true" class="error" id="worklocErr_#index#"></label>										
@@ -485,7 +470,7 @@
 								<tr class="tbl_row">
 										<td width="120" class="tbl_column">Other Vital Information (Position Specific)  <span class="f_req"></span></td>
 										<td> 
-										<textarea   placeholder="" name="vital_#index#" tabindex="8" id="vital_#index#" cols="10" rows="3" class="span8"></textarea>
+										<textarea   placeholder="" name="vital_#index#" tabindex="8" id="vital_#index#" cols="10" rows="3" class="span8 wysiwyg1"></textarea>
 										</td>
 							</tr>
 							<tr>
@@ -574,7 +559,7 @@
 									<tr class="tbl_row">
 										<td width="120" class="tbl_column">Program Title <span class="f_req">*</span></td>
 										<td>
-										<input type="text" tabindex="3" name="programtitle_#index#" id="programtitle_#index#" value="" class="span8 wysiwyg1">
+		<input type="text" tabindex="3" name="programtitle_#index#" id="programtitle_#index#" value="" class="span8">
 									<label for="reg_city" generated="true" class="error" id="programtitleErr_#index#"></label>
 										</td>	
 									</tr>
@@ -614,65 +599,72 @@
 <div class="tab-pane" id="box_Consultant">
 <div class="span6">
 			<table class="table table-bordered dataTable" style="margin-bottom:0;">
-						<tbody>						
+						<tbody>		
 									<tr class="tbl_row">
+									<td width="120" class="tbl_column">Candidates Outlook on Company   </td>
+									<td> 
+										<textarea name="about_company" tabindex="1" cols="10" rows="3" class="span8 wysiwyg1">{if $about_company}{$about_company}{else}{$smarty.post.about_company}{/if}</textarea>									
+									</td>
+									</tr>
+			
+									<tr class="">
 										<td width="120" class="tbl_column">Candidates Personality <span class="f_req">*</span>
 										</td>
 										<td>
-<textarea placeholder="" name="personality" tabindex="1" cols="10" rows="3" class="span8">{if $personality}{$personality}{else}{$smarty.post.personality}{/if}</textarea>
-										<label for="reg_city" generated="true" class="error">{$personalityErr} </label>	
+<textarea placeholder="" name="personality" tabindex="2" cols="10" rows="3" class="span8 wysiwyg1">{if $personality}{$personality}{else}{$smarty.post.personality}{/if}</textarea>
+<label for="reg_city" generated="true" class="error">{$personalityErr}</label>	
 										</td>	
-									</tr>	
-									<tr class="">
-										<td width="120" class="tbl_column">Interview Availability <span class="f_req">*</span></td>
-										<td>
-<textarea placeholder="" name="interview_availability" tabindex="2" cols="10" rows="3" class="span8">{if $interview_availability}{$interview_availability}{else}{$smarty.post.interview_availability}{/if}</textarea>
-<label for="reg_city" generated="true" class="error">{$interview_availabilityErr} </label>	
-										</td>	
-									</tr>		
+									</tr>
 									<tr class="tbl_row">
-										<td width="120" class="tbl_column">Achievements  </td>
-										<td> 
-									   <textarea name="achievement" cols="10" tabindex="3" rows="3" class="span8 wysiwyg1">{if $achievement}{$achievement}{else}{$smarty.post.achievement}{/if}</textarea>									
-										</td>
-									</tr>	
-									<tr class="">
-									<td width="120" class="tbl_column">Any other vital inputs for the interview  </td>
+									<td width="120" class="tbl_column">Relevant Exposure <span class="f_req">*</span></td>
 									<td> 
-										<textarea name="vital_info_interview" tabindex="4" cols="10" rows="3" class="span8">{if $vital_info_interview}{$vital_info_interview}{else}{$smarty.post.vital_info_interview}{/if}</textarea>									
+									<textarea name="relevant_exposure" tabindex="3" cols="10" rows="3" class="span8 wysiwyg1">{if $relevant_exposure}{$relevant_exposure}{else}{$smarty.post.relevant_exposure}{/if}</textarea>									
+									<label for="reg_city" generated="true" class="error">{$relevant_exposureErr}</label>	
 									</td>
 									</tr>
+									
+									<tr class="">
+				<td width="120" class="tbl_column">Credentials considered for Shortlisting <span class="f_req">*</span></td>
+				<td> 
+					<textarea name="credential_shortlisting" tabindex="4" cols="10" rows="3" class="span8 wysiwyg1">{if $credential_shortlisting}{$credential_shortlisting}{else}{$smarty.post.credential_shortlisting}{/if}</textarea>									
+					<label for="reg_city" generated="true" class="error">{$credential_shortlistingErr}</label>	
+					</td>
+			</tr>
+			<tr class="tbl_row">
+									<td width="120" class="tbl_column">Any other vital inputs for the interview  </td>
+									<td> 
+										<textarea name="vital_info_interview" tabindex="5" cols="10" rows="3" class="span8 wysiwyg1">{if $vital_info_interview}{$vital_info_interview}{else}{$smarty.post.vital_info_interview}{/if}</textarea>									
+									</td>
+									</tr>
+			
+									
 									</tbody>
 			</table>
 </div>
 <div class="span6">	
 	<table class="table table-bordered dataTable" style="margin-bottom:0;">
 		<tbody>	
+			
 			<tr class="tbl_row">
-				<td width="120" class="tbl_column">Candidates Outlook on Company   </td>
-				<td> 
-					<textarea name="about_company" tabindex="4" cols="10" rows="3" class="span8 wysiwyg1">{if $about_company}{$about_company}{else}{$smarty.post.about_company}{/if}</textarea>									
-					</td>
-			</tr>
-			<tr class="tbl_row">
-				<td width="120" class="tbl_column">Relevant Exposure <span class="f_req">*</span></td>
-				<td> 
-					<textarea name="relevant_exposure" tabindex="4" cols="10" rows="3" class="span8">{if $relevant_exposure}{$relevant_exposure}{else}{$smarty.post.relevant_exposure}{/if}</textarea>									
-					<label for="reg_city" generated="true" class="error">{$relevant_exposureErr} </label>	
-					</td>
-			</tr>
-			<tr class="tbl_row">
-				<td width="120" class="tbl_column">Credentials considered for Shortlisting <span class="f_req">*</span></td>
-				<td> 
-					<textarea name="credential_shortlisting" tabindex="4" cols="10" rows="3" class="span8">{if $credential_shortlisting}{$credential_shortlisting}{else}{$smarty.post.credential_shortlisting}{/if}</textarea>									
-					<label for="reg_city" generated="true" class="error">{$credential_shortlistingErr} </label>	
-					</td>
-			</tr>
+										<td width="120" class="tbl_column">Interview Availability <span class="f_req">*</span></td>
+										<td>
+											<textarea placeholder="" name="interview_availability" tabindex="6" cols="10" rows="3" class="span8">{if $interview_availability}{$interview_availability}{else}{$smarty.post.interview_availability}{/if}</textarea>
+											<label for="reg_city" generated="true" class="error">{$interview_availabilityErr}</label>	
+										</td>	
+									</tr>		
+									<tr class="">
+										<td width="120" class="tbl_column">Achievements  </td>
+										<td> 
+									   <textarea name="achievement" cols="10" tabindex="7" rows="3" class="span8 wysiwyg1">{if $achievement}{$achievement}{else}{$smarty.post.achievement}{/if}</textarea>									
+										</td>
+									</tr>	
+									
+			
 				
-			<tr>
+			<tr class="tbl_row">
 				<td width="120" class="tbl_column">Candidate Brief </td>
 				<td> 
-				   <textarea name="candidate_brief" tabindex="5" cols="10" rows="3" class="span8">{if $candidate_brief}{$candidate_brief}{else}{$smarty.post.candidate_brief}{/if}</textarea>									
+				   <textarea name="candidate_brief" tabindex="8" cols="10" rows="3" class="span8 wysiwyg1">{if $candidate_brief}{$candidate_brief}{else}{$smarty.post.candidate_brief}{/if}</textarea>									
 				</td>
 			</tr>										
 		</tbody>
@@ -706,6 +698,25 @@
 					</form>
          	
 				
+
+	<div class="row-fluid" style="clear:left;float:left;margin-top:15px;">				
+			<div class="span12">
+			<h3 class="heading">Candidate Resume</h3>
+	<table class="table table-bordered dataTable" style="margin-bottom:0;">
+	<tbody>
+	<tr class="tbl_row">
+									
+										<td style="margin:10px;text-align:center;">
+<textarea  class="span12" style="height:300px" name="RESUME_DATA">
+{if $RESUME_DATA}{$RESUME_DATA}{else}{$smarty.post.RESUME_DATA}{/if}
+</textarea>
+																						
+										</td>
+	</tr>									
+									
+	</tbody>
+	</table>
+</div>		</div>
 
                 </div>
             </div> 
@@ -946,6 +957,8 @@ $(document).ready(function(){
 		   continuousIndex: true,
 		   afterAdd: function(source, newForm) {
 			 $('#exp_count').attr('value',source.getFormsCount());
+			  // for auto resize text area
+			 autosize(document.querySelectorAll('.wysiwyg1'));
 		   },
 		   afterRemoveCurrent: function(source) {		
 			 $('#exp_count').attr('value',source.getFormsCount());

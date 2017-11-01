@@ -36,9 +36,10 @@ class AppModel extends Model {
 		if($show == '1'){
 			$qryCond = "(a.level1 = '$id' or a.level2 = '$id') and ";
 		}		
-		$sql = "select u.id, u.first_name, u.last_name from users u inner join	approval a  on (a.users_id = u.id) where
+		 $sql = "select u.id, u.first_name, u.last_name from users u inner join	approval a  on (a.users_id = u.id) where
 		$qryCond u.is_deleted = 'N' and u.status = '0' group by u.id order by u.first_name asc";		
-		$result = $this->query($sql);		
+		$result = $this->query($sql);	
+		
 		return $result;
 		
 	}

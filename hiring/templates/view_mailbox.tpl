@@ -34,7 +34,7 @@
 								
 			<div class="tab-content" style="overflow:visible">			
 			
-			<div class="span6">
+			<div class="span12">
 							<table class="table table-striped table-bordered dataTable" style="">
 								<tbody>
 									<tr>

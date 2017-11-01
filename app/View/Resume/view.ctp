@@ -129,7 +129,7 @@
 										<tr>
 										
 										<td  class="tbl_column" width="120"><b>Current Status</b></td>
-										<td><?php echo $resume_data['ReqResume']['stage_title'];?> - <?php echo $resume_data['ReqResume']['status_title'];?></td>
+										<td><?php echo $this->Functions->get_status_crisp($resume_data['ReqResume']['stage_title'],$resume_data['ReqResume']['status_title']);?></td>
 											
 									</tr>
 									
@@ -189,7 +189,7 @@
 											
 									</tr>
 									
-									<?php endif; ?>	
+									<?php  endif; ?>	
 									
 									<?php if($resume_data['Resume']['present_employer']):?>
 									
@@ -198,6 +198,17 @@
 										<td class="tbl_column">Present Company</td>
 										<td><?php echo $resume_data['Resume']['present_employer'];?></td>
 									<?php endif; ?>	
+									</tr>
+									
+										<tr>
+										
+										<td class="tbl_column">Snapshot</td>
+										<td>
+										<?php  $date = $resume_data['Resume']['modified_date'] ? $resume_data['Resume']['modified_date'] : $resume_data['Resume']['created_date']; ?>
+<a class="notify" data-notify-time = '2000' data-notify-title="In Progress!" data-notify-message="Downloading Snapshot... Please wait..."  href="<?php echo $this->webroot;?>resume/profile_snapshot/<?php echo $resume_data['ResDoc']['resume']; ?>/<?php echo strtotime($date);?>/">Candidate Resume </a></td>
+
+										</td>
+											
 									</tr>
 										
 									<tr>

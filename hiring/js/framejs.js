@@ -28,20 +28,26 @@
 		
 	});
 		/* editor */
+	/* editor for position page*/ 
 	if($('.wysiwyg').length > 0){
 		$(function(){
 			tinymce.init({
 			  selector: 'textarea.wysiwyg',
+			  body_class: 'wysiwygCls',
+			  content_style: "@import url('https://fonts.googleapis.com/css?family=Open+Sans'); .wysiwygCls p {font-family:'Open Sans', sans-serif !important;font-size:12px !important;color:#555;line-height:18px;}",
+			  theme: 'modern',
+			  branding: false,
 			  menubar: false,
 			  plugins: [
 				'advlist autolink lists link image charmap print preview anchor',
 				'searchreplace visualblocks code fullscreen' ,
 				'insertdatetime media table contextmenu paste code'
 			  ],
-			  toolbar: 'undo redo | insert | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
+			  toolbar: 'undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent',
 			});
 		});
 	}
+	
 	/* for timepicker */
 	if($('.timepicker').length > 0){
 		$('.timepicker').timepicker();

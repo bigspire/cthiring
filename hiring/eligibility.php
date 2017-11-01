@@ -144,7 +144,7 @@ try{
 	
 	// create,update,delete message validation
 	if($_GET['cur_status'] == 'deleted' || $_GET['cur_status'] == 'created' || $_GET['cur_status'] == 'updated'){
- 	 $success_msg = 'Eligibility ' . $_GET['cur_status'] . ' successfully';
+ 	 $success_msg = 'Eligibility ' . ucfirst($_GET['cur_status']) . ' Successfully';
 	}else if($_GET['current_status'] == 'msg'){
 		$success_msg = 'This record is not available in our database';
 	}

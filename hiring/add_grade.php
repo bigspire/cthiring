@@ -48,7 +48,7 @@ if(!empty($_POST)){
 	// assigning the date
 	$date =  $fun->current_date();
 	// query to check whether it is exist or not. 
-	$query = "CALL check_grade_exist('0', '".$fun->is_white_space($_POST['grade_name'])."')";
+	$query = "CALL check_grade_exist('0', '".$fun->is_white_space($mysql->real_escape_str($_POST['grade_name']))."')";
 	// Calling the function that makes the insert
 	try{
 		// calling mysql exe_query function

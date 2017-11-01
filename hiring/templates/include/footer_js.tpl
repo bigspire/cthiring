@@ -34,12 +34,15 @@
 	<script src="js/plugins/timepicker/bootstrap-timepicker.min.js"></script>	
 	<script type="text/javascript" src="js/multiselect/jquery.multiselect.js"></script>
 		<!-- Notify -->
+
 	<script src="js/plugins/gritter/jquery.gritter.min.js"></script>	
 	<script src="js/jquery.sheepItPlugin-1.1.1.js"></script>	
 	<script src="js/jquery.printarea.js"></script>	
 	<script src="js/plugins/colorbox/jquery.colorbox-min.js"></script>	
 	<script src="js/application.js"></script>		
 	<script src="js/jquery.cookie.js"></script>
+	
+	
 	
 	<script src="js/custom_validation.js"></script>
 	<script src="js/validation.js"></script>

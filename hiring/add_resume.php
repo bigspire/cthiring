@@ -22,6 +22,8 @@ include('classes/class.content.php');
 if(empty($_SESSION['resume_doc_id'])){
 	header('Location:page_error.php');
 }
+
+
 // when doc. extraction happen in first time
 if($_SESSION['extraction'] == '' || $_POST['RESUME_DATA'] == ''){
 	// fetch the resume data
@@ -68,6 +70,33 @@ $smarty->assign('dob_default', date('d/m/Y', strtotime('-18 years')));
 // role based validation
 $module_access = $fun->check_role_access('7',$modules);
 $smarty->assign('module',$module_access);
+
+// get the skills for rating
+$query ="CALL get_tech_skills('".$_SESSION['position_for']."')";
+	try{
+		// calling mysql exe_query function
+		if(!$result = $mysql->execute_query($query)){
+			throw new Exception('Problem in executing tech skills');
+		}
+		while($obj = $mysql->display_result($result)){
+			$skilData['ts'] = $obj['tech_skill'];
+			$skilData['bs'] = $obj['behav_skill'];  			
+		}
+		// split the keywords
+		$ts_data = explode(',',$skilData['ts']);
+		$bs_data = explode(',',$skilData['bs']);
+		// assign in smarty
+		$smarty->assign('tsData', $ts_data);
+		$smarty->assign('bsData', $bs_data);
+		
+		// free the memory
+		$mysql->clear_result($result);
+		// call the next result
+		$mysql->next_query();		
+			
+	}catch(Exception $e){
+		echo 'Caught exception: ',  $e->getMessage(), "\n";
+	}
 
 // post of education fields value
 for($i = 0; $i < $_POST['edu_count']; $i++){
@@ -127,6 +156,9 @@ $smarty->assign('degree', $degree);
 $smarty->assign('spec', $spec);
 
 if(!empty($_POST)){
+	// for retaining skills and rating
+	$smarty->assign('tsrData', $_POST['tsr']);
+	$smarty->assign('bsrData', $_POST['bsr']);
 	
 	// post of education fields value
 	for($i = 0; $i < $_POST['edu_count']; $i++){
@@ -172,8 +204,10 @@ if(!empty($_POST)){
 		
 		$desigData[] = $_POST['desig_'.$i];
 		$areaData[] = $_POST['area_'.$i];
-		$year_of_expData[] = $_POST['year_of_exp_'.$i];
-		$month_of_expData[] = $_POST['month_of_exp_'.$i];
+		$from_year_of_expData[] = $_POST['from_year_of_exp_'.$i];
+		$from_month_of_expData[] = $_POST['from_month_of_exp_'.$i];
+		$to_year_of_expData[] = $_POST['to_year_of_exp_'.$i];
+		$to_month_of_expData[] = $_POST['to_month_of_exp_'.$i];
 		//$current_locData[] = $_POST['current_loc_'.$i];
 		$companyData[] = $_POST['company_'.$i];
 		$locationData[] = $_POST['location_'.$i];
@@ -181,11 +215,13 @@ if(!empty($_POST)){
 		
 		if($_POST['year_of_exp'] == 0 && $_POST['month_of_exp'] == 0){
 			// array for printing correct field name in error message 
-			$fieldtype1 = array('0', '1', '0', '0', '0'); 
-			$actualfield1 = array( 'designation','employment period','area of specialization/expertise',
+			$fieldtype1 = array('1', '1','1','1','1', '0', '0', '0'); 
+			$actualfield1 = array('designation','employment from year','employment from month',
+				'employment to year','employment to month','area of specialization/expertise',
 				'company name','location'); 
-			$field_ar1 = array('desig_'.$i => '', 'year_of_exp_'.$i => '',
-				'area_'.$i => '', 'company_'.$i => '','location_'.$i => ''); 
+			$field_ar1 = array('desig_'.$i => '','from_year_of_exp_'.$i => '',
+			'from_month_of_exp_'.$i => '','to_year_of_exp_'.$i => '',
+			'to_month_of_exp_'.$i => '','area_'.$i => '', 'company_'.$i => '','location_'.$i => ''); 
 			$j = 0; 
 			foreach($field_ar1 as $field1 => $er_var1){ 
 				if($_POST[$field1] == ''){
@@ -196,11 +232,13 @@ if(!empty($_POST)){
 			}
 		}else{
 			// array for printing correct field name in error message 
-			$fieldtype1 = array('0', '1', '0', '0', '0'); 
-			$actualfield1 = array( 'designation','employment period','area of specialization/expertise',
+			$fieldtype1 = array('1', '1','1','1','1', '0', '0', '0'); 
+			$actualfield1 = array( 'designation','employment from year','employment from month',
+		        'employment to year','employment to month','area of specialization/expertise',
 				'company name','location'); 
-			$field_ar1 = array('desig_'.$i => 'desigErr', 'year_of_exp_'.$i => 'year_of_expErr',
-			'area_'.$i => 'areaErr', 'company_'.$i => 'companyErr','location_'.$i => 'locationErr'); 
+			$field_ar1 = array('desig_'.$i => 'desigErr','from_year_of_exp_'.$i => 'from_year_of_expErr',
+			'from_month_of_exp_'.$i => 'from_month_of_expErr','to_year_of_exp_'.$i => 'to_year_of_expErr',
+			'to_month_of_exp_'.$i => 'to_month_of_expErr','area_'.$i => 'areaErr', 'company_'.$i => 'companyErr','location_'.$i => 'locationErr'); 
 			$j = 0; 
 			foreach($field_ar1 as $field1 => $er_var1){ 
 				if($_POST[$field1] == ''){
@@ -216,9 +254,10 @@ if(!empty($_POST)){
 	}
 	$smarty->assign('desigData', $desigData);
 	$smarty->assign('areaData', $areaData);
-	$smarty->assign('year_of_expData', $year_of_expData);
-	$smarty->assign('month_of_expData', $month_of_expData);
-	//$smarty->assign('current_locData', $current_locData);
+	$smarty->assign('from_year_of_expData', $from_year_of_expData);
+	$smarty->assign('from_month_of_expData', $from_month_of_expData);
+	$smarty->assign('to_year_of_expData', $to_year_of_expData);
+	$smarty->assign('to_month_of_expData', $to_month_of_expData);
 	$smarty->assign('companyData', $companyData);
 	$smarty->assign('locationData', $locationData);
 	$smarty->assign('vitalData', $vitalData);
@@ -283,6 +322,20 @@ if(!empty($_POST)){
 	
 	// save all the data
 	if($test != 'error'){
+		// for saving purpose of tech skills
+		foreach($_POST['ts'] as $key => $ts){
+			if($ts){
+				$ts_data[$ts] = $_POST['tsr'][$key];
+			}
+		}
+		// for saving purpose of behav skills
+		foreach($_POST['bs'] as $key => $bs){
+			if($bs){
+				$bs_data[$bs] = $_POST['bsr'][$key];
+			}
+		}
+		$tech_skill = serialize($ts_data);
+		$behav_skill = serialize($bs_data);
 		// query to add personal details
 		$query = "CALL add_res_personal('".$fun->is_white_space($mysql->real_escape_str($_POST['first_name']))."',
 			'".$fun->is_white_space($mysql->real_escape_str($_POST['last_name']))."',
@@ -297,7 +350,9 @@ if(!empty($_POST)){
  			'".$date."','".$created_by."','N','".$mysql->real_escape_str($_SESSION['resume_doc_id'])."',
  			'".$fun->is_white_space($mysql->real_escape_str($_POST['consultant']))."',
  			'".$fun->is_white_space($mysql->real_escape_str($_POST['interview_availability']))."',
-			'".$fun->is_white_space($mysql->real_escape_str($_POST['certification']))."')";
+			'".$fun->is_white_space($mysql->real_escape_str($_POST['certification']))."',
+			'".$tech_skill."',
+			'".$behav_skill."')";
 		try{
 			if(!$result = $mysql->execute_query($query)){
 				throw new Exception('Problem in adding personal details');
@@ -333,11 +388,8 @@ if(!empty($_POST)){
 			$grade_typeData = $_POST['grade_type_'.$i];
 			$year_of_passData = $_POST['year_of_pass_'.$i];
 			$universityData = $_POST['university_'.$i];
-<<<<<<< HEAD
-			
-			// for snapshot printing
-			$snap_edu .= $degreeData.', '.$specializationData.', '.$year_of_passData.', '.$gradeData.', '.$grade_typeData.'<br>';
-=======
+
+
 			// get degree name
 			$query = "call get_degree_id('".$mysql->real_escape_str($degreeData)."')";
 			if(!$result = $mysql->execute_query($query)){
@@ -355,10 +407,10 @@ if(!empty($_POST)){
 			$specStr = $row['spec'];
 			$mysql->next_query();
 			$course_type = $fun->get_course_type($grade_typeData);
-			$gradeStr = $gradeData > 10 ? $gradeData.'% of marks overall' : $gradeData.' CGPA';
+			$gradeStr = $gradeData > 10 ? $gradeData.'%' : $gradeData;
 			// for snapshot printing
-			$snap_edu .= $degreeStr.', '.$specStr.', '.$year_of_passData.', '.$gradeStr.', '.$course_type.'<br>';
->>>>>>> f1cf94f1e451666b1c26d60ec60d158732da4a1a
+			$snap_edu .= $degreeStr.', '.$specStr.', '.$year_of_passData.', '.$gradeStr.'<br>';
+
 			
 			// query to add education details
 			$query = "CALL add_res_education('".$fun->is_white_space($mysql->real_escape_str($gradeData))."',
@@ -406,7 +458,10 @@ if(!empty($_POST)){
 		
 		for($i = 0; $i < $_POST['exp_count']; $i++){
 			$desigData = $_POST['desig_'.$i];
-			$expData = $_POST['year_of_exp_'.$i].'.'.$_POST['month_of_exp_'.$i];
+			$from_year_expData = $_POST['from_year_of_exp_'.$i];
+			$from_month_expData = $_POST['from_month_of_exp_'.$i];
+			$to_year_expData = $_POST['to_year_of_exp_'.$i];
+			$to_month_expData = $_POST['to_month_of_exp_'.$i];
 			$areaData = $_POST['area_'.$i];
 			//$current_locData[] = $_POST['current_loc_'.$i];
 			$companyData = $_POST['company_'.$i];
@@ -414,13 +469,10 @@ if(!empty($_POST)){
 			$vitalData = $_POST['vital_'.$i];
 			
 			// for snapshot printing
-			$tot_exp_years = $_POST['year_of_exp_'.$i] == 0 ? '0' : $_POST['year_of_exp_'.$i].'.'.$_POST['month_of_exp_'.$i];
-<<<<<<< HEAD
-			$expStr = $fun->check_exp($tot_exp_years);
+			// $tot_exp_years = $_POST['year_of_exp_'.$i] == 0 ? '0' : $_POST['year_of_exp_'.$i].'.'.$_POST['month_of_exp_'.$i];
 
-			$snap_exp .= $companyData.', '.$desigData.', '.$expStr.'<br>';
-=======
-			$expStr = $fun->show_exp_details($tot_exp_years);
+			// $expStr = $fun->show_exp_details($tot_exp_years);
+			$expStr = date('M',$from_month_expData).' '.$from_year_expData.' to '.date('M',$to_month_expData).' '.$to_year_expData;
 			$locationDataCase = ucwords($locationData);
 			// get the designation details
 			$query = "call get_designation_id('".$mysql->real_escape_str($desigData)."')";
@@ -430,12 +482,15 @@ if(!empty($_POST)){
 			$row = $mysql->display_result($result);
 			$desigStr = $row['desig'];
 			$mysql->next_query();
-			$snap_exp .= ucwords($companyData).', '.ucwords($desigStr).', '.$expStr.'<br>';
->>>>>>> f1cf94f1e451666b1c26d60ec60d158732da4a1a
-			$snap_skill .= $vitalData.' ';
+			$snap_exp .= ucwords($companyData).', '.ucwords($desigStr).', '.$expStr.', '.ucfirst($locationData).'<br>';
+			$snap_skill .= $areaData.' ';
 			
 			// query to add experience details
-			$query = "CALL add_res_experience('".$mysql->real_escape_str($desigData)."','".$mysql->real_escape_str($expData)."',
+			$query = "CALL add_res_experience('".$mysql->real_escape_str($desigData)."',
+			'".$mysql->real_escape_str($from_month_expData)."',
+				'".$mysql->real_escape_str($from_year_expData)."',
+				'".$mysql->real_escape_str($to_month_expData)."',
+				'".$mysql->real_escape_str($to_year_expData)."',
 				'".$fun->is_white_space($mysql->real_escape_str($locationData))."',
 				'".$fun->is_white_space($mysql->real_escape_str($areaData))."',
 				'".$fun->is_white_space($mysql->real_escape_str($companyData))."',
@@ -472,6 +527,37 @@ if(!empty($_POST)){
 			$_SESSION['extraction'] = '';
 			// create snapshot pdf
 			include_once('snapshot.php');
+			// hide the contact details in the resume
+			// get recruiter nameget_recruiter_name
+			$query =  "CALL get_recruiter_name('".$mysql->real_escape_str($_SESSION['user_id'])."')";
+			if(!$result = $mysql->execute_query($query)){
+					throw new Exception('Problem in getting recruiter details');
+			}
+			$row_user = $mysql->display_result($result);
+			$recruiter = $row_user['first_name'].' '.$row_user['last_name'];
+			// free the memory
+			$mysql->clear_result($result);
+			// call the next result
+			$mysql->next_query();		
+			// generate auto resume doc file
+			$resume_path = dirname(__FILE__).'/uploads/resume/'.$_SESSION['resume_doc'];
+			$template_path = dirname(__FILE__).'/uploads/template/'.$_SESSION['resume_doc']; 
+			// duplicate the file for template creation
+			$fun->upload_file($resume_path,$template_path);
+			$email = $_POST['email'];
+			$mobile_len = strlen($_POST['mobile']); 			
+			if($mobile_len >= 12){
+				$mobile2 = substr($_POST['mobile'], 2, $mobile_len);
+				$mobile3 = substr($_POST['mobile'], 1, $mobile_len); 
+				$mobile4 = '+91 '.substr($_POST['mobile'], 2, $mobile_len);
+				$mobile5 = '+91-'.substr($_POST['mobile'], 2, $mobile_len); 
+				$mobile6 = '91 '.substr($_POST['mobile'], 2, $mobile_len); 
+				$mobile7 = '91-'.substr($_POST['mobile'], 2, $mobile_len); 
+			}
+			// $mobile_split = preg_split("/[\s-]+/", $_POST['mobile']);
+			include('vendor/PHPWord-develop/samples/template_process2.php');
+			// remove the file
+			unlink($template_path);
 			// convert the resume doc. into pdf
 			require_once('vendor/ilovepdf-php-1.1.5/init.php');			
 			ini_set('display_errors', '1');
@@ -483,6 +569,7 @@ if(!empty($_POST)){
 			// Add files to task for upload
 			$resume_path = dirname(__FILE__).'/uploads/resume/'.$_SESSION['resume_doc'];
 			$file1 = $myTaskConvertOffice->addFile($resume_path);
+			$myTaskConvertOffice->setOutputFilename($snap_file_name);
 			// Execute the task
 			$myTaskConvertOffice->execute();
 			// Download the package files
@@ -501,7 +588,11 @@ if(!empty($_POST)){
 			// and finally download file. If no path is set, it will be downloaded on current folder
 			$myTask->download('uploads/snapshotmerged/');
 			//include('vendor/ilovepdf-php-1.1.5/samples/merge_basic.php');
-			header('Location: ../resume/?action=created');
+			// unset the sessions
+			unset($_SESSION['position_for']);
+			unset($_SESSION['resume_doc']);
+			unset($_SESSION['clients_id']);
+			header('Location: ../resume?action=created&download='.$snap_file_name.'_'.date('d-m-Y').'.pdf');
 		} 
 	}else{
 		$smarty->assign('tab_open', ($tab1 == 'fail' ? 'tab1' : ($tab2 == 'fail' ? 'tab2' : ($tab3 == 'fail' ? 'tab3' : 'tab4' ))));
@@ -518,28 +609,39 @@ $smarty->assign('grade_status', array('' => 'Select', '1' => 'Active', '2' => 'I
 // smarty drop down array for type
 $smarty->assign('grade_type', array('' => 'Select', 'I' => 'Individual', 'T' => 'Team'));
 
-// smarty drop down array for experience year 
+// smarty drop down for exp month and year
+$smarty->assign('exp_month', array('1' => 'Jan', '2' => 'Feb', '3' => 'Mar', '4' => 'Apr', '5' => 'May', '6' => 'Jun',
+ '7' => 'Jul', '8' => 'Aug', '9' => 'Sep', '10' => 'Oct', '11' => 'Nov', '12' => 'Dec'));
+ 
 $exp_yr = array(); 
-$exp_yr[0] = '0 Years';
+for($l = date('Y'); $l >= 1950; $l--){ 
+	$exp_yr[$l] = $l; 
+}
+$smarty->assign('exp_yr', $exp_yr);
+
+
+// smarty drop down array for experience year 
+$tot_exp_yr = array(); 
+$tot_exp_yr[0] = '0 Years';
 for($l = 1; $l <= 50; $l++){ 
 	if($l == '1') {
-		$exp_yr[$l] = $l.' '.Year; 
+		$tot_exp_yr[$l] = $l.' '.Year; 
 	}else {
-		$exp_yr[$l] = $l.' '.Years; 
+		$tot_exp_yr[$l] = $l.' '.Years; 
 	}
 } 
-$smarty->assign('exp_yr', $exp_yr);
+$smarty->assign('tot_exp_yr', $tot_exp_yr);
 // smarty drop down array for experience month 
-$exp_month = array(); 
-$exp_month[0] = '0 Months';
+$tot_exp_month = array(); 
+$tot_exp_month[0] = '0 Months';
 for($l = 1; $l <= 11; $l++){
 	if($l == '1') {
-		$exp_month[$l] = $l.' '.Month;
+		$tot_exp_month[$l] = $l.' '.Month;
 	}else { 
-		$exp_month[$l] = $l.' '.Months; 
+		$tot_exp_month[$l] = $l.' '.Months; 
 	} 
 }
-$smarty->assign('exp_month', $exp_month);
+$smarty->assign('tot_exp_month', $tot_exp_month);
 
 // smarty drop down array for current ctc
 $smarty->assign('ctc_type', array('' => 'Select', 'T' => 'Thousand', 'L' => 'Lacs', 'C' => 'Crore'));
@@ -595,7 +697,7 @@ $smarty->assign('grade_drop', array('' => 'Select', 'R' => 'Regular', 'C' => 'Co
  
 // smarty drop down array for year of passing 
 $year_of_pass = array(); 
-for($l = 2020; $l >= 1990; $l--){
+for($l = date('Y'); $l >= 1990; $l--){
 	$year_of_pass[$l] = $l;
 }
 $smarty->assign('year_of_pass', $year_of_pass);

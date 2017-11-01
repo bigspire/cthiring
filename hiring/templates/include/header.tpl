@@ -7,9 +7,11 @@
 	   
 	    <!-- Bootstrap framework -->
             <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
+			
+
             <link rel="stylesheet" href="bootstrap/css/bootstrap-responsive.min.css" />
         <!-- gebo blue theme-->
-            <link rel="stylesheet" href="css/blue.css" id="link_theme" />            
+            <link rel="stylesheet" href="css/{$THEME}.css" id="link_theme" />            
         <!-- main styles -->
             <link rel="stylesheet" href="css/style.css" />
         <!-- tooltips-->
@@ -29,6 +31,9 @@
             <link rel="stylesheet" href="css/smoke.css" />
 			 <!-- splashy icons -->
             <link rel="stylesheet" href="img/splashy/splashy.css"  />
+			
+			<link rel="stylesheet" href="vendor/node_modules/bootstrap-rating/bootstrap-rating.css"  />
+			
 
 			<!-- colorbox -->
 	<link rel="stylesheet" href="css/colorbox/colorbox.css">
@@ -49,7 +54,7 @@
                     <div class="navbar-inner">
                         <div class="container-fluid">
                             
-							<a class="brand" href="recruiter_dashboard.php">
+							<a class="brand" href="{$smarty.const.webroot}home">
 							 Manage Hiring </a>
                             <ul class="nav user_menu pull-right">
                          
@@ -65,7 +70,23 @@
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">{ucfirst($user_name)} <span class="caret"></span></a>
                                     <ul class="dropdown-menu">
-																			<li class="divider"></li>
+									
+									<li>
+							<div class="style_switcher">
+								<div class="sepH_c">
+									<p>Colors:</p>
+									<div class="clearfix colorDiv">							
+										<a href="get_theme.php?col=blue" class="style_item jQclr blue_theme"  title="blue">blue</a>
+										<a href="get_theme.php?col=dark" class="style_item jQclr dark_theme"  title="dark">dark</a>
+										<a href="get_theme.php?col=green" class="style_item jQclr green_theme style_active" title="green">green</a>
+										<a href="get_theme.php?col=brown" class="style_item jQclr brown_theme"  title="brown">brown</a>
+										<a href="get_theme.php?col=eastern_blue" class="style_item jQclr eastern_blue_theme"  title="eastern_blue">eastern blue</a>
+										<a href="get_theme.php?col=tamarillo" class="style_item jQclr tamarillo_theme"  title="tamarillo">tamarillo</a>
+									</div>
+								</div>
+							</div>
+									</li>
+								<li class="divider"></li>
 
 										<li><a href="view_profile.php">View Profile</a></li>
 
@@ -248,6 +269,17 @@
                                             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
 											<i class="icon-cog icon-white"></i> Settings <b class="caret"></b></a>
                                           <ul class="dropdown-menu">
+										  
+										  {if $module['manage_contact_branch'] eq '1'}
+	
+												<li><a href="contact_branch.php">Branch</a></li>
+											{/if}
+											
+											{if $module['manage_designation'] eq '1'}
+	
+												<li><a href="designation.php">Designation </a></li>
+											{/if}
+											
 											{if $module['manage_grade'] eq '1'}
                                                 <li><a href="grade.php">Grade {if $grade_count}<span class="label-bub label-info white">{$grade_count}</span>{/if}</a></li>
 											{/if}
@@ -281,6 +313,7 @@
 													</ul>
 												</li>
 											{/if}
+
                                             </ul>
                                         </li>
 										{/if}

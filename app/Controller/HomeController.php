@@ -54,10 +54,10 @@ class HomeController  extends AppController {
 		$this->set('locList', $this->get_loc_details());
 		// apply date conditions
 		// for testing date changed
-		// $dateFrm = date('Y-m-d', strtotime('-9 days'));
-		$dateFrm = '2017-06-01';
-		$dateTo = '2017-06-10';
-		// $dateTo = date('Y-m-d');
+		$dateFrm = date('Y-m-d', strtotime('-6 days'));
+		//$dateFrm = '2017-06-01';
+		//$dateTo = '2017-06-10';
+		$dateTo = date('Y-m-d');
 		$start = $this->request->query['from'] ? $this->Functions->format_date_save($this->request->query['from']) : $dateFrm;
 		$end = $this->request->query['to'] ? $this->Functions->format_date_save($this->request->query['to']) : $dateTo;
 		// set date condition				
@@ -197,8 +197,7 @@ class HomeController  extends AppController {
 			$client_emp_cond = array('ClientAH.users_id' => $this->Session->read('USER.Login.id'));
 			$pos_emp_cond2 = array('Position.created_by' => $this->Session->read('USER.Login.id'));
 			$this->set('ac_dash', 'active');
-		}else if($dash_type == 'bd_view'  || ($this->Session->read('USER.Login.roles_id') == '33' || $this->Session->read('USER.Login.roles_id') == '35'
-		|| $this->Session->read('USER.Login.roles_id') == '26' || $this->Session->read('USER.Login.roles_id') == '39')){
+		}else if($dash_type == 'bd_view'  || ($this->Session->read('USER.Login.roles_id') == '33' || $this->Session->read('USER.Login.roles_id') == '35' || $this->Session->read('USER.Login.roles_id') == '26' || $this->Session->read('USER.Login.roles_id') == '39')){
 			$resume_options = array(			
 				array('table' => 'req_resume',
 						'alias' => 'ReqResume',					
@@ -337,7 +336,7 @@ class HomeController  extends AppController {
 		$date_cond = array('or' => array("DATE_FORMAT(Client.created_date, '%Y-%m-%d') between ? and ?" => array($start, $end)));
 		$fields = array('id','client_name','ResLocation.location','created_date','Creator.first_name',
 		"count(distinct Position.id) req_count");
-		$conditions = array('fields' => $fields,'limit' => '250','conditions' => array($keyCond,$date_cond,$client_emp_cond),
+		$conditions = array('fields' => $fields,'limit' => '10','conditions' => array($keyCond,$date_cond,$client_emp_cond, 'Client.is_approve' => 'A'),
 		'order' => array('Client.created_date' => 'desc'),	'group' => array('Client.id'), 'joins' => $cli_options);
 		$data = $this->Home->Client->find('all', $conditions);
 		$this->set('client_data', $data);
@@ -345,7 +344,8 @@ class HomeController  extends AppController {
 		$this->loadModel('Position');
 		$date_cond = array('or' => array("DATE_FORMAT(Position.created_date, '%Y-%m-%d') between ? and ?" => array($start, $end)));
 		$fields = array('id','job_title','location','Client.client_name', 'Creator.first_name','created_date', 'count(ReqResume.id) cv_sent','ReqStatus.title');			
-		$conditions = array('fields' => $fields,'limit' => '250','conditions' => array($date_cond,$pos_emp_cond2),
+		$conditions = array('fields' => $fields,'limit' => '10','conditions' => array($date_cond,$pos_emp_cond2, 'Position.is_approve' => 'A',
+		'Position.status' => 'A'),
 		'order' => array('created_date' => 'desc'),	'group' => array('Position.id'));
 		$this->Position->unBindModel(array('belongsTo' => array('FunctionArea')));
 		$data = $this->Position->find('all', $conditions);
@@ -358,7 +358,7 @@ class HomeController  extends AppController {
 		
 		$fields = array('id',"concat(Resume.first_name,' ',Resume.last_name) full_name",'email_id','mobile', 'Creator.first_name',
 		'ReqResume.stage_title','ReqResume.status_title','ReqResume.modified_date');			
-		$conditions = array('fields' => $fields,'limit' => '250','conditions' => array($date_cond,$pos_emp_cond,
+		$conditions = array('fields' => $fields,'limit' => '50','conditions' => array($date_cond,$pos_emp_cond,
 		'ReqResume.stage_title' =>   array( 'Validation - Account Holder', 'Validation - Recruiter','Shortlist')),
 		'order' => array('ReqResume.modified_date' => 'desc'),'group' => array('Resume.id'), 'joins' => $resume_options);
 		$data = $this->Resume->find('all', $conditions);
@@ -395,7 +395,7 @@ class HomeController  extends AppController {
 		*/
 		$fields = array('id',"concat(Resume.first_name,' ',Resume.last_name) full_name",'email_id','mobile', 'Creator.first_name',
 		'ReqResume.modified_date','Resume.modified_date','ReqResume.stage_title','ReqResume.status_title');			
-		$conditions = array('fields' => $fields,'limit' => '250','conditions' => array($pos_emp_cond,$date_cond,
+		$conditions = array('fields' => $fields,'limit' => '50','conditions' => array($pos_emp_cond,$date_cond,
 		'ReqResume.stage_title like' => '%Interview'),
 		'order' => array('ReqResume.modified_date' => 'desc'), 'group' => array('Resume.id'), 'joins' => $resume_options);
 		$data = $this->Resume->find('all', $conditions);
@@ -403,7 +403,7 @@ class HomeController  extends AppController {
 		// get recent resumes with offers
 		$fields = array('id',"concat(Resume.first_name,' ',Resume.last_name) full_name",'email_id','mobile', 'Creator.first_name',
 		'ReqResume.modified_date','Resume.modified_date','ReqResume.stage_title','ReqResume.status_title');		
-		$conditions = array('fields' => $fields,'limit' => '250','conditions' => array('ReqResume.stage_title' => 'Offer', 
+		$conditions = array('fields' => $fields,'limit' => '50','conditions' => array('ReqResume.stage_title' => 'Offer', 
 		$date_cond,$pos_emp_cond, 'ReqResume.stage_title' => 'Offer'),'order' => array('ReqResume.modified_date' => 'desc'),
 		'group' => array('Resume.id'), 'joins' => $resume_options);
 		$data = $this->Resume->find('all', $conditions);
@@ -411,7 +411,7 @@ class HomeController  extends AppController {
 		// get resent resumes joinees
 		$fields = array('id',"concat(Resume.first_name,' ',Resume.last_name) full_name",'email_id','mobile', 'Creator.first_name',
 		'Resume.created_date','ReqResume.modified_date','ReqResume.stage_title','ReqResume.status_title');		
-		$conditions = array('fields' => $fields,'limit' => '250','conditions' => array('ReqResume.stage_title' => 'Joining', 
+		$conditions = array('fields' => $fields,'limit' => '50','conditions' => array('ReqResume.stage_title' => 'Joining', 
 		$date_cond,$pos_emp_cond, 'ReqResume.stage_title' => 'Joining'),'order' => array('ReqResume.modified_date' => 'desc'),
 		'group' => array('Resume.id'), 'joins' => $resume_options);
 		$data = $this->Resume->find('all', $conditions);
@@ -1098,15 +1098,44 @@ class HomeController  extends AppController {
 			$this->Home->set($this->request->data);
 			// validate file		
 			if($this->Home->validates(array('fieldList' => array('message')))){
-				$sub = 'Hirecraft - Feedback received from '.ucfirst($this->Session->read('USER.Login.first_name')).' '.ucfirst($this->Session->read('USER.Login.last_name'));
+				$sub = 'Manage Hiring - Feedback received from '.ucfirst($this->Session->read('USER.Login.first_name')).' '.ucfirst($this->Session->read('USER.Login.last_name'));
 				$from = ucfirst($this->Session->read('USER.Login.first_name')).' '.ucfirst($this->Session->read('USER.Login.last_name'));
 				$vars = array('from_name' => $from, 'message' => $this->request->data['Home']['message']);
 				// notify superiors						
-				if(!$this->send_email($sub, 'feedback', 'noreply@ct-hiring.in', 'ravi@bigspire.com',$vars)){	
+				if(!$this->send_email($sub, 'feedback', 'noreply@managehiring.in', 'ravi@bigspire.com',$vars)){	
 					// show the msg.								
 					$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Problem in sending the mail to admin...', 'default', array('class' => 'alert alert-error'));				
 				}else{
 					$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Thanks for feedback. Feedback sent successfully!', 'default', array('class' => 'alert alert-success'));
+					unset($this->request->data);
+				}				
+			}
+		}
+	}
+	
+	/* function to save a bug  */
+	public function report_bug(){
+		$this->set('noHead', '1');
+		if ($this->request->is('post')){
+			// validates the form
+			$this->Home->set($this->request->data);
+			// validate file		
+			if($this->Home->validates(array('fieldList' => array('subject','message')))){
+				$sub = 'Manage Hiring - Report a bug received from '.ucfirst($this->Session->read('USER.Login.first_name')).' '.ucfirst($this->Session->read('USER.Login.last_name'));
+				$from = ucfirst($this->Session->read('USER.Login.first_name')).' '.ucfirst($this->Session->read('USER.Login.last_name'));
+				$vars = array('from_name' => $from, 'message' => $this->request->data['Home']['message'],'subject' => $this->request->data['Home']['subject']);
+				// save the attachment
+				if(!empty($this->request->data['Home']['attachment']['tmp_name'])){
+					$src = $this->request->data['Home']['attachment']['tmp_name'];
+					$dest = 'uploads/message/'.time().'_'.$this->request->data['Home']['attachment']['name'];
+					$this->upload_file($src, $dest);
+				}
+				// notify superiors						
+				if(!$this->send_email($sub, 'report_bug', 'noreply@managehiring.in', 'ravi@bigspire.com',$vars, $dest)){	
+					// show the msg.								
+					$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Problem in sending the mail to admin...', 'default', array('class' => 'alert alert-error'));				
+				}else{
+					$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Thanks for reporting a bug. Details sent to admin successfully!', 'default', array('class' => 'alert alert-success'));
 					unset($this->request->data);
 				}				
 			}

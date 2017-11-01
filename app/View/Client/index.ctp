@@ -120,17 +120,17 @@
 								<?php foreach($data as $client):?>
 									<tr>
 										
-										<td><a rel="tooltip" title="Click to view the details" href="<?php echo $this->webroot;?>client/view/<?php echo $client['Client']['id'];?>/"><?php echo ucwords($client['Client']['client_name']);?></a></td>
+										<td><a rel="tooltip" title="Click to view the details" href="<?php echo $this->webroot;?>client/view/<?php echo $client['Client']['id'];?>/<?php echo $client[0]['st_id'];?>/<?php echo $client['Client']['created_by'];?>"><?php echo ucwords($client['Client']['client_name']);?></a></td>
 										<td><?php echo $client['Client']['city'];?></td>
 										<td><?php echo ucfirst($client['ResLocation']['location']);?></td>
-										<td style="text-align:center"><a rel="tooltip" title="Click to view the Requirements" target="_blank" href="<?php echo $this->webroot;?>position/index/?keyword=<?php echo $client['Client']['client_name'];?>"><?php echo $client[0]['no_pos'];?></a></td>
-										<td style="text-align:center"><a rel="tooltip" title="Click to view the Contacts" target="_blank" href="<?php echo $this->webroot;?>client/view/<?php echo $client['Client']['id'];?>/"><?php echo $client[0]['no_contact'];?></a></td>
+										<td style="text-align:center"><a rel="tooltip" title="Click to view the Requirements"  href="<?php echo $this->webroot;?>position/?client_id=<?php echo $client['Client']['id'];?>"><?php echo $client[0]['no_pos'];?></a></td>
+										<td style="text-align:center"><?php echo $client[0]['no_contact'];?></td>
 										<td><?php echo $client[0]['account_holder'];?></td>
 										<td style="text-align:center">
 										<?php if($client['Client']['status'] == '1'):?>
 										<span title="Inactive Client" rel="tooltip" class="label label">Inactive</span>
 										<?php elseif($client['Client']['status'] == '2'):?>
-										<span title="Awaiting for Approval" rel="tooltip" class="label label">Awaiting Approval</span>
+										<span title="Awaiting for Approval" rel="tooltip" class="label label-warning">Awaiting Approval</span>
 										<?php else:?>
 										<span title="Active Client" rel="tooltip" class="label label-success">Active</span>
 										<?php endif; ?>
@@ -147,8 +147,8 @@
 	<a href="<?php echo $this->webroot;?>client/edit/<?php echo $client['Client']['id'];?>/" class="btn  btn-mini"  rel="tooltip" class="sepV_a" title="Edit Company"><i class="icon-pencil"></i></a>
 	<?php endif; ?>	
 	
-	<?php if($client['Client']['is_approve'] == 'W' && $this->Session->read('USER.Login.roles_id') == '39'):?>
-	<a rel="tooltip" title="Verify Client" href="<?php echo $this->webroot;?>client/view/<?php echo $client['Client']['id'];?>/" class="btn  btn-mini"><i class="icon-edit"></i></a>
+	<?php if($client['Client']['is_approve'] == 'W'):?>
+	<a rel="tooltip" title="Verify Client" href="<?php echo $this->webroot;?>client/view/<?php echo $client['Client']['id'];?>/<?php echo $client[0]['st_id'];?>/<?php echo $client['Client']['created_by'];?>/" class="btn  btn-mini"><i class="icon-edit"></i></a>
 	<?php endif; ?>									
 										
 										

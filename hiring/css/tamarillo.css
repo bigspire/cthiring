@@ -1,5 +1,12 @@
 /* ---- Gebo Admin tamarillo theme ---- */
-
+body {
+    margin: 0;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 12px;
+    line-height: 18px;
+    color: #333;
+    background-color: #fff;
+}
     .navbar-inner {
 		background: #af2c36;
 		background: -moz-linear-gradient(top, #af2c36 0%, #791e25 100%);

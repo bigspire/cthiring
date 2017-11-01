@@ -129,8 +129,8 @@
 										<th width="210"><?php echo $this->Paginator->sort('job_title', 'Job Title', array('escape' => false, 'direction' => 'desc', 'rel' => 'tooltip', 'title' => 'Sort by Ascending or Descending'));?></th>										
 										<th width="200"><?php echo $this->Paginator->sort('Client.client_name', 'Client', array('escape' => false, 'direction' => 'desc', 'rel' => 'tooltip', 'title' => 'Sort by Ascending or Descending'));?></th>
 										<th width="100"  style="text-align:center"><?php echo $this->Paginator->sort('no_job', 'Openings', array('escape' => false, 'direction' => 'desc', 'rel' => 'tooltip', 'title' => 'Sort by Ascending or Descending'));?></th>
-										<th width="150"><?php echo $this->Paginator->sort('team_member', 'Team', array('escape' => false, 'direction' => 'desc', 'rel' => 'tooltip', 'title' => 'Sort by Ascending or Descending'));?></th>
-										<th width="65"  style="text-align:center">CV Sent</th>
+										<th width="150"><?php echo $this->Paginator->sort('team_member', 'Recruiters', array('escape' => false, 'direction' => 'desc', 'rel' => 'tooltip', 'title' => 'Sort by Ascending or Descending'));?></th>
+										<th width="65"  style="text-align:center">CVs</th>
 										<th width="65"  style="text-align:center">Joined</th>
 										<th width="100"  style="text-align:center"><?php echo $this->Paginator->sort('status', 'Status', array('escape' => false, 'direction' => 'desc', 'rel' => 'tooltip', 'title' => 'Sort by Ascending or Descending'));?></th>
 										<th width="95"><?php echo $this->Paginator->sort('Creator.first_name', 'Created By', array('escape' => false, 'direction' => 'desc', 'rel' => 'tooltip', 'title' => 'Sort by Ascending or Descending'));?></th>
@@ -148,20 +148,21 @@
 									<?php foreach($data as $req):?>
 									<tr>
 										<?php if(!empty($noHead)): $target = "target='_blank'"; endif;?>
-										<td width=""><a <?php echo $target;?> href="<?php echo $this->webroot;?>position/view/<?php echo $req['Position']['id'];?>/"><?php echo ucwords($req['Position']['job_title']);?></a></td>
+										<td width=""><a <?php echo $target;?> href="<?php echo $this->webroot;?>position/view/<?php echo $req['Position']['id'];?>/<?php echo $req[0]['st_id'];?>/"><?php echo ucwords($req['Position']['job_title']);?></a></td>
 										<td width="" ><?php echo $req['Client']['client_name'];?></td>
 										<td   style="text-align:center" width=""><?php echo $req['Position']['no_job'];?></td>
 										
 						
 						<td width=""><?php echo $req[0]['team_member'];?></td>
-						<td width=""  style="text-align:center"><a target="_blank" title="View CV Sent"  href="<?php echo $this->webroot;?>resume/?status=1&spec=<?php echo $req['Position']['id'];?>" rel="tooltip"><?php echo $req[0]['cv_sent'];?></a>
-						<td width=""  style="text-align:center"><a target="_blank" title="View Joined Resumes"  href="<?php echo $this->webroot;?>resume/?status=10&spec=<?php echo $req['Position']['id'];?>"  rel="tooltip"><?php echo $this->Functions->get_total_joined($req[0]['joined']);?></a></td>
+						
+						<td width=""  style="text-align:center"><a  title="View CV Submitted"  href="<?php echo $this->webroot;?>resume/?spec=<?php echo $req['Position']['id'];?>" rel="tooltip"><?php echo $req[0]['cv_sent'];?></a>
+						<td width=""  style="text-align:center"><a title="View Joined Resumes"  href="<?php echo $this->webroot;?>resume/?status=10&spec=<?php echo $req['Position']['id'];?>"  rel="tooltip"><?php echo $this->Functions->get_total_joined($req[0]['joined'],$req[0]['req_resume_id']);?></a></td>
 						
 						<td width=""  style="text-align:center">
 						<?php if($req['Position']['status'] == 'A'):?>
 						<span rel="tooltip" title="Requirement Status: <?php echo $req['ReqStatus']['title'];?> " class="label label-<?php echo $this->Functions->get_req_status_color($req['ReqStatus']['title']);?>"><?php echo $req['ReqStatus']['title'];?></span>			
 						<?php else:?>	
-						<span title="Awaiting for Approval" rel="tooltip" class="label label">Awaiting Approval</span>						
+						<span title="Awaiting for Approval" rel="tooltip" class="label label-warning">Awaiting Approval</span>						
 						<?php endif; ?>
 						
 						</td>
@@ -182,8 +183,8 @@
 	<a href="<?php echo $this->webroot;?>position/edit/<?php echo $req['Position']['id'];?>/" class="btn  btn-mini"  rel="tooltip" class="sepV_a" title="Edit Position"><i class="icon-pencil"></i></a>
 	<?php endif; ?>	
 	
-	<?php if($req['Position']['is_approve'] == 'W' && $this->Session->read('USER.Login.roles_id') == '39'):?>
-	<a rel="tooltip" title="Verify Position" href="<?php echo $this->webroot;?>position/view/<?php echo $req['Position']['id'];?>/" class="btn  btn-mini"><i class="icon-edit"></i></a>
+	<?php if($req['Position']['is_approve'] == 'W'):?>
+	<a rel="tooltip"  title="Verify" href="<?php echo $this->webroot;?>position/view/<?php echo $req['Position']['id'];?>/<?php echo $req[0]['st_id'];?>/" class="btn  btn-mini"><i class="icon-edit"></i></a>
 	<?php endif; ?>		
 	
 	

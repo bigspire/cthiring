@@ -7,7 +7,7 @@ Date : 26-05-2017
 
 session_start();
 use Ilovepdf\Ilovepdf;
-ini_set('display_errors', 1);
+// ini_set('display_errors', 0);
 
 // including smarty config
 include 'configs/smartyconfig.php';
@@ -23,22 +23,12 @@ include('classes/class.mailer.php');
 // content class
 include('classes/class.content.php');
 
-<<<<<<< HEAD
-// generate auto resume doc file
-// include('vendor/PHPWord-develop/samples/template_process.php');
-// generate the auto resume pdf file
-include('vendor/ilovepdf-php-1.1.5/samples/office.php');
-
-
-
-=======
->>>>>>> f1cf94f1e451666b1c26d60ec60d158732da4a1a
 
 $smarty->assign('dob_default', date('d/m/Y', strtotime('-18 years')));
 
 // role based validation
-// $module_access = $fun->check_role_access('7',$modules);
-// $smarty->assign('module',$module_access);
+$module_access = $fun->check_role_access('7',$modules);
+$smarty->assign('module',$module_access);
 
 $getid = $_GET['id'];
 $smarty->assign('getid',$getid);
@@ -85,12 +75,17 @@ if(empty($_POST)){
 		$smarty->assign('tech_expert', str_replace('"',"'",$row['expert']));
 		$smarty->assign('achievement', str_replace('"',"'",$row['achievements']));
 		$smarty->assign('about_company', str_replace('"',"'",$row['company_details']));
-		$total_exp  = $row['total_exp'];		
+		
+		$total_exp  = $row['total_exp'];
+		$total_exp_yrs = explode(".", $total_exp);
+		
 		if($total_exp == '0'){
 			$smarty->assign('year_of_exp',0);
 			$smarty->assign('month_of_exp',0);
+		}else if(empty($total_exp_yrs[1])){
+			$smarty->assign('year_of_exp',$total_exp_yrs[0]);
+			$smarty->assign('month_of_exp',0);
 		}else{
-			$total_exp_yrs = explode(".", $total_exp);
 			$smarty->assign('year_of_exp',$total_exp_yrs[0]);
 			$smarty->assign('month_of_exp',$total_exp_yrs[1]);
 		}
@@ -465,7 +460,7 @@ $smarty->assign('grade_drop', array('' => 'Select', 'R' => 'Regular', 'C' => 'Co
  
 // smarty drop down array for year of passing 
 $year_of_pass = array(); 
-for($l = 2020; $l >= 1990; $l--){
+for($l = date('Y'); $l >= 1990; $l--){
 	$year_of_pass[$l] = $l;
 }
 $smarty->assign('year_of_pass', $year_of_pass);
@@ -682,13 +677,13 @@ if(!empty($_POST)){
 	}
 	
 	// array for printing correct field name in error message
-	$fieldtype = array('0', '0','0','0','0','0', '0','1','1','0', '0','0','1','1', '1','1','0','0','0','0','0');
+	$fieldtype = array('0', '0','0','0','0', '0','1','1','0', '0','0','1','1', '1','1','0','0','0','0','0');
 	$actualfield = array('first name', 'last name','email', 'mobile', 'telephone', 'dob',
 						'current designation', 'total years of experience','total months of experience',
 						'present CTC','expected CTC','present CTC type','expected CTC type',
 						'notice period','gender', 'present location','nationality', 'language','address');
    $field = array('first_name' => 'first_nameErr', 'last_name' => 'last_nameErr','email' => 'emailErr',
-    'mobile' => 'mobileErr','telephone' => 'telephoneErr','dob_field' => 'dobErr',
+    'mobile' => 'mobileErr','dob_field' => 'dobErr',
     'designation_id' => 'positionErr','year_of_exp' => 'year_of_expErr', 'month_of_exp' => 'month_of_expErr',
     'present_ctc' => 'present_ctcErr','expected_ctc' => 'expected_ctcErr',
 	'present_ctc_type' => 'present_ctc_typeErr','expected_ctc_type' => 'expected_ctc_typeErr',
@@ -735,16 +730,16 @@ if(!empty($_POST)){
 	$field1 = array('personality' => 'personalityErr','interview_availability' => 'interview_availabilityErr',
 		'credential_shortlisting' => 'credential_shortlistingErr', 'relevant_exposure' => 'relevant_exposureErr');
 	$j = 0;
-	foreach ($field1 as $field => $er_var){ 
-		if($_POST[$field] == ''){
+	foreach ($field1 as $field1 => $er_var){ 
+		if($_POST[$field1] == ''){
 			$error_msg1 = $fieldtype1[$j] ? ' select the ' : ' enter the ';
 			$actual_field1 =  $actualfield1[$j];
-			$er1[$er_var] = 'Please'. $error_msg .$actual_field1;
+			$er1[$er_var] = 'Please'. $error_msg1 .$actual_field1;
 			$test = 'error';
 			$tab5 = 'fail';
 			$smarty->assign($er_var,$er1[$er_var]);
 		}else{
-			$smarty->assign($field1,$_POST[$field]);
+			$smarty->assign($field1,$_POST[$field1]);
 		}
 			$j++;
 	}
@@ -1026,11 +1021,9 @@ if(!empty($_POST)){
 			$template_path = dirname(__FILE__).'/uploads/template/autoresume.docx'; 
 			include('vendor/PHPWord-develop/samples/template_process.php');
 			// generate the auto resume pdf file
-			// convert the resume doc. into pdf
-			/*
-			
+			// convert the resume doc. into pdf			
 			require_once('vendor/ilovepdf-php-1.1.5/init.php');			
-			ini_set('display_errors', '1');
+			// ini_set('display_errors', '1');
 			// you can call task class directly
 			// to get your key pair, please visit https://developer.ilovepdf.com/user/projects
 			$ilovepdf = new Ilovepdf('project_public_30e4ef2596c7436ae907615a841f995b_J4pWwe338d0756271411b0769ee277075a664','secret_key_9d6d00d05185d32c499082fc7e008ba1_fovTb7e8e14419dee395103d2b71d6b7e7175');
@@ -1039,12 +1032,12 @@ if(!empty($_POST)){
 			// Add files to task for upload
 			$file1 = $myTaskConvertOffice->addFile($resume_path);
 			$snap_file_name = substr($_SESSION['resume_doc'], 0, strlen($_SESSION['resume_doc'])-5);
-			$myTaskConvertOffice->setOutputFilename($snap_file_name.'_{date}'.'.pdf');
+			$myTaskConvertOffice->setOutputFilename($fun->filter_file($snap_file_name).'_{date}'.'.pdf');
 			// Execute the task
 			$myTaskConvertOffice->execute();
 			// Download the package files
 			$myTaskConvertOffice->download('uploads/autoresumepdf/');   
-			*/
+			
 			// once successfully created, redirect the page
 			if($_GET['resume'] != ''){
 				header('Location: ../resume/?action=auto_modified');
