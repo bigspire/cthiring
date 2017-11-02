@@ -712,6 +712,7 @@ class PositionController extends AppController {
 		'conditions' => array('requirements_id' => $id),
 		'order' => array('Resume.created_date' => 'desc'),'group' => array('ReqResume.id'), 'joins' => $options));		
 		$this->set('resume_data', $data);
+		/*
 		// get the req resume status data 			
 		$this->loadModel('ReqResumeStatus');
 		$options = array(					
@@ -726,6 +727,7 @@ class PositionController extends AppController {
 		'ReqResumeStatus.stage_title', 'Resume.id', 'ReqResumeStatus.created_date','ReqResume.bill_ctc','ReqResume.modified_date'),
 		'conditions' => array('ReqResume.requirements_id' => $id, $validate_cond), 'joins' => $options));		
 		$this->set('status_data', $data);
+		*/
 		
 	}
 	

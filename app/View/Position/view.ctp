@@ -889,16 +889,16 @@ $action = 1;?>
 									
 
 <?php
-$sent = $this->Functions->get_req_tab_count($status_data, 'CV-Sent', 'status');
-$shortlist = $this->Functions->get_req_tab_count($status_data, 'Shortlisted', 'status');
-$cv_reject = $this->Functions->get_req_tab_count($status_data, '', '','shorlist_reject');
-$interview =  $this->Functions->get_req_tab_count($status_data, 'First Interview-Final Interview-Second Interview', 'stage');
-$interview_not_att =  $this->Functions->get_req_tab_count($status_data, 'First Interview-Final Interview-Second Interview', 'stage', 'interview_not_att');
-$interview_reject =  $this->Functions->get_req_tab_count($status_data, 'First Interview-Final Interview-Second Interview', 'stage', 'interview_reject');
-$offer =  $this->Functions->get_req_tab_count($status_data, 'Offer','stage');
-$offer_rej =  $this->Functions->get_req_tab_count($status_data, 'OfferReject','','offer_reject');
-$joined =  $this->Functions->get_req_tab_count($status_data, 'Joined','status');
-$billing =  $this->Functions->get_req_tab_count($status_data, '','','billing');
+$sent = $this->Functions->get_req_tab_count($resume_data, 'CV-Sent', 'status');
+$shortlist = $this->Functions->get_req_tab_count($resume_data, 'Shortlisted', 'status');
+$cv_reject = $this->Functions->get_req_tab_count($resume_data, '', '','shorlist_reject');
+$interview =  $this->Functions->get_req_tab_count($resume_data, 'First Interview-Final Interview-Second Interview', 'stage');
+$interview_not_att =  $this->Functions->get_req_tab_count($resume_data, 'First Interview-Final Interview-Second Interview', 'stage', 'interview_not_att');
+$interview_reject =  $this->Functions->get_req_tab_count($resume_data, 'First Interview-Final Interview-Second Interview', 'stage', 'interview_reject');
+$offer =  $this->Functions->get_req_tab_count($resume_data, 'Offer','stage');
+$offer_rej =  $this->Functions->get_req_tab_count($resume_data, 'OfferReject','','offer_reject');
+$joined =  $this->Functions->get_req_tab_count($resume_data, 'Joined','status');
+$billing =  $this->Functions->get_req_tab_count($resume_data, '','','billing');
 $yrf =  $sent - ($shortlist  + $cv_reject)
 
 ?>									
