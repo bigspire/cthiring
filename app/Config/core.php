@@ -33,6 +33,7 @@
  */
 	// phpinfo();
 	Configure::write('debug',  0);
+	
 	// error_reporting(E_ALL);
 
 
