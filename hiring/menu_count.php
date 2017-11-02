@@ -234,9 +234,6 @@ try{
 
 
 
-
-
-
 /*
 // assign smarty for module names
 foreach($modules as $key => $record){

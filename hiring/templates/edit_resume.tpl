@@ -188,7 +188,7 @@
 									<tr class="tbl_row">
 										<td width="120" class="tbl_column">Family (Dependents) <span class="f_req"></span></td>										
 										<td>
-										<textarea name="family" id="family" tabindex="17" cols="10" rows="3" class="span8">{if $family}{$family}{else}{$smarty.post.family}{/if}</textarea>									
+										<textarea name="family" id="family" tabindex="17" cols="10" rows="3" class="span8 wysiwyg1">{if $family}{$family}{else}{$smarty.post.family}{/if}</textarea>									
 										</td>			
 									</tr>	
 									<tr>

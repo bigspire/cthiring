@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-10-27 19:02:46
+/* Smarty version 3.1.29, created on 2017-11-02 14:01:20
   from "C:\xampp\htdocs\2017\ctsvn\cthiring\hiring\templates\contact_branch.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_59f3357edb6665_20683980',
+  'unifunc' => 'content_59fad7d84a21b2_00398544',
   'file_dependency' => 
   array (
     'be730a1f96566857b0d3902c7874b537ab4755f5' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\templates\\contact_branch.tpl',
-      1 => 1509111161,
+      1 => 1509111192,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_59f3357edb6665_20683980 ($_smarty_tpl) {
+function content_59fad7d84a21b2_00398544 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -92,7 +92,7 @@ home"><i class="icon-home"></i></a>
 							</div>
 						<?php }?>
 						
-						<?php if ($_smarty_tpl->tpl_vars['keyword']->value || $_smarty_tpl->tpl_vars['status']->value >= '0') {?>
+						<?php if ($_smarty_tpl->tpl_vars['keyword']->value) {?>
 						  <?php $_smarty_tpl->tpl_vars['hide'] = new Smarty_Variable('', null);
 $_smarty_tpl->ext->_updateScope->updateScope($_smarty_tpl, 'hide', 0);?>
 						<?php } else { ?>
