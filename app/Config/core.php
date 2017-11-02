@@ -31,9 +31,11 @@
  * In production mode, flash messages redirect after a time interval.
  * In development mode, you need to click the flash message to continue.
  */
+	// phpinfo();
+	Configure::write('debug',  0);
+	// error_reporting(E_ALL);
 
-	Configure::write('debug', 0);
-	
+
 	ini_set('memory_limit', '-1');
 	
 	ini_set('max_execution_time', '300');
@@ -44,9 +46,9 @@
 
 	Configure::write('CTROOT', '../hiring/');	
 	
-	Configure::write('WEBSITE', 'http://localhost');
+	Configure::write('WEBSITE', 'http://35.184.224.111');
 	
-	Configure::write('WEBSITE_HOME', 'http://localhost/cthiring_home/');
+	Configure::write('WEBSITE_HOME', 'http://35.184.224.111/mh/');
 /**
  * Configure the Error handler used to handle errors for your application. By default
  * ErrorHandler::handleError() is used. It will display errors using Debugger, when debug > 0
