@@ -385,10 +385,19 @@
 									
 
 									<div class="tab-pane active" id="mbox_inbox">											
-											
-											<table data-msg_rowlink="a" class="table table_vam mbox_table dTableR cvTable dataTable stickyTable" id="dt_inbox">
+										
+
+
+							
+											<table data-msg_rowlink="a" class="tableID table table_vam mbox_table dTableR cvTable dataTable stickyTable" id="dt_inbox">
 												<thead>
 													<tr class="upload_row sent_row">
+													
+													<th   style="text-align:center" width="50" class="upload_row table_checkbox">
+													<?php  // if($resume['ReqResume']['stage_title'] == 'Validation - Account Holder' && $resume['ReqResume']['status_title'] == 'Validated'):?>
+													<input type="checkbox" name="select_rows" rel="cvSel" class="select_rows">
+													<?php  // endif; ?>
+													</th>
 														<th width="250">Candidate Name</th>
 														<th  width="100">Mobile</th>
 														<th  width="120">Email</th>
@@ -406,6 +415,8 @@
 													
 													
 														<tr class="dn status_row">
+										<th   style="text-align:center" width="50" class="table_checkbox"><input type="checkbox" name="select_rows" rel="intSel" class="select_rows"></th>
+
 														<th width="250">Candidate Name</th>
 														<th style="text-align:center">Screening Status</th>
 														<th style="text-align:center">Interview Status</th>
@@ -429,7 +440,13 @@
 		
 													
 													<tr class="upload_row <?php echo $row_type;?>">
-														<td>														
+							<th  class="upload_row" style="text-align:center" width="50">
+							<?php if($resume['ReqResume']['stage_title'] == 'Validation - Account Holder' && $resume['ReqResume']['status_title'] == 'Validated'):?>	
+							<input type="checkbox" name="cv_row_sel[]" value="<?php echo $resume['Resume']['id']; ?>-<?php echo $this->request->params['pass'][0];?>-<?php echo $resume['ReqResume']['id']; ?>" class="selRow cvSel">
+							<?php else:?>
+							<input type="checkbox" name="row_sel" disabled class="">
+							<?php endif; ?>
+								</th>						<td>														
 														<a target="_blank" href="<?php echo $this->webroot;?>resume/view/<?php echo $resume['Resume']['id'];?>/"><?php echo ucwords($resume['Resume']['first_name'].' '.$resume['Resume']['last_name']);?></a>
 															<span style="font-size:9px">(<?php echo $resume['ReqResume']['stage_title'];?> <?php echo $resume['ReqResume']['status_title'];?>)</span>
 
@@ -461,7 +478,7 @@
 														
 														<td style="text-align:center" class="actionItem upload_row">
 			<?php if($resume['ReqResume']['stage_title'] == 'Validation - Account Holder' &&
-										$resume['ReqResume']['status_title'] == 'Validated'):?>
+										$resume['ReqResume']['status_title'] == 'Validated'): $multi_send_cv = '1';?>
 															
 					<span rel="tooltip" style="cursor:pointer" data-original-title="Send CV"><a href="<?php echo $this->webroot;?>position/send_cv/<?php echo $resume['Resume']['id']; ?>/<?php echo $this->request->params['pass'][0];?>/<?php echo $resume['ReqResume']['id']; ?>/" val="65_90"  class="iframeBox"><i class="splashy-arrow_medium_upper_right"></i></a></span>
 																
@@ -531,6 +548,22 @@
 								<?php if($resume['ReqResume']['stage_title'] != 'Validation - Recruiter' && $resume['ReqResume']['stage_title'] != 'Validation - Account Holder'):?>
 
 													<tr class="dn status_row">
+													
+			<th  style="text-align:center" width="50">
+			
+		<?php	if((strstr($resume['ReqResume']['stage_title'], 'Interview') && ($resume['ReqResume']['status_title'] != 'Rejected')
+	&& ($resume['ReqResume']['status_title'] == 'Selected' && $resume['ReqResume']['stage_title'] != 'Final Interview')
+	|| ($resume['ReqResume']['status_title'] == 'Scheduled')) ||
+	($resume['ReqResume']['stage_title'] == 'Shortlist' && $resume['ReqResume']['status_title'] == 'Shortlisted')
+	|| ($resume['ReqResume']['status_title'] == 'Cancelled' || $resume['ReqResume']['status_title'] == 'No Show')
+	&& $action != '1'):  $schedule_interview = 1; ?>
+		<input type="checkbox" name="int_row_sel" value="<?php echo $resume['Resume']['id']; ?>-<?php echo $this->request->params['pass'][0];?>-<?php echo $resume['ReqResume']['id']; ?>" class="selRow intSel">
+		<?php else:?>
+		<input type="checkbox" name="row_sel" disabled>
+		<?php $schedule_interview = 0; 
+		endif; ?>
+			</th>
+
 														<td>														
 	<a target="_blank" href="<?php echo $this->webroot;?>resume/view/<?php echo $resume['Resume']['id'];?>/">
 	<?php echo ucwords($resume['Resume']['first_name'].' '.$resume['Resume']['last_name']);?></a>
@@ -589,13 +622,16 @@
 							<td style="text-align:center">	
 												
 							<?php 
+	/*
 	if((strstr($resume['ReqResume']['stage_title'], 'Interview') && ($resume['ReqResume']['status_title'] != 'Rejected')
 	&& ($resume['ReqResume']['status_title'] == 'Selected' && $resume['ReqResume']['stage_title'] != 'Final Interview')
 	|| ($resume['ReqResume']['status_title'] == 'Scheduled')) ||
 	($resume['ReqResume']['stage_title'] == 'Shortlist' && $resume['ReqResume']['status_title'] == 'Shortlisted')
 	|| ($resume['ReqResume']['status_title'] == 'Cancelled' || $resume['ReqResume']['status_title'] == 'No Show')
-	&& $action != '1'): 
-		$action = '1';?>						
+	&& $action != '1'): */
+	
+	 if($schedule_interview == '1' && $action != '1'):
+		$action = '1'; $multi_show_interview = '1';?>						
 
 <?php $int_level = explode(' ', $resume['ReqResume']['stage_title']);
 	$int_lev = $this->Functions->get_int_level($int_level[0]);
@@ -626,14 +662,14 @@
 										
 										<ul class="dropdown-menu">
 										<?php if($resume['ReqResume']['status_title'] == 'Shortlisted' || $resume['ReqResume']['status_title'] == 'Selected' || $resume['ReqResume']['status_title'] == 'Cancelled' || $resume['ReqResume']['status_title'] == 'No Show'):?>
-										<li><a  href="<?php echo $this->webroot;?>position/schedule_interview/<?php echo  $resume['Resume']['id'];?>/<?php echo $this->request->params['pass'][0];?>/<?php echo $resume['ReqResume']['id'];?>/<?php echo $int_lev;?>/" val="65_90"  class="iframeBox sepV_a cboxElement">Interview Schedule / Reschedule</a></li>
+										<li><a  href="<?php echo $this->webroot;?>position/schedule_interview/<?php echo  $resume['Resume']['id'];?>/<?php echo $this->request->params['pass'][0];?>/<?php echo $resume['ReqResume']['id'];?>/<?php echo $int_lev;?>/" val="65_90"  class="iframeBox sepV_a cboxElement">Schedule Interview</a></li>
+
 										<?php else: ?>
 										<li><a  href="<?php echo $this->webroot;?>position/view_interview_schedule/<?php echo  $resume['ReqResume']['id'];?>/<?php echo $int_lev_same;?>/" val="65_90"  class="iframeBox sepV_a cboxElement">View Interview Details</a></li>
 										<?php endif; ?>
 										
-										<?php if($resume['ReqResume']['status_title'] == 'Scheduled'):?>
-										
-										<li><a  href="<?php echo $this->webroot;?>position/schedule_interview/<?php echo  $resume['Resume']['id'];?>/<?php echo $this->request->params['pass'][0];?>/<?php echo $resume['ReqResume']['id'];?>/<?php echo $int_lev_same;?>/reschedule/" val="65_90"  class="iframeBox sepV_a cboxElement">Interview Re-Schedule</a></li>
+										<?php if($resume['ReqResume']['status_title'] == 'Scheduled'): $reschedule = '1';?>										
+										<li><a  href="<?php echo $this->webroot;?>position/schedule_interview/<?php echo  $resume['Resume']['id'];?>/<?php echo $this->request->params['pass'][0];?>/<?php echo $resume['ReqResume']['id'];?>/<?php echo $int_lev_same;?>/reschedule/" val="65_90"  class="iframeBox sepV_a cboxElement">Re-Schedule Interview</a></li>
 										
 										<li class="divider"></li>
 										
@@ -796,6 +832,10 @@ $action = 1;?>
 												<?php $action = '';?>						
 														
 													</tr>
+												
+									
+
+							
 						<?php endif; ?>
 											
 													<?php  endforeach; ?>
@@ -803,7 +843,39 @@ $action = 1;?>
 												
 												</tbody>
 											</table>	
-											
+							
+						<input type="hidden" id="int_url" value="<?php echo $this->webroot;?>position/schedule_interview/">
+						<input type="hidden" id="cv_url" value="<?php echo $this->webroot;?>position/send_cv/">
+
+												
+					<?php if($multi_send_cv == '1'):?>	
+						<div class="btn-group upload_row sepH_b">
+								<button data-toggle="dropdown" class="btn btn-info dropdown-toggle">Action <span class="caret"></span></button>
+								<ul class="dropdown-menu">
+									<li><a href="javascript:void(0)" class="multi_send_cv">Send CV</a></li>
+								</ul>
+							</div>
+						<?php endif; ?> 
+						
+						
+				
+					<?php if($multi_show_interview == '1'):?>		
+					<div class="btn-group status_row sepH_b dn">
+								<button data-toggle="dropdown" class="btn btn-info  dropdown-toggle">Action <span class="caret"></span></button>
+								<ul class="dropdown-menu">
+									<li><a href="javascript:void(0)" class="multi_interview">Schedule Interview</a></li>
+									<?php if($reschedule == '1'): ?>
+									<li><a href="javascript:void(0)"  class="multi_interview">Re-Schedule Interview</a></li>
+									<?php endif; ?>
+								</ul>
+							</div>
+							
+						<?php endif; ?> 
+
+						
+
+							
+							
 											<div class="alert alert-login no_record dn">
 								<a class="close" data-dismiss="alert">×</a>
 								<strong>Oops!</strong> No records found!.

@@ -956,10 +956,12 @@ class PositionController extends AppController {
 					$resume_data = $this->ReqResume->Resume->find('all', array('conditions' => array('Resume.id' => $res_id),
 					'fields' => array('ResDoc.resume','Resume.created_date','Resume.modified_date'), 'joins' => $options));
 					// parse the file name			
+					/*
 					$updated = $resume_data[0]['Resume']['modified_date'] ? $resume_data[0]['Resume']['modified_date'] : $resume_data[0]['Resume']['created_date'];
 					$snap_file = substr($resume_data[0]['ResDoc']['resume'], 0, strlen($resume_data[0]['ResDoc']['resume']) - 5);
 					$pdf_date = date('d-m-Y', strtotime($updated));				
 					$resume_path = '../../hiring/uploads/snapshotmerged/'.$this->Functions->filter_file($snap_file).'_'.$pdf_date.'.pdf';
+					*/
 					// get contact details		
 					$client_data = $this->ReqResume->Position->findById($pos_id, array('fields' => 'client_contact_id','job_title','location'));
 					$this->loadModel('Contact');
@@ -972,7 +974,7 @@ class PositionController extends AppController {
 					$vars = array('from_name' => $from, 'to_name' => ucwords($to_name), 'position' => $this->request->data['Position']['job_title'],'msg'=> $split_msg[0], 'location' => $this->request->data['Position']['location']);
 					// save the mail box
 					$this->save_mail_box($split_msg[1], $split_msg[0], $req_res_id);
-					if(!$this->send_email($split_msg[1], 'send_cv', $this->Session->read('USER.Login.email_id'), $contact_data['Contact']['email'],$vars, $resume_path)){	
+					if(!$this->send_email($split_msg[1], 'send_cv', $this->Session->read('USER.Login.email_id'), $contact_data['Contact']['email'],$vars)){	
 						// show the msg.								
 						$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Problem in sending the mail to client...', 'default', array('class' => 'alert alert-error'));				
 					}else{						
@@ -1363,9 +1365,12 @@ class PositionController extends AppController {
 	}
 	
 	/* function to schedule for interview */
-	public function schedule_interview($id, $pos_id, $req_res_id,$interview_level,$schedule_type){
+	public function schedule_interview($id, $pos_id, $req_res_id,$interview_level,$schedule_type, $multi_sel){
 		$this->layout = 'framebox';
 		if(!empty($id) && !empty($pos_id)){
+		
+			// for multiple interview
+			
 			// get the template details
 			$this->get_template_details($id,$pos_id, '3');
 			$this->get_template_details($id,$pos_id, '2');
@@ -1467,7 +1472,8 @@ class PositionController extends AppController {
 							);
 						$resume_data = $this->ReqResume->Resume->find('all', array('conditions' => array('Resume.id' => $id),
 						'fields' => array('ResDoc.resume','Resume.created_date','Resume.modified_date'), 'joins' => $options));
-						// parse the file name			
+						// parse the file name	
+						/*						
 						$updated = $resume_data[0]['Resume']['modified_date'] ? $resume_data[0]['Resume']['modified_date'] : $resume_data[0]['Resume']['created_date'];
 						$snap_file = substr($resume_data[0]['ResDoc']['resume'], 0, strlen($resume_data[0]['ResDoc']['resume']) - 5);
 						$pdf_date = date('d-m-Y', strtotime($updated));	
@@ -1476,6 +1482,7 @@ class PositionController extends AppController {
 						if(!file_exists($resume_path)){
 							$resume_path = '';
 						}
+						*/
 						// get contact details		
 						$client_data = $this->ReqResume->Position->findById($pos_id, array('fields' => 'client_contact_id','job_title','location'));
 						$this->loadModel('Contact');
@@ -1489,7 +1496,7 @@ class PositionController extends AppController {
 						// save the mail box
 						$this->save_mail_box($client_msg_split[1], $client_msg_split[0], $req_res_id);
 						// send mail
-						if(!$this->send_email($client_msg_split[1], 'confirm_interview', $this->Session->read('USER.Login.email_id'), $contact_data['Contact']['email'], $vars, $resume_path)){	
+						if(!$this->send_email($client_msg_split[1], 'confirm_interview', $this->Session->read('USER.Login.email_id'), $contact_data['Contact']['email'], $vars)){	
 							// show the msg.								
 							$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Problem in sending the mail to candidate...', 'default', array('class' => 'alert alert-error'));				
 						}
