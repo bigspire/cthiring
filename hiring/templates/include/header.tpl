@@ -128,6 +128,9 @@
                                                {if $module['view_client'] eq '1'}
 												<li><a href="{webroot}client/">Search Client {* if $client_count *}<!-- span class="label-bub label-info white">{* $client_count *}</span-->{* /if *}</a></li>
 											    {/if}
+												{if $module['approve_client'] eq '1'}
+												<li><a href="{webroot}client/index/pending/">Approve Client</a></li>
+											    {/if}
 												<!-- <li><a href="add_client_contact.php">Add Client Contact</a></li>-->
 												<!--  <li><a href="client_contact.php">Search Client Contact</a></li>-->
                                             </ul>
@@ -141,6 +144,9 @@
 											 {/if}
 											 {if $module['view_position'] eq '1'}
                                                 <li><a href="{webroot}position/">Search Position {* if $position_count *}<!-- span class="label-bub label-info white">{* $position_count *}</span-->{* /if *}</a></li>
+											  {/if}
+											  {if $module['approve_position'] eq '1'}
+                                                <li><a href="{webroot}position/">Approve Position</a></li>
 											  {/if}
 										   </ul>
                                         </li>
@@ -179,9 +185,7 @@
 										   {if $module['view_billing'] eq '1'}
 												<li><a href="billing.php">Search Billing</a></li>
 										   {/if}
-										   {if $module['view_incentive'] eq '1'}
-                                                <li><a href="incentive.php">Search Incentive</a></li>
-										   {/if}
+										   
                                                 <!--li><a href="bonus.php">Search Bonus</a></li-->
 												{* if $module['add_billing'] eq '1' *}
 												 <!-- li><a href="add_billing.php">Add Billing</a></li-->
@@ -194,6 +198,9 @@
 												 <span class="label-bub label-info white">{$approve_billing_count}</span>{/if}</a></li>
 												{* /if *} 
 												{/if}
+												{if $module['view_incentive'] eq '1'}
+                                                <li><a href="incentive.php">Search Incentive</a></li>
+										   {/if}
                                             </ul>
                                         </li>
 										{/if}

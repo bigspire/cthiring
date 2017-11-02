@@ -133,6 +133,11 @@ class PositionController extends AppController {
 			);
 		}
 		
+		// check role based access
+		if($this->Session->read('USER.Login.roles_id') == '30'){ // recruiter
+			$roleCond = array('PositionStatus.member_approve' => 'A');
+		}
+		
 		/*
 		
 		// check role based access
@@ -220,7 +225,8 @@ class PositionController extends AppController {
 			$this->Excel->generate('positions', $data, $data, 'Report', 'Position');
 		}
 		
-		$this->paginate = array('fields' => $fields,'limit' => '25','conditions' => array($keyCond,$approveCond,$date_cond,$branchCond,$empCond,$stCond,$contactCond,$teamCond,$clientCond),
+		$this->paginate = array('fields' => $fields,'limit' => '25','conditions' => array($keyCond,$approveCond,$date_cond,$branchCond,$empCond,$stCond,
+		$contactCond,$teamCond,$clientCond,$roleCond),
 		'order' => array('created_date' => 'desc'),	'group' => array('Position.id'), 'joins' => $options);
 		$data = $this->paginate('Position');
 		$this->set('data', $data);
@@ -712,6 +718,7 @@ class PositionController extends AppController {
 		'conditions' => array('requirements_id' => $id),
 		'order' => array('Resume.created_date' => 'desc'),'group' => array('ReqResume.id'), 'joins' => $options));		
 		$this->set('resume_data', $data);
+		/*
 		// get the req resume status data 			
 		$this->loadModel('ReqResumeStatus');
 		$options = array(					
@@ -726,6 +733,7 @@ class PositionController extends AppController {
 		'ReqResumeStatus.stage_title', 'Resume.id', 'ReqResumeStatus.created_date','ReqResume.bill_ctc','ReqResume.modified_date'),
 		'conditions' => array('ReqResume.requirements_id' => $id, $validate_cond), 'joins' => $options));		
 		$this->set('status_data', $data);
+		*/
 		
 	}
 	

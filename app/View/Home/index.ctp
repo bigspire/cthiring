@@ -182,6 +182,154 @@
 					
 					<div class="row-fluid" style="margin-top:10px">
 						
+										
+					   
+						<div class="span6">
+							<h3 class="heading">Productivity <small>Individual</small>
+								
+									</h3>
+
+							<table class="table table-striped table-bordered ">
+								<thead class="">
+									<tr>
+									<th  class="optional">Date</th>
+										<th class=""  style="text-align:center">CTC</th>
+										<th  class="optional"   style="text-align:center">Expected</th>
+										<th class="optional"   style="text-align:center">Actual</th> 
+										<th   style="text-align:center">No. Positions</th>
+									</tr>
+								</thead>
+								<tbody class="">
+								<?php foreach($client_data as $data):?>
+									<tr>
+										<td><a href="<?php echo $this->webroot;?>client/view/<?php echo $data['Client']['id'];?>"><?php echo $data['Client']['client_name'];?></a></td>
+										<td><?php echo $data['ResLocation']['location'];?></td>
+										<td><?php echo $data['Creator']['first_name'];?></td>
+										<td><?php echo $this->Functions->format_date($data['Client']['created_date']);?></td>
+										<td style="text-align:center"><a   href="<?php echo $this->webroot;?>position/?keyword=<?php echo $data['Client']['client_name'];?>"><?php echo $data[0]['req_count'];?></a></td>										
+									</tr>
+								<?php endforeach; ?>	
+		
+								<tr>
+									<td>02/11/2017</td>
+									<td style="text-align:center">4.5 L</td>
+									<td style="text-align:center" >4</td>
+									<td style="text-align:center" >6</td>
+									<td style="text-align:center" width="100" style="text-align:center"><a href="#">4</a></td>										
+								  </tr>							
+								<tr>
+									<td >01/11/2017</td>
+									<td style="text-align:center" >4.5 L</td>
+									<td style="text-align:center" >4</td>
+									<td style="text-align:center" >6</td>
+									<td style="text-align:center"><a href="#">4</a></td>										
+								  </tr>	
+								<tr>
+									<td>31/10/2017</td>
+									<td style="text-align:center" >4.5 L</td>
+									<td style="text-align:center" >4</td>
+									<td style="text-align:center" >6</td>
+									<td style="text-align:center"><a href="#">4</a></td>										
+								  </tr>	
+								<tr>
+									<td>30/10/2017</td>
+									<td style="text-align:center" >4.5 L</td>
+									<td style="text-align:center" >4</td>
+									<td style="text-align:center" >6</td>
+									<td  style="text-align:center"><a href="#">4</a></td>										
+								  </tr>	
+									<tr>
+									<td>29/10/2017</td>
+									<td style="text-align:center" >4.5 L</td>
+									<td style="text-align:center" >4</td>
+									<td style="text-align:center" >6</td>
+									<td  style="text-align:center"><a href="#">4</a></td>										
+								  </tr>		
+								<tr>
+									<td>28/10/2017</td>
+									<td style="text-align:center" >4.5 L</td>
+									<td style="text-align:center" >4</td>
+									<td style="text-align:center" >6</td>
+									<td style="text-align:center"><a href="#">4</a></td>										
+								  </tr>	
+								<tr>
+									<td>27/10/2017</td>
+									<td style="text-align:center" >4.5 L</td>
+									<td style="text-align:center" >4</td>
+									<td style="text-align:center" >6</td>
+									<td style="text-align:center"><a href="#">4</a></td>										
+								 </tr>									  
+								</tbody>
+							</table>
+						</div>
+						
+						<div class="span6">
+							<h3 class="heading">Business Conversion <small>Individual</small></h3>
+							
+							<table class="table table-striped table-bordered">
+							
+							<thead class="">
+									<tr>
+										<th style="text-align:center" colspan="2">Vacancies Related</th>
+										<th  style="text-align:center"  colspan="2">CV Quality & Contribution</th>
+									</tr>
+								</thead>
+								
+								
+								<tbody class="">
+									<tr>
+										<td class="optional">Positions Worked</td>
+										<td style="text-align:center" class="optional"><a href="#">6</a></td>
+										<td  class="essential persist">CVs Submitted</td>
+										<td style="text-align:center" class="optional"><a href="#">6</a></td>
+									</tr>
+									<tr>
+										<td class="optional">Vacancies Handled</td>
+										<td style="text-align:center" class="optional"><a href="#">10</a></td>
+										<td  class="essential persist">Average Lead Time (Days)</td>
+										<td style="text-align:center" class="optional"><a href="#">5</a></td>
+									</tr>
+									<tr>
+										<td class="optional">Vacancies Billed</td>
+										<td style="text-align:center" class="optional"><a href="#">2</a></td>
+										<td  class="essential persist">CVs Billed</td>
+										<td style="text-align:center" class="optional"><a href="#">1</a></td>
+									</tr>
+									<tr>
+										<td class="optional">Vacancies Not Billed</td>
+										<td style="text-align:center" class="optional"><a href="#">8</a></td>
+										<td  class="essential persist">CVs Not Billed</td>
+										<td style="text-align:center" class="optional"><a href="#">5</a></td>
+									</tr>
+									
+									<tr>
+										<td class="optional">Business Value</td>
+										<td style="text-align:center" class="optional"><a href="#">408000</a></td>
+										<td  class="essential persist">% of Final Interview Candidates</td>
+										<td style="text-align:center" class="optional"><a href="#">50%</a></td>
+									</tr>
+									<tr>
+										<td class="optional">Avg Lead Time for Billing (Days)</td>
+										<td style="text-align:center" class="optional"><a href="#">100</a>	</td>
+										<td  class="essential persist">Billing Value</td>
+										<td style="text-align:center" class="optional"><a href="#">180000</a></td>
+									</tr>
+									<tr>
+										<th class="optional">Business Conversion</th>
+										<th style="text-align:center" class="optional">44%</td>
+										<th  class="essential persist">Individual Contribution</th>
+										<th style="text-align:center" class="optional">120000</th>
+									</tr>
+								</tbody>
+								
+							</table>
+                        </div>
+						
+						
+					</div>
+					
+					
+					
 					<div class="row-fluid">
 						<div class="span6">
 							<h3 class="heading">Daily Activity <small>Overview</small>
