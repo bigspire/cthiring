@@ -378,7 +378,7 @@
 			<a href="<?php echo $this->webroot;?>position/download_doc/<?php echo $this->request->data['Position']['job_desc_file'];?>"><?php echo $this->request->data['Position']['job_desc_file'];?></a>
 			<br>
 
-			<textarea   style="width:1200px" rows = "10"><?php echo trim($this->Functions->read_document(WWW_ROOT.'/uploads/jd/'.$this->request->data['Position']['job_desc_file']));?></textarea>
+			<textarea   class="span12" rows = "10"><?php echo trim($this->Functions->read_document(WWW_ROOT.'/uploads/jd/'.$this->request->data['Position']['job_desc_file']));?></textarea>
 	<?php endif; ?>
 									</td>
 								</tr>

@@ -167,6 +167,12 @@ class PositionController extends AppController {
 			//unset($date_cond);
 			
 		}
+		
+		// for client condition
+		if($this->request->query['client_id'] != ''){
+			$clientCond = array('Position.clients_id' => $this->request->query['client_id']);
+		}
+		
 		// for branch condition
 		if($this->request->query['loc'] != ''){ 
 			$branchCond = array('Creator.location_id' => $this->request->query['loc']);
@@ -185,7 +191,7 @@ class PositionController extends AppController {
 		// show awaiting approval condition
 		if($rec_status =='pending'){
 			// $approveCond = array('Position.status' => 'I', 'Position.is_approve' => 'W');
-			$approveCond = array('PositionStatus.users_id' => $this->Session->read('USER.Login.id'),					'PositionStatus.status' => 'W');
+			$approveCond = array('PositionStatus.users_id' => $this->Session->read('USER.Login.id'),'PositionStatus.status' => 'W');
 		}else{
 			$approveCond = array('Position.status' => 'A', 'Position.is_approve' => 'A');
 		}
@@ -209,12 +215,12 @@ class PositionController extends AppController {
 		// for export
 		if($this->request->query['action'] == 'export'){
 			$data = $this->Position->find('all', array('fields' => $fields,'conditions' => 
-			array($keyCond,$date_cond,$branchCond,$empCond,$stCond,$teamCond,$contactCond), 
+			array($keyCond,$date_cond,$branchCond,$empCond,$stCond,$teamCond,$contactCond,$clientCond), 
 			'order' => array('created_date' => 'desc'), 'group' => array('Position.id'), 'joins' => $options));
 			$this->Excel->generate('positions', $data, $data, 'Report', 'Position');
 		}
 		
-		$this->paginate = array('fields' => $fields,'limit' => '25','conditions' => array($keyCond,$approveCond,$date_cond,$branchCond,$empCond,$stCond,$contactCond,$teamCond),
+		$this->paginate = array('fields' => $fields,'limit' => '25','conditions' => array($keyCond,$approveCond,$date_cond,$branchCond,$empCond,$stCond,$contactCond,$teamCond,$clientCond),
 		'order' => array('created_date' => 'desc'),	'group' => array('Position.id'), 'joins' => $options);
 		$data = $this->paginate('Position');
 		$this->set('data', $data);
@@ -309,7 +315,7 @@ class PositionController extends AppController {
 									// show the msg.								
 									$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Problem in sending the mail for approval...', 'default', array('class' => 'alert alert-error'));				
 								}else{
-									$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Position Created Successfully. After approval, it will be visible', 'default', array('class' => 'alert alert-warning'));				
+									$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Position Created Successfully. After approval, it will be visible', 'default', array('class' => 'alert alert-info'));				
 								}
 							}
 						}else{
@@ -675,7 +681,7 @@ class PositionController extends AppController {
 		'group_concat(ReqResume.status_title) joined', 'start_date', 'end_date', //"group_concat(distinct ResOwner.first_name  SEPARATOR ', ') team_member",
 		"group_concat(distinct AH.first_name  SEPARATOR ', ') ac_holder","group_concat(distinct TeamMember.first_name  SEPARATOR ', ') team_member2",
 		'skills','Contact.first_name','Contact.email','Contact.mobile','Contact.phone','Contact.id','FunctionArea.function',
-		'Position.created_by','Position.is_approve','tech_skill','behav_skill');
+		'Position.created_by','Position.is_approve','tech_skill','behav_skill','job_desc_file');
 		$data = $this->Position->find('all', array('fields' => $fields,'conditions' => array('Position.id' => $id), 'joins' => $options));
 		$this->set('position_data', $data[0]);
 		// get the resume details
@@ -782,7 +788,7 @@ class PositionController extends AppController {
 							// show the msg.								
 							$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Problem in sending the mail to user...', 'default', array('class' => 'alert alert-error'));				
 						}else{
-							$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Position '.$approve_msg.' successfully.', 'default', array('class' => 'alert alert-success'));
+							$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Position '.$approve_msg.' Successfully.', 'default', array('class' => 'alert alert-success'));
 						}
 						
 						// get the superiors
@@ -804,31 +810,45 @@ class PositionController extends AppController {
 									// make sure not duplicate status exists
 									$this->check_duplicate_status($req_id, $approval_data['Approve']['level2'], 0);						
 									if($this->PositionStatus->save($data, true, $fieldList = array('requirements_id','created_date','users_id','is_approve'))){
-										$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Position '.$approve_msg.' successfully.', 'default', array('class' => 'alert alert-success'));
-																	
+										$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Position '.$approve_msg.' Successfully.', 'default', array('class' => 'alert alert-success'));																	
 									}else{
 										$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Problem in saving superior status...', 'default', array('class' => 'alert alert-error'));
 									}
 								}else{
 									// update status if l2 approved
+									
 									$this->Position->id = $req_id;
 									$this->Position->saveField('is_approve', 'A');
 									$this->Position->saveField('status', 'A');	
-									$this->Position->saveField('req_status_id', '0');									
+									$this->Position->saveField('req_status_id', '0');
+									
+									// approve the member
+									$this->PositionStatus->id = $st_id;
+									$this->PositionStatus->saveField('member_approve', 'A');	
+									
 								}
 							}else{
 								// update  status
+								
 								$this->Position->id = $req_id;
 								$this->Position->saveField('is_approve', 'A');
 								$this->Position->saveField('status', 'A');
-								$this->Position->saveField('req_status_id', '0');									
+								$this->Position->saveField('req_status_id', '0');	
+									
+								
+								// approve the member
+								$this->PositionStatus->id = $st_id;
+								$this->PositionStatus->saveField('member_approve', 'A');
 							}
 							
 						}else{
 							// update  status
 							$this->Position->id = $req_id;
-							// $this->Position->saveField('is_approve', 'R');
+							$this->Position->saveField('is_approve', 'R');
 							
+							$this->PositionStatus->id = $st_id;
+							$this->PositionStatus->saveField('member_approve', 'R');
+								
 							/*
 							$approval_data = $this->Approve->find('first', array('fields' => array('level1','level2'), 'conditions'=> array('Approve.users_id' => $user_id)));
 							if($approval_data['Approve']['level1'] == $this->Session->read('USER.Login.id')){
@@ -856,6 +876,7 @@ class PositionController extends AppController {
 					}else{
 						$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert-error">&times;</button>Problem in updating the status', 'default', array('class' => 'alert alert-error'));		
 					}
+					$this->set('action_status', $approve_msg);
 					$this->set('form_status', '1');
 					/*
 					if($this->Position->save($data, array('validate' => false))){	
@@ -935,10 +956,12 @@ class PositionController extends AppController {
 					$resume_data = $this->ReqResume->Resume->find('all', array('conditions' => array('Resume.id' => $res_id),
 					'fields' => array('ResDoc.resume','Resume.created_date','Resume.modified_date'), 'joins' => $options));
 					// parse the file name			
+					/*
 					$updated = $resume_data[0]['Resume']['modified_date'] ? $resume_data[0]['Resume']['modified_date'] : $resume_data[0]['Resume']['created_date'];
 					$snap_file = substr($resume_data[0]['ResDoc']['resume'], 0, strlen($resume_data[0]['ResDoc']['resume']) - 5);
 					$pdf_date = date('d-m-Y', strtotime($updated));				
 					$resume_path = '../../hiring/uploads/snapshotmerged/'.$this->Functions->filter_file($snap_file).'_'.$pdf_date.'.pdf';
+					*/
 					// get contact details		
 					$client_data = $this->ReqResume->Position->findById($pos_id, array('fields' => 'client_contact_id','job_title','location'));
 					$this->loadModel('Contact');
@@ -951,7 +974,7 @@ class PositionController extends AppController {
 					$vars = array('from_name' => $from, 'to_name' => ucwords($to_name), 'position' => $this->request->data['Position']['job_title'],'msg'=> $split_msg[0], 'location' => $this->request->data['Position']['location']);
 					// save the mail box
 					$this->save_mail_box($split_msg[1], $split_msg[0], $req_res_id);
-					if(!$this->send_email($split_msg[1], 'send_cv', $this->Session->read('USER.Login.email_id'), $contact_data['Contact']['email'],$vars, $resume_path)){	
+					if(!$this->send_email($split_msg[1], 'send_cv', $this->Session->read('USER.Login.email_id'), $contact_data['Contact']['email'],$vars)){	
 						// show the msg.								
 						$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Problem in sending the mail to client...', 'default', array('class' => 'alert alert-error'));				
 					}else{						
@@ -1342,9 +1365,12 @@ class PositionController extends AppController {
 	}
 	
 	/* function to schedule for interview */
-	public function schedule_interview($id, $pos_id, $req_res_id,$interview_level,$schedule_type){
+	public function schedule_interview($id, $pos_id, $req_res_id,$interview_level,$schedule_type, $multi_sel){
 		$this->layout = 'framebox';
 		if(!empty($id) && !empty($pos_id)){
+		
+			// for multiple interview
+			
 			// get the template details
 			$this->get_template_details($id,$pos_id, '3');
 			$this->get_template_details($id,$pos_id, '2');
@@ -1446,7 +1472,8 @@ class PositionController extends AppController {
 							);
 						$resume_data = $this->ReqResume->Resume->find('all', array('conditions' => array('Resume.id' => $id),
 						'fields' => array('ResDoc.resume','Resume.created_date','Resume.modified_date'), 'joins' => $options));
-						// parse the file name			
+						// parse the file name	
+						/*						
 						$updated = $resume_data[0]['Resume']['modified_date'] ? $resume_data[0]['Resume']['modified_date'] : $resume_data[0]['Resume']['created_date'];
 						$snap_file = substr($resume_data[0]['ResDoc']['resume'], 0, strlen($resume_data[0]['ResDoc']['resume']) - 5);
 						$pdf_date = date('d-m-Y', strtotime($updated));	
@@ -1455,6 +1482,7 @@ class PositionController extends AppController {
 						if(!file_exists($resume_path)){
 							$resume_path = '';
 						}
+						*/
 						// get contact details		
 						$client_data = $this->ReqResume->Position->findById($pos_id, array('fields' => 'client_contact_id','job_title','location'));
 						$this->loadModel('Contact');
@@ -1468,7 +1496,7 @@ class PositionController extends AppController {
 						// save the mail box
 						$this->save_mail_box($client_msg_split[1], $client_msg_split[0], $req_res_id);
 						// send mail
-						if(!$this->send_email($client_msg_split[1], 'confirm_interview', $this->Session->read('USER.Login.email_id'), $contact_data['Contact']['email'], $vars, $resume_path)){	
+						if(!$this->send_email($client_msg_split[1], 'confirm_interview', $this->Session->read('USER.Login.email_id'), $contact_data['Contact']['email'], $vars)){	
 							// show the msg.								
 							$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Problem in sending the mail to candidate...', 'default', array('class' => 'alert alert-error'));				
 						}

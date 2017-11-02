@@ -35,73 +35,73 @@
 										<fieldset>
 																					
 											<div class="control-group formSep">
-												<label for="u_fname" class="control-label">Full name</label>
-												<div class="controls">
-													<input type="text" id="u_fname" class="input-xlarge" value="{$profile_data['full_name']}" disabled/>
+												<label for="u_fname" class="control-label viewLabelHead">Full name</label>
+												<div class="controls view_label">
+													{$profile_data['full_name']}
 												</div>
 											</div>
 											<div class="control-group formSep">
-												<label for="u_email" class="control-label">Email</label>
-												<div class="controls">
-													<input type="text" id="u_email" class="input-xlarge" value="{$profile_data['email_id']}" disabled/>
+												<label for="u_email" class="control-label viewLabelHead">Email</label>
+												<div class="controls view_label">
+													{$profile_data['email_id']}
 												</div>
 											</div>
 											<div class="control-group formSep">
-												<label for="u_password" class="control-label">Mobile</label>
+												<label for="u_password" class="control-label viewLabelHead">Mobile</label>
 												<div class="controls">
-													<div class="sepH_b">
-														<input type="text" class="input-xlarge" value="{$profile_data['mobile']}" disabled/>
+													<div class="sepH_b view_label">
+														{$profile_data['mobile']}
 													</div>
 												</div>
 											</div>
 											<div class="control-group formSep">
-												<label for="u_password" class="control-label">Location</label>
+												<label for="u_password" class="control-label viewLabelHead">Location</label>
 												<div class="controls">
-													<div class="sepH_b">
-														<input type="text"  class="input-xlarge" value="{$profile_data['location']}" disabled/>
+													<div class="sepH_b view_label">
+														{$profile_data['location']}
 													</div>
 												</div>
 											</div>
 											<div class="control-group formSep">
-												<label for="u_password" class="control-label">Role</label>
+												<label for="u_password" class="control-label viewLabelHead">Role</label>
 												<div class="controls">
-													<div class="sepH_b">
-														<input type="text"  class="input-xlarge" value="{$profile_data['role_name']}" disabled/>
+													<div class="sepH_b view_label">
+													{$profile_data['role_name']}
 													</div>
 												</div>
 											</div>
 											<div class="control-group formSep">
-												<label for="u_password" class="control-label">Designation</label>
+												<label for="u_password" class="control-label viewLabelHead">Designation</label>
 												<div class="controls">
-													<div class="sepH_b">
-														<input type="text"  class="input-xlarge" value="{$profile_data['position']}" disabled/>
-													</div>
-												</div>
-											</div>
-											
-											<div class="control-group formSep">
-												<label for="u_password" class="control-label">Signature</label>
-												<div class="controls">
-													<div class="sepH_b">
-														<textarea  class="input-xlarge" disabled/>{$profile_data['signature']}</textarea>
+													<div class="sepH_b view_label">
+														{$profile_data['position']}
 													</div>
 												</div>
 											</div>
 											
 											<div class="control-group formSep">
-												<label for="u_password" class="control-label">L1</label>
+												<label for="u_password" class="control-label viewLabelHead">Signature</label>
 												<div class="controls">
-													<div class="sepH_b">
-														<input type="text"  class="input-xlarge" value="{$profile_data['level1']}" disabled/>
+													<div class="sepH_b view_label">
+														{$profile_data['signature']|nl2br}
 													</div>
 												</div>
 											</div>
 											
 											<div class="control-group formSep">
-												<label for="u_password" class="control-label">L2</label>
+												<label for="u_password" class="control-label viewLabelHead">L1</label>
 												<div class="controls">
-													<div class="sepH_b">
-														<input type="text"  class="input-xlarge" value="{$profile_data['level2']}" disabled/>
+													<div class="sepH_b view_label">
+														{$profile_data['level1']}
+													</div>
+												</div>
+											</div>
+											
+											<div class="control-group formSep">
+												<label for="u_password" class="control-label viewLabelHead">L2</label>
+												<div class="controls">
+													<div class="sepH_b view_label">
+														{$profile_data['level2']}
 													</div>
 												</div>
 											</div>

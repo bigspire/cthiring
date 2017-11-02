@@ -41,6 +41,7 @@ class mysql{
 
 	// real escape string 
 	public function real_escape_str($str){
+		$str = addslashes($str);
 		return mysqli_real_escape_string($this->link, $str);
 	}	
 	// number of rows	

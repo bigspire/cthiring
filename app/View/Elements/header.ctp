@@ -69,7 +69,15 @@
                                               
 											</ul-->
                                         </li>
-										  <li class="dropdown <?php echo $client_menu ?>">
+										
+										<?php 
+										if($APPR_CLIENT_COUNT > 0):
+										$active2 = 'active2';
+										else:
+										$active2 = '';
+										endif;
+										?>
+										  <li class="dropdown <?php echo $client_menu ?> <?php echo $active2;?>">
                                             <a data-toggle="dropdown" class="dropdown-toggle " href="#"><i class="icon-user icon-white"></i> Clients <!--span class="label-bub label-info bubble">1</span--><b class="caret"></b></a>
 											  <ul class="dropdown-menu">
 											  <?php if($create_client == '1'):?>
@@ -91,7 +99,15 @@
                                             </ul>
                                           </li>
 										  
-										  <li class="dropdown <?php echo $position_menu ?>">
+										<?php 
+										if($APPR_REQ_COUNT > 0):
+										$active2 = 'active2';
+										else:
+										$active2 = '';
+										endif;
+										?>
+										
+										  <li class="dropdown <?php echo $position_menu ?> <?php echo $active2;?>">
                                             <a  data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icon-list-alt icon-white"></i> Positions <!--span class="label-bub label-info bubble">14</span--><b class="caret"></b></a>
                                              <ul class="dropdown-menu">
                                                  <?php if($create_position == '1'):?>

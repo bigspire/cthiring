@@ -414,7 +414,7 @@ class FunctionsHelper extends AppHelper {
 		}else if($short_stage[1] == 'Interview'){
 			$new_status =  'Interview '.$status;
 		}else if($short_stage[0] == 'Offer'){
-			$new_status =  'Offer '.$status;
+			$new_status =  $status;
 		}else if($stage == 'Joining' && $status == 'Joined'){
 			$new_status = 'Joined';
 		}else if($stage == 'Joining' && $status == 'Not Joined'){
@@ -704,6 +704,19 @@ class FunctionsHelper extends AppHelper {
 			break;			
 		}
 		return $title;
+	}
+	
+	/* function to get the title */
+	public function get_contact_title($title){
+		switch($title){
+			case '1':
+			$value = 'Mr.';
+			break;
+			case '2':
+			$value = 'Ms.';			
+			break;			
+		}
+		return $value;
 	}
 }
 ?>

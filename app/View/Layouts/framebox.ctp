@@ -52,8 +52,7 @@
 	 <?php if($form_status == '1'): ?>
 	<script type="text/javascript">
 	$(document).ready(function(){
-		var status = $('#action').val() == 'A' ? 'approved' : 'rejected';
-		self.parent.location.href = jQuery('#success_page').val()+'?&update='+status;
+		self.parent.location.href = jQuery('#success_page').val();
 		parent.jQuery("#cboxClose").click();
 	});
 

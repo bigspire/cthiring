@@ -887,6 +887,56 @@ $(document).ready(function() {
 		}
 	}
 	
+	/* function to select multiple check boxes */
+	$('.select_rows').click(function () {
+            $('.tableID').find('.'+$(this).attr('rel')).attr('checked', this.checked);
+	});
+	
+	/* for multiple interview */
+	$('.multi_interview').click(function () {			
+		var data_sel;	
+		var sel_item;
+		$(".intSel").each(function() {
+			if($(this).attr('checked') == 'checked' && $(this).attr('checked') != undefined){
+				var sel_item = sel_item + $(this).val() + ',';
+				data_sel = 1;
+			}
+		});
+		// if no records selected
+		if(data_sel != '1'){
+			alert('Please select atleast a record to proceed!');
+		}else{
+			$(this).colorbox({href:$('#int_url').val()+'multi_select/'+sel_item, iframe:true, rel: 'nofollow',  width:'65%', height:'90%',opacity:   '.8', 	  scrolling: true, fixed:true,overlayClose:false, escKey: false,
+			onClosed:function(){					
+			
+				}
+			});
+		}
+	});	
+	
+	/* for multiple interview */
+	$('.multi_send_cv').click(function () {			
+		var data_sel;	
+		var sel_item;
+		$(".cvSel").each(function() {
+			if($(this).attr('checked') == 'checked' && $(this).attr('checked') != undefined){
+				var sel_item = sel_item + $(this).val() + ',';
+				data_sel = 1;
+			}
+		});
+		// if no records selected
+		if(data_sel != '1'){
+			alert('Please select atleast a record to proceed!');
+		}else{
+			$(this).colorbox({href:$('#cv_url').val()+'multi_select/'+sel_item, iframe:true, rel: 'nofollow',  width:'65%', height:'90%',opacity:   '.8', 	  scrolling: true, fixed:true,overlayClose:false, escKey: false,
+			onClosed:function(){					
+			
+				}
+			});
+		}
+	});	
+				
+				
 	/* function to call when the formatted resume tab change */
 	$('.restabChange').click(function(){
 		$('#add_formatted_resume').val($(this).attr('rel'));
