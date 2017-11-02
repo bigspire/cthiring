@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-10-31 09:58:47
+/* Smarty version 3.1.29, created on 2017-11-02 13:56:29
   from "C:\xampp\htdocs\2017\ctsvn\cthiring\hiring\templates\include\header.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_59f7fbffa1d583_07005336',
+  'unifunc' => 'content_59fad6b5288671_71777451',
   'file_dependency' => 
   array (
     '418ce04694c91a3f6ebee8f2a2efa42e5260b14c' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\templates\\include\\header.tpl',
-      1 => 1509423989,
+      1 => 1509610541,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_59f7fbffa1d583_07005336 ($_smarty_tpl) {
+function content_59fad6b5288671_71777451 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -159,6 +159,10 @@ client/add/">Add Client</a></li>
 												<li><a href="<?php echo webroot;?>
 client/">Search Client <!-- span class="label-bub label-info white"></span--></a></li>
 											    <?php }?>
+												<?php if ($_smarty_tpl->tpl_vars['module']->value['approve_client'] == '1') {?>
+												<li><a href="<?php echo webroot;?>
+client/index/pending/">Approve Client</a></li>
+											    <?php }?>
 												<!-- <li><a href="add_client_contact.php">Add Client Contact</a></li>-->
 												<!--  <li><a href="client_contact.php">Search Client Contact</a></li>-->
                                             </ul>
@@ -174,6 +178,10 @@ position/add/">Add Position</a></li>
 											 <?php if ($_smarty_tpl->tpl_vars['module']->value['view_position'] == '1') {?>
                                                 <li><a href="<?php echo webroot;?>
 position/">Search Position <!-- span class="label-bub label-info white"></span--></a></li>
+											  <?php }?>
+											  <?php if ($_smarty_tpl->tpl_vars['module']->value['approve_position'] == '1') {?>
+                                                <li><a href="<?php echo webroot;?>
+position/">Approve Position</a></li>
 											  <?php }?>
 										   </ul>
                                         </li>
@@ -220,9 +228,7 @@ resume/">Search Resume <!-- span class="label-bub label-info white"><?php echo $
 										   <?php if ($_smarty_tpl->tpl_vars['module']->value['view_billing'] == '1') {?>
 												<li><a href="billing.php">Search Billing</a></li>
 										   <?php }?>
-										   <?php if ($_smarty_tpl->tpl_vars['module']->value['view_incentive'] == '1') {?>
-                                                <li><a href="incentive.php">Search Incentive</a></li>
-										   <?php }?>
+										   
                                                 <!--li><a href="bonus.php">Search Bonus</a></li-->
 												
 												 <!-- li><a href="add_billing.php">Add Billing</a></li-->
@@ -236,6 +242,9 @@ resume/">Search Resume <!-- span class="label-bub label-info white"><?php echo $
 </span><?php }?></a></li>
 												 
 												<?php }?>
+												<?php if ($_smarty_tpl->tpl_vars['module']->value['view_incentive'] == '1') {?>
+                                                <li><a href="incentive.php">Search Incentive</a></li>
+										   <?php }?>
                                             </ul>
                                         </li>
 										<?php }?>

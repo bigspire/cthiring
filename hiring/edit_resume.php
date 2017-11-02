@@ -624,7 +624,7 @@ if(!empty($_POST)){
 			    '".$mysql->real_escape_str($from_month_expData)."',
 				'".$mysql->real_escape_str($from_year_expData)."',
 				'".$mysql->real_escape_str($to_month_expData)."',
-				'".$mysql->real_escape_str($to_year_expDate)."',
+				'".$mysql->real_escape_str($to_year_expData)."',
 				'".$fun->is_white_space($mysql->real_escape_str($locationData))."',
 				'".$fun->is_white_space($mysql->real_escape_str($areaData))."',
 				'".$fun->is_white_space($mysql->real_escape_str($companyData))."',

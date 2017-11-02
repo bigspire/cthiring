@@ -144,7 +144,7 @@
 									<tr class="tbl_row">
 										<td width="120" class="tbl_column">Family (Dependents)<span class="f_req"></span></td>										
 										<td>
-										<textarea name="family" tabindex="13" cols="10" rows="2" class="span8">{if $family}{$family}{else}{$smarty.post.family}{/if}</textarea>									
+										<textarea name="family" tabindex="13" cols="10" rows="2" class="span8 wysiwyg1">{if $family}{$family}{else}{$smarty.post.family}{/if}</textarea>									
 										</td>			
 									</tr>	
 																	
@@ -238,14 +238,14 @@
 									<tr class="tbl_row">
 										<td width="120" class="tbl_column">Computer Skills </td>
 										<td>
-										<textarea name="skills" cols="10" tabindex="25" rows="3" class="span8">{if $skills}{$skills}{else}{$smarty.post.skills}{/if}</textarea>									
+										<textarea name="skills" cols="10" tabindex="25" rows="3" class="span8 wysiwyg1">{if $skills}{$skills}{else}{$smarty.post.skills}{/if}</textarea>									
 										</td>	
 									</tr>									
 									
 									<tr>
 										<td width="120" class="tbl_column">Address <span class="f_req">*</span></td>
 										<td>
-										 <textarea name="address" cols="10" tabindex="26" rows="3" class="span8">{if $address}{$address}{else}{$smarty.post.address}{/if}</textarea>									
+										 <textarea name="address" cols="10" tabindex="26" rows="3" class="span8 wysiwyg1">{if $address}{$address}{else}{$smarty.post.address}{/if}</textarea>									
 										<label for="reg_city" generated="true" class="error">{$addressErr}</label>
 										</td>	
 									</tr>
@@ -253,7 +253,7 @@
 									<tr class="tbl_row">
 										<td width="120" class="tbl_column">Hobbies </td>
 										<td>
-										<textarea name="hobby" tabindex="27" cols="10" rows="3" class="span8">{if $hobby}{$hobby}{else}{$smarty.post.hobby}{/if}</textarea>									
+										<textarea name="hobby" tabindex="27" cols="10" rows="3" class="span8 wysiwyg1">{if $hobby}{$hobby}{else}{$smarty.post.hobby}{/if}</textarea>									
 										</td>	
 									</tr>	
 								</tbody>
@@ -455,7 +455,7 @@
 							<tr>
 								<td width="120" class="tbl_column">Company Profile <span class="f_req">*</span></td>
 								<td>
-								<textarea name="company_profile_#index#" tabindex="7" id="company_profile_#index#" cols="10" rows="3" class="span8"></textarea>									
+								<textarea name="company_profile_#index#" tabindex="7" id="company_profile_#index#" cols="10" rows="3" class="span8 wysiwyg1"></textarea>									
 								<label for="reg_city" generated="true" class="error" id="company_profileErr_#index#"></label>
 								</td>	
 							</tr>							
@@ -648,7 +648,7 @@
 			<tr class="tbl_row">
 										<td width="120" class="tbl_column">Interview Availability <span class="f_req">*</span></td>
 										<td>
-											<textarea placeholder="" name="interview_availability" tabindex="6" cols="10" rows="3" class="span8">{if $interview_availability}{$interview_availability}{else}{$smarty.post.interview_availability}{/if}</textarea>
+											<textarea placeholder="" name="interview_availability" tabindex="6" cols="10" rows="3" class="span8 wysiwyg1">{if $interview_availability}{$interview_availability}{else}{$smarty.post.interview_availability}{/if}</textarea>
 											<label for="reg_city" generated="true" class="error">{$interview_availabilityErr}</label>	
 										</td>	
 									</tr>		
@@ -1067,6 +1067,8 @@ $(document).ready(function(){
 		   continuousIndex: true,
 		   afterAdd: function(source, newForm) {
 			 $('#train_count').attr('value',source.getFormsCount());
+			 // for auto resize text area
+			 autosize(document.querySelectorAll('.wysiwyg1'));
 		   },
 		   afterRemoveCurrent: function(source) {		
 			 $('#train_count').attr('value',source.getFormsCount());

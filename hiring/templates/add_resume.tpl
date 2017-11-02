@@ -196,7 +196,7 @@
 									<tr class="tbl_row">
 										<td width="120" class="tbl_column">Family (Dependents) <span class="f_req"></span></td>										
 										<td>
-										<textarea name="family" id="family" tabindex="19" cols="10" rows="3" class="span8">{$smarty.post.family}</textarea>									
+										<textarea name="family" id="family" tabindex="19" cols="10" rows="3" class="span8 wysiwyg1">{$smarty.post.family}</textarea>									
 										</td>			
 									</tr>	
 									<tr>

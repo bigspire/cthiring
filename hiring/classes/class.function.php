@@ -117,9 +117,15 @@ class fun{
 					$mod['approve_billing'] = 1;
 					break;
 					case 38:					
-					$mod['manage_designation'] = 1;
+					$mod['approve_position'] = 1;
 					break;
 					case 39:					
+					$mod['approve_client'] = 1;
+					break;
+					case 40:					
+					$mod['manage_designation'] = 1;
+					break;
+					case 41:					
 					$mod['manage_contact_branch'] = 1;
 					break;
 				}				
