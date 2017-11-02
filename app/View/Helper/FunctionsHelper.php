@@ -137,6 +137,60 @@ class FunctionsHelper extends AppHelper {
 		$count = '';
 		foreach($data as $record){
 			if($field == 'interview_not_att'){
+				if(($record['ReqResume']['stage_title'] == $split_str[0] || $record['ReqResume']['stage_title'] == $split_str[1] || $record['ReqResume']['stage_title'] == $split_str[2]) && 
+				($record['ReqResume']['status_title'] == 'No Show')){
+					$count++;
+				}
+			}else if($field == 'interview_reject'){
+				if(($record['ReqResume']['stage_title'] == $split_str[0] || $record['ReqResume']['stage_title'] == $split_str[1] || $record['ReqResume']['stage_title'] == $split_str[2]) && 
+				($record['ReqResume']['status_title'] == 'Not Interested' || $record['ReqResume']['status_title'] == 'Rejected')){
+					$count++;
+				}
+			}else if($field == 'offer_reject'){
+				if(($record['ReqResume']['stage_title'] == 'Offer') &&($record['ReqResume']['status_title'] == 'Rejected')){
+					$count++;
+				}
+			}else if($field == 'billing'){ 
+				if($record['ReqResume']['bill_ctc'] != '' && $record['ReqResume']['bill_ctc'] > '0'){
+					// avoid duplicates
+					if(!in_array($record['Resume']['id'], $resume_id)){
+						$count++;
+					}
+					$resume_id[] = $record['Resume']['id'];
+				}
+			}else if($field == 'shorlist_reject'){ 
+				if($record['ReqResume']['stage_title'] == 'Shortlist' && $record['ReqResume']['status_title']  == 'Rejected'){
+					$count++;
+				}
+			}else if($type == 'stage'){
+				if($record['ReqResume']['stage_title'] == $split_str[0] || $record['ReqResume']['stage_title'] == $split_str[1] || $record['ReqResume']['stage_title'] == $split_str[2]){
+					// avoid duplicates
+					if(!in_array($record['Resume']['id'], $resume_id)){
+						$count++;
+					}
+					$resume_id[] = $record['Resume']['id'];
+				}
+			}else if($type == 'status'){ 
+				if($record['ReqResume']['status_title'] == 'CV-Sent' && $str == 'CV-Sent'){	
+					$count++; 
+				}if($record['ReqResume']['status_title'] == 'Shortlisted' && $str == 'Shortlisted'){				
+					$count++;
+				}else if($record['ReqResume']['status_title'] == $split_str[0]){ 				
+					$count++;
+				}
+			}
+		}
+		return $count;
+	}
+	
+	
+	/* function to get the req. tab counts BK */
+	/*
+	public function get_req_tab_count($data, $str, $type, $field){
+		$split_str = explode('-', $str);
+		$count = '';
+		foreach($data as $record){
+			if($field == 'interview_not_att'){
 				if(($record['ReqResumeStatus']['stage_title'] == $split_str[0] || $record['ReqResumeStatus']['stage_title'] == $split_str[1] || $record['ReqResumeStatus']['stage_title'] == $split_str[2]) && 
 				($record['ReqResumeStatus']['status_title'] == 'No Show')){
 					$count++;
@@ -182,6 +236,8 @@ class FunctionsHelper extends AppHelper {
 		}
 		return $count;
 	}
+	
+	*/
 	
 	 /* match the fields in the auto complete search */
 	function match_results($keyword, $value){
