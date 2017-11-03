@@ -223,7 +223,7 @@ class HomeController  extends AppController {
 						'conditions' => array('`Position`.`clients_id` = `Client`.`id`')
 				)
 			);
-			$client_emp_cond = array('Client.created_by' => $this->Session->read('USER.Login.id'));
+			// $client_emp_cond = array('Client.created_by' => $this->Session->read('USER.Login.id'));
 			$this->set('bd_dash', 'active');
 		}
 		
