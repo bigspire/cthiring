@@ -237,7 +237,7 @@ class PositionController extends AppController {
 	}
 	
 	/* function to add the position */
-	public function add(){ 
+	public function add($client_id){ 
 		$this->check_role_access(4);
 		// set the page title		
 		$this->set('title_for_layout', 'Create Position - Positions - Manage Hiring');	
@@ -246,6 +246,13 @@ class PositionController extends AppController {
 		$this->set('expList', $this->Functions->get_experience());
 		// assign the ctc type
 		$this->set('ctcList', array('T' => 'Thousands', 'L' => 'Lacs'));
+		// resume hide and resume types
+		$this->set('hide_contacts', array('1' => 'Yes', '0' => 'No'));
+		$this->set('resume_types', array('S' => 'Snapshot', 'F' => 'Fully Formatted Resume'));
+		// when client id is passed from view client
+		if($client_id){
+			$this->get_contact_list($client_id);
+		}
 		if ($this->request->is('post')){
 			// validates the form
 			$this->request->data['Position']['created_by'] = $this->Session->read('USER.Login.id');
@@ -256,7 +263,9 @@ class PositionController extends AppController {
 			// validate the client contacts
 			// $coord_validate = $this->validate_coord();
 			// validate the form fields
-			if ($this->Position->validates(array('fieldList' => array('clients_id','client_contact_id','job_title','location','max_exp','ctc_to_type','skills','team_member_req','end_date','function_area_id','status','job_desc','education','tech_skill','behav_skill')))){
+			if ($this->Position->validates(array('fieldList' => array('clients_id','client_contact_id','job_title','location','max_exp',
+			'ctc_to_type','skills','team_member_req','end_date','function_area_id','status','job_desc','education','tech_skill','behav_skill',
+			'hide_contact','resume_type')))){
 				// format the dates
 				$this->request->data['Position']['start_date'] = $this->Functions->format_date_save($this->request->data['Position']['start_date']);
 				$this->request->data['Position']['end_date'] = $this->Functions->format_date_save($this->request->data['Position']['end_date']);
@@ -380,6 +389,9 @@ class PositionController extends AppController {
 				$this->set('expList', $this->Functions->get_experience());
 				// assign the ctc type
 				$this->set('ctcList', array('T' => 'Thousands', 'L' => 'Lacs'));
+				// resume hide and resume types
+				$this->set('hide_contacts', array('1' => 'Yes', '0' => 'No'));
+				$this->set('resume_types', array('S' => 'Snapshot', 'F' => 'Fully Formatted Resume'));
 				if (!empty($this->request->data)){
 					// validates the form
 					$this->request->data['Position']['modified_by'] = $this->Session->read('USER.Login.id');
@@ -391,7 +403,8 @@ class PositionController extends AppController {
 					// $coord_validate = $this->validate_coord();
 					// validate the form fields
 					if ($this->Position->validates(array('fieldList' => array('clients_id','client_contact_id','job_title','location','max_exp',
-					'ctc_from','ctc_to','ctc_from_type','ctc_to_type','skills','team_member_req','end_date','function_area_id','job_desc','education','tech_skill','behav_skill')))){
+					'ctc_from','ctc_to','ctc_from_type','ctc_to_type','skills','team_member_req','end_date','function_area_id','job_desc',
+					'education','tech_skill','behav_skill',	'hide_contact','resume_type')))){
 						// format the dates
 						$this->request->data['Position']['start_date'] = $this->Functions->format_date_save($this->request->data['Position']['start_date']);
 						$this->request->data['Position']['end_date'] = $this->Functions->format_date_save($this->request->data['Position']['end_date']);
@@ -421,8 +434,8 @@ class PositionController extends AppController {
 				}else{
 					// get the position details
 					$data = $this->Position->find('all', array('fields' => array('Position.id','clients_id','client_contact_id','job_title','location','min_exp','max_exp',
-					'ctc_from','ctc_to','education','ctc_from_type','ctc_to_type','skills','no_job','start_date','end_date','function_area_id','job_desc','job_desc_file','client_contact_id',
-					'tech_skill','behav_skill'), 
+					'ctc_from','ctc_to','education','ctc_from_type','ctc_to_type','skills','no_job','start_date','end_date','function_area_id',
+					'job_desc','job_desc_file','client_contact_id',	'tech_skill','behav_skill','hide_contact','resume_type'), 
 					'conditions' => array('Position.id' => $id), 'joins' => $options));
 					$this->request->data = $data[0];
 					$this->request->data['Position']['start_date'] = $this->Functions->format_date_show($this->request->data['Position']['start_date']);
@@ -687,7 +700,7 @@ class PositionController extends AppController {
 		'group_concat(ReqResume.status_title) joined', 'start_date', 'end_date', //"group_concat(distinct ResOwner.first_name  SEPARATOR ', ') team_member",
 		"group_concat(distinct AH.first_name  SEPARATOR ', ') ac_holder","group_concat(distinct TeamMember.first_name  SEPARATOR ', ') team_member2",
 		'skills','Contact.first_name','Contact.email','Contact.mobile','Contact.phone','Contact.id','FunctionArea.function',
-		'Position.created_by','Position.is_approve','tech_skill','behav_skill','job_desc_file');
+		'Position.created_by','Position.is_approve','tech_skill','behav_skill','job_desc_file','hide_contact','resume_type');
 		$data = $this->Position->find('all', array('fields' => $fields,'conditions' => array('Position.id' => $id), 'joins' => $options));
 		$this->set('position_data', $data[0]);
 		// get the resume details

@@ -1136,6 +1136,29 @@ $(document).ready(function() {
 		});
 	});
 	*/
+	
+	/* for print the graph */
+	$(document).ready(function() {
+		$("#printId").on('click', function() {
+			$(".printArea").print({
+					globalStyles: true,
+					mediaPrint: false,
+					stylesheet: null,
+					noPrintSelector: ".no-print",
+					iframe: true,
+					append: null,
+					prepend: null,
+					manuallyCopyFormValues: true,
+					deferred: $.Deferred(),
+					timeout: 750,
+					title: null,
+					doctype: '<!doctype html>'
+			});
+		});		
+	
+    });
+	
+	
 	/* function for sticky header */
 	if($('.stickyTable').length > 0){
 		$('.stickyTable').stickyTableHeaders();

@@ -35,11 +35,11 @@
 								<?php endif; ?>
 								
 								
-							<?php if($create_resume == '1'):?>
-<a rel="tooltip"  title="Upload New Resume" href="<?php echo $this->webroot;?>hiring/upload_resume.php" 
+							<?php // if($create_resume == '1'):?>
+<!--a rel="tooltip"  title="Upload New Resume" href="<?php echo $this->webroot;?>hiring/upload_resume.php" 
 					 val="40_50"  class="iframeBox sepV_a cboxElement">
-					<input value="Upload Resume" type="button" class="btn btn-info"></a>	
-					<?php endif; ?>
+					<input value="Upload Resume" type="button" class="btn btn-info"></a-->	
+					<?php // endif; ?>
 						</div>
 						
 						<?php if($this->request->query['action'] == 'created'):	?>					

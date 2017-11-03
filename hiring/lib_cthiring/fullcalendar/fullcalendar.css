@@ -55,7 +55,7 @@ a.fc-event{text-decoration:none}
 .fc-corner-bottom{margin-bottom:1px}
 .fc-corner-bottom .fc-event-inner{margin-bottom:-1px;border-bottom-width:1px}
 .fc-corner-left .fc-event-inner{border-left-width:1px}
-.fc-border-separate th,.fc-border-separate td{border-width:1px 0 0 1px}
+.fc-border-separate th,.fc-border-separate td{border-width:1px 0 0 1px;}
 .fc-border-separate tr.fc-last th,.fc-border-separate tr.fc-last td{border-bottom-width:1px}
 .fc-grid .fc-day-number{float:right;padding:0 2px}
 .fc-grid .fc-other-month .fc-day-number{opacity:0.3;filter:alpha(opacity=30)}
