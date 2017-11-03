@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-10-30 17:42:47
+/* Smarty version 3.1.29, created on 2017-11-02 15:45:48
   from "C:\xampp\htdocs\ctsvn\cthiring\hiring\templates\add_resume.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_59f7173fa5c3a4_72642384',
+  'unifunc' => 'content_59faf0542764c9_00266512',
   'file_dependency' => 
   array (
     '6c51bf5c0ae51546eb3c53993fc7afba7339e799' => 
     array (
       0 => 'C:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\templates\\add_resume.tpl',
-      1 => 1509365528,
+      1 => 1509616638,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_59f7173fa5c3a4_72642384 ($_smarty_tpl) {
+function content_59faf0542764c9_00266512 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -264,7 +264,7 @@ echo 'checked';?>
 									<tr class="tbl_row">
 										<td width="120" class="tbl_column">Family (Dependents) <span class="f_req"></span></td>										
 										<td>
-										<textarea name="family" id="family" tabindex="19" cols="10" rows="3" class="span8"><?php echo $_POST['family'];?>
+										<textarea name="family" id="family" tabindex="19" cols="10" rows="3" class="span8 wysiwyg1"><?php echo $_POST['family'];?>
 </textarea>									
 										</td>			
 									</tr>	

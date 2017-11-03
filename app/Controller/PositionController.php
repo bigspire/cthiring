@@ -133,6 +133,11 @@ class PositionController extends AppController {
 			);
 		}
 		
+		// check role based access
+		if($this->Session->read('USER.Login.roles_id') == '30'){ // recruiter
+			$roleCond = array('PositionStatus.member_approve' => 'A');
+		}
+		
 		/*
 		
 		// check role based access
@@ -220,7 +225,8 @@ class PositionController extends AppController {
 			$this->Excel->generate('positions', $data, $data, 'Report', 'Position');
 		}
 		
-		$this->paginate = array('fields' => $fields,'limit' => '25','conditions' => array($keyCond,$approveCond,$date_cond,$branchCond,$empCond,$stCond,$contactCond,$teamCond,$clientCond),
+		$this->paginate = array('fields' => $fields,'limit' => '25','conditions' => array($keyCond,$approveCond,$date_cond,$branchCond,$empCond,$stCond,
+		$contactCond,$teamCond,$clientCond,$roleCond),
 		'order' => array('created_date' => 'desc'),	'group' => array('Position.id'), 'joins' => $options);
 		$data = $this->paginate('Position');
 		$this->set('data', $data);

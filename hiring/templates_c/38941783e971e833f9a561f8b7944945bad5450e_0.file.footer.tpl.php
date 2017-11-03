@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-10-28 19:09:41
+/* Smarty version 3.1.29, created on 2017-11-02 15:45:48
   from "C:\xampp\htdocs\ctsvn\cthiring\hiring\templates\include\footer.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_59f4889dc2f1f0_51364015',
+  'unifunc' => 'content_59faf0548575d7_64704231',
   'file_dependency' => 
   array (
     '38941783e971e833f9a561f8b7944945bad5450e' => 
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_59f4889dc2f1f0_51364015 ($_smarty_tpl) {
+function content_59faf0548575d7_64704231 ($_smarty_tpl) {
 ?>
 <div id="footer">
 

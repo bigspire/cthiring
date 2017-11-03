@@ -120,6 +120,11 @@ class HomeController  extends AppController {
 						'alias' => 'ReqResume',					
 						'type' => 'LEFT',
 						'conditions' => array('`ReqResume`.`requirements_id` = `Position`.`id`')
+				),
+				array('table' => 'req_approval_status',
+						'alias' => 'PositionStatus',					
+						'type' => 'LEFT',
+						'conditions' => array('`PositionStatus`.`requirements_id` = `Position`.`id`', 'member_approve' => 'A')
 				)
 			);	
 			$pos_emp_cond2 = array('ReqResume.created_by' => $this->Session->read('USER.Login.id'));			
@@ -218,7 +223,7 @@ class HomeController  extends AppController {
 						'conditions' => array('`Position`.`clients_id` = `Client`.`id`')
 				)
 			);
-			$client_emp_cond = array('Client.created_by' => $this->Session->read('USER.Login.id'));
+			// $client_emp_cond = array('Client.created_by' => $this->Session->read('USER.Login.id'));
 			$this->set('bd_dash', 'active');
 		}
 		

@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-10-30 14:25:45
+/* Smarty version 3.1.29, created on 2017-11-02 20:06:01
   from "C:\xampp\htdocs\ctsvn\cthiring\hiring\templates\view_mailbox.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_59f6e911419a85_44243822',
+  'unifunc' => 'content_59fb2d51c83d85_75306090',
   'file_dependency' => 
   array (
     '89e93366c77324f0e05871be8fbc472c5dba3aaf' => 
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_59f6e911419a85_44243822 ($_smarty_tpl) {
+function content_59fb2d51c83d85_75306090 ($_smarty_tpl) {
 ?>
 
    

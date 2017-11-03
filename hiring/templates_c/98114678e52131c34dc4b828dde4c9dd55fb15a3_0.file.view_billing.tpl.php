@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-10-28 13:20:30
+/* Smarty version 3.1.29, created on 2017-11-02 20:01:58
   from "C:\xampp\htdocs\ctsvn\cthiring\hiring\templates\view_billing.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_59f436c650d634_14940603',
+  'unifunc' => 'content_59fb2c5ea7ae01_15319177',
   'file_dependency' => 
   array (
     '98114678e52131c34dc4b828dde4c9dd55fb15a3' => 
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_59f436c650d634_14940603 ($_smarty_tpl) {
+function content_59fb2c5ea7ae01_15319177 ($_smarty_tpl) {
 ?>
 
    

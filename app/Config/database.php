@@ -74,10 +74,17 @@ class DATABASE_CONFIG {
 	public $default = array(
 			'datasource' => 'Database/Mysql',
 			'persistent' => false,
+//<<<<<<< HEAD
 			'host' => 'localhost',
 			'login' => 'root',
 			'password' => '',
-			'database' => 'cthiring_local4',
+			'database' => 'cthiring_local',
+//=======
+//			'host' => 'localhost',
+//			'login' => 'root',
+//			'password' => '',
+//			'database' => 'cthiring_local',
+// >>>>>>> 1c6d834a4b3496fde2748f2bd3924c6bccbeac74
 			'prefix' => '',
 			//'encoding' => 'utf8',
 		);

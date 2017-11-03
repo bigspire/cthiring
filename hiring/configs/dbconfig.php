@@ -11,9 +11,11 @@ define('Username', 'cthireuser');
 define('Password', 'hire39R23!');
 define('Database', 'cthiringdata');
 */
+		
+			
 define('Host', 'localhost');
 define('Username', 'root');
 define('Password', '');
-define('Database', 'cthiring_local4');
+define('Database', 'cthiring_local');
 
 ?>
