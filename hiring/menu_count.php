@@ -199,6 +199,42 @@ try{
 	echo 'Caught exception: ',  $e->getMessage(), "\n";
 }
 
+// fetch approve client menu count
+$query = "CALL count_approve_client('".$_SESSION['user_id']."')";
+try{
+	if(!$result = $mysql->execute_query($query)){
+		throw new Exception('Problem in executing approve client count page');
+	}
+	// calling mysql fetch_result function
+	$approve_client = $mysql->display_result($result);
+	// assign client count variables here
+	$smarty->assign('approve_client_count', $approve_client['count']);
+	// free the memory
+	$mysql->clear_result($result);
+	// call the next result
+	$mysql->next_query();
+}catch(Exception $e){
+	echo 'Caught exception: ',  $e->getMessage(), "\n";
+}
+
+// fetch approve position menu count
+$query = "CALL count_approve_position('".$_SESSION['user_id']."')";
+try{
+	if(!$result = $mysql->execute_query($query)){
+		throw new Exception('Problem in executing approve position count page');
+	}
+	// calling mysql fetch_result function
+	$approve_position = $mysql->display_result($result);
+	// assign approve position count variables here
+	$smarty->assign('approve_position_count', $approve_position['count']);
+	// free the memory
+	$mysql->clear_result($result);
+	// call the next result
+	$mysql->next_query();
+}catch(Exception $e){
+	echo 'Caught exception: ',  $e->getMessage(), "\n";
+}
+
 $query = "call get_roles_id('".$_SESSION['user_id']."')";
 try{
 	// calling mysql exe_query function
