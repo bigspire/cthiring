@@ -138,7 +138,7 @@
 </div>
 	 
 	 <script src="js/jquery.min.js"></script>		
-	 <input type="hidden" value="add_resume.php" class="redirect_url"/>		
+	 <input type="hidden" value="{$redirect_url}" class="redirect_url"/>		
 	 <input type="hidden" value="resume.php" class="redirect_url_value"/>	
 	 <!-- main bootstrap js -->
 	 <script src="bootstrap/js/bootstrap.min.js"></script>			

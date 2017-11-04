@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-11-02 20:01:32
+/* Smarty version 3.1.29, created on 2017-11-04 11:01:53
   from "C:\xampp\htdocs\ctsvn\cthiring\hiring\templates\add_billing.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_59fb2c44683887_79729149',
+  'unifunc' => 'content_59fd50c952e328_23634913',
   'file_dependency' => 
   array (
     '6a971a91e3de28462ff4ffafc14d3daf1eed5035' => 
     array (
       0 => 'C:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\templates\\add_billing.tpl',
-      1 => 1508918448,
+      1 => 1509773511,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_59fb2c44683887_79729149 ($_smarty_tpl) {
+function content_59fd50c952e328_23634913 ($_smarty_tpl) {
 ?>
 
    
@@ -93,7 +93,7 @@ echo $_POST['client_id'];
 echo $_smarty_tpl->tpl_vars['candidate_name']->value;
 } else {
 echo $_POST['candidate_name'];
-}?>" class="span10" aria-controls="dt_gal">
+}?>" class="span8" aria-controls="dt_gal">
 										<input type="hidden" name="candidate_name" value="<?php if ($_smarty_tpl->tpl_vars['candidate_name']->value) {
 echo $_smarty_tpl->tpl_vars['candidate_name']->value;
 } else {
@@ -107,7 +107,7 @@ echo $_POST['candidate_name'];
 									<tr>
 										<td width="120" class="tbl_column">Position <span class="f_req">*</span></td>
 										<td>
-										<input type="text" name="position" disabled value="<?php if ($_smarty_tpl->tpl_vars['position']->value) {
+										<input type="text" class="span8"  name="position" disabled value="<?php if ($_smarty_tpl->tpl_vars['position']->value) {
 echo $_smarty_tpl->tpl_vars['position']->value;
 } else {
 echo $_POST['position'];
@@ -123,7 +123,7 @@ echo $_POST['position'];
 									<tr class="tbl_row">
 										<td width="120" class="tbl_column">Client Name <span class="f_req">*</span></td>
 										<td>
-										<input type="text" name="client_name" disabled value="<?php if ($_smarty_tpl->tpl_vars['client_name']->value) {
+										<input type="text" class="span8"  name="client_name" disabled value="<?php if ($_smarty_tpl->tpl_vars['client_name']->value) {
 echo $_smarty_tpl->tpl_vars['client_name']->value;
 } else {
 echo $_POST['client_name'];
@@ -140,7 +140,7 @@ echo $_POST['client_name'];
 									<tr>
 										<td width="120" class="tbl_column">Joined Date <span class="f_req">*</span></td>
 										<td> 
-										<input type="text" name="joined_date" disabled value="<?php if ($_smarty_tpl->tpl_vars['joined_date']->value) {
+										<input type="text" class="span8"  name="joined_date" disabled value="<?php if ($_smarty_tpl->tpl_vars['joined_date']->value) {
 echo $_smarty_tpl->tpl_vars['joined_date']->value;
 } else {
 echo $_POST['joined_date'];
@@ -164,7 +164,7 @@ echo $_POST['joined_date'];
 									<tr class="tbl_row">
 										<td width="120" class="tbl_column">CTC Offered <span class="f_req">*</span></td>
 										<td> 
-										<input type="text" name="ctc_offer"  value="<?php echo $_smarty_tpl->tpl_vars['ctc_offer']->value;?>
+										<input type="text" class="span8"  name="ctc_offer"  value="<?php echo $_smarty_tpl->tpl_vars['ctc_offer']->value;?>
 ">
 										<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['ctc_offerErr']->value;?>
 </label>									
@@ -174,7 +174,7 @@ echo $_POST['joined_date'];
 									<tr>
 										<td width="120" class="tbl_column">Billing Amount <span class="f_req">*</span></td>
 										<td> 
-										<input type="text" name="billing_amount"  value="<?php echo $_smarty_tpl->tpl_vars['billing_amount']->value;?>
+										<input type="text" class="span8"  name="billing_amount"  value="<?php echo $_smarty_tpl->tpl_vars['billing_amount']->value;?>
 ">
 										<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['billing_amountErr']->value;?>
 </label>									
@@ -184,7 +184,7 @@ echo $_POST['joined_date'];
 									<tr class="tbl_row">
 										<td width="120" class="tbl_column">Billing Date <span class="f_req">*</span></td>
 										<td> 
-										<input type="text" name="billing_date"  value="<?php echo $_smarty_tpl->tpl_vars['billing_date']->value;?>
+										<input type="text" class="span8"  name="billing_date"  value="<?php echo $_smarty_tpl->tpl_vars['billing_date']->value;?>
 " class="datepick">									
 										<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['billing_dateErr']->value;?>
 </label>									

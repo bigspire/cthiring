@@ -34,6 +34,9 @@ if($_GET['client_id'] != ''  and $_GET['req_id'] != ''){
 		$row = $mysql->display_result($result);
 		$smarty->assign('client',ucwords($row['client_name']));
 		$smarty->assign('position_for',ucwords($row['job_title']));
+		$url = $row['resume_type'] == 'F' ? 'add_formatted_resume.php' : 'add_resume.php';
+		$id = '144576';
+		$smarty->assign('redirect_url',$url.'?id='.$id);
 		// free the memory
 		$mysql->clear_result($result);
 		// call the next result
