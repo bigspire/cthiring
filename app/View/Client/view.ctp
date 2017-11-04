@@ -35,6 +35,12 @@
 							<a href="<?php echo $this->webroot;?>client/edit/<?php echo $this->request->params['pass'][0];?>" class="sepV_a jsRedirect" title="Edit Client">
 							<input value="Edit" type="button" class="btn btn-info"></a>
 							<?php endif; ?>
+							
+							   <?php if($create_position == '1'):?>
+	<a href="<?php echo $this->webroot;?>position/add/<?php echo $this->request->params['pass'][0];?>" class="sepV_a jsRedirect" title="Add Client">
+							<input value="Add Position" type="button" class="btn btn-info"></a>		
+							<?php endif; ?>
+												  
 						</div>
 					</div>	
 						

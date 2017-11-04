@@ -52,7 +52,7 @@
 <?php if($valid_st == 'not_joined' || $valid_st == 'deferred'):?>
 				
 				<tr class="" >
-					<td width="120" class="tbl_column">Reject Reason <span class="f_req">*</span>
+					<td width="120" class="tbl_column">Reason <span class="f_req">*</span>
 					</td>
 						<td>
 					<?php echo $this->Form->input('reason_id', array('div'=> false,'type' => 'select', 'label' => false, 

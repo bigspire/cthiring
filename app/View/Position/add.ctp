@@ -51,7 +51,7 @@
 							<td>										
 				<?php echo $this->Form->input('clients_id', array('div'=> false,'type' => 'select', 'label' => false, 
 		'class' => 'span8 input-xlarge load_client', 'id' => 'client_id', 'empty' => 'Select', 'required' => false, 'placeholder' => '', 
-		'style' => "clear:left", 'options' => $clientList, 'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 
+		'style' => "clear:left", 'options' => $clientList, 'default' => $this->params->pass[0], 'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 
 																				
 				
 							</td>	
@@ -143,7 +143,20 @@
 										</td>
 									</tr>
 									
-						
+						   <tr>
+										<td width="120" class="tbl_column">Resume Type <span class="f_req">*</span></td>
+										<td>	
+										
+			<?php echo $this->Form->input('resume_type', array('div'=> false,'type' => 'radio', 'label' => false,  'style' => 'margin:4px 2px', 'class' => 'input-xlarge', 
+	'options' => $resume_types, 'separator' => ' ', 'id' => '',  'required' => false, 'placeholder' => '', 
+	'legend' => false, 'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?>
+		
+		
+		
+	
+										</td>	
+									</tr>
+				    
 																										
 				</tbody>
 			</table>
@@ -166,14 +179,14 @@
 
 				  </tr>	
 				  
-				<tr  class="tbl_row">
+				<tr  class="">
 										<td width="120" class="tbl_column">Technical Skills <span class="f_req">*</span></td>
 										<td> 
 <?php echo $this->Form->input('tech_skill', array('div'=> false, 'data-role' => 'tagsinput', 'type' => 'text', 'multiple' => 'multiple', 'label' => false, 'class' => 'span8 tagInput', 'required' => false, 'placeholder' => '',	'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 
 										</td>
 				</tr>
 					
-				<tr  class="">
+				<tr  class="tbl_row">
 										<td width="120" class="tbl_column">Behavioural Skills <span class="f_req">*</span></td>
 										<td> 
 <?php echo $this->Form->input('behav_skill', array('div'=> false,'type' => 'text', 'label' => false, 'class' => 'span8 tagInput', 'required' => false, 'placeholder' => '', 'data-role' => 'tagsinput',	'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 
@@ -260,7 +273,7 @@
 						
 																	
 				
-				  <tr class="">
+				  <tr class="tbl_row">
 						<td width="120" class="tbl_column">Recruiters <span class="f_req">*</span></td>
 						<td>	
 				
@@ -305,7 +318,7 @@
 					</tr-->
 					
 					
-				  	<tr class="tbl_row">
+				  	<tr class="">
 										<td width="120" class="tbl_column">Requirement Date <span class="f_req">*</span></td>
 										<td> 
 										
@@ -323,7 +336,7 @@
 		</td>
 									</tr>		
 								
-								   <tr>
+								   <tr class="tbl_row">
 										<td width="120" class="tbl_column">Functional Area <span class="f_req">*</span></td>
 										<td>	
 										
@@ -335,7 +348,18 @@
 										</td>	
 									</tr>
 				  
-				    
+				     <tr class="">
+										<td width="120" class="">Hide Resume Contacts <span class="f_req">*</span></td>
+										<td>	
+	<?php echo $this->Form->input('hide_contact', array('div'=> false,'type' => 'radio', 'label' => false,  'style' => 'margin:4px 2px', 'class' => 'input-xlarge', 
+	'options' => $hide_contacts, 'separator' => ' ', 'id' => '',  'required' => false, 'placeholder' => '', 
+	'legend' => false, 'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?>
+									
+
+										</td>	
+									</tr>
+									
+									
 									
 				</tbody>
 			</table>

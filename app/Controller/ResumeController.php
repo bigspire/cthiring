@@ -221,7 +221,7 @@ class ResumeController extends AppController {
 		}
 		$fields = array('id',"concat(Resume.first_name,' ',Resume.last_name) full_name",'email_id','mobile','mobile2','total_exp','education','present_employer',
 		'ResLocation.location','present_ctc','expected_ctc', 'Creator.first_name','Resume.created_date',
-		'Resume.modified_date','ReqResume.stage_title','ReqResume.status_title','ResDoc.resume','present_location','autoresume_modified',
+		'Resume.modified_date','ReqResume.stage_title','ReqResume.status_title','ResDoc.resume','present_location','autoresume_modified','Position.resume_type',
 		'Resume.created_by');	
 		// for export
 		if($this->request->query['action'] == 'export'){ 
@@ -242,7 +242,7 @@ class ResumeController extends AppController {
 			$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Oops! No Resumes Found!', 'default', array('class' => 'alert alert-info'));
 		}
 		// downlod the pdf 
-		if(!empty($this->request->query['download'])){
+		if(!empty($this->request->query['download']) && !isset($this->request->params['named']['page'])){
 			$this->set('file_download',$this->request->query['download']);
 		}else{
 			$this->set('file_download','');
@@ -370,7 +370,7 @@ class ResumeController extends AppController {
 		'ResLocation.location', 'present_ctc','expected_ctc', 'Creator.first_name','created_date','notice_period',
 		'Resume.modified_date','ReqResume.stage_title','ReqResume.status_title','Designation.designation','present_ctc_type','expected_ctc_type',
 		'gender','marital_status','family','present_location','native_location', 'dob','consultant_assess','interview_avail','ResDoc.resume',
-		'Position.job_title','Resume.skills','Resume.created_by');
+		'Position.job_title','Resume.skills','Resume.created_by','Resume.tech_skill_rate','Resume.behav_skill_rate','Position.id');
 		$data2 = $this->Resume->find('all', array('fields' => $fields,'conditions' => array('Resume.id' => $id),
 		'order' => array('ReqResume.id' => 'desc'),'joins' => $options));
 		$this->set('resume_data', $data2[0]);		
@@ -416,6 +416,10 @@ class ResumeController extends AppController {
 		'Contact.email','Contact.mobile','Contact.phone','Position.id'), 'conditions' => array('ReqResume.resume_id' => $id),
 		'order' => array('ReqResume.created_Date' => 'desc'), 'group' => array('ReqResume.id'),	'joins' => $options));
 		$this->set('position_data', $data);
+		// get the position skills
+		$data = $this->ReqResume->Position->findById($data2[0]['Position']['id'], array('fields' => 'tech_skill','behav_skill'));
+		$this->set('skill_data', $data);
+		
 		
 	}
 	
@@ -459,7 +463,7 @@ class ResumeController extends AppController {
 	/* function to view the resume pdf */
 	public function view_resume_pdf($file){
 		$this->layout = false;
-		$this->set('filePath', '../../hiring/uploads/snapshotmerged/'.$file);
+		$this->set('filePath', '../../hiring/uploads/snapshotwatermarked/'.$file);
 	}
 	
 	
@@ -471,7 +475,7 @@ class ResumeController extends AppController {
 		 if($action == 'view'){
 			$this->redirect('/resume/view_resume_pdf/'.$this->Functions->filter_file($snap_exp).'_'.$pdf_date.'.pdf');		
 		 }else{ 
-			$this->download_file('../../hiring/uploads/snapshotmerged/'.$this->Functions->filter_file($snap_exp).'_'.$pdf_date.'.pdf');
+			$this->download_file('../../hiring/uploads/snapshotwatermarked/'.$this->Functions->filter_file($snap_exp).'_'.$pdf_date.'.pdf');
 		 }
 		 die;		
 			// $id = '144515';
@@ -557,7 +561,7 @@ class ResumeController extends AppController {
 	
 	/* function to download the file */
 	public function download_snap($file){
-		 $this->download_file('../../hiring/uploads/snapshotmerged/'.$file);
+		 $this->download_file('../../hiring/uploads/snapshotwatermarked/'.$file);
 		 die;
 	}
 	

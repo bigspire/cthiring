@@ -35,11 +35,11 @@
 								<?php endif; ?>
 								
 								
-							<?php if($create_resume == '1'):?>
-<a rel="tooltip"  title="Upload New Resume" href="<?php echo $this->webroot;?>hiring/upload_resume.php" 
+							<?php // if($create_resume == '1'):?>
+<!--a rel="tooltip"  title="Upload New Resume" href="<?php echo $this->webroot;?>hiring/upload_resume.php" 
 					 val="40_50"  class="iframeBox sepV_a cboxElement">
-					<input value="Upload Resume" type="button" class="btn btn-info"></a>	
-					<?php endif; ?>
+					<input value="Upload Resume" type="button" class="btn btn-info"></a-->	
+					<?php // endif; ?>
 						</div>
 						
 						<?php if($this->request->query['action'] == 'created'):	?>					
@@ -205,16 +205,26 @@
 									</button>
 										<ul class="dropdown-menu">
 										
+													<li><a href="<?php echo $this->webroot;?>resume/download_doc/<?php echo $res['ResDoc']['resume'];?>/">Candidate Resume</a></li>
+
+													
+										<?php if($res['Position']['resume_type'] == 'S' || $res['Position']['resume_type'] == ''):?>
 											<li><a href="<?php echo $this->webroot;?>resume/profile_snapshot/<?php echo $res['ResDoc']['resume'];?>/<?php echo $res['Resume']['modified_date'] ? strtotime($res['Resume']['modified_date']) : strtotime($res['Resume']['created_date']);?>/">Snapshot</a></li>
-											<li><a href="<?php echo $this->webroot;?>resume/download_doc/<?php echo $res['ResDoc']['resume'];?>/">Candidate Resume</a></li>
-											<?php if($res['Resume']['autoresume_modified']):?>
+											<?php endif; ?>
+
+											
+											<?php if($res['Resume']['autoresume_modified']  && $res['Position']['resume_type'] == 'F'):?>
 											<li><a href="<?php echo $this->webroot;?>resume/autoresume/<?php echo $res['ResDoc']['resume'];?>/<?php echo strtotime($res['Resume']['autoresume_modified']);?>">Fully Formatted Resume</a></li>
 											<?php endif; ?>
+											
+								
 										<li class="divider"></li>
 			
+			<?php if($res['Position']['resume_type'] == 'S' || $res['Position']['resume_type'] == ''):?>
 			<li><a class="iframeBox" val="70_100" href="<?php echo $this->webroot;?>resume/profile_snapshot/<?php echo $res['ResDoc']['resume'];?>/<?php echo $res['Resume']['modified_date'] ? strtotime($res['Resume']['modified_date']) : strtotime($res['Resume']['created_date']);?>/view/">View Snapshot</a></li>
-
-			<?php if($res['Resume']['autoresume_modified']):?>
+			<?php endif; ?>
+			
+			<?php if($res['Resume']['autoresume_modified'] && $res['Position']['resume_type'] == 'F'):?>
 			<li><a class="iframeBox" val="70_100"  href="<?php echo $this->webroot;?>resume/autoresume/<?php echo $res['ResDoc']['resume'];?>/<?php echo strtotime($res['Resume']['autoresume_modified']);?>/view/">View Formatted Resume</a></li>
 			<?php endif; ?>
 											
@@ -229,9 +239,11 @@
 									<button data-toggle="dropdown" rel="tooltip" title="Edit" class="btn btn-mini dropdown-toggle"><i class="icon-pencil"></i> <span class="caret"></span>
 									</button>
 										<ul class="dropdown-menu">
+											<?php if($res['Position']['resume_type'] == 'S' || $res['Position']['resume_type'] == ''):?>
 											<li><a href="<?php echo $this->webroot;?>hiring/edit_resume.php?id=<?php echo $res['Resume']['id'];?>">Resume</a></li>
+											<?php else: ?>
 											<li><a href="<?php echo $this->webroot;?>hiring/add_formatted_resume.php?id=<?php echo $res['Resume']['id'];?>&resume=<?php echo $res['Resume']['autoresume_modified'];?>">Fully Formatted Resume</a></li>
-
+											<?php endif; ?>
 										</ul>
 									</div>	
 									

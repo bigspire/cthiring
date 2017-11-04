@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-11-02 15:45:48
+/* Smarty version 3.1.29, created on 2017-11-04 10:31:22
   from "C:\xampp\htdocs\ctsvn\cthiring\hiring\templates\include\header.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_59faf05467fd47_94382561',
+  'unifunc' => 'content_59fd49a2a24b92_31082629',
   'file_dependency' => 
   array (
     '2cc32a09905a93cae1ddf68e0518ebdd3aca7f41' => 
     array (
       0 => 'C:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\templates\\include\\header.tpl',
-      1 => 1509616638,
+      1 => 1509727127,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_59faf05467fd47_94382561 ($_smarty_tpl) {
+function content_59fd49a2a24b92_31082629 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -148,7 +148,13 @@ home/" class=""><i class="icon-file icon-white"></i> Dashboard </a>
                                               
 											</ul-->
                                         </li>
-										  <li class="dropdown <?php echo '<?php ';?>echo $fun->set_menu_active(array('add_client','edit_client','client','view_client','client_contact','add_client_contact','edit_client_contact'));<?php echo '?>';?>">
+										
+										<?php if ($_smarty_tpl->tpl_vars['approve_client_count']->value != '0') {?>
+											<?php $_smarty_tpl->tpl_vars['col_count'] = new Smarty_Variable('active2', null);
+$_smarty_tpl->ext->_updateScope->updateScope($_smarty_tpl, 'col_count', 0);?>
+										 <?php }?>
+										  <li class="<?php echo $_smarty_tpl->tpl_vars['col_count']->value;?>
+ dropdown <?php echo '<?php ';?>echo $fun->set_menu_active(array('add_client','edit_client','client','view_client','client_contact','add_client_contact','edit_client_contact'));<?php echo '?>';?>">
                                             <a data-toggle="dropdown" class="dropdown-toggle " href="#"><i class="icon-user icon-white"></i> Clients <!--span class="label-bub label-info bubble"></span--><b class="caret"></b></a>
 											  <ul class="dropdown-menu">
 											  <?php if ($_smarty_tpl->tpl_vars['module']->value['create_client'] == '1') {?>
@@ -157,18 +163,25 @@ client/add/">Add Client</a></li>
 											  <?php }?>
                                                <?php if ($_smarty_tpl->tpl_vars['module']->value['view_client'] == '1') {?>
 												<li><a href="<?php echo webroot;?>
-client/">Search Client <!-- span class="label-bub label-info white"></span--></a></li>
+client/">Search Client <!--span class="label-bub label-info white"><?php echo $_smarty_tpl->tpl_vars['client_count']->value;?>
+</span--></a></li>
 											    <?php }?>
 												<?php if ($_smarty_tpl->tpl_vars['module']->value['approve_client'] == '1') {?>
 												<li><a href="<?php echo webroot;?>
-client/index/pending/">Approve Client</a></li>
+client/index/pending/">Approve Client <?php if ($_smarty_tpl->tpl_vars['approve_client_count']->value) {?><span class="label-bub label-info white"><?php echo $_smarty_tpl->tpl_vars['approve_client_count']->value;?>
+</span><?php }?></a></li>
 											    <?php }?>
 												<!-- <li><a href="add_client_contact.php">Add Client Contact</a></li>-->
 												<!--  <li><a href="client_contact.php">Search Client Contact</a></li>-->
                                             </ul>
                                           </li>
 										  
-										  <li class="<?php echo '<?php ';?>echo $fun->set_menu_active(array('position','view_position','add_position','edit_position'));<?php echo '?>';?>  dropdown">
+										   <?php if ($_smarty_tpl->tpl_vars['approve_position_count']->value != '0') {?>
+											<?php $_smarty_tpl->tpl_vars['col_count'] = new Smarty_Variable('active2', null);
+$_smarty_tpl->ext->_updateScope->updateScope($_smarty_tpl, 'col_count', 0);?>
+										 <?php }?>
+										  <li class="<?php echo '<?php ';?>echo $fun->set_menu_active(array('position','view_position','add_position','edit_position'));<?php echo '?>';?>  dropdown <?php echo $_smarty_tpl->tpl_vars['col_count']->value;?>
+">
                                             <a  data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icon-list-alt icon-white"></i> Positions <!--span class="label-bub label-info bubble"></span--><b class="caret"></b></a>
                                              <ul class="dropdown-menu">
 											 <?php if ($_smarty_tpl->tpl_vars['module']->value['create_position'] == '1') {?>
@@ -177,11 +190,13 @@ position/add/">Add Position</a></li>
 											 <?php }?>
 											 <?php if ($_smarty_tpl->tpl_vars['module']->value['view_position'] == '1') {?>
                                                 <li><a href="<?php echo webroot;?>
-position/">Search Position <!-- span class="label-bub label-info white"></span--></a></li>
+position/">Search Position <!--span class="label-bub label-info white"><?php echo $_smarty_tpl->tpl_vars['position_count']->value;?>
+</span--></a></li>
 											  <?php }?>
 											  <?php if ($_smarty_tpl->tpl_vars['module']->value['approve_position'] == '1') {?>
                                                 <li><a href="<?php echo webroot;?>
-position/">Approve Position</a></li>
+position/">Approve Position <?php if ($_smarty_tpl->tpl_vars['approve_position_count']->value) {?><span class="label-bub label-info white"><?php echo $_smarty_tpl->tpl_vars['approve_position_count']->value;?>
+</span><?php }?></a></li>
 											  <?php }?>
 										   </ul>
                                         </li>
@@ -219,9 +234,19 @@ resume/">Search Resume <!-- span class="label-bub label-info white"><?php echo $
                                             </ul>
                                          </li>
 										 <?php }?>
+										 
+
+										
                                       <?php if ($_smarty_tpl->tpl_vars['module']->value['view_billing'] == '1' || $_smarty_tpl->tpl_vars['module']->value['view_incentive'] == '1') {?>
-                                        <li class="<?php echo $_smarty_tpl->tpl_vars['billings_active']->value;?>
+									  
+									  <?php if ($_smarty_tpl->tpl_vars['approve_billing_count']->value != '0') {?>
+											<li class="<?php echo $_smarty_tpl->tpl_vars['billings_active']->value;?>
+ dropdown active2">
+											<?php } else { ?>
+											<li class="<?php echo $_smarty_tpl->tpl_vars['billings_active']->value;?>
  dropdown">
+										 <?php }?>
+                                        
                                             <a data-toggle="dropdown" class="dropdown-toggle " href="#"><i class="icon-file icon-white"></i> Incentive <?php if ($_smarty_tpl->tpl_vars['approve_billing_count']->value) {?><span class="label-bub label-info white"><?php echo $_smarty_tpl->tpl_vars['approve_billing_count']->value;?>
 </span><?php }?><b class="caret"></b></a>
                                            <ul class="dropdown-menu">

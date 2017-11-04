@@ -308,7 +308,23 @@ class Position extends AppModel {
                 'required' => true,
                 'message'  => 'Please select the reason'
             )
-        ),
+        )
+		,
+		'resume_type' => array(		
+            'empty' => array(
+                'rule'     => 'notEmpty',
+                'required' => true,
+                'message'  => 'Please select any one'
+            )
+        )
+		,
+		'hide_contact' => array(		
+            'empty' => array(
+                'rule'     => 'notEmpty',
+                'required' => true,
+                'message'  => 'Please select any one'
+            )
+        )
 	);
 	
 	/* function to validate the team members */

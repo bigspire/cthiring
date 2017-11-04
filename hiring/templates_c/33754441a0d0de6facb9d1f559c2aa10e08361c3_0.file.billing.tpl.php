@@ -1,17 +1,31 @@
 <?php
+<<<<<<< HEAD:hiring/templates_c/50cf885d3bb20c9a385c0b3e6e66e6afa91cfee8_0.file.billing.tpl.php
+/* Smarty version 3.1.29, created on 2017-11-03 16:23:16
+  from "C:\xampp\htdocs\2017\ctsvn\cthiring\hiring\templates\billing.tpl" */
+=======
 /* Smarty version 3.1.29, created on 2017-11-01 11:50:47
   from "/var/www/html/mh/hiring/templates/billing.tpl" */
+>>>>>>> f07dd29363dd33e185de94d041c79592028c889d:hiring/templates_c/33754441a0d0de6facb9d1f559c2aa10e08361c3_0.file.billing.tpl.php
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
+<<<<<<< HEAD:hiring/templates_c/50cf885d3bb20c9a385c0b3e6e66e6afa91cfee8_0.file.billing.tpl.php
+  'unifunc' => 'content_59fc4a9c8b3862_59747860',
+=======
   'unifunc' => 'content_59f967bf53e072_35021615',
+>>>>>>> f07dd29363dd33e185de94d041c79592028c889d:hiring/templates_c/33754441a0d0de6facb9d1f559c2aa10e08361c3_0.file.billing.tpl.php
   'file_dependency' => 
   array (
     '33754441a0d0de6facb9d1f559c2aa10e08361c3' => 
     array (
+<<<<<<< HEAD:hiring/templates_c/50cf885d3bb20c9a385c0b3e6e66e6afa91cfee8_0.file.billing.tpl.php
+      0 => 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\templates\\billing.tpl',
+      1 => 1509595896,
+=======
       0 => '/var/www/html/mh/hiring/templates/billing.tpl',
       1 => 1509463418,
+>>>>>>> f07dd29363dd33e185de94d041c79592028c889d:hiring/templates_c/33754441a0d0de6facb9d1f559c2aa10e08361c3_0.file.billing.tpl.php
       2 => 'file',
     ),
   ),
@@ -21,7 +35,11 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
+<<<<<<< HEAD:hiring/templates_c/50cf885d3bb20c9a385c0b3e6e66e6afa91cfee8_0.file.billing.tpl.php
+function content_59fc4a9c8b3862_59747860 ($_smarty_tpl) {
+=======
 function content_59f967bf53e072_35021615 ($_smarty_tpl) {
+>>>>>>> f07dd29363dd33e185de94d041c79592028c889d:hiring/templates_c/33754441a0d0de6facb9d1f559c2aa10e08361c3_0.file.billing.tpl.php
 ?>
 
    

@@ -121,6 +121,14 @@
 											
 									</tr>	
 									
+										<tr>
+										
+										<td class="tbl_column">Resume Type </td>
+										<td><?php echo $this->Functions->get_resume_type($position_data['Position']['resume_type']);?></td>
+											
+									</tr>	
+									
+									
 									<tr>
 										
 										<td class="tbl_column">Created On</td>
@@ -217,6 +225,16 @@
 										<td><?php echo $position_data['FunctionArea']['function'];?></td>
 											
 									</tr>
+									
+										<tr>
+										
+										<td class="tbl_column">Hide Resume Contacts  </td>
+										<td><?php echo $position_data['Position']['hide_contact'] ? 'Yes' : 'No';?></td>
+											
+									</tr>	
+									
+									
+									
 									
 									<?php if($position_data['Position']['modified_date']):?>
 										<tr>

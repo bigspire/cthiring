@@ -1,3 +1,5 @@
+<?php if($this->request->query['action'] != 'view_graph'):?>
+
 <div id="footer">
 
 <p><span>Copyright © <?php echo date('Y');?> Career Tree. Powered by <a  class="theme_link" href="http://bigspire.com" target="_blank" title="BigSpire Software">BigSpire</a></span>
@@ -6,3 +8,5 @@
 		
 	</p>		
 </div>
+
+<?php endif; ?>

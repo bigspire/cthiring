@@ -348,21 +348,73 @@
 					 </div>
 		<div class="tab-pane" id="mbox_consultant">
 																						
-							<div class="span12">
+							<div class="span6">
 							<table class="table table-bordered  dataTable" style="margin-bottom:0">
 								<tbody>
 									<tr  class="tbl_row">
-										<td width="120" class="tbl_column">Consultant Assessment</td>
+										<td width="150" class="tbl_column">Consultant Assessment</td>
 										<td><?php echo $edu['Resume']['consultant_assess']; ?></td>	
 									</tr>		
-									<tr>
-										<td width="120" class="tbl_column">Interview Availability</td>
-										<td><?php echo $edu['Resume']['interview_avail']; ?></td>	
+											<tr class="">
+										<td width="120" class="tbl_column">Rate Technical Skills <span class="f_req"></span></td>
+										<td>
+<ul class="ratingList">
+<?php $skill_parse = explode(',',$skill_data['Position']['tech_skill']);
+$unserialize = unserialize($resume_data['Resume']['tech_skill_rate']);
+
+foreach($skill_parse as $key => $skill):?>
+
+  <li><?php echo ucwords($skill);?>
+  <input name="tsr[]" type="hidden" value="<?php echo $unserialize[$skill];?>"  data-readonly   class="rating" data-fractions="2"/>
+  <span class="label label-info"><?php echo $unserialize[$skill];?></span></li>
+<?php endforeach; ?> 
+
+
+
+</ul>
+ 
+    <!-- Custom CSS -->
+ 
+										</td>	
 									</tr>								
 								</tbody>
 							</table>
 							</div>
+<div class="span6">
+							<table class="table table-bordered  dataTable" style="margin-bottom:0">
+								<tbody>
+								
+								<tr class="tbl_row">
+										<td width="150" class="tbl_column">Interview Availability</td>
+										<td><?php echo $edu['Resume']['interview_avail']; ?></td>	
+									</tr>
+									
+									
+									<tr class="">
+										<td width="120" class="tbl_column">Rate Behavioural Skills </td>
+										<td>
+<ul class="ratingList">
+ 
+<?php $skill_parse = explode(',',$skill_data['Position']['behav_skill']);
+$unserialize = unserialize($resume_data['Resume']['behav_skill_rate']);
+foreach($skill_parse as $key => $skill):?>
 
+  <li><?php echo ucwords($skill);?>
+  <input name="tsr[]" type="hidden" value="<?php echo $unserialize[$skill];?>"  data-readonly  class="rating" data-fractions="2"/>
+  <span class="label label-info"><?php echo $unserialize[$skill];?></span></li>
+<?php endforeach; ?> 
+
+ 
+ 
+</ul>
+ 
+										<!--label for="reg_city" generated="true" class="error">{$interview_availabilityErr}</label-->
+										</td>	
+									</tr>
+																	
+								</tbody>
+							</table>
+							</div>
 							</div>
 								</div>	
 								</div>

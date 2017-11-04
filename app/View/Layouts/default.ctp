@@ -173,7 +173,14 @@
 
 			<script type="text/javascript" src="<?php echo $this->webroot;?>hiring/js/sheepit-jquery.sheepItPlugin-v1.1.1/jquery.sheepItPlugin.js"></script>
 			<script src="<?php echo $this->webroot;?>hiring/js/datepicker/bootstrap-datepicker.min.js"></script>
-	
+		
+			<script src="<?php echo $this->webroot;?>hiring/js/jQuery.print.js"></script>
+				
+			<script src="<?php echo $this->webroot;?>hiring/js/datatables/jquery.dataTables.min.js"></script>
+		
+			<script src="<?php echo $this->webroot;?>hiring/vendor/node_modules/bootstrap-rating/bootstrap-rating.min.js"></script>
+
+						
 			<script src="<?php echo $this->webroot;?>hiring/js/main.js"></script>
 			<script src="<?php echo $this->webroot;?>hiring/js/jquery.slimscroll.min.js"></script>
 		    <script src="<?php echo $this->webroot;?>hiring/js/application.js"></script>

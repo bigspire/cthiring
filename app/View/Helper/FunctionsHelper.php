@@ -774,5 +774,19 @@ class FunctionsHelper extends AppHelper {
 		}
 		return $value;
 	}
+	
+	/* function to get the title */
+	public function get_resume_type($title){
+		switch($title){
+			case 'S':
+			$value = 'Snapshot';
+			break;
+			case 'F':
+			$value = 'Fully Formatted Resume';			
+			break;			
+		}
+		return $value;
+	}
+	
 }
 ?>

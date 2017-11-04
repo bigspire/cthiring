@@ -337,6 +337,10 @@ class HomeController  extends AppController {
 		$this->set('START_DATE', date('d-M', strtotime($start)));
 		$this->set('END_DATE', date('d-M', strtotime($end)));
 		
+		// for detailed graph
+		if($this->request->query['action'] == 'view_graph'){
+			$this->render('view_graph');
+		}
 		
 		$date_cond = array('or' => array("DATE_FORMAT(Client.created_date, '%Y-%m-%d') between ? and ?" => array($start, $end)));
 		$fields = array('id','client_name','ResLocation.location','created_date','Creator.first_name',
