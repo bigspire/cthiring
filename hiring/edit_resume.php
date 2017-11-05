@@ -769,7 +769,9 @@ if(!empty($_POST)){
 			unset($_SESSION['position_for']);
 			unset($_SESSION['resume_doc']);
 			unset($_SESSION['clients_id']);
-			header('Location: ../resume?action=modified&download='.$snap_file_name.'_'.date('d-m-Y').'.pdf');
+			// header('Location: ../resume?action=modified&download='.$snap_file_name.'_'.date('d-m-Y').'.pdf');
+			header('Location: ../resume?action=modified');
+
 
 		} 
 	}else{
