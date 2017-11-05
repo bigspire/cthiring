@@ -11,9 +11,9 @@ define('Username', 'cthireuser');
 define('Password', 'hire39R23!');
 define('Database', 'cthiringdata');
 */
-define('Host', '35.202.182.147');
+define('Host', 'localhost');
 define('Username', 'root');
-define('Password', 'como#9!');
-define('Database', 'mhlive');
+define('Password', '');
+define('Database', 'cthiring_local');
 
 ?>

@@ -75,10 +75,10 @@ class DATABASE_CONFIG {
 			'datasource' => 'Database/Mysql',
 			'persistent' => false,
 //<<<<<<< HEAD
-			'host' => '35.202.182.147',
+			'host' => 'localhost',
 			'login' => 'root',
-			'password' => 'como#9!',
-			'database' => 'mhlive',
+			'password' => '',
+			'database' => 'cthiring_local',
 //=======
 //			'host' => 'localhost',
 //			'login' => 'root',

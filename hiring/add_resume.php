@@ -588,6 +588,7 @@ if(!empty($_POST)){
 			include('vendor/PHPWord-develop/samples/template_process2.php');
 			// remove the file
 			unlink($template_path);
+			/*
 			// convert the resume doc. into pdf
 			require_once('vendor/ilovepdf-php-1.1.5/init.php');			
 			// you can call task class directly
@@ -649,6 +650,7 @@ if(!empty($_POST)){
 			$myTaskWatermark->execute();
 			// Download the package files
 			$myTaskWatermark->download('uploads/snapshotwatermarked/');
+			*/
 			//include('vendor/ilovepdf-php-1.1.5/samples/merge_basic.php');
 			// unset the sessions
 			unset($_SESSION['position_for']);

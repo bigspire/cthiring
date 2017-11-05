@@ -683,7 +683,7 @@ if(!empty($_POST)){
 			$resume_path = dirname(__FILE__).'/uploads/introduction/'.$_SESSION['resume_doc'];
 			$template_path = dirname(__FILE__).'/uploads/template/introduction.docx'; 
 			include('vendor/PHPWord-develop/samples/template_process3.php');
-			
+			/*
 			// generate auto resume doc file
 			$resume_path = dirname(__FILE__).'/uploads/resume/'.$_SESSION['resume_doc'];
 			$template_path = dirname(__FILE__).'/uploads/template/'.$_SESSION['resume_doc']; 
@@ -764,6 +764,7 @@ if(!empty($_POST)){
 			$myTaskWatermark->execute();
 			// Download the package files
 			$myTaskWatermark->download('uploads/snapshotwatermarked/');
+			*/
 			// unset the sessions
 			unset($_SESSION['position_for']);
 			unset($_SESSION['resume_doc']);
