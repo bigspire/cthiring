@@ -86,7 +86,7 @@ class ClientController extends AppController {
 		}
 		
 		// check role based access
-		/*
+		
 		if($this->Session->read('USER.Login.roles_id') == '34'){ // account holder
 			$empCond = array('AH.users_id' => $this->Session->read('USER.Login.id'));
 		}else if($this->Session->read('USER.Login.roles_id') == '30'){ // recruiter
@@ -101,7 +101,7 @@ class ClientController extends AppController {
 		|| $this->Session->read('USER.Login.roles_id') == '39'){ // director & BD
 			$empCond = '';
 		}
-		*/
+		
 		
 		
 			// for employee condition

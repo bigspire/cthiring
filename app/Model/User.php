@@ -27,6 +27,12 @@ class User extends AppModel {
 	
 	public $useTable = 'users';
 	
+	/*
+	public $virtualFields = array(
+		'full_name' => 'CONCAT(User.first_name, " ", User.last_name)'
+	);
+	*/
+	
 	public $belongsTo = array(		
 		'Location' => array(
             'className'  => 'Location',

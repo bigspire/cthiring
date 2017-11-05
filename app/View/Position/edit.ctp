@@ -51,7 +51,7 @@
 			<table class="table table-bordered dataTable" style="margin-bottom:0;">
 				<tbody>
 						<tr class="tbl_row">
-							<td width="120" class="tbl_column">Client Name <span class="f_req">*</span></td>
+							<td width="135" class="tbl_column">Client Name <span class="f_req">*</span></td>
 							<td>										
 				<?php echo $this->Form->input('clients_id', array('div'=> false,'type' => 'select', 'label' => false, 
 		'class' => 'span8 input-xlarge load_client','id' => 'client_id', 'empty' => 'Select', 'required' => false, 'placeholder' => '', 
@@ -96,7 +96,18 @@
 
 							</td>	
 						</tr>
-							<tr class="tbl_row">
+								<tr class="tbl_column">
+							<td width="120" class="">Job Code	 </td>
+							<td>	
+							
+		<?php echo $this->Form->input('job_code', array('div'=> false,'type' => 'text', 'label' => false, 'class' => 'span8',  'required' => false, 'placeholder' => '',
+				'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 	
+				
+
+							</td>	
+						</tr>	
+						
+							<tr class="">
 										
 										<td class="tbl_column">Experience <span class="f_req">*</span></td>
 										<td>
@@ -115,7 +126,7 @@
 											
 									 </tr>	
 									
-									 <tr>
+									 <tr class="tbl_row">
 										<td width="120" class="tbl_column">CTC <span class="f_req">*</span></td>
 										<td>	
 <?php echo $this->Form->input('ctc_from', array('div'=> false,'type' => 'text', 'label' => false, 'class' => 'span2',  'required' => false, 'placeholder' => 'Min. CTC',
@@ -139,27 +150,15 @@
 										</td>												
 									</tr>	
 								
-								   <tr  class="tbl_row">
+								   <tr  class="">
 										<td width="120" class="tbl_column">Qualification <span class="f_req">*</span></td>
 										<td> 
-<?php echo $this->Form->input('education', array('div'=> false,'type' => 'text', 'label' => false, 'class' => 'span8', 'cols' => '10', 'rows' => '3',
+<?php echo $this->Form->input('education', array('div'=> false,'type' => 'text', 'label' => false, 'class' => 'span8', 'rows' => '2',
   'required' => false, 'placeholder' => '',	'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 
 										</td>
 									</tr>
 									
-						    <tr>
-										<td width="120" class="tbl_column">Resume Type <span class="f_req">*</span></td>
-										<td>	
-										
-			<?php echo $this->Form->input('resume_type', array('div'=> false,'type' => 'radio', 'label' => false,  'style' => 'margin:4px 2px', 'class' => 'input-xlarge', 
-	'options' => $resume_types, 'separator' => ' ', 'id' => '',  'required' => false, 'placeholder' => '', 
-	'legend' => false, 'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?>
-		
-		
-		
-	
-										</td>	
-									</tr>
+						
 																										
 				</tbody>
 			</table>
@@ -169,7 +168,7 @@
 			<table class="table table-bordered dataTable" style="margin-bottom:0;">
 				<tbody>
 					<tr class="tbl_row">
-						<td width="120" class="tbl_column">Account Holder <span class="f_req">*</span></td>
+						<td width="135" class="tbl_column">Account Holder <span class="f_req">*</span></td>
 						<td>	
 						
 	<?php echo $this->Form->input('account_holder', array('div'=> false,'type' => 'text', 'label' => false, 
@@ -202,16 +201,7 @@
 										</td>
 				</tr>					
 									
-						<tr class="">
-							<td width="120" class="tbl_column">Job Code	 </td>
-							<td>	
 							
-		<?php echo $this->Form->input('job_code', array('div'=> false,'type' => 'text', 'label' => false, 'class' => 'span8',  'required' => false, 'placeholder' => '',
-				'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 	
-				
-
-							</td>	
-						</tr>				
 					<!--tr class="">
 						<td width="120" class="tbl_column">No. of Openings <span class="f_req">*</span></td>
 						<td>
@@ -305,14 +295,17 @@
 	
 	<div class="noJob"> 
 	<?php
-	foreach($teamData as $key => $team):?>
-	<span id="" style="margin-top:2px;font-size:13px;font-weight:normal" class="tagDiv tag label label-warning"><?php echo $team['Creator']['first_name'].' '.$team['Creator']['last_name'];?> - <?php echo $noPositions[$key];?> <i class="icon-adt_trash  removeTag" val="" rel="tooltip" data="96" title="remove" style="margin-top:2px;cursor:pointer"></i></span>
-	<?php $pos_str .= $team['Creator']['id'].'-'.$noPositions[$key].',';?>
+	foreach($teamData as $key => $team):
+	$mem_req = $posData[$key] ? $posData[$key] : $this->request->data['Position']['no_job'];?>
+	
+	<span id="" style="margin-top:2px;font-size:13px;font-weight:normal" class="tagDiv tag label label-warning"><?php echo $team['Creator']['first_name'].' '.$team['Creator']['last_name'];?> - <?php echo $mem_req;?> 
+	<i class="icon-adt_trash  removeTag" val="<?php echo str_replace(' ','',$team['Creator']['first_name'].$team['Creator']['last_name']);?>" rel="tooltip" data="<?php echo $team['Creator']['id'];?>" title="remove" style="margin-top:2px;cursor:pointer"></i></span>
+	<?php $pos_str .= $team['Creator']['id'].'-'.$mem_req.',';?>
 	<?php endforeach;?>
 	</div>
 	
 	
-		<div  class="noJob"></div>
+		
 	
 	
 	<?php 
@@ -368,7 +361,19 @@
 
 										</td>	
 									</tr>
-									
+									    <tr   class="tbl_row">
+										<td width="120" class="tbl_column">Resume Type <span class="f_req">*</span></td>
+										<td>	
+										
+			<?php echo $this->Form->input('resume_type', array('div'=> false,'type' => 'radio', 'label' => false,  'style' => 'margin:4px 2px', 'class' => 'input-xlarge', 
+	'options' => $resume_types, 'separator' => ' ', 'id' => '',  'required' => false, 'placeholder' => '', 
+	'legend' => false, 'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?>
+		
+		
+		
+	
+										</td>	
+									</tr>
 				</tbody>
 			</table>
 		</div>
@@ -484,7 +489,7 @@
   </div-->
   <!-- /Controls -->
 
-</div>
+<!--/div>
 		</div-->
 		
 		</div>

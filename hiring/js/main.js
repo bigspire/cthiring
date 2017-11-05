@@ -54,7 +54,6 @@ $(document).ready(function() {
 		// for edit position page
 		if($('#page').val() == 'edit_position' && $('#pos_default').val() == '1'){			
 			$('#pos_default').val('0');
-			$('.noJob').html('');
 			$('.noJob').append(' <span id='+new_txt+' style="margin-top:2px;font-size:13px;font-weight:normal" class="tagDiv tag label label-warning">'+txt+' - '+val+' <i class="icon-adt_trash  removeTag" val="'+new_txt+'" rel="tooltip" data="'+data+'" title="remove" style="margin-top:2px;cursor:pointer"></i></span> ');
 		}else{
 			var prev_txt = $('.noJob').html();
