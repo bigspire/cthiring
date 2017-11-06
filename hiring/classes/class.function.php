@@ -290,6 +290,14 @@ class fun{
 			return $c_d;
 		}
 	}
+	
+	// function to validate database created_date field 
+	public function convert_date_format($created_date){
+		if($created_date != ''){
+			$c_d = date('Y-m-d', strtotime($created_date));
+			return $c_d;
+		}
+	}
 
 	
    // function to validate database status field 

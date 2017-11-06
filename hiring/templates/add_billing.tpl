@@ -96,7 +96,16 @@
 						
 										</td>
 									</tr>
+									
 									<tr>
+										<td width="120" class="tbl_column">Billing % <span class="f_req"></span></td>
+										<td> 
+										<input type="text" class="span8"  name="bill_percent"  value="{if $bill_percent}{$bill_percent}{else}{$smarty.post.bill_percent}{/if}">
+										<label for="reg_city" generated="true" class="error">{$bill_percentErr}</label>
+										</td>
+									</tr>
+									
+									<tr class="tbl_row">
 										<td width="120" class="tbl_column">Billing Amount <span class="f_req">*</span></td>
 										<td> 
 										<input type="text" class="span8"  name="billing_amount"  value="{$billing_amount}">
@@ -104,7 +113,7 @@
 						
 										</td>
 									</tr>
-									<tr class="tbl_row">
+									<tr>
 										<td width="120" class="tbl_column">Billing Date <span class="f_req">*</span></td>
 										<td> 
 										<input type="text" class="span8"  name="billing_date"  value="{$billing_date}" class="datepick">									

@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-11-06 10:14:54
+/* Smarty version 3.1.29, created on 2017-11-06 11:48:21
   from "C:\xampp\htdocs\2017\ctsvn\cthiring\hiring\templates\upload_resume.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_59ffe8c6989f69_35303183',
+  'unifunc' => 'content_59fffeaddce7f3_40360902',
   'file_dependency' => 
   array (
     '1effb1acafb93d7bfa5e9c52b333e85de322510f' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\templates\\upload_resume.tpl',
-      1 => 1499857141,
+      1 => 1509945177,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_59ffe8c6989f69_35303183 ($_smarty_tpl) {
+function content_59fffeaddce7f3_40360902 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -172,7 +172,8 @@ echo $_smarty_tpl->tpl_vars['attachmentuploadErr']->value;?>
 	 <?php echo '<script'; ?>
  src="js/jquery.min.js"><?php echo '</script'; ?>
 >		
-	 <input type="hidden" value="add_resume.php" class="redirect_url"/>		
+	 <input type="hidden" value="<?php echo $_smarty_tpl->tpl_vars['redirect_url']->value;?>
+" class="redirect_url"/>		
 	 <input type="hidden" value="resume.php" class="redirect_url_value"/>	
 	 <!-- main bootstrap js -->
 	 <?php echo '<script'; ?>
