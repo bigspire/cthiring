@@ -143,10 +143,10 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 			}	
 
 			// query to insert into database. 
-			echo $query = "CALL edit_billing_req_resume('".$fun->is_white_space($mysql->real_escape_str($_POST['ctc_offer']))."',
+			$query = "CALL edit_billing_req_resume('".$fun->is_white_space($mysql->real_escape_str($_POST['ctc_offer']))."',
 			'".$fun->is_white_space($mysql->real_escape_str($_POST['billing_amount']))."',
 			'".$fun->is_white_space($mysql->real_escape_str($fun->convert_date_format($_POST['billing_date'])))."',
-			'".$_GET['req_res_id']."','".$fun->is_white_space($mysql->real_escape_str($_POST['bill_percent']))."',)";die;
+			'".$_GET['req_res_id']."','".$fun->is_white_space($mysql->real_escape_str($_POST['bill_percent']))."')";
 
 			// Calling the function that makes the insert
 			try{

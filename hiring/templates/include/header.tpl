@@ -303,6 +303,11 @@
 												<li><a href="designation.php">Designation </a></li>
 											{/if}
 											
+											{if $module['manage_functional_area'] eq '1'}
+	
+												<li><a href="functional_area.php">Functional Area</a></li>
+											{/if}
+											
 											{if $module['manage_grade'] eq '1'}
                                                 <li><a href="grade.php">Grade {if $grade_count}<span class="label-bub label-info white">{$grade_count}</span>{/if}</a></li>
 											{/if}

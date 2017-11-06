@@ -38,23 +38,32 @@
 			<div class="span6">
 							<table class="table table-striped table-bordered dataTable" style="">
 								<tbody>
+									
 									<tr>
-										<td width="120" class="tbl_column">Candidate Name </td>
-										<td>{ucwords($candidate_name)} </td>
-									</tr>
+										<td width="" class="tbl_column">Client Name </td>
+										<td>{$client_name}</td>
+									</tr>	
 									
 									<tr>
 										<td width="" class="tbl_column">Position  </td>
 										<td>{$position}</td>
 									</tr>
+									
 									<tr>
-										<td width="" class="tbl_column">Client Name </td>
-										<td>{$client_name}</td>
-									</tr>	
-											<tr>
-										<td width="120" class="tbl_column">Joined Date </td>
-										<td>{$joined_date}</td>
+										<td width="120" class="tbl_column">Recruiter </td>
+										<td>{$recruiter}</td>
 									</tr>
+									
+									<tr>
+										<td width="120" class="tbl_column">Billing % </td>
+										<td>{if $bill_percent gt '0'}{$bill_percent}{/if}</td>
+									</tr>
+									
+									<tr>
+									<td class="tbl_column">Billing Amount</td>
+									<td>{$billing_amount}</td>
+								</tr>
+									
 								</tbody>
 							</table>
 				</div>
@@ -62,20 +71,27 @@
 				<div class="span6">
 							<table class="table table-striped table-bordered dataTable" style="">
 								<tbody>
+								
+								<tr>
+										<td width="120" class="tbl_column">Candidate Name </td>
+										<td>{ucwords($candidate_name)} </td>
+									</tr>
+									
 								<tr>
 										<td width="" class="tbl_column">CTC Offered </td>
 										<td>{$ctc_offer}</td>
 									</tr>
-								<tr>
-									<td class="tbl_column">Billing Amount</td>
-									<td>{$billing_amount}</td>
-								</tr>	
+									
 									
 								<tr>
 									<td class="tbl_column">Billing Date </td>
 									<td>{$billing_date}</td>
 								</tr>	
 									
+											<tr>
+										<td width="120" class="tbl_column">Joined Date </td>
+										<td>{$joined_date}</td>
+									</tr>
 							
 								</tbody>
 							</table>
