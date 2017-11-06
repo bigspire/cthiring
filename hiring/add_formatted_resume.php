@@ -678,10 +678,10 @@ if(!empty($_POST)){
 	
 	// array for printing correct field name in error message
 	$fieldtype = array('0', '0','0','0','0', '0','1','1','0', '0','0','1','1', '1','1','0','0','0','0','0');
-	$actualfield = array('first name', 'last name','email', 'mobile', 'telephone', 'dob',
+	$actualfield = array('first name', 'last name','email', 'mobile','dob',
 						'current designation', 'total years of experience','total months of experience',
 						'present CTC','expected CTC','present CTC type','expected CTC type',
-						'notice period','gender', 'present location','nationality', 'language','address');
+						'notice period','gender', 'present location','nationality', 'language','address','technical expertise and domain expertise');
    $field = array('first_name' => 'first_nameErr', 'last_name' => 'last_nameErr','email' => 'emailErr',
     'mobile' => 'mobileErr','dob_field' => 'dobErr',
     'designation_id' => 'positionErr','year_of_exp' => 'year_of_expErr', 'month_of_exp' => 'month_of_expErr',
@@ -689,7 +689,7 @@ if(!empty($_POST)){
 	'present_ctc_type' => 'present_ctc_typeErr','expected_ctc_type' => 'expected_ctc_typeErr',
 	'notice_period' => 'notice_periodErr','gender' => 'genderErr',
 	'present_location' => 'present_locationErr','nationality' => 'nationalityErr','res_language' => 'languageErr',
-	'address' => 'addressErr');
+	'address' => 'addressErr', 'tech_expert' => 'tech_expertErr');
 	$j = 0;
 	foreach ($field as $field => $er_var){ 
 		if($_POST[$field] == ''){

@@ -42,6 +42,17 @@ $templateProcessor->setValue('CANDIDATE_EMAIL', $_POST['email'],  1,0);
 	$templateProcessor->setValue('MARITAL', $fun->marital_status($_POST['marital_status']),   1, 0);
 // to retain relevant exposure
 $templateProcessor->setValue('RELEVANTEXPOSURE', $_POST['relevant_exposure'],   1, 0);
+// to retain CREDENTIALS CONSIDERED field
+$templateProcessor->setValue('CREDENTIALSCONSIDERED', $_POST['credential_shortlisting'],  1,0); 
+// to retain VITAL INPUTS field
+$templateProcessor->setValue('VITALINPUTS', $_POST['vital_info_interview'],  1,0); 
+// to retain INTERVIEW AVAILABILITY field
+$templateProcessor->setValue('INTERVIEWAVAILABILITY', $_POST['interview_availability'],  1,0); 
+// to retain ACHIVEMENTS field
+$templateProcessor->setValue('ACHIVEMENTS', $_POST['achievement']  1,0); 
+// to retain CANDIDATE BRIEF field
+$templateProcessor->setValue('CANDIDATEBRIEF', $_POST['candidate_brief'],  1,0); 
+
 
 // to retain candidate language field 
 		// fetch language by id
