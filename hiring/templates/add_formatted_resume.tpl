@@ -229,9 +229,10 @@
 									
 									
 									<tr>
-										<td width="120" class="tbl_column">Technical Expertise and Domain Expertise</td>
+										<td width="120" class="tbl_column">Technical Expertise and Domain Expertise <span class="f_req">*</span></td>
 										<td> 
 									   <textarea name="tech_expert" tabindex="24" cols="10" rows="3" class="span8 wysiwyg1">{if $tech_expert}{$tech_expert}{else}{$smarty.post.tech_expert}{/if}</textarea>									
+										<label for="reg_city" generated="true" class="error">{$tech_expertErr} </label>	
 										</td>
 									</tr>	
 									
@@ -603,7 +604,7 @@
 									<tr class="tbl_row">
 									<td width="120" class="tbl_column">Candidates Outlook on Company   </td>
 									<td> 
-										<textarea name="about_company" tabindex="1" cols="10" rows="3" class="span8 wysiwyg1">{if $about_company}{$about_company}{else}{$smarty.post.about_company}{/if}</textarea>									
+										<textarea name="about_company" tabindex="1"  rows="3" class="span12 wysiwyg1">{if $about_company}{$about_company}{else}{$smarty.post.about_company}{/if}</textarea>									
 									</td>
 									</tr>
 			
@@ -611,14 +612,14 @@
 										<td width="120" class="tbl_column">Candidates Personality <span class="f_req">*</span>
 										</td>
 										<td>
-<textarea placeholder="" name="personality" tabindex="2" cols="10" rows="3" class="span8 wysiwyg1">{if $personality}{$personality}{else}{$smarty.post.personality}{/if}</textarea>
+<textarea placeholder="" name="personality" tabindex="2"  rows="3" class="span12 wysiwyg1">{if $personality}{$personality}{else}{$smarty.post.personality}{/if}</textarea>
 <label for="reg_city" generated="true" class="error">{$personalityErr}</label>	
 										</td>	
 									</tr>
 									<tr class="tbl_row">
 									<td width="120" class="tbl_column">Relevant Exposure <span class="f_req">*</span></td>
 									<td> 
-									<textarea name="relevant_exposure" tabindex="3" cols="10" rows="3" class="span8 wysiwyg1">{if $relevant_exposure}{$relevant_exposure}{else}{$smarty.post.relevant_exposure}{/if}</textarea>									
+									<textarea name="relevant_exposure" tabindex="3"  rows="3" class="span12 wysiwyg1">{if $relevant_exposure}{$relevant_exposure}{else}{$smarty.post.relevant_exposure}{/if}</textarea>									
 									<label for="reg_city" generated="true" class="error">{$relevant_exposureErr}</label>	
 									</td>
 									</tr>
@@ -626,14 +627,14 @@
 									<tr class="">
 				<td width="120" class="tbl_column">Credentials considered for Shortlisting <span class="f_req">*</span></td>
 				<td> 
-					<textarea name="credential_shortlisting" tabindex="4" cols="10" rows="3" class="span8 wysiwyg1">{if $credential_shortlisting}{$credential_shortlisting}{else}{$smarty.post.credential_shortlisting}{/if}</textarea>									
+					<textarea name="credential_shortlisting" tabindex="4" rows="3" class="span12 wysiwyg1">{if $credential_shortlisting}{$credential_shortlisting}{else}{$smarty.post.credential_shortlisting}{/if}</textarea>									
 					<label for="reg_city" generated="true" class="error">{$credential_shortlistingErr}</label>	
 					</td>
 			</tr>
 			<tr class="tbl_row">
 									<td width="120" class="tbl_column">Any other vital inputs for the interview  </td>
 									<td> 
-										<textarea name="vital_info_interview" tabindex="5" cols="10" rows="3" class="span8 wysiwyg1">{if $vital_info_interview}{$vital_info_interview}{else}{$smarty.post.vital_info_interview}{/if}</textarea>									
+										<textarea name="vital_info_interview" tabindex="5" rows="3" class="span12 wysiwyg1">{if $vital_info_interview}{$vital_info_interview}{else}{$smarty.post.vital_info_interview}{/if}</textarea>									
 									</td>
 									</tr>
 			
@@ -648,14 +649,14 @@
 			<tr class="tbl_row">
 										<td width="120" class="tbl_column">Interview Availability <span class="f_req">*</span></td>
 										<td>
-											<textarea placeholder="" name="interview_availability" tabindex="6" cols="10" rows="3" class="span8 wysiwyg1">{if $interview_availability}{$interview_availability}{else}{$smarty.post.interview_availability}{/if}</textarea>
+											<textarea placeholder="" name="interview_availability" tabindex="6"  rows="3" class="span12 wysiwyg1">{if $interview_availability}{$interview_availability}{else}{$smarty.post.interview_availability}{/if}</textarea>
 											<label for="reg_city" generated="true" class="error">{$interview_availabilityErr}</label>	
 										</td>	
 									</tr>		
 									<tr class="">
 										<td width="120" class="tbl_column">Achievements  </td>
 										<td> 
-									   <textarea name="achievement" cols="10" tabindex="7" rows="3" class="span8 wysiwyg1">{if $achievement}{$achievement}{else}{$smarty.post.achievement}{/if}</textarea>									
+									   <textarea name="achievement"  tabindex="7" rows="3" class="span12 wysiwyg1">{if $achievement}{$achievement}{else}{$smarty.post.achievement}{/if}</textarea>									
 										</td>
 									</tr>	
 									
@@ -664,7 +665,7 @@
 			<tr class="tbl_row">
 				<td width="120" class="tbl_column">Candidate Brief </td>
 				<td> 
-				   <textarea name="candidate_brief" tabindex="8" cols="10" rows="3" class="span8 wysiwyg1">{if $candidate_brief}{$candidate_brief}{else}{$smarty.post.candidate_brief}{/if}</textarea>									
+				   <textarea name="candidate_brief" tabindex="8"  rows="3" class="span12 wysiwyg1">{if $candidate_brief}{$candidate_brief}{else}{$smarty.post.candidate_brief}{/if}</textarea>									
 				</td>
 			</tr>										
 		</tbody>

@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-11-02 14:14:51
+/* Smarty version 3.1.29, created on 2017-11-06 10:07:28
   from "C:\xampp\htdocs\2017\ctsvn\cthiring\hiring\templates\add_formatted_resume.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_59fadb03c7f734_28295728',
+  'unifunc' => 'content_59ffe70880d0b9_70461597',
   'file_dependency' => 
   array (
     '7b9debb43acd1c9656df1fbe01b897c4d462aec5' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\templates\\add_formatted_resume.tpl',
-      1 => 1509612288,
+      1 => 1509943042,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_59fadb03c7f734_28295728 ($_smarty_tpl) {
+function content_59ffe70880d0b9_70461597 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -317,13 +317,15 @@ echo 'checked';?>
 									
 									
 									<tr>
-										<td width="120" class="tbl_column">Technical Expertise and Domain Expertise</td>
+										<td width="120" class="tbl_column">Technical Expertise and Domain Expertise <span class="f_req">*</span></td>
 										<td> 
 									   <textarea name="tech_expert" tabindex="24" cols="10" rows="3" class="span8 wysiwyg1"><?php if ($_smarty_tpl->tpl_vars['tech_expert']->value) {
 echo $_smarty_tpl->tpl_vars['tech_expert']->value;
 } else {
 echo $_POST['tech_expert'];
 }?></textarea>									
+										<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['tech_expertErr']->value;?>
+ </label>	
 										</td>
 									</tr>	
 									
@@ -720,7 +722,7 @@ echo $_POST['hobby'];
 									<tr class="tbl_row">
 									<td width="120" class="tbl_column">Candidates Outlook on Company   </td>
 									<td> 
-										<textarea name="about_company" tabindex="1" cols="10" rows="3" class="span8 wysiwyg1"><?php if ($_smarty_tpl->tpl_vars['about_company']->value) {
+										<textarea name="about_company" tabindex="1"  rows="3" class="span12 wysiwyg1"><?php if ($_smarty_tpl->tpl_vars['about_company']->value) {
 echo $_smarty_tpl->tpl_vars['about_company']->value;
 } else {
 echo $_POST['about_company'];
@@ -732,7 +734,7 @@ echo $_POST['about_company'];
 										<td width="120" class="tbl_column">Candidates Personality <span class="f_req">*</span>
 										</td>
 										<td>
-<textarea placeholder="" name="personality" tabindex="2" cols="10" rows="3" class="span8 wysiwyg1"><?php if ($_smarty_tpl->tpl_vars['personality']->value) {
+<textarea placeholder="" name="personality" tabindex="2"  rows="3" class="span12 wysiwyg1"><?php if ($_smarty_tpl->tpl_vars['personality']->value) {
 echo $_smarty_tpl->tpl_vars['personality']->value;
 } else {
 echo $_POST['personality'];
@@ -744,7 +746,7 @@ echo $_POST['personality'];
 									<tr class="tbl_row">
 									<td width="120" class="tbl_column">Relevant Exposure <span class="f_req">*</span></td>
 									<td> 
-									<textarea name="relevant_exposure" tabindex="3" cols="10" rows="3" class="span8 wysiwyg1"><?php if ($_smarty_tpl->tpl_vars['relevant_exposure']->value) {
+									<textarea name="relevant_exposure" tabindex="3"  rows="3" class="span12 wysiwyg1"><?php if ($_smarty_tpl->tpl_vars['relevant_exposure']->value) {
 echo $_smarty_tpl->tpl_vars['relevant_exposure']->value;
 } else {
 echo $_POST['relevant_exposure'];
@@ -757,7 +759,7 @@ echo $_POST['relevant_exposure'];
 									<tr class="">
 				<td width="120" class="tbl_column">Credentials considered for Shortlisting <span class="f_req">*</span></td>
 				<td> 
-					<textarea name="credential_shortlisting" tabindex="4" cols="10" rows="3" class="span8 wysiwyg1"><?php if ($_smarty_tpl->tpl_vars['credential_shortlisting']->value) {
+					<textarea name="credential_shortlisting" tabindex="4" rows="3" class="span12 wysiwyg1"><?php if ($_smarty_tpl->tpl_vars['credential_shortlisting']->value) {
 echo $_smarty_tpl->tpl_vars['credential_shortlisting']->value;
 } else {
 echo $_POST['credential_shortlisting'];
@@ -769,7 +771,7 @@ echo $_POST['credential_shortlisting'];
 			<tr class="tbl_row">
 									<td width="120" class="tbl_column">Any other vital inputs for the interview  </td>
 									<td> 
-										<textarea name="vital_info_interview" tabindex="5" cols="10" rows="3" class="span8 wysiwyg1"><?php if ($_smarty_tpl->tpl_vars['vital_info_interview']->value) {
+										<textarea name="vital_info_interview" tabindex="5" rows="3" class="span12 wysiwyg1"><?php if ($_smarty_tpl->tpl_vars['vital_info_interview']->value) {
 echo $_smarty_tpl->tpl_vars['vital_info_interview']->value;
 } else {
 echo $_POST['vital_info_interview'];
@@ -788,7 +790,7 @@ echo $_POST['vital_info_interview'];
 			<tr class="tbl_row">
 										<td width="120" class="tbl_column">Interview Availability <span class="f_req">*</span></td>
 										<td>
-											<textarea placeholder="" name="interview_availability" tabindex="6" cols="10" rows="3" class="span8 wysiwyg1"><?php if ($_smarty_tpl->tpl_vars['interview_availability']->value) {
+											<textarea placeholder="" name="interview_availability" tabindex="6"  rows="3" class="span12 wysiwyg1"><?php if ($_smarty_tpl->tpl_vars['interview_availability']->value) {
 echo $_smarty_tpl->tpl_vars['interview_availability']->value;
 } else {
 echo $_POST['interview_availability'];
@@ -800,7 +802,7 @@ echo $_POST['interview_availability'];
 									<tr class="">
 										<td width="120" class="tbl_column">Achievements  </td>
 										<td> 
-									   <textarea name="achievement" cols="10" tabindex="7" rows="3" class="span8 wysiwyg1"><?php if ($_smarty_tpl->tpl_vars['achievement']->value) {
+									   <textarea name="achievement"  tabindex="7" rows="3" class="span12 wysiwyg1"><?php if ($_smarty_tpl->tpl_vars['achievement']->value) {
 echo $_smarty_tpl->tpl_vars['achievement']->value;
 } else {
 echo $_POST['achievement'];
@@ -813,7 +815,7 @@ echo $_POST['achievement'];
 			<tr class="tbl_row">
 				<td width="120" class="tbl_column">Candidate Brief </td>
 				<td> 
-				   <textarea name="candidate_brief" tabindex="8" cols="10" rows="3" class="span8 wysiwyg1"><?php if ($_smarty_tpl->tpl_vars['candidate_brief']->value) {
+				   <textarea name="candidate_brief" tabindex="8"  rows="3" class="span12 wysiwyg1"><?php if ($_smarty_tpl->tpl_vars['candidate_brief']->value) {
 echo $_smarty_tpl->tpl_vars['candidate_brief']->value;
 } else {
 echo $_POST['candidate_brief'];

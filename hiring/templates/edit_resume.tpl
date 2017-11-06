@@ -479,9 +479,10 @@
 									</tr>	
 									
 									<tr class="tbl_row">
-										<td width="120" class="tbl_column">Consultant Assessment <span class="f_req"></span></td>
+										<td width="120" class="tbl_column">Consultant Assessment <span class="f_req">*</span></td>
 										<td>
 <textarea placeholder="" name="consultant" tabindex="1" id="consultant" cols="10" rows="3" class="span10 wysiwyg1">{if $consultant}{$consultant}{else}{$smarty.post.consultant}{/if}</textarea>
+										<label for="reg_city" generated="true" class="error">{$consultantErr}</label>
 										</td>	
 									</tr>	
 																						
@@ -515,9 +516,10 @@
 
 								
 									<tr class="">
-										<td width="120" class="tbl_column">Interview Availability </td>
+										<td width="120" class="tbl_column">Interview Availability <span class="f_req">*</span></td>
 										<td>
 <textarea placeholder="" name="interview_availability" tabindex="2"  cols="10" rows="3" class="span10 wysiwyg1">{if $interview_availability}{$interview_availability}{else}{$smarty.post.interview_availability}{/if}</textarea>
+										<label for="reg_city" generated="true" class="error">{$interview_availabilityErr}</label>
 										</td>	
 									</tr>													
 								</tbody>

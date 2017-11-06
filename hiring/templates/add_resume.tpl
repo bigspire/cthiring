@@ -497,9 +497,10 @@
 									
 									
 									<tr class="tbl_row">
-										<td width="120" class="tbl_column">Consultant Assessment <span class="f_req"></span></td>
+										<td width="120" class="tbl_column">Consultant Assessment <span class="f_req">*</span></td>
 										<td>
 <textarea placeholder="" name="consultant" tabindex="1" id="consultant" cols="10" rows="3" class="span10 wysiwyg1">{$smarty.post.consultant}</textarea>
+										<label for="reg_city" generated="true" class="error">{$consultantErr}</label>
 										</td>	
 									</tr>	
 																						
@@ -526,16 +527,16 @@
  
 </ul>
  
-										<!--label for="reg_city" generated="true" class="error">{$interview_availabilityErr}</label-->
+										
 										</td>	
 									</tr>
 
 									
 									<tr class="">
-										<td width="120" class="tbl_column">Interview Availability </td>
+										<td width="120" class="tbl_column">Interview Availability <span class="f_req">*</span></td>
 										<td>
 <textarea placeholder="" name="interview_availability" tabindex="2" id="interview_availability" cols="10" rows="3" class="span10 wysiwyg1">{$smarty.post.interview_availability}</textarea>
-										<!--label for="reg_city" generated="true" class="error">{$interview_availabilityErr}</label-->
+										<label for="reg_city" generated="true" class="error">{$interview_availabilityErr}</label>
 										</td>	
 									</tr>													
 								</tbody>

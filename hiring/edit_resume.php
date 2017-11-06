@@ -416,7 +416,25 @@ if(!empty($_POST)){
 			$j++;
 	}
 	
-
+	// array for printing correct field name in error message for consultant
+	$fieldtype1 = array('0','0');
+	$actualfield1 = array('interview availability', 'consultant assessment');
+	$field1 = array('interview_availability' => 'interview_availabilityErr','consultant' => 'consultantErr');
+	$j = 0;
+	foreach ($field1 as $field1 => $er_var){ 
+		if($_POST[$field1] == ''){
+			$error_msg1 = $fieldtype1[$j] ? ' select the ' : ' enter the ';
+			$actual_field1 =  $actualfield1[$j];
+			$er1[$er_var] = 'Please'. $error_msg1 .$actual_field1;
+			$test = 'error';
+			$tab4 = 'fail';
+			$smarty->assign($er_var,$er1[$er_var]);
+		}else{
+			$smarty->assign($field1,$_POST[$field1]);
+		}
+			$j++;
+	}
+	
 	// save all the data
 	/*if($test != 'error'){
 		echo 'save data';
