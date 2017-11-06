@@ -1,6 +1,6 @@
 <?php
 /* 
-Purpose : To create formatted resume.
+Purpose : To Edit formatted resume.
 Created : Nikitasa
 Date : 26-05-2017
 */
@@ -1057,10 +1057,10 @@ if(!empty($_POST)){
 $mysql->close_connection();
 
 // assign page title
-$smarty->assign('page_title' , 'Add Fully Formatted Resume - Manage Hiring');  
+$smarty->assign('page_title' , 'Edit Fully Formatted Resume - Manage Hiring');  
 // assigning active class status to smarty menu.tpl
 $smarty->assign('resume_active','active');
 // $smarty->assign('setting_active', $fun->set_menu_active('add_grade'));
 // display smarty file
-$smarty->display('add_formatted_resume.tpl');
+$smarty->display('edit_formatted_resume.tpl');
 ?>

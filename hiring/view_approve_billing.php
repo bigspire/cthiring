@@ -99,6 +99,8 @@ try{
 		while($obj = $mysql->display_result($result)){
 			$smarty->assign('candidate_name', $obj['candidate_name']);
 			$smarty->assign('position', $obj['position']);
+			$smarty->assign('recruiter', $obj['recruiter']);
+			$smarty->assign('bill_percent', $obj['bill_percent']);
 			$smarty->assign('client_name', $obj['client_name']);
 			$smarty->assign('ctc_offer', $obj['ctc_offer']);
 			$smarty->assign('billing_amount', $obj['billing_amount']);

@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-11-03 17:50:35
+/* Smarty version 3.1.29, created on 2017-11-06 15:54:03
   from "C:\xampp\htdocs\2017\ctsvn\cthiring\hiring\templates\include\header.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_59fc5f13625ca8_88167932',
+  'unifunc' => 'content_5a003843dd5007_03250356',
   'file_dependency' => 
   array (
     '418ce04694c91a3f6ebee8f2a2efa42e5260b14c' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\templates\\include\\header.tpl',
-      1 => 1509711623,
+      1 => 1509963841,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_59fc5f13625ca8_88167932 ($_smarty_tpl) {
+function content_5a003843dd5007_03250356 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -353,6 +353,11 @@ resume/">Search Resume <!-- span class="label-bub label-info white"><?php echo $
 											<?php if ($_smarty_tpl->tpl_vars['module']->value['manage_designation'] == '1') {?>
 	
 												<li><a href="designation.php">Designation </a></li>
+											<?php }?>
+											
+											<?php if ($_smarty_tpl->tpl_vars['module']->value['manage_functional_area'] == '1') {?>
+	
+												<li><a href="functional_area.php">Functional Area</a></li>
 											<?php }?>
 											
 											<?php if ($_smarty_tpl->tpl_vars['module']->value['manage_grade'] == '1') {?>

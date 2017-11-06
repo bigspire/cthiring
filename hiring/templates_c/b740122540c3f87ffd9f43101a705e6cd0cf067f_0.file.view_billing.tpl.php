@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-11-06 14:35:02
+/* Smarty version 3.1.29, created on 2017-11-06 15:43:57
   from "C:\xampp\htdocs\2017\ctsvn\cthiring\hiring\templates\view_billing.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5a0025bedabbb6_44182763',
+  'unifunc' => 'content_5a0035e5bee046_14766187',
   'file_dependency' => 
   array (
     'b740122540c3f87ffd9f43101a705e6cd0cf067f' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\templates\\view_billing.tpl',
-      1 => 1509959100,
+      1 => 1509963235,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5a0025bedabbb6_44182763 ($_smarty_tpl) {
+function content_5a0035e5bee046_14766187 ($_smarty_tpl) {
 ?>
 
    
@@ -65,27 +65,38 @@ home"><i class="icon-home"></i></a>
 			<div class="span6">
 							<table class="table table-striped table-bordered dataTable" style="">
 								<tbody>
+									
 									<tr>
-										<td width="120" class="tbl_column">Candidate Name </td>
-										<td><?php echo ucwords($_smarty_tpl->tpl_vars['candidate_name']->value);?>
- </td>
-									</tr>
+										<td width="" class="tbl_column">Client Name </td>
+										<td><?php echo $_smarty_tpl->tpl_vars['client_name']->value;?>
+</td>
+									</tr>	
 									
 									<tr>
 										<td width="" class="tbl_column">Position  </td>
 										<td><?php echo $_smarty_tpl->tpl_vars['position']->value;?>
 </td>
 									</tr>
+									
 									<tr>
-										<td width="" class="tbl_column">Client Name </td>
-										<td><?php echo $_smarty_tpl->tpl_vars['client_name']->value;?>
-</td>
-									</tr>	
-											<tr>
-										<td width="120" class="tbl_column">Joined Date </td>
-										<td><?php echo $_smarty_tpl->tpl_vars['joined_date']->value;?>
+										<td width="120" class="tbl_column">Recruiter </td>
+										<td><?php echo $_smarty_tpl->tpl_vars['recruiter']->value;?>
 </td>
 									</tr>
+									
+									<tr>
+										<td width="120" class="tbl_column">Billing % </td>
+										<td><?php if ($_smarty_tpl->tpl_vars['bill_percent']->value > '0') {
+echo $_smarty_tpl->tpl_vars['bill_percent']->value;
+}?></td>
+									</tr>
+									
+									<tr>
+									<td class="tbl_column">Billing Amount</td>
+									<td><?php echo $_smarty_tpl->tpl_vars['billing_amount']->value;?>
+</td>
+								</tr>
+									
 								</tbody>
 							</table>
 				</div>
@@ -93,22 +104,19 @@ home"><i class="icon-home"></i></a>
 				<div class="span6">
 							<table class="table table-striped table-bordered dataTable" style="">
 								<tbody>
+								
 								<tr>
-										<td width="120" class="tbl_column">Recruiter </td>
-										<td><?php echo $_smarty_tpl->tpl_vars['employee']->value;?>
-</td>
+										<td width="120" class="tbl_column">Candidate Name </td>
+										<td><?php echo ucwords($_smarty_tpl->tpl_vars['candidate_name']->value);?>
+ </td>
 									</tr>
-								<tr>
+									
 								<tr>
 										<td width="" class="tbl_column">CTC Offered </td>
 										<td><?php echo $_smarty_tpl->tpl_vars['ctc_offer']->value;?>
 </td>
 									</tr>
-								<tr>
-									<td class="tbl_column">Billing Amount</td>
-									<td><?php echo $_smarty_tpl->tpl_vars['billing_amount']->value;?>
-</td>
-								</tr>	
+									
 									
 								<tr>
 									<td class="tbl_column">Billing Date </td>
@@ -116,6 +124,11 @@ home"><i class="icon-home"></i></a>
 </td>
 								</tr>	
 									
+											<tr>
+										<td width="120" class="tbl_column">Joined Date </td>
+										<td><?php echo $_smarty_tpl->tpl_vars['joined_date']->value;?>
+</td>
+									</tr>
 							
 								</tbody>
 							</table>
