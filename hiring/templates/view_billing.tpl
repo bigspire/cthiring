@@ -63,6 +63,11 @@
 							<table class="table table-striped table-bordered dataTable" style="">
 								<tbody>
 								<tr>
+										<td width="120" class="tbl_column">Recruiter </td>
+										<td>{$employee}</td>
+									</tr>
+								<tr>
+								<tr>
 										<td width="" class="tbl_column">CTC Offered </td>
 										<td>{$ctc_offer}</td>
 									</tr>

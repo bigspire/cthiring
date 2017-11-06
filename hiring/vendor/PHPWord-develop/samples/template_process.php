@@ -49,7 +49,7 @@ $templateProcessor->setValue('VITALINPUTS', $_POST['vital_info_interview'],  1,0
 // to retain INTERVIEW AVAILABILITY field
 $templateProcessor->setValue('INTERVIEWAVAILABILITY', $_POST['interview_availability'],  1,0); 
 // to retain ACHIVEMENTS field
-$templateProcessor->setValue('ACHIVEMENTS', $_POST['achievement']  1,0); 
+$templateProcessor->setValue('ACHIVEMENTS', $_POST['achievement'],  1,0); 
 // to retain CANDIDATE BRIEF field
 $templateProcessor->setValue('CANDIDATEBRIEF', $_POST['candidate_brief'],  1,0); 
 
