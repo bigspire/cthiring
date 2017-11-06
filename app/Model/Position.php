@@ -308,6 +308,42 @@ class Position extends AppModel {
                 'required' => true,
                 'message'  => 'Please select the reason'
             )
+        )
+		,
+		'resume_type' => array(		
+            'empty' => array(
+                'rule'     => 'notEmpty',
+                'required' => true,
+                'message'  => 'Please select any one'
+            )
+        )
+		,
+		'hide_contact' => array(		
+            'empty' => array(
+                'rule'     => 'notEmpty',
+                'required' => true,
+                'message'  => 'Please select any one'
+            )
+        )
+		,
+		'req_status_id' => array(		
+            'empty' => array(
+                'rule'     => 'notEmpty',
+                'required' => true,
+                'message'  => 'Please select the new status'
+            )
+        ),
+		'job_code' => array(		
+            'empty' => array(
+                'rule'     => 'notEmpty',
+                'required' => true,
+                'message'  => 'Please enter the job code'
+            ),
+			 'unique' => array(
+                'rule'     => 'check_unique_code',
+                'required' => true,
+                'message'  => 'Job Code already exists'
+            )
         ),
 	);
 	
@@ -324,7 +360,7 @@ class Position extends AppModel {
 	/* function to validate the job desc length */
 	public function check_length(){
 		if($this->data['Position']['job_desc'] != ''){
-			if(strlen($this->data['Position']['job_desc']) < 500){				
+			if(strlen($this->data['Position']['job_desc']) < 100){				
 				return false;
 			}else{
 				return true;
@@ -333,6 +369,22 @@ class Position extends AppModel {
 			return true;
 		}
 	}
+	
+	/* function to check job code already exists */
+	public function check_unique_code(){
+		// for edit page
+		if($this->data['Position']['page'] == 'edit_position'){
+			$cond = array('Position.id !=' => $this->data['Position']['id']);
+		}
+		$count = $this->find('count', array('conditions' => array('job_code' => $this->data['Position']['job_code'],
+		'Position.is_deleted' => 'N', $cond)));
+		if($count){
+			return false;
+		}else{
+			return true;
+		}
+	}
+	
 	
 	/* function to validate the file type */
 	public function validate_file(){ 

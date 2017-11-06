@@ -146,9 +146,9 @@ $str = <<<EOD
   </tbody>
 </table>
 
-<footer class="footer is-paddingless level" style="height:50px;">
+<footer class="footer is-paddingless level" style="margin-top:150px;height:50px;">
   <div class="container is-light">
-    <div class="level-item content has-text-centered">
+    <div class="level-item content has-text-centered"  style="margin-top:15px;">
       <p>
         <strong>Created</strong> by <a class="is-danger" href="http://career-tree.in">CareerTree HR Solutions Private Limited</a>. 
       </p>     

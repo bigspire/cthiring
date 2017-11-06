@@ -155,6 +155,33 @@ $smarty->assign('degreeData', $degree_data);
 $smarty->assign('degree', $degree);
 $smarty->assign('spec', $spec);
 
+// query to fetch client and position details. 
+$query = "CALL get_res_client_details('".$_SESSION['client']."','".$_SESSION['position_for']."')";
+try{
+	// calling mysql exe_query function
+	if(!$result = $mysql->execute_query($query)){
+		throw new Exception('Problem in getting client and position details');
+	}
+	while($row = $mysql->display_result($result))
+	{
+ 		$requirement = ucwords($row['job_title']).' ( '.($row['client_name']).' )';
+		
+		$position = ucwords($row['job_title']).' ( '.($row['client_name']).' )';
+		$client_autoresume = $row['client_name'];
+		$position_autoresume = $row['job_title'];
+		$state_autoresume = $row['state'];
+		$city_autoresume = $row['city'];
+	}
+	$smarty->assign('requirement',$requirement);
+	// free the memory
+	$mysql->clear_result($result);
+	// call the next result
+	$mysql->next_query();
+}catch(Exception $e){
+	echo 'Caught exception: ',  $e->getMessage(), "\n";
+}
+
+
 if(!empty($_POST)){
 	// for retaining skills and rating
 	$smarty->assign('tsrData', $_POST['tsr']);
@@ -541,11 +568,6 @@ if(!empty($_POST)){
 		}
 
 		if(!empty($edu_id) && !empty($exp_id) && !empty($resume_id) && !empty($position_id) && !empty($req_res_id)){
-			//echo 'save data';
-			$_SESSION['extraction'] = '';
-			// create snapshot pdf
-			include_once('snapshot.php');
-			// hide the contact details in the resume
 			// get recruiter nameget_recruiter_name
 			$query =  "CALL get_recruiter_name('".$mysql->real_escape_str($_SESSION['user_id'])."')";
 			if(!$result = $mysql->execute_query($query)){
@@ -553,10 +575,18 @@ if(!empty($_POST)){
 			}
 			$row_user = $mysql->display_result($result);
 			$recruiter = $row_user['first_name'].' '.$row_user['last_name'];
-			// free the memory
+				// free the memory
 			$mysql->clear_result($result);
 			// call the next result
-			$mysql->next_query();		
+			$mysql->next_query();	
+			//echo 'save data';
+			$_SESSION['extraction'] = '';			
+			// create snapshot pdf
+			include_once('snapshot.php');			
+			//  introduction page processing
+			$resume_path = dirname(__FILE__).'/uploads/introduction/'.$_SESSION['resume_doc'];
+			$template_path = dirname(__FILE__).'/uploads/template/introduction.docx'; 
+			include('vendor/PHPWord-develop/samples/template_process3.php');
 			// generate auto resume doc file
 			$resume_path = dirname(__FILE__).'/uploads/resume/'.$_SESSION['resume_doc'];
 			$template_path = dirname(__FILE__).'/uploads/template/'.$_SESSION['resume_doc']; 
@@ -576,11 +606,13 @@ if(!empty($_POST)){
 			include('vendor/PHPWord-develop/samples/template_process2.php');
 			// remove the file
 			unlink($template_path);
+			/*
 			// convert the resume doc. into pdf
 			require_once('vendor/ilovepdf-php-1.1.5/init.php');			
 			// you can call task class directly
 			// to get your key pair, please visit https://developer.ilovepdf.com/user/projects
-			$ilovepdf = new Ilovepdf('project_public_30e4ef2596c7436ae907615a841f995b_J4pWwe338d0756271411b0769ee277075a664','secret_key_9d6d00d05185d32c499082fc7e008ba1_fovTb7e8e14419dee395103d2b71d6b7e7175');
+			$ilovepdf = new Ilovepdf('project_public_5b8a8c940b378f560a9af9b547fda145_DNRT62d35f5d2494212a0dad512be366352cf',
+			'secret_key_629c405d975d170c4785d1781f9a0e6c_DccLT641e98f8d020e52866e228464f75321d');
 			// Create a new task
 			$myTaskConvertOffice = $ilovepdf->newTask('officepdf');
 			// Add files to task for upload
@@ -590,13 +622,28 @@ if(!empty($_POST)){
 			// Execute the task
 			$myTaskConvertOffice->execute();
 			// Download the package files
-			$myTaskConvertOffice->download('uploads/resumepdf/');   
+			$myTaskConvertOffice->download('uploads/resumepdf/'); 
+			
+			// create introduction pdf file			
+			$resume_path2 = dirname(__FILE__).'/uploads/introduction/'.$_SESSION['resume_doc'];
+			// Create a new task
+			$myTaskConvertOffice2 = $ilovepdf->newTask('officepdf');
+			// Add files to task for upload
+			// $resume_path = dirname(__FILE__).'/uploads/resume/'.$_SESSION['resume_doc'];
+			$file1 = $myTaskConvertOffice2->addFile($resume_path2);
+			$myTaskConvertOffice2->setOutputFilename($snap_file_name);
+			// Execute the task
+			$myTaskConvertOffice2->execute();
+			// Download the package files
+			$myTaskConvertOffice2->download('uploads/introductionpdf/');
+			
 			// include('vendor/ilovepdf-php-1.1.5/samples/resume.php');
 			// merge the snapshot pdf and resume pdf
 			// and get the task tool
 			$myTask = $ilovepdf->newTask('merge');
 			// file var keeps info about server file id, name...
 			// it can be used latter to cancel a specific file
+			$fileZ = $myTask->addFile(dirname(__FILE__).'/uploads/introductionpdf/'.$snap_file_name.'.pdf');
 			$fileA = $myTask->addFile(dirname(__FILE__).'/uploads/snapshot/'.$snap_file_name.'.pdf');
 			$fileB = $myTask->addFile(dirname(__FILE__).'/uploads/resumepdf/'.$snap_file_name.'.pdf');
 			$myTask->setOutputFilename($snap_file_name.'_{date}');
@@ -604,12 +651,32 @@ if(!empty($_POST)){
 			$myTask->execute();
 			// and finally download file. If no path is set, it will be downloaded on current folder
 			$myTask->download('uploads/snapshotmerged/');
+			// water mark the pdf
+			$myTaskWatermark = $ilovepdf->newTask('watermark');
+			// Add files to task for upload
+			$file1 = $myTaskWatermark->addFile(dirname(__FILE__).'/uploads/snapshotmerged/'.$snap_file_name.'_'.date('d-m-Y').'.pdf');
+			// Select watermark parameters
+			$myTaskWatermark->setText('CareerTree HR Solutions');
+			// $myTaskWatermark->setImage('uploads/template/watermark.jpg');			
+			$myTaskWatermark->setPages('3-end');
+			// $myTaskWatermark->setOpacity(50);
+			$myTaskWatermark->setVerticalPosition('top');
+			$myTaskWatermark->setHorizontalPosition('right');
+			// $myTaskWatermark->setFontFamily('courier');
+			$myTaskWatermark->setFontSize(24);
+			$myTaskWatermark->setFontColor('#c7c3be');
+			$myTaskWatermark->execute();
+			// Download the package files
+			$myTaskWatermark->download('uploads/snapshotwatermarked/');
+			*/
 			//include('vendor/ilovepdf-php-1.1.5/samples/merge_basic.php');
 			// unset the sessions
 			unset($_SESSION['position_for']);
 			unset($_SESSION['resume_doc']);
 			unset($_SESSION['clients_id']);
-			header('Location: ../resume?action=created&download='.$snap_file_name.'_'.date('d-m-Y').'.pdf');
+			// header('Location: ../resume?action=created&download='.$snap_file_name.'_'.date('d-m-Y').'.pdf');
+			header('Location: ../resume?action=created');
+
 		} 
 	}else{
 		$smarty->assign('tab_open', ($tab1 == 'fail' ? 'tab1' : ($tab2 == 'fail' ? 'tab2' : ($tab3 == 'fail' ? 'tab3' : 'tab4' ))));
@@ -689,25 +756,7 @@ try{
 }
 
 
-// query to fetch client and position details. 
-$query = "CALL get_res_client_details('".$_SESSION['client']."','".$_SESSION['position_for']."')";
-try{
-	// calling mysql exe_query function
-	if(!$result = $mysql->execute_query($query)){
-		throw new Exception('Problem in getting client and position details');
-	}
-	while($row = $mysql->display_result($result))
-	{
- 		$requirement = ucwords($row['job_title']).' ( '.($row['client_name']).' )';
-	}
-	$smarty->assign('requirement',$requirement);
-	// free the memory
-	$mysql->clear_result($result);
-	// call the next result
-	$mysql->next_query();
-}catch(Exception $e){
-	echo 'Caught exception: ',  $e->getMessage(), "\n";
-}
+
 
 // smarty drop down array for grade type
 $smarty->assign('grade_drop', array('' => 'Select', 'R' => 'Regular', 'C' => 'Correspondence'));

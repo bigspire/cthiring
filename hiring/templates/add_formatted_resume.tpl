@@ -406,21 +406,21 @@
 								<tr>
 										<td width="120" class="tbl_column">Employment Period<span class="f_req"> *</span></td>
 										<td>
-										<select name="from_month_of_exp_#index#" id = "from_month_of_exp_#index#" tabindex="3" class="span3">
+										<select name="from_month_of_exp_#index#" id = "from_month_of_exp_#index#" tabindex="3" class="span2">
 										<option value="">From Month</option>
 										{html_options options=$exp_month} 
 										</select>
-										<select name="from_year_of_exp_#index#" id = "from_year_of_exp_#index#" tabindex="2" class="inline_text span3">
+										<select name="from_year_of_exp_#index#" id = "from_year_of_exp_#index#" tabindex="2" class="inline_text span2">
 										<option value="">From Year</option>
 										{html_options options=$exp_yr} 
 										</select>
 										
-										<select name="to_month_of_exp_#index#" id = "to_month_of_exp_#index#" tabindex="3" class="inline_text span3">
+										<select name="to_month_of_exp_#index#" id = "to_month_of_exp_#index#" tabindex="3" class="inline_text span2">
 										<option value="">To Month</option>
 										{html_options options=$exp_month} 
 										</select>
 										
-										<select name="to_year_of_exp_#index#" id = "to_year_of_exp_#index#" tabindex="2" class="inline_text span3">
+										<select name="to_year_of_exp_#index#" id = "to_year_of_exp_#index#" tabindex="2" class="inline_text span2">
 										<option value="">To Year</option>
 										{html_options options=$exp_yr} 
 										</select>

@@ -28,9 +28,9 @@
                     </nav>
 					
 					<div class="srch_buttons">
-				<?php if($this->Session->read('USER.Login.id') == $position_data['Position']['created_by'] && $position_data['Position']['is_approve'] == 'A'):?>	
-				<a rel="tooltip jsRedirect" title="Edit the Position Info." href="<?php echo $this->webroot;?>position/edit/<?php echo $this->request->params['pass'][0];?>" class="sepV_a" title="Edit Position">
-				<input value="Edit" type="button" class="btn btn-info"></a>
+				<?php if($this->Session->read('USER.Login.id') == $position_data['Position']['created_by'] && $this->Session->read('USER.Login.roles_id') == '34' && $position_data['Position']['is_approve'] == 'A'):?>	
+				<a rel="tooltip jsRedirect" href="<?php echo $this->webroot;?>position/edit/<?php echo $this->request->params['pass'][0];?>" title="Edit Position">
+				<input rel="tooltip" title="Edit Position" value="Edit" type="button" class="btn btn-info"></a>
 				<?php endif; ?>	
 					
 					<!--<a href="#"  class="sepV_a" title="Delete Position">
@@ -121,6 +121,14 @@
 											
 									</tr>	
 									
+										<tr>
+										
+										<td class="tbl_column">Resume Type </td>
+										<td><?php echo $this->Functions->get_resume_type($position_data['Position']['resume_type']);?></td>
+											
+									</tr>	
+									
+									
 									<tr>
 										
 										<td class="tbl_column">Created On</td>
@@ -144,6 +152,11 @@
 	<td>	
 										
 <span rel="tooltip" title="Requirement Status: <?php echo $position_data['ReqStatus']['title'];?> " class="label label-<?php echo $this->Functions->get_req_status_color($position_data['ReqStatus']['title']);?>"><?php echo $position_data['ReqStatus']['title'];?></span>	
+
+<?php if($this->Session->read('USER.Login.roles_id') == '34'):?>
+	<a rel="tooltip" val="40_60"  class="iframeBox" title="Change Status" href="<?php echo $this->webroot;?>position/update_position_status/<?php echo $this->request->params['pass'][0];?>/<?php echo $this->request->params['pass'][1];?>/<?php echo $position_data['ReqStatus']['id'];?>/"><i class="splashy-pencil"></i></a>
+<?php endif;?>
+
 </td>
 	</tr>
 	<?php endif; ?>								
@@ -186,29 +199,42 @@
 									</tr>
 									
 									
-									<tr>
-										
-										<td class="tbl_column">No. of Openings</td>
-										<td><?php echo $position_data['Position']['no_job'];?></td>
-											
-									</tr>
+								
 									
 										<tr>
 										
 										<td class="tbl_column">Recruiters</td>
-										<td><?php echo $position_data[0]['team_member2'];?></td>
+										<td>
+										
+										<div class="noJob"> 
+			
+			<?php  		$no_req = $position_data['Position']['no_job'];
+						$team_member = explode(',', $position_data[0]['team_member2']);
+						$team_req = explode(',', $position_data[0]['team_req']);
+						foreach($team_member as $key => $member):
+						$mem_req = $team_req[$key] ? $team_req[$key] : $no_req; ?>
+			<?php echo $member;?> :  	 
+			<button rel="tooltip" title="<?php echo $mem_req;?> Openings" class="tagDiv tag label btn-info"><?php echo $mem_req;?></button>	<br>
+				
+				<?php endforeach;?>
+										
+										</div>
+			</td>
 											
 									</tr>
 									<tr>
 										
 										<td class="tbl_column">Start Date</td>
-										<td><?php echo $this->Functions->format_date($position_data['Position']['start_date']);?></td>
+<?php $start = $position_data['Position']['start_date'] ? $position_data['Position']['start_date'] : $position_data['Position']['created_date'];?>
+<td><?php echo $this->Functions->format_date($start);?></td>
 											
 									</tr>
 										<tr>
 										
 										<td class="tbl_column">Closure Date</td>
-										<td><?php echo $this->Functions->format_date($position_data['Position']['end_date']);?></td>
+<?php $end = $position_data['Position']['end_date'] ? $position_data['Position']['end_date'] : $position_data['Position']['modified_date'];?>
+
+										<td><?php echo $this->Functions->format_date($end);?></td>
 											
 									</tr>
 									<tr>
@@ -217,6 +243,16 @@
 										<td><?php echo $position_data['FunctionArea']['function'];?></td>
 											
 									</tr>
+									
+										<tr>
+										
+										<td class="tbl_column">Hide Resume Contacts  </td>
+										<td><?php echo $position_data['Position']['hide_contact'] ? 'Yes' : 'No';?></td>
+											
+									</tr>	
+									
+									
+									
 									
 									<?php if($position_data['Position']['modified_date']):?>
 										<tr>
@@ -241,7 +277,11 @@
 									<tr>
 										<td  class="tbl_column"width="120">Job Description</td>
 										<td>
+									<?php if($position_data['Position']['plain_jd']):?>
+									<?php echo nl2br($position_data['Position']['plain_jd']);?>
+									<?php else:?>
 									<?php echo nl2br(strip_tags($position_data['Position']['job_desc'], '<br>'));?>	
+									<?php endif; ?>
 										
 
 			<br></td>
@@ -478,13 +518,13 @@
 														
 														<td style="text-align:center" class="actionItem upload_row">
 			<?php if($resume['ReqResume']['stage_title'] == 'Validation - Account Holder' &&
-										$resume['ReqResume']['status_title'] == 'Validated'): $multi_send_cv = '1';?>
+										$resume['ReqResume']['status_title'] == 'Validated'  && $this->Session->read('USER.Login.roles_id') == '34'): $multi_send_cv = '1';?>
 															
 					<span rel="tooltip" style="cursor:pointer" data-original-title="Send CV"><a href="<?php echo $this->webroot;?>position/send_cv/<?php echo $resume['Resume']['id']; ?>/<?php echo $this->request->params['pass'][0];?>/<?php echo $resume['ReqResume']['id']; ?>/" val="65_90"  class="iframeBox"><i class="splashy-arrow_medium_upper_right"></i></a></span>
 																
 																
 										<?php elseif($resume['ReqResume']['stage_title'] == 'Validation - Account Holder' &&
-										$resume['ReqResume']['status_title'] == 'Pending'):?>
+										$resume['ReqResume']['status_title'] == 'Pending'  && $this->Session->read('USER.Login.roles_id') == '34'):?>
 													<div class="btn-group">		
 												<span rel="tooltip" data-toggle="dropdown"  style="cursor:pointer" data-original-title="Update CV"><i class="splashy-sprocket_light"></i>
 																</span>
@@ -499,7 +539,7 @@
 																
 											
 											<?php elseif($resume['ReqResume']['stage_title'] == 'Validation - Account Holder' &&
-										$resume['ReqResume']['status_title'] == 'Rejected'):?>
+										$resume['ReqResume']['status_title'] == 'Rejected' && $this->Session->read('USER.Login.roles_id') == '34'):?>
 
 										<span rel="tooltip" style="cursor:" data-original-title="Account Holder - Rejected"><i class="splashy-thumb_down"></i></span>
 										
@@ -584,16 +624,18 @@
 										<span class="btn-mini alert alert-success alert-action legendView" rel="tooltip" title="CV Feedback Awaiting"  style="">
 										FA  
 										</span>
-										
+									
+						<?php if($this->Session->read('USER.Login.roles_id') == '34'):?>
+									
 										<span data-toggle="dropdown" style="padding-top:1px;margin-left:1px;border:1px solid #fbfcbd" class=" dropdown-toggle  alert-action"><span class="caret" style="margin-top:7px;"></span></span>
-										
-										
-										
-										
+									
 										<ul class="dropdown-menu">
 	<li><a  href="<?php echo $this->webroot;?>position/update_cv/<?php echo  $resume['Resume']['id'];?>/<?php echo $this->request->params['pass'][0];?>/<?php echo  $resume['ReqResume']['id'];?>/shortlist/" val="40_60"  class="iframeBox sepV_a cboxElement"><i class="splashy-check"></i> Shortlisted</a></li>
 	<li><a  href="<?php echo $this->webroot;?>position/update_cv/<?php echo  $resume['Resume']['id'];?>/<?php echo $this->request->params['pass'][0];?>/<?php echo  $resume['ReqResume']['id'];?>/cv_reject/" val="40_60"  class="iframeBox sepV_a cboxElement"><i class="splashy-error_small"></i> Rejected</a></li>
 										</ul>
+										
+								<?php endif; ?>
+								
 									</div>	
 								
 	<?php elseif($resume['ReqResume']['stage_title'] == 'Shortlist' && $resume['ReqResume']['status_title'] == 'Rejected'):
@@ -658,6 +700,8 @@
 										<?php endif; ?>
 										
 										
+										<?php if($this->Session->read('USER.Login.roles_id') == '34'):?>
+
 										<span data-toggle="dropdown" style="padding-top:1px;margin-left:1px;border:1px solid #fbfcbd" class=" dropdown-toggle  alert-action"><span class="caret" style="margin-top:7px;"></span></span>
 										
 										<ul class="dropdown-menu">
@@ -677,6 +721,15 @@
 											<li><a  href="<?php echo $this->webroot;?>position/update_interview/<?php echo  $resume['Resume']['id'];?>/<?php echo $this->request->params['pass'][0];?>/<?php echo  $resume['ReqResume']['id'];?>/reject/<?php echo $int_lev_same;?>/" val="40_60"  class="iframeBox sepV_a cboxElement"><?php  if($int_level[0] > 0): echo $int_level[0]; endif;?> <i class="splashy-error_small"></i> Interview Rejected</a></li>
 										<?php endif; ?>
 										</ul>
+										<?php else:?>										
+										<span data-toggle="dropdown" style="padding-top:1px;margin-left:1px;border:1px solid #fbfcbd" class=" dropdown-toggle  alert-action"><span class="caret" style="margin-top:7px;"></span></span>
+										
+										<ul class="dropdown-menu">										
+										<li><a  href="<?php echo $this->webroot;?>position/view_interview_schedule/<?php echo  $resume['ReqResume']['id'];?>/<?php echo $int_lev_same;?>/" val="65_90"  class="iframeBox sepV_a cboxElement">View Interview Details</a></li>
+										
+										</ul>
+										<?php endif; ?>
+										
 									</div>	
 								
 <?php elseif((strstr($resume['ReqResume']['stage_title'], 'Interview') && $resume['ReqResume']['status_title'] == 'Selected')
@@ -713,12 +766,15 @@
 										OP  
 										</span>
 										
+										<?php if($this->Session->read('USER.Login.roles_id') == '34'):?>	
 										<span data-toggle="dropdown" style="padding-top:1px;margin-left:1px;border:1px solid #fbfcbd" class=" dropdown-toggle  alert-action"><span class="caret" style="margin-top:7px;"></span></span>
 										
 										<ul class="dropdown-menu">
 											<li><a  href="<?php echo $this->webroot;?>position/update_offer/<?php echo  $resume['Resume']['id'];?>/<?php echo $this->request->params['pass'][0];?>/<?php echo  $resume['ReqResume']['id'];?>/offer_accept/" val="40_70"  class="iframeBox sepV_a cboxElement"><i class="splashy-check"></i> Accepted</a></li>
 											<li><a  href="<?php echo $this->webroot;?>position/update_offer/<?php echo  $resume['Resume']['id'];?>/<?php echo $this->request->params['pass'][0];?>/<?php echo  $resume['ReqResume']['id'];?>/offer_decline/" val="40_60"  class="iframeBox sepV_a cboxElement"><i class="splashy-error_small"></i> Declined</a></li>
 										</ul>
+										<?php endif; ?>
+										
 									</div>	
 										
 									<!--div class="btn-group">
@@ -763,7 +819,8 @@ $action = 1;?>
 										<span class="btn-mini alert alert-success alert-action" rel="tooltip" title="Joining <?php echo $st_title;?>"   style="background-image:none;cursor:default;margin-bottom:0px;">
 										JA  
 										</span>
-										
+									
+								<?php if($this->Session->read('USER.Login.roles_id') == '34'):?>										
 										<span data-toggle="dropdown" style="padding-top:1px;margin-left:1px;border:1px solid #fbfcbd" class=" dropdown-toggle  alert-action"><span class="caret" style="margin-top:7px;"></span></span>
 										
 									
@@ -772,6 +829,8 @@ $action = 1;?>
 											<li><a  href="<?php echo $this->webroot;?>position/update_joining/<?php echo  $resume['Resume']['id'];?>/<?php echo $this->request->params['pass'][0];?>/<?php echo  $resume['ReqResume']['id'];?>/not_joined/" val="40_70"  class="iframeBox sepV_a cboxElement">Not Joined</a></li>
 											<li><a  href="<?php echo $this->webroot;?>position/update_joining/<?php echo  $resume['Resume']['id'];?>/<?php echo $this->request->params['pass'][0];?>/<?php echo  $resume['ReqResume']['id'];?>/deferred/" val="40_70"  class="iframeBox sepV_a cboxElement">Deferred</a></li>
 										</ul>
+									<?php endif; ?>
+									
 									</div>	
 								
 <?php elseif($resume['ReqResume']['stage_title'] == 'Joining' && $resume['ReqResume']['status_title'] == 'Not Joined'):
@@ -805,7 +864,7 @@ $action = 1;?>
 										<span class="btn-mini alert alert-success alert-action legendView" rel="tooltip" title="Billing Awaiting"   style="">
 										BA  
 										</span>
-										
+									<?php if($this->Session->read('USER.Login.roles_id') == '34'):?>		
 										<span data-toggle="dropdown" style="padding-top:1px;margin-left:1px;border:1px solid #fbfcbd" class=" dropdown-toggle  alert-action"><span class="caret" style="margin-top:7px;"></span></span>
 										
 										
@@ -813,7 +872,7 @@ $action = 1;?>
 										<ul class="dropdown-menu">
 											<li><a href="<?php echo $this->webroot;?>hiring/add_billing.php?res_id=<?php echo $resume['Resume']['id'];?>&req_res_id=<?php echo $resume['ReqResume']['id'];?>">Add Billing</a></li>
 										</ul>
-									
+									<?php endif; ?>
 								</div>
 	
 <?php elseif($resume['ReqResume']['status_title'] == 'Joined'  && $resume['ReqResume']['bill_ctc'] != '0.00'):?>
@@ -848,7 +907,7 @@ $action = 1;?>
 						<input type="hidden" id="cv_url" value="<?php echo $this->webroot;?>position/send_cv/">
 
 												
-					<?php if($multi_send_cv == '1'):?>	
+					<?php if($multi_send_cv == '1' && $this->Session->read('USER.Login.roles_id') == '34'):?>	
 						<div class="btn-group upload_row sepH_b">
 								<button data-toggle="dropdown" class="btn btn-info dropdown-toggle">Action <span class="caret"></span></button>
 								<ul class="dropdown-menu">
@@ -859,7 +918,7 @@ $action = 1;?>
 						
 						
 				
-					<?php if($multi_show_interview == '1'):?>		
+					<?php if($multi_show_interview == '1' && $this->Session->read('USER.Login.roles_id') == '34'):?>		
 					<div class="btn-group status_row sepH_b dn">
 								<button data-toggle="dropdown" class="btn btn-info  dropdown-toggle">Action <span class="caret"></span></button>
 								<ul class="dropdown-menu">

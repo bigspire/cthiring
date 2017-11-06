@@ -35,11 +35,11 @@
 								<?php endif; ?>
 								
 								
-							<?php if($create_resume == '1'):?>
-<a rel="tooltip"  title="Upload New Resume" href="<?php echo $this->webroot;?>hiring/upload_resume.php" 
+							<?php // if($create_resume == '1'):?>
+<!--a rel="tooltip"  title="Upload New Resume" href="<?php echo $this->webroot;?>hiring/upload_resume.php" 
 					 val="40_50"  class="iframeBox sepV_a cboxElement">
-					<input value="Upload Resume" type="button" class="btn btn-info"></a>	
-					<?php endif; ?>
+					<input value="Upload Resume" type="button" class="btn btn-info"></a-->	
+					<?php // endif; ?>
 						</div>
 						
 						<?php if($this->request->query['action'] == 'created'):	?>					
@@ -166,12 +166,12 @@
 										<th width="70"><?php echo $this->Paginator->sort('mobile', 'Mobile', array('escape' => false, 'direction' => 'desc'));?></th>
 										<th width="80"><?php echo $this->Paginator->sort('email', 'Email Id', array('escape' => false, 'direction' => 'desc'));?></th>
 										<!--th width="120"><?php echo $this->Paginator->sort('present_employer', 'Employer', array('escape' => false, 'direction' => 'desc'));?></th-->
-										<th width="60"><?php echo $this->Paginator->sort('total_exp', 'Exp.', array('escape' => false, 'direction' => 'desc'));?></th>
+										<th width="120"><?php echo $this->Paginator->sort('total_exp', 'Exp.', array('escape' => false, 'direction' => 'desc'));?></th>
 										<th width="80"><?php echo $this->Paginator->sort('ResLocation.location', 'Location', array('escape' => false, 'direction' => 'desc'));?></th>
 										<!--th width="90"><?php echo $this->Paginator->sort('education', 'Qualification', array('escape' => false, 'direction' => 'desc'));?></th-->
 										<!--th width="50"><?php echo $this->Paginator->sort('present_ctc', 'Present CTC', array('escape' => false, 'direction' => 'desc'));?></th>
 										<th width="50"><?php echo $this->Paginator->sort('expected_ctc', 'Expected CTC', array('escape' => false, 'direction' => 'desc'));?></th-->
-										<th width="120"><?php echo $this->Paginator->sort('status', 'Current Status', array('escape' => false, 'direction' => 'desc'));?></th>
+										<th width="80"><?php echo $this->Paginator->sort('status', 'Current Status', array('escape' => false, 'direction' => 'desc'));?></th>
 										<th width="75"><?php echo $this->Paginator->sort('Creator.first_name', 'Created By', array('escape' => false, 'direction' => 'desc'));?></th>
 										<th width="90" style="text-align:center">Actions</th>
 										<th width="75"><?php echo $this->Paginator->sort('created_date', 'Created', array('escape' => false, 'direction' => 'desc'));?></th>
@@ -190,7 +190,7 @@
 										<td><?php echo $this->Functions->get_format_text($res['Resume']['mobile']);?></td>
 										<td><?php echo $this->Functions->get_format_text($res['Resume']['email_id']);?></td>
 										<!--td><?php echo $res['Resume']['present_employer'];?></td-->
-										<td><?php echo $res['Resume']['total_exp'];?></td>
+										<td><?php echo $this->Functions->show_exp_details($res['Resume']['total_exp']);?></td>
 										<td><?php echo $res['ResLocation']['location'] ? $res['ResLocation']['location'] : $res['Resume']['present_location'];?></td>
 										<!--td><?php echo $res['Resume']['education'];?></td-->
 										<!--td><?php if(!empty($res['Resume']['present_ctc'])): echo $res['Resume']['present_ctc'].' L'; endif; ?></td>
@@ -205,16 +205,26 @@
 									</button>
 										<ul class="dropdown-menu">
 										
+													<li><a href="<?php echo $this->webroot;?>resume/download_doc/<?php echo $res['ResDoc']['resume'];?>/">Candidate Resume</a></li>
+
+													
+										<?php if($res['Position']['resume_type'] == 'S' || $res['Position']['resume_type'] == ''):?>
 											<li><a href="<?php echo $this->webroot;?>resume/profile_snapshot/<?php echo $res['ResDoc']['resume'];?>/<?php echo $res['Resume']['modified_date'] ? strtotime($res['Resume']['modified_date']) : strtotime($res['Resume']['created_date']);?>/">Snapshot</a></li>
-											<li><a href="<?php echo $this->webroot;?>resume/download_doc/<?php echo $res['ResDoc']['resume'];?>/">Candidate Resume</a></li>
-											<?php if($res['Resume']['autoresume_modified']):?>
+											<?php endif; ?>
+
+											
+											<?php if($res['Resume']['autoresume_modified']  && $res['Position']['resume_type'] == 'F'):?>
 											<li><a href="<?php echo $this->webroot;?>resume/autoresume/<?php echo $res['ResDoc']['resume'];?>/<?php echo strtotime($res['Resume']['autoresume_modified']);?>">Fully Formatted Resume</a></li>
 											<?php endif; ?>
+											
+								
 										<li class="divider"></li>
 			
+			<?php if($res['Position']['resume_type'] == 'S' || $res['Position']['resume_type'] == ''):?>
 			<li><a class="iframeBox" val="70_100" href="<?php echo $this->webroot;?>resume/profile_snapshot/<?php echo $res['ResDoc']['resume'];?>/<?php echo $res['Resume']['modified_date'] ? strtotime($res['Resume']['modified_date']) : strtotime($res['Resume']['created_date']);?>/view/">View Snapshot</a></li>
-
-			<?php if($res['Resume']['autoresume_modified']):?>
+			<?php endif; ?>
+			
+			<?php if($res['Resume']['autoresume_modified'] && $res['Position']['resume_type'] == 'F'):?>
 			<li><a class="iframeBox" val="70_100"  href="<?php echo $this->webroot;?>resume/autoresume/<?php echo $res['ResDoc']['resume'];?>/<?php echo strtotime($res['Resume']['autoresume_modified']);?>/view/">View Formatted Resume</a></li>
 			<?php endif; ?>
 											
@@ -229,9 +239,11 @@
 									<button data-toggle="dropdown" rel="tooltip" title="Edit" class="btn btn-mini dropdown-toggle"><i class="icon-pencil"></i> <span class="caret"></span>
 									</button>
 										<ul class="dropdown-menu">
+											<?php if($res['Position']['resume_type'] == 'S' || $res['Position']['resume_type'] == ''):?>
 											<li><a href="<?php echo $this->webroot;?>hiring/edit_resume.php?id=<?php echo $res['Resume']['id'];?>">Resume</a></li>
+											<?php else: ?>
 											<li><a href="<?php echo $this->webroot;?>hiring/add_formatted_resume.php?id=<?php echo $res['Resume']['id'];?>&resume=<?php echo $res['Resume']['autoresume_modified'];?>">Fully Formatted Resume</a></li>
-
+											<?php endif; ?>
 										</ul>
 									</div>	
 									

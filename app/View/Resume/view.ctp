@@ -61,7 +61,7 @@
 									<div class="tab-content"  style="overflow:auto;max-height:300px;">
 										<div class="tab-pane active" id="mbox_Personal">
 																						
-							<div class="span6">
+							<div class="span4">
 							<table class="table table-bordered table-striped dataTable" style="margin-bottom:0">
 								<tbody>
 								<tr>
@@ -69,7 +69,7 @@
 										<td><?php echo ucwords($resume_data['Position']['job_title']);?></td>
 									</tr>
 									<tr class="">
-										<td width="120" class="tbl_column">Candidate Name</td>
+										<td width="130" class="tbl_column">Candidate Name</td>
 										<td><?php echo ucwords($resume_data['Resume']['first_name'].' '.$resume_data['Resume']['last_name']);?></td>	
 									</tr>
 									<tr class="">
@@ -92,7 +92,7 @@
 									</tr>
 									<tr>
 										<td class="tbl_column">Total Years of Exp</td>
-										<td><?php echo $this->Functions->check_exp($resume_data['Resume']['total_exp']);?></td>	
+										<td><?php echo $this->Functions->show_exp_details($resume_data['Resume']['total_exp']);?></td>	
 									</tr>
 									
 								
@@ -137,12 +137,12 @@
 							</table>
 							</div>
 
-							<div class="span6">
+							<div class="span8">
 							<table class="table table-bordered dataTable table-striped " style="margin-bottom:0">
 								<tbody>	
 									<tr>
-										<td  class="tbl_column" width="120">CTC</td>
-										<td>
+										<td  class="" width="140">CTC</td>
+										<td >
 										<?php echo $resume_data['Resume']['present_ctc'];?>
 										<?php echo $this->Functions->get_ctc_type($resume_data['Resume']['present_ctc_type']);?> - 
 										<?php echo $resume_data['Resume']['expected_ctc'];?>
@@ -150,7 +150,7 @@
 										</td>	
 									</tr>	
 									<tr>
-									<td  class="tbl_column" width="120">Notice Period</td>
+									<td  class="tbl_column" width="">Notice Period</td>
 										<td><?php echo $this->Functions->get_notice($resume_data['Resume']['notice_period']);?></td>	
 									</tr>										
 									<tr>
@@ -162,15 +162,15 @@
 										<td><?php echo $this->Functions->check_marital($resume_data['Resume']['marital_status']);?></td>
 									</tr>
 									<tr>
-										<td class="tbl_column">Family (Dependents) </td>
+										<td class="tbl_column" width="140" style="width:140px">Family (Dependents) </td>
 										<td><?php echo $resume_data['Resume']['family'];?></td>
 									</tr>
 									<tr class="">
-										<td width="120" class="tbl_column">Present Location</td>
+										<td width="" class="tbl_column">Present Location</td>
 										<td><?php echo $resume_data['Resume']['present_location'];?></td>	
 									</tr>
 									<tr class="">
-										<td width="120" class="tbl_column">Native Location</td>
+										<td width="" class="tbl_column">Native Location</td>
 										<td><?php echo $resume_data['Resume']['native_location'];?></td>	
 									</tr>
 									
@@ -184,7 +184,7 @@
 									</tr>
 									
 									<tr>										
-										<td  class="" width="120">Skills</td>
+										<td  class="" width="">Skills</td>
 										<td><?php echo $resume_data['Resume']['skills'];?></td>
 											
 									</tr>
@@ -348,21 +348,73 @@
 					 </div>
 		<div class="tab-pane" id="mbox_consultant">
 																						
-							<div class="span12">
+							<div class="span6">
 							<table class="table table-bordered  dataTable" style="margin-bottom:0">
 								<tbody>
 									<tr  class="tbl_row">
-										<td width="120" class="tbl_column">Consultant Assessment</td>
+										<td width="150" class="tbl_column">Consultant Assessment</td>
 										<td><?php echo $edu['Resume']['consultant_assess']; ?></td>	
 									</tr>		
-									<tr>
-										<td width="120" class="tbl_column">Interview Availability</td>
-										<td><?php echo $edu['Resume']['interview_avail']; ?></td>	
+											<tr class="">
+										<td width="120" class="tbl_column">Rate Technical Skills <span class="f_req"></span></td>
+										<td>
+<ul class="ratingList">
+<?php $skill_parse = explode(',',$skill_data['Position']['tech_skill']);
+$unserialize = unserialize($resume_data['Resume']['tech_skill_rate']);
+
+foreach($skill_parse as $key => $skill):?>
+
+  <li><?php echo ucwords($skill);?>
+  <input name="tsr[]" type="hidden" value="<?php echo $unserialize[$skill];?>"  data-readonly   class="rating" data-fractions="2"/>
+  <span class="label label-info"><?php echo $unserialize[$skill];?></span></li>
+<?php endforeach; ?> 
+
+
+
+</ul>
+ 
+    <!-- Custom CSS -->
+ 
+										</td>	
 									</tr>								
 								</tbody>
 							</table>
 							</div>
+<div class="span6">
+							<table class="table table-bordered  dataTable" style="margin-bottom:0">
+								<tbody>
+								
+								<tr class="tbl_row">
+										<td width="150" class="tbl_column">Interview Availability</td>
+										<td><?php echo $edu['Resume']['interview_avail']; ?></td>	
+									</tr>
+									
+									
+									<tr class="">
+										<td width="120" class="tbl_column">Rate Behavioural Skills </td>
+										<td>
+<ul class="ratingList">
+ 
+<?php $skill_parse = explode(',',$skill_data['Position']['behav_skill']);
+$unserialize = unserialize($resume_data['Resume']['behav_skill_rate']);
+foreach($skill_parse as $key => $skill):?>
 
+  <li><?php echo ucwords($skill);?>
+  <input name="tsr[]" type="hidden" value="<?php echo $unserialize[$skill];?>"  data-readonly  class="rating" data-fractions="2"/>
+  <span class="label label-info"><?php echo $unserialize[$skill];?></span></li>
+<?php endforeach; ?> 
+
+ 
+ 
+</ul>
+ 
+										<!--label for="reg_city" generated="true" class="error">{$interview_availabilityErr}</label-->
+										</td>	
+									</tr>
+																	
+								</tbody>
+							</table>
+							</div>
 							</div>
 								</div>	
 								</div>
