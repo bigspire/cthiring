@@ -926,6 +926,7 @@ $(document).ready(function() {
 		// if no records selected
 		if(data_sel != '1'){
 			alert('Please select atleast a record to proceed!');
+			return false;
 		}else{
 			$(this).colorbox({href:$('#cv_url').val()+'multi_select/'+sel_item, iframe:true, rel: 'nofollow',  width:'65%', height:'90%',opacity:   '.8', 	  scrolling: true, fixed:true,overlayClose:false, escKey: false,
 			onClosed:function(){					

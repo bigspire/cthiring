@@ -740,7 +740,8 @@ class PositionController extends AppController {
 		"group_concat(distinct AH.first_name  SEPARATOR ', ') ac_holder","group_concat(distinct concat(TeamMember.first_name,' ',TeamMember.last_name)) team_member2",
 		'skills','Contact.first_name','Contact.email','Contact.mobile','Contact.phone','Contact.id','FunctionArea.function',
 		'Position.created_by','Position.is_approve','tech_skill','behav_skill','job_desc_file','hide_contact','resume_type',
-		'ReqStatus.id','Position.plain_jd','group_concat(ReqTeam.no_req) team_req');
+		'ReqStatus.id','Position.plain_jd','group_concat(ReqTeam.no_req) team_req','group_concat(distinct ReqTeam.users_id) team_mem_id',
+		'group_concat(distinct CAH.users_id) ac_holder_id');
 		$data = $this->Position->find('all', array('fields' => $fields,'conditions' => array('Position.id' => $id),
 		'joins' => $options));
 		$this->set('position_data', $data[0]);
@@ -1018,12 +1019,13 @@ class PositionController extends AppController {
 					$resume_data = $this->ReqResume->Resume->find('all', array('conditions' => array('Resume.id' => $res_id),
 					'fields' => array('ResDoc.resume','Resume.created_date','Resume.modified_date'), 'joins' => $options));
 					// parse the file name			
-					/*
+					
 					$updated = $resume_data[0]['Resume']['modified_date'] ? $resume_data[0]['Resume']['modified_date'] : $resume_data[0]['Resume']['created_date'];
 					$snap_file = substr($resume_data[0]['ResDoc']['resume'], 0, strlen($resume_data[0]['ResDoc']['resume']) - 5);
 					$pdf_date = date('d-m-Y', strtotime($updated));				
-					$resume_path = '../../hiring/uploads/snapshotmerged/'.$this->Functions->filter_file($snap_file).'_'.$pdf_date.'.pdf';
-					*/
+					// $resume_path = '../../hiring/uploads/snapshotmerged/'.$this->Functions->filter_file($snap_file).'_'.$pdf_date.'.pdf';
+					$resume_path = '../../hiring/uploads/resume/'.$resume_data[0]['ResDoc']['resume'];
+					
 					// get contact details		
 					$client_data = $this->ReqResume->Position->findById($pos_id, array('fields' => 'client_contact_id','job_title','location'));
 					$this->loadModel('Contact');
@@ -1036,7 +1038,7 @@ class PositionController extends AppController {
 					$vars = array('from_name' => $from, 'to_name' => ucwords($to_name), 'position' => $this->request->data['Position']['job_title'],'msg'=> $split_msg[0], 'location' => $this->request->data['Position']['location']);
 					// save the mail box
 					$this->save_mail_box($split_msg[1], $split_msg[0], $req_res_id);
-					if(!$this->send_email($split_msg[1], 'send_cv', $this->Session->read('USER.Login.email_id'), $contact_data['Contact']['email'],$vars)){	
+					if(!$this->send_email($split_msg[1], 'send_cv', $this->Session->read('USER.Login.email_id'), $contact_data['Contact']['email'],$vars,$resume_path)){	
 						// show the msg.								
 						$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Problem in sending the mail to client...', 'default', array('class' => 'alert alert-error'));				
 					}else{						
@@ -1114,31 +1116,118 @@ class PositionController extends AppController {
 			'Resume.modified_date','ReqResume.stage_title','ReqResume.status_title','Designation.designation','Resume.present_ctc_type','Resume.expected_ctc_type',
 			'Resume.gender','Resume.marital_status','Resume.family','Resume.present_location','Resume.native_location', 'Resume.dob','Resume.consultant_assess',
 			'Resume.interview_avail','ResDoc.resume','Position.job_title','Position.location','Position.job_desc','Contact.first_name'
-			,'Contact.mobile','Recruiter.first_name','Recruiter.last_name','Client.client_name','Recruiter.signature');
+			,'Contact.mobile','Recruiter.first_name','Recruiter.last_name','Client.client_name','Recruiter.signature','Contact.title',
+			'Position.created_date', 'Position.modified_date');
 			$cand_data = $this->Position->find('all', array('fields' => $fields,'conditions' => array('Resume.id' => $res_id),
 			'joins' => $options));
 			// print_r($cand_data);
 			$cand_name = ucwords($cand_data[0]['Resume']['first_name'].' '.$cand_data[0]['Resume']['last_name']);
 			$rec_name = ucwords($cand_data[0]['Recruiter']['first_name'].' '.$cand_data[0]['Recruiter']['last_name']);
 			$signature = $cand_data[0]['Recruiter']['signature'];
+			$contact_title = $cand_data[0]['Contact']['title']  == '1' ? 'Mr.' : 'Ms';
+			$position_date = $cand_data[0]['Position']['modified_date'] != '' ? $cand_data[0]['Position']['modified_date'] : $cand_data[0]['Position']['created_date'];
 			$this->set('candidate_name', $cand_name);
 			// get resume education details
 			$this->loadModel('ResEdu');
 			$edu_data = $this->ResEdu->find('all', array('conditions' => array('resume_id' => $res_id), 'fields' => array('percent_mark','year_passing','college',
 			'course_type','university','location','ResDegree.degree','ResSpec.spec'), 'order' => array('ResEdu.id' => 'desc')));
 			// get resume experience details
+			$options = array(			
+				array('table' => 'resume',
+						'alias' => 'Resume',					
+						'type' => 'LEFT',
+						'conditions' => array('`Resume`.`id` = `ResExp`.`resume_id`',
+						'ResExp.is_recent' => '1')
+				)
+			);
 			$this->loadModel('ResExp');
-			$exp_data = $this->ResExp->find('all', array('conditions' => array('resume_id' => $res_id), 'fields' => array('experience','work_location','skills',
-			'company','other_info','Designation.designation'), 'order' => array('ResExp.id' => 'desc')));
+			$exp_data = $this->ResExp->find('all', array('conditions' => array('Resume.id' => $res_id), 'fields' => array('experience','work_location','skills',
+			'company','other_info','Designation.designation','Resume.first_name','Resume.last_name'),  'joins' => $options));
+			// iterate the experience details
+			$exp_table .= "<table  width='90%' border='0' cellspacing='2' cellpadding='5' style='border:1px solid #ededed; font:bold 13px Arial'>";
+			$exp_table .= "<tr><td>S. No.</td><td>Candidate Name</td><td>Present Company</td><td>Present Designation</td></tr>";
+			foreach($exp_data as $key => $exp){
+				$exp_table .= "<tr  style='font-weight:normal'>";
+				$exp_table .= "<td width='50'>";
+				$exp_table .= ++$key;
+				$exp_table .= "</td>";
+				$exp_table .= "<td  width='120'>";
+				$exp_table .= ucwords($exp['Resume']['first_name'].' '.$exp['Resume']['last_name']);
+				$exp_table .= "</td>";
+				$exp_table .= "<td  width='140'>";
+				$exp_table .= $exp['Designation']['designation'];
+				$exp_table .= "</td>";
+				$exp_table .= "<td  width='140'>";
+				$exp_table .= $exp['ResExp']['company'];
+				$exp_table .= "</td>";
+				$exp_table .= "</tr>";
+
+			}
+			$exp_table .= "</table>";
+			// get resume experience details of previous candidates
+			$options = array(
+				array('table' => 'resume',
+						'alias' => 'Resume',					
+						'type' => 'LEFT',
+						'conditions' => array('`Resume`.`id` = `ReqResume`.`resume_id`')
+				),
+				array('table' => 'res_employer',
+						'alias' => 'ResExp',					
+						'type' => 'LEFT',
+						'conditions' => array('`ReqResume`.`resume_id` = `ResExp`.`resume_id`',
+						'ResExp.is_recent' => '1')
+				),
+				array('table' => 'requirements',
+						'alias' => 'Position',					
+						'type' => 'LEFT',
+						'conditions' => array('`Position`.`id` = `ReqResume`.`requirements_id`')
+				),
+				array('table' => 'designation',
+						'alias' => 'Designation',					
+						'type' => 'LEFT',
+						'conditions' => array('`Designation`.`id` = `ResExp`.`designation_id`')
+				)
+			);
+			$this->loadModel('ReqResumeStatus');
+			$prev_exp_data = $this->ReqResumeStatus->find('all', array('conditions' => array('ReqResumeStatus.status_title' => 'CV-Sent',
+			'Position.id' => $pos_id), 'fields' => array('ResExp.experience','ResExp.work_location','ResExp.skills',
+			'ResExp.company','ResExp.other_info','Designation.designation','Resume.first_name','Resume.last_name'),
+			'group' => array('Resume.id'), 'joins' => $options));
+			// iterate the experience details
+			$prev_exp_table .= "<table  width='90%' border='0' cellspacing='2' cellpadding='5' style='border:1px solid #ededed; font:bold 13px Arial'>";
+			$prev_exp_table .= "<tr><td>S. No.</td><td>Candidate Name</td><td>Present Company</td><td>Present Designation</td></tr>";
+			foreach($prev_exp_data as $key => $exp){
+				$prev_exp_table .= "<tr  style='font-weight:normal'>";
+				$prev_exp_table .= "<td width='50'>";
+				$prev_exp_table .= ++$key;
+				$prev_exp_table .= "</td>";
+				$prev_exp_table .= "<td  width='120'>";
+				$prev_exp_table .= ucwords($exp['Resume']['first_name'].' '.$exp['Resume']['last_name']);
+				$prev_exp_table .= "</td>";
+				$prev_exp_table .= "<td  width='140'>";
+				$prev_exp_table .= $exp['Designation']['designation'];
+				$prev_exp_table .= "</td>";
+				$prev_exp_table .= "<td  width='140'>";
+				$prev_exp_table .= $exp['ResExp']['company'];
+				$prev_exp_table .= "</td>";
+				$prev_exp_table .= "</tr>";
+
+			}
+			$prev_exp_table .= "</table>";
 			// get the mail template details
 			$this->loadModel('MailTemplate');
 			$data = $this->MailTemplate->findById($mailtemplete, array('fields' => 'subject','message'));
 			$loc = $cand_data[0]['ResLoc']['location'] ? $cand_data[0]['ResLoc']['location'] : $cand_data[0]['Resume']['present_location'];
 			$tags = array('[candidate_name]','[mobile]','[email_id]','[position]','[address]','[location]','[designation]','[experience]',	'[client]','[client_contact_name]','[client_contact_no]','[job_location]','[job_desc]','[function]','[today_date]','[recruiter_name]',
-			'[signature]');
+			'[signature]','[client_contact_title]','[account_holder_name]','[position_date]','[sent_candidates]','[previous_sent_candidates]');
+			
 			$template_data = array($cand_name,$cand_data[0]['Resume']['mobile'],$cand_data[0]['Resume']['email_id'], 
-			$cand_data[0]['Position']['job_title'],	$cand_data[0]['Position']['address1']. '<br>'.$cand_data[0]['Position']['address2'],$loc,	$cand_data[0]['Designation']['designation'],$this->Functions->check_exp($cand_data[0]['Position']['total_exp']),	$cand_data[0]['Client']['client_name'],$cand_data[0]['Contact']['first_name'],$cand_data[0]['Contact']['mobile'],	$cand_data[0]['Position']['location'],$cand_data[0]['Position']['job_desc'],$cand_data[0]['FunctionArea']['function'],	date('d-M, Y'),
-			$rec_name, $signature);
+			$cand_data[0]['Position']['job_title'],	$cand_data[0]['Position']['address1']. '<br>'.$cand_data[0]['Position']['address2'],
+			$loc,	$cand_data[0]['Designation']['designation'],$this->Functions->check_exp($cand_data[0]['Position']['total_exp']),	
+			$cand_data[0]['Client']['client_name'],$cand_data[0]['Contact']['first_name'],$cand_data[0]['Contact']['mobile'],	
+			$cand_data[0]['Position']['location'],$cand_data[0]['Position']['job_desc'],$cand_data[0]['FunctionArea']['function'],	
+			date('d-M, Y'),	$rec_name, $signature,$contact_title,$rec_name, $this->Functions->format_date($position_date),
+			$exp_table,$prev_exp_table);
 			$body_text = str_replace($tags, $template_data, $data['MailTemplate']['message']);
 			$subject_text = str_replace($tags, $template_data, $data['MailTemplate']['subject']);
 			$this->set('subject_'.$mailtemplete, $subject_text);
