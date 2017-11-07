@@ -1040,11 +1040,7 @@ if(!empty($_POST)){
 			$myTaskConvertOffice->download('uploads/autoresumepdf/');   
 			
 			// once successfully created, redirect the page
-			if($_GET['resume'] != ''){
-				header('Location: ../resume/?action=auto_modified');
-			}else{
-				header('Location: ../resume/?action=auto_created');
-			}
+			header('Location: ../resume/?action=auto_modified');
 		} 
 	}else{
 		$smarty->assign('tab_open_resume', ($tab1 == 'fail' ? 'tab1' : ($tab2 == 'fail' ? 'tab2' : ($tab3 == 'fail' ? 'tab3' : ($tab4 == 'fail' ? 'tab4' : ($tab5 == 'fail' ? 'tab5' : ''))))));

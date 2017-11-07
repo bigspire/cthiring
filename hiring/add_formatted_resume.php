@@ -601,7 +601,8 @@ if(!empty($_POST)){
 			'".$fun->is_white_space($mysql->real_escape_str($_POST['candidate_brief']))."',
 			'".$fun->is_white_space($mysql->real_escape_str($_POST['credential_shortlisting']))."',
 			'".$fun->is_white_space($mysql->real_escape_str($_POST['relevant_exposure']))."',
-			'".$fun->is_white_space($mysql->real_escape_str($_POST['vital_info_interview']))."')";
+			'".$fun->is_white_space($mysql->real_escape_str($_POST['vital_info_interview']))."',
+			'".$mysql->real_escape_str($_SESSION['resume_doc_id'])."')";
 		try{
 			if(!$result = $mysql->execute_query($query)){
 				throw new Exception('Problem in updating personal details');
@@ -660,7 +661,7 @@ if(!empty($_POST)){
 			$universityData = $_POST['university_'.$i];
 		
 			// query to update education details
-			$query = "CALL add_full_res_education('$getid','".$fun->is_white_space($mysql->real_escape_str($gradeData))."',
+			$query = "CALL add_full_res_education('$resume_id','".$fun->is_white_space($mysql->real_escape_str($gradeData))."',
 				'".$mysql->real_escape_str($year_of_passData)."','".$fun->is_white_space($mysql->real_escape_str($collegeData))."',
 				'".$mysql->real_escape_str($grade_typeData)."','".$fun->is_white_space($mysql->real_escape_str($universityData))."',
 				'".$fun->is_white_space($mysql->real_escape_str($loactionData))."','".$date."','N',
@@ -708,7 +709,7 @@ if(!empty($_POST)){
 			$reporting_toData = $_POST['reporting_to_'.$i];
 			
 			// query to add experience details
-			$query = "CALL add_full_res_experience('$getid','".$mysql->real_escape_str($desigData)."',
+			$query = "CALL add_full_res_experience('$resume_id','".$mysql->real_escape_str($desigData)."',
 				'".$mysql->real_escape_str($from_month_exp)."',
 				'".$mysql->real_escape_str($from_year_exp)."',
 				'".$mysql->real_escape_str($to_month_exp)."',
@@ -743,7 +744,7 @@ if(!empty($_POST)){
 			$train_locationData = $_POST['train_location_'.$i];
 			
 			// query to add experience details
-			$query = "CALL add_full_res_training('$getid','".$mysql->real_escape_str($train_yearData)."',
+			$query = "CALL add_full_res_training('$resume_id','".$mysql->real_escape_str($train_yearData)."',
 				'".$fun->is_white_space($mysql->real_escape_str($descriptionData))."',
 				'".$fun->is_white_space($mysql->real_escape_str($programtitleData))."',
 				'".$fun->is_white_space($mysql->real_escape_str($train_locationData))."','N')";
