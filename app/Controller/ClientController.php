@@ -65,12 +65,69 @@ class ClientController extends AppController {
 		
 		// for director and BH
 		
+		// for director and BH		
 		if($this->Session->read('USER.Login.roles_id') == '33'){
 			$show = 'all';
 			$team_cond = false;
 		}else{
 			$show = '1';
 			$team_cond = true;
+		}
+		
+		
+		
+		// get the team members
+		$result = $this->Client->get_team($this->Session->read('USER.Login.id'),$show);
+		$data[] =  $this->Session->read('USER.Login.id');
+
+		if(!empty($result)){
+			$this->set('approveUser', '1');
+			// for drop down listing
+			$format_list = $this->Functions->format_dropdown($result, 'u','id','first_name', 'last_name');
+			$this->set('empList', $format_list);
+			foreach($result as $rec){
+				$data[] =  $rec['u']['id'];
+			}			
+		}
+		
+		
+		if($team_cond){
+				$teamCond = array('OR' => array(
+					'ReqResume.created_by' =>  $data,
+					'ReqTeam.users_id' => $data,
+					'AH.users_id' => $data,
+					'Client.created_by' => $data						
+				)
+			);
+		}
+		
+		
+		/*
+		// check role based access
+		if($this->Session->read('USER.Login.roles_id') == '34'   && !$team_cond){ // account holder
+			$empCond = array('AH.users_id' => $this->Session->read('USER.Login.id'));
+		}else if($this->Session->read('USER.Login.roles_id') == '30'   && !$team_cond){ // recruiter
+			$empCond = array('OR' => array(
+					'ReqResume.created_by' =>  $this->Session->read('USER.Login.id'),
+					'ReqTeam.users_id' => $this->Session->read('USER.Login.id')
+					)
+			);
+			//$empCond = array('ReqResumeStatus.created_by' => $this->Session->read('USER.Login.id'),
+			//'ReqResumeStatus.stage_title' => 'Validation - Account Holder', 'ReqResumeStatus.status_title' => 'Validated');		
+		}
+		
+		*/
+		
+		if($this->Session->read('USER.Login.roles_id') == '33' || $this->Session->read('USER.Login.roles_id') == '35'){ // director & BD
+			$empCond = '';
+			$team_cond = '';
+		}
+		
+		/*		
+		if($this->Session->read('USER.Login.roles_id') == '33'){
+			$show = 'all';
+		}else{
+			$show = '1';
 		}
 		
 		
@@ -86,29 +143,26 @@ class ClientController extends AppController {
 		
 		// check role based access
 		
-		if($this->Session->read('USER.Login.roles_id') == '34'  && !$team_cond){ // account holder
-			$empCond = array('AH.users_id' => $this->Session->read('USER.Login.id'));
-		}else if($this->Session->read('USER.Login.roles_id') == '30'  && !$team_cond){ // recruiter
+		if($this->Session->read('USER.Login.roles_id') == '33'){ // director & BD
+			$empCond = '';
+		}else{
 			$empCond = array('OR' => array(
 					'ReqResume.created_by' =>  $this->Session->read('USER.Login.id'),
-					'ReqTeam.users_id' => $this->Session->read('USER.Login.id')
+					'ReqTeam.users_id' => $this->Session->read('USER.Login.id'),
+					'Client.created_by' => $this->Session->read('USER.Login.id'),
+					'AH.users_id' => $this->Session->read('USER.Login.id')
 					)
 			);		
-			//$empCond = array('ReqResumeStatus.created_by' => $this->Session->read('USER.Login.id'),
-			//'ReqResumeStatus.stage_title' => 'Validation - Account Holder', 'ReqResumeStatus.status_title' => 'Validated');		
-		}else if($this->Session->read('USER.Login.roles_id') == '33' || $this->Session->read('USER.Login.roles_id') == '35'
-		|| $this->Session->read('USER.Login.roles_id') == '39'){ // director & BD
-			$empCond = '';
-		}
+		}	
 		
-		
-		
+		*/
 			// for employee condition
 		if($this->request->query['emp_id'] != ''){ 
 			$empCond = array('Client.created_by' => $this->request->query['emp_id']);
 		}else if($this->Session->read('USER.Login.rights') != '5'){			
 			// $empCond = array('ReqResume.created_by' => $this->Session->read('USER.Login.id'));
 		}
+		
 			$options = array(			
 				array('table' => 'requirements',
 						'alias' => 'Position',					
@@ -164,7 +218,7 @@ class ClientController extends AppController {
 		// for export
 		if($this->request->query['action'] == 'export'){ 
 			$data = $this->Client->find('all', array('fields' => $fields,'conditions' => 
-			array($keyCond,$date_cond,$stCond,$empCond,$approveCond),'order' => array('created_date' => 'desc'), 
+			array($keyCond,$date_cond,$stCond,$empCond,$approveCond,$teamCond),'order' => array('created_date' => 'desc'), 
 			'group' => array('Client.id'), 'joins' => $options));
 			// get the client contacts
 			$options = array(		
@@ -186,7 +240,7 @@ class ClientController extends AppController {
 			$this->Excel->generate('clients', $data, $data, 'Client Report', 'ClientDetails'.date('ddmmyy'));
 		}
 		$this->paginate = array('fields' => $fields,'limit' => '25','conditions' => array($keyCond,$date_cond,$stCond,
-		$empCond,$approveCond),
+		$empCond,$approveCond,$teamCond),
 		'order' => array('created_date' => 'desc'),	'group' => array('Client.id'), 'joins' => $options);
 		$data = $this->paginate('Client');
 		$this->set('data', $data);

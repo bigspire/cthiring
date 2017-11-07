@@ -117,6 +117,8 @@ class ResumeController extends AppController {
 					array($this->Functions->format_date_save($start), $this->Functions->format_date_save($end_search))));
 			
 		}
+		
+		/*
 			// check role based access
 		if($this->Session->read('USER.Login.roles_id') == '34' && !$team_cond){ // account holder
 			// $empCond = array('AH.users_id' => $this->Session->read('USER.Login.id'));
@@ -136,7 +138,12 @@ class ResumeController extends AppController {
 			$empCond = '';
 			$teamCond = '';
 		}
+		*/
 		
+		if($this->Session->read('USER.Login.roles_id') == '33' || $this->Session->read('USER.Login.roles_id') == '35'){ // director & BD
+			$empCond = '';
+			$team_cond = '';
+		}
 		
 		$options = array(			
 				array('table' => 'req_resume',

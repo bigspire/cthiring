@@ -138,6 +138,7 @@ class PositionController extends AppController {
 		}
 		
 		
+		/*
 		
 		// check role based access
 		if($this->Session->read('USER.Login.roles_id') == '34'   && !$team_cond){ // account holder
@@ -154,8 +155,12 @@ class PositionController extends AppController {
 			$empCond = '';
 			$team_cond = '';
 		}
+		*/
 		
-		
+		if($this->Session->read('USER.Login.roles_id') == '33' || $this->Session->read('USER.Login.roles_id') == '35'){ // director & BD
+			$empCond = '';
+			$team_cond = '';
+		}
 	
 		// set keyword condition
 		if($this->params->query['keyword'] != ''){
