@@ -63,10 +63,9 @@ class ClientController extends AppController {
 			$stCond = array('Client.status' => $status);
 		}
 		
-		// for director and BH
 		
-		// for director and BH		
-		if($this->Session->read('USER.Login.roles_id') == '33'){
+		// for director and BDH		
+		if($this->Session->read('USER.Login.roles_id') == '33' || $this->Session->read('USER.Login.roles_id') == '35'){
 			$show = 'all';
 			$team_cond = false;
 		}else{

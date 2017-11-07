@@ -87,10 +87,10 @@
 							</label>
 						<?php endif; ?>
 							
-							<label>Unread: 
-							<?php echo $this->Form->input('unread', array('div'=> false,'type' => 'checkbox', 'label' => false, 'class' => 'input-medium', 'title' => 'Check for Unread Positions', 'checked' => $this->params->query['unread'], 'required' => false, 'placeholder' => '')); ?> 
+							<!--label>Unread: 
+							<?php // echo $this->Form->input('unread', array('div'=> false,'type' => 'checkbox', 'label' => false, 'class' => 'input-medium', 'title' => 'Check for Unread Positions', 'checked' => $this->params->query['unread'], 'required' => false, 'placeholder' => '')); ?> 
 
-							</label>
+							</label-->
 							
 							
 							
@@ -136,7 +136,7 @@
 										<th width="95"><?php echo $this->Paginator->sort('Creator.first_name', 'Created By', array('escape' => false, 'direction' => 'desc', 'rel' => 'tooltip', 'title' => 'Sort by Ascending or Descending'));?></th>
 										<th width="75"><?php echo $this->Paginator->sort('created_date', 'Created', array('escape' => false, 'direction' => 'desc', 'rel' => 'tooltip', 'title' => 'Sort by Ascending or Descending'));?></th>
 										<th width="75"><?php echo $this->Paginator->sort('modified_date', 'Modified', array('escape' => false, 'direction' => 'desc', 'rel' => 'tooltip', 'title' => 'Sort by Ascending or Descending'));?></th>
-										<th width="60" style="text-align:center">Message</th>
+										<!--th width="60" style="text-align:center">Message</th-->
 										<th width="50" style="text-align:center">Actions</th>
 									</tr>
 								</thead>
@@ -170,13 +170,13 @@
 						<td width=""><?php echo $this->Functions->format_date($req['Position']['created_date']);?></td>
 						<td width=""><?php echo $this->Functions->format_date($req['Position']['modified_date']);?></td>
 						
-						<th  style="text-align:center">
+						<!--th  style="text-align:center">
 					<a href="<?php echo $this->webroot;?>position/view_message/<?php echo $req['Position']['id'];?>/" class="btn  btn-mini iframeBox unreadLink" val="70_80" title="Messages" rel="tooltip" class="sepV_a"><i class="icon-envelope"></i></a>
 
 									<?php if($req[0]['read_count'] > 0):?>
 									<span class="label label-important unreadCount"><?php echo $req[0]['read_count'];?></span>
 									<?php endif; ?>
-						</th>
+						</th-->
 									
 	<td class="actionItem" style="text-align:center">
 	<?php if($req['Position']['status'] == 'A' && $this->Session->read('USER.Login.id') == $req['Position']['created_by']):?>

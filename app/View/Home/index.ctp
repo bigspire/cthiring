@@ -29,11 +29,11 @@
 										<button val="<?php echo $this->webroot;?>home/index/ac_view/" rel="tooltip" title="<?php echo $this->Functions->show_view_detail('ac_view',$ac_dash,$rec_dash,$bd_dash);?>" class="dash_view btn <?php echo $ac_dash;?>">Account Holder</button>
 										<button val="<?php echo $this->webroot;?>home/index/rec_view/" rel="tooltip" title="<?php echo $this->Functions->show_view_detail('rec_view', $ac_dash,$rec_dash,$bd_dash);?>" class="dash_view btn <?php echo $rec_dash;?>">Recruiter</button>
 									
-									<?php elseif($this->Session->read('USER.Login.roles_id') == '33' || $this->Session->read('USER.Login.roles_id') == '35'  || $this->Session->read('USER.Login.roles_id') == '26'
-									 || $this->Session->read('USER.Login.roles_id') == '39'): ?>
-									<button val="<?php echo $this->webroot;?>home/index/bd_view/" rel="tooltip" title="<?php echo $this->Functions->show_view_detail('bd_view',$ac_dash,$rec_dash,$bd_dash);?>" class="dash_view btn <?php echo $bd_dash;?>">Biz. Development</button>
+									<?php // elseif($this->Session->read('USER.Login.roles_id') == '33' || $this->Session->read('USER.Login.roles_id') == '35'  || $this->Session->read('USER.Login.roles_id') == '26'
+									 // || $this->Session->read('USER.Login.roles_id') == '39'): ?>
+									<!--button val="<?php echo $this->webroot;?>home/index/bd_view/" rel="tooltip" title="<?php echo $this->Functions->show_view_detail('bd_view',$ac_dash,$rec_dash,$bd_dash);?>" class="dash_view btn <?php echo $bd_dash;?>">Biz. Development</button>
 									<button val="<?php echo $this->webroot;?>home/index/rec_view/" rel="tooltip" title="<?php echo $this->Functions->show_view_detail('rec_view', $ac_dash,$rec_dash,$bd_dash);?>" class="dash_view btn <?php echo $rec_dash;?>">Recruiter</button>
-									<button val="<?php echo $this->webroot;?>home/index/ac_view/" rel="tooltip" title="<?php echo $this->Functions->show_view_detail('ac_view',$ac_dash,$rec_dash,$bd_dash);?>" class="dash_view btn <?php echo $ac_dash;?>">Account Holder</button>
+									<button val="<?php echo $this->webroot;?>home/index/ac_view/" rel="tooltip" title="<?php echo $this->Functions->show_view_detail('ac_view',$ac_dash,$rec_dash,$bd_dash);?>" class="dash_view btn <?php echo $ac_dash;?>">Account Holder</button-->
 
 									
 									<?php endif; ?>

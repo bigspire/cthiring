@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-11-06 18:27:46
+/* Smarty version 3.1.29, created on 2017-11-07 21:30:36
   from "C:\xampp\htdocs\ctsvn\cthiring\hiring\templates\include\header.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5a005c4a4360f0_20157723',
+  'unifunc' => 'content_5a01d8a49628d1_31321812',
   'file_dependency' => 
   array (
     '2cc32a09905a93cae1ddf68e0518ebdd3aca7f41' => 
     array (
       0 => 'C:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\templates\\include\\header.tpl',
-      1 => 1509972659,
+      1 => 1510066998,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_5a005c4a4360f0_20157723 ($_smarty_tpl) {
+function content_5a01d8a49628d1_31321812 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -279,15 +279,15 @@ resume/">Search Resume <!-- span class="label-bub label-info white"><?php echo $
                                             <a data-toggle="dropdown" class="dropdown-toggle " href="#"><i class="icon-download-alt icon-white"></i> Reports <b class="caret"></b></a>
                                           <ul class="dropdown-menu">
 											<?php if ($_smarty_tpl->tpl_vars['module']->value['recruiter_report'] == '1') {?>
-                                                <li><a href="recruiter_performance.php">Recruiter Performance</a></li>
+                                                <li><a href="#">Recruiter Performance</a></li>
 											<?php }?>
 										  
 											<?php if ($_smarty_tpl->tpl_vars['module']->value['account_holder_report'] == '1') {?>
-                                                <li><a href="ah_performance.php">Account Holder Performance</a></li>
+                                                <li><a href="#">Account Holder Performance</a></li>
 										    <?php }?>
 											
 											<?php if ($_smarty_tpl->tpl_vars['module']->value['location_report'] == '1') {?>
-												<li><a href="location_performance.php">Location Performance</a></li>
+												<li><a href="#">Location Performance</a></li>
                                                <!-- <li><a href="#">Clientwise Performance</a></li>-->
 											<?php }?>
 											
@@ -296,31 +296,31 @@ resume/">Search Resume <!-- span class="label-bub label-info white"><?php echo $
 											<?php }?>
 											
 											<?php if ($_smarty_tpl->tpl_vars['module']->value['revenue_report'] == '1') {?>
-												<li><a href="revenue.php">Revenue </a></li>
+												<li><a href="#">Revenue </a></li>
 											<?php }?>
 											
 											<?php if ($_smarty_tpl->tpl_vars['module']->value['tat_report'] == '1') {?>
-												<li><a href="tat_time.php">TAT Time </a></li>
+												<li><a href="#">TAT Time </a></li>
 											<?php }?>
 											
 											<?php if ($_smarty_tpl->tpl_vars['module']->value['collection_report'] == '1') {?>
-												<li><a href="collection_table.php">Collection Table </a></li>
+												<li><a href="#">Collection Table </a></li>
 											<?php }?>
 											
 											<?php if ($_smarty_tpl->tpl_vars['module']->value['client_retention_report'] == '1') {?>
-												<li><a href="client_retention.php">Client Retention Table </a></li>
+												<li><a href="#">Client Retention Table </a></li>
 											<?php }?>
 											
 											<?php if ($_smarty_tpl->tpl_vars['module']->value['incentive_report'] == '1') {?>
-												<li><a href="incentive_report.php">Incentive </a></li>
+												<li><a href="#">Incentive </a></li>
 											<?php }?>
 											
 											<?php if ($_smarty_tpl->tpl_vars['module']->value['daily_report'] == '1') {?>
-												<li><a href="daily_performance.php">Daily Performance </a></li>
+												<li><a href="#">Daily Performance </a></li>
 											<?php }?>
 											
 											<?php if ($_smarty_tpl->tpl_vars['module']->value['weekly_report'] == '1') {?>
-												<li><a href="weekly_performance.php">Weekly Performance </a></li>
+												<li><a href="#">Weekly Performance </a></li>
 											<?php }?>
                                             </ul>
 										</li>

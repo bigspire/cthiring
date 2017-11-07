@@ -202,7 +202,7 @@ class HomeController  extends AppController {
 			$client_emp_cond = array('ClientAH.users_id' => $this->Session->read('USER.Login.id'));
 			$pos_emp_cond2 = array('Position.created_by' => $this->Session->read('USER.Login.id'));
 			$this->set('ac_dash', 'active');
-		}else if($dash_type == 'bd_view'  || ($this->Session->read('USER.Login.roles_id') == '33' || $this->Session->read('USER.Login.roles_id') == '35' || $this->Session->read('USER.Login.roles_id') == '26' || $this->Session->read('USER.Login.roles_id') == '39')){
+		}else if($this->Session->read('USER.Login.roles_id') == '33'){ // director
 			$resume_options = array(			
 				array('table' => 'req_resume',
 						'alias' => 'ReqResume',					
@@ -225,6 +225,53 @@ class HomeController  extends AppController {
 			);
 			// $client_emp_cond = array('Client.created_by' => $this->Session->read('USER.Login.id'));
 			$this->set('bd_dash', 'active');
+		}else if($this->Session->read('USER.Login.roles_id') == '38'){ // branch head
+			// get all the branch team members
+			
+			
+		}else{ // for all roles, same as recruiter
+			$cv_emp_cond = array('ReqResume.created_by' => $this->Session->read('USER.Login.id'));
+			$int_emp_cond = array('ReqResume.created_by' => $this->Session->read('USER.Login.id'));
+			$pos_emp_cond = array('ReqResume.created_by' => $this->Session->read('USER.Login.id'));
+			$cv_sent_emp_cond = array('Resume.created_by' => $this->Session->read('USER.Login.id'));
+			$resume_options = array(			
+				array('table' => 'req_resume',
+						'alias' => 'ReqResume',					
+						'type' => 'LEFT',
+						'conditions' => array('`ReqResume`.`resume_id` = `Resume`.`id`')
+				)
+			);
+			$cli_options = array(						
+				array('table' => 'requirements',
+						'alias' => 'Position',					
+						'type' => 'LEFT',
+						'conditions' => array('`Position`.`clients_id` = `Client`.`id`')
+				),
+				array('table' => 'req_team',
+						'alias' => 'ReqTeam',					
+						'type' => 'LEFT',
+						'conditions' => array('`ReqTeam`.`requirements_id` = `Position`.`id`')
+				),
+				array('table' => 'req_resume',
+						'alias' => 'ReqResume',					
+						'type' => 'LEFT',
+						'conditions' => array('`ReqResume`.`requirements_id` = `Position`.`id`')
+				),
+				array('table' => 'req_approval_status',
+						'alias' => 'PositionStatus',					
+						'type' => 'LEFT',
+						'conditions' => array('`PositionStatus`.`requirements_id` = `Position`.`id`', 'member_approve' => 'A')
+				)
+			);	
+			$pos_emp_cond2 = array('ReqResume.created_by' => $this->Session->read('USER.Login.id'));			
+			
+			// $client_emp_cond = array('ReqTeam.users_id' => $this->Session->read('USER.Login.id'));
+			
+			$client_emp_cond = array('OR' => array(
+					'ReqResume.created_by' =>  $this->Session->read('USER.Login.id'),
+					'ReqTeam.users_id' => $this->Session->read('USER.Login.id')
+					)
+			);
 		}
 		
 		// for branch condition

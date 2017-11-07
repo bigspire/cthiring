@@ -157,7 +157,7 @@ class PositionController extends AppController {
 		}
 		*/
 		
-		if($this->Session->read('USER.Login.roles_id') == '33' || $this->Session->read('USER.Login.roles_id') == '35'){ // director & BD
+		if($this->Session->read('USER.Login.roles_id') == '33' || $this->Session->read('USER.Login.roles_id') == '35'){ // director & BDH
 			$empCond = '';
 			$team_cond = '';
 		}

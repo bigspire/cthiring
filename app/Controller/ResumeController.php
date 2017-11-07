@@ -62,8 +62,9 @@ class ResumeController extends AppController {
 			$keyCond = array('Client.client_name'  => $this->params->query['keyword']);
 
 		}
-		// for director and BH
-		if($this->Session->read('USER.Login.roles_id') == '33'){
+		
+		// for director and BDH
+		if($this->Session->read('USER.Login.roles_id') == '33' || $this->Session->read('USER.Login.roles_id') == '35'){
 			$show = 'all';
 			$team_cond = false;
 		}else{

@@ -43,7 +43,7 @@ class AppController extends Controller {
 			$this->front_active_menus();
 			if(!$this->request->is('ajax')){
 				// $this->check_sync_time();
-				$this->get_unread_count();
+				// $this->get_unread_count();
 				$this->get_approve_client_count();
 				$this->get_approve_req_count();
 			}
