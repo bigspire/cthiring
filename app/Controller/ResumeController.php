@@ -67,6 +67,7 @@ class ResumeController extends AppController {
 			$show = 'all';
 			$team_cond = false;
 		}else{
+			$show = '1';
 			$team_cond = true;
 		}
 		
