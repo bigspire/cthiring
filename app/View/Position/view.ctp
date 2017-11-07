@@ -6,12 +6,12 @@
                 
 			
 					
-					<div class="row-fluid">
+					<div class="row-fluid printArea">
 					
 						 <div class="span12">
 
  <nav>
-                        <div id="jCrumbs" class="breadCrumb module">
+                        <div id="jCrumbs" class="breadCrumb module no-print">
                             <ul>
                                 <li>
                                     <a href="<?php echo $this->webroot;?>home/"><i class="icon-home"></i></a>
@@ -27,7 +27,7 @@
                         </div>
                     </nav>
 					
-					<div class="srch_buttons">
+					<div class="srch_buttons no-print">
 				<?php if($this->Session->read('USER.Login.id') == $position_data['Position']['created_by'] && $this->Session->read('USER.Login.roles_id') == '34' && $position_data['Position']['is_approve'] == 'A'):?>	
 				<a rel="tooltip jsRedirect" href="<?php echo $this->webroot;?>position/edit/<?php echo $this->request->params['pass'][0];?>" title="Edit Position">
 				<input rel="tooltip" title="Edit Position" value="Edit" type="button" class="btn btn-info"></a>
@@ -36,7 +36,8 @@
 					<!--<a href="#"  class="sepV_a" title="Delete Position">
 					<input value="Delete" type="button" class="btn btn-danger"/></a>-->
 					
-					<?php if($create_resume == '1' && $position_data['Position']['is_approve'] == 'A'):?>
+					<?php $team = explode(',', $position_data[0]['team_mem_id']);?>
+					<?php if($create_resume == '1' && $position_data['Position']['is_approve'] == 'A' && in_array($this->Session->read('USER.Login.id'), $team)):?>
 					<a rel="tooltip"  title="Upload New Resume" href="<?php echo $this->webroot;?>hiring/upload_resume.php?client_id=<?php echo $position_data['Client']['id'];?>&req_id=<?php echo $this->request->params['pass'][0];?>"
 					 val="40_50"  class="iframeBox sepV_a cboxElement">
 					<input value="Upload Resume" type="button" class="btn btn-warning"></a>					
@@ -55,7 +56,7 @@
 							<div class="heading">
 										<ul class="nav nav-tabs">
 										<li class="active"><a class="restabChange" rel="position"  href="#mbox_basic" data-toggle="tab"><i class="splashy-document_a4_edit"></i>  Basic </a></li>
-										<li class=""><a class="restabChange" rel="interview"  href="#mbox_description" data-toggle="tab"><i class="splashy-document_a4_add"></i>  Job Description </a></li>
+										<li class="no-print"><a class="restabChange" rel="interview"  href="#mbox_description" data-toggle="tab"><i class="splashy-document_a4_add"></i>  Job Description </a></li>
 										<!--li class=""><a class="restabChange" rel="interview"  href="#mbox_co-ordination" data-toggle="tab"><i class="splashy-mail_light_down"></i>  Co-ordination </a></li-->
 									</ul>
 										
@@ -121,7 +122,7 @@
 											
 									</tr>	
 									
-										<tr>
+										<tr class="no-print">
 										
 										<td class="tbl_column">Resume Type </td>
 										<td><?php echo $this->Functions->get_resume_type($position_data['Position']['resume_type']);?></td>
@@ -165,7 +166,7 @@
 							</table>
 							</div>
 							
-								<div class="span6">
+								<div class="span6 no-print">
 							<table class="table  table-striped  table-bordered dataTable" style="margin-bottom:0">
 								<tbody>									
 									<tr>
@@ -269,7 +270,7 @@
 							</div>
 							</div>
 									
-						<div class="tab-pane" id="mbox_description">
+						<div class="tab-pane no-print" id="mbox_description">
 										
 						<div class="span12">
 							<table class="table table-striped table-bordered dataTable" style="margin-bottom:0">
@@ -407,9 +408,9 @@
 										<?php $total = count($resume_data);?>
 										<li class="active uploadTab"><a href="#mbox_inbox" class="tabChange" val="<?php echo $total;?>" rel="upload_row"  data-toggle="tab"><i class="splashy-box_add"></i>  CV Uploaded <?php if($total):?><span class="label label-info"> <?php echo $total;?></span><?php endif; ?></a></li>
 
-										<li class="sentTab"><a href="#mbox_inbox" class="tabChange" val="<?php echo $cv_sent;?>" rel="sent_row"  data-toggle="tab"><i class="splashy-box_okay"></i>  CV Sent <?php if($sent_count):?><span class="label label-info"> <?php echo $sent_count;?></span><?php endif; ?></a></li>
+										<li class="sentTab no-print"><a href="#mbox_inbox" class="tabChange" val="<?php echo $cv_sent;?>" rel="sent_row"  data-toggle="tab"><i class="splashy-box_okay"></i>  CV Sent <?php if($sent_count):?><span class="label label-info"> <?php echo $sent_count;?></span><?php endif; ?></a></li>
 									
-										<li class="cvStatusTab"><a href="#mbox_inbox" class="tabChange"  rel="status_row"  data-toggle="tab"><i class="splashy-box_share"></i>  CV Status</a></li>
+										<li class="cvStatusTab no-print"><a href="#mbox_inbox" class="tabChange"  rel="status_row"  data-toggle="tab"><i class="splashy-box_share"></i>  CV Status</a></li>
 
 										<li><a href="#mbox_overall" class="tabChange overAllTab"  rel="overall_status_row"  data-toggle="tab"><i class="splashy-box_new"></i>  Overall Status</a></li>
 	
@@ -427,6 +428,7 @@
 									<div class="tab-pane active" id="mbox_inbox">											
 										
 
+										<?php $ac_member = explode(',', $position_data[0]['ac_holder_id']);	?>			
 
 							
 											<table data-msg_rowlink="a" class="tableID table table_vam mbox_table dTableR cvTable dataTable stickyTable" id="dt_inbox">
@@ -474,8 +476,10 @@
 												<?php foreach($resume_data as $resume):	?>
 													
 	<?php if($resume['ReqResume']['stage_title'] != 'Validation - Recruiter' && $resume['ReqResume']['stage_title'] != 'Validation - Account Holder'):?>
-	<?php $row_type = 'sent_row';
-	
+	<?php 
+	$row_type = 'sent_row';	
+	else:
+	$row_type = '';
 	endif; ?>
 		
 													
@@ -518,13 +522,13 @@
 														
 														<td style="text-align:center" class="actionItem upload_row">
 			<?php if($resume['ReqResume']['stage_title'] == 'Validation - Account Holder' &&
-										$resume['ReqResume']['status_title'] == 'Validated'  && $this->Session->read('USER.Login.roles_id') == '34'): $multi_send_cv = '1';?>
+										$resume['ReqResume']['status_title'] == 'Validated'  && $this->Session->read('USER.Login.roles_id') == '34'  && in_array($this->Session->read('USER.Login.id'), $ac_member)):
+										$multi_send_cv = '1';?>
 															
 					<span rel="tooltip" style="cursor:pointer" data-original-title="Send CV"><a href="<?php echo $this->webroot;?>position/send_cv/<?php echo $resume['Resume']['id']; ?>/<?php echo $this->request->params['pass'][0];?>/<?php echo $resume['ReqResume']['id']; ?>/" val="65_90"  class="iframeBox"><i class="splashy-arrow_medium_upper_right"></i></a></span>
 																
-																
 										<?php elseif($resume['ReqResume']['stage_title'] == 'Validation - Account Holder' &&
-										$resume['ReqResume']['status_title'] == 'Pending'  && $this->Session->read('USER.Login.roles_id') == '34'):?>
+										$resume['ReqResume']['status_title'] == 'Pending'  && $this->Session->read('USER.Login.roles_id') == '34'  && in_array($this->Session->read('USER.Login.id'), $ac_member)):?>
 													<div class="btn-group">		
 												<span rel="tooltip" data-toggle="dropdown"  style="cursor:pointer" data-original-title="Update CV"><i class="splashy-sprocket_light"></i>
 																</span>
@@ -539,11 +543,12 @@
 																
 											
 											<?php elseif($resume['ReqResume']['stage_title'] == 'Validation - Account Holder' &&
-										$resume['ReqResume']['status_title'] == 'Rejected' && $this->Session->read('USER.Login.roles_id') == '34'):?>
+										$resume['ReqResume']['status_title'] == 'Rejected'):?>
 
 										<span rel="tooltip" style="cursor:" data-original-title="Account Holder - Rejected"><i class="splashy-thumb_down"></i></span>
 										
-										<?php else:?>										
+											<?php elseif($resume['ReqResume']['stage_title'] == 'Validation - Account Holder' &&
+										$resume['ReqResume']['status_title'] == 'Validated'):?>										
 										<span rel="tooltip" style="cursor:" data-original-title="Account Holder - Validated"><i class="splashy-thumb_up"></i></span>		
 
 										<?php endif; ?>	
@@ -942,10 +947,6 @@ $action = 1;?>
 							
 										</div>
 								
-									
-									
-									<div align="center" class="span6 tab-pane overall_status_row dn" id="mbox_overall">											
-									
 
 <?php
 $sent = $this->Functions->get_req_tab_count($resume_data, 'CV-Sent', 'status');
@@ -958,66 +959,86 @@ $offer =  $this->Functions->get_req_tab_count($resume_data, 'Offer','stage');
 $offer_rej =  $this->Functions->get_req_tab_count($resume_data, 'OfferReject','','offer_reject');
 $joined =  $this->Functions->get_req_tab_count($resume_data, 'Joined','status');
 $billing =  $this->Functions->get_req_tab_count($resume_data, '','','billing');
-$yrf =  $sent - ($shortlist  + $cv_reject)
-
+$yrf =  $sent - ($shortlist  + $cv_reject);
+$pending =  $this->Functions->get_req_tab_count($resume_data, 'pending','','validation');
+$validate =  $this->Functions->get_req_tab_count($resume_data, 'validated','','validation');
+$ac_reject =  $this->Functions->get_req_tab_count($resume_data, 'rejected','','validation');
 ?>									
-										<table data-msg_rowlink="a"  class="overall_status_row dn table table_vam mbox_table dTableR cvTable dataTable stickyTable" id="dt_inbox">
+									
+									<div style="margin-left:0px" align="center" class="span6 tab-pane overall_status_row dn" id="mbox_overall">											
+									
+
+								
+										<table data-msg_rowlink="a"  class="overall_status_row dn table table-striped table-bordered table-condensed" id="dt_inbox">
 												<thead>
 												<tr class="">
 														<th width="250">Status</th>
-														<th>No. of Candidates</th>
+														<th style="text-align:center">No. of Candidates</th>
 													
 													</tr>
 											<tbody>
+												<tr class="">
+														<td>AH Validation Pending</td>
+														<th  style="text-align:center"><?php echo $pending;?></th>
+														</tr>
+														<tr class="">
+														<td>AH Validated</td>
+														<th  style="text-align:center"><?php echo $validate;?></th>
+														</tr>
+															<tr class="">
+														<td>AH Rejected</td>
+														<th  style="text-align:center"><?php echo $ac_reject;?></th>
+														</tr>
+																												
 														<tr class="">
 														<td>CV Sent</td>
-														<th><?php echo $sent;?></th>
+														<th  style="text-align:center"><?php echo $sent;?></th>
 														</tr>
 													<tr class="">
 														<td>CV Shortlisted </td>
-														<th><?php echo $shortlist;?></th>
+														<th  style="text-align:center"><?php echo $shortlist;?></th>
 														</tr>
 														<tr class="">
 														<td>CV Rejected</td>
-														<th><?php echo $cv_reject;?></th>
+														<th  style="text-align:center"><?php echo $cv_reject;?></th>
 														</tr>
 														<tr class="">
 														<td>Feedback Awaiting</td>
-														<th><?php echo $yrf > 0 ? $yrf : '';?></th>
+														<th  style="text-align:center"><?php echo $yrf > 0 ? $yrf : '';?></th>
 														</tr>
 														<tr class="">
-														<td>Interviewed</td>
-														<th><?php echo $interview;?></td>
+														<td>Candidates Interviewed</td>
+														<th  style="text-align:center"><?php echo $interview;?></td>
 														</tr>
 														
 														<tr class="">
 														<td>Interview Dropouts </td>
-														<th><?php echo $interview_not_att;?></td>
+														<th  style="text-align:center"><?php echo $interview_not_att;?></td>
 														</tr>
 														
 														<tr class="">
 														<td>Interview Rejected </td>
-														<th><?php echo $interview_reject;?></td>
+														<th  style="text-align:center"><?php echo $interview_reject;?></td>
 														</tr>
 														
 														<tr class="">
-														<td>Offered </td>
-														<th><?php echo $offer;?></td>
+														<td>Candidates Offered </td>
+														<th  style="text-align:center"><?php echo $offer;?></td>
 														</tr>
 														
 														<tr class="">
 														<td>Offer Dropouts  </td>
-														<th><?php echo $offer_rej;?></td>
+														<th  style="text-align:center"><?php echo $offer_rej;?></td>
 														</tr>
 														
 														<tr class="">
-														<td>Joined  </td>
-														<th><?php echo $joined;?></td>
+														<td>Candidates Joined  </td>
+														<th  style="text-align:center"><?php echo $joined;?></td>
 														</tr>
 														
 														<tr class="">
-														<td>Billed </td>
-														<th><?php echo $billing;?></td>
+														<td>Candidates Billed </td>
+														<th  style="text-align:center"><?php echo $billing;?></td>
 														</tr>
 											</tbody>
 										</table>
@@ -1035,8 +1056,11 @@ $yrf =  $sent - ($shortlist  + $cv_reject)
 						</div>
 					</div>
 					
-					<div class="form-actions">
+					<div class="form-actions no-print">
 	<a href="<?php echo $this->webroot;?>position/" rel="tooltip" title="Back to Positions"  class="jsRedirect"><button class="btn">Back</button></a>
+					
+	<a class="overall_status_row" href="javascript:void(0);" rel="tooltip" title="Print"  id="printId"><button class="btn btn-warning">Print</button></a>
+			
 					</div>
 								
                     </div>

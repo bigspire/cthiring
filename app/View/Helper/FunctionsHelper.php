@@ -162,6 +162,17 @@ class FunctionsHelper extends AppHelper {
 				if($record['ReqResume']['stage_title'] == 'Shortlist' && $record['ReqResume']['status_title']  == 'Rejected'){
 					$count++;
 				}
+			}else if($field == 'validation'){ 
+				if($record['ReqResume']['stage_title'] == 'Validation - Account Holder' && $record['ReqResume']['status_title']  == 'Pending'
+				&& $str == 'pending'){
+					$count++;
+				}else if($record['ReqResume']['stage_title'] == 'Validation - Account Holder' && $record['ReqResume']['status_title']  == 'Validated'
+				&& $str == 'validated'){
+					$count++;
+				}else if($record['ReqResume']['stage_title'] == 'Validation - Account Holder' && $record['ReqResume']['status_title']  == 'Rejected'
+				&& $str == 'rejected'){
+					$count++;
+				}
 			}else if($type == 'stage'){
 				if($record['ReqResume']['stage_title'] == $split_str[0] || $record['ReqResume']['stage_title'] == $split_str[1] || $record['ReqResume']['stage_title'] == $split_str[2]){
 					// avoid duplicates

@@ -64,6 +64,13 @@ class FunctionsComponent extends Component {
 		}
 	}
 	
+	/* function used to format the date */
+	public function format_date($date){ 
+		if(!empty($date) && $date!= '0000-00-00' && $date!= '0000-00-00 00:00:00'){
+			return date('d-M-Y',strtotime($date));
+		}
+	}
+	
 	/* function to format the date to show */
 	public function format_date_show($date){ 
 		$exp_date = explode('-', $date);
