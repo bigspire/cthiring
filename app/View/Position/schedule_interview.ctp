@@ -21,7 +21,7 @@
 <?php echo $this->Form->create('Position', array('id' => '', 'class' => 'formID')); ?>
 <div class="box">
 	<div class="box-title mb5">
-			<h4>Schedule / Re-Schedule Interview</h4>
+			<h4>Schedule Interview</h4>
 	</div>
 	
 	
@@ -33,9 +33,10 @@
 									<div class="w-box-content">
 										<div class="tabbable clearfix">
 											<ul class="nav nav-tabs" style="float:left;margin-left:15px;">
-												<li class="active"><a href="#tab1" data-toggle="tab" style="font-size:13px;">Interview Details</a></li>
-												<li class=""><a href="#tab2" data-toggle="tab" style="font-size:13px;">Interview Confirmation to Candidate</a></li>
-												<li><a href="#tab3" data-toggle="tab" style="font-size:13px;">Interview Confirmation to Clients</a></li>
+												<li class="active"><a href="#tab1" data-toggle="tab" style="font-size:12px;">Interview Details</a></li>
+												<li><a href="#tab3" data-toggle="tab" style="font-size:12px;">Interview Confirmation to Clients</a></li>
+												<li class=""><a href="#tab2" data-toggle="tab" style="font-size:12px;">Interview Confirmation to Candidate</a></li>
+
 											</ul>
 											<div class="tab-content">
 											
@@ -232,7 +233,7 @@
 </form>
 <?php endif; ?>	
 
-<input type="hidden" id="success_page" value="<?php echo $this->webroot;?>position/view/<?php echo $this->request->params['pass'][1]?>/?tab=cv_status"/>
+<input type="hidden" id="success_page" value="<?php echo $this->webroot;?>position/view/<?php echo $spec_id;?>/?tab=cv_status"/>
   </div>
 </div>
 </div> 

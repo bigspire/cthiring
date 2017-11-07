@@ -460,7 +460,7 @@
 													
 													
 														<tr class="dn status_row">
-										<th   style="text-align:center" width="50" class="table_checkbox"><input type="checkbox" name="select_rows" rel="intSel" class="select_rows"></th>
+										<th   style="text-align:center" width="50" class="table_checkbox"><input type="checkbox"  name="select_rows" rel="intSel" class="select_rows"></th>
 
 														<th width="250">Candidate Name</th>
 														<th style="text-align:center">Screening Status</th>
@@ -951,9 +951,9 @@ $action = 1;?>
 <li><span class="btn btn-mini alert alert-success legendView"> S </span> - Shortlisted</li>
 <li><span class="btn btn-mini alert alert-error legendView"> R </span> - Rejected	</li>
 <li><span class="btn-mini alert alert-success alert-action legendView"> ISA  </span> - Interview Schedule Awaiting	</li>
-<li><span class="btn btn-mini alert alert-success legendView"> 1IS </span> - First Interview Scheduled</li>
-<li><span class="btn btn-mini alert alert-success legendView"> 2IS </span> - Second Interview Scheduled</li>
-<li><span class="btn btn-mini alert alert-success legendView"> 3IS </span> - Third Interview Scheduled</li>
+<li><span class="btn-mini alert alert-success alert-action legendView"> 1IS </span> - First Interview Scheduled</li>
+<li><span class="btn-mini alert alert-success alert-action legendView"> 2IS </span> - Second Interview Scheduled</li>
+<li><span class="btn-mini alert alert-success alert-action legendView"> 3IS </span> - Third Interview Scheduled</li>
 <li><span class="btn-mini alert alert-success alert-action legendView"> OP  </span> - Offer Pending</li>
 <li><span class="btn btn-mini alert alert-success legendView"> OA </span> - Offer Accepted</li>
 <li><span class="btn btn-mini alert alert-error legendView"> OR </span> - Offer Rejected</li>

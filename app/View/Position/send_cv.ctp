@@ -73,7 +73,9 @@
 </div>
 </form>
 <?php endif; ?>	
-					<input type="hidden" id="success_page" value="<?php echo $this->webroot;?>position/view/<?php echo $this->request->params['pass'][1]?>/?tab=sent"/>
+
+
+	<input type="hidden" id="success_page" value="<?php echo $this->webroot;?>position/view/<?php echo $spec_id;?>/?tab=sent"/>
 
   </div>
 </div>

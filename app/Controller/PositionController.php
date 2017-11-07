@@ -984,72 +984,112 @@ class PositionController extends AppController {
 		$this->layout = 'framebox';
 		// when the values are not empty
 		if(!empty($res_id) && !empty($pos_id)){
+			// if multi option is selected
+			if($res_id == 'multi_select'){			
+				$resume_check = explode(',', $pos_id);
+				// iterate the candidates
+				foreach($resume_check as $check){
+					if(trim($check) != ''){
+						$check_ids = explode('-', $check);
+						// $chk_resume_id[] = $check_ids[0];	
+						$chk_pos_id[] = $check_ids[1];
+						$req_res_ids[] = $check_ids[2];
+						// save resume ids in array
+						$chk_resume_id_ar[] = $check_ids[0];
+					}
+				}
+				// get the candidate names
+				$options = array(			
+					array('table' => 'resume',
+							'alias' => 'Resume',					
+							'type' => 'LEFT',
+							'conditions' => array('`Resume`.`id` = `ReqResume`.`resume_id`')
+					)						
+				);
+					
+				$fields = array('Resume.first_name','Resume.last_name');
+				$cand_data = $this->Position->find('all', array('fields' => $fields,'conditions' => array('Resume.id' => $chk_resume_id_ar),
+				'group' => array('Resume.id'),'joins' => $options));
+				foreach($cand_data as $cand){
+					$can_name .= ucwords($cand['Resume']['first_name'].' '.$cand['Resume']['last_name']).', ';	
+				}				
+				$pos_id = $chk_pos_id[0];
+				$res_id = $chk_resume_id_ar[0];
+				$cand_name = substr($can_name, 0, strlen($can_name)-3);
+			}else{
+				$req_res_ids[] = $req_res_id;
+				
+			}
+			// for success page redirect
+			$this->set('spec_id', $pos_id);
+
 			// get the template details
-			$this->get_template_details($res_id,$pos_id, '1');
+			$this->get_template_details($res_id,$pos_id, '1','',$cand_name,$chk_resume_id_ar);
 			
 		}
-
 		// when the form submitted
 		if(!empty($this->request->data)){
 			// get the req. resume id
 			$this->loadModel('ReqResume');
-			//$req_res_id = $this->ReqResume->find('all', array('fields' => array('ReqResume.id'), 
-			//'conditions' => array('requirements_id' => $pos_id, 'resume_id' => $res_id)));
-			// save req resume table
-			$data = array('id' => $req_res_id ,'modified_date' => $this->Functions->get_current_date(),
-			'modified_by' => $this->Session->read('USER.Login.id'),	'stage_title' => 'Shortlist', 'status_title' => 'CV-Sent',
-			'cv_sent_date' => $this->Functions->get_current_date());
-			// save  req resume
-			if($this->ReqResume->save($data, array('validate' => false))){		
-				// save req resume status
-				$this->loadModel('ReqResumeStatus');
-				$data = array('req_resume_id' => $req_res_id, 'created_date' => $this->Functions->get_current_date(),
-				'created_by' => $this->Session->read('USER.Login.id'), 'stage_title' => 'Shortlist', 'status_title' => 'CV-Sent');
-				if($this->ReqResumeStatus->save($data, array('validate' => false))){
-					// get mail contents
-					$message = $this->get_template_details($res_id,$pos_id, '1');		
-					$split_msg = explode('|||', $message);
-					// get the resume details
-					$options = array(								
-							array('table' => 'resume_doc',
-									'alias' => 'ResDoc',					
-									'type' => 'INNER',
-									'conditions' => array('`ResDoc.id` = `Resume`.`resume_doc_id`', )
-								)
-						);
-					$resume_data = $this->ReqResume->Resume->find('all', array('conditions' => array('Resume.id' => $res_id),
-					'fields' => array('ResDoc.resume','Resume.created_date','Resume.modified_date'), 'joins' => $options));
-					// parse the file name			
-					
-					$updated = $resume_data[0]['Resume']['modified_date'] ? $resume_data[0]['Resume']['modified_date'] : $resume_data[0]['Resume']['created_date'];
-					$snap_file = substr($resume_data[0]['ResDoc']['resume'], 0, strlen($resume_data[0]['ResDoc']['resume']) - 5);
-					$pdf_date = date('d-m-Y', strtotime($updated));				
-					// $resume_path = '../../hiring/uploads/snapshotmerged/'.$this->Functions->filter_file($snap_file).'_'.$pdf_date.'.pdf';
-					$resume_path = '../../hiring/uploads/resume/'.$resume_data[0]['ResDoc']['resume'];
-					
-					// get contact details		
-					$client_data = $this->ReqResume->Position->findById($pos_id, array('fields' => 'client_contact_id','job_title','location'));
-					$this->loadModel('Contact');
-					$contact_data = $this->Contact->findById($client_data['Position']['client_contact_id'], array('fields' => 'Contact.first_name','Contact.last_name','Contact.email'));
-					// $sub = 'Manage Hiring - Resume sent by '.ucfirst($this->Session->read('USER.Login.first_name')).' '.ucfirst($this->Session->read('USER.Login.last_name'));
-					$from = ucfirst($this->Session->read('USER.Login.first_name')).' '.ucfirst($this->Session->read('USER.Login.last_name'));
-					$to_name = $contact_data['Contact']['first_name'].' '.$contact_data['Contact']['last_name'];
-					// send mail to client 
-					$contact_data['Contact']['email'] = 'testing7@bigspire.com'; // for testing
-					$vars = array('from_name' => $from, 'to_name' => ucwords($to_name), 'position' => $this->request->data['Position']['job_title'],'msg'=> $split_msg[0], 'location' => $this->request->data['Position']['location']);
-					// save the mail box
-					$this->save_mail_box($split_msg[1], $split_msg[0], $req_res_id);
-					if(!$this->send_email($split_msg[1], 'send_cv', $this->Session->read('USER.Login.email_id'), $contact_data['Contact']['email'],$vars,$resume_path)){	
-						// show the msg.								
-						$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Problem in sending the mail to client...', 'default', array('class' => 'alert alert-error'));				
-					}else{						
-						$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>CV Sent Successfully', 'default', array('class' => 'alert alert-success'));			
+			// iterate for multiple send CVs
+			foreach($req_res_ids as $req_res_id){
+				// save req resume table
+				$data = array('id' => $req_res_id ,'modified_date' => $this->Functions->get_current_date(),
+				'modified_by' => $this->Session->read('USER.Login.id'),	'stage_title' => 'Shortlist', 'status_title' => 'CV-Sent',
+				'cv_sent_date' => $this->Functions->get_current_date());
+				// save  req resume
+				if($this->ReqResume->save($data, array('validate' => false))){		
+					// save req resume status
+					$this->loadModel('ReqResumeStatus');
+					$data = array('req_resume_id' => $req_res_id, 'created_date' => $this->Functions->get_current_date(),
+					'created_by' => $this->Session->read('USER.Login.id'), 'stage_title' => 'Shortlist', 'status_title' => 'CV-Sent');
+					if($this->ReqResumeStatus->save($data, array('validate' => false))){
+						// get mail contents
+						$message = $this->get_template_details($res_id,$pos_id, '1','',$cand_name,$chk_resume_id_ar);		
+						$split_msg = explode('|||', $message);
+						// get the resume details
+						$options = array(								
+								array('table' => 'resume_doc',
+										'alias' => 'ResDoc',					
+										'type' => 'INNER',
+										'conditions' => array('`ResDoc.id` = `Resume`.`resume_doc_id`', )
+									)
+							);
+						$resume_data = $this->ReqResume->Resume->find('all', array('conditions' => array('Resume.id' => $chk_resume_id_ar ? $chk_resume_id_ar : $res_id),
+						'fields' => array('ResDoc.resume','Resume.created_date','Resume.modified_date'), 'joins' => $options));
+						// parse the file name			
+						foreach($resume_data as $resume_file){
+							$updated = $resume_file['Resume']['modified_date'] ? $resume_file['Resume']['modified_date'] : $resume_file['Resume']['created_date'];
+							$snap_file = substr($resume_file['ResDoc']['resume'], 0, strlen($resume_file['ResDoc']['resume']) - 5);
+							$pdf_date = date('d-m-Y', strtotime($updated));				
+							// $resume_path = '../../hiring/uploads/snapshotmerged/'.$this->Functions->filter_file($snap_file).'_'.$pdf_date.'.pdf';
+							$resume_path[] = '../../hiring/uploads/resume/'.$resume_file['ResDoc']['resume'];
+						}						
+						// $this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>CV Sent Successfully', 'default', array('class' => 'alert alert-success'));									
 					}
-					// if successfully update
-					$this->set('cv_update_status', 1);
-					// $this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>CV Sent Successfully', 'default', array('class' => 'alert alert-success'));									
-				}
+				}				
 			}
+			// get contact details		
+			$client_data = $this->ReqResume->Position->findById($pos_id, array('fields' => 'client_contact_id','job_title','location'));
+			$this->loadModel('Contact');
+			$contact_data = $this->Contact->findById($client_data['Position']['client_contact_id'], array('fields' => 'Contact.first_name','Contact.last_name','Contact.email'));
+			// $sub = 'Manage Hiring - Resume sent by '.ucfirst($this->Session->read('USER.Login.first_name')).' '.ucfirst($this->Session->read('USER.Login.last_name'));
+			$from = ucfirst($this->Session->read('USER.Login.first_name')).' '.ucfirst($this->Session->read('USER.Login.last_name'));
+			$to_name = $contact_data['Contact']['first_name'].' '.$contact_data['Contact']['last_name'];
+			// send mail to client 
+			$contact_data['Contact']['email'] = 'testing7@bigspire.com'; // for testing
+			$vars = array('from_name' => $from, 'to_name' => ucwords($to_name), 'position' => $this->request->data['Position']['job_title'],'msg'=> $split_msg[0], 'location' => $this->request->data['Position']['location']);
+			// save the mail box
+			$this->save_mail_box($split_msg[1], $split_msg[0], $req_res_id);
+			if(!$this->send_email($split_msg[1], 'send_cv', $this->Session->read('USER.Login.email_id'), $contact_data['Contact']['email'],$vars,$resume_path)){	
+				// show the msg.								
+				$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Problem in sending the mail to client...', 'default', array('class' => 'alert alert-error'));				
+			}else{						
+				$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>CV Sent Successfully', 'default', array('class' => 'alert alert-success'));			
+				// if successfully update
+				$this->set('cv_update_status', 1);
+			}
+			
 		}
 	}
 	
@@ -1070,7 +1110,7 @@ class PositionController extends AppController {
 	}
 	
 	/* function to get the template details */
-	public function get_template_details($res_id, $pos_id, $mailtemplete){
+	public function get_template_details($res_id, $pos_id, $mailtemplete,$int_candidates, $multi_candidates,$candidate_arr){
 		$options = array(			
 			array('table' => 'resume',
 					'alias' => 'Resume',					
@@ -1116,7 +1156,7 @@ class PositionController extends AppController {
 			'ResLocation.location', 'Resume.present_ctc','Resume.expected_ctc', 'Creator.first_name','Resume.created_date','Resume.notice_period',
 			'Resume.modified_date','ReqResume.stage_title','ReqResume.status_title','Designation.designation','Resume.present_ctc_type','Resume.expected_ctc_type',
 			'Resume.gender','Resume.marital_status','Resume.family','Resume.present_location','Resume.native_location', 'Resume.dob','Resume.consultant_assess',
-			'Resume.interview_avail','ResDoc.resume','Position.job_title','Position.location','Position.job_desc','Contact.first_name'
+			'Resume.interview_avail','ResDoc.resume','Position.job_title','Position.location','Position.job_desc','Contact.first_name','Contact.last_name'
 			,'Contact.mobile','Recruiter.first_name','Recruiter.last_name','Client.client_name','Recruiter.signature','Contact.title',
 			'Position.created_date', 'Position.modified_date');
 			$cand_data = $this->Position->find('all', array('fields' => $fields,'conditions' => array('Resume.id' => $res_id),
@@ -1127,7 +1167,7 @@ class PositionController extends AppController {
 			$signature = $cand_data[0]['Recruiter']['signature'];
 			$contact_title = $cand_data[0]['Contact']['title']  == '1' ? 'Mr.' : 'Ms';
 			$position_date = $cand_data[0]['Position']['modified_date'] != '' ? $cand_data[0]['Position']['modified_date'] : $cand_data[0]['Position']['created_date'];
-			$this->set('candidate_name', $cand_name);
+			$this->set('candidate_name', $multi_candidates ? $multi_candidates : $cand_name);
 			// get resume education details
 			$this->loadModel('ResEdu');
 			$edu_data = $this->ResEdu->find('all', array('conditions' => array('resume_id' => $res_id), 'fields' => array('percent_mark','year_passing','college',
@@ -1142,7 +1182,7 @@ class PositionController extends AppController {
 				)
 			);
 			$this->loadModel('ResExp');
-			$exp_data = $this->ResExp->find('all', array('conditions' => array('Resume.id' => $res_id), 'fields' => array('experience','work_location','skills',
+			$exp_data = $this->ResExp->find('all', array('conditions' => array('Resume.id' => $candidate_arr ? $candidate_arr : $res_id), 'fields' => array('experience','work_location','skills',
 			'company','other_info','Designation.designation','Resume.first_name','Resume.last_name'),  'joins' => $options));
 			// iterate the experience details
 			$exp_table .= "<table  width='90%' border='0' cellspacing='2' cellpadding='5' style='border:1px solid #ededed; font:bold 13px Arial'>";
@@ -1219,16 +1259,23 @@ class PositionController extends AppController {
 			$this->loadModel('MailTemplate');
 			$data = $this->MailTemplate->findById($mailtemplete, array('fields' => 'subject','message'));
 			$loc = $cand_data[0]['ResLoc']['location'] ? $cand_data[0]['ResLoc']['location'] : $cand_data[0]['Resume']['present_location'];
+			// form the tags
 			$tags = array('[candidate_name]','[mobile]','[email_id]','[position]','[address]','[location]','[designation]','[experience]',	'[client]','[client_contact_name]','[client_contact_no]','[job_location]','[job_desc]','[function]','[today_date]','[recruiter_name]',
-			'[signature]','[client_contact_title]','[account_holder_name]','[position_date]','[sent_candidates]','[previous_sent_candidates]');
-			
+			'[signature]','[client_contact_title]','[account_holder_name]','[position_date]','[sent_candidates]','[previous_sent_candidates]',
+			'[interview_candidates]','[interview_stage]','[interview_date]','[interview_duration]','[interview_mode]','[interview_venue]',
+			'[interview_contact_person]','[interview_contact_no]','[interview_additional]','[website]');
+			// form the templates data
 			$template_data = array($cand_name,$cand_data[0]['Resume']['mobile'],$cand_data[0]['Resume']['email_id'], 
-			$cand_data[0]['Position']['job_title'],	$cand_data[0]['Position']['address1']. '<br>'.$cand_data[0]['Position']['address2'],
+			ucwords($cand_data[0]['Position']['job_title']),	$cand_data[0]['Position']['address1']. '<br>'.$cand_data[0]['Position']['address2'],
 			$loc,	$cand_data[0]['Designation']['designation'],$this->Functions->check_exp($cand_data[0]['Position']['total_exp']),	
-			$cand_data[0]['Client']['client_name'],$cand_data[0]['Contact']['first_name'],$cand_data[0]['Contact']['mobile'],	
-			$cand_data[0]['Position']['location'],$cand_data[0]['Position']['job_desc'],$cand_data[0]['FunctionArea']['function'],	
+			ucwords($cand_data[0]['Client']['client_name']),ucwords($cand_data[0]['Contact']['first_name'].' '.$cand_data[0]['Contact']['last_name']),$cand_data[0]['Contact']['mobile'],	
+			ucfirst($cand_data[0]['Position']['location']),$cand_data[0]['Position']['job_desc'],$cand_data[0]['FunctionArea']['function'],	
 			date('d-M, Y'),	$rec_name, $signature,$contact_title,$rec_name, $this->Functions->format_date($position_date),
-			$exp_table,$prev_exp_table);
+			$exp_table,$prev_exp_table,$int_candidates, $this->request->data['Position']['interview_level'],$this->request->data['Position']['int_date'],
+			$this->request->data['Position']['int_time'],$this->request->data['Position']['interview_stage_id'],$this->request->data['Position']['venue'],
+			ucwords($this->request->data['Position']['contact_name']),$this->request->data['Position']['contact_no'],$this->request->data['Position']['additional'],
+			'www.career-tree.in');
+			
 			$body_text = str_replace($tags, $template_data, $data['MailTemplate']['message']);
 			$subject_text = str_replace($tags, $template_data, $data['MailTemplate']['subject']);
 			$this->set('subject_'.$mailtemplete, $subject_text);
@@ -1550,13 +1597,8 @@ class PositionController extends AppController {
 	/* function to schedule for interview */
 	public function schedule_interview($id, $pos_id, $req_res_id,$interview_level,$schedule_type, $multi_sel){
 		$this->layout = 'framebox';
-		if(!empty($id) && !empty($pos_id)){
-		
-			// for multiple interview
-			
-			// get the template details
-			$this->get_template_details($id,$pos_id, '3');
-			$this->get_template_details($id,$pos_id, '2');
+		// validate the fields
+		if(!empty($id) && !empty($pos_id)){		
 			// get interview levels
 			$int_levels = array('First Interview', 'Second Interview', 'Final Interview');
 			$this->set('int_levels', $int_levels);
@@ -1585,7 +1627,80 @@ class PositionController extends AppController {
 			$stage_list = $this->InterviewStage->find('list', array('fields' => array('id','interview_stage'), 
 			'order' => array('interview_stage ASC'),'conditions' => array('is_deleted' => 'N', 'status' => '1')));
 			$this->set('stageList', $stage_list);
+		}		
+		
+		// for multiple interview
+		if($id == 'multi_select'){			
+			$resume_check = explode(',', $pos_id);
+			// iterate the candidates
+			foreach($resume_check as $check){
+				if(trim($check) != ''){
+					$check_ids = explode('-', $check);
+					// $chk_resume_id = $check_ids[0];	
+					$chk_pos_id = $check_ids[1];
+					$req_res_ids[] = $check_ids[2];
+					// save resume ids in array
+					$chk_resume_id_ar[] = $check_ids[0];
+				}
+			}
+			// get the candidate names
+			$options = array(			
+				array('table' => 'resume',
+						'alias' => 'Resume',					
+						'type' => 'LEFT',
+						'conditions' => array('`Resume`.`id` = `ReqResume`.`resume_id`')
+				)						
+			);
+				
+			$fields = array('Resume.first_name','Resume.last_name', 'Resume.mobile');
+			$cand_data = $this->Position->find('all', array('fields' => $fields,'conditions' => array('Resume.id' => $chk_resume_id_ar),
+			'group' => array('Resume.id'),'joins' => $options));		
+			// iterate the candidate interview table
+			$int_table .= "<table  width='90%' border='0' cellspacing='2' cellpadding='5' style='border:1px solid #ededed; font:bold 13px Arial'>";
+			$int_table .= "<tr><td>S. No.</td><td>Candidate Name</td><td>Interview Stage</td><td>Interview Date</td><td>Interview Timing</td><td>Interview Mode</td>
+			<td>Contact No.</td></tr>";
+			foreach($cand_data as $key => $exp){
+				$int_table .= "<tr  style='font-weight:normal'>";
+				$int_table .= "<td width='50'>";
+				$int_table .= ++$key;
+				$int_table .= "</td>";
+				$int_table .= "<td  width='120'>";
+				$int_table .= ucwords($exp['Resume']['first_name'].' '.$exp['Resume']['last_name']);
+				$int_table .= "</td>";
+				$int_table .= "<td  width='140'>";
+				$int_table .= '[interview_stage]';
+				$int_table .= "</td>";
+				$int_table .= "<td  width='140'>";
+				$int_table .= '[interview_date]';
+				$int_table .= "</td>";
+				$int_table .= "<td  width='140'>";
+				$int_table .= '[interview_duration]';
+				$int_table .= "</td>";
+				$int_table .= "<td  width='140'>";
+				$int_table .= '[interview_mode]';
+				$int_table .= "</td>";
+				$int_table .= "<td  width='140'>";
+				$int_table .= $exp['Resume']['mobile'];
+				$int_table .= "</td>";
+				$int_table .= "</tr>";		
+				$can_name .= ucwords($exp['Resume']['first_name'].' '.$exp['Resume']['last_name']).', ';
+			}
+			$int_table .= "</table>";
+			
+			$pos_id = $chk_pos_id;
+			$id = $chk_resume_id_ar[0];
+		}else{
+			$req_res_ids[] = $req_res_id;
+			$chk_resume_id_ar[] = $id;
 		}
+		// for success page redirect
+		$this->set('spec_id', $pos_id);
+		$cand_name = substr($can_name, 0, strlen($can_name)-3);
+
+		// get the template details
+		$this->get_template_details($id,$pos_id, '3');
+		$this->get_template_details($id,$pos_id, '2', $int_table,$cand_name);
+			
 		// when the form submitted
 		if(!empty($this->request->data)){
 			// validate the form
@@ -1598,103 +1713,107 @@ class PositionController extends AppController {
 				$this->loadModel('ReqResume');
 				//$req_res_id = $this->ReqResume->find('all', array('fields' => array('ReqResume.id'), 
 				//'conditions' => array('requirements_id' => $pos_id, 'resume_id' => $id)));
-				// save req resume table
-				$data = array('id' => $req_res_id,'modified_date' => $this->Functions->get_current_date(),
-				'modified_by' => $this->Session->read('USER.Login.id'),	 'stage_title' => $this->request->data['Position']['interview_level'],
-				 'status_title' => 'Scheduled');
-				// save  req resume
-				if($this->ReqResume->save($data, array('validate' => false))){		
-					// save req resume status
-					$this->loadModel('ReqResumeStatus');
-					$data = array('req_resume_id' => $req_res_id, 'created_date' => $this->Functions->get_current_date(),
-					'created_by' => $this->Session->read('USER.Login.id'), 'stage_title' => $this->request->data['Position']['interview_level'],'status_title' => 'Scheduled', 'note' => $this->request->data['Position']['note']);					
-					if($this->ReqResumeStatus->save($data, array('validate' => false))){			
-						// save interview status
-						$this->loadModel('ResInterview');
+				// send the interview mail to candidate
+				// iterate for multiple send CVs
+				foreach($req_res_ids as $key => $req_res_id){				
+					// save req resume table
+					$data = array('id' => $req_res_id,'modified_date' => $this->Functions->get_current_date(),
+					'modified_by' => $this->Session->read('USER.Login.id'),	 'stage_title' => $this->request->data['Position']['interview_level'],
+					 'status_title' => 'Scheduled');
+					// save  req resume
+					if($this->ReqResume->save($data, array('validate' => false))){		
+						// save req resume status
+						$this->loadModel('ReqResumeStatus');
 						$data = array('req_resume_id' => $req_res_id, 'created_date' => $this->Functions->get_current_date(),
-						'created_by' => $this->Session->read('USER.Login.id'), 'stage_title' => $this->request->data['Position']['interview_level'],
-						'status_title' => 'Scheduled',	'int_date' => $this->Functions->format_date_save($this->request->data['Position']['int_date']),
-						'int_duration' => $this->request->data['Position']['int_duration'], 'int_time' => $this->request->data['Position']['int_time'],
-						'interview_stage_id' => $this->request->data['Position']['interview_stage_id'],
-						'venue' =>  $this->request->data['Position']['venue'],'reason_id' =>  $this->request->data['Position']['reason_id'],
-						'additional' => $this->request->data['Position']['additional'],
-						'contact_name' => $this->request->data['Position']['contact_name'],
-						'contact_no' => $this->request->data['Position']['contact_no']							
-						);
-						$this->ResInterview->save($data, array('validate' => false));
-						
-						// send the interview mail to candidate
-						$candidate_msg = $this->get_template_details($id,$pos_id, '3');
-						$candidate_msg_split = explode('|||', $candidate_msg);
-						// get candidate details
-						$resume_data = $this->ReqResume->Resume->findById($id, array('fields' => 'Resume.email_id','Resume.first_name',
-						'Resume.last_name'));
-						$from = ucfirst($this->Session->read('USER.Login.first_name')).' '.ucfirst($this->Session->read('USER.Login.last_name'));
-						$to_name = $resume_data['Resume']['first_name'].' '.$resume_data['Resume']['last_name'];
-						// send mail to client 
-						$resume_data['Resume']['email_id'] = 'testing7@bigspire.com'; // for testing
-						$vars = array('from_name' => $from, 'to_name' => ucwords($to_name), 'msg'=> $candidate_msg_split[0]);
-						// save the mail box
-						$this->save_mail_box($candidate_msg_split[1], $candidate_msg_split[0], $req_res_id);
-						// send mail
-						if(!$this->send_email($candidate_msg_split[1], 'send_interview', $this->Session->read('USER.Login.email_id'), $resume_data['Resume']['email_id'], $vars)){	
-							// show the msg.								
-							$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Problem in sending the mail to candidate...', 'default', array('class' => 'alert alert-error'));				
-						}
-						
-						// send the interview confirmation mail to client
-						$client_msg = $this->get_template_details($id,$pos_id, '2');
-						$client_msg_split = explode('|||', $client_msg);
-						// get the resume details
-						$options = array(								
-								array('table' => 'resume_doc',
-										'alias' => 'ResDoc',					
-										'type' => 'INNER',
-										'conditions' => array('`ResDoc.id` = `Resume`.`resume_doc_id`', )
-									)
+						'created_by' => $this->Session->read('USER.Login.id'), 'stage_title' => $this->request->data['Position']['interview_level'],'status_title' => 'Scheduled', 'note' => $this->request->data['Position']['note']);					
+						if($this->ReqResumeStatus->save($data, array('validate' => false))){			
+							// save interview status
+							$this->loadModel('ResInterview');
+							$data = array('req_resume_id' => $req_res_id, 'created_date' => $this->Functions->get_current_date(),
+							'created_by' => $this->Session->read('USER.Login.id'), 'stage_title' => $this->request->data['Position']['interview_level'],
+							'status_title' => 'Scheduled',	'int_date' => $this->Functions->format_date_save($this->request->data['Position']['int_date']),
+							'int_duration' => $this->request->data['Position']['int_duration'], 'int_time' => $this->request->data['Position']['int_time'],
+							'interview_stage_id' => $this->request->data['Position']['interview_stage_id'],
+							'venue' =>  $this->request->data['Position']['venue'],'reason_id' =>  $this->request->data['Position']['reason_id'],
+							'additional' => $this->request->data['Position']['additional'],
+							'contact_name' => $this->request->data['Position']['contact_name'],
+							'contact_no' => $this->request->data['Position']['contact_no']							
 							);
-						$resume_data = $this->ReqResume->Resume->find('all', array('conditions' => array('Resume.id' => $id),
-						'fields' => array('ResDoc.resume','Resume.created_date','Resume.modified_date'), 'joins' => $options));
-						// parse the file name	
-						/*						
-						$updated = $resume_data[0]['Resume']['modified_date'] ? $resume_data[0]['Resume']['modified_date'] : $resume_data[0]['Resume']['created_date'];
-						$snap_file = substr($resume_data[0]['ResDoc']['resume'], 0, strlen($resume_data[0]['ResDoc']['resume']) - 5);
-						$pdf_date = date('d-m-Y', strtotime($updated));	
-						// check the file exists
-						$resume_path = '../../hiring/uploads/snapshotmerged/'.$this->Functions->filter_file($snap_file).'_'.$pdf_date.'.pdf';
-						if(!file_exists($resume_path)){
-							$resume_path = '';
-						}
-						*/
-						// get contact details		
-						$client_data = $this->ReqResume->Position->findById($pos_id, array('fields' => 'client_contact_id','job_title','location'));
-						$this->loadModel('Contact');
-						$contact_data = $this->Contact->findById($client_data['Position']['client_contact_id'], array('fields' => 'Contact.first_name','Contact.last_name','Contact.email'));
-						// $sub = 'Manage Hiring - Resume sent by '.ucfirst($this->Session->read('USER.Login.first_name')).' '.ucfirst($this->Session->read('USER.Login.last_name'));
-						$from = ucfirst($this->Session->read('USER.Login.first_name')).' '.ucfirst($this->Session->read('USER.Login.last_name'));
-						$to_name = $contact_data['Contact']['first_name'].' '.$contact_data['Contact']['last_name'];
-						// send mail to client 
-						$contact_data['Contact']['email'] = 'testing7@bigspire.com'; // for testing
-						$vars = array('from_name' => $from, 'to_name' => ucwords($to_name),'msg'=> $client_msg_split[0]);
-						// save the mail box
-						$this->save_mail_box($client_msg_split[1], $client_msg_split[0], $req_res_id);
-						// send mail
-						if(!$this->send_email($client_msg_split[1], 'confirm_interview', $this->Session->read('USER.Login.email_id'), $contact_data['Contact']['email'], $vars)){	
-							// show the msg.								
-							$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Problem in sending the mail to candidate...', 'default', array('class' => 'alert alert-error'));				
-						}
+							$this->ResInterview->save($data, array('validate' => false));
 						
-						// if successfully update
-						$this->set('cv_update_status', 1);
-						$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Interview Details Updated Successfully', 'default', array('class' => 'alert alert-success'));											
+							$candidate_msg = $this->get_template_details($chk_resume_id_ar[$key],$pos_id, '3');
+							$candidate_msg_split = explode('|||', $candidate_msg);
+							// get candidate details
+							$resume_data = $this->ReqResume->Resume->findById($chk_resume_id_ar[$key], array('fields' => 'Resume.email_id','Resume.first_name',
+							'Resume.last_name'));
+							$from = ucfirst($this->Session->read('USER.Login.first_name')).' '.ucfirst($this->Session->read('USER.Login.last_name'));
+							$to_name = $resume_data['Resume']['first_name'].' '.$resume_data['Resume']['last_name'];
+							// send mail to client 
+							$resume_data['Resume']['email_id'] = 'testing7@bigspire.com'; // for testing
+							$vars = array('from_name' => $from, 'to_name' => ucwords($to_name), 'msg'=> $candidate_msg_split[0]);
+							// save the mail box
+							$this->save_mail_box($candidate_msg_split[1], $candidate_msg_split[0], $req_res_id);
+							// send mail
+							if(!$this->send_email($candidate_msg_split[1], 'send_interview', $this->Session->read('USER.Login.email_id'), $resume_data['Resume']['email_id'], $vars)){	
+								// show the msg.								
+								$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Problem in sending the mail to candidate...', 'default', array('class' => 'alert alert-error'));				
+								}
+						
+							}						
+						}else{
+							// show the error msg.
+							$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Problem in saving the data...', 'default', array('class' => 'alert alert-error'));					
+						}	
 					}
-				}
-			}else{
-				// show the error msg.
-				$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Problem in saving the data...', 'default', array('class' => 'alert alert-error'));					
-			}
 			
+						
+					// send the interview confirmation mail to client
+					$client_msg = $this->get_template_details($id,$pos_id, '2', $int_table,$cand_name);
+					$client_msg_split = explode('|||', $client_msg);
+					// get the resume details
+					$options = array(								
+							array('table' => 'resume_doc',
+									'alias' => 'ResDoc',					
+									'type' => 'INNER',
+									'conditions' => array('`ResDoc.id` = `Resume`.`resume_doc_id`', )
+								)
+					);
+					$resume_data = $this->ReqResume->Resume->find('all', array('conditions' => array('Resume.id' => $id),
+					'fields' => array('ResDoc.resume','Resume.created_date','Resume.modified_date'), 'joins' => $options));
+					// parse the file name	
+					/*						
+					$updated = $resume_data[0]['Resume']['modified_date'] ? $resume_data[0]['Resume']['modified_date'] : $resume_data[0]['Resume']['created_date'];
+					$snap_file = substr($resume_data[0]['ResDoc']['resume'], 0, strlen($resume_data[0]['ResDoc']['resume']) - 5);
+					$pdf_date = date('d-m-Y', strtotime($updated));	
+					// check the file exists
+					$resume_path = '../../hiring/uploads/snapshotmerged/'.$this->Functions->filter_file($snap_file).'_'.$pdf_date.'.pdf';
+					if(!file_exists($resume_path)){
+						$resume_path = '';
+					}
+					*/
+					// get contact details		
+					$client_data = $this->ReqResume->Position->findById($pos_id, array('fields' => 'client_contact_id','job_title','location'));
+					$this->loadModel('Contact');
+					$contact_data = $this->Contact->findById($client_data['Position']['client_contact_id'], array('fields' => 'Contact.first_name','Contact.last_name','Contact.email'));
+					// $sub = 'Manage Hiring - Resume sent by '.ucfirst($this->Session->read('USER.Login.first_name')).' '.ucfirst($this->Session->read('USER.Login.last_name'));
+					$from = ucfirst($this->Session->read('USER.Login.first_name')).' '.ucfirst($this->Session->read('USER.Login.last_name'));
+					$to_name = $contact_data['Contact']['first_name'].' '.$contact_data['Contact']['last_name'];
+					// send mail to client 
+					$contact_data['Contact']['email'] = 'testing7@bigspire.com'; // for testing
+					$vars = array('from_name' => $from, 'to_name' => ucwords($to_name),'msg'=> $client_msg_split[0]);
+					// save the mail box
+					$this->save_mail_box($client_msg_split[1], $client_msg_split[0], $req_res_id);
+					// send mail
+					if(!$this->send_email($client_msg_split[1], 'confirm_interview', $this->Session->read('USER.Login.email_id'), $contact_data['Contact']['email'], $vars)){	
+						// show the msg.								
+						$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Problem in sending the mail to candidate...', 'default', array('class' => 'alert alert-error'));				
+					}						
+					// if successfully update
+				$this->set('cv_update_status', 1);
+				$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Interview Details Updated Successfully', 'default', array('class' => 'alert alert-success'));											
+			}
 		}
+			
 	}
 	
 	/* function to show the view interview */
