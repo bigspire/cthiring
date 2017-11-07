@@ -245,6 +245,8 @@ $(document).ready(function() {
 			$('.sent_row').hide();
 			$('.status_row').show();	
 			$('.overall_status_row').hide();
+			// hide column
+			$('.sent_col').hide();
 		}else if(GetURLParameter('tab') == 'sent'){
 			// for tab
 			$('.sentTab').addClass('active');
@@ -255,6 +257,8 @@ $(document).ready(function() {
 			$('.sent_row').show();
 			$('.status_row').hide();
 			$('.overall_status_row').hide();
+			// hide column
+			$('.sent_col').show();
 		}else if(GetURLParameter('tab') == 'upload_status'){
 			// for tab
 			$('.uploadTab').addClass('active');
@@ -384,12 +388,16 @@ $(document).ready(function() {
 			$('.sent_row').show();
 			$('.status_row').hide();
 			$('.overall_status_row').hide();
+			// hide column
+			$('.sent_col').hide();
 			break;	
 			case 'sent_row':
 			$('.upload_row').hide();
 			$('.sent_row').show();
 			$('.status_row').hide();
 			$('.overall_status_row').hide();
+			// hide column
+			$('.sent_col').show();
 			break;
 			case 'status_row':
 			$('.upload_row').hide();

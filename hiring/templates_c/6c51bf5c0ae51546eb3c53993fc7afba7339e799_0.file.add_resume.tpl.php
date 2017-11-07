@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-11-02 15:45:48
+/* Smarty version 3.1.29, created on 2017-11-07 14:23:51
   from "C:\xampp\htdocs\ctsvn\cthiring\hiring\templates\add_resume.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_59faf0542764c9_00266512',
+  'unifunc' => 'content_5a01749fb6cb56_46732132',
   'file_dependency' => 
   array (
     '6c51bf5c0ae51546eb3c53993fc7afba7339e799' => 
     array (
       0 => 'C:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\templates\\add_resume.tpl',
-      1 => 1509616638,
+      1 => 1509952497,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_59faf0542764c9_00266512 ($_smarty_tpl) {
+function content_5a01749fb6cb56_46732132 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -602,10 +602,12 @@ $_smarty_tpl->tpl_vars['ts_data'] = $__foreach_ts_data_0_saved_item;
 									
 									
 									<tr class="tbl_row">
-										<td width="120" class="tbl_column">Consultant Assessment <span class="f_req"></span></td>
+										<td width="120" class="tbl_column">Consultant Assessment <span class="f_req">*</span></td>
 										<td>
 <textarea placeholder="" name="consultant" tabindex="1" id="consultant" cols="10" rows="3" class="span10 wysiwyg1"><?php echo $_POST['consultant'];?>
 </textarea>
+										<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['consultantErr']->value;?>
+</label>
 										</td>	
 									</tr>	
 																						
@@ -650,19 +652,18 @@ $_smarty_tpl->tpl_vars['bs_data'] = $__foreach_bs_data_1_saved_item;
  
 </ul>
  
-										<!--label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['interview_availabilityErr']->value;?>
-</label-->
+										
 										</td>	
 									</tr>
 
 									
 									<tr class="">
-										<td width="120" class="tbl_column">Interview Availability </td>
+										<td width="120" class="tbl_column">Interview Availability <span class="f_req">*</span></td>
 										<td>
 <textarea placeholder="" name="interview_availability" tabindex="2" id="interview_availability" cols="10" rows="3" class="span10 wysiwyg1"><?php echo $_POST['interview_availability'];?>
 </textarea>
-										<!--label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['interview_availabilityErr']->value;?>
-</label-->
+										<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['interview_availabilityErr']->value;?>
+</label>
 										</td>	
 									</tr>													
 								</tbody>

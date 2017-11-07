@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-11-04 11:01:53
+/* Smarty version 3.1.29, created on 2017-11-07 12:12:57
   from "C:\xampp\htdocs\ctsvn\cthiring\hiring\templates\add_billing.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_59fd50c952e328_23634913',
+  'unifunc' => 'content_5a0155f1459155_87687883',
   'file_dependency' => 
   array (
     '6a971a91e3de28462ff4ffafc14d3daf1eed5035' => 
     array (
       0 => 'C:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\templates\\add_billing.tpl',
-      1 => 1509773511,
+      1 => 1509952497,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_59fd50c952e328_23634913 ($_smarty_tpl) {
+function content_5a0155f1459155_87687883 ($_smarty_tpl) {
 ?>
 
    
@@ -171,7 +171,21 @@ echo $_POST['joined_date'];
 						
 										</td>
 									</tr>
+									
 									<tr>
+										<td width="120" class="tbl_column">Billing % <span class="f_req"></span></td>
+										<td> 
+										<input type="text" class="span8"  name="bill_percent"  value="<?php if ($_smarty_tpl->tpl_vars['bill_percent']->value) {
+echo $_smarty_tpl->tpl_vars['bill_percent']->value;
+} else {
+echo $_POST['bill_percent'];
+}?>">
+										<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['bill_percentErr']->value;?>
+</label>
+										</td>
+									</tr>
+									
+									<tr class="tbl_row">
 										<td width="120" class="tbl_column">Billing Amount <span class="f_req">*</span></td>
 										<td> 
 										<input type="text" class="span8"  name="billing_amount"  value="<?php echo $_smarty_tpl->tpl_vars['billing_amount']->value;?>
@@ -181,7 +195,7 @@ echo $_POST['joined_date'];
 						
 										</td>
 									</tr>
-									<tr class="tbl_row">
+									<tr>
 										<td width="120" class="tbl_column">Billing Date <span class="f_req">*</span></td>
 										<td> 
 										<input type="text" class="span8"  name="billing_date"  value="<?php echo $_smarty_tpl->tpl_vars['billing_date']->value;?>

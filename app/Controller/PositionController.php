@@ -98,16 +98,15 @@ class PositionController extends AppController {
 		}
 		
 		// for director and BH		
-		if($this->Session->read('USER.Login.roles_id') == '33' || $this->Session->read('USER.Login.roles_id') == '38'
-		|| $this->Session->read('USER.Login.roles_id') == '39'){
+		if($this->Session->read('USER.Login.roles_id') == '33'){
 			$show = 'all';
-			// $team_cond = false;
+			$team_cond = false;
 		}else{
 			$show = '1';
-			// $team_cond = true;
+			$team_cond = true;
 		}
 		
-		$team_cond = true;
+		
 		
 		// get the team members
 		$result = $this->Position->get_team($this->Session->read('USER.Login.id'),$show);
@@ -138,12 +137,12 @@ class PositionController extends AppController {
 			$roleCond = array('PositionStatus.member_approve' => 'A');
 		}
 		
-		/*
+		
 		
 		// check role based access
-		if($this->Session->read('USER.Login.roles_id') == '34'){ // account holder
+		if($this->Session->read('USER.Login.roles_id') == '34'   && !$team_cond){ // account holder
 			$empCond = array('AH.users_id' => $this->Session->read('USER.Login.id'));
-		}else if($this->Session->read('USER.Login.roles_id') == '30'){ // recruiter
+		}else if($this->Session->read('USER.Login.roles_id') == '30'   && !$team_cond){ // recruiter
 			$empCond = array('OR' => array(
 					'ReqResume.created_by' =>  $this->Session->read('USER.Login.id'),
 					'ReqTeam.users_id' => $this->Session->read('USER.Login.id')
@@ -156,7 +155,7 @@ class PositionController extends AppController {
 			$team_cond = '';
 		}
 		
-		*/
+		
 	
 		// set keyword condition
 		if($this->params->query['keyword'] != ''){
@@ -645,7 +644,7 @@ class PositionController extends AppController {
 		// load the team members
 		$this->Position->Creator->virtualFields['full_name'] = 'CONCAT(Creator.first_name, " ", Creator.last_name)';
 		$user_list = $this->Position->Creator->find('list',  array('fields' => array('id','full_name'), 
-		'order' => array('first_name ASC'),'conditions' => array('status' => '0')));
+		'order' => array('first_name ASC'),'conditions' => array('status' => '0', 'roles_id' => array('30','34','37'))));
 		$this->set('userList', $user_list);
 		// load the functional area
 		$function_list = $this->Position->FunctionArea->find('list', array('fields' => array('id','function'), 
@@ -769,7 +768,8 @@ class PositionController extends AppController {
 		'Resume.last_name','ReqResume.status_title','ReqResume.stage_title','Resume.created_date','Resume.modified_date',
 		'ReqResume.created_date','Resume.mobile','Resume.email_id','Resume.present_ctc','Resume.expected_ctc',
 		'Resume.notice_period','ResLoc.location','Creator.first_name','ReqResume.modified_date','ReqResume.bill_ctc','ResDoc.resume',
-		'Resume.present_location','Resume.present_ctc_type','Resume.expected_ctc_type', 'ReqResume.id'),
+		'Resume.present_location','Resume.present_ctc_type','Resume.expected_ctc_type', 'ReqResume.id', 'ReqResume.cv_sent_date',
+		'ReqResume.cv_shortlist_date'),
 		'conditions' => array('requirements_id' => $id),
 		'order' => array('Resume.created_date' => 'desc'),'group' => array('ReqResume.id'), 'joins' => $options));		
 		$this->set('resume_data', $data);
@@ -997,7 +997,8 @@ class PositionController extends AppController {
 			//'conditions' => array('requirements_id' => $pos_id, 'resume_id' => $res_id)));
 			// save req resume table
 			$data = array('id' => $req_res_id ,'modified_date' => $this->Functions->get_current_date(),
-			'modified_by' => $this->Session->read('USER.Login.id'),	'stage_title' => 'Shortlist', 'status_title' => 'CV-Sent');
+			'modified_by' => $this->Session->read('USER.Login.id'),	'stage_title' => 'Shortlist', 'status_title' => 'CV-Sent',
+			'cv_sent_date' => $this->Functions->get_current_date());
 			// save  req resume
 			if($this->ReqResume->save($data, array('validate' => false))){		
 				// save req resume status
@@ -1295,7 +1296,8 @@ class PositionController extends AppController {
 				//'conditions' => array('requirements_id' => $pos_id, 'resume_id' => $id)));
 				// save req resume table
 				$data = array('id' => $req_res_id,'modified_date' => $this->Functions->get_current_date(),
-				'modified_by' => $this->Session->read('USER.Login.id'),	 'status_title' => $status);
+				'modified_by' => $this->Session->read('USER.Login.id'),	 'status_title' => $status,
+				'cv_shortlist_date' => $this->Functions->get_current_date());
 				// save  req resume
 				if($this->ReqResume->save($data, array('validate' => false))){		
 					// save req resume status
@@ -1351,7 +1353,8 @@ class PositionController extends AppController {
 				'conditions' => array('requirements_id' => $pos_id, 'resume_id' => $id)));
 				// save req resume table
 				$data = array('id' => $req_res_id[0]['ReqResume']['id'],'modified_date' => $this->Functions->get_current_date(),
-				'modified_by' => $this->Session->read('USER.Login.id'),	 'status_title' => $status);
+				'modified_by' => $this->Session->read('USER.Login.id'),	 'status_title' => $status,
+				'cv_validation_date' => $this->Functions->get_current_date());
 				// save  req resume
 				if($this->ReqResume->save($data, array('validate' => false))){		
 					// save req resume status
@@ -1404,7 +1407,8 @@ class PositionController extends AppController {
 				//'conditions' => array('requirements_id' => $pos_id, 'resume_id' => $id)));
 				// save req resume table
 				$data = array('id' => $req_res_id,'modified_date' => $this->Functions->get_current_date(),'ctc_offer' => $this->request->data['Position']['ctc_offer'],'date_offer'=> $this->Functions->format_date_save($this->request->data['Position']['date_offer']),
-				'modified_by' => $this->Session->read('USER.Login.id'), 'stage_title' => 'Offer', 'status_title' => $status);
+				'modified_by' => $this->Session->read('USER.Login.id'), 'stage_title' => 'Offer', 'status_title' => $status,
+				'offer_shortlist_date' => $this->Functions->get_current_date());
 				// save  req resume
 				if($this->ReqResume->save($data, array('validate' => false))){		
 					// save req resume status

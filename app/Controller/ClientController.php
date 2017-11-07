@@ -65,16 +65,15 @@ class ClientController extends AppController {
 		
 		// for director and BH
 		
-		if($this->Session->read('USER.Login.roles_id') == '33' || $this->Session->read('USER.Login.roles_id') == '38'
-		|| $this->Session->read('USER.Login.roles_id') == '39'){
+		if($this->Session->read('USER.Login.roles_id') == '33'){
 			$show = 'all';
-			// $team_cond = false;
+			$team_cond = false;
 		}else{
 			$show = '1';
-			// $team_cond = true;
+			$team_cond = true;
 		}
 		
-		$team_cond = true;
+		
 		
 		// get the team members
 		$result = $this->Client->get_team($this->Session->read('USER.Login.id'),$show);
@@ -87,9 +86,9 @@ class ClientController extends AppController {
 		
 		// check role based access
 		
-		if($this->Session->read('USER.Login.roles_id') == '34'){ // account holder
+		if($this->Session->read('USER.Login.roles_id') == '34'  && !$team_cond){ // account holder
 			$empCond = array('AH.users_id' => $this->Session->read('USER.Login.id'));
-		}else if($this->Session->read('USER.Login.roles_id') == '30'){ // recruiter
+		}else if($this->Session->read('USER.Login.roles_id') == '30'  && !$team_cond){ // recruiter
 			$empCond = array('OR' => array(
 					'ReqResume.created_by' =>  $this->Session->read('USER.Login.id'),
 					'ReqTeam.users_id' => $this->Session->read('USER.Login.id')
