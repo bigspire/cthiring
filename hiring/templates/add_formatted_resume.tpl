@@ -1,6 +1,6 @@
-{* Purpose : To edit formatted resume.
+{* Purpose : To add formatted resume.
  	Created : Nikitasa
-   Date : 26-05-2017 *}
+   Date : 07-11-2017 *}
    
 {include file='include/header.tpl'}
 			
@@ -19,7 +19,7 @@
                            <a href="{$smarty.const.webroot}resume">Resumes</a>
                         </li>
                         <li>
-                           Edit Fully Formatted Resume
+                           Add Fully Formatted Resume
                         </li>
                      </ul>
                   </div>
@@ -677,7 +677,7 @@
 <input type="hidden" id="train_count" name="train_count" value="{$trainCount}">
 <input type="hidden" id="totCount_edu" name="totCount_edu" value="{$totCount_edu}">	
 <input type="hidden" id="totCount_exp" name="totCount_exp" value="{$totCount_exp}">	
-<input type="hidden" id="edit_formatted_resume" name="edit_formatted_resume" value="{$marty.post.edit_formatted_resume}">
+<input type="hidden" id="add_formatted_resume" name="add_formatted_resume" value="{$marty.post.add_formatted_resume}">
 
 				
 							</div>

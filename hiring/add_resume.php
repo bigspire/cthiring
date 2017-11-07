@@ -553,7 +553,7 @@ if(!empty($_POST)){
 			}
 		}
 		
-		// query to add experience details
+		// query to add req resume details
 		$query = "CALL add_req_resume_status('Validation - Account Holder','Pending','".$created_by."','".$date."','".$position_id."')";
 		try{
 			if(!$result = $mysql->execute_query($query)){
