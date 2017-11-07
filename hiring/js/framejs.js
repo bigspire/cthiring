@@ -48,6 +48,11 @@
 		});
 	}
 	
+		/* auto resize */
+	if($('.wysiwyg1').length > 0){
+		autosize(document.querySelectorAll('.wysiwyg1'));
+	}
+	
 	/* for timepicker */
 	if($('.timepicker').length > 0){
 		$('.timepicker').timepicker();

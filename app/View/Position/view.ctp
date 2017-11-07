@@ -214,8 +214,10 @@
 						$team_req = explode(',', $position_data[0]['team_req']);
 						foreach($team_member as $key => $member):
 						$mem_req = $team_req[$key] ? $team_req[$key] : $no_req; ?>
-			<?php echo $member;?> :  	 
-			<button rel="tooltip" title="<?php echo $mem_req;?> Openings" class="tagDiv tag label btn-info"><?php echo $mem_req;?></button>	<br>
+			
+			<div style="margin-top:4px;"><?php echo $member;?> :  	 
+			<button rel="tooltip" title="<?php echo $mem_req;?> Openings" class="tagDiv tag label btn-info"><?php echo $mem_req;?></button>	
+			<div>
 				
 				<?php endforeach;?>
 										
@@ -408,9 +410,9 @@
 										<?php $total = count($resume_data);?>
 										<li class="active uploadTab"><a href="#mbox_inbox" class="tabChange" val="<?php echo $total;?>" rel="upload_row"  data-toggle="tab"><i class="splashy-box_add"></i>  CV Uploaded <?php if($total):?><span class="label label-info"> <?php echo $total;?></span><?php endif; ?></a></li>
 
-										<li class="sentTab no-print"><a href="#mbox_inbox" class="tabChange" val="<?php echo $cv_sent;?>" rel="sent_row"  data-toggle="tab"><i class="splashy-box_okay"></i>  CV Sent <?php if($sent_count):?><span class="label label-info"> <?php echo $sent_count;?></span><?php endif; ?></a></li>
+										<li class="sentTab"><a href="#mbox_inbox" class="tabChange" val="<?php echo $cv_sent;?>" rel="sent_row"  data-toggle="tab"><i class="splashy-box_okay"></i>  CV Sent <?php if($sent_count):?><span class="label label-info"> <?php echo $sent_count;?></span><?php endif; ?></a></li>
 									
-										<li class="cvStatusTab no-print"><a href="#mbox_inbox" class="tabChange"  rel="status_row"  data-toggle="tab"><i class="splashy-box_share"></i>  CV Status</a></li>
+										<li class="cvStatusTab"><a href="#mbox_inbox" class="tabChange"  rel="status_row"  data-toggle="tab"><i class="splashy-box_share"></i>  CV Status</a></li>
 
 										<li><a href="#mbox_overall" class="tabChange overAllTab"  rel="overall_status_row"  data-toggle="tab"><i class="splashy-box_new"></i>  Overall Status</a></li>
 	
@@ -448,7 +450,8 @@
 														<th  width="85">Exp. CTC</th>
 														<th  width="80"  class="noticePeriod">Notice</th>
 														<th  width="140" class="">CV Owner</th>
-														<th  width="90" class="">CV Created</th>
+														<th  width="90" class="">CV Uploaded</th>
+														<th  width="90" class="sent_col">CV Sent</th>
 														<th style="text-align:center"  width="75" class="upload_row">Action</th>
 														<th style="text-align:center" width="75">Download</th>
 													</tr>
@@ -517,9 +520,10 @@
 										
 														<td  class="noticePeriod"><?php echo $this->Functions->get_notice($resume['Resume']['notice_period']);?></td>
 														<td><?php echo $resume['Creator']['first_name'];?></td>
-														<td><?php echo $this->Functions->format_date($resume['ReqResume']['created_date']);?></td>
+<td><?php echo $this->Functions->format_date($resume['ReqResume']['created_date']);?></td>
 														
-														
+	<td class="sent_col"><?php echo $this->Functions->format_date($resume['ReqResume']['cv_sent_date']);?></td>
+													
 														<td style="text-align:center" class="actionItem upload_row">
 			<?php if($resume['ReqResume']['stage_title'] == 'Validation - Account Holder' &&
 										$resume['ReqResume']['status_title'] == 'Validated'  && $this->Session->read('USER.Login.roles_id') == '34'  && in_array($this->Session->read('USER.Login.id'), $ac_member)):
@@ -548,7 +552,10 @@
 										<span rel="tooltip" style="cursor:" data-original-title="Account Holder - Rejected"><i class="splashy-thumb_down"></i></span>
 										
 											<?php elseif($resume['ReqResume']['stage_title'] == 'Validation - Account Holder' &&
-										$resume['ReqResume']['status_title'] == 'Validated'):?>										
+										$resume['ReqResume']['status_title'] == 'Pending'):?>
+			<span rel="tooltip" style="cursor:" data-original-title="Account Holder - Pending"><i class="splashy-sprocket_light"></i></span>		
+
+											<?php else:?>										
 										<span rel="tooltip" style="cursor:" data-original-title="Account Holder - Validated"><i class="splashy-thumb_up"></i></span>		
 
 										<?php endif; ?>	
@@ -646,7 +653,7 @@
 	<?php elseif($resume['ReqResume']['stage_title'] == 'Shortlist' && $resume['ReqResume']['status_title'] == 'Rejected'):
 							?>
 							
-<span class="btn btn-mini alert alert-danger legendView" rel="tooltip" title="CV Rejected" style="">
+<span class="btn btn-mini alert alert-danger legendView" rel="tooltip" title="CV Rejected <?php echo $this->Functions->format_date($resume['ReqResume']['cv_shortlist_date']);?>" style="">
                 R
             </span>									
 									
@@ -656,7 +663,8 @@
 || $resume['ReqResume']['stage_title'] == 'Joining'):
 ?>
 								
-<span class="btn btn-mini alert alert-success legendView" rel="tooltip" title="CV Shortlisted" style="">
+<span class="btn btn-mini alert alert-success legendView" rel="tooltip" title="CV Shortlisted
+ <?php echo $this->Functions->format_date($resume['ReqResume']['cv_shortlist_date']);?>" style="">
                 S
             </span>									
 									
@@ -820,9 +828,14 @@ $action = 1;?>
 							$action = '1';?>																		
 									
 									<div class="btn-group">
-									<?php $st_title = $resume['ReqResume']['status_title'] == 'Deferred' ? 'Deferred' : 'Awaiting';?>
+									<?php $st_title = $resume['ReqResume']['status_title'] == 'Deferred' ? 'Deferred' : 'Awaiting';
+									 $st_code = $resume['ReqResume']['status_title'] == 'Deferred' ? 'JD' : 'JA';
+									
+									?>
+									
+									
 										<span class="btn-mini alert alert-success alert-action" rel="tooltip" title="Joining <?php echo $st_title;?>"   style="background-image:none;cursor:default;margin-bottom:0px;">
-										JA  
+										<?php echo  $st_code;?>  
 										</span>
 									
 								<?php if($this->Session->read('USER.Login.roles_id') == '34'):?>										
@@ -913,7 +926,7 @@ $action = 1;?>
 
 												
 					<?php if($multi_send_cv == '1' && $this->Session->read('USER.Login.roles_id') == '34'):?>	
-						<div class="btn-group upload_row sepH_b">
+						<div class="btn-group upload_row sepH_b  no-print">
 								<button data-toggle="dropdown" class="btn btn-info dropdown-toggle">Action <span class="caret"></span></button>
 								<ul class="dropdown-menu">
 									<li><a href="javascript:void(0)" class="multi_send_cv">Send CV</a></li>
@@ -925,21 +938,37 @@ $action = 1;?>
 				
 					<?php if($multi_show_interview == '1' && $this->Session->read('USER.Login.roles_id') == '34'):?>		
 					<div class="btn-group status_row sepH_b dn">
-								<button data-toggle="dropdown" class="btn btn-info  dropdown-toggle">Action <span class="caret"></span></button>
-								<ul class="dropdown-menu">
+								<button data-toggle="dropdown" class="btn btn-info  dropdown-toggle  no-print">Action <span class="caret"></span></button>
+								<ul class="dropdown-menu  no-print">
 									<li><a href="javascript:void(0)" class="multi_interview">Schedule Interview</a></li>
 									<?php if($reschedule == '1'): ?>
 									<li><a href="javascript:void(0)"  class="multi_interview">Re-Schedule Interview</a></li>
 									<?php endif; ?>
 								</ul>
+								
+<ul class="status_row dn statusLegend" style="margin-left:100px;">
+	
+<li><span class="btn btn-mini alert alert-success legendView"> S </span> - Shortlisted</li>
+<li><span class="btn btn-mini alert alert-error legendView"> R </span> - Rejected	</li>
+<li><span class="btn-mini alert alert-success alert-action legendView"> ISA  </span> - Interview Schedule Awaiting	</li>
+<li><span class="btn btn-mini alert alert-success legendView"> 1IS </span> - First Interview Scheduled</li>
+<li><span class="btn btn-mini alert alert-success legendView"> 2IS </span> - Second Interview Scheduled</li>
+<li><span class="btn btn-mini alert alert-success legendView"> 3IS </span> - Third Interview Scheduled</li>
+<li><span class="btn-mini alert alert-success alert-action legendView"> OP  </span> - Offer Pending</li>
+<li><span class="btn btn-mini alert alert-success legendView"> OA </span> - Offer Accepted</li>
+<li><span class="btn btn-mini alert alert-error legendView"> OR </span> - Offer Rejected</li>
+<li><span class="btn-mini alert alert-success alert-action legendView"> JA  </span> - Joining Awaiting	</li>
+<li><span class="btn btn-mini alert alert-success legendView"> J </span> - Joined</li>
+<li><span class="btn btn-mini alert alert-success legendView"> JD </span> - Deferred</li>
+<li><span class="btn btn-mini alert alert-success legendView"> BA </span> - Billing Awaited</li>
+<li><span class="btn btn-mini alert alert-success legendView"> B </span> - Billed </li>
+
+</ul>	
 							</div>
 							
 						<?php endif; ?> 
 
-						
-
-							
-							
+				
 											<div class="alert alert-login no_record dn">
 								<a class="close" data-dismiss="alert">×</a>
 								<strong>Oops!</strong> No records found!.
@@ -1058,8 +1087,8 @@ $ac_reject =  $this->Functions->get_req_tab_count($resume_data, 'rejected','','v
 					
 					<div class="form-actions no-print">
 	<a href="<?php echo $this->webroot;?>position/" rel="tooltip" title="Back to Positions"  class="jsRedirect"><button class="btn">Back</button></a>
-					
-	<a class="overall_status_row" href="javascript:void(0);" rel="tooltip" title="Print"  id="printId"><button class="btn btn-warning">Print</button></a>
+				
+	<a class="" href="javascript:void(0);" rel="tooltip" title="Print"  id="printId"><button class="btn btn-warning">Print</button></a>
 			
 					</div>
 								

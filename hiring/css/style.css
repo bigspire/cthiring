@@ -988,3 +988,4 @@ ul.ratingList{margin:0px !important;}
 .navbar .nav .active2 > a, .navbar .nav .active2 > a:hover{border-bottom:2px solid #f4f141 !important}
 .view_label{margin-top:5px}
 .viewLabelHead{font-weight:bold;}
+ul.statusLegend li{width:220px;float:left;list-style-type:none;margin:5px;height:20px;}

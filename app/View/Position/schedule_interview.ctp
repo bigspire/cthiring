@@ -101,7 +101,7 @@
 					<td width="120" class="tbl_column">Interview Venue <span class="f_req">*</span>
 					</td>
 						<td>
-<?php echo $this->Form->input('venue', array('div'=> false,'type' => 'textarea', 'label' => false, 'class' => 'span8', 'required' => false, 'placeholder' => '', 'rows' => '4', 'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 	
+<?php echo $this->Form->input('venue', array('div'=> false,'type' => 'textarea', 'label' => false, 'class' => 'span8 wysiwyg1', 'required' => false, 'placeholder' => '', 'rows' => '2', 'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 	
 		
 										
 						</td>	
@@ -115,9 +115,9 @@
 					
 					
 						<td>
-<?php echo $this->Form->input('contact_name', array('div'=> false,'type' => 'text', 'label' => false, 'class' => 'span8', 'required' => false, 'placeholder' => 'Contact Person Name', 'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 	
+<?php echo $this->Form->input('contact_name', array('div'=> false,'type' => 'text', 'label' => false, 'class' => 'span4 wysiwyg1', 'required' => false, 'placeholder' => 'Contact Person Name', 'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 	
 							
-<?php echo $this->Form->input('contact_no', array('div'=> false,'type' => 'text', 'label' => false, 'class' => 'span8', 'required' => false, 'placeholder' => 'Contact No.', 'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 										
+<?php echo $this->Form->input('contact_no', array('div'=> false,'type' => 'text', 'label' => false, 'class' => 'span4 inline_text wysiwyg1', 'required' => false, 'placeholder' => 'Contact Mobile No.', 'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 										
 						</td>	
 				</tr>
 				
@@ -125,7 +125,7 @@
 					<td width="120" class="tbl_column">Additional Info 
 					</td>
 						<td>
-<?php echo $this->Form->input('additional', array('div'=> false,'type' => 'textarea', 'label' => false, 'class' => 'span8', 'required' => false, 'placeholder' => '', 'rows' => '4', 'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 	
+<?php echo $this->Form->input('additional', array('div'=> false,'type' => 'textarea', 'label' => false, 'class' => 'span8', 'required' => false, 'placeholder' => '', 'rows' => '3', 'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 	
 		
 										
 						</td>	
