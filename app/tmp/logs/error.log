@@ -3432,6 +3432,7 @@ Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
 Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
 [main] - APP\webroot\index.php, line 118
 
+<<<<<<< HEAD
 2017-11-07 14:18:04 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Position.id' in 'field list'
 Request URL: /ctsvn/cthiring/home/?from=01%2F11%2F2017&to=07%2F11%2F2017
 Stack Trace:
@@ -3449,6 +3450,48 @@ Stack Trace:
 #11 C:\xampp\htdocs\ctsvn\cthiring\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #12 {main}
 2017-11-07 14:18:24 Warning: Warning (2): Missing argument 1 for AppController::check_role_access(), called in C:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php on line 1099 and defined in [C:\xampp\htdocs\ctsvn\cthiring\app\Controller\AppController.php, line 151]
+=======
+<<<<<<< HEAD
+2017-11-06 18:02:25 Warning: Warning (2): Missing argument 2 for PositionController::index() in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\PositionController.php, line 33]
+=======
+2017-11-06 15:06:56 Warning: Warning (2): Missing argument 4 for FunctionsHelper::get_req_tab_count(), called in C:\xampp\htdocs\ctsvn\cthiring\app\View\Position\view.ctp on line 952 and defined in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Helper\FunctionsHelper.php, line 135]
+Trace:
+FunctionsHelper::get_req_tab_count() - APP\View\Helper\FunctionsHelper.php, line 135
+include - APP\View\Position\view.ctp, line 952
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-06 15:06:56 Warning: Warning (2): Missing argument 4 for FunctionsHelper::get_req_tab_count(), called in C:\xampp\htdocs\ctsvn\cthiring\app\View\Position\view.ctp on line 953 and defined in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Helper\FunctionsHelper.php, line 135]
+Trace:
+FunctionsHelper::get_req_tab_count() - APP\View\Helper\FunctionsHelper.php, line 135
+include - APP\View\Position\view.ctp, line 953
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-06 15:06:56 Warning: Warning (2): Missing argument 4 for FunctionsHelper::get_req_tab_count(), called in C:\xampp\htdocs\ctsvn\cthiring\app\View\Position\view.ctp on line 955 and defined in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Helper\FunctionsHelper.php, line 135]
+Trace:
+FunctionsHelper::get_req_tab_count() - APP\View\Helper\FunctionsHelper.php, line 135
+include - APP\View\Position\view.ctp, line 955
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-06 15:06:56 Warning: Warning (2): Missing argument 4 for FunctionsHelper::get_req_tab_count(), called in C:\xampp\htdocs\ctsvn\cthiring\app\View\Position\view.ctp on line 958 and defined in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Helper\FunctionsHelper.php, line 135]
+>>>>>>> ae898e6d37a65a91035d86ebb5eb2c9bbbb8d302
 Trace:
 AppController::check_role_access() - APP\Controller\AppController.php, line 151
 HomeController::beforeFilter() - APP\Controller\HomeController.php, line 1099
@@ -3926,7 +3969,12 @@ Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
 Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
 [main] - APP\webroot\index.php, line 118
 
+<<<<<<< HEAD
 2017-11-07 14:18:30 Warning: Warning (2): Missing argument 6 for HomeController::get_position_count(), called in C:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php on line 245 and defined in [C:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php, line 502]
+=======
+2017-11-06 15:32:07 Warning: Warning (2): Missing argument 1 for PositionController::index() in [C:\xampp\htdocs\ctsvn\cthiring\app\Controller\PositionController.php, line 33]
+>>>>>>> 8756eb341ccb9e4d39643d4e26307f6429c7eabf
+>>>>>>> ae898e6d37a65a91035d86ebb5eb2c9bbbb8d302
 Trace:
 HomeController::get_position_count() - APP\Controller\HomeController.php, line 502
 HomeController::index() - APP\Controller\HomeController.php, line 245
@@ -3936,7 +3984,15 @@ Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
 Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
 [main] - APP\webroot\index.php, line 118
 
+<<<<<<< HEAD
 2017-11-07 14:18:31 Warning: Warning (2): Missing argument 6 for HomeController::get_position_count(), called in C:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php on line 245 and defined in [C:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php, line 502]
+=======
+<<<<<<< HEAD
+2017-11-06 18:02:34 Warning: Warning (2): Missing argument 2 for PositionController::index() in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\PositionController.php, line 33]
+=======
+2017-11-06 15:32:07 Warning: Warning (2): Missing argument 2 for PositionController::index() in [C:\xampp\htdocs\ctsvn\cthiring\app\Controller\PositionController.php, line 33]
+>>>>>>> 8756eb341ccb9e4d39643d4e26307f6429c7eabf
+>>>>>>> ae898e6d37a65a91035d86ebb5eb2c9bbbb8d302
 Trace:
 HomeController::get_position_count() - APP\Controller\HomeController.php, line 502
 HomeController::index() - APP\Controller\HomeController.php, line 245
@@ -3946,6 +4002,7 @@ Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
 Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
 [main] - APP\webroot\index.php, line 118
 
+<<<<<<< HEAD
 2017-11-07 14:18:32 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Position.id' in 'field list'
 Request URL: /ctsvn/cthiring/home/?from=01%2F11%2F2017&to=07%2F11%2F2017
 Stack Trace:
@@ -3974,6 +4031,11 @@ Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
 [main] - APP\webroot\index.php, line 118
 
 2017-11-07 14:18:47 Warning: Warning (2): in_array() expects parameter 2 to be array, null given in [C:\xampp\htdocs\ctsvn\cthiring\app\Controller\AppController.php, line 172]
+=======
+<<<<<<< HEAD
+=======
+2017-11-06 15:32:09 Warning: Warning (2): in_array() expects parameter 2 to be array, null given in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Helper\FunctionsHelper.php, line 42]
+>>>>>>> ae898e6d37a65a91035d86ebb5eb2c9bbbb8d302
 Trace:
 in_array - [internal], line ??
 AppController::check_role_access() - APP\Controller\AppController.php, line 172
@@ -6812,3 +6874,4 @@ Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
 Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
 [main] - APP\webroot\index.php, line 118
 
+>>>>>>> 8756eb341ccb9e4d39643d4e26307f6429c7eabf
