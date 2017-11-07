@@ -60,14 +60,14 @@
 						<?php if($this->request->query['action'] == 'auto_created'):	?>					
 						<div class="alert alert-success">
 								<a class="close" data-dismiss="alert">×</a>
-								 AutoResume Created Successfully
+								 Fully Formatted Resume Created Successfully
 								 </div>	
 						<?php endif; ?>
 						
 						<?php if($this->request->query['action'] == 'auto_modified'):	?>					
 						<div class="alert alert-success">
 								<a class="close" data-dismiss="alert">×</a>
-								 AutoResume Modified Successfully
+								 Fully Formatted Resume Modified Successfully
 								 </div>	
 						<?php endif; ?>
 						
@@ -242,7 +242,7 @@
 											<?php if($res['Position']['resume_type'] == 'S' || $res['Position']['resume_type'] == ''):?>
 											<li><a href="<?php echo $this->webroot;?>hiring/edit_resume.php?id=<?php echo $res['Resume']['id'];?>">Resume</a></li>
 											<?php else: ?>
-											<li><a href="<?php echo $this->webroot;?>hiring/add_formatted_resume.php?id=<?php echo $res['Resume']['id'];?>&resume=<?php echo $res['Resume']['autoresume_modified'];?>">Fully Formatted Resume</a></li>
+											<li><a href="<?php echo $this->webroot;?>hiring/edit_formatted_resume.php?id=<?php echo $res['Resume']['id'];?>&resume=<?php echo $res['Resume']['autoresume_modified'];?>">Fully Formatted Resume</a></li>
 											<?php endif; ?>
 										</ul>
 									</div>	
