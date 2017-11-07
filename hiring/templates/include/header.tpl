@@ -229,15 +229,15 @@
                                             <a data-toggle="dropdown" class="dropdown-toggle " href="#"><i class="icon-download-alt icon-white"></i> Reports <b class="caret"></b></a>
                                           <ul class="dropdown-menu">
 											{if $module['recruiter_report'] eq '1'}
-                                                <li><a href="recruiter_performance.php">Recruiter Performance</a></li>
+                                                <li><a href="#">Recruiter Performance</a></li>
 											{/if}
 										  
 											{if $module['account_holder_report'] eq '1'}
-                                                <li><a href="ah_performance.php">Account Holder Performance</a></li>
+                                                <li><a href="#">Account Holder Performance</a></li>
 										    {/if}
 											
 											{if $module['location_report'] eq '1'}
-												<li><a href="location_performance.php">Location Performance</a></li>
+												<li><a href="#">Location Performance</a></li>
                                                <!-- <li><a href="#">Clientwise Performance</a></li>-->
 											{/if}
 											
@@ -246,31 +246,31 @@
 											{/if}
 											
 											{if $module['revenue_report'] eq '1'}
-												<li><a href="revenue.php">Revenue </a></li>
+												<li><a href="#">Revenue </a></li>
 											{/if}
 											
 											{if $module['tat_report'] eq '1'}
-												<li><a href="tat_time.php">TAT Time </a></li>
+												<li><a href="#">TAT Time </a></li>
 											{/if}
 											
 											{if $module['collection_report'] eq '1'}
-												<li><a href="collection_table.php">Collection Table </a></li>
+												<li><a href="#">Collection Table </a></li>
 											{/if}
 											
 											{if $module['client_retention_report'] eq '1'}
-												<li><a href="client_retention.php">Client Retention Table </a></li>
+												<li><a href="#">Client Retention Table </a></li>
 											{/if}
 											
 											{if $module['incentive_report'] eq '1'}
-												<li><a href="incentive_report.php">Incentive </a></li>
+												<li><a href="#">Incentive </a></li>
 											{/if}
 											
 											{if $module['daily_report'] eq '1'}
-												<li><a href="daily_performance.php">Daily Performance </a></li>
+												<li><a href="#">Daily Performance </a></li>
 											{/if}
 											
 											{if $module['weekly_report'] eq '1'}
-												<li><a href="weekly_performance.php">Weekly Performance </a></li>
+												<li><a href="#">Weekly Performance </a></li>
 											{/if}
                                             </ul>
 										</li>
