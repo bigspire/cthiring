@@ -72,25 +72,30 @@ class ResumeController extends AppController {
 			$team_cond = true;
 		}
 		
+				
 		// get the team members
 		$result = $this->Resume->get_team($this->Session->read('USER.Login.id'),$show);
+		$data[] =  $this->Session->read('USER.Login.id');
+
 		if(!empty($result)){
 			$this->set('approveUser', '1');
 			// for drop down listing
 			$format_list = $this->Functions->format_dropdown($result, 'u','id','first_name', 'last_name');
 			$this->set('empList', $format_list);
-			$data[] =  $this->Session->read('USER.Login.id');
 			foreach($result as $rec){
 				$data[] =  $rec['u']['id'];
-			}
-			if($team_cond){
+			}			
+		}
+		
+		if($team_cond){
 				$teamCond = array('OR' => array(
 					'ReqResume.created_by' =>  $data,
 					'AH.users_id' => $data					
 					)
-				);			
-			}
+			);
 		}
+		
+		
 	
 		// min. exp. condition
 		if($this->request->query['min_exp'] != ''){
