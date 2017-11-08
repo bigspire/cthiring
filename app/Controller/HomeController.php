@@ -96,7 +96,7 @@ class HomeController  extends AppController {
 		if($dash_type == 'rec_view' || $this->Session->read('USER.Login.roles_id') == '30'){
 			$cv_emp_cond = array('ReqResume.created_by' => $this->Session->read('USER.Login.id'));
 			$int_emp_cond = array('ReqResume.created_by' => $this->Session->read('USER.Login.id'));
-			$pos_emp_cond = array('ReqResume.created_by' => $this->Session->read('USER.Login.id'));
+			$pos_emp_cond = array('ReqTeam.users_id' => $this->Session->read('USER.Login.id'), 'ReqTeam.is_approve' => 'A');
 			$cv_sent_emp_cond = array('Resume.created_by' => $this->Session->read('USER.Login.id'));
 			$resume_options = array(			
 				array('table' => 'req_resume',
@@ -109,12 +109,14 @@ class HomeController  extends AppController {
 				array('table' => 'requirements',
 						'alias' => 'Position',					
 						'type' => 'LEFT',
-						'conditions' => array('`Position`.`clients_id` = `Client`.`id`')
+						'conditions' => array('`Position`.`clients_id` = `Client`.`id`',
+						'Position.is_approve' => 'A', 'Position.status' => 'A')
 				),
 				array('table' => 'req_team',
 						'alias' => 'ReqTeam',					
 						'type' => 'LEFT',
-						'conditions' => array('`ReqTeam`.`requirements_id` = `Position`.`id`')
+						'conditions' => array('`ReqTeam`.`requirements_id` = `Position`.`id`',
+						'ReqTeam.is_approve' => 'A')
 				),
 				array('table' => 'req_resume',
 						'alias' => 'ReqResume',					
@@ -127,7 +129,7 @@ class HomeController  extends AppController {
 						'conditions' => array('`PositionStatus`.`requirements_id` = `Position`.`id`', 'member_approve' => 'A')
 				)
 			);	
-			$pos_emp_cond2 = array('ReqResume.created_by' => $this->Session->read('USER.Login.id'));			
+			$pos_emp_cond2 = array('ReqTeam.users_id' => $this->Session->read('USER.Login.id'), 'ReqTeam.is_approve' => 'A');			
 			
 			// $client_emp_cond = array('ReqTeam.users_id' => $this->Session->read('USER.Login.id'));
 			
@@ -139,12 +141,13 @@ class HomeController  extends AppController {
 			$this->set('rec_dash', 'active');
 
 			
-		}else if($dash_type == 'ac_view'  || $this->Session->read('USER.Login.roles_id') == '34'){
+		}else if($this->Session->read('USER.Login.roles_id') == '34'){
 			$cli_options = array(						
 				array('table' => 'requirements',
 						'alias' => 'Position',					
 						'type' => 'LEFT',
-						'conditions' => array('`Position`.`clients_id` = `Client`.`id`')
+						'conditions' => array('`Position`.`clients_id` = `Client`.`id`',
+						'Position.is_approve' => 'A', 'Position.status' => 'A')
 				),
 				array('table' => 'client_account_holder',
 						'alias' => 'ClientAH',					
@@ -197,12 +200,12 @@ class HomeController  extends AppController {
 			);
 			$cv_emp_cond = array('ClientAH.users_id' => $this->Session->read('USER.Login.id'));
 			$int_emp_cond =  array('ClientAH.users_id' => $this->Session->read('USER.Login.id'));
-			$pos_emp_cond =  array('ClientAH.users_id' => $this->Session->read('USER.Login.id'));
+			$pos_emp_cond =  array('ClientAH.users_id' => $this->Session->read('USER.Login.id'), 'Home.is_approve' => 'A');
 			$cv_sent_emp_cond =  array('ClientAH.users_id' => $this->Session->read('USER.Login.id'));			
 			$client_emp_cond = array('ClientAH.users_id' => $this->Session->read('USER.Login.id'));
-			$pos_emp_cond2 = array('Position.created_by' => $this->Session->read('USER.Login.id'));
+			$pos_emp_cond2 = array('Position.created_by' => $this->Session->read('USER.Login.id'), 'Position.is_approve' => 'A');
 			$this->set('ac_dash', 'active');
-		}else if($this->Session->read('USER.Login.roles_id') == '33'){ // director
+		}else if($this->Session->read('USER.Login.roles_id') == '33'  || $this->Session->read('USER.Login.roles_id') == '35'){ // director
 			$resume_options = array(			
 				array('table' => 'req_resume',
 						'alias' => 'ReqResume',					
@@ -212,9 +215,9 @@ class HomeController  extends AppController {
 			);
 			$cv_emp_cond = '';
 			$int_emp_cond = '';
-			$pos_emp_cond = '';
+			$pos_emp_cond = array('Home.is_approve' => 'A');
 			$cv_sent_emp_cond = '';
-			$pos_emp_cond2 = '';
+			$pos_emp_cond2 = array('Position.is_approve' => 'A');
 			// get recent clients
 			$cli_options = array(						
 				array('table' => 'requirements',
@@ -250,7 +253,8 @@ class HomeController  extends AppController {
 				array('table' => 'req_team',
 						'alias' => 'ReqTeam',					
 						'type' => 'LEFT',
-						'conditions' => array('`ReqTeam`.`requirements_id` = `Position`.`id`')
+						'conditions' => array('`ReqTeam`.`requirements_id` = `Position`.`id`',
+						'ReqTeam.is_approve' => 'A')
 				),
 				array('table' => 'req_resume',
 						'alias' => 'ReqResume',					
@@ -398,11 +402,18 @@ class HomeController  extends AppController {
 		$this->set('client_data', $data);
 		// get recent positions
 		$this->loadModel('Position');
+		$pos_options = array(						
+			array('table' => 'req_team',
+				'alias' => 'ReqTeam',					
+				'type' => 'LEFT',
+				'conditions' => array('`ReqTeam`.`requirements_id` = `Position`.`id`',
+				'ReqTeam.is_approve' => 'A')
+			)
+		);
 		$date_cond = array('or' => array("DATE_FORMAT(Position.created_date, '%Y-%m-%d') between ? and ?" => array($start, $end)));
 		$fields = array('id','job_title','location','Client.client_name', 'Creator.first_name','created_date', 'count(ReqResume.id) cv_sent','ReqStatus.title');			
 		$conditions = array('fields' => $fields,'limit' => '10','conditions' => array($date_cond,$pos_emp_cond2, 'Position.is_approve' => 'A',
-		'Position.status' => 'A'),
-		'order' => array('created_date' => 'desc'),	'group' => array('Position.id'));
+		'Position.status' => 'A'),	'order' => array('created_date' => 'desc'),	'group' => array('Position.id'), 'joins' => $pos_options);
 		$this->Position->unBindModel(array('belongsTo' => array('FunctionArea')));
 		$data = $this->Position->find('all', $conditions);
 		$this->set('position_data', $data);
@@ -410,12 +421,10 @@ class HomeController  extends AppController {
 
 		$date_cond = array('or' => array("DATE_FORMAT(ReqResume.modified_date, '%Y-%m-%d') between ? and ?" => 	array($start, $end)));
 		// get recent resumes sent
-		$this->loadModel('Resume');
-		
+		$this->loadModel('Resume');		
 		$fields = array('id',"concat(Resume.first_name,' ',Resume.last_name) full_name",'email_id','mobile', 'Creator.first_name',
 		'ReqResume.stage_title','ReqResume.status_title','ReqResume.modified_date');			
-		$conditions = array('fields' => $fields,'limit' => '50','conditions' => array($date_cond,$pos_emp_cond,
-		'ReqResume.stage_title' =>   array( 'Validation - Account Holder', 'Validation - Recruiter','Shortlist')),
+		$conditions = array('fields' => $fields,'limit' => '50','conditions' => array($date_cond, $int_emp_cond,'ReqResume.stage_title' =>   array( 'Shortlist'), 'ReqResume.status_title' => 'CV-Sent'),
 		'order' => array('ReqResume.modified_date' => 'desc'),'group' => array('Resume.id'), 'joins' => $resume_options);
 		$data = $this->Resume->find('all', $conditions);
 		$this->set('resume_data', $data);
@@ -451,7 +460,7 @@ class HomeController  extends AppController {
 		*/
 		$fields = array('id',"concat(Resume.first_name,' ',Resume.last_name) full_name",'email_id','mobile', 'Creator.first_name',
 		'ReqResume.modified_date','Resume.modified_date','ReqResume.stage_title','ReqResume.status_title');			
-		$conditions = array('fields' => $fields,'limit' => '50','conditions' => array($pos_emp_cond,$date_cond,
+		$conditions = array('fields' => $fields,'limit' => '50','conditions' => array($int_emp_cond,$date_cond,
 		'ReqResume.stage_title like' => '%Interview'),
 		'order' => array('ReqResume.modified_date' => 'desc'), 'group' => array('Resume.id'), 'joins' => $resume_options);
 		$data = $this->Resume->find('all', $conditions);
@@ -460,7 +469,7 @@ class HomeController  extends AppController {
 		$fields = array('id',"concat(Resume.first_name,' ',Resume.last_name) full_name",'email_id','mobile', 'Creator.first_name',
 		'ReqResume.modified_date','Resume.modified_date','ReqResume.stage_title','ReqResume.status_title');		
 		$conditions = array('fields' => $fields,'limit' => '50','conditions' => array('ReqResume.stage_title' => 'Offer', 
-		$date_cond,$pos_emp_cond, 'ReqResume.stage_title' => 'Offer'),'order' => array('ReqResume.modified_date' => 'desc'),
+		$date_cond,$int_emp_cond, 'ReqResume.stage_title' => 'Offer'),'order' => array('ReqResume.modified_date' => 'desc'),
 		'group' => array('Resume.id'), 'joins' => $resume_options);
 		$data = $this->Resume->find('all', $conditions);
 		$this->set('offer_data', $data);
@@ -468,7 +477,7 @@ class HomeController  extends AppController {
 		$fields = array('id',"concat(Resume.first_name,' ',Resume.last_name) full_name",'email_id','mobile', 'Creator.first_name',
 		'Resume.created_date','ReqResume.modified_date','ReqResume.stage_title','ReqResume.status_title');		
 		$conditions = array('fields' => $fields,'limit' => '50','conditions' => array('ReqResume.stage_title' => 'Joining', 
-		$date_cond,$pos_emp_cond, 'ReqResume.stage_title' => 'Joining'),'order' => array('ReqResume.modified_date' => 'desc'),
+		$date_cond,$int_emp_cond, 'ReqResume.stage_title' => 'Joining'),'order' => array('ReqResume.modified_date' => 'desc'),
 		'group' => array('Resume.id'), 'joins' => $resume_options);
 		$data = $this->Resume->find('all', $conditions);
 		$this->set('join_data', $data);
@@ -546,8 +555,24 @@ class HomeController  extends AppController {
 	
 	
 	/* function to get position counts */
-	public function get_position_count($date,$pos_emp_cond,$ac_join,$branch_cond,$client_cond,$reqCond){
+	public function get_position_count($date,$pos_emp_cond,$ac_join,$branch_cond,$client_cond,$reqCond){	
 		// set date condition
+		if($this->Session->read('USER.Login.roles_id') == '30'){
+			$ac_join = array(						
+				array('table' => 'req_team',
+					'alias' => 'ReqTeam',					
+					'type' => 'LEFT',
+					'conditions' => array('`ReqTeam`.`requirements_id` = `Home`.`id`',
+					'ReqTeam.is_approve' => 'A')
+				),
+				array('table' => 'req_approval_status',
+					'alias' => 'PositionStatus',					
+					'type' => 'INNER',
+					'conditions' => array('`PositionStatus`.`requirements_id` = `Home`.`id`',
+					'PositionStatus.member_approve' => 'A', 'PositionStatus.member_id' => $this->Session->read('USER.Login.id'))
+				)
+			);
+		}
 		$this->Home->unBindModel(array('belongsTo' => array('Contact','ReqStatus')));
 		$count_data = $this->Home->find('all', array('fields' => array('Home.id','Home.job_title','Client.client_name'),
 		'conditions' => array("DATE_FORMAT(Home.created_date, '%Y-%m-%d')" => $date,$pos_emp_cond,$branch_cond,$client_cond,$reqCond),

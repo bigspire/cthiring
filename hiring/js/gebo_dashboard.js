@@ -273,43 +273,7 @@
 			var userList = new List('user-list3', options);
 			
 
-			$('#filter-17').on('click',function() {
-				$('ul.filter li').removeClass('active');
-				$(this).parent('li').addClass('active');
-				userList.filter(function(item) {
-					if (item.values().sl_status3 == "Not Interested") {
-						return true;
-					} else {
-						return false;
-					}
-				});
-				return false;
-			});
-			$('#filter-18').on('click',function() {
-				$('ul.filter li').removeClass('active');
-				$(this).parent('li').addClass('active');
-				userList.filter(function(item) {
-					if (item.values().sl_status3 == "Offer Accepted") {
-						return true;
-					} else {
-						return false;
-					}
-				});
-				return false;
-			});
-			$('#filter-19').on('click',function() {
-				$('ul.filter li').removeClass('active');
-				$(this).parent('li').addClass('active');
-				userList.filter(function(item) {
-					if (item.values().sl_status3 == "Offer Made") {
-						return true;
-					} else {
-						return false;
-					}
-				});
-				return false;
-			});
-			$('#filter-20').on('click',function() {
+			$('#filter-21').on('click',function() {
 				$('ul.filter li').removeClass('active');
 				$(this).parent('li').addClass('active');
 				userList.filter(function(item) {
@@ -321,23 +285,11 @@
 				});
 				return false;
 			});
-			$('#filter-21').on('click',function() {
-				$('ul.filter li').removeClass('active');
-				$(this).parent('li').addClass('active');
-				userList.filter(function(item) {
-					if (item.values().sl_status3 == "Quit") {
-						return true;
-					} else {
-						return false;
-					}
-				});
-				return false;
-			});
 			$('#filter-22').on('click',function() {
 				$('ul.filter li').removeClass('active');
 				$(this).parent('li').addClass('active');
 				userList.filter(function(item) {
-					if (item.values().sl_status3 == "Rejected") {
+					if (item.values().sl_status3 == "Offer Accepted") {
 						return true;
 					} else {
 						return false;
@@ -349,7 +301,7 @@
 				$('ul.filter li').removeClass('active');
 				$(this).parent('li').addClass('active');
 				userList.filter(function(item) {
-					if (item.values().sl_status3 == "Yet to Join") {
+					if (item.values().sl_status3 == "Rejected") {
 						return true;
 					} else {
 						return false;
@@ -357,6 +309,7 @@
 				});
 				return false;
 			});
+			
 			
 	
 			$('#filter-none3').on('click',function() {
@@ -405,7 +358,7 @@
 			};
 			var userList = new List('user-list4', options);
 			
-			$('#filter-24').on('click',function() {
+			$('#filter-31').on('click',function() {
 				$('ul.filter li').removeClass('active');
 				$(this).parent('li').addClass('active');
 				userList.filter(function(item) {
@@ -417,11 +370,11 @@
 				});
 				return false;
 			});
-			$('#filter-25').on('click',function() {
+			$('#filter-32').on('click',function() {
 				$('ul.filter li').removeClass('active');
 				$(this).parent('li').addClass('active');
 				userList.filter(function(item) {
-					if (item.values().sl_status4 == "Quit") {
+					if (item.values().sl_status4 == "Not Joined") {
 						return true;
 					} else {
 						return false;
@@ -429,6 +382,19 @@
 				});
 				return false;
 			});
+			$('#filter-33').on('click',function() {
+				$('ul.filter li').removeClass('active');
+				$(this).parent('li').addClass('active');
+				userList.filter(function(item) {
+					if (item.values().sl_status4 == "Deferred") {
+						return true;
+					} else {
+						return false;
+					}
+				});
+				return false;
+			});
+			
 			$('#filter-none4').on('click',function() {
 				$('ul.filter li').removeClass('active');
 				$(this).parent('li').addClass('active');
@@ -614,47 +580,11 @@
 			};
 			var userList = new List('user-list', options);
 			
-			$('#filter-8').on('click',function() {
-				$('ul.filter li').removeClass('active');
-				$(this).parent('li').addClass('active');
-				userList.filter(function(item) {
-					if (item.values().sl_status == "Pending") {
-						return true;
-					} else {
-						return false;
-					}
-				});
-				return false;
-			});
-			$('#filter-9').on('click',function() {
-				$('ul.filter li').removeClass('active');
-				$(this).parent('li').addClass('active');
-				userList.filter(function(item) {
-					if (item.values().sl_status == "Scheduled/Re-Scheduled") {
-						return true;
-					} else {
-						return false;
-					}
-				});
-				return false;
-			});
-			$('#filter-10').on('click',function() {
-				$('ul.filter li').removeClass('active');
-				$(this).parent('li').addClass('active');
-				userList.filter(function(item) {
-					if (item.values().sl_status == "Selected") {
-						return true;
-					} else {
-						return false;
-					}
-				});
-				return false;
-			});
 			$('#filter-11').on('click',function() {
 				$('ul.filter li').removeClass('active');
 				$(this).parent('li').addClass('active');
 				userList.filter(function(item) {
-					if (item.values().sl_status == "Rejected") {
+					if (item.values().sl_status == "Interview Scheduled") {
 						return true;
 					} else {
 						return false;
@@ -666,7 +596,7 @@
 				$('ul.filter li').removeClass('active');
 				$(this).parent('li').addClass('active');
 				userList.filter(function(item) {
-					if (item.values().sl_status == "YRF") {
+					if (item.values().sl_status == "Interview Selected") {
 						return true;
 					} else {
 						return false;
@@ -678,7 +608,7 @@
 				$('ul.filter li').removeClass('active');
 				$(this).parent('li').addClass('active');
 				userList.filter(function(item) {
-					if (item.values().sl_status == "Cancelled") {
+					if (item.values().sl_status == "Interview Rejected") {
 						return true;
 					} else {
 						return false;
@@ -690,7 +620,7 @@
 				$('ul.filter li').removeClass('active');
 				$(this).parent('li').addClass('active');
 				userList.filter(function(item) {
-					if (item.values().sl_status == "No Show") {
+					if (item.values().sl_status == "Interview Re-Scheduled") {
 						return true;
 					} else {
 						return false;
@@ -698,30 +628,7 @@
 				});
 				return false;
 			});
-			$('#filter-15').on('click',function() {
-				$('ul.filter li').removeClass('active');
-				$(this).parent('li').addClass('active');
-				userList.filter(function(item) {
-					if (item.values().sl_status == "OnHold") {
-						return true;
-					} else {
-						return false;
-					}
-				});
-				return false;
-			});
-			$('#filter-16').on('click',function() {
-				$('ul.filter li').removeClass('active');
-				$(this).parent('li').addClass('active');
-				userList.filter(function(item) {
-					if (item.values().sl_status == "Re-Scheduled") {
-						return true;
-					} else {
-						return false;
-					}
-				});
-				return false;
-			});
+			
 			$('#filter-none').on('click',function() {
 				$('ul.filter li').removeClass('active');
 				$(this).parent('li').addClass('active');

@@ -33,8 +33,11 @@ class ClientController extends AppController {
 
 	public function index($status){ 
 		if($this->request->is('post')){
-			$url_vars = $this->Functions->create_url(array('keyword','from','to','status','emp_id'),'Client'); 			
-			$this->redirect('/client/?srch_status=1&'.$url_vars);				
+			$url_vars = $this->Functions->create_url(array('keyword','from','to','status','emp_id','apr_status'),'Client'); 			
+			if($rec_status == 'pending'){
+				$pending = 'index/pending/';
+			}
+			$this->redirect('/client/'.$pending.'?srch_status=1&'.$url_vars);
 		}
 
 		// set date condition
@@ -45,9 +48,17 @@ class ClientController extends AppController {
 						array($this->Functions->format_date_save($start), $this->Functions->format_date_save($end))));
 		}
 		
+		// set the approval status
+		$this->set('approveStatus', array('W' => 'Awaiting Approval', 'R' => 'Rejected'));
+		
 		// show awaiting approval condition
 		if($status =='pending'){
-			$approveCond = array('Client.status' => '2', 'Client.is_approve' => 'W', 'ClientStatus.users_id' => $this->Session->read('USER.Login.id'));
+			$approveCond = array('Client.status' => '2', 'Client.is_approve' => 'W', 
+			'ClientStatus.users_id' => $this->Session->read('USER.Login.id'));
+		}// for approval status condition
+		else if($this->request->query['apr_status'] != ''){
+			$approveCond = array('ClientStatus.status' => $this->request->query['apr_status'],
+			'Client.created_by' => $this->Session->read('USER.Login.id'));
 		}else{
 			$approveCond = array('Client.status' => '0', 'Client.is_approve' => 'A');
 		}		
@@ -213,7 +224,8 @@ class ClientController extends AppController {
 		$this->set('title_for_layout', 'Clients - Manage Hiring');	
 		$fields = array('id','client_name','ResLocation.location','created_date',
 		'Creator.first_name','status',"group_concat(distinct CAH.first_name separator ', ') account_holder", 'city',
-		'count(distinct Position.id) no_pos','count(distinct CON.id) no_contact', 'modified_date', 'Client.created_by','Client.is_approve',	"max(ClientStatus.id) st_id");
+		'count(distinct Position.id) no_pos','count(distinct CON.id) no_contact', 'modified_date', 'Client.created_by','Client.is_approve',
+		"max(ClientStatus.id) st_id","max(ClientStatus.users_id) st_user_id", 'ClientStatus.status');
 		// for export
 		if($this->request->query['action'] == 'export'){ 
 			$data = $this->Client->find('all', array('fields' => $fields,'conditions' => 
@@ -388,18 +400,29 @@ class ClientController extends AppController {
 	}
 	
 	/* function to auth record */
-	public function auth_action($id){ 	
-		$data = $this->Client->findById($id, array('fields' => 'created_by','is_deleted','modified_date','status'));	
-		// check the req belongs to the user
-		if($data['Client']['is_deleted'] == 'Y'){
-			return $data['Client']['modified_date'];
-		}else if($data['Client']['status'] == '2'){
-			return 'fail';
-		}		
-		else if($data['Client']['created_by'] == $this->Session->read('USER.Login.id')){	
-			return 'pass';
-		}else{
-			return 'fail';
+	public function auth_action($id, $st_id){ 	
+		if($this->request->params['pass'][3] != 'pending'){	
+			$data = $this->Client->findById($id, array('fields' => 'created_by','is_deleted','modified_date','status'));
+			// check the req belongs to the user
+			if($data['Client']['is_deleted'] == 'Y'){
+				return $data['Client']['modified_date'];
+			}else if($data['Client']['created_by'] == $this->Session->read('USER.Login.id')){	
+				return 'pass';
+			}else if($data['ClientStatus']['users_id'] == $this->Session->read('USER.Login.id')){	
+				return 'pass';
+			}else if($this->Session->read('USER.Login.roles_id') == '33' || $this->Session->read('USER.Login.roles_id') == '35'){	
+				return 'pass';
+			}else{
+				return 'fail';
+			}
+		}else if($this->request->params['pass'][3] == 'pending'){	
+			$data = $this->ClientStatus->find('all', array('fields' => array('ClientStatus.users_id'),
+			'conditions' => array('ClientStatus.id' => $st_id)));
+			if($data[0]['ClientStatus']['users_id'] == $this->Session->read('USER.Login.id')){
+				return 'pass';
+			}else{
+				return 'fail';
+			}
 		}
 	}
 	
@@ -605,7 +628,8 @@ class ClientController extends AppController {
 		$this->set('stateList', $state_list);
 		// load the account holders
 		$user_list = $this->Client->Creator->find('list',  array('fields' => array('id','first_name'), 
-		'order' => array('first_name ASC'),'conditions' => array('status' => '0','Creator.is_deleted' => 'N')));
+		'order' => array('first_name ASC'),'conditions' => array('status' => '0','Creator.is_deleted' => 'N',
+		'Creator.roles_id' => '34')));
 		$this->set('userList', $user_list);
 		// fetch the contact branch
 		$this->loadModel('ContactBranch');
@@ -651,64 +675,76 @@ class ClientController extends AppController {
 	
 	
 	/* function to view the position */
-	public function view($id){	
-		// set the page title
-		$this->set('title_for_layout', 'View Client - Manage Hiring');	
-		$options = array(			
-			array('table' => 'state',
-				  'alias' => 'State',					
-				  'type' => 'LEFT',
-				  'conditions' => array('`State`.`id` = `ResLocation`.`state_id`')
-			),
-			array('table' => 'users',
-				  'alias' => 'Modifier',					
-				  'type' => 'LEFT',
-				  'conditions' => array('`Modifier`.`id` = `Client`.`modified_by`')
-			)
-		);
-		$fields = array('id','client_name','phone','ResLocation.location','address','created_date','Creator.first_name','Creator.last_name',
-		'address','status','door_no','street_name','area_name','city','modified_date','pincode','State.state',
-		'Modifier.first_name','is_approve','Client.created_by','Modifier.last_name',);
-		$data = $this->Client->find('all', array('fields' => $fields,'conditions' => array('Client.id' => $id),
-		'joins' => $options));
-		$this->set('client_data', $data[0]);
-		// get account holder
-		$this->loadModel('ClientAccountHolder');
-		$ac_holder = $this->ClientAccountHolder->find('all', array('fields' => array("group_concat(User.first_name separator ', ') account_holder"),
-		'order' => array('User.first_name ASC'), 'conditions' => array('ClientAccountHolder.clients_id' => $id, 
-		'User.is_deleted' => 'N')));
-		$this->set('accountList', $ac_holder[0][0]['account_holder']);
-		// get the client contacts
-		$this->loadModel('ClientContact');
-		$options = array(			
-			array('table' => 'users',
-					'alias' => 'Creator',					
-					'type' => 'LEFT',
-					'conditions' => array('`Creator`.`id` = `Contact`.`created_by`')
-			),
-			array('table' => 'designation',
-					'alias' => 'Designation',					
-					'type' => 'LEFT',
-					'conditions' => array('`Designation`.`id` = `Contact`.`designation_id`')
-			),
-			array('table' => 'contact_branch',
-					'alias' => 'ContactBranch',					
-					'type' => 'LEFT',
-					'conditions' => array('`ContactBranch`.`id` = `Contact`.`contact_branch_id`')
-			)
-		);		
-		$contact = $this->ClientContact->find('all', array('fields' => array('Contact.id','Contact.first_name','Contact.last_name','Contact.email',
-		'Contact.phone','Contact.mobile','Contact.created_date','Creator.first_name', 'Creator.last_name','Designation.designation','Contact.title','ContactBranch.branch'), 
-		'conditions' => array('clients_id' => $id, 'Contact.status' => '0'), 'order' => array('Contact.created_date' => 'desc'),
-		'joins' => $options));
-		$this->set('contact_data', $contact);
-		// get the clients requirements
-		$this->loadModel('Position');
-		$fields = array('id','job_title','location','no_job','min_exp','max_exp','ctc_from','ctc_to','ReqStatus.title',
-		'Creator.first_name','created_date','modified_date', 'count(ReqResume.id) cv_sent','group_concat(ReqResume.status_title) joined');
-		$data = $this->Position->find('all', array('fields' => $fields,'limit' => '25','conditions' => array('clients_id' => $id),
-		'order' => array('created_date' => 'desc'),	'group' => array('Position.id')));
-		$this->set('position_data', $data);
+	public function view($id, $st_id){	
+		$this->loadModel('ClientStatus');
+		$ret_value = $this->auth_action($id, $st_id);
+		if($ret_value == 'pass'){
+			// set the page title
+			$this->set('title_for_layout', 'View Client - Manage Hiring');	
+			$options = array(			
+				array('table' => 'state',
+					  'alias' => 'State',					
+					  'type' => 'LEFT',
+					  'conditions' => array('`State`.`id` = `ResLocation`.`state_id`')
+				),
+				array('table' => 'users',
+					  'alias' => 'Modifier',					
+					  'type' => 'LEFT',
+					  'conditions' => array('`Modifier`.`id` = `Client`.`modified_by`')
+				),
+				array('table' => 'client_status',
+						'alias' => 'ClientStatus',					
+						'type' => 'LEFT',
+						'conditions' => array('`ClientStatus`.`clients_id` = `Client`.`id`')
+				),
+			);
+			$fields = array('id','client_name','phone','ResLocation.location','address','created_date','Creator.first_name','Creator.last_name',
+			'address','status','door_no','street_name','area_name','city','modified_date','pincode','State.state',
+			'Modifier.first_name','is_approve','Client.created_by','Modifier.last_name', 'ClientStatus.status');
+			$data = $this->Client->find('all', array('fields' => $fields,'conditions' => array('Client.id' => $id),
+			'joins' => $options));
+			$this->set('client_data', $data[0]);
+			// get account holder
+			$this->loadModel('ClientAccountHolder');
+			$ac_holder = $this->ClientAccountHolder->find('all', array('fields' => array("group_concat(User.first_name separator ', ') account_holder"),
+			'order' => array('User.first_name ASC'), 'conditions' => array('ClientAccountHolder.clients_id' => $id, 
+			'User.is_deleted' => 'N')));
+			$this->set('accountList', $ac_holder[0][0]['account_holder']);
+			// get the client contacts
+			$this->loadModel('ClientContact');
+			$options = array(			
+				array('table' => 'users',
+						'alias' => 'Creator',					
+						'type' => 'LEFT',
+						'conditions' => array('`Creator`.`id` = `Contact`.`created_by`')
+				),
+				array('table' => 'designation',
+						'alias' => 'Designation',					
+						'type' => 'LEFT',
+						'conditions' => array('`Designation`.`id` = `Contact`.`designation_id`')
+				),
+				array('table' => 'contact_branch',
+						'alias' => 'ContactBranch',					
+						'type' => 'LEFT',
+						'conditions' => array('`ContactBranch`.`id` = `Contact`.`contact_branch_id`')
+				)
+			);		
+			$contact = $this->ClientContact->find('all', array('fields' => array('Contact.id','Contact.first_name','Contact.last_name','Contact.email',
+			'Contact.phone','Contact.mobile','Contact.created_date','Creator.first_name', 'Creator.last_name','Designation.designation','Contact.title','ContactBranch.branch'), 
+			'conditions' => array('clients_id' => $id, 'Contact.status' => '0'), 'order' => array('Contact.created_date' => 'desc'),
+			'joins' => $options));
+			$this->set('contact_data', $contact);
+			// get the clients requirements
+			$this->loadModel('Position');
+			$fields = array('id','job_title','location','no_job','min_exp','max_exp','ctc_from','ctc_to','ReqStatus.title',
+			'Creator.first_name','created_date','modified_date', 'count(ReqResume.id) cv_sent','group_concat(ReqResume.status_title) joined');
+			$data = $this->Position->find('all', array('fields' => $fields,'limit' => '25','conditions' => array('clients_id' => $id),
+			'order' => array('created_date' => 'desc'),	'group' => array('Position.id')));
+			$this->set('position_data', $data);
+		}else if($ret_value == 'fail'){ 
+			$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert-error">&times;</button>Invalid Entry', 'default', array('class' => 'alert alert-error'));	
+			$this->redirect('/client/');	
+		}
 		
 	}
 	

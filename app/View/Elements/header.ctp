@@ -100,7 +100,7 @@
                                           </li>
 										  
 										<?php 
-										if($APPR_REQ_COUNT > 0):
+										if($APPR_REQ_COUNT > 0 || $new_pos_count > 0):
 										$active2 = 'active2';
 										else:
 										$active2 = '';

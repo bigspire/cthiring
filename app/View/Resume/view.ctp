@@ -366,7 +366,10 @@ foreach($skill_parse as $key => $skill):?>
 
   <li><?php echo ucwords($skill);?>
   <input name="tsr[]" type="hidden" value="<?php echo $unserialize[$skill];?>"  data-readonly   class="rating" data-fractions="2"/>
-  <span class="label label-info"><?php echo $unserialize[$skill];?></span></li>
+  <?php if($unserialize[$skill] > 0):?>
+  <span class="label label-info"><?php echo $unserialize[$skill];?></span>
+  <?php endif; ?>
+  </li>
 <?php endforeach; ?> 
 
 
@@ -401,7 +404,10 @@ foreach($skill_parse as $key => $skill):?>
 
   <li><?php echo ucwords($skill);?>
   <input name="tsr[]" type="hidden" value="<?php echo $unserialize[$skill];?>"  data-readonly  class="rating" data-fractions="2"/>
-  <span class="label label-info"><?php echo $unserialize[$skill];?></span></li>
+  <?php if($unserialize[$skill] > 0):?>
+  <span class="label label-info"><?php echo $unserialize[$skill];?></span>
+   <?php endif; ?>
+  </li>
 <?php endforeach; ?> 
 
  
