@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-11-06 15:54:03
+/* Smarty version 3.1.29, created on 2017-11-08 17:04:10
   from "C:\xampp\htdocs\2017\ctsvn\cthiring\hiring\templates\include\header.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5a003843dd5007_03250356',
+  'unifunc' => 'content_5a02ebb262a0c1_75897200',
   'file_dependency' => 
   array (
     '418ce04694c91a3f6ebee8f2a2efa42e5260b14c' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\templates\\include\\header.tpl',
-      1 => 1509963841,
+      1 => 1510140845,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_5a003843dd5007_03250356 ($_smarty_tpl) {
+function content_5a02ebb262a0c1_75897200 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -239,7 +239,7 @@ resume/">Search Resume <!-- span class="label-bub label-info white"><?php echo $
 										
                                       <?php if ($_smarty_tpl->tpl_vars['module']->value['view_billing'] == '1' || $_smarty_tpl->tpl_vars['module']->value['view_incentive'] == '1') {?>
 									  
-									  <?php if ($_smarty_tpl->tpl_vars['approve_billing_count']->value != '0') {?>
+									  <?php if ($_smarty_tpl->tpl_vars['approve_billing_count']->value != '0' && $_smarty_tpl->tpl_vars['module']->value['approve_billing'] == '1') {?>
 											<li class="<?php echo $_smarty_tpl->tpl_vars['billings_active']->value;?>
  dropdown active2">
 											<?php } else { ?>
@@ -247,7 +247,7 @@ resume/">Search Resume <!-- span class="label-bub label-info white"><?php echo $
  dropdown">
 										 <?php }?>
                                         
-                                            <a data-toggle="dropdown" class="dropdown-toggle " href="#"><i class="icon-file icon-white"></i> Incentive <?php if ($_smarty_tpl->tpl_vars['approve_billing_count']->value) {?><span class="label-bub label-info white"><?php echo $_smarty_tpl->tpl_vars['approve_billing_count']->value;?>
+                                            <a data-toggle="dropdown" class="dropdown-toggle " href="#"><i class="icon-file icon-white"></i> Incentive <?php if ($_smarty_tpl->tpl_vars['module']->value['approve_billing'] == '1' && $_smarty_tpl->tpl_vars['approve_billing_count']->value) {?><span class="label-bub label-info white"><?php echo $_smarty_tpl->tpl_vars['approve_billing_count']->value;?>
 </span><?php }?><b class="caret"></b></a>
                                            <ul class="dropdown-menu">
 										   <?php if ($_smarty_tpl->tpl_vars['module']->value['view_billing'] == '1') {?>
@@ -279,15 +279,15 @@ resume/">Search Resume <!-- span class="label-bub label-info white"><?php echo $
                                             <a data-toggle="dropdown" class="dropdown-toggle " href="#"><i class="icon-download-alt icon-white"></i> Reports <b class="caret"></b></a>
                                           <ul class="dropdown-menu">
 											<?php if ($_smarty_tpl->tpl_vars['module']->value['recruiter_report'] == '1') {?>
-                                                <li><a href="recruiter_performance.php">Recruiter Performance</a></li>
+                                                <li><a href="#">Recruiter Performance</a></li>
 											<?php }?>
 										  
 											<?php if ($_smarty_tpl->tpl_vars['module']->value['account_holder_report'] == '1') {?>
-                                                <li><a href="ah_performance.php">Account Holder Performance</a></li>
+                                                <li><a href="#">Account Holder Performance</a></li>
 										    <?php }?>
 											
 											<?php if ($_smarty_tpl->tpl_vars['module']->value['location_report'] == '1') {?>
-												<li><a href="location_performance.php">Location Performance</a></li>
+												<li><a href="#">Location Performance</a></li>
                                                <!-- <li><a href="#">Clientwise Performance</a></li>-->
 											<?php }?>
 											
@@ -296,31 +296,31 @@ resume/">Search Resume <!-- span class="label-bub label-info white"><?php echo $
 											<?php }?>
 											
 											<?php if ($_smarty_tpl->tpl_vars['module']->value['revenue_report'] == '1') {?>
-												<li><a href="revenue.php">Revenue </a></li>
+												<li><a href="#">Revenue </a></li>
 											<?php }?>
 											
 											<?php if ($_smarty_tpl->tpl_vars['module']->value['tat_report'] == '1') {?>
-												<li><a href="tat_time.php">TAT Time </a></li>
+												<li><a href="#">TAT Time </a></li>
 											<?php }?>
 											
 											<?php if ($_smarty_tpl->tpl_vars['module']->value['collection_report'] == '1') {?>
-												<li><a href="collection_table.php">Collection Table </a></li>
+												<li><a href="#">Collection Table </a></li>
 											<?php }?>
 											
 											<?php if ($_smarty_tpl->tpl_vars['module']->value['client_retention_report'] == '1') {?>
-												<li><a href="client_retention.php">Client Retention Table </a></li>
+												<li><a href="#">Client Retention Table </a></li>
 											<?php }?>
 											
 											<?php if ($_smarty_tpl->tpl_vars['module']->value['incentive_report'] == '1') {?>
-												<li><a href="incentive_report.php">Incentive </a></li>
+												<li><a href="#">Incentive </a></li>
 											<?php }?>
 											
 											<?php if ($_smarty_tpl->tpl_vars['module']->value['daily_report'] == '1') {?>
-												<li><a href="daily_performance.php">Daily Performance </a></li>
+												<li><a href="#">Daily Performance </a></li>
 											<?php }?>
 											
 											<?php if ($_smarty_tpl->tpl_vars['module']->value['weekly_report'] == '1') {?>
-												<li><a href="weekly_performance.php">Weekly Performance </a></li>
+												<li><a href="#">Weekly Performance </a></li>
 											<?php }?>
                                             </ul>
 										</li>
@@ -361,17 +361,17 @@ resume/">Search Resume <!-- span class="label-bub label-info white"><?php echo $
 											<?php }?>
 											
 											<?php if ($_smarty_tpl->tpl_vars['module']->value['manage_grade'] == '1') {?>
-                                                <li><a href="grade.php">Grade <?php if ($_smarty_tpl->tpl_vars['grade_count']->value) {?><span class="label-bub label-info white"><?php echo $_smarty_tpl->tpl_vars['grade_count']->value;?>
-</span><?php }?></a></li>
+                                                <li><a href="grade.php">Grade <!-- span class="label-bub label-info white"><?php echo $_smarty_tpl->tpl_vars['grade_count']->value;?>
+</span--></a></li>
 											<?php }?>
 											<?php if ($_smarty_tpl->tpl_vars['module']->value['manage_users'] == '1') {?>
-                                                <li><a href="users.php">Users <?php if ($_smarty_tpl->tpl_vars['users_count']->value) {?><span class="label-bub label-info white"><?php echo $_smarty_tpl->tpl_vars['users_count']->value;?>
-</span><?php }?></a></li>
+                                                <li><a href="users.php">Users <!--span class="label-bub label-info white"><?php echo $_smarty_tpl->tpl_vars['users_count']->value;?>
+</span--></a></li>
 											<?php }?>											
 											<?php if ($_smarty_tpl->tpl_vars['module']->value['manage_role'] == '1') {?>
 	
-												<li><a href="roles.php">Roles [Access] <?php if ($_smarty_tpl->tpl_vars['roles_count']->value) {?><span class="label-bub label-info white"><?php echo $_smarty_tpl->tpl_vars['roles_count']->value;?>
-</span><?php }?></a></li>
+												<li><a href="roles.php">Roles [Access] <!--pan class="label-bub label-info white"><?php echo $_smarty_tpl->tpl_vars['roles_count']->value;?>
+</span--></a></li>
 											<?php }?>
 											
 											<?php if ($_smarty_tpl->tpl_vars['module']->value['manage_mailer_template'] == '1') {?>

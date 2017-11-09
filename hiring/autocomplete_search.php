@@ -167,7 +167,7 @@ elseif($_GET['page'] == 'list_eligibility'){
    }
 }elseif($_GET['page'] == 'list_billing'){
 	// get matched data from billing
-	$query = "CALL search_billing('".$keyword."')";
+	$query = "CALL search_billing('".$keyword."','".$_SESSION['user_id']."')";
 	try{	
 		if(!$result = $mysql->execute_query($query)){
 			throw new Exception('Problem in executing billing page');

@@ -78,7 +78,7 @@ class DATABASE_CONFIG {
 			'host' => 'localhost',
 			'login' => 'root',
 			'password' => '',
-			'database' => 'cthiring_local',
+			'database' => 'cthiring_local4',
 //=======
 //			'host' => 'localhost',
 //			'login' => 'root',
