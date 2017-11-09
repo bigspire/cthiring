@@ -100,7 +100,7 @@
             </div>
             <div class="span1 tile_stats_count" style="width:160px;border:none;">
               <span class="count_top"><i class="fa fa-user"></i> Total Billing</span>
-              <div class="count">₹<?php echo $BILLED_AMT_TAB_COUNT;?></div>
+              <div class="count">₹<?php echo $BILLED_AMT_TAB_COUNT ? $BILLED_AMT_TAB_COUNT  : 0;?></div>
               <!--span class="count_bottom"><i class="green"><i class="icon-circle-arrow-up"></i> 34% </i> From last Week</span-->
             </div>
 			

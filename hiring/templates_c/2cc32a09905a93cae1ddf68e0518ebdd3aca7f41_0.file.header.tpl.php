@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-11-07 21:30:36
+/* Smarty version 3.1.29, created on 2017-11-09 12:35:10
   from "C:\xampp\htdocs\ctsvn\cthiring\hiring\templates\include\header.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5a01d8a49628d1_31321812',
+  'unifunc' => 'content_5a03fe26f020c9_24641278',
   'file_dependency' => 
   array (
     '2cc32a09905a93cae1ddf68e0518ebdd3aca7f41' => 
     array (
       0 => 'C:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\templates\\include\\header.tpl',
-      1 => 1510066998,
+      1 => 1510205605,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_5a01d8a49628d1_31321812 ($_smarty_tpl) {
+function content_5a03fe26f020c9_24641278 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -239,7 +239,7 @@ resume/">Search Resume <!-- span class="label-bub label-info white"><?php echo $
 										
                                       <?php if ($_smarty_tpl->tpl_vars['module']->value['view_billing'] == '1' || $_smarty_tpl->tpl_vars['module']->value['view_incentive'] == '1') {?>
 									  
-									  <?php if ($_smarty_tpl->tpl_vars['approve_billing_count']->value != '0') {?>
+									  <?php if ($_smarty_tpl->tpl_vars['approve_billing_count']->value != '0' && $_smarty_tpl->tpl_vars['module']->value['approve_billing'] == '1') {?>
 											<li class="<?php echo $_smarty_tpl->tpl_vars['billings_active']->value;?>
  dropdown active2">
 											<?php } else { ?>
@@ -247,7 +247,7 @@ resume/">Search Resume <!-- span class="label-bub label-info white"><?php echo $
  dropdown">
 										 <?php }?>
                                         
-                                            <a data-toggle="dropdown" class="dropdown-toggle " href="#"><i class="icon-file icon-white"></i> Incentive <?php if ($_smarty_tpl->tpl_vars['approve_billing_count']->value) {?><span class="label-bub label-info white"><?php echo $_smarty_tpl->tpl_vars['approve_billing_count']->value;?>
+                                            <a data-toggle="dropdown" class="dropdown-toggle " href="#"><i class="icon-file icon-white"></i> Incentive <?php if ($_smarty_tpl->tpl_vars['module']->value['approve_billing'] == '1' && $_smarty_tpl->tpl_vars['approve_billing_count']->value) {?><span class="label-bub label-info white"><?php echo $_smarty_tpl->tpl_vars['approve_billing_count']->value;?>
 </span><?php }?><b class="caret"></b></a>
                                            <ul class="dropdown-menu">
 										   <?php if ($_smarty_tpl->tpl_vars['module']->value['view_billing'] == '1') {?>
@@ -361,17 +361,17 @@ resume/">Search Resume <!-- span class="label-bub label-info white"><?php echo $
 											<?php }?>
 											
 											<?php if ($_smarty_tpl->tpl_vars['module']->value['manage_grade'] == '1') {?>
-                                                <li><a href="grade.php">Grade <?php if ($_smarty_tpl->tpl_vars['grade_count']->value) {?><span class="label-bub label-info white"><?php echo $_smarty_tpl->tpl_vars['grade_count']->value;?>
-</span><?php }?></a></li>
+                                                <li><a href="grade.php">Grade <!-- span class="label-bub label-info white"><?php echo $_smarty_tpl->tpl_vars['grade_count']->value;?>
+</span--></a></li>
 											<?php }?>
 											<?php if ($_smarty_tpl->tpl_vars['module']->value['manage_users'] == '1') {?>
-                                                <li><a href="users.php">Users <?php if ($_smarty_tpl->tpl_vars['users_count']->value) {?><span class="label-bub label-info white"><?php echo $_smarty_tpl->tpl_vars['users_count']->value;?>
-</span><?php }?></a></li>
+                                                <li><a href="users.php">Users <!--span class="label-bub label-info white"><?php echo $_smarty_tpl->tpl_vars['users_count']->value;?>
+</span--></a></li>
 											<?php }?>											
 											<?php if ($_smarty_tpl->tpl_vars['module']->value['manage_role'] == '1') {?>
 	
-												<li><a href="roles.php">Roles [Access] <?php if ($_smarty_tpl->tpl_vars['roles_count']->value) {?><span class="label-bub label-info white"><?php echo $_smarty_tpl->tpl_vars['roles_count']->value;?>
-</span><?php }?></a></li>
+												<li><a href="roles.php">Roles [Access] <!--pan class="label-bub label-info white"><?php echo $_smarty_tpl->tpl_vars['roles_count']->value;?>
+</span--></a></li>
 											<?php }?>
 											
 											<?php if ($_smarty_tpl->tpl_vars['module']->value['manage_mailer_template'] == '1') {?>

@@ -111,7 +111,7 @@ class AppController extends Controller {
 					'ClientStatus.users_id' => $this->Session->read('USER.Login.id'))
 			)
 		);
-		$count = $this->Client->find('count', array('conditions' => array('Client.status' => '2','Client.is_approve' => 'W'),	'group' => array('Client.id'), 'joins' => $options));
+		$count = $this->Client->find('count', array('conditions' => array('Client.status' => '2','ClientStatus.status' => 'W'),	'group' => array('Client.id'), 'joins' => $options));
 		$this->set('APPR_CLIENT_COUNT', $count);
 	}	
 
@@ -126,7 +126,7 @@ class AppController extends Controller {
 					'PositionStatus.users_id' => $this->Session->read('USER.Login.id'))
 			)
 		);
-		$count = $this->Position->find('count', array('conditions' => array('Position.status' => 'I','Position.is_approve' => 'W'),	'group' => array('Position.id'), 'joins' => $options));
+		$count = $this->Position->find('count', array('conditions' => array('PositionStatus.status' => 'W'),	'group' => array('Position.id'), 'joins' => $options));
 		$this->set('APPR_REQ_COUNT', $count);
 	}		
 	

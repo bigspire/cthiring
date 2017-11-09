@@ -287,11 +287,12 @@ class ClientController extends AppController {
 					$this->retain_contact_list();
 					// validate the form fields
 					if ($this->Client->validates(array('fieldList' => array('client_name','city','pincode','state','res_location_id',
-					'account_holder'))) && $contact_validate){					
+					'account_holder','remarks'))) && $contact_validate){					
 						// save the data
+						$this->request->data['Client']['is_approve'] = 'W';
+						$this->request->data['Client']['status'] = '2';
+						
 						if($this->Client->save($this->request->data['Client'], array('validate' => false))){
-								// remove contact list
-							// $this->remove_contact_list($this->Client->id);
 							// remove contact list
 							$this->remove_client_contact_list($this->Client->id);
 							// remove account holder list
@@ -299,9 +300,59 @@ class ClientController extends AppController {
 							// save contact list
 							$this->save_client_contact_list($this->Client->id);
 							// save account holder
-							$this->save_account_holder($this->Client->id);							
+							$this->save_account_holder($this->Client->id);	
+							// send mail to approver
+							$sub = 'Manage Hiring - Client Revised by '.ucfirst($this->Session->read('USER.Login.first_name')).' '.ucfirst($this->Session->read('USER.Login.last_name'));
+							$from = ucfirst($this->Session->read('USER.Login.first_name')).' '.ucfirst($this->Session->read('USER.Login.last_name'));
+							// get the superiors
+							
+							/*
+							$this->loadModel('Approve');
+							$approval_data = $this->Approve->find('first', array('fields' => array('level1'), 'conditions'=> array('Approve.users_id' => $this->Session->read('USER.Login.id'))));														
+							// get leader email address
+							$leader_data = $this->Client->Creator->find('all', array('conditions' => array('Creator.id' => $approval_data['Approve']['level1']),'fields' => array('Creator.id',	'Creator.first_name','Creator.last_name','Creator.email_id')));
+							*/					
+							
+							// get the Business Head
+							$leader_data = $this->Client->Creator->find('all', array('conditions' => array('roles_id' => '35'), 'fields' => array('Creator.id',	'Creator.first_name','Creator.last_name', 'Creator.email_id')));
+							
+							// get account holder name				
+							
+							/*
+							$sub = 'Manage Hiring - Client created by '.ucfirst($this->Session->read('USER.Login.first_name')).' '.ucfirst($this->Session->read('USER.Login.last_name'));
+							$from = ucfirst($this->Session->read('USER.Login.first_name')).' '.ucfirst($this->Session->read('USER.Login.last_name'));
+							// get the Business Head
+							$leader_data = $this->Client->Creator->find('all', array('conditions' => array('roles_id' => '39'), 'fields' => array('Creator.id',	'Creator.first_name','Creator.last_name', 'Creator.email_id')));
+							// get account holder name
+							$ac_holder = $this->ClientAccountHolder->find('all', array('fields' => array("group_concat(User.first_name separator ', ') account_holder"), 'order' => array('User.first_name ASC'), 'conditions' => array('ClientAccountHolder.clients_id' => $this->Client->id, 	'User.is_deleted' => 'N'), 'group' => array('User.id')));
+							*/
+							
+							// if leader found
+							if(!empty($leader_data)){
+								$this->loadModel('ClientStatus');
+								// make sure not duplicate status exists
+								$this->check_duplicate_status($this->Client->id, $leader_data[0]['Creator']['id']);			
+								// save req. status data
+								$data = array('clients_id' => $this->Client->id, 'created_date' => $this->Functions->get_current_date(), 'users_id' => $leader_data[0]['Creator']['id']);
+								// save the client status
+								if($this->ClientStatus->save($data, true, $fieldList = array('clients_id','created_date','users_id'))){
+								
+									$ac_holder = $this->ClientAccountHolder->find('all', array('fields' => array("group_concat(User.first_name separator ', ') account_holder"), 'order' => array('User.first_name ASC'), 'conditions' => array('ClientAccountHolder.clients_id' => $this->Client->id, 'User.is_deleted' => 'N')));
+									
+									$vars = array('from_name' => $from, 'to_name' => ucwords($leader_data[0]['Creator']['first_name'].' '.$leader_data[0]['Creator']['last_name']), 'client_name' => $this->request->data['Client']['client_name'], 'city' => $this->request->data['Client']['city'],'account_holder' => $ac_holder[0][0]['account_holder']);
+															
+									// notify superiors						
+									if(!$this->send_email($sub, 'add_client', 'noreply@managehiring.com', $leader_data[0]['Creator']['email_id'],$vars)){	
+										// show the msg.								
+										$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Problem in sending the mail for approval...', 'default', array('class' => 'alert alert-error'));				
+									}else{
+										$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Client Revised Successfully. After approval, it will be visible!', 'default', array('class' => 'alert alert-info'));
+									}
+								}
+							}else{
+								$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>You have no superior to approve your request', 'default', array('class' => 'alert alert-info'));
+							}								
 							// show the msg.
-							$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Client modified successfully', 'default', array('class' => 'alert alert-success'));				
 							$this->redirect('/client/');
 						}else{
 							// show the error msg.
@@ -401,14 +452,25 @@ class ClientController extends AppController {
 	
 	/* function to auth record */
 	public function auth_action($id, $st_id){ 	
-		if($this->request->params['pass'][3] != 'pending'){	
-			$data = $this->Client->findById($id, array('fields' => 'created_by','is_deleted','modified_date','status'));
+		if($this->request->params['pass'][3] != 'pending'){			
+			$options = array(								
+				array('table' => 'client_account_holder',
+						'alias' => 'AH',					
+						'type' => 'LEFT',
+						'conditions' => array('`AH.clients_id` = `Client`.`id`',
+							'users_id' => $this->Session->read('USER.Login.id'))
+					)								
+			);
+			$data = $this->Client->find('all', array('fields' => array('AH.users_id', 'Client.created_by','Client.is_deleted','Client.modified_date'),
+			'group' => array('Client.id'), 'conditions' => array('Client.id' => $id), 'joins' => $options));
 			// check the req belongs to the user
-			if($data['Client']['is_deleted'] == 'Y'){
-				return $data['Client']['modified_date'];
-			}else if($data['Client']['created_by'] == $this->Session->read('USER.Login.id')){	
+			if($data[0]['Client']['is_deleted'] == 'Y'){
+				return $data[0]['Client']['modified_date'];
+			}else if($data[0]['Client']['created_by'] == $this->Session->read('USER.Login.id')){	
 				return 'pass';
-			}else if($data['ClientStatus']['users_id'] == $this->Session->read('USER.Login.id')){	
+			}else if($data[0]['ClientStatus']['users_id'] == $this->Session->read('USER.Login.id')){	
+				return 'pass';
+			}else if($data[0]['AH']['users_id'] == $this->Session->read('USER.Login.id')){	
 				return 'pass';
 			}else if($this->Session->read('USER.Login.roles_id') == '33' || $this->Session->read('USER.Login.roles_id') == '35'){	
 				return 'pass';
@@ -417,7 +479,7 @@ class ClientController extends AppController {
 			}
 		}else if($this->request->params['pass'][3] == 'pending'){	
 			$data = $this->ClientStatus->find('all', array('fields' => array('ClientStatus.users_id'),
-			'conditions' => array('ClientStatus.id' => $st_id)));
+			'conditions' => array('ClientStatus.id' => $st_id, 'ClientStatus.status' => 'W')));
 			if($data[0]['ClientStatus']['users_id'] == $this->Session->read('USER.Login.id')){
 				return 'pass';
 			}else{
@@ -429,7 +491,8 @@ class ClientController extends AppController {
 	
 	/* function to check for duplicate entry */
 	public function check_duplicate_status($req_id, $app_user_id, $exist){
-		$count = $this->ClientStatus->find('count',  array('conditions' => array('ClientStatus.clients_id' => $req_id, 'ClientStatus.users_id' => $app_user_id)));
+		$count = $this->ClientStatus->find('count',  array('conditions' => array('ClientStatus.clients_id' => $req_id, 
+		'ClientStatus.users_id' => $app_user_id, 'ClientStatus.status' => 'W')));
 		$limit = $exist ? $exist : 0;
 		if($count > $limit){
 			$this->invalid_attempt();
@@ -463,7 +526,8 @@ class ClientController extends AppController {
 					$this->save_client_contact_list($this->Client->id);
 					// save account holder list
 					$this->save_account_holder($this->Client->id);
-					
+					// update req approval status table
+					$this->save_client_approval($this->Client->id);
 					// send mail to approver
 					$sub = 'Manage Hiring - Client created by '.ucfirst($this->Session->read('USER.Login.first_name')).' '.ucfirst($this->Session->read('USER.Login.last_name'));
 					$from = ucfirst($this->Session->read('USER.Login.first_name')).' '.ucfirst($this->Session->read('USER.Login.last_name'));
@@ -509,7 +573,7 @@ class ClientController extends AppController {
 								// show the msg.								
 								$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Problem in sending the mail for approval...', 'default', array('class' => 'alert alert-error'));				
 							}else{
-								$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Client created successfully. After approval, it will be visible!', 'default', array('class' => 'alert alert-info'));
+								$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Client Created Successfully. After approval, it will be visible!', 'default', array('class' => 'alert alert-info'));
 							}
 						}
 					}else{
@@ -525,6 +589,13 @@ class ClientController extends AppController {
 				$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Please check the validation errors...', 'default', array('class' => 'alert alert-error'));					
 			}			
 		}
+	}
+	
+	
+	/* function to save the client. approval */
+	public function save_client_approval($id){
+		$this->loadModel('ClientStatus');
+		$this->ClientStatus->updateAll(array('status' => "'S'"), 	array('clients_id' => $id));
 	}
 	
 	/* function to validate the client contact */

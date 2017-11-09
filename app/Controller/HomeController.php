@@ -93,7 +93,7 @@ class HomeController  extends AppController {
 		*/
 		
 		/* for dashboard switching */
-		if($dash_type == 'rec_view' || $this->Session->read('USER.Login.roles_id') == '30'){
+		if($dash_type == 'rec_view' || $this->Session->read('USER.Login.roles_id') == '30'){ 
 			$cv_emp_cond = array('ReqResume.created_by' => $this->Session->read('USER.Login.id'));
 			$int_emp_cond = array('ReqResume.created_by' => $this->Session->read('USER.Login.id'));
 			$pos_emp_cond = array('ReqTeam.users_id' => $this->Session->read('USER.Login.id'), 'ReqTeam.is_approve' => 'A');
@@ -110,7 +110,7 @@ class HomeController  extends AppController {
 						'alias' => 'Position',					
 						'type' => 'LEFT',
 						'conditions' => array('`Position`.`clients_id` = `Client`.`id`',
-						'Position.is_approve' => 'A', 'Position.status' => 'A')
+						'Position.status' => 'A')
 				),
 				array('table' => 'req_team',
 						'alias' => 'ReqTeam',					
@@ -129,7 +129,7 @@ class HomeController  extends AppController {
 						'conditions' => array('`PositionStatus`.`requirements_id` = `Position`.`id`', 'member_approve' => 'A')
 				)
 			);	
-			$pos_emp_cond2 = array('ReqTeam.users_id' => $this->Session->read('USER.Login.id'), 'ReqTeam.is_approve' => 'A');			
+			$pos_emp_cond2 = array('ReqTeam.users_id' => $this->Session->read('USER.Login.id'), 'ReqTeam.is_approve' => 'A');	
 			
 			// $client_emp_cond = array('ReqTeam.users_id' => $this->Session->read('USER.Login.id'));
 			
@@ -147,7 +147,7 @@ class HomeController  extends AppController {
 						'alias' => 'Position',					
 						'type' => 'LEFT',
 						'conditions' => array('`Position`.`clients_id` = `Client`.`id`',
-						'Position.is_approve' => 'A', 'Position.status' => 'A')
+						'Position.status' => 'A')
 				),
 				array('table' => 'client_account_holder',
 						'alias' => 'ClientAH',					
@@ -200,10 +200,10 @@ class HomeController  extends AppController {
 			);
 			$cv_emp_cond = array('ClientAH.users_id' => $this->Session->read('USER.Login.id'));
 			$int_emp_cond =  array('ClientAH.users_id' => $this->Session->read('USER.Login.id'));
-			$pos_emp_cond =  array('ClientAH.users_id' => $this->Session->read('USER.Login.id'), 'Home.is_approve' => 'A');
+			$pos_emp_cond =  array('ClientAH.users_id' => $this->Session->read('USER.Login.id'), 'Home.status' => 'A');
 			$cv_sent_emp_cond =  array('ClientAH.users_id' => $this->Session->read('USER.Login.id'));			
 			$client_emp_cond = array('ClientAH.users_id' => $this->Session->read('USER.Login.id'));
-			$pos_emp_cond2 = array('Position.created_by' => $this->Session->read('USER.Login.id'), 'Position.is_approve' => 'A');
+			$pos_emp_cond2 =  array('ClientAH.users_id' => $this->Session->read('USER.Login.id'), 'Position.status' => 'A');
 			$this->set('ac_dash', 'active');
 		}else if($this->Session->read('USER.Login.roles_id') == '33'  || $this->Session->read('USER.Login.roles_id') == '35'){ // director
 			$resume_options = array(			
@@ -215,15 +215,16 @@ class HomeController  extends AppController {
 			);
 			$cv_emp_cond = '';
 			$int_emp_cond = '';
-			$pos_emp_cond = array('Home.is_approve' => 'A');
+			$pos_emp_cond = array('Home.status' => 'A');
 			$cv_sent_emp_cond = '';
-			$pos_emp_cond2 = array('Position.is_approve' => 'A');
+			$pos_emp_cond2 = array('Position.status' => 'A');
 			// get recent clients
 			$cli_options = array(						
 				array('table' => 'requirements',
 						'alias' => 'Position',					
 						'type' => 'LEFT',
-						'conditions' => array('`Position`.`clients_id` = `Client`.`id`')
+						'conditions' => array('`Position`.`clients_id` = `Client`.`id`',
+						'Position.status' => 'A')
 				)
 			);
 			// $client_emp_cond = array('Client.created_by' => $this->Session->read('USER.Login.id'));
@@ -291,7 +292,7 @@ class HomeController  extends AppController {
 		$chart_date = $this->generate_chart_date($start, $end);
 		// check the graph type
 		
-		foreach($chart_date as $date){
+		foreach($chart_date as $date){ 
 			// get the requirements count
 			$req_count_data = $this->get_position_count($date,$pos_emp_cond,$ac_join,$branch_cond,$client_cond);	
 			$req_count[] = count($req_count_data);
@@ -408,12 +409,17 @@ class HomeController  extends AppController {
 				'type' => 'LEFT',
 				'conditions' => array('`ReqTeam`.`requirements_id` = `Position`.`id`',
 				'ReqTeam.is_approve' => 'A')
+			),
+			array('table' => 'client_account_holder',
+				'alias' => 'ClientAH',					
+				'type' => 'LEFT',
+				'conditions' => array('`Client`.`id` = `ClientAH`.`clients_id`')
 			)
 		);
 		$date_cond = array('or' => array("DATE_FORMAT(Position.created_date, '%Y-%m-%d') between ? and ?" => array($start, $end)));
 		$fields = array('id','job_title','location','Client.client_name', 'Creator.first_name','created_date', 'count(ReqResume.id) cv_sent','ReqStatus.title');			
-		$conditions = array('fields' => $fields,'limit' => '10','conditions' => array($date_cond,$pos_emp_cond2, 'Position.is_approve' => 'A',
-		'Position.status' => 'A'),	'order' => array('created_date' => 'desc'),	'group' => array('Position.id'), 'joins' => $pos_options);
+		$conditions = array('fields' => $fields,'conditions' => array($date_cond,$pos_emp_cond2,
+		'Position.status' => 'A'),	'order' => array('Position.created_date' => 'desc'),	'group' => array('Position.id'), 'joins' => $pos_options);
 		$this->Position->unBindModel(array('belongsTo' => array('FunctionArea')));
 		$data = $this->Position->find('all', $conditions);
 		$this->set('position_data', $data);
@@ -557,7 +563,7 @@ class HomeController  extends AppController {
 	/* function to get position counts */
 	public function get_position_count($date,$pos_emp_cond,$ac_join,$branch_cond,$client_cond,$reqCond){	
 		// set date condition
-		if($this->Session->read('USER.Login.roles_id') == '30'){
+		if($this->Session->read('USER.Login.roles_id') == '30' || $this->request->params['pass'][0] ==  'rec_view'){
 			$ac_join = array(						
 				array('table' => 'req_team',
 					'alias' => 'ReqTeam',					
@@ -579,6 +585,7 @@ class HomeController  extends AppController {
 		'order' => array('Client.client_name' => 'asc'), 'joins' => $ac_join, 'group' => array('Home.id')));
 		return $count_data;		
 	}
+	
 	
 	/* function to get cv sent counts */
 	public function get_cv_sent_count($date,$cv_sent_emp_cond,$cv_branch_cond,$client_cond,$reqCond){
@@ -1134,7 +1141,7 @@ class HomeController  extends AppController {
 		$n = $this->Home->diff_date($start, $end);
 		$i = 0;		
 		while($n >= $i){
-			$date = date('Y-m-d', strtotime($start. '+'.$i.' days'));
+			$date = date('Y-m-d', strtotime($end. '-'.$i.' days'));
 			$chart_date[] = $date;
 			$i++;
 		}		

@@ -163,7 +163,11 @@
 				</tbody>
 			</table>
 		</div>
-							
+					
+
+
+	
+	
 		<div class="span6">		
 			<table class="table table-bordered dataTable" style="margin-bottom:0;">
 				<tbody>
@@ -377,6 +381,23 @@
 				</tbody>
 			</table>
 		</div>
+		
+		
+		<div class="span12" style="clear:left;margin-top:10px;margin-left:0px;padding:0">		
+			<table class="table table-bordered dataTable" style="margin-bottom:0;">
+				<tbody>
+								   <tr  class="">
+										<td width="135" class="tbl_column">Remarks <span class="f_req">*</span></td>
+										<td> 
+<?php echo $this->Form->input('remarks2', array('div'=> false,'type' => 'text', 'label' => false, 'class' => 'span8 wysiwyg1', 'rows' => '2',
+  'required' => false, 'placeholder' => '',	'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 
+										</td>
+									</tr>
+
+			</tbody>
+			</table>
+	</div>
+	
 		</div>
 		
 		<div class="tab-pane" id="job_desc">
