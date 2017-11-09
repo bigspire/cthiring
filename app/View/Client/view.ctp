@@ -36,7 +36,7 @@
 							<input value="Edit" type="button" class="btn btn-info"></a>
 							<?php endif; ?>
 							
-							   <?php if($create_position == '1'):?>
+							   <?php if($create_position == '1' && $this->Session->read('USER.Login.roles_id') == '34'):?>
 	<a href="<?php echo $this->webroot;?>position/add/<?php echo $this->request->params['pass'][0];?>" class="sepV_a jsRedirect" title="Add Client">
 							<input value="Add Position" type="button" class="btn btn-info"></a>		
 							<?php endif; ?>
@@ -152,12 +152,14 @@
 										
 										<td  class="tbl_column"width="120">Status</td>
 										<td>
-										<?php if($client_data['Client']['status'] == '1'):?>
-										<span class="label label">Inactive</span>
+									<?php if($client_data['Client']['status'] == '1'):?>
+										<span title="Inactive Client" rel="tooltip" class="label label">Inactive</span>
+										<?php elseif($client_data['ClientStatus']['status'] == 'R'):?>	
+										<span title="Rejected" rel="tooltip" class="label label-inverse">Rejected</span>	
 										<?php elseif($client_data['Client']['status'] == '2'):?>
 										<span title="Awaiting for Approval" rel="tooltip" class="label label-warning">Awaiting Approval</span>
-										<?php else:?>
-										<span class="label label-success">Active</span>
+										<?php elseif($client_data['Client']['status'] == '0'):?>
+										<span title="Active Client" rel="tooltip" class="label label-success">Active</span>
 										<?php endif; ?>
 										</td>
 											
@@ -274,11 +276,17 @@
 					</div>
 					
 	<div class="form-actions">
-		<?php if($client_data['Client']['is_approve'] == 'W'):?>
+		<?php if($client_data['Client']['is_approve'] == 'W'  &&  $this->request->params['pass'][3] == 'pending'):?>
 <a class="iframeBox unreadLink" rel="tooltip" title="Approve Client" href="<?php echo $this->webroot;?>client/remark/<?php echo $client_data['Client']['id'];?>/<?php echo $this->request->params['pass'][1];?>/<?php echo $client_data['Client']['created_by'];?>/A/" val="40_50"><input type="button" value="Approve" class="btn btn btn-success"/></a>
 <a class="iframeBox unreadLink" rel="tooltip" title="Reject Client" href="<?php echo $this->webroot;?>client/remark/<?php echo $client_data['Client']['id'];?>/<?php echo $this->request->params['pass'][1];?>/<?php echo $client_data['Client']['created_by'];?>/R/" val="40_50"><input type="button" value="Reject" class="btn btn btn-danger"/></a>
 <a href="<?php echo $this->webroot;?>client/index/pending/" rel="tooltip" title="Cancel and Back to Clients"  class="jsRedirect"><button class="btn">Cancel</button></a>
+<?php else: ?>
+<a href="<?php echo $this->webroot;?>client/index/<?php echo $this->request->params['pass'][3];?>" rel="tooltip" title="Back to Clients"  class="jsRedirect"><button class="btn">Back</button></a>
+
 	<?php endif; ?>
+	
+	
+	
 	
 	<?php if($client_data['Client']['is_approve'] == 'A'):?>
 	<a href="<?php echo $this->webroot;?>client/" rel="tooltip" title="Back to Clients"  class="jsRedirect"><button class="btn">Back</button></a>

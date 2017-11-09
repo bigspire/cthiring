@@ -153,7 +153,7 @@ class Position extends AppModel {
 			 'minlength' => array(
                 'rule'     => 'check_length',
                 'required' => true,
-                'message'  => 'Job description must be min. of 500 chars.'
+                'message'  => 'Job description must be min. of 100 chars.'
             )
         ),
 		'desc_file' => array(		

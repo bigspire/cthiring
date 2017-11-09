@@ -168,6 +168,7 @@ $(document).ready(function() {
 			  theme: 'modern',
 			  branding: false,
 			  menubar: false,
+			  statusbar: false,
 			  plugins: [
 				'advlist autolink lists link image charmap print preview anchor',
 				'searchreplace visualblocks code fullscreen' ,
@@ -212,7 +213,9 @@ $(document).ready(function() {
 			prevText: "",
 			nextText: "",
 			autoclose:true,
-			todayHighlight: false
+			todayHighlight: true,
+			startDate:$('#start_date').val(),
+			endDate:$('#end_date').val(),
 		});
 	}
 	 
@@ -575,7 +578,7 @@ $(document).ready(function() {
 		var sheepAdd = $('#sheepItFormContact').sheepIt({
 			   separator: '',
 			   allowRemoveLast: true,
-			   allowRemoveCurrent: false,
+			   allowRemoveCurrent: true,
 			   allowRemoveAll: false,
 			   allowAdd: true,
 			   allowAddN: true,

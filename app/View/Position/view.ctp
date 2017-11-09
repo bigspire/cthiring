@@ -112,7 +112,11 @@
 										<tr>
 										
 										<td class="tbl_column">CTC</td>
-										<td><?php echo $position_data['Position']['ctc_from'].' - '.$position_data['Position']['ctc_to'];?> Lacs</td>
+										<?php 
+										$pre_ctc_type = $this->Functions->get_ctc_type($position_data['Position']['ctc_from_type']);
+										$exp_ctc_type = $this->Functions->get_ctc_type($position_data['Position']['ctc_to_type']);
+										?>
+										<td><?php echo $position_data['Position']['ctc_from'].' '.$pre_ctc_type.' - '.$position_data['Position']['ctc_to'].' '.$exp_ctc_type;?></td>
 											
 									</tr>
 									<tr>
@@ -212,10 +216,16 @@
 			<?php  		$no_req = $position_data['Position']['no_job'];
 						$team_member = explode(',', $position_data[0]['team_member2']);
 						$team_req = explode(',', $position_data[0]['team_req']);
+						$team_mem_id = explode(',', $position_data[0]['team_mem_id']);						
 						foreach($team_member as $key => $member):
 						$mem_req = $team_req[$key] ? $team_req[$key] : $no_req; ?>
-			
-			<div style="margin-top:4px;"><?php echo $member;?> :  	 
+			<?php 
+			if($stmemberID == $team_mem_id[$key]):
+			$style = 'font-weight:bold;';
+			else:
+			$style = 'font-weight:normal;';
+			endif; ?>
+			<div style="margin-top:4px;"><span style="<?php echo $style;?>"><?php echo $member;?> : </span>  	 
 			<button rel="tooltip" title="<?php echo $mem_req;?> Openings" class="tagDiv tag label btn-info"><?php echo $mem_req;?></button>	
 			<div>
 				
@@ -323,12 +333,16 @@
 					
 					
 					</div></div>
-			<?php if($position_data['Position']['is_approve'] == 'W'):?>
 
 							<div class="form-actions">
+<?php if($position_data['Position']['is_approve'] == 'W' &&  $this->request->params['pass'][2] == 'pending'):?>
+
 <a class="iframeBox unreadLink" rel="tooltip" title="Approve Position" href="<?php echo $this->webroot;?>position/remark/<?php echo $position_data['Position']['id'];?>/<?php echo $this->request->params['pass'][1];?>/<?php echo $position_data['Position']['created_by'];?>/A/" val="40_50"><input type="button" value="Approve" class="btn btn btn-success"/></a>
 <a class="iframeBox unreadLink" rel="tooltip" title="Reject Position" href="<?php echo $this->webroot;?>position/remark/<?php echo $position_data['Position']['id'];?>/<?php echo $this->request->params['pass'][1];?>/<?php echo $position_data['Position']['created_by'];?>/R/" val="40_50"><input type="button" value="Reject" class="btn btn btn-danger"/></a>
 <a href="<?php echo $this->webroot;?>position/index/pending/" rel="tooltip" title="Cancel and Back to Positions"  class="jsRedirect"><button class="btn">Cancel</button></a>
+			<?php else:?>
+			
+			<a href="<?php echo $this->webroot;?>position/index/<?php echo $this->request->params['pass'][2];?>" rel="tooltip" title="Back to Positions"  class="jsRedirect"><button class="btn">Back</button></a>
 
 
 						

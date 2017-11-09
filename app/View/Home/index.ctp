@@ -349,7 +349,7 @@
 										<ul class="dropdown-menu sort-by">
 											<li><a href="<?php echo $this->webroot;?>home/?type=req&from=<?php echo $this->request->query['from'];?>&to=<?php echo $this->request->query['to'];?>" class="sort" data-sort="sl_name2">Requirement Graph</a></li>
 											<li><a href="<?php echo $this->webroot;?>home/?from=<?php echo $this->request->query['from'];?>&to=<?php echo $this->request->query['to'];?>" class="sort" data-sort="sl_date2">As Is Graph</a></li>
-											<li><a class="iframeBox" val="95_95" href="<?php echo $this->webroot;?>home/?action=view_graph&from=<?php echo $this->request->query['from'];?>&to=<?php echo $this->request->query['to'];?>" class="sort" data-sort="sl_date2">Enlarge & Print Graph</a></li>
+											<li><a class="iframeBox" val="95_95" href="<?php echo $this->webroot;?>home/?action=view_graph&from=<?php echo $this->request->query['from'];?>&to=<?php echo $this->request->query['to'];?>&type=<?php echo $this->request->query['type'];?>" class="sort" data-sort="sl_date2">Enlarge & Print Graph</a></li>
 
 
 										</ul>
@@ -492,7 +492,7 @@
 									<tr>
 										<th class="">Client</th>
 										<th  class="optional">Location</th>
-										<th class="optional">Account Holder</th> 
+										<th class="optional">Created By</th> 
 										<th  class="optional">Created Date</th>
 										<th  class="essential" style="text-align:center">No. Positions</th>
 									</tr>
@@ -618,8 +618,10 @@
 										<a class="dropdown-toggle" data-toggle="dropdown" href="#">Show <b class="caret"></b></a>
 										<ul class="dropdown-menu filter">
 											<li class="active"><a href="javascript:void(0)" id="filter-none4">All</a></li>
-											<li><a href="javascript:void(0)" id="filter-24">Joined</a></li>
-											<li><a href="javascript:void(0)" id="filter-25">Not Joined</a></li>
+											<li><a href="javascript:void(0)" id="filter-31">Joined</a></li>
+											<li><a href="javascript:void(0)" id="filter-32">Not Joined</a></li>
+											<li><a href="javascript:void(0)" id="filter-33">Deferred</a></li>
+
 										</ul>
 									</li>
 								</ul>

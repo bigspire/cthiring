@@ -66,12 +66,12 @@
 						</span>	
 							
 							
-							
+							<?php if($this->request->params['pass'][0] != 'pending'):?>	
 							<label>Status: 
 							<?php echo $this->Form->input('status', array('div'=> false,'type' => 'select', 
 							'label' => false, 'class' => 'input-medium', 'empty' => 'Select',
 							'selected' => $this->params->query['status'], 'required' => false, 'placeholder' => '', 'style' => "clear:left", 'options' => $stList)); ?> 
-
+							<?php endif; ?>
 							
 							</label>
 							<?php if($approveUser):?>
@@ -80,13 +80,17 @@
 							</label>
 						<?php endif; ?>
 						
-						<?php if($this->Session->read('USER.Login.roles_id') == '33' || $this->Session->read('USER.Login.roles_id') == '38'):?>	
+						<?php if($this->Session->read('USER.Login.roles_id') == '33' || $this->Session->read('USER.Login.roles_id') == '35' || $this->Session->read('USER.Login.roles_id') == '39'):?>	
 							<label>
 							Branch: 
 							<?php echo $this->Form->input('loc', array('div'=> false,'type' => 'select', 'label' => false, 'class' => 'input-medium', 'empty' => 'Select', 'selected' => $this->params->query['loc'], 'required' => false, 'placeholder' => '', 'style' => "clear:left", 'options' => $locList)); ?> 
 							</label>
 						<?php endif; ?>
-							
+					<?php if($this->request->params['pass'][0] != 'pending'):?>	
+					<label>Approval Status: 
+						<?php echo $this->Form->input('apr_status', array('div'=> false,'type' => 'select', 'label' => false, 'class' => 'input-medium', 'empty' => 'Select', 'selected' => $this->params->query['apr_status'], 'required' => false, 'placeholder' => '', 'style' => "clear:left", 'options' => $approveStatus)); ?> 					
+					</label>
+					<?php endif; ?>		
 							<!--label>Unread: 
 							<?php // echo $this->Form->input('unread', array('div'=> false,'type' => 'checkbox', 'label' => false, 'class' => 'input-medium', 'title' => 'Check for Unread Positions', 'checked' => $this->params->query['unread'], 'required' => false, 'placeholder' => '')); ?> 
 
@@ -148,8 +152,16 @@
 									<?php foreach($data as $req):?>
 									<tr>
 										<?php if(!empty($noHead)): $target = "target='_blank'"; endif;?>
-										<td width=""><a <?php echo $target;?> href="<?php echo $this->webroot;?>position/view/<?php echo $req['Position']['id'];?>/<?php echo $req[0]['st_id'];?>/"><?php echo ucwords($req['Position']['job_title']);?></a></td>
-										<td width="" ><?php echo $req['Client']['client_name'];?></td>
+										<td width=""><a <?php echo $target;?> href="<?php echo $this->webroot;?>position/view/<?php echo $req['Position']['id'];?>/<?php echo $req[0]['st_id'];?>/<?php echo $this->request->params['pass'][0];?><?php echo $req['ReqRead']['id'];?>/"><?php echo ucwords($req['Position']['job_title']);?></a>
+										<?php if($req['ReqRead']['id'] != '' && $req['ReqRead']['status'] == 'U'):?>
+										<span rel="tooltip" title="New Position" class="label label-warning">New</span>			
+										<?php endif; ?>
+										</td>
+										
+										
+										<td width="" ><?php echo $req['Client']['client_name'];?>
+										
+										</td>
 										<td   style="text-align:center" width=""><?php echo $req['Position']['no_job'];?></td>
 										
 						
@@ -161,6 +173,8 @@
 						<td width=""  style="text-align:center">
 						<?php if($req['Position']['status'] == 'A'):?>
 						<span rel="tooltip" title="Requirement Status: <?php echo $req['ReqStatus']['title'];?> " class="label label-<?php echo $this->Functions->get_req_status_color($req['ReqStatus']['title']);?>"><?php echo $req['ReqStatus']['title'];?></span>			
+						<?php elseif($req['PositionStatus']['member_approve'] == 'R'):?>	
+						<span title="Rejected" rel="tooltip" class="label label-danger">Rejected</span>	
 						<?php else:?>	
 						<span title="Awaiting for Approval" rel="tooltip" class="label label-warning">Awaiting Approval</span>						
 						<?php endif; ?>
@@ -183,8 +197,8 @@
 	<a href="<?php echo $this->webroot;?>position/edit/<?php echo $req['Position']['id'];?>/" class="btn  btn-mini"  rel="tooltip" class="sepV_a" title="Edit Position"><i class="icon-pencil"></i></a>
 	<?php endif; ?>	
 	
-	<?php if($req['Position']['is_approve'] == 'W'):?>
-	<a rel="tooltip"  title="Verify" href="<?php echo $this->webroot;?>position/view/<?php echo $req['Position']['id'];?>/<?php echo $req[0]['st_id'];?>/" class="btn  btn-mini"><i class="icon-edit"></i></a>
+	<?php if($req['Position']['is_approve'] == 'W' && $req[0]['st_user_id'] == $this->Session->read('USER.Login.id') && $this->request->params['pass'][0] == 'pending'):?>
+	<a rel="tooltip"  title="Verify" href="<?php echo $this->webroot;?>position/view/<?php echo $req['Position']['id'];?>/<?php echo $req[0]['st_id'];?>/<?php echo $this->request->params['pass'][0];?>" class="btn  btn-mini"><i class="icon-edit"></i></a>
 	<?php endif; ?>		
 	
 	

@@ -38,6 +38,7 @@
 			  theme: 'modern',
 			  branding: false,
 			  menubar: false,
+			  statusbar: false,
 			  plugins: [
 				'advlist autolink lists link image charmap print preview anchor',
 				'searchreplace visualblocks code fullscreen' ,

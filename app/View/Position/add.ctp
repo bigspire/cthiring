@@ -152,7 +152,7 @@
 								   <tr  class="">
 										<td width="120" class="tbl_column">Qualification <span class="f_req">*</span></td>
 										<td> 
-<?php echo $this->Form->input('education', array('div'=> false,'type' => 'text', 'label' => false, 'class' => 'span8', 'cols' => '10', 'rows' => '3',
+<?php echo $this->Form->input('education', array('div'=> false,'type' => 'text', 'label' => false, 'class' => 'span8 wysiwyg1', 'cols' => '10', 'rows' => '3',
   'required' => false, 'placeholder' => '',	'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 
 										</td>
 									</tr>
@@ -330,6 +330,9 @@
 					
 <?php echo $this->Form->input('end_date', array('div'=> false,'type' => 'text', 'label' => false, 'class' => 'span4 inline_text datepick',  'required' => false, 'placeholder' => 'Closure Date',
 				'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 	
+				
+		<input type="hidden" id="start_date" name="start_date" value="<?php echo date('d/m/Y', strtotime('-2 days'));?>">
+
 						</span>	
 						</span>	
 									

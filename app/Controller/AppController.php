@@ -46,6 +46,7 @@ class AppController extends Controller {
 				// $this->get_unread_count();
 				$this->get_approve_client_count();
 				$this->get_approve_req_count();
+				$this->get_position_unread_count();
 			}
 
 		}
@@ -88,6 +89,16 @@ class AppController extends Controller {
 		'group' => array('Read.id')));
 		$this->set('msg_count', $count);
 	}
+	
+	/* get unread count for the unread counts of positions */
+	public function get_position_unread_count(){
+		$this->loadModel('ReqRead');
+		$count = $this->ReqRead->find('count', array('conditions' => array('users_id' => $this->Session->read('USER.Login.id'),
+		'ReqRead.status' => 'U'),'group' => array('ReqRead.id')));
+		$this->set('new_pos_count', $count);
+	}
+	
+	
 			
 	/* get unread count for the approve client */
 	public function get_approve_client_count(){

@@ -138,7 +138,7 @@
 		textarea, input {outline: none}
 
 	/* header */
-		.navbar .brand {width: 100px;padding-bottom:0;font-weight:bold;padding-top:0;margin-top:6px;font-size: 14px;text-decoration:none;color: #fff}
+		.navbar .brand {width: 105px;padding-bottom:0;font-weight:bold;padding-top:0;margin-top:6px;font-size: 14px;text-decoration:none;color: #fff}
 		.navbar .brand i {margin-top:5px}
         .navbar .caret {opacity: .6;filter: alpha(opacity=60)}
 		.navbar .user_menu {margin-left: 0}
@@ -989,3 +989,4 @@ ul.ratingList{margin:0px !important;}
 .view_label{margin-top:5px}
 .viewLabelHead{font-weight:bold;}
 ul.statusLegend li{width:220px;float:left;list-style-type:none;margin:5px;height:20px;}
+.bootstrap-tagsinput input{width:300px !important}

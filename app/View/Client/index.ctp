@@ -29,18 +29,17 @@
                     </nav>
 
 						<div class="srch_buttons">
-							<?php if($this->request->params['pass'][0] != 'pending'):?>
 							<a class="jsRedirect toggleSearch"  href="javascript:void(0)"><input type="button" value="Search" class="homeSrch btn btn-success"/></a>
-							<?php endif; ?>
+							
 
 														
-							<?php if($this->request->params['pass'][0] != 'pending' && ($this->Session->read('USER.Login.roles_id') == '33' 
-							|| $this->Session->read('USER.Login.roles_id') == '39')):?>
+<?php if($this->request->params['pass'][0] != 'pending' && ($this->Session->read('USER.Login.roles_id') == '33' 
+							|| $this->Session->read('USER.Login.roles_id') == '35')):?>
 							<a class="notify jsRedirect" data-notify-time = '3000' data-notify-title="In Progress!" data-notify-message="Downloading Excel... Please wait..." 
 							href="<?php echo $this->webroot;?>client/?action=export&<?php echo $this->Functions->get_url_vars($this->request->query);?>"><input type="button" value="Export Excel" class="btn btn-warning"/></a>
 							<?php endif; ?>
 							
-							<?php if($create_client == '1' && $this->request->params['pass'][0] != 'pending'):?>
+							<?php if($create_client == '1'):?>
 							<a class="jsRedirect"  href="<?php echo $this->webroot;?>client/add/"><input type="button" value="Create Client" class="btn btn-info"/></a>
 							<?php endif; ?>
 						</div>
@@ -65,7 +64,9 @@
 							<label>To Date: <input  placeholder="dd/mm/yyyy" type="text" name="data[Client][to]" value="<?php echo $this->request->query['to'];?>" class="input-small" aria-controls="dt_gal"></label>
 
 						</span>	
-						</span>							
+						</span>		
+
+						
 							
 <?php if($approveUser):?>
 							<label>Employee: 
@@ -73,19 +74,28 @@
 							</label>
 						<?php endif; ?>
 														
-
+			
+					
 						<input type="hidden" value="1" id="SearchKeywords">
 						<input type="hidden" value="<?php echo $this->webroot;?>client/" id="webroot">
 					<input type="hidden" id="srchSubmit" value="<?php echo $this->params->query['srch_status'];?>">
 
 			
+							<?php if($this->request->params['pass'][0] != 'pending'):?>	
 
 			
 	<label>Status: 
 							<?php echo $this->Form->input('status', array('div'=> false,'type' => 'select', 'label' => false, 'class' => 'input-small', 'empty' => 'Select', 'selected' => $this->params->query['status'], 'required' => false, 'placeholder' => '', 'style' => "clear:left", 'options' => array('2' => 'Active','1' => 'Inactive'))); ?> 
 
 							</label>
+							
+							
 
+					<label>Approval Status: 
+						<?php echo $this->Form->input('apr_status', array('div'=> false,'type' => 'select', 'label' => false, 'class' => 'input-medium', 'empty' => 'Select', 'selected' => $this->params->query['apr_status'], 'required' => false, 'placeholder' => '', 'style' => "clear:left", 'options' => $approveStatus)); ?> 					
+					</label>
+					<?php endif; ?>	
+					
 							<label style="margin-top:18px;"><input type="submit" value="Submit" class="btn btn-gebo" /></label>
 							
 						
@@ -120,7 +130,7 @@
 								<?php foreach($data as $client):?>
 									<tr>
 										
-										<td><a rel="tooltip" title="Click to view the details" href="<?php echo $this->webroot;?>client/view/<?php echo $client['Client']['id'];?>/<?php echo $client[0]['st_id'];?>/<?php echo $client['Client']['created_by'];?>"><?php echo ucwords($client['Client']['client_name']);?></a></td>
+										<td><a rel="tooltip" title="Click to view the details" href="<?php echo $this->webroot;?>client/view/<?php echo $client['Client']['id'];?>/<?php echo $client[0]['st_id'];?>/<?php echo $client['Client']['created_by'];?>/<?php echo $this->request->params['pass'][0];?>/"><?php echo ucwords($client['Client']['client_name']);?></a></td>
 										<td><?php echo $client['Client']['city'];?></td>
 										<td><?php echo ucfirst($client['ResLocation']['location']);?></td>
 										<td style="text-align:center"><a rel="tooltip" title="Click to view the Requirements"  href="<?php echo $this->webroot;?>position/?client_id=<?php echo $client['Client']['id'];?>"><?php echo $client[0]['no_pos'];?></a></td>
@@ -129,9 +139,11 @@
 										<td style="text-align:center">
 										<?php if($client['Client']['status'] == '1'):?>
 										<span title="Inactive Client" rel="tooltip" class="label label">Inactive</span>
+										<?php elseif($client['ClientStatus']['status'] == 'R'):?>	
+										<span title="Rejected" rel="tooltip" class="label label-inverse">Rejected</span>	
 										<?php elseif($client['Client']['status'] == '2'):?>
 										<span title="Awaiting for Approval" rel="tooltip" class="label label-warning">Awaiting Approval</span>
-										<?php else:?>
+										<?php elseif($client['Client']['status'] == '0'):?>
 										<span title="Active Client" rel="tooltip" class="label label-success">Active</span>
 										<?php endif; ?>
 										</td>
@@ -147,8 +159,8 @@
 	<a href="<?php echo $this->webroot;?>client/edit/<?php echo $client['Client']['id'];?>/" class="btn  btn-mini"  rel="tooltip" class="sepV_a" title="Edit Company"><i class="icon-pencil"></i></a>
 	<?php endif; ?>	
 	
-	<?php if($client['Client']['is_approve'] == 'W'):?>
-	<a rel="tooltip" title="Verify Client" href="<?php echo $this->webroot;?>client/view/<?php echo $client['Client']['id'];?>/<?php echo $client[0]['st_id'];?>/<?php echo $client['Client']['created_by'];?>/" class="btn  btn-mini"><i class="icon-edit"></i></a>
+	<?php if($client['Client']['is_approve'] == 'W' && $client[0]['st_user_id'] == $this->Session->read('USER.Login.id') && $this->request->params['pass'][0] == 'pending'):?>
+	<a rel="tooltip" title="Verify Client" href="<?php echo $this->webroot;?>client/view/<?php echo $client['Client']['id'];?>/<?php echo $client[0]['st_id'];?>/<?php echo $client['Client']['created_by'];?>/<?php echo $this->request->params['pass'][0];?>/" class="btn  btn-mini"><i class="icon-edit"></i></a>
 	<?php endif; ?>									
 										
 										

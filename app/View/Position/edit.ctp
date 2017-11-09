@@ -153,7 +153,7 @@
 								   <tr  class="">
 										<td width="120" class="tbl_column">Qualification <span class="f_req">*</span></td>
 										<td> 
-<?php echo $this->Form->input('education', array('div'=> false,'type' => 'text', 'label' => false, 'class' => 'span8', 'rows' => '2',
+<?php echo $this->Form->input('education', array('div'=> false,'type' => 'text', 'label' => false, 'class' => 'span8 wysiwyg1', 'rows' => '2',
   'required' => false, 'placeholder' => '',	'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 
 										</td>
 									</tr>
