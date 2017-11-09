@@ -25,7 +25,9 @@
                             </ul>
                         </div>
                     </nav>
-				
+				{if $EXIST_MSG}
+				 <div id="flashMessage" class="alert alert-error"><button type="button" class="close" data-dismiss="alert">×</button>{$EXIST_MSG}</div>					
+				{/if}
 <form action="" id="formID" class="formID" method="post" accept-charset="utf-8">
 	<div class="box">
 		<div class="row-fluid">
@@ -386,7 +388,8 @@
 										<input type="text"  name="company_#index#" tabindex="5" id="company_#index#"  class="span8" />
 										<label for="reg_city" generated="true" class="error" id="company_Err_#index#"></label>										
 										</td>
-							</tr>						
+							</tr>		
+           					
 			</tbody>
 		</table>				
 		</div>
