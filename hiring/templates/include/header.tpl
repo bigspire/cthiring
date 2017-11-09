@@ -190,13 +190,13 @@
 										
                                       {if $module['view_billing'] eq '1' || $module['view_incentive'] eq '1'}
 									  
-									  {if $approve_billing_count neq '0'}
+									  {if $approve_billing_count neq '0' && $module['approve_billing'] eq '1'}
 											<li class="{$billings_active} dropdown active2">
 											{else}
 											<li class="{$billings_active} dropdown">
 										 {/if}
                                         
-                                            <a data-toggle="dropdown" class="dropdown-toggle " href="#"><i class="icon-file icon-white"></i> Incentive {if $approve_billing_count}<span class="label-bub label-info white">{$approve_billing_count}</span>{/if}<b class="caret"></b></a>
+                                            <a data-toggle="dropdown" class="dropdown-toggle " href="#"><i class="icon-file icon-white"></i> Incentive {if $module['approve_billing'] eq '1' and $approve_billing_count}<span class="label-bub label-info white">{$approve_billing_count}</span>{/if}<b class="caret"></b></a>
                                            <ul class="dropdown-menu">
 										   {if $module['view_billing'] eq '1'}
 												<li><a href="billing.php">Search Billing</a></li>
@@ -309,14 +309,14 @@
 											{/if}
 											
 											{if $module['manage_grade'] eq '1'}
-                                                <li><a href="grade.php">Grade {if $grade_count}<span class="label-bub label-info white">{$grade_count}</span>{/if}</a></li>
+                                                <li><a href="grade.php">Grade {* if $grade_count *}<!-- span class="label-bub label-info white">{$grade_count}</span-->{* /if *}</a></li>
 											{/if}
 											{if $module['manage_users'] eq '1'}
-                                                <li><a href="users.php">Users {if $users_count}<span class="label-bub label-info white">{$users_count}</span>{/if}</a></li>
+                                                <li><a href="users.php">Users {* if $users_count *}<!--span class="label-bub label-info white">{$users_count}</span-->{* /if *}</a></li>
 											{/if}											
 											{if $module['manage_role'] eq '1'}
 	
-												<li><a href="roles.php">Roles [Access] {if $roles_count}<span class="label-bub label-info white">{$roles_count}</span>{/if}</a></li>
+												<li><a href="roles.php">Roles [Access] {* if $roles_count *}<!--pan class="label-bub label-info white">{$roles_count}</span-->{* /if *}</a></li>
 											{/if}
 											
 											{if $module['manage_mailer_template'] eq '1'}

@@ -74,28 +74,9 @@
 						</td>	
 				  </tr>	
 
-  <tr>
-						<td width="120" class="tbl_column">Status <span class="f_req">*</span></td>
-						<td>	
-							<select name="status" class="span8"  id="PositionEmpId">
-								{html_options options=$user_status selected=$status}
-							</select> 
-							<label for="reg_city" generated="true" class="error">{$statusErr}</label>	
-						</td>	
-				  </tr>	
+ 
 				  
-				   <tr class="tbl_row">
-						<td width="120" class="tbl_column">Role <span class="f_req">*</span></td>
-						<td>	
-							<select name="roles_id" class="span8">
-								<option value="">Select</option>
-								{html_options options=$roles selected=$roles_id}	
-							</select> 
-							<label for="reg_city" generated="true" class="error">{$roleErr}</label>											
-						</td>	
-				  </tr>
-				  
-				  <tr>
+				  <tr class="tbl_row">
 						<td width="120" class="tbl_column">Designation <span class="f_req"></span></td>
 						<td>	
 							<input type="text" tabindex="7" name="position" value="{if $position}{$position}{else}{$smarty.post.designation}{/if}" class="span8" autocomplete="off">									
@@ -123,7 +104,7 @@
 				  </tr>
 
 
-				   <tr class="tbl_row">
+				   <tr>
 						<td width="120" class="tbl_column">L2 </td>
 						<td>	
 							<select name="level2" class="span8"  id="PositionEmpId">
@@ -132,7 +113,7 @@
 							</select> 
 						</td>	
 				  </tr>	
-				   <tr class="">
+				   <tr class="tbl_row">
 						<td width="120" class="tbl_column">Email Signature <span class="f_req">*</span></td>
 						<td>
 						<textarea name="signature" class="span8 wysiwyg1">{$signature}</textarea>	
@@ -140,7 +121,26 @@
 						</td>
 				  </tr>
 				  
-									
+				  
+				   <tr>
+						<td width="120" class="tbl_column">Role <span class="f_req">*</span></td>
+						<td>	
+							<select name="roles_id" class="span8">
+								<option value="">Select</option>
+								{html_options options=$roles selected=$roles_id}	
+							</select> 
+							<label for="reg_city" generated="true" class="error">{$roleErr}</label>											
+						</td>	
+				  </tr class="tbl_row">
+							 <tr>
+						<td width="120" class="tbl_column">Status <span class="f_req">*</span></td>
+						<td>	
+							<select name="status" class="span8"  id="PositionEmpId">
+								{html_options options=$user_status selected=$status}
+							</select> 
+							<label for="reg_city" generated="true" class="error">{$statusErr}</label>	
+						</td>	
+				  </tr>			
 				</tbody>
 			</table>
 		</div>

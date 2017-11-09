@@ -86,7 +86,7 @@
 										<th width="100"><a href="base_target.php?field=status&order={$order}&page={$smarty.get.page}&keyword={$keyword}&status={$status}" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="{$sort_field_status}">Status</a></th>
 										<th width="75"><a href="base_target.php?field=created&order={$order}&page={$smarty.get.page}&keyword={$keyword}&status={$status}" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="{$sort_field_created}">Created</a></th>
 										<th width="75"><a href="base_target.php?field=modified&order={$order}&page={$smarty.get.page}&keyword={$keyword}&status={$status}" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="{$sort_field_modified}">Modified</a></th>
-										<th width="30" style="text-align:center">Actions</th>
+										<th width="50" style="text-align:center">Actions</th>
 									</tr>
 								</thead>
 								<tbody>

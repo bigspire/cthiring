@@ -37,6 +37,7 @@ if($_GET['client_id'] != ''  and $_GET['req_id'] != ''){
 		$row = $mysql->display_result($result);
 		$smarty->assign('client',ucwords($row['client_name']));
 		$smarty->assign('position_for',ucwords($row['job_title']));
+		
 		$url = $row['resume_type'] == 'F' ? 'add_formatted_resume.php' : 'add_resume.php';
 		// $id = '144576';
 		// $smarty->assign('redirect_url',$url.'?id='.$id);
@@ -52,7 +53,8 @@ if($_GET['client_id'] != ''  and $_GET['req_id'] != ''){
 
 	$clients = array();
 	// query to fetch all clients names. 
-	$query = 'CALL get_clients()';
+	// $query = "CALL get_clients('".$_SESSION['user_id']."')";
+	$query = "CALL get_clients()";
 	try{
 		// calling mysql exe_query function
 		if(!$result = $mysql->execute_query($query)){
@@ -168,7 +170,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 	$date =  $fun->current_date();
 	$type = 'D';
 	
-	if(empty($test)){
+	if(empty($test)){ 
 		//update the attached file
 		if(!empty($_FILES['resume']['name'])){			
 			// upload the file
@@ -187,17 +189,17 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 				$_SESSION['resume_doc_id'] = $last_id;
 				// write the session to server
 				$_SESSION['resume_doc'] = $new_file;
-				
-				if(empty($_SESSION['client_id']) && empty($_SESSION['req_id'])){
+				// when user come from view position 
+				/* if(empty($_SESSION['client_id']) && empty($_SESSION['req_id'])){
 					$_SESSION['client'] = $_POST['client'];
 					$_SESSION['position_for'] = $_POST['position_for'];
 				}else{
 					$_SESSION['client'] = $_SESSION['client_id'];
 					$_SESSION['position_for'] = $_SESSION['req_id'];
-				}
+				}*/
 				
-				// $_SESSION['client'] = $_POST['client'];
-				// $_SESSION['position_for'] = $_POST['position_for'];
+				$_SESSION['client'] = $_POST['client'];
+				$_SESSION['position_for'] = $_POST['position_for'];
 				// call the next result
 				$mysql->next_query();
 			}catch(Exception $e){

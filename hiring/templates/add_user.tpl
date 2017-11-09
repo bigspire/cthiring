@@ -74,31 +74,9 @@
 							<label for="reg_city" generated="true" class="error">{$locationErr}</label>											
 						</td>	
 				  </tr>		
-	  <tr class="tbl_row">
-						<td width="120" class="tbl_column">Status <span class="f_req">*</span></td>
-						<td>	
-							<select name="status" class="span8"  id="PositionEmpId">
-							{if isset($status)}
-								{html_options options=$user_status selected=$status}	
-							{else}
-								{html_options options=$user_status selected='0'}	
-							{/if}
-							</select> 
-							<label for="reg_city" generated="true" class="error">{$statusErr}</label>											
-						</td>	
-				  </tr>	
-					<tr class="tbl_row">
-						<td width="120" class="tbl_column">Role <span class="f_req">*</span></td>
-						<td>	
-							<select name="role" class="span8"  id="PositionEmpId">
-								<option value="">Select</option>
-								{html_options options=$roles selected=$smarty.post.role}	
-							</select> 
-							<label for="reg_city" generated="true" class="error">{$roleErr}</label>											
-						</td>	
-				  </tr>
+	  
 				  
-				   <tr>
+				   <tr class="tbl_row">
 						<td width="120" class="tbl_column">Designation <span class="f_req"></span></td>
 						<td>	
 							<input type="text" tabindex="7" name="designation" value="{$smarty.post.designation}" class="span8" autocomplete="off">									
@@ -124,7 +102,7 @@
 				  </tr>
 
 
-				   <tr class="tbl_row">
+				   <tr>
 						<td width="120" class="tbl_column">L2 </td>
 						<td>	
 							<select name="level2" class="span8"  id="PositionEmpId">
@@ -133,14 +111,38 @@
 							</select> 
 						</td>	
 				  </tr>	
-				  <tr class="">
+				  <tr class="tbl_row">
 						<td width="120" class="tbl_column">Email Signature <span class="f_req">*</span></td>
 						<td>
 						<textarea name="signature" class="span8 wysiwyg1">{if $signature}{$signature}{else}{$signature}{/if}</textarea>	
 							<label for="reg_city" generated="true" class="error">{$signatureErr}</label>											
 						</td>
 				  </tr>
-								
+				  
+				
+					<tr>
+						<td width="120" class="tbl_column">Role <span class="f_req">*</span></td>
+						<td>	
+							<select name="role" class="span8"  id="PositionEmpId">
+								<option value="">Select</option>
+								{html_options options=$roles selected=$smarty.post.role}	
+							</select> 
+							<label for="reg_city" generated="true" class="error">{$roleErr}</label>											
+						</td>	
+				  </tr>
+						  <tr class="tbl_row">
+						<td width="120" class="tbl_column">Status <span class="f_req">*</span></td>
+						<td>	
+							<select name="status" class="span8"  id="PositionEmpId">
+							{if isset($status)}
+								{html_options options=$user_status selected=$status}	
+							{else}
+								{html_options options=$user_status selected='0'}	
+							{/if}
+							</select> 
+							<label for="reg_city" generated="true" class="error">{$statusErr}</label>											
+						</td>	
+				  </tr>			
 				</tbody>
 			</table>
 		</div>
