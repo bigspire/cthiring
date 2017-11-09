@@ -753,6 +753,25 @@ if(!empty($_POST)){
 		// $smarty->assign('tab_open_resume', 'tab2');
 	} */
 	
+	
+	// query to check whether it is exist or not. 
+	$query = "CALL check_resume_exist('$getid', '".$fun->is_white_space($mysql->real_escape_str($_POST['email']))."',
+	'".$fun->is_white_space($mysql->real_escape_str($_POST['mobile']))."')";
+	// Calling the function that makes the insert
+	try{
+		// calling mysql exe_query function
+		if(!$result = $mysql->execute_query($query)){
+			throw new Exception('Problem in executing to check resume exist');
+		}
+		$check = $mysql->display_result($result);
+		// free the memory
+		$mysql->clear_result($result);
+		// call the next result
+		$mysql->next_query();
+	}catch(Exception $e){
+		echo 'Caught exception: ',  $e->getMessage(), "\n";
+	}
+	
 	// assigning the date
 	$date =  $fun->current_date();
 	$modified_by = $_SESSION['user_id'];
@@ -760,6 +779,7 @@ if(!empty($_POST)){
 	
 	// save all the data
 	if($test != 'error'){
+		if($check['total'] == '0'){
 		// query to update personal details
 		$query = "CALL edit_full_res_personal('$getid','".$fun->is_white_space($mysql->real_escape_str($_POST['first_name']))."',
 			'".$fun->is_white_space($mysql->real_escape_str($_POST['last_name']))."',
@@ -967,6 +987,31 @@ if(!empty($_POST)){
 			}
 		}
 		
+		// get and insert is recent exp field
+		$query = "CALL get_is_recent_exp('".$getid."')";
+		try{
+			if(!$result = $mysql->execute_query($query)){
+				throw new Exception('Problem in getting is recent exp details');
+			}
+			$row = $mysql->display_result($result);
+			// call the next result
+			$mysql->next_query();
+		}catch(Exception $e){
+			echo 'Caught exception: ',  $e->getMessage(), "\n";
+		}
+		// query to insert is recent exp
+		$query = "CALL edit_exp_is_recent('".$row['id']."')";
+		try{
+			if(!$result = $mysql->execute_query($query)){
+				throw new Exception('Problem in editing is recent exp details');
+			}
+			$row = $mysql->display_result($result);
+			// call the next result
+			$mysql->next_query();
+		}catch(Exception $e){
+			echo 'Caught exception: ',  $e->getMessage(), "\n";
+		}
+		
 		// query to delete training details
 		$query = "CALL delete_res_training('$getid')";
 		try{
@@ -1042,10 +1087,15 @@ if(!empty($_POST)){
 			// once successfully created, redirect the page
 			header('Location: ../resume/?action=auto_modified');
 		} 
+	
+		}else{
+			$msg = "Resume already exists";
+			$smarty->assign('EXIST_MSG',$msg); 
+		} 
 	}else{
 		$smarty->assign('tab_open_resume', ($tab1 == 'fail' ? 'tab1' : ($tab2 == 'fail' ? 'tab2' : ($tab3 == 'fail' ? 'tab3' : ($tab4 == 'fail' ? 'tab4' : ($tab5 == 'fail' ? 'tab5' : ''))))));
 		// $smarty->assign('tab_open_resume', 'tab2');
-	}
+	}	
 }
 
 

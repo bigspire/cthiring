@@ -137,6 +137,24 @@ class fun{
 		return $mod;
 	}
 	
+	/* string truncate*/
+	function string_truncate($message,$length){ 	
+		$message = strip_tags($message);
+		$dots = '..';
+	    $len = strlen($message);
+		if($len > $length){	
+			$position =  strpos($message,' ',$length);	
+			if($position){
+				return $message = substr($message,0,$position).$dots;		
+			}else{
+				return $message = substr($message,0,$length).$dots;
+			}				
+		}
+		else{
+			return $message;		
+		}			
+	}
+	
 	/* function to encrypt */
 	 function encrypt($plain){
         return trim(base64_encode(mcrypt_encrypt(MCRYPT_RIJNDAEL_256, $this->key, $plain, MCRYPT_MODE_ECB, mcrypt_create_iv(mcrypt_get_iv_size(MCRYPT_RIJNDAEL_256, MCRYPT_MODE_ECB), MCRYPT_RAND))));

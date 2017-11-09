@@ -465,6 +465,24 @@ if(!empty($_POST)){
 		$smarty->assign('tab_open', ($tab1 == 'fail' ? 'tab1' : ($tab2 == 'fail' ? 'tab2' : ($tab3 == 'fail' ? 'tab3' : '' ))));
 	}*/
 	
+	// query to check whether it is exist or not. 
+	$query = "CALL check_resume_exist('$getid', '".$fun->is_white_space($mysql->real_escape_str($_POST['email']))."',
+	'".$fun->is_white_space($mysql->real_escape_str($_POST['mobile']))."')";
+	// Calling the function that makes the insert
+	try{
+		// calling mysql exe_query function
+		if(!$result = $mysql->execute_query($query)){
+			throw new Exception('Problem in executing to check resume exist');
+		}
+		$check = $mysql->display_result($result);
+		// free the memory
+		$mysql->clear_result($result);
+		// call the next result
+		$mysql->next_query();
+	}catch(Exception $e){
+		echo 'Caught exception: ',  $e->getMessage(), "\n";
+	}
+	
 	// assigning the date
 	$date =  $fun->current_date();
 	$modified_by = $_SESSION['user_id'];
@@ -472,6 +490,7 @@ if(!empty($_POST)){
 	
 	// save all the data
 	if($test != 'error'){
+	   if($check['total'] == '0'){
 		// for saving purpose of tech skills
 		foreach($_POST['ts'] as $key => $ts){
 			if($ts){
@@ -598,7 +617,7 @@ if(!empty($_POST)){
 		$query = "CALL get_is_recent_edu('".$getid."')";
 		try{
 			if(!$result = $mysql->execute_query($query)){
-				throw new Exception('Problem in getting is recent details');
+				throw new Exception('Problem in getting is recent edu details');
 			}
 			$row = $mysql->display_result($result);
 			// call the next result
@@ -610,7 +629,7 @@ if(!empty($_POST)){
 		$query = "CALL edit_edu_is_recent('".$row['id']."')";
 		try{
 			if(!$result = $mysql->execute_query($query)){
-				throw new Exception('Problem in editing is recent details');
+				throw new Exception('Problem in editing is recent edu details');
 			}
 			$row = $mysql->display_result($result);
 			// call the next result
@@ -681,7 +700,32 @@ if(!empty($_POST)){
 			}catch(Exception $e){
 				echo 'Caught exception: ',  $e->getMessage(), "\n";
 			}
+		}	
+		// get and insert is recent exp field
+		$query = "CALL get_is_recent_exp('".$getid."')";
+		try{
+			if(!$result = $mysql->execute_query($query)){
+				throw new Exception('Problem in getting is recent exp details');
+			}
+			$row = $mysql->display_result($result);
+			// call the next result
+			$mysql->next_query();
+		}catch(Exception $e){
+			echo 'Caught exception: ',  $e->getMessage(), "\n";
 		}
+		// query to insert is recent exp
+		$query = "CALL edit_exp_is_recent('".$row['id']."')";
+		try{
+			if(!$result = $mysql->execute_query($query)){
+				throw new Exception('Problem in editing is recent exp details');
+			}
+			$row = $mysql->display_result($result);
+			// call the next result
+			$mysql->next_query();
+		}catch(Exception $e){
+			echo 'Caught exception: ',  $e->getMessage(), "\n";
+		}
+		
 		if(!empty($edu_id) && !empty($exp_id) && !empty($resume_id)){
 			// get recruiter nameget_recruiter_name
 			$query =  "CALL get_recruiter_name('".$mysql->real_escape_str($_SESSION['user_id'])."')";
@@ -789,9 +833,11 @@ if(!empty($_POST)){
 			unset($_SESSION['clients_id']);
 			// header('Location: ../resume?action=modified&download='.$snap_file_name.'_'.date('d-m-Y').'.pdf');
 			header('Location: ../resume?action=modified');
-
-
-		} 
+			} 
+		}else{
+			$msg = "Resume already exists";
+			$smarty->assign('EXIST_MSG',$msg); 
+		}
 	}else{
 		$smarty->assign('tab_open', ($tab1 == 'fail' ? 'tab1' : ($tab2 == 'fail' ? 'tab2' : ($tab3 == 'fail' ? 'tab3' : 'tab4' ))));
 	}
