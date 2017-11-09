@@ -504,7 +504,7 @@
 										<td ><?php echo $data['ResLocation']['location'];?></td>
 										<td><?php echo $data['Creator']['first_name'];?></td>
 										<td><?php echo $this->Functions->format_date($data['Client']['created_date']);?></td>
-										<td  width="100" style="text-align:center"><a   href="<?php echo $this->webroot;?>position/?keyword=<?php echo $data['Client']['client_name'];?>"><?php echo $data[0]['req_count'];?></a></td>										
+										<td  width="100" style="text-align:center"><a   href="<?php echo $this->webroot;?>position/?client_id=<?php echo $data['Client']['id'];?>&srch_status=1"><?php echo $data[0]['req_count'];?></a></td>										
 									</tr>
 								<?php endforeach; ?>	
 								</tbody>
@@ -536,7 +536,7 @@
 										<td><?php echo $data['Client']['client_name'];?></td>
 										<td><span class="label label-<?php echo $this->Functions->get_req_status_color($data['ReqStatus']['title']);?>"><?php echo $data['ReqStatus']['title'];?></span></td>
 										<td><?php echo $this->Functions->format_date($data['Position']['created_date']);?></td>
-										<td style="text-align:center"><a   href="<?php echo $this->webroot;?>resume/?status=1"><?php echo $data[0]['cv_sent'];?></a></td>
+										<td style="text-align:center"><a   href="<?php echo $this->webroot;?>resume/?srch_status=1&spec=<?php echo $data['Position']['id'];?>&status=1"><?php echo $data[0]['cv_sent'];?></a></td>
 										
 									</tr>
 									<?php endforeach; ?>	
