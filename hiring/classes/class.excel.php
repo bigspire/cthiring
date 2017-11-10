@@ -43,6 +43,40 @@ class libExcel{
 
 	public $objPHPExcel;
 	
+	/* function used to read the data in the file */
+	 function read_data($file) {		
+		 $this->loadFile($file);
+		 return $this->extract_data($this->objPHPExcel->getActiveSheet());
+    }
+	
+	function extract_data($sheet){
+		$array_data = array();
+		$rowIterator = $this->objPHPExcel->getActiveSheet()->getRowIterator();
+		$col_array = array('A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R');
+		foreach($rowIterator as $row){
+            $cellIterator = $row->getCellIterator();
+            $cellIterator->setIterateOnlyExistingCells(false); // Loop all cells, even if it is not set
+            //if(1 == $row->getRowIndex ()) continue;//skip first row
+            $rowIndex = $row->getRowIndex();
+			foreach($cellIterator as $cell){
+                $count = 1;
+                $array_size = sizeof($col_array);
+                foreach($col_array as $inner_val){
+                    if($inner_val == $cell->getColumn()){
+                        if($array_size == $count) {
+                            $array_data[$rowIndex][$cell->getColumn()] = PHPExcel_Style_NumberFormat::toFormattedString($cell->getCalculatedValue());
+                        }else{
+                             $array_data[$rowIndex][$cell->getColumn()] = $cell->getCalculatedValue();
+                        }
+                    }
+                    $count++;
+                }
+            }
+        }
+		return $array_data;		
+	}
+
+	
 	//  call constructor to create object and initialize
 	function libExcel() {
 		$this->objPHPExcel = new PHPExcel();
