@@ -66,7 +66,17 @@ class Home extends AppModel {
                 'required' => true,
                 'message'  => 'Please enter the subject of the issue'
             )
-		)
+		),		
+		
+		/*
+		'to' => array(		
+            'empty' => array(
+                'rule'     => 'check_diff',
+                'required' => true,
+                'message'  => 'Date diff. should not be more than 30 days'
+				)
+		  )
+		  */
 	);
 	
 	public $hasOne = array(		
@@ -77,6 +87,18 @@ class Home extends AppModel {
         )	
 		
 	);	
+	
+	/* function to check the date diff. validation */
+	public function check_diff(){
+		$start = $this->format_date_save($this->data['Home']['from']);
+		$end = $this->format_date_save($this->data['Home']['to']);
+		$n = $this->diff_date($start, $end);
+		if($n > 30){
+			return false;
+		}else{
+			return true;
+		}
+	}
 	
 	/* function to get the employee details */
 	public function get_employee_details(){
@@ -89,5 +111,13 @@ class Home extends AppModel {
 		$result = $this->query($sql);		
 		return $result[0][0]['date_diff'];
 
+	}
+	
+		/* function to format the date to save */
+	public function format_date_save($date){
+		if(!empty($date)){
+			$exp_date = explode('/', $date); 
+			return $exp_date[2].'-'.$exp_date[1].'-'.$exp_date[0];
+		}
 	}
 }

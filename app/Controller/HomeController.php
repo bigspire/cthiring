@@ -43,6 +43,20 @@ class HomeController  extends AppController {
 	public function index($dash_type){ 
 		// set the page title
 		$this->set('title_for_layout', 'Home - Manage Hiring');
+		// set the validation
+		$this->Home->set($this->request->data);
+		if(!empty($this->request->data)){
+			// validate the form
+			//$validate = $this->Home->validates(array('fieldList' => array('to')));
+			$validate = $this->Home->check_diff();
+			if(!$validate){
+				$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Date diff. should not be more than 30 days', 'default', array('class' => 'alert alert-error'));									
+				$this->redirect('/home/');
+			}
+		}
+		
+		
+		
 		// when the form is submitted for search
 		if($this->request->is('post')){
 			$url_vars = $this->Functions->create_url(array('from','to','loc','emp_id','srchSubmit','client','type'),'Home');		
@@ -60,6 +74,7 @@ class HomeController  extends AppController {
 		$dateTo = date('Y-m-d');
 		$start = $this->request->query['from'] ? $this->Functions->format_date_save($this->request->query['from']) : $dateFrm;
 		$end = $this->request->query['to'] ? $this->Functions->format_date_save($this->request->query['to']) : $dateTo;
+		
 		// set date condition				
 		$this->request->query['from'] = $this->Functions->format_date_show($start);
 		$this->request->query['to'] = $this->Functions->format_date_show($end);	

@@ -227,7 +227,7 @@ class PositionController extends AppController {
 		else if($this->request->query['apr_status'] != ''){
 			$clientCond = array('PositionStatus.member_approve' => $this->request->query['apr_status'],
 			'Position.created_by' => $this->Session->read('USER.Login.id'));
-		}else{
+		}else{ 
 			$approveCond = array('Position.status' => 'A');			
 		}
 		
@@ -871,8 +871,7 @@ class PositionController extends AppController {
 				array('table' => 'client_contact',
 						'alias' => 'PositionContact',					
 						'type' => 'LEFT',
-						'conditions' => array('`PositionContact.clients_id` = `Client`.`id`',
-						'`Position.client_contact_id` = `PositionContact`.`contact_id`')
+						'conditions' => array('`PositionContact.clients_id` = `Client`.`id`')
 				),
 				array('table' => 'contact',
 						'alias' => 'Contact',					

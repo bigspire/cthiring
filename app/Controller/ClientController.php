@@ -106,7 +106,7 @@ class ClientController extends AppController {
 					'ReqResume.created_by' =>  $data,
 					'ReqTeam.users_id' => $data,
 					'AH.users_id' => $data,
-					'Client.created_by' => $data						
+					'Client.created_by' => $data
 				)
 			);
 		}
@@ -178,7 +178,7 @@ class ClientController extends AppController {
 						'alias' => 'Position',					
 						'type' => 'LEFT',
 						'conditions' => array('`Position`.`clients_id` = `Client`.`id`',
-						'Position.is_approve' => 'A')
+						'Position.status' => 'A')
 				),				
 				array('table' => 'req_resume',
 						'alias' => 'ReqResume',					

@@ -967,7 +967,7 @@ line-height: 18px;padding: 3px 15px;background-color:#eaeeef !important; backgro
 
 .tile_count .tile_stats_count {
     border-right: 1px dashed #ADB2B5;
-    padding: 0 10px 0 20px;
+    padding: 0 10px 0 10px;
     position: relative;
 	
 }

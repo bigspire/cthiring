@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-11-06 18:44:07
+/* Smarty version 3.1.29, created on 2017-11-10 17:43:17
   from "C:\xampp\htdocs\ctsvn\cthiring\hiring\templates\base_target.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5a00601f6c8c73_17739611',
+  'unifunc' => 'content_5a0597ddd8f4d4_04779838',
   'file_dependency' => 
   array (
     'bb3164e10c0125b719a06f4f846de7c1ecf0a433' => 
     array (
       0 => 'C:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\templates\\base_target.tpl',
-      1 => 1500741076,
+      1 => 1510205605,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5a00601f6c8c73_17739611 ($_smarty_tpl) {
+function content_5a0597ddd8f4d4_04779838 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -152,7 +152,7 @@ $_smarty_tpl->ext->_updateScope->updateScope($_smarty_tpl, 'hide', 0);?>
 &status=<?php echo $_smarty_tpl->tpl_vars['status']->value;?>
 " rel="tooltip" data-original-title="Sort by Ascending or Descending" class="<?php echo $_smarty_tpl->tpl_vars['sort_field_modified']->value;?>
 ">Modified</a></th>
-										<th width="30" style="text-align:center">Actions</th>
+										<th width="50" style="text-align:center">Actions</th>
 									</tr>
 								</thead>
 								<tbody>

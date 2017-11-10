@@ -14,6 +14,15 @@
 						
 						<?php echo $this->Session->flash();?>   
 						
+						<?php if($this->request->query['access'] == 'invalid'):	?>					
+						<div class="alert alert-error">
+								<a class="close" data-dismiss="alert">×</a>
+								Invalid Entry
+								 </div>
+						<?php endif; ?>
+						
+						
+						
 						<?php if($this->Session->read('USER.Login.roles_id') == '30'): ?>
 						<?php $margin = ''; ?>
 						<?php else: ?>
@@ -54,8 +63,10 @@
 						<span  class="input-daterange" id="datepicker">	
 						
 							<input type="text" class="input-small datepick" name="data[Home][from]" value="<?php echo $this->request->query['from'];?>" aria-controls="dt_gal">
-							
-							<input type="text" name="data[Home][to]"  style="margin-left:3px;" value="<?php echo $this->request->query['to'];?>" class="input-small datepick" aria-controls="dt_gal">
+						
+		<?php echo $this->Form->input('to', array('div'=> false,'type' => 'text', 'value' => $this->request->query['to'], 'label' => false,  'style'=> "margin-left:3px;", 'class' => 'input-small datepick',  'required' => false, 'placeholder' => '',
+				'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 	
+									
 												
 						</span>	
 						</span>							
@@ -100,7 +111,7 @@
             </div>
             <div class="span1 tile_stats_count" style="width:160px;border:none;">
               <span class="count_top"><i class="fa fa-user"></i> Total Billing</span>
-              <div class="count">₹<?php echo $BILLED_AMT_TAB_COUNT ? $BILLED_AMT_TAB_COUNT  : 0;?></div>
+              <div class="count">₹<?php echo $BILLED_AMT_TAB_COUNT ? (int)$BILLED_AMT_TAB_COUNT  : 0;?></div>
               <!--span class="count_bottom"><i class="green"><i class="icon-circle-arrow-up"></i> 34% </i> From last Week</span-->
             </div>
 			

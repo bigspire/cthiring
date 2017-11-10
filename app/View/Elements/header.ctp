@@ -224,6 +224,8 @@
                                         </li>
 										
 						<?php endif; ?>
+						
+							 <?php if($sent_item == '1'):?> 
                                            <li class="dropdown">
                                             <a data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icon-th icon-white"></i> Mail Box <b class="caret"></b></a>
 											  <ul class="dropdown-menu">                                              
@@ -231,6 +233,8 @@
 											
                                             </ul>
                                          </li>
+							<?php endif; ?>				 
+										 
 										
 									  <?php if($manage_grade == '1' || $manage_users == '1' || $manage_roles == '1' || $manage_mailer_template == '1'
 									  || $manage_incentive == '1'):?> 	
