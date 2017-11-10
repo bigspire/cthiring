@@ -265,7 +265,7 @@
 						
 																	
 				
-				  <tr class="tbl_row">
+				  <tr class="">
 						<td width="120" class="tbl_column">Recruiters <span class="f_req">*</span></td>
 						<td>	
 				
@@ -319,7 +319,7 @@
 					</tr-->
 					
 					
-				  	<tr class="">
+				  	<tr class="tbl_row">
 										<td width="120" class="tbl_column">Requirement Date <span class="f_req">*</span></td>
 										<td> 
 										
@@ -340,7 +340,7 @@
 		</td>
 									</tr>		
 								
-								   <tr class="tbl_row">
+								   <tr class="">
 										<td width="120" class="tbl_column">Functional Area <span class="f_req">*</span></td>
 										<td>	
 										
@@ -352,7 +352,7 @@
 										</td>	
 									</tr>
 				  
-				     <tr class="">
+				     <tr class="tbl_row">
 										<td width="120">Hide Resume Contacts <span class="f_req">*</span></td>
 										<td>	
 	<?php echo $this->Form->input('hide_contact', array('div'=> false,'type' => 'radio', 'label' => false,  'style' => 'margin:4px 2px', 'class' => 'input-xlarge', 
@@ -363,7 +363,7 @@
 										</td>	
 									</tr>
 									
-							   <tr class="tbl_row">
+							   <tr class="">
 										<td width="120" class="tbl_column">Resume Type <span class="f_req">*</span></td>
 										<td>	
 										

@@ -50,7 +50,8 @@ class PositionController extends AppController {
 		'Client.client_name','team_member', 'Creator.first_name','created_date','modified_date', 'count(distinct ReqResume.id) cv_sent','group_concat(ReqResume.id) req_resume_id', 
 		'group_concat(ReqResume.status_title) joined','count(distinct Read.id) read_count', "group_concat(distinct TeamMember.first_name
 		SEPARATOR ', ') team_member", 'Position.created_by','Position.is_approve','Position.status', "max(PositionStatus.id) st_id",
-		"max(PositionStatus.users_id) st_user_id",'PositionStatus.member_approve','ReqRead.id', 'ReqRead.status');
+		"max(PositionStatus.users_id) st_user_id",'PositionStatus.member_approve', 'ReqRead.status','Position.req_status_id',
+		'sum(ReqTeam.no_req) no_job', 'ReqRead.id');
 				
 		$options = array(			
 			array('table' => 'users',
@@ -79,14 +80,15 @@ class PositionController extends AppController {
 			array('table' => 'req_team',
 					'alias' => 'ReqTeam',					
 					'type' => 'LEFT',
-					'conditions' => array('`ReqTeam`.`requirements_id` = `Position`.`id`',
-					'ReqTeam.is_approve' => 'A')
+					'conditions' => array('`ReqTeam`.`requirements_id` = `Position`.`id`')
 			)
 			,
 			array('table' => 'users',
 					'alias' => 'TeamMember',					
 					'type' => 'LEFT',
-					'conditions' => array('`ReqTeam`.`users_id` = `TeamMember`.`id`')
+					'conditions' => array('`ReqTeam`.`users_id` = `TeamMember`.`id`',
+					'ReqTeam.is_approve !=' => array('S','R')
+					)
 			),
 			array('table' => 'req_approval_status',
 					'alias' => 'PositionStatus',					
@@ -96,7 +98,9 @@ class PositionController extends AppController {
 			array('table' => 'req_read',
 					'alias' => 'ReqRead',					
 					'type' => 'LEFT',
-					'conditions' => array('`ReqRead`.`requirements_id` = `Position`.`id`')
+					'conditions' => array('`ReqRead`.`requirements_id` = `Position`.`id`',
+					'ReqRead.users_id' => $this->Session->read('USER.Login.id'),
+					'ReqRead.status' => 'U')
 			)
 		);
 		
@@ -212,16 +216,19 @@ class PositionController extends AppController {
 			$stCond = array('Position.req_status_id' => $st, 'Position.status' => 'A');
 		}
 		
+		$req_team_cond = array('ReqTeam.is_approve' => 'A');
+		
 		// show awaiting approval condition
 		if($rec_status =='pending'){
 			// $approveCond = array('Position.status' => 'I', 'Position.is_approve' => 'W');
+			$req_team_cond = array('ReqTeam.is_approve' => 'W');
 			$approveCond = array('PositionStatus.users_id' => $this->Session->read('USER.Login.id'),'PositionStatus.status' => 'W');
 		}// for approval status condition
 		else if($this->request->query['apr_status'] != ''){
 			$clientCond = array('PositionStatus.member_approve' => $this->request->query['apr_status'],
 			'Position.created_by' => $this->Session->read('USER.Login.id'));
 		}else{
-			$approveCond = array('Position.status' => 'A', 'Position.is_approve' => 'A');
+			$approveCond = array('Position.status' => 'A');			
 		}
 		
 		
@@ -243,13 +250,13 @@ class PositionController extends AppController {
 		// for export
 		if($this->request->query['action'] == 'export'){
 			$data = $this->Position->find('all', array('fields' => $fields,'conditions' => 
-			array($keyCond,$date_cond,$branchCond,$empCond,$stCond,$teamCond,$contactCond,$clientCond,$roleCond), 
+			array($keyCond,$date_cond,$branchCond,$empCond,$stCond,$teamCond,$contactCond,$clientCond,$roleCond,$approveCond,$req_team_cond), 
 			'order' => array('created_date' => 'desc'), 'group' => array('Position.id'), 'joins' => $options));
 			$this->Excel->generate('positions', $data, $data, 'Report', 'Position');
 		}
 		
 		$this->paginate = array('fields' => $fields,'limit' => '25','conditions' => array($keyCond,$approveCond,$date_cond,$branchCond,$empCond,$stCond,
-		$contactCond,$teamCond,$clientCond,$roleCond),
+		$contactCond,$teamCond,$clientCond,$roleCond,$req_team_cond),
 		'order' => array('created_date' => 'desc'),	'group' => array('Position.id'), 'joins' => $options);
 		$data = $this->paginate('Position');
 		$this->set('data', $data);
@@ -383,7 +390,8 @@ class PositionController extends AppController {
 	
 	/* function to check for duplicate entry */
 	public function check_duplicate_status($req_id, $app_user_id, $exist){
-		$count = $this->PositionStatus->find('count',  array('conditions' => array('PositionStatus.requirements_id' => $req_id, 'PositionStatus.users_id' => $app_user_id)));
+		$count = $this->PositionStatus->find('count',  array('conditions' => array('PositionStatus.requirements_id' => $req_id,
+		'PositionStatus.users_id' => $app_user_id, 'PositionStatus.status' => 'W')));
 		$limit = $exist ? $exist : 0;
 		if($count > $limit){
 			$this->invalid_attempt();
@@ -431,12 +439,16 @@ class PositionController extends AppController {
 					// validate the client contacts
 					// $coord_validate = $this->validate_coord();
 					// validate the form fields
-					if ($this->Position->validates(array('fieldList' => array('clients_id','client_contact_id','job_title','location','max_exp',
+					if($this->Position->validates(array('fieldList' => array('clients_id','client_contact_id','job_title','location','max_exp',
 					'ctc_from','ctc_to','ctc_from_type','ctc_to_type','skills','team_member_req','end_date','function_area_id','job_desc',
-					'education','tech_skill','behav_skill',	'hide_contact','resume_type','job_code')))){
+					'education','tech_skill','behav_skill',	'hide_contact','resume_type','job_code','remarks2')))){
 						// format the dates
 						$this->request->data['Position']['start_date'] = $this->Functions->format_date_save($this->request->data['Position']['start_date']);
 						$this->request->data['Position']['end_date'] = $this->Functions->format_date_save($this->request->data['Position']['end_date']);
+						
+						$this->request->data['Position']['is_approve'] = 'W';
+						$this->request->data['Position']['status'] = 'I';
+						$this->request->data['Position']['req_status_id'] =  NULL;
 						// save the data
 						if($this->Position->save($this->request->data['Position'], array('validate' => false))){
 							// save the file name
@@ -446,11 +458,74 @@ class PositionController extends AppController {
 							// save position coordination
 							// $this->save_position_coodination($this->Position->id);
 							// remove team members list
-							$this->remove_team_member($this->Position->id);
+							$this->update_team_member($this->Position->id);
 							// save team members list
-							$this->save_team_member($this->Position->id);
+							$team_members = $this->save_team_member($this->Position->id);
+							// save req. revision
+							$this->save_req_revision($this->Position->id);
+							// update req approval status table
+							$this->save_req_approval($this->Position->id);
+							// send mail to approver
+							$sub = 'Manage Hiring - Position revised by '.ucfirst($this->Session->read('USER.Login.first_name')).' '.ucfirst($this->Session->read('USER.Login.last_name'));
+							$from = ucfirst($this->Session->read('USER.Login.first_name')).' '.ucfirst($this->Session->read('USER.Login.last_name'));
+							// get the superiors
+							$this->loadModel('Approve');					
+							// iterate the team members
+							foreach($team_members as $team_id){					
+								$approval_data = $this->Approve->find('first', array('fields' => array('level1'), 'conditions'=> array('Approve.users_id' => $team_id)));					
+																	
+								// get leader email address
+								$leader_data = $this->Position->Creator->find('all', array('conditions' => array('Creator.id' => $approval_data['Approve']['level1']),
+								'fields' => array('Creator.id',	'Creator.first_name','Creator.last_name','Creator.email_id')));
+								
+								// if leader found
+								if(!empty($leader_data)){
+									$this->loadModel('PositionStatus');
+									// make sure not duplicate status exists
+									$this->check_duplicate_status($this->Position->id, $approval_data['Approve']['level1']);			
+									// save req. status data
+									$this->PositionStatus->id = '';
+									$data = array('requirements_id' => $this->Position->id, 'created_date' => $this->Functions->get_current_date(), 'users_id' => $approval_data['Approve']['level1'], 'member_id' => $team_id, 'is_approve' => 'W');
+									if($this->PositionStatus->save($data, true, $fieldList = array('requirements_id','created_date','users_id', 'member_id'))){						
+										/*
+										// save adv. users
+										$this->loadModel('PositionUser');
+										$req_user_data = array('requirements_id' => $this->Position->id, 'users_id' => $approval_data['Approve']['level1']);							
+										$this->PositionUser->id = '';
+										$this->PositionUser->save($req_user_data, true, $fieldList = array('requirements_id','users_id'));
+										*/
+										$options = array(								
+											array('table' => 'req_team',
+													'alias' => 'ReqTeam',					
+													'type' => 'INNER',
+													'conditions' => array('`ReqTeam.requirements_id` = `Position`.`id`',													
+													'ReqTeam.is_approve !=' => 'S')
+											),
+											array('table' => 'users',
+													'alias' => 'TeamMember',					
+													'type' => 'INNER',
+													'conditions' => array('`ReqTeam.users_id` = `TeamMember`.`id`')
+											)
+										);								
+										$position_data = $this->Position->find('all', array('conditions' => array('Position.id' => $this->Position->id),'fields' => array( 'Client.client_name',	"group_concat(distinct TeamMember.first_name  SEPARATOR ', ') team_member"),'joins' => $options));
+
+										$vars = array('from_name' => $from, 'to_name' => ucwords($leader_data[0]['Creator']['first_name'].' '.$leader_data[0]['Creator']['last_name']), 'position' => $this->request->data['Position']['job_title'],'client_name' => $position_data[0]['Client']['client_name'], 'no_opening' => $this->request->data['Position']['no_job'], 'team_member' => $position_data[0][0]['team_member'],
+										'location' => $this->request->data['Position']['location']);																
+										
+										// notify superiors						
+										if(!$this->send_email($sub, 'add_position', 'noreply@managehiring.com', $leader_data[0]['Creator']['email_id'],$vars)){	
+											// show the msg.								
+											$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Problem in sending the mail for approval...', 'default', array('class' => 'alert alert-error'));				
+										}else{
+											$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Position Revised Successfully. After approval, it will be visible', 'default', array('class' => 'alert alert-info'));				
+										}
+									}
+								}else{
+									$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Recruiter has no superior to approve your request', 'default', array('class' => 'alert alert-info'));
+								}				
+							}						
+							
 							// show the msg.
-							$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Position Modified Successfully', 'default', array('class' => 'alert alert-success'));				
 							$this->redirect('/position/');
 						}else{
 							// show the error msg.
@@ -511,6 +586,20 @@ class PositionController extends AppController {
 		}				
 	}
 	
+	/* function to save the req. revision */
+	public function save_req_revision($id){
+		$this->loadModel('ReqRevision');
+		$data = array('requirements_id' => $id, 'remarks' => $this->request->data['Position']['remarks2'], 'created_date' => $this->Functions->get_current_date());
+		$this->ReqRevision->save($data, true, $fieldList = array('created_date','requirements_id','remarks'));
+	}
+	
+	/* function to save the req. approval */
+	public function save_req_approval($id){
+		$this->loadModel('PositionStatus');
+		$this->PositionStatus->updateAll(array('status' => "'S'"), 	array('requirements_id' => $id));
+	}
+	
+	
 	/* function to download the file */
 	public function download_doc($file){
 		 $this->download_file(WWW_ROOT.'/uploads/jd/'.$file);
@@ -544,7 +633,7 @@ class PositionController extends AppController {
 			}
 		}else if($this->request->params['pass'][2] == 'pending'){	
 			$data = $this->PositionStatus->find('all', array('fields' => array('PositionStatus.users_id','PositionStatus.member_id'),
-			'conditions' => array('PositionStatus.id' => $st_id)));
+			'conditions' => array('PositionStatus.id' => $st_id, 'member_approve' => 'W')));
 			if($data[0]['PositionStatus']['users_id'] == $this->Session->read('USER.Login.id')){
 				$this->set('stmemberID', $data[0]['PositionStatus']['member_id']);
 				return 'pass';
@@ -583,6 +672,12 @@ class PositionController extends AppController {
 		$this->ReqTeam->deleteAll(array('ReqTeam.requirements_id' => $id), false);
 	}
 	
+	/* function to update the team members */
+	public function update_team_member($id){
+		$this->loadModel('ReqTeam');		
+		$this->ReqTeam->updateAll(array('is_approve' => "'S'"), array('requirements_id' => $id));
+	}
+	
 	/* function to save team member */
 	public function save_team_member($id){
 		$this->loadModel('ReqTeam');
@@ -591,16 +686,16 @@ class PositionController extends AppController {
 		$split_req = explode(',', $req_no);
 		foreach($split_req as $req){ 
 			$new_split_req = explode('-', $req);
-			$this->request->data['Position']['no_job'] += $new_split_req[1];
+			$no_job += $new_split_req[1];
 			if($new_split_req[0] != ''){
 				$member_id[] = $new_split_req[0];
 				$this->ReqTeam->create();
-				$data = array('created_by' => $this->Session->read('USER.Login.id'),'requirements_id' => $id, 'users_id' => $new_split_req[0], 'no_req' => $new_split_req[1], 'is_approve' => 'A');
+				$data = array('created_by' => $this->Session->read('USER.Login.id'),'requirements_id' => $id, 'users_id' => $new_split_req[0], 'no_req' => $new_split_req[1], 'is_approve' => 'W');
 				$this->ReqTeam->save($data, true, $fieldList = array('requirements_id','created_by','users_id','no_req','is_approve'));
 			}
 		}
 		$this->Position->id = $id;
-		$this->Position->saveField('no_job',$this->request->data['Position']['no_job']);
+		$this->Position->saveField('no_job',$no_job);
 		return $member_id;
 	}
 	
@@ -632,7 +727,8 @@ class PositionController extends AppController {
 	/* function to get the team members list */
 	public function get_team_member_list($id){
 		$this->loadModel('ReqTeam');
-		$team_member = $this->ReqTeam->find('all', array('fields' => array('users_id','no_req'), 'conditions' => array('requirements_id' => $id)));
+		$team_member = $this->ReqTeam->find('all', array('fields' => array('users_id','no_req'), 'conditions' => array('requirements_id' => $id,
+		'ReqTeam.is_approve' => 'A')));
 		foreach($team_member as $record){
 			$users[] = $record['ReqTeam']['users_id'];
 			$no_pos[] = $record['ReqTeam']['no_req'];
@@ -737,11 +833,11 @@ class PositionController extends AppController {
 		$this->loadModel('PositionStatus');
 		$ret_value = $this->auth_action($id, $st_id);
 		// update the read req.
-		if($this->request->params['pass'][2] != ''){
+		if($this->request->params['pass'][2] != '' && $this->request->params['pass'][3] == 'U'){
 			$this->loadModel('ReqRead');
 			$this->ReqRead->id = $this->request->params['pass'][2];
 			$this->ReqRead->saveField('modified_date', $this->Functions->get_current_date());
-			$this->ReqRead->saveField('status', 'R' );
+			$this->ReqRead->saveField('status', 'R');
 		}
 		if($ret_value == 'pass'){
 			// get the team members
@@ -797,7 +893,8 @@ class PositionController extends AppController {
 						'alias' => 'ReqTeam',					
 						'type' => 'INNER',
 						'conditions' => array('`ReqTeam.requirements_id` = `Position`.`id`',
-						'ReqTeam.is_approve' => 'A' )
+						'ReqTeam.is_approve !=' => array('S','R')
+						)
 				),
 				array('table' => 'users',
 						'alias' => 'TeamMember',					
@@ -812,10 +909,12 @@ class PositionController extends AppController {
 			'skills','Contact.first_name','Contact.email','Contact.mobile','Contact.phone','Contact.id','FunctionArea.function',
 			'Position.created_by','Position.is_approve','tech_skill','behav_skill','job_desc_file','hide_contact','resume_type',
 			'ReqStatus.id','Position.plain_jd','group_concat(ReqTeam.no_req) team_req','group_concat(distinct ReqTeam.users_id) team_mem_id',
-			'group_concat(distinct CAH.users_id) ac_holder_id','ctc_from_type','ctc_to_type');
+			'group_concat(distinct CAH.users_id) ac_holder_id','ctc_from_type','ctc_to_type','group_concat(ReqTeam.is_approve) mem_approve',
+			'Position.status');
 			$data = $this->Position->find('all', array('fields' => $fields,'conditions' => array('Position.id' => $id),
 			'joins' => $options));
 			$this->set('position_data', $data[0]);
+			
 			// get the resume details
 			$options = array(					
 				array('table' => 'res_location',
@@ -898,6 +997,19 @@ class PositionController extends AppController {
 					$this->check_duplicate_status($req_id, $this->Session->read('USER.Login.id'), 1);
 					// save the position status
 					if($this->PositionStatus->save($data, true, $fieldList = array('modified_by','modified_date','remarks','status','is_approve'))){
+						// get the member id to find the L2
+						$member_data = $this->PositionStatus->find('first', array('fields' => array('member_id'), 'conditions'=> array('PositionStatus.id' => $st_id)));
+							
+						// update team member
+						$this->loadModel('ReqTeam');
+						$req_data_id = $this->ReqTeam->find('all', array('fields' => array('ReqTeam.id'), 'conditions' => array('ReqTeam.requirements_id' => $req_id,
+						'ReqTeam.users_id' => $member_data['PositionStatus']['member_id']),	'order' => array('ReqTeam.id' => 'desc')));
+						$this->ReqTeam->id = $req_data_id[0]['ReqTeam']['id'];
+						$this->ReqTeam->saveField('is_approve', 'A');
+
+						//$this->ReqTeam->updateAll(array('is_approve' => "'A'"), array('requirements_id' => $req_id, 'users_id' => $member_data['PositionStatus']['member_id',
+						//'ReqTeam.id' => ));
+						
 						// get user data
 						$user_data = $this->Position->Creator->find('all', array('conditions' => array('Creator.id' => $user_id),'fields' => array('Creator.id',	'Creator.first_name','Creator.last_name','Creator.email_id')));
 						
@@ -934,8 +1046,6 @@ class PositionController extends AppController {
 						$this->loadModel('Approve');
 						// if record approved
 						if($status == 'A'){
-							// get the member id to find the L2
-							$member_data = $this->PositionStatus->find('first', array('fields' => array('member_id'), 'conditions'=> array('PositionStatus.id' => $st_id)));
 							// get the team member user id							
 							$approval_data = $this->Approve->find('first', array('fields' => array('level2'), 'conditions'=> array('Approve.users_id' => $member_data['PositionStatus']['member_id'])));
 							// make sure level 2 is not empty
@@ -957,7 +1067,7 @@ class PositionController extends AppController {
 									// update status if l2 approved
 									
 									$this->Position->id = $req_id;
-									$this->Position->saveField('is_approve', 'A');
+									//$this->Position->saveField('is_approve', 'A');
 									$this->Position->saveField('status', 'A');	
 									$this->Position->saveField('req_status_id', '0');
 									
@@ -968,12 +1078,14 @@ class PositionController extends AppController {
 									// save the read status
 									$this->save_read_status($req_id,$member_data['PositionStatus']['member_id']);
 									
+									
+									
 								}
 							}else{
 								// update  status
 								
 								$this->Position->id = $req_id;
-								$this->Position->saveField('is_approve', 'A');
+								//$this->Position->saveField('is_approve', 'A');
 								$this->Position->saveField('status', 'A');
 								$this->Position->saveField('req_status_id', '0');	
 									

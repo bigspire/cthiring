@@ -37,7 +37,7 @@
 					<input value="Delete" type="button" class="btn btn-danger"/></a>-->
 					
 					<?php $team = explode(',', $position_data[0]['team_mem_id']);?>
-					<?php if($create_resume == '1' && $position_data['Position']['is_approve'] == 'A' && in_array($this->Session->read('USER.Login.id'), $team)):?>
+					<?php if($create_resume == '1' && $position_data['Position']['status'] == 'A' && in_array($this->Session->read('USER.Login.id'), $team)):?>
 					<a rel="tooltip"  title="Upload New Resume" href="<?php echo $this->webroot;?>hiring/upload_resume.php?client_id=<?php echo $position_data['Client']['id'];?>&req_id=<?php echo $this->request->params['pass'][0];?>"
 					 val="40_50"  class="iframeBox sepV_a cboxElement">
 					<input value="Upload Resume" type="button" class="btn btn-warning"></a>					
@@ -216,18 +216,28 @@
 			<?php  		$no_req = $position_data['Position']['no_job'];
 						$team_member = explode(',', $position_data[0]['team_member2']);
 						$team_req = explode(',', $position_data[0]['team_req']);
-						$team_mem_id = explode(',', $position_data[0]['team_mem_id']);						
+						$team_mem_id = explode(',', $position_data[0]['team_mem_id']);			
+						$mem_apr = explode(',', $position_data[0]['mem_approve']);
+						
 						foreach($team_member as $key => $member):
+						
+						$chk = $this->request->params['pass'][2] == 'pending'  ? 'W' : 'A';
+						
+						
+						if($mem_apr[$key] == $chk):
+						
 						$mem_req = $team_req[$key] ? $team_req[$key] : $no_req; ?>
-			<?php 
-			if($stmemberID == $team_mem_id[$key]):
-			$style = 'font-weight:bold;';
-			else:
-			$style = 'font-weight:normal;';
-			endif; ?>
-			<div style="margin-top:4px;"><span style="<?php echo $style;?>"><?php echo $member;?> : </span>  	 
-			<button rel="tooltip" title="<?php echo $mem_req;?> Openings" class="tagDiv tag label btn-info"><?php echo $mem_req;?></button>	
-			<div>
+					<?php 
+					if($stmemberID == $team_mem_id[$key]):
+					$style = 'font-weight:bold;';
+					else:
+					$style = 'font-weight:normal;';
+					endif; ?>
+					<div style="margin-top:4px;"><span style="<?php echo $style;?>"><?php echo $member;?> : </span>  	 
+					<button rel="tooltip" title="<?php echo $mem_req;?> Openings" class="tagDiv tag label btn-info"><?php echo $mem_req;?></button>	
+					<div>
+						
+			<?php endif;?>
 				
 				<?php endforeach;?>
 										
@@ -403,13 +413,13 @@
 
 
 									
-					<?php if($position_data['Position']['is_approve'] == 'A'):?>	
+					<?php if($position_data['Position']['status'] == 'A' && $this->request->params['pass'][2] != 'pending'):?>	
 				
 					  <div class="row-fluid">
 						<div class="span12">
 						
 					<?php echo $this->Session->flash();?>
-<span id="update"></span>
+		<span id="update"></span>
 															
 															
 							<div class="mbox">
@@ -959,9 +969,13 @@ $action = 1;?>
 									<li><a href="javascript:void(0)"  class="multi_interview">Re-Schedule Interview</a></li>
 									<?php endif; ?>
 								</ul>
-								
-<ul class="status_row dn statusLegend" style="margin-left:100px;">
 	
+							</div>
+							
+						<?php endif; ?> 
+
+												
+<ul class="status_row dn statusLegend" style="margin-left:100px;">	
 <li><span class="btn btn-mini alert alert-success legendView"> S </span> - Shortlisted</li>
 <li><span class="btn btn-mini alert alert-error legendView"> R </span> - Rejected	</li>
 <li><span class="btn-mini alert alert-success alert-action legendView"> ISA  </span> - Interview Schedule Awaiting	</li>
@@ -976,13 +990,7 @@ $action = 1;?>
 <li><span class="btn btn-mini alert alert-success legendView"> JD </span> - Deferred</li>
 <li><span class="btn btn-mini alert alert-success legendView"> BA </span> - Billing Awaited</li>
 <li><span class="btn btn-mini alert alert-success legendView"> B </span> - Billed </li>
-
-</ul>	
-							</div>
-							
-						<?php endif; ?> 
-
-				
+</ul>
 											<div class="alert alert-login no_record dn">
 								<a class="close" data-dismiss="alert">×</a>
 								<strong>Oops!</strong> No records found!.

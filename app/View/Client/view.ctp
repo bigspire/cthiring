@@ -289,7 +289,7 @@
 	
 	
 	<?php if($client_data['Client']['is_approve'] == 'A'):?>
-	<a href="<?php echo $this->webroot;?>client/" rel="tooltip" title="Back to Clients"  class="jsRedirect"><button class="btn">Back</button></a>
+	<!--a href="<?php echo $this->webroot;?>client/" rel="tooltip" title="Back to Clients"  class="jsRedirect"><button class="btn">Back</button></a-->
 	<?php endif; ?>
 
 						

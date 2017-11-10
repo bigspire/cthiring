@@ -37,7 +37,7 @@
 							|| $this->Session->read('USER.Login.roles_id') == '39')):?>
 							<a class="notify jsRedirect" data-notify-time = '3000' data-notify-title="In Progress!" data-notify-message="Downloading Excel... Please wait..."   href="<?php echo $this->webroot;?>position/?action=export&<?php echo $this->Functions->get_url_vars($this->request->query);?>"><input type="button" value="Export Excel" class="btn btn-warning"/></a>
 							<?php endif; ?>
-							 <?php if($create_position == '1'):?>
+							 <?php if($create_position == '1' && $this->Session->read('USER.Login.roles_id') == '34'):?>
 							<a class="jsRedirect" data-notify-time = '3000'   href="<?php echo $this->webroot;?>position/add/">
 							<input type="button" value="Create Position" class="btn btn-info"/></a>		
 							<?php endif; ?>
@@ -132,7 +132,7 @@
 
 										<th width="210"><?php echo $this->Paginator->sort('job_title', 'Job Title', array('escape' => false, 'direction' => 'desc', 'rel' => 'tooltip', 'title' => 'Sort by Ascending or Descending'));?></th>										
 										<th width="200"><?php echo $this->Paginator->sort('Client.client_name', 'Client', array('escape' => false, 'direction' => 'desc', 'rel' => 'tooltip', 'title' => 'Sort by Ascending or Descending'));?></th>
-										<th width="100"  style="text-align:center"><?php echo $this->Paginator->sort('no_job', 'Openings', array('escape' => false, 'direction' => 'desc', 'rel' => 'tooltip', 'title' => 'Sort by Ascending or Descending'));?></th>
+										<th width="120"  style="text-align:center"><?php echo $this->Paginator->sort('no_job', 'Total Openings', array('escape' => false, 'direction' => 'desc', 'rel' => 'tooltip', 'title' => 'Sort by Ascending or Descending'));?></th>
 										<th width="150"><?php echo $this->Paginator->sort('team_member', 'Recruiters', array('escape' => false, 'direction' => 'desc', 'rel' => 'tooltip', 'title' => 'Sort by Ascending or Descending'));?></th>
 										<th width="65"  style="text-align:center">CVs</th>
 										<th width="65"  style="text-align:center">Joined</th>
@@ -152,7 +152,7 @@
 									<?php foreach($data as $req):?>
 									<tr>
 										<?php if(!empty($noHead)): $target = "target='_blank'"; endif;?>
-										<td width=""><a <?php echo $target;?> href="<?php echo $this->webroot;?>position/view/<?php echo $req['Position']['id'];?>/<?php echo $req[0]['st_id'];?>/<?php echo $this->request->params['pass'][0];?><?php echo $req['ReqRead']['id'];?>/"><?php echo ucwords($req['Position']['job_title']);?></a>
+										<td width=""><a <?php echo $target;?> href="<?php echo $this->webroot;?>position/view/<?php echo $req['Position']['id'];?>/<?php echo $req[0]['st_id'];?>/<?php echo $this->request->params['pass'][0];?><?php echo $req['ReqRead']['id'];?>/<?php echo $req['ReqRead']['status'];?>/"><?php echo ucwords($req['Position']['job_title']);?></a>
 										<?php if($req['ReqRead']['id'] != '' && $req['ReqRead']['status'] == 'U'):?>
 										<span rel="tooltip" title="New Position" class="label label-warning">New</span>			
 										<?php endif; ?>
@@ -171,12 +171,14 @@
 						<td width=""  style="text-align:center"><a title="View Joined Resumes"  href="<?php echo $this->webroot;?>resume/?status=10&spec=<?php echo $req['Position']['id'];?>"  rel="tooltip"><?php echo $this->Functions->get_total_joined($req[0]['joined'],$req[0]['req_resume_id']);?></a></td>
 						
 						<td width=""  style="text-align:center">
-						<?php if($req['Position']['status'] == 'A'):?>
+						<?php if($req['Position']['is_approve'] == 'W' && $req['Position']['req_status_id'] == ''):?>
+						<span title="Awaiting for Approval" rel="tooltip" class="label label-warning">Awaiting Approval</span>
+						<?php elseif($req['Position']['is_approve'] == 'W' && $this->request->params['pass']['0'] == 'pending'):?>
+						<span title="Awaiting for Approval" rel="tooltip" class="label label-warning">Awaiting Approval</span>							
+						<?php elseif($req['Position']['status'] == 'A'):?>
 						<span rel="tooltip" title="Requirement Status: <?php echo $req['ReqStatus']['title'];?> " class="label label-<?php echo $this->Functions->get_req_status_color($req['ReqStatus']['title']);?>"><?php echo $req['ReqStatus']['title'];?></span>			
 						<?php elseif($req['PositionStatus']['member_approve'] == 'R'):?>	
 						<span title="Rejected" rel="tooltip" class="label label-danger">Rejected</span>	
-						<?php else:?>	
-						<span title="Awaiting for Approval" rel="tooltip" class="label label-warning">Awaiting Approval</span>						
 						<?php endif; ?>
 						
 						</td>
@@ -193,7 +195,7 @@
 						</th-->
 									
 	<td class="actionItem" style="text-align:center">
-	<?php if($req['Position']['status'] == 'A' && $this->Session->read('USER.Login.id') == $req['Position']['created_by']):?>
+	<?php if($req['Position']['status'] == 'A'  &&  $this->Session->read('USER.Login.id') == $req['Position']['created_by']):?>
 	<a href="<?php echo $this->webroot;?>position/edit/<?php echo $req['Position']['id'];?>/" class="btn  btn-mini"  rel="tooltip" class="sepV_a" title="Edit Position"><i class="icon-pencil"></i></a>
 	<?php endif; ?>	
 	
