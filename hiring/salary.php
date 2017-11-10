@@ -25,20 +25,19 @@ $module_access = $fun->check_role_access('34',$modules);
 $smarty->assign('module',$module_access);
 
 $keyword = $_POST['keyword'] ? $_POST['keyword'] : $_GET['keyword'];
+$salary_from_date = $_POST['salary_from_date'] ? $_POST['salary_from_date'] : $_GET['salary_from_date'];
+$salary_to_date = $_POST['salary_to_date'] ? $_POST['salary_to_date'] : $_GET['salary_to_date'];
 
-// to display the data using status filter
-if(isset($_POST['status'])){
-	$status = $_POST['status'];
-}else if(isset($_GET['status'])){
-	$status = $_GET['status'];
-}else{
-	$status = '1';
-}
+$salary_from_dt = $fun->convert_date($salary_from_date);
+$salary_to_dt = $fun->convert_date($salary_to_date);
+
 //post url for paging
 if($_POST){
 	$post_url .= '&keyword='.$keyword;
-	$post_url .= '&status='.$status;
+	$post_url .= '&salary_from_date='.$salary_from_date;
+	$post_url .= '&salary_to_date='.$salary_to_date;
 }
+
 
 // for export
 if($_GET['action'] == 'export'){
@@ -46,10 +45,10 @@ if($_GET['action'] == 'export'){
 }
 
 // count the total no. of records
-$query = "CALL list_base_target('".$keyword."','".$status."','0','0','','','".$_GET['action']."')";
+$query = "CALL list_salary('".$keyword."','".$salary_from_dt."','".$salary_to_dt."','0','0','','','".$_GET['action']."')";
 try{
 	if(!$result = $mysql->execute_query($query)){
-		throw new Exception('Problem in executing list Base Target page');
+		throw new Exception('Problem in executing list salary page');
 	}
 
 	// fetch result
@@ -74,8 +73,8 @@ try{
 
 // set the condition to check ascending or descending order		
 $order = ($_GET['order'] == 'desc') ? 'asc' :  'desc';	
-$sort_fields = array('1' => 'grade','no_times','status','type','created','modified');
-$org_fields = array('1' => 'grade','no_times','status','type','created_date','modified_date');
+$sort_fields = array('1' => 'emp','sal_date','ctc','created');
+$org_fields = array('1' => 'employee','sal_date','ctc','created_date');
 
 // to set the sorting image
 foreach($sort_fields as $key => $b_field){
@@ -89,7 +88,7 @@ foreach($sort_fields as $key => $b_field){
 // if no fields are set, set default sort image
 if(empty($_GET['field'])){		
 	$order = 'desc';			
-	$field = 'bt.created_date';			
+	$field = 'us.created_date';			
 	$smarty->assign('sort_field_created', 'sorting desc');
 }	
 $smarty->assign('order', $order);
@@ -99,21 +98,20 @@ if($search_key = array_search($_GET['field'], $sort_fields)){
 }
 
 // fetch all records
-$query =  "CALL list_base_target('".$keyword."','".$status."','$start','$limit','".$field."','".$order."','".$_GET['action']."')";
+$query =  "CALL list_salary('".$keyword."','".$salary_from_dt."','".$salary_to_dt."','$start','$limit','".$field."','".$order."','".$_GET['action']."')";
 try{
 	if(!$result = $mysql->execute_query($query)){
-		throw new Exception('Problem in executing list Base Target page');
+		throw new Exception('Problem in executing list salary page');
 	}
 	// calling mysql fetch_result function
 	$i = '0';
 	while($obj = $mysql->display_result($result))
 	{
  		$data[] = $obj;
- 		$data[$i]['status'] = $fun->display_status($obj['status']);
- 		$data[$i]['status_cls'] = $fun->status_cls($obj['status']);
- 		$data[$i]['type'] = $fun->target_type($obj['type']);
  		$data[$i]['created_date'] = $fun->convert_date_to_display($obj['created_date']);
- 		$data[$i]['modified_date'] = $fun->convert_date_to_display($obj['modified_date']);
+ 		$data[$i]['sal_from'] = $fun->convert_date_to_display($obj['sal_from']);
+		$data[$i]['sal_to'] = $fun->convert_date_to_display($obj['sal_to']);
+		$data[$i]['sal_date'] = $fun->convert_month_year_display($obj['sal_date']);
  		$i++;
  		$pno[]=$paging->print_no();
  		$smarty->assign('pno',$pno);
@@ -126,14 +124,14 @@ try{
 		include('classes/class.excel.php');
 		$excelObj = new libExcel();
 		// function to print the excel header
-      $excelObj->printHeader($header = array('Grade','No of Times','Type','Status','Created','Modified') ,$col = array('A','B','C','D','E','F'));  
+      $excelObj->printHeader($header = array('Employee','Salary Month','CTC','Created') ,$col = array('A','B','C','D'));  
 		// function to print the excel data
-		$excelObj->printCell($data, $count,$col = array('A','B','C','D','E','F'), $field = array('grade','no_times','type','status','created_date','modified_date'),'Base Target_'.$current_date);
+		$excelObj->printCell($data, $count,$col = array('A','B','C','D'), $field = array('employee','sal_date','ctc','created_date'),'Salary_'.$current_date);
 	}	
 	
 	// create,update,delete message validation
 	if($_GET['status'] == 'deleted' || $_GET['status'] == 'created' || $_GET['status'] == 'updated'){
- 	 $success_msg = 'Base Target ' . ucfirst($_GET['status']) . ' Successfully';
+ 	 $success_msg = 'Salary ' . ucfirst($_GET['status']) . ' Successfully';
 	}else if($_GET['current_status'] == 'msg'){
 		$success_msg = 'This record is not available in our database';
 	}
@@ -147,9 +145,6 @@ try{
 	echo 'Caught exception: ',  $e->getMessage(), "\n";
 }
 
-// smarty drop down array for status
-$smarty->assign('status_type', array('' => 'All Status', '1' => 'Active', '2' => 'Inactive'));
-
 // calling mysql close db connection function
 $c_c = $mysql->close_connection();
 $paging->posturl($post_url);
@@ -160,15 +155,14 @@ $smarty->assign('data', $data);
 $smarty->assign('page' , $page); 
 $smarty->assign('total_pages' , $total_pages); 	
 $smarty->assign('keyword' , $keyword); 
-$smarty->assign('status', $status);	
+$smarty->assign('salary_from_date' , $salary_from_date); 
+$smarty->assign('salary_to_date' , $salary_to_date); 
 $smarty->assign('ALERT_MSG', $alert_msg);
 $smarty->assign('SUCCESS_MSG', $success_msg);
 // assign page title
 $smarty->assign('page_title' , 'Salary - Manage Hiring');  
 // assigning active class status to smarty menu.tpl
-$smarty->assign('setting_active','active');
-// $smarty->assign('setting_active', $fun->set_menu_active('base_target'));
- 
+$smarty->assign('setting_active','active'); 
 // display smarty file
 $smarty->display('salary.tpl');
 ?>

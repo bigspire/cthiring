@@ -33,8 +33,8 @@
 								<a class="jsRedirect toggleSearch"  href="javascript:void(0)">
 							<input type="button" value="Search" class="btn btn-success"/></a>
 							{if !$ALERT_MSG}
-								<a href="salary.php?action=export&keyword={$smarty.post.keyword}" class="jsRedirect">
-								<button type="button" val="salary.php?action=export&keyword={$smarty.post.keyword}" name="export" class="btn btn-warning" >Export Excel</button></a>
+								<a href="salary.php?action=export&keyword={$smarty.post.keyword}&salary_from_date={$salary_from_date}&salary_to_date={$salary_to_date}" class="jsRedirect">
+								<button type="button" val="salary.php?action=export&keyword={$smarty.post.keyword}&salary_from_date={$salary_from_date}&salary_to_date={$salary_to_date}" name="export" class="btn btn-warning" >Export Excel</button></a>
 							{/if}
 						<a class="jsRedirect" data-notify-time = '3000'   href="import_salary.php"><input type="button" value="Import Salary" class="btn btn-info"/></a>							
 						</div>
@@ -53,7 +53,7 @@
 							</div>
 						{/if}
 						
-						{if $keyword}
+						{if $keyword || $salary_from_date || $salary_to_date}
 						  {assign var=hide value=''}
 						{else}
 							{assign var=hide value=dn}
@@ -62,13 +62,12 @@
 							
 							<div class="{$hide} dataTables_filter srchBox" style="float:left;" id="dt_gal_filter">
 							<label style="margin-left:0">Keyword: <input type="text" placeholder="Search Here..." name="keyword" id="keyword" value="{$keyword}" class="input-large" aria-controls="dt_gal"></label>
-							<label>Status: 
-							<select name="status" class="input-small" style="clear:left" id="ClientStatus">
-								{html_options options=$status_type selected=$status}
-							</select> 
-							</label>
+							<label>Salary From: 
+							<input type="text" class="input-small datepick" name="salary_from_date" placeholder="dd/mm/yyyy" style="width:70px;"  value="{$salary_from_date}" aria-controls="dt_gal"></label>
+							<label>Salary To: <input type="text" class="input-small datepick" name="salary_to_date" placeholder="dd/mm/yyyy" style="width:70px;"  value="{$salary_to_date}" aria-controls="dt_gal"></label>
+						
 							<label style="margin-top:18px;"><input type="submit" value="Submit" class="btn btn-gebo" /></label>
-							<label style="margin-top:18px;"><a href="base_target.php" class="jsRedirect"><input value="Reset" type="button" class="btn"/></a></label>
+							<label style="margin-top:18px;"><a href="salary.php" class="jsRedirect"><input value="Reset" type="button" class="btn"/></a></label>
 							</div>
 
 						<input type="hidden" value="1" id="SearchKeywords">
@@ -80,31 +79,22 @@
 							<table class="table table-striped table-bordered dataTable stickyTable">
 								<thead>
 									<tr>
-										<th width="200"><a href="salary.php?field=grade&order={$order}&page={$smarty.get.page}&keyword={$keyword}&status={$status}" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="{$sort_field_grade}">Grade</a></th>
-										<th width="200"><a href="salary.php?field=no_times&order={$order}&page={$smarty.get.page}&keyword={$keyword}&status={$status}" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="{$sort_field_no_times}">No. of times</a></th>
-										<th width="200"><a href="salary.php?field=type&order={$order}&page={$smarty.get.page}&keyword={$keyword}&status={$status}" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="{$sort_field_type}">Type</a></th>									 	
-										<th width="100"><a href="salary.php?field=status&order={$order}&page={$smarty.get.page}&keyword={$keyword}&status={$status}" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="{$sort_field_status}">Status</a></th>
-										<th width="75"><a href="salary.php?field=created&order={$order}&page={$smarty.get.page}&keyword={$keyword}&status={$status}" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="{$sort_field_created}">Created</a></th>
-										<th width="75"><a href="salary.php?field=modified&order={$order}&page={$smarty.get.page}&keyword={$keyword}&status={$status}" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="{$sort_field_modified}">Modified</a></th>
-										<th width="50" style="text-align:center">Actions</th>
+										<th width="200"><a href="salary.php?field=emp&order={$order}&page={$smarty.get.page}&keyword={$keyword}&salary_from_date={$salary_from_date}&salary_to_date={$salary_to_date}" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="{$sort_field_emp}">Employee</a></th>
+										<th width="200"><a href="salary.php?field=sal_date&order={$order}&page={$smarty.get.page}&keyword={$keyword}&salary_from_date={$salary_from_date}&salary_to_date={$salary_to_date}" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="{$sort_field_sal_date}">Salary Month</a></th>
+										<th width="200"><a href="salary.php?field=ctc&order={$order}&page={$smarty.get.page}&keyword={$keyword}&salary_from_date={$salary_from_date}&salary_to_date={$salary_to_date}" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="{$sort_field_ctc}">CTC</a></th>									 	
+										<th width="75"><a href="salary.php?field=created&order={$order}&page={$smarty.get.page}&keyword={$keyword}&salary_from_date={$salary_from_date}&salary_to_date={$salary_to_date}" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="{$sort_field_created}">Created</a></th>
 									</tr>
 								</thead>
 								<tbody>
 								{foreach from=$data item=item key=key}	
-									{if $item.grade}
+									{* if $item.employee *}
 									<tr>
-										<td>{$item.grade}</td>
-										<td>{$item.no_times}</td>
-										<td>{$item.type}</td>
-										<td><span class="label label-{$item.status_cls}">{$item.status}</span></td>
+										<td>{$item.employee}</td>
+										<td>{$item.sal_date}</td>
+										<td>{$item.ctc}</td>
 										<td>{$item.created_date}</td>
-										<td>{$item.modified_date}</td>
-										<td class="actionItem" style="text-align:center">
-										<a href="edit_salary.php?id={$item.id}" class="btn  btn-mini"  rel="tooltip" class="sepV_a" title="Edit"><i class="icon-pencil"></i></a>
-										<a id="{$item.id}" href="javascript:void(0)" rel="tooltip" class="btn Confirm btn-mini" value="#"  title="Delete"><i class="icon-trash"></i></a>
-										</td>
 									</tr>
-								   {/if}
+								   {* /if *}
 								{/foreach}
 								</tbody>
 							</table>

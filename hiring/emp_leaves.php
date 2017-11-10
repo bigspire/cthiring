@@ -25,19 +25,17 @@ $module_access = $fun->check_role_access('34',$modules);
 $smarty->assign('module',$module_access);
 
 $keyword = $_POST['keyword'] ? $_POST['keyword'] : $_GET['keyword'];
+$leave_from_date = $_POST['leave_from_date'] ? $_POST['leave_from_date'] : $_GET['leave_from_date'];
+$leave_to_date = $_POST['leave_to_date'] ? $_POST['leave_to_date'] : $_GET['leave_to_date'];
 
-// to display the data using status filter
-if(isset($_POST['status'])){
-	$status = $_POST['status'];
-}else if(isset($_GET['status'])){
-	$status = $_GET['status'];
-}else{
-	$status = '1';
-}
+$leave_from_dt = $fun->convert_date($leave_from_date);
+$leave_to_dt = $fun->convert_date($leave_to_date);
+
 //post url for paging
 if($_POST){
 	$post_url .= '&keyword='.$keyword;
-	$post_url .= '&status='.$status;
+	$post_url .= '&leave_from_date='.$leave_from_date;
+	$post_url .= '&leave_to_date='.$leave_to_date;
 }
 
 // for export
@@ -46,10 +44,10 @@ if($_GET['action'] == 'export'){
 }
 
 // count the total no. of records
-$query = "CALL list_base_target('".$keyword."','".$status."','0','0','','','".$_GET['action']."')";
+$query = "CALL list_emp_leaves('".$keyword."','".$leave_from_dt."','".$leave_to_dt."','0','0','','','".$_GET['action']."')";
 try{
 	if(!$result = $mysql->execute_query($query)){
-		throw new Exception('Problem in executing list Base Target page');
+		throw new Exception('Problem in executing list employee leave page');
 	}
 
 	// fetch result
@@ -74,8 +72,8 @@ try{
 
 // set the condition to check ascending or descending order		
 $order = ($_GET['order'] == 'desc') ? 'asc' :  'desc';	
-$sort_fields = array('1' => 'grade','no_times','status','type','created','modified');
-$org_fields = array('1' => 'grade','no_times','status','type','created_date','modified_date');
+$sort_fields = array('1' => 'emp','leave_date','session','created');
+$org_fields = array('1' => 'employee','leave_date','session','created_date');
 
 // to set the sorting image
 foreach($sort_fields as $key => $b_field){
@@ -89,7 +87,7 @@ foreach($sort_fields as $key => $b_field){
 // if no fields are set, set default sort image
 if(empty($_GET['field'])){		
 	$order = 'desc';			
-	$field = 'bt.created_date';			
+	$field = 'ul.created_date';			
 	$smarty->assign('sort_field_created', 'sorting desc');
 }	
 $smarty->assign('order', $order);
@@ -99,21 +97,19 @@ if($search_key = array_search($_GET['field'], $sort_fields)){
 }
 
 // fetch all records
-$query =  "CALL list_base_target('".$keyword."','".$status."','$start','$limit','".$field."','".$order."','".$_GET['action']."')";
+$query =  "CALL list_emp_leaves('".$keyword."','".$leave_from_dt."','".$leave_to_dt."','$start','$limit','".$field."','".$order."','".$_GET['action']."')";
 try{
 	if(!$result = $mysql->execute_query($query)){
-		throw new Exception('Problem in executing list Base Target page');
+		throw new Exception('Problem in executing list employee leave page');
 	}
 	// calling mysql fetch_result function
 	$i = '0';
 	while($obj = $mysql->display_result($result))
 	{
  		$data[] = $obj;
- 		$data[$i]['status'] = $fun->display_status($obj['status']);
- 		$data[$i]['status_cls'] = $fun->status_cls($obj['status']);
- 		$data[$i]['type'] = $fun->target_type($obj['type']);
+ 		$data[$i]['session'] = $fun->convert_emp_leave_session($obj['session']);
  		$data[$i]['created_date'] = $fun->convert_date_to_display($obj['created_date']);
- 		$data[$i]['modified_date'] = $fun->convert_date_to_display($obj['modified_date']);
+ 		$data[$i]['leave_date'] = $fun->convert_date_to_display($obj['leave_date']);
  		$i++;
  		$pno[]=$paging->print_no();
  		$smarty->assign('pno',$pno);
@@ -126,9 +122,9 @@ try{
 		include('classes/class.excel.php');
 		$excelObj = new libExcel();
 		// function to print the excel header
-      $excelObj->printHeader($header = array('Grade','No of Times','Type','Status','Created','Modified') ,$col = array('A','B','C','D','E','F'));  
+      $excelObj->printHeader($header = array('Employee','Leave Date','Session','Created') ,$col = array('A','B','C','D'));  
 		// function to print the excel data
-		$excelObj->printCell($data, $count,$col = array('A','B','C','D','E','F'), $field = array('grade','no_times','type','status','created_date','modified_date'),'Base Target_'.$current_date);
+		$excelObj->printCell($data, $count,$col = array('A','B','C','D'), $field = array('employee','leave_date','session','created_date'),'Employee Leaves_'.$current_date);
 	}	
 	
 	// create,update,delete message validation
@@ -160,15 +156,14 @@ $smarty->assign('data', $data);
 $smarty->assign('page' , $page); 
 $smarty->assign('total_pages' , $total_pages); 	
 $smarty->assign('keyword' , $keyword); 
-$smarty->assign('status', $status);	
+$smarty->assign('leave_from_date' , $leave_from_date); 
+$smarty->assign('leave_to_date' , $leave_to_date); 
 $smarty->assign('ALERT_MSG', $alert_msg);
 $smarty->assign('SUCCESS_MSG', $success_msg);
 // assign page title
 $smarty->assign('page_title' , 'Employee Leaves - Manage Hiring');  
 // assigning active class status to smarty menu.tpl
 $smarty->assign('setting_active','active');
-// $smarty->assign('setting_active', $fun->set_menu_active('base_target'));
- 
 // display smarty file
 $smarty->display('emp_leaves.tpl');
 ?>

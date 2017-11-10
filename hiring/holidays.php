@@ -28,6 +28,7 @@ $smarty->assign('module',$module_access);
 $keyword = $_POST['keyword'] ? $_POST['keyword'] : $_GET['keyword'];
 $event_from_date = $_POST['event_from_date'] ? $_POST['event_from_date'] : $_GET['event_from_date'];
 $event_to_date = $_POST['event_to_date'] ? $_POST['event_to_date'] : $_GET['event_to_date'];
+$branch = $_POST['branch'] ? $_POST['branch'] : $_GET['branch'];
 
 $event_from_dt = $fun->convert_date($event_from_date);
 $event_to_dt = $fun->convert_date($event_to_date);
@@ -37,6 +38,7 @@ if($_POST){
 	$post_url .= '&keyword='.$keyword;
 	$post_url .= '&event_from_date='.$event_from_date;
 	$post_url .= '&event_to_date='.$event_to_date;
+	$post_url .= '&branch='.$branch;
 }
 
 // for export
@@ -44,8 +46,28 @@ if($_GET['action'] == 'export'){
 	$status = $_GET['status']; 
 }
 
+// query to fetch all branch list. 
+$query = 'CALL get_branch()';
+try{
+	// calling mysql exe_query function
+	if(!$result = $mysql->execute_query($query)){
+		throw new Exception('Problem in getting branch list');
+	}
+	while($row = $mysql->display_result($result))
+	{
+ 		$branch_name[$row['id']] = ucwords($row['branch']);
+	}
+	$smarty->assign('branch_name',$branch_name);
+	// free the memory
+	$mysql->clear_result($result);
+	// call the next result
+	$mysql->next_query();
+}catch(Exception $e){
+	echo 'Caught exception: ',  $e->getMessage(), "\n";
+} 
+
 // count the total no. of records
-$query = "CALL list_holidays('".$keyword."','".$event_from_dt."','".$event_to_dt."','0','0','','','".$_GET['action']."')";
+$query = "CALL list_holidays('".$keyword."','".$branch."','".$event_from_dt."','".$event_to_dt."','0','0','','','".$_GET['action']."')";
 try{
 	if(!$result = $mysql->execute_query($query)){
 		throw new Exception('Problem in executing list holidays page');
@@ -73,8 +95,8 @@ try{
 
 // set the condition to check ascending or descending order		
 $order = ($_GET['order'] == 'desc') ? 'asc' :  'desc';	
-$sort_fields = array('1' => 'event','event_date','created');
-$org_fields = array('1' => 'event','event_date','created_date');
+$sort_fields = array('1' => 'event','event_date','created','branch');
+$org_fields = array('1' => 'event','event_date','created_date','branch');
 
 // to set the sorting image
 foreach($sort_fields as $key => $b_field){
@@ -98,7 +120,7 @@ if($search_key = array_search($_GET['field'], $sort_fields)){
 }
 
 // fetch all records
-$query =  "CALL list_holidays('".$keyword."','".$event_from_dt."','".$event_to_dt."','$start','$limit','".$field."','".$order."','".$_GET['action']."')";
+$query =  "CALL list_holidays('".$keyword."','".$branch."','".$event_from_dt."','".$event_to_dt."','$start','$limit','".$field."','".$order."','".$_GET['action']."')";
 try{
 	if(!$result = $mysql->execute_query($query)){
 		throw new Exception('Problem in executing list holidays page');
@@ -122,10 +144,18 @@ try{
 		include('classes/class.excel.php');
 		$excelObj = new libExcel();
 		// function to print the excel header
-      $excelObj->printHeader($header = array('Holidays','Holidays Date','Created') ,$col = array('A','B','C'));  
+      $excelObj->printHeader($header = array('Event Title','Event Date','Branch','Created') ,$col = array('A','B','C','D'));  
 		// function to print the excel data
-		$excelObj->printCell($data, $count,$col = array('A','B','C'), $field = array('event','event_date','created_date'),'Holidays_'.$current_date);
+		$excelObj->printCell($data, $count,$col = array('A','B','C','D'), $field = array('event','event_date','created_date','branch'),'Holidays_'.$current_date);
 	}	
+	
+	// call to import the excel data
+	if($_POST['action'] == 'import'){ 
+		include('classes/class.excel.php');
+		$excelObj = new read_data($_FILES['resume']['name']);
+	}	
+	
+
 	
 	// create,update,delete message validation
 	if($_GET['status'] == 'deleted' || $_GET['status'] == 'created' || $_GET['status'] == 'updated'){

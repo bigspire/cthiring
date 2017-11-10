@@ -296,10 +296,28 @@ class fun{
 	}
 	
 	
+	// function to validate employee leave session field 
+	public function convert_emp_leave_session($session){
+		if($session == 'M'){
+			$session_st = 'Morning';
+		}elseif($session == 'A'){	
+	 		$session_st = 'Afternoon';
+		}
+		return $session_st;
+	}
+	
 	// function to validate database created_date field 
 	public function convert_date_to_display($created_date){
 		if(($created_date != '') && ($created_date != '0000-00-00') && ($created_date != '0000-00-00 00:00:00')){
 			$c_d = date('d-M-Y', strtotime($created_date));
+			return $c_d;
+		}
+	}
+	
+	// function to validate database created_date field 
+	public function convert_month_year_display($created_date){
+		if(($created_date != '') && ($created_date != '0000-00-00') && ($created_date != '0000-00-00 00:00:00')){
+			$c_d = date('M-Y', strtotime($created_date));
 			return $c_d;
 		}
 	}
