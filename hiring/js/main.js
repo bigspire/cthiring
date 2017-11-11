@@ -600,7 +600,7 @@ $(document).ready(function() {
 			
 			for(i = 0; i < $('#contact_count').val(); i++){
 				if($('#titleID_'+i).length > 0){
-					$('#contactID_'+i).val($('#titleID_'+i).val());
+					$('#id_'+i).val($('#titleID_'+i).val());
 				}
 				if($('#titleName_'+i).length > 0){
 					$('#title_'+i).val($('#titleName_'+i).val());

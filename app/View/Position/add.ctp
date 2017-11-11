@@ -376,6 +376,20 @@
 	
 										</td>	
 									</tr>				
+						
+	   <tr class="tbl_row">
+										<td width="120" class="tbl_column">Project Type <span class="f_req">*</span></td>
+										<td>	
+										
+			<?php echo $this->Form->input('is_rpo', array('div'=> false,'type' => 'radio', 'label' => false,  'style' => 'margin:4px 2px', 'class' => 'input-xlarge', 
+	'options' => $project_types, 'separator' => ' ', 'id' => '',  'required' => false, 'placeholder' => '', 
+	'legend' => false, 'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?>
+		
+		
+		
+	
+										</td>	
+									</tr>	
 									
 				</tbody>
 			</table>
