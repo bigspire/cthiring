@@ -378,6 +378,21 @@
 	
 										</td>	
 									</tr>
+									
+														
+	   <tr class="">
+										<td width="120" class="tbl_column">Project Type <span class="f_req">*</span></td>
+										<td>	
+										
+			<?php echo $this->Form->input('is_rpo', array('div'=> false,'type' => 'radio', 'label' => false,  'style' => 'margin:4px 2px', 'class' => 'input-xlarge', 
+	'options' => $project_types, 'separator' => ' ', 'id' => '',  'required' => false, 'placeholder' => '', 
+	'legend' => false, 'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?>
+		
+		
+		
+	
+										</td>	
+									</tr>	
 				</tbody>
 			</table>
 		</div>
@@ -389,7 +404,7 @@
 								   <tr  class="">
 										<td width="135" class="tbl_column">Remarks <span class="f_req">*</span></td>
 										<td> 
-<?php echo $this->Form->input('remarks2', array('div'=> false,'type' => 'text', 'label' => false, 'class' => 'span8 wysiwyg1', 'rows' => '2',
+<?php echo $this->Form->input('remarks', array('div'=> false,'type' => 'text', 'label' => false, 'class' => 'span8 wysiwyg1', 'rows' => '2',
   'required' => false, 'placeholder' => '',	'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 
 										</td>
 									</tr>

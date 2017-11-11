@@ -345,11 +345,18 @@ class Position extends AppModel {
                 'message'  => 'Job Code already exists'
             )
         ),
-		'remarks2' => array(
+		'remarks' => array(
             'empty' => array(
                 'rule'     => 'notEmpty',
                 'required' => true,
                 'message'  => 'Please enter the remarks for the revision'
+            )
+        ),
+		'is_rpo' => array(
+            'empty' => array(
+                'rule'     => 'notEmpty',
+                'required' => true,
+                'message'  => 'Please select the project type'
             )
         )
 	);

@@ -28,7 +28,7 @@
                     </nav>
 					
 					<div class="srch_buttons no-print">
-				<?php if($this->Session->read('USER.Login.id') == $position_data['Position']['created_by'] && $this->Session->read('USER.Login.roles_id') == '34' && $position_data['Position']['is_approve'] == 'A'):?>	
+				<?php if($this->Session->read('USER.Login.id') == $position_data['Position']['created_by'] && $this->Session->read('USER.Login.roles_id') == '34' && $position_data['Position']['status'] == 'A'):?>	
 				<a rel="tooltip jsRedirect" href="<?php echo $this->webroot;?>position/edit/<?php echo $this->request->params['pass'][0];?>" title="Edit Position">
 				<input rel="tooltip" title="Edit Position" value="Edit" type="button" class="btn btn-info"></a>
 				<?php endif; ?>	
@@ -148,6 +148,19 @@
 										<td><?php echo $position_data['Creator']['first_name'];?></td>
 											
 									</tr>
+									
+										<tr>
+										
+										<td class="tbl_column">Project Type  </td>
+										<td><?php 
+										
+										if($position_data['Position']['is_rpo'] != ''):
+										echo $position_data['Position']['is_rpo'] ? 'RPO' : 'Non-RPO';
+										endif; 
+										
+										?></td>
+											
+									</tr>	
 			
 <?php  if($position_data['Position']['is_approve'] != 'W'):?>			
 
@@ -223,8 +236,8 @@
 						
 						$chk = $this->request->params['pass'][2] == 'pending'  ? 'W' : 'A';
 						
-						
-						if($mem_apr[$key] == $chk):
+					//	print_r($mem_apr);
+						//if($mem_apr[$key] == $chk):
 						
 						$mem_req = $team_req[$key] ? $team_req[$key] : $no_req; ?>
 					<?php 
@@ -233,11 +246,22 @@
 					else:
 					$style = 'font-weight:normal;';
 					endif; ?>
+					
+						<?php 
+					if($mem_apr[$key] == 'W'):
+					$approval_str = '(Awaiting Approval)';
+					else:
+					$approval_str = '';
+					endif; ?>
+					
+					
 					<div style="margin-top:4px;"><span style="<?php echo $style;?>"><?php echo $member;?> : </span>  	 
 					<button rel="tooltip" title="<?php echo $mem_req;?> Openings" class="tagDiv tag label btn-info"><?php echo $mem_req;?></button>	
+					
+					<span style="<?php echo $style;?>"><?php echo $approval_str;?></span>  
 					<div>
 						
-			<?php endif;?>
+			<?php //endif;?>
 				
 				<?php endforeach;?>
 										
@@ -331,7 +355,55 @@
 				
                       </div>
 					  
-					  
+		<?php if($position_data['Position']['remarks'] != ''):?>
+			<div class="span6" style="clear:left;margin-top:10px;margin-left:0px;padding:0">		
+			<table class="table table-bordered  table-striped dataTable" style="margin-bottom:0;">
+				<tbody>
+				
+								<?php 
+								
+								$revision_data = explode(',', $position_data[0]['revision_history']);
+								$revision_remark = explode('|||', $position_data[0]['revision_remark']);
+								$k = 0; 
+								$i = 1; 
+								while($i <= $position_data[0]['no_revision']): ?>
+
+								<tr  class="">
+										
+								<td width="120" style="text-align:center"> 
+									
+									<?php 
+									if($position_data[0]['no_revision'] == $i):
+									$style='font-weight:bold'; 
+									else: 
+									$style= '';
+									endif;
+									
+									?>
+									<span style="<?php echo $style;?>"> Rev.<?php echo $i++;?> : 	
+
+
+									<?php echo $this->Functions->format_date($revision_data[$k]); ?></span>
+
+										
+									</td>
+										<td width="500"> 
+				<?php  echo $revision_remark[$k]; $k++; ?>
+										
+									</td>
+										
+									
+								</tr>
+									
+						<?php endwhile; ?>			
+			
+			</tbody>
+			</table>
+	</div>	  
+	
+	<?php endif; ?>
+	
+	
                       </div>  
 					</div>
 					

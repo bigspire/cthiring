@@ -279,6 +279,8 @@ class PositionController extends AppController {
 		// resume hide and resume types
 		$this->set('hide_contacts', array('1' => 'Yes', '0' => 'No'));
 		$this->set('resume_types', array('S' => 'Snapshot', 'F' => 'Fully Formatted Resume'));
+		$this->set('project_types', array('1' => 'RPO', '0' => 'Non - RPO'));
+		
 		// get total job for job code
 		$tot = $this->Position->find('count');
 		$this->set('jobCode', 'CT/'.++$tot.'/'.date('Y'));		
@@ -298,7 +300,7 @@ class PositionController extends AppController {
 			// validate the form fields
 			if ($this->Position->validates(array('fieldList' => array('clients_id','client_contact_id','job_title','location','max_exp',
 			'ctc_to_type','skills','team_member_req','end_date','function_area_id','status','job_desc','education','tech_skill','behav_skill',
-			'hide_contact','resume_type','job_code')))){
+			'hide_contact','resume_type','job_code','is_rpo')))){
 				// format the dates
 				$this->request->data['Position']['start_date'] = $this->Functions->format_date_save($this->request->data['Position']['start_date']);
 				$this->request->data['Position']['end_date'] = $this->Functions->format_date_save($this->request->data['Position']['end_date']);
@@ -428,6 +430,8 @@ class PositionController extends AppController {
 				// resume hide and resume types
 				$this->set('hide_contacts', array('1' => 'Yes', '0' => 'No'));
 				$this->set('resume_types', array('S' => 'Snapshot', 'F' => 'Fully Formatted Resume'));
+				$this->set('project_types', array('1' => 'RPO', '0' => 'Non - RPO'));
+
 				// retain the account holder
 				if (!empty($this->request->data)){
 					// validates the form
@@ -441,7 +445,7 @@ class PositionController extends AppController {
 					// validate the form fields
 					if($this->Position->validates(array('fieldList' => array('clients_id','client_contact_id','job_title','location','max_exp',
 					'ctc_from','ctc_to','ctc_from_type','ctc_to_type','skills','team_member_req','end_date','function_area_id','job_desc',
-					'education','tech_skill','behav_skill',	'hide_contact','resume_type','job_code','remarks2')))){
+					'education','tech_skill','behav_skill',	'hide_contact','resume_type','job_code','remarks','is_rpo')))){
 						// format the dates
 						$this->request->data['Position']['start_date'] = $this->Functions->format_date_save($this->request->data['Position']['start_date']);
 						$this->request->data['Position']['end_date'] = $this->Functions->format_date_save($this->request->data['Position']['end_date']);
@@ -465,6 +469,9 @@ class PositionController extends AppController {
 							$this->save_req_revision($this->Position->id);
 							// update req approval status table
 							$this->save_req_approval($this->Position->id);
+							// make all the reads to read mode
+							$this->update_req_read_status($this->Position->id);
+							
 							// send mail to approver
 							$sub = 'Manage Hiring - Position revised by '.ucfirst($this->Session->read('USER.Login.first_name')).' '.ucfirst($this->Session->read('USER.Login.last_name'));
 							$from = ucfirst($this->Session->read('USER.Login.first_name')).' '.ucfirst($this->Session->read('USER.Login.last_name'));
@@ -540,7 +547,7 @@ class PositionController extends AppController {
 				
 					// get the position details
 					$data = $this->Position->find('all', array('fields' => array('Position.id','clients_id','client_contact_id','job_title','location','min_exp','max_exp',
-					'ctc_from','ctc_to','education','ctc_from_type','ctc_to_type','skills','no_job','start_date','end_date','function_area_id',
+					'ctc_from','ctc_to','education','ctc_from_type','ctc_to_type','skills','no_job','start_date','end_date','function_area_id', 'is_rpo',
 					'job_desc','job_desc_file','client_contact_id',	'tech_skill','behav_skill','hide_contact','resume_type','plain_jd','job_code','created_date','modified_date'), 
 					'conditions' => array('Position.id' => $id), 'joins' => $options));
 					$this->request->data = $data[0];					
@@ -589,7 +596,7 @@ class PositionController extends AppController {
 	/* function to save the req. revision */
 	public function save_req_revision($id){
 		$this->loadModel('ReqRevision');
-		$data = array('requirements_id' => $id, 'remarks' => $this->request->data['Position']['remarks2'], 'created_date' => $this->Functions->get_current_date());
+		$data = array('requirements_id' => $id, 'remarks' => $this->request->data['Position']['remarks'], 'created_date' => $this->Functions->get_current_date());
 		$this->ReqRevision->save($data, true, $fieldList = array('created_date','requirements_id','remarks'));
 	}
 	
@@ -760,7 +767,7 @@ class PositionController extends AppController {
 	
 	
 	/* function to load the contacts */
-	public function get_contact_list($id){
+	public function get_contact_list($id){ 
 		$this->loadModel('Contact');
 		$options = array(		
 			array('table' => 'client_contact',
@@ -769,7 +776,7 @@ class PositionController extends AppController {
 					'conditions' => array('`ClientCont`.`contact_id` = `Contact`.`id`')
 			)
 		);
-		$con_list = $this->Contact->find('all', array('fields' => array('id',"concat(first_name,' ',last_name) uname"),
+		$con_list = $this->Contact->find('all', array('fields' => array('Contact.id',"concat(first_name,' ',last_name) uname"),
 		'order' => array('first_name ASC'),'conditions' => array('Contact.status' => 'A', 'Contact.is_deleted' => 'N',
 		'ClientCont.clients_id' => $id), 'joins' => $options));
 		$format_list = $this->Functions->format_list_key($con_list, 'Contact','id', 'uname');
@@ -898,7 +905,14 @@ class PositionController extends AppController {
 				array('table' => 'users',
 						'alias' => 'TeamMember',					
 						'type' => 'INNER',
-						'conditions' => array('`ReqTeam.users_id` = `TeamMember`.`id`', )
+						'conditions' => array('`ReqTeam.users_id` = `TeamMember`.`id`'
+						)
+						
+				),
+				array('table' => 'req_revision',
+						'alias' => 'ReqRevision',					
+						'type' => 'LEFT',
+						'conditions' => array('`ReqRevision.requirements_id` = `Position`.`id`')
 				)
 			);
 			$fields = array('id','Client.id','job_title','job_code','education','location','no_job','min_exp','max_exp','ctc_from','ctc_to','ReqStatus.title','job_desc',
@@ -909,9 +923,9 @@ class PositionController extends AppController {
 			'Position.created_by','Position.is_approve','tech_skill','behav_skill','job_desc_file','hide_contact','resume_type',
 			'ReqStatus.id','Position.plain_jd','group_concat(ReqTeam.no_req) team_req','group_concat(distinct ReqTeam.users_id) team_mem_id',
 			'group_concat(distinct CAH.users_id) ac_holder_id','ctc_from_type','ctc_to_type','group_concat(ReqTeam.is_approve) mem_approve',
-			'Position.status');
-			$data = $this->Position->find('all', array('fields' => $fields,'conditions' => array('Position.id' => $id),
-			'joins' => $options));
+			'Position.status','count(distinct ReqRevision.id) as no_revision', 'Position.remarks', 'group_concat(ReqRevision.created_date) revision_history','is_rpo',
+			 "group_concat(ReqRevision.remarks separator '|||') revision_remark");
+			$data = $this->Position->find('all', array('fields' => $fields,'conditions' => array('Position.id' => $id),	'joins' => $options));
 			$this->set('position_data', $data[0]);
 			
 			// get the resume details
@@ -1106,7 +1120,7 @@ class PositionController extends AppController {
 							// update the req team
 							$this->loadModel('ReqTeam');
 							$req_team_data = $this->ReqTeam->find('all', array('conditions' => array('ReqTeam.requirements_id' => $req_id,
-							'users_id' => $member_data['PositionStatus']['member_id']), 'fields' => array('ReqTeam.id')));
+							'users_id' => $member_data['PositionStatus']['member_id']), 'fields' => array('ReqTeam.id'), 'order' => array('ReqTeam.id' => 'desc')));
 							$this->ReqTeam->id = $req_team_data[0]['ReqTeam']['id']; 
 							$this->ReqTeam->saveField('is_approve', 'R');
 
@@ -1184,6 +1198,13 @@ class PositionController extends AppController {
 		$data = array('requirements_id' => $id, 'created_date' => $this->Functions->get_current_date(),
 		'users_id' => $user_id);
 		$this->ReqRead->save($data, array('validate' => false));
+	}
+	
+	/* function to update the req read status */
+	public function update_req_read_status($id){
+		$this->loadModel('ReqRead');
+		$this->ReqRead->updateAll(array('status' => "'R'",  'modified_date' => '"'.$this->Functions->get_current_date().'"'), array('requirements_id' => $id));
+
 	}
 	
 	/* function to send CV to client */

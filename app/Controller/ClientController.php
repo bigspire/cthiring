@@ -409,14 +409,14 @@ class ClientController extends AppController {
 	public function get_key_val($key){
 		$key_val = explode('_', $key);
 		if(in_array($key_val[0], array('title','first','last','email','designation','mobile',
-		'phone','branch','status'))){
+		'phone','branch','status','id'))){
 			return ($key_val[0] == 'first' ||  $key_val[0] == 'last') ? $key_val[0].'_name' : $key_val[0];
 		}		
 		
 	}
 	
 	/* function to retain client contacts */
-	public function retain_contact_list(){ 
+	public function retain_contact_list(){
 		$contact_data = array();		
 		foreach($this->request->data['Client'] as $key => $data){ 
 			// for the form fields
@@ -656,14 +656,14 @@ class ClientController extends AppController {
 		for($i = 0; $i < $this->request->data['Client']['contact_count']; $i++){ 
 			if($this->request->data['Client']['first_name_'.$i] != ''){ 
 				$this->loadModel('Contact');
-				$this->Contact->id = $this->request->data['Client']['contactID_'.$i];
+				$this->Contact->id = $this->request->data['Client']['id_'.$i];
 				$data = array('title' => $this->request->data['Client']['title_'.$i],'first_name' => $this->request->data['Client']['first_name_'.$i],
 				'last_name' => $this->request->data['Client']['last_name_'.$i],'mobile' => $this->request->data['Client']['mobile_'.$i],
 				'phone' => $this->request->data['Client']['phone_'.$i],'designation_id' => $this->request->data['Client']['designation_'.$i],
 				'status' => $this->request->data['Client']['status_'.$i],'contact_branch_id' => $this->request->data['Client']['branch_'.$i],
 				'email' => $this->request->data['Client']['email_'.$i], 'created_by' => $this->Session->read('USER.Login.id'),
 				'created_date' => $this->Functions->get_current_date());
-				if($this->request->data['Client']['contactID_'.$i] == ''){
+				if($this->request->data['Client']['id_'.$i] == ''){
 					$this->Contact->create();
 				}
 				if($this->Contact->save($data, true, $fieldList = array('title','first_name','last_name','email',

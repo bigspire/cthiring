@@ -180,7 +180,7 @@
 		'class' => 'span2', 'empty' => 'Select', 'required' => false, 'placeholder' => '', 'id' => 'title_#index#',
 		'style' => "clear:left", 'options' => $titleList, 'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 
 			
-			<?php echo $this->Form->input('contactID_#index#', array('id' => 'contactID_#index#', 'type' => 'hidden')); ?> 
+			<?php echo $this->Form->input('id_#index#', array('id' => 'id_#index#', 'type' => 'hidden')); ?> 
 									
 						
 						
@@ -313,7 +313,7 @@
 	<?php endforeach;endif; ?> 
 	<?php if(!empty($this->request->data['Contact'])): 
 		for($j = 0; $j < $count; $j++):?>
-		<input type="hidden" id="titleID_<?php echo $j;?>" name="titleID_<?php echo $i;?>" value="<?php echo $contact['Contact']['id'][$j];?>">
+		<input type="hidden" id="titleID_<?php echo $j;?>" name="titleID_<?php echo $i;?>" value="<?php echo $contact_list['Contact']['id'][$j];?>">
 		<input type="hidden" id="titleName_<?php echo $j;?>" name="titleName_<?php echo $j;?>" value="<?php echo $contact_list['Contact']['title'][$j];?>">
 		<input type="hidden" id="firstName_<?php echo $j;?>" name="firstName_<?php echo $j;?>" value="<?php echo $contact_list['Contact']['first_name'][$j];?>">
 		<input type="hidden" id="lastName_<?php echo $j;?>" name="lastName_<?php echo $j;?>" value="<?php echo $contact_list['Contact']['last_name'][$j];?>">
