@@ -149,14 +149,6 @@ try{
 		$excelObj->printCell($data, $count,$col = array('A','B','C','D'), $field = array('event','event_date','created_date','branch'),'Holidays_'.$current_date);
 	}	
 	
-	// call to import the excel data
-	if($_POST['action'] == 'import'){ 
-		include('classes/class.excel.php');
-		$excelObj = new read_data($_FILES['resume']['name']);
-	}	
-	
-
-	
 	// create,update,delete message validation
 	if($_GET['status'] == 'deleted' || $_GET['status'] == 'created' || $_GET['status'] == 'updated'){
  	 $success_msg = 'Holidays ' . ucfirst($_GET['status']) . ' Successfully';

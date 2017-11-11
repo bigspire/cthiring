@@ -265,6 +265,7 @@ class fun{
 		$date = date('Y-m-d H:i:s');
 		return $date;
 	}
+
 	
 	// function to validate incentive quarter field 
 	public function convert_quater_month($created_date){

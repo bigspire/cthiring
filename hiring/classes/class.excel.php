@@ -49,9 +49,20 @@ class libExcel{
 		 return $this->extract_data($this->objPHPExcel->getActiveSheet());
     }
 	
+
+	function loadFile($file) {
+		$this->reader = new PHPExcel_Reader_Excel5();
+		$this->xls = $this->reader->load("{$file}");
+		$this->xls->setActiveSheetIndex(0);
+		$this->sheet = $this->xls->getActiveSheet();
+		$this->sheet->getDefaultStyle()->getFont()->setName('Verdana');
+		$this->sheet->getStyle()->getNumberFormat()->setFormatCode('@');
+	} 
+
+
 	function extract_data($sheet){
 		$array_data = array();
-		$rowIterator = $this->objPHPExcel->getActiveSheet()->getRowIterator();
+		$rowIterator = $this->sheet->getRowIterator();
 		$col_array = array('A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R');
 		foreach($rowIterator as $row){
             $cellIterator = $row->getCellIterator();
@@ -61,7 +72,7 @@ class libExcel{
 			foreach($cellIterator as $cell){
                 $count = 1;
                 $array_size = sizeof($col_array);
-                foreach($col_array as $inner_val){
+                foreach($col_array as $inner_val){ 
                     if($inner_val == $cell->getColumn()){
                         if($array_size == $count) {
                             $array_data[$rowIndex][$cell->getColumn()] = PHPExcel_Style_NumberFormat::toFormattedString($cell->getCalculatedValue());

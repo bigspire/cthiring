@@ -36,7 +36,7 @@
 								<a href="emp_leaves.php?action=export&keyword={$smarty.post.keyword}&leave_from_date={$leave_from_date}&leave_to_date={$leave_to_date}" class="jsRedirect">
 								<button type="button" val="emp_leaves.php?action=export&keyword={$smarty.post.keyword}&leave_from_date={$leave_from_date}&leave_to_date={$leave_to_date}" name="export" class="btn btn-warning" >Export Excel</button></a>
 							{/if}
-						<a class="jsRedirect" data-notify-time = '3000'   href="import_emp_leaves.php"><input type="button" value="Import Employee Leaves" class="btn btn-info"/></a>							
+						<a class="iframeBox unreadLink" val="40_45" href="import_excel.php?action=emp_leaves"><input type="button" value="Import Employee Leaves" class="btn btn-info"/></a>							
 						</div>
 							
 						{if $SUCCESS_MSG}
@@ -67,7 +67,8 @@
 							<label>Leave To: <input type="text" class="input-small datepick" name="leave_to_date" placeholder="dd/mm/yyyy" style="width:70px;"  value="{$leave_to_date}" aria-controls="dt_gal"></label>
 						
 							<label style="margin-top:18px;"><input type="submit" value="Submit" class="btn btn-gebo" /></label>
-							<label style="margin-top:18px;"><a href="emp_leaves.php" class="jsRedirect"><input value="Reset" type="button" class="btn"/></a></label>
+							<label style="margin-top:18px;">
+							<a href="import_excel.php?action='emp_leaves'" class="iframeBox unreadLink" val="40_45"><input value="Reset" type="button" class="btn"/></a></label>
 							</div>
 
 						<input type="hidden" value="1" id="SearchKeywords">
