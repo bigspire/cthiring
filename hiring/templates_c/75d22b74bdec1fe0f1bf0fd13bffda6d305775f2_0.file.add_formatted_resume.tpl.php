@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-11-06 15:24:05
+/* Smarty version 3.1.29, created on 2017-11-13 11:46:32
   from "C:\xampp\htdocs\ctsvn\cthiring\hiring\templates\add_formatted_resume.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5a00313d2b5cc1_58094572',
+  'unifunc' => 'content_5a0938c0a93ae6_18430514',
   'file_dependency' => 
   array (
     '75d22b74bdec1fe0f1bf0fd13bffda6d305775f2' => 
     array (
       0 => 'C:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\templates\\add_formatted_resume.tpl',
-      1 => 1509952497,
+      1 => 1510238631,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5a00313d2b5cc1_58094572 ($_smarty_tpl) {
+function content_5a0938c0a93ae6_18430514 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -47,12 +47,15 @@ home"><i class="icon-home"></i></a>
 resume">Resumes</a>
                         </li>
                         <li>
-                           Create Fully Formatted Resume
+                           Add Fully Formatted Resume
                         </li>
                      </ul>
                   </div>
               </nav>
-					
+				<?php if ($_smarty_tpl->tpl_vars['EXIST_MSG']->value) {?>
+				 <div id="flashMessage" class="alert alert-error"><button type="button" class="close" data-dismiss="alert">×</button><?php echo $_smarty_tpl->tpl_vars['EXIST_MSG']->value;?>
+</div>					
+				<?php }?>	
 <form action="" id="formID" class="formID" method="post" accept-charset="utf-8">
 	<div class="box">
 		<div class="row-fluid">

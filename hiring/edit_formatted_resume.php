@@ -1089,7 +1089,7 @@ if(!empty($_POST)){
 		} 
 	
 		}else{
-			$msg = "Resume already exists";
+			$msg = "Resume with same email address and mobile no. already exists";
 			$smarty->assign('EXIST_MSG',$msg); 
 		} 
 	}else{

@@ -845,10 +845,13 @@ if(!empty($_POST)){
 			$mysql->clear_result($result);
 			// call the next result
 			$mysql->next_query();			
+			// for languages known
+			$getid = $resume_id;
 			// generate auto resume doc file
 			$resume_path = dirname(__FILE__).'/uploads/autoresume/'.$_SESSION['resume_doc'];
 			$template_path = dirname(__FILE__).'/uploads/template/autoresume.docx'; 
 			include('vendor/PHPWord-develop/samples/template_process.php');
+			die;
 			// generate the auto resume pdf file
 			// convert the resume doc. into pdf			
 			require_once('vendor/ilovepdf-php-1.1.5/init.php');			
@@ -872,7 +875,7 @@ if(!empty($_POST)){
 			header('Location: ../resume/?action=auto_created');
 		} 
 		}else{
-			$msg = "Resume already exists";
+			$msg = "Resume with same email address and mobile no. already exists";
 			$smarty->assign('EXIST_MSG',$msg); 
 		}
 	}else{

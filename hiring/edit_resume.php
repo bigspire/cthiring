@@ -835,7 +835,7 @@ if(!empty($_POST)){
 			header('Location: ../resume?action=modified');
 			} 
 		}else{
-			$msg = "Resume already exists";
+			$msg = "Resume with same email address and mobile no. already exists";
 			$smarty->assign('EXIST_MSG',$msg); 
 		}
 	}else{

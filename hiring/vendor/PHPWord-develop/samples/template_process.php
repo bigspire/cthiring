@@ -22,7 +22,7 @@ $templateProcessor->setValue('RECRUITER_NAME', ucwords($recruiter),  1,0);
 // to retain current date field      
 $templateProcessor->setValue('CURRENT_DATE', date('d-M-Y'),  1,0);       
 // to retain designation field 
-$templateProcessor->setValue('DESIGNATION_NAME', ucwords($position_autoresume),  1,0); 
+$templateProcessor->setValue('DESIGNATION', ucwords($position_autoresume),  1,0); 
 // to retain candidate address field 
 $templateProcessor->setValue('CANDIDATE_ADDRESS', $_POST['address'],  1,0);  
 // to retain candidate phone number field   
@@ -97,19 +97,25 @@ $templateProcessor->setValue('CANDIDATEBRIEF', $_POST['candidate_brief'],  1,0);
 	
 	
 // to retain key achievements field 	
-	$templateProcessor->cloneRow('TRACKRECORDS', $_POST['exp_count']);
-	$train_flags = 1;
-	for($i = 0; $i < $_POST['exp_count']; $i++){
-		$key_achievementData = $_POST['key_achievement_'.$i];
-		$html = nl2br($key_achievementData);
-		// $html = '<br><p>Performs reporting risk assessments and auditing and observes all QHSE related activities and policies within a location.</p><p>Ensures operations are conducted in a safe and efficient manner and in conformance to federal, provincial and company safety regulations by integrating and implementing company and third-party QHSE policies and procedures.</p><p>Performs post-incident investigations and communicates with the QHSE Manager and others until all action items have been closed. Files QHSE documents and participates in job risk analysis and continual improvement. Likely to be either a specialist within a particular focus area for QHSE</p>';
+	$key_achievementData = $_POST['key_achievement_0'];
 
-	    // $html = str_replace('<br>', '<p>', $html);
-		// $toOpenXML = HTMLtoOpenXML::getInstance()->fromHTML($html);
-		// $templateProcessor->setValue('TRACKRECORDS#'.$train_flag, $toOpenXML, 0, 1);
-		$templateProcessor->setValue('TRACKRECORDS#'.$train_flags, $html, 0, 0);
-		$train_flags++;
-	}
+	$html = explode("\n", $key_achievementData);
+	$track_tot = count($html);
+	$templateProcessor->cloneRow('TRACKRECORDS', $track_tot); // $_POST['exp_count']);
+	$train_flags = 1;
+	//
+	//for($i = 0; $i < $track_tot; $i++){
+		// $html = '<br><p>Performs reporting risk assessments and auditing and observes all QHSE related activities and policies within a location.</p><p>Ensures operations are conducted in a safe and efficient manner and in conformance to federal, provincial and company safety regulations by integrating and implementing company and third-party QHSE policies and procedures.</p><p>Performs post-incident investigations and communicates with the QHSE Manager and others until all action items have been closed. Files QHSE documents and participates in job risk analysis and continual improvement. Likely to be either a specialist within a particular focus area for QHSE</p>';
+		foreach($html as $track_rec){
+			// $html = str_replace('<br>', '<p>', $html);
+			// $toOpenXML = HTMLtoOpenXML::getInstance()->fromHTML($html);
+			// $templateProcessor->setValue('TRACKRECORDS#'.$train_flag, $toOpenXML, 0, 1);
+			$templateProcessor->setValue('TRACKRECORDS#'.$train_flags, $track_rec, 0, 0);
+			$train_flags++;
+
+		}
+		
+	// }
 
 // to retain training field 	
 	$templateProcessor->cloneRow('TRAINYR', $_POST['train_count']);
@@ -117,8 +123,8 @@ $templateProcessor->setValue('CANDIDATEBRIEF', $_POST['candidate_brief'],  1,0);
 	for($i = 0; $i < $_POST['train_count']; $i++){
 			$train_yearData = $_POST['train_year_'.$i];
 			$descriptionData = $_POST['description_'.$i];
-			$programtitleData = $_POST['programtitle_'.$i];
-			$train_locationData = $_POST['train_location_'.$i];
+			$programtitleData = ucwords($_POST['programtitle_'.$i]);
+			$train_locationData = ucfirst($_POST['train_location_'.$i]);
 	
 		$templateProcessor->setValue('TRAINYR#'.$train_flag, $train_yearData,   0, 0);
 		$templateProcessor->setValue('TRAINTITLE#'.$train_flag, $programtitleData,   0, 0);
@@ -135,12 +141,12 @@ $templateProcessor->cloneRow('EDUYR', $_POST['edu_count']);
 $train_flag = 1;
 $train_flag2 = 1;
 for($i = 0; $i < $_POST['edu_count']; $i++){
-			$collegeData = $_POST['college_'.$i];
+			$collegeData = ucwords($_POST['college_'.$i]);
 			$specializationData = $_POST['specialization_'.$i];
 			$degreeData = $_POST['degree_'.$i];
 			$gradeData = $_POST['grade_'.$i];
 			$year_of_passData = $_POST['from_yr_'.$i];
-			$loactionData = $_POST['location_'.$i];
+			$loactionData = ucfirst($_POST['location_'.$i]);
 			$universityData = $_POST['university_'.$i];
 			if($gradeData > 10){
 				$type = '%';
@@ -188,10 +194,10 @@ for($i = 0; $i < $_POST['exp_count']; $i++){
 			$to_year_exp = $_POST['to_year_of_exp_'.$i];
 			$to_month_exp = $_POST['to_month_of_exp_'.$i];
 			$areaData = $_POST['area_'.$i];
-			$companyData = $_POST['company_'.$i];
+			$companyData = ucwords($_POST['company_'.$i]);
 			$vitalData = $_POST['vital_'.$i];
 			$company_profileData = $_POST['company_profile_'.$i];
-			$worklocData = $_POST['workloc_'.$i];
+			$worklocData = ucfirst($_POST['workloc_'.$i]);
 			$key_responsibilityData = $_POST['key_responsibility_'.$i];
 			$key_achievementData = $_POST['key_achievement_'.$i];
 			$reporting_toData = $_POST['reporting_to_'.$i];
@@ -236,7 +242,7 @@ for($i = 0; $i < $_POST['exp_count']; $i++){
 			$areaData = $_POST['area_'.$i];
 			$companyData = $_POST['company_'.$i];
 			$company_profileData = $_POST['company_profile_'.$i];
-			$worklocData = $_POST['workloc_'.$i];
+			$worklocData = ucfirst($_POST['workloc_'.$i]);
 			$key_responsibilityData = $_POST['key_responsibility_'.$i];
 			$key_achievementData = $_POST['key_achievement_'.$i];
 			$reporting_toData = $_POST['reporting_to_'.$i];
