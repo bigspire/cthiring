@@ -412,17 +412,17 @@
 										<option value="">From Month</option>
 										{html_options options=$exp_month} 
 										</select>
-										<select name="from_year_of_exp_#index#" id = "from_year_of_exp_#index#" tabindex="2" class="inline_text span2">
+										<select name="from_year_of_exp_#index#" id = "from_year_of_exp_#index#" rel="maxDrop_#index#" tabindex="2" class="minExpDrop inline_text span2">
 										<option value="">From Year</option>
 										{html_options options=$exp_yr} 
 										</select>
 										
-										<select name="to_month_of_exp_#index#" id = "to_month_of_exp_#index#" tabindex="3" class="inline_text span2">
+										<select name="to_month_of_exp_#index#" id = "to_month_of_exp_#index#" tabindex="3" class=" inline_text span2">
 										<option value="">To Month</option>
 										{html_options options=$exp_month} 
 										</select>
 										
-										<select name="to_year_of_exp_#index#" id = "to_year_of_exp_#index#" tabindex="2" class="inline_text span2">
+										<select name="to_year_of_exp_#index#" id = "maxDrop_#index#" tabindex="2" class="inline_text span2">
 										<option value="">To Year</option>
 										{html_options options=$exp_yr} 
 										</select>
@@ -962,7 +962,24 @@ $(document).ready(function(){
 			 $('#exp_count').attr('value',source.getFormsCount());
 			  // for auto resize text area
 			 autosize(document.querySelectorAll('.wysiwyg1'));
-		   },
+			  /* function to update max drop down */
+				$('.minExpDrop').unbind().change(function(){ 
+					cur_obj = $(this).attr('id');		
+					option_id = $(this).attr('rel');					
+					val = parseFloat($(this).val());
+					$('#'+option_id).append('<option>Loading...</option>');
+					html = "<option value=''>Select</option>";
+					$('#'+cur_obj+' option').each(function(){
+						// allow only values equals or greater than
+						if(val < $(this).val()){ 
+							html += '<option value='+$(this).val()+'>'+$(this).text()+'</option>';
+						}
+					});
+					$('#'+option_id).empty();
+					$('#'+option_id).append(html);
+
+				});
+			},
 		   afterRemoveCurrent: function(source) {		
 			 $('#exp_count').attr('value',source.getFormsCount());
 		  }
@@ -988,7 +1005,7 @@ $(document).ready(function(){
 				$('#from_month_of_exp_'+i).val( $('#from_month_of_expData_'+i).val());
 			}
 			if($('#to_year_of_expData_'+i).length > 0){ 
-				$('#to_year_of_exp_'+i).attr('value', $('#to_year_of_expData_'+i).val());
+				$('#maxDrop_'+i).attr('value', $('#to_year_of_expData_'+i).val());
 			}
 			if($('#to_month_of_expData_'+i).length > 0){ 
 				$('#to_month_of_exp_'+i).val( $('#to_month_of_expData_'+i).val());
