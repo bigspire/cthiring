@@ -29,7 +29,7 @@ $smarty->assign('module',$module_access);
 $id = $_GET['id'];
 
 if(($fun->isnumeric($id)) || ($fun->is_empty($id)) || ($id == 0)){
-  		header('Location:page_error.php');
+  	header('Location: ../?access=invalid');
 }
 
 // check valid approve billing user  
@@ -50,7 +50,7 @@ try{
 
 // redirecting to error page if users dont have permission to see view page
 if($valid_user['total'] == '0'){
-	header('Location:page_error.php');
+	header('Location: ../?access=invalid');
 }
 
 // select and execute query and fetch the result
@@ -75,7 +75,7 @@ try{
 			$data[] = $obj;
 		}
 	}else{
-		header('Location:page_error.php');
+		header('Location: ../?access=invalid');
 	}
 	// free the memory
 	$mysql->clear_result($result);

@@ -17,7 +17,7 @@ if(isset($_GET['id'])){
    // get record id   
 	$id = $_GET['id'];
 	if(($fun->isnumeric($id)) || ($fun->is_empty($id)) || ($id == 0)){
-  		header('Location:page_error.php');
+  		header('Location: ../?access=invalid');
 	}
 	
    // delete record details

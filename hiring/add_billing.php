@@ -50,7 +50,7 @@ if(!empty($_GET['res_id']) && !empty($_GET['req_res_id'])){
 				$smarty->assign('joined_date' , $fun->convert_date_to_display($obj['joined_date']));
 			}
 		}else{
-			header('Location:page_error.php');
+			header('Location: ../?access=invalid');
 		}
 		// free the memory
 		$mysql->clear_result($result);

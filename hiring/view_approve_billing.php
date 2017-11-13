@@ -30,7 +30,7 @@ $_SESSION['emp_id'] = $_GET['emp_id'];
 $_SESSION['billing_id'] = $_GET['id'];
 
 if(($fun->isnumeric($id)) || ($fun->is_empty($id)) || ($id == 0)){
-  		header('Location:page_error.php');
+  	header('Location: ../?access=invalid');
 }
 
 // check valid approve billing user  
@@ -51,7 +51,7 @@ try{
 
 // redirecting to error page if users dont have permission to see view page
 if(($valid_user['level1'] != $_SESSION['user_id']) and ($valid_user['level2'] != $_SESSION['user_id'])){
-	header('Location:page_error.php');
+	header('Location: ../?access=invalid');
 }
 
 // fetch approve status 
@@ -109,7 +109,7 @@ try{
 			$data[] = $obj;
 		}
 	}else{
-		header('Location:page_error.php');
+		header('Location: ../?access=invalid');
 	}
 	// free the memory
 	$mysql->clear_result($result);
