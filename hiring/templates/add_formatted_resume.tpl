@@ -728,6 +728,9 @@
 		</div>
 		</div>
 	</div>
+	
+	<input type="hidden" id="end_date" name="end_date" value="{$dob_default}">	
+
 			
 {include file='include/footer.tpl'}
 

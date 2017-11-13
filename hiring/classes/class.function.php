@@ -614,7 +614,7 @@ class fun{
 	
 	/* function to filter the file */
 	public function filter_file($snap_file_name){
-		return str_replace(array('.','_','-','(',')',' '), '', $snap_file_name);
+		return str_replace(array('.','_','-','(',')',' ','&'), '', $snap_file_name);
 	}	
 	
 	// check the  file is not empty

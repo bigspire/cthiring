@@ -66,6 +66,7 @@ if($_SESSION['extraction'] == '' || $_POST['RESUME_DATA'] == ''){
 }else{
 	$smarty->assign('RESUME_DATA', $_POST['RESUME_DATA']);
 }
+
 $smarty->assign('dob_default', date('d/m/Y', strtotime('-18 years')));
 // role based validation
 $module_access = $fun->check_role_access('7',$modules);
@@ -850,8 +851,7 @@ if(!empty($_POST)){
 			// generate auto resume doc file
 			$resume_path = dirname(__FILE__).'/uploads/autoresume/'.$_SESSION['resume_doc'];
 			$template_path = dirname(__FILE__).'/uploads/template/autoresume.docx'; 
-			include('vendor/PHPWord-develop/samples/template_process.php');
-			die;
+			include('vendor/PHPWord-develop/samples/template_process.php');			
 			// generate the auto resume pdf file
 			// convert the resume doc. into pdf			
 			require_once('vendor/ilovepdf-php-1.1.5/init.php');			
@@ -870,7 +870,25 @@ if(!empty($_POST)){
 			$myTaskConvertOffice->execute();
 			// Download the package files
 			$myTaskConvertOffice->download('uploads/autoresumepdf/');   
-			
+			/*
+			// water mark the pdf
+			$myTaskWatermark = $ilovepdf->newTask('watermark');
+			// Add files to task for upload
+			$file1 = $myTaskWatermark->addFile(dirname(__FILE__).'/uploads/autoresumepdf/'.$fun->filter_file($snap_file_name).'_'.date('d-m-Y').'.pdf');
+			// Select watermark parameters
+			$myTaskWatermark->setText('CareerTree HR Solutions');
+			// $myTaskWatermark->setImage('uploads/template/watermark.jpg');			
+			$myTaskWatermark->setPages('3-end');
+			// $myTaskWatermark->setOpacity(50);
+			$myTaskWatermark->setVerticalPosition('top');
+			$myTaskWatermark->setHorizontalPosition('right');
+			// $myTaskWatermark->setFontFamily('courier');
+			$myTaskWatermark->setFontSize(24);
+			$myTaskWatermark->setFontColor('#c7c3be');
+			$myTaskWatermark->execute();
+			// Download the package files
+			$myTaskWatermark->download('uploads/autoresumewatermarked/');
+			*/
 			// once successfully created, redirect the page
 			header('Location: ../resume/?action=auto_created');
 		} 
