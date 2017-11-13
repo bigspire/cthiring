@@ -29,7 +29,7 @@ $smarty->assign('module',$module_access);
 $id = $_GET['id'];
 
 if(($fun->isnumeric($id)) || ($fun->is_empty($id)) || ($id == 0)){
-  		header('Location:page_error.php');
+  	header('Location: ../?access=invalid');
 }
 
 // select and execute query and fetch the result
@@ -45,7 +45,7 @@ try{
 		$smarty->assign('created_date', $fun->convert_date_to_display($obj['created_date']));
 		$smarty->assign('data', $obj);
 	}else{
-		header('Location:page_error.php');
+		header('Location: ../?access=invalid');
 	}
 	// free the memory
 	$mysql->clear_result($result);

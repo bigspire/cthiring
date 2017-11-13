@@ -36,47 +36,8 @@ if($_POST){
 	$post_url .= '&t_date='.$t_date;
 }
 
-		// for director and BH
-		if($_SESSION['roles_id'] == '33' || $_SESSION['roles_id'] == '38' || $_SESSION['roles_id'] == '39'){
-			$show = 'all';
-		}else{
-			$show = '1';			
-		}
-		$team_cond = true;
-		// call the next result
-		$mysql->next_query();
-		$id = $_SESSION['user_id'];
-		// get the team members
-		if($show == '1'){
-			$qryCond = "(a.level1 = '$id' or a.level2 = '$id') and ";
-		}		
-		$sql = "select u.id, u.first_name, u.last_name from users u left join	approval a  on (a.users_id = u.id) where
-		$qryCond u.is_deleted = 'N' and u.status = '0' group by u.id order by u.first_name asc";		
-		$result = $mysql->execute_query($sql);		
-		while($row = $mysql->display_result($result)){
-			$emp_name[$row['id']] = ucwords($row['first_name'].' '.$row['last_name']);
-			$data_ar[] = $row['id'];
-		}
-		
-		// if not director or BH
-		if(!empty($emp_name)){
-			$smarty->assign('approveUser', '1');		
-			foreach($data_ar as $rec){
-				// concatenate the list of team members
-				$id_str .=  $rec.' , ';
-			}
-			$id_str .= $_SESSION['user_id'];
-			if($team_cond){
-				$cond .= ' or ( rr.created_by in('.$id_str.')';
-				$cond .= ' or cah2.users_id in('.$id_str.')
-				)';
-				
-			}
-			$smarty->assign('emp_name',$emp_name);
-		}
-
 // count the total no. of records
-$query = "CALL list_mail_box('".$_SESSION['user_id']."','".$_SESSION['roles_id']."','".$keyword."','".$from_date."','".$to_date."','0','0','','','".$cond."')";
+$query = "CALL list_mail_box('".$_SESSION['user_id']."','".$keyword."','".$from_date."','".$to_date."','0','0','','','".$cond."')";
 try{
 	if(!$result = $mysql->execute_query($query)){
 		throw new Exception('Problem in executing mail box page');
@@ -130,7 +91,7 @@ if($search_key = array_search($_GET['field'], $sort_fields)){
 
 
 // fetch all records
-$query = "CALL list_mail_box('".$_SESSION['user_id']."','".$_SESSION['roles_id']."','".$keyword."','".$from_date."','".$to_date."','$start','$limit','".$field."','".$order."','".$cond."')";
+$query = "CALL list_mail_box('".$_SESSION['user_id']."','".$keyword."','".$from_date."','".$to_date."','$start','$limit','".$field."','".$order."','".$cond."')";
 
 try{
 	if(!$result = $mysql->execute_query($query)){

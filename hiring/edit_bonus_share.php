@@ -23,7 +23,7 @@ $smarty->assign('getid',$getid);
 
 // validate url 
 if(($fun->isnumeric($getid)) || ($fun->is_empty($getid)) || ($getid == 0)){
-  header('Location:page_error.php');
+  header('Location: ../?access=invalid');
 }
 
 // if id is not in database then redirect to list page

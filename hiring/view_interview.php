@@ -30,7 +30,7 @@ $req_res_id = $_GET['req_res_id'];
 $resume_id = $_GET['resume_id'];
 
 if(($fun->isnumeric($req_res_id)) || ($fun->is_empty($req_res_id)) || ($req_res_id == 0)){
-  		header('Location:page_error.php');
+  	header('Location: ../?access=invalid');
 }
 
 // select and execute query and fetch the result
@@ -70,7 +70,7 @@ if(!empty($row)){
 		echo 'Caught exception: ',  $e->getMessage(), "\n";
 	}
 }else{
-	header('Location:page_error.php');
+	header('Location: ../?access=invalid');
 }
 
 // calling mysql close db connection function

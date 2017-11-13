@@ -20,7 +20,7 @@ include('classes/class.mailer.php');
 // content class
 include('classes/class.content.php');
 if(empty($_SESSION['resume_doc_id'])){
-	header('Location:page_error.php');
+	header('Location: ../?access=invalid');
 }
 
 

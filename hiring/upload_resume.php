@@ -53,8 +53,8 @@ if($_GET['client_id'] != ''  and $_GET['req_id'] != ''){
 
 	$clients = array();
 	// query to fetch all clients names. 
-	// $query = "CALL get_clients('".$_SESSION['user_id']."')";
-	$query = "CALL get_clients()";
+	$query = "CALL get_clients('".$_SESSION['user_id']."')";
+	// $query = "CALL get_clients()";
 	try{
 		// calling mysql exe_query function
 		if(!$result = $mysql->execute_query($query)){
