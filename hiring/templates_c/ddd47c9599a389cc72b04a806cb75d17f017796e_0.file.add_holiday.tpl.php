@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-11-11 17:37:23
+/* Smarty version 3.1.29, created on 2017-11-13 12:55:36
   from "C:\xampp\htdocs\2017\ctsvn\cthiring\hiring\templates\add_holiday.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5a06e7fb3aa605_66024406',
+  'unifunc' => 'content_5a0948f0165244_88162607',
   'file_dependency' => 
   array (
     'ddd47c9599a389cc72b04a806cb75d17f017796e' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\templates\\add_holiday.tpl',
-      1 => 1510402037,
+      1 => 1510557917,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_5a06e7fb3aa605_66024406 ($_smarty_tpl) {
+function content_5a0948f0165244_88162607 ($_smarty_tpl) {
 ?>
 
 
@@ -75,6 +75,7 @@ function content_5a06e7fb3aa605_66024406 ($_smarty_tpl) {
 						<label class="error"><?php echo $_smarty_tpl->tpl_vars['event_excelErr']->value;
 echo $_smarty_tpl->tpl_vars['attachmentuploadErr']->value;?>
  </label>
+						<a href = "add_holiday.php?action=download">Download Excel Template</a>
 						</td>	
 					</tr>
 				</tbody>

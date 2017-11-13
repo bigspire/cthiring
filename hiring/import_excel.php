@@ -175,12 +175,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 						}
 						
 						// query to check whether it is exist or not. 
-						$query = "CALL check_emp_exist('$emp_id')";
+						$query = "CALL check_salary_exist('$emp_id','$salary_date')";
 						// Calling the function that makes the insert
 						try{
 							// calling mysql exe_query function
 							if(!$result = $mysql->execute_query($query)){
-								throw new Exception('Problem in executing to check emp salary exist');
+								throw new Exception('Problem in executing to check salary exist');
 							}
 							$check = $mysql->display_result($result);
 							// free the memory

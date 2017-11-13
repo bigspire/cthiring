@@ -303,6 +303,10 @@ class fun{
 			$session_st = 'Morning';
 		}elseif($session == 'A'){	
 	 		$session_st = 'Afternoon';
+		}elseif($session == 'Morning'){	
+	 		$session_st = 'M';
+		}elseif($session == 'Afternoon'){	
+	 		$session_st = 'A';
 		}
 		return $session_st;
 	}

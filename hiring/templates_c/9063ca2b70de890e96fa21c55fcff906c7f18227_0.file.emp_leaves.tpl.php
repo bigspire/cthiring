@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-11-11 16:24:25
+/* Smarty version 3.1.29, created on 2017-11-13 11:41:57
   from "C:\xampp\htdocs\2017\ctsvn\cthiring\hiring\templates\emp_leaves.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5a06d6e19753f1_75756333',
+  'unifunc' => 'content_5a0937addf5232_67356333',
   'file_dependency' => 
   array (
     '9063ca2b70de890e96fa21c55fcff906c7f18227' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\templates\\emp_leaves.tpl',
-      1 => 1510396531,
+      1 => 1510547704,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5a06d6e19753f1_75756333 ($_smarty_tpl) {
+function content_5a0937addf5232_67356333 ($_smarty_tpl) {
 ?>
 
    
@@ -68,7 +68,7 @@ home"><i class="icon-home"></i></a>
 &leave_to_date=<?php echo $_smarty_tpl->tpl_vars['leave_to_date']->value;?>
 " name="export" class="btn btn-warning" >Export Excel</button></a>
 							<?php }?>
-						<a class="iframeBox unreadLink" val="40_45" href="import_excel.php?action=emp_leaves"><input type="button" value="Import Employee Leaves" class="btn btn-info"/></a>							
+						<a class="iframeBox unreadLink" val="40_45" href="add_emp_leaves.php"><input type="button" value="Import Employee Leaves" class="btn btn-info"/></a>							
 						</div>
 							
 						<?php if ($_smarty_tpl->tpl_vars['SUCCESS_MSG']->value) {?>

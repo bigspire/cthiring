@@ -1,8 +1,8 @@
 <?php
 /* 
-Purpose : To upload resume.
+Purpose : To import holidays.
 Created : Nikitasa
-Date : 07-03-2017
+Date : 11-11-2017
 */
 
 // starting session
@@ -16,6 +16,12 @@ $mysql->connect_database();
 include('classes/class.function.php');
 // add menu count
 include('menu_count.php');
+
+// to download template file
+if($_GET['action'] == 'download'){
+	$path = 'uploads/import/template/Holidays Template.xls';
+	$fun->download_file($path);
+}
 
 $attachmentuploadErr = '';
 if($_SERVER["REQUEST_METHOD"] == "POST"){

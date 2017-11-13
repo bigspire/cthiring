@@ -1,6 +1,6 @@
-{* Purpose : To upload resume.
+{* Purpose : To import holidays.
  Created : Nikitasa
-   Date : 07-03-2017 *}
+   Date : 11-11-2017 *}
 
 <!DOCTYPE html>
 <html>
@@ -52,6 +52,7 @@
 						<td>
 						<input type="file" tabindex="3" name="event_excel" class="upload" id="event_excel"/>
 						<label class="error">{$event_excelErr}{$attachmentuploadErr} </label>
+						<a href = "add_holiday.php?action=download">Download Excel Template</a>
 						</td>	
 					</tr>
 				</tbody>
