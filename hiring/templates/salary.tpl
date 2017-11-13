@@ -36,7 +36,7 @@
 								<a href="salary.php?action=export&keyword={$smarty.post.keyword}&salary_from_date={$salary_from_date}&salary_to_date={$salary_to_date}" class="jsRedirect">
 								<button type="button" val="salary.php?action=export&keyword={$smarty.post.keyword}&salary_from_date={$salary_from_date}&salary_to_date={$salary_to_date}" name="export" class="btn btn-warning" >Export Excel</button></a>
 							{/if}
-						<a class="jsRedirect" data-notify-time = '3000'   href="import_salary.php"><input type="button" value="Import Salary" class="btn btn-info"/></a>							
+						<a class="iframeBox unreadLink" val="40_45" href="add_salary.php"><input type="button" value="Import Salary" class="btn btn-info"/></a>							
 						</div>
 							
 						{if $SUCCESS_MSG}

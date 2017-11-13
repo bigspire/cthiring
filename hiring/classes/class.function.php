@@ -265,6 +265,7 @@ class fun{
 		$date = date('Y-m-d H:i:s');
 		return $date;
 	}
+
 	
 	// function to validate incentive quarter field 
 	public function convert_quater_month($created_date){
@@ -302,6 +303,10 @@ class fun{
 			$session_st = 'Morning';
 		}elseif($session == 'A'){	
 	 		$session_st = 'Afternoon';
+		}elseif($session == 'Morning'){	
+	 		$session_st = 'M';
+		}elseif($session == 'Afternoon'){	
+	 		$session_st = 'A';
 		}
 		return $session_st;
 	}
