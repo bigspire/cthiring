@@ -38,7 +38,6 @@ if($_POST){
 	$post_url .= '&employee='.$employee;
 }
 
-
 // count the total no. of records
 $query = "CALL list_approve_billing('".$keyword."','".$_SESSION['user_id']."','".$employee."','".$from_date."','".$to_date."','0','0','','','".$_GET['action']."')";
 try{

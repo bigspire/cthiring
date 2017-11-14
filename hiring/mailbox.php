@@ -80,7 +80,7 @@ foreach($sort_fields as $key => $b_field){
 // if no fields are set, set default sort image
 if(empty($_GET['field'])){		
 	$order = 'desc';			
-	$field = 'con.created_date';			
+	$field = 'm.created_date';			
 	$smarty->assign('sort_field_created_date', 'sorting desc');
 }	
 $smarty->assign('order', $order);

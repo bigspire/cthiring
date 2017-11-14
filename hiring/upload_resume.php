@@ -50,7 +50,7 @@ if($_GET['client_id'] != ''  and $_GET['req_id'] != ''){
 		echo 'Caught exception: ',  $e->getMessage(), "\n";
 	}
 }else{
-
+	
 	$clients = array();
 	// query to fetch all clients names. 
 	$query = "CALL get_clients('".$_SESSION['user_id']."')";
