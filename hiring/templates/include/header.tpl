@@ -140,7 +140,7 @@
                                             </ul>
                                           </li>
 										  
-										   {if $approve_position_count neq '0'}
+										   {if $approve_position_count neq '0' || $position_count gt '0'}
 											{assign col_count active2}
 										 {/if}
 										  <li class="<?php echo $fun->set_menu_active(array('position','view_position','add_position','edit_position'));?>  dropdown {$col_count}">
@@ -150,10 +150,10 @@
                                                 <li><a href="{webroot}position/add/">Add Position</a></li>
 											 {/if}
 											 {if $module['view_position'] eq '1'}
-                                                <li><a href="{webroot}position/">Search Position {* if $position_count *}<!--span class="label-bub label-info white">{$position_count}</span-->{* /if *}</a></li>
+                                                <li><a href="{webroot}position/">Search Position {if $position_count}<span class="label-bub label-info white">{$position_count}</span>{/if}</a></li>
 											  {/if}
 											  {if $module['approve_position'] eq '1'}
-                                                <li><a href="{webroot}position/">Approve Position {if $approve_position_count}<span class="label-bub label-info white">{$approve_position_count}</span>{/if}</a></li>
+                                                <li><a href="{webroot}position/index/pending/">Approve Position {if $approve_position_count}<span class="label-bub label-info white">{$approve_position_count}</span>{/if}</a></li>
 											  {/if}
 										   </ul>
                                         </li>

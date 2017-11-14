@@ -144,7 +144,7 @@ try{
 }
 
 // fetch position menu count
-$query = 'CALL count_position()';
+$query = "CALL count_position('".$_SESSION['user_id']."')";
 try{
 	if(!$result = $mysql->execute_query($query)){
 		throw new Exception('Problem in executing position count page');

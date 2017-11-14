@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-11-14 15:35:40
+/* Smarty version 3.1.29, created on 2017-11-14 16:18:20
   from "C:\xampp\htdocs\2017\ctsvn\cthiring\hiring\templates\include\header.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5a0abff48ceea3_23847379',
+  'unifunc' => 'content_5a0ac9f4c89bf6_42175378',
   'file_dependency' => 
   array (
     '418ce04694c91a3f6ebee8f2a2efa42e5260b14c' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\templates\\include\\header.tpl',
-      1 => 1510653937,
+      1 => 1510656497,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_5a0abff48ceea3_23847379 ($_smarty_tpl) {
+function content_5a0ac9f4c89bf6_42175378 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -176,7 +176,7 @@ client/index/pending/">Approve Client <?php if ($_smarty_tpl->tpl_vars['approve_
                                             </ul>
                                           </li>
 										  
-										   <?php if ($_smarty_tpl->tpl_vars['approve_position_count']->value != '0') {?>
+										   <?php if ($_smarty_tpl->tpl_vars['approve_position_count']->value != '0' || $_smarty_tpl->tpl_vars['position_count']->value > '0') {?>
 											<?php $_smarty_tpl->tpl_vars['col_count'] = new Smarty_Variable('active2', null);
 $_smarty_tpl->ext->_updateScope->updateScope($_smarty_tpl, 'col_count', 0);?>
 										 <?php }?>
@@ -190,12 +190,12 @@ position/add/">Add Position</a></li>
 											 <?php }?>
 											 <?php if ($_smarty_tpl->tpl_vars['module']->value['view_position'] == '1') {?>
                                                 <li><a href="<?php echo webroot;?>
-position/">Search Position <!--span class="label-bub label-info white"><?php echo $_smarty_tpl->tpl_vars['position_count']->value;?>
-</span--></a></li>
+position/">Search Position <?php if ($_smarty_tpl->tpl_vars['position_count']->value) {?><span class="label-bub label-info white"><?php echo $_smarty_tpl->tpl_vars['position_count']->value;?>
+</span><?php }?></a></li>
 											  <?php }?>
 											  <?php if ($_smarty_tpl->tpl_vars['module']->value['approve_position'] == '1') {?>
                                                 <li><a href="<?php echo webroot;?>
-position/">Approve Position <?php if ($_smarty_tpl->tpl_vars['approve_position_count']->value) {?><span class="label-bub label-info white"><?php echo $_smarty_tpl->tpl_vars['approve_position_count']->value;?>
+position/index/pending/">Approve Position <?php if ($_smarty_tpl->tpl_vars['approve_position_count']->value) {?><span class="label-bub label-info white"><?php echo $_smarty_tpl->tpl_vars['approve_position_count']->value;?>
 </span><?php }?></a></li>
 											  <?php }?>
 										   </ul>
