@@ -981,7 +981,7 @@ class PositionController extends AppController {
 	}
 	
 	/* function to approve / reject the position */
-	public function remark($req_id, $st_id,$user_id,$team_id,$status){
+	public function remark($req_id, $st_id,$user_id,$status,$team_id){
 		$this->layout = 'framebox';
 		if(!empty($this->request->data)){			
 			/*

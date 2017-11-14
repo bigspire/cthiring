@@ -200,6 +200,7 @@ try{
 		$position_autoresume = $row['job_title'];
 		$state_autoresume = $row['state'];
 		$city_autoresume = $row['city'];
+		$hide_contact = $row['hide_contact'];
 	}
 	$smarty->assign('position',$position);
 	// free the memory
@@ -271,16 +272,40 @@ $smarty->assign('degreeData', $degree_data);
 $smarty->assign('degree', $degree);
 $smarty->assign('spec', $spec);
 
-if($_POST['RESUME_DATA'] == ''){
+//if($_POST['RESUME_DATA'] == ''){
 	// fetch the resume data
 	$uploaddir = 'uploads/resume/'; 
 	$resume_data = $fun->read_document($uploaddir.$_SESSION['resume_doc']);
+	
+	// extract the mobile
+	$string = preg_replace("#[^\d{12}\s]#",'',$resume_data);
+	preg_match_all("#(\d{10})#", "$string", $found);	
+	foreach($found as $key => $phone_number) {
+	  if(strlen($phone_number[$key]) >= 10){ 
+		$mobile = $phone_number[$key];
+		// break;
+	  };
+	  // save for hiding contacts
+	  $phone_nos = $phone_number;
+	}
+	
+	// extract the email
+	$string = preg_split("/[\s,]+/", $resume_data);
+	foreach($string as $mail){
+		if(!filter_var($mail, FILTER_VALIDATE_EMAIL)) {
+			// continue;
+		}else{
+			$mail_ids[] = $mail;
+			// break;
+		}
+	}
+	
 	// echo $resume_data;die;
 	$smarty->assign('RESUME_DATA', $resume_data);
 	// $_SESSION['extraction'] = 'done';
-}else{
-	$smarty->assign('RESUME_DATA', $_POST['RESUME_DATA']);
-}
+//}else{
+	//$smarty->assign('RESUME_DATA', $_POST['RESUME_DATA']);
+//}
 
 if(!empty($_POST)){
 		// for retaining skills and rating
@@ -745,27 +770,21 @@ if(!empty($_POST)){
 			$resume_path = dirname(__FILE__).'/uploads/introduction/'.$_SESSION['resume_doc'];
 			$template_path = dirname(__FILE__).'/uploads/template/introduction.docx'; 
 			include('vendor/PHPWord-develop/samples/template_process3.php');
-			/*
-			// generate auto resume doc file
-			$resume_path = dirname(__FILE__).'/uploads/resume/'.$_SESSION['resume_doc'];
-			$template_path = dirname(__FILE__).'/uploads/template/'.$_SESSION['resume_doc']; 
-			// duplicate the file for template creation
-			$fun->upload_file($resume_path,$template_path);
-			$email = $_POST['email'];
-			$mobile1 = $_POST['mobile'];	
-			$mobile_len = strlen($_POST['mobile']); 			
-			if($mobile_len >= 12){
-				$mobile2 = substr($_POST['mobile'], 2, $mobile_len);
-				$mobile3 = substr($_POST['mobile'], 1, $mobile_len); 
-				$mobile4 = '+91 '.substr($_POST['mobile'], 2, $mobile_len);
-				$mobile5 = '+91-'.substr($_POST['mobile'], 2, $mobile_len); 
-				$mobile6 = '91 '.substr($_POST['mobile'], 2, $mobile_len); 
-				$mobile7 = '91-'.substr($_POST['mobile'], 2, $mobile_len);
+			// for hiding the contacts
+			if($hide_contact == '1'){
+				// generate auto resume doc file
+				$resume_path = dirname(__FILE__).'/uploads/resume/'.$_SESSION['resume_doc'];
+				$template_path = dirname(__FILE__).'/uploads/template/'.$_SESSION['resume_doc']; 
+				// duplicate the file for template creation
+				$fun->upload_file($resume_path,$template_path);			
+				include('vendor/PHPWord-develop/samples/template_process2.php');	
+				// remove the file
+				unlink($template_path);				
 			}
-			$resume_path = dirname(__FILE__).'/uploads/resume/'.$_SESSION['resume_doc'];
-			include('vendor/PHPWord-develop/samples/template_process2.php');			
-			// remove the file
-			unlink($template_path);
+			
+			die;
+			
+			/*		
 			// convert the resume doc. into pdf
 			require_once('vendor/ilovepdf-php-1.1.5/init.php');			
 			// you can call task class directly

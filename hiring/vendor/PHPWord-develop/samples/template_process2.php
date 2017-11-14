@@ -10,18 +10,34 @@ $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor($template_path);
 
 require_once "HTMLtoOpenXML.php";
 
-// Hide email and mobile
-$templateProcessor->setValue($email, '********************',  1,0);  
-$templateProcessor->setValue('mailto:'.$email, '********************',  1,0);  
 
 
-$templateProcessor->setValue($mobile1, '********************',  1,0);
-$templateProcessor->setValue($mobile2, '********************',  1,0);
-$templateProcessor->setValue($mobile3, '********************',  1,0);
-$templateProcessor->setValue($mobile4, '********************',  1,0);
-$templateProcessor->setValue($mobile5, '********************',  1,0);
-$templateProcessor->setValue($mobile6, '********************',  1,0);
-$templateProcessor->setValue($mobile7, '********************',  1,0);
+// hide the mobile nos with 91 space
+foreach($phone_nos as $mobile){
+	$templateProcessor->setValue('+91 '.$mobile, '**********',  1,0);
+}
+// hide the mobile nos with 91-
+foreach($phone_nos as $mobile){
+	$templateProcessor->setValue('91-'.$mobile, '**********',  1,0);
+}
+// hide the mobile nos with 91
+foreach($phone_nos as $mobile){
+	$templateProcessor->setValue('91'.$mobile, '**********',  1,0);
+}
+// hide the mobile nos.
+foreach($phone_nos as $mobile){ echo $mobile;
+	$templateProcessor->setValue($mobile, '**********',  1,0);
+}
+// hide the mail ids
+foreach($mail_ids as $mail){ echo $mail;
+	$templateProcessor->setValue($mail, '**********',  1,0);
+}
+// hide the mobile nos with 0 prefix
+foreach($phone_nos as $mobile){
+	$templateProcessor->setValue('0'.$mobile, '**********',  1,0);
+}
+
+
 
 echo date('H:i:s'), ' Saving the result document...', EOL;
 // $templateProcessor->saveAs('results/EWKI - 2.docx');

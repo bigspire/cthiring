@@ -108,13 +108,23 @@
 										?>
 										
 										  <li class="dropdown <?php echo $position_menu ?> <?php echo $active2;?>">
-                                            <a  data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icon-list-alt icon-white"></i> Positions <!--span class="label-bub label-info bubble">14</span--><b class="caret"></b></a>
+                                            <a  data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icon-list-alt icon-white"></i> Positions
+									
+												
+												
+											<b class="caret"></b></a>
                                              <ul class="dropdown-menu">
                                                  <?php if($create_position == '1'):?>
 												 <li><a href="<?php echo $this->webroot;?>position/add/">Add Position</a></li>
 												  <?php endif; ?>
 												  <?php if($view_position == '1'):?> 
-                                                <li><a href="<?php echo $this->webroot;?>position/">Search Position <!--span class="label-bub label-info white">14</span--></a></a></li>
+                                                <li><a href="<?php echo $this->webroot;?>position/">Search Position 
+												
+											<?php if($new_pos_count):?>
+											<span class="label-bub label-info bubble"><?php echo $new_pos_count;?></span>
+											<?php endif; ?>												
+												
+												</a></a></li>
 												 <?php endif; ?>
 												  <?php if($approve_position == '1'):?>
                                                 <li><a href="<?php echo $this->webroot;?>position/index/pending/">Approve Position 
