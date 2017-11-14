@@ -398,7 +398,7 @@
 					<tr class="tbl_row">
 										<td width="120" class="tbl_column">Designation <span class="f_req">*</span></td>
 										<td> 
-										<select tabindex="7" name="desig_#index#" class="span8"  id="desig_#index#">	
+										<select tabindex="1" name="desig_#index#" class="span8"  id="desig_#index#">	
 											<option value="">Select</option>
 											{html_options options=$desig_name}															
 										</select>
@@ -408,21 +408,21 @@
 								<tr>
 										<td width="120" class="tbl_column">Employment Period<span class="f_req"> *</span></td>
 										<td>
-										<select name="from_month_of_exp_#index#" id = "from_month_of_exp_#index#" tabindex="3" class="span2">
+										<select name="from_month_of_exp_#index#" id = "from_month_of_exp_#index#" tabindex="2" class="span2">
 										<option value="">From Month</option>
 										{html_options options=$exp_month} 
 										</select>
-										<select name="from_year_of_exp_#index#" id = "from_year_of_exp_#index#" rel="maxDrop_#index#" tabindex="2" class="minExpDrop inline_text span2">
+										<select name="from_year_of_exp_#index#" id = "from_year_of_exp_#index#" rel="maxDrop_#index#" tabindex="3" class="minExpDrop inline_text span2">
 										<option value="">From Year</option>
 										{html_options options=$exp_yr} 
 										</select>
 										
-										<select name="to_month_of_exp_#index#" id = "to_month_of_exp_#index#" tabindex="3" class=" inline_text span2">
+										<select name="to_month_of_exp_#index#" id = "to_month_of_exp_#index#" tabindex="4" class=" inline_text span2">
 										<option value="">To Month</option>
 										{html_options options=$exp_month} 
 										</select>
 										
-										<select name="to_year_of_exp_#index#" id = "maxDrop_#index#" tabindex="2" class="inline_text span2">
+										<select name="to_year_of_exp_#index#" id = "maxDrop_#index#" tabindex="5" class="inline_text span2">
 										<option value="">To Year</option>
 										{html_options options=$exp_yr} 
 										</select>
@@ -436,7 +436,7 @@
 							<tr class="tbl_row">
 										<td width="120" class="tbl_column">Location of Work <span class="f_req">*</span></td>
 										<td> 
-										<input type="text"  tabindex="4" name="workloc_#index#" id="workloc_#index#" value="" class="span8" />										
+										<input type="text"  tabindex="6" name="workloc_#index#" id="workloc_#index#" value="" class="span8" />										
 										<label for="reg_city" generated="true" class="error" id="worklocErr_#index#"></label>										
 										</td>
 										
@@ -444,21 +444,21 @@
 							<tr>
 										<td width="120" class="tbl_column">Area of Specialization/Expertise  <span class="f_req">*</span></td>
 										<td> 
-										<input type="text" value=""  name="area_#index#" id="area_#index#"  tabindex="5" class="span8" />
+										<input type="text" value=""  name="area_#index#" id="area_#index#"  tabindex="7" class="span8" />
 										<label for="reg_city" generated="true" class="error" id="areaErr_#index#"></label>										
 										</td>
 							</tr>
 								<tr class="tbl_row">
 										<td width="120" class="tbl_column">Company Name <span class="f_req">*</span></td>
 										<td> 
-										<input type="text"  tabindex="6" name="company_#index#" value="" id="company_#index#"  class="span8" />
+										<input type="text"  tabindex="8" name="company_#index#" value="" id="company_#index#"  class="span8" />
 										<label for="reg_city" generated="true" class="error" id="companyErr_#index#"></label>										
 										</td>
 							</tr>	
 							<tr>
 								<td width="120" class="tbl_column">Company Profile <span class="f_req">*</span></td>
 								<td>
-								<textarea name="company_profile_#index#" tabindex="7" id="company_profile_#index#" cols="10" rows="3" class="span8 wysiwyg1"></textarea>									
+								<textarea name="company_profile_#index#" tabindex="9" id="company_profile_#index#" cols="10" rows="3" class="span8 wysiwyg1"></textarea>									
 								<label for="reg_city" generated="true" class="error" id="company_profileErr_#index#"></label>
 								</td>	
 							</tr>							
@@ -473,13 +473,13 @@
 								<tr class="tbl_row">
 										<td width="120" class="tbl_column">Other Vital Information (Position Specific)  <span class="f_req"></span></td>
 										<td> 
-										<textarea   placeholder="" name="vital_#index#" tabindex="8" id="vital_#index#" cols="10" rows="3" class="span8 wysiwyg1"></textarea>
+										<textarea   placeholder="" name="vital_#index#" tabindex="10" id="vital_#index#" cols="10" rows="3" class="span8 wysiwyg1"></textarea>
 										</td>
 							</tr>
 							<tr>
 										<td width="120" class="tbl_column">Key Responsibility <span class="f_req">*</span></td>
 										<td>
-										<textarea name="key_responsibility_#index#" tabindex="9" id="key_responsibility_#index#" cols="10" rows="3" class="span8 wysiwyg1"></textarea>									
+										<textarea name="key_responsibility_#index#" tabindex="11" id="key_responsibility_#index#" cols="10" rows="3" class="span8 wysiwyg1"></textarea>									
 									<label for="reg_city" generated="true" class="error" id="key_responsibilityErr_#index#"></label>
 										</td>	
 									</tr>
@@ -487,7 +487,7 @@
 									<tr class="tbl_row">
 								<td width="120" class="tbl_column">Notable Achievements  <span class="f_req">*</span></td>
 								<td>
-								<textarea name="key_achievement_#index#" tabindex="10" id="key_achievement_#index#" cols="10" rows="3" class="span8 wysiwyg1"></textarea>									
+								<textarea name="key_achievement_#index#" tabindex="12" id="key_achievement_#index#" cols="10" rows="3" class="span8 wysiwyg1"></textarea>									
 								<label for="reg_city" generated="true" class="error" id="key_achievementErr_#index#"></label>
 									
 								</td>	
@@ -495,7 +495,7 @@
 								   <tr>
 										<td width="120" class="tbl_column"> Reporting To  <span class="f_req">*</span></td>
 										<td>
-										<input type="text" tabindex="11" name="reporting_to_#index#" id="reporting_to_#index#" value="" class="span8" autocomplete="off">							
+										<input type="text" tabindex="13" name="reporting_to_#index#" id="reporting_to_#index#" value="" class="span8" autocomplete="off">							
 										<label for="reg_city" generated="true" class="error" id="reporting_toErr_#index#"></label>
 										</td>		
 									</tr>

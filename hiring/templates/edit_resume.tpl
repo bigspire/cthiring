@@ -51,7 +51,7 @@
 									<tr class="tbl_row">
 										<td width="120" class="tbl_column">Position For <span class="f_req">*</span></td>
 										<td>
-										<input type="text" tabindex="3" name="position" value="{$position}" class="span8" disabled>
+										<input type="text"  name="position" value="{$position}" class="span8" disabled>
 										<input type="hidden" value="{$position}" name="requirement">
 										
 										
@@ -101,7 +101,7 @@
 									<tr>
 										<td width="120" class="tbl_column">Current Designation<span class="f_req">*</span></td>
 										<td>										
-										<select tabindex="7" name="designation_id" class="span8"  id="designation_id">	
+										<select tabindex="6" name="designation_id" class="span8"  id="designation_id">	
 											<option value="">Select</option>
 											{html_options options=$desig_name selected=$designation_id}															
 										</select>
@@ -111,11 +111,11 @@
 									<tr class="tbl_row">
 										<td width="120" class="tbl_column">Total Years of Exp<span class="f_req">*</span></td>
 										<td>
-										<select name="year_of_exp" tabindex="8" class="span4">
+										<select name="year_of_exp" tabindex="7" class="span4">
 										<option value="">Year</option>
 										{html_options options=$tot_exp_yr selected=$year_of_exp}	
 										</select>
-										<select name="month_of_exp" tabindex="9" class="inline_text span4">
+										<select name="month_of_exp" tabindex="8" class="inline_text span4">
 										<option value="">Month</option>
 										{html_options options=$tot_exp_month selected=$month_of_exp}	
 										</select>
@@ -136,12 +136,12 @@
 										<td width="120" class="tbl_column">CTC <span class="f_req">*</span></td>
 										<td>	
 										
-										<input type="text"  tabindex="10" name="present_ctc" value="{$present_ctc}" placeholder="Present"  class="span2"/>										
+										<input type="text"  tabindex="9" name="present_ctc" value="{$present_ctc}" placeholder="Present"  class="span2"/>										
 										<select class="span2"   name="present_ctc_type">
 										{html_options options=$ctc_type selected=$present_ctc_type}
 										</select> 
 											
-										<input type="text" tabindex="11" name="expected_ctc" value="{$expected_ctc}" placeholder="Expected"  class="span2"/>	
+										<input type="text" tabindex="10" name="expected_ctc" value="{$expected_ctc}" placeholder="Expected"  class="span2"/>	
 										<select  class="span2"  name="expected_ctc_type">
 										{html_options options=$ctc_type selected=$expected_ctc_type}
 										</select>			
@@ -165,7 +165,7 @@
 									<tr>
 										<td width="125" class="tbl_column">Notice Period <span class="f_req">*</span></td>
 										<td> 
-										<select name="notice_period" tabindex="12" class="span8">										
+										<select name="notice_period" tabindex="11" class="span8">										
 										{html_options options=$n_p selected=$notice_period}							
 										</select>
 										<label for="reg_city" generated="true" class="error">{$notice_periodErr}</label>																		
@@ -174,16 +174,16 @@
 									<tr class="tbl_row">
 										<td width="120" class="tbl_column">Gender <span class="f_req">*</span></td>
 										<td> 
-										<input type="radio" tabindex="13" name="gender"{if $gender && $gender == '1'}{'checked'}{/if} value="1"> Male
-										<input type="radio" tabindex="14" name="gender"{if $gender && $gender == '2'}{'checked'} {/if} value="2"> Female
+										<input type="radio" tabindex="12" name="gender"{if $gender && $gender == '1'}{'checked'}{/if} value="1"> Male
+										<input type="radio" tabindex="13" name="gender"{if $gender && $gender == '2'}{'checked'} {/if} value="2"> Female
 										<label for="reg_city" generated="true" class="error">{$genderErr}</label>																				
 										</td>
 									</tr>	
 									 <tr>
 										<td width="120" class="tbl_column">Marital Status <span class="f_req"></span></td>
 										<td>
-										<input type="radio" tabindex="15" name="marital_status"{if $marital_status && $marital_status == '1' || $smarty.post.marital_status == '1'}{'checked'}{/if} value="1"> Single
-										<input type="radio" tabindex="16" name="marital_status"{if $marital_status && $marital_status == '2' || $smarty.post.marital_status == '2'}{'checked'} {/if} value="2"> Married
+										<input type="radio" tabindex="14" name="marital_status"{if $marital_status && $marital_status == '1' || $smarty.post.marital_status == '1'}{'checked'}{/if} value="1"> Single
+										<input type="radio" tabindex="15" name="marital_status"{if $marital_status && $marital_status == '2' || $smarty.post.marital_status == '2'}{'checked'} {/if} value="2"> Married
 										<input type="radio" tabindex="16" name="marital_status"{if $marital_status && $marital_status == '3' || $smarty.post.marital_status == '3'}{'checked'} {/if} value="3"> Separated
 										</td>	
 									</tr>
@@ -349,21 +349,21 @@
 								<tr>
 										<td width="120" class="tbl_column">Employment Period<span class="f_req"> *</span></td>
 										<td>
-										<select name="from_month_of_exp_#index#" id = "from_month_of_exp_#index#" tabindex="3" class="span2">
+										<select name="from_month_of_exp_#index#" id = "from_month_of_exp_#index#" tabindex="2" class="span2">
 										<option value="">From</option>
 										{html_options options=$exp_month} 
 										</select>
-										<select name="from_year_of_exp_#index#" id = "from_year_of_exp_#index#" tabindex="2" class="inline_text span2">
+										<select name="from_year_of_exp_#index#" id = "from_year_of_exp_#index#" rel="maxDrop_#index#"  tabindex="3" class="minExpDrop inline_text span2">
 										<option value="">From</option>
 										{html_options options=$exp_yr} 
 										</select>
 										
-										<select name="to_month_of_exp_#index#" id = "to_month_of_exp_#index#" tabindex="3" class="inline_text span2">
+										<select name="to_month_of_exp_#index#" id = "to_month_of_exp_#index#" tabindex="4" class="inline_text span2">
 										<option value="">To</option>
 										{html_options options=$exp_month} 
 										</select>
 										
-										<select name="to_year_of_exp_#index#" id = "to_year_of_exp_#index#" tabindex="2" class="inline_text span2">
+										<select name="to_year_of_exp_#index#"  id = "maxDrop_#index#"  tabindex="5" class="inline_text span2">
 										<option value="">To</option>
 										{html_options options=$exp_yr} 
 										</select>
@@ -378,14 +378,14 @@
 							<tr class="tbl_row">
 										<td width="120" class="tbl_column">Area of Specialization/Expertise  <span class="f_req">*</span></td>
 											<td> 
-										<input type="text" name="area_#index#" tabindex="4"  id="area_#index#"  class="span8" />
+										<input type="text" name="area_#index#" tabindex="6"  id="area_#index#"  class="span8" />
 										<label for="reg_city" generated="true" class="error" id="area_Err_#index#"></label>										
 										</td>
 							</tr>
 							<tr>
 										<td width="120" class="tbl_column">Company Name <span class="f_req">*</span></td>
 										<td> 
-										<input type="text"  name="company_#index#" tabindex="5" id="company_#index#"  class="span8" />
+										<input type="text"  name="company_#index#" tabindex="7" id="company_#index#"  class="span8" />
 										<label for="reg_city" generated="true" class="error" id="company_Err_#index#"></label>										
 										</td>
 							</tr>		
@@ -401,14 +401,14 @@
 							<tr class="tbl_row">
 										<td width="120" class="tbl_column"> Location<span class="f_req">*</span></td>
 										<td> 
-										<input type="text" tabindex="6"  name="location_#index#" id="location_#index#"  class="span8" />
+										<input type="text" tabindex="8"  name="location_#index#" id="location_#index#"  class="span8" />
 										<label for="reg_city" generated="true" class="error" id="location_Err_#index#"></label>										
 										</td>
 							</tr>				
 								<tr>
 										<td width="120" class="tbl_column">Other Vital Information (Position Specific)  <span class="f_req"></span></td>
 										<td> 
-										<textarea name="vital_#index#" tabindex="7" id="vital_#index#" cols="10" rows="3" class="span8 wysiwyg1"></textarea>
+										<textarea name="vital_#index#" tabindex="9" id="vital_#index#" cols="10" rows="3" class="span8 wysiwyg1"></textarea>
 										</td>
 							</tr>							
 								
@@ -447,7 +447,7 @@
 		  <tr>
 			<td width="133" class="tbl_column">Project / Certification Details (optional) <span class="f_req"></span></td>
 				<td> 
-						<textarea name="certification" tabindex="7" id="certification" cols="10" rows="3" class="span8 wysiwyg1">{if $certification}{$certification}{else}{$smarty.post.certification}{/if}</textarea>
+						<textarea name="certification" tabindex="10" id="certification" cols="10" rows="3" class="span8 wysiwyg1">{if $certification}{$certification}{else}{$smarty.post.certification}{/if}</textarea>
 				</td>
 			</tr>
 		  </tbody>
@@ -782,6 +782,23 @@ $(document).ready(function(){
 			 $('#exp_count').attr('value',source.getFormsCount());
 			  // for auto resize text area
 			 autosize(document.querySelectorAll('.wysiwyg1'));
+			 /* function to update max drop down */
+				$('.minExpDrop').unbind().change(function(){ 
+					cur_obj = $(this).attr('id');		
+					option_id = $(this).attr('rel');					
+					val = parseFloat($(this).val());
+					$('#'+option_id).append('<option>Loading...</option>');
+					html = "<option value=''>Select</option>";
+					$('#'+cur_obj+' option').each(function(){
+						// allow only values equals or greater than
+						if(val < $(this).val()){ 
+							html += '<option value='+$(this).val()+'>'+$(this).text()+'</option>';
+						}
+					});
+					$('#'+option_id).empty();
+					$('#'+option_id).append(html);
+
+				});
 		   },
 		   afterRemoveCurrent: function(source) {		
 			 $('#exp_count').attr('value',source.getFormsCount());
