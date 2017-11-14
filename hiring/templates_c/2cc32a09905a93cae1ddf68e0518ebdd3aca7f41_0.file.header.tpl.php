@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-11-10 18:27:00
+/* Smarty version 3.1.29, created on 2017-11-14 16:53:32
   from "C:\xampp\htdocs\ctsvn\cthiring\hiring\templates\include\header.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5a05a21cf0e191_92412633',
+  'unifunc' => 'content_5a0ad234114f25_26934065',
   'file_dependency' => 
   array (
     '2cc32a09905a93cae1ddf68e0518ebdd3aca7f41' => 
     array (
       0 => 'C:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\templates\\include\\header.tpl',
-      1 => 1510318419,
+      1 => 1510658601,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_5a05a21cf0e191_92412633 ($_smarty_tpl) {
+function content_5a0ad234114f25_26934065 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -176,7 +176,7 @@ client/index/pending/">Approve Client <?php if ($_smarty_tpl->tpl_vars['approve_
                                             </ul>
                                           </li>
 										  
-										   <?php if ($_smarty_tpl->tpl_vars['approve_position_count']->value != '0') {?>
+										   <?php if ($_smarty_tpl->tpl_vars['approve_position_count']->value != '0' || $_smarty_tpl->tpl_vars['position_count']->value > '0') {?>
 											<?php $_smarty_tpl->tpl_vars['col_count'] = new Smarty_Variable('active2', null);
 $_smarty_tpl->ext->_updateScope->updateScope($_smarty_tpl, 'col_count', 0);?>
 										 <?php }?>
@@ -190,12 +190,12 @@ position/add/">Add Position</a></li>
 											 <?php }?>
 											 <?php if ($_smarty_tpl->tpl_vars['module']->value['view_position'] == '1') {?>
                                                 <li><a href="<?php echo webroot;?>
-position/">Search Position <!--span class="label-bub label-info white"><?php echo $_smarty_tpl->tpl_vars['position_count']->value;?>
-</span--></a></li>
+position/">Search Position <?php if ($_smarty_tpl->tpl_vars['position_count']->value) {?><span class="label-bub label-info white"><?php echo $_smarty_tpl->tpl_vars['position_count']->value;?>
+</span><?php }?></a></li>
 											  <?php }?>
 											  <?php if ($_smarty_tpl->tpl_vars['module']->value['approve_position'] == '1') {?>
                                                 <li><a href="<?php echo webroot;?>
-position/">Approve Position <?php if ($_smarty_tpl->tpl_vars['approve_position_count']->value) {?><span class="label-bub label-info white"><?php echo $_smarty_tpl->tpl_vars['approve_position_count']->value;?>
+position/index/pending/">Approve Position <?php if ($_smarty_tpl->tpl_vars['approve_position_count']->value) {?><span class="label-bub label-info white"><?php echo $_smarty_tpl->tpl_vars['approve_position_count']->value;?>
 </span><?php }?></a></li>
 											  <?php }?>
 										   </ul>
@@ -247,8 +247,8 @@ resume/">Search Resume <!-- span class="label-bub label-info white"><?php echo $
  dropdown">
 										 <?php }?>
                                         
-                                            <a data-toggle="dropdown" class="dropdown-toggle " href="#"><i class="icon-file icon-white"></i> Incentive <?php if ($_smarty_tpl->tpl_vars['module']->value['approve_billing'] == '1' && $_smarty_tpl->tpl_vars['approve_billing_count']->value) {?><span class="label-bub label-info white"><?php echo $_smarty_tpl->tpl_vars['approve_billing_count']->value;?>
-</span><?php }?><b class="caret"></b></a>
+                                            <a data-toggle="dropdown" class="dropdown-toggle " href="#"><i class="icon-file icon-white"></i> Incentive <!-- span class="label-bub label-info white"><?php echo $_smarty_tpl->tpl_vars['approve_billing_count']->value;?>
+</span><b class="caret"></b--></a>
                                            <ul class="dropdown-menu">
 										   <?php if ($_smarty_tpl->tpl_vars['module']->value['view_billing'] == '1') {?>
 												<li><a href="billing.php">Search Billing</a></li>

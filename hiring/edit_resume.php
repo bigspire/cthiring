@@ -782,9 +782,8 @@ if(!empty($_POST)){
 				unlink($template_path);				
 			}
 			
-			die;
 			
-			/*		
+				
 			// convert the resume doc. into pdf
 			require_once('vendor/ilovepdf-php-1.1.5/init.php');			
 			// you can call task class directly
@@ -845,7 +844,7 @@ if(!empty($_POST)){
 			$myTaskWatermark->execute();
 			// Download the package files
 			$myTaskWatermark->download('uploads/snapshotwatermarked/');
-			*/
+			
 			// unset the sessions
 			unset($_SESSION['position_for']);
 			unset($_SESSION['resume_doc']);
