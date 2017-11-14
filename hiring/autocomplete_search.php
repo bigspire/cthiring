@@ -140,7 +140,7 @@ elseif($_GET['page'] == 'list_eligibility'){
    }catch(Exception $e){
 		echo 'Caught exception: ',  $e->getMessage(), "\n";
    }
-}elseif($_GET['page'] == 'list_bonus_share'){
+/* }elseif($_GET['page'] == 'list_bonus_share'){
 	// get matched data from sharing criteria
 	$query = "CALL search_bonus_share('".$keyword."')";
 	try{	
@@ -165,6 +165,7 @@ elseif($_GET['page'] == 'list_eligibility'){
    }catch(Exception $e){
 		echo 'Caught exception: ',  $e->getMessage(), "\n";
    }
+ */
 }elseif($_GET['page'] == 'list_billing'){
 	// get matched data from billing
 	$query = "CALL search_billing('".$keyword."','".$_SESSION['user_id']."')";
