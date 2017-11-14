@@ -60,7 +60,7 @@
 									
 									<tr>
 									
-									<tr class="tbl_row">
+									<tr class="">
 										<td width="120" class="tbl_column">Candidate Name <span class="f_req">*</span></td>
 										<td>
 								        <input type="text" tabindex="1" name="first_name" placeholder="First Name" value="{$first_name}" class="span4">
@@ -69,14 +69,14 @@
 										<label for="reg_city" generated="true" class="error">{$first_nameErr}{$last_nameErr}</label>
 										</td>	
 									</tr>
-									<tr>
+									<tr class="tbl_row">
 										<td width="120" class="tbl_column">Email <span class="f_req">*</span></td>
 										<td>	
 										<input type="text" tabindex="3" id="email" name="email" value="{$email}" class="span8">
 										<label for="reg_city" generated="true" class="error">{$emailErr}</label>																						
 										</td>	
 									</tr>	
-                                    <tr class="tbl_row">
+                                    <tr class="">
 										<td width="120" class="tbl_column"> Mobile <span class="f_req">*</span></td>
 										<td>
 										<input type="text" tabindex="4" name="mobile" class="span8" value="{$mobile}" autocomplete="off">							
@@ -86,7 +86,7 @@
 									<label for="reg_city" generated="true" class="error">{$mobileErr} </label>							
 										</td>		
 									</tr>									
-									<tr>
+									<tr class="tbl_row">
 										<td width="120" class="tbl_column">DOB <span class="f_req">*</span></td>
 										<td> 
 										<input name="dob" tabindex="5" value="{$dob}"  class="datepick span8" placeholder="" type="text" id="HrEmployeeDob">										
@@ -498,7 +498,7 @@
 									</tr>	
 									
 									
-									<tr class="tbl_row">
+									<tr class="">
 										<td width="120" class="tbl_column">Consultant Assessment <span class="f_req">*</span></td>
 										<td>
 <textarea placeholder="" name="consultant" tabindex="1" id="consultant" cols="10" rows="3" class="span10 wysiwyg1">{$smarty.post.consultant}</textarea>
@@ -513,7 +513,7 @@
 						<div class="span6">
 			<table class="table table-bordered dataTable" style="margin-bottom:0;">
 						<tbody>
-									<tr class="">
+									<tr class="tbl_row">
 										<td width="120" class="tbl_column">Rate Behavioural Skills </td>
 										<td>
 <ul class="ratingList">

@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-11-13 11:43:14
+/* Smarty version 3.1.29, created on 2017-11-14 14:30:07
   from "C:\xampp\htdocs\ctsvn\cthiring\hiring\templates\add_resume.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5a0937fa81c293_55201204',
+  'unifunc' => 'content_5a0ab097cb8aa2_05001803',
   'file_dependency' => 
   array (
     '6c51bf5c0ae51546eb3c53993fc7afba7339e799' => 
     array (
       0 => 'C:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\templates\\add_resume.tpl',
-      1 => 1510238631,
+      1 => 1510650003,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5a0937fa81c293_55201204 ($_smarty_tpl) {
+function content_5a0ab097cb8aa2_05001803 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -90,7 +90,7 @@ home"><i class="icon-home"></i></a>
 									
 									<tr>
 									
-									<tr class="tbl_row">
+									<tr class="">
 										<td width="120" class="tbl_column">Candidate Name <span class="f_req">*</span></td>
 										<td>
 								        <input type="text" tabindex="1" name="first_name" placeholder="First Name" value="<?php echo $_smarty_tpl->tpl_vars['first_name']->value;?>
@@ -103,7 +103,7 @@ echo $_smarty_tpl->tpl_vars['last_nameErr']->value;?>
 </label>
 										</td>	
 									</tr>
-									<tr>
+									<tr class="tbl_row">
 										<td width="120" class="tbl_column">Email <span class="f_req">*</span></td>
 										<td>	
 										<input type="text" tabindex="3" id="email" name="email" value="<?php echo $_smarty_tpl->tpl_vars['email']->value;?>
@@ -112,7 +112,7 @@ echo $_smarty_tpl->tpl_vars['last_nameErr']->value;?>
 </label>																						
 										</td>	
 									</tr>	
-                                    <tr class="tbl_row">
+                                    <tr class="">
 										<td width="120" class="tbl_column"> Mobile <span class="f_req">*</span></td>
 										<td>
 										<input type="text" tabindex="4" name="mobile" class="span8" value="<?php echo $_smarty_tpl->tpl_vars['mobile']->value;?>
@@ -124,7 +124,7 @@ echo $_smarty_tpl->tpl_vars['last_nameErr']->value;?>
  </label>							
 										</td>		
 									</tr>									
-									<tr>
+									<tr class="tbl_row">
 										<td width="120" class="tbl_column">DOB <span class="f_req">*</span></td>
 										<td> 
 										<input name="dob" tabindex="5" value="<?php echo $_smarty_tpl->tpl_vars['dob']->value;?>
@@ -604,7 +604,7 @@ $_smarty_tpl->tpl_vars['ts_data'] = $__foreach_ts_data_0_saved_item;
 									</tr>	
 									
 									
-									<tr class="tbl_row">
+									<tr class="">
 										<td width="120" class="tbl_column">Consultant Assessment <span class="f_req">*</span></td>
 										<td>
 <textarea placeholder="" name="consultant" tabindex="1" id="consultant" cols="10" rows="3" class="span10 wysiwyg1"><?php echo $_POST['consultant'];?>
@@ -621,7 +621,7 @@ $_smarty_tpl->tpl_vars['ts_data'] = $__foreach_ts_data_0_saved_item;
 						<div class="span6">
 			<table class="table table-bordered dataTable" style="margin-bottom:0;">
 						<tbody>
-									<tr class="">
+									<tr class="tbl_row">
 										<td width="120" class="tbl_column">Rate Behavioural Skills </td>
 										<td>
 <ul class="ratingList">
