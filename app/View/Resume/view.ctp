@@ -110,7 +110,7 @@
 									<?php if($resume_data['ResDoc']['resume'] == ''):?>	
 										<a class="notify" data-notify-time = '7000' data-notify-title="In Progress!" data-notify-message="Downloading Resume... Please wait..."  href="<?php echo $this->webroot;?>hc/download/<?php echo $resume_data['Resume']['id']; ?>">Candidate Resume </a></td>
 									<?php else: ?>	
-									<a class="notify" data-notify-time = '2000' data-notify-title="In Progress!" data-notify-message="Downloading Resume... Please wait..."  href="<?php echo $this->webroot;?>resume/download_doc/<?php echo $resume_data['ResDoc']['resume']; ?>">Candidate Resume </a></td>
+									<a class="notify" data-notify-time = '2000' data-notify-title="In Progress!" data-notify-message="Downloading Resume... Please wait..."  href="<?php echo $this->webroot;?>resume/download_doc/<?php echo $resume_data['ResDoc']['resume']; ?>/">Candidate Resume </a></td>
 
 									<?php endif; ?>	
 	
@@ -202,11 +202,22 @@
 									
 										<tr>
 										
-										<td class="tbl_column">Snapshot</td>
+										<?php  if($resume_data['Position']['resume_type'] == 'S'):
+										$res_type = 'Snapshot';
+										else:
+										$res_type = 'Fully Formatted Resume';
+										endif;
+										?>
+										
+										<td class="tbl_column"><?php echo $res_type;?></td>
 										<td>
 										<?php  $date = $resume_data['Resume']['modified_date'] ? $resume_data['Resume']['modified_date'] : $resume_data['Resume']['created_date']; ?>
-<a class="notify" data-notify-time = '2000' data-notify-title="In Progress!" data-notify-message="Downloading Snapshot... Please wait..."  href="<?php echo $this->webroot;?>resume/profile_snapshot/<?php echo $resume_data['ResDoc']['resume']; ?>/<?php echo strtotime($date);?>/">Candidate Resume </a></td>
 
+<?php  if($resume_data['Position']['resume_type'] == 'F'):?>										
+<a class="notify" data-notify-time = '2000' data-notify-title="In Progress!" data-notify-message="Downloading Fully Formatted Resume... Please wait..."   href="<?php echo $this->webroot;?>resume/autoresume/<?php echo $res['ResDoc']['resume'];?>/<?php echo $res['Resume']['modified_date'] ? strtotime($res['Resume']['modified_date']) : strtotime($res['Resume']['created_date']);?>">Download Fully Formatted Resume</a>
+<?php  elseif($resume_data['Position']['resume_type'] == 'S'):?>				
+<a class="notify" data-notify-time = '2000' data-notify-title="In Progress!" data-notify-message="Downloading Snapshot... Please wait..."  href="<?php echo $this->webroot;?>resume/profile_snapshot/<?php echo $resume_data['ResDoc']['resume']; ?>/<?php echo strtotime($date);?>/">Download Snapshot</a></td>
+<?php endif; ?>
 										</td>
 											
 									</tr>

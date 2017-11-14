@@ -384,7 +384,7 @@ class ResumeController extends AppController {
 		'ResLocation.location', 'present_ctc','expected_ctc', 'Creator.first_name','created_date','notice_period',
 		'Resume.modified_date','ReqResume.stage_title','ReqResume.status_title','Designation.designation','present_ctc_type','expected_ctc_type',
 		'gender','marital_status','family','present_location','native_location', 'dob','consultant_assess','interview_avail','ResDoc.resume',
-		'Position.job_title','Resume.skills','Resume.created_by','Resume.tech_skill_rate','Resume.behav_skill_rate','Position.id');
+		'Position.job_title','Resume.skills','Resume.created_by','Resume.tech_skill_rate','Resume.behav_skill_rate','Position.id','Position.resume_type');
 		$data2 = $this->Resume->find('all', array('fields' => $fields,'conditions' => array('Resume.id' => $id),
 		'order' => array('ReqResume.id' => 'desc'),'joins' => $options));
 		$this->set('resume_data', $data2[0]);		
