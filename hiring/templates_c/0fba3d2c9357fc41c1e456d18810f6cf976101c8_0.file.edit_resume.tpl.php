@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-11-14 14:22:22
+/* Smarty version 3.1.29, created on 2017-11-14 16:58:39
   from "C:\xampp\htdocs\2017\ctsvn\cthiring\hiring\templates\edit_resume.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5a0aaec68b93a9_64250888',
+  'unifunc' => 'content_5a0ad3677ab7c7_45487906',
   'file_dependency' => 
   array (
     '0fba3d2c9357fc41c1e456d18810f6cf976101c8' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\templates\\edit_resume.tpl',
-      1 => 1510649539,
+      1 => 1510658906,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5a0aaec68b93a9_64250888 ($_smarty_tpl) {
+function content_5a0ad3677ab7c7_45487906 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -1101,7 +1101,7 @@ $(document).ready(function(){
 				$('#from_month_of_exp_'+i).val( $('#from_month_of_expData_'+i).val());
 			}
 			if($('#to_year_of_expData_'+i).length > 0){ 
-				$('#to_year_of_exp_'+i).attr('value', $('#to_year_of_expData_'+i).val());
+				$('#maxDrop_'+i).attr('value', $('#to_year_of_expData_'+i).val());
 			}
 			if($('#to_month_of_expData_'+i).length > 0){ 
 				$('#to_month_of_exp_'+i).val( $('#to_month_of_expData_'+i).val());
