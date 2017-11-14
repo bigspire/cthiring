@@ -1009,7 +1009,7 @@ $(document).ready(function(){
 				$('#from_month_of_exp_'+i).val( $('#from_month_of_expData_'+i).val());
 			}
 			if($('#to_year_of_expData_'+i).length > 0){ 
-				$('#to_year_of_exp_'+i).attr('value', $('#to_year_of_expData_'+i).val());
+				$('#maxDrop_'+i).attr('value', $('#to_year_of_expData_'+i).val());
 			}
 			if($('#to_month_of_expData_'+i).length > 0){ 
 				$('#to_month_of_exp_'+i).val( $('#to_month_of_expData_'+i).val());
