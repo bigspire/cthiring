@@ -331,7 +331,7 @@ class PositionController extends AppController {
 						if(!empty($leader_data)){
 							$this->loadModel('PositionStatus');
 							// make sure not duplicate status exists
-							$this->check_duplicate_status($this->Position->id, $approval_data['Approve']['level1']);			
+							$this->check_duplicate_status($this->Position->id, $approval_data['Approve']['level1'],$team_id);			
 							// save req. status data
 							$this->PositionStatus->id = '';
 							$data = array('requirements_id' => $this->Position->id, 'created_date' => $this->Functions->get_current_date(), 'users_id' => $approval_data['Approve']['level1'], 'member_id' => $team_id, 'is_approve' => 'W');
@@ -391,9 +391,10 @@ class PositionController extends AppController {
 
 	
 	/* function to check for duplicate entry */
-	public function check_duplicate_status($req_id, $app_user_id, $exist){
+	public function check_duplicate_status($req_id, $app_user_id, $member_id, $exist){
 		$count = $this->PositionStatus->find('count',  array('conditions' => array('PositionStatus.requirements_id' => $req_id,
-		'PositionStatus.users_id' => $app_user_id, 'PositionStatus.status' => 'W')));
+		'PositionStatus.users_id' => $app_user_id, 'PositionStatus.status' => 'W', 'PositionStatus.users_id !=' => $this->Session->read('USER.Login.id'),
+		'PositionStatus.member_id !=' => $member_id)));
 		$limit = $exist ? $exist : 0;
 		if($count > $limit){
 			$this->invalid_attempt();
@@ -489,7 +490,7 @@ class PositionController extends AppController {
 								if(!empty($leader_data)){
 									$this->loadModel('PositionStatus');
 									// make sure not duplicate status exists
-									$this->check_duplicate_status($this->Position->id, $approval_data['Approve']['level1']);			
+									$this->check_duplicate_status($this->Position->id, $approval_data['Approve']['level1'],$team_id);			
 									// save req. status data
 									$this->PositionStatus->id = '';
 									$data = array('requirements_id' => $this->Position->id, 'created_date' => $this->Functions->get_current_date(), 'users_id' => $approval_data['Approve']['level1'], 'member_id' => $team_id, 'is_approve' => 'W');
@@ -1007,7 +1008,7 @@ class PositionController extends AppController {
 					$this->PositionStatus->id = $st_id;
 					$st_msg = $status == 'A' ? 'approved' : 'rejected';
 					// make sure not duplicate status exists
-					$this->check_duplicate_status($req_id, $this->Session->read('USER.Login.id'), 1);
+					$this->check_duplicate_status($req_id, $this->Session->read('USER.Login.id'), '', 1);
 					// save the position status
 					if($this->PositionStatus->save($data, true, $fieldList = array('modified_by','modified_date','remarks','status','is_approve'))){
 						// get the member id to find the L2
@@ -1066,12 +1067,13 @@ class PositionController extends AppController {
 								// check level 2 is not empty and its not the same user
 								if($approval_data['Approve']['level2'] != $this->Session->read('USER.Login.id')){ 	
 									// get superior level 2 details				
-									$data = array('requirements_id' => $req_id, 'created_date' => $this->Functions->get_current_date(), 'users_id' => $approval_data['Approve']['level2'], 'is_approve' => 'W');
+									$data = array('requirements_id' => $req_id, 'created_date' => $this->Functions->get_current_date(), 
+									'users_id' => $approval_data['Approve']['level2'], 'is_approve' => 'W', 'member_id' => $member_data['PositionStatus']['member_id']);
 									// save leve 2 if found
 									$this->PositionStatus->id = '';						
 									// make sure not duplicate status exists
 									$this->check_duplicate_status($req_id, $approval_data['Approve']['level2'], 0);						
-									if($this->PositionStatus->save($data, true, $fieldList = array('requirements_id','created_date','users_id','is_approve'))){
+									if($this->PositionStatus->save($data, true, $fieldList = array('requirements_id','created_date','users_id','is_approve', 'member_id'))){
 										$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Position '.$approve_msg.' Successfully.', 'default', array('class' => 'alert alert-success'));																	
 									}else{
 										$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Problem in saving superior status...', 'default', array('class' => 'alert alert-error'));
