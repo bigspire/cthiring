@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-11-14 16:58:39
+/* Smarty version 3.1.29, created on 2017-11-15 11:40:04
   from "C:\xampp\htdocs\2017\ctsvn\cthiring\hiring\templates\edit_resume.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5a0ad3677ab7c7_45487906',
+  'unifunc' => 'content_5a0bda3c1b72f2_24939484',
   'file_dependency' => 
   array (
     '0fba3d2c9357fc41c1e456d18810f6cf976101c8' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\templates\\edit_resume.tpl',
-      1 => 1510658906,
+      1 => 1510724273,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5a0ad3677ab7c7_45487906 ($_smarty_tpl) {
+function content_5a0bda3c1b72f2_24939484 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -570,7 +570,7 @@ $_smarty_tpl->tpl_vars['ts_data']->_loop = false;
 foreach ($_from as $_smarty_tpl->tpl_vars['ts_data']->key => $_smarty_tpl->tpl_vars['ts_data']->value) {
 $_smarty_tpl->tpl_vars['ts_data']->_loop = true;
 $__foreach_ts_data_0_saved_local_item = $_smarty_tpl->tpl_vars['ts_data'];
-if ($_smarty_tpl->tpl_vars['ts_data']->value) {?>
+if ($_smarty_tpl->tpl_vars['ts_data']->value != 0) {?>
   <li><input class="span8" readonly="readonly" placeholder="" name="ts[]" value="<?php if ($_POST) {
 echo $_smarty_tpl->tpl_vars['ts_data']->value;
 } else {
@@ -639,7 +639,7 @@ $_smarty_tpl->tpl_vars['bs_data']->_loop = false;
 foreach ($_from as $_smarty_tpl->tpl_vars['bs_data']->key => $_smarty_tpl->tpl_vars['bs_data']->value) {
 $_smarty_tpl->tpl_vars['bs_data']->_loop = true;
 $__foreach_bs_data_1_saved_local_item = $_smarty_tpl->tpl_vars['bs_data'];
-if ($_smarty_tpl->tpl_vars['bs_data']->value) {?>
+if ($_smarty_tpl->tpl_vars['bs_data']->value != 0) {?>
   <li><input class="span8" readonly="readonly" placeholder="" name="bs[]" value="<?php if ($_POST) {
 echo $_smarty_tpl->tpl_vars['bs_data']->value;
 } else {

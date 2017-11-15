@@ -8,6 +8,49 @@ $notice = $fun->get_notice($_POST['notice_period']);
 $gen = $fun->check_gender($_POST['gender']);
 $dob = $fun->convert_date_to_display($fun->convert_date($_POST['dob']));
 
+// parse the tech skill ratings	
+foreach($tech_skills as $key => $skill){
+	if(!intval($key)){
+		$tech_skill_star .=  '<div class="rating rating2">';
+		$tech_skill_star .= '<span class="skill_txt">'.ucwords($key).'</span>';
+		 if($skill >= 0){
+			for($i = 1; $i<=5; $i++){
+				if($i <= $skill){
+					$tech_skill_star .=  '<a href="javascript:void(0)" style="color: orange;">★</a>';
+				}else{
+					$tech_skill_star .=  '<a href="javascript:void(0)" >★</a>';		
+				}
+			}
+			
+		 }
+		 $tech_skill_star .=  '</div>';
+		 $tech_skill_star .=  '<br>';
+	}
+} 
+
+// parse the behav skill ratings
+	
+foreach($beh_skills as $key => $skill){
+	if(!intval($key)){
+		$behav_skill_star .=  '<div class="rating rating2">';
+		$behav_skill_star .= '<span class="skill_txt">'.ucwords($key).'</span>';
+			
+		 if($skill >= 0){
+			for($i = 1; $i<=5; $i++){
+				if($i <= $skill){
+					$behav_skill_star .=  '<a href="javascript:void(0)" style="color: orange;">★</a>';
+				}else{
+					$behav_skill_star .=  '<a href="javascript:void(0)" >★</a>';		
+				}
+			}
+			
+		 }
+		 $behav_skill_star .=  '</div>';
+		 $behav_skill_star .=  '<br>';
+	}
+
+} 
+	
 
 $str = <<<EOD
 
@@ -20,6 +63,51 @@ $str = <<<EOD
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.5.1/css/bulma.min.css">
   </head>
+  
+  <style>
+  
+
+		/*  
+		 * Rating styles
+		 */
+		 .skill_txt{font-size:18px;margin-right:10px;}
+		 
+		.rating {
+			font-size: 25px;
+			overflow:hidden;
+		}
+.rating input {
+  float: right;
+  opacity: 0;
+  position: absolute;
+}
+		.rating a,
+    .rating label {
+			float:right;
+			color: #aaa;
+			text-decoration: none;
+			-webkit-transition: color .4s;
+			-moz-transition: color .4s;
+			-o-transition: color .4s;
+			transition: color .4s;
+		}
+.rating label:hover ~ label,
+.rating input:focus ~ label,
+.rating label:hover,
+		.rating a:hover,
+		.rating a:hover ~ a,
+		.rating a:focus,
+		.rating a:focus ~ a		{
+			color: orange;
+			cursor: pointer;
+		}
+		
+		
+		.rating2 a {
+			float:none
+			
+		}
+  </style>
   <body>
   
  
@@ -138,15 +226,57 @@ $str = <<<EOD
     
     <tr>
       <th class="has-text-centered">14</th>
-      <th class="">Consultant Assessment</th>
+      <td class="">Consultant Assessment</td>
     
-      <td>$_POST[consultant]</td>
+      <td>
+	  
+	  $_POST[consultant]
+	  
+	  </td>
     </tr>
+	
+	 
+    <tr>
+      <th class="has-text-centered">15</th>
+      <td class="">Interview Availability</td>
+    
+      <td>
+	  
+	  $_POST[interview_availability]
+	  
+	  </td>
+    </tr>
+	
+	
+	 <tr>
+      <th class="has-text-centered">16</th>
+      <th class="">Technical Skills</th>
+    
+      <td>
+	  
+	 $tech_skill_star
+	  
+	  
+	  </td>
+    </tr>
+	
+	 <tr>
+      <th class="has-text-centered">17</th>
+      <th class="">Behavioral Skills</th>
+    
+      <td>
+	  
+	  $behav_skill_star
+	  
+	  
+	  </td>
+    </tr>
+	
     
   </tbody>
 </table>
 
-<footer class="footer is-paddingless level" style="margin-top:150px;height:50px;">
+<footer class="footer is-paddingless level" style="margin-top:25px;height:50px;">
   <div class="container is-light">
     <div class="level-item content has-text-centered"  style="margin-top:15px;">
       <p>
@@ -162,7 +292,16 @@ $str = <<<EOD
 
 </body>
 </html>
+	  
+	  
+
 EOD;
+
+
+
+// echo $str;
+ //die;
+
 
 $snap_file_name = substr($_SESSION['resume_doc'], 0, strlen($_SESSION['resume_doc'])-5);
 $snap_file_name = $fun->filter_file($snap_file_name);

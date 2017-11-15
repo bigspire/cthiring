@@ -7,7 +7,6 @@ Date : 20-06-2017
 
 // starting session
 session_start();
-
 include 'configs/smartyconfig.php';
 // include mysql class
 include('classes/class.mysql.php');
@@ -29,6 +28,7 @@ try{
 	while($obj = $mysql->display_result($result)){
 		$position[$obj['id']] = $obj['job_title'];  	   
 	}
+	
 	
 	// free the memory
 	$mysql->clear_result($result);

@@ -140,7 +140,7 @@
                                             <a data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icon-th icon-white"></i> Resumes <!--span class="label-bub label-info bubble"></span--><b class="caret"></b></a>
 											  <ul class="dropdown-menu">
 											   <?php if($create_resume == '1'):?>
-                                                <li><a href="<?php echo $this->webroot;?>hiring/upload_resume.php" class="iframeBox unreadLink" val="40_50">Upload Resume</a></li>
+                                                <li><a href="<?php echo $this->webroot;?>hiring/upload_resume.php" class="iframeBox unreadLink" val="40_55">Upload Resume</a></li>
 												 <?php endif; ?>
 												 <?php if($view_resume == '1'):?>
                                                 <li><a href="<?php echo $this->webroot;?>resume/">Search Resume <!--span class="label-bub label-info white">13453</span--></a></li>
