@@ -29,51 +29,53 @@ if($_SESSION['extraction'] == '' || $_POST['RESUME_DATA'] == ''){
 	// fetch the resume data
 	$uploaddir = 'uploads/resume/'; 
 	$resume_data = $fun->read_document($uploaddir.$_SESSION['resume_doc']);
-	$smarty->assign('RESUME_DATA', $resume_data);
-	// extract the mobile
-	$string = preg_replace("#[^\d{12}\s]#",'',$resume_data);
-	preg_match_all("#(\d{10})#", "$string", $found);	
-	foreach($found as $key => $phone_number) {
+	$smarty->assign('RESUME_DATA', $resume_data);	
+	$_SESSION['extraction'] = 'done';
+}else{
+	$smarty->assign('RESUME_DATA', $_POST['RESUME_DATA']);.
+	$resume_data = $_POST['RESUME_DATA'];
+}
+
+// extract the mobile
+$string = preg_replace("#[^\d{12}\s]#",'',$resume_data);
+preg_match_all("#(\d{10})#", "$string", $found);	
+foreach($found as $key => $phone_number) {
 	  if(strlen($phone_number[$key]) >= 10){ 
 		$mobile = $phone_number[$key];
 		// break;
 	  };
 	  // save for hiding contacts
 	  $phone_nos = $phone_number;
-	}
-	
-	// extract the email
-	$string = preg_split("/[\s,]+/", $resume_data);
-	foreach($string as $mail){
-		if(!filter_var($mail, FILTER_VALIDATE_EMAIL)) {
-			// continue;
-		}else{
-			$mail_ids[] = $mail;
-			// break;
-			$email = $mail;
-		}
-	}	
-	
-	
-	// extract the candidate name
-	foreach($string as $name_key => $name){
-		$name = trim($name);
-		if($name != 'Name' && $name != 'CURRICULUM' && $name != 'VITAE' && $name != 'RESUME' && $name != ''
-		&& $name != 'Mailing' && $name != 'Address' && $name != ':' && $name != '' && !is_numeric($name)){
-			break;
-		}else{
-			continue;
-		}
-	}
-	$smarty->assign('first_name', $string[$name_key]);
-	$smarty->assign('last_name', $string[$name_key+1]);
-	$smarty->assign('email', $email);
-	$smarty->assign('mobile', $mobile);
-	$_SESSION['extraction'] = 'done';
-}else{
-	$smarty->assign('RESUME_DATA', $_POST['RESUME_DATA']);
 }
-
+	
+// extract the email
+$string = preg_split("/[\s,]+/", $resume_data);
+foreach($string as $mail){
+	if(!filter_var($mail, FILTER_VALIDATE_EMAIL)) {
+		// continue;
+	}else{
+		$mail_ids[] = $mail;
+		// break;
+		$email = $mail;
+	}
+}	
+	
+	
+// extract the candidate name
+foreach($string as $name_key => $name){
+	$name = trim($name);
+	if($name != 'Name' && $name != 'CURRICULUM' && $name != 'VITAE' && $name != 'RESUME' && $name != ''
+		&& $name != 'Mailing' && $name != 'Address' && $name != ':' && $name != '' && !is_numeric($name)){
+		break;
+	}else{
+		continue;
+	}
+}
+	
+$smarty->assign('first_name', $string[$name_key]);
+$smarty->assign('last_name', $string[$name_key+1]);
+$smarty->assign('email', $email);
+$smarty->assign('mobile', $mobile);
 
 
 $smarty->assign('dob_default', date('d/m/Y', strtotime('-18 years')));
