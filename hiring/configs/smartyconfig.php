@@ -9,6 +9,7 @@ Date : 21-01-2017
 
 date_default_timezone_set('Asia/Kolkata');
 ini_set('display_errors', '0');
+ini_set('max_execution_time', 300); 
 // smarty config
 include('vendor/smarty-3.1.29/libs/Smarty.class.php');
 $smarty = new Smarty();

@@ -728,7 +728,20 @@ if(!empty($_POST)){
 		}
 		
 		if(!empty($edu_id) && !empty($exp_id) && !empty($resume_id)){
-			// get recruiter nameget_recruiter_name
+			
+			$query =  "CALL get_personal_skills('$getid')";
+			if(!$result = $mysql->execute_query($query)){
+					throw new Exception('Problem in getting skills details');
+			}
+			$per_skills = $mysql->display_result($result);
+			$tech_skills = unserialize($per_skills['tech_skill_rate']);
+			$beh_skills = unserialize($per_skills['behav_skill_rate']);
+			// free the memory
+			$mysql->clear_result($result);
+			// call the next result
+			$mysql->next_query();	
+			
+			// get recruiter name
 			$query =  "CALL get_recruiter_name('".$mysql->real_escape_str($_SESSION['user_id'])."')";
 			if(!$result = $mysql->execute_query($query)){
 					throw new Exception('Problem in getting recruiter details');
@@ -742,6 +755,7 @@ if(!empty($_POST)){
 			$_SESSION['extraction'] = '';
 			// create snapshot pdf
 			include_once('snapshot.php');
+			// die;
 			//  introduction page processing
 			$resume_path = dirname(__FILE__).'/uploads/introduction/'.$_SESSION['resume_doc'];
 			$template_path = dirname(__FILE__).'/uploads/template/introduction.docx'; 
