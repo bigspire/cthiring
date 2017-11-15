@@ -25,17 +25,31 @@ foreach($phone_nos as $mobile){
 	$templateProcessor->setValue('91'.$mobile, '**********',  1,0);
 }
 // hide the mobile nos.
-foreach($phone_nos as $mobile){ echo $mobile;
+foreach($phone_nos as $mobile){ 
 	$templateProcessor->setValue($mobile, '**********',  1,0);
 }
-// hide the mail ids
-foreach($mail_ids as $mail){ echo $mail;
-	$templateProcessor->setValue($mail, '**********',  1,0);
-}
+
 // hide the mobile nos with 0 prefix
 foreach($phone_nos as $mobile){
 	$templateProcessor->setValue('0'.$mobile, '**********',  1,0);
 }
+
+
+// hide the mail ids
+foreach($mail_ids as $mail){ 
+	$templateProcessor->setValue($mail, '**********',  1,0);
+}
+
+// hide the mail ids with anchor tags
+
+/*
+foreach($mail_ids as $mail){ 
+	echo $html = "<a href='mailto:$mail'>$mail</a>";
+	// $xml = HTMLtoOpenXML::getInstance()->fromHTML($html);	
+	$templateProcessor->setValue($html, '**********',  1,0);
+}
+
+*/
 
 
 

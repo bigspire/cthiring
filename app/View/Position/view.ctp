@@ -666,16 +666,22 @@
 															
 															
 													
+						<?php $date = $resume['Resume']['modified_date'] ? $resume['Resume']['modified_date']: $resume['Resume']['created_date']?>
+									
 														
-														
-															<?php if($resume['ResDoc']['resume'] == ''):?>
+	<?php if($resume['ResDoc']['resume'] == ''):?>																
 																
-																
-																<a rel="tooltip" title="Download" class="notify" data-notify-time = '7000' data-notify-title="In Progress!" data-notify-message="Downloading Resume... Please wait..."   href="<?php echo $this->webroot;?>hc/download/<?php echo $resume['Resume']['id']; ?>"><i  class="splashy-document_letter_download"></i></a>
-																<?php else:?>
-													<?php $date = $resume['Resume']['modified_date'] ? $resume['Resume']['modified_date']: $resume['Resume']['created_date']?>
-																<a rel="tooltip" title="Download"  class="notify" data-notify-time = '3000' data-notify-title="In Progress!" data-notify-message="Downloading Resume... Please wait..."   href="<?php echo $this->webroot;?>resume/profile_snapshot/<?php echo $resume['ResDoc']['resume']; ?>/<?php echo strtotime($date);?>"><i  class="splashy-document_letter_download"></i></a>
-																<?php endif; ?>
+	<a rel="tooltip" title="Download" class="notify" data-notify-time = '7000' data-notify-title="In Progress!" data-notify-message="Downloading Resume... Please wait..."   href="<?php echo $this->webroot;?>hc/download/<?php echo $resume['Resume']['id']; ?>"><i  class="splashy-document_letter_download"></i></a>
+	
+	<?php elseif($resume['Position']['resume_type'] == 'F'):?>
+
+	<a rel="tooltip" title="Download"  class="notify" data-notify-time = '3000' data-notify-title="In Progress!" data-notify-message="Downloading Fully Formatted Resume... Please wait..."   href="<?php echo $this->webroot;?>resume/autoresume/<?php echo $resume['ResDoc']['resume']; ?>/<?php echo strtotime($date);?>/"><i  class="splashy-document_letter_download"></i></a>
+
+	<?php elseif($resume['Position']['resume_type'] == 'S'):?>
+
+	<a rel="tooltip" title="Download"  class="notify" data-notify-time = '3000' data-notify-title="In Progress!" data-notify-message="Downloading Resume... Please wait..."   href="<?php echo $this->webroot;?>resume/profile_snapshot/<?php echo $resume['ResDoc']['resume']; ?>/<?php echo strtotime($date);?>/"><i  class="splashy-document_letter_download"></i></a>
+															
+	<?php endif; ?>
 																
 															
 																									
