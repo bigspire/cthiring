@@ -32,13 +32,13 @@ if($_SESSION['extraction'] == '' || $_POST['RESUME_DATA'] == ''){
 	$smarty->assign('RESUME_DATA', $resume_data);	
 	$_SESSION['extraction'] = 'done';
 }else{
-	$smarty->assign('RESUME_DATA', $_POST['RESUME_DATA']);.
+	$smarty->assign('RESUME_DATA', $_POST['RESUME_DATA']);
 	$resume_data = $_POST['RESUME_DATA'];
 }
 
 // extract the mobile
 $string = preg_replace("#[^\d{12}\s]#",'',$resume_data);
-preg_match_all("#(\d{10})#", "$string", $found);	
+preg_match_all("#(\d{12})#", "$string", $found);	
 foreach($found as $key => $phone_number) {
 	  if(strlen($phone_number[$key]) >= 10){ 
 		$mobile = $phone_number[$key];

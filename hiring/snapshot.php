@@ -10,7 +10,7 @@ $dob = $fun->convert_date_to_display($fun->convert_date($_POST['dob']));
 
 // parse the tech skill ratings	
 foreach($tech_skills as $key => $skill){
-	if(!intval($key)){
+	if(!intval($key) && $key != '0'){
 		$tech_skill_star .=  '<div class="rating rating2">';
 		$tech_skill_star .= '<span class="skill_txt">'.ucwords($key).'</span>';
 		 if($skill >= 0){
@@ -31,7 +31,7 @@ foreach($tech_skills as $key => $skill){
 // parse the behav skill ratings
 	
 foreach($beh_skills as $key => $skill){
-	if(!intval($key)){
+	if(!intval($key) && $key != '0'){
 		$behav_skill_star .=  '<div class="rating rating2">';
 		$behav_skill_star .= '<span class="skill_txt">'.ucwords($key).'</span>';
 			
