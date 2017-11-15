@@ -10,42 +10,44 @@ $dob = $fun->convert_date_to_display($fun->convert_date($_POST['dob']));
 
 // parse the tech skill ratings	
 foreach($tech_skills as $key => $skill){
-	
-	$tech_skill_star .=  '<div class="rating rating2">';
-	$tech_skill_star .= '<span class="skill_txt">'.$key.'</span>';
-	 if($skill >= 0){
-		for($i = 1; $i<=5; $i++){
-			if($i <= $skill){
-				$tech_skill_star .=  '<a href="javascript:void(0)" style="color: orange;">★</a>';
-			}else{
-				$tech_skill_star .=  '<a href="javascript:void(0)" >★</a>';		
+	if(!intval($key)){
+		$tech_skill_star .=  '<div class="rating rating2">';
+		$tech_skill_star .= '<span class="skill_txt">'.ucwords($key).'</span>';
+		 if($skill >= 0){
+			for($i = 1; $i<=5; $i++){
+				if($i <= $skill){
+					$tech_skill_star .=  '<a href="javascript:void(0)" style="color: orange;">★</a>';
+				}else{
+					$tech_skill_star .=  '<a href="javascript:void(0)" >★</a>';		
+				}
 			}
-		}
-		
-	 }
-	 $tech_skill_star .=  '</div>';
-	 $tech_skill_star .=  '<br>';
-
+			
+		 }
+		 $tech_skill_star .=  '</div>';
+		 $tech_skill_star .=  '<br>';
+	}
 } 
 
 // parse the behav skill ratings
 	
 foreach($beh_skills as $key => $skill){
-	$behav_skill_star .=  '<div class="rating rating2">';
-	$behav_skill_star .= '<span class="skill_txt">'.$key.'</span>';
-
-	 if($skill >= 0){
-		for($i = 1; $i<=5; $i++){
-			if($i <= $skill){
-				$behav_skill_star .=  '<a href="javascript:void(0)" style="color: orange;">★</a>';
-			}else{
-				$behav_skill_star .=  '<a href="javascript:void(0)" >★</a>';		
+	if(!intval($key)){
+		$behav_skill_star .=  '<div class="rating rating2">';
+		$behav_skill_star .= '<span class="skill_txt">'.ucwords($key).'</span>';
+			
+		 if($skill >= 0){
+			for($i = 1; $i<=5; $i++){
+				if($i <= $skill){
+					$behav_skill_star .=  '<a href="javascript:void(0)" style="color: orange;">★</a>';
+				}else{
+					$behav_skill_star .=  '<a href="javascript:void(0)" >★</a>';		
+				}
 			}
-		}
-		
-	 }
-	 $behav_skill_star .=  '</div>';
-	 $behav_skill_star .=  '<br>';
+			
+		 }
+		 $behav_skill_star .=  '</div>';
+		 $behav_skill_star .=  '<br>';
+	}
 
 } 
 	
@@ -274,7 +276,7 @@ $str = <<<EOD
   </tbody>
 </table>
 
-<footer class="footer is-paddingless level" style="margin-top:150px;height:50px;">
+<footer class="footer is-paddingless level" style="margin-top:25px;height:50px;">
   <div class="container is-light">
     <div class="level-item content has-text-centered"  style="margin-top:15px;">
       <p>
@@ -298,7 +300,7 @@ EOD;
 
 
 // echo $str;
-// die;
+ //die;
 
 
 $snap_file_name = substr($_SESSION['resume_doc'], 0, strlen($_SESSION['resume_doc'])-5);
