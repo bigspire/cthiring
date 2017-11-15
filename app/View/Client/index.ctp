@@ -110,12 +110,14 @@
 							<table class="table table-striped table-bordered dataTable stickyTable">
 								<thead>
 									<tr>
-										<th width="200"><?php echo $this->Paginator->sort('client_name', 'Client Name', array('escape' => false, 'direction' => 'desc', 'rel' => 'tooltip', 'title' => 'Sort by Ascending or Descending'));?></th>
+										<th width="170"><?php echo $this->Paginator->sort('client_name', 'Client Name', array('escape' => false, 'direction' => 'desc', 'rel' => 'tooltip', 'title' => 'Sort by Ascending or Descending'));?></th>
 										<th width="90"><?php echo $this->Paginator->sort('city', 'City', array('escape' => false, 'direction' => 'desc', 'rel' => 'tooltip', 'title' => 'Sort by Ascending or Descending'));?></th>
 										<th width="90"><?php echo $this->Paginator->sort('ResLocation.location', 'District', array('escape' => false, 'direction' => 'desc', 'rel' => 'tooltip', 'title' => 'Sort by Ascending or Descending'));?></th>
+										<?php if($this->request->params['pass'][0] != 'pending'):?>
 										<th style="text-align:center" width="70"><?php echo $this->Paginator->sort('no_pos', 'Positions', array('escape' => false, 'direction' => 'desc', 'rel' => 'tooltip', 'title' => 'Sort by Ascending or Descending'));?></th>
+										<?php endif; ?>
 										<th style="text-align:center" width="70"><?php echo $this->Paginator->sort('no_contact', 'Contact', array('escape' => false, 'direction' => 'desc', 'rel' => 'tooltip', 'title' => 'Sort by Ascending or Descending'));?></th>
-										<th width="130"><?php echo $this->Paginator->sort('account_holder', 'Account Holder', array('escape' => false, 'direction' => 'desc', 'rel' => 'tooltip', 'title' => 'Sort by Ascending or Descending'));?></th>
+										<th width="150"><?php echo $this->Paginator->sort('account_holder', 'Account Holder', array('escape' => false, 'direction' => 'desc', 'rel' => 'tooltip', 'title' => 'Sort by Ascending or Descending'));?></th>
 										<th style="text-align:center" width="70"><?php echo $this->Paginator->sort('status', 'Status', array('escape' => false, 'direction' => 'desc', 'rel' => 'tooltip', 'title' => 'Sort by Ascending or Descending'));?></th>
 										<th width="95"><?php echo $this->Paginator->sort('Creator.first_name', 'Created By', array('escape' => false, 'direction' => 'desc', 'rel' => 'tooltip', 'title' => 'Sort by Ascending or Descending'));?></th>
 										<th width="75"><?php echo $this->Paginator->sort('created_date', 'Created', array('escape' => false, 'direction' => 'desc', 'rel' => 'tooltip', 'title' => 'Sort by Ascending or Descending'));?></th>
@@ -133,7 +135,11 @@
 										<td><a rel="tooltip" title="Click to view the details" href="<?php echo $this->webroot;?>client/view/<?php echo $client['Client']['id'];?>/<?php echo $client[0]['st_id'];?>/<?php echo $client['Client']['created_by'];?>/<?php echo $this->request->params['pass'][0];?>/"><?php echo ucwords($client['Client']['client_name']);?></a></td>
 										<td><?php echo $client['Client']['city'];?></td>
 										<td><?php echo ucfirst($client['ResLocation']['location']);?></td>
+										
+										<?php if($this->request->params['pass'][0] != 'pending'):?>
 										<td style="text-align:center"><a rel="tooltip" title="Click to view the Requirements"  href="<?php echo $this->webroot;?>position/?client_id=<?php echo $client['Client']['id'];?>"><?php echo $client[0]['no_pos'];?></a></td>
+										<?php endif; ?>
+										
 										<td style="text-align:center"><?php echo $client[0]['no_contact'];?></td>
 										<td><?php echo $client[0]['account_holder'];?></td>
 										<td style="text-align:center">

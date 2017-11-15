@@ -115,7 +115,7 @@
 					</tr>	
 							
 
-								<tr>
+								<tr class="tbl_row">
 						<td width="120" class="tbl_column">Pincode <span class="f_req">*</span></td>
 						<td> 
 							<?php echo $this->Form->input('pincode', array('div'=> false,'type' => 'text', 'label' => false, 'class' => 'inline_text span8',  'required' => false, 'placeholder' => 'Pincode',
@@ -127,7 +127,7 @@
 					</tr>	
 
 							
-							<tr class="tbl_row">
+							<tr class="">
 						<td width="120" class="tbl_column">Account Holder <span class="f_req">*</span></td>
 						<td>	
 						
@@ -153,7 +153,7 @@
 								   <tr  class="">
 										<td width="120" class="tbl_column">Remarks <span class="f_req">*</span></td>
 										<td> 
-<?php echo $this->Form->input('remarks', array('div'=> false,'type' => 'text', 'label' => false, 'class' => 'span8 wysiwyg1', 'rows' => '2',
+<?php echo $this->Form->input('rev_remarks', array('div'=> false,'type' => 'text', 'label' => false, 'class' => 'span8 wysiwyg1', 'rows' => '2',
   'required' => false, 'placeholder' => '',	'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 
 										</td>
 									</tr>

@@ -287,10 +287,11 @@ class ClientController extends AppController {
 					$this->retain_contact_list();
 					// validate the form fields
 					if ($this->Client->validates(array('fieldList' => array('client_name','city','pincode','state','res_location_id',
-					'account_holder','remarks'))) && $contact_validate){					
+					'account_holder','rev_remarks'))) && $contact_validate){					
 						// save the data
 						$this->request->data['Client']['is_approve'] = 'W';
 						$this->request->data['Client']['status'] = '2';
+						$this->request->data['Client']['remarks'] = $this->request->data['Client']['rev_remarks'];
 						
 						if($this->Client->save($this->request->data['Client'], array('validate' => false))){
 							// remove contact list
@@ -339,10 +340,10 @@ class ClientController extends AppController {
 								
 									$ac_holder = $this->ClientAccountHolder->find('all', array('fields' => array("group_concat(User.first_name separator ', ') account_holder"), 'order' => array('User.first_name ASC'), 'conditions' => array('ClientAccountHolder.clients_id' => $this->Client->id, 'User.is_deleted' => 'N')));
 									
-									$vars = array('from_name' => $from, 'to_name' => ucwords($leader_data[0]['Creator']['first_name'].' '.$leader_data[0]['Creator']['last_name']), 'client_name' => $this->request->data['Client']['client_name'], 'city' => $this->request->data['Client']['city'],'account_holder' => $ac_holder[0][0]['account_holder']);
+									$vars = array('from_name' => $from, 'rev_remarks' => $this->request->data['Client']['rev_remarks'], 'to_name' => ucwords($leader_data[0]['Creator']['first_name'].' '.$leader_data[0]['Creator']['last_name']), 'client_name' => $this->request->data['Client']['client_name'], 'city' => $this->request->data['Client']['city'],'account_holder' => $ac_holder[0][0]['account_holder']);
 															
 									// notify superiors						
-									if(!$this->send_email($sub, 'add_client', 'noreply@managehiring.com', $leader_data[0]['Creator']['email_id'],$vars)){	
+									if(!$this->send_email($sub, 'revise_client', 'noreply@managehiring.com', $leader_data[0]['Creator']['email_id'],$vars)){	
 										// show the msg.								
 										$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Problem in sending the mail for approval...', 'default', array('class' => 'alert alert-error'));				
 									}else{
@@ -751,7 +752,8 @@ class ClientController extends AppController {
 		$ret_value = $this->auth_action($id, $st_id);
 		if($ret_value == 'pass'){
 			// set the page title
-			$this->set('title_for_layout', 'View Client - Manage Hiring');	
+			$view_title = $this->Functions->get_view_type($this->request->params['pass'][3]);
+			$this->set('title_for_layout', $view_title.' Client - Manage Hiring');	
 			$options = array(			
 				array('table' => 'state',
 					  'alias' => 'State',					
@@ -771,7 +773,7 @@ class ClientController extends AppController {
 			);
 			$fields = array('id','client_name','phone','ResLocation.location','address','created_date','Creator.first_name','Creator.last_name',
 			'address','status','door_no','street_name','area_name','city','modified_date','pincode','State.state',
-			'Modifier.first_name','is_approve','Client.created_by','Modifier.last_name', 'ClientStatus.status');
+			'Modifier.first_name','is_approve','Client.created_by','Modifier.last_name', 'ClientStatus.status','remarks');
 			$data = $this->Client->find('all', array('fields' => $fields,'conditions' => array('Client.id' => $id),
 			'joins' => $options));
 			$this->set('client_data', $data[0]);
@@ -893,7 +895,7 @@ class ClientController extends AppController {
 			$this->Client->unBindModel(array('belongsTo' => array('Creator')));
 			$data = $this->Client->find('all', array('fields' => array('Client.client_name','ResLocation.location'),
 			'group' => array('Client.client_name','ResLocation.location'), 'conditions' => 	array("OR" => array ('Client.client_name like' => '%'.$q.'%',
-			'ResLocation.location like' => '%'.$q.'%'), 'AND' => array('Client.is_deleted' => 'N'))));		
+			'ResLocation.location like' => '%'.$q.'%'), 'AND' => array('Client.is_deleted' => 'N', 'is_approve' => 'A','Client.status' => '0', ))));		
 			$this->set('results', $data);
 		}
     }

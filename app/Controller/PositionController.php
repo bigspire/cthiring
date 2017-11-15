@@ -445,7 +445,7 @@ class PositionController extends AppController {
 					// validate the form fields
 					if($this->Position->validates(array('fieldList' => array('clients_id','client_contact_id','job_title','location','max_exp',
 					'ctc_from','ctc_to','ctc_from_type','ctc_to_type','skills','team_member_req','end_date','function_area_id','job_desc',
-					'education','tech_skill','behav_skill',	'hide_contact','resume_type','job_code','remarks','is_rpo')))){
+					'education','tech_skill','behav_skill',	'hide_contact','resume_type','job_code','rev_remarks','is_rpo')))){
 						// format the dates
 						$this->request->data['Position']['start_date'] = $this->Functions->format_date_save($this->request->data['Position']['start_date']);
 						$this->request->data['Position']['end_date'] = $this->Functions->format_date_save($this->request->data['Position']['end_date']);
@@ -596,7 +596,7 @@ class PositionController extends AppController {
 	/* function to save the req. revision */
 	public function save_req_revision($id){
 		$this->loadModel('ReqRevision');
-		$data = array('requirements_id' => $id, 'remarks' => $this->request->data['Position']['remarks'], 'created_date' => $this->Functions->get_current_date());
+		$data = array('requirements_id' => $id, 'remarks' => $this->request->data['Position']['rev_remarks'], 'created_date' => $this->Functions->get_current_date());
 		$this->ReqRevision->save($data, true, $fieldList = array('created_date','requirements_id','remarks'));
 	}
 	

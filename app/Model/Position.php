@@ -345,7 +345,7 @@ class Position extends AppModel {
                 'message'  => 'Job Code already exists'
             )
         ),
-		'remarks' => array(
+		'rev_remarks' => array(
             'empty' => array(
                 'rule'     => 'notEmpty',
                 'required' => true,

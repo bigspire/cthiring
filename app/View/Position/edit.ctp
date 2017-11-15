@@ -404,7 +404,7 @@
 								   <tr  class="">
 										<td width="135" class="tbl_column">Remarks <span class="f_req">*</span></td>
 										<td> 
-<?php echo $this->Form->input('remarks', array('div'=> false,'type' => 'text', 'label' => false, 'class' => 'span8 wysiwyg1', 'rows' => '2',
+<?php echo $this->Form->input('rev_remarks', array('div'=> false,'type' => 'text', 'label' => false, 'class' => 'span8 wysiwyg1', 'rows' => '2',
   'required' => false, 'placeholder' => '',	'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 
 										</td>
 									</tr>

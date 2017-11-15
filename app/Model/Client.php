@@ -104,7 +104,7 @@ class Client extends AppModel {
                 'message'  => 'Please enter the reason to reject'
             )
         ),
-		'remarks' => array(
+		'rev_remarks' => array(
             'empty' => array(
                 'rule'     => 'notEmpty',
                 'required' => true,

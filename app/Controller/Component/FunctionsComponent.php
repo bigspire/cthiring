@@ -214,7 +214,15 @@ class FunctionsComponent extends Component {
    }
    
 
-   
+   /* function to get view page approval type */
+   public function get_view_type($action){
+		if($action == 'pending'){
+			$view_title = 'Approve';
+		}else{
+			$view_title = 'View';
+		}
+		return $view_title;
+   }
   
 	
 	

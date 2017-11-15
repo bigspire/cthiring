@@ -98,6 +98,17 @@
 											
 									</tr>
 									
+									<?php if($client_data['Client']['remarks'] != ''):?>
+									
+									<tr>
+										
+										<td class="tbl_column">Revision Remarks</td>
+										<td><?php echo $client_data['Client']['remarks'];?></td>
+											
+									</tr>
+									
+									<?php endif; ?>
+									
 									
 								</tbody>
 							</table>
@@ -277,8 +288,8 @@
 					
 	<div class="form-actions">
 		<?php if($client_data['Client']['is_approve'] == 'W'  &&  $this->request->params['pass'][3] == 'pending'):?>
-<a class="iframeBox unreadLink" rel="tooltip" title="Approve Client" href="<?php echo $this->webroot;?>client/remark/<?php echo $client_data['Client']['id'];?>/<?php echo $this->request->params['pass'][1];?>/<?php echo $client_data['Client']['created_by'];?>/A/" val="40_50"><input type="button" value="Approve" class="btn btn btn-success"/></a>
-<a class="iframeBox unreadLink" rel="tooltip" title="Reject Client" href="<?php echo $this->webroot;?>client/remark/<?php echo $client_data['Client']['id'];?>/<?php echo $this->request->params['pass'][1];?>/<?php echo $client_data['Client']['created_by'];?>/R/" val="40_50"><input type="button" value="Reject" class="btn btn btn-danger"/></a>
+<a class="iframeBox unreadLink" rel="tooltip" title="Approve Client" href="<?php echo $this->webroot;?>client/remark/<?php echo $client_data['Client']['id'];?>/<?php echo $this->request->params['pass'][1];?>/<?php echo $client_data['Client']['created_by'];?>/A/" val="40_60"><input type="button" value="Approve" class="btn btn btn-success"/></a>
+<a class="iframeBox unreadLink" rel="tooltip" title="Reject Client" href="<?php echo $this->webroot;?>client/remark/<?php echo $client_data['Client']['id'];?>/<?php echo $this->request->params['pass'][1];?>/<?php echo $client_data['Client']['created_by'];?>/R/" val="40_60"><input type="button" value="Reject" class="btn btn btn-danger"/></a>
 <a href="<?php echo $this->webroot;?>client/index/pending/" rel="tooltip" title="Cancel and Back to Clients"  class="jsRedirect"><button class="btn">Cancel</button></a>
 <?php else: ?>
 <a href="<?php echo $this->webroot;?>client/index/<?php echo $this->request->params['pass'][3];?>" rel="tooltip" title="Back to Clients"  class="jsRedirect"><button class="btn">Back</button></a>
