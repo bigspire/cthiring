@@ -272,40 +272,16 @@ $smarty->assign('degreeData', $degree_data);
 $smarty->assign('degree', $degree);
 $smarty->assign('spec', $spec);
 
-//if($_POST['RESUME_DATA'] == ''){
+if($_POST['RESUME_DATA'] == ''){
 	// fetch the resume data
 	$uploaddir = 'uploads/resume/'; 
-	$resume_data = $fun->read_document($uploaddir.$_SESSION['resume_doc']);
-	
-	// extract the mobile
-	$string = preg_replace("#[^\d{12}\s]#",'',$resume_data);
-	preg_match_all("#(\d{10})#", "$string", $found);	
-	foreach($found as $key => $phone_number) {
-	  if(strlen($phone_number[$key]) >= 10){ 
-		$mobile = $phone_number[$key];
-		// break;
-	  };
-	  // save for hiding contacts
-	  $phone_nos = $phone_number;
-	}
-	
-	// extract the email
-	$string = preg_split("/[\s,]+/", $resume_data);
-	foreach($string as $mail){
-		if(!filter_var($mail, FILTER_VALIDATE_EMAIL)) {
-			// continue;
-		}else{
-			$mail_ids[] = $mail;
-			// break;
-		}
-	}
-	
+	$resume_data = $fun->read_document($uploaddir.$_SESSION['resume_doc']);		
 	// echo $resume_data;die;
 	$smarty->assign('RESUME_DATA', $resume_data);
-	// $_SESSION['extraction'] = 'done';
-//}else{
-	//$smarty->assign('RESUME_DATA', $_POST['RESUME_DATA']);
-//}
+	$_SESSION['extraction'] = 'done';
+}else{
+	$smarty->assign('RESUME_DATA', $_POST['RESUME_DATA']);
+}
 
 if(!empty($_POST)){
 		// for retaining skills and rating

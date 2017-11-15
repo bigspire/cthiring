@@ -50,9 +50,9 @@ if($_SESSION['extraction'] == '' || $_POST['RESUME_DATA'] == ''){
 		}else{
 			$mail_ids[] = $mail;
 			// break;
+			$email = $mail;
 		}
-	}
-	
+	}	
 	
 	
 	// extract the candidate name
@@ -67,7 +67,7 @@ if($_SESSION['extraction'] == '' || $_POST['RESUME_DATA'] == ''){
 	}
 	$smarty->assign('first_name', $string[$name_key]);
 	$smarty->assign('last_name', $string[$name_key+1]);
-	$smarty->assign('email', $mail);
+	$smarty->assign('email', $email);
 	$smarty->assign('mobile', $mobile);
 	$_SESSION['extraction'] = 'done';
 }else{

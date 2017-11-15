@@ -19,6 +19,7 @@ $str = <<<EOD
     <title>Hello Bulma!</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.5.1/css/bulma.min.css">
+	<link href="dist/css/bootstrap.css" rel="stylesheet">
   </head>
   <body>
   
@@ -140,15 +141,23 @@ $str = <<<EOD
       <th class="has-text-centered">14</th>
       <th class="">Consultant Assessment</th>
     
-      <td>$_POST[consultant]</td>
+      <td>$_POST[tech_skill]</td>
     </tr>
 	
 	<tr>
-      <th class="has-text-centered">14</th>
-      <th class="">Consultant Assessment</th>
+      <th class="has-text-centered">15</th>
+      <th class="">Technical Skills</th>
     
-      <td>$_POST[consultant]</td>
+      <td>$ts_data</td>
     </tr>
+	
+	<tr>
+      <th class="has-text-centered">16</th>
+      <th class="">Behavioural Skills</th>
+    
+      <td>$bs_data</td>
+    </tr>
+	
     
   </tbody>
 </table>
@@ -168,6 +177,18 @@ $str = <<<EOD
 	
 
 </body>
+<script src="vendor/node_modules/bootstrap-rating/bootstrap-rating.min.js"></script>
+<script type="text/javascript" src="dist/js/jquery-1.10.2.js"></script>
+<script type="text/javascript">	
+$(document).ready(function(){
+	/* for star rating */
+	$('.rating').each(function (){   
+		if($(this).next('.label').text() != ''){ 
+			$(this).next('.label').text($(this).val()).show();
+		}
+	});
+});
+</script>	
 </html>
 EOD;
 

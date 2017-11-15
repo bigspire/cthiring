@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-11-13 09:42:56
+/* Smarty version 3.1.29, created on 2017-11-15 11:40:46
   from "C:\xampp\htdocs\2017\ctsvn\cthiring\hiring\templates\add_resume.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5a091bc8592c15_67757721',
+  'unifunc' => 'content_5a0bda66a678a2_52184187',
   'file_dependency' => 
   array (
     '20fa0800b264c1941565246828a7b2b89c0b2234' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\templates\\add_resume.tpl',
-      1 => 1510226857,
+      1 => 1510658912,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5a091bc8592c15_67757721 ($_smarty_tpl) {
+function content_5a0bda66a678a2_52184187 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -90,7 +90,7 @@ home"><i class="icon-home"></i></a>
 									
 									<tr>
 									
-									<tr class="tbl_row">
+									<tr class="">
 										<td width="120" class="tbl_column">Candidate Name <span class="f_req">*</span></td>
 										<td>
 								        <input type="text" tabindex="1" name="first_name" placeholder="First Name" value="<?php echo $_smarty_tpl->tpl_vars['first_name']->value;?>
@@ -103,7 +103,7 @@ echo $_smarty_tpl->tpl_vars['last_nameErr']->value;?>
 </label>
 										</td>	
 									</tr>
-									<tr>
+									<tr class="tbl_row">
 										<td width="120" class="tbl_column">Email <span class="f_req">*</span></td>
 										<td>	
 										<input type="text" tabindex="3" id="email" name="email" value="<?php echo $_smarty_tpl->tpl_vars['email']->value;?>
@@ -112,7 +112,7 @@ echo $_smarty_tpl->tpl_vars['last_nameErr']->value;?>
 </label>																						
 										</td>	
 									</tr>	
-                                    <tr class="tbl_row">
+                                    <tr class="">
 										<td width="120" class="tbl_column"> Mobile <span class="f_req">*</span></td>
 										<td>
 										<input type="text" tabindex="4" name="mobile" class="span8" value="<?php echo $_smarty_tpl->tpl_vars['mobile']->value;?>
@@ -124,7 +124,7 @@ echo $_smarty_tpl->tpl_vars['last_nameErr']->value;?>
  </label>							
 										</td>		
 									</tr>									
-									<tr>
+									<tr class="tbl_row">
 										<td width="120" class="tbl_column">DOB <span class="f_req">*</span></td>
 										<td> 
 										<input name="dob" tabindex="5" value="<?php echo $_smarty_tpl->tpl_vars['dob']->value;?>
@@ -148,7 +148,7 @@ echo $_smarty_tpl->tpl_vars['last_nameErr']->value;?>
 									<tr>
 										<td width="120" class="tbl_column">Current Designation<span class="f_req">*</span></td>
 										<td>										
-										<select tabindex="7" name="designation_id" class="span8"  id="designation_id">	
+										<select tabindex="6" name="designation_id" class="span8"  id="designation_id">	
 											<option value="">Select</option>
 											<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['desig_name']->value,'selected'=>$_POST['designation_id']),$_smarty_tpl);?>
 															
@@ -160,12 +160,12 @@ echo $_smarty_tpl->tpl_vars['last_nameErr']->value;?>
 									<tr class="tbl_row">
 										<td width="120" class="tbl_column">Total Years of Exp<span class="f_req">*</span></td>
 										<td>
-										<select name="year_of_exp" tabindex="8" class="span4">
+										<select name="year_of_exp" tabindex="7" class="span4">
 										<option value="">Year</option>
 										<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['tot_exp_yr']->value,'selected'=>$_POST['year_of_exp']),$_smarty_tpl);?>
 	
 										</select>
-										<select name="month_of_exp" tabindex="9" class="inline_text span4">
+										<select name="month_of_exp" tabindex="8" class="inline_text span4">
 										<option value="">Month</option>
 										<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['tot_exp_month']->value,'selected'=>$_POST['month_of_exp']),$_smarty_tpl);?>
 	
@@ -194,16 +194,16 @@ echo $_smarty_tpl->tpl_vars['last_nameErr']->value;?>
 										<td width="120" class="tbl_column">CTC <span class="f_req">*</span></td>
 										<td>	
 										
-										<input type="text" tabindex="10" name="present_ctc" value="<?php echo $_smarty_tpl->tpl_vars['present_ctc']->value;?>
+										<input type="text" tabindex="9" name="present_ctc" value="<?php echo $_smarty_tpl->tpl_vars['present_ctc']->value;?>
 " placeholder="Present"  class="span2"/>										
-										<select class="span2"  tabindex="11"  name="present_ctc_type">
+										<select class="span2"  tabindex="10"  name="present_ctc_type">
 										<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['ctc_type']->value,'selected'=>$_POST['present_ctc_type']),$_smarty_tpl);?>
 
 										</select> 
 											
-										<input type="text" tabindex="12" name="expected_ctc" value="<?php echo $_smarty_tpl->tpl_vars['expected_ctc']->value;?>
+										<input type="text" tabindex="11" name="expected_ctc" value="<?php echo $_smarty_tpl->tpl_vars['expected_ctc']->value;?>
 " placeholder="Expected"  class="span2"/>	
-										<select  class="span2" tabindex="13"  name="expected_ctc_type">
+										<select  class="span2" tabindex="12"  name="expected_ctc_type">
 										<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['ctc_type']->value,'selected'=>$_POST['expected_ctc_type']),$_smarty_tpl);?>
 
 										</select>			
@@ -229,7 +229,7 @@ echo $_smarty_tpl->tpl_vars['last_nameErr']->value;?>
 									<tr>
 										<td width="125" class="tbl_column">Notice Period <span class="f_req">*</span></td>
 										<td> 
-										<select name="notice_period" tabindex="14" class="span8">										
+										<select name="notice_period" tabindex="13" class="span8">										
 										<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['n_p']->value,'selected'=>$_POST['notice_period']),$_smarty_tpl);?>
 							
 										</select>
@@ -240,10 +240,10 @@ echo $_smarty_tpl->tpl_vars['last_nameErr']->value;?>
 									<tr class="tbl_row">
 										<td width="120" class="tbl_column">Gender <span class="f_req">*</span></td>
 										<td> 
-										<input type="radio" tabindex="2" tabindex="15" name="gender"<?php if ($_POST['gender'] == '1') {
+										<input type="radio" tabindex="2" tabindex="14" name="gender"<?php if ($_POST['gender'] == '1') {
 echo 'checked';
 }?> value="1"> Male
-										<input type="radio" tabindex="3" tabindex="16" name="gender"<?php if ($_POST['gender'] == '2') {
+										<input type="radio" tabindex="3" tabindex="15" name="gender"<?php if ($_POST['gender'] == '2') {
 echo 'checked';?>
  <?php }?> value="2"> Female
 										<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['genderErr']->value;?>
@@ -253,10 +253,10 @@ echo 'checked';?>
 									 <tr>
 										<td width="120" class="tbl_column">Marital Status <span class="f_req"></span></td>
 										<td>
-										<input type="radio" tabindex="17" name="marital_status"<?php if ($_POST['marital_status'] && $_POST['marital_status'] == 1) {
+										<input type="radio" tabindex="16" name="marital_status"<?php if ($_POST['marital_status'] && $_POST['marital_status'] == 1) {
 echo 'checked';
 }?> value="1"> Single
-										<input type="radio" tabindex="18" name="marital_status"<?php if ($_POST['marital_status'] && $_POST['marital_status'] == 2) {
+										<input type="radio" tabindex="17" name="marital_status"<?php if ($_POST['marital_status'] && $_POST['marital_status'] == 2) {
 echo 'checked';?>
  <?php }?> value="2"> Married
 										<input type="radio" tabindex="18" name="marital_status"<?php if ($_POST['marital_status'] && $_POST['marital_status'] == 3) {
@@ -447,24 +447,24 @@ echo 'checked';?>
 								<tr>
 										<td width="120" class="tbl_column">Employment Period<span class="f_req"> *</span></td>
 										<td>
-										<select name="from_month_of_exp_#index#" id = "from_month_of_exp_#index#" tabindex="3" class="span2">
+										<select name="from_month_of_exp_#index#" id = "from_month_of_exp_#index#" tabindex="2" class="span2">
 										<option value="">From</option>
 										<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['exp_month']->value),$_smarty_tpl);?>
  
 										</select>
-										<select name="from_year_of_exp_#index#" id = "from_year_of_exp_#index#" tabindex="2" class="inline_text span2">
+										<select name="from_year_of_exp_#index#" id = "from_year_of_exp_#index#" rel="maxDrop_#index#" tabindex="3" class="minExpDrop inline_text span2">
 										<option value="">From</option>
 										<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['exp_yr']->value),$_smarty_tpl);?>
  
 										</select>
 										
-										<select name="to_month_of_exp_#index#" id = "to_month_of_exp_#index#" tabindex="3" class="inline_text span2">
+										<select name="to_month_of_exp_#index#" id = "to_month_of_exp_#index#" tabindex="4" class="inline_text span2">
 										<option value="">To</option>
 										<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['exp_month']->value),$_smarty_tpl);?>
  
 										</select>
 										
-										<select name="to_year_of_exp_#index#" id = "to_year_of_exp_#index#" tabindex="2" class="inline_text span2">
+										<select name="to_year_of_exp_#index#"  id = "maxDrop_#index#"  tabindex="5" class="inline_text span2">
 										<option value="">To</option>
 										<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['exp_yr']->value),$_smarty_tpl);?>
  
@@ -479,14 +479,14 @@ echo 'checked';?>
 							<tr class="tbl_row">
 										<td width="120" class="tbl_column">Area of Specialization/Expertise  <span class="f_req">*</span></td>
 											<td> 
-										<input type="text" name="area_#index#" id="area_#index#"  tabindex="4" class="span8" />
+										<input type="text" name="area_#index#" id="area_#index#"  tabindex="6" class="span8" />
 										<label for="reg_city" generated="true" class="error" id="area_Err_#index#"></label>										
 										</td>
 							</tr>
 							<tr>
 										<td width="120" class="tbl_column">Company Name <span class="f_req">*</span></td>
 										<td> 
-										<input type="text" tabindex="5" name="company_#index#" id="company_#index#"  class="span8" />
+										<input type="text" tabindex="7" name="company_#index#" id="company_#index#"  class="span8" />
 										<label for="reg_city" generated="true" class="error" id="company_Err_#index#"></label>										
 										</td>
 							</tr>						
@@ -501,14 +501,14 @@ echo 'checked';?>
 							<tr class="tbl_row">
 										<td width="120" class="tbl_column">Location <span class="f_req">*</span></td>
 										<td> 
-										<input type="text"  tabindex="6" name="location_#index#" id="location_#index#"  class="span8" />
+										<input type="text"  tabindex="8" name="location_#index#" id="location_#index#"  class="span8" />
 										<label for="reg_city" generated="true" class="error" id="location_Err_#index#"></label>										
 										</td>
 							</tr>			
 								<tr>
 										<td width="120" class="tbl_column">Other Vital Information (Position Specific)  <span class="f_req"></span></td>
 										<td> 
-										<textarea name="vital_#index#" tabindex="7" id="vital_#index#" cols="10" rows="3" class="span8 wysiwyg1"></textarea>
+										<textarea name="vital_#index#" tabindex="9" id="vital_#index#" cols="10" rows="3" class="span8 wysiwyg1"></textarea>
 										</td>
 							</tr>
 			
@@ -547,7 +547,7 @@ echo 'checked';?>
 		  <tr>
 			<td width="133" class="tbl_column">Project / Certification Details (optional) <span class="f_req"></span></td>
 				<td> 
-						<textarea name="certification" tabindex="7" id="certification" cols="10" rows="3" class="span8 wysiwyg1"><?php if ($_smarty_tpl->tpl_vars['certification']->value) {
+						<textarea name="certification" tabindex="10" id="certification" cols="10" rows="3" class="span8 wysiwyg1"><?php if ($_smarty_tpl->tpl_vars['certification']->value) {
 echo $_smarty_tpl->tpl_vars['certification']->value;
 } else {
 echo $_POST['certification'];
@@ -604,7 +604,7 @@ $_smarty_tpl->tpl_vars['ts_data'] = $__foreach_ts_data_0_saved_item;
 									</tr>	
 									
 									
-									<tr class="tbl_row">
+									<tr class="">
 										<td width="120" class="tbl_column">Consultant Assessment <span class="f_req">*</span></td>
 										<td>
 <textarea placeholder="" name="consultant" tabindex="1" id="consultant" cols="10" rows="3" class="span10 wysiwyg1"><?php echo $_POST['consultant'];?>
@@ -621,7 +621,7 @@ $_smarty_tpl->tpl_vars['ts_data'] = $__foreach_ts_data_0_saved_item;
 						<div class="span6">
 			<table class="table table-bordered dataTable" style="margin-bottom:0;">
 						<tbody>
-									<tr class="">
+									<tr class="tbl_row">
 										<td width="120" class="tbl_column">Rate Behavioural Skills </td>
 										<td>
 <ul class="ratingList">
@@ -1037,6 +1037,23 @@ $(document).ready(function(){
 			 $('#exp_count').attr('value',source.getFormsCount());
 			 // for auto resize text area
 			 autosize(document.querySelectorAll('.wysiwyg1'));
+			 /* function to update max drop down */
+				$('.minExpDrop').unbind().change(function(){ 
+					cur_obj = $(this).attr('id');		
+					option_id = $(this).attr('rel');					
+					val = parseFloat($(this).val());
+					$('#'+option_id).append('<option>Loading...</option>');
+					html = "<option value=''>Select</option>";
+					$('#'+cur_obj+' option').each(function(){
+						// allow only values equals or greater than
+						if(val < $(this).val()){ 
+							html += '<option value='+$(this).val()+'>'+$(this).text()+'</option>';
+						}
+					});
+					$('#'+option_id).empty();
+					$('#'+option_id).append(html);
+
+				});
 		   },
 		   afterRemoveCurrent: function(source) {		
 			 $('#exp_count').attr('value',source.getFormsCount());
@@ -1063,7 +1080,7 @@ $(document).ready(function(){
 				$('#from_month_of_exp_'+i).val( $('#from_month_of_expData_'+i).val());
 			}
 			if($('#to_year_of_expData_'+i).length > 0){ 
-				$('#to_year_of_exp_'+i).attr('value', $('#to_year_of_expData_'+i).val());
+				$('#maxDrop_'+i).attr('value', $('#to_year_of_expData_'+i).val());
 			}
 			if($('#to_month_of_expData_'+i).length > 0){ 
 				$('#to_month_of_exp_'+i).val( $('#to_month_of_expData_'+i).val());
