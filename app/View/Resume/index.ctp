@@ -213,7 +213,7 @@
 											<?php endif; ?>
 
 											
-											<?php if($res['Resume']['autoresume_modified']  && $res['Position']['resume_type'] == 'F'):?>
+											<?php if($res['Position']['resume_type'] == 'F'):?>
 											<li><a href="<?php echo $this->webroot;?>resume/autoresume/<?php echo $res['ResDoc']['resume'];?>/<?php echo $res['Resume']['modified_date'] ? strtotime($res['Resume']['modified_date']) : strtotime($res['Resume']['created_date']);?>">Fully Formatted Resume</a></li>
 											<?php endif; ?>
 											
@@ -224,7 +224,7 @@
 			<li><a class="iframeBox" val="70_100" href="<?php echo $this->webroot;?>resume/profile_snapshot/<?php echo $res['ResDoc']['resume'];?>/<?php echo $res['Resume']['modified_date'] ? strtotime($res['Resume']['modified_date']) : strtotime($res['Resume']['created_date']);?>/view/">View Snapshot</a></li>
 			<?php endif; ?>
 			
-			<?php if($res['Resume']['autoresume_modified'] && $res['Position']['resume_type'] == 'F'):?>
+			<?php if($res['Position']['resume_type'] == 'F'):?>
 			<li><a class="iframeBox" val="70_100"  href="<?php echo $this->webroot;?>resume/autoresume/<?php echo $res['ResDoc']['resume'];?>/<?php echo $res['Resume']['modified_date'] ? strtotime($res['Resume']['modified_date']) : strtotime($res['Resume']['created_date']);?>/view/">View Formatted Resume</a></li>
 			<?php endif; ?>
 											
