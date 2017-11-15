@@ -142,6 +142,13 @@ $str = <<<EOD
     
       <td>$_POST[consultant]</td>
     </tr>
+	
+	<tr>
+      <th class="has-text-centered">14</th>
+      <th class="">Consultant Assessment</th>
+    
+      <td>$_POST[consultant]</td>
+    </tr>
     
   </tbody>
 </table>
