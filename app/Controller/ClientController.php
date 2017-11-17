@@ -747,7 +747,7 @@ class ClientController extends AppController {
 	
 	
 	/* function to view the position */
-	public function view($id, $st_id){	
+	public function view($id, $st_id){							
 		$this->loadModel('ClientStatus');
 		$ret_value = $this->auth_action($id, $st_id);
 		if($ret_value == 'pass'){
@@ -860,7 +860,11 @@ class ClientController extends AppController {
 						$creator_data = $this->Client->find('all', array('conditions' => array('Client.id' => $id), 'fields' => array('Client.client_name', 'Client.city','Creator.first_name','Creator.last_name', 'Creator.email_id')));
 						// get account holder name
 						$this->loadModel('ClientAccountHolder');
-						$ac_holder = $this->ClientAccountHolder->find('all', array('fields' => array("group_concat(User.first_name separator ', ') account_holder"), 'order' => array('User.first_name ASC'), 'conditions' => array('ClientAccountHolder.clients_id' => $id, 'User.is_deleted' => 'N')));
+						
+						$ac_holder = $this->ClientAccountHolder->find('all', array('fields' => array("group_concat(User.first_name separator ', ') account_holder",
+						"group_concat(User.email_id) account_holder_mail", "group_concat(User.last_name) account_holder_last"),
+						'order' => array('User.first_name ASC'), 'conditions' => array('ClientAccountHolder.clients_id' => $id, 'User.is_deleted' => 'N')));
+						
 						$vars = array('to_name' =>  ucwords($creator_data[0]['Creator']['first_name'].' '.$creator_data[0]['Creator']['last_name']), 'from_name' => $from, 'client_name' => $creator_data[0]['Client']['client_name'], 'city' => $creator_data[0]['Client']['city'],'account_holder' => $ac_holder[0][0]['account_holder'], 'approve_msg' => $approve_msg, 'remarks' => $this->request->data['Client']['remarks']);
 						$this->set('action_status', $approve_msg);
 						// notify employee						
@@ -869,6 +873,23 @@ class ClientController extends AppController {
 							$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Problem in sending the mail to user...', 'default', array('class' => 'alert alert-error'));				
 						}else{
 							$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Client '.$approve_msg.' Successfully.', 'default', array('class' => 'alert alert-success'));
+						}
+						// notify the account holders if approved
+						if($status == 'A'){
+							$mails = explode(',', $ac_holder[0][0]['account_holder_mail']);
+							$fname = explode(',', $ac_holder[0][0]['account_holder']);
+							$lname = explode(',', $ac_holder[0][0]['account_holder_last']);
+							$sub = 'Manage Hiring - Client approved by '.ucfirst($this->Session->read('USER.Login.first_name')).' '.ucfirst($this->Session->read('USER.Login.last_name'));
+							foreach($mails as $key =>  $mail){
+								$vars = array('to_name' =>  ucwords($fname[$key].' '.$lname[$key]), 'from_name' => $from, 'client_name' => $creator_data[0]['Client']['client_name'], 'city' => $creator_data[0]['Client']['city'],'account_holder' => $ac_holder[0][0]['account_holder'], 'approve_msg' => $approve_msg, 'remarks' => $this->request->data['Client']['remarks']);
+								// notify employee						
+								if(!$this->send_email('Manage Hiring - Client '.$st_msg.' by '.ucfirst($this->Session->read('USER.Login.first_name')).' '.ucfirst($this->Session->read('USER.Login.last_name')), 'approve_client', 'noreply@managehiring.com', $mail,$vars)){		
+									// show the msg.								
+									$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Problem in sending the mail to user...', 'default', array('class' => 'alert alert-error'));				
+								}else{
+									// $this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Client '.$approve_msg.' Successfully.', 'default', array('class' => 'alert alert-success'));
+								}
+							}
 						}
 						// update the client
 						$this->Client->id = $id;

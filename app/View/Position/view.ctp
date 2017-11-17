@@ -76,7 +76,7 @@
 									</tr>
 									<tr>
 										
-										<td width="120" class="tbl_column">SPOC Name</td>
+										<td width="120" class="tbl_column">SPOC Details</td>
 										<td><?php echo $position_data['Contact']['first_name'];?>, 
 										<?php echo $position_data['Contact']['email'];?>. 
 										<?php											
@@ -103,6 +103,16 @@
 										<td><?php echo ucfirst($position_data['Position']['location']);?></td>
 											
 									</tr>
+									
+										<tr>
+										
+										<td class="tbl_column" style="width:140px;">Job Code</td>
+										<td><?php echo $position_data['Position']['job_code'];?></td>
+											
+									</tr>
+									
+									
+									
 									<tr>
 										
 										<td width="120" class="tbl_column">Experience</td>
@@ -126,15 +136,16 @@
 											
 									</tr>	
 									
-										<tr class="no-print">
+										<tr>
 										
-										<td class="tbl_column">Resume Type </td>
-										<td><?php echo $this->Functions->get_resume_type($position_data['Position']['resume_type']);?></td>
+										<td class="tbl_column">Functional Area</td>
+										<td><?php echo $position_data['FunctionArea']['function'];?></td>
 											
-									</tr>	
+									</tr>
 									
 									
-									<tr>
+										
+				<tr>
 										
 										<td class="tbl_column">Created On</td>
 										<td><?php echo $this->Functions->format_date($position_data['Position']['created_date']);?></td>
@@ -148,20 +159,6 @@
 										<td><?php echo $position_data['Creator']['first_name'];?></td>
 											
 									</tr>
-									
-										<tr>
-										
-										<td class="tbl_column">Project Type  </td>
-										<td><?php 
-										
-										if($position_data['Position']['is_rpo'] != ''):
-										echo $position_data['Position']['is_rpo'] ? 'RPO' : 'Non-RPO';
-										endif; 
-										
-										?></td>
-											
-									</tr>	
-			
 <?php  if($position_data['Position']['is_approve'] != 'W'):?>			
 
 		<tr>
@@ -209,12 +206,6 @@
 											
 									</tr>
 									
-										<tr>
-										
-										<td class="tbl_column" style="width:140px;">Job Code</td>
-										<td><?php echo $position_data['Position']['job_code'];?></td>
-											
-									</tr>
 									
 									
 								
@@ -284,14 +275,33 @@
 										<td><?php echo $this->Functions->format_date($end);?></td>
 											
 									</tr>
-									<tr>
+								
+									
+									
+										<tr class="no-print">
 										
-										<td class="tbl_column">Functional Area</td>
-										<td><?php echo $position_data['FunctionArea']['function'];?></td>
+										<td class="tbl_column">Resume Type </td>
+										<td><?php echo $this->Functions->get_resume_type($position_data['Position']['resume_type']);?></td>
 											
-									</tr>
+									</tr>	
+									
+									
+								
 									
 										<tr>
+										
+										<td class="tbl_column">Project Type  </td>
+										<td><?php 
+										
+										if($position_data['Position']['is_rpo'] != ''):
+										echo $position_data['Position']['is_rpo'] ? 'RPO' : 'Non-RPO';
+										endif; 
+										
+										?></td>
+											
+									</tr>
+
+									<tr>
 										
 										<td class="tbl_column">Hide Resume Contacts  </td>
 										<td><?php echo $position_data['Position']['hide_contact'] ? 'Yes' : 'No';?></td>
@@ -323,7 +333,7 @@
 								<tbody>
 									<tr>
 										<td  class="tbl_column"width="120">Job Description</td>
-										<td>
+										<td style="padding:10px;">
 									<?php if($position_data['Position']['plain_jd']):?>
 									<?php echo nl2br($position_data['Position']['plain_jd']);?>
 									<?php else:?>
@@ -419,8 +429,8 @@
 							<div class="form-actions">
 <?php if($position_data['Position']['is_approve'] == 'W' &&  $this->request->params['pass'][2] == 'pending'):?>
 
-<a class="iframeBox unreadLink" rel="tooltip" title="Approve Position" href="<?php echo $this->webroot;?>position/remark/<?php echo $position_data['Position']['id'];?>/<?php echo $this->request->params['pass'][1];?>/<?php echo $position_data['Position']['created_by'];?>/A/<?php echo $stmemberID;?>" val="40_50"><input type="button" value="Approve" class="btn btn btn-success"/></a>
-<a class="iframeBox unreadLink" rel="tooltip" title="Reject Position" href="<?php echo $this->webroot;?>position/remark/<?php echo $position_data['Position']['id'];?>/<?php echo $this->request->params['pass'][1];?>/<?php echo $position_data['Position']['created_by'];?>/R/<?php echo $stmemberID;?>" val="40_50"><input type="button" value="Reject" class="btn btn btn-danger"/></a>
+<a class="iframeBox unreadLink" rel="tooltip" title="Approve Position" href="<?php echo $this->webroot;?>position/remark/<?php echo $position_data['Position']['id'];?>/<?php echo $this->request->params['pass'][1];?>/<?php echo $position_data['Position']['created_by'];?>/A/<?php echo $stmemberID;?>" val="40_55"><input type="button" value="Approve" class="btn btn btn-success"/></a>
+<a class="iframeBox unreadLink" rel="tooltip" title="Reject Position" href="<?php echo $this->webroot;?>position/remark/<?php echo $position_data['Position']['id'];?>/<?php echo $this->request->params['pass'][1];?>/<?php echo $position_data['Position']['created_by'];?>/R/<?php echo $stmemberID;?>" val="40_55"><input type="button" value="Reject" class="btn btn btn-danger"/></a>
 <a href="<?php echo $this->webroot;?>position/index/pending/" rel="tooltip" title="Cancel and Back to Positions"  class="jsRedirect"><button class="btn">Cancel</button></a>
 			<?php else:?>
 			

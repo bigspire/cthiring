@@ -21,7 +21,7 @@
 		<h1 style="font:bold 15px Arial, Helvetica, sans-serif; color:#676767; margin:0 0 10px 0;">Dear <?php echo $to_name?>,</h1>
           <p style="font:13px Arial, Helvetica, sans-serif; color:#676767; margin:0;">The following client is <?php echo strtolower($approve_msg);?> by <?php echo $from_name;?>. 
 		  
-		   <?php if($approve_msg == strtolower('approved')):?>
+		   <?php if(strtolower($approve_msg) == 'approved'):?>
 		  Please login to manage hiring and start creating the requirements for this client.
 		   <?php endif; ?>
 		  

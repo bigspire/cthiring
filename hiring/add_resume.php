@@ -32,7 +32,7 @@ if($_SESSION['extraction'] == '' || $_POST['RESUME_DATA'] == ''){
 	$smarty->assign('RESUME_DATA', $resume_data);	
 	$_SESSION['extraction'] = 'done';
 }else{
-	$smarty->assign('RESUME_DATA', $_POST['RESUME_DATA']);.
+	$smarty->assign('RESUME_DATA', $_POST['RESUME_DATA']);
 	$resume_data = $_POST['RESUME_DATA'];
 }
 

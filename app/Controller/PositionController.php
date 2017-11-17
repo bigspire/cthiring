@@ -216,7 +216,6 @@ class PositionController extends AppController {
 			$stCond = array('Position.req_status_id' => $st, 'Position.status' => 'A');
 		}
 		
-		$req_team_cond = array('ReqTeam.is_approve' => 'A');
 		
 		// show awaiting approval condition
 		if($rec_status =='pending'){
@@ -224,10 +223,12 @@ class PositionController extends AppController {
 			$req_team_cond = array('ReqTeam.is_approve' => 'W');
 			$approveCond = array('PositionStatus.users_id' => $this->Session->read('USER.Login.id'),'PositionStatus.status' => 'W');
 		}// for approval status condition
-		else if($this->request->query['apr_status'] != ''){
-			$clientCond = array('PositionStatus.member_approve' => $this->request->query['apr_status'],
+		else if($this->request->query['apr_status'] != ''){ 
+			$req_team_cond = array('ReqTeam.is_approve' => 'W');
+			$approveCond = array('PositionStatus.status' => $this->request->query['apr_status'],
 			'Position.created_by' => $this->Session->read('USER.Login.id'));
 		}else{ 
+			$req_team_cond = array('ReqTeam.is_approve' => 'A');
 			$approveCond = array('Position.status' => 'A');			
 		}
 		
@@ -624,14 +625,31 @@ class PositionController extends AppController {
 							'member_id' => $this->Session->read('USER.Login.id'), 'member_approve' => 'A')
 					)								
 			);
-			$data = $this->Position->find('all', array('fields' => array('PositionStatus.member_id','Position.created_by','Position.is_deleted','Position.modified_date'),
+			$data = $this->Position->find('all', array('fields' => array('PositionStatus.member_id',
+			'PositionStatus.users_id','Position.created_by','Position.is_deleted','Position.modified_date'),
 			'group' => array('Position.id'), 'conditions' => array('Position.id' => $id), 'joins' => $options));
+		
+			// for not account holders but the leaders for the recruiters
+			$options = array(								
+					array('table' => 'req_approval_status',
+							'alias' => 'PositionStatus',					
+							'type' => 'LEFT',
+							'conditions' => array('`PositionStatus.requirements_id` = `Position`.`id`',
+								'users_id' => $this->Session->read('USER.Login.id'))
+						)								
+				);
+			$data2 = $this->Position->find('all', array('fields' => array('PositionStatus.users_id'),
+			'group' => array('Position.id'), 'conditions' => array('Position.id' => $id), 'joins' => $options));
+			
+			
 			// check the req belongs to the user
 			if($data[0]['Position']['is_deleted'] == 'Y'){
 				return $data['Position']['modified_date'];
 			}else if($data[0]['Position']['created_by'] == $this->Session->read('USER.Login.id')){	
 				return 'pass';
 			}else if($data[0]['PositionStatus']['member_id'] == $this->Session->read('USER.Login.id')){	
+				return 'pass';
+			}else if($data2[0]['PositionStatus']['users_id'] == $this->Session->read('USER.Login.id')){	
 				return 'pass';
 			}else if($this->Session->read('USER.Login.roles_id') == '33' || $this->Session->read('USER.Login.roles_id') == '35'){	
 				return 'pass';
@@ -834,7 +852,8 @@ class PositionController extends AppController {
 	/* function to view the position */
 	public function view($id, $st_id){
 		// set the page title
-		$this->set('title_for_layout', 'View Positions - Manage Hiring');
+		$view_title = $this->Functions->get_view_type($this->request->params['pass'][2]);
+		$this->set('title_for_layout', $view_title.' Position - Manage Hiring');	
 		$this->set('stList', $this->get_status_details());
 		// authorize user before action
 		$this->loadModel('PositionStatus');
