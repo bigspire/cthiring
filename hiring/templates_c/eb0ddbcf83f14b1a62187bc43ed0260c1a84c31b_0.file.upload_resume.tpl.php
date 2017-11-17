@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-11-09 18:36:40
+/* Smarty version 3.1.29, created on 2017-11-15 16:41:36
   from "C:\xampp\htdocs\ctsvn\cthiring\hiring\templates\upload_resume.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5a0452e0964f92_34731227',
+  'unifunc' => 'content_5a0c20e863ba10_96262340',
   'file_dependency' => 
   array (
     'eb0ddbcf83f14b1a62187bc43ed0260c1a84c31b' => 
     array (
       0 => 'C:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\templates\\upload_resume.tpl',
-      1 => 1510205605,
+      1 => 1510740410,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_5a0452e0964f92_34731227 ($_smarty_tpl) {
+function content_5a0c20e863ba10_96262340 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -29,41 +29,14 @@ if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdoc
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />	<title>
 		Upload Resume - CT Hiring</title>
-	
-	   <!-- Bootstrap framework -->
-         <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
-         <link rel="stylesheet" href="bootstrap/css/bootstrap-responsive.min.css" />
-       <!-- gebo blue theme-->
-         <link rel="stylesheet" href="css/blue.css" id="link_theme" />            
-       <!-- main styles -->
-         <link rel="stylesheet" href="css/style.css" />
-		 <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Sans" />
-		 
 	   <!-- Bootstrap framework -->
          <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
          <link rel="stylesheet" href="bootstrap/css/bootstrap-responsive.min.css" />
        <!-- gebo blue theme-->
          <link rel="stylesheet" href="css/blue.css" id="link_theme" />            
          <!-- main styles -->
-            <link rel="stylesheet" href="css/style.css" />
-         <!-- tooltips-->
-            <link rel="stylesheet" href="lib_cthiring/qtip2/jquery.qtip.min.css" />
-		 <!-- tag handler -->
-            <link rel="stylesheet" href="lib_cthiring/tag_handler/css/jquery.taghandler.css" />            
-			<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
-            <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Sans" />
-			<link rel="stylesheet" media="screen" href="css/datepicker/datepicker.css">	
-
-			<link type="text/css" media="screen" href="css/jquery.autocomplete.css" rel="stylesheet" />
-			<link rel="stylesheet" href="css/gritter/jquery.gritter.css">
-			<!-- smoke_js -->
-            <link rel="stylesheet" href="css/smoke.css" />
-	   <!-- colorbox -->
-			<link rel="stylesheet" href="css/colorbox/colorbox.css">
-			<link rel="stylesheet" href="lib_cthiring/chosen/chosen.css" type="text/css">
-			<link rel="stylesheet" href="lib_cthiring/multisel/multi-select.css" type="text/css">
-	  <!-- breadcrumbs-->
-            <link rel="stylesheet" href="lib_cthiring/jBreadcrumbs/css/BreadCrumb.css" />
+         <link rel="stylesheet" href="css/style.css" />
+        
 	
 </head>
 <body  class="menu_hover " >
@@ -166,23 +139,12 @@ echo $_smarty_tpl->tpl_vars['attachmentuploadErr']->value;?>
 	 
 <?php echo '<script'; ?>
  src="js/jquery.min.js"><?php echo '</script'; ?>
->		
+>
+		
 <input type="hidden" value="<?php echo $_smarty_tpl->tpl_vars['redirect_url']->value;?>
 " class="redirect_url"/>		
 <input type="hidden" value="resume.php" class="redirect_url_value"/>	
 <!-- main bootstrap js -->
-<?php echo '<script'; ?>
- src="bootstrap/js/bootstrap.min.js"><?php echo '</script'; ?>
->			
-<?php echo '<script'; ?>
- src="lib_cthiring/jquery-ui/jquery-ui-1.8.20.custom.min.js"><?php echo '</script'; ?>
->
-<?php echo '<script'; ?>
- src="js/gebo_common.js"><?php echo '</script'; ?>
->		
-<?php echo '<script'; ?>
- src="js/application.js"><?php echo '</script'; ?>
-> 
 		 
 <?php if ($_smarty_tpl->tpl_vars['form_sent']->value == '1') {?>
 
@@ -197,6 +159,8 @@ parent.$.colorbox.close();
 
 <?php }?>
 
+
+
 <?php echo '<script'; ?>
  type="text/javascript">
 $(".cancel").click(function(){
@@ -204,6 +168,16 @@ $(".cancel").click(function(){
 });
 
 $(document).ready(function(){
+		/* when the form submitted */
+	$('.formID').submit(function(){ 		
+		// Disable the 'Next' button to prevent multiple clicks		
+		$('input[type=submit]', this).attr('value', 'Processing...');		
+		$('input[type=submit]', this).attr('disabled', 'disabled');
+		// hide cancel button
+		$('button[type=button]', this).hide();
+		$('.cancelBtn').hide();
+		
+	});
 	// fetch the degree
 	$(".client_id").change(function(){ 
 		var client_name = $(this).val();
@@ -228,10 +202,6 @@ $(document).ready(function(){
 });
 <?php echo '</script'; ?>
 >	
-<!-- datatable (inbox,outbox) -->
-<?php echo '<script'; ?>
- src="lib_cthiring/datatables/jquery.dataTables.min.js"><?php echo '</script'; ?>
->                                                                                                                                                                             
 
 </body>
 </html><?php }

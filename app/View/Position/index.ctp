@@ -134,8 +134,11 @@
 										<th width="200"><?php echo $this->Paginator->sort('Client.client_name', 'Client', array('escape' => false, 'direction' => 'desc', 'rel' => 'tooltip', 'title' => 'Sort by Ascending or Descending'));?></th>
 										<th width="120"  style="text-align:center"><?php echo $this->Paginator->sort('no_job', 'Total Openings', array('escape' => false, 'direction' => 'desc', 'rel' => 'tooltip', 'title' => 'Sort by Ascending or Descending'));?></th>
 										<th width="150"><?php echo $this->Paginator->sort('team_member', 'Recruiters', array('escape' => false, 'direction' => 'desc', 'rel' => 'tooltip', 'title' => 'Sort by Ascending or Descending'));?></th>
+										
+										<?php if($this->request->params['pass'][0] != 'pending'):?>	
 										<th width="65"  style="text-align:center">CVs</th>
 										<th width="65"  style="text-align:center">Joined</th>
+										<?php endif; ?>
 										<th width="100"  style="text-align:center"><?php echo $this->Paginator->sort('status', 'Status', array('escape' => false, 'direction' => 'desc', 'rel' => 'tooltip', 'title' => 'Sort by Ascending or Descending'));?></th>
 										<th width="95"><?php echo $this->Paginator->sort('Creator.first_name', 'Created By', array('escape' => false, 'direction' => 'desc', 'rel' => 'tooltip', 'title' => 'Sort by Ascending or Descending'));?></th>
 										<th width="75"><?php echo $this->Paginator->sort('created_date', 'Created', array('escape' => false, 'direction' => 'desc', 'rel' => 'tooltip', 'title' => 'Sort by Ascending or Descending'));?></th>
@@ -167,8 +170,10 @@
 						
 						<td width=""><?php echo $req[0]['team_member'];?></td>
 						
+						<?php if($this->request->params['pass'][0] != 'pending'):?>	
 						<td width=""  style="text-align:center"><a  title="View CV Submitted"  href="<?php echo $this->webroot;?>resume/?spec=<?php echo $req['Position']['id'];?>" rel="tooltip"><?php echo $req[0]['cv_sent'];?></a>
 						<td width=""  style="text-align:center"><a title="View Joined Resumes"  href="<?php echo $this->webroot;?>resume/?status=10&spec=<?php echo $req['Position']['id'];?>"  rel="tooltip"><?php echo $this->Functions->get_total_joined($req[0]['joined'],$req[0]['req_resume_id']);?></a></td>
+						<?php endif; ?>
 						
 						<td width=""  style="text-align:center">
 						<?php if($req['Position']['is_approve'] == 'W' && $req['Position']['req_status_id'] == ''):?>
