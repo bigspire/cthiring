@@ -412,7 +412,7 @@
 										<option value="">From Month</option>
 										{html_options options=$exp_month} 
 										</select>
-										<select name="from_year_of_exp_#index#" rel="maxDrop_#index#" tabindex="2" class="minExpDrop inline_text span2">
+										<select name="from_year_of_exp_#index#" id="from_year_of_exp_#index#" rel="maxDrop_#index#" tabindex="2" class="minExpDrop inline_text span2">
 										<option value="">From Year</option>
 										{html_options options=$exp_yr} 
 										</select>
