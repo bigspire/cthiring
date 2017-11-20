@@ -65,10 +65,10 @@ if(!empty($_POST)){
 }
 
 // smarty drop down array for incentive type
-$smarty->assign('types', array('' => 'Select', '1' => 'Profile Shortlisting & Rewards', '2' => 'Position Closure'));
+$smarty->assign('types', array('' => 'Select', '1' => 'Profile Short-listing & Interviewing', '2' => 'Position Closure'));
 
 // smarty drop down array for status
-$smarty->assign('position_months', array('' => 'Month', '03' => 'Jan - Mar', '06' => 'Apr - Jun', '09' => 'Jul - Sep', '12' => 'Oct - Dec'));
+$smarty->assign('position_months', array('' => 'Month', '06' => 'Apr - Jun', '09' => 'Jul - Sep', '12' => 'Oct - Dec', '03' => 'Jan - Mar'));
 
 // smarty drop down array for status
 $smarty->assign('ps_months', array('' => 'Month', '01' => 'Jan', '02' => 'Feb', '03' => 'Mar', '04' => 'Apr', '05' => 'May', '06' => 'Jun', '07' => 'Jul'
@@ -76,7 +76,7 @@ $smarty->assign('ps_months', array('' => 'Month', '01' => 'Jan', '02' => 'Feb', 
 
 // smarty drop down array for no of times
 $years = array();
-for($i = 2017; $i <= 2050; $i++){
+for($i = date('Y'); $i <= 2017; $i++){
 	$years[$i] = $i;
 }
 $smarty->assign('years', $years);
