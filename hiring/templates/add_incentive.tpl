@@ -45,27 +45,31 @@
 								<label for="reg_city" generated="true" class="error">{$typeErr}</label>									
 							</td>	
 						</tr>
-						<tr class="tbl_row position_month">
+						<tr class="tbl_row pos_Validity">
 							<td width="120" class="tbl_column inline">Incentive Date <span class="f_req">*</span></td>
 							<td>																			
-								<select name="position_month" class="span6 input-medium pos_Validity" placeholder="" style="clear:left" id="position_month">
+								<select name="position_month" class="span3 pos_Validity" style="clear:left" id="position_month">
 								{html_options class="pos_Validity"  options=$position_months selected=$smarty.post.position_month}							
 								</select> 
-								<select name="year" class="span6 input-medium pos_Validity" style="clear:left;display:inline" id="year">
+								<select name="year" class="span3  pos_Validity" style="clear:left;display:inline" id="year">
 								<option value="">Year</option>
-								{html_options class="pos_Validity" options=$years selected=$smarty.post.year}							
+								{html_options  options=$years selected=$smarty.post.year}							
 								</select>																	
-								
-								<select name="ps_month" class="span6 input-medium short_Validity" style="clear:left" id="ps_month">
+								</td>
+								</tr>	
+								<tr class="tbl_row short_Validity">
+							<td width="120" class="tbl_column inline">Incentive Date <span class="f_req">*</span></td>
+								<td>
+								<select name="ps_month" class="span3 short_Validity" style="clear:left" id="ps_month">
 								{html_options class="short_Validity" options=$ps_months selected=$smarty.post.ps_month}							
 								</select> 
-								<select name="ps_year" class="span6 input-medium short_Validity" placeholder="" style="clear:left;display:inline" id="ps_year">
+								<select name="ps_year" class="span3 short_Validity" placeholder="" style="clear:left;display:inline" id="year">
 								<option value="">Year</option>
-								{html_options class="short_Validity" options=$years selected=$smarty.post.ps_year}							
+								{html_options options=$years selected=$smarty.post.ps_year}							
 								</select>									
 								<label for="reg_city" generated="true" class="error">{$dateErr}</label>									
 							</td>
-						</tr>																																			
+						</tr>								
 				</tbody>
 			</table>
 		</div>
