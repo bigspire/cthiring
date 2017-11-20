@@ -64,8 +64,15 @@ if(!empty($_POST)){
 	}
 }
 
+// smarty drop down array for incentive type
+$smarty->assign('types', array('' => 'Select', '1' => 'Profile Shortlisting & Rewards', '2' => 'Position Closure'));
+
 // smarty drop down array for status
-$smarty->assign('months', array('' => 'Month', '03' => 'Jan - Mar', '06' => 'Apr - Jun', '09' => 'Jul - Sep', '12' => 'Oct - Dec'));
+$smarty->assign('position_months', array('' => 'Month', '03' => 'Jan - Mar', '06' => 'Apr - Jun', '09' => 'Jul - Sep', '12' => 'Oct - Dec'));
+
+// smarty drop down array for status
+$smarty->assign('ps_months', array('' => 'Month', '01' => 'Jan', '02' => 'Feb', '03' => 'Mar', '04' => 'Apr', '05' => 'May', '06' => 'Jun', '07' => 'Jul'
+, '08' => 'Aug', '09' => 'Sep', '10' => 'Oct', '11' => 'Nov', '12' => 'Dec'));
 
 // smarty drop down array for no of times
 $years = array();
