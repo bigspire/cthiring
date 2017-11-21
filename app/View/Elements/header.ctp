@@ -279,6 +279,10 @@
                                                 <li><a href="<?php echo $this->webroot;?>hiring/designation.php">Designation <!--span class="label-bub label-info white">102</span--></a></li>
 												<?php endif; ?>	
 												
+												<?php if($functional_area == '1'):?> 
+                                                <li><a href="<?php echo $this->webroot;?>hiring/functional_area.php">Functional Area <!--span class="label-bub label-info white">102</span--></a></li>
+												<?php endif; ?>	
+												
 										   <?php if($manage_grade == '1'):?> 
                                                 <li><a href="<?php echo $this->webroot;?>hiring/grade.php">Grade <!--span class="label-bub label-info white">102</span--></a></li>
 												<?php endif; ?>	

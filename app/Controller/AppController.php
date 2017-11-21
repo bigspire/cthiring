@@ -284,6 +284,9 @@ class AppController extends Controller {
 					case 42:					
 					$this->set('todays_plan', 1);
 					break;
+					case 43:					
+					$this->set('functional_area', 1);
+					break;
 				}				
 			}
 		}
