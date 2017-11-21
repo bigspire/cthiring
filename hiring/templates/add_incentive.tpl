@@ -40,7 +40,7 @@
 							<td width="120" class="tbl_column inline">Incentive Type <span class="f_req">*</span></td>
 							<td>																			
 								<select name="type" class="span6 input-medium change_incentive_type" placeholder="" style="clear:left" id="month">
-								{html_options class="change_incentive_type" options=$types selected=$smarty.post.month}							
+								{html_options class="change_incentive_type" options=$types selected=$smarty.post.type}							
 								</select>			
 								<label for="reg_city" generated="true" class="error">{$typeErr}</label>									
 							</td>	
@@ -54,7 +54,9 @@
 								<select name="year" class="span3  pos_Validity" style="clear:left;display:inline" id="year">
 								<option value="">Year</option>
 								{html_options  options=$years selected=$smarty.post.year}							
-								</select>																	
+								</select>	
+								<label for="reg_city" generated="true" class="error pos_Validity">{$position_monthErr}</label>
+								<label for="reg_city" generated="true" class="error pos_Validity">{$yearErr}</label>								
 								</td>
 								</tr>	
 								<tr class="tbl_row short_Validity">
@@ -67,7 +69,8 @@
 								<option value="">Year</option>
 								{html_options options=$years selected=$smarty.post.ps_year}							
 								</select>									
-								<label for="reg_city" generated="true" class="error">{$dateErr}</label>									
+								<label for="reg_city" generated="true" class="error short_Validity">{$ps_monthErr}</label>	
+								<label for="reg_city" generated="true" class="error short_Validity">{$ps_yearErr}</label>									
 							</td>
 						</tr>								
 				</tbody>
