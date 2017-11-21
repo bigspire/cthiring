@@ -799,6 +799,25 @@ class FunctionsHelper extends AppHelper {
 		return $value;
 	}
 	
+	/* function to get the session */
+	public function get_session($title){
+		switch($title){
+			case 'F':
+			$value = 'Forenoon';
+			break;
+			case 'A':
+			$value = 'Afternoon';			
+			break;	
+			case 'D':
+			$value = 'Full Day';			
+			break;			
+		}
+		return $value;
+	}
+	
+	
+	
+	
 	   /* function to find the min and max exp */
    public function show_exp_details($value){
 		$exp_val = explode('.', $value);

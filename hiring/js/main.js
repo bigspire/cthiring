@@ -103,6 +103,35 @@ $(document).ready(function() {
 		});
 	});
 	
+	/* function to show the alert message for single record delete */   
+	$(".delConfirm").click( function(e) {
+		e.preventDefault();
+		var rel = $(this).attr('rel');
+		smoke.confirm("Are you sure you want to delete?",function(e){
+		if (e){
+			// location.href = rel;
+			$('.srchForm').attr('action', rel);
+			$('.srchForm').submit(); 
+		}else{
+			return false;
+		}
+		}, {
+			reverseButtons: true,
+				ok: "Yes",
+				cancel: "No"
+		});
+				
+				
+			/*
+			jConfirm('Are you sure you want to delete?', 'Confirmation!', function(r) {
+			if(r){	
+				$('.srchForm').attr('action', $(this).attr('rel'));
+				$('.srchForm').submit(); 
+			}
+		});
+		*/
+	});
+	
 	/* function to show the alert message for cancel */   
 	$(".Cancel").click( function(s) {
 		s.preventDefault();
@@ -738,6 +767,22 @@ $(document).ready(function() {
 			});
 		}
 	});
+	
+	/* get position of client */
+	$('.load_client_position').change(function(){			
+		id = $(this).val();			
+		$('.load_position').empty();
+		$('.load_position').append('<option>Loading...</option>');
+		$.ajax({
+			 url: $('#webroot').val()+'get_position/?id='+id	
+		}).done(function( html ) {	
+			$('.load_position').empty();
+			$('.load_position').append(html);
+			// $(".bdDist").trigger("chosen:updated");
+		});	
+		
+	});
+	
 	
 	// retain the account holder
 		if($('.load_ach').length > 0){

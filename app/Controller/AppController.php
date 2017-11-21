@@ -281,6 +281,9 @@ class AppController extends Controller {
 					case 41:					
 					$this->set('manage_desig', 1);
 					break;
+					case 42:					
+					$this->set('todays_plan', 1);
+					break;
 				}				
 			}
 		}

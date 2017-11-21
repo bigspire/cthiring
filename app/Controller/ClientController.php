@@ -208,7 +208,8 @@ class ClientController extends AppController {
 				array('table' => 'req_team',
 						'alias' => 'ReqTeam',					
 						'type' => 'LEFT',
-						'conditions' => array('`ReqTeam`.`requirements_id` = `Position`.`id`')
+						'conditions' => array('`ReqTeam`.`requirements_id` = `Position`.`id`',
+						'ReqTeam.is_approve' => 'A')
 				),
 				array('table' => 'client_status',
 						'alias' => 'ClientStatus',					
