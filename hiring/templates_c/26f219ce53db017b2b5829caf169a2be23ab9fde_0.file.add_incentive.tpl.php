@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-11-20 15:40:08
+/* Smarty version 3.1.29, created on 2017-11-20 16:27:05
   from "C:\xampp\htdocs\ctsvn\cthiring\hiring\templates\add_incentive.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5a12aa00446fa4_89062021',
+  'unifunc' => 'content_5a12b501e6d3f9_15717949',
   'file_dependency' => 
   array (
     '26f219ce53db017b2b5829caf169a2be23ab9fde' => 
     array (
       0 => 'C:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\templates\\add_incentive.tpl',
-      1 => 1511171598,
+      1 => 1511175204,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5a12aa00446fa4_89062021 ($_smarty_tpl) {
+function content_5a12b501e6d3f9_15717949 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -74,32 +74,36 @@ home"><i class="icon-home"></i></a>
 </label>									
 							</td>	
 						</tr>
-						<tr class="tbl_row position_month">
+						<tr class="tbl_row pos_Validity">
 							<td width="120" class="tbl_column inline">Incentive Date <span class="f_req">*</span></td>
 							<td>																			
-								<select name="position_month" class="span6 input-medium pos_Validity" placeholder="" style="clear:left" id="position_month">
+								<select name="position_month" class="span3 pos_Validity" style="clear:left" id="position_month">
 								<?php echo smarty_function_html_options(array('class'=>"pos_Validity",'options'=>$_smarty_tpl->tpl_vars['position_months']->value,'selected'=>$_POST['position_month']),$_smarty_tpl);?>
 							
 								</select> 
-								<select name="year" class="span6 input-medium pos_Validity" style="clear:left;display:inline" id="year">
+								<select name="year" class="span3  pos_Validity" style="clear:left;display:inline" id="year">
 								<option value="">Year</option>
-								<?php echo smarty_function_html_options(array('class'=>"pos_Validity",'options'=>$_smarty_tpl->tpl_vars['years']->value,'selected'=>$_POST['year']),$_smarty_tpl);?>
+								<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['years']->value,'selected'=>$_POST['year']),$_smarty_tpl);?>
 							
 								</select>																	
-								
-								<select name="ps_month" class="span6 input-medium short_Validity" style="clear:left" id="ps_month">
+								</td>
+								</tr>	
+								<tr class="tbl_row short_Validity">
+							<td width="120" class="tbl_column inline">Incentive Date <span class="f_req">*</span></td>
+								<td>
+								<select name="ps_month" class="span3 short_Validity" style="clear:left" id="ps_month">
 								<?php echo smarty_function_html_options(array('class'=>"short_Validity",'options'=>$_smarty_tpl->tpl_vars['ps_months']->value,'selected'=>$_POST['ps_month']),$_smarty_tpl);?>
 							
 								</select> 
-								<select name="ps_year" class="span6 input-medium short_Validity" placeholder="" style="clear:left;display:inline" id="ps_year">
+								<select name="ps_year" class="span3 short_Validity" placeholder="" style="clear:left;display:inline" id="year">
 								<option value="">Year</option>
-								<?php echo smarty_function_html_options(array('class'=>"short_Validity",'options'=>$_smarty_tpl->tpl_vars['years']->value,'selected'=>$_POST['ps_year']),$_smarty_tpl);?>
+								<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['years']->value,'selected'=>$_POST['ps_year']),$_smarty_tpl);?>
 							
 								</select>									
 								<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['dateErr']->value;?>
 </label>									
 							</td>
-						</tr>																																			
+						</tr>								
 				</tbody>
 			</table>
 		</div>

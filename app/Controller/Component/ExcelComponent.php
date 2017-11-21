@@ -249,6 +249,20 @@ class ExcelComponent extends Component {
 					$j= 0;			
 				}			
 			
+		}else if($template == 'tasks'){
+			$i = 2;
+			foreach($this->data as $key => $value){
+					$this->sheet->setCellValueByColumnAndRow($j++,$i,$this->format_date($value['TaskPlan']['task_date']));
+					$this->sheet->setCellValueByColumnAndRow($j++,$i,ucwords($this->get_session($value['TaskPlan']['session'])));
+					$this->sheet->setCellValueByColumnAndRow($j++,$i,ucwords($value['Position']['job_title']));
+					$this->sheet->setCellValueByColumnAndRow($j++,$i,ucwords($value['Client']['client_name']));
+					$this->sheet->setCellValueByColumnAndRow($j++,$i,$value['TaskPlan']['ctc']);				
+					$this->sheet->setCellValueByColumnAndRow($j++,$i,$this->format_date($value['TaskPlan']['created_date']));
+					$this->sheet->setCellValueByColumnAndRow($j++,$i,$this->format_date($value['TaskPlan']['modified_date']));
+					$i++;
+					$j= 0;			
+				}			
+			
 		}	
 	}
 	
@@ -295,6 +309,23 @@ class ExcelComponent extends Component {
 			return date('d-M-Y',mktime($date[3],$date[4],$date[5],$date[1],$date[2],$date[0]));
 		}
 	}
+	
+	/* function to get the session */
+	public function get_session($title){
+		switch($title){
+			case 'F':
+			$value = 'Forenoon';
+			break;
+			case 'A':
+			$value = 'Afternoon';			
+			break;	
+			case 'D':
+			$value = 'Full Day';			
+			break;			
+		}
+		return $value;
+	}
+	
 	
 	/* function to format the team members */
 	public function format_team_member($data){
