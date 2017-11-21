@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-11-20 16:13:11
+/* Smarty version 3.1.29, created on 2017-11-20 16:33:23
   from "C:\xampp\htdocs\2017\ctsvn\cthiring\hiring\templates\add_incentive.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5a12b1bf02b5e0_22045319',
+  'unifunc' => 'content_5a12b67bc59fe1_17267385',
   'file_dependency' => 
   array (
     '06a9c3df5e2d4c90178667431e4e0f90fb67ba3d' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\templates\\add_incentive.tpl',
-      1 => 1511174586,
+      1 => 1511175800,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5a12b1bf02b5e0_22045319 ($_smarty_tpl) {
+function content_5a12b67bc59fe1_17267385 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -67,7 +67,7 @@ home"><i class="icon-home"></i></a>
 							<td width="120" class="tbl_column inline">Incentive Type <span class="f_req">*</span></td>
 							<td>																			
 								<select name="type" class="span6 input-medium change_incentive_type" placeholder="" style="clear:left" id="month">
-								<?php echo smarty_function_html_options(array('class'=>"change_incentive_type",'options'=>$_smarty_tpl->tpl_vars['types']->value,'selected'=>$_POST['month']),$_smarty_tpl);?>
+								<?php echo smarty_function_html_options(array('class'=>"change_incentive_type",'options'=>$_smarty_tpl->tpl_vars['types']->value,'selected'=>$_POST['type']),$_smarty_tpl);?>
 							
 								</select>			
 								<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['typeErr']->value;?>
@@ -85,7 +85,11 @@ home"><i class="icon-home"></i></a>
 								<option value="">Year</option>
 								<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['years']->value,'selected'=>$_POST['year']),$_smarty_tpl);?>
 							
-								</select>																	
+								</select>	
+								<label for="reg_city" generated="true" class="error pos_Validity"><?php echo $_smarty_tpl->tpl_vars['position_monthErr']->value;?>
+</label>
+								<label for="reg_city" generated="true" class="error pos_Validity"><?php echo $_smarty_tpl->tpl_vars['yearErr']->value;?>
+</label>								
 								</td>
 								</tr>	
 								<tr class="tbl_row short_Validity">
@@ -100,7 +104,9 @@ home"><i class="icon-home"></i></a>
 								<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['years']->value,'selected'=>$_POST['ps_year']),$_smarty_tpl);?>
 							
 								</select>									
-								<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['dateErr']->value;?>
+								<label for="reg_city" generated="true" class="error short_Validity"><?php echo $_smarty_tpl->tpl_vars['ps_monthErr']->value;?>
+</label>	
+								<label for="reg_city" generated="true" class="error short_Validity"><?php echo $_smarty_tpl->tpl_vars['ps_yearErr']->value;?>
 </label>									
 							</td>
 						</tr>								

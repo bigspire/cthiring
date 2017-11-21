@@ -196,6 +196,8 @@ class fun{
 		return $st;
 	}
 	
+	
+	
 	// function to validate string
 	public function upper_case_string($emp_name){
 		$let = ucwords($emp_name);

@@ -56,6 +56,19 @@
                             
 							<a class="brand" href="{$smarty.const.webroot}home">
 							 Manage Hiring </a>
+							 {if $todays_plan == '1'}
+										   <li class="dropdown <?php echo $taskplan_menu ?> <?php echo $leave_menu ?>">
+                                            <a  data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icon-list-alt icon-white"></i> Today's Plan
+												
+											<b class="caret"></b></a>
+                                             <ul class="dropdown-menu">
+												<li><a href="<?php echo $this->webroot;?>taskplan/add/">Add Task Plan</a></li>
+                                                <li><a href="<?php echo $this->webroot;?>taskplan/">Search Task Plan</a></li>
+												<li><a href="<?php echo $this->webroot;?>leave/add/">Add Leave</a></li>
+											    <li><a href="<?php echo $this->webroot;?>leave/">Search Leaves</a></li>
+                                            </ul>
+                                        </li>
+								{/if}
                             <ul class="nav user_menu pull-right">
                          
 						 <!--li class="divider-vertical hidden-phone hidden-tablet"></li>    

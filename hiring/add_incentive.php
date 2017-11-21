@@ -21,10 +21,31 @@ $module_access = $fun->check_role_access('13',$modules);
 $smarty->assign('module',$module_access);
 
 if(!empty($_POST)){	
+	// error message validation
+	if(!empty($_POST['type'])){
+		if(empty($_POST['position_month'])){
+			$smarty->assign($position_monthErr,'Please select the incentive month');
+			$test = 'error';
+		}else if(empty($_POST['year'])){
+			$smarty->assign($yearErr,'Please select the incentive year');
+			$test = 'error';
+		}else if(empty($_POST['ps_month'])){
+			$smarty->assign($ps_monthErr,'Please select the incentive month');
+			$test = 'error';
+		}else if(empty($_POST['ps_year'])){
+			$smarty->assign($ps_yearErr,'Please select the incentive year');
+			$test = 'error';
+		}
+	}else{
+		$smarty->assign($typeErr,'Please select the incentive type');
+		$test = 'error';
+	}
+	
+	/*
 	// array for printing correct field name in error message
-	$fieldtype = array('1', '1');
-	$actualfield = array('quarter (Month & Year)', 'quarter (Month & Year)');
-   $field = array('month' => 'quarterErr', 'year' => 'quarterErr');
+	$fieldtype = array('1', '1','1', '1','1');
+	$actualfield = array('incentive type ', 'incentive month','incentive year','incentive month','incentive year');
+	$field = array('type' => 'typeErr', 'position_month' => 'position_monthErr','year' => 'yearErr','ps_month' => 'ps_monthErr', 'ps_year' => 'ps_yearErr');
 	$j = 0;
 	foreach ($field as $field => $er_var){ 
 		if($_POST[$field] == ''){
@@ -38,12 +59,33 @@ if(!empty($_POST)){
 		}
 			$j++;
 	}
+	*/
 	// assigning the date
 	$date =  $fun->current_date(); 
+
+	$incentive_month = $_POST['position_month'] ? $_POST['position_month'] : $_GET['ps_month'];
+	$incentive_year = $_POST['year'] ? $_POST['year'] : $_GET['ps_year'];
+	
+	// function to validate incentive date
+	if($incentive_month == '6'){
+		$start_month = '04';
+		$end_month = '06';
+	}else if($inc_date == '9'){	
+	 	$start_month = '07';
+		$end_month = '09';
+	}else if($inc_date == '12'){	
+	 	$start_month = '10';
+		$end_month = '12';
+	}else if($inc_date == '3'){	
+	 	$start_month = '01';
+		$end_month = '03';
+	}
 	
 	if(empty($test)){
+		
 		// query to insert grade. 
-		$query = "CALL add_incentive('".$mysql->real_escape_str($_POST['grade_name'])."', '".$date."','".$mysql->real_escape_str($_POST['status'])."')";
+		$query = "CALL get_incentive_details('".$mysql->real_escape_str($incentive_year.'-'.$start_month)."',
+		'".$mysql->real_escape_str($incentive_year.'-'.$end_month)."')";
 		// Calling the function that makes the insert
 		try{
 			// calling mysql exe_query function
