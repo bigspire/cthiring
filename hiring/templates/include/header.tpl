@@ -56,19 +56,7 @@
                             
 							<a class="brand" href="{$smarty.const.webroot}home">
 							 Manage Hiring </a>
-							 {if $todays_plan == '1'}
-										   <li class="dropdown <?php echo $taskplan_menu ?> <?php echo $leave_menu ?>">
-                                            <a  data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icon-list-alt icon-white"></i> Today's Plan
-												
-											<b class="caret"></b></a>
-                                             <ul class="dropdown-menu">
-												<li><a href="<?php echo $this->webroot;?>taskplan/add/">Add Task Plan</a></li>
-                                                <li><a href="<?php echo $this->webroot;?>taskplan/">Search Task Plan</a></li>
-												<li><a href="<?php echo $this->webroot;?>leave/add/">Add Leave</a></li>
-											    <li><a href="<?php echo $this->webroot;?>leave/">Search Leaves</a></li>
-                                            </ul>
-                                        </li>
-								{/if}
+							 
                             <ul class="nav user_menu pull-right">
                          
 						 <!--li class="divider-vertical hidden-phone hidden-tablet"></li>    
@@ -132,6 +120,19 @@
                                               
 											</ul-->
                                         </li>
+										
+										
+										{if $module['todays_plan'] eq '1'}
+											<li class="{$col_count} dropdown <?php echo $fun->set_menu_active(array('todays_plan','leave_menu'));?>">
+                                          	 <a data-toggle="dropdown" class="dropdown-toggle " href="#"><i class="icon-list-alt icon-white"></i> Today's Plan<b class="caret"></b></a>
+                                             <ul class="dropdown-menu">
+												<li><a href="{webroot}/taskplan/add/">Add Task Plan</a></li>
+                                                <li><a href="{webroot}/taskplan/">Search Task Plan</a></li>
+												<li><a href="{webroot}/leave/add/">Add Leave</a></li>
+											    <li><a href="{webroot}/leave/">Search Leaves</a></li>
+                                            </ul>
+                                        </li>
+										{/if}
 										
 										{if $approve_client_count neq '0'}
 											{assign col_count active2}
@@ -350,7 +351,7 @@
 														<li><a href="base_target.php">Base Target</a></li>
 														<li><a href="eligibility.php">Eligibility</a></li>
 														<li><a href="sharing_criteria.php">Sharing Criteria</a></li>	
-														<li><a href="holidays.php">Holidays</a></li>
+														<!--li><a href="holidays.php">Holidays</a></li-->
 														<li><a href="salary.php">Salary</a></li>
 														<li><a href="emp_leaves.php">Employee Leaves</a></li>
 														<!--li><a href="bonus_share.php">Bonus Share</a></li-->														

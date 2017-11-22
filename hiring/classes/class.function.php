@@ -128,8 +128,11 @@ class fun{
 					case 41:					
 					$mod['manage_contact_branch'] = 1;
 					break;
-					case 42:					
+					case 43:					
 					$mod['manage_functional_area'] = 1;
+					break;
+					case 42:					
+					$mod['todays_plan'] = 1;
 					break;
 				}				
 			}

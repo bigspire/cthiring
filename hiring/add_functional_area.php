@@ -21,7 +21,7 @@ include('classes/class.mailer.php');
 include('classes/class.content.php');
 
 // role based validation
-$module_access = $fun->check_role_access('42',$modules);
+$module_access = $fun->check_role_access('43',$modules);
 $smarty->assign('module',$module_access);
 
 if(!empty($_POST)){	
