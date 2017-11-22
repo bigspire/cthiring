@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-11-21 17:49:32
+/* Smarty version 3.1.29, created on 2017-11-22 12:30:50
   from "C:\xampp\htdocs\2017\ctsvn\cthiring\hiring\templates\include\header.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5a1419d41abfc1_97681370',
+  'unifunc' => 'content_5a1520a2048a68_11741024',
   'file_dependency' => 
   array (
     '418ce04694c91a3f6ebee8f2a2efa42e5260b14c' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\templates\\include\\header.tpl',
-      1 => 1511265328,
+      1 => 1511333998,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_5a1419d41abfc1_97681370 ($_smarty_tpl) {
+function content_5a1520a2048a68_11741024 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -82,19 +82,7 @@ function content_5a1419d41abfc1_97681370 ($_smarty_tpl) {
 							<a class="brand" href="<?php echo @constant('webroot');?>
 home">
 							 Manage Hiring </a>
-							 <?php if ($_smarty_tpl->tpl_vars['todays_plan']->value == '1') {?>
-										   <li class="dropdown <?php echo '<?php ';?>echo $taskplan_menu <?php echo '?>';?> <?php echo '<?php ';?>echo $leave_menu <?php echo '?>';?>">
-                                            <a  data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icon-list-alt icon-white"></i> Today's Plan
-												
-											<b class="caret"></b></a>
-                                             <ul class="dropdown-menu">
-												<li><a href="<?php echo '<?php ';?>echo $this->webroot;<?php echo '?>';?>taskplan/add/">Add Task Plan</a></li>
-                                                <li><a href="<?php echo '<?php ';?>echo $this->webroot;<?php echo '?>';?>taskplan/">Search Task Plan</a></li>
-												<li><a href="<?php echo '<?php ';?>echo $this->webroot;<?php echo '?>';?>leave/add/">Add Leave</a></li>
-											    <li><a href="<?php echo '<?php ';?>echo $this->webroot;<?php echo '?>';?>leave/">Search Leaves</a></li>
-                                            </ul>
-                                        </li>
-								<?php }?>
+							 
                             <ul class="nav user_menu pull-right">
                          
 						 <!--li class="divider-vertical hidden-phone hidden-tablet"></li>    
@@ -161,6 +149,24 @@ home/" class=""><i class="icon-file icon-white"></i> Dashboard </a>
                                               
 											</ul-->
                                         </li>
+										
+										
+										<?php if ($_smarty_tpl->tpl_vars['module']->value['todays_plan'] == '1') {?>
+											<li class="<?php echo $_smarty_tpl->tpl_vars['col_count']->value;?>
+ dropdown <?php echo '<?php ';?>echo $fun->set_menu_active(array('todays_plan','leave_menu'));<?php echo '?>';?>">
+                                          	 <a data-toggle="dropdown" class="dropdown-toggle " href="#"><i class="icon-list-alt icon-white"></i> Today's Plan<b class="caret"></b></a>
+                                             <ul class="dropdown-menu">
+												<li><a href="<?php echo webroot;?>
+/taskplan/add/">Add Task Plan</a></li>
+                                                <li><a href="<?php echo webroot;?>
+/taskplan/">Search Task Plan</a></li>
+												<li><a href="<?php echo webroot;?>
+/leave/add/">Add Leave</a></li>
+											    <li><a href="<?php echo webroot;?>
+/leave/">Search Leaves</a></li>
+                                            </ul>
+                                        </li>
+										<?php }?>
 										
 										<?php if ($_smarty_tpl->tpl_vars['approve_client_count']->value != '0') {?>
 											<?php $_smarty_tpl->tpl_vars['col_count'] = new Smarty_Variable('active2', null);
