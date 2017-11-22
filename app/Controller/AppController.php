@@ -280,12 +280,25 @@ class AppController extends Controller {
 					break;
 					case 41:					
 					$this->set('manage_desig', 1);
-					break;
-					case 42:					
-					$this->set('todays_plan', 1);
-					break;
+					break;					
 					case 43:					
 					$this->set('functional_area', 1);
+					break;
+					
+					case 45:					
+					$this->set('create_leave', 1);
+					break;
+					case 46:					
+					$this->set('approve_leave', 1);
+					break;
+					case 47:					
+					$this->set('view_leave', 1);
+					break;
+					case 48:					
+					$this->set('create_task', 1);
+					break;
+					case 49:					
+					$this->set('view_task', 1);
 					break;
 				}				
 			}

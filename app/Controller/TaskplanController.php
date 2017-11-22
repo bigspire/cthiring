@@ -135,6 +135,8 @@ class TaskplanController extends AppController {
 	
 	/* function to add the task plan */
 	public function add(){
+		$this->check_role_access(48);
+
 		// set the page title		
 		$this->set('title_for_layout', 'Create Task - Task Plan - Manage Hiring');	
 		$this->set('session', array('F' => 'Forenoon','A' => 'Afternoon', 'D' => 'Full Day'));
@@ -371,7 +373,7 @@ class TaskplanController extends AppController {
 	// check the role permissions
 	public function beforeFilter(){ 
 		$this->check_session();
-		$this->check_role_access(42);
+		$this->check_role_access(49);
 		
 	}
 }

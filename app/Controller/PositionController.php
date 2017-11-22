@@ -398,8 +398,7 @@ class PositionController extends AppController {
 		$limit = $exist ? $exist : 0;
 		if($count > $limit){
 			$this->invalid_attempt();
-		}
-		
+		}	
 	}
 	
 	/* function to save the JD */

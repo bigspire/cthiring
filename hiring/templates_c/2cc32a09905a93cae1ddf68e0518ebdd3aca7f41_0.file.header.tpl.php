@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-11-14 16:53:32
+/* Smarty version 3.1.29, created on 2017-11-22 18:14:51
   from "C:\xampp\htdocs\ctsvn\cthiring\hiring\templates\include\header.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5a0ad234114f25_26934065',
+  'unifunc' => 'content_5a15714383eaa1_45057197',
   'file_dependency' => 
   array (
     '2cc32a09905a93cae1ddf68e0518ebdd3aca7f41' => 
     array (
       0 => 'C:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\templates\\include\\header.tpl',
-      1 => 1510658601,
+      1 => 1511266380,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_5a0ad234114f25_26934065 ($_smarty_tpl) {
+function content_5a15714383eaa1_45057197 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -82,6 +82,19 @@ function content_5a0ad234114f25_26934065 ($_smarty_tpl) {
 							<a class="brand" href="<?php echo @constant('webroot');?>
 home">
 							 Manage Hiring </a>
+							 <?php if ($_smarty_tpl->tpl_vars['todays_plan']->value == '1') {?>
+										   <li class="dropdown <?php echo '<?php ';?>echo $taskplan_menu <?php echo '?>';?> <?php echo '<?php ';?>echo $leave_menu <?php echo '?>';?>">
+                                            <a  data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icon-list-alt icon-white"></i> Today's Plan
+												
+											<b class="caret"></b></a>
+                                             <ul class="dropdown-menu">
+												<li><a href="<?php echo '<?php ';?>echo $this->webroot;<?php echo '?>';?>taskplan/add/">Add Task Plan</a></li>
+                                                <li><a href="<?php echo '<?php ';?>echo $this->webroot;<?php echo '?>';?>taskplan/">Search Task Plan</a></li>
+												<li><a href="<?php echo '<?php ';?>echo $this->webroot;<?php echo '?>';?>leave/add/">Add Leave</a></li>
+											    <li><a href="<?php echo '<?php ';?>echo $this->webroot;<?php echo '?>';?>leave/">Search Leaves</a></li>
+                                            </ul>
+                                        </li>
+								<?php }?>
                             <ul class="nav user_menu pull-right">
                          
 						 <!--li class="divider-vertical hidden-phone hidden-tablet"></li>    

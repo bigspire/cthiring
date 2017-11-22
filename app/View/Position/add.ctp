@@ -331,7 +331,7 @@
 <?php echo $this->Form->input('end_date', array('div'=> false,'type' => 'text', 'label' => false, 'class' => 'span4 inline_text datepick',  'required' => false, 'placeholder' => 'Closure Date',
 				'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 	
 				
-		<input type="hidden" id="start_date" name="start_date" value="<?php echo date('d/m/Y', strtotime('-2 days'));?>">
+		<input type="hidden" id="start_date" name="start_date" value="<?php echo date('d/m/Y');?>">
 
 						</span>	
 						</span>	
