@@ -351,7 +351,7 @@
 														<li><a href="base_target.php">Base Target</a></li>
 														<li><a href="eligibility.php">Eligibility</a></li>
 														<li><a href="sharing_criteria.php">Sharing Criteria</a></li>	
-														<li><a href="holidays.php">Holidays</a></li>
+														<!--li><a href="holidays.php">Holidays</a></li-->
 														<li><a href="salary.php">Salary</a></li>
 														<li><a href="emp_leaves.php">Employee Leaves</a></li>
 														<!--li><a href="bonus_share.php">Bonus Share</a></li-->														
