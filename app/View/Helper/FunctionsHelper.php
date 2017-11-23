@@ -816,6 +816,30 @@ class FunctionsHelper extends AppHelper {
 	}
 	
 	
+	/* function to get leave types */
+	public function get_leave_type($type){
+		switch($type){
+			case 'NBL':
+			$value = 'Need Based Leave';
+			break;
+			case 'PL':
+			$value = 'Privileged Leave';			
+			break;	
+			case 'ML':
+			$value = 'Maternity Leave';			
+			break;	
+			case 'PA':
+			$value = 'Paternity Leave';			
+			break;
+			case 'LOP':
+			$value = 'Loss of Pay';			
+			break;	
+			case 'OD':
+			$value = 'On Duty of Pay';			
+			break;				
+		}
+		return $value;
+	}
 	
 	
 	   /* function to find the min and max exp */

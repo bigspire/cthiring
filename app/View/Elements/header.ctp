@@ -70,18 +70,36 @@
 											</ul-->
                                         </li>
 										
-										<?php if($todays_plan == '1'):?> 
+										<?php if($create_task == '1' || $view_task == '1'):?> 
 										   <li class="dropdown <?php echo $taskplan_menu ?> <?php echo $leave_menu ?>">
                                             <a  data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icon-list-alt icon-white"></i> Today's Plan
 												
 											<b class="caret"></b></a>
                                              <ul class="dropdown-menu">
-												<li><a href="<?php echo $this->webroot;?>taskplan/add/">Add Task Plan</a></li>
-                                                <li><a href="<?php echo $this->webroot;?>taskplan/">Search Task Plan</a></li>
-												<!--li><a href="<?php echo $this->webroot;?>leave/add/">Add Leave</a></li>
-											    <li><a href="<?php echo $this->webroot;?>leave/">Search Leaves</a></li-->
-												<li><a href="#">Add Leave</a></li>
-											    <li><a href="#">Search Leaves</a></li>
+											
+											<?php if($create_task == '1'):?> 											
+											<li><a href="<?php echo $this->webroot;?>taskplan/add/">Add Task</a></li>															
+											<?php endif; ?>	
+
+												<?php if($view_task == '1'):?> 								
+                                                <li><a href="<?php echo $this->webroot;?>taskplan/">Search Task</a></li>
+												
+												<?php endif; ?>
+												
+												
+												<?php if($create_leave == '1'):?> 
+												<li><a href="<?php echo $this->webroot;?>leave/add/">Add Leave</a></li>
+												<?php endif; ?>
+												
+													<?php if($view_leave == '1'):?> 
+											    <li><a href="<?php echo $this->webroot;?>leave/">Search Leave</a></li>
+												<?php endif; ?>
+												
+												<?php if($approve_leave == '1'):?> 
+											    <li><a href="<?php echo $this->webroot;?>leave/index/pending/">Approve Leave</a></li>
+												<?php endif; ?>
+												
+												
                                             </ul>
                                         </li>
 										<?php endif; ?>
@@ -309,8 +327,6 @@
 														<li><a href="<?php echo $this->webroot;?>hiring/base_target.php">Base Target</a></li>
 														<li><a href="<?php echo $this->webroot;?>hiring/eligibility.php">Eligibility</a></li>
 														<li><a href="<?php echo $this->webroot;?>hiring/sharing_criteria.php">Sharing Criteria</a></li>	
-														<!--li><a href="<?php echo $this->webroot;?>hiring/bonus_share.php">Bonus Share</a></li-->		
-														<li><a href="<?php echo $this->webroot;?>hiring/holidays.php">Holidays</a></li>
 														<li><a href="<?php echo $this->webroot;?>hiring/salary.php">Salary</a></li>
 														<li><a href="<?php echo $this->webroot;?>hiring/emp_leaves.php">Employee Leaves</a></li>														
 													</ul>
