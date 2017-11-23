@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-11-20 16:33:23
+/* Smarty version 3.1.29, created on 2017-11-23 15:48:28
   from "C:\xampp\htdocs\2017\ctsvn\cthiring\hiring\templates\add_incentive.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5a12b67bc59fe1_17267385',
+  'unifunc' => 'content_5a16a074584866_98565547',
   'file_dependency' => 
   array (
     '06a9c3df5e2d4c90178667431e4e0f90fb67ba3d' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\templates\\add_incentive.tpl',
-      1 => 1511175800,
+      1 => 1511432306,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5a12b67bc59fe1_17267385 ($_smarty_tpl) {
+function content_5a16a074584866_98565547 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -144,19 +144,19 @@ home"><i class="icon-home"></i></a>
 $(document).ready(function(){
 // function to change the incentive type
 	$('.change_incentive_type').change(function(){ 
-		if($(this).val() == '1' || $(this).val() == ''){
+		if($(this).val() == '2'){
 			$('.pos_Validity').show();
 			$('.short_Validity').hide();
-		}else if($(this).val() == '2'){
+		}else if($(this).val() == '1'  || $(this).val() == ''){
 			$('.pos_Validity').hide();
 			$('.short_Validity').show();
 		}
 	});
 if($('.change_incentive_type').length > 0){
-		if($('.change_incentive_type:selected').val() == '1' || $('.change_incentive_type:selected').val() == ''){
+		if($('.change_incentive_type:selected').val() == '2'){
 			$('.pos_Validity').show();
 			$('.short_Validity').hide();
-		}else if($('.change_incentive_type:selected').val() == '2'){
+		}else if($('.change_incentive_type:selected').val() == '1'  || $('.change_incentive_type:selected').val() == ''){
 			$('.pos_Validity').hide();
 			$('.short_Validity').show();
 		}

@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-11-22 15:14:46
+/* Smarty version 3.1.29, created on 2017-11-23 12:47:13
   from "C:\xampp\htdocs\2017\ctsvn\cthiring\hiring\templates\include\header.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5a15470eb3a880_37434715',
+  'unifunc' => 'content_5a1675f98c9117_21383735',
   'file_dependency' => 
   array (
     '418ce04694c91a3f6ebee8f2a2efa42e5260b14c' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\templates\\include\\header.tpl',
-      1 => 1511343884,
+      1 => 1511421430,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_5a15470eb3a880_37434715 ($_smarty_tpl) {
+function content_5a1675f98c9117_21383735 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -160,10 +160,8 @@ home/" class=""><i class="icon-file icon-white"></i> Dashboard </a>
 /taskplan/add/">Add Task Plan</a></li>
                                                 <li><a href="<?php echo webroot;?>
 /taskplan/">Search Task Plan</a></li>
-												<li><a href="<?php echo webroot;?>
-/leave/add/">Add Leave</a></li>
-											    <li><a href="<?php echo webroot;?>
-/leave/">Search Leaves</a></li>
+												<li><a href="#">Add Leave</a></li>
+											    <li><a href="#">Search Leaves</a></li>
                                             </ul>
                                         </li>
 										<?php }?>

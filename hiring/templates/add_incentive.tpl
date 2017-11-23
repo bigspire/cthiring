@@ -104,19 +104,19 @@
 $(document).ready(function(){
 // function to change the incentive type
 	$('.change_incentive_type').change(function(){ 
-		if($(this).val() == '1' || $(this).val() == ''){
+		if($(this).val() == '2'){
 			$('.pos_Validity').show();
 			$('.short_Validity').hide();
-		}else if($(this).val() == '2'){
+		}else if($(this).val() == '1'  || $(this).val() == ''){
 			$('.pos_Validity').hide();
 			$('.short_Validity').show();
 		}
 	});
 if($('.change_incentive_type').length > 0){
-		if($('.change_incentive_type:selected').val() == '1' || $('.change_incentive_type:selected').val() == ''){
+		if($('.change_incentive_type:selected').val() == '2'){
 			$('.pos_Validity').show();
 			$('.short_Validity').hide();
-		}else if($('.change_incentive_type:selected').val() == '2'){
+		}else if($('.change_incentive_type:selected').val() == '1'  || $('.change_incentive_type:selected').val() == ''){
 			$('.pos_Validity').hide();
 			$('.short_Validity').show();
 		}
