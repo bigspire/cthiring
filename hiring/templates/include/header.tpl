@@ -121,23 +121,38 @@
 											</ul-->
                                         </li>
 										
-										
-										{if $module['todays_plan'] eq '1'}
-											<li class="{$col_count} dropdown <?php echo $fun->set_menu_active(array('todays_plan','leave_menu'));?>">
+										{if $approve_leave_count gt '0'}
+											{assign col_count_leave active2}
+										 {/if}
+										{if $module['create_my_leaves'] eq '1' || $module['approve_my_leaves'] eq '1' || $module['view_my_leaves'] eq '1' ||
+										$module['create_todays_plan'] eq '1' || $module['view_todays_plan'] eq '1'}
+											<li class="{$col_count_leave} dropdown <?php echo $fun->set_menu_active(array('add_task_plan','add_leave'));?>">
                                           	 <a data-toggle="dropdown" class="dropdown-toggle " href="#"><i class="icon-list-alt icon-white"></i> Today's Plan<b class="caret"></b></a>
                                              <ul class="dropdown-menu">
-												<li><a href="{webroot}/taskplan/add/">Add Task Plan</a></li>
-                                                <li><a href="{webroot}/taskplan/">Search Task Plan</a></li>
-												<li><a href="#">Add Leave</a></li>
-											    <li><a href="#">Search Leaves</a></li>
+											 {if $module['create_todays_plan'] eq '1'}
+												<li><a href="{webroot}taskplan/add/">Add Task</a></li>
+											 {/if}
+											 {if $module['view_todays_plan'] eq '1'}
+                                                <li><a href="{webroot}taskplan/">Search Task</a></li>
+											 {/if}
+											 {if $module['create_my_leaves'] eq '1'}
+												<li><a href="{webroot}leave/add/">Add Leave</a></li>
+											 {/if}
+											 {if $module['view_my_leaves'] eq '1'}
+											    <li><a href="{webroot}leave/">Search Leave</a></li>
+											 {/if}
+											 {if $module['approve_my_leaves'] eq '1'}
+											    <li><a href="{webroot}leave/index/pending/">Approve Leave
+												{if $approve_leave_count}<span class="label-bub label-info white">{$approve_leave_count}</span>{/if}</a></li>{/if}
                                             </ul>
                                         </li>
 										{/if}
 										
-										{if $approve_client_count neq '0'}
-											{assign col_count active2}
+										
+										{if $approve_client_count gt '0'}
+											{assign col_count_client active2}
 										 {/if}
-										  <li class="{$col_count} dropdown <?php echo $fun->set_menu_active(array('add_client','edit_client','client','view_client','client_contact','add_client_contact','edit_client_contact'));?>">
+										  <li class="{$col_count_client} dropdown <?php echo $fun->set_menu_active(array('add_client','edit_client','client','view_client','client_contact','add_client_contact','edit_client_contact'));?>">
                                             <a data-toggle="dropdown" class="dropdown-toggle " href="#"><i class="icon-user icon-white"></i> Clients {* if $client_count *}<!--span class="label-bub label-info bubble">{* $client_count *}</span-->{* /if *}<b class="caret"></b></a>
 											  <ul class="dropdown-menu">
 											  {if $module['create_client'] eq '1'}
@@ -155,9 +170,9 @@
                                           </li>
 										  
 										   {if $approve_position_count neq '0' || $position_count gt '0'}
-											{assign col_count active2}
+											{assign col_count_position active2}
 										 {/if}
-										  <li class="<?php echo $fun->set_menu_active(array('position','view_position','add_position','edit_position'));?>  dropdown {$col_count}">
+										  <li class="<?php echo $fun->set_menu_active(array('position','view_position','add_position','edit_position'));?>  dropdown {$col_count_position}">
                                             <a  data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icon-list-alt icon-white"></i> Positions {* if $position_count *}<!--span class="label-bub label-info bubble">{* $position_count *}</span-->{* /if *}<b class="caret"></b></a>
                                              <ul class="dropdown-menu">
 											 {if $module['create_position'] eq '1'}
