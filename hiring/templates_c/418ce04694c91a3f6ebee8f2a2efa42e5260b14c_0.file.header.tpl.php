@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-11-23 12:47:13
+/* Smarty version 3.1.29, created on 2017-11-24 14:51:47
   from "C:\xampp\htdocs\2017\ctsvn\cthiring\hiring\templates\include\header.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5a1675f98c9117_21383735',
+  'unifunc' => 'content_5a17e4ab636007_46795370',
   'file_dependency' => 
   array (
     '418ce04694c91a3f6ebee8f2a2efa42e5260b14c' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\templates\\include\\header.tpl',
-      1 => 1511421430,
+      1 => 1511515304,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_5a1675f98c9117_21383735 ($_smarty_tpl) {
+function content_5a17e4ab636007_46795370 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -150,7 +150,6 @@ home/" class=""><i class="icon-file icon-white"></i> Dashboard </a>
 											</ul-->
                                         </li>
 										
-										
 										<?php if ($_smarty_tpl->tpl_vars['module']->value['todays_plan'] == '1') {?>
 											<li class="<?php echo $_smarty_tpl->tpl_vars['col_count']->value;?>
  dropdown <?php echo '<?php ';?>echo $fun->set_menu_active(array('todays_plan','leave_menu'));<?php echo '?>';?>">
@@ -165,6 +164,8 @@ home/" class=""><i class="icon-file icon-white"></i> Dashboard </a>
                                             </ul>
                                         </li>
 										<?php }?>
+										
+										
 										
 										<?php if ($_smarty_tpl->tpl_vars['approve_client_count']->value != '0') {?>
 											<?php $_smarty_tpl->tpl_vars['col_count'] = new Smarty_Variable('active2', null);

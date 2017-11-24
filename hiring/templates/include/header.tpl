@@ -121,7 +121,6 @@
 											</ul-->
                                         </li>
 										
-										
 										{if $module['todays_plan'] eq '1'}
 											<li class="{$col_count} dropdown <?php echo $fun->set_menu_active(array('todays_plan','leave_menu'));?>">
                                           	 <a data-toggle="dropdown" class="dropdown-toggle " href="#"><i class="icon-list-alt icon-white"></i> Today's Plan<b class="caret"></b></a>
@@ -133,6 +132,8 @@
                                             </ul>
                                         </li>
 										{/if}
+										
+										
 										
 										{if $approve_client_count neq '0'}
 											{assign col_count active2}

@@ -226,12 +226,10 @@ if(!empty($_POST)){
 					
 		
 		}	
-		
-		/*
-		
 		// check if percentage >= 100 and calculate incentive
 		foreach($avg as $id => $avg_rec){
 			$avg_user = $avg_rec[0];
+			echo $avg_user;die;
 			if($avg_user >= '100'){
 				// get the interview sent candidates Position CTC for the month
 				$query = "CALL get_candidate_interview('".$id."','".$year_month."')";
@@ -268,6 +266,7 @@ if(!empty($_POST)){
 							throw new Exception('Problem in saving the incentive details');
 						}
 						$row = $mysql->display_result($result);
+						$last_id = $row['inserted_id'];
 						// free the memory
 						$mysql->clear_result($result);
 						// next query execution
@@ -286,10 +285,10 @@ if(!empty($_POST)){
 			}
 		}
 		
-		*/
-		
+		if(!empty($last_id)){
 		// redirecting to list page
-		header("Location: incentive.php?status=created");	
+		header("Location: incentive.php?status=created");
+		}		
 	}
 	
 	
