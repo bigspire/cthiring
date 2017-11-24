@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-11-08 11:04:02
+/* Smarty version 3.1.29, created on 2017-11-24 11:36:34
   from "C:\xampp\htdocs\2017\ctsvn\cthiring\hiring\templates\edit_user.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5a02974a99ce60_93340811',
+  'unifunc' => 'content_5a17b6eabd66c3_30224393',
   'file_dependency' => 
   array (
     '1a94f9050211933cbe4d48a80946caeaad0bbb91' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\templates\\edit_user.tpl',
-      1 => 1510119234,
+      1 => 1511503591,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5a02974a99ce60_93340811 ($_smarty_tpl) {
+function content_5a17b6eabd66c3_30224393 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -139,7 +139,7 @@ echo $_POST['designation'];
 						<td>	
 							<select name="level1" class="span8"  id="PositionEmpId">
 							<option  value="">Select</option>
-						<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['users']->value,'selected'=>$_smarty_tpl->tpl_vars['lead']->value['level1']),$_smarty_tpl);?>
+						<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['users']->value,'selected'=>$_smarty_tpl->tpl_vars['level1']->value),$_smarty_tpl);?>
 	
 
 							</select> 
@@ -152,7 +152,7 @@ echo $_POST['designation'];
 						<td>	
 							<select name="level2" class="span8"  id="PositionEmpId">
 							<option  value="">Select</option>
-								<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['users']->value,'selected'=>$_smarty_tpl->tpl_vars['lead']->value['level2']),$_smarty_tpl);?>
+								<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['users']->value,'selected'=>$_smarty_tpl->tpl_vars['level2']->value),$_smarty_tpl);?>
 	
 							</select> 
 						</td>	

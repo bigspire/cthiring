@@ -97,7 +97,7 @@
 						<td>	
 							<select name="level1" class="span8"  id="PositionEmpId">
 							<option  value="">Select</option>
-						{html_options options=$users selected='0' selected=$lead.level1}	
+						{html_options options=$users selected='0' selected=$level1}	
 
 							</select> 
 						</td>	
@@ -109,7 +109,7 @@
 						<td>	
 							<select name="level2" class="span8"  id="PositionEmpId">
 							<option  value="">Select</option>
-								{html_options options=$users selected='0' selected=$lead.level2}	
+								{html_options options=$users selected='0' selected=$level2}	
 							</select> 
 						</td>	
 				  </tr>	
