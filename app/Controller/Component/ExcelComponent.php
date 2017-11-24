@@ -263,6 +263,20 @@ class ExcelComponent extends Component {
 					$j= 0;			
 				}			
 			
+		}else if($template == 'leave'){
+			$i = 2;
+			foreach($this->data as $key => $value){
+					$this->sheet->setCellValueByColumnAndRow($j++,$i,$this->format_date($value['Leave']['leave_from']));
+					$this->sheet->setCellValueByColumnAndRow($j++,$i,$this->format_date($value['Leave']['leave_to']));
+					$this->sheet->setCellValueByColumnAndRow($j++,$i,ucfirst($this->get_session($value['Leave']['session'])));
+					$this->sheet->setCellValueByColumnAndRow($j++,$i,$this->get_leave_type($value['Leave']['leave_type']));
+					$this->sheet->setCellValueByColumnAndRow($j++,$i,ucfirst($value['Leave']['reason_leave']));
+					$this->sheet->setCellValueByColumnAndRow($j++,$i,$this->format_date($value['Leave']['created_date']));
+					$this->sheet->setCellValueByColumnAndRow($j++,$i,ucwords($value['Creator']['first_name'].' '.$value['Creator']['last_name']));
+					$i++;
+					$j= 0;			
+				}			
+			
 		}	
 	}
 	
@@ -281,6 +295,32 @@ class ExcelComponent extends Component {
 		}
 		return $count;
 	}
+	
+		/* function to get leave types */
+	public function get_leave_type($type){
+		switch($type){
+			case 'NBL':
+			$value = 'Need Based Leave';
+			break;
+			case 'PL':
+			$value = 'Privileged Leave';			
+			break;	
+			case 'ML':
+			$value = 'Maternity Leave';			
+			break;	
+			case 'PA':
+			$value = 'Paternity Leave';			
+			break;
+			case 'LOP':
+			$value = 'Loss of Pay';			
+			break;	
+			case 'OD':
+			$value = 'On Duty';			
+			break;				
+		}
+		return $value;
+	}
+	
 	
 	/* function to print the value */
 	public function print_value($val){

@@ -4,9 +4,6 @@
             <!-- main content -->
             <div id="contentwrapper">
                 <div class="main_content">
-                
-					
-
 					
 					<div class="row-fluid">
 						 <div class="span12">
@@ -22,7 +19,7 @@
                                 </li>
                             
                                 <li>
-                                   Search Client
+                                   <?php echo $this->Functions->show_list_page($this->request->params['pass'][0]);?> Client
                                 </li>
                             </ul>
                         </div>

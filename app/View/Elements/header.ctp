@@ -70,8 +70,17 @@
 											</ul-->
                                         </li>
 										
-										<?php if($create_task == '1' || $view_task == '1'):?> 
-										   <li class="dropdown <?php echo $taskplan_menu ?> <?php echo $leave_menu ?>">
+										<?php 
+										if($APPR_LEAVE_COUNT > 0):
+										$active2 = 'active2';
+										else:
+										$active2 = '';
+										endif;
+										?>
+										
+										
+										<?php if($create_task == '1' || $view_task == '1'  || $create_leave == '1'  || $view_leave == '1' || $approve_leave == '1'):?> 
+										   <li class="dropdown <?php echo $taskplan_menu ?> <?php echo $leave_menu ?>  <?php echo $active2;?>">
                                             <a  data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icon-list-alt icon-white"></i> Today's Plan
 												
 											<b class="caret"></b></a>
@@ -96,7 +105,11 @@
 												<?php endif; ?>
 												
 												<?php if($approve_leave == '1'):?> 
-											    <li><a href="<?php echo $this->webroot;?>leave/index/pending/">Approve Leave</a></li>
+											    <li><a href="<?php echo $this->webroot;?>leave/index/pending/">Approve Leave
+												<?php if($APPR_LEAVE_COUNT):?>
+												<span class="label-bub label-info white"><?php echo $APPR_LEAVE_COUNT;?></span>
+												<?php endif; ?>
+												</a></li>
 												<?php endif; ?>
 												
 												

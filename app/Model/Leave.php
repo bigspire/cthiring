@@ -66,6 +66,11 @@ class Leave extends AppModel {
                 'rule'     => 'notEmpty',
                 'required' => true,
                 'message'  => 'Please select the session'
+            ),
+			 'session_validate' => array(
+                'rule'     => 'session_validate',
+                'required' => true,
+                'message'  => 'Invalid session'
             )
         ),
 	
@@ -74,10 +79,39 @@ class Leave extends AppModel {
                 'rule'     => 'check_leave',
                 'required' => true,
                 'message'  => 'Please select the leave dates'
+            ),
+			 'check_exists' => array(
+                'rule'     => 'check_exists',
+                'required' => true,
+                'message'  => 'Leaves already created b/w these dates'
+            )
+        ),
+		
+		'remarks' => array(		
+            'empty' => array(
+                'rule'     => 'notEmpty',
+                'required' => true,
+                'message'  => 'Please enter the reason to cancel'
             )
         )
 	);
 	
+	
+	/* public function validate session */
+	public function session_validate(){
+		if(!empty($this->data['Leave']['leave_from']) && !empty($this->data['Leave']['leave_to'])){
+			$leave_from = $this->format_date_save($this->data['Leave']['leave_from']);
+			$leave_to = $this->format_date_save($this->data['Leave']['leave_to']);
+			$diff = $this->diff_date($leave_from, $leave_to);			
+			if($diff > 0 && $this->data['Leave']['session'] != 'D'){
+				return false;
+			}else{
+				return true;
+			}
+		}else{
+			return true;
+		}
+	}
 	
 	/* function to check job code already exists */
 	public function check_leave(){
@@ -89,6 +123,23 @@ class Leave extends AppModel {
 		}
 	}
 	
+	/* function to check leave exists */
+	public function check_exists(){
+		if(!empty($this->data['Leave']['leave_from']) && !empty($this->data['Leave']['leave_to'])){
+			$from = $this->format_date_save($this->data['Leave']['leave_from']);
+			$to = $this->format_date_save($this->data['Leave']['leave_to']);
+			$count =  $this->find('count', array('conditions' => array('or' => array('leave_from between ? and ?' => array($from, $to),
+			'leave_to between ? and ?' => array($from, $to)), 'Leave.users_id' => CakeSession::read('USER.Login.id'), 
+			'Leave.is_deleted'=> 'N', 'Leave.is_approve !=' =>  'R')));
+			if($count > 0){
+				return false;
+			}else{
+				return true;
+			}
+		}
+		return true;
+	}
+	
 	/* function to format the date to save */
 	public function format_date_save($date){
 		if(!empty($date)){
@@ -96,4 +147,13 @@ class Leave extends AppModel {
 			return $exp_date[2].'-'.$exp_date[1].'-'.$exp_date[0];
 		}
 	}
+	
+	/* get diff b/w the date */
+	public function diff_date($from, $to){ 
+		$sql = "SELECT DATEDIFF('$to','$from') AS date_diff";
+		$result = $this->query($sql);		
+		return $result[0][0]['date_diff'];
+	}
+	
+	
 }

@@ -131,8 +131,20 @@ class fun{
 					case 43:					
 					$mod['manage_functional_area'] = 1;
 					break;
-					case 42:					
-					$mod['todays_plan'] = 1;
+					case 45:					
+					$mod['create_my_leaves'] = 1;
+					break;
+					case 46:					
+					$mod['approve_my_leaves'] = 1;
+					break;
+					case 47:					
+					$mod['view_my_leaves'] = 1;
+					break;
+					case 48:					
+					$mod['view_todays_plan'] = 1;
+					break;
+					case 49:					
+					$mod['create_todays_plan'] = 1;
 					break;
 				}				
 			}

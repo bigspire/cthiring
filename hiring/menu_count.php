@@ -108,6 +108,24 @@ try{
 	echo 'Caught exception: ',  $e->getMessage(), "\n";
 }
 
+// fetch approve leave menu count
+$query = "CALL count_approve_leave('".$_SESSION['user_id']."')";
+try{
+	if(!$result = $mysql->execute_query($query)){
+		throw new Exception('Problem in executing approve leave count page');
+	}
+	// calling mysql fetch_result function
+	$appove_leave = $mysql->display_result($result);
+	// assign approve leave count variables here
+	$smarty->assign('approve_leave_count', $appove_leave['count']);
+	// free the memory
+	$mysql->clear_result($result);
+	// call the next result
+	$mysql->next_query();
+}catch(Exception $e){
+	echo 'Caught exception: ',  $e->getMessage(), "\n";
+}
+
 // fetch users roles id 
 $query = "CALL get_roles_id('".$_SESSION['user_id']."')";
 try{

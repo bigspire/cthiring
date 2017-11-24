@@ -22,7 +22,7 @@
                                 </li>
                             
                                 <li>
-                                   Search Leave
+                                   <?php echo $this->Functions->show_list_page($this->request->params['pass'][0]);?> Leave
                                 </li>
                             </ul>
                         </div>
@@ -69,20 +69,23 @@
 							</label-->
 							
 							
-							
+						<?php if($this->request->params['pass'][0] == 'pending'):?>	
+					<label>Approval Status: 
+						<?php echo $this->Form->input('apr_status', array('div'=> false,'type' => 'select', 'label' => false, 'class' => 'input-medium', 'empty' => 'Select', 'selected' => $this->params->query['apr_status'], 'required' => false, 'placeholder' => '', 'style' => "clear:left", 'options' => $approveStatus)); ?> 					
+					</label>
+					<?php endif; ?>			
 							
 
 							
 														<label style="margin-top:18px;"><input type="submit" value="Submit" class="btn btn-gebo" /></label>
 
-							<label style="margin-top:18px;"><a class="jsRedirect" href="<?php echo $this->webroot;?>leave/"><input value="Reset" type="button" class="btn"/></a></label>
+							<label style="margin-top:18px;"><a class="jsRedirect" href="<?php echo $this->webroot;?>leave/index/<?php echo $this->request->params['pass'][0];?>"><input value="Reset" type="button" class="btn"/></a></label>
 
 							
 														</div>
 						<input type="hidden" id="srchSubmit" value="<?php echo $this->params->query['srch_status'];?>">
 
 
-						<input type="hidden" value="1" id="SearchKeywords">
 						<input type="hidden" value="<?php echo $this->webroot;?>leave/" id="webroot">
 						</form>
 					<?php endif; ?>	
@@ -111,11 +114,16 @@
 										<th width="100"  style="text-align:"><?php echo $this->Paginator->sort('session', 'Session', array('escape' => false, 'direction' => 'desc', 'rel' => 'tooltip', 'title' => 'Sort by Ascending or Descending'));?></th>
 
 										<th width="210"><?php echo $this->Paginator->sort('leave_type', 'Leave Type', array('escape' => false, 'direction' => 'desc', 'rel' => 'tooltip', 'title' => 'Sort by Ascending or Descending'));?></th>										
-										
+			
+		
 										
 										<th width="100"><?php echo $this->Paginator->sort('LeaveStatus.status', 'Status', array('escape' => false, 'direction' => 'desc', 'rel' => 'tooltip', 'title' => 'Sort by Ascending or Descending'));?></th>										
 
-										<th width="75"><?php echo $this->Paginator->sort('created_date', 'Created', array('escape' => false, 'direction' => 'desc', 'rel' => 'tooltip', 'title' => 'Sort by Ascending or Descending'));?></th>
+										<?php if($this->request->params['pass'][0] == 'pending'): ?>
+			<th width="150"><?php echo $this->Paginator->sort('Creator.first_name', 'Created By', array('escape' => false, 'direction' => 'desc', 'rel' => 'tooltip', 'title' => 'Sort by Ascending or Descending'));?></th>										
+			<?php endif; ?>
+
+			<th width="75"><?php echo $this->Paginator->sort('created_date', 'Created', array('escape' => false, 'direction' => 'desc', 'rel' => 'tooltip', 'title' => 'Sort by Ascending or Descending'));?></th>
 										
 										<th width="75" style="text-align:center">Actions</th>
 									</tr>
@@ -138,21 +146,30 @@
 			<td width=""><?php echo $this->Functions->get_session($req['Leave']['session']);?></td>
 
 			<td width=""><?php echo $this->Functions->get_leave_type($req['Leave']['leave_type']);?></td>
-										
+				
+
+
+			
 			<td width="">
 				
 	<?php if($req['Leave']['is_approve'] == 'W'):
 		?>
 		<span title="Awaiting for Approval" rel="tooltip" class="label label-warning">Awaiting Approval</span>							
 		<?php elseif($req['Leave']['is_approve'] == 'A'):?>
-		<span rel="tooltip" title="Approved" class="label label-success">Approved</span>			
+		<span rel="tooltip" title="Approved" class="label label-success">Approved</span>
+	<?php elseif($req['Leave']['is_approve'] == 'C'):?>	
+		<span title="Cancelled" rel="tooltip" class="label label-yellow">Cancelled</span>			
 		<?php elseif($req['Leave']['is_approve'] == 'R'):?>	
-		<span title="Rejected" rel="tooltip" class="label label-danger">Rejected</span>	
+		<span title="Rejected" rel="tooltip" class="label label-important">Rejected</span>	
 	<?php endif; ?>
 					
 			</td>
 										
 						
+		
+<?php if($this->request->params['pass'][0] == 'pending'): ?>
+			<td><?php echo ucwords($req['Creator']['first_name'].' '.$req['Creator']['last_name']);?></th>										
+			<?php endif; ?>
 			
 			<td><?php echo $this->Functions->format_date($req['Leave']['created_date']);?></td>
 			
@@ -170,7 +187,7 @@
 						
 	
 	
-	<a rel="tooltip" title="<?php echo $action_status;?> Leave" href="<?php echo $this->webroot;?>leave/view/<?php echo $req['Leave']['id'];?>/<?php echo $req[0]['st_id'];?>"  class="btn  btn-mini" id="<?php echo $req['Leave']['id'];?>"  rel="tooltip" class="sepV_a" title="<?php echo $action_status;?> Leave"><i class="icon-edit"></i></a>
+	<a rel="tooltip" title="<?php echo $action_status;?> Leave" href="<?php echo $this->webroot;?>leave/view/<?php echo $req['Leave']['id'];?>/<?php echo $req[0]['st_id'];?>/<?php echo $req[0]['st_user'];?>/<?php echo $this->request->params['pass'][0];?>"  class="btn  btn-mini" id="<?php echo $req['Leave']['id'];?>"  rel="tooltip" class="sepV_a" title="<?php echo $action_status;?> Leave"><i class="icon-edit"></i></a>
 	
 	
 		</td>
