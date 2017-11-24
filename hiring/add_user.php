@@ -37,8 +37,8 @@ if(!empty($_POST)){
 	// array for printing correct field name in error message
 	$fieldtype = array('0', '0' ,'0','0','1','1','1','0');
 	$actualfield = array('first name','last name', 'email address', 'mobile','role','status','location','email signature');
-    $field = array('first_name' => 'first_nameErr','last_name' => 'last_nameErr', 'email_id' => 'emailErr' ,
-	'mobile' => 'mobileErr','roles_id' => 'roleErr','status' => 'statusErr','location_id' => 'locationErr',
+    $field = array('first_name' => 'first_nameErr','last_name' => 'last_nameErr', 'email' => 'emailErr' ,
+	'mobile' => 'mobileErr','role' => 'roleErr','status' => 'statusErr','location' => 'locationErr',
 	'signature' => 'signatureErr');
 	
 	$j = 0;

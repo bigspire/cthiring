@@ -121,8 +121,8 @@ try{
 	}	
 
 	// approve or reject validation
-	if($_GET['status'] == 'Approved' || $_GET['status'] == 'Rejected'){
- 		$success_msg = 'Billing ' . ucfirst($_GET['status']) . ' Successfully';
+	if($_GET['status'] == 'created'){
+ 		$success_msg = 'Incentive  ' . ucfirst($_GET['status']) . ' Successfully';
 	}
 
 	// validating pagination

@@ -128,8 +128,8 @@
                                              <ul class="dropdown-menu">
 												<li><a href="{webroot}/taskplan/add/">Add Task Plan</a></li>
                                                 <li><a href="{webroot}/taskplan/">Search Task Plan</a></li>
-												<li><a href="{webroot}/leave/add/">Add Leave</a></li>
-											    <li><a href="{webroot}/leave/">Search Leaves</a></li>
+												<li><a href="#">Add Leave</a></li>
+											    <li><a href="#">Search Leaves</a></li>
                                             </ul>
                                         </li>
 										{/if}

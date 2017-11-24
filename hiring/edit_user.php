@@ -82,7 +82,8 @@ try{
 		throw new Exception('Problem in getting approve user details');
 	}
 	$row = $mysql->display_result($result);
-	$smarty->assign('lead', $row);
+	$smarty->assign('level1', $row['level1']);
+	$smarty->assign('level2', $row['level2']);
 	// free the memory
 	$mysql->clear_result($result);
 	// call the next result
@@ -103,6 +104,13 @@ if(!empty($_POST)){
 		$emailErr = 'Please enter the valid email address';
     	$smarty->assign('emailErr',$emailErr);
     	$test = 'error';
+	}
+	
+	if(!empty($_POST['level2'])){
+    	$smarty->assign('level2',$_POST['level2']);
+	}
+	if(!empty($_POST['level1'])){
+    	$smarty->assign('level1',$_POST['level1']);
 	}
 	
 	// array for printing correct field name in error message
