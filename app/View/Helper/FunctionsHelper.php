@@ -618,6 +618,23 @@ class FunctionsHelper extends AppHelper {
 		return $value;
    }
    
+    /* function to get ctc type */
+   public function get_short_ctc_type($type){
+		switch($type){
+			case 'T':
+			$value = 'K';
+			break;
+			case 'L':
+			$value = 'L';
+			break;
+			case 'C':
+			$value = 'C';
+			break;
+			
+		}
+		return $value;
+   }
+   
 
    
     /* function to get ctc type */

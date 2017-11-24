@@ -199,16 +199,17 @@
 											
 									</tr>
 									
+								
+									
+									
 									<tr>
 										
 										<td class="tbl_column" style="width:140px;">Behavioural Skills</td>
 										<td><?php echo ucwords(str_replace(',', ', ',$position_data['Position']['behav_skill']));?></td>
 											
 									</tr>
-									
-									
-									
 								
+									
 									
 										<tr>
 										
@@ -258,6 +259,13 @@
 										
 										</div>
 			</td>
+											
+									</tr>
+									
+										<tr>
+										
+										<td class="tbl_column" style="width:140px;">Total Openings</td>
+										<td><?php echo $position_data['Position']['no_job'];?></td>
 											
 									</tr>
 									<tr>
@@ -556,12 +564,12 @@
 														<th  width="100">Mobile</th>
 														<th  width="120">Email</th>
 														<th  width="100">Location</th>
-														<th  width="85">Present CTC</th>
+														<th  width="85">Pre. CTC</th>
 														<th  width="85">Exp. CTC</th>
 														<th  width="80"  class="noticePeriod">Notice</th>
 														<th  width="140" class="">CV Owner</th>
-														<th  width="90" class="">CV Uploaded</th>
-														<th  width="90" class="sent_col">CV Sent</th>
+														<th  width="100" class="">CV Created</th>
+														<th  width="100" class="sent_col">CV Sent</th>
 														<th style="text-align:center"  width="75" class="upload_row">Action</th>
 														<th style="text-align:center" width="75">Download</th>
 													</tr>
@@ -605,7 +613,7 @@
 							<?php endif; ?>
 								</th>						<td>														
 														<a target="_blank" href="<?php echo $this->webroot;?>resume/view/<?php echo $resume['Resume']['id'];?>/"><?php echo ucwords($resume['Resume']['first_name'].' '.$resume['Resume']['last_name']);?></a>
-															<span style="font-size:9px">(<?php echo $resume['ReqResume']['stage_title'];?> <?php echo $resume['ReqResume']['status_title'];?>)</span>
+															<!--span style="font-size:9px">(<?php echo $resume['ReqResume']['stage_title'];?> <?php echo $resume['ReqResume']['status_title'];?>)</span-->
 
 															</td>
 														<td><span><?php echo $this->Functions->get_format_text($resume['Resume']['mobile']);?></span></td>
@@ -621,12 +629,12 @@
 														<td>
 														
 										<?php echo $resume['Resume']['present_ctc'];?>
-										<?php echo $this->Functions->get_ctc_type($resume['Resume']['present_ctc_type']);?>
+										<?php echo $this->Functions->get_short_ctc_type($resume['Resume']['present_ctc_type']);?>
 										</td>
 														<td>
 														
 										<?php echo $resume['Resume']['expected_ctc'];?>
-										<?php echo $this->Functions->get_ctc_type($resume['Resume']['expected_ctc_type']);?>
+										<?php echo $this->Functions->get_short_ctc_type($resume['Resume']['expected_ctc_type']);?>
 										
 														<td  class="noticePeriod"><?php echo $this->Functions->get_notice($resume['Resume']['notice_period']);?></td>
 														<td><?php echo $resume['Creator']['first_name'];?></td>

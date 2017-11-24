@@ -933,9 +933,14 @@ class PositionController extends AppController {
 						'conditions' => array('`ReqRevision.requirements_id` = `Position`.`id`')
 				)
 			);
+			
+			$this->Position->unBindModel(array('hasOne' => array('ReqResume')));
+
 			$fields = array('id','Client.id','job_title','job_code','education','location','no_job','min_exp','max_exp','ctc_from','ctc_to','ReqStatus.title','job_desc',
-			'Client.client_name', 'Creator.first_name','created_date','modified_date', 'count(DISTINCT  ReqResume.id) cv_sent','req_status_id',
-			'group_concat(ReqResume.status_title) joined', 'start_date', 'end_date', //"group_concat(distinct ResOwner.first_name  SEPARATOR ', ') team_member",
+			'Client.client_name', 'Creator.first_name','created_date','modified_date',
+			//'count(DISTINCT  ReqResume.id) cv_sent','req_status_id',
+			//'group_concat(ReqResume.status_title) joined',
+			'start_date', 'end_date', //"group_concat(distinct ResOwner.first_name  SEPARATOR ', ') team_member",
 			"group_concat(distinct AH.first_name  SEPARATOR ', ') ac_holder","group_concat(distinct concat(TeamMember.first_name,' ',TeamMember.last_name)) team_member2",
 			'skills','Contact.first_name','Contact.email','Contact.mobile','Contact.phone','Contact.id','FunctionArea.function',
 			'Position.created_by','Position.is_approve','tech_skill','behav_skill','job_desc_file','hide_contact','resume_type',
@@ -944,6 +949,7 @@ class PositionController extends AppController {
 			'Position.status','count(distinct ReqRevision.id) as no_revision', 'Position.remarks', 'group_concat(ReqRevision.created_date) revision_history','is_rpo',
 			 "group_concat(ReqRevision.remarks separator '|||') revision_remark");
 			$data = $this->Position->find('all', array('fields' => $fields,'conditions' => array('Position.id' => $id),	'joins' => $options));
+
 			$this->set('position_data', $data[0]);
 			
 			// get the resume details
