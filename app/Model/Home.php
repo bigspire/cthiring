@@ -93,7 +93,7 @@ class Home extends AppModel {
 		$start = $this->format_date_save($this->data['Home']['from']);
 		$end = $this->format_date_save($this->data['Home']['to']);
 		$n = $this->diff_date($start, $end);
-		if($n > 30){
+		if($n > 150){
 			return false;
 		}else{
 			return true;

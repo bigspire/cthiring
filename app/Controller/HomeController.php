@@ -50,11 +50,10 @@ class HomeController  extends AppController {
 			//$validate = $this->Home->validates(array('fieldList' => array('to')));
 			$validate = $this->Home->check_diff();
 			if(!$validate){
-				$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Date diff. should not be more than 30 days', 'default', array('class' => 'alert alert-error'));									
+				$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Date diff. should not be more than 6 months (150 days)', 'default', array('class' => 'alert alert-error'));									
 				$this->redirect('/home/');
 			}
-		}
-		
+		}	
 		
 		
 		// when the form is submitted for search
@@ -68,13 +67,15 @@ class HomeController  extends AppController {
 		$this->set('locList', $this->get_loc_details());
 		// apply date conditions
 		// for testing date changed
-		$dateFrm = date('Y-m-d', strtotime('-6 days'));
+		$dateFrm = date('Y-m-d', strtotime('-30 days'));
 		//$dateFrm = '2017-06-01';
 		//$dateTo = '2017-06-10';
 		$dateTo = date('Y-m-d');
 		$start = $this->request->query['from'] ? $this->Functions->format_date_save($this->request->query['from']) : $dateFrm;
 		$end = $this->request->query['to'] ? $this->Functions->format_date_save($this->request->query['to']) : $dateTo;
 		
+		$start_chart = date('Y-m-d', strtotime('-6 days'));
+		$end_chart = date('Y-m-d');
 		// set date condition				
 		$this->request->query['from'] = $this->Functions->format_date_show($start);
 		$this->request->query['to'] = $this->Functions->format_date_show($end);	
@@ -304,7 +305,7 @@ class HomeController  extends AppController {
 			$client_cond = array('Client.client_name' => $this->request->query['client']);			
 		}		
 		// generate graph		
-		$chart_date = $this->generate_chart_date($start, $end);
+		$chart_date = $this->generate_chart_date($start_chart, $end_chart);
 		// check the graph type
 		
 		foreach($chart_date as $date){ 
@@ -403,6 +404,9 @@ class HomeController  extends AppController {
 		$this->set('DATE_COUNT', $chart_format);
 		$this->set('START_DATE', date('d-M', strtotime($start)));
 		$this->set('END_DATE', date('d-M', strtotime($end)));
+		
+		$this->set('START_CHART_DATE', date('d-M', strtotime($start_chart)));
+		$this->set('END_CHART_DATE', date('d-M', strtotime($end_chart)));
 		
 		// for detailed graph
 		if($this->request->query['action'] == 'view_graph'){

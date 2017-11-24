@@ -17,7 +17,7 @@ foreach($tech_skills as $key => $skill){
 		 if($skill > 0){
 			for($i = 1; $i<=5; $i++){
 				if($i <= $skill){
-					$tech_skill_star .=  '<a href="javascript:void(0)" style="color: orange;">★</a>';
+					$tech_skill_star .=  '<a href="#" style="color: orange;">★</a>';
 				}else{
 					// $tech_skill_star .=  '<a href="javascript:void(0)" >★</a>';		
 				}
@@ -39,7 +39,7 @@ foreach($beh_skills as $key => $skill){
 		 if($skill > 0){
 			for($i = 1; $i<=5; $i++){
 				if($i <= $skill){
-					$behav_skill_star .=  '<a href="javascript:void(0)" style="color: orange;">★</a>';
+					$behav_skill_star .=  '<a href="#" style="color: orange;">★</a>';
 				}else{
 					// $behav_skill_star .=  '<a href="javascript:void(0)" >★</a>';		
 				}
@@ -112,7 +112,7 @@ $str = <<<EOD
 			width:50%
 			
 		}
-		.titleLeft{margin-left:28% !important;}
+		.titleLeft{margin-left:25% !important;}
 		.titleLogo{margin-left:10% !important}
   </style>
   <body>
@@ -123,16 +123,16 @@ $str = <<<EOD
 	
 	<div class="columns" style="margin-bottom:0rem;">
 	 <div class="column  title has-text-centered titleLeft"  style="padding:0.1rem;color:#826386 !important;">PROFILE SNAPSHOT 
-	 <img  class="titleLogo" src="http://jobsfactory.in/images/for_pdf.png">
+	 <img  class="titleLogo" src="http://bigspire.in/ct/career-tree-logo-CMYK_resiz.png">
 	 </div>
 	</div>
 	<table class="table content box is-radius" style="clear:left;">
   <thead >
     <tr  class="is-selected" style="background: #826386 ">
       <th class=" has-text-centered"width="5%">S.No</th>
-      <th class="" width="20%">Criteria</th>
+      <th class="" width="22%">Criteria</th>
      
-      <th class="" width="75%">Candidate Credentials</th>
+      <th class="" width="73%">Candidate Credentials</th>
     </tr>
   </thead>
   <tfoot>

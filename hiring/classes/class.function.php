@@ -866,7 +866,7 @@ class fun{
 		return $value;
    }
    
-    /* function to get ctc type */
+   /* function to get ctc type */
    public function get_notice($val){
 		switch($val){
 			case '0':
@@ -878,7 +878,7 @@ class fun{
 			case '30':
 			$value = '30 Days';
 			break;
-			case '40':
+			case '45':
 			$value = '45 Days';
 			break;
 			case '60':

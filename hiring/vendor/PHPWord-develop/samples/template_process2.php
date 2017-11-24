@@ -21,6 +21,11 @@ foreach($phone_nos as $mobile){
 	$templateProcessor->setValue('+91'.$mobile, '**********',  1,0);
 }
 
+// hide the mobile nos with out +91- 
+foreach($phone_nos as $mobile){
+	$templateProcessor->setValue('+91-'.$mobile, '**********',  1,0);
+}
+
 // hide the mobile nos with 91-
 foreach($phone_nos as $mobile){
 	$templateProcessor->setValue('91-'.$mobile, '**********',  1,0);

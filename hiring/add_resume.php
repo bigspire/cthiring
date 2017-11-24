@@ -72,8 +72,8 @@ foreach($string as $name_key => $name){
 	}
 }
 	
-$smarty->assign('first_name', $string[$name_key]);
-$smarty->assign('last_name', $string[$name_key+1]);
+$smarty->assign('first_name', ucfirst(strtolower($string[$name_key])));
+$smarty->assign('last_name', ucfirst(strtolower($string[$name_key+1])));
 $smarty->assign('email', $email);
 $smarty->assign('mobile', $mobile);
 

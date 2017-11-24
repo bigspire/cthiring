@@ -618,6 +618,8 @@ class FunctionsHelper extends AppHelper {
 		return $value;
    }
    
+
+   
     /* function to get ctc type */
    public function get_notice($val){
 		switch($val){
@@ -630,7 +632,7 @@ class FunctionsHelper extends AppHelper {
 			case '30':
 			$value = '30 Days';
 			break;
-			case '40':
+			case '45':
 			$value = '45 Days';
 			break;
 			case '60':
