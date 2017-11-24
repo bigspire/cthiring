@@ -677,7 +677,7 @@ if(!empty($_POST)){
 			$row = $mysql->display_result($result);
 			$desigStr = $row['desig'];
 			$mysql->next_query();
-			$snap_exp .= ucwords($companyData).', '.ucwords($desigStr).', '.$expStr.', '.ucfirst($locationData).'<br>';
+			$snap_exp .=  $expStr.', '.ucwords($companyData).', '.ucwords($desigStr).', '.ucfirst($locationData).'<br>';
 			$snap_skill .= $areaData.' ';
 			
 			// query to add experience details
@@ -778,8 +778,8 @@ if(!empty($_POST)){
 			require_once('vendor/ilovepdf-php-1.1.5/init.php');			
 			// you can call task class directly
 			// to get your key pair, please visit https://developer.ilovepdf.com/user/projects
-			$ilovepdf = new Ilovepdf('project_public_5b8a8c940b378f560a9af9b547fda145_DNRT62d35f5d2494212a0dad512be366352cf',
-			'secret_key_629c405d975d170c4785d1781f9a0e6c_DccLT641e98f8d020e52866e228464f75321d');
+			$ilovepdf = new Ilovepdf('project_public_e1b1961d9d9cb94da486a4a04f3ce2b6_vIiAd97ec8dba4620fe3944e24fee623378b6',
+			'secret_key_9912dae17d681dfe0fc2be7c92d895d8_BRyVqff37bf1e9f79bd62481c6bdbdb213e8b');
 			// Create a new task
 			$myTaskConvertOffice = $ilovepdf->newTask('officepdf');
 			// Add files to task for upload
@@ -823,13 +823,13 @@ if(!empty($_POST)){
 			$file1 = $myTaskWatermark->addFile(dirname(__FILE__).'/uploads/snapshotmerged/'.$snap_file_name.'_'.date('d-m-Y').'.pdf');
 			// Select watermark parameters
 			$myTaskWatermark->setText('CareerTree HR Solutions');
-			// $myTaskWatermark->setImage('uploads/template/watermark.jpg');			
+			// $myTaskWatermark->setImage('watermark.jpg');			
 			$myTaskWatermark->setPages('3-end');
 			// $myTaskWatermark->setOpacity(50);
 			$myTaskWatermark->setVerticalPosition('top');
 			$myTaskWatermark->setHorizontalPosition('right');
 			// $myTaskWatermark->setFontFamily('courier');
-			$myTaskWatermark->setFontSize(24);
+			$myTaskWatermark->setFontSize(18);
 			$myTaskWatermark->setFontColor('#c7c3be');
 			$myTaskWatermark->execute();
 			// Download the package files

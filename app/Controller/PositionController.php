@@ -283,7 +283,7 @@ class PositionController extends AppController {
 		$this->set('project_types', array('1' => 'RPO', '0' => 'Non - RPO'));
 		
 		// get total job for job code
-		$tot = $this->Position->find('count');
+		$tot = $this->Position->find('count', array('conditions' => array('Position.created_date like' => date('Y').'%')));
 		$this->set('jobCode', 'CT/'.++$tot.'/'.date('Y'));		
 		// when client id is passed from view client
 		if($client_id){

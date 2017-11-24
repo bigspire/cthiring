@@ -430,7 +430,11 @@
 <?php if($position_data['Position']['is_approve'] == 'W' &&  $this->request->params['pass'][2] == 'pending'):?>
 
 <a class="iframeBox unreadLink" rel="tooltip" title="Approve Position" href="<?php echo $this->webroot;?>position/remark/<?php echo $position_data['Position']['id'];?>/<?php echo $this->request->params['pass'][1];?>/<?php echo $position_data['Position']['created_by'];?>/A/<?php echo $stmemberID;?>" val="40_55"><input type="button" value="Approve" class="btn btn btn-success"/></a>
+
+<?php if($position_data['Position']['modified_date'] == ''):?>
 <a class="iframeBox unreadLink" rel="tooltip" title="Reject Position" href="<?php echo $this->webroot;?>position/remark/<?php echo $position_data['Position']['id'];?>/<?php echo $this->request->params['pass'][1];?>/<?php echo $position_data['Position']['created_by'];?>/R/<?php echo $stmemberID;?>" val="40_55"><input type="button" value="Reject" class="btn btn btn-danger"/></a>
+<?php endif; ?>
+
 <a href="<?php echo $this->webroot;?>position/index/pending/" rel="tooltip" title="Cancel and Back to Positions"  class="jsRedirect"><button class="btn">Cancel</button></a>
 			<?php else:?>
 			

@@ -7,46 +7,47 @@ $exp_ctc_type = $fun->get_ctc_type($_POST['expected_ctc_type']);
 $notice = $fun->get_notice($_POST['notice_period']);
 $gen = $fun->check_gender($_POST['gender']);
 $dob = $fun->convert_date_to_display($fun->convert_date($_POST['dob']));
+$age = $fun->get_age($fun->convert_date($_POST['dob'])).' Yrs';
 
 // parse the tech skill ratings	
 foreach($tech_skills as $key => $skill){
-	if(!intval($key) && $key != '0'){
+	if(!intval($key) && $key != '0' && $skill > 0){
 		$tech_skill_star .=  '<div class="rating rating2">';
 		$tech_skill_star .= '<span class="skill_txt">'.ucwords($key).'</span>';
-		 if($skill >= 0){
+		 if($skill > 0){
 			for($i = 1; $i<=5; $i++){
 				if($i <= $skill){
 					$tech_skill_star .=  '<a href="javascript:void(0)" style="color: orange;">★</a>';
 				}else{
-					$tech_skill_star .=  '<a href="javascript:void(0)" >★</a>';		
+					// $tech_skill_star .=  '<a href="javascript:void(0)" >★</a>';		
 				}
 			}
 			
 		 }
 		 $tech_skill_star .=  '</div>';
-		 $tech_skill_star .=  '<br>';
+		 // $tech_skill_star .=  '<br>';
 	}
 } 
 
 // parse the behav skill ratings
 	
 foreach($beh_skills as $key => $skill){
-	if(!intval($key) && $key != '0'){
+	if(!intval($key) && $key != '0'  && $skill > 0){
 		$behav_skill_star .=  '<div class="rating rating2">';
 		$behav_skill_star .= '<span class="skill_txt">'.ucwords($key).'</span>';
 			
-		 if($skill >= 0){
+		 if($skill > 0){
 			for($i = 1; $i<=5; $i++){
 				if($i <= $skill){
 					$behav_skill_star .=  '<a href="javascript:void(0)" style="color: orange;">★</a>';
 				}else{
-					$behav_skill_star .=  '<a href="javascript:void(0)" >★</a>';		
+					// $behav_skill_star .=  '<a href="javascript:void(0)" >★</a>';		
 				}
 			}
 			
 		 }
 		 $behav_skill_star .=  '</div>';
-		 $behav_skill_star .=  '<br>';
+		//  $behav_skill_star .=  '<br>';
 	}
 
 } 
@@ -59,7 +60,7 @@ $str = <<<EOD
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Hello Bulma!</title>
+    <title>Manage Hiring - Profile Snapshot</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.5.1/css/bulma.min.css">
   </head>
@@ -70,10 +71,10 @@ $str = <<<EOD
 		/*  
 		 * Rating styles
 		 */
-		 .skill_txt{font-size:18px;margin-right:10px;}
+		 .skill_txt{font-size:1rem;margin-right:10px;}
 		 
 		.rating {
-			font-size: 25px;
+			font-size: 1rem;
 			overflow:hidden;
 		}
 .rating input {
@@ -102,11 +103,17 @@ $str = <<<EOD
 			cursor: pointer;
 		}
 		
-		
+		.rating2{
+			float:left;
+			width:40%
+		}
 		.rating2 a {
-			float:none
+			float:none;
+			width:50%
 			
 		}
+		.titleLeft{margin-left:28% !important;}
+		.titleLogo{margin-left:10% !important}
   </style>
   <body>
   
@@ -114,17 +121,18 @@ $str = <<<EOD
   <section class="section">
     <div class="container">
 	
-	<div class="columns">
-	 <div class="column is-three-quarters title has-text-primary" style="float:left">PROFILE SNAPSHOT </div>
-	 <div class="column" style="float:right"><img src="http://jobsfactory.in/images/for_pdf.png"></div>
+	<div class="columns" style="margin-bottom:0rem;">
+	 <div class="column  title has-text-centered titleLeft"  style="padding:0.1rem;color:#826386 !important;">PROFILE SNAPSHOT 
+	 <img  class="titleLogo" src="http://jobsfactory.in/images/for_pdf.png">
+	 </div>
 	</div>
 	<table class="table content box is-radius" style="clear:left;">
   <thead >
-    <tr  class="is-selected">
+    <tr  class="is-selected" style="background: #826386 ">
       <th class=" has-text-centered"width="5%">S.No</th>
-      <th class="" width="25%">Criteria</th>
+      <th class="" width="20%">Criteria</th>
      
-      <th class="" width="70%">Candidate Credentials</th>
+      <th class="" width="75%">Candidate Credentials</th>
     </tr>
   </thead>
   <tfoot>
@@ -137,13 +145,13 @@ $str = <<<EOD
   </tfoot>
   <tbody>
   <tr>
-	 <th class="has-text-centered">1</th>
+	 <td class="has-text-centered">1</td>
       <td>Profile for the Position of</td>
       <td>$_POST[requirement]</td>
     </tr>
 	
-    <tr >
-      <th class="has-text-centered">2</th>
+    <tr>
+      <td class="has-text-centered">2</td>
       <td>Name of the Candidate
       </td>
      
@@ -151,34 +159,34 @@ $str = <<<EOD
     </tr>
     
 	<tr>
-      <th class="has-text-centered">3</th>
+      <td class="has-text-centered">3</td>
       <td>Gender</td>
       <td>$gen</td>
     </tr>
 	
 	<tr>
-      <th class="has-text-centered">4</th>
+      <td class="has-text-centered">4</td>
       <td>Qualification</td>
      
       <td>$snap_edu</td>
     </tr>
 	
 	<tr>
-      <th class="has-text-centered">5</th>
+      <td class="has-text-centered">5</td>
       <td>Career Highlights</td>
      
       <td>$snap_exp</td>
     </tr>
 	
 	 <tr>
-      <th  class="has-text-centered">6</th>
-      <td>Areas of Specialization / Expertise</td>
+      <td  class="has-text-centered">6</td>
+      <td>Areas of Expertise</td>
      
       <td>$snap_skill</td>
     </tr>
 	
     <tr>
-      <th class="has-text-centered">7</th>
+      <td class="has-text-centered">7</td>
       <td>Total Years of Experience</td>
      
       <td>$expStr</td>
@@ -187,69 +195,44 @@ $str = <<<EOD
 	
   
     <tr>
-      <th  class="has-text-centered">8</th>
+      <td  class="has-text-centered">8</td>
       <td>Current Location of Work</td>
       <td>$locationDataCase</td>
     </tr>
 	
     <tr>
-      <th  class="has-text-centered">9</th>
+      <td  class="has-text-centered">9</td>
       <td>Current CTC</td>
       <td>$_POST[present_ctc] $pre_ctc_type Per Annum</td>
     </tr>
 	
     <tr>
-      <th  class="has-text-centered">10</th>
+      <td  class="has-text-centered">10</td>
       <td>Expected CTC</td>
       <td>$_POST[expected_ctc] $exp_ctc_type Per Annum</td>
     </tr>
 	
     <tr>
-      <th class="has-text-centered">11</th>
+      <td class="has-text-centered">11</td>
       <td>Notice Period</td>
       <td>$notice</td>
     </tr>
  
     <tr>
-      <th class="has-text-centered">12</th>
-      <td>Date of Birth</td>
-      <td>$dob</td>
+      <td class="has-text-centered">12</td>
+      <td>Date of Birth / Age</td>
+      <td>$dob / $age</td>
     </tr>
 	
 	<tr>
-      <th class="has-text-centered">13</th>
+      <td class="has-text-centered">13</td>
       <td>Family (Dependents)
 	</td>
       <td>$_POST[family]</td>
     </tr>
 	
-    
-    <tr>
-      <th class="has-text-centered">14</th>
-      <td class="">Consultant Assessment</td>
-    
-      <td>
-	  
-	  $_POST[consultant]
-	  
-	  </td>
-    </tr>
-	
-	 
-    <tr>
-      <th class="has-text-centered">15</th>
-      <td class="">Interview Availability</td>
-    
-      <td>
-	  
-	  $_POST[interview_availability]
-	  
-	  </td>
-    </tr>
-	
-	
-	 <tr>
-      <th class="has-text-centered">16</th>
+     <tr>
+      <td class="has-text-centered">14</td>
       <th class="">Technical Skills</th>
     
       <td>
@@ -261,7 +244,7 @@ $str = <<<EOD
     </tr>
 	
 	 <tr>
-      <th class="has-text-centered">17</th>
+      <td class="has-text-centered">15</td>
       <th class="">Behavioral Skills</th>
     
       <td>
@@ -272,15 +255,41 @@ $str = <<<EOD
 	  </td>
     </tr>
 	
+    <tr>
+      <td class="has-text-centered">16</td>
+      <td class="">Consultant Assessment</td>
+    
+      <td>
+	  
+	  $_POST[consultant]
+	  
+	  </td>
+    </tr>
+	
+	 
+    <tr>
+      <td class="has-text-centered">17</td>
+      <td class="">Interview Availability</td>
+    
+      <td>
+	  
+	  $_POST[interview_availability]
+	  
+	  </td>
+    </tr>
+	
+	
+	
+	
     
   </tbody>
 </table>
 
-<footer class="footer is-paddingless level" style="margin-top:25px;height:50px;">
-  <div class="container is-light">
+<footer class="is-paddingless level" style="margin-top:25px;height:50px;">
+  <div class="container">
     <div class="level-item content has-text-centered"  style="margin-top:15px;">
       <p>
-        <strong>Created</strong> by <a class="is-danger" href="http://career-tree.in">CareerTree HR Solutions Private Limited</a>. 
+        Created by <a class="" href="http://career-tree.in" style="color:#826386 !important;"><strong>CareerTree HR Solutions Private Limited</strong></a>. 
       </p>     
     </div>
   </div>
@@ -299,9 +308,7 @@ EOD;
 
 
 
-// echo $str;
- //die;
-
+// echo $str;die;
 
 $snap_file_name = substr($_SESSION['resume_doc'], 0, strlen($_SESSION['resume_doc'])-5);
 $snap_file_name = $fun->filter_file($snap_file_name);

@@ -915,16 +915,21 @@ class fun{
 
    
    function openZip($file_to_open, $target) {
-    $zip = new ZipArchive();
-    $x = $zip->open($file_to_open);
-    if($x === true) {
-        $zip->extractTo($target);
-        $zip->close();         
-        //unlink($file_to_open);
-    } else {
-        die("There was a problem. Please try again!");
-    }
-}
+		$zip = new ZipArchive();
+		$x = $zip->open($file_to_open);
+		if($x === true) {
+			$zip->extractTo($target);
+			$zip->close();         
+			//unlink($file_to_open);
+		} else {
+			die("There was a problem. Please try again!");
+		}
+	}
+	
+	/* function to calculate age */
+	public function get_age($dob){
+		return floor((time() - strtotime($dob))/31556926);
+	}
 
 }
 
