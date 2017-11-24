@@ -93,7 +93,6 @@ if(!empty($_POST)){
 		// '".$mysql->real_escape_str($incentive_year.'-'.$end_month)."')";
 		
 		$query = "CALL get_employee()";
-		
 		// Calling the function that makes the fetch
 		try{
 			// calling mysql exe_query function
@@ -219,20 +218,20 @@ if(!empty($_POST)){
 					}
 									
 				}
-				$work_days = $no_days - $leave_days;
+				echo $work_days = $no_days - $leave_days;
 				$avg[$emp_id][] = round(($work_days/$no_days)*$work_avg, 1); 
 				$work_avg = '';					
 			//}
 					
 		
-		}	
+		}
 		// check if percentage >= 100 and calculate incentive
 		foreach($avg as $id => $avg_rec){
 			$avg_user = $avg_rec[0];
-			echo $avg_user;die;
+			echo $avg_user;
 			if($avg_user >= '100'){
 				// get the interview sent candidates Position CTC for the month
-				$query = "CALL get_candidate_interview('".$id."','".$year_month."')";
+				echo $query = "CALL get_candidate_interview('".$id."','".$year_month."')";
 				try{
 					// calling mysql exe_query function
 					if(!$result = $mysql->execute_query($query)){
@@ -258,8 +257,10 @@ if(!empty($_POST)){
 							echo 'Caught exception: ',  $e->getMessage(), "\n";
 						}						
 					}
+					
 					// save the incentive details of the candidates
-					$query = "CALL save_candidate_incentive('".$id."','".$incentive_amount."','".$year_month."')";
+					$query = "CALL save_candidate_incentive('".$id."','I','".$period."','".$incentive_target_amt."','".$achievement_amt."',
+					'".$eligible_incentive_amt."','".$created_by."','".$created_date."')";
 					try{
 						// calling mysql exe_query function
 						if(!$result = $mysql->execute_query($query)){
@@ -283,7 +284,7 @@ if(!empty($_POST)){
 					echo 'Caught exception: ',  $e->getMessage(), "\n";
 				}
 			}
-		}
+		}die;
 		
 		if(!empty($last_id)){
 		// redirecting to list page

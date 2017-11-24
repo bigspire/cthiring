@@ -33054,3 +33054,3083 @@ Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
 Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
 [main] - APP\webroot\index.php, line 118
 
+2017-11-24 16:56:55 Debug: Deprecated (16384): Validation::notEmpty() is deprecated. Use Validation::notBlank() instead. in [C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Utility\Validation.php, line 60]
+Trace:
+Validation::notEmpty() - CORE\Cake\Utility\Validation.php, line 60
+CakeValidationRule::process() - CORE\Cake\Model\Validator\CakeValidationRule.php, line 277
+CakeValidationSet::validate() - CORE\Cake\Model\Validator\CakeValidationSet.php, line 135
+ModelValidator::errors() - CORE\Cake\Model\ModelValidator.php, line 268
+ModelValidator::validates() - CORE\Cake\Model\ModelValidator.php, line 99
+Model::validates() - CORE\Cake\Model\Model.php, line 3469
+LoginController::index() - APP\Controller\LoginController.php, line 41
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:55 Debug: Deprecated (16384): Validation::notEmpty() is deprecated. Use Validation::notBlank() instead. in [C:\xampp\htdocs\2017\ctsvn\cthiring\lib\Cake\Utility\Validation.php, line 60]
+Trace:
+Validation::notEmpty() - CORE\Cake\Utility\Validation.php, line 60
+CakeValidationRule::process() - CORE\Cake\Model\Validator\CakeValidationRule.php, line 277
+CakeValidationSet::validate() - CORE\Cake\Model\Validator\CakeValidationSet.php, line 135
+ModelValidator::errors() - CORE\Cake\Model\ModelValidator.php, line 268
+ModelValidator::validates() - CORE\Cake\Model\ModelValidator.php, line 99
+Model::validates() - CORE\Cake\Model\Model.php, line 3469
+LoginController::index() - APP\Controller\LoginController.php, line 41
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:55 Debug: Notice (8): Undefined index: from in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 75]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 75
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:55 Debug: Notice (8): Undefined index: to in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 76]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 76
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:55 Debug: Notice (8): Undefined variable: dash_type in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 111]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 111
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:55 Debug: Notice (8): Undefined index: loc in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 298]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 298
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:55 Debug: Notice (8): Undefined index: client in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 303]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 303
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:55 Debug: Notice (8): Undefined variable: ac_join in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 312]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 312
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:55 Debug: Notice (8): Undefined variable: branch_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 312]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 312
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:55 Debug: Notice (8): Undefined variable: client_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 312]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 312
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:55 Debug: Notice (8): Undefined offset: 0 in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 581]
+Trace:
+HomeController::get_position_count() - APP\Controller\HomeController.php, line 581
+HomeController::index() - APP\Controller\HomeController.php, line 312
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:55 Debug: Notice (8): Undefined variable: reqCond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 599]
+Trace:
+HomeController::get_position_count() - APP\Controller\HomeController.php, line 599
+HomeController::index() - APP\Controller\HomeController.php, line 312
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:55 Debug: Notice (8): Undefined index: type in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 315]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 315
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:55 Debug: Notice (8): Undefined variable: cv_branch_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 325]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 325
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:55 Debug: Notice (8): Undefined variable: client_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 325]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 325
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:55 Debug: Notice (8): Undefined variable: reqCond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 325]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 325
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:55 Debug: Notice (8): Undefined variable: cv_branch_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 329]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 329
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:55 Debug: Notice (8): Undefined variable: client_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 329]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 329
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:55 Debug: Notice (8): Undefined variable: reqCond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 329]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 329
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:55 Debug: Notice (8): Undefined variable: cv_branch_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 333]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 333
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:55 Debug: Notice (8): Undefined variable: client_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 333]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 333
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:55 Debug: Notice (8): Undefined variable: reqCond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 333]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 333
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:55 Debug: Notice (8): Undefined variable: cv_branch_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 337]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 337
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:55 Debug: Notice (8): Undefined variable: client_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 337]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 337
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:55 Debug: Notice (8): Undefined variable: reqCond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 337]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 337
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:55 Debug: Notice (8): Undefined variable: cv_branch_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 345]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 345
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:55 Debug: Notice (8): Undefined variable: client_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 345]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 345
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:55 Debug: Notice (8): Undefined variable: reqCond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 345]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 345
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:55 Debug: Notice (8): Undefined variable: cv_branch_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 349]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 349
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:55 Debug: Notice (8): Undefined variable: client_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 349]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 349
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:55 Debug: Notice (8): Undefined variable: reqCond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 349]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 349
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:55 Debug: Notice (8): Undefined variable: cv_branch_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 353]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 353
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:55 Debug: Notice (8): Undefined variable: client_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 353]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 353
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:55 Debug: Notice (8): Undefined variable: reqCond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 353]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 353
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:55 Debug: Notice (8): Undefined variable: cv_branch_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 357]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 357
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:55 Debug: Notice (8): Undefined variable: client_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 357]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 357
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:55 Debug: Notice (8): Undefined variable: reqCond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 357]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 357
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:55 Debug: Notice (8): Undefined variable: cv_branch_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 361]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 361
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:55 Debug: Notice (8): Undefined variable: client_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 361]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 361
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:55 Debug: Notice (8): Undefined variable: reqCond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 361]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 361
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:55 Debug: Notice (8): Undefined variable: cv_branch_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 365]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 365
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:55 Debug: Notice (8): Undefined variable: client_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 365]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 365
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:55 Debug: Notice (8): Undefined variable: reqCond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 365]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 365
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:55 Debug: Notice (8): Undefined variable: cv_branch_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 369]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 369
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:55 Debug: Notice (8): Undefined variable: client_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 369]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 369
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:55 Debug: Notice (8): Undefined variable: reqCond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 369]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 369
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:55 Debug: Notice (8): Undefined variable: ac_join in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 312]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 312
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:55 Debug: Notice (8): Undefined variable: branch_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 312]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 312
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:55 Debug: Notice (8): Undefined variable: client_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 312]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 312
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:55 Debug: Notice (8): Undefined offset: 0 in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 581]
+Trace:
+HomeController::get_position_count() - APP\Controller\HomeController.php, line 581
+HomeController::index() - APP\Controller\HomeController.php, line 312
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:55 Debug: Notice (8): Undefined variable: reqCond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 599]
+Trace:
+HomeController::get_position_count() - APP\Controller\HomeController.php, line 599
+HomeController::index() - APP\Controller\HomeController.php, line 312
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:55 Debug: Notice (8): Undefined index: type in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 315]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 315
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:55 Debug: Notice (8): Undefined variable: cv_branch_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 325]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 325
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:55 Debug: Notice (8): Undefined variable: client_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 325]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 325
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:55 Debug: Notice (8): Undefined variable: reqCond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 325]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 325
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:55 Debug: Notice (8): Undefined variable: cv_branch_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 329]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 329
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:55 Debug: Notice (8): Undefined variable: client_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 329]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 329
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:55 Debug: Notice (8): Undefined variable: reqCond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 329]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 329
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:56 Debug: Notice (8): Undefined variable: cv_branch_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 333]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 333
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:56 Debug: Notice (8): Undefined variable: client_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 333]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 333
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:56 Debug: Notice (8): Undefined variable: reqCond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 333]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 333
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:56 Debug: Notice (8): Undefined variable: cv_branch_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 337]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 337
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:56 Debug: Notice (8): Undefined variable: client_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 337]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 337
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:56 Debug: Notice (8): Undefined variable: reqCond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 337]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 337
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:56 Debug: Notice (8): Undefined variable: cv_branch_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 345]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 345
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:56 Debug: Notice (8): Undefined variable: client_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 345]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 345
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:56 Debug: Notice (8): Undefined variable: reqCond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 345]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 345
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:56 Debug: Notice (8): Undefined variable: cv_branch_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 349]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 349
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:56 Debug: Notice (8): Undefined variable: client_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 349]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 349
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:56 Debug: Notice (8): Undefined variable: reqCond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 349]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 349
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:56 Debug: Notice (8): Undefined variable: cv_branch_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 353]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 353
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:56 Debug: Notice (8): Undefined variable: client_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 353]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 353
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:56 Debug: Notice (8): Undefined variable: reqCond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 353]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 353
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:56 Debug: Notice (8): Undefined variable: cv_branch_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 357]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 357
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:56 Debug: Notice (8): Undefined variable: client_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 357]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 357
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:56 Debug: Notice (8): Undefined variable: reqCond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 357]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 357
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:56 Debug: Notice (8): Undefined variable: cv_branch_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 361]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 361
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:56 Debug: Notice (8): Undefined variable: client_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 361]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 361
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:56 Debug: Notice (8): Undefined variable: reqCond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 361]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 361
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:56 Debug: Notice (8): Undefined variable: cv_branch_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 365]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 365
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:56 Debug: Notice (8): Undefined variable: client_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 365]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 365
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:56 Debug: Notice (8): Undefined variable: reqCond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 365]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 365
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:56 Debug: Notice (8): Undefined variable: cv_branch_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 369]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 369
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:56 Debug: Notice (8): Undefined variable: client_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 369]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 369
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:56 Debug: Notice (8): Undefined variable: reqCond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 369]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 369
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:56 Debug: Notice (8): Undefined variable: ac_join in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 312]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 312
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:56 Debug: Notice (8): Undefined variable: branch_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 312]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 312
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:56 Debug: Notice (8): Undefined variable: client_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 312]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 312
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:56 Debug: Notice (8): Undefined offset: 0 in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 581]
+Trace:
+HomeController::get_position_count() - APP\Controller\HomeController.php, line 581
+HomeController::index() - APP\Controller\HomeController.php, line 312
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:56 Debug: Notice (8): Undefined variable: reqCond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 599]
+Trace:
+HomeController::get_position_count() - APP\Controller\HomeController.php, line 599
+HomeController::index() - APP\Controller\HomeController.php, line 312
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:56 Debug: Notice (8): Undefined index: type in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 315]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 315
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:56 Debug: Notice (8): Undefined variable: cv_branch_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 325]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 325
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:56 Debug: Notice (8): Undefined variable: client_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 325]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 325
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:56 Debug: Notice (8): Undefined variable: reqCond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 325]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 325
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:56 Debug: Notice (8): Undefined variable: cv_branch_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 329]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 329
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:56 Debug: Notice (8): Undefined variable: client_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 329]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 329
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:56 Debug: Notice (8): Undefined variable: reqCond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 329]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 329
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:56 Debug: Notice (8): Undefined variable: cv_branch_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 333]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 333
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:56 Debug: Notice (8): Undefined variable: client_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 333]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 333
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:56 Debug: Notice (8): Undefined variable: reqCond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 333]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 333
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:56 Debug: Notice (8): Undefined variable: cv_branch_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 337]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 337
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:56 Debug: Notice (8): Undefined variable: client_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 337]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 337
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:56 Debug: Notice (8): Undefined variable: reqCond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 337]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 337
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:56 Debug: Notice (8): Undefined variable: cv_branch_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 345]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 345
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:56 Debug: Notice (8): Undefined variable: client_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 345]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 345
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:56 Debug: Notice (8): Undefined variable: reqCond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 345]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 345
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:56 Debug: Notice (8): Undefined variable: cv_branch_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 349]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 349
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:56 Debug: Notice (8): Undefined variable: client_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 349]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 349
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:56 Debug: Notice (8): Undefined variable: reqCond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 349]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 349
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:56 Debug: Notice (8): Undefined variable: cv_branch_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 353]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 353
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:56 Debug: Notice (8): Undefined variable: client_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 353]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 353
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:56 Debug: Notice (8): Undefined variable: reqCond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 353]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 353
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:56 Debug: Notice (8): Undefined variable: cv_branch_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 357]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 357
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:56 Debug: Notice (8): Undefined variable: client_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 357]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 357
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:56 Debug: Notice (8): Undefined variable: reqCond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 357]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 357
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:56 Debug: Notice (8): Undefined variable: cv_branch_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 361]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 361
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:56 Debug: Notice (8): Undefined variable: client_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 361]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 361
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:56 Debug: Notice (8): Undefined variable: reqCond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 361]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 361
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:56 Debug: Notice (8): Undefined variable: cv_branch_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 365]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 365
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:56 Debug: Notice (8): Undefined variable: client_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 365]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 365
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:56 Debug: Notice (8): Undefined variable: reqCond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 365]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 365
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:56 Debug: Notice (8): Undefined variable: cv_branch_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 369]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 369
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:56 Debug: Notice (8): Undefined variable: client_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 369]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 369
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:56 Debug: Notice (8): Undefined variable: reqCond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 369]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 369
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:56 Debug: Notice (8): Undefined variable: ac_join in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 312]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 312
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:56 Debug: Notice (8): Undefined variable: branch_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 312]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 312
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:56 Debug: Notice (8): Undefined variable: client_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 312]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 312
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:56 Debug: Notice (8): Undefined offset: 0 in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 581]
+Trace:
+HomeController::get_position_count() - APP\Controller\HomeController.php, line 581
+HomeController::index() - APP\Controller\HomeController.php, line 312
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:56 Debug: Notice (8): Undefined variable: reqCond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 599]
+Trace:
+HomeController::get_position_count() - APP\Controller\HomeController.php, line 599
+HomeController::index() - APP\Controller\HomeController.php, line 312
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:56 Debug: Notice (8): Undefined index: type in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 315]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 315
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:56 Debug: Notice (8): Undefined variable: cv_branch_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 325]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 325
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:56 Debug: Notice (8): Undefined variable: client_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 325]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 325
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:56 Debug: Notice (8): Undefined variable: reqCond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 325]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 325
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:56 Debug: Notice (8): Undefined variable: cv_branch_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 329]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 329
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:56 Debug: Notice (8): Undefined variable: client_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 329]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 329
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:56 Debug: Notice (8): Undefined variable: reqCond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 329]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 329
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:56 Debug: Notice (8): Undefined variable: cv_branch_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 333]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 333
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:56 Debug: Notice (8): Undefined variable: client_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 333]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 333
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:56 Debug: Notice (8): Undefined variable: reqCond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 333]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 333
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:56 Debug: Notice (8): Undefined variable: cv_branch_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 337]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 337
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:56 Debug: Notice (8): Undefined variable: client_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 337]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 337
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:56 Debug: Notice (8): Undefined variable: reqCond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 337]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 337
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:56 Debug: Notice (8): Undefined variable: cv_branch_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 345]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 345
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:56 Debug: Notice (8): Undefined variable: client_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 345]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 345
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:56 Debug: Notice (8): Undefined variable: reqCond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 345]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 345
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:56 Debug: Notice (8): Undefined variable: cv_branch_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 349]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 349
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:56 Debug: Notice (8): Undefined variable: client_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 349]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 349
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:56 Debug: Notice (8): Undefined variable: reqCond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 349]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 349
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:56 Debug: Notice (8): Undefined variable: cv_branch_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 353]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 353
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:56 Debug: Notice (8): Undefined variable: client_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 353]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 353
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:56 Debug: Notice (8): Undefined variable: reqCond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 353]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 353
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:56 Debug: Notice (8): Undefined variable: cv_branch_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 357]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 357
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:56 Debug: Notice (8): Undefined variable: client_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 357]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 357
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:56 Debug: Notice (8): Undefined variable: reqCond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 357]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 357
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:56 Debug: Notice (8): Undefined variable: cv_branch_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 361]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 361
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:56 Debug: Notice (8): Undefined variable: client_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 361]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 361
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:56 Debug: Notice (8): Undefined variable: reqCond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 361]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 361
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:56 Debug: Notice (8): Undefined variable: cv_branch_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 365]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 365
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:56 Debug: Notice (8): Undefined variable: client_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 365]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 365
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:56 Debug: Notice (8): Undefined variable: reqCond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 365]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 365
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:56 Debug: Notice (8): Undefined variable: cv_branch_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 369]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 369
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:56 Debug: Notice (8): Undefined variable: client_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 369]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 369
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:56 Debug: Notice (8): Undefined variable: reqCond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 369]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 369
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:56 Debug: Notice (8): Undefined variable: ac_join in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 312]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 312
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:56 Debug: Notice (8): Undefined variable: branch_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 312]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 312
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:56 Debug: Notice (8): Undefined variable: client_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 312]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 312
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:56 Debug: Notice (8): Undefined offset: 0 in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 581]
+Trace:
+HomeController::get_position_count() - APP\Controller\HomeController.php, line 581
+HomeController::index() - APP\Controller\HomeController.php, line 312
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:56 Debug: Notice (8): Undefined variable: reqCond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 599]
+Trace:
+HomeController::get_position_count() - APP\Controller\HomeController.php, line 599
+HomeController::index() - APP\Controller\HomeController.php, line 312
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:56 Debug: Notice (8): Undefined index: type in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 315]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 315
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:56 Debug: Notice (8): Undefined variable: cv_branch_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 325]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 325
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:56 Debug: Notice (8): Undefined variable: client_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 325]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 325
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:56 Debug: Notice (8): Undefined variable: reqCond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 325]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 325
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:57 Debug: Notice (8): Undefined variable: cv_branch_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 329]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 329
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:57 Debug: Notice (8): Undefined variable: client_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 329]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 329
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:57 Debug: Notice (8): Undefined variable: reqCond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 329]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 329
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:57 Debug: Notice (8): Undefined variable: cv_branch_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 333]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 333
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:57 Debug: Notice (8): Undefined variable: client_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 333]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 333
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:57 Debug: Notice (8): Undefined variable: reqCond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 333]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 333
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:57 Debug: Notice (8): Undefined variable: cv_branch_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 337]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 337
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:57 Debug: Notice (8): Undefined variable: client_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 337]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 337
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:57 Debug: Notice (8): Undefined variable: reqCond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 337]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 337
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:57 Debug: Notice (8): Undefined variable: cv_branch_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 345]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 345
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:57 Debug: Notice (8): Undefined variable: client_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 345]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 345
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:57 Debug: Notice (8): Undefined variable: reqCond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 345]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 345
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:57 Debug: Notice (8): Undefined variable: cv_branch_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 349]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 349
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:57 Debug: Notice (8): Undefined variable: client_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 349]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 349
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:57 Debug: Notice (8): Undefined variable: reqCond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 349]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 349
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:57 Debug: Notice (8): Undefined variable: cv_branch_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 353]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 353
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:57 Debug: Notice (8): Undefined variable: client_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 353]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 353
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:57 Debug: Notice (8): Undefined variable: reqCond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 353]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 353
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:57 Debug: Notice (8): Undefined variable: cv_branch_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 357]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 357
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:57 Debug: Notice (8): Undefined variable: client_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 357]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 357
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:57 Debug: Notice (8): Undefined variable: reqCond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 357]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 357
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:57 Debug: Notice (8): Undefined variable: cv_branch_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 361]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 361
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:57 Debug: Notice (8): Undefined variable: client_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 361]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 361
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:57 Debug: Notice (8): Undefined variable: reqCond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 361]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 361
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:57 Debug: Notice (8): Undefined variable: cv_branch_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 365]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 365
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:57 Debug: Notice (8): Undefined variable: client_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 365]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 365
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:57 Debug: Notice (8): Undefined variable: reqCond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 365]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 365
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:57 Debug: Notice (8): Undefined variable: cv_branch_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 369]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 369
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:57 Debug: Notice (8): Undefined variable: client_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 369]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 369
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:57 Debug: Notice (8): Undefined variable: reqCond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 369]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 369
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:57 Debug: Notice (8): Undefined variable: ac_join in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 312]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 312
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:57 Debug: Notice (8): Undefined variable: branch_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 312]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 312
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:57 Debug: Notice (8): Undefined variable: client_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 312]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 312
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:57 Debug: Notice (8): Undefined offset: 0 in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 581]
+Trace:
+HomeController::get_position_count() - APP\Controller\HomeController.php, line 581
+HomeController::index() - APP\Controller\HomeController.php, line 312
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:57 Debug: Notice (8): Undefined variable: reqCond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 599]
+Trace:
+HomeController::get_position_count() - APP\Controller\HomeController.php, line 599
+HomeController::index() - APP\Controller\HomeController.php, line 312
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:57 Debug: Notice (8): Undefined index: type in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 315]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 315
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:57 Debug: Notice (8): Undefined variable: cv_branch_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 325]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 325
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:57 Debug: Notice (8): Undefined variable: client_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 325]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 325
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:57 Debug: Notice (8): Undefined variable: reqCond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 325]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 325
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:57 Debug: Notice (8): Undefined variable: cv_branch_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 329]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 329
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:57 Debug: Notice (8): Undefined variable: client_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 329]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 329
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:57 Debug: Notice (8): Undefined variable: reqCond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 329]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 329
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:57 Debug: Notice (8): Undefined variable: cv_branch_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 333]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 333
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:57 Debug: Notice (8): Undefined variable: client_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 333]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 333
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:57 Debug: Notice (8): Undefined variable: reqCond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 333]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 333
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:57 Debug: Notice (8): Undefined variable: cv_branch_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 337]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 337
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:57 Debug: Notice (8): Undefined variable: client_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 337]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 337
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:57 Debug: Notice (8): Undefined variable: reqCond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 337]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 337
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:57 Debug: Notice (8): Undefined variable: cv_branch_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 345]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 345
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:57 Debug: Notice (8): Undefined variable: client_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 345]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 345
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:57 Debug: Notice (8): Undefined variable: reqCond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 345]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 345
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:57 Debug: Notice (8): Undefined variable: cv_branch_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 349]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 349
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:57 Debug: Notice (8): Undefined variable: client_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 349]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 349
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:57 Debug: Notice (8): Undefined variable: reqCond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 349]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 349
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:57 Debug: Notice (8): Undefined variable: cv_branch_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 353]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 353
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:57 Debug: Notice (8): Undefined variable: client_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 353]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 353
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:57 Debug: Notice (8): Undefined variable: reqCond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 353]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 353
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:57 Debug: Notice (8): Undefined variable: cv_branch_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 357]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 357
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:57 Debug: Notice (8): Undefined variable: client_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 357]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 357
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:57 Debug: Notice (8): Undefined variable: reqCond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 357]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 357
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:57 Debug: Notice (8): Undefined variable: cv_branch_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 361]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 361
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:57 Debug: Notice (8): Undefined variable: client_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 361]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 361
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:57 Debug: Notice (8): Undefined variable: reqCond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 361]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 361
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:57 Debug: Notice (8): Undefined variable: cv_branch_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 365]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 365
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:57 Debug: Notice (8): Undefined variable: client_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 365]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 365
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:57 Debug: Notice (8): Undefined variable: reqCond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 365]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 365
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:57 Debug: Notice (8): Undefined variable: cv_branch_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 369]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 369
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:57 Debug: Notice (8): Undefined variable: client_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 369]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 369
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:57 Debug: Notice (8): Undefined variable: reqCond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 369]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 369
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:57 Debug: Notice (8): Undefined variable: ac_join in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 312]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 312
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:57 Debug: Notice (8): Undefined variable: branch_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 312]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 312
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:57 Debug: Notice (8): Undefined variable: client_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 312]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 312
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:57 Debug: Notice (8): Undefined offset: 0 in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 581]
+Trace:
+HomeController::get_position_count() - APP\Controller\HomeController.php, line 581
+HomeController::index() - APP\Controller\HomeController.php, line 312
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:57 Debug: Notice (8): Undefined variable: reqCond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 599]
+Trace:
+HomeController::get_position_count() - APP\Controller\HomeController.php, line 599
+HomeController::index() - APP\Controller\HomeController.php, line 312
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:57 Debug: Notice (8): Undefined index: type in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 315]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 315
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:57 Debug: Notice (8): Undefined variable: cv_branch_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 325]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 325
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:57 Debug: Notice (8): Undefined variable: client_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 325]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 325
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:57 Debug: Notice (8): Undefined variable: reqCond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 325]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 325
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:57 Debug: Notice (8): Undefined variable: cv_branch_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 329]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 329
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:57 Debug: Notice (8): Undefined variable: client_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 329]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 329
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:57 Debug: Notice (8): Undefined variable: reqCond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 329]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 329
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:57 Debug: Notice (8): Undefined variable: cv_branch_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 333]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 333
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:57 Debug: Notice (8): Undefined variable: client_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 333]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 333
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:57 Debug: Notice (8): Undefined variable: reqCond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 333]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 333
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:57 Debug: Notice (8): Undefined variable: cv_branch_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 337]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 337
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:57 Debug: Notice (8): Undefined variable: client_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 337]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 337
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:57 Debug: Notice (8): Undefined variable: reqCond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 337]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 337
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:57 Debug: Notice (8): Undefined variable: cv_branch_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 345]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 345
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:57 Debug: Notice (8): Undefined variable: client_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 345]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 345
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:57 Debug: Notice (8): Undefined variable: reqCond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 345]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 345
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:57 Debug: Notice (8): Undefined variable: cv_branch_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 349]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 349
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:57 Debug: Notice (8): Undefined variable: client_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 349]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 349
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:57 Debug: Notice (8): Undefined variable: reqCond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 349]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 349
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:57 Debug: Notice (8): Undefined variable: cv_branch_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 353]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 353
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:57 Debug: Notice (8): Undefined variable: client_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 353]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 353
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:57 Debug: Notice (8): Undefined variable: reqCond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 353]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 353
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:57 Debug: Notice (8): Undefined variable: cv_branch_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 357]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 357
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:57 Debug: Notice (8): Undefined variable: client_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 357]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 357
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:57 Debug: Notice (8): Undefined variable: reqCond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 357]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 357
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:57 Debug: Notice (8): Undefined variable: cv_branch_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 361]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 361
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:57 Debug: Notice (8): Undefined variable: client_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 361]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 361
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:57 Debug: Notice (8): Undefined variable: reqCond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 361]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 361
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:57 Debug: Notice (8): Undefined variable: cv_branch_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 365]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 365
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:57 Debug: Notice (8): Undefined variable: client_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 365]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 365
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:57 Debug: Notice (8): Undefined variable: reqCond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 365]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 365
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:57 Debug: Notice (8): Undefined variable: cv_branch_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 369]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 369
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:57 Debug: Notice (8): Undefined variable: client_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 369]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 369
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:57 Debug: Notice (8): Undefined variable: reqCond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 369]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 369
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:57 Debug: Notice (8): Undefined index: action in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 408]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 408
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:57 Debug: Notice (8): Undefined variable: keyCond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 415]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 415
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:57 Debug: Notice (8): Undefined variable: client_emp_cond in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 415]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 415
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:58 Debug: Notice (8): Undefined variable: count_options in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 516]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 516
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:58 Debug: Notice (8): Undefined variable: count_options in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 520]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 520
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:58 Debug: Notice (8): Undefined variable: count_options in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 524]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 524
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:58 Debug: Notice (8): Undefined variable: count_options in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 529]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 529
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:58 Debug: Notice (8): Undefined variable: count_options in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 534]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 534
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:58 Debug: Notice (8): Undefined variable: count_options in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 544]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 544
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:58 Debug: Notice (8): Undefined variable: count_options in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 558]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 558
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:58 Debug: Notice (8): Undefined variable: count_options in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 563]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 563
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:58 Debug: Notice (8): Undefined variable: count_options in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 566]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 566
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:58 Debug: Notice (8): Undefined variable: count_options in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\HomeController.php, line 570]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 570
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:58 Debug: Notice (8): Undefined variable: options in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\AppController.php, line 138]
+Trace:
+AppController::get_approve_leave_count() - APP\Controller\AppController.php, line 138
+AppController::beforeRender() - APP\Controller\AppController.php, line 49
+call_user_func - [internal], line ??
+CakeEventManager::dispatch() - CORE\Cake\Event\CakeEventManager.php, line 243
+Controller::render() - CORE\Cake\Controller\Controller.php, line 936
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:58 Debug: Notice (8): Undefined variable: create_task in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\View\Elements\header.ctp, line 82]
+Trace:
+include - APP\View\Elements\header.ctp, line 82
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::_renderElement() - CORE\Cake\View\View.php, line 1224
+View::element() - CORE\Cake\View\View.php, line 418
+include - APP\View\Home\index.ctp, line 2
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:58 Debug: Notice (8): Undefined variable: taskplan_menu in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\View\Elements\header.ctp, line 83]
+Trace:
+include - APP\View\Elements\header.ctp, line 83
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::_renderElement() - CORE\Cake\View\View.php, line 1224
+View::element() - CORE\Cake\View\View.php, line 418
+include - APP\View\Home\index.ctp, line 2
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:58 Debug: Notice (8): Undefined variable: leave_menu in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\View\Elements\header.ctp, line 83]
+Trace:
+include - APP\View\Elements\header.ctp, line 83
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::_renderElement() - CORE\Cake\View\View.php, line 1224
+View::element() - CORE\Cake\View\View.php, line 418
+include - APP\View\Home\index.ctp, line 2
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:58 Debug: Notice (8): Undefined variable: create_task in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\View\Elements\header.ctp, line 89]
+Trace:
+include - APP\View\Elements\header.ctp, line 89
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::_renderElement() - CORE\Cake\View\View.php, line 1224
+View::element() - CORE\Cake\View\View.php, line 418
+include - APP\View\Home\index.ctp, line 2
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:58 Debug: Notice (8): Undefined variable: client_menu in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\View\Elements\header.ctp, line 128]
+Trace:
+include - APP\View\Elements\header.ctp, line 128
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::_renderElement() - CORE\Cake\View\View.php, line 1224
+View::element() - CORE\Cake\View\View.php, line 418
+include - APP\View\Home\index.ctp, line 2
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:58 Debug: Notice (8): Undefined variable: position_menu in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\View\Elements\header.ctp, line 160]
+Trace:
+include - APP\View\Elements\header.ctp, line 160
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::_renderElement() - CORE\Cake\View\View.php, line 1224
+View::element() - CORE\Cake\View\View.php, line 418
+include - APP\View\Home\index.ctp, line 2
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:58 Debug: Notice (8): Undefined variable: resume_menu in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\View\Elements\header.ctp, line 189]
+Trace:
+include - APP\View\Elements\header.ctp, line 189
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::_renderElement() - CORE\Cake\View\View.php, line 1224
+View::element() - CORE\Cake\View\View.php, line 418
+include - APP\View\Home\index.ctp, line 2
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:58 Debug: Notice (8): Undefined variable: manage_grade in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\View\Elements\header.ctp, line 299]
+Trace:
+include - APP\View\Elements\header.ctp, line 299
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::_renderElement() - CORE\Cake\View\View.php, line 1224
+View::element() - CORE\Cake\View\View.php, line 418
+include - APP\View\Home\index.ctp, line 2
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:58 Debug: Notice (8): Undefined variable: manage_users in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\View\Elements\header.ctp, line 299]
+Trace:
+include - APP\View\Elements\header.ctp, line 299
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::_renderElement() - CORE\Cake\View\View.php, line 1224
+View::element() - CORE\Cake\View\View.php, line 418
+include - APP\View\Home\index.ctp, line 2
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:58 Debug: Notice (8): Undefined variable: manage_roles in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\View\Elements\header.ctp, line 299]
+Trace:
+include - APP\View\Elements\header.ctp, line 299
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::_renderElement() - CORE\Cake\View\View.php, line 1224
+View::element() - CORE\Cake\View\View.php, line 418
+include - APP\View\Home\index.ctp, line 2
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:58 Debug: Notice (8): Undefined variable: manage_mailer_template in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\View\Elements\header.ctp, line 300]
+Trace:
+include - APP\View\Elements\header.ctp, line 300
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::_renderElement() - CORE\Cake\View\View.php, line 1224
+View::element() - CORE\Cake\View\View.php, line 418
+include - APP\View\Home\index.ctp, line 2
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:58 Debug: Notice (8): Undefined variable: manage_incentive in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\View\Elements\header.ctp, line 300]
+Trace:
+include - APP\View\Elements\header.ctp, line 300
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::_renderElement() - CORE\Cake\View\View.php, line 1224
+View::element() - CORE\Cake\View\View.php, line 418
+include - APP\View\Home\index.ctp, line 2
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:58 Debug: Notice (8): Undefined index: access in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\View\Home\index.ctp, line 17]
+Trace:
+include - APP\View\Home\index.ctp, line 17
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:58 Debug: Notice (8): Undefined variable: margin in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\View\Home\index.ctp, line 32]
+Trace:
+include - APP\View\Home\index.ctp, line 32
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:58 Debug: Notice (8): Undefined variable: INTERVIEW_DROP_TAB_COUNT in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\View\Home\index.ctp, line 142]
+Trace:
+include - APP\View\Home\index.ctp, line 142
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:58 Debug: Notice (8): Undefined variable: INTERVIEW_REJ_TAB_COUNT in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\View\Home\index.ctp, line 148]
+Trace:
+include - APP\View\Home\index.ctp, line 148
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:58 Debug: Notice (8): Undefined variable: INTERVIEW_DROP_TAB_COUNT in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\View\Home\index.ctp, line 181]
+Trace:
+include - APP\View\Home\index.ctp, line 181
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:58 Debug: Notice (8): Undefined variable: INTERVIEW_REJ_TAB_COUNT in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\View\Home\index.ctp, line 182]
+Trace:
+include - APP\View\Home\index.ctp, line 182
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:58 Debug: Notice (8): Undefined variable: data in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\View\Home\index.ctp, line 216]
+Trace:
+include - APP\View\Home\index.ctp, line 216
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:58 Debug: Notice (8): Undefined variable: data in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\View\Home\index.ctp, line 216]
+Trace:
+include - APP\View\Home\index.ctp, line 216
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:58 Debug: Notice (8): Undefined variable: data in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\View\Home\index.ctp, line 217]
+Trace:
+include - APP\View\Home\index.ctp, line 217
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:58 Debug: Notice (8): Undefined variable: data in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\View\Home\index.ctp, line 218]
+Trace:
+include - APP\View\Home\index.ctp, line 218
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:58 Debug: Notice (8): Undefined variable: data in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\View\Home\index.ctp, line 219]
+Trace:
+include - APP\View\Home\index.ctp, line 219
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:58 Debug: Notice (8): Undefined variable: data in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\View\Home\index.ctp, line 220]
+Trace:
+include - APP\View\Home\index.ctp, line 220
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:58 Debug: Notice (8): Undefined variable: data in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\View\Home\index.ctp, line 220]
+Trace:
+include - APP\View\Home\index.ctp, line 220
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:58 Debug: Notice (8): Undefined index: type in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\View\Home\index.ctp, line 352]
+Trace:
+include - APP\View\Home\index.ctp, line 352
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:58 Debug: Notice (8): Undefined index: type in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\View\Home\index.ctp, line 363]
+Trace:
+include - APP\View\Home\index.ctp, line 363
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:58 Debug: Notice (8): Undefined index: color in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\View\Layouts\default.ctp, line 33]
+Trace:
+include - APP\View\Layouts\default.ctp, line 33
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::renderLayout() - CORE\Cake\View\View.php, line 546
+View::render() - CORE\Cake\View\View.php, line 481
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:58 Debug: Notice (8): Undefined index: action in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\View\Elements\footer.ctp, line 1]
+Trace:
+include - APP\View\Elements\footer.ctp, line 1
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::_renderElement() - CORE\Cake\View\View.php, line 1224
+View::element() - CORE\Cake\View\View.php, line 418
+include - APP\View\Layouts\default.ctp, line 90
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::renderLayout() - CORE\Cake\View\View.php, line 546
+View::render() - CORE\Cake\View\View.php, line 481
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:58 Debug: Notice (8): Undefined variable: options in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Controller\AppController.php, line 138]
+Trace:
+AppController::get_approve_leave_count() - APP\Controller\AppController.php, line 138
+AppController::beforeRender() - APP\Controller\AppController.php, line 49
+call_user_func - [internal], line ??
+CakeEventManager::dispatch() - CORE\Cake\Event\CakeEventManager.php, line 243
+Controller::render() - CORE\Cake\Controller\Controller.php, line 936
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-24 16:56:58 Debug: Notice (8): Undefined variable: data in [C:\xampp\htdocs\2017\ctsvn\cthiring\app\Plugin\FullCalendar\Controller\EventsController.php, line 107]
+Trace:
+EventsController::feed() - APP\Plugin\FullCalendar\Controller\EventsController.php, line 107
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
