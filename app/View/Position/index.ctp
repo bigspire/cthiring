@@ -22,7 +22,7 @@
                                 </li>
                             
                                 <li>
-                                   Search Position
+                                   <?php echo $this->Functions->show_list_page($this->request->params['pass'][0]);?> Position
                                 </li>
                             </ul>
                         </div>

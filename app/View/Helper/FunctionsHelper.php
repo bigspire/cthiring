@@ -835,11 +835,22 @@ class FunctionsHelper extends AppHelper {
 			$value = 'Loss of Pay';			
 			break;	
 			case 'OD':
-			$value = 'On Duty of Pay';			
+			$value = 'On Duty';			
 			break;				
 		}
 		return $value;
 	}
+	
+	/* function to get leave types */
+	public function show_list_page($page){
+		if($page == ''){
+			$list_page = 'Search';
+		}else if($page == 'pending'){
+			$list_page = 'Approve';
+		}
+		return $list_page;
+	}
+	
 	
 	
 	   /* function to find the min and max exp */

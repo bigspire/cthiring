@@ -46,6 +46,7 @@ class AppController extends Controller {
 				// $this->get_unread_count();
 				$this->get_approve_client_count();
 				$this->get_approve_req_count();
+				$this->get_approve_leave_count();
 				$this->get_position_unread_count();
 			}
 
@@ -128,6 +129,14 @@ class AppController extends Controller {
 		);
 		$count = $this->Position->find('count', array('conditions' => array('PositionStatus.status' => 'W'),	'group' => array('Position.id'), 'joins' => $options));
 		$this->set('APPR_REQ_COUNT', $count);
+	}		
+	
+		/* get unread count for the approve client */
+	public function get_approve_leave_count(){
+		$this->loadModel('Leave');		
+		$count = $this->Leave->find('count', array('conditions' => array('LeaveStatus.status' => 'W','LeaveStatus.users_id' => $this->Session->read('USER.Login.id')),	'group' => array('Leave.id'), 
+		'joins' => $options));
+		$this->set('APPR_LEAVE_COUNT', $count);
 	}		
 	
 	

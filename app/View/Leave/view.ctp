@@ -104,8 +104,17 @@
 											
 									</tr>
 							
+							
+							<?php if(!empty($leave_data['LeaveStatus']['remarks'])):?>
 									
-									
+									<tr>										
+										<td class="tbl_column"><b>Remarks</b></td>
+										<td><?php echo $leave_data['LeaveStatus']['remarks'];?></td>
+											
+									</tr>
+								<?php endif; ?>
+
+								
 								</tbody>
 							</table>
 							</div>
@@ -128,14 +137,19 @@
 					
 					</div></div>
 
-							<div class="form-actions">
-<?php if($leave_data['Leave']['is_approve'] == 'W' &&  $this->request->params['pass'][2] == 'pending'):?>
+							<div class="form-actions"> 
+<?php if($leave_data['Leave']['is_approve'] == 'W' &&  $this->request->params['pass'][2] == $this->Session->read('USER.Login.id')):?>
 
-<a class="iframeBox unreadLink" rel="tooltip" title="Approve Leave" href="<?php echo $this->webroot;?>leave/remark/<?php echo $leave_data['Leave']['id'];?>/<?php echo $this->request->params['pass'][1];?>/<?php echo $leave_data['Leave']['created_by'];?>/A/<?php echo $stmemberID;?>" val="40_55"><input type="button" value="Approve" class="btn btn btn-success"/></a>
-<a class="iframeBox unreadLink" rel="tooltip" title="Reject Leave" href="<?php echo $this->webroot;?>leave/remark/<?php echo $leave_data['Leave']['id'];?>/<?php echo $this->request->params['pass'][1];?>/<?php echo $leave_data['Leave']['created_by'];?>/R/<?php echo $stmemberID;?>" val="40_55"><input type="button" value="Reject" class="btn btn btn-danger"/></a>
+<a class="iframeBox unreadLink" rel="tooltip" title="Approve Leave" href="<?php echo $this->webroot;?>leave/remark/<?php echo $leave_data['Leave']['id'];?>/<?php echo $this->request->params['pass'][1];?>/<?php echo $leave_data['Leave']['users_id'];?>/A/<?php echo $this->request->params['pass'][3];?>" val="40_55"><input type="button" value="Approve" class="btn btn btn-success"/></a>
+<a class="iframeBox unreadLink" rel="tooltip" title="Reject Leave" href="<?php echo $this->webroot;?>leave/remark/<?php echo $leave_data['Leave']['id'];?>/<?php echo $this->request->params['pass'][1];?>/<?php echo $leave_data['Leave']['users_id'];?>/R/<?php echo $this->request->params['pass'][3];?>" val="40_55"><input type="button" value="Reject" class="btn btn btn-danger"/></a>
 <a href="<?php echo $this->webroot;?>leave/index/pending/" rel="tooltip" title="Cancel and Back to Leave"  class="jsRedirect"><button class="btn">Cancel</button></a>
+<?php elseif(($leave_data['Leave']['is_approve'] == 'A' || $leave_data['Leave']['is_approve'] == 'W') &&  $leave_data['Leave']['users_id'] == $this->Session->read('USER.Login.id')):?>
+
+<a class="iframeBox unreadLink" rel="tooltip" title="Cancel Leave" href="<?php echo $this->webroot;?>leave/remark/<?php echo $leave_data['Leave']['id'];?>/<?php echo $this->request->params['pass'][1];?>/<?php echo $leave_data['Leave']['users_id'];?>/C/" val="40_55"><input type="button" value="Cancel Leave" class="btn btn btn-warning"/></a>
+<a href="<?php echo $this->webroot;?>leave/index/<?php echo $this->request->params['pass'][3];?>" rel="tooltip" title="Back to Leave"  class="jsRedirect"><button class="btn">Back</button></a>
+
 <?php else:?>			
-<a href="<?php echo $this->webroot;?>leave/index/<?php echo $this->request->params['pass'][2];?>" rel="tooltip" title="Back to Leave"  class="jsRedirect"><button class="btn">Back</button></a>
+<a href="<?php echo $this->webroot;?>leave/index/<?php echo $this->request->params['pass'][3];?>" rel="tooltip" title="Back to Leave"  class="jsRedirect"><button class="btn">Back</button></a>
 <?php endif; ?>
 						
 					</div>

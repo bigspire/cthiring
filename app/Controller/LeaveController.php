@@ -30,10 +30,13 @@ class LeaveController extends AppController {
 	
 	public $components = array('Session', 'Functions', 'Excel');
 
-	public function index(){			
+	public function index($rec_status){			
 		// when the form is submitted for search
 		if($this->request->is('post')){
-			$url_vars = $this->Functions->create_url(array('keyword','from','to'),'Leave'); 					
+			$url_vars = $this->Functions->create_url(array('keyword','from','to','apr_status'),'Leave'); 
+			if($rec_status == 'pending'){
+				$pending = 'index/pending/';
+			}
 			$this->redirect('/leave/'.$pending.'?srch_status=1&'.$url_vars);				
 		}		
 		// set the page title
@@ -41,9 +44,10 @@ class LeaveController extends AppController {
 		
 		// set the approval status
 		$fields = array('id','leave_from','leave_to','created_date', 'leave_type', 'session','reason_leave','is_approve','approve_date',
-		'max(LeaveStatus.id) st_id','max(LeaveStatus.users_id) st_user');
+		'max(LeaveStatus.id) st_id','max(LeaveStatus.users_id) st_user','Creator.first_name','Creator.last_name');
 				
-		
+		$this->set('approveStatus', array('W' => 'Awaiting Approval', 'R' => 'Rejected', 'C' => 'Cancelled', 'A' => 'Approved'));
+
 		// set keyword condition
 		if($this->params->query['keyword'] != ''){
 			$keyCond = array("MATCH (reason_leave) AGAINST ('".$this->Functions->format_search_keyword($this->params->query['keyword'])."' IN BOOLEAN MODE)"); 
@@ -55,15 +59,31 @@ class LeaveController extends AppController {
 			
 			$dateCond = array('or' => array('leave_from between ? and ?' => array($from, $to),'leave_to between ? and ?' => array($from, $to))); 
 		}	
+		
+		// for approval status condition
+		$apr_status = $this->request->query['apr_status'] != '' ? $this->request->query['apr_status'] : 'W';
+		if($this->request->query['apr_status'] != ''){
+			$approveCond = array('LeaveStatus.status' => $apr_status,
+			'LeaveStatus.users_id' => $this->Session->read('USER.Login.id'));
+		}
+			
+		// show awaiting approval condition
+		if($this->request->params['pass'][0] =='pending'){
+			$userCond = array('LeaveStatus.users_id' => $this->Session->read('USER.Login.id'), 'LeaveStatus.status' => $apr_status);
+		}else{
+			$userCond = array('Leave.users_id' => $this->Session->read('USER.Login.id'));
+		}
+		
 		// for export
 		if($this->request->query['action'] == 'export'){
 			$data = $this->Leave->find('all', array('fields' => $fields,'conditions' => 
-			array($keyCond,$date_cond, 'users_id' => $this->Session->read('USER.Login.id'),	'Leave.is_deleted' => 'N'), 
-			'order' => array('created_date' => 'desc'), 'group' => array('Leave.id'), 'joins' => $options));
-			$this->Excel->generate('tasks', $data, $data, 'Report', 'Leave');
+			array($keyCond,$dateCond,$approveCond, $userCond, 'Leave.is_deleted' => 'N'), 
+			'order' => array('Leave.created_date' => 'desc'), 'group' => array('Leave.id'), 'joins' => $options));
+			$this->Excel->generate('leave', $data, $data, 'Report', 'Leave');
 		}
 		
-		$this->paginate = array('fields' => $fields,'limit' => '25','conditions' => array($keyCond,$date_cond, 'Leave.users_id' => $this->Session->read('USER.Login.id'),
+		
+		$this->paginate = array('fields' => $fields,'limit' => '25','conditions' => array($keyCond,$dateCond, $userCond,$approveCond,
 		'Leave.is_deleted' => 'N'), 'order' => array('Leave.created_date' => 'desc'),	'group' => array('Leave.id'), 'joins' => $options);
 		$data = $this->paginate('Leave');
 		$this->set('data', $data);
@@ -72,59 +92,7 @@ class LeaveController extends AppController {
 		}		
 	}
 	
-	/* function to get the clients */
-	public function get_client_list(){
-		$this->loadModel('Client');		
-		$options = array(			
-				array('table' => 'requirements',
-						'alias' => 'Position',					
-						'type' => 'LEFT',
-						'conditions' => array('`Position`.`clients_id` = `Client`.`id`',
-						'Position.status' => 'A')
-				),				
-				array('table' => 'req_resume',
-						'alias' => 'ReqResume',					
-						'type' => 'LEFT',
-						'conditions' => array('`ReqResume`.`requirements_id` = `Position`.`id`')
-				),				
-				array('table' => 'client_account_holder',
-						'alias' => 'AH',					
-						'type' => 'LEFT',
-						'conditions' => array('`AH`.`clients_id` = `Client`.`id`')
-				),
-				array('table' => 'req_team',
-						'alias' => 'ReqTeam',					
-						'type' => 'LEFT',
-						'conditions' => array('`ReqTeam`.`requirements_id` = `Position`.`id`',
-						'ReqTeam.is_approve' => 'A')
-				)
-			);
-		
-		$list[] =  $this->Session->read('USER.Login.id');
-		$result = $this->Client->get_team($this->Session->read('USER.Login.id'),'1');
-
-		if(!empty($result)){
-			foreach($result as $rec){
-				$list[] =  $rec['u']['id'];
-			}			
-		}	
-		
-		$teamCond = array('OR' => array(
-					'ReqResume.created_by' =>  $list,
-					'ReqTeam.users_id' => $list,
-					'AH.users_id' => $list,
-					'Client.created_by' => $list
-				)
-			);
-		
-		// set the page title
-		$fields = array('id','client_name');
-		$data = $this->Client->find('all', array('fields' => $fields,'conditions' => 
-		array('Client.is_approve' => 'A', 'Client.status' => '0', 'Client.is_deleted' => 'N',$teamCond ),'order' => array('Client.created_date' => 'desc'), 
-		'group' => array('Client.id'), 'joins' => $options));
-		$format_list = $this->Functions->format_dropdown($data, 'Client','id','client_name');
-		$this->set('clientList', $format_list);
-	}
+	
 	
 	
 	/* function to add the task plan */
@@ -132,7 +100,7 @@ class LeaveController extends AppController {
 		// set the page title		
 		$this->check_role_access(45);
 		$this->set('title_for_layout', 'Create Leave - Leave - Manage Hiring');	
-		$this->set('session', array('F' => 'Forenoon','A' => 'Afternoon', 'D' => 'Full Day'));
+		$this->set('session', array('D' => 'Full Day', 'F' => 'Forenoon','A' => 'Afternoon'));
 		// get the client list
 		$this->set('typeList', array('NBL' => 'Need Based Leave', 'PL' => 'Privileged Leave','OD' => 'On Duty','LOP' => 'Loss of Pay', 'ML' => 'Maternity Leave',
 		'PA' => 'Paternity Leave'));		
@@ -200,8 +168,10 @@ class LeaveController extends AppController {
 		$this->set('title_for_layout', $view_title.' Leave - Manage Hiring');	
 		$ret_value = $this->auth_action($id, $st_id);	
 		if($ret_value == 'pass'){			
-			$fields = array('id','leave_from','leave_to','created_date','leave_type','reason_leave','session','Creator.first_name','Creator.last_name');
-			$data = $this->Leave->find('all', array('fields' => $fields,'conditions' => array('Leave.id' => $id),	'joins' => $options));
+			$fields = array('id','leave_from','leave_to','created_date','leave_type','reason_leave','session','Creator.first_name','Creator.last_name',
+			'Leave.is_approve','Leave.users_id', 'LeaveStatus.remarks');
+			$data = $this->Leave->find('all', array('fields' => $fields,'conditions' => array('Leave.id' => $id), 'order' => array('LeaveStatus.id' => 'desc'),
+			'joins' => $options));
 			$this->set('leave_data', $data[0]);
 		}else if($ret_value == 'fail'){ 
 			$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert-error">&times;</button>Invalid Entry', 'default', array('class' => 'alert alert-error'));	
@@ -221,95 +191,15 @@ class LeaveController extends AppController {
 		}	
 	}
 	
-	/* function to get avg ctc of the position */
-	public function get_avg_ctc($id){
-		$data = $this->Leave->Position->findById($id, array('fields' => 'ctc_from','ctc_to','ctc_from_type','ctc_to_type'));
-		$from_ctc = $data['Position']['ctc_from_type'] == 'T' ? round($data['Position']['ctc_from']/100, 1) : $data['Position']['ctc_from'];
-		$to_ctc = $data['Position']['ctc_to_type'] == 'T' ? round($data['Position']['ctc_to']/100, 1) :  $data['Position']['ctc_to'];
-		return round(($from_ctc+$to_ctc)/2, 1);
-	}
 	
-	/* function to edit the position */
-	public function edit($id){
-		// set the page title		
-		$this->set('title_for_layout', 'Edit Leave - Leave - Manage Hiring');	
-		if(!empty($id) && intval($id)){
-			// authorize user before action
-			$ret_value = $this->auth_action($id);
-			if($ret_value == 'pass'){
-				$this->set('session', array('F' => 'Forenoon','A' => 'Afternoon', 'D' => 'Full Day'));
-				// get the client list
-				$this->get_client_list();				
-				// When the form submitted
-				if (!empty($this->request->data)){
-					// validates the form
-					$this->request->data['Leave']['users_id'] = $this->Session->read('USER.Login.id');
-					$this->request->data['Leave']['modified_date'] = $this->Functions->get_current_date();
-					$this->Leave->set($this->request->data);
-					// validate the form fields
-					if ($this->Leave->validates(array('fieldList' => array('clients_id','requirements_id','session','task_date')))){
-						// format the dates
-						$this->request->data['Leave']['task_date'] = $this->Functions->format_date_save($this->request->data['Leave']['task_date']);
-						// save the data
-						$this->Leave->id = $id;
-						if($this->Leave->save($this->request->data['Leave'], array('validate' => false))){
-							$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Leave Modified Successfully', 'default', array('class' => 'alert alert-success'));					
-							$this->redirect('/leave/');
-						}else{
-								// show the error msg.
-								$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Problem in saving the data...', 'default', array('class' => 'alert alert-error'));					
-							}		
-					}else{
-						// retain the position 
-						
-						$this->load_position($this->request->data['Leave']['clients_id']);
-						$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Please check the validation errors...', 'default', array('class' => 'alert alert-error'));					
-					}
-				}else{				
-						$options = array(		
-							array('table' => 'clients',
-									'alias' => 'Client',					
-									'type' => 'LEFT',
-									'conditions' => array('`Client`.`id` = `Position`.`clients_id`')
-							)
-						);
-						// get the position details
-						$data = $this->Leave->find('all', array('fields' => array('Position.id','task_date','requirements_id','session','Client.id','Leave.id'), 
-						'conditions' => array('Leave.id' => $id), 'joins' => $options));
-						$this->request->data = $data[0];	
-						$this->request->data['Leave']['clients_id'] = 	$data[0]['Client']['id'];					
-						// retain the position
-						$this->load_position($data[0]['Client']['id']);	
-						// check edit option is validate
-						$this->check_valid_edit($this->request->data['Leave']['task_date']);						
-						$this->request->data['Leave']['task_date'] = $this->Functions->format_date_show($this->request->data['Leave']['task_date']);
-						
-						
-					}
-				}else if($ret_value == 'fail'){ 
-					$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert-error">&times;</button>Invalid Entry', 'default', array('class' => 'alert alert-error'));	
-					$this->redirect('/position/');	
-				}else{
-					$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert-error">&times;</button>Record Deleted: '.$ret_value , 'default', array('class' => 'alert alert-error'));	
-					$this->redirect('/position/');	
-				}
-			}else{
-				$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert-error">&times;</button>Invalid Entry', 'default', array('class' => 'alert alert-error'));		
-				$this->redirect('/leave/');	
-			}				
-	}
 	
-	/* function to check valid edit */
-	public function check_valid_edit($date){
-		 if(strtotime(date('Y-m-d')) > strtotime($date)){
-				$this->redirect('/leave/');
-		 }
-	}
 	
 	/* function to auth record */
 	public function auth_action($id, $st_id){ 				
-		$data = $this->Leave->find('all', array('fields' => array('Leave.users_id','Leave.is_deleted'),'conditions' => array('Leave.id' => $id)));
+		$data = $this->Leave->find('all', array('fields' => array('Leave.users_id','Leave.is_deleted', 'max(LeaveStatus.users_id) user_id'),'conditions' => array('Leave.id' => $id)));
 		if($data[0]['Leave']['users_id'] == $this->Session->read('USER.Login.id')){
+			return 'pass';
+		}else if($data[0][0]['user_id'] == $this->Session->read('USER.Login.id')){
 			return 'pass';
 		}else if($data[0]['Leave']['is_deleted'] == 'Y'){
 			return 'fail';
@@ -319,67 +209,10 @@ class LeaveController extends AppController {
 	}
 		
 		
-	/* function to load the districts options */
-	public function get_position(){
-		$this->layout = 'ajax';
-		$this->load_position($this->request->query['id']);
-		$this->render(false);
-		die;
-	}	
-	
-	/* function to load the positions */
-	public function load_position($id){
-		// get the team members
-		$result = $this->Leave->Position->get_team($this->Session->read('USER.Login.id'),'1');
-		$data[] =  $this->Session->read('USER.Login.id');
-		
-		if(!empty($result)){
-			// for drop down listing
-			foreach($result as $rec){
-				$data[] =  $rec['u']['id'];
-			}			
-		}
-		
-		$teamCond = array('OR' => array(
-					'ReqResume.created_by' =>  $data,
-					'ReqTeam.users_id' => $data,
-					'AH.users_id' => $data,
-					'Position.created_by' => $data						
-				)
-		);
-				
-		$options = array(		
-			array('table' => 'req_team',
-					'alias' => 'ReqTeam',					
-					'type' => 'LEFT',
-					'conditions' => array('`ReqTeam`.`requirements_id` = `Position`.`id`', 'ReqTeam.is_approve' => 'A')
-			),			
-			array('table' => 'client_account_holder',
-					'alias' => 'AH',					
-					'type' => 'LEFT',					
-					'conditions' => array('`AH`.`clients_id` = `Client`.`id`')
-			)
-		);
-		$pos_list = $this->Leave->Position->find('all', array('fields' => array('id','job_title'),
-		'order' => array('job_title ASC'),'conditions' => array($teamCond, 'Position.status' => 'A', 'Position.is_deleted' => 'N',
-		'Position.clients_id' => $id), 'group' => array('Position.id'), 'joins' => $options));
-		// for retaining
-		$format_list = $this->Functions->format_dropdown($pos_list, 'Position','id','job_title');
-		$this->set('posList', $format_list);
-		// call when it called from ajax 
-		if(!isset($this->request->data['Leave']['task_date'])){
-			$select .= "<option value=''>Choose Position</option>";
-			foreach($pos_list as $record){ 
-				$select .= "<option value='".$record['Position']['id']."'>".ucwords($record['Position']['job_title'])."</option>";
-			}
-			echo $select;
-		}
-	}
 	
 	
 	
-	
-	/* auto complete search */	
+	/* auto complete search 
 	public function search(){
 		$this->layout = false;		
 		$q = trim(Sanitize::escape($_GET['q']));	
@@ -393,6 +226,8 @@ class LeaveController extends AppController {
 			$this->set('results', $data);
 		}
     }
+	*/	
+	
 	
 		/* function to delete the plan */
 	public function delete($id){
@@ -420,10 +255,79 @@ class LeaveController extends AppController {
 
 	}
 	
+	/* function to approve / reject / cancel leave */
+	public function remark($id, $st_id, $user_id, $status){
+		$this->layout = 'framebox';		
+		if(!empty($this->request->data)){		
+		
+			$approve_msg = $status == 'R' ? 'Rejected': ($status == 'C' ? 'Cancelled' :  'Approved');	
+
+			if($this->request->is('post') && $st_id != ''){
+				// set the validation
+				$this->Leave->set($this->request->data);
+				if($status == 'R' || $status == 'C'){
+					$validate = $this->Leave->validates(array('fieldList' => array('remarks')));
+				}else{
+					$validate = true;
+				}
+				// update the todo
+				if($validate){
+					$this->loadModel('LeaveStatus');
+					$data = array('modified_date' => $this->Functions->get_current_date(), 'modified_by' => $this->Session->read('USER.Login.id'), 'remarks' => $this->request->data['Leave']['remarks'], 'status' => $status);
+					$this->LeaveStatus->id = $st_id;
+					$st_msg = $status == 'A' ? 'approved' : ($status == 'C' ? 'cancelled' : 'rejected');
+					// make sure not duplicate status exists
+					$this->check_duplicate_status($id, $this->Session->read('USER.Login.id'), 1);
+					// save the position status
+					if($this->LeaveStatus->save($data, true, $fieldList = array('modified_by','modified_date','remarks','status'))){
+						
+						$sub = 'Manage Hiring - Leave '.$approve_msg.' by '.ucfirst($this->Session->read('USER.Login.first_name')).' '.ucfirst($this->Session->read('USER.Login.last_name'));
+						
+						$from = ucfirst($this->Session->read('USER.Login.first_name')).' '.ucfirst($this->Session->read('USER.Login.last_name'));
+						// get the creator data
+						$creator_data = $this->Leave->find('all', array('conditions' => array('Leave.id' => $id), 'fields' => array('Leave.leave_from', 'Leave.leave_to',
+						'Leave.reason_leave', 'Leave.leave_type','Leave.session','Creator.first_name', 'Creator.last_name', 'Creator.email_id')));
+						// get L1 for notification if cancelled
+						if($status == 'C'){
+							$leader_data = $this->Leave->Creator->find('all', array('conditions' => array('Creator.id' => $user_id), 'fields' => array('Creator.first_name', 'Creator.last_name', 'Creator.email_id')));
+							$to_name = $leader_data[0]['Creator']['first_name'].' '.$leader_data[0]['Creator']['last_name'];
+							$to_email = $leader_data[0]['Creator']['email_id'];
+						}else{
+							$to_name = $creator_data[0]['Creator']['first_name'].' '.$creator_data[0]['Creator']['last_name'];
+							$to_email = $creator_data[0]['Creator']['email_id'];
+						}
+						
+						$vars = array('to_name' =>  ucwords($to_name), 'from_name' => $from, 
+						'approve_msg' => $approve_msg, 'remarks' => $this->request->data['Leave']['remarks']);
+						$this->set('action_status', $approve_msg);
+						// notify employee						
+						if(!$this->send_email('Manage Hiring - Leave '.$st_msg.' by '.ucfirst($this->Session->read('USER.Login.first_name')).' '.ucfirst($this->Session->read('USER.Login.last_name')), 'approve_leave', 'noreply@managehiring.com', $to_email,$vars)){		
+							// show the msg.								
+							$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Problem in sending the mail to user...', 'default', array('class' => 'alert alert-error'));				
+						}else{
+							$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Leave '.$approve_msg.' Successfully.', 'default', array('class' => 'alert alert-success'));
+						}			
+						// update the client
+						$this->Leave->id = $id;
+						$this->Leave->saveField('is_approve', $status);
+						
+						$this->set('form_status', '1');		
+					}else{
+						$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Problem in saving the data.', 'default', array('class' => 'alert alert-error'));	
+					}
+					
+				}
+			}
+		}
+	}
+	
+	
 	// check the role permissions
-	public function beforeFilter(){ 
+	public function beforeFilter(){
+		$mod_id = ($this->request->params['pass'][0] == 'pending' || $this->request->params['pass'][3] == 'pending' 
+					|| $this->request->params['pass'][4] == 'pending')	? '46' : '47';
 		$this->check_session();
-		$this->check_role_access(47);
+		$this->check_role_access($mod_id);
 		
 	}
 }
