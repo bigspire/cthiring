@@ -77,22 +77,13 @@ class LeaveController extends AppController {
 		// for export
 		if($this->request->query['action'] == 'export'){
 			$data = $this->Leave->find('all', array('fields' => $fields,'conditions' => 
-<<<<<<< HEAD
 			array($keyCond,$dateCond,$approveCond, $userCond, 'Leave.is_deleted' => 'N'), 
 			'order' => array('Leave.created_date' => 'desc'), 'group' => array('Leave.id'), 'joins' => $options));
 			$this->Excel->generate('leave', $data, $data, 'Report', 'Leave');
 		}
 		
-		
-		$this->paginate = array('fields' => $fields,'limit' => '25','conditions' => array($keyCond,$dateCond, $userCond,$approveCond,
-=======
-			array($keyCond,$dateCond, 'users_id' => $this->Session->read('USER.Login.id'),	'Leave.is_deleted' => 'N'), 
-			'order' => array('created_date' => 'desc'), 'group' => array('Leave.id'), 'joins' => $options));
-			$this->Excel->generate('tasks', $data, $data, 'Report', 'Leave');
-		}
-		
+				
 		$this->paginate = array('fields' => $fields,'limit' => '25','conditions' => array($keyCond,$dateCond, 'Leave.users_id' => $this->Session->read('USER.Login.id'),
->>>>>>> 77710f854af3860756af1753981eee1c5592f545
 		'Leave.is_deleted' => 'N'), 'order' => array('Leave.created_date' => 'desc'),	'group' => array('Leave.id'), 'joins' => $options);
 		$data = $this->paginate('Leave');
 		$this->set('data', $data);
