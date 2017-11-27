@@ -93,10 +93,10 @@
 										<th width="180"><a href="incentive.php?field=employee&order={$order}&page={$smarty.get.page}&f_date={$f_date}&t_date={$t_date}&employee={$employee}" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="{$sort_field_employee}">Employee</a></th>										
 										<th width="150"><a href="incentive.php?field=target_amt&order={$order}&page={$smarty.get.page}&f_date={$f_date}&t_date={$t_date}&employee={$employee}" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="{$sort_field_target_amt}">Target Amount</a></th>
 										<th width="180"><a href="incentive.php?field=achievement_amt&order={$order}&page={$smarty.get.page}&f_date={$f_date}&t_date={$t_date}&employee={$employee}" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="{$sort_field_achievement_amt}">Achievement in Amt.</a></th>
-										<th width="160"><a href="incentive.php?field=achievement_percent&order={$order}&page={$smarty.get.page}&f_date={$f_date}&t_date={$t_date}&employee={$employee}" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="{$sort_field_achievement_percent}">Achievement in % </a></th>
-										<th width="150"><a href="incentive.php?field=eligible_incentive_percent&order={$order}&page={$smarty.get.page}&f_date={$f_date}&t_date={$t_date}&employee={$employee}" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="{$sort_field_eligible_incentive_percent}">Eligible Incentive % </a></th>
+										<!--th width="160"><a href="incentive.php?field=achievement_percent&order={$order}&page={$smarty.get.page}&f_date={$f_date}&t_date={$t_date}&employee={$employee}" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="{$sort_field_achievement_percent}">Achievement in % </a></th-->
+										<!--th width="150"><a href="incentive.php?field=eligible_incentive_percent&order={$order}&page={$smarty.get.page}&f_date={$f_date}&t_date={$t_date}&employee={$employee}" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="{$sort_field_eligible_incentive_percent}">Eligible Incentive % </a></th-->
 										<th width="180"><a href="incentive.php?field=eligible_incentive_amt&order={$order}&page={$smarty.get.page}&f_date={$f_date}&t_date={$t_date}&employee={$employee}" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="{$sort_field_eligible_incentive_amt}">Eligible Incentive Amt. </a></th>
-										<th width="100"><a href="incentive.php?field=quarter&order={$order}&page={$smarty.get.page}&f_date={$f_date}&t_date={$t_date}&employee={$employee}" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="{$sort_field_quarter}">Quarter</a></th>
+										<th width="100"><a href="incentive.php?field=quarter&order={$order}&page={$smarty.get.page}&f_date={$f_date}&t_date={$t_date}&employee={$employee}" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="{$sort_field_quarter}">Period</a></th>
 										<th width="120"><a href="incentive.php?field=created_date&order={$order}&page={$smarty.get.page}&f_date={$f_date}&t_date={$t_date}&employee={$employee}" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="{$sort_field_created_date}">Created</a></th>
 									</tr>
 								</thead>
@@ -105,12 +105,12 @@
 									{foreach from=$data item=item key=key}	
 									<tr>
 										<td width=""><a  href="view_incentive.php?id={$item.id}&emp_id={$item.emp_id}">{$item.employee}</a></td>
-										<td width="" >{$item.target_amt}</td>
+										<td width="" >{$item.incentive_target_amt}</td>
 										<td width="">{$item.achievement_amt}</td>
-										<td width="">{$item.achievement_percent}%</td>
-										<td width="">{$item.eligible_incentive_percent}%</td>						
+										<!--td width="">{$item.achievement_percent}%</td-->
+										<!--td width="">{$item.eligible_incentive_percent}%</td-->						
 										<td width="">{$item.eligible_incentive_amt}</td>
-										<td width="">{$item.quarter}</td>
+										<td width="">{$item.period}</td>
 										<td width="">{$item.created_date}</td>
 									</tr>
 								{/foreach}
