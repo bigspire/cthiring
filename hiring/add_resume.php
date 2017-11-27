@@ -72,8 +72,8 @@ foreach($string as $name_key => $name){
 	}
 }
 	
-$smarty->assign('first_name', $string[$name_key]);
-$smarty->assign('last_name', $string[$name_key+1]);
+$smarty->assign('first_name', ucfirst(strtolower($string[$name_key])));
+$smarty->assign('last_name', ucfirst(strtolower($string[$name_key+1])));
 $smarty->assign('email', $email);
 $smarty->assign('mobile', $mobile);
 
@@ -561,7 +561,7 @@ if(!empty($_POST)){
 			$row = $mysql->display_result($result);
 			$desigStr = $row['desig'];
 			$mysql->next_query();
-			$snap_exp .= ucwords($companyData).', '.ucwords($desigStr).', '.$expStr.', '.ucfirst($locationData).'<br>';
+			$snap_exp .=  $expStr.', '.ucwords($companyData).', '.ucwords($desigStr).', '.ucfirst($locationData).'<br>';
 			$snap_skill .= $areaData.' ';
 			
 			// query to add experience details

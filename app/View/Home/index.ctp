@@ -536,7 +536,7 @@
 										<th  class="essential persist">Client</th>
 										<th class="optional">Status</th>
 										<th class="optional">Created Date</th>
-										<th class="essential" style="text-align:center">CV Sent</th>
+										<th class="essential" style="text-align:center">CV Posted</th>
 										<!--th class="essential">Action</th-->
 									</tr>
 								</thead>
@@ -547,7 +547,7 @@
 										<td><?php echo $data['Client']['client_name'];?></td>
 										<td><span class="label label-<?php echo $this->Functions->get_req_status_color($data['ReqStatus']['title']);?>"><?php echo $data['ReqStatus']['title'];?></span></td>
 										<td><?php echo $this->Functions->format_date($data['Position']['created_date']);?></td>
-										<td style="text-align:center"><a   href="<?php echo $this->webroot;?>resume/?srch_status=1&spec=<?php echo $data['Position']['id'];?>&status=1"><?php echo $data[0]['cv_sent'];?></a></td>
+										<td style="text-align:center"><a   href="<?php echo $this->webroot;?>resume/?srch_status=1&spec=<?php echo $data['Position']['id'];?>"><?php echo $data[0]['cv_sent'];?></a></td>
 										
 									</tr>
 									<?php endforeach; ?>	

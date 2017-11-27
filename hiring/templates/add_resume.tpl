@@ -484,7 +484,7 @@
 {foreach $tsData as $ts_data}
 {if $ts_data}
   <li><input class="span8" readonly="readonly" placeholder="" name="ts[]" value="{$ts_data}" type="text">   
-  <input name="tsr[]" type="hidden" value="{$tsrData[$ts_data@key]}"  class="rating" data-fractions="2"/> <span class="label label-info dn">{$tsrData[$ts_data@key]}</span></li>
+  <input name="tsr[]" type="hidden" value="{$tsrData[$ts_data@key]}"  class="rating" data-fractions="1"/> <span class="label label-info dn">{$tsrData[$ts_data@key]}</span></li>
   {/if}
 {/foreach} 
 
@@ -521,7 +521,7 @@
  {foreach $bsData as $bs_data}
 {if $bs_data}
   <li><input class="span8" readonly="readonly" placeholder="" name="bs[]" value="{$bs_data}" type="text">   
-  <input name="bsr[]" type="hidden" value="{$bsrData[$bs_data@key]}"  class="rating" data-fractions="2"/> <span class="label label-info dn">{$bsrData[$bs_data@key]}</span> </li>
+  <input name="bsr[]" type="hidden" value="{$bsrData[$bs_data@key]}"  class="rating" data-fractions="1"/> <span class="label label-info dn">{$bsrData[$bs_data@key]}</span> </li>
   {/if}
 {/foreach} 
 

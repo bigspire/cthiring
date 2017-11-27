@@ -442,7 +442,7 @@
       // The transparency of the text.
       opacity: 0.7
     }},
-	   title: 'Performance Graph, <?php echo $START_DATE;?> - <?php echo $END_DATE;?>',
+	   title: 'Performance Graph, <?php echo $START_CHART_DATE;?> - <?php echo $END_CHART_DATE;?>',
 		 /*chart: {
           title: 'Performance Graph',
           subtitle: '21-Aug - 04-Sep'

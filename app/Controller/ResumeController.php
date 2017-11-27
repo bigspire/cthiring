@@ -34,7 +34,7 @@ class ResumeController extends AppController {
 		// when the form is submitted for search
 		if($this->request->is('post')){
 			$url_vars = $this->Functions->create_url(array('keyword','from','to','min_exp','max_exp',
-			'int_from','int_to','emp_id','loc','status','report_status'),'Resume'); 			
+			'int_from','int_to','emp_id','loc','status','report_status','spec'),'Resume'); 			
 			$this->redirect('/resume/?srch_status=1&'.$url_vars);				
 		}
 		// set the page title
