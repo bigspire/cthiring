@@ -393,7 +393,7 @@
 										</td>
 							</tr>
 							<tr class="tbl_row">
-										<td width="120" class="tbl_column">Area of Specialization/Expertise  <span class="f_req">*</span></td>
+										<td width="120" class="tbl_column">Specialization/Expertise  <span class="f_req">*</span></td>
 											<td> 
 										<input type="text" name="area_#index#" id="area_#index#"  tabindex="6" class="span8" />
 										<label for="reg_city" generated="true" class="error" id="area_Err_#index#"></label>										

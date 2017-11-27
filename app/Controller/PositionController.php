@@ -972,12 +972,12 @@ class PositionController extends AppController {
 					'conditions' => array('`ResDoc`.`id` = `Resume`.`resume_doc_id`')
 				)
 			);		
-			$data = $this->Position->ReqResume->find('all', array('fields' => array('Resume.id','Resume.first_name',
+			$data = $this->Position->ReqResume->find('all', array('fields' => array('Resume.code','Resume.id','Resume.first_name',
 			'Resume.last_name','ReqResume.status_title','ReqResume.stage_title','Resume.created_date','Resume.modified_date',
 			'ReqResume.created_date','Resume.mobile','Resume.email_id','Resume.present_ctc','Resume.expected_ctc',
 			'Resume.notice_period','ResLoc.location','Creator.first_name','ReqResume.modified_date','ReqResume.bill_ctc','ResDoc.resume',
 			'Resume.present_location','Resume.present_ctc_type','Resume.expected_ctc_type', 'ReqResume.id', 'ReqResume.cv_sent_date',
-			'ReqResume.cv_shortlist_date'),
+			'ReqResume.cv_shortlist_date','Reason.reason'),
 			'conditions' => array('requirements_id' => $id),
 			'order' => array('Resume.created_date' => 'desc'),'group' => array('ReqResume.id'), 'joins' => $options));		
 			$this->set('resume_data', $data);
@@ -1238,7 +1238,9 @@ class PositionController extends AppController {
 		// when the values are not empty
 		if(!empty($res_id) && !empty($pos_id)){
 			// if multi option is selected
-			if($res_id == 'multi_select'){			
+			if($res_id == 'multi_select'){	
+				$this->set('tiny_readonly', '1');
+				$multi_chk = 1;
 				$resume_check = explode(',', $pos_id);
 				// iterate the candidates
 				foreach($resume_check as $check){
@@ -1299,8 +1301,14 @@ class PositionController extends AppController {
 					$this->ReqResumeStatus->id = '';
 					if($this->ReqResumeStatus->save($data, array('validate' => false))){
 						// get mail contents
-						$message = $this->get_template_details($res_id,$pos_id, '1','',$cand_name,$chk_resume_id_ar);		
-						$split_msg = explode('|||', $message);
+						// for multi selection only
+						if($multi_chk  == '1'){
+							$message = $this->get_template_details($res_id,$pos_id, '1','',$cand_name,$chk_resume_id_ar);	
+						}else{
+							$message = $this->request->data['Position']['message'];
+						}						
+						$subject = $this->request->data['Position']['subject'];
+	
 						// get the resume details
 						$options = array(								
 								array('table' => 'resume_doc',
@@ -1332,10 +1340,10 @@ class PositionController extends AppController {
 			$to_name = $contact_data['Contact']['first_name'].' '.$contact_data['Contact']['last_name'];
 			// send mail to client 
 			$contact_data['Contact']['email'] = 'testing7@bigspire.com'; // for testing
-			$vars = array('from_name' => $from, 'to_name' => ucwords($to_name), 'position' => $this->request->data['Position']['job_title'],'msg'=> $split_msg[0], 'location' => $this->request->data['Position']['location']);
+			$vars = array('from_name' => $from, 'to_name' => ucwords($to_name), 'position' => $this->request->data['Position']['job_title'],'msg'=> $message, 'location' => $this->request->data['Position']['location']);
 			// save the mail box
-			$this->save_mail_box($split_msg[1], $split_msg[0], $req_res_id);
-			if(!$this->send_email($split_msg[1], 'send_cv', $this->Session->read('USER.Login.email_id'), $contact_data['Contact']['email'],$vars,$resume_path)){	
+			$this->save_mail_box($subject, $message, $req_res_id);
+			if(!$this->send_email($subject, 'send_cv', $this->Session->read('USER.Login.email_id'), $contact_data['Contact']['email'],$vars,$resume_path)){	
 				// show the msg.								
 				$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Problem in sending the mail to client...', 'default', array('class' => 'alert alert-error'));				
 			}else{						
@@ -1365,177 +1373,234 @@ class PositionController extends AppController {
 	
 	/* function to get the template details */
 	public function get_template_details($res_id, $pos_id, $mailtemplete,$int_candidates, $multi_candidates,$candidate_arr){
-		$options = array(			
-			array('table' => 'resume',
-					'alias' => 'Resume',					
-					'type' => 'LEFT',
-					'conditions' => array('`Resume`.`id` = `ReqResume`.`resume_id`')
-			),
-			array(
-				'table' => 'resume_doc',
-				'alias' => 'ResDoc',					
-				'type' => 'LEFT',
-				'conditions' => array('`ResDoc`.`id` = `Resume`.`resume_doc_id`')
-				),
-			array(
-				'table' => 'res_location',
-				'alias' => 'ResLocation',					
-				'type' => 'LEFT',
-				'conditions' => array('`ResLocation`.`id` = `Resume`.`res_location_id`')
-				)
-				,
-			array(
-				'table' => 'designation',
-				'alias' => 'Designation',					
-				'type' => 'LEFT',
-				'conditions' => array('`Designation`.`id` = `Resume`.`designation_id`')
-				)	
-				,
-			array(
-				'table' => 'contact',
-				'alias' => 'Contact',					
-				'type' => 'LEFT',
-				'conditions' => array('`Contact`.`id` = `Position`.`client_contact_id`')
-				)	
-				,
-			array(
-				'table' => 'users',
-				'alias' => 'Recruiter',					
-				'type' => 'LEFT',
-				'conditions' => array('`Recruiter`.`id` = `Resume`.`created_by`')
-				)
-			
-			);
-			$fields = array('Resume.first_name','Resume.last_name','Resume.email_id','Resume.mobile','Resume.mobile2','Resume.total_exp','Resume.education','Resume.present_employer',
-			'ResLocation.location', 'Resume.present_ctc','Resume.expected_ctc', 'Creator.first_name','Resume.created_date','Resume.notice_period',
-			'Resume.modified_date','ReqResume.stage_title','ReqResume.status_title','Designation.designation','Resume.present_ctc_type','Resume.expected_ctc_type',
-			'Resume.gender','Resume.marital_status','Resume.family','Resume.present_location','Resume.native_location', 'Resume.dob','Resume.consultant_assess',
-			'Resume.interview_avail','ResDoc.resume','Position.job_title','Position.location','Position.job_desc','Contact.first_name','Contact.last_name'
-			,'Contact.mobile','Recruiter.first_name','Recruiter.last_name','Client.client_name','Recruiter.signature','Contact.title',
-			'Position.created_date', 'Position.modified_date');
-			$cand_data = $this->Position->find('all', array('fields' => $fields,'conditions' => array('Resume.id' => $res_id),
-			'joins' => $options));
-			// print_r($cand_data);
-			$cand_name = ucwords($cand_data[0]['Resume']['first_name'].' '.$cand_data[0]['Resume']['last_name']);
-			$rec_name = ucwords($cand_data[0]['Recruiter']['first_name'].' '.$cand_data[0]['Recruiter']['last_name']);
-			$signature = $cand_data[0]['Recruiter']['signature'];
-			$contact_title = $cand_data[0]['Contact']['title']  == '1' ? 'Mr.' : 'Ms';
-			$position_date = $cand_data[0]['Position']['modified_date'] != '' ? $cand_data[0]['Position']['modified_date'] : $cand_data[0]['Position']['created_date'];
-			$this->set('candidate_name', $multi_candidates ? $multi_candidates : $cand_name);
-			// get resume education details
-			$this->loadModel('ResEdu');
-			$edu_data = $this->ResEdu->find('all', array('conditions' => array('resume_id' => $res_id), 'fields' => array('percent_mark','year_passing','college',
-			'course_type','university','location','ResDegree.degree','ResSpec.spec'), 'order' => array('ResEdu.id' => 'desc')));
-			// get resume experience details
+		// when the form is not submitted
+		if(empty($this->request->data)){
 			$options = array(			
-				array('table' => 'resume',
-						'alias' => 'Resume',					
-						'type' => 'LEFT',
-						'conditions' => array('`Resume`.`id` = `ResExp`.`resume_id`',
-						'ResExp.is_recent' => '1')
-				)
-			);
-			$this->loadModel('ResExp');
-			$exp_data = $this->ResExp->find('all', array('conditions' => array('Resume.id' => $candidate_arr ? $candidate_arr : $res_id), 'fields' => array('experience','work_location','skills',
-			'company','other_info','Designation.designation','Resume.first_name','Resume.last_name'),  'joins' => $options));
-			// iterate the experience details
-			$exp_table .= "<table  width='90%' border='0' cellspacing='2' cellpadding='5' style='border:1px solid #ededed; font:bold 13px Arial'>";
-			$exp_table .= "<tr><td>S. No.</td><td>Candidate Name</td><td>Present Company</td><td>Present Designation</td></tr>";
-			foreach($exp_data as $key => $exp){
-				$exp_table .= "<tr  style='font-weight:normal'>";
-				$exp_table .= "<td width='50'>";
-				$exp_table .= ++$key;
-				$exp_table .= "</td>";
-				$exp_table .= "<td  width='120'>";
-				$exp_table .= ucwords($exp['Resume']['first_name'].' '.$exp['Resume']['last_name']);
-				$exp_table .= "</td>";
-				$exp_table .= "<td  width='140'>";
-				$exp_table .= $exp['Designation']['designation'];
-				$exp_table .= "</td>";
-				$exp_table .= "<td  width='140'>";
-				$exp_table .= $exp['ResExp']['company'];
-				$exp_table .= "</td>";
-				$exp_table .= "</tr>";
-
-			}
-			$exp_table .= "</table>";
-			// get resume experience details of previous candidates
-			$options = array(
 				array('table' => 'resume',
 						'alias' => 'Resume',					
 						'type' => 'LEFT',
 						'conditions' => array('`Resume`.`id` = `ReqResume`.`resume_id`')
 				),
-				array('table' => 'res_employer',
-						'alias' => 'ResExp',					
-						'type' => 'LEFT',
-						'conditions' => array('`ReqResume`.`resume_id` = `ResExp`.`resume_id`',
-						'ResExp.is_recent' => '1')
-				),
-				array('table' => 'requirements',
-						'alias' => 'Position',					
-						'type' => 'LEFT',
-						'conditions' => array('`Position`.`id` = `ReqResume`.`requirements_id`')
-				),
-				array('table' => 'designation',
-						'alias' => 'Designation',					
-						'type' => 'LEFT',
-						'conditions' => array('`Designation`.`id` = `ResExp`.`designation_id`')
-				)
-			);
-			$this->loadModel('ReqResumeStatus');
-			$prev_exp_data = $this->ReqResumeStatus->find('all', array('conditions' => array('ReqResumeStatus.status_title' => 'CV-Sent',
-			'Position.id' => $pos_id), 'fields' => array('ResExp.experience','ResExp.work_location','ResExp.skills',
-			'ResExp.company','ResExp.other_info','Designation.designation','Resume.first_name','Resume.last_name'),
-			'group' => array('Resume.id'), 'joins' => $options));
-			// iterate the experience details
-			$prev_exp_table .= "<table  width='90%' border='0' cellspacing='2' cellpadding='5' style='border:1px solid #ededed; font:bold 13px Arial'>";
-			$prev_exp_table .= "<tr><td>S. No.</td><td>Candidate Name</td><td>Present Company</td><td>Present Designation</td></tr>";
-			foreach($prev_exp_data as $key => $exp){
-				$prev_exp_table .= "<tr  style='font-weight:normal'>";
-				$prev_exp_table .= "<td width='50'>";
-				$prev_exp_table .= ++$key;
-				$prev_exp_table .= "</td>";
-				$prev_exp_table .= "<td  width='120'>";
-				$prev_exp_table .= ucwords($exp['Resume']['first_name'].' '.$exp['Resume']['last_name']);
-				$prev_exp_table .= "</td>";
-				$prev_exp_table .= "<td  width='140'>";
-				$prev_exp_table .= $exp['Designation']['designation'];
-				$prev_exp_table .= "</td>";
-				$prev_exp_table .= "<td  width='140'>";
-				$prev_exp_table .= $exp['ResExp']['company'];
-				$prev_exp_table .= "</td>";
-				$prev_exp_table .= "</tr>";
+				array(
+					'table' => 'resume_doc',
+					'alias' => 'ResDoc',					
+					'type' => 'LEFT',
+					'conditions' => array('`ResDoc`.`id` = `Resume`.`resume_doc_id`')
+					),
+				array(
+					'table' => 'res_location',
+					'alias' => 'ResLocation',					
+					'type' => 'LEFT',
+					'conditions' => array('`ResLocation`.`id` = `Resume`.`res_location_id`')
+					)
+					,
+				array(
+					'table' => 'designation',
+					'alias' => 'Designation',					
+					'type' => 'LEFT',
+					'conditions' => array('`Designation`.`id` = `Resume`.`designation_id`')
+					)	
+					,
+				array(
+					'table' => 'contact',
+					'alias' => 'Contact',					
+					'type' => 'LEFT',
+					'conditions' => array('`Contact`.`id` = `Position`.`client_contact_id`')
+					)	
+					,
+				array(
+					'table' => 'users',
+					'alias' => 'Recruiter',					
+					'type' => 'LEFT',
+					'conditions' => array('`Recruiter`.`id` = `Resume`.`created_by`')
+					)
+				
+				);
+				$fields = array('Resume.first_name','Resume.last_name','Resume.email_id','Resume.mobile','Resume.mobile2','Resume.total_exp','Resume.education','Resume.present_employer',
+				'ResLocation.location', 'Resume.present_ctc','Resume.expected_ctc', 'Creator.first_name','Resume.created_date','Resume.notice_period',
+				'Resume.modified_date','ReqResume.stage_title','ReqResume.status_title','Designation.designation','Resume.present_ctc_type','Resume.expected_ctc_type',
+				'Resume.gender','Resume.marital_status','Resume.family','Resume.present_location','Resume.native_location', 'Resume.dob','Resume.consultant_assess',
+				'Resume.interview_avail','ResDoc.resume','Position.job_title','Position.location','Position.job_desc','Contact.first_name','Contact.last_name'
+				,'Contact.mobile','Recruiter.first_name','Recruiter.last_name','Client.client_name','Recruiter.signature','Contact.title',
+				'Position.created_date', 'Position.modified_date');
+				$cand_data = $this->Position->find('all', array('fields' => $fields,'conditions' => array('Resume.id' => $res_id),
+				'joins' => $options));
+				
+				// print_r($cand_data);
+				$cand_name = ucwords($cand_data[0]['Resume']['first_name'].' '.$cand_data[0]['Resume']['last_name']);
+				$rec_name = ucwords($cand_data[0]['Recruiter']['first_name'].' '.$cand_data[0]['Recruiter']['last_name']);
+				$signature = $cand_data[0]['Recruiter']['signature'];
+				$contact_title = $cand_data[0]['Contact']['title']  == '1' ? 'Mr.' : ($cand_data[0]['Contact']['title']  == '2' ?  'Ms' : '');
+				$position_date = $cand_data[0]['Position']['modified_date'] != '' ? $cand_data[0]['Position']['modified_date'] : $cand_data[0]['Position']['created_date'];
+				$job_title = $cand_data[0]['Position']['job_title'] ? $cand_data[0]['Position']['job_title'] : '[POSITION]';
+				
+				// for no data for multiple option
+				$cand_name = trim($cand_name) ? $cand_name : '[CANDIDATE_NAME]';
+				$rec_name = trim($rec_name) ? $rec_name : '[RECRUITER_NAME]';
+				$signature = $signature ? $signature : '[SIGNATURE]';
+				$position_date = $position_date ? $position_date : '[POSITION_DATE]';
+				$contact_title = $contact_title ? $contact_title : '[CLIENT_CONTACT_TITLE]';
+				$client_name = $cand_data[0]['Client']['client_name'] ? $cand_data[0]['Client']['client_name'] : '[CLIENT]';	
+				$client_contact_name = $cand_data[0]['Contact']['first_name'].' '.$cand_data[0]['Contact']['last_name'];
+				$client_contact_name = trim($client_contact_name) ? $client_contact_name : '[CLIENT_CONTACT_NAME]';
+				if($res_id == 'multi_select'){
+					$multi_candidates = '[CANDIDATE_NAME]';
+				}
+				$this->set('candidate_name', $multi_candidates ? $multi_candidates : $cand_name);
+				// get resume education details
+				$this->loadModel('ResEdu');
+				$edu_data = $this->ResEdu->find('all', array('conditions' => array('resume_id' => $res_id), 'fields' => array('percent_mark','year_passing','college',
+				'course_type','university','location','ResDegree.degree','ResSpec.spec'), 'order' => array('ResEdu.id' => 'desc')));
+				// get resume experience details
+				$options = array(			
+					array('table' => 'resume',
+							'alias' => 'Resume',					
+							'type' => 'LEFT',
+							'conditions' => array('`Resume`.`id` = `ResExp`.`resume_id`',
+							'ResExp.is_recent' => '1')
+					)
+				);
+				$this->loadModel('ResExp');
+				$exp_data = $this->ResExp->find('all', array('conditions' => array('Resume.id' => $candidate_arr ? $candidate_arr : $res_id), 'fields' => array('experience','work_location','skills',
+				'company','other_info','Designation.designation','Resume.first_name','Resume.last_name'),  'joins' => $options));
+				// iterate the experience details
+				$exp_table .= "<table  width='90%' border='0' cellspacing='2' cellpadding='5' style='border:1px solid #ededed; font:bold 13px Arial'>";
+				$exp_table .= "<tr><td>S. No.</td><td>Candidate Name</td><td>Present Company</td><td>Present Designation</td></tr>";
+				foreach($exp_data as $key => $exp){
+					$exp_table .= "<tr  style='font-weight:normal'>";
+					$exp_table .= "<td width='50'>";
+					$exp_table .= ++$key;
+					$exp_table .= "</td>";
+					$exp_table .= "<td  width='120'>";
+					$exp_table .= ucwords($exp['Resume']['first_name'].' '.$exp['Resume']['last_name']);
+					$exp_table .= "</td>";
+					$exp_table .= "<td  width='140'>";
+					$exp_table .= $exp['Designation']['designation'];
+					$exp_table .= "</td>";
+					$exp_table .= "<td  width='140'>";
+					$exp_table .= $exp['ResExp']['company'];
+					$exp_table .= "</td>";
+					$exp_table .= "</tr>";
 
+				}
+				$exp_table .= "</table>";
+				// get resume experience details of previous candidates
+				$options = array(
+					array('table' => 'resume',
+							'alias' => 'Resume',					
+							'type' => 'LEFT',
+							'conditions' => array('`Resume`.`id` = `ReqResume`.`resume_id`')
+					),
+					array('table' => 'res_employer',
+							'alias' => 'ResExp',					
+							'type' => 'LEFT',
+							'conditions' => array('`ReqResume`.`resume_id` = `ResExp`.`resume_id`',
+							'ResExp.is_recent' => '1')
+					),
+					array('table' => 'requirements',
+							'alias' => 'Position',					
+							'type' => 'LEFT',
+							'conditions' => array('`Position`.`id` = `ReqResume`.`requirements_id`')
+					),
+					array('table' => 'designation',
+							'alias' => 'Designation',					
+							'type' => 'LEFT',
+							'conditions' => array('`Designation`.`id` = `ResExp`.`designation_id`')
+					)
+				);
+				$this->loadModel('ReqResumeStatus');
+				$prev_exp_data = $this->ReqResumeStatus->find('all', array('conditions' => array('ReqResumeStatus.status_title' => 'CV-Sent',
+				'Position.id' => $pos_id), 'fields' => array('ResExp.experience','ResExp.work_location','ResExp.skills',
+				'ResExp.company','ResExp.other_info','Designation.designation','Resume.first_name','Resume.last_name'),
+				'group' => array('Resume.id'), 'joins' => $options));
+				// iterate the experience details
+				$prev_exp_table .= "<table  width='90%' border='0' cellspacing='2' cellpadding='5' style='border:1px solid #ededed; font:bold 13px Arial'>";
+				$prev_exp_table .= "<tr><td>S. No.</td><td>Candidate Name</td><td>Present Company</td><td>Present Designation</td></tr>";
+				foreach($prev_exp_data as $key => $exp){
+					$prev_exp_table .= "<tr  style='font-weight:normal'>";
+					$prev_exp_table .= "<td width='50'>";
+					$prev_exp_table .= ++$key;
+					$prev_exp_table .= "</td>";
+					$prev_exp_table .= "<td  width='120'>";
+					$prev_exp_table .= ucwords($exp['Resume']['first_name'].' '.$exp['Resume']['last_name']);
+					$prev_exp_table .= "</td>";
+					$prev_exp_table .= "<td  width='140'>";
+					$prev_exp_table .= $exp['Designation']['designation'];
+					$prev_exp_table .= "</td>";
+					$prev_exp_table .= "<td  width='140'>";
+					$prev_exp_table .= $exp['ResExp']['company'];
+					$prev_exp_table .= "</td>";
+					$prev_exp_table .= "</tr>";
+
+				}
+				$prev_exp_table .= "</table>";
+				// get the mail template details
+				$this->loadModel('MailTemplate');
+				$data = $this->MailTemplate->findById($mailtemplete, array('fields' => 'subject','message'));
+				
+				$loc = $cand_data[0]['ResLoc']['location'] ? $cand_data[0]['ResLoc']['location'] : $cand_data[0]['Resume']['present_location'];
+				$int_level = $this->request->data['Position']['interview_level'] ? $this->request->data['Position']['interview_level'] : '[INTERVIEW_LEVEL]';
+				$int_date = $this->request->data['Position']['int_date'] ? $this->request->data['Position']['int_date'] : '[INTERVIEW_DATE]';
+				$int_time = $this->request->data['Position']['int_time'] ? $this->request->data['Position']['int_time'] : '[INTERVIEW_TIME]';
+				$int_duration = $this->request->data['Position']['int_duration'] ? $this->request->data['Position']['int_duration'] : '[INTERVIEW_DURATION]';
+				$venue = $this->request->data['Position']['venue'] ? $this->request->data['Position']['venue'] : '[INTERVIEW_VENUE]';
+				$contact_name = $this->request->data['Position']['contact_name'] ? $this->request->data['Position']['contact_name'] : '[INTERVIEW_CONTACT_PERSON]';
+				$contact_no = $this->request->data['Position']['contact_no'] ? $this->request->data['Position']['contact_no'] : '[INTERVIEW_CONTACT_NO]';
+				$additional = $this->request->data['Position']['additional'] ? $this->request->data['Position']['additional'] : '[INTERVIEW_ADDITIONAL]';
+				// get the interview mode
+				$interview_stage = $this->get_interview_mode($this->request->data['Position']['interview_stage_id']);
+				//$this->loadModel('InterviewStage');
+				//$stage_data = $this->InterviewStage->findById($this->request->data['Position']['interview_stage_id'], array('fields' => 'interview_stage'));
+				$interview_stage = $interview_stage ? $interview_stage : '[INTERVIEW_MODE]';
+				// form the tags
+				$tags = array('[candidate_name]','[mobile]','[email_id]','[position]','[address]','[location]','[designation]','[experience]',	'[client]','[client_contact_name]','[client_contact_no]','[job_location]','[job_desc]','[function]','[today_date]','[recruiter_name]',
+				'[signature]','[client_contact_title]','[account_holder_name]','[position_date]','[sent_candidates]','[previous_sent_candidates]',
+				'[interview_candidates]','[interview_date]','[interview_time]','[interview_duration]','[interview_mode]','[interview_venue]',
+				'[interview_contact_person]','[interview_contact_no]','[interview_additional]','[website]','[interview_level]');
+				
+				// form the templates data
+				$template_data = array($cand_name,$cand_data[0]['Resume']['mobile'],$cand_data[0]['Resume']['email_id'], 
+				ucwords($job_title),	$cand_data[0]['Position']['address1']. '<br>'.$cand_data[0]['Position']['address2'],
+				$loc,	$cand_data[0]['Designation']['designation'],$this->Functions->check_exp($cand_data[0]['Position']['total_exp']),	
+				ucwords($client_name),ucwords($client_contact_name),$cand_data[0]['Contact']['mobile'],	
+				ucfirst($cand_data[0]['Position']['location']),$cand_data[0]['Position']['job_desc'],$cand_data[0]['FunctionArea']['function'],	
+				date('d-M, Y'),	$rec_name, $signature,$contact_title,$rec_name, $this->Functions->format_date($position_date),
+				$exp_table,$prev_exp_table,$int_candidates,$int_date,$int_time,$int_duration,$interview_stage,$venue,
+				ucwords($contact_name),$contact_no,$additional,	'www.career-tree.in',$int_level);
+				
+				$body_text = str_replace($tags, $template_data, $data['MailTemplate']['message']);
+				$subject_text = str_replace($tags, $template_data, $data['MailTemplate']['subject']);
+				$this->set('subject_'.$mailtemplete, $subject_text);
+				$this->set('body_'.$mailtemplete, $body_text);
+				return $body_text.'|||'.$subject_text;
 			}
-			$prev_exp_table .= "</table>";
-			// get the mail template details
-			$this->loadModel('MailTemplate');
-			$data = $this->MailTemplate->findById($mailtemplete, array('fields' => 'subject','message'));
-			$loc = $cand_data[0]['ResLoc']['location'] ? $cand_data[0]['ResLoc']['location'] : $cand_data[0]['Resume']['present_location'];
-			// form the tags
-			$tags = array('[candidate_name]','[mobile]','[email_id]','[position]','[address]','[location]','[designation]','[experience]',	'[client]','[client_contact_name]','[client_contact_no]','[job_location]','[job_desc]','[function]','[today_date]','[recruiter_name]',
-			'[signature]','[client_contact_title]','[account_holder_name]','[position_date]','[sent_candidates]','[previous_sent_candidates]',
-			'[interview_candidates]','[interview_stage]','[interview_date]','[interview_duration]','[interview_mode]','[interview_venue]',
-			'[interview_contact_person]','[interview_contact_no]','[interview_additional]','[website]');
-			// form the templates data
-			$template_data = array($cand_name,$cand_data[0]['Resume']['mobile'],$cand_data[0]['Resume']['email_id'], 
-			ucwords($cand_data[0]['Position']['job_title']),	$cand_data[0]['Position']['address1']. '<br>'.$cand_data[0]['Position']['address2'],
-			$loc,	$cand_data[0]['Designation']['designation'],$this->Functions->check_exp($cand_data[0]['Position']['total_exp']),	
-			ucwords($cand_data[0]['Client']['client_name']),ucwords($cand_data[0]['Contact']['first_name'].' '.$cand_data[0]['Contact']['last_name']),$cand_data[0]['Contact']['mobile'],	
-			ucfirst($cand_data[0]['Position']['location']),$cand_data[0]['Position']['job_desc'],$cand_data[0]['FunctionArea']['function'],	
-			date('d-M, Y'),	$rec_name, $signature,$contact_title,$rec_name, $this->Functions->format_date($position_date),
-			$exp_table,$prev_exp_table,$int_candidates, $this->request->data['Position']['interview_level'],$this->request->data['Position']['int_date'],
-			$this->request->data['Position']['int_time'],$this->request->data['Position']['interview_stage_id'],$this->request->data['Position']['venue'],
-			ucwords($this->request->data['Position']['contact_name']),$this->request->data['Position']['contact_no'],$this->request->data['Position']['additional'],
-			'www.career-tree.in');
-			
-			$body_text = str_replace($tags, $template_data, $data['MailTemplate']['message']);
-			$subject_text = str_replace($tags, $template_data, $data['MailTemplate']['subject']);
-			$this->set('subject_'.$mailtemplete, $subject_text);
-			$this->set('body_'.$mailtemplete, $body_text);
-			return $body_text.'|||'.$subject_text;
-
+	}
+	
+	/* function to get interview level */
+	public function get_interview_mode($mode){
+		$this->loadModel('InterviewStage');
+		$stage_data = $this->InterviewStage->findById($mode, array('fields' => 'interview_stage'));
+		return $stage_data['InterviewStage']['interview_stage'];
+	}
+	
+	/* function to parse the html data to send interview to candidates */
+	public function parse_interview_mail($message){
+		$interview_mode = $this->get_interview_mode($this->request->data['Position']['interview_stage_id']);
+		$int_date = $this->request->data['Position']['int_date'];
+		$int_time = $this->request->data['Position']['int_time'];
+		$venue = $this->request->data['Position']['venue'];
+		$duration = $this->request->data['Position']['int_duration'];
+		$contact_name = $this->request->data['Position']['contact_name'];
+		$contact_no = $this->request->data['Position']['contact_no'];
+		$additional = $this->request->data['Position']['additional'];
+		$level =  $this->request->data['Position']['interview_level'];
+		$tags = array('[INTERVIEW_DATE]','[INTERVIEW_DURATION]','[INTERVIEW_MODE]','[INTERVIEW_VENUE]',
+		'[INTERVIEW_CONTACT_PERSON]','[INTERVIEW_CONTACT_NO]','[INTERVIEW_ADDITIONAL]','[INTERVIEW_LEVEL]',
+		'[INTERVIEW_TIME]');
+		// form the templates data
+		$template_data = array($int_date,$duration,$interview_mode,$venue,ucwords($contact_name),$contact_no,$additional,$level,
+		$int_time);
+		return $body_text = str_replace($tags, $template_data, $message);
 	}
 	
 		/* function to update the CV status */
@@ -1636,7 +1701,7 @@ class PositionController extends AppController {
 		$cand_name = ucwords($cand_data['Resume']['first_name'].' '.$cand_data['Resume']['last_name']);
 		$this->set('candidate_name', $cand_name);
 		// get rejection status drop down
-		$this->get_reject_drop('Screening');
+		$this->get_reject_drop('Validation');
 		// when th form is submitted
 		if(!empty($id) && !empty($pos_id)){
 			// set the validation
@@ -1655,13 +1720,14 @@ class PositionController extends AppController {
 				// save req resume table
 				$data = array('id' => $req_res_id[0]['ReqResume']['id'],'modified_date' => $this->Functions->get_current_date(),
 				'modified_by' => $this->Session->read('USER.Login.id'),	 'status_title' => $status,
-				'cv_validation_date' => $this->Functions->get_current_date());
+				'cv_validation_date' => $this->Functions->get_current_date(),'reason_id' => $this->request->data['Position']['reason_id']);
 				// save  req resume
 				if($this->ReqResume->save($data, array('validate' => false))){		
 					// save req resume status
 					$this->loadModel('ReqResumeStatus');
 					$data = array('req_resume_id' => $req_res_id[0]['ReqResume']['id'], 'created_date' => $this->Functions->get_current_date(),
-					'created_by' => $this->Session->read('USER.Login.id'), 'stage_title' => 'Validation - Account Holder', 'status_title' => $status, 'reason_id' => $this->request->data['Position']['reason_id'], 'note' => $this->request->data['Position']['note']);
+					'created_by' => $this->Session->read('USER.Login.id'), 'stage_title' => 'Validation - Account Holder', 'status_title' => $status,
+					'reason_id' => $this->request->data['Position']['reason_id'], 'note' => $this->request->data['Position']['note']);
 					if($this->ReqResumeStatus->save($data, array('validate' => false))){					
 						// if successfully update
 						if($st != 'approve'){
@@ -1814,7 +1880,7 @@ class PositionController extends AppController {
 			if($status == 'Rejected'){
 				$validate = $this->Position->validates(array('fieldList' => array('reason_id')));
 			}else{
-				$validate = true;
+				$validate = $this->Position->validates(array('fieldList' => array('next_interview')));
 			}
 			// if validation pass
 			if($validate){			
@@ -1838,7 +1904,24 @@ class PositionController extends AppController {
 						$data = array('id' => $interview_id[0]['ResInterview']['id'],'reason_id' => $this->request->data['Position']['reason_id'],  'req_resume_id' => $req_res_id, 'modified_date' => $this->Functions->get_current_date(),
 						'modified_by' => $this->Session->read('USER.Login.id'), 'status_title' => $status);
 						$this->ResInterview->save($data, array('validate' => false));					
-					
+						// if next interview not applicable proceed to Offer Status
+						if($this->request->data['Position']['next_interview'] == 'N' && $st == 'shortlist'){
+							// Change Offer status pending
+							$data = array('id' => $req_res_id,'modified_date' => $this->Functions->get_current_date(),
+							'modified_by' => $this->Session->read('USER.Login.id'),	'stage_title' => 'Offer', 'status_title' => 'Offer Pending');
+							// save  req resume
+							if($this->ReqResume->save($data, array('validate' => false))){		
+								// save req resume status
+								$this->ReqResumeStatus->id = '';
+								$this->loadModel('ReqResumeStatus');
+								$data = array('req_resume_id' => $req_res_id, 'created_date' => $this->Functions->get_current_date(),	
+								'created_by' => $this->Session->read('USER.Login.id'), 'stage_title' => 'Offer',	'status_title' => 'Offer Pending', 
+								'note' => $this->request->data['Position']['note'],'reason_id' => $this->request->data['Position']['reason_id']);
+								if($this->ReqResumeStatus->save($data, array('validate' => false))){
+									
+								}							
+							}
+						}
 						$this->set('cv_update_status', 1);
 						$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Interview Details Updated Successfully', 'default', array('class' => 'alert alert-success'));									
 
@@ -1883,8 +1966,13 @@ class PositionController extends AppController {
 			$this->set('stageList', $stage_list);
 		}		
 		
+		$req_res_ids[] = $req_res_id;
+		$chk_resume_id_ar[] = $id;
+			
 		// for multiple interview
-		if($id == 'multi_select'){			
+		if($id == 'multi_select'){
+			$multi_chk = 1;
+			$this->set('tiny_readonly', '1');			
 			$resume_check = explode(',', $pos_id);
 			// iterate the candidates
 			foreach($resume_check as $check){
@@ -1897,6 +1985,7 @@ class PositionController extends AppController {
 					$chk_resume_id_ar[] = $check_ids[0];
 				}
 			}
+		}
 			// get the candidate names
 			$options = array(			
 				array('table' => 'resume',
@@ -1905,13 +1994,13 @@ class PositionController extends AppController {
 						'conditions' => array('`Resume`.`id` = `ReqResume`.`resume_id`')
 				)						
 			);
-				
+			
 			$fields = array('Resume.first_name','Resume.last_name', 'Resume.mobile');
 			$cand_data = $this->Position->find('all', array('fields' => $fields,'conditions' => array('Resume.id' => $chk_resume_id_ar),
 			'group' => array('Resume.id'),'joins' => $options));		
 			// iterate the candidate interview table
 			$int_table .= "<table  width='90%' border='0' cellspacing='2' cellpadding='5' style='border:1px solid #ededed; font:bold 13px Arial'>";
-			$int_table .= "<tr><td>S. No.</td><td>Candidate Name</td><td>Interview Stage</td><td>Interview Date</td><td>Interview Timing</td><td>Interview Mode</td>
+			$int_table .= "<tr><td>S. No.</td><td>Candidate Name</td><td>Interview Level</td><td>Interview Mode</td><td>Interview Date</td><td>Interview Timing</td>
 			<td>Contact No.</td></tr>";
 			foreach($cand_data as $key => $exp){
 				$int_table .= "<tr  style='font-weight:normal'>";
@@ -1919,38 +2008,36 @@ class PositionController extends AppController {
 				$int_table .= ++$key;
 				$int_table .= "</td>";
 				$int_table .= "<td  width='120'>";
-				$int_table .= ucwords($exp['Resume']['first_name'].' '.$exp['Resume']['last_name']);
+				$contact_name = $multi_chk = 1 ? '[CANDIDATE_NAME]' : ucwords($exp['Resume']['first_name'].' '.$exp['Resume']['last_name']);
+				$int_table .= $contact_name;
 				$int_table .= "</td>";
 				$int_table .= "<td  width='140'>";
-				$int_table .= '[interview_stage]';
-				$int_table .= "</td>";
-				$int_table .= "<td  width='140'>";
-				$int_table .= '[interview_date]';
-				$int_table .= "</td>";
-				$int_table .= "<td  width='140'>";
-				$int_table .= '[interview_duration]';
+				$int_table .= '[interview_level]';
 				$int_table .= "</td>";
 				$int_table .= "<td  width='140'>";
 				$int_table .= '[interview_mode]';
 				$int_table .= "</td>";
 				$int_table .= "<td  width='140'>";
-				$int_table .= $exp['Resume']['mobile'];
+				$int_table .= '[interview_date]'. ', [interview_time]';
+				$int_table .= "</td>";
+				$int_table .= "<td  width='140'>";
+				$int_table .= '[interview_duration]';
+				$int_table .= "</td>";				
+				$int_table .= "<td  width='140'>";
+				$mobile = $multi_chk = 1 ? '[MOBILE]' : $exp['Resume']['mobile'];
+				$int_table .= $mobile;
 				$int_table .= "</td>";
 				$int_table .= "</tr>";		
 				$can_name .= ucwords($exp['Resume']['first_name'].' '.$exp['Resume']['last_name']).', ';
 			}
 			$int_table .= "</table>";
-			
 			$pos_id = $chk_pos_id;
 			$id = $chk_resume_id_ar[0];
-		}else{
-			$req_res_ids[] = $req_res_id;
-			$chk_resume_id_ar[] = $id;
-		}
+		// }
 		// for success page redirect
 		$this->set('spec_id', $pos_id);
 		$cand_name = substr($can_name, 0, strlen($can_name)-3);
-
+	
 		// get the template details
 		$this->get_template_details($id,$pos_id, '3');
 		$this->get_template_details($id,$pos_id, '2', $int_table,$cand_name);
@@ -1996,9 +2083,16 @@ class PositionController extends AppController {
 							'contact_no' => $this->request->data['Position']['contact_no']							
 							);
 							$this->ResInterview->save($data, array('validate' => false));
-						
-							$candidate_msg = $this->get_template_details($chk_resume_id_ar[$key],$pos_id, '3');
-							$candidate_msg_split = explode('|||', $candidate_msg);
+							// for multi selection only
+							if($multi_chk  == '1'){
+								$candidate_msg = $this->get_template_details($chk_resume_id_ar[$key],$pos_id, '3');
+								$candidate_msg_split = explode('|||', $candidate_msg);
+								$message = $candidate_msg_split[0];
+								$subject = $candidate_msg_split[1];
+							}else{
+								$message = $this->parse_interview_mail($this->request->data['Position']['message']);
+								$subject = $this->request->data['Position']['subject'];
+							}
 							// get candidate details
 							$resume_data = $this->ReqResume->Resume->findById($chk_resume_id_ar[$key], array('fields' => 'Resume.email_id','Resume.first_name',
 							'Resume.last_name'));
@@ -2006,11 +2100,11 @@ class PositionController extends AppController {
 							$to_name = $resume_data['Resume']['first_name'].' '.$resume_data['Resume']['last_name'];
 							// send mail to client 
 							$resume_data['Resume']['email_id'] = 'testing7@bigspire.com'; // for testing
-							$vars = array('from_name' => $from, 'to_name' => ucwords($to_name), 'msg'=> $candidate_msg_split[0]);
+							$vars = array('from_name' => $from, 'to_name' => ucwords($to_name), 'msg'=> $message);
 							// save the mail box
-							$this->save_mail_box($candidate_msg_split[1], $candidate_msg_split[0], $req_res_id);
+							$this->save_mail_box($subject, $message, $req_res_id);
 							// send mail
-							if(!$this->send_email($candidate_msg_split[1], 'send_interview', $this->Session->read('USER.Login.email_id'), $resume_data['Resume']['email_id'], $vars)){	
+							if(!$this->send_email($subject, 'send_interview', $this->Session->read('USER.Login.email_id'), $resume_data['Resume']['email_id'], $vars)){	
 								// show the msg.								
 								$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Problem in sending the mail to candidate...', 'default', array('class' => 'alert alert-error'));				
 								}
@@ -2022,10 +2116,17 @@ class PositionController extends AppController {
 						}	
 					}
 			
-						
 					// send the interview confirmation mail to client
-					$client_msg = $this->get_template_details($id,$pos_id, '2', $int_table,$cand_name);
-					$client_msg_split = explode('|||', $client_msg);
+					// for multi selection only 					
+					if($multi_chk  == '1'){
+						$client_msg = $this->get_template_details($id,$pos_id, '2', $int_table,$cand_name);
+						$client_msg_split = explode('|||', $client_msg);
+						$message = $client_msg_split[0];
+						$subject = $client_msg_split[1];
+					}else{
+						$message = $this->parse_interview_mail($this->request->data['Position']['client_message']);
+						$subject = $this->request->data['Position']['client_subject'];
+					}					
 					// get the resume details
 					$options = array(								
 							array('table' => 'resume_doc',
@@ -2056,11 +2157,11 @@ class PositionController extends AppController {
 					$to_name = $contact_data['Contact']['first_name'].' '.$contact_data['Contact']['last_name'];
 					// send mail to client 
 					$contact_data['Contact']['email'] = 'testing7@bigspire.com'; // for testing
-					$vars = array('from_name' => $from, 'to_name' => ucwords($to_name),'msg'=> $client_msg_split[0]);
+					$vars = array('from_name' => $from, 'to_name' => ucwords($to_name),'msg'=> $message);
 					// save the mail box
-					$this->save_mail_box($client_msg_split[1], $client_msg_split[0], $req_res_id);
+					$this->save_mail_box($subject, $message, $req_res_id);
 					// send mail
-					if(!$this->send_email($client_msg_split[1], 'confirm_interview', $this->Session->read('USER.Login.email_id'), $contact_data['Contact']['email'], $vars)){	
+					if(!$this->send_email($subject, 'confirm_interview', $this->Session->read('USER.Login.email_id'), $contact_data['Contact']['email'], $vars)){	
 						// show the msg.								
 						$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Problem in sending the mail to candidate...', 'default', array('class' => 'alert alert-error'));				
 					}						

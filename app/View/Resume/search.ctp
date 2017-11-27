@@ -11,6 +11,7 @@ if(!empty($results)):
 		$result[] = $this->Functions->match_results($keyword,$data['ResLocation']['location']);
 		$result[] = $this->Functions->match_results($keyword,$data[0]['first_name']);
 		$result[] = $this->Functions->match_results($keyword,$data['Resume']['present_employer']);
+		$result[] = $this->Functions->match_results($keyword,$data['Resume']['code']);
 		
 	endforeach;
 	

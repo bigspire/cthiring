@@ -358,6 +358,13 @@ class Position extends AppModel {
                 'required' => true,
                 'message'  => 'Please select the project type'
             )
+        ),
+		'next_interview' => array(
+            'empty' => array(
+                'rule'     => 'notEmpty',
+                'required' => true,
+                'message'  => 'Please select the next interview'
+            )
         )
 	);
 	

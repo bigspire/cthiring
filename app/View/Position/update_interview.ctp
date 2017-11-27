@@ -66,6 +66,22 @@
 
 						</td>	
 				</tr>
+					<?php if($validation):?>
+					<tr class="" >
+					<td width="120" class="tbl_column">Next Interview
+					
+					<span class="f_req">*</span>
+					
+					</td>
+						<td>
+						<?php echo $this->Form->input('next_interview', array('div'=> false,'type' => 'radio', 'label' => false,  'style' => 'margin:4px 2px', 'class' => '', 
+	'options' => array('Y' => 'Applicable', 'N' => 'Not Applicable'), 'separator' => ' ', 'id' => '',  'required' => false, 'placeholder' => '', 
+	'legend' => false, 'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?>
+
+						</td>	
+				</tr>
+				<?php endif; ?>
+				
 				</tbody>
 			</table>
 			<div class="form-actions">

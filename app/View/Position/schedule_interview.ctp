@@ -211,6 +211,7 @@
 			<div class="form-actions">
 			
 			<input type="hidden" id="start_date" name="start_date" value="<?php echo date('d/m/Y');?>">
+			<input type="hidden" id="tiny_readonly" name="tiny_readonly" value="<?php echo $tiny_readonly;?>">
 
 
 			<input name="submit" class="btn btn-gebo theForm" value="Submit"  type="submit"/>
@@ -233,7 +234,7 @@
 </form>
 <?php endif; ?>	
 
-<input type="hidden" id="success_page" value="<?php echo $this->webroot;?>position/view/<?php echo $spec_id;?>/?tab=cv_status"/>
+<input type="hidden" id="success_page" value="<?php echo $this->webroot;?>position/view/<?php echo $this->request->params['pass'][1]?>/?tab=cv_status"/>
   </div>
 </div>
 </div> 

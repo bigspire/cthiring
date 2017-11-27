@@ -21,7 +21,7 @@
                                 </li>
                             
                                 <li>
-                                  <?php echo ucwords($resume_data['Resume']['first_name'].' '.$resume_data['Resume']['last_name']);?>
+                                  <?php echo ucwords(strtolower($resume_data['Resume']['first_name'].' '.$resume_data['Resume']['last_name']));?>
                                 </li>
                             </ul>
                         </div>
@@ -70,7 +70,7 @@
 									</tr>
 									<tr class="">
 										<td width="130" class="tbl_column">Candidate Name</td>
-										<td><?php echo ucwords($resume_data['Resume']['first_name'].' '.$resume_data['Resume']['last_name']);?></td>	
+										<td><?php echo ucwords(strtolower($resume_data['Resume']['first_name'].' '.$resume_data['Resume']['last_name']));?></td>	
 									</tr>
 									<tr class="">
 										<td width="120" class="tbl_column">Email</td>
@@ -140,6 +140,16 @@
 							<div class="span8">
 							<table class="table table-bordered dataTable table-striped " style="margin-bottom:0">
 								<tbody>	
+									<tr>
+									<td  class="tbl_column" width="">Code</td>
+										<td><?php 
+										if($resume_data['Resume']['code']):
+										else:
+										echo $resume_data['Resume']['code'];
+										echo 'MH-'.$resume_data['Resume']['id'];
+										endif; ?></td>	
+									</tr>
+									
 									<tr>
 										<td  class="" width="140">CTC</td>
 										<td >
@@ -308,7 +318,7 @@
 										<td><?php echo $this->Functions->check_exp($exp['ResExp']['experience']); ?></td>
 									</tr>
 									<tr>
-										<td class="tbl_column">Area of Specialization/Expertise</td>
+										<td class="tbl_column">Specialization/Expertise</td>
 										<td><?php echo $exp['ResExp']['skills']; ?></td>
 									</tr>
 										<tr>
@@ -367,7 +377,7 @@
 										<td><?php echo $edu['Resume']['consultant_assess']; ?></td>	
 									</tr>		
 											<tr class="">
-										<td width="120" class="tbl_column">Rate Technical Skills <span class="f_req"></span></td>
+										<td width="120" class="tbl_column">Technical Skills Rating<span class="f_req"></span></td>
 										<td>
 <ul class="ratingList">
 <?php $skill_parse = explode(',',$skill_data['Position']['tech_skill']);
@@ -407,7 +417,7 @@ foreach($skill_parse as $key => $skill):?>
 									
 									
 									<tr class="">
-										<td width="120" class="tbl_column">Rate Behavioural Skills </td>
+										<td width="120" class="tbl_column">Behavioural Skills Rating</td>
 										<td>
 <ul class="ratingList">
  

@@ -61,8 +61,8 @@
 									<tr class="tbl_row">
 										<td width="120" class="tbl_column">Candidate Name <span class="f_req">*</span></td>
 										<td>
-								        <input type="text" tabindex="1" name="first_name" placeholder="First Name" value="{$first_name}" class="span4">
-								        <input type="text" tabindex="2" name="last_name" placeholder="Last Name" value="{$last_name}" class="inline_text span4">
+								        <input type="text" tabindex="1" name="first_name" placeholder="First Name" value="{$first_name|strtolower|ucwords}" class="span4">
+								        <input type="text" tabindex="2" name="last_name" placeholder="Last Name" value="{$last_name|strtolower|ucwords}" class="inline_text span4">
 								
 										<label for="reg_city" generated="true" class="error">{$first_nameErr}{$last_nameErr}</label>
 										</td>	
@@ -376,7 +376,7 @@
 							</tr>
 							
 							<tr class="tbl_row">
-										<td width="120" class="tbl_column">Area of Specialization/Expertise  <span class="f_req">*</span></td>
+										<td width="120" class="tbl_column">Specialization/Expertise  <span class="f_req">*</span></td>
 											<td> 
 										<input type="text" name="area_#index#" tabindex="6"  id="area_#index#"  class="span8" />
 										<label for="reg_city" generated="true" class="error" id="area_Err_#index#"></label>										
