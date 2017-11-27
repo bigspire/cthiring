@@ -65,8 +65,8 @@ try{
 
 // set the condition to check ascending or descending order		
 $order = ($_GET['order'] == 'desc') ? 'asc' :  'desc';	
-$sort_fields = array('1' => 'employee','target_amt','achievement_amt','achievement_percent','eligible_incentive_percent','eligible_incentive_amt','quarter','created_date');
-$org_fields = array('1' => 'employee','target_amt','achievement_amt','achievement_percent','eligible_incentive_percent','eligible_incentive_amt','quarter','created_date');
+$sort_fields = array('1' => 'employee','period','eligible_incentive_amt','incentive_type','created_date');
+$org_fields = array('1' => 'employee','period','eligible_incentive_amt','incentive_type','created_date');
 
 // to set the sorting image
 foreach($sort_fields as $key => $b_field){
@@ -100,8 +100,10 @@ try{
 	while($obj = $mysql->display_result($result))
 	{
  		$data[] = $obj;
- 		$data[$i]['quarter'] = $fun->display_quater($fun->convert_quater_month($obj['quarter'])).', '.$fun->convert_quater_year($obj['quarter']);
- 		$data[$i]['created_date'] = $fun->convert_date_to_display($obj['created_date']);
+ 		// $data[$i]['period'] = $fun->display_quater($fun->convert_quater_month($obj['period'])).', '.$fun->convert_quater_year($obj['period']);
+ 		$data[$i]['period'] = '01'.'-'.$fun->convert_quater_month($obj['period']).'-'.$fun->convert_quater_year($obj['period']);
+		$data[$i]['created_date'] = $fun->convert_date_to_display($obj['created_date']);
+		$data[$i]['incentive_type'] = $fun->check_incentive_type($obj['incentive_type']);
  		$i++;
  		$pno[]=$paging->print_no();
  		$smarty->assign('pno',$pno);
@@ -114,10 +116,10 @@ try{
 		include('classes/class.excel.php');
 		$excelObj = new libExcel();
 		// function to print the excel header
-      $excelObj->printHeader($header = array('Employee','Target Amount','Achievement in Amt.',
-      'Achievement in %','Eligible Incentive %','Eligible Incentive Amt.','Quarter','Created') ,$col = array('A','B','C','D','E','F','G','H'));  
+      $excelObj->printHeader($header = array('Employee','Incentive Type','Period',
+      'Incentive Amt.','Created') ,$col = array('A','B','C','D','E'));  
 		// function to print the excel data
-		$excelObj->printCell($data, $count,$col = array('A','B','C','D','E','F','G','H'), $field = array('employee','target_amt','achievement_amt','achievement_percent','eligible_incentive_percent','eligible_incentive_amt','quarter','created_date'),'Incentive_'.$current_date);
+		$excelObj->printCell($data, $count,$col = array('A','B','C','D','E'), $field = array('employee','incentive_type','Period','eligible_incentive_amt','created_date'),'Incentive_'.$current_date);
 	}	
 
 	// approve or reject validation

@@ -283,6 +283,15 @@ class fun{
 		return $date;
 	}
 
+	// function to validate incentive type field 
+	public function check_incentive_type($incentive_type){
+		if($incentive_type == 'I'){
+			$inc = 'Profile Short-listing & Interviewing';
+		}else if($incentive_type == 'J'){
+			$inc = 'Position Closure';
+		}
+		return $inc;
+	}
 	
 	// function to validate incentive quarter field 
 	public function convert_quater_month($created_date){
