@@ -1,0 +1,137 @@
+2017-11-27 19:29:40 Warning: Warning (2): Missing argument 1 for PositionController::index() in [C:\xampp\htdocs\ctsvn\cthiring\app\Controller\PositionController.php, line 33]
+Trace:
+PositionController::index() - APP\Controller\PositionController.php, line 33
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-27 19:29:40 Warning: Warning (2): Missing argument 2 for PositionController::index() in [C:\xampp\htdocs\ctsvn\cthiring\app\Controller\PositionController.php, line 33]
+Trace:
+PositionController::index() - APP\Controller\PositionController.php, line 33
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-27 19:29:43 Warning: Warning (2): Missing argument 1 for ClientController::index() in [C:\xampp\htdocs\ctsvn\cthiring\app\Controller\ClientController.php, line 34]
+Trace:
+ClientController::index() - APP\Controller\ClientController.php, line 34
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-27 19:29:47 Warning: Warning (2): Missing argument 5 for FunctionsComponent::format_dropdown(), called in C:\xampp\htdocs\ctsvn\cthiring\app\Controller\TaskplanController.php on line 131 and defined in [C:\xampp\htdocs\ctsvn\cthiring\app\Controller\Component\FunctionsComponent.php, line 106]
+Trace:
+FunctionsComponent::format_dropdown() - APP\Controller\Component\FunctionsComponent.php, line 106
+TaskplanController::get_client_list() - APP\Controller\TaskplanController.php, line 131
+TaskplanController::add() - APP\Controller\TaskplanController.php, line 144
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-27 19:29:49 Warning: Warning (2): Missing argument 1 for LeaveController::index() in [C:\xampp\htdocs\ctsvn\cthiring\app\Controller\LeaveController.php, line 33]
+Trace:
+LeaveController::index() - APP\Controller\LeaveController.php, line 33
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-27 19:29:50 Warning: Warning (2): Missing argument 1 for AppController::check_role_access(), called in C:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php on line 1197 and defined in [C:\xampp\htdocs\ctsvn\cthiring\app\Controller\AppController.php, line 171]
+Trace:
+AppController::check_role_access() - APP\Controller\AppController.php, line 171
+HomeController::beforeFilter() - APP\Controller\HomeController.php, line 1197
+call_user_func - [internal], line ??
+CakeEventManager::dispatch() - CORE\Cake\Event\CakeEventManager.php, line 243
+Controller::startupProcess() - CORE\Cake\Controller\Controller.php, line 677
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 189
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-27 19:29:50 Warning: Warning (2): Missing argument 1 for HomeController::index() in [C:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php, line 43]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 43
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-27 19:29:50 Warning: Warning (2): Missing argument 6 for HomeController::get_position_count(), called in C:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php on line 313 and defined in [C:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php, line 583]
+Trace:
+HomeController::get_position_count() - APP\Controller\HomeController.php, line 583
+HomeController::index() - APP\Controller\HomeController.php, line 313
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-27 19:29:50 Warning: Warning (2): Missing argument 6 for HomeController::get_position_count(), called in C:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php on line 313 and defined in [C:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php, line 583]
+Trace:
+HomeController::get_position_count() - APP\Controller\HomeController.php, line 583
+HomeController::index() - APP\Controller\HomeController.php, line 313
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-27 19:29:50 Warning: Warning (2): Missing argument 6 for HomeController::get_position_count(), called in C:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php on line 313 and defined in [C:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php, line 583]
+Trace:
+HomeController::get_position_count() - APP\Controller\HomeController.php, line 583
+HomeController::index() - APP\Controller\HomeController.php, line 313
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-27 19:29:50 Warning: Warning (2): Missing argument 6 for HomeController::get_position_count(), called in C:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php on line 313 and defined in [C:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php, line 583]
+Trace:
+HomeController::get_position_count() - APP\Controller\HomeController.php, line 583
+HomeController::index() - APP\Controller\HomeController.php, line 313
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-27 19:29:51 Warning: Warning (2): Missing argument 6 for HomeController::get_position_count(), called in C:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php on line 313 and defined in [C:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php, line 583]
+Trace:
+HomeController::get_position_count() - APP\Controller\HomeController.php, line 583
+HomeController::index() - APP\Controller\HomeController.php, line 313
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-27 19:29:51 Warning: Warning (2): Missing argument 6 for HomeController::get_position_count(), called in C:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php on line 313 and defined in [C:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php, line 583]
+Trace:
+HomeController::get_position_count() - APP\Controller\HomeController.php, line 583
+HomeController::index() - APP\Controller\HomeController.php, line 313
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2017-11-27 19:29:51 Warning: Warning (2): Missing argument 6 for HomeController::get_position_count(), called in C:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php on line 313 and defined in [C:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php, line 583]
+Trace:
+HomeController::get_position_count() - APP\Controller\HomeController.php, line 583
+HomeController::index() - APP\Controller\HomeController.php, line 313
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+

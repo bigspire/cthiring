@@ -175,7 +175,7 @@
 										<th width="50"><?php echo $this->Paginator->sort('expected_ctc', 'Expected CTC', array('escape' => false, 'direction' => 'desc'));?></th-->
 										<th width="80"><?php echo $this->Paginator->sort('status', ' Status', array('escape' => false, 'direction' => 'desc'));?></th>
 										<th width="75"><?php echo $this->Paginator->sort('Creator.first_name', 'Created By', array('escape' => false, 'direction' => 'desc'));?></th>
-										<th width="90" style="text-align:center">Actions</th>
+										<th width="110" style="text-align:center">Actions</th>
 										<th width="75"><?php echo $this->Paginator->sort('created_date', 'Created', array('escape' => false, 'direction' => 'desc'));?></th>
 										<th width="75"><?php echo $this->Paginator->sort('modified_date', 'Modified', array('escape' => false, 'direction' => 'desc'));?></th>
 										
