@@ -30,7 +30,7 @@ $id = $_GET['id'];
 $emp_id = $_GET['emp_id'];
 
 if(($fun->isnumeric($id)) || ($fun->is_empty($id)) || ($id == 0)){
-  	header('Location: ../?access=invalid');
+  	// header('Location: ../?access=invalid');
 }
 
 // select and execute query and fetch the result
@@ -71,7 +71,7 @@ if(!empty($row)){
 		echo 'Caught exception: ',  $e->getMessage(), "\n";
 	}
 }else{
-	header('Location: ../?access=invalid');
+	// header('Location: ../?access=invalid');
 }
 
 // calling mysql close db connection function
