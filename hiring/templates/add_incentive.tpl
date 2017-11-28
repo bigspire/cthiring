@@ -26,7 +26,9 @@
                             </ul>
                         </div>
                     </nav>
-
+				{if $EXIST_MSG}
+				 <div id="flashMessage" class="alert alert-error"><button type="button" class="close" data-dismiss="alert">×</button>{$EXIST_MSG}</div>					
+				{/if}
 <form action="" id="formID" class="formID" method="post" accept-charset="utf-8">
 	<div class="box">
 		<div class="box-title mb5">
@@ -104,19 +106,19 @@
 $(document).ready(function(){
 // function to change the incentive type
 	$('.change_incentive_type').change(function(){ 
-		if($(this).val() == '2'){
+		if($(this).val() == 'J'){
 			$('.pos_Validity').show();
 			$('.short_Validity').hide();
-		}else if($(this).val() == '1'  || $(this).val() == ''){
+		}else if($(this).val() == 'I'  || $(this).val() == ''){
 			$('.pos_Validity').hide();
 			$('.short_Validity').show();
 		}
 	});
 if($('.change_incentive_type').length > 0){
-		if($('.change_incentive_type:selected').val() == '2'){
+		if($('.change_incentive_type:selected').val() == 'J'){
 			$('.pos_Validity').show();
 			$('.short_Validity').hide();
-		}else if($('.change_incentive_type:selected').val() == '1'  || $('.change_incentive_type:selected').val() == ''){
+		}else if($('.change_incentive_type:selected').val() == 'I'  || $('.change_incentive_type:selected').val() == ''){
 			$('.pos_Validity').hide();
 			$('.short_Validity').show();
 		}

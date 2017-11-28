@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-11-23 15:48:28
+/* Smarty version 3.1.29, created on 2017-11-28 11:59:24
   from "C:\xampp\htdocs\2017\ctsvn\cthiring\hiring\templates\add_incentive.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5a16a074584866_98565547',
+  'unifunc' => 'content_5a1d0244bbacb0_94959919',
   'file_dependency' => 
   array (
     '06a9c3df5e2d4c90178667431e4e0f90fb67ba3d' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\templates\\add_incentive.tpl',
-      1 => 1511432306,
+      1 => 1511850562,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5a16a074584866_98565547 ($_smarty_tpl) {
+function content_5a1d0244bbacb0_94959919 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -53,7 +53,10 @@ home"><i class="icon-home"></i></a>
                             </ul>
                         </div>
                     </nav>
-
+				<?php if ($_smarty_tpl->tpl_vars['EXIST_MSG']->value) {?>
+				 <div id="flashMessage" class="alert alert-error"><button type="button" class="close" data-dismiss="alert">×</button><?php echo $_smarty_tpl->tpl_vars['EXIST_MSG']->value;?>
+</div>					
+				<?php }?>
 <form action="" id="formID" class="formID" method="post" accept-charset="utf-8">
 	<div class="box">
 		<div class="box-title mb5">
@@ -144,19 +147,19 @@ home"><i class="icon-home"></i></a>
 $(document).ready(function(){
 // function to change the incentive type
 	$('.change_incentive_type').change(function(){ 
-		if($(this).val() == '2'){
+		if($(this).val() == 'J'){
 			$('.pos_Validity').show();
 			$('.short_Validity').hide();
-		}else if($(this).val() == '1'  || $(this).val() == ''){
+		}else if($(this).val() == 'I'  || $(this).val() == ''){
 			$('.pos_Validity').hide();
 			$('.short_Validity').show();
 		}
 	});
 if($('.change_incentive_type').length > 0){
-		if($('.change_incentive_type:selected').val() == '2'){
+		if($('.change_incentive_type:selected').val() == 'J'){
 			$('.pos_Validity').show();
 			$('.short_Validity').hide();
-		}else if($('.change_incentive_type:selected').val() == '1'  || $('.change_incentive_type:selected').val() == ''){
+		}else if($('.change_incentive_type:selected').val() == 'I'  || $('.change_incentive_type:selected').val() == ''){
 			$('.pos_Validity').hide();
 			$('.short_Validity').show();
 		}

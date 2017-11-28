@@ -104,6 +104,7 @@ try{
  		$data[$i]['period'] = '01'.'-'.$fun->convert_quater_month($obj['period']).'-'.$fun->convert_quater_year($obj['period']);
 		$data[$i]['created_date'] = $fun->convert_date_to_display($obj['created_date']);
 		$data[$i]['incentive_type'] = $fun->check_incentive_type($obj['incentive_type']);
+		// $data[$i]['inc_type'] = $obj['incentive_type'];
  		$i++;
  		$pno[]=$paging->print_no();
  		$smarty->assign('pno',$pno);
@@ -125,6 +126,8 @@ try{
 	// approve or reject validation
 	if($_GET['status'] == 'created'){
  		$success_msg = 'Incentive  ' . ucfirst($_GET['status']) . ' Successfully';
+	}else if($_GET['status'] == 'not_found'){
+		$success_msg = 'No Incentive Found';
 	}
 
 	// validating pagination
