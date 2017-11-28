@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-11-28 09:53:43
+/* Smarty version 3.1.29, created on 2017-11-28 14:48:13
   from "C:\xampp\htdocs\2017\ctsvn\cthiring\hiring\templates\add_resume.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5a1ce4cf838d08_67542858',
+  'unifunc' => 'content_5a1d29d5c41929_14488259',
   'file_dependency' => 
   array (
     '20fa0800b264c1941565246828a7b2b89c0b2234' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\templates\\add_resume.tpl',
-      1 => 1511760804,
+      1 => 1511851262,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5a1ce4cf838d08_67542858 ($_smarty_tpl) {
+function content_5a1d29d5c41929_14488259 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -477,7 +477,7 @@ echo 'checked';?>
 										</td>
 							</tr>
 							<tr class="tbl_row">
-										<td width="120" class="tbl_column">Area of Specialization/Expertise  <span class="f_req">*</span></td>
+										<td width="120" class="tbl_column">Specialization/Expertise  <span class="f_req">*</span></td>
 											<td> 
 										<input type="text" name="area_#index#" id="area_#index#"  tabindex="6" class="span8" />
 										<label for="reg_city" generated="true" class="error" id="area_Err_#index#"></label>										
