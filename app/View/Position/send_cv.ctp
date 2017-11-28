@@ -62,7 +62,8 @@
 				</tbody>
 			</table>
 				
-					
+								<input type="hidden" id="tiny_readonly" name="tiny_readonly" value="<?php echo $tiny_readonly;?>">
+
 			<div class="form-actions">
 			<input name="submit" class="btn btn-gebo theForm" value="Submit"  type="submit"/>
 					<a class="jsRedirect toggleSearch"  href="javascript:window.close()">
@@ -75,7 +76,7 @@
 <?php endif; ?>	
 
 
-	<input type="hidden" id="success_page" value="<?php echo $this->webroot;?>position/view/<?php echo $spec_id;?>/?tab=sent"/>
+	<input type="hidden" id="success_page" value="<?php echo $this->webroot;?>position/view/<?php echo $this->request->params['pass'][1]?>/?tab=sent"/>
 
   </div>
 </div>

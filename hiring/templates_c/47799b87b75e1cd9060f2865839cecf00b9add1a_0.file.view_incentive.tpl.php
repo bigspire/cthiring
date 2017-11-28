@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-11-28 10:49:06
+/* Smarty version 3.1.29, created on 2017-11-28 12:19:28
   from "C:\xampp\htdocs\2017\ctsvn\cthiring\hiring\templates\view_incentive.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5a1cf1cab41c61_94454418',
+  'unifunc' => 'content_5a1d06f8e3aee5_22175826',
   'file_dependency' => 
   array (
     '47799b87b75e1cd9060f2865839cecf00b9add1a' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\templates\\view_incentive.tpl',
-      1 => 1511846332,
+      1 => 1511851751,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5a1cf1cab41c61_94454418 ($_smarty_tpl) {
+function content_5a1d06f8e3aee5_22175826 ($_smarty_tpl) {
 ?>
 
    
@@ -71,8 +71,8 @@ home"><i class="icon-home"></i></a>
 									</tr>
 									<tr>
 										<td width="" class="tbl_column">Period </td>
-										<td><?php echo $_smarty_tpl->tpl_vars['incentive_data']->value['period'];?>
-%</td>
+										<td><?php echo $_smarty_tpl->tpl_vars['period']->value;?>
+</td>
 									</tr>	
 									
 									<tr>
@@ -109,12 +109,12 @@ home"><i class="icon-home"></i></a>
 								<tr>
 									<td class="tbl_column">Target Amount </td>
 									<td><?php echo $_smarty_tpl->tpl_vars['incentive_data']->value['incentive_target_amt'];?>
-%</td>
+</td>
 								</tr>
 								<tr>
 									<td class="tbl_column">Eligibility Amount </td>
 									<td><?php echo $_smarty_tpl->tpl_vars['incentive_data']->value['eligible_incentive_amt'];?>
-%</td>
+</td>
 								</tr>
 								
 								<?php }?>	

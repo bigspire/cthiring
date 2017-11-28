@@ -42,7 +42,7 @@
 									</tr>
 									<tr>
 										<td width="" class="tbl_column">Period </td>
-										<td>{$incentive_data['period']}%</td>
+										<td>{$period}</td>
 									</tr>	
 									
 									<tr>
@@ -74,11 +74,11 @@
 									
 								<tr>
 									<td class="tbl_column">Target Amount </td>
-									<td>{$incentive_data['incentive_target_amt']}%</td>
+									<td>{$incentive_data['incentive_target_amt']}</td>
 								</tr>
 								<tr>
 									<td class="tbl_column">Eligibility Amount </td>
-									<td>{$incentive_data['eligible_incentive_amt']}%</td>
+									<td>{$incentive_data['eligible_incentive_amt']}</td>
 								</tr>
 								
 								{/if}	

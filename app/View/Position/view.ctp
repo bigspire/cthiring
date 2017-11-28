@@ -526,9 +526,9 @@
 										<?php // $cv_sent =  $this->Functions->get_req_tab_count_new($resume_data, 'CV-Sent', 'cv_sent');?>
 
 										<?php $total = count($resume_data);?>
-										<li class="active uploadTab"><a href="#mbox_inbox" class="tabChange" val="<?php echo $total;?>" rel="upload_row"  data-toggle="tab"><i class="splashy-box_add"></i>  CV Uploaded <?php if($total):?><span class="label label-info"> <?php echo $total;?></span><?php endif; ?></a></li>
+										<li class="active uploadTab"><a href="#mbox_inbox" class="tabChange" val="<?php echo $total;?>" rel="upload_row"  data-toggle="tab"><i class="splashy-box_add"></i>  CV Uploaded <?php if($total):?><span class="label label-warning"> <?php echo $total;?></span><?php endif; ?></a></li>
 
-										<li class="sentTab"><a href="#mbox_inbox" class="tabChange" val="<?php echo $cv_sent;?>" rel="sent_row"  data-toggle="tab"><i class="splashy-box_okay"></i>  CV Sent <?php if($sent_count):?><span class="label label-info"> <?php echo $sent_count;?></span><?php endif; ?></a></li>
+										<li class="sentTab"><a href="#mbox_inbox" class="tabChange" val="<?php echo $cv_sent;?>" rel="sent_row"  data-toggle="tab"><i class="splashy-box_okay"></i>  CV Sent <?php if($sent_count):?><span class="label label-success"> <?php echo $sent_count;?></span><?php endif; ?></a></li>
 									
 										<li class="cvStatusTab"><a href="#mbox_inbox" class="tabChange"  rel="status_row"  data-toggle="tab"><i class="splashy-box_share"></i>  CV Status</a></li>
 
@@ -560,16 +560,17 @@
 													<input type="checkbox" name="select_rows" rel="cvSel" class="select_rows">
 													<?php  // endif; ?>
 													</th>
-														<th width="250">Candidate Name</th>
+														<th width="80">Code</th>
+														<th width="180">Candidate Name</th>
 														<th  width="100">Mobile</th>
 														<th  width="120">Email</th>
 														<th  width="100">Location</th>
 														<th  width="85">Pre. CTC</th>
 														<th  width="85">Exp. CTC</th>
 														<th  width="80"  class="noticePeriod">Notice</th>
-														<th  width="140" class="">CV Owner</th>
-														<th  width="100" class="">CV Created</th>
-														<th  width="100" class="sent_col">CV Sent</th>
+														<th  width="140" class="">Owner</th>
+														<th  width="120" class="">Created</th>
+														<th  width="120" class="sent_col">Sent</th>
 														<th style="text-align:center"  width="75" class="upload_row">Action</th>
 														<th style="text-align:center" width="75">Download</th>
 													</tr>
@@ -611,7 +612,18 @@
 							<?php else:?>
 							<input type="checkbox" name="row_sel" disabled class="">
 							<?php endif; ?>
-								</th>						<td>														
+								</th>	
+								<td>
+								<?php 
+										if($resume['Resume']['code']):
+										else:
+										echo $resume['Resume']['code'];
+										echo 'MH-'.$resume['Resume']['id'];
+										endif; ?>
+								</td>
+								
+								
+					<td>														
 														<a target="_blank" href="<?php echo $this->webroot;?>resume/view/<?php echo $resume['Resume']['id'];?>/"><?php echo ucwords($resume['Resume']['first_name'].' '.$resume['Resume']['last_name']);?></a>
 															<!--span style="font-size:9px">(<?php echo $resume['ReqResume']['stage_title'];?> <?php echo $resume['ReqResume']['status_title'];?>)</span-->
 
@@ -666,8 +678,8 @@
 											
 											<?php elseif($resume['ReqResume']['stage_title'] == 'Validation - Account Holder' &&
 										$resume['ReqResume']['status_title'] == 'Rejected'):?>
-
-										<span rel="tooltip" style="cursor:" data-original-title="Account Holder - Rejected"><i class="splashy-thumb_down"></i></span>
+										<?php $reject_reason = $resume['Reason']['reason'] ? ', '.$resume['Reason']['reason'] : '';?>
+										<span rel="tooltip" style="cursor:" data-original-title="Account Holder - Rejected, <?php echo $reject_reason;?>"><i class="splashy-thumb_down"></i></span>
 										
 											<?php elseif($resume['ReqResume']['stage_title'] == 'Validation - Account Holder' &&
 										$resume['ReqResume']['status_title'] == 'Pending'):?>
@@ -695,14 +707,19 @@
 																
 	<a rel="tooltip" title="Download" class="notify" data-notify-time = '7000' data-notify-title="In Progress!" data-notify-message="Downloading Resume... Please wait..."   href="<?php echo $this->webroot;?>hc/download/<?php echo $resume['Resume']['id']; ?>"><i  class="splashy-document_letter_download"></i></a>
 	
-	<?php elseif($resume['Position']['resume_type'] == 'F'):?>
+	<?php elseif($position_data['Position']['resume_type'] == 'F'):?>
 
 	<a rel="tooltip" title="Download"  class="notify" data-notify-time = '3000' data-notify-title="In Progress!" data-notify-message="Downloading Fully Formatted Resume... Please wait..."   href="<?php echo $this->webroot;?>resume/autoresume/<?php echo $resume['ResDoc']['resume']; ?>/<?php echo strtotime($date);?>/"><i  class="splashy-document_letter_download"></i></a>
 
-	<?php elseif($resume['Position']['resume_type'] == 'S'):?>
+	<?php elseif($position_data['Position']['resume_type'] == 'S'):?>
 
 	<a rel="tooltip" title="Download"  class="notify" data-notify-time = '3000' data-notify-title="In Progress!" data-notify-message="Downloading Resume... Please wait..."   href="<?php echo $this->webroot;?>resume/profile_snapshot/<?php echo $resume['ResDoc']['resume']; ?>/<?php echo strtotime($date);?>/"><i  class="splashy-document_letter_download"></i></a>
+	
+	<?php elseif($position_data['Position']['resume_type'] == ''):?>
+
+	<a rel="tooltip" title="Download"  class="notify" data-notify-time = '3000' data-notify-title="In Progress!" data-notify-message="Downloading Resume... Please wait..."   href="<?php echo $this->webroot;?>resume/download_doc/<?php echo $resume['ResDoc']['resume']; ?>/"><i  class="splashy-document_letter_download"></i></a>
 															
+		
 	<?php endif; ?>
 																
 															
@@ -743,7 +760,7 @@
 														<td>														
 	<a target="_blank" href="<?php echo $this->webroot;?>resume/view/<?php echo $resume['Resume']['id'];?>/">
 	<?php echo ucwords($resume['Resume']['first_name'].' '.$resume['Resume']['last_name']);?></a>
-	<span style="font-size:9px">(<?php echo $resume['ReqResume']['stage_title'];?> <?php echo $resume['ReqResume']['status_title'];?>)</span>
+	<!--span style="font-size:9px">(<?php echo $resume['ReqResume']['stage_title'];?> <?php echo $resume['ReqResume']['status_title'];?>)</span-->
 
 	
 	</td>
@@ -845,7 +862,7 @@
 										<?php if($resume['ReqResume']['status_title'] == 'Shortlisted' || $resume['ReqResume']['status_title'] == 'Selected' || $resume['ReqResume']['status_title'] == 'Cancelled' || $resume['ReqResume']['status_title'] == 'No Show'):?>
 										<li><a  href="<?php echo $this->webroot;?>position/schedule_interview/<?php echo  $resume['Resume']['id'];?>/<?php echo $this->request->params['pass'][0];?>/<?php echo $resume['ReqResume']['id'];?>/<?php echo $int_lev;?>/" val="65_90"  class="iframeBox sepV_a cboxElement">Schedule Interview</a></li>
 
-										<?php else: ?>
+										<?php elseif($int_lev_same > 0): ?>
 										<li><a  href="<?php echo $this->webroot;?>position/view_interview_schedule/<?php echo  $resume['ReqResume']['id'];?>/<?php echo $int_lev_same;?>/" val="65_90"  class="iframeBox sepV_a cboxElement">View Interview Details</a></li>
 										<?php endif; ?>
 										
@@ -858,7 +875,7 @@
 											<li><a  href="<?php echo $this->webroot;?>position/update_interview/<?php echo  $resume['Resume']['id'];?>/<?php echo $this->request->params['pass'][0];?>/<?php echo  $resume['ReqResume']['id'];?>/reject/<?php echo $int_lev_same;?>/" val="40_60"  class="iframeBox sepV_a cboxElement"><?php  if($int_level[0] > 0): echo $int_level[0]; endif;?> <i class="splashy-error_small"></i> Interview Rejected</a></li>
 										<?php endif; ?>
 										</ul>
-										<?php else:?>										
+										<?php elseif($int_lev_same > 0): ?>									
 										<span data-toggle="dropdown" style="padding-top:1px;margin-left:1px;border:1px solid #fbfcbd" class=" dropdown-toggle  alert-action"><span class="caret" style="margin-top:7px;"></span></span>
 										
 										<ul class="dropdown-menu">										
@@ -1074,14 +1091,16 @@ $action = 1;?>
 							
 						<?php endif; ?> 
 
-												
-<ul class="status_row dn statusLegend" style="margin-left:100px;">	
+		<hr class="status_row dn">										
+<ul class="status_row dn statusLegend" style="margin-left:10px;">	
 <li><span class="btn btn-mini alert alert-success legendView"> S </span> - Shortlisted</li>
 <li><span class="btn btn-mini alert alert-error legendView"> R </span> - Rejected	</li>
 <li><span class="btn-mini alert alert-success alert-action legendView"> ISA  </span> - Interview Schedule Awaiting	</li>
 <li><span class="btn-mini alert alert-success alert-action legendView"> 1IS </span> - First Interview Scheduled</li>
 <li><span class="btn-mini alert alert-success alert-action legendView"> 2IS </span> - Second Interview Scheduled</li>
 <li><span class="btn-mini alert alert-success alert-action legendView"> 3IS </span> - Third Interview Scheduled</li>
+<li><span class="btn-mini alert alert-success alert-action legendView"> FIS </span> - Final Interview Scheduled</li>
+
 <li><span class="btn-mini alert alert-success alert-action legendView"> OP  </span> - Offer Pending</li>
 <li><span class="btn btn-mini alert alert-success legendView"> OA </span> - Offer Accepted</li>
 <li><span class="btn btn-mini alert alert-error legendView"> OR </span> - Offer Rejected</li>

@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-11-20 16:27:05
+/* Smarty version 3.1.29, created on 2017-11-27 10:41:30
   from "C:\xampp\htdocs\ctsvn\cthiring\hiring\templates\add_incentive.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5a12b501e6d3f9_15717949',
+  'unifunc' => 'content_5a1b9e826d9dd3_95375697',
   'file_dependency' => 
   array (
     '26f219ce53db017b2b5829caf169a2be23ab9fde' => 
     array (
       0 => 'C:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\templates\\add_incentive.tpl',
-      1 => 1511175204,
+      1 => 1511514442,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5a12b501e6d3f9_15717949 ($_smarty_tpl) {
+function content_5a1b9e826d9dd3_95375697 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -67,7 +67,7 @@ home"><i class="icon-home"></i></a>
 							<td width="120" class="tbl_column inline">Incentive Type <span class="f_req">*</span></td>
 							<td>																			
 								<select name="type" class="span6 input-medium change_incentive_type" placeholder="" style="clear:left" id="month">
-								<?php echo smarty_function_html_options(array('class'=>"change_incentive_type",'options'=>$_smarty_tpl->tpl_vars['types']->value,'selected'=>$_POST['month']),$_smarty_tpl);?>
+								<?php echo smarty_function_html_options(array('class'=>"change_incentive_type",'options'=>$_smarty_tpl->tpl_vars['types']->value,'selected'=>$_POST['type']),$_smarty_tpl);?>
 							
 								</select>			
 								<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['typeErr']->value;?>
@@ -85,7 +85,11 @@ home"><i class="icon-home"></i></a>
 								<option value="">Year</option>
 								<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['years']->value,'selected'=>$_POST['year']),$_smarty_tpl);?>
 							
-								</select>																	
+								</select>	
+								<label for="reg_city" generated="true" class="error pos_Validity"><?php echo $_smarty_tpl->tpl_vars['position_monthErr']->value;?>
+</label>
+								<label for="reg_city" generated="true" class="error pos_Validity"><?php echo $_smarty_tpl->tpl_vars['yearErr']->value;?>
+</label>								
 								</td>
 								</tr>	
 								<tr class="tbl_row short_Validity">
@@ -100,7 +104,9 @@ home"><i class="icon-home"></i></a>
 								<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['years']->value,'selected'=>$_POST['ps_year']),$_smarty_tpl);?>
 							
 								</select>									
-								<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['dateErr']->value;?>
+								<label for="reg_city" generated="true" class="error short_Validity"><?php echo $_smarty_tpl->tpl_vars['ps_monthErr']->value;?>
+</label>	
+								<label for="reg_city" generated="true" class="error short_Validity"><?php echo $_smarty_tpl->tpl_vars['ps_yearErr']->value;?>
 </label>									
 							</td>
 						</tr>								
@@ -138,19 +144,19 @@ home"><i class="icon-home"></i></a>
 $(document).ready(function(){
 // function to change the incentive type
 	$('.change_incentive_type').change(function(){ 
-		if($(this).val() == '1' || $(this).val() == ''){
+		if($(this).val() == '2'){
 			$('.pos_Validity').show();
 			$('.short_Validity').hide();
-		}else if($(this).val() == '2'){
+		}else if($(this).val() == '1'  || $(this).val() == ''){
 			$('.pos_Validity').hide();
 			$('.short_Validity').show();
 		}
 	});
 if($('.change_incentive_type').length > 0){
-		if($('.change_incentive_type:selected').val() == '1' || $('.change_incentive_type:selected').val() == ''){
+		if($('.change_incentive_type:selected').val() == '2'){
 			$('.pos_Validity').show();
 			$('.short_Validity').hide();
-		}else if($('.change_incentive_type:selected').val() == '2'){
+		}else if($('.change_incentive_type:selected').val() == '1'  || $('.change_incentive_type:selected').val() == ''){
 			$('.pos_Validity').hide();
 			$('.short_Validity').show();
 		}

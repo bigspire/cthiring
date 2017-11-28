@@ -465,6 +465,19 @@ class ClientController extends AppController {
 			);
 			$data = $this->Client->find('all', array('fields' => array('AH.users_id', 'Client.created_by','Client.is_deleted','Client.modified_date'),
 			'group' => array('Client.id'), 'conditions' => array('Client.id' => $id), 'joins' => $options));
+			
+			// check team member of the position for that client
+			$this->loadModel('Position');
+			$options = array(								
+				array('table' => 'req_team',
+						'alias' => 'ReqTeam',					
+						'type' => 'LEFT',
+						'conditions' => array('`ReqTeam.requirements_id` = `Position`.`id`',
+							'ReqTeam.users_id' => $this->Session->read('USER.Login.id'), 'ReqTeam.is_approve' => 'A')
+					)								
+			);
+			$rec_data = $this->Position->find('count', array('group' => array('Position.id'),
+			'conditions' => array('Position.clients_id' => $id),'joins' => $options));
 			// check the req belongs to the user
 			if($data[0]['Client']['is_deleted'] == 'Y'){
 				return $data[0]['Client']['modified_date'];
@@ -476,10 +489,12 @@ class ClientController extends AppController {
 				return 'pass';
 			}else if($this->Session->read('USER.Login.roles_id') == '33' || $this->Session->read('USER.Login.roles_id') == '35'){	
 				return 'pass';
+			}else if($rec_data > 0){
+				return 'pass';
 			}else{
 				return 'fail';
 			}
-		}else if($this->request->params['pass'][3] == 'pending'){	
+		}else if($this->request->params['pass'][3] == 'pending'){	// for approve user
 			$data = $this->ClientStatus->find('all', array('fields' => array('ClientStatus.users_id'),
 			'conditions' => array('ClientStatus.id' => $st_id, 'ClientStatus.status' => 'W')));
 			if($data[0]['ClientStatus']['users_id'] == $this->Session->read('USER.Login.id')){

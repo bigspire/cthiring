@@ -34,7 +34,7 @@ if(($fun->isnumeric($id)) || ($fun->is_empty($id)) || ($id == 0)){
 }
 
 // select and execute query and fetch the result
-$query = "CALL view_incentive_details('$id')";
+$query = "CALL view_incentive_details('".$id."','".$emp_id."')";
 try{
 	if(!$result = $mysql->execute_query($query)){
 		throw new Exception('Problem in executing view billing page');
@@ -44,6 +44,7 @@ try{
 	$smarty->assign('created_date' , $fun->convert_date_to_display($row['created_date']));
 	$smarty->assign('modified_date' , $fun->convert_date_to_display($row['modified_date']));
 	$smarty->assign('incentive_type' , $fun->check_incentive_type($row['incentive_type']));
+	$smarty->assign('period' ,$fun->convert_date_to_display($row['period']));
 	// free the memory
 	$mysql->clear_result($result);
 	// call the next result
@@ -54,7 +55,7 @@ try{
 
 if(!empty($row)){
 	// select and execute query and fetch the result
-	$query = "CALL view_approved_billing_details('".$emp_id."','".$row['incentive_type']."')";
+	$query = "CALL view_approved_billing_details('".$emp_id."','".$row['incentive_type']."','".$row['period']."')";
 	try{
 		if(!$result = $mysql->execute_query($query)){
 			throw new Exception('Problem in executing view interview page');

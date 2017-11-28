@@ -39,6 +39,7 @@
 			  branding: false,
 			  menubar: false,
 			  statusbar: false,
+			  readonly: $('#tiny_readonly').val() == '' ? 0 : $('#tiny_readonly').val(),
 			  plugins: [
 				'advlist autolink lists link image charmap print preview anchor',
 				'searchreplace visualblocks code fullscreen' ,

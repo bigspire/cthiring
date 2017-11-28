@@ -233,7 +233,7 @@ class ResumeController extends AppController {
 				)
 			);*/
 		}
-		$fields = array('id',"concat(Resume.first_name,' ',Resume.last_name) full_name",'email_id','mobile','mobile2','total_exp','education','present_employer',
+		$fields = array('id', 'Resume.code',"concat(Resume.first_name,' ',Resume.last_name) full_name",'email_id','mobile','mobile2','total_exp','education','present_employer',
 		'ResLocation.location','present_ctc','expected_ctc', 'Creator.first_name','Resume.created_date',
 		'Resume.modified_date','ReqResume.stage_title','ReqResume.status_title','ResDoc.resume','present_location','autoresume_modified','Position.resume_type',
 		'Resume.created_by');	
@@ -469,7 +469,7 @@ class ResumeController extends AppController {
 			$this->Resume->unBindModel(array('belongsTo' => array('Creator')));
 			$data = $this->Resume->find('all', array('fields' => array('ResLocation.location',"concat(first_name, ' ', last_name) as first_name",'present_employer'),
 			'group' => array('ResLocation.location','first_name','present_employer'), 'conditions' => 	array("OR" => array ('ResLocation.location like' => '%'.$q.'%',
-			'first_name like' => '%'.$q.'%', 'present_employer like' => '%'.$q.'%'), 'AND' => array('Resume.is_deleted' => 'N',$date_cond))));		
+			'first_name like' => '%'.$q.'%', 'present_employer like' => '%'.$q.'%','code like' => '%'.$q.'%'), 'AND' => array('Resume.is_deleted' => 'N',$date_cond))));		
 			$this->set('results', $data);
 		}
     }

@@ -162,7 +162,9 @@
 						<table class="table table-striped table-bordered dataTable stickyTable">
 								<thead>
 									<tr>
-										<th width="100"><?php echo $this->Paginator->sort('first_name', 'Name', array('escape' => false, 'direction' => 'desc'));?></th>
+										<th width="70"><?php echo $this->Paginator->sort('id', 'Code', array('escape' => false, 'direction' => 'desc'));?></th>
+
+										<th width="140"><?php echo $this->Paginator->sort('first_name', 'Name', array('escape' => false, 'direction' => 'desc'));?></th>
 										<th width="70"><?php echo $this->Paginator->sort('mobile', 'Mobile', array('escape' => false, 'direction' => 'desc'));?></th>
 										<th width="80"><?php echo $this->Paginator->sort('email', 'Email Id', array('escape' => false, 'direction' => 'desc'));?></th>
 										<!--th width="120"><?php echo $this->Paginator->sort('present_employer', 'Employer', array('escape' => false, 'direction' => 'desc'));?></th-->
@@ -171,7 +173,7 @@
 										<!--th width="90"><?php echo $this->Paginator->sort('education', 'Qualification', array('escape' => false, 'direction' => 'desc'));?></th-->
 										<!--th width="50"><?php echo $this->Paginator->sort('present_ctc', 'Present CTC', array('escape' => false, 'direction' => 'desc'));?></th>
 										<th width="50"><?php echo $this->Paginator->sort('expected_ctc', 'Expected CTC', array('escape' => false, 'direction' => 'desc'));?></th-->
-										<th width="80"><?php echo $this->Paginator->sort('status', 'Current Status', array('escape' => false, 'direction' => 'desc'));?></th>
+										<th width="80"><?php echo $this->Paginator->sort('status', ' Status', array('escape' => false, 'direction' => 'desc'));?></th>
 										<th width="75"><?php echo $this->Paginator->sort('Creator.first_name', 'Created By', array('escape' => false, 'direction' => 'desc'));?></th>
 										<th width="90" style="text-align:center">Actions</th>
 										<th width="75"><?php echo $this->Paginator->sort('created_date', 'Created', array('escape' => false, 'direction' => 'desc'));?></th>
@@ -185,8 +187,17 @@
 									
 									<?php foreach($data as $res):?>
 									<tr>
+										<td>
+										<?php 
+										if($res['Resume']['code']):
+										else:
+										echo $res['Resume']['code'];
+										echo 'MH-'.$res['Resume']['id'];
+										endif; ?>
+										</td>
+
 										<?php // if(!empty($noHead)): $target = "target='_blank'"; endif;?>
-										<td><a  href="<?php echo $this->webroot;?>resume/view/<?php echo $res['Resume']['id'];?>/"><?php echo ucwords($res[0]['full_name']);?></a></td>
+										<td><a  href="<?php echo $this->webroot;?>resume/view/<?php echo $res['Resume']['id'];?>/"><?php echo ucwords(strtolower($res[0]['full_name']));?></a></td>
 										<td><?php echo $this->Functions->get_format_text($res['Resume']['mobile']);?></td>
 										<td><?php echo $this->Functions->get_format_text($res['Resume']['email_id']);?></td>
 										<!--td><?php echo $res['Resume']['present_employer'];?></td-->
