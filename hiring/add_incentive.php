@@ -97,12 +97,12 @@ if(!empty($_POST)){
 	//$test = '';
 	
 	// query to check whether it is exist or not. 
-	$query = "CALL check_incentive_exist('0','".$mysql->real_escape_str($_POST['type'])."', '".$mysql->real_escape_str($incentive_year.'-'.$incentive_month)."')";
+	$query = "CALL check_incentive_exist('".$mysql->real_escape_str($_POST['type'])."', '".$mysql->real_escape_str($incentive_year.'-'.$incentive_month)."')";
 	// Calling the function that makes the insert
 	try{
 		// calling mysql exe_query function
 		if(!$result = $mysql->execute_query($query)){
-			throw new Exception('Problem in executing to check grade exist');
+			throw new Exception('Problem in executing to check incetive exist');
 		}
 		$check = $mysql->display_result($result);
 		// free the memory

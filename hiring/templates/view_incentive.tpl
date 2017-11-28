@@ -57,27 +57,27 @@
 							<table class="table table-striped table-bordered dataTable" style="margin-bottom:0;">
 								<tbody>
 								<tr>
-									<td class="tbl_column">Created Date</td>
+									<td width="120"  class="tbl_column">Created Date</td>
 									<td>{$created_date}</td>
 								</tr>	
 									
 								<tr>
-									<td class="tbl_column">Modified Date </td>
+									<td width=""  class="tbl_column">Modified Date </td>
 									<td>{$modified_date}</td>
 								</tr>
 
 								{if $incentive_data['incentive_type'] neq 'I'}
 								<tr>
-									<td class="tbl_column">Billing Amount</td>
+									<td  width=""  class="tbl_column">Billing Amount</td>
 									<td>{$incentive_data['achievement_amt']}</td>
 								</tr>	
 									
 								<tr>
-									<td class="tbl_column">Target Amount </td>
+									<td width=""  class="tbl_column">Target Amount </td>
 									<td>{$incentive_data['incentive_target_amt']}</td>
 								</tr>
 								<tr>
-									<td class="tbl_column">Eligibility Amount </td>
+									<td  width="" class="tbl_column">Eligibility Amount </td>
 									<td>{$incentive_data['eligible_incentive_amt']}</td>
 								</tr>
 								
