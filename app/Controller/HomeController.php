@@ -574,7 +574,52 @@ class HomeController  extends AppController {
 		'ReqResume.bill_ctc >' => '0'), 'joins' => $count_options));
 		$this->set('BILLED_TAB_COUNT', $billing_count_tab[0][0]['count']);
 		$this->set('BILLED_AMT_TAB_COUNT', $billing_count_tab[0][0]['ctc']);
-		
+		// get the data for MOP table 
+		$this->loadModel('TaskPlan');		
+		$date_cond = array('or' => array("DATE_FORMAT(TaskPlan.task_date, '%Y-%m-%d') between ? and ?" => array($start, $end)));
+		$task_plan_data = $this->TaskPlan->find('all', array('fields' => array('task_date','ctc','session','requirements_id'),
+		'conditions' => array('users_id' => $this->Session->read('USER.Login.id'),$date_cond, 'TaskPlan.is_deleted' => 'N'), 
+		'group' => array('TaskPlan.id'), 'joins' => $options));
+		$this->set('task_plan_data', $task_plan_data);
+		// get the no. of resumes sent for that day  for that position ctc
+		foreach($task_plan_data as $task_data){
+			$ctc_count_ar[] = $task_data['TaskPlan']['ctc'];
+			$no_resume = $this->Home->get_resumes_ctc($task_data['TaskPlan']['ctc']);
+			$resume_count = $task_data['TaskPlan']['session'] == 'D' ? $no_resume  : round($no_resume/2, 0);
+			// calculate no. of days worked
+			$work_days += $task_data['TaskPlan']['session'] == 'D' ? 1 : 0.5;
+			$resume_count_elig[] = $resume_count;
+			// get the actual resume uploaded
+			$task_data['TaskPlan']['task_date'];
+			$resume_upload_count = $this->ReqResume->find('count', array('conditions' => array('ReqResume.requirements_id' => $task_data['TaskPlan']['requirements_id'],
+			"date_format(ReqResume.created_date, '%Y-%m-%d')" => $task_data['TaskPlan']['task_date']), 'group' => array('ReqResume.id')));
+			$resume_upload[] = $resume_upload_count;
+			// get the actual resume sent
+			$options = array(						
+				array('table' => 'req_resume_status',
+					'alias' => 'ReqResumeStatus',					
+					'type' => 'LEFT',
+					'conditions' => array('`ReqResumeStatus`.`req_resume_id` = `ReqResume`.`id`')
+				)
+			);
+			$resume_sent_count = $this->ReqResume->find('count', array('conditions' => array('ReqResume.requirements_id' => $task_data['TaskPlan']['requirements_id'],
+			"date_format(Resume.created_date, '%Y-%m-%d')" => $task_data['TaskPlan']['task_date'], 'ReqResumeStatus.stage_title' => 'Shortlist',
+			'ReqResumeStatus.status_title' => 'CV-Sent'), 	'group' => array('ReqResume.id'), 'joins' => $options));
+			$resume_sent[] = $resume_sent_count;
+			$productivity = round(($resume_sent_count / $resume_count) * 100, 1);
+			$prod_ar[] = $productivity;
+			
+			}
+			$total_days = $this->Home->diff_date($start, $end);
+			$overall_prod = round(($work_days / $total_days) * 100, 1);
+
+			// assign all the values for display
+			$this->set('ctc_count_ar', $ctc_count_ar);
+			$this->set('resume_count_elig', $resume_count_elig);
+			$this->set('resume_upload', $resume_upload);
+			$this->set('resume_sent', $resume_sent);
+			$this->set('prod_ar', $prod_ar);			
+			$this->set('overall_prod', $overall_prod);
 	}
 	
 	

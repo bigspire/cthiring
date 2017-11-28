@@ -74,6 +74,7 @@ $(document).ready(function() {
 		//* basic
 		gebo_datatbles.dt_a();
 		gebo_datatbles.dt_z();
+		gebo_datatbles.dt_k();
 		// horizontal scroll
 		//gebo_datatbles.dt_b();
 		//* large table
@@ -103,6 +104,19 @@ $(document).ready(function() {
                 "sDom": "<'row'<'span6'<'dt_actions'>1><'span12'f>r>t<'row'<'span6'><'span6'p>>",
 				"order": [[ 3, "desc" ]],
 				// "info":     false,
+                "sPaginationType": "bootstrap_alt",
+                "oLanguage": {
+                    "sLengthMenu": "_MENU_ records per page"
+                }
+            });
+		},
+		dt_k: function() {
+			$('#dt_k').dataTable({
+                "sDom": "<'row'<'span6'<'dt_actions'>1><'span12'f>r>t<'row'<'span6'><'span6'p>>",
+				"order": [[ 3, "desc" ]],
+				// "info":     false,
+				"iDisplayLength": 5,
+				"bFilter": false,
                 "sPaginationType": "bootstrap_alt",
                 "oLanguage": {
                     "sLengthMenu": "_MENU_ records per page"
