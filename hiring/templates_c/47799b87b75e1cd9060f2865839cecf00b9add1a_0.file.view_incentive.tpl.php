@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-11-27 17:12:23
+/* Smarty version 3.1.29, created on 2017-11-28 17:08:58
   from "C:\xampp\htdocs\2017\ctsvn\cthiring\hiring\templates\view_incentive.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5a1bfa1f7db6f3_99797636',
+  'unifunc' => 'content_5a1d4ad257b339_59106967',
   'file_dependency' => 
   array (
     '47799b87b75e1cd9060f2865839cecf00b9add1a' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\templates\\view_incentive.tpl',
-      1 => 1497270582,
+      1 => 1511869136,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5a1bfa1f7db6f3_99797636 ($_smarty_tpl) {
+function content_5a1d4ad257b339_59106967 ($_smarty_tpl) {
 ?>
 
    
@@ -53,7 +53,7 @@ home"><i class="icon-home"></i></a>
                             </ul>
                         </div>
                     </nav>
-							
+						
 						<div class="row-fluid">
 							<div class="span6">
 							<table class="table table-striped table-bordered dataTable" style="margin-bottom:0;">
@@ -65,19 +65,19 @@ home"><i class="icon-home"></i></a>
 									</tr>
 									
 									<tr>
-										<td width="" class="tbl_column">Achievement in Amount </td>
-										<td><?php echo $_smarty_tpl->tpl_vars['incentive_data']->value['achievement_amt'];?>
+										<td width="" class="tbl_column">Incentive Type </td>
+										<td><?php echo $_smarty_tpl->tpl_vars['incentive_type']->value;?>
 </td>
 									</tr>
 									<tr>
-										<td width="" class="tbl_column">Eligible Incentive % </td>
-										<td><?php echo $_smarty_tpl->tpl_vars['incentive_data']->value['eligible_incentive_percent'];?>
-%</td>
+										<td width="" class="tbl_column">Period </td>
+										<td><?php echo $_smarty_tpl->tpl_vars['period']->value;?>
+</td>
 									</tr>	
 									
 									<tr>
-										<td width="" class="tbl_column">Quarter</td>
-										<td><?php echo $_smarty_tpl->tpl_vars['quarter']->value;?>
+										<td width="" class="tbl_column">Amount</td>
+										<td><?php echo $_smarty_tpl->tpl_vars['incentive_data']->value['eligible_incentive_amt'];?>
 </td>
 									</tr>
 								</tbody>
@@ -88,27 +88,42 @@ home"><i class="icon-home"></i></a>
 							<table class="table table-striped table-bordered dataTable" style="margin-bottom:0;">
 								<tbody>
 								<tr>
-									<td class="tbl_column">Target Amount</td>
-									<td><?php echo $_smarty_tpl->tpl_vars['incentive_data']->value['target_amt'];?>
+									<td width="120"  class="tbl_column">Created Date</td>
+									<td><?php echo $_smarty_tpl->tpl_vars['created_date']->value;?>
 </td>
 								</tr>	
 									
 								<tr>
-									<td class="tbl_column">Achievement in % </td>
-									<td><?php echo $_smarty_tpl->tpl_vars['incentive_data']->value['achievement_percent'];?>
-%</td>
+									<td width=""  class="tbl_column">Modified Date </td>
+									<td><?php echo $_smarty_tpl->tpl_vars['modified_date']->value;?>
+</td>
+								</tr>
+
+								<?php if ($_smarty_tpl->tpl_vars['incentive_data']->value['incentive_type'] != 'I') {?>
+								<tr>
+									<td  width=""  class="tbl_column">Billing Amount</td>
+									<td><?php echo $_smarty_tpl->tpl_vars['incentive_data']->value['achievement_amt'];?>
+</td>
 								</tr>	
 									
 								<tr>
-									<td  class="tbl_column"width="120">Eligible Incentive Amt.</td>
+									<td width=""  class="tbl_column">Target Amount </td>
+									<td><?php echo $_smarty_tpl->tpl_vars['incentive_data']->value['incentive_target_amt'];?>
+</td>
+								</tr>
+								<tr>
+									<td  width="" class="tbl_column">Eligibility Amount </td>
 									<td><?php echo $_smarty_tpl->tpl_vars['incentive_data']->value['eligible_incentive_amt'];?>
 </td>
 								</tr>
+								
+								<?php }?>	
 								</tbody>
 							</table>
 							</div>
 						
                  </div>
+				 
                  <br>
                  <br>
                  
@@ -120,9 +135,15 @@ home"><i class="icon-home"></i></a>
 													<tr>
 													<th class="allCol position">Position</th>
 													<th class="allCol position">Client</th>
+													<th class="allCol position">Candidate Name</th>
+													<th class="allCol position">Interview Level</th>
+													<th class="allCol position">Interview Date</th>
+													<th class="allCol position">Interview Status</th>
+													<?php if ($_smarty_tpl->tpl_vars['incentive_data']->value['incentive_type'] != 'I') {?>
 													<th class="allCol position">Billing Amount</th>
 													<th class="allCol position">Offer CTC</th>
 													<th class="allCol position">Billing Date</th>	
+													<?php }?>
 													</tr>
 												</thead>
 												<tbody>
@@ -146,12 +167,22 @@ $__foreach_item_0_saved_local_item = $_smarty_tpl->tpl_vars['item'];
 </td>
 												<td class="allCol position"><?php echo $_smarty_tpl->tpl_vars['item']->value['client_name'];?>
 </td>
+												<td class="allCol position"><?php echo $_smarty_tpl->tpl_vars['item']->value['candidate_name'];?>
+</td>
+												<td class="allCol position"><?php echo $_smarty_tpl->tpl_vars['item']->value['stage_title'];?>
+</td>
+												<td class="allCol position"><?php echo $_smarty_tpl->tpl_vars['item']->value['int_date'];?>
+</td>
+												<td class="allCol position"><?php echo $_smarty_tpl->tpl_vars['item']->value['status_title'];?>
+</td>
+												<?php if ($_smarty_tpl->tpl_vars['incentive_data']->value['incentive_type'] != 'I') {?>
 												<td class="allCol position"><?php echo $_smarty_tpl->tpl_vars['item']->value['ctc_offer'];?>
 </td>																 													
 												<td class="allCol position"><?php echo $_smarty_tpl->tpl_vars['item']->value['billing_amount'];?>
 </td>																 										
 												<td class="allCol position"><?php echo $_smarty_tpl->tpl_vars['item']->value['billing_date'];?>
-</td>																 										
+</td>	
+												<?php }?>												
 												</tr>
 												<?php
 $_smarty_tpl->tpl_vars['item'] = $__foreach_item_0_saved_local_item;
