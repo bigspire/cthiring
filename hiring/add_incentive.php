@@ -96,26 +96,9 @@ if(!empty($_POST)){
 	
 	//$test = '';
 	
-	// query to check whether it is exist or not. 
-	$query = "CALL check_incentive_exist('".$mysql->real_escape_str($_POST['type'])."', '".$mysql->real_escape_str($incentive_year.'-'.$incentive_month)."')";
-	// Calling the function that makes the insert
-	try{
-		// calling mysql exe_query function
-		if(!$result = $mysql->execute_query($query)){
-			throw new Exception('Problem in executing to check incetive exist');
-		}
-		$check = $mysql->display_result($result);
-		// free the memory
-		$mysql->clear_result($result);
-		// call the next result
-		$mysql->next_query();
-	}catch(Exception $e){
-		echo 'Caught exception: ',  $e->getMessage(), "\n";
-	}
-	
 	if(empty($test)){
 		if($_POST['type'] == 'I'){
-			if($check['total'] == '0'){
+			
 				// query to fetch employee for incentive.		
 				$query = "CALL get_employee()";
 				// Calling the function that makes the fetch
@@ -141,6 +124,25 @@ if(!empty($_POST)){
 					$emp_id = $record['id'];
 					$emp_name = $record['emp_name'];
 					if($emp_id == '98'){
+						
+					// query to check whether it is exist or not. 
+					$query = "CALL check_incentive_exist('".$emp_id."','".$mysql->real_escape_str($_POST['type'])."', '".$mysql->real_escape_str($incentive_year.'-'.$incentive_month)."')";
+					// Calling the function that makes the insert
+					try{
+						// calling mysql exe_query function
+						if(!$result = $mysql->execute_query($query)){
+							throw new Exception('Problem in executing to check incetive exist');
+						}
+						$check = $mysql->display_result($result);
+						// free the memory
+						$mysql->clear_result($result);
+						// call the next result
+						$mysql->next_query();
+					}catch(Exception $e){
+						echo 'Caught exception: ',  $e->getMessage(), "\n";
+					}
+	
+					
 						// get the user leaves
 						$year_month = $incentive_year.'-'.$incentive_month;
 						$query = "CALL get_user_leaves('".$emp_id."','".$year_month."')";
@@ -249,6 +251,8 @@ if(!empty($_POST)){
 						$work_avg = '';					
 					}
 				}
+				
+				if($check['total'] == '0'){
 				// print_r($avg);
 				// check if percentage >= 100 and calculate incentive
 				foreach($avg as $id => $avg_rec){
@@ -321,6 +325,7 @@ if(!empty($_POST)){
 						}
 					}
 				}
+			
 				if(!empty($last_id)){
 					// redirecting to list page
 					header("Location: incentive.php?status=created");
