@@ -464,10 +464,10 @@
 						<tr class="tbl_row">
 										<td width="120" class="tbl_column">Rate Technical Skills <span class="f_req"></span></td>
 										<td>
-<ul class="ratingList"> 
+<ul class="ratingList">
 {foreach $tsData as $ts_data}
 {if $ts_data neq 0}
-  <li><input class="span8" readonly="readonly" placeholder="" name="ts[]" value="{if $smarty.post}{$ts_data}{else}{$ts_data@key}{/if}" type="text">   
+  <li><input class="span8" readonly="readonly" placeholder="" name="ts[]" value="{if $smarty.post}{$ts_data|ucwords}{else}{$ts_data@key|ucwords}{/if}" type="text">   
   <input name="tsr[]" type="hidden" value="{if $smarty.post}{$tsrData[$ts_data@key]}{else}{$tsData[$ts_data@key]}{/if}"  class="rating" data-fractions="1"/> <span class="label label-info dn">{if $smarty.post}{$tsrData[$ts_data@key]}{else}{$tsData[$ts_data@key]}{/if}</span></li>
   {/if}
 {/foreach} 
@@ -504,7 +504,7 @@
  
  {foreach $bsData as $bs_data}
 {if $bs_data neq 0}
-  <li><input class="span8" readonly="readonly" placeholder="" name="bs[]" value="{if $smarty.post}{$bs_data}{else}{$bs_data@key}{/if}" type="text">   
+  <li><input class="span8" readonly="readonly" placeholder="" name="bs[]" value="{if $smarty.post}{$bs_data|ucwords}{else}{$bs_data@key|ucwords}{/if}" type="text">   
   <input name="bsr[]" type="hidden" value="{if $smarty.post}{$bsrData[$bs_data@key]}{else}{$bsData[$bs_data@key]}{/if}"  class="rating" data-fractions="1"/> <span class="label label-info dn">{if $smarty.post}{$bsrData[$bs_data@key]}{else}{$bsData[$bs_data@key]}{/if}</span> </li>
   {/if}
 {/foreach} 

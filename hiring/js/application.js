@@ -92,6 +92,7 @@ $(document).ready(function() {
               
 			   "sDom": "<'row'<'span6'<'dt_actions'>1><'span12'f>r>t<'row'<'span6'><'span6'p>>",
 				"order": [[ 3, "desc" ]],
+				"iDisplayLength": 5,
 				// "info":     false,
                 "sPaginationType": "bootstrap_alt",
                 "oLanguage": {
@@ -103,6 +104,8 @@ $(document).ready(function() {
 			$('#dt_z').dataTable({
                 "sDom": "<'row'<'span6'<'dt_actions'>1><'span12'f>r>t<'row'<'span6'><'span6'p>>",
 				"order": [[ 3, "desc" ]],
+				"iDisplayLength": 5,
+
 				// "info":     false,
                 "sPaginationType": "bootstrap_alt",
                 "oLanguage": {

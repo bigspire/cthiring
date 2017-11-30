@@ -240,11 +240,11 @@ class ResumeController extends AppController {
 		// for export
 		if($this->request->query['action'] == 'export'){ 
 			$data = $this->Resume->find('all', array('fields' => $fields,'conditions' => 
-			array($date_cond,$keyCond,$minCond,	$maxCond,$int_cond,$empCond,$branchCond,$statusCond,$repStatusCond,$teamCond,$specCond), 
+			array('Resume.is_deleted' => 'N', $date_cond,$keyCond,$minCond,	$maxCond,$int_cond,$empCond,$branchCond,$statusCond,$repStatusCond,$teamCond,$specCond), 
 			'order' => array('Resume.created_date' => 'desc'), 'group' => array('Resume.id'), 'joins' => $options));
 			$this->Excel->generate('resumes', $data, $data, 'Report', 'CV Details','',$this->webroot);
 		}
-		$this->paginate = array('fields' => $fields,'limit' => '25','conditions' => array($date_cond,$keyCond,$minCond,
+		$this->paginate = array('fields' => $fields,'limit' => '25','conditions' => array('Resume.is_deleted' => 'N', $date_cond,$keyCond,$minCond,
 		$maxCond,$int_cond,$empCond,$branchCond,$statusCond,$repStatusCond,$teamCond,$specCond),
 		'order' => array('Resume.created_date' => 'desc'),'group' => array('Resume.id'), 'joins' => $options);
 		$data = $this->paginate('Resume');

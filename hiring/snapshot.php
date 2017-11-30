@@ -289,7 +289,7 @@ $str = <<<EOD
   <div class="container">
     <div class="level-item content has-text-centered"  style="margin-top:15px;">
       <p>
-        Created by <a class="" href="http://career-tree.in" style="color:#826386 !important;"><strong>CareerTree HR Solutions Private Limited</strong></a>. 
+        Created by <a class="" href="http://career-tree.in" style="color:#826386 !important;"><strong>CareerTree HR Solutions</strong></a>. 
       </p>     
     </div>
   </div>

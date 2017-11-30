@@ -182,9 +182,10 @@
 
 			<!-- auto size text area -->
 			<script src="<?php echo $this->webroot;?>hiring/js/autosize.min.js"></script>			
-			<script src="<?php echo $this->webroot;?>hiring/js/main.js"></script>
 			<script src="<?php echo $this->webroot;?>hiring/js/jquery.slimscroll.min.js"></script>
 		    <script src="<?php echo $this->webroot;?>hiring/js/application.js"></script>
+			<script src="<?php echo $this->webroot;?>hiring/js/main.js"></script>
+
 	
 		<a id="toTop" rel="nofollow" style="display: block;" title="Back to Top">Back to top</a>
 	

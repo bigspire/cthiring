@@ -10,7 +10,8 @@ $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor($template_path);
 $templateProcessor->setValue('CANDIDATE_NAME', ucwords($_POST['first_name'].' '.$_POST['last_name']),  1,0);       
 
 require_once "HTMLtoOpenXML.php";
-
+// to retain company name field
+$templateProcessor->setValue('CAND_CODE', 'MH-'.$getid,  1,0);  
 // to retain company name field
 $templateProcessor->setValue('COMPANY_NAME', ucwords($client_autoresume),  1,0);  
 // to retain company location field     
@@ -34,9 +35,10 @@ $templateProcessor->setValue('CANDIDATE_EMAIL', $_POST['email'],  1,0);
 // to retain candidate dob field    
 	$date_format = $fun->convert_date($_POST['dob_field']);
 	// $date_day = explode('-', );
-	$templateProcessor->setValue('DATEOFBIRTH', date('d',strtotime($date_format)),   1, 0);
-	$templateProcessor->setValue('DOBUPPER', date('S',strtotime($date_format)), 1,0);
-	$templateProcessor->setValue('YEARBIRTH', date('M-Y', strtotime($date_format)),   1, 0);
+	$templateProcessor->setValue('DATEOFBIRTH', date('d/m/Y',strtotime($date_format)),   1, 0);
+	//$templateProcessor->setValue('DOBUPPER', date('S',strtotime($date_format)), 1,0);
+	//$templateProcessor->setValue('YEARBIRTH', date('M-Y', strtotime($date_format)),   1, 0);
+	
 // to retain candidate nation field 
 	$templateProcessor->setValue('NATIONALDATA', ucfirst($_POST['nationality']),   1, 0);
 // to retain candidate marital status field 
@@ -84,9 +86,9 @@ $templateProcessor->setValue('CANDIDATEBRIEF', ucfirst($_POST['candidate_brief']
 // to retain candidate's computer skills field 
 	$templateProcessor->setValue('COMPUTERSKILLS', ucwords($_POST['skills']),   1, 0);
 // to retain compansation amount field 
-	$templateProcessor->setValue('COMPENSATIONAMOUNT', $_POST['present_ctc'].' '.$fun->ctc_type($_POST['present_ctc_type']).' per Annum',   1, 0);
+	$templateProcessor->setValue('COMPENSATIONAMOUNT', $_POST['present_ctc'].' '.$fun->ctc_type($_POST['present_ctc_type']),   1, 0);
 // to retain notice period field 	
-    $templateProcessor->setValue('NOTICEPERIOD', $fun->get_notice($_POST['notice_period']).' (Maximum)',   1, 0);
+    $templateProcessor->setValue('NOTICEPERIOD', $fun->get_notice($_POST['notice_period']),   1, 0);
 // to retain appraisal field 
 	$templateProcessor->setValue('CANDIDATEAPPRAISAL', ucfirst($_POST['candidate_brief']),   1, 0);
 // to retain technical expertise field 
@@ -181,7 +183,7 @@ for($i = 0; $i < $_POST['edu_count']; $i++){
 			$templateProcessor->setValue('EDUYR#'.$train_flag, $year_of_passData,   0, 0);
 			$templateProcessor->setValue('COLLEGE#'.$train_flag, $collegeData,   0, 0);
 			$templateProcessor->setValue('LOCATION#'.$train_flag, $loactionData,   0, 0);
-			$templateProcessor->setValue('MARKS#'.$train_flag, $gradeData.$type.' overall',   0, 0);
+			$templateProcessor->setValue('MARKS#'.$train_flag, $gradeData.$type.'',   0, 0);
 			$train_flag++;
 } 
 
@@ -232,7 +234,7 @@ for($i = 0; $i < $_POST['exp_count']; $i++){
 
 
 // to retain career details 
-$templateProcessor->cloneRow('CARCOMPANYNAME', $_POST['exp_count']);
+$templateProcessor->cloneRow('CARSTART', $_POST['exp_count']);
 $train_flag = 1;
 for($i = 0; $i < $_POST['exp_count']; $i++){
 			$desigData = $_POST['desig_'.$i];
@@ -276,15 +278,20 @@ for($i = 0; $i < $_POST['exp_count']; $i++){
 		
 		$responsibilityData = explode("\n", $key_responsibilityData);		
 		foreach($responsibilityData as $key_resp){
-			$key_res_data .= '<w:p><w:pPr><w:numPr><w:ilvl w:val="0"/><w:numId w:val="1"/></w:numPr></w:pPr><w:rPr><w:rFonts w:ascii="Cambria"/><w:sz w:val="30"/></w:rPr><w:r><w:t>'.ucfirst($key_resp).'</w:t></w:r></w:p>';
+			if(trim($key_resp) != ''){
+				$key_res_data .= '<w:p><w:pPr><w:numPr><w:ilvl w:val="0"/><w:numId w:val="1"/></w:numPr></w:pPr><w:rPr><w:rFonts w:ascii="Gadugi"/><w:sz w:val="30"/></w:rPr><w:r><w:t>'.ucfirst($key_resp).'</w:t></w:r></w:p>';
+			}
 		}
 		$key_responsibilityData_xml = HTMLtoOpenXML::getInstance()->fromHTML($key_res_data);
 		$templateProcessor->setValue('CARKEYRESP#'.$train_flag,  $key_responsibilityData_xml,   0, 1);
 		
 		$achievementData = explode("\n", $key_achievementData);		
 		foreach($achievementData as $key_achieve){
-			$key_achi_data .= '<w:p><w:pPr><w:numPr><w:ilvl w:val="0"/><w:numId w:val="1"/></w:numPr></w:pPr><w:rPr><w:rFonts w:ascii="Cambria"/><w:sz w:val="30"/></w:rPr><w:r><w:t>'.ucfirst($key_achieve).'</w:t></w:r></w:p>';
+			if(trim($key_achieve) != ''){
+				$key_achi_data .= '<w:p><w:pPr><w:numPr><w:ilvl w:val="0"/><w:numId w:val="1"/></w:numPr></w:pPr><w:rPr><w:rFonts w:ascii="Gadugi"/><w:sz w:val="30"/></w:rPr><w:r><w:t>'.ucfirst($key_achieve).'</w:t></w:r></w:p>';
+			}
 		}
+		
 		$key_achieveData_xml = HTMLtoOpenXML::getInstance()->fromHTML($key_achi_data);		
 		$templateProcessor->setValue('CARKEYACHIEVE#'.$train_flag, $key_achieveData_xml,   0, 1);
 		

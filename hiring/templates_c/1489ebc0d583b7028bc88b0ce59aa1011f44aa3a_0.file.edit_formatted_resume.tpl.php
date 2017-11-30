@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-11-13 17:53:52
+/* Smarty version 3.1.29, created on 2017-11-29 18:47:13
   from "C:\xampp\htdocs\ctsvn\cthiring\hiring\templates\edit_formatted_resume.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5a098ed8a8cef3_69976151',
+  'unifunc' => 'content_5a1eb3593f60e2_97908286',
   'file_dependency' => 
   array (
     '1489ebc0d583b7028bc88b0ce59aa1011f44aa3a' => 
     array (
       0 => 'C:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\templates\\edit_formatted_resume.tpl',
-      1 => 1510572892,
+      1 => 1510901869,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5a098ed8a8cef3_69976151 ($_smarty_tpl) {
+function content_5a1eb3593f60e2_97908286 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -527,7 +527,7 @@ echo $_POST['hobby'];
 										<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['exp_month']->value),$_smarty_tpl);?>
  
 										</select>
-										<select name="from_year_of_exp_#index#" id = "from_year_of_exp_#index#" tabindex="2" class="inline_text span2">
+										<select name="from_year_of_exp_#index#" id="from_year_of_exp_#index#" rel="maxDrop_#index#" tabindex="2" class="minExpDrop inline_text span2">
 										<option value="">From Year</option>
 										<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['exp_yr']->value),$_smarty_tpl);?>
  
@@ -539,7 +539,7 @@ echo $_POST['hobby'];
  
 										</select>
 										
-										<select name="to_year_of_exp_#index#" id = "to_year_of_exp_#index#" tabindex="2" class="inline_text span2">
+										<select name="to_year_of_exp_#index#" id = "maxDrop_#index#" tabindex="2" class="inline_text span2">
 										<option value="">To Year</option>
 										<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['exp_yr']->value),$_smarty_tpl);?>
  
@@ -1291,6 +1291,23 @@ $(document).ready(function(){
 			 $('#exp_count').attr('value',source.getFormsCount());
 			  // for auto resize text area
 			 autosize(document.querySelectorAll('.wysiwyg1'));
+			 /* function to update max drop down */
+				$('.minExpDrop').unbind().change(function(){ 
+					cur_obj = $(this).attr('id');		
+					option_id = $(this).attr('rel');					
+					val = parseFloat($(this).val());
+					$('#'+option_id).append('<option>Loading...</option>');
+					html = "<option value=''>Select</option>";
+					$('#'+cur_obj+' option').each(function(){
+						// allow only values equals or greater than
+						if(val < $(this).val()){ 
+							html += '<option value='+$(this).val()+'>'+$(this).text()+'</option>';
+						}
+					});
+					$('#'+option_id).empty();
+					$('#'+option_id).append(html);
+
+				});
 		   },
 		   afterRemoveCurrent: function(source) {		
 			 $('#exp_count').attr('value',source.getFormsCount());
@@ -1317,7 +1334,7 @@ $(document).ready(function(){
 				$('#from_month_of_exp_'+i).val( $('#from_month_of_expData_'+i).val());
 			}
 			if($('#to_year_of_expData_'+i).length > 0){ 
-				$('#to_year_of_exp_'+i).attr('value', $('#to_year_of_expData_'+i).val());
+				$('#maxDrop_'+i).attr('value', $('#to_year_of_expData_'+i).val());
 			}
 			if($('#to_month_of_expData_'+i).length > 0){ 
 				$('#to_month_of_exp_'+i).val( $('#to_month_of_expData_'+i).val());
