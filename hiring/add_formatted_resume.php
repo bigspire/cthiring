@@ -851,7 +851,9 @@ if(!empty($_POST)){
 			// generate auto resume doc file
 			$resume_path = dirname(__FILE__).'/uploads/autoresume/'.$_SESSION['resume_doc'];
 			$template_path = dirname(__FILE__).'/uploads/template/autoresume.docx'; 
-			include('vendor/PHPWord-develop/samples/template_process.php');			
+			include('vendor/PHPWord-develop/samples/template_process.php');	
+						
+			
 			// generate the auto resume pdf file
 			// convert the resume doc. into pdf			
 			require_once('vendor/ilovepdf-php-1.1.5/init.php');			

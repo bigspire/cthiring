@@ -59,6 +59,11 @@ class PositionController extends AppController {
 					'type' => 'LEFT',
 					'conditions' => array('`ResOwner.id` = `ReqResume`.`created_by`')
 			),
+			array('table' => 'resume',
+					'alias' => 'Resume',					
+					'type' => 'LEFT',
+					'conditions' => array('`Resume.id` = `ReqResume`.`resume_id`')
+			),
 			array('table' => 'req_message_read',
 					'alias' => 'Read',					
 					'type' => 'LEFT',
@@ -251,12 +256,14 @@ class PositionController extends AppController {
 		// for export
 		if($this->request->query['action'] == 'export'){
 			$data = $this->Position->find('all', array('fields' => $fields,'conditions' => 
-			array($keyCond,$date_cond,$branchCond,$empCond,$stCond,$teamCond,$contactCond,$clientCond,$roleCond,$approveCond,$req_team_cond), 
+			array('Position.is_deleted' => 'N',
+		'Resume.is_deleted' => 'N',$keyCond,$date_cond,$branchCond,$empCond,$stCond,$teamCond,$contactCond,$clientCond,$roleCond,$approveCond,$req_team_cond), 
 			'order' => array('created_date' => 'desc'), 'group' => array('Position.id'), 'joins' => $options));
 			$this->Excel->generate('positions', $data, $data, 'Report', 'Position');
 		}
 		
-		$this->paginate = array('fields' => $fields,'limit' => '25','conditions' => array($keyCond,$approveCond,$date_cond,$branchCond,$empCond,$stCond,
+		$this->paginate = array('fields' => $fields,'limit' => '25','conditions' => array('Position.is_deleted' => 'N',
+		'Resume.is_deleted' => 'N', $keyCond,$approveCond,$date_cond,$branchCond,$empCond,$stCond,
 		$contactCond,$teamCond,$clientCond,$roleCond,$req_team_cond),
 		'order' => array('created_date' => 'desc'),	'group' => array('Position.id'), 'joins' => $options);
 		$data = $this->paginate('Position');
@@ -978,7 +985,7 @@ class PositionController extends AppController {
 			'Resume.notice_period','ResLoc.location','Creator.first_name','ReqResume.modified_date','ReqResume.bill_ctc','ResDoc.resume',
 			'Resume.present_location','Resume.present_ctc_type','Resume.expected_ctc_type', 'ReqResume.id', 'ReqResume.cv_sent_date',
 			'ReqResume.cv_shortlist_date','Reason.reason'),
-			'conditions' => array('requirements_id' => $id),
+			'conditions' => array('requirements_id' => $id,'Position.is_deleted' => 'N','Resume.is_deleted' => 'N'),
 			'order' => array('Resume.created_date' => 'desc'),'group' => array('ReqResume.id'), 'joins' => $options));		
 			$this->set('resume_data', $data);
 			/*

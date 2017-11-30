@@ -9,7 +9,7 @@ $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor($template_path);
 
 
 require_once "HTMLtoOpenXML.php";
-
+$templateProcessor->setValue('CAND_CODE', 'MH-'.$getid,  1,0);  
 $templateProcessor->setValue('CANDIDATE_NAME', ucwords($_POST['first_name'].' '.$_POST['last_name']),  1,0);       
 // to retain company name field
 $templateProcessor->setValue('COMPANY_NAME', ucwords($client_autoresume),  1,0);  

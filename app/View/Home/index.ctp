@@ -190,7 +190,8 @@
 						</div>
 					</div>
 					
-					
+				
+		<?php if($this->Session->read('USER.Login.roles_id') == '30' || $this->Session->read('USER.Login.roles_id') == '34'):?>
 					<div class="row-fluid" style="margin-top:10px">
 						
 										
@@ -203,13 +204,13 @@
 							<table class="table table-striped table-bordered"  id="dt_k">
 								<thead class="">
 									<tr>
-									<th  class="optional">Date</th>
-									<th  class="optional">Session</th>
-										<th class=""  style="text-align:center">CTC (in Lacs)</th>
-										<th  class="optional"   style="text-align:center">CV Target</th>
-										<th class="optional"   style="text-align:center">CV Submitted</th> 
-										<th class="optional"   style="text-align:center">CV Sent</th> 
-										<th   style="text-align:center">Productivity</th>
+									<th  width="140" class="optional">Date</th>
+									<th  width="100" class="optional">Session</th>
+										<th width="170" class=""  style="text-align:center">CTC (in Lacs)</th>
+										<th width="140"  class="optional"   style="text-align:center">CV Target</th>
+										<th width="160" class="optional"   style="text-align:center">CV Submitted</th> 
+										<th width="120" class="optional"   style="text-align:center">CV Sent</th> 
+										<th  width="170"  style="text-align:center">Productivity</th>
 									</tr>
 								</thead>
 								<tbody class="">
@@ -256,47 +257,47 @@
 								
 								<tbody class="">
 									<tr>
-										<td class="optional">Positions Worked</td>
-										<td style="text-align:center" class="optional"><a href="#">6</a></td>
-										<td  class="essential persist">CVs Submitted</td>
-										<td style="text-align:center" class="optional"><a href="#">6</a></td>
+										<td class="optional" width="300">Positions Worked</td>
+										<td style="text-align:center" width="100" class="optional"><?php echo $POS_TAB_COUNT;?></td>
+										<td  class="essential persist" width="300">CVs Submitted</td>
+										<td style="text-align:center" width="100" class="optional"><?php echo $RESUME_SENT_MOP_COUNT;?></td>
 									</tr>
 									<tr>
 										<td class="optional">Vacancies Handled</td>
-										<td style="text-align:center" class="optional"><a href="#">10</a></td>
+										<td style="text-align:center" class="optional"><?php echo $VACANCY_MOP_COUNT;?></td>
 										<td  class="essential persist">Average Lead Time (Days)</td>
-										<td style="text-align:center" class="optional"><a href="#">5</a></td>
+										<td style="text-align:center" class="optional">-</td>
 									</tr>
 									<tr>
 										<td class="optional">Vacancies Billed</td>
-										<td style="text-align:center" class="optional"><a href="#">2</a></td>
+										<td style="text-align:center" class="optional"><?php echo $JOINED_TAB_COUNT; ?></td>
 										<td  class="essential persist">CVs Billed</td>
-										<td style="text-align:center" class="optional"><a href="#">1</a></td>
+										<td style="text-align:center" class="optional"><?php echo $JOINED_TAB_COUNT; ?></td>
 									</tr>
 									<tr>
 										<td class="optional">Vacancies Not Billed</td>
-										<td style="text-align:center" class="optional"><a href="#">8</a></td>
+										<td style="text-align:center" class="optional"><?php echo $VACANCY_MOP_COUNT - $JOINED_TAB_COUNT ;?></td>
 										<td  class="essential persist">CVs Not Billed</td>
-										<td style="text-align:center" class="optional"><a href="#">5</a></td>
+										<td style="text-align:center" class="optional"><?php echo $RESUME_SENT_MOP_COUNT - $JOINED_TAB_COUNT ;?></td>
 									</tr>
 									
 									<tr>
-										<td class="optional">Business Value</td>
-										<td style="text-align:center" class="optional"><a href="#">408000</a></td>
+										<td class="optional">Business Value (in Lacs)</td>
+										<td style="text-align:center" class="optional">₹<?php echo $BUSINESS_VALUE_MOP_COUNT; ?></td>
 										<td  class="essential persist">% of Final Interview Candidates</td>
-										<td style="text-align:center" class="optional"><a href="#">50%</a></td>
+										<td style="text-align:center" class="optional"><?php echo $INTERVIEW_MOP_PERCENT_COUNT; ?></td>
 									</tr>
 									<tr>
 										<td class="optional">Avg Lead Time for Billing (Days)</td>
-										<td style="text-align:center" class="optional"><a href="#">100</a>	</td>
-										<td  class="essential persist">Billing Value</td>
-										<td style="text-align:center" class="optional"><a href="#">180000</a></td>
+										<td style="text-align:center" class="optional">-</td>
+										<td  class="essential persist">Billing Value (in Lacs)</td>
+										<td style="text-align:center" class="optional">₹<?php echo $BILLED_AMT_TAB_COUNT ? (int)$BILLED_AMT_TAB_COUNT  : 0;?></td>
 									</tr>
 									<tr>
 										<th class="optional">Business Conversion</th>
-										<th style="text-align:center" class="optional">44%</td>
+										<th style="text-align:center" class="optional"><?php echo round($BILLED_TAB_COUNT/$BUSINESS_VALUE_MOP_COUNT, 1).'%'; ?></td>
 										<th  class="essential persist">Individual Contribution</th>
-										<th style="text-align:center" class="optional">120000</th>
+										<th style="text-align:center" class="optional">-</th>
 									</tr>
 								</tbody>
 								
@@ -306,7 +307,9 @@
 						
 					</div>
 					
-					
+		<?php  endif; ?>
+
+			
 					
 					<div class="row-fluid">
 						<div class="span6">

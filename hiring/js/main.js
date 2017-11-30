@@ -1194,6 +1194,11 @@ $(document).ready(function() {
 	});
 	*/
 	
+	/* remove the row in the productivity table in home */
+	$('#dt_k_wrapper').ready(function() {
+		$('#dt_k_wrapper').children('.row:nth-child(1)').remove();
+	});
+	
 	/* for print the graph */
 	$(document).ready(function() {
 		$("#printId").on('click', function() {

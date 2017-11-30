@@ -436,14 +436,26 @@ class HomeController  extends AppController {
 			)
 		);
 		$date_cond = array('or' => array("DATE_FORMAT(Position.created_date, '%Y-%m-%d') between ? and ?" => array($start, $end)));
-		$fields = array('id','job_title','location','Client.client_name', 'Creator.first_name','created_date', 'count(ReqResume.id) cv_sent','ReqStatus.title');			
+		$fields = array('id','job_title','location','Client.client_name', 'Creator.first_name','created_date',
+		'count(ReqResume.id) cv_sent','ReqStatus.title', 'ReqTeam.no_req', 'ctc_from','ctc_to','ctc_from_type','ctc_to_type');			
 		$conditions = array('fields' => $fields,'conditions' => array($date_cond,$pos_emp_cond2,
 		'Position.status' => 'A'),	'order' => array('Position.created_date' => 'desc'),	'group' => array('Position.id'), 'joins' => $pos_options);
 		$this->Position->unBindModel(array('belongsTo' => array('FunctionArea')));
 		$data = $this->Position->find('all', $conditions);
 		$this->set('position_data', $data);
 		$this->set('POS_TAB_COUNT', count($data));
-
+		// only for MOP for recruiters and account holders
+		if($this->Session->read('USER.Login.roles_id') == '30' || $this->Session->read('USER.Login.roles_id') == '34'){
+			// count the vacancy
+			foreach($data as $record){
+				$no_job += $record['ReqTeam']['no_req'];
+				$ctc_from = $record['Position']['ctc_from_type'] == 'T' ?  round($record['Position']['ctc_from']/100, 1) : $record['Position']['ctc_from'];
+				$ctc_to = $record['Position']['ctc_to_type'] == 'T' ?  round($record['Position']['ctc_to']/100, 1) : $record['Position']['ctc_to'];
+				$ctc += round(($ctc_from+$ctc_to)/2, 1) * $record['ReqTeam']['no_req'];
+			}
+			$this->set('VACANCY_MOP_COUNT', $no_job);
+			$this->set('BUSINESS_VALUE_MOP_COUNT', $ctc);
+		}
 		$date_cond = array('or' => array("DATE_FORMAT(ReqResume.modified_date, '%Y-%m-%d') between ? and ?" => 	array($start, $end)));
 		// get recent resumes sent
 		$this->loadModel('Resume');		
@@ -516,8 +528,8 @@ class HomeController  extends AppController {
 		// get the total counts of cv sent
 		$this->loadModel('ReqResume');
 		$date_cond = array('or' => array("DATE_FORMAT(ReqResume.modified_date, '%Y-%m-%d') between ? and ?" => array($start, $end)));
-		$cv_sent_count_tab = $this->ReqResume->find('count', array('conditions' => array('ReqResume.stage_title' => 
-		'Validation - Account Holder','ReqResume.status_title' => 'Validated',	$cv_emp_cond,$date_cond), 'joins' => $count_options));
+		$cv_sent_count_tab = $this->ReqResume->find('count', array('conditions' => array('ReqResume.stage_title !=' => 
+		array('Validation - Account Holder'), $cv_emp_cond,$date_cond), 'joins' => $count_options));
 		$this->set('CV_SENT_TAB_COUNT', $cv_sent_count_tab);
 		// get the total counts of cv shortlisted
 		$cv_shortlist_count_tab = $this->ReqResume->find('count', array('conditions' => array('ReqResume.status_title' => 'Shortlisted',
@@ -537,6 +549,33 @@ class HomeController  extends AppController {
 		$cv_interview_count_tab = $this->ReqResume->find('count', array('conditions' => array('ReqResume.status_title like' => '%Scheduled',
 		$cv_emp_cond,$date_cond), 'joins' => $count_options));
 		$this->set('INTERVIEW_TAB_COUNT', $cv_interview_count_tab);
+		
+		if($this->Session->read('USER.Login.roles_id') == '30' || $this->Session->read('USER.Login.roles_id') == '34'){
+			// pecentage of final interview - MOP
+			$mop_options = array(			
+				array('table' => 'resume',
+						'alias' => 'Resume',					
+						'type' => 'LEFT',
+						'conditions' => array('`Resume`.`id` = `ReqResume`.`resume_id`')
+				),
+				array('table' => 'req_resume_interview',
+					'alias' => 'ResInterview',					
+					'type' => 'LEFT',
+					'conditions' => array('`ResInterview`.`req_resume_id` = `ReqResume`.`id`')
+				)
+			);
+			$mop_date_cond = array('or' => array("DATE_FORMAT(ResInterview.int_date, '%Y-%m-%d') between ? and ?" => array($start, $end)));		
+			$this->loadModel('ReqResumeStatus');
+			$count_interview = $this->ReqResumeStatus->find('all', array('fields' => array('ReqResumeStatus.stage_title'),'conditions' => 
+			array($mop_date_cond,$int_emp_cond,'ReqResumeStatus.stage_title like' => '% Interview'), 'joins' => $mop_options,'group' => array('Resume.id')));
+			foreach($count_interview as $int_data){
+				$int_attend += 1;
+				if($int_data['ReqResumeStatus']['stage_title'] == 'Final Interview'){
+					$final_int += 1;
+				}
+			}
+			$this->set('INTERVIEW_MOP_PERCENT_COUNT', round(($final_int/$int_attend)*100, 1).'%');
+		}
 		/*
 		// get the total counts of candidates interview drop outs
 		$cv_int_drop_count_tab = $this->ReqResume->find('count', array('conditions' => array('ReqResume.stage_title like' => '%Interview', 'ReqResume.status_title' => 'No Show',
@@ -574,6 +613,8 @@ class HomeController  extends AppController {
 		'ReqResume.bill_ctc >' => '0'), 'joins' => $count_options));
 		$this->set('BILLED_TAB_COUNT', $billing_count_tab[0][0]['count']);
 		$this->set('BILLED_AMT_TAB_COUNT', $billing_count_tab[0][0]['ctc']);
+		// MOP Table for recruiter and account holders
+		if($this->Session->read('USER.Login.roles_id') == '30' || $this->Session->read('USER.Login.roles_id') == '34'){
 		// get the data for MOP table 
 		$this->loadModel('TaskPlan');		
 		$date_cond = array('or' => array("DATE_FORMAT(TaskPlan.task_date, '%Y-%m-%d') between ? and ?" => array($start, $end)));
@@ -592,7 +633,7 @@ class HomeController  extends AppController {
 			// get the actual resume uploaded
 			$task_data['TaskPlan']['task_date'];
 			$resume_upload_count = $this->ReqResume->find('count', array('conditions' => array('ReqResume.requirements_id' => $task_data['TaskPlan']['requirements_id'],
-			"date_format(ReqResume.created_date, '%Y-%m-%d')" => $task_data['TaskPlan']['task_date']), 'group' => array('ReqResume.id')));
+			"date_format(ReqResume.created_date, '%Y-%m-%d')" => $task_data['TaskPlan']['task_date'],'Resume.is_deleted' => 'N'), 'group' => array('ReqResume.id')));
 			$resume_upload[] = $resume_upload_count;
 			// get the actual resume sent
 			$options = array(						
@@ -603,16 +644,16 @@ class HomeController  extends AppController {
 				)
 			);
 			$resume_sent_count = $this->ReqResume->find('count', array('conditions' => array('ReqResume.requirements_id' => $task_data['TaskPlan']['requirements_id'],
-			"date_format(Resume.created_date, '%Y-%m-%d')" => $task_data['TaskPlan']['task_date'], 'ReqResumeStatus.stage_title' => 'Shortlist',
+			"date_format(Resume.created_date, '%Y-%m-%d')" => $task_data['TaskPlan']['task_date'], 
+			'Resume.is_deleted' => 'N', 'ReqResumeStatus.stage_title' => 'Shortlist',
 			'ReqResumeStatus.status_title' => 'CV-Sent'), 	'group' => array('ReqResume.id'), 'joins' => $options));
 			$resume_sent[] = $resume_sent_count;
+			$resume_sent_mop  += $resume_sent_count;
 			$productivity = round(($resume_sent_count / $resume_count) * 100, 1);
-			$prod_ar[] = $productivity;
-			
+			$prod_ar[] = $productivity;			
 			}
 			$total_days = $this->Home->diff_date($start, $end);
 			$overall_prod = round(($work_days / $total_days) * 100, 1);
-
 			// assign all the values for display
 			$this->set('ctc_count_ar', $ctc_count_ar);
 			$this->set('resume_count_elig', $resume_count_elig);
@@ -620,6 +661,8 @@ class HomeController  extends AppController {
 			$this->set('resume_sent', $resume_sent);
 			$this->set('prod_ar', $prod_ar);			
 			$this->set('overall_prod', $overall_prod);
+			$this->set('RESUME_SENT_MOP_COUNT', $resume_sent_mop);
+		}
 	}
 	
 	
@@ -687,7 +730,7 @@ class HomeController  extends AppController {
 					'conditions' => array('`Client`.`id` = `ClientAH`.`clients_id`')
 			)
 		);
-		$validate_cond = array('ReqResumeStatus.stage_title' => 'Validation - Account Holder','ReqResumeStatus.status_title' => 'Validated');
+		$validate_cond = array('ReqResumeStatus.stage_title' => 'Shortlist','ReqResumeStatus.status_title' => 'CV-Sent');
 		if(empty($reqCond)){
 			$dateCond = array("DATE_FORMAT(ReqResumeStatus.created_date, '%Y-%m-%d')" => $date);
 		}
