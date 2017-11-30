@@ -200,76 +200,43 @@
 								
 									</h3>
 
-							<table class="table table-striped table-bordered ">
+							<table class="table table-striped table-bordered"  id="dt_k">
 								<thead class="">
 									<tr>
 									<th  class="optional">Date</th>
-										<th class=""  style="text-align:center">CTC</th>
-										<th  class="optional"   style="text-align:center">Expected</th>
-										<th class="optional"   style="text-align:center">Actual</th> 
-										<th   style="text-align:center">No. Positions</th>
+									<th  class="optional">Session</th>
+										<th class=""  style="text-align:center">CTC (in Lacs)</th>
+										<th  class="optional"   style="text-align:center">CV Target</th>
+										<th class="optional"   style="text-align:center">CV Submitted</th> 
+										<th class="optional"   style="text-align:center">CV Sent</th> 
+										<th   style="text-align:center">Productivity</th>
 									</tr>
 								</thead>
 								<tbody class="">
-								<?php //foreach($client_data as $data):?>
-									<!--tr>
-										<td><a href="<?php echo $this->webroot;?>client/view/<?php echo $data['Client']['id'];?>"><?php echo $data['Client']['client_name'];?></a></td>
-										<td><?php echo $data['ResLocation']['location'];?></td>
-										<td><?php echo $data['Creator']['first_name'];?></td>
-										<td><?php echo $this->Functions->format_date($data['Client']['created_date']);?></td>
-										<td style="text-align:center"><a   href="<?php echo $this->webroot;?>position/?keyword=<?php echo $data['Client']['client_name'];?>"><?php echo $data[0]['req_count'];?></a></td>										
-									</tr-->
-								<?php //endforeach; ?>	
-		
+								
+								
+							
+
+
+
+	
+		<?php foreach($task_plan_data as $key =>  $tsk_data): ?>
 								<tr>
-									<td>02/11/2017</td>
-									<td style="text-align:center">4.5 L</td>
-									<td style="text-align:center" >4</td>
-									<td style="text-align:center" >6</td>
-									<td style="text-align:center" width="100" style="text-align:center"><a href="#">4</a></td>										
+									<td><?php echo $this->Functions->format_date($tsk_data['TaskPlan']['task_date']);?></td>
+									<td><?php echo $this->Functions->get_session($tsk_data['TaskPlan']['session']);?></td>
+									<td style="text-align:center"><?php echo $ctc_count_ar[$key];?></td>
+									<td style="text-align:center" ><?php echo $resume_count_elig[$key];?></td>
+									<td style="text-align:center" ><?php echo $resume_upload[$key];?></td>
+									<td style="text-align:center" ><?php echo $resume_sent[$key];?></td>
+									<td style="text-align:center" width="100" style="text-align:center"><?php echo $prod_ar[$key];?>%</td>										
 								  </tr>							
-								<tr>
-									<td >01/11/2017</td>
-									<td style="text-align:center" >4.5 L</td>
-									<td style="text-align:center" >4</td>
-									<td style="text-align:center" >6</td>
-									<td style="text-align:center"><a href="#">4</a></td>										
-								  </tr>	
-								<tr>
-									<td>31/10/2017</td>
-									<td style="text-align:center" >4.5 L</td>
-									<td style="text-align:center" >4</td>
-									<td style="text-align:center" >6</td>
-									<td style="text-align:center"><a href="#">4</a></td>										
-								  </tr>	
-								<tr>
-									<td>30/10/2017</td>
-									<td style="text-align:center" >4.5 L</td>
-									<td style="text-align:center" >4</td>
-									<td style="text-align:center" >6</td>
-									<td  style="text-align:center"><a href="#">4</a></td>										
-								  </tr>	
-									<tr>
-									<td>29/10/2017</td>
-									<td style="text-align:center" >4.5 L</td>
-									<td style="text-align:center" >4</td>
-									<td style="text-align:center" >6</td>
-									<td  style="text-align:center"><a href="#">4</a></td>										
-								  </tr>		
-								<tr>
-									<td>28/10/2017</td>
-									<td style="text-align:center" >4.5 L</td>
-									<td style="text-align:center" >4</td>
-									<td style="text-align:center" >6</td>
-									<td style="text-align:center"><a href="#">4</a></td>										
-								  </tr>	
-								<tr>
-									<td>27/10/2017</td>
-									<td style="text-align:center" >4.5 L</td>
-									<td style="text-align:center" >4</td>
-									<td style="text-align:center" >6</td>
-									<td style="text-align:center"><a href="#">4</a></td>										
-								 </tr>									  
+								<?php endforeach; ?>	
+									  <tfoot><tr>
+									<th colspan="6" style="text-align:right;">Productivity for the Period <?php echo $START_DATE;?> - <?php echo $END_DATE;?>
+									</th>
+									<th style="text-align:center" colspan=""><?php echo $overall_prod;?>%</th>
+									</tr>
+									</tfoot>
 								</tbody>
 							</table>
 						</div>

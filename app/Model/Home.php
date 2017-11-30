@@ -113,6 +113,16 @@ class Home extends AppModel {
 
 	}
 	
+	/* get no. resumes for the ctc */
+	public function get_resumes_ctc($ctc){
+		$sql = "CALL get_resume_send('$ctc')";
+		$result = $this->query($sql);
+		return $result[0]['inc_eligibility']['no_resumes'];
+
+	}
+	
+	
+	
 		/* function to format the date to save */
 	public function format_date_save($date){
 		if(!empty($date)){
