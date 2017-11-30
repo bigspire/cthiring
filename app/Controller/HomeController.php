@@ -416,7 +416,8 @@ class HomeController  extends AppController {
 		$date_cond = array('or' => array("DATE_FORMAT(Client.created_date, '%Y-%m-%d') between ? and ?" => array($start, $end)));
 		$fields = array('id','client_name','ResLocation.location','created_date','Creator.first_name',
 		"count(distinct Position.id) req_count");
-		$conditions = array('fields' => $fields,'limit' => '10','conditions' => array($keyCond,$date_cond,$client_emp_cond, 'Client.is_approve' => 'A'),
+		$conditions = array('fields' => $fields,'limit' => '10','conditions' => array($keyCond,$date_cond,$client_emp_cond, 
+		'Client.is_approve' => 'A'),
 		'order' => array('Client.created_date' => 'desc'),	'group' => array('Client.id'), 'joins' => $cli_options);
 		$data = $this->Home->Client->find('all', $conditions);
 		$this->set('client_data', $data);
@@ -461,7 +462,8 @@ class HomeController  extends AppController {
 		$this->loadModel('Resume');		
 		$fields = array('id',"concat(Resume.first_name,' ',Resume.last_name) full_name",'email_id','mobile', 'Creator.first_name',
 		'ReqResume.stage_title','ReqResume.status_title','ReqResume.modified_date');			
-		$conditions = array('fields' => $fields,'limit' => '50','conditions' => array($date_cond, $int_emp_cond,'ReqResume.stage_title' =>   array( 'Shortlist'), 'ReqResume.status_title' => 'CV-Sent'),
+		$conditions = array('fields' => $fields,'limit' => '50','conditions' => array($date_cond, $int_emp_cond,
+		'ReqResume.stage_title' =>   array( 'Shortlist'), 'ReqResume.status_title' => 'CV-Sent', 'Resume.is_deleted' => 'N'),
 		'order' => array('ReqResume.modified_date' => 'desc'),'group' => array('Resume.id'), 'joins' => $resume_options);
 		$data = $this->Resume->find('all', $conditions);
 		$this->set('resume_data', $data);
@@ -498,7 +500,7 @@ class HomeController  extends AppController {
 		$fields = array('id',"concat(Resume.first_name,' ',Resume.last_name) full_name",'email_id','mobile', 'Creator.first_name',
 		'ReqResume.modified_date','Resume.modified_date','ReqResume.stage_title','ReqResume.status_title');			
 		$conditions = array('fields' => $fields,'limit' => '50','conditions' => array($int_emp_cond,$date_cond,
-		'ReqResume.stage_title like' => '%Interview'),
+		'ReqResume.stage_title like' => '%Interview', 'Resume.is_deleted' => 'N'),
 		'order' => array('ReqResume.modified_date' => 'desc'), 'group' => array('Resume.id'), 'joins' => $resume_options);
 		$data = $this->Resume->find('all', $conditions);
 		$this->set('interview_data', $data);
@@ -506,7 +508,7 @@ class HomeController  extends AppController {
 		$fields = array('id',"concat(Resume.first_name,' ',Resume.last_name) full_name",'email_id','mobile', 'Creator.first_name',
 		'ReqResume.modified_date','Resume.modified_date','ReqResume.stage_title','ReqResume.status_title');		
 		$conditions = array('fields' => $fields,'limit' => '50','conditions' => array('ReqResume.stage_title' => 'Offer', 
-		$date_cond,$int_emp_cond, 'ReqResume.stage_title' => 'Offer'),'order' => array('ReqResume.modified_date' => 'desc'),
+		$date_cond,$int_emp_cond, 'ReqResume.stage_title' => 'Offer', 'Resume.is_deleted' => 'N'),'order' => array('ReqResume.modified_date' => 'desc'),
 		'group' => array('Resume.id'), 'joins' => $resume_options);
 		$data = $this->Resume->find('all', $conditions);
 		$this->set('offer_data', $data);
@@ -514,7 +516,7 @@ class HomeController  extends AppController {
 		$fields = array('id',"concat(Resume.first_name,' ',Resume.last_name) full_name",'email_id','mobile', 'Creator.first_name',
 		'Resume.created_date','ReqResume.modified_date','ReqResume.stage_title','ReqResume.status_title');		
 		$conditions = array('fields' => $fields,'limit' => '50','conditions' => array('ReqResume.stage_title' => 'Joining', 
-		$date_cond,$int_emp_cond, 'ReqResume.stage_title' => 'Joining'),'order' => array('ReqResume.modified_date' => 'desc'),
+		$date_cond,$int_emp_cond, 'ReqResume.stage_title' => 'Joining', 'Resume.is_deleted' => 'N'),'order' => array('ReqResume.modified_date' => 'desc'),
 		'group' => array('Resume.id'), 'joins' => $resume_options);
 		$data = $this->Resume->find('all', $conditions);
 		$this->set('join_data', $data);
