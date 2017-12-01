@@ -42,7 +42,7 @@ if($_POST){
 }
 
 		// for director and BH
-		if($_SESSION['roles_id'] == '33' || $_SESSION['roles_id'] == '38' || $_SESSION['roles_id'] == '39'){
+		if($_SESSION['roles_id'] == '33' || $_SESSION['roles_id'] == '35'){
 			$show = 'all';
 			$team_cond = false;
 		}else{
@@ -69,11 +69,28 @@ if($_POST){
 			$smarty->assign('approveUser', '1');	
 			if($team_cond){
 				$cond .= 'or ( rr.created_by in('.substr($id_str, 0, strlen($id_str)-2).')';
-				$cond .= ' or cah2.users_id in('.substr($id_str, 0, strlen($id_str)-2).'))';				
+				$cond .= ' or cah.users_id in('.substr($id_str, 0, strlen($id_str)-2).'))';				
 			}
 			$smarty->assign('emp_name',$emp_name);
 		}
-
+		
+		// if branch admmin
+		if($_SESSION['roles_id'] == '35'){
+			$loc = $_SESSION['location_id'];
+			$sql = "select u.id from users where u.is_deleted = 'N' and u.status = '0' and u.location_id = '$loc'  group by u.id order by u.first_name asc";		
+			$result = $mysql->execute_query($sql);		
+			while($row = $mysql->display_result($result)){
+				$emp_name[$row['id']] = ucwords($row['first_name'].' '.$row['last_name']);
+				// concatenate the list of team members
+				$id_str .=  $row['id'].', ';
+			}
+			$smarty->assign('approveUser', '1');	
+			$cond .= 'or ( rri.created_by in('.substr($id_str, 0, strlen($id_str)-2).') )';
+			$smarty->assign('emp_name',$emp_name);
+		}
+		
+		
+		
 // count the total no. of records
 $query = "CALL list_interview('".$_SESSION['user_id']."','".$_SESSION['roles_id']."','".$keyword."','".$employee."','".$branch."','".$fun->get_status_cond($current_status)."','".$from_date."','".$to_date."','0','0','','','".$_GET['action']."','".$cond."')";
 try{

@@ -245,10 +245,37 @@ class HomeController  extends AppController {
 			);
 			// $client_emp_cond = array('Client.created_by' => $this->Session->read('USER.Login.id'));
 			$this->set('bd_dash', 'active');
-		}else if($this->Session->read('USER.Login.roles_id') == '38'){ // branch head
-			// get all the branch team members
-			
-			
+		}else if($this->Session->read('USER.Login.roles_id') == '38'){ // branch admin
+			// get the branch users
+			$user_data = $this->Home->Creator->find('all', array('conditions' => array('Creator.location_id' => $this->Session->read('USER.Login.location_id'),
+			'Creator.is_deleted' => 'N'),
+			'fields' => array('Creator.id')));
+			foreach($user_data as $rec){
+				$branch_user[] =  $rec['Creator']['id'];
+			}
+			$resume_options = array(			
+				array('table' => 'req_resume',
+						'alias' => 'ReqResume',					
+						'type' => 'LEFT',
+						'conditions' => array('`ReqResume`.`resume_id` = `Resume`.`id`')
+				)
+			);
+			$cv_emp_cond = array('ReqResume.created_by' => $branch_user);
+			$int_emp_cond =  array('ReqResume.created_by' => $branch_user);
+			$pos_emp_cond =  array('ReqResume.created_by' => $branch_user, 'Home.status' => 'A');
+			$cv_sent_emp_cond =  array('ReqResume.created_by' => $branch_user);			
+			$client_emp_cond = array('ReqResume.created_by' => $branch_user);
+			$pos_emp_cond2 =  array('ReqResume.created_by' => $branch_user, 'Position.status' => 'A');
+			// get recent clients
+			$cli_options = array(						
+				array('table' => 'requirements',
+						'alias' => 'Position',					
+						'type' => 'LEFT',
+						'conditions' => array('`Position`.`clients_id` = `Client`.`id`',
+						'Position.status' => 'A')
+				)
+			);
+			 $client_emp_cond = array('Client.created_by' => $branch_user);
 		}else{ // for all roles, same as recruiter
 			$cv_emp_cond = array('ReqResume.created_by' => $this->Session->read('USER.Login.id'));
 			$int_emp_cond = array('ReqResume.created_by' => $this->Session->read('USER.Login.id'));

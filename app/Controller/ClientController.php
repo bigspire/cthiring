@@ -111,7 +111,22 @@ class ClientController extends AppController {
 			);
 		}
 		
-		
+		if($this->Session->read('USER.Login.roles_id') == '38'){ // branch admin
+			// get the branch users
+			$user_data = $this->Client->Creator->find('all', array('conditions' => array('Creator.location_id' => $this->Session->read('USER.Login.location_id'),
+			'Creator.is_deleted' => 'N'),
+			'fields' => array('Creator.id')));
+			foreach($user_data as $rec){
+				$branch_user[] =  $rec['Creator']['id'];
+			}
+			$teamCond = array('OR' => array(
+					'ReqResume.created_by' =>  $branch_user,
+					'ReqTeam.users_id' => $branch_user,
+					'AH.users_id' => $branch_user,
+					'Client.created_by' => $branch_user					
+				)
+			);
+		}
 		/*
 		// check role based access
 		if($this->Session->read('USER.Login.roles_id') == '34'   && !$team_cond){ // account holder

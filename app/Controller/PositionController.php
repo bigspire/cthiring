@@ -119,7 +119,7 @@ class PositionController extends AppController {
 		}
 		
 		// for director and BH		
-		if($this->Session->read('USER.Login.roles_id') == '33'){
+		if($this->Session->read('USER.Login.roles_id') == '33'  || $this->Session->read('USER.Login.roles_id') == '35'){
 			$show = 'all';
 			$team_cond = false;
 		}else{
@@ -149,6 +149,23 @@ class PositionController extends AppController {
 					'ReqTeam.users_id' => $data,
 					'AH.users_id' => $data,
 					'Position.created_by' => $data						
+				)
+			);
+		}
+		
+		if($this->Session->read('USER.Login.roles_id') == '38'){ // branch admin
+			// get the branch users
+			$user_data = $this->Position->Creator->find('all', array('conditions' => array('Creator.location_id' => $this->Session->read('USER.Login.location_id'),
+			'Creator.is_deleted' => 'N'),
+			'fields' => array('Creator.id')));
+			foreach($user_data as $rec){
+				$branch_user[] =  $rec['Creator']['id'];
+			}
+			$teamCond = array('OR' => array(
+					'ReqResume.created_by' =>  $branch_user,
+					'ReqTeam.users_id' => $branch_user,
+					'AH.users_id' => $branch_user,
+					'Position.created_by' => $branch_user						
 				)
 			);
 		}
