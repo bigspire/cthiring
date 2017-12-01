@@ -207,6 +207,10 @@ class fun{
 			$st = 'Recruiter';
 		}else if($type == 'AH'){	
 	 		$st = 'Account Holder';
+		}else if($type == 'Recruiter'){	
+	 		$st = 'R';
+		}else if($type == 'Account Holder'){	
+	 		$st = 'AH';
 		}
 		return $st;
 	}
