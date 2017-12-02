@@ -103,37 +103,94 @@ class libExcel{
 
 	}
 	
+	
 	// Add some data, we will use printing features
-	function printCell($data,$total,$col,$field,$file_name){	
+	function printCell($data,$total,$col,$field,$file_name, $module, $data2, $incentive_type,$period,$created_date,$modified_date){
 		$j = 1;
 		$total =  $total;
 		$field_count = count($field);
 		$c_count = $field_count-1;
 		$k = 0;
-		for($i = 2; $i <= $total+1; $i++){
-			for($j = 0; $j < $field_count; $j++){ 
-				$this->objPHPExcel->getActiveSheet()->setCellValue($col[$j] . $i, strip_tags($data[$k][$field[$j]]));
+		
+		// for view incentive 1
+		if($module == 'view_incentive1'){
+			$this->objPHPExcel->getActiveSheet()->setCellValue('A1', 'Employee');
+			$this->objPHPExcel->getActiveSheet()->getStyle('A1')->getFont()->setBold(true);
+			$this->objPHPExcel->getActiveSheet()->getColumnDimension('A1')->setAutoSize(true);			
+			$this->objPHPExcel->getActiveSheet()->setCellValue('B1', $data2['employee']);
+			
+			$this->objPHPExcel->getActiveSheet()->setCellValue('A2', 'Incentive Type');
+			$this->objPHPExcel->getActiveSheet()->getStyle('A2')->getFont()->setBold(true);	
+			$this->objPHPExcel->getActiveSheet()->getColumnDimension('A2')->setAutoSize(true);	
+			$this->objPHPExcel->getActiveSheet()->setCellValue('B2', $incentive_type);
+			
+			$this->objPHPExcel->getActiveSheet()->setCellValue('A3', 'Period');
+			$this->objPHPExcel->getActiveSheet()->getStyle('A3')->getFont()->setBold(true);	
+			$this->objPHPExcel->getActiveSheet()->getColumnDimension('A3')->setAutoSize(true);	
+			$this->objPHPExcel->getActiveSheet()->setCellValue('B3', $period);
+			
+			$this->objPHPExcel->getActiveSheet()->setCellValue('C1', 'Amount');
+			$this->objPHPExcel->getActiveSheet()->getStyle('C1')->getFont()->setBold(true);	
+			$this->objPHPExcel->getActiveSheet()->getColumnDimension('C1')->setAutoSize(true);	
+			$this->objPHPExcel->getActiveSheet()->setCellValue('D1', $data2['eligible_incentive_amt']);
+			
+			
+			$this->objPHPExcel->getActiveSheet()->setCellValue('C2', 'Created Date');
+			$this->objPHPExcel->getActiveSheet()->getStyle('C2')->getFont()->setBold(true);	
+			$this->objPHPExcel->getActiveSheet()->getColumnDimension('C2')->setAutoSize(true);	
+			$this->objPHPExcel->getActiveSheet()->setCellValue('D2', $created_date);
+			
+			$this->objPHPExcel->getActiveSheet()->setCellValue('C3', 'Modified Date');
+			$this->objPHPExcel->getActiveSheet()->getStyle('C3')->getFont()->setBold(true);	
+			$this->objPHPExcel->getActiveSheet()->getColumnDimension('C3')->setAutoSize(true);	
+			$this->objPHPExcel->getActiveSheet()->setCellValue('D3', $modified_date);
+			
+			
+			// iterate the multiple rows
+			for($i = 6; $i <= $total+4; $i++){
+				for($j = 0; $j < $field_count; $j++){
+					$this->objPHPExcel->getActiveSheet()->setCellValue($col[$j] . $i, strip_tags($data[$k][$field[$j]]));
+				}
+				$k++;
 			}
-			$k++;
-		}	
+		
+		}else{
+			for($i = 2; $i <= $total+1; $i++){
+				for($j = 0; $j < $field_count; $j++){ 
+					$this->objPHPExcel->getActiveSheet()->setCellValue($col[$j] . $i, strip_tags($data[$k][$field[$j]]));
+				}
+				$k++;
+			}			
+		}
+		
 		// auto size for columns 
 		foreach(range('A',"$col[$c_count]") as $columnID) {
-   		$this->objPHPExcel->getActiveSheet()->getColumnDimension($columnID)
-        ->setAutoSize(true);
+			$this->objPHPExcel->getActiveSheet()->getColumnDimension($columnID)->setAutoSize(true);
 		}	
 		// set the header
 		$this->setHeader($file_name);
 	}	
 	
+	
 	// print header data
-	function printHeader($header,$col){    
+	function printHeader($header,$col, $module){    
     	$col_count = count($col); 
-    	$i = 1; 
+		// for view incentive 1
+		if($module == 'view_incentive1'){
+			$i = 7;
+			$this->objPHPExcel->getActiveSheet()->setAutoFilter('A7:F7');
+			$this->objPHPExcel->getActiveSheet()->getStyle('A7:N7')->getFont()->setBold(true);		
+
+		}else{
+			$i = 1; 
+			//$this->objPHPExcel->getActiveSheet()->setAutoFilter('A1:F1');
+			$this->objPHPExcel->getActiveSheet()->getStyle('A1:N1')->getFont()->setBold(true);		
+		}
+		
     	// print header cells in the first row
     	for($j = 0; $j < $col_count; $j++){ 
        	$this->objPHPExcel->getActiveSheet()->setCellValue($col[$j] . $i,  $header[$j])->getStyle($col[$j] . $i,  $header[$j])->applyFromArray(array('fill' => array('type' => PHPExcel_Style_Fill::FILL_SOLID,'color' => array('rgb' => 'b3b3ff')))); 
-      	$this->objPHPExcel->getActiveSheet()->getStyle('A1:N1')->getFont()->setBold(true);
-	
+		// $this->objPHPExcel->getActiveSheet()->setAutoFilterByColumnAndRow($col[$j]. $i);
       } 
     	$i++; 
 	}	
