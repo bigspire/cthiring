@@ -255,7 +255,7 @@ class ResumeController extends AppController {
 			$data = $this->Resume->find('all', array('fields' => $fields,'conditions' => 
 			array('Resume.is_deleted' => 'N', $date_cond,$keyCond,$minCond,	$maxCond,$int_cond,$empCond,$branchCond,$statusCond,$repStatusCond,$teamCond,$specCond), 
 			'order' => array('Resume.created_date' => 'desc'), 'group' => array('Resume.id'), 'joins' => $options));
-			$this->Excel->generate('resumes', $data, $data, 'Report', 'CV Details','',$this->webroot);
+			$this->Excel->generate('resumes', $data, $data, 'Report', 'ResumeDetails'.date('dmy'),'',$this->webroot);
 		}
 		$this->paginate = array('fields' => $fields,'limit' => '25','conditions' => array('Resume.is_deleted' => 'N', $date_cond,$keyCond,$minCond,
 		$maxCond,$int_cond,$empCond,$branchCond,$statusCond,$repStatusCond,$teamCond,$specCond),

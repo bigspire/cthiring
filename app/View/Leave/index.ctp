@@ -18,7 +18,7 @@
                                     <a href="<?php echo $this->webroot;?>home/"><i class="icon-home"></i></a>
                                 </li>
                                 <li>
-                                    <a href="<?php echo $this->webroot;?>leave/">Leave</a>
+                                    <a href="<?php echo $this->webroot;?>leave/index/<?php echo $this->request->params['pass'][0];?>">Leave</a>
                                 </li>
                             
                                 <li>

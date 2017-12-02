@@ -19,7 +19,7 @@
       <tr>
         <td width="490" valign="top"  style="padding:0 20px;">
 		<h1 style="font:bold 15px Arial, Helvetica, sans-serif; color:#676767; margin:0 0 10px 0;">Dear <?php echo $to_name?>,</h1>
-          <p style="font:13px Arial, Helvetica, sans-serif; color:#676767; margin:0;">The following position is created by <?php echo $from_name;?>. Please login to manage hiring and approve the requirement quickly. After your approval only recruiters can send resumes for this requirement.</p><br />
+          <p style="font:13px Arial, Helvetica, sans-serif; color:#676767; margin:0;">The following position is created by <?php echo $from_name;?>. Please login to manage hiring and approve the requirement quickly. After your approval only recruiters can create resumes for this requirement.</p><br />
 
           <p style="font:normal 13px Arial, Helvetica, sans-serif; color:#676767; margin:0;">Please check the details below,</p>
           <table width="100%" border="0" cellspacing="2" cellpadding="10" style="border:1px solid #ededed; font:bold 13px Arial, Helvetica, sans-serif; color:#6f6e6e; margin:10px 0 20px 0;">
@@ -30,9 +30,9 @@
 			
 			
 			<tr style="background:#f5f4f4;">
-               <td   width="100">Employee Name</td>
+               <td   width="130">Employee</td>
               <td  style="color:#2a2a2a;"><?php echo $from_name; ?></td>
-			   <td   width="100">Client Name</td>
+			   <td   width="130">Client Name</td>
               <td  style="color:#2a2a2a;"><?php echo $client_name; ?></td>
            
             </tr>
@@ -52,7 +52,7 @@
 		    <tr style="background:#f5f4f4;">
 			   <td>Team Member(s)</td>
               <td  style="color:#2a2a2a;"><?php echo $team_member; ?></td>
-				<td>No. of Openings</td>
+				<td>Total Openings</td>
 				<td style="color:#2a2a2a;"><?php echo $no_opening; ?></td>
              
             </tr>

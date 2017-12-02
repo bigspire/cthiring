@@ -17,7 +17,7 @@
                                     <a href="<?php echo $this->webroot;?>home/"><i class="icon-home"></i></a>
                                 </li>
                                 <li>
-                                    <a href="<?php echo $this->webroot;?>position/">Positions</a>
+                                    <a href="<?php echo $this->webroot;?>position/index/<?php echo $this->request->params['pass'][2];?>">Positions</a>
                                 </li>
                             
                                 <li>
@@ -222,9 +222,21 @@
 						$team_member = explode(',', $position_data[0]['team_member2']);
 						$team_req = explode(',', $position_data[0]['team_req']);
 						$team_mem_id = explode(',', $position_data[0]['team_mem_id']);			
-						$mem_apr = explode(',', $position_data[0]['mem_approve']);
+						$mem_apr = explode('|', $position_data[0]['mem_approve']);
 						
-						foreach($team_member as $key => $member):
+						$mem_count = count($mem_apr);
+						$k = 0;
+						while($k <= $mem_count){
+							$mem_apr2 = explode(':', $mem_apr[$k]);
+							if(!in_array($mem_apr2[0], $mem_data)){
+								$mem_data[] = $mem_apr2[0];							
+								$mem_data_st[] = $mem_apr2[1];
+							}
+							$k++;
+						}
+						
+						// print_r($mem_apr);
+						foreach($team_member as $key => $member): 
 						
 						$chk = $this->request->params['pass'][2] == 'pending'  ? 'W' : 'A';
 						
@@ -240,7 +252,7 @@
 					endif; ?>
 					
 						<?php 
-					if($mem_apr[$key] == 'W'):
+					if($mem_data_st[$key] == 'W'):
 					$approval_str = '(Awaiting Approval)';
 					else:
 					$approval_str = '';

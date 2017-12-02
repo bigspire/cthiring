@@ -15,7 +15,7 @@
                                     <a href="<?php echo $this->webroot;?>home/"><i class="icon-home"></i></a>
                                 </li>
                                 <li>
-                                    <a href="<?php echo $this->webroot;?>client/">Clients</a>
+                                    <a href="<?php echo $this->webroot;?>client/index/<?php echo $this->request->params['pass'][0];?>">Clients</a>
                                 </li>
                             
                                 <li>
@@ -30,7 +30,7 @@
 							
 
 														
-<?php if($this->request->params['pass'][0] != 'pending' && ($this->Session->read('USER.Login.roles_id') == '33' 
+<?php  if($this->request->params['pass'][0] != 'pending' && ($this->Session->read('USER.Login.roles_id') == '33' 
 							|| $this->Session->read('USER.Login.roles_id') == '35')):?>
 							<a class="notify jsRedirect" data-notify-time = '3000' data-notify-title="In Progress!" data-notify-message="Downloading Excel... Please wait..." 
 							href="<?php echo $this->webroot;?>client/?action=export&<?php echo $this->Functions->get_url_vars($this->request->query);?>"><input type="button" value="Export Excel" class="btn btn-warning"/></a>
@@ -96,7 +96,7 @@
 							<label style="margin-top:18px;"><input type="submit" value="Submit" class="btn btn-gebo" /></label>
 							
 						
-												<label style="margin-top:18px;"><a href="<?php echo $this->webroot;?>client/" class="jsRedirect"><input value="Reset" type="button" class="btn"/></a></label>
+<label style="margin-top:18px;"><a href="<?php echo $this->webroot;?>client/index/<?php echo $this->request->params['pass'][0];?>" class="jsRedirect"><input value="Reset" type="button" class="btn"/></a></label>
 </div>
 
 <input type="hidden" id="srchSubmit" value="<?php echo $this->params->query['srch_status'];?>">
@@ -116,6 +116,9 @@
 										<th style="text-align:center" width="70"><?php echo $this->Paginator->sort('no_contact', 'Contact', array('escape' => false, 'direction' => 'desc', 'rel' => 'tooltip', 'title' => 'Sort by Ascending or Descending'));?></th>
 										<th width="150"><?php echo $this->Paginator->sort('account_holder', 'Account Holder', array('escape' => false, 'direction' => 'desc', 'rel' => 'tooltip', 'title' => 'Sort by Ascending or Descending'));?></th>
 										<th style="text-align:center" width="70"><?php echo $this->Paginator->sort('status', 'Status', array('escape' => false, 'direction' => 'desc', 'rel' => 'tooltip', 'title' => 'Sort by Ascending or Descending'));?></th>
+										<?php if($this->request->params['pass'][0] == 'pending'):?>
+										<th style="text-align:center" width="90">Pending</th>
+										<?php endif;?>
 										<th width="95"><?php echo $this->Paginator->sort('Creator.first_name', 'Created By', array('escape' => false, 'direction' => 'desc', 'rel' => 'tooltip', 'title' => 'Sort by Ascending or Descending'));?></th>
 										<th width="75"><?php echo $this->Paginator->sort('created_date', 'Created', array('escape' => false, 'direction' => 'desc', 'rel' => 'tooltip', 'title' => 'Sort by Ascending or Descending'));?></th>
 										<th width="75"><?php echo $this->Paginator->sort('modified_date', 'Modified', array('escape' => false, 'direction' => 'desc', 'rel' => 'tooltip', 'title' => 'Sort by Ascending or Descending'));?></th>
@@ -151,6 +154,11 @@
 										<?php endif; ?>
 										</td>
 										
+										<?php if($this->request->params['pass'][0] == 'pending'):?>
+										<td style="text-align:center">										
+											<?php echo $this->Functions->time_diff($client['Client']['created_date'], 0); ?>											
+										</td>
+										<?php endif;?>
 										
 										<td><?php echo ucfirst($client['Creator']['first_name']);?></td>
 
@@ -166,7 +174,7 @@
 	<a rel="tooltip" title="Verify Client" href="<?php echo $this->webroot;?>client/view/<?php echo $client['Client']['id'];?>/<?php echo $client[0]['st_id'];?>/<?php echo $client['Client']['created_by'];?>/<?php echo $this->request->params['pass'][0];?>/" class="btn  btn-mini"><i class="icon-edit"></i></a>
 	<?php endif; ?>									
 										
-										
+			<input type="hidden" id="para1"	value="<?php echo $this->request->params['pass'][0];?>">
 	</td>
 									</tr>
 								<?php endforeach; ?>

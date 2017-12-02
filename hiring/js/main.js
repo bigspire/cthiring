@@ -479,7 +479,8 @@ $(document).ready(function() {
 	if(jQuery('#SearchKeywords').length > 0){ 
 		$('#SearchKeywords').ready(function () {
 			webroot = $("#webroot").attr('value');
-			jQuery('#SearchText').autocomplete(webroot+'search/', {
+			var para = $("#para1").attr('value') != '' ? $("#para1").attr('value') : '';
+			jQuery('#SearchText').autocomplete(webroot+'search/'+para, {
 			width: 227,
 			selectFirst: true			
 			});	

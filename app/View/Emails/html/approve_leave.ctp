@@ -31,9 +31,9 @@
 			
 			<tr style="background:#f5f4f4;">
               
-			    <td>Leave From</td>
+			    <td width="130">Leave From</td>
               <td  style="color:#2a2a2a;"><?php echo $this->Functions->format_date($leave_from); ?></td>
-			    <td>Leave To</td>
+			    <td width="130">Leave To</td>
               <td  style="color:#2a2a2a;"><?php echo $this->Functions->format_date($leave_to); ?></td>
             
             </tr>

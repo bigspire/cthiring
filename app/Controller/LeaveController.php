@@ -62,6 +62,7 @@ class LeaveController extends AppController {
 		
 		// for approval status condition
 		$apr_status = $this->request->query['apr_status'] != '' ? $this->request->query['apr_status'] : 'W';
+		
 		if($this->request->query['apr_status'] != ''){
 			$approveCond = array('LeaveStatus.status' => $apr_status,
 			'LeaveStatus.users_id' => $this->Session->read('USER.Login.id'));
@@ -83,7 +84,7 @@ class LeaveController extends AppController {
 		}
 		
 				
-		$this->paginate = array('fields' => $fields,'limit' => '25','conditions' => array($keyCond,$dateCond, 'Leave.users_id' => $this->Session->read('USER.Login.id'),
+		$this->paginate = array('fields' => $fields,'limit' => '25','conditions' => array($keyCond,$dateCond,$userCond, 
 		'Leave.is_deleted' => 'N'), 'order' => array('Leave.created_date' => 'desc'),	'group' => array('Leave.id'), 'joins' => $options);
 		$data = $this->paginate('Leave');
 		$this->set('data', $data);
@@ -298,7 +299,9 @@ class LeaveController extends AppController {
 						}
 						
 						$vars = array('to_name' =>  ucwords($to_name), 'from_name' => $from, 
-						'approve_msg' => $approve_msg, 'remarks' => $this->request->data['Leave']['remarks']);
+							'leave_from' => $leader_data[0]['Leave']['leave_from'],'leave_to' => $leader_data[0]['Leave']['leave_to'], 
+							'reason' => $leader_data[0]['Leave']['reason_leave'],	'leave_type' => $leader_data[0]['Leave']['leave_type'],						
+							'approve_msg' => $approve_msg, 'remarks' => $this->request->data['Leave']['remarks']);
 						$this->set('action_status', $approve_msg);
 						// notify employee						
 						if(!$this->send_email('Manage Hiring - Leave '.$st_msg.' by '.ucfirst($this->Session->read('USER.Login.first_name')).' '.ucfirst($this->Session->read('USER.Login.last_name')), 'approve_leave', 'noreply@managehiring.com', $to_email,$vars)){		

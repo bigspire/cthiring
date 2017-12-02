@@ -591,6 +591,21 @@ class HomeController  extends AppController {
 					'alias' => 'ResInterview',					
 					'type' => 'LEFT',
 					'conditions' => array('`ResInterview`.`req_resume_id` = `ReqResume`.`id`')
+				),
+				array('table' => 'requirements',
+						'alias' => 'Position',					
+						'type' => 'LEFT',
+						'conditions' => array('`Position`.`id` = `ReqResume`.`requirements_id`')
+				),
+				array('table' => 'clients',
+						'alias' => 'Client',					
+						'type' => 'LEFT',
+						'conditions' => array('`Position`.`clients_id` = `Client`.`id`')
+				),
+				array('table' => 'client_account_holder',
+						'alias' => 'ClientAH',					
+						'type' => 'LEFT',
+						'conditions' => array('`Client`.`id` = `ClientAH`.`clients_id`')
 				)
 			);
 			$mop_date_cond = array('or' => array("DATE_FORMAT(ResInterview.int_date, '%Y-%m-%d') between ? and ?" => array($start, $end)));		
@@ -649,7 +664,7 @@ class HomeController  extends AppController {
 		$date_cond = array('or' => array("DATE_FORMAT(TaskPlan.task_date, '%Y-%m-%d') between ? and ?" => array($start, $end)));
 		$task_plan_data = $this->TaskPlan->find('all', array('fields' => array('task_date','ctc','session','requirements_id'),
 		'conditions' => array('users_id' => $this->Session->read('USER.Login.id'),$date_cond, 'TaskPlan.is_deleted' => 'N'), 
-		'group' => array('TaskPlan.id'), 'joins' => $options));
+		'group' => array('TaskPlan.id'), 'order' => array('TaskPlan.task_date' => 'desc'), 'joins' => $options));
 		$this->set('task_plan_data', $task_plan_data);
 		// get the no. of resumes sent for that day  for that position ctc
 		foreach($task_plan_data as $task_data){
