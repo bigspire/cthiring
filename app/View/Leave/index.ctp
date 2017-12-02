@@ -34,10 +34,11 @@
 							<a class="jsRedirect toggleSearch"  href="javascript:void(0)">
 							<input type="button" value="Search" class="homeSrch btn btn-success"/></a>
 							
-							<a class="notify jsRedirect" data-notify-time = '3000' data-notify-title="In Progress!" data-notify-message="Downloading Excel... Please wait..."   href="<?php echo $this->webroot;?>leave/?action=export&<?php echo $this->Functions->get_url_vars($this->request->query);?>"><input type="button" value="Export Excel" class="btn btn-warning"/></a>
-							
+							<a class="notify jsRedirect" data-notify-time = '3000' data-notify-title="In Progress!" data-notify-message="Downloading Excel... Please wait..."   href="<?php echo $this->webroot;?>leave/index/<?php echo $this->request->params['pass'][0];?>?action=export&<?php echo $this->Functions->get_url_vars($this->request->query);?>"><input type="button" value="Export Excel" class="btn btn-warning"/></a>
+					<?php if($this->request->params['pass'][0] != 'pending'):?>			
 							<a class="jsRedirect" data-notify-time = '3000'   href="<?php echo $this->webroot;?>leave/add/">
-							<input type="button" value="Create Leave" class="btn btn-info"/></a>		
+							<input type="button" value="Create Leave" class="btn btn-info"/></a>
+					<?php endif; ?>
 							
 							</div>
 						

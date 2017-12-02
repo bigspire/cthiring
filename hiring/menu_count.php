@@ -27,6 +27,8 @@ try{
 	}
 	$row = $mysql->display_result($result);
 	$smarty->assign('user_name', $row['first_name']);
+	$_SESSION['location_id'] = $row['location_id'];
+
 	$mysql->clear_result($result);
 	// call the next result
 	$mysql->next_query();
