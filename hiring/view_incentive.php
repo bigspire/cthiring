@@ -41,10 +41,15 @@ try{
 	}
 	$row = $mysql->display_result($result);
 	$smarty->assign('incentive_data',$row);
-	$smarty->assign('created_date' , $fun->convert_date_to_display($row['created_date']));
-	$smarty->assign('modified_date' , $fun->convert_date_to_display($row['modified_date']));
-	$smarty->assign('incentive_type' , $fun->check_incentive_type($row['incentive_type']));
-	$smarty->assign('period' ,$fun->convert_date_to_display($row['period']));
+	$smarty->assign('row',$row);
+	$created_date = $fun->convert_date_to_display($row['created_date']);
+	$smarty->assign('created_date' , $created_date);
+	$modified_date = $fun->convert_date_to_display($row['modified_date']);
+	$smarty->assign('modified_date' , $modified_date);
+	$incentive_type = $fun->check_incentive_type($row['incentive_type']);
+	$smarty->assign('incentive_type' , $incentive_type);
+	$period = $fun->convert_date_to_display($row['period']);
+	$smarty->assign('period' ,$period);
 	// free the memory
 	$mysql->clear_result($result);
 	// call the next result
@@ -78,6 +83,26 @@ if(!empty($row)){
 	header('Location: ../?access=invalid');
 }
 
+// get current date 
+$current_date = $fun->display_date();
+// call to export the excel data
+if($_GET['action'] == 'export'){ 
+	include('classes/class.excel.php');
+	$excelObj = new libExcel();
+	if($row['incentive_type'] == 'I'){
+		// function to print the excel header
+		$excelObj->printHeader($header = array('Position','Client','Candidate Name','Interview Level','Interview Date','Interview Status') ,$col = array('A','B','C','D','E','F'), 'view_incentive1');  
+		// function to print the excel data
+		$excelObj->printCell($data, $i,$col = array('A','B','C','D','E','F'), $field = array('position','client_name','candidate_name','stage_title','int_date','status_title'),'Incentive_'.$current_date, 'view_incentive1',$row,$incentive_type,$period,$created_date,$modified_date);
+	}else if($row['incentive_type'] == 'J'){
+		// function to print the excel header
+		$excelObj->printHeader($header = array('Position','Client','Candidate Name','Interview Level','Interview Date','Interview Status') ,$col = array('A','B','C','D','E','F'), 'view_incentive2');  
+		// function to print the excel data
+		$excelObj->printCell($data, $i,$col = array('A','B','C','D','E','F'), $field = array('position','client_name','candidate_name','stage_title','int_date','status_title'),'Incentive_'.$current_date, 'view_incentive1',$row,$incentive_type,$period,$created_date,$modified_date);
+	}
+}
+
+	
 // calling mysql close db connection function
 $c_c = $mysql->close_connection();
 

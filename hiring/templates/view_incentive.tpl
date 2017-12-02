@@ -23,10 +23,15 @@
                                 <li>
                                    {$incentive_data['employee']}
                                 </li>
-                            </ul>
+							</ul>
                         </div>
                     </nav>
 						
+						<div class="srch_buttons">
+							<a href="view_incentive.php?id={$smarty.get.id}&emp_id={$smarty.get.emp_id}&action=export">
+							<button type="button" val="view_incentive.php?id={$smarty.get.id}&emp_id={$smarty.get.emp_id}&action=export" name="export" class="jsRedirect btn btn-warning" >Export</button></a></a>							
+						</div>
+							
 						<div class="row-fluid">
 							<div class="span6">
 							<table class="table table-striped table-bordered dataTable" style="margin-bottom:0;">

@@ -37,7 +37,7 @@ if($_POST){
 }
 
 // count the total no. of records
-$query = "CALL list_incentive('".$employee."','".$from_date."','".$to_date."','0','0','','','".$_GET['action']."')";
+$query = "CALL list_incentive('".$employee."','".$_SESSION['roles_id']."','".$from_date."','".$to_date."','0','0','','','".$_GET['action']."')";
 try{
 	if(!$result = $mysql->execute_query($query)){
 		throw new Exception('Problem in executing count incentive page');
@@ -90,7 +90,7 @@ if($search_key = array_search($_GET['field'], $sort_fields)){
 }
 
 // fetch all records
-$query =  "CALL list_incentive('".$employee."','".$from_date."','".$to_date."','$start','$limit','".$field."','".$order."','".$_GET['action']."')";
+$query =  "CALL list_incentive('".$employee."','".$_SESSION['roles_id']."','".$from_date."','".$to_date."','$start','$limit','".$field."','".$order."','".$_GET['action']."')";
 try{
 	if(!$result = $mysql->execute_query($query)){
 		throw new Exception('Problem in executing list incentive page');
