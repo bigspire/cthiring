@@ -1303,6 +1303,20 @@ $(document).ready(function() {
 
 	});
 	
+	/* disable the multi check box in view position */
+	if($('#multi-validate').length > 0){
+		if($('#multi-validate').val() != '1'){
+			$('.multi-upload').attr("disabled", true);
+		}
+	}
+	
+	/* disable the multi check box in view position */
+	if($('#multi-inter').length > 0){
+		if($('#multi-inter').val() != '1'){
+			$('.multi-inter').attr("disabled", true);
+		}
+	}
+	
 	 /* function to update max drop down */
 	if($('.minDrop').length > 0){ 
 		var max_val = $('.maxDrop').val();

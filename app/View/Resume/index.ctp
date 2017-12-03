@@ -162,7 +162,7 @@
 						<table class="table table-striped table-bordered dataTable stickyTable">
 								<thead>
 									<tr>
-										<th width="70"><?php echo $this->Paginator->sort('id', 'Code', array('escape' => false, 'direction' => 'desc'));?></th>
+										<th width="90"><?php echo $this->Paginator->sort('id', 'Code', array('escape' => false, 'direction' => 'desc'));?></th>
 
 										<th width="140"><?php echo $this->Paginator->sort('first_name', 'Name', array('escape' => false, 'direction' => 'desc'));?></th>
 										<th width="70"><?php echo $this->Paginator->sort('mobile', 'Mobile', array('escape' => false, 'direction' => 'desc'));?></th>
@@ -175,6 +175,7 @@
 										<th width="50"><?php echo $this->Paginator->sort('expected_ctc', 'Expected CTC', array('escape' => false, 'direction' => 'desc'));?></th-->
 										<th width="80"><?php echo $this->Paginator->sort('status', ' Status', array('escape' => false, 'direction' => 'desc'));?></th>
 										<th width="75"><?php echo $this->Paginator->sort('Creator.first_name', 'Created By', array('escape' => false, 'direction' => 'desc'));?></th>
+										<th width="75"><?php echo $this->Paginator->sort('Resume.resume_type', 'Resume Type', array('escape' => false, 'direction' => 'desc'));?></th>
 										<th width="110" style="text-align:center">Actions</th>
 										<th width="75"><?php echo $this->Paginator->sort('created_date', 'Created', array('escape' => false, 'direction' => 'desc'));?></th>
 										<th width="75"><?php echo $this->Paginator->sort('modified_date', 'Modified', array('escape' => false, 'direction' => 'desc'));?></th>
@@ -188,26 +189,34 @@
 									<?php foreach($data as $res):?>
 									<tr>
 										<td>
-										<?php 
+										<a  href="<?php echo $this->webroot;?>resume/view/<?php echo $res['Resume']['id'];?>/"><?php 
 										if($res['Resume']['code']):
 										else:
 										echo $res['Resume']['code'];
 										echo 'MH-'.$res['Resume']['id'];
-										endif; ?>
+										endif; ?></a>
 										</td>
 
 										<?php // if(!empty($noHead)): $target = "target='_blank'"; endif;?>
-										<td><a  href="<?php echo $this->webroot;?>resume/view/<?php echo $res['Resume']['id'];?>/"><?php echo ucwords(strtolower($res[0]['full_name']));?></a></td>
-										<td><?php echo $this->Functions->get_format_text($res['Resume']['mobile']);?></td>
+										<td><?php echo ucwords(strtolower($res[0]['full_name']));?></td>
+										<td>
+										<?php echo $this->Functions->get_format_text($res['Resume']['mobile']);?></td>
 										<td><?php echo $this->Functions->get_format_text($res['Resume']['email_id']);?></td>
 										<!--td><?php echo $res['Resume']['present_employer'];?></td-->
 										<td><?php echo $this->Functions->show_exp_details($res['Resume']['total_exp']);?></td>
-										<td><?php echo $res['ResLocation']['location'] ? $res['ResLocation']['location'] : $res['Resume']['present_location'];?></td>
+										<td><?php echo $res['ResLocation']['location'] ? ucfirst($res['ResLocation']['location']) : ucfirst($res['Resume']['present_location']);?></td>
 										<!--td><?php echo $res['Resume']['education'];?></td-->
 										<!--td><?php if(!empty($res['Resume']['present_ctc'])): echo $res['Resume']['present_ctc'].' L'; endif; ?></td>
 										<td><?php if(!empty($res['Resume']['expected_ctc'])): echo $res['Resume']['expected_ctc'].' L'; endif; ?></td-->
 										<td><?php echo $this->Functions->get_status_crisp($res['ReqResume']['stage_title'],$res['ReqResume']['status_title']);?></td>
 										<td><?php echo ucfirst($res['Creator']['first_name']);?></td>
+										
+										<td>
+										<?php echo $res['Position']['resume_type'] == 'F' ? 'Fully Formatted' : 'Snapshot';?>
+										
+										
+										</td>
+										
 										<td class="actionItem">
 								
 									<div class="btn-group" style="display:inline-block;float:left;margin-left:12px;">

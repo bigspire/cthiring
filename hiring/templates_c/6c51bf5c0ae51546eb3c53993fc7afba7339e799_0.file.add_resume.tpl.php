@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-11-24 18:23:24
+/* Smarty version 3.1.29, created on 2017-12-03 12:50:08
   from "C:\xampp\htdocs\ctsvn\cthiring\hiring\templates\add_resume.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5a181644c28549_54592579',
+  'unifunc' => 'content_5a23a5a8148dc1_07195189',
   'file_dependency' => 
   array (
     '6c51bf5c0ae51546eb3c53993fc7afba7339e799' => 
     array (
       0 => 'C:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\templates\\add_resume.tpl',
-      1 => 1511528002,
+      1 => 1512285606,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5a181644c28549_54592579 ($_smarty_tpl) {
+function content_5a23a5a8148dc1_07195189 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -477,7 +477,7 @@ echo 'checked';?>
 										</td>
 							</tr>
 							<tr class="tbl_row">
-										<td width="120" class="tbl_column">Area of Specialization/Expertise  <span class="f_req">*</span></td>
+										<td width="120" class="tbl_column">Specialization/Expertise  <span class="f_req">*</span></td>
 											<td> 
 										<input type="text" name="area_#index#" id="area_#index#"  tabindex="6" class="span8" />
 										<label for="reg_city" generated="true" class="error" id="area_Err_#index#"></label>										
@@ -581,7 +581,7 @@ foreach ($_from as $_smarty_tpl->tpl_vars['ts_data']->key => $_smarty_tpl->tpl_v
 $_smarty_tpl->tpl_vars['ts_data']->_loop = true;
 $__foreach_ts_data_0_saved_local_item = $_smarty_tpl->tpl_vars['ts_data'];
 if ($_smarty_tpl->tpl_vars['ts_data']->value) {?>
-  <li><input class="span8" readonly="readonly" placeholder="" name="ts[]" value="<?php echo $_smarty_tpl->tpl_vars['ts_data']->value;?>
+  <li><input class="span8" readonly="readonly" placeholder="" name="ts[]" value="<?php echo ucfirst(trim($_smarty_tpl->tpl_vars['ts_data']->value));?>
 " type="text">   
   <input name="tsr[]" type="hidden" value="<?php echo $_smarty_tpl->tpl_vars['tsrData']->value[$_smarty_tpl->tpl_vars['ts_data']->key];?>
 "  class="rating" data-fractions="1"/> <span class="label label-info dn"><?php echo $_smarty_tpl->tpl_vars['tsrData']->value[$_smarty_tpl->tpl_vars['ts_data']->key];?>
@@ -638,7 +638,7 @@ foreach ($_from as $_smarty_tpl->tpl_vars['bs_data']->key => $_smarty_tpl->tpl_v
 $_smarty_tpl->tpl_vars['bs_data']->_loop = true;
 $__foreach_bs_data_1_saved_local_item = $_smarty_tpl->tpl_vars['bs_data'];
 if ($_smarty_tpl->tpl_vars['bs_data']->value) {?>
-  <li><input class="span8" readonly="readonly" placeholder="" name="bs[]" value="<?php echo $_smarty_tpl->tpl_vars['bs_data']->value;?>
+  <li><input class="span8" readonly="readonly" placeholder="" name="bs[]" value="<?php echo ucfirst(trim($_smarty_tpl->tpl_vars['bs_data']->value));?>
 " type="text">   
   <input name="bsr[]" type="hidden" value="<?php echo $_smarty_tpl->tpl_vars['bsrData']->value[$_smarty_tpl->tpl_vars['bs_data']->key];?>
 "  class="rating" data-fractions="1"/> <span class="label label-info dn"><?php echo $_smarty_tpl->tpl_vars['bsrData']->value[$_smarty_tpl->tpl_vars['bs_data']->key];?>
