@@ -148,8 +148,8 @@ if($search_key = array_search($_GET['field'], $sort_fields)){
 		
 
 // fetch all records
-echo $query =  "CALL list_interview('".$_SESSION['user_id']."','".$_SESSION['roles_id']."','".$keyword."','".$employee."','".$branch."','".$fun->get_status_cond($current_status)."','".$from_date."','".$to_date."','$start','$limit','".$field."','".$order."','".$_GET['action']."', '".$cond."')";
-die;try{
+$query =  "CALL list_interview('".$_SESSION['user_id']."','".$_SESSION['roles_id']."','".$keyword."','".$employee."','".$branch."','".$fun->get_status_cond($current_status)."','".$from_date."','".$to_date."','$start','$limit','".$field."','".$order."','".$_GET['action']."', '".$cond."')";
+try{
 	if(!$result = $mysql->execute_query($query)){
 		throw new Exception('Problem in executing list interview page');
 	}
