@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-11-14 17:00:14
+/* Smarty version 3.1.29, created on 2017-12-04 11:51:07
   from "C:\xampp\htdocs\2017\ctsvn\cthiring\hiring\templates\interview.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5a0ad3c6e025e3_71499348',
+  'unifunc' => 'content_5a24e953c23e17_89715645',
   'file_dependency' => 
   array (
     'f6a289244f814d0ad89821cb8c5c16d091402940' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\templates\\interview.tpl',
-      1 => 1510652538,
+      1 => 1512362760,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5a0ad3c6e025e3_71499348 ($_smarty_tpl) {
+function content_5a24e953c23e17_89715645 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -58,7 +58,7 @@ home"><i class="icon-home"></i></a>
 								<div class="srch_buttons">
 								<a class="jsRedirect toggleSearch"  href="javascript:void(0)">
 							<input type="button" value="Search" class="btn btn-success"/></a>
-							<?php if (!$_smarty_tpl->tpl_vars['ALERT_MSG']->value && ($_SESSION['roles_id'] == '33' || $_SESSION['roles_id'] == '39')) {?>
+							<?php if (!$_smarty_tpl->tpl_vars['ALERT_MSG']->value && ($_SESSION['roles_id'] == '33' || $_SESSION['roles_id'] == '35')) {?>
 							<a href="interview.php?action=export&keyword=<?php echo $_smarty_tpl->tpl_vars['keyword']->value;?>
 &employee=<?php echo $_smarty_tpl->tpl_vars['employee']->value;?>
 &f_date=<?php echo $_smarty_tpl->tpl_vars['f_date']->value;?>
