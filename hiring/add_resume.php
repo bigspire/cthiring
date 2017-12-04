@@ -19,6 +19,7 @@ include('menu_count.php');
 include('classes/class.mailer.php');
 // content class
 include('classes/class.content.php');
+
 if(empty($_SESSION['resume_doc_id'])){
 	header('Location: ../?access=invalid');
 }
@@ -108,6 +109,7 @@ $query ="CALL get_tech_skills('".$_SESSION['position_for']."')";
 	}catch(Exception $e){
 		echo 'Caught exception: ',  $e->getMessage(), "\n";
 	}
+
 
 // post of education fields value
 for($i = 0; $i < $_POST['edu_count']; $i++){
@@ -443,8 +445,10 @@ if(!empty($_POST)){
 			echo 'Caught exception: ',  $e->getMessage(), "\n";
 		}
 		
+		// generate resume code
+		$code = 'MH-'.$resume_id;
 		// query to add resume code
-		$query = "CALL edit_resume_code('".$resume_id."','MH-'.'".$resume_id."')";
+		$query = "CALL edit_resume_code('".$resume_id."','".$code."')";
 		try{
 			if(!$result = $mysql->execute_query($query)){
 				throw new Exception('Problem in adding resume code');
@@ -653,6 +657,21 @@ if(!empty($_POST)){
 			// call the next result
 			$mysql->next_query();
 			
+			// query to get account holder details
+			$query = "CALL get_accountholder_details('".$_SESSION['client']."')";
+			try{
+				if(!$result = $mysql->execute_query($query)){
+					throw new Exception('Problem in getting the AH Details');
+				}
+				$row = $mysql->display_result($result);
+				$ah_email = $row['ah_email'];
+				$ac_name = ucwords($row['ac_name']);		
+				// call the next result
+				$mysql->next_query();
+			}catch(Exception $e){
+				echo 'Caught exception: ',  $e->getMessage(), "\n";
+			}
+			
 			// get recruiter nameget_recruiter_name
 			$query =  "CALL get_recruiter_name('".$mysql->real_escape_str($_SESSION['user_id'])."')";
 			if(!$result = $mysql->execute_query($query)){
@@ -660,11 +679,14 @@ if(!empty($_POST)){
 			}
 			$row_user = $mysql->display_result($result);
 			$recruiter = $row_user['first_name'].' '.$row_user['last_name'];
+			$recruiter_email = $row_user['email_id'];
 			$getid = $resume_id;
-				// free the memory
+			// free the memory
 			$mysql->clear_result($result);
 			// call the next result
 			$mysql->next_query();	
+			
+
 			//echo 'save data';
 			$_SESSION['extraction'] = '';			
 			// create snapshot pdf
@@ -749,6 +771,11 @@ if(!empty($_POST)){
 			$myTaskWatermark->execute();
 			// Download the package files
 			$myTaskWatermark->download('uploads/snapshotwatermarked/');
+			
+			// send mail to account holder
+			$sub = "CTHiring -  Resume uploaded by " .$recruiter;
+			$msg = $content->get_create_resume_mail($_POST,$client_autoresume,$position_autoresume,$recruiter,$recruiter_email,$ac_name,$ah_email);
+			$mailer->send_mail($sub,$msg,$recruiter,$recruiter_email,$ac_name,$ah_email);
 			
 			//include('vendor/ilovepdf-php-1.1.5/samples/merge_basic.php');
 			// unset the sessions

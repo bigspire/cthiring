@@ -144,9 +144,6 @@ if($search_key = array_search($_GET['field'], $sort_fields)){
 	$field =  $org_fields[$search_key];
 }
 
-
-		
-
 // fetch all records
 $query =  "CALL list_interview('".$_SESSION['user_id']."','".$_SESSION['roles_id']."','".$keyword."','".$employee."','".$branch."','".$fun->get_status_cond($current_status)."','".$from_date."','".$to_date."','$start','$limit','".$field."','".$order."','".$_GET['action']."', '".$cond."')";
 try{
