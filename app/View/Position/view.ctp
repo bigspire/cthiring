@@ -645,9 +645,9 @@
 														<td><?php echo $this->Functions->get_format_text($resume['Resume']['email_id']);?></td>
 													<td>
 														<?php if($resume['ResLoc']['location'] != ''):
-														echo $resume['ResLoc']['location'];
+														echo ucfirst($resume['ResLoc']['location']);
 														else:
-														echo $resume['Resume']['present_location'];
+														echo ucfirst($resume['Resume']['present_location']);
 														endif;
 														?>
 														</td>

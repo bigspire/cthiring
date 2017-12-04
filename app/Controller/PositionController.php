@@ -649,7 +649,7 @@ class PositionController extends AppController {
 							'member_id' => $this->Session->read('USER.Login.id'), 'member_approve' => 'A')
 					)								
 			);
-			$data = $this->Position->find('all', array('fields' => array('PositionStatus.member_id',
+			$data = $this->Position->find('all', array('fields' => array('PositionStatus.member_id','Position.clients_id',
 			'PositionStatus.users_id','Position.created_by','Position.is_deleted','Position.modified_date'),
 			'group' => array('Position.id'), 'conditions' => array('Position.id' => $id), 'joins' => $options));
 		
@@ -665,6 +665,10 @@ class PositionController extends AppController {
 			$data2 = $this->Position->find('all', array('fields' => array('PositionStatus.users_id'),
 			'group' => array('Position.id'), 'conditions' => array('Position.id' => $id), 'joins' => $options));
 			
+			// for account holders		
+			$this->loadModel('ClientAccountHolder');
+			$data3 = $this->ClientAccountHolder->find('count', array('conditions' => array('ClientAccountHolder.clients_id' => $data[0]['Position']['clients_id'],
+			'ClientAccountHolder.users_id' => $this->Session->read('USER.Login.id'))));
 			
 			// check the req belongs to the user
 			if($data[0]['Position']['is_deleted'] == 'Y'){
@@ -676,6 +680,8 @@ class PositionController extends AppController {
 			}else if($data2[0]['PositionStatus']['users_id'] == $this->Session->read('USER.Login.id')){	
 				return 'pass';
 			}else if($this->Session->read('USER.Login.roles_id') == '33' || $this->Session->read('USER.Login.roles_id') == '35'){	
+				return 'pass';
+			}else if($data3){	
 				return 'pass';
 			}else{
 				return 'fail';
@@ -1298,7 +1304,7 @@ class PositionController extends AppController {
 					)						
 				);
 					
-				$fields = array('Resume.first_name','Resume.last_name');
+				$fields = array('Resume.first_name','Resume.last_name','Position.resume_type');
 				$cand_data = $this->Position->find('all', array('fields' => $fields,'conditions' => array('Resume.id' => $chk_resume_id_ar),
 				'group' => array('Resume.id'),'joins' => $options));
 				foreach($cand_data as $cand){
@@ -1339,10 +1345,14 @@ class PositionController extends AppController {
 						// get mail contents
 						// for multi selection only
 						if($multi_chk  == '1'){
-							$message = $this->get_template_details($res_id,$pos_id, '1','',$cand_name,$chk_resume_id_ar);	
+							$message = $this->get_template_details($res_id,$pos_id, '1','',$cand_name,$chk_resume_id_ar);
+							$candidate_msg_split = explode('|||', $message);
+							$message = $candidate_msg_split[0];
+							$subject = $candidate_msg_split[1];							
 						}else{
 							$message = $this->request->data['Position']['message'];
-						}						
+						}	
+						
 						$subject = $this->request->data['Position']['subject'];
 	
 						// get the resume details
@@ -1359,9 +1369,10 @@ class PositionController extends AppController {
 						foreach($resume_data as $resume_file){
 							$updated = $resume_file['Resume']['modified_date'] ? $resume_file['Resume']['modified_date'] : $resume_file['Resume']['created_date'];
 							$snap_file = substr($resume_file['ResDoc']['resume'], 0, strlen($resume_file['ResDoc']['resume']) - 5);
-							$pdf_date = date('d-m-Y', strtotime($updated));				
+							$pdf_date = date('d-m-Y', strtotime($updated));		
+							$resume_folder = $cand_data[0]['Position']['resume_type'] == 'F' ? 'autoresumepdf/' : 'snapshotwatermarked/';
 							// $resume_path = '../../hiring/uploads/snapshotmerged/'.$this->Functions->filter_file($snap_file).'_'.$pdf_date.'.pdf';
-							$resume_path[] = '../../hiring/uploads/resume/'.$resume_file['ResDoc']['resume'];
+							$resume_path[] = '../../hiring/uploads/'.$resume_folder.$this->Functions->filter_file($snap_file).'_'.$pdf_date.'.pdf';
 						}						
 						// $this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>CV Sent Successfully', 'default', array('class' => 'alert alert-success'));									
 					}
@@ -1410,7 +1421,7 @@ class PositionController extends AppController {
 	/* function to get the template details */
 	public function get_template_details($res_id, $pos_id, $mailtemplete,$int_candidates, $multi_candidates,$candidate_arr){
 		// when the form is not submitted
-		if(empty($this->request->data)){
+		if(empty($this->request->data) || $this->request->data['tiny_readonly'] == '1'){
 			$options = array(			
 				array('table' => 'resume',
 						'alias' => 'Resume',					
@@ -2078,6 +2089,7 @@ class PositionController extends AppController {
 		$this->get_template_details($id,$pos_id, '3');
 		$this->get_template_details($id,$pos_id, '2', $int_table,$cand_name);
 			
+		
 		// when the form submitted
 		if(!empty($this->request->data)){
 			// validate the form
