@@ -19,6 +19,7 @@ include('menu_count.php');
 include('classes/class.mailer.php');
 // content class
 include('classes/class.content.php');
+
 if(empty($_SESSION['resume_doc_id'])){
 	header('Location: ../?access=invalid');
 }
@@ -108,6 +109,7 @@ $query ="CALL get_tech_skills('".$_SESSION['position_for']."')";
 	}catch(Exception $e){
 		echo 'Caught exception: ',  $e->getMessage(), "\n";
 	}
+
 
 // post of education fields value
 for($i = 0; $i < $_POST['edu_count']; $i++){
@@ -442,6 +444,22 @@ if(!empty($_POST)){
 		}catch(Exception $e){
 			echo 'Caught exception: ',  $e->getMessage(), "\n";
 		}
+		
+		// generate resume code
+		$code = 'MH-'.$resume_id;
+		// query to add resume code
+		$query = "CALL edit_resume_code('".$resume_id."','".$code."')";
+		try{
+			if(!$result = $mysql->execute_query($query)){
+				throw new Exception('Problem in adding resume code');
+			}
+			$row = $mysql->display_result($result);
+			$res_id = $row['affected_rows'];
+			// call the next result
+			$mysql->next_query();
+		}catch(Exception $e){
+			echo 'Caught exception: ',  $e->getMessage(), "\n";
+		}
 
 		// query to add position for details
 		$query = "CALL add_req_resume_position('".$created_by."','".$date."',
@@ -625,7 +643,7 @@ if(!empty($_POST)){
 			echo 'Caught exception: ',  $e->getMessage(), "\n";
 		}
 
-		if(!empty($edu_id) && !empty($exp_id) && !empty($resume_id) && !empty($position_id) && !empty($req_res_id)){
+		if(!empty($edu_id) && !empty($res_id) && !empty($exp_id) && !empty($resume_id) && !empty($position_id) && !empty($req_res_id)){
 			
 			$query =  "CALL get_personal_skills('$resume_id')";
 			if(!$result = $mysql->execute_query($query)){
@@ -639,6 +657,36 @@ if(!empty($_POST)){
 			// call the next result
 			$mysql->next_query();
 			
+			// query to get account holder details
+			$query = "CALL get_accountholder_details('".$_SESSION['client']."')";
+			try{
+				if(!$result = $mysql->execute_query($query)){
+					throw new Exception('Problem in getting the AH Details');
+				}
+				$row = $mysql->display_result($result);
+				$ah_id = $row['ah_id'];
+				$ah_email = $row['ah_email'];
+				$ac_name = ucwords($row['ac_name']);		
+				// call the next result
+				$mysql->next_query();
+			}catch(Exception $e){
+				echo 'Caught exception: ',  $e->getMessage(), "\n";
+			}
+			
+			// query to add req read details
+			$query = "CALL add_req_read('".$_SESSION['position_for']."','".$ah_id."','".$date."')";
+			try{
+				if(!$result = $mysql->execute_query($query)){
+					throw new Exception('Problem in adding req read');
+				}
+				$row = $mysql->display_result($result);
+				$req_read = $row['inserted_id'];		
+				// call the next result
+				$mysql->next_query();
+			}catch(Exception $e){
+				echo 'Caught exception: ',  $e->getMessage(), "\n";
+			}
+			
 			// get recruiter nameget_recruiter_name
 			$query =  "CALL get_recruiter_name('".$mysql->real_escape_str($_SESSION['user_id'])."')";
 			if(!$result = $mysql->execute_query($query)){
@@ -646,11 +694,14 @@ if(!empty($_POST)){
 			}
 			$row_user = $mysql->display_result($result);
 			$recruiter = $row_user['first_name'].' '.$row_user['last_name'];
+			$recruiter_email = $row_user['email_id'];
 			$getid = $resume_id;
-				// free the memory
+			// free the memory
 			$mysql->clear_result($result);
 			// call the next result
 			$mysql->next_query();	
+			
+
 			//echo 'save data';
 			$_SESSION['extraction'] = '';			
 			// create snapshot pdf
@@ -736,13 +787,24 @@ if(!empty($_POST)){
 			// Download the package files
 			$myTaskWatermark->download('uploads/snapshotwatermarked/');
 			
+			if(!empty($req_read)){
+				// send mail to account holder
+				$sub = "CTHiring -  Resume uploaded by " .$recruiter;
+				$msg = $content->get_create_resume_mail($_POST,$client_autoresume,$position_autoresume,$recruiter,$recruiter_email,$ac_name,$ah_email);
+				$mailer->send_mail($sub,$msg,$recruiter,$recruiter_email,$ac_name,$ah_email);
+				$successfull = '1';
+			}
+			
 			//include('vendor/ilovepdf-php-1.1.5/samples/merge_basic.php');
 			// unset the sessions
 			unset($_SESSION['position_for']);
 			unset($_SESSION['resume_doc']);
 			unset($_SESSION['clients_id']);
-			// header('Location: ../resume?action=created&download='.$snap_file_name.'_'.date('d-m-Y').'.pdf');
-			header('Location: ../resume?action=created');
+			
+			if($successfull == '1'){
+				// header('Location: ../resume?action=created&download='.$snap_file_name.'_'.date('d-m-Y').'.pdf');
+				header('Location: ../resume?action=created');
+			}
 		} 
 		}else{
 				$msg = "Resume with same email address and mobile no. already exists";

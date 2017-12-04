@@ -643,6 +643,22 @@ if(!empty($_POST)){
 			echo 'Caught exception: ',  $e->getMessage(), "\n";
 		}
 		
+		
+		$code = 'MH-'.$resume_id;
+		// query to add resume code
+		$query = "CALL edit_resume_code('".$resume_id."','".$code."')";
+		try{
+			if(!$result = $mysql->execute_query($query)){
+				throw new Exception('Problem in adding resume code');
+			}
+			$row = $mysql->display_result($result);
+			$res_id = $row['affected_rows'];
+			// call the next result
+			$mysql->next_query();
+		}catch(Exception $e){
+			echo 'Caught exception: ',  $e->getMessage(), "\n";
+		}
+		
 		// query to add position for details
 		$query = "CALL add_req_resume_position('".$created_by."','".$date."',
 			'".$mysql->real_escape_str($_SESSION['position_for'])."','".$resume_id."','Validation - Account Holder','Pending')";
@@ -843,18 +859,53 @@ if(!empty($_POST)){
 			echo 'Caught exception: ',  $e->getMessage(), "\n";
 		}
 		
-		if(!empty($edu_id) && !empty($position_id) && !empty($req_res_id) && !empty($exp_id) && !empty($train_id) && !empty($language_id) && !empty($resume_id)){
-			// get recruiter nameget_recruiter_name
+		if(!empty($edu_id) && !empty($res_id) && !empty($position_id) && !empty($req_res_id) && !empty($exp_id) && !empty($train_id) && !empty($language_id) && !empty($resume_id)){
+			
+			// query to get account holder details
+			$query = "CALL get_accountholder_details('".$_SESSION['client']."')";
+			try{
+				if(!$result = $mysql->execute_query($query)){
+					throw new Exception('Problem in getting the AH Details');
+				}
+				$row = $mysql->display_result($result);
+				$ah_id = $row['ah_id'];
+				$ah_email = $row['ah_email'];
+				$ac_name = ucwords($row['ac_name']);		
+				// call the next result
+				$mysql->next_query();
+			}catch(Exception $e){
+				echo 'Caught exception: ',  $e->getMessage(), "\n";
+			}
+			
+			// query to add req read details
+			$query = "CALL add_req_read('".$_SESSION['position_for']."','".$ah_id."','".$date."')";
+			try{
+				if(!$result = $mysql->execute_query($query)){
+					throw new Exception('Problem in adding req read');
+				}
+				$row = $mysql->display_result($result);
+				$req_read = $row['inserted_id'];		
+				// call the next result
+				$mysql->next_query();
+			}catch(Exception $e){
+				echo 'Caught exception: ',  $e->getMessage(), "\n";
+			}
+			
+			// get recruiter details
 			$query =  "CALL get_recruiter_name('".$mysql->real_escape_str($_SESSION['user_id'])."')";
 			if(!$result = $mysql->execute_query($query)){
 					throw new Exception('Problem in getting recruiter details');
 			}
 			$row_user = $mysql->display_result($result);
 			$recruiter = $row_user['first_name'].' '.$row_user['last_name'];
+			$recruiter_email = $row_user['email_id'];
 			// free the memory
 			$mysql->clear_result($result);
 			// call the next result
-			$mysql->next_query();			
+			$mysql->next_query();	
+
+
+			
 			// for languages known
 			$getid = $resume_id;
 			// generate auto resume doc file
@@ -881,6 +932,16 @@ if(!empty($_POST)){
 			$myTaskConvertOffice->execute();
 			// Download the package files
 			$myTaskConvertOffice->download('uploads/autoresumepdf/');   
+			
+			
+			if(!empty($req_read)){
+				// send mail to account holder
+				$sub = "CTHiring -  Resume uploaded by " .$recruiter;
+				$msg = $content->get_create_resume_mail($_POST,$client_autoresume,$position_autoresume,$recruiter,$recruiter_email,$ac_name,$ah_email);
+				$mailer->send_mail($sub,$msg,$recruiter,$recruiter_email,$ac_name,$ah_email);
+				$successfull = '1';
+			}	
+			
 			/*
 			// water mark the pdf
 			$myTaskWatermark = $ilovepdf->newTask('watermark');
@@ -900,8 +961,11 @@ if(!empty($_POST)){
 			// Download the package files
 			$myTaskWatermark->download('uploads/autoresumewatermarked/');
 			*/
-			// once successfully created, redirect the page
-			header('Location: ../resume/?action=auto_created');
+			
+			if($successfull == '1'){
+				// once successfully created, redirect the page
+				header('Location: ../resume/?action=auto_created');
+			}
 		} 
 		}else{
 			$msg = "Resume with same email address and mobile no. already exists";

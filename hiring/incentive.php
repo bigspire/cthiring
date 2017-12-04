@@ -117,10 +117,9 @@ try{
 		include('classes/class.excel.php');
 		$excelObj = new libExcel();
 		// function to print the excel header
-      $excelObj->printHeader($header = array('Employee','Incentive Type','Period',
-      'Incentive Amt.','Created') ,$col = array('A','B','C','D','E'));  
+		$excelObj->printHeader($header = array('Employee','Incentive Type','Period','Incentive Amt.','Created') ,$col = array('A','B','C','D','E'));  
 		// function to print the excel data
-		$excelObj->printCell($data, $count,$col = array('A','B','C','D','E'), $field = array('employee','incentive_type','Period','eligible_incentive_amt','created_date'),'Incentive_'.$current_date);
+		$excelObj->printCell($data, $count,$col = array('A','B','C','D','E'), $field = array('employee','incentive_type','period','eligible_incentive_amt','created_date'),'Incentive_'.$current_date);
 	}	
 
 	// approve or reject validation
