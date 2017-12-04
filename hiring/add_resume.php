@@ -442,6 +442,20 @@ if(!empty($_POST)){
 		}catch(Exception $e){
 			echo 'Caught exception: ',  $e->getMessage(), "\n";
 		}
+		
+		// query to add resume code
+		$query = "CALL edit_resume_code('".$resume_id."','MH-'.'".$resume_id."')";
+		try{
+			if(!$result = $mysql->execute_query($query)){
+				throw new Exception('Problem in adding resume code');
+			}
+			$row = $mysql->display_result($result);
+			$res_id = $row['affected_rows'];
+			// call the next result
+			$mysql->next_query();
+		}catch(Exception $e){
+			echo 'Caught exception: ',  $e->getMessage(), "\n";
+		}
 
 		// query to add position for details
 		$query = "CALL add_req_resume_position('".$created_by."','".$date."',
@@ -625,7 +639,7 @@ if(!empty($_POST)){
 			echo 'Caught exception: ',  $e->getMessage(), "\n";
 		}
 
-		if(!empty($edu_id) && !empty($exp_id) && !empty($resume_id) && !empty($position_id) && !empty($req_res_id)){
+		if(!empty($edu_id) && !empty($res_id) && !empty($exp_id) && !empty($resume_id) && !empty($position_id) && !empty($req_res_id)){
 			
 			$query =  "CALL get_personal_skills('$resume_id')";
 			if(!$result = $mysql->execute_query($query)){

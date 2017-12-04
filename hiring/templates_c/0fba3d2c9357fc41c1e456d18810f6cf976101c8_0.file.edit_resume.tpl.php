@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-11-15 11:40:04
+/* Smarty version 3.1.29, created on 2017-12-04 12:37:41
   from "C:\xampp\htdocs\2017\ctsvn\cthiring\hiring\templates\edit_resume.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5a0bda3c1b72f2_24939484',
+  'unifunc' => 'content_5a24f43d01c4e4_43749611',
   'file_dependency' => 
   array (
     '0fba3d2c9357fc41c1e456d18810f6cf976101c8' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\templates\\edit_resume.tpl',
-      1 => 1510724273,
+      1 => 1512362760,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5a0bda3c1b72f2_24939484 ($_smarty_tpl) {
+function content_5a24f43d01c4e4_43749611 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -92,9 +92,9 @@ resume">Resumes</a>
 									<tr class="tbl_row">
 										<td width="120" class="tbl_column">Candidate Name <span class="f_req">*</span></td>
 										<td>
-								        <input type="text" tabindex="1" name="first_name" placeholder="First Name" value="<?php echo $_smarty_tpl->tpl_vars['first_name']->value;?>
+								        <input type="text" tabindex="1" name="first_name" placeholder="First Name" value="<?php echo ucwords(strtolower($_smarty_tpl->tpl_vars['first_name']->value));?>
 " class="span4">
-								        <input type="text" tabindex="2" name="last_name" placeholder="Last Name" value="<?php echo $_smarty_tpl->tpl_vars['last_name']->value;?>
+								        <input type="text" tabindex="2" name="last_name" placeholder="Last Name" value="<?php echo ucwords(strtolower($_smarty_tpl->tpl_vars['last_name']->value));?>
 " class="inline_text span4">
 								
 										<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['first_nameErr']->value;
@@ -466,7 +466,7 @@ echo $_POST['native_location'];
 							</tr>
 							
 							<tr class="tbl_row">
-										<td width="120" class="tbl_column">Area of Specialization/Expertise  <span class="f_req">*</span></td>
+										<td width="120" class="tbl_column">Specialization/Expertise  <span class="f_req">*</span></td>
 											<td> 
 										<input type="text" name="area_#index#" tabindex="6"  id="area_#index#"  class="span8" />
 										<label for="reg_city" generated="true" class="error" id="area_Err_#index#"></label>										
@@ -558,7 +558,7 @@ echo $_POST['certification'];
 						<tr class="tbl_row">
 										<td width="120" class="tbl_column">Rate Technical Skills <span class="f_req"></span></td>
 										<td>
-<ul class="ratingList"> 
+<ul class="ratingList">
 <?php
 $_from = $_smarty_tpl->tpl_vars['tsData']->value;
 if (!is_array($_from) && !is_object($_from)) {
@@ -580,7 +580,7 @@ echo $_smarty_tpl->tpl_vars['ts_data']->key;
 echo $_smarty_tpl->tpl_vars['tsrData']->value[$_smarty_tpl->tpl_vars['ts_data']->key];
 } else {
 echo $_smarty_tpl->tpl_vars['tsData']->value[$_smarty_tpl->tpl_vars['ts_data']->key];
-}?>"  class="rating" data-fractions="2"/> <span class="label label-info dn"><?php if ($_POST) {
+}?>"  class="rating" data-fractions="1"/> <span class="label label-info dn"><?php if ($_POST) {
 echo $_smarty_tpl->tpl_vars['tsrData']->value[$_smarty_tpl->tpl_vars['ts_data']->key];
 } else {
 echo $_smarty_tpl->tpl_vars['tsData']->value[$_smarty_tpl->tpl_vars['ts_data']->key];
@@ -649,7 +649,7 @@ echo $_smarty_tpl->tpl_vars['bs_data']->key;
 echo $_smarty_tpl->tpl_vars['bsrData']->value[$_smarty_tpl->tpl_vars['bs_data']->key];
 } else {
 echo $_smarty_tpl->tpl_vars['bsData']->value[$_smarty_tpl->tpl_vars['bs_data']->key];
-}?>"  class="rating" data-fractions="2"/> <span class="label label-info dn"><?php if ($_POST) {
+}?>"  class="rating" data-fractions="1"/> <span class="label label-info dn"><?php if ($_POST) {
 echo $_smarty_tpl->tpl_vars['bsrData']->value[$_smarty_tpl->tpl_vars['bs_data']->key];
 } else {
 echo $_smarty_tpl->tpl_vars['bsData']->value[$_smarty_tpl->tpl_vars['bs_data']->key];
