@@ -664,8 +664,23 @@ if(!empty($_POST)){
 					throw new Exception('Problem in getting the AH Details');
 				}
 				$row = $mysql->display_result($result);
+				$ah_id = $row['ah_id'];
 				$ah_email = $row['ah_email'];
 				$ac_name = ucwords($row['ac_name']);		
+				// call the next result
+				$mysql->next_query();
+			}catch(Exception $e){
+				echo 'Caught exception: ',  $e->getMessage(), "\n";
+			}
+			
+			// query to add req read details
+			$query = "CALL add_req_read('".$_SESSION['position_for']."','".$ah_id."','".$date."')";
+			try{
+				if(!$result = $mysql->execute_query($query)){
+					throw new Exception('Problem in adding req read');
+				}
+				$row = $mysql->display_result($result);
+				$req_read = $row['inserted_id'];		
 				// call the next result
 				$mysql->next_query();
 			}catch(Exception $e){
@@ -772,18 +787,24 @@ if(!empty($_POST)){
 			// Download the package files
 			$myTaskWatermark->download('uploads/snapshotwatermarked/');
 			
-			// send mail to account holder
-			$sub = "CTHiring -  Resume uploaded by " .$recruiter;
-			$msg = $content->get_create_resume_mail($_POST,$client_autoresume,$position_autoresume,$recruiter,$recruiter_email,$ac_name,$ah_email);
-			$mailer->send_mail($sub,$msg,$recruiter,$recruiter_email,$ac_name,$ah_email);
+			if(!empty($req_read)){
+				// send mail to account holder
+				$sub = "CTHiring -  Resume uploaded by " .$recruiter;
+				$msg = $content->get_create_resume_mail($_POST,$client_autoresume,$position_autoresume,$recruiter,$recruiter_email,$ac_name,$ah_email);
+				$mailer->send_mail($sub,$msg,$recruiter,$recruiter_email,$ac_name,$ah_email);
+				$successfull = '1';
+			}
 			
 			//include('vendor/ilovepdf-php-1.1.5/samples/merge_basic.php');
 			// unset the sessions
 			unset($_SESSION['position_for']);
 			unset($_SESSION['resume_doc']);
 			unset($_SESSION['clients_id']);
-			// header('Location: ../resume?action=created&download='.$snap_file_name.'_'.date('d-m-Y').'.pdf');
-			header('Location: ../resume?action=created');
+			
+			if($successfull == '1'){
+				// header('Location: ../resume?action=created&download='.$snap_file_name.'_'.date('d-m-Y').'.pdf');
+				header('Location: ../resume?action=created');
+			}
 		} 
 		}else{
 				$msg = "Resume with same email address and mobile no. already exists";
