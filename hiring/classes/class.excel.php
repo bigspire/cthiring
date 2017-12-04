@@ -147,7 +147,7 @@ class libExcel{
 			
 			
 			// iterate the multiple rows
-			for($i = 6; $i <= $total+4; $i++){
+			for($i = 8; $i <= $total+7; $i++){
 				for($j = 0; $j < $field_count; $j++){
 					$this->objPHPExcel->getActiveSheet()->setCellValue($col[$j] . $i, strip_tags($data[$k][$field[$j]]));
 				}

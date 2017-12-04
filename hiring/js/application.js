@@ -85,14 +85,17 @@ $(document).ready(function() {
 		//gebo_datatbles.dt_e();
 	});
 	
+
+
 	//* calendar
 	gebo_datatbles = {
 		dt_a: function() {
 			$('#dt_a').dataTable({
-              
+               "ordering": false,
 			   "sDom": "<'row'<'span6'<'dt_actions'>1><'span12'f>r>t<'row'<'span6'><'span6'p>>",
 				"order": [[ 3, "desc" ]],
 				"iDisplayLength": 5,
+				"aaSorting": [],
 				// "info":     false,
                 "sPaginationType": "bootstrap_alt",
                 "oLanguage": {
@@ -105,7 +108,8 @@ $(document).ready(function() {
                 "sDom": "<'row'<'span6'<'dt_actions'>1><'span12'f>r>t<'row'<'span6'><'span6'p>>",
 				"order": [[ 3, "desc" ]],
 				"iDisplayLength": 5,
-
+				 "ordering": false,
+				"aaSorting": [],
 				// "info":     false,
                 "sPaginationType": "bootstrap_alt",
                 "oLanguage": {
@@ -116,9 +120,10 @@ $(document).ready(function() {
 		dt_k: function() {
 			$('#dt_k').dataTable({
                 "sDom": "<'row'<'span6'<'dt_actions'>1><'span12'f>r>t<'row'<'span6'><'span6'p>>",
-				"order": [[ 3, "desc" ]],
 				// "info":     false,
 				"iDisplayLength": 5,
+				 "ordering": false,
+				  "aaSorting": [],
 				"bFilter": false,
                 "sPaginationType": "bootstrap_alt",
                 "oLanguage": {

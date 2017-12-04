@@ -204,28 +204,25 @@
 							<table class="table table-striped table-bordered"  id="dt_k">
 								<thead class="">
 									<tr>
-									<th  width="140" class="optional">Date</th>
+									<th  width="160" class="optional">Date</th>
 									<th  width="100" class="optional">Session</th>
-										<th width="170" class=""  style="text-align:center">CTC (in Lacs)</th>
+										<th width="170" class=""  style="text-align:center">CTC (₹)</th>
 										<th width="140"  class="optional"   style="text-align:center">CV Target</th>
 										<th width="160" class="optional"   style="text-align:center">CV Submitted</th> 
 										<th width="120" class="optional"   style="text-align:center">CV Sent</th> 
-										<th  width="170"  style="text-align:center">Productivity</th>
+										<th  width="170" class=""  style="text-align:center">Productivity</th>
 									</tr>
 								</thead>
 								<tbody class="">
 								
 								
-							
-
-
 
 	
 		<?php foreach($task_plan_data as $key =>  $tsk_data): ?>
 								<tr>
 									<td><?php echo $this->Functions->format_date($tsk_data['TaskPlan']['task_date']);?></td>
 									<td><?php echo $this->Functions->get_session($tsk_data['TaskPlan']['session']);?></td>
-									<td style="text-align:center"><?php echo $ctc_count_ar[$key];?></td>
+									<td style="text-align:center"><?php echo $ctc_count_ar[$key];?> Lacs</td>
 									<td style="text-align:center" ><?php echo $resume_count_elig[$key];?></td>
 									<td style="text-align:center" ><?php echo $resume_upload[$key];?></td>
 									<td style="text-align:center" ><?php echo $resume_sent[$key];?></td>
@@ -282,16 +279,16 @@
 									</tr>
 									
 									<tr>
-										<td class="optional">Business Value (in Lacs)</td>
-										<td style="text-align:center" class="optional">₹<?php echo $BUSINESS_VALUE_MOP_COUNT; ?></td>
+										<td class="optional">Business Value (₹)</td>
+										<td style="text-align:center" class="optional"><?php echo $BUSINESS_VALUE_MOP_COUNT; ?>  Lacs</td>
 										<td  class="essential persist">% of Final Interview Candidates</td>
 										<td style="text-align:center" class="optional"><?php echo $INTERVIEW_MOP_PERCENT_COUNT; ?></td>
 									</tr>
 									<tr>
 										<td class="optional">Avg Lead Time for Billing (Days)</td>
 										<td style="text-align:center" class="optional">-</td>
-										<td  class="essential persist">Billing Value (in Lacs)</td>
-										<td style="text-align:center" class="optional">₹<?php echo $BILLED_AMT_TAB_COUNT ? (int)$BILLED_AMT_TAB_COUNT  : 0;?></td>
+										<td  class="essential persist">Billing Value (₹)</td>
+										<td style="text-align:center" class="optional"><?php echo $BILLED_AMT_TAB_COUNT ? (int)$BILLED_AMT_TAB_COUNT  : 0;?> Lacs</td>
 									</tr>
 									<tr>
 										<th class="optional">Business Conversion</th>

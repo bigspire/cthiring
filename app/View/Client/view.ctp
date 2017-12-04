@@ -18,7 +18,7 @@
                                     <a href="<?php echo $this->webroot;?>home/"><i class="icon-home"></i></a>
                                 </li>
                                 <li>
-                                    <a href="<?php echo $this->webroot;?>client/">Clients</a>
+                                    <a href="<?php echo $this->webroot;?>client/index/<?php echo $this->request->params['pass'][3];?>">Clients</a>
                                 </li>
                             
                                 <li>
@@ -37,7 +37,7 @@
 							<?php endif; ?>
 							
 							   <?php if($create_position == '1' && $this->Session->read('USER.Login.roles_id') == '34'):?>
-	<a href="<?php echo $this->webroot;?>position/add/<?php echo $this->request->params['pass'][0];?>" class="sepV_a jsRedirect" title="Add Client">
+	<a href="<?php echo $this->webroot;?>position/add/<?php echo $this->request->params['pass'][0];?>" class="sepV_a jsRedirect" title="Add Position">
 							<input value="Add Position" type="button" class="btn btn-info"></a>		
 							<?php endif; ?>
 												  
@@ -102,7 +102,7 @@
 									
 									<tr>
 										
-										<td class="tbl_column">Revision Remarks</td>
+										<th class="tbl_column">Revision Remarks</th>
 										<td><?php echo $client_data['Client']['remarks'];?></td>
 											
 									</tr>
@@ -192,7 +192,7 @@
 								<div class="tabbable">
 									<div class="heading">
 										<ul class="nav nav-tabs">
-								<li class="active"><a href="#mbox_inbox" data-toggle="tab"><i class="splashy-group_blue"></i>  Client Contacts <span class="label label-info"> <?php echo count($contact_data);?></span></a></li>											
+								<li class="active"><a href="#mbox_inbox" data-toggle="tab"><i class="splashy-group_blue"></i>  Client Contacts <span class="label label-success"> <?php echo count($contact_data);?></span></a></li>											
 										<?php if($client_data['Client']['status'] == '1'):?>
 											<li class=""><a href="#mbox_inbox2" class="tabChange" data-toggle="tab"><i class="splashy-documents_okay"></i>  Client Requirements <span class="label label-info"><?php echo count($position_data);?> </span></a></li>											
 										<?php endif; ?>
@@ -289,6 +289,8 @@
 	<div class="form-actions">
 		<?php if($client_data['Client']['is_approve'] == 'W'  &&  $this->request->params['pass'][3] == 'pending'):?>
 <a class="iframeBox unreadLink" rel="tooltip" title="Approve Client" href="<?php echo $this->webroot;?>client/remark/<?php echo $client_data['Client']['id'];?>/<?php echo $this->request->params['pass'][1];?>/<?php echo $client_data['Client']['created_by'];?>/A/" val="40_60"><input type="button" value="Approve" class="btn btn btn-success"/></a>
+<?php endif; ?>
+<?php if($client_data['Client']['is_approve'] == 'W'  &&  $this->request->params['pass'][3] == 'pending' && $client_data['Client']['modified_date'] == '' ):?>
 <a class="iframeBox unreadLink" rel="tooltip" title="Reject Client" href="<?php echo $this->webroot;?>client/remark/<?php echo $client_data['Client']['id'];?>/<?php echo $this->request->params['pass'][1];?>/<?php echo $client_data['Client']['created_by'];?>/R/" val="40_60"><input type="button" value="Reject" class="btn btn btn-danger"/></a>
 <a href="<?php echo $this->webroot;?>client/index/pending/" rel="tooltip" title="Cancel and Back to Clients"  class="jsRedirect"><button class="btn">Cancel</button></a>
 <?php else: ?>

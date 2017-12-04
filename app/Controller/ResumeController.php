@@ -255,7 +255,7 @@ class ResumeController extends AppController {
 			$data = $this->Resume->find('all', array('fields' => $fields,'conditions' => 
 			array('Resume.is_deleted' => 'N', $date_cond,$keyCond,$minCond,	$maxCond,$int_cond,$empCond,$branchCond,$statusCond,$repStatusCond,$teamCond,$specCond), 
 			'order' => array('Resume.created_date' => 'desc'), 'group' => array('Resume.id'), 'joins' => $options));
-			$this->Excel->generate('resumes', $data, $data, 'Report', 'CV Details','',$this->webroot);
+			$this->Excel->generate('resumes', $data, $data, 'Report', 'ResumeDetails'.date('dmy'),'',$this->webroot);
 		}
 		$this->paginate = array('fields' => $fields,'limit' => '25','conditions' => array('Resume.is_deleted' => 'N', $date_cond,$keyCond,$minCond,
 		$maxCond,$int_cond,$empCond,$branchCond,$statusCond,$repStatusCond,$teamCond,$specCond),
@@ -391,13 +391,28 @@ class ResumeController extends AppController {
 				'alias' => 'Position',					
 				'type' => 'LEFT',
 				'conditions' => array('`Position`.`id` = `ReqResume`.`requirements_id`')
+			),			
+			array(
+				'table' => 'res_language',
+				'alias' => 'ResLanguage',					
+				'type' => 'LEFT',
+				'conditions' => array('`ResLanguage`.`resume_id` = `Resume`.`id`')
+			),
+			
+			array(
+				'table' => 'language',
+				'alias' => 'Language',					
+				'type' => 'LEFT',
+				'conditions' => array('`Language`.`id` = `ResLanguage`.`language_id`')
 			)
 		);
 		$fields = array('id','ReqResume.id','first_name','last_name','email_id','mobile','mobile2','total_exp','education','present_employer',
 		'ResLocation.location', 'present_ctc','expected_ctc', 'Creator.first_name','created_date','notice_period',
 		'Resume.modified_date','ReqResume.stage_title','ReqResume.status_title','Designation.designation','present_ctc_type','expected_ctc_type',
 		'gender','marital_status','family','present_location','native_location', 'dob','consultant_assess','interview_avail','ResDoc.resume',
-		'Position.job_title','Resume.skills','Resume.created_by','Resume.tech_skill_rate','Resume.behav_skill_rate','Position.id','Position.resume_type');
+		'Position.job_title','Resume.skills','Resume.created_by','Resume.tech_skill_rate','Resume.behav_skill_rate','Position.id','Position.resume_type','certification',
+		'personality','achievement','about_company','candidate_brief','credential_shortlisting','vital_info_interview','relevant_exposure','nationality',
+		"group_concat(Language.language SEPARATOR ', ') language",'hobby','tech_expert','address1');
 		$data2 = $this->Resume->find('all', array('fields' => $fields,'conditions' => array('Resume.id' => $id),
 		'order' => array('ReqResume.id' => 'desc'),'joins' => $options));
 		$this->set('resume_data', $data2[0]);		
@@ -409,8 +424,14 @@ class ResumeController extends AppController {
 		// get resume experience details
 		$this->loadModel('ResExp');
 		$data = $this->ResExp->find('all', array('conditions' => array('resume_id' => $id), 'fields' => array('experience','work_location','skills',
-		'company','other_info','Designation.designation'), 'order' => array('ResExp.id' => 'desc')));
+		'company','other_info','Designation.designation','from_month','from_year','to_month','to_year','company_profile',
+		'key_achieve','key_resp','reporting'), 'order' => array('ResExp.id' => 'desc')));
 		$this->set('exp_data', $data);
+		// get resume experience details
+		$this->loadModel('ResTraining');
+		$data = $this->ResTraining->find('all', array('conditions' => array('resume_id' => $id), 'fields' => array('train_desc','train_year','prog_title',
+		'location'), 'order' => array('train_year' => 'desc')));
+		$this->set('train_data', $data);
 		// get interview details
 		$this->loadModel('ResInterview');		
 		$int_data = $this->ResInterview->find('all', array('fields' => array('int_date','stage_title','status_title',

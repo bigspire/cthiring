@@ -34,7 +34,7 @@ class ClientController extends AppController {
 	public function index($status){ 
 		if($this->request->is('post')){
 			$url_vars = $this->Functions->create_url(array('keyword','from','to','status','emp_id','apr_status'),'Client'); 			
-			if($rec_status == 'pending'){
+			if($status == 'pending'){
 				$pending = 'index/pending/';
 			}
 			$this->redirect('/client/'.$pending.'?srch_status=1&'.$url_vars);
@@ -47,7 +47,6 @@ class ClientController extends AppController {
 			$date_cond = array('or' => array("DATE_FORMAT(Client.created_date, '%Y-%m-%d') between ? and ?" => 
 						array($this->Functions->format_date_save($start), $this->Functions->format_date_save($end))));
 		}
-		
 		// set the approval status
 		$this->set('approveStatus', array('W' => 'Awaiting Approval', 'R' => 'Rejected'));
 		
@@ -73,7 +72,6 @@ class ClientController extends AppController {
 			$status = $this->request->query['status'] == '2' ?  '0' : $this->request->query['status'];
 			$stCond = array('Client.status' => $status);
 		}
-		
 		
 		// for director and BDH		
 		if($this->Session->read('USER.Login.roles_id') == '33' || $this->Session->read('USER.Login.roles_id') == '35'){
@@ -237,7 +235,8 @@ class ClientController extends AppController {
 	
 		
 		// set the page title
-		$this->set('title_for_layout', 'Clients - Manage Hiring');	
+		$view_title = $this->Functions->get_view_type($this->request->params['pass'][0]);
+		$this->set('title_for_layout', $view_title.' Clients - Manage Hiring');	
 		$fields = array('id','client_name','ResLocation.location','created_date',
 		'Creator.first_name','status',"group_concat(distinct CAH.first_name separator ', ') account_holder", 'city',
 		'count(distinct Position.id) no_pos','count(distinct CON.id) no_contact', 'modified_date', 'Client.created_by','Client.is_approve',
@@ -264,7 +263,7 @@ class ClientController extends AppController {
 					// echo '<pre>'; print_r($data);die;
 				}
 			}			
-			$this->Excel->generate('clients', $data, $data, 'Client Report', 'ClientDetails'.date('ddmmyy'));
+			$this->Excel->generate('clients', $data, $data, 'Client Report', 'ClientDetails'.date('dmy'));
 		}
 		$this->paginate = array('fields' => $fields,'limit' => '25','conditions' => array($keyCond,$date_cond,$stCond,
 		$empCond,$approveCond,$teamCond),
@@ -888,7 +887,7 @@ class ClientController extends AppController {
 						
 						$from = ucfirst($this->Session->read('USER.Login.first_name')).' '.ucfirst($this->Session->read('USER.Login.last_name'));
 						// get the creator data
-						$creator_data = $this->Client->find('all', array('conditions' => array('Client.id' => $id), 'fields' => array('Client.client_name', 'Client.city','Creator.first_name','Creator.last_name', 'Creator.email_id')));
+						$creator_data = $this->Client->find('all', array('conditions' => array('Client.id' => $id), 'fields' => array('Client.client_name', 'Client.city','Creator.id','Creator.first_name','Creator.last_name', 'Creator.email_id',  'Client.modified_date')));
 						// get account holder name
 						$this->loadModel('ClientAccountHolder');
 						
@@ -927,6 +926,27 @@ class ClientController extends AppController {
 						$this->Client->saveField('is_approve', $status);
 						$this->Client->saveField('status', $status == 'A' ? 0 : 2);
 						
+						// If approved and first time add only
+						if($status == 'A' && $creator_data[0]['Client']['modified_date'] == ''){
+							// Send mail to all BDs (Biz. head, branch head, biz. dev. executive & director)
+							$bd_user = $this->Client->Creator->find('all', array('conditions' => array('Creator.roles_id' => array('39','36','38','33')),
+							'fields' => array('Creator.id', 'Creator.first_name','Creator.last_name', 'Creator.email_id')));
+							foreach($bd_user as $user){
+								$vars = array('to_name' =>  ucwords($user['Creator']['first_name'].' '.$user['Creator']['last_name']), 'from_name' => $from, 'client_name' => $creator_data[0]['Client']['client_name'], 
+								'city' => $creator_data[0]['Client']['city'],'account_holder' => $ac_holder[0][0]['account_holder'], 'approve_msg' => $approve_msg);
+								// filter the created user
+								if($user['Creator']['id'] != $creator_data[0]['Creator']['id']){
+									// notify all						
+									if(!$this->send_email('Manage Hiring - New Client '.$st_msg.' by '.ucfirst($this->Session->read('USER.Login.first_name')).' '.ucfirst($this->Session->read('USER.Login.last_name')), 'inform_client', 'noreply@managehiring.com', $user['Creator']['email_id'],$vars)){		
+										// show the msg.								
+										$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Problem in sending the mail to bd user...', 'default', array('class' => 'alert alert-error'));				
+									}else{
+										// $this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Client '.$approve_msg.' Successfully.', 'default', array('class' => 'alert alert-success'));
+									}
+								}
+							}
+						}
+						
 						$this->set('form_status', '1');		
 					}else{
 						$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Problem in saving the data.', 'default', array('class' => 'alert alert-error'));	
@@ -938,8 +958,9 @@ class ClientController extends AppController {
 	}
 	
 	/* auto complete search */	
-	public function search(){ 
+	public function search($para1){ 
 		$this->layout = false;		
+		$approve_cond = $para1 == 'pending' ? array('is_approve' => 'W','Client.status' => '2') : array('is_approve' => 'A','Client.status' => '0');
 		$q = trim(Sanitize::escape($_GET['q']));	
 		if(!empty($q)){
 			// execute only when the search keywork has value		
@@ -947,7 +968,7 @@ class ClientController extends AppController {
 			$this->Client->unBindModel(array('belongsTo' => array('Creator')));
 			$data = $this->Client->find('all', array('fields' => array('Client.client_name','ResLocation.location'),
 			'group' => array('Client.client_name','ResLocation.location'), 'conditions' => 	array("OR" => array ('Client.client_name like' => '%'.$q.'%',
-			'ResLocation.location like' => '%'.$q.'%'), 'AND' => array('Client.is_deleted' => 'N', 'is_approve' => 'A','Client.status' => '0', ))));		
+			'ResLocation.location like' => '%'.$q.'%'), 'AND' => array('Client.is_deleted' => 'N', $approve_cond))));		
 			$this->set('results', $data);
 		}
     }

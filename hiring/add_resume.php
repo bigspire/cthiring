@@ -35,10 +35,9 @@ if($_SESSION['extraction'] == '' || $_POST['RESUME_DATA'] == ''){
 	$smarty->assign('RESUME_DATA', $_POST['RESUME_DATA']);
 	$resume_data = $_POST['RESUME_DATA'];
 }
-
 // extract the mobile
 $string = preg_replace("#[^\d{12}\s]#",'',$resume_data);
-preg_match_all("#(\d{12})#", "$string", $found);	
+preg_match_all("#(\d{12}|\d{11}|\d{10})#", $string, $found);	
 foreach($found as $key => $phone_number) {
 	  if(strlen($phone_number[$key]) >= 10){ 
 		$mobile = $phone_number[$key];
@@ -64,9 +63,9 @@ foreach($string as $mail){
 // extract the candidate name
 foreach($string as $name_key => $name){
 	$name = trim($name);
-	if($name != 'Name' && $name != 'CURRICULUM' && $name != 'VITAE' && $name != 'RESUME' && $name != ''
+	if($name != 'Name' && $name != 'Name:' && $name != 'vitae' && $name != 'CURRICULUM' && $name != 'Curriculum' && $name != 'Curriculam' && $name != 'Vitae' && $name != 'VITAE' && $name != 'RESUME' && $name != ''
 		&& $name != 'Mailing' && $name != 'Address' && $name != ':' && $name != '' && !is_numeric($name)){
-		break;
+			break;
 	}else{
 		continue;
 	}
@@ -647,6 +646,7 @@ if(!empty($_POST)){
 			}
 			$row_user = $mysql->display_result($result);
 			$recruiter = $row_user['first_name'].' '.$row_user['last_name'];
+			$getid = $resume_id;
 				// free the memory
 			$mysql->clear_result($result);
 			// call the next result
@@ -683,7 +683,7 @@ if(!empty($_POST)){
 			// Create a new task
 			$myTaskConvertOffice = $ilovepdf->newTask('officepdf');
 			// Add files to task for upload
-			// $resume_path = dirname(__FILE__).'/uploads/resume/'.$_SESSION['resume_doc'];
+			$resume_path = dirname(__FILE__).'/uploads/resume/'.$_SESSION['resume_doc'];
 			$file1 = $myTaskConvertOffice->addFile($resume_path);
 			$myTaskConvertOffice->setOutputFilename($snap_file_name);
 			// Execute the task

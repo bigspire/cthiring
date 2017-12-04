@@ -19,10 +19,10 @@
       <tr>
         <td width="490" valign="top"  style="padding:0 20px;">
 		<h1 style="font:bold 15px Arial, Helvetica, sans-serif; color:#676767; margin:0 0 10px 0;">Dear <?php echo $to_name?>,</h1>
-          <p style="font:13px Arial, Helvetica, sans-serif; color:#676767; margin:0;">The following position is <?php echo $approve_msg;?> by <?php echo $from_name;?>. 
+          <p style="font:13px Arial, Helvetica, sans-serif; color:#676767; margin:0;">The following position is <?php echo strtolower($approve_msg);?> by <?php echo $from_name;?>. 
 		  
-		  <?php if($approve_msg == 'approved'):?>
-		  Please login to manage hiring and start sending the resume for this requirement.
+		  <?php if(strtolower($approve_msg) == 'approved'):?>
+		  Please login to manage hiring and start submitting resumes for this position.
 		  <?php endif; ?>
 		  </p><br />
 
@@ -35,9 +35,9 @@
 			
 			
 		<tr style="background:#f5f4f4;">
-               <td   width="100">Employee Name</td>
+               <td   width="130">Employee</td>
               <td  style="color:#2a2a2a;"><?php echo $from_name; ?></td>
-			   <td   width="100">Client Name</td>
+			   <td   width="130">Client Name</td>
               <td  style="color:#2a2a2a;"><?php echo $client_name; ?></td>
            
             </tr>
@@ -57,7 +57,7 @@
 		    <tr style="background:#f5f4f4;">
 			   <td>Team Member(s)</td>
               <td  style="color:#2a2a2a;"><?php echo $team_member; ?></td>
-				<td>No. of Openings</td>
+				<td>Total Openings</td>
 				<td style="color:#2a2a2a;"><?php echo $no_opening; ?></td>
              
             </tr>

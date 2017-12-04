@@ -17,7 +17,7 @@
                                     <a href="<?php echo $this->webroot;?>home/"><i class="icon-home"></i></a>
                                 </li>
                                 <li>
-                                    <a href="<?php echo $this->webroot;?>position/">Positions</a>
+                                    <a href="<?php echo $this->webroot;?>position/index/<?php echo $this->request->params['pass'][2];?>">Positions</a>
                                 </li>
                             
                                 <li>
@@ -222,9 +222,21 @@
 						$team_member = explode(',', $position_data[0]['team_member2']);
 						$team_req = explode(',', $position_data[0]['team_req']);
 						$team_mem_id = explode(',', $position_data[0]['team_mem_id']);			
-						$mem_apr = explode(',', $position_data[0]['mem_approve']);
+						$mem_apr = explode('|', $position_data[0]['mem_approve']);
 						
-						foreach($team_member as $key => $member):
+						$mem_count = count($mem_apr);
+						$k = 0;
+						while($k <= $mem_count){
+							$mem_apr2 = explode(':', $mem_apr[$k]);
+							if(!in_array($mem_apr2[0], $mem_data)){
+								$mem_data[] = $mem_apr2[0];							
+								$mem_data_st[] = $mem_apr2[1];
+							}
+							$k++;
+						}
+						
+						// print_r($mem_apr);
+						foreach($team_member as $key => $member): 
 						
 						$chk = $this->request->params['pass'][2] == 'pending'  ? 'W' : 'A';
 						
@@ -240,7 +252,7 @@
 					endif; ?>
 					
 						<?php 
-					if($mem_apr[$key] == 'W'):
+					if($mem_data_st[$key] == 'W'):
 					$approval_str = '(Awaiting Approval)';
 					else:
 					$approval_str = '';
@@ -557,7 +569,7 @@
 													
 													<th   style="text-align:center" width="50" class="upload_row table_checkbox">
 													<?php  // if($resume['ReqResume']['stage_title'] == 'Validation - Account Holder' && $resume['ReqResume']['status_title'] == 'Validated'):?>
-													<input type="checkbox" name="select_rows" rel="cvSel" class="select_rows">
+													<input type="checkbox" name="select_rows" rel="cvSel" class="select_rows multi-upload">
 													<?php  // endif; ?>
 													</th>
 														<th width="80">Code</th>
@@ -579,7 +591,7 @@
 													
 													
 														<tr class="dn status_row">
-										<th   style="text-align:center" width="50" class="table_checkbox"><input type="checkbox"  name="select_rows" rel="intSel" class="select_rows"></th>
+										<th   style="text-align:center" width="50" class="table_checkbox"><input type="checkbox"  name="select_rows" rel="intSel" class="select_rows multi-inter"></th>
 
 														<th width="250">Candidate Name</th>
 														<th style="text-align:center">Screening Status</th>
@@ -607,7 +619,8 @@
 													
 													<tr class="upload_row <?php echo $row_type;?>">
 							<th  class="upload_row" style="text-align:center" width="50">
-							<?php if($resume['ReqResume']['stage_title'] == 'Validation - Account Holder' && $resume['ReqResume']['status_title'] == 'Validated'):?>	
+							<?php if($resume['ReqResume']['stage_title'] == 'Validation - Account Holder' && $resume['ReqResume']['status_title'] == 'Validated'):
+							$validate_checkbox = 1;?>	
 							<input type="checkbox" name="cv_row_sel[]" value="<?php echo $resume['Resume']['id']; ?>-<?php echo $this->request->params['pass'][0];?>-<?php echo $resume['ReqResume']['id']; ?>" class="selRow cvSel">
 							<?php else:?>
 							<input type="checkbox" name="row_sel" disabled class="">
@@ -1221,7 +1234,8 @@ $ac_reject =  $this->Functions->get_req_tab_count($resume_data, 'rejected','','v
 								</div>
 							</div>
 							
-							
+							<input type="hidden" value="<?php echo $schedule_interview?>" id="multi-inter">
+							<input type="hidden" value="<?php echo $validate_checkbox?>" id="multi-validate">
 							
 						</div>
 					</div>

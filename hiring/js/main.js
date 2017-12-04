@@ -479,7 +479,8 @@ $(document).ready(function() {
 	if(jQuery('#SearchKeywords').length > 0){ 
 		$('#SearchKeywords').ready(function () {
 			webroot = $("#webroot").attr('value');
-			jQuery('#SearchText').autocomplete(webroot+'search/', {
+			var para = $("#para1").attr('value') != '' ? $("#para1").attr('value') : '';
+			jQuery('#SearchText').autocomplete(webroot+'search/'+para, {
 			width: 227,
 			selectFirst: true			
 			});	
@@ -1301,6 +1302,20 @@ $(document).ready(function() {
 		$('#'+option_id).append(html);
 
 	});
+	
+	/* disable the multi check box in view position */
+	if($('#multi-validate').length > 0){
+		if($('#multi-validate').val() != '1'){
+			$('.multi-upload').attr("disabled", true);
+		}
+	}
+	
+	/* disable the multi check box in view position */
+	if($('#multi-inter').length > 0){
+		if($('#multi-inter').val() != '1'){
+			$('.multi-inter').attr("disabled", true);
+		}
+	}
 	
 	 /* function to update max drop down */
 	if($('.minDrop').length > 0){ 

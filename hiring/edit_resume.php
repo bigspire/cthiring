@@ -783,7 +783,7 @@ if(!empty($_POST)){
 			// Create a new task
 			$myTaskConvertOffice = $ilovepdf->newTask('officepdf');
 			// Add files to task for upload
-			// $resume_path = dirname(__FILE__).'/uploads/resume/'.$_SESSION['resume_doc'];
+			$resume_path = dirname(__FILE__).'/uploads/resume/'.$_SESSION['resume_doc'];
 			$file1 = $myTaskConvertOffice->addFile($resume_path);
 			$myTaskConvertOffice->setOutputFilename($snap_file_name);
 			// Execute the task

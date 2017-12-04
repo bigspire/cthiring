@@ -985,8 +985,8 @@ ul.ratingList{margin:0px !important;}
 .wysiwygCls p{}
 .legendView{background-image:none !important;cursor:default !important;margin-bottom:0px !important;text-align:center !important;font-weight:bold;}
 .rating-symbol{font-size:15px !important;}
-.navbar .nav .active2 > a, .navbar .nav .active2 > a:hover{border-bottom:2px solid #f4f141 !important}
+.navbar .nav .active2 > a, .navbar .nav .active2 > a:hover{border-bottom:2px solid #f4f141 !important;margin:0px 5px;}
 .view_label{margin-top:5px}
 .viewLabelHead{font-weight:bold;}
-ul.statusLegend li{width:220px;float:left;list-style-type:none;margin:5px;height:20px;}
+ul.statusLegend li{width:220px;float:left;list-style-type:none;margin:3px;height:20px;}
 .bootstrap-tagsinput input{width:300px !important}

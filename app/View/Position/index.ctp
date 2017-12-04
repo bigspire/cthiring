@@ -100,10 +100,9 @@
 							
 							
 
-							
-														<label style="margin-top:18px;"><input type="submit" value="Submit" class="btn btn-gebo" /></label>
+				<label style="margin-top:18px;"><input type="submit" value="Submit" class="btn btn-gebo" /></label>
 
-							<label style="margin-top:18px;"><a class="jsRedirect" href="<?php echo $this->webroot;?>position/"><input value="Reset" type="button" class="btn"/></a></label>
+							<label style="margin-top:18px;"><a class="jsRedirect" href="<?php echo $this->webroot;?>position/index/<?php echo $this->request->params['pass'][0];?>"><input value="Reset" type="button" class="btn"/></a></label>
 
 							
 														</div>
@@ -130,8 +129,8 @@
 								<thead>
 									<tr>
 
-										<th width="210"><?php echo $this->Paginator->sort('job_title', 'Job Title', array('escape' => false, 'direction' => 'desc', 'rel' => 'tooltip', 'title' => 'Sort by Ascending or Descending'));?></th>										
-										<th width="200"><?php echo $this->Paginator->sort('Client.client_name', 'Client', array('escape' => false, 'direction' => 'desc', 'rel' => 'tooltip', 'title' => 'Sort by Ascending or Descending'));?></th>
+										<th width="180"><?php echo $this->Paginator->sort('job_title', 'Job Title', array('escape' => false, 'direction' => 'desc', 'rel' => 'tooltip', 'title' => 'Sort by Ascending or Descending'));?></th>										
+										<th width="180"><?php echo $this->Paginator->sort('Client.client_name', 'Client', array('escape' => false, 'direction' => 'desc', 'rel' => 'tooltip', 'title' => 'Sort by Ascending or Descending'));?></th>
 										<th width="120"  style="text-align:center"><?php echo $this->Paginator->sort('no_job', 'Total Openings', array('escape' => false, 'direction' => 'desc', 'rel' => 'tooltip', 'title' => 'Sort by Ascending or Descending'));?></th>
 										<th width="150"><?php echo $this->Paginator->sort('team_member', 'Recruiters', array('escape' => false, 'direction' => 'desc', 'rel' => 'tooltip', 'title' => 'Sort by Ascending or Descending'));?></th>
 										
@@ -139,8 +138,12 @@
 										<th width="65"  style="text-align:center">CVs</th>
 										<th width="65"  style="text-align:center">Joined</th>
 										<?php endif; ?>
-										<th width="100"  style="text-align:center"><?php echo $this->Paginator->sort('status', 'Status', array('escape' => false, 'direction' => 'desc', 'rel' => 'tooltip', 'title' => 'Sort by Ascending or Descending'));?></th>
-										<th width="95"><?php echo $this->Paginator->sort('Creator.first_name', 'Created By', array('escape' => false, 'direction' => 'desc', 'rel' => 'tooltip', 'title' => 'Sort by Ascending or Descending'));?></th>
+										<th width="120"  style="text-align:center"><?php echo $this->Paginator->sort('status', 'Status', array('escape' => false, 'direction' => 'desc', 'rel' => 'tooltip', 'title' => 'Sort by Ascending or Descending'));?></th>
+										<?php if($this->request->params['pass'][0] == 'pending'):?>
+										<th style="text-align:center" width="90">Pending</th>
+										<?php endif;?>
+										
+										<th width="120"><?php echo $this->Paginator->sort('Creator.first_name', 'Created By', array('escape' => false, 'direction' => 'desc', 'rel' => 'tooltip', 'title' => 'Sort by Ascending or Descending'));?></th>
 										<th width="75"><?php echo $this->Paginator->sort('created_date', 'Created', array('escape' => false, 'direction' => 'desc', 'rel' => 'tooltip', 'title' => 'Sort by Ascending or Descending'));?></th>
 										<th width="75"><?php echo $this->Paginator->sort('modified_date', 'Modified', array('escape' => false, 'direction' => 'desc', 'rel' => 'tooltip', 'title' => 'Sort by Ascending or Descending'));?></th>
 										<!--th width="60" style="text-align:center">Message</th-->
@@ -187,6 +190,14 @@
 						<?php endif; ?>
 						
 						</td>
+						
+									<?php if($this->request->params['pass'][0] == 'pending'):?>
+										<td style="text-align:center">										
+											<?php echo $this->Functions->time_diff($req['Position']['created_date'], 0); ?>											
+										</td>
+										<?php endif;?>
+										
+										
 						<td width=""><?php echo $req['Creator']['first_name'];?></td>
 						<td width=""><?php echo $this->Functions->format_date($req['Position']['created_date']);?></td>
 						<td width=""><?php echo $this->Functions->format_date($req['Position']['modified_date']);?></td>

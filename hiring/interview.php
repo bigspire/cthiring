@@ -176,7 +176,7 @@ try{
 		// function to print the excel header
       $excelObj->printHeader($header = array('Candidate Name','Position','Company','Account Holder','Interview Date','Stage','Status','Created By','Created') ,$col = array('A','B','C','D','E','F','G','H','I'));  
 		// function to print the excel data
-		$excelObj->printCell($data, $count,$col = array('A','B','C','D','E','F','G','H','I'), $field = array('candidate_name','position','company','ac_holder','interview_date','stage','status','created_by','created_date'),'Interview_'.$current_date);
+		$excelObj->printCell($data, $count,$col = array('A','B','C','D','E','F','G','H','I'), $field = array('candidate_name','position','company','ac_holder','interview_date','stage','status','created_by','created_date'),'InterviewDetails'.date('dmy'));
 	}	
 
 	// approve or reject validation

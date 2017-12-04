@@ -638,7 +638,7 @@ class FunctionsHelper extends AppHelper {
 
    
     /* function to get ctc type */
-   public function get_notice($val){
+   public function get_notice($val){ 
 		switch($val){
 			case '0':
 			$value = 'Immediate';

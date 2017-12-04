@@ -31,7 +31,7 @@
 								<div class="srch_buttons">
 								<a class="jsRedirect toggleSearch"  href="javascript:void(0)">
 							<input type="button" value="Search" class="btn btn-success"/></a>
-							{if !$ALERT_MSG && ($smarty.session.roles_id == '33' || $smarty.session.roles_id == '39')}
+							{if !$ALERT_MSG && ($smarty.session.roles_id == '33' || $smarty.session.roles_id == '35')}
 							<a href="interview.php?action=export&keyword={$keyword}&employee={$employee}&f_date={$f_date}&t_date={$t_date}&branch={$branch}&current_status={$current_status}" class="jsRedirect">
 							<button type="button" val="interview.php?action=export&keyword={$keyword}&employee={$employee}&f_date={$f_date}&t_date={$t_date}&branch={$branch}&current_status={$current_status}" name="export" class="btn btn-warning" >Export</button></a></a>							
 							{/if}

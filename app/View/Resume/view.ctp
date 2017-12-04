@@ -46,10 +46,13 @@
 							<div class="tabbable">
 									<div class="heading">
 								<ul class="nav nav-tabs">
-										<li class="active"><a class="restabChange" rel="position"  href="#mbox_Personal" data-toggle="tab"><i class="splashy-contact_blue"></i>  Personal </a></li>
-										<li class=""><a class="restabChange" rel="interview"  href="#mbox_Education" data-toggle="tab"><i class="splashy-document_letter_add"></i>  Education </a></li>
-										<li class=""><a class="restabChange" rel="interview"  href="#mbox_Experience" data-toggle="tab"><i class="splashy-folder_classic_stuffed_add"></i> Experience </a></li>
-										<li class=""><a class="restabChange" rel="interview"  href="#mbox_consultant" data-toggle="tab"><i class="splashy-contact_grey_edit"></i> Consultant Assessment </a></li>
+										<li class="active"><a class="" rel="position"  href="#mbox_Personal" data-toggle="tab"><i class="splashy-contact_blue"></i>  Personal </a></li>
+										<li class=""><a class="" rel="interview"  href="#mbox_Education" data-toggle="tab"><i class="splashy-document_letter_add"></i>  Education </a></li>
+										<li class=""><a class="" rel="interview"  href="#mbox_Experience" data-toggle="tab"><i class="splashy-folder_classic_stuffed_add"></i> Experience </a></li>
+										<?php  if($resume_data['Position']['resume_type'] == 'F'):?>
+										<li class=""><a class="" rel="interview"  href="#mbox_Train" data-toggle="tab"><i class="splashy-document_letter_add"></i> Training & Programmes</a></li>
+										<?php endif; ?>
+										<li class=""><a class="" rel="interview"  href="#mbox_consultant" data-toggle="tab"><i class="splashy-contact_grey_edit"></i> Consultant Assessment </a></li>
 								</ul>
 									</div>
 										
@@ -61,7 +64,7 @@
 									<div class="tab-content"  style="overflow:auto;max-height:300px;">
 										<div class="tab-pane active" id="mbox_Personal">
 																						
-							<div class="span4">
+							<div class="span5">
 							<table class="table table-bordered table-striped dataTable" style="margin-bottom:0">
 								<tbody>
 								<tr>
@@ -72,6 +75,16 @@
 										<td width="130" class="tbl_column">Candidate Name</td>
 										<td><?php echo ucwords(strtolower($resume_data['Resume']['first_name'].' '.$resume_data['Resume']['last_name']));?></td>	
 									</tr>
+										<tr>
+									<td  class="tbl_column" width="">Code</td>
+										<td><?php 
+										if($resume_data['Resume']['code']):
+										else:
+										echo $resume_data['Resume']['code'];
+										echo 'MH-'.$resume_data['Resume']['id'];
+										endif; ?></td>	
+									</tr>
+									
 									<tr class="">
 										<td width="120" class="tbl_column">Email</td>
 										<td><?php echo $this->Functions->get_format_text($resume_data['Resume']['email_id'], ';');?></td>	
@@ -80,6 +93,16 @@
 										<td width="120" class="tbl_column">Mobile</td>
 										<td><?php echo $this->Functions->get_format_text($resume_data['Resume']['mobile'], ',');?></td>	
 									</tr>
+									
+									<?php  if($resume_data['Position']['resume_type'] == 'F'):?>
+										<tr class="">
+										<td width="120" class="tbl_column">Landline</td>
+										<td><?php echo $resume_data['Resume']['mobile2'];?></td>	
+									</tr>
+									
+									<?php endif; ?>
+
+									
 									<tr>										
 										<td width="120" class="tbl_column">DOB</td>
 										<td><?php echo $this->Functions->format_date($resume_data['Resume']['dob']);?></td>	
@@ -95,15 +118,7 @@
 										<td><?php echo $this->Functions->show_exp_details($resume_data['Resume']['total_exp']);?></td>	
 									</tr>
 									
-								
-								<tr>
-										
-										<td class="tbl_column">Created By</td>
-										<td><?php echo $resume_data['Creator']['first_name'];?></td>
-											
-									</tr>
-									
-										<tr>
+									<tr>
 										
 										<td class="tbl_column">Resume</td>
 										<td>
@@ -120,38 +135,51 @@
 									
 									<tr>
 										
-										<td class="tbl_column">Last Modified</td>
-										<td><?php echo $this->Functions->format_date($resume_data['Resume']['modified_date']);?></td>
-											
-									</tr>
-									
-									
-										<tr>
-										
 										<td  class="tbl_column" width="120"><b>Current Status</b></td>
 										<td><?php echo $this->Functions->get_status_crisp($resume_data['ReqResume']['stage_title'],$resume_data['ReqResume']['status_title']);?></td>
 											
 									</tr>
 									
+									
+									<?php  if($resume_data['Position']['resume_type'] == 'F'):?>
+										
+										<tr class="">
+										<td width="120" class="tbl_column">Family (Dependants)</td>
+										<td><?php echo $resume_data['Resume']['family'];?></td>	
+									</tr>
+										<tr class="">
+										<td width="120" class="tbl_column">Nationality </td>
+										<td><?php echo ucfirst($resume_data['Resume']['nationality']);?></td>	
+									</tr>
+									<?php endif; ?>
+							
+									
+										
+								
+									
+										
+									
 								</tbody>
 							</table>
 							</div>
 
-							<div class="span8">
+							<div class="span7">
 							<table class="table table-bordered dataTable table-striped " style="margin-bottom:0">
 								<tbody>	
-									<tr>
-									<td  class="tbl_column" width="">Code</td>
-										<td><?php 
-										if($resume_data['Resume']['code']):
-										else:
-										echo $resume_data['Resume']['code'];
-										echo 'MH-'.$resume_data['Resume']['id'];
-										endif; ?></td>	
+								
+							<?php  if($resume_data['Position']['resume_type'] == 'F'):?>
+										
+										<tr class="">
+										<td width="160" class="tbl_column">Languages</td>
+										<td><?php echo $resume_data[0]['language'];?></td>	
 									</tr>
 									
+									<?php endif; ?>	
+								
+								
+								
 									<tr>
-										<td  class="" width="140">CTC</td>
+										<td  class="" width="160">CTC (Present & Expected)</td>
 										<td >
 										<?php echo $resume_data['Resume']['present_ctc'];?>
 										<?php echo $this->Functions->get_ctc_type($resume_data['Resume']['present_ctc_type']);?> - 
@@ -171,46 +199,25 @@
 										<td class="tbl_column">Marital Status</td>
 										<td><?php echo $this->Functions->check_marital($resume_data['Resume']['marital_status']);?></td>
 									</tr>
-									<tr>
-										<td class="tbl_column" width="140" style="width:140px">Family (Dependents) </td>
-										<td><?php echo $resume_data['Resume']['family'];?></td>
-									</tr>
 									<tr class="">
 										<td width="" class="tbl_column">Present Location</td>
-										<td><?php echo $resume_data['Resume']['present_location'];?></td>	
+										<td><?php echo ucfirst($resume_data['Resume']['present_location']);?></td>	
 									</tr>
 									<tr class="">
 										<td width="" class="tbl_column">Native Location</td>
-										<td><?php echo $resume_data['Resume']['native_location'];?></td>	
+										<td><?php echo ucfirst($resume_data['Resume']['native_location']);?></td>	
 									</tr>
-									
-									<?php if($resume_data['Resume']['education']):?>
-									
-										<tr>
+									<?php  if($resume_data['Position']['resume_type'] == 'F'):?>
 										
-										<td  class="tbl_column" width="120">Qualification</td>
-										<td><?php echo $resume_data['Resume']['education'];?></td>
-											
+										<tr class="">
+										<td width="120" class="tbl_column">Technical Expertise and Domain Expertise </td>
+										<td><?php echo ucwords(nl2br($resume_data['Resume']['tech_expert']));?></td>	
 									</tr>
-									
-									<tr>										
-										<td  class="" width="">Skills</td>
-										<td><?php echo $resume_data['Resume']['skills'];?></td>
-											
+									<tr class="">
+										<td width="120" class="tbl_column">Computer Skills	</td>
+										<td><?php echo ucwords(nl2br($resume_data['Resume']['skills']));?></td>	
 									</tr>
-									
-									<?php  endif; ?>	
-									
-									<?php if($resume_data['Resume']['present_employer']):?>
-									
-										<tr>
-										
-										<td class="tbl_column">Present Company</td>
-										<td><?php echo $resume_data['Resume']['present_employer'];?></td>
-									<?php endif; ?>	
-									</tr>
-									
-										<tr>
+									<tr>
 										
 										<?php  if($resume_data['Position']['resume_type'] == 'S'):
 										$res_type = 'Snapshot';
@@ -224,14 +231,60 @@
 										<?php  $date = $resume_data['Resume']['modified_date'] ? $resume_data['Resume']['modified_date'] : $resume_data['Resume']['created_date']; ?>
 
 <?php  if($resume_data['Position']['resume_type'] == 'F'):?>										
-<a class="notify" data-notify-time = '2000' data-notify-title="In Progress!" data-notify-message="Downloading Fully Formatted Resume... Please wait..."   href="<?php echo $this->webroot;?>resume/autoresume/<?php echo $res['ResDoc']['resume'];?>/<?php echo $res['Resume']['modified_date'] ? strtotime($res['Resume']['modified_date']) : strtotime($res['Resume']['created_date']);?>">Download Fully Formatted Resume</a>
+<a class="notify" data-notify-time = '2000' data-notify-title="In Progress!" data-notify-message="Downloading Fully Formatted Resume... Please wait..."   href="<?php echo $this->webroot;?>resume/autoresume/<?php echo $resume_data['ResDoc']['resume'];?>/<?php echo $resume_data['Resume']['modified_date'] ? strtotime($resume_data['Resume']['modified_date']) : strtotime($resume_data['Resume']['created_date']);?>">Download Fully Formatted Resume</a>
 <?php  elseif($resume_data['Position']['resume_type'] == 'S'):?>				
 <a class="notify" data-notify-time = '2000' data-notify-title="In Progress!" data-notify-message="Downloading Snapshot... Please wait..."  href="<?php echo $this->webroot;?>resume/profile_snapshot/<?php echo $resume_data['ResDoc']['resume']; ?>/<?php echo strtotime($date);?>/">Download Snapshot</a></td>
 <?php endif; ?>
 										</td>
 											
 									</tr>
+										<tr>
 										
+										<td class="tbl_column">Created By</td>
+										<td><?php echo $resume_data['Creator']['first_name'];?></td>
+											
+									</tr>		
+									<tr class="">
+										<td width="120" class="tbl_column">Address </td>
+										<td><?php echo ucwords($resume_data['Resume']['address1']);?></td>	
+									</tr>
+									<tr class="">
+										<td width="120" class="tbl_column">Hobbies </td>
+										<td><?php echo ucwords($resume_data['Resume']['hobby']);?></td>	
+									</tr>
+									
+									<?php endif; ?>	
+									
+									
+										
+									
+									
+									
+								
+									
+									<?php if($resume_data['Resume']['education']):?>
+									
+										<tr>
+										
+										<td  class="tbl_column" width="120">Qualification</td>
+										<td><?php echo $resume_data['Resume']['education'];?></td>
+											
+									</tr>
+									
+									
+									<?php  endif; ?>	
+									
+									<?php if($resume_data['Resume']['present_employer']):?>
+									
+										<tr>
+										
+										<td class="tbl_column">Present Company</td>
+										<td><?php echo $resume_data['Resume']['present_employer'];?></td>
+									<?php endif; ?>	
+									</tr>
+									
+									
+								
 									<tr>
 										
 										<td class="tbl_column">Created</td>
@@ -239,6 +292,12 @@
 											
 									</tr>
 									
+										<tr>
+										
+										<td class="tbl_column">Modified</td>
+										<td><?php echo $this->Functions->format_date($resume_data['Resume']['modified_date']);?></td>
+											
+									</tr>
 									
 									
 								
@@ -261,13 +320,19 @@
 									</tr>
 									<tr>
 										<td  class="tbl_column" width="120">Specialization</td>
-										<td><?php echo $edu['ResSpec']['spec']; ?></td>	
+										<td><?php echo ucwords($edu['ResSpec']['spec']); ?></td>	
 									</tr>	
 									<tr>
 										<td class="tbl_column">College</td>
-										<td><?php echo $edu['ResEdu']['college']; ?></td>
+										<td><?php echo ucwords($edu['ResEdu']['college']); ?></td>
 									</tr>
-								
+									
+									<?php  if($resume_data['Position']['resume_type'] == 'F'):?>
+									<tr>
+										<td class="tbl_column">Location</td>
+										<td><?php echo ucfirst($edu['ResEdu']['location']); ?></td>
+									</tr>
+									<?php endif; ?>
 								</tbody>
 							</table>
 							</div>
@@ -277,7 +342,7 @@
 								<tbody>
 										<tr>
 										<td class="tbl_column">University</td>
-										<td><?php echo $edu['ResEdu']['university']; ?></td>
+										<td><?php echo ucwords($edu['ResEdu']['university']); ?></td>
 									</tr>
 									<tr>
 										<td class="tbl_column">% of Marks / Grade </td>
@@ -310,22 +375,29 @@
 							<table class="table table-bordered table-striped dataTable" style="">
 								<tbody>
 									<tr>
-										<td  class="tbl_column" width="120">Designation </td>
-										<td><?php echo $exp['Designation']['designation']; ?></td>
+										<td  class="tbl_column" width="135">Designation </td>
+										<td><?php echo ucfirst($exp['Designation']['designation']); ?></td>
 									</tr>	
 									<tr>
 										<td class="tbl_column">Employment Period</td>
-										<td><?php echo $this->Functions->check_exp($exp['ResExp']['experience']); ?></td>
+										<td><?php echo  date('M', strtotime('2017-'.$exp['ResExp']['from_month'].'-'.'01')).', '.$exp['ResExp']['from_year'].' - '.date('M', strtotime('2017-'.$exp['ResExp']['to_month'].'-'.'01')).', '.$exp['ResExp']['to_year']; ?></td>
 									</tr>
-									<tr>
-										<td class="tbl_column">Specialization/Expertise</td>
-										<td><?php echo $exp['ResExp']['skills']; ?></td>
+										<tr>
+										<td class="tbl_column">Location of work</td>
+										<td><?php echo ucfirst($exp['ResExp']['work_location']); ?></td>
 									</tr>
 										<tr>
 										<td class="tbl_column">Company Name</td>
-										<td><?php echo $exp['ResExp']['company']; ?></td>	
+										<td><?php echo ucwords($exp['ResExp']['company']); ?></td>	
 									</tr>
 								
+								
+									<?php  if($resume_data['Position']['resume_type'] == 'F'):?>
+									<tr>
+										<td class="tbl_column">Company Profile</td>
+										<td><?php echo ucfirst($exp['ResExp']['company_profile']); ?></td>	
+									</tr>
+									<?php endif; ?>
 								   <!--	<tr>
 										<td class="tbl_column">CTC</td>
 										<td>5.6 - 8.6 Lacs</td>
@@ -342,23 +414,53 @@
 							<div class="span6">
 							<table class="table table-bordered  table-striped dataTable" style="">
 								<tbody>
-										<tr>
-										<td class="tbl_column">Current location of work</td>
-										<td><?php echo $exp['ResExp']['work_location']; ?></td>
+								
+									<tr>
+										<td class="tbl_column">Specialization/Expertise</td>
+										<td><?php echo ucwords($exp['ResExp']['skills']); ?></td>
 									</tr>
 									
+									
+									
 								
-								<!--	<tr>
+								<!--	
+								<tr>
 										<td class="tbl_column">Area of Specialization/Expertise</td>
 										<td>PHP, JAVA, .Net, Salesforce, Angular JS, Selenium</td>
-									</tr> -->
-							<!--	<tr>
+								</tr> 
+								-->
+								
+							    <!--
+									<tr>
 										<td  class="tbl_column" width="120">Notice Period</td>
 										<td>3 Months</td>
-									</tr>	-->
+									</tr>	
+								-->
+																		
+									
+									
+									
+									<?php  if($resume_data['Position']['resume_type'] == 'F'):?>
+									
+									<tr>
+										<td class="tbl_column">Key Responsibility </td>
+										<td><?php echo ucfirst($exp['ResExp']['key_resp']); ?></td>	
+									</tr>
+									
+										<tr>
+										<td class="tbl_column">Notable Achievements </td>
+										<td><?php echo ucfirst($exp['ResExp']['key_achieve']); ?></td>	
+									</tr>
+										<tr>
+										<td class="tbl_column">Reporting To </td>
+										<td><?php echo ucfirst($exp['ResExp']['reporting']); ?></td>	
+									</tr>
+									<?php endif; ?>
+									
+									
 									<tr>
 										<td  class="tbl_column" width="120">Other Vital Information (Position Specific)</td>
-										<td><?php echo $exp['ResExp']['other_info']; ?></td>
+										<td><?php echo ucfirst($exp['ResExp']['other_info']); ?></td>
 									</tr>
 									
 								</tbody>
@@ -366,15 +468,142 @@
 							</div>
 						</div>
 						<?php endforeach; ?>
+						
+							<?php  if($resume_data['Position']['resume_type'] == 'S'):?>
+						
+						 <div class="row-fluid" style="clear:left;margin-top:10px;">
+
+<div class="span6">
+		  <table class="table table-bordered dataTable" style="margin-bottom:0;">
+		  <tbody>
+		  <tr>
+			<td width="133" class="tbl_column">Project / Certification Details  <span class="f_req"></span></td>
+				<td> 
+						<?php echo ucfirst($resume_data['Resume']['certification']); ?>
+				</td>
+			</tr>
+		  </tbody>
+		  </table>
+		  </div>
+		  </div>
+		  <?php endif; ?>
+		  
 					 </div>
-		<div class="tab-pane" id="mbox_consultant">
-																						
+		
+			<?php  if($resume_data['Position']['resume_type'] == 'F'):?>
+		<div class="tab-pane" id="mbox_Train">
+						
+						<?php foreach($train_data as $key => $train): ?>
+						<?php $margin = $key != '0' ? 'margin-top:10px' :  '';?>
+						<div class="row-fluid" style="<?php echo $margin;?>">
 							<div class="span6">
+							<table class="table table-bordered table-striped dataTable" style="margin-bottom:0">
+								<tbody>
+									<tr>
+										<td  class="tbl_column" width="120">Year</td>
+										<td><?php echo $train['ResTraining']['train_year']; ?></td>
+									</tr>
+									<tr>
+										<td  class="tbl_column" width="120">Description</td>
+										<td><?php echo ucfirst($train['ResTraining']['train_desc']); ?></td>	
+									</tr>	
+									
+								
+								</tbody>
+							</table>
+							</div>
+                        					
+							<div class="span6">
+							<table class="table table-bordered  table-striped dataTable" style="margin-bottom:0">
+								<tbody>
+										<tr>
+										<td class="tbl_column">Program Title</td>
+										<td><?php echo ucwords($train['ResTraining']['prog_title']); ?></td>
+									</tr>
+									<tr>
+										<td class="tbl_column">Location </td>
+										<td><?php echo ucfirst($train['ResTraining']['location']); ?></td>
+									</tr>
+									
+									
+								</tbody>
+							</table>
+							</div>
+                    
+						</div>
+							<?php endforeach; ?>
+					
+					</div>
+							
+		<?php endif; ?>					
+		
+		<div class="tab-pane" id="mbox_consultant">
+		
+			<?php  if($resume_data['Position']['resume_type'] == 'F'):?>
+							
+				<div class="span6">
 							<table class="table table-bordered  dataTable" style="margin-bottom:0">
 								<tbody>
+								
+							
+									<tr  class="tbl_row">
+										<td width="150" class="tbl_column">Candidates Outlook on Company</td>
+										<td><?php echo ucfirst($resume_data['Resume']['about_company']); ?></td>	
+									</tr>
+									<tr  class="">
+										<td width="150" class="tbl_column">Candidates Personality</td>
+										<td><?php echo ucfirst($resume_data['Resume']['personality']); ?></td>	
+									</tr>
+									<tr  class="tbl_row">
+										<td width="150" class="tbl_column">Relevant Exposure</td>
+										<td><?php echo ucfirst($resume_data['Resume']['relevant_exposure']); ?></td>	
+									</tr>
+									<tr  class="">
+										<td width="150" class="tbl_column">Credentials considered for Shortlisting</td>
+										<td><?php echo ucfirst($resume_data['Resume']['credential_shortlisting']); ?></td>	
+									</tr>
+									<tr  class="tbl_row">
+										<td width="150" class="tbl_column">Any other vital inputs for the interview</td>
+										<td><?php echo ucfirst($resume_data['Resume']['vital_info_interview']); ?></td>	
+									</tr>
+								</tbody>	
+							</table>
+					</div>
+					<div class="span6">
+							<table class="table table-bordered  dataTable" style="margin-bottom:0">
+								<tbody>
+								
+							
+									<tr  class="tbl_row">
+										<td width="150" class="tbl_column">Interview Availability </td>
+										<td><?php echo ucfirst($resume_data['Resume']['interview_avail']); ?></td>	
+									</tr>
+									
+										<tr  class="">
+										<td width="150" class="tbl_column">Achievements</td>
+										<td><?php echo ucfirst($resume_data['Resume']['achievement']); ?></td>	
+									</tr>
+									<tr  class="tbl_row">
+										<td width="150" class="tbl_column">Candidate Brief</td>
+										<td><?php echo ucfirst($resume_data['Resume']['candidate_brief']); ?></td>	
+									</tr>
+									
+									
+								</tbody>	
+							</table>
+					</div>
+					
+					
+			<?php else: ?>
+							
+			<div class="span6">
+							<table class="table table-bordered  dataTable" style="margin-bottom:0">
+								<tbody>
+								
+							
 									<tr  class="tbl_row">
 										<td width="150" class="tbl_column">Consultant Assessment</td>
-										<td><?php echo $edu['Resume']['consultant_assess']; ?></td>	
+										<td><?php echo ucfirst($resume_data['Resume']['consultant_assess']); ?></td>	
 									</tr>		
 											<tr class="">
 										<td width="120" class="tbl_column">Technical Skills Rating<span class="f_req"></span></td>
@@ -382,7 +611,6 @@
 <ul class="ratingList">
 <?php $skill_parse = explode(',',$skill_data['Position']['tech_skill']);
 $unserialize = unserialize($resume_data['Resume']['tech_skill_rate']);
-
 foreach($skill_parse as $key => $skill):?>
  <?php if($unserialize[$skill] > 0):?>
   <li><?php echo ucwords($skill);?>
@@ -412,7 +640,7 @@ foreach($skill_parse as $key => $skill):?>
 								
 								<tr class="tbl_row">
 										<td width="150" class="tbl_column">Interview Availability</td>
-										<td><?php echo $edu['Resume']['interview_avail']; ?></td>	
+										<td><?php echo ucfirst($resume_data['Resume']['interview_avail']); ?></td>	
 									</tr>
 									
 									
@@ -446,7 +674,13 @@ foreach($skill_parse as $key => $skill):?>
 								</tbody>
 							</table>
 							</div>
-							</div>
+			
+							
+			<?php endif; ?>
+								
+								
+																						
+						</div>
 								</div>	
 								</div>
 							</div>
@@ -472,7 +706,7 @@ foreach($skill_parse as $key => $skill):?>
 									</div>
 									<div class="tab-content"  style="overflow:auto;max-height:300px;">
 										<div class="tab-pane active" id="mbox_inbox">
-											<?php if(count($int_data) > 0 && count($position_data) > 0):?>
+											<?php if(count($int_data) > 0 || count($position_data) > 0):?>
 											
 											<table data-msg_rowlink="a" class="table table_vam mbox_table dTableR" id="dt_inbox">
 												<thead>
@@ -514,7 +748,10 @@ foreach($skill_parse as $key => $skill):?>
 										</td>
 												</tr>
 												<?php endforeach;?>	
-													
+												
+
+
+	
 												<?php foreach($int_data as $key => $interview):?>	
 												<tr class="allRow <?php echo $key == 0 ? 'joinedRow billingRow' : ''?>">
 													
