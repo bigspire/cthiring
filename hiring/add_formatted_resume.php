@@ -870,7 +870,7 @@ if(!empty($_POST)){
 				$row = $mysql->display_result($result);
 				$ah_id = $row['ah_id'];
 				$ah_email = $row['ah_email'];
-				$ac_name = ucwords($row['ac_name']);		
+				$ah_name = ucwords($row['ah_name']);		
 				// call the next result
 				$mysql->next_query();
 			}catch(Exception $e){
@@ -904,7 +904,13 @@ if(!empty($_POST)){
 			// call the next result
 			$mysql->next_query();	
 
-
+			if(!empty($req_read)){
+				// send mail to account holder
+				$sub = "CTHiring -  Resume uploaded by " .$recruiter;
+				$msg = $content->get_create_resume_mail($_POST,$client_autoresume,$position_autoresume,$recruiter,$recruiter_email,$ah_name,$ah_email);
+				$mailer->send_mail($sub,$msg,$recruiter,$recruiter_email,$ah_name,$ah_email);
+				$successfull = '1';
+			}
 			
 			// for languages known
 			$getid = $resume_id;
@@ -934,13 +940,7 @@ if(!empty($_POST)){
 			$myTaskConvertOffice->download('uploads/autoresumepdf/');   
 			
 			
-			if(!empty($req_read)){
-				// send mail to account holder
-				$sub = "CTHiring -  Resume uploaded by " .$recruiter;
-				$msg = $content->get_create_resume_mail($_POST,$client_autoresume,$position_autoresume,$recruiter,$recruiter_email,$ac_name,$ah_email);
-				$mailer->send_mail($sub,$msg,$recruiter,$recruiter_email,$ac_name,$ah_email);
-				$successfull = '1';
-			}	
+				
 			
 			/*
 			// water mark the pdf
