@@ -666,7 +666,9 @@ if(!empty($_POST)){
 				$row = $mysql->display_result($result);
 				$ah_id = $row['ah_id'];
 				$ah_email = $row['ah_email'];
-				$ac_name = ucwords($row['ac_name']);		
+				$ah_name = ucwords($row['ah_name']);
+				// free the memory
+				$mysql->clear_result($result);					
 				// call the next result
 				$mysql->next_query();
 			}catch(Exception $e){
@@ -680,7 +682,9 @@ if(!empty($_POST)){
 					throw new Exception('Problem in adding req read');
 				}
 				$row = $mysql->display_result($result);
-				$req_read = $row['inserted_id'];		
+				$req_read = $row['inserted_id'];
+				// free the memory
+				$mysql->clear_result($result);				
 				// call the next result
 				$mysql->next_query();
 			}catch(Exception $e){
@@ -701,6 +705,13 @@ if(!empty($_POST)){
 			// call the next result
 			$mysql->next_query();	
 			
+			if(!empty($req_read)){
+				// send mail to account holder
+				$sub = "CTHiring -  Resume uploaded by " .$recruiter;
+				$msg = $content->get_create_resume_mail($_POST,$client_autoresume,$position_autoresume,$recruiter,$recruiter_email,$ah_name,$ah_email);
+				$mailer->send_mail($sub,$msg,$recruiter,$recruiter_email,$ah_name,$ah_email);
+				$successfull = '1';
+			}
 
 			//echo 'save data';
 			$_SESSION['extraction'] = '';			
@@ -787,13 +798,8 @@ if(!empty($_POST)){
 			// Download the package files
 			$myTaskWatermark->download('uploads/snapshotwatermarked/');
 			
-			if(!empty($req_read)){
-				// send mail to account holder
-				$sub = "CTHiring -  Resume uploaded by " .$recruiter;
-				$msg = $content->get_create_resume_mail($_POST,$client_autoresume,$position_autoresume,$recruiter,$recruiter_email,$ac_name,$ah_email);
-				$mailer->send_mail($sub,$msg,$recruiter,$recruiter_email,$ac_name,$ah_email);
-				$successfull = '1';
-			}
+			
+			
 			
 			//include('vendor/ilovepdf-php-1.1.5/samples/merge_basic.php');
 			// unset the sessions

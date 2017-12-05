@@ -8,6 +8,7 @@ Date : 03-02-2017
 class mailContent extends fun{
 	
 /* function to print the uploded resume info html */
+
 	function get_create_resume_mail($form_data,$client_autoresume,$position_autoresume,$recruiter,$recruiter_email,$ah_name,$ah_email){ 
 	  $approval_user_name = ucwords($approval_user_name);
 	  $user_name = ucwords($user_name);

@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-11-23 16:16:49
+/* Smarty version 3.1.29, created on 2017-12-05 18:10:26
   from "C:\xampp\htdocs\2017\ctsvn\cthiring\hiring\templates\add_eligibility.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5a16a719a54349_53344211',
+  'unifunc' => 'content_5a2693ba2d1613_54073258',
   'file_dependency' => 
   array (
     'aa1ddebef775ed4e403ccbaaa703c72044edd60a' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\templates\\add_eligibility.tpl',
-      1 => 1504002229,
+      1 => 1512477624,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5a16a719a54349_53344211 ($_smarty_tpl) {
+function content_5a2693ba2d1613_54073258 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -65,9 +65,9 @@ home"><i class="icon-home"></i></a>
 			<table class="table table-bordered dataTable" style="margin-bottom:0;">
 				<tbody>
 						<tr class="tbl_row">
-							<td width="120" class="tbl_column">Period Type <span class="f_req">*</span></td>
+							<td width="120" class="tbl_column change_amount_type">Period Type <span class="f_req">*</span></td>
 							<td>										
-							<select name="period_type"  tabindex="3" class="span8">
+							<select name="period_type"  tabindex="3" class="span8 change_amount_type">
 							<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['period']->value,'selected'=>$_POST['period_type']),$_smarty_tpl);?>
 			    			
 							</select>
@@ -106,11 +106,11 @@ home"><i class="icon-home"></i></a>
 							</td>	
 						</tr>
 						<tr>
-							<td width="120" class="tbl_column">Amount (INR) <span class="f_req">*</span></td>
-							<td>										
+							<td width="120" class="tbl_column amount_Validity">Amount (INR) <span class="f_req">*</span></td>
+							<td class = "amount_Validity">										
 								<input type="text" tabindex="4" name="amount" value="<?php echo $_POST['amount'];?>
-" class="span8">
-								<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['amountErr']->value;?>
+" class="span8 amount_Validity">
+								<label for="reg_city" generated="true" class="error amount_Validity"><?php echo $_smarty_tpl->tpl_vars['amountErr']->value;?>
  </label>									
 							</td>	
 						</tr>						
@@ -135,7 +135,7 @@ home"><i class="icon-home"></i></a>
 					<tr>
 							<td width="120" class="tbl_column">Type <span class="f_req">*</span></td>
 							<td>										
-							<select name="types" id="types" tabindex="3" class="span8">
+							<select name="types" id="types" tabindex="3" class="span8 change_amount_type">
 							<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['type']->value,'selected'=>$_POST['types']),$_smarty_tpl);?>
 			    			
 							</select>
@@ -186,5 +186,68 @@ home"><i class="icon-home"></i></a>
  </div>
 </div>		
 <?php $_smarty_tpl->smarty->ext->_subtemplate->render($_smarty_tpl, "file:include/footer.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
-}
+?>
+
+
+
+<?php echo '<script'; ?>
+ type="text/javascript">
+/*
+$(document).ready(function(){
+	// function to change the amount
+	$('.change_amount_type').change(function(){ 
+		if($(this).val() == 'PS'){
+			$('.amount_Validity').hide();
+		}else if($(this).val()  == 'M' && $(this).val() == 'PS'){
+			$('.amount_Validity').hide();
+		}else if($(this).val()  == 'H' && $(this).val() == 'PS'){
+			$('.amount_Validity').hide();
+		}else if($(this).val()  == 'M'){
+			$('.amount_Validity').hide();
+		}else if($(this).val()  == 'H'){
+			$('.amount_Validity').hide();
+		}else{
+			$('.amount_Validity').show();
+		}
+	});
+	
+	if($('.change_amount_type').length > 0){
+		if($('.change_amount_type:selected').val() == 'PS'){
+			$('.amount_Validity').hide();
+		}else if($('.change_amount_type:selected').val() == 'M'){
+			$('.amount_Validity').hide();
+		}else if($('.change_amount_type:selected').val() == 'H'){
+			$('.amount_Validity').hide();
+		}else{
+			$('.amount_Validity').show();
+		}
+	}
+
+	
+	// function to change the amount
+	$('.change_periodType_amount_type').change(function(){ 
+		if($(this).val() == 'M'){
+			$('.amount_Validity').hide();
+		}else if($(this).val() == 'H'){
+			$('.amount_Validity').hide();
+		}else{
+			$('.amount_Validity').show();
+		}
+	});
+	
+	if($('.change_periodType_amount_type').length > 0){
+		if($('.change_periodType_amount_type:selected').val() == 'M'){
+			$('.amount_Validity').hide();
+		}else if($('.change_periodType_amount_type:selected').val() == 'H'){
+			$('.amount_Validity').hide();
+		}else{
+			$('.amount_Validity').show();
+		}
+	}
+
+});
+*/
+<?php echo '</script'; ?>
+>	
+<?php }
 }
