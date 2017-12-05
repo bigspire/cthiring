@@ -37,9 +37,9 @@
 			<table class="table table-bordered dataTable" style="margin-bottom:0;">
 				<tbody>
 						<tr class="tbl_row">
-							<td width="120" class="tbl_column">Period Type <span class="f_req">*</span></td>
+							<td width="120" class="tbl_column change_amount_type">Period Type <span class="f_req">*</span></td>
 							<td>										
-							<select name="period_type"  tabindex="3" class="span8">
+							<select name="period_type"  tabindex="3" class="span8 change_amount_type">
 							{html_options options=$period selected=$smarty.post.period_type}			    			
 							</select>
 								<label for="reg_city" generated="true" class="error">{$period_typeErr}</label>									
@@ -70,10 +70,10 @@
 							</td>	
 						</tr>
 						<tr>
-							<td width="120" class="tbl_column">Amount (INR) <span class="f_req">*</span></td>
-							<td>										
-								<input type="text" tabindex="4" name="amount" value="{$smarty.post.amount}" class="span8">
-								<label for="reg_city" generated="true" class="error">{$amountErr} </label>									
+							<td width="120" class="tbl_column amount_Validity">Amount (INR) <span class="f_req">*</span></td>
+							<td class = "amount_Validity">										
+								<input type="text" tabindex="4" name="amount" value="{$smarty.post.amount}" class="span8 amount_Validity">
+								<label for="reg_city" generated="true" class="error amount_Validity">{$amountErr} </label>									
 							</td>	
 						</tr>						
 				</tbody>
@@ -95,7 +95,7 @@
 					<tr>
 							<td width="120" class="tbl_column">Type <span class="f_req">*</span></td>
 							<td>										
-							<select name="types" id="types" tabindex="3" class="span8">
+							<select name="types" id="types" tabindex="3" class="span8 change_amount_type">
 							{html_options options=$type selected=$smarty.post.types}			    			
 							</select>
 								<label for="reg_city" generated="true" class="error">{$typesErr}</label>									
@@ -141,3 +141,63 @@
  </div>
 </div>		
 {include file='include/footer.tpl'}
+
+{literal}
+<script type="text/javascript">
+/*
+$(document).ready(function(){
+	// function to change the amount
+	$('.change_amount_type').change(function(){ 
+		if($(this).val() == 'PS'){
+			$('.amount_Validity').hide();
+		}else if($(this).val()  == 'M' && $(this).val() == 'PS'){
+			$('.amount_Validity').hide();
+		}else if($(this).val()  == 'H' && $(this).val() == 'PS'){
+			$('.amount_Validity').hide();
+		}else if($(this).val()  == 'M'){
+			$('.amount_Validity').hide();
+		}else if($(this).val()  == 'H'){
+			$('.amount_Validity').hide();
+		}else{
+			$('.amount_Validity').show();
+		}
+	});
+	
+	if($('.change_amount_type').length > 0){
+		if($('.change_amount_type:selected').val() == 'PS'){
+			$('.amount_Validity').hide();
+		}else if($('.change_amount_type:selected').val() == 'M'){
+			$('.amount_Validity').hide();
+		}else if($('.change_amount_type:selected').val() == 'H'){
+			$('.amount_Validity').hide();
+		}else{
+			$('.amount_Validity').show();
+		}
+	}
+
+	
+	// function to change the amount
+	$('.change_periodType_amount_type').change(function(){ 
+		if($(this).val() == 'M'){
+			$('.amount_Validity').hide();
+		}else if($(this).val() == 'H'){
+			$('.amount_Validity').hide();
+		}else{
+			$('.amount_Validity').show();
+		}
+	});
+	
+	if($('.change_periodType_amount_type').length > 0){
+		if($('.change_periodType_amount_type:selected').val() == 'M'){
+			$('.amount_Validity').hide();
+		}else if($('.change_periodType_amount_type:selected').val() == 'H'){
+			$('.amount_Validity').hide();
+		}else{
+			$('.amount_Validity').show();
+		}
+	}
+
+});
+*/
+</script>	
+{/literal}

@@ -861,22 +861,6 @@ if(!empty($_POST)){
 		
 		if(!empty($edu_id) && !empty($res_id) && !empty($position_id) && !empty($req_res_id) && !empty($exp_id) && !empty($train_id) && !empty($language_id) && !empty($resume_id)){
 			
-			// query to get account holder details
-			$query = "CALL get_accountholder_details('".$_SESSION['client']."')";
-			try{
-				if(!$result = $mysql->execute_query($query)){
-					throw new Exception('Problem in getting the AH Details');
-				}
-				$row = $mysql->display_result($result);
-				$ah_id = $row['ah_id'];
-				$ah_email = $row['ah_email'];
-				$ah_name = ucwords($row['ah_name']);		
-				// call the next result
-				$mysql->next_query();
-			}catch(Exception $e){
-				echo 'Caught exception: ',  $e->getMessage(), "\n";
-			}
-			
 			// query to add req read details
 			$query = "CALL add_req_read('".$_SESSION['position_for']."','".$ah_id."','".$date."')";
 			try{
@@ -903,7 +887,48 @@ if(!empty($_POST)){
 			$mysql->clear_result($result);
 			// call the next result
 			$mysql->next_query();	
-
+			
+			// query to get account holder details
+			$query = "CALL get_accountholder_details('".$_SESSION['client']."')";
+			try{
+				if(!$result = $mysql->execute_query($query)){
+					throw new Exception('Problem in getting the AH Details');
+				}
+				$row = $mysql->display_result($result);
+				$ah_id = $row['ah_id'];
+				$ah_email = $row['ah_email'];
+				$ah_name = ucwords($row['ah_name']);
+				// free the memory
+				$mysql->clear_result($result);					
+				// call the next result
+				$mysql->next_query();
+			}catch(Exception $e){
+				echo 'Caught exception: ',  $e->getMessage(), "\n";
+			}
+			
+			
+			/*
+			// query to get account holder details
+			$query = "CALL get_accountholder_details('".$_SESSION['client']."')";
+			try{
+				if(!$result = $mysql->execute_query($query)){
+					throw new Exception('Problem in getting the AH Details');
+				}
+				$i = '0';
+				while($obj = $mysql->display_result($result)){
+					$ah_details[] = $obj;
+					$ah_details[$i]['ah_id'] = $ah_details['ah_id'];
+					$ah_details[$i]['ah_email'] = $ah_details['ah_email'];
+					$ah_details[$i]['ah_name'] = ucwords($ah_details['ah_name']);	
+					$i++;
+				}
+				// call the next result
+				$mysql->next_query();
+			}catch(Exception $e){
+				echo 'Caught exception: ',  $e->getMessage(), "\n";
+			}
+			*/
+			
 			if(!empty($req_read)){
 				// send mail to account holder
 				$sub = "CTHiring -  Resume uploaded by " .$recruiter;
