@@ -80,16 +80,16 @@
 							<table class="table table-striped table-bordered dataTable stickyTable">
 								<thead>
 									<tr>
-										<th width="80"><a href="mailbox.php?field=to&order={$order}&page={$smarty.get.page}&keyword={$keyword}&f_date={$f_date}&t_date={$t_date}" class="{$sort_field_to}">To</a></th>
-										<th width="90"><a href="mailbox.php?field=subject&order={$order}&page={$smarty.get.page}&keyword={$keyword}&f_date={$f_date}&t_date={$t_date}" class="{$sort_field_subject}">Subject</a></th>
-										<th width="120"><a href="mailbox.php?field=message&order={$order}&page={$smarty.get.page}&keyword={$keyword}&f_date={$f_date}&t_date={$t_date}" class="{$sort_field_message}">Message</a></th>
-										<th width="50"><a href="mailbox.php?field=date&order={$order}&page={$smarty.get.page}&keyword={$keyword}&f_date={$f_date}&t_date={$t_date}" class="{$sort_field_date}">Date</a></th>
-										<th width="50"><a href="mailbox.php?field=created_by&order={$order}&page={$smarty.get.page}&keyword={$keyword}&f_date={$f_date}&t_date={$t_date}" class="{$sort_field_created_by}">Created by</a></th>
-										<th width="50">Attachment</a></th>
+										<th width="100"><a href="mailbox.php?field=to&order={$order}&page={$smarty.get.page}&keyword={$keyword}&f_date={$f_date}&t_date={$t_date}" class="{$sort_field_to}">To</a></th>
+										<th width="150"><a href="mailbox.php?field=subject&order={$order}&page={$smarty.get.page}&keyword={$keyword}&f_date={$f_date}&t_date={$t_date}" class="{$sort_field_subject}">Subject</a></th>
+										<th width="300"><a href="mailbox.php?field=message&order={$order}&page={$smarty.get.page}&keyword={$keyword}&f_date={$f_date}&t_date={$t_date}" class="{$sort_field_message}">Message</a></th>
+										<th width="90"><a href="mailbox.php?field=date&order={$order}&page={$smarty.get.page}&keyword={$keyword}&f_date={$f_date}&t_date={$t_date}" class="{$sort_field_date}">Date</a></th>
+										<th width="100"><a href="mailbox.php?field=created_by&order={$order}&page={$smarty.get.page}&keyword={$keyword}&f_date={$f_date}&t_date={$t_date}" class="{$sort_field_created_by}">Created by</a></th>
+										<th width="60">Attachment</a></th>
 									</tr>
 								</thead>
 								<tbody>	
-								{foreach from=$data item=item key=key}	
+								{foreach from=$data item=item key=key}
 									<tr>
 										<td>{if $item.mail_type == 'C'}{$item.client_name} ({$item.email}){else}{$item.candidate_name} ({$item.email_id}){/if}</td>
 										<td>{$item.subject}</td>

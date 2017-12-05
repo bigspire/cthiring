@@ -103,7 +103,7 @@ try{
 	{
  		$data[] = $obj;
  		$data[$i]['created_date'] = $fun->convert_date_to_display($obj['created_date']);
-		$data[$i]['message'] = $fun->string_truncate($obj['message'],'50');
+		$data[$i]['message'] = $fun->string_truncate($obj['message'],'120');
  		$i++;
  		$pno[]=$paging->print_no();
  		$smarty->assign('pno',$pno);
