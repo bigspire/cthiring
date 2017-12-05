@@ -981,6 +981,7 @@ class PositionController extends AppController {
 			"group_concat(CONCAT(ReqTeam.users_id, ':', ReqTeam.is_approve) SEPARATOR '|' ) mem_approve",
 			'Position.status','count(distinct ReqRevision.id) as no_revision', 'Position.remarks', 'group_concat(ReqRevision.created_date) revision_history','is_rpo',
 			 "group_concat(ReqRevision.remarks separator '|||') revision_remark");
+
 			$data = $this->Position->find('all', array('fields' => $fields,'conditions' => array('Position.id' => $id),	'joins' => $options));
 
 			$this->set('position_data', $data[0]);
@@ -1942,7 +1943,10 @@ class PositionController extends AppController {
 				if($this->ReqResume->save($data, array('validate' => false))){		
 					// save req resume status
 					$this->loadModel('ReqResumeStatus');
-					$data = array('req_resume_id' => $req_res_id, 'created_date' => $this->Functions->get_current_date(),	'created_by' => $this->Session->read('USER.Login.id'), 'stage_title' => $this->Functions->get_level_text($int_level),	'status_title' => $status, 'note' => $this->request->data['Position']['note'],'reason_id' => $this->request->data['Position']['reason_id']);
+					$data = array('req_resume_id' => $req_res_id, 'created_date' => $this->Functions->get_current_date(),	
+					'created_by' => $this->Session->read('USER.Login.id'), 'stage_title' => $this->Functions->get_level_text($int_level),	
+					'status_title' => $status, 'note' => $this->request->data['Position']['note'],
+					'reason_id' => $this->request->data['Position']['reason_id']);
 					if($this->ReqResumeStatus->save($data, array('validate' => false))){
 						// save interview status
 						$this->loadModel('ResInterview');
@@ -2055,7 +2059,7 @@ class PositionController extends AppController {
 				$int_table .= ++$key;
 				$int_table .= "</td>";
 				$int_table .= "<td  width='120'>";
-				$contact_name = $multi_chk = 1 ? '[CANDIDATE_NAME]' : ucwords($exp['Resume']['first_name'].' '.$exp['Resume']['last_name']);
+			 	$contact_name = $multi_chk == 1 ? '[CANDIDATE_NAME]' : ucwords($exp['Resume']['first_name'].' '.$exp['Resume']['last_name']);
 				$int_table .= $contact_name;
 				$int_table .= "</td>";
 				$int_table .= "<td  width='140'>";
@@ -2071,29 +2075,28 @@ class PositionController extends AppController {
 				$int_table .= '[interview_duration]';
 				$int_table .= "</td>";				
 				$int_table .= "<td  width='140'>";
-				$mobile = $multi_chk = 1 ? '[MOBILE]' : $exp['Resume']['mobile'];
+				$mobile = $multi_chk == 1 ? '[MOBILE]' : $exp['Resume']['mobile'];
 				$int_table .= $mobile;
 				$int_table .= "</td>";
 				$int_table .= "</tr>";		
 				$can_name .= ucwords($exp['Resume']['first_name'].' '.$exp['Resume']['last_name']).', ';
 			}
 			$int_table .= "</table>";
-			$pos_id = $chk_pos_id;
+			$pos_id = $chk_pos_id ? $chk_pos_id  : $pos_id;
 			$id = $chk_resume_id_ar[0];
 		// }
 		// for success page redirect
-		$this->set('spec_id', $pos_id);
 		$cand_name = substr($can_name, 0, strlen($can_name)-3);
-	
 		// get the template details
 		$this->get_template_details($id,$pos_id, '3');
 		$this->get_template_details($id,$pos_id, '2', $int_table,$cand_name);
-			
+		$this->set('spec_id', $pos_id);
 		
 		// when the form submitted
 		if(!empty($this->request->data)){
 			// validate the form
 			$this->Position->set($this->request->data);
+			$interview_status = $schedule_type == 'reschedule' ? 'Re-Scheduled' : 'Scheduled';
 			// retain the district
 			// validate the form fields
 			if ($this->Position->validates(array('fieldList' => array('interview_level','interview_stage_id','int_date','int_time',
@@ -2108,13 +2111,13 @@ class PositionController extends AppController {
 					// save req resume table
 					$data = array('id' => $req_res_id,'modified_date' => $this->Functions->get_current_date(),
 					'modified_by' => $this->Session->read('USER.Login.id'),	 'stage_title' => $this->request->data['Position']['interview_level'],
-					 'status_title' => 'Scheduled');
+					 'status_title' => $interview_status);
 					// save  req resume
 					if($this->ReqResume->save($data, array('validate' => false))){		
 						// save req resume status
 						$this->loadModel('ReqResumeStatus');
 						$data = array('req_resume_id' => $req_res_id, 'created_date' => $this->Functions->get_current_date(),
-						'created_by' => $this->Session->read('USER.Login.id'), 'stage_title' => $this->request->data['Position']['interview_level'],'status_title' => 'Scheduled', 'note' => $this->request->data['Position']['note']);					
+						'created_by' => $this->Session->read('USER.Login.id'), 'stage_title' => $this->request->data['Position']['interview_level'],'status_title' => $interview_status, 'note' => $this->request->data['Position']['note']);					
 						$this->ReqResumeStatus->id = '';
 						if($this->ReqResumeStatus->save($data, array('validate' => false))){			
 							// save interview status
@@ -2122,7 +2125,7 @@ class PositionController extends AppController {
 							$this->ResInterview->id = '';
 							$data = array('req_resume_id' => $req_res_id, 'created_date' => $this->Functions->get_current_date(),
 							'created_by' => $this->Session->read('USER.Login.id'), 'stage_title' => $this->request->data['Position']['interview_level'],
-							'status_title' => 'Scheduled',	'int_date' => $this->Functions->format_date_save($this->request->data['Position']['int_date']),
+							'status_title' => $interview_status,	'int_date' => $this->Functions->format_date_save($this->request->data['Position']['int_date']),
 							'int_duration' => $this->request->data['Position']['int_duration'], 'int_time' => $this->request->data['Position']['int_time'],
 							'interview_stage_id' => $this->request->data['Position']['interview_stage_id'],
 							'venue' =>  $this->request->data['Position']['venue'],'reason_id' =>  $this->request->data['Position']['reason_id'],
@@ -2138,9 +2141,10 @@ class PositionController extends AppController {
 								$message = $candidate_msg_split[0];
 								$subject = $candidate_msg_split[1];
 							}else{
-								$message = $this->parse_interview_mail($this->request->data['Position']['message']);
-								$subject = $this->request->data['Position']['subject'];
+								$message = $this->parse_interview_mail($this->request->data['Position']['message_candidate']);
+								$subject = $this->request->data['Position']['subject_candidate'];
 							}
+							
 							// get candidate details
 							$resume_data = $this->ReqResume->Resume->findById($chk_resume_id_ar[$key], array('fields' => 'Resume.email_id','Resume.first_name',
 							'Resume.last_name'));
@@ -2172,8 +2176,8 @@ class PositionController extends AppController {
 						$message = $client_msg_split[0];
 						$subject = $client_msg_split[1];
 					}else{
-						$message = $this->parse_interview_mail($this->request->data['Position']['client_message']);
-						$subject = $this->request->data['Position']['client_subject'];
+						$message = $this->parse_interview_mail($this->request->data['Position']['message']);
+						$subject = $this->request->data['Position']['subject'];
 					}					
 					// get the resume details
 					$options = array(								
@@ -2208,6 +2212,7 @@ class PositionController extends AppController {
 					$vars = array('from_name' => $from, 'to_name' => ucwords($to_name),'msg'=> $message);
 					// save the mail box
 					$this->save_mail_box($subject, $message, $req_res_id);
+					
 					// send mail
 					if(!$this->send_email($subject, 'confirm_interview', $this->Session->read('USER.Login.email_id'), $contact_data['Contact']['email'], $vars)){	
 						// show the msg.								

@@ -79,8 +79,8 @@
 									<td  class="tbl_column" width="">Code</td>
 										<td><?php 
 										if($resume_data['Resume']['code']):
-										else:
 										echo $resume_data['Resume']['code'];
+										else:
 										echo 'MH-'.$resume_data['Resume']['id'];
 										endif; ?></td>	
 									</tr>
@@ -207,16 +207,7 @@
 										<td width="" class="tbl_column">Native Location</td>
 										<td><?php echo ucfirst($resume_data['Resume']['native_location']);?></td>	
 									</tr>
-									<?php  if($resume_data['Position']['resume_type'] == 'F'):?>
-										
-										<tr class="">
-										<td width="120" class="tbl_column">Technical Expertise and Domain Expertise </td>
-										<td><?php echo ucwords(nl2br($resume_data['Resume']['tech_expert']));?></td>	
-									</tr>
-									<tr class="">
-										<td width="120" class="tbl_column">Computer Skills	</td>
-										<td><?php echo ucwords(nl2br($resume_data['Resume']['skills']));?></td>	
-									</tr>
+									
 									<tr>
 										
 										<?php  if($resume_data['Position']['resume_type'] == 'S'):
@@ -238,12 +229,20 @@
 										</td>
 											
 									</tr>
-										<tr>
+									
+									
+									<?php  if($resume_data['Position']['resume_type'] == 'F'):?>
 										
-										<td class="tbl_column">Created By</td>
-										<td><?php echo $resume_data['Creator']['first_name'];?></td>
-											
-									</tr>		
+										<tr class="">
+										<td width="120" class="tbl_column">Technical Expertise and Domain Expertise </td>
+										<td><?php echo ucwords(nl2br($resume_data['Resume']['tech_expert']));?></td>	
+									</tr>
+									<tr class="">
+										<td width="120" class="tbl_column">Computer Skills	</td>
+										<td><?php echo ucwords(nl2br($resume_data['Resume']['skills']));?></td>	
+									</tr>
+									
+												
 									<tr class="">
 										<td width="120" class="tbl_column">Address </td>
 										<td><?php echo ucwords($resume_data['Resume']['address1']);?></td>	
@@ -255,7 +254,12 @@
 									
 									<?php endif; ?>	
 									
-									
+									<tr>
+										
+										<td class="tbl_column">Created By</td>
+										<td><?php echo $resume_data['Creator']['first_name'];?></td>
+											
+									</tr>
 										
 									
 									
@@ -721,8 +725,9 @@ foreach($skill_parse as $key => $skill):?>
 														<th class="allCol interview dn">Stage</th>
 														<th class="allCol interview dn">Status</th>	
 														<th class="allCol joined dn">Offered Date</th>
+														<th class="allCol dn joined">Offerred CTC</th>	
+
 														<th class="allCol joined dn">Joined Date</th>
-														<th class="allCol dn billing">Offer CTC</th>	
 														<th class="allCol dn billing">Billing Amount</th>
 																											
 														
@@ -763,8 +768,8 @@ foreach($skill_parse as $key => $skill):?>
 														<td class="allCol interview dn"><?php echo $interview['ResInterview']['stage_title'];?></td>
 														<td class="allCol interview dn"><?php echo $interview['ResInterview']['status_title'];?></td>
 														<td class="allCol dn joined"><?php echo $this->Functions->format_date($interview['ReqResume']['date_offer']);?></td>
+														<td class="allCol dn joined"><?php echo $interview['ReqResume']['ctc_offer'] > 0 ? $interview['ReqResume']['ctc_offer'] : '';?></td>
 														<td class="allCol dn joined"><?php echo $this->Functions->format_date($interview['ReqResume']['joined_on']);?></td>
-														<td class="allCol dn billing"><?php echo $interview['ReqResume']['ctc_offer'] > 0 ? $interview['ReqResume']['ctc_offer'] : '';?></td>
 														<td class="allCol dn billing"><?php echo $interview['ReqResume']['bill_ctc'] > 0 ? $interview['ReqResume']['bill_ctc'] : '';?></td>
 													</tr>
 												<?php endforeach;?>	

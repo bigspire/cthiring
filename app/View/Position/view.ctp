@@ -32,7 +32,8 @@
 				<a rel="tooltip jsRedirect" href="<?php echo $this->webroot;?>position/edit/<?php echo $this->request->params['pass'][0];?>" title="Edit Position">
 				<input rel="tooltip" title="Edit Position" value="Edit" type="button" class="btn btn-info"></a>
 				<?php endif; ?>	
-					
+		<a href="<?php echo $this->webroot;?>position/index/<?php echo $this->request->params['pass'][2];?>"  title="Back to Positions"  class="jsRedirect"><button class="btn">Back</button></a>
+	
 					<!--<a href="#"  class="sepV_a" title="Delete Position">
 					<input value="Delete" type="button" class="btn btn-danger"/></a>-->
 					
@@ -445,9 +446,10 @@
 					
 					
 					</div></div>
+					
+<?php if($position_data['Position']['is_approve'] == 'W' &&  $this->request->params['pass'][2] == 'pending'):?>
 
 							<div class="form-actions">
-<?php if($position_data['Position']['is_approve'] == 'W' &&  $this->request->params['pass'][2] == 'pending'):?>
 
 <a class="iframeBox unreadLink" rel="tooltip" title="Approve Position" href="<?php echo $this->webroot;?>position/remark/<?php echo $position_data['Position']['id'];?>/<?php echo $this->request->params['pass'][1];?>/<?php echo $position_data['Position']['created_by'];?>/A/<?php echo $stmemberID;?>" val="40_55"><input type="button" value="Approve" class="btn btn btn-success"/></a>
 
@@ -456,9 +458,8 @@
 <?php endif; ?>
 
 <a href="<?php echo $this->webroot;?>position/index/pending/" rel="tooltip" title="Cancel and Back to Positions"  class="jsRedirect"><button class="btn">Cancel</button></a>
-			<?php else:?>
 			
-			<a href="<?php echo $this->webroot;?>position/index/<?php echo $this->request->params['pass'][2];?>" rel="tooltip" title="Back to Positions"  class="jsRedirect"><button class="btn">Back</button></a>
+			
 
 
 						
@@ -470,7 +471,7 @@
 			
 					
 				
-							<br>	
+								
 							<div class="dn dataTables_filter srchBox"  id="dt_gal_filter">
 							
 					<label style="margin-left:0">Keyword: <input type="text" placeholder="Search Keywords Here.." name="data[Position][keyword]" id = "SearchText" value="<?php echo $this->params->query['keyword'];?>" class="input-large" aria-controls="dt_gal"></label>
@@ -629,8 +630,8 @@
 								<td>
 								<?php 
 										if($resume['Resume']['code']):
-										else:
 										echo $resume['Resume']['code'];
+										else:
 										echo 'MH-'.$resume['Resume']['id'];
 										endif; ?>
 								</td>
@@ -716,7 +717,7 @@
 						<?php $date = $resume['Resume']['modified_date'] ? $resume['Resume']['modified_date']: $resume['Resume']['created_date']?>
 									
 														
-	<?php if($resume['ResDoc']['resume'] == ''):?>																
+	<?php  if($resume['ResDoc']['resume'] == ''):?>																
 																
 	<a rel="tooltip" title="Download" class="notify" data-notify-time = '7000' data-notify-title="In Progress!" data-notify-message="Downloading Resume... Please wait..."   href="<?php echo $this->webroot;?>hc/download/<?php echo $resume['Resume']['id']; ?>"><i  class="splashy-document_letter_download"></i></a>
 	

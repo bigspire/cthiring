@@ -191,8 +191,8 @@
 										<td>
 										<a  href="<?php echo $this->webroot;?>resume/view/<?php echo $res['Resume']['id'];?>/"><?php 
 										if($res['Resume']['code']):
-										else:
 										echo $res['Resume']['code'];
+										else:										
 										echo 'MH-'.$res['Resume']['id'];
 										endif; ?></a>
 										</td>

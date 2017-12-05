@@ -191,7 +191,7 @@
 					</div>
 					
 				
-		<?php if($this->Session->read('USER.Login.roles_id') == '30' || $this->Session->read('USER.Login.roles_id') == '34'):?>
+		<?php if($this->Session->read('USER.Login.roles_id') == '30' || $this->request->params['pass'][0] == 'rec_view'):?>
 					<div class="row-fluid" style="margin-top:10px">
 						
 										

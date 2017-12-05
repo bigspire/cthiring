@@ -171,7 +171,7 @@
                                                 <li><a href="<?php echo $this->webroot;?>position/">Search Position 
 												
 											<?php if($new_pos_count):?>
-											<span class="label-bub label-info bubble"><?php echo $new_pos_count;?></span>
+											<span class="label-bub label-info white"><?php echo $new_pos_count;?></span>
 											<?php endif; ?>												
 												
 												</a></a></li>

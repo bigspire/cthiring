@@ -50,7 +50,7 @@
 					<td width="120" class="tbl_column">Offered CTC  <span class="f_req">*</span>
 					</td>
 						<td>
-						<?php echo $this->Form->input('ctc_offer', array('div'=> false,'type' => 'text', 'label' => false, 'class' => 'span8', 'placeholder' => 'Write Full Value', 'required' => false, 'placeholder' => '', 'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 					
+						<?php echo $this->Form->input('ctc_offer', array('div'=> false,'type' => 'text', 'label' => false, 'class' => 'span8', 'placeholder' => 'Write Full Value', 'required' => false,  'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 					
 						</td>	
 				</tr>
 	<?php endif; ?>			
