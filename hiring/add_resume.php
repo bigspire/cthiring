@@ -733,16 +733,17 @@ if(!empty($_POST)){
 			$items = array();
 			$count = 0;
 			foreach($row as $i => $username) { 
-				$items[$count++] = $username; 
-				$ah_email = $username['ah_email'];
-				$ah_name = $username['ah_name'];
+				// $items[$count++] = $username;
+				$items[$count]['ah_email'] = $username['ah_email']; 				
+				$items[$count]['ah_name'] = $username['ah_name'];
 				if(!empty($req_read)){
 					// send mail to account holder
-					$sub = "CTHiring -  Resume uploaded by " .$recruiter;
-					$msg = $content->get_create_resume_mail($_POST,$client_autoresume,$position_autoresume,$recruiter,$recruiter_email,$ah_name,$ah_email);
-					$mailer->send_mail($sub,$msg,$recruiter,$recruiter_email,$ah_name,$ah_email);
+					$sub = "Manage Hiring -  Resume uploaded by " .$recruiter;
+					$msg = $content->get_create_resume_mail($_POST,$client_autoresume,$position_autoresume,$recruiter,$recruiter_email,$items[$count]['ah_name'],$items[$count]['ah_email']);
+					$mailer->send_mail($sub,$msg,$recruiter,$recruiter_email,$items[$count]['ah_name'],$items[$count]['ah_email']);
 					$successfull = '1';
 				}
+				$count++;
 			}
 
 			//echo 'save data';
