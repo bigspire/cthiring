@@ -132,8 +132,9 @@
 										<th width="180"><?php echo $this->Paginator->sort('job_title', 'Job Title', array('escape' => false, 'direction' => 'desc', 'rel' => 'tooltip', 'title' => 'Sort by Ascending or Descending'));?></th>										
 										<th width="180"><?php echo $this->Paginator->sort('Client.client_name', 'Client', array('escape' => false, 'direction' => 'desc', 'rel' => 'tooltip', 'title' => 'Sort by Ascending or Descending'));?></th>
 										<th width="120"  style="text-align:center"><?php echo $this->Paginator->sort('no_job', 'Total Openings', array('escape' => false, 'direction' => 'desc', 'rel' => 'tooltip', 'title' => 'Sort by Ascending or Descending'));?></th>
+										<th width="150"><?php echo $this->Paginator->sort('ac_holder', 'Account Holders', array('escape' => false, 'direction' => 'desc', 'rel' => 'tooltip', 'title' => 'Sort by Ascending or Descending'));?></th>
 										<th width="150"><?php echo $this->Paginator->sort('team_member', 'Recruiters', array('escape' => false, 'direction' => 'desc', 'rel' => 'tooltip', 'title' => 'Sort by Ascending or Descending'));?></th>
-										
+
 										<?php if($this->request->params['pass'][0] != 'pending'):?>	
 										<th width="65"  style="text-align:center">CVs</th>
 										<th width="65"  style="text-align:center">Joined</th>
@@ -143,9 +144,9 @@
 										<th style="text-align:center" width="90">Pending</th>
 										<?php endif;?>
 										
-										<th width="120"><?php echo $this->Paginator->sort('Creator.first_name', 'Created By', array('escape' => false, 'direction' => 'desc', 'rel' => 'tooltip', 'title' => 'Sort by Ascending or Descending'));?></th>
-										<th width="75"><?php echo $this->Paginator->sort('created_date', 'Created', array('escape' => false, 'direction' => 'desc', 'rel' => 'tooltip', 'title' => 'Sort by Ascending or Descending'));?></th>
-										<th width="75"><?php echo $this->Paginator->sort('modified_date', 'Modified', array('escape' => false, 'direction' => 'desc', 'rel' => 'tooltip', 'title' => 'Sort by Ascending or Descending'));?></th>
+										<th width="100"><?php echo $this->Paginator->sort('Creator.first_name', 'Created By', array('escape' => false, 'direction' => 'desc', 'rel' => 'tooltip', 'title' => 'Sort by Ascending or Descending'));?></th>
+										<th width="80"><?php echo $this->Paginator->sort('created_date', 'Created', array('escape' => false, 'direction' => 'desc', 'rel' => 'tooltip', 'title' => 'Sort by Ascending or Descending'));?></th>
+										<th width="80"><?php echo $this->Paginator->sort('modified_date', 'Modified', array('escape' => false, 'direction' => 'desc', 'rel' => 'tooltip', 'title' => 'Sort by Ascending or Descending'));?></th>
 										<!--th width="60" style="text-align:center">Message</th-->
 										<th width="50" style="text-align:center">Actions</th>
 									</tr>
@@ -176,7 +177,8 @@
 										</td>
 										<td   style="text-align:center" width=""><?php echo $req['Position']['no_job'];?></td>
 										
-						
+												<td width=""><?php echo $req[0]['ac_holder'];?></td>
+
 						<td width=""><?php echo $req[0]['team_member'];?></td>
 						
 						<?php if($this->request->params['pass'][0] != 'pending'):?>	

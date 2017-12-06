@@ -52,17 +52,14 @@
 									</tr>	
 										
 									<tr>
-										<td width="" class="tbl_column">Created Date </td>
+										<td width="" class="tbl_column">Sent Date </td>
 										<td>{$created_date}</td>
 									</tr>
 									<tr>
-										<td width="" class="tbl_column">Created By </td>
+										<td width="" class="tbl_column">Sent By </td>
 										<td>{$data.employee}</td>
 									</tr>
-									<tr>
-										<td width="" class="tbl_column">Attachment </td>
-										<td>{$data.attachment}</td>
-									</tr>
+									
 								</tbody>
 							</table>
 				</div>

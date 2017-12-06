@@ -219,7 +219,7 @@
 										<td><?php echo ucfirst($res['Creator']['first_name']);?></td>
 										
 										<td>
-										<?php echo $res['Position']['resume_type'] == 'F' ? 'Fully Formatted' : 'Snapshot';?>
+										<?php echo $res['Position']['resume_type'] == 'F' ? 'Formatted' : 'Snapshot';?>
 										
 										
 										</td>

@@ -96,6 +96,7 @@ class ResumeController extends AppController {
 			);
 		}
 		
+		
 		if($this->Session->read('USER.Login.roles_id') == '38'){ // branch admin
 			// get the branch users
 			$user_data = $this->Resume->Creator->find('all', array('conditions' => array('Creator.location_id' => $this->Session->read('USER.Login.location_id'),
@@ -127,6 +128,7 @@ class ResumeController extends AppController {
 		if($this->request->query['spec'] != ''){ 
 			$specCond = array('Position.id' => $this->request->query['spec']);
 			$statusCond = $this->get_status_cond($this->request->query['status']);
+			$teamCond = '';
 		}
 		// for report status condition
 		if($this->request->query['report_status'] != ''){ 

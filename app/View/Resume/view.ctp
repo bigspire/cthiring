@@ -29,11 +29,16 @@
 					<div class="srch_buttons">
 					
 					<?php if($this->Session->read('USER.Login.id') == $resume_data['Resume']['created_by']):?>	
-
+				
+											
+							<?php if($resume_data['Position']['resume_type'] == 'S' || $resume_data['Position']['resume_type'] == ''):?>				
 							<a href="<?php echo $this->webroot;?>hiring/edit_resume.php?id=<?php echo $this->request->params['pass'][0];?>"  class="sepV_a" title="Edit">
-								<input value="Edit" type="button" class="btn btn-info"/>
-							</a>
-					<?php endif; ?>	
+								<input value="Edit" type="button" class="btn btn-info"/></a>
+							<?php else: ?>
+							<a href="<?php echo $this->webroot;?>hiring/edit_formatted_resume.php?id=<?php echo $this->request->params['pass'][0];?>"  class="sepV_a" title="Edit">
+								<input value="Edit" type="button" class="btn btn-info"/></a>									
+							<?php endif; ?>
+						<?php endif; ?>	
 							
 							</div>
 
@@ -67,15 +72,11 @@
 							<div class="span5">
 							<table class="table table-bordered table-striped dataTable" style="margin-bottom:0">
 								<tbody>
-								<tr>
+								<!--tr>
 										<td class="tbl_column">Position For</td>
 										<td><?php echo ucwords($resume_data['Position']['job_title']);?></td>
-									</tr>
-									<tr class="">
-										<td width="130" class="tbl_column">Candidate Name</td>
-										<td><?php echo ucwords(strtolower($resume_data['Resume']['first_name'].' '.$resume_data['Resume']['last_name']));?></td>	
-									</tr>
-									
+									</tr-->
+									<tr>
 									<td  class="tbl_column" width="">Code</td>
 										<td><?php 
 										if($resume_data['Resume']['code']):
@@ -85,7 +86,14 @@
 										endif; ?></td>	
 									</tr>
 								
-									<tr>
+								
+									<tr class="">
+										<td width="130" class="tbl_column">Candidate Name</td>
+										<td><?php echo ucwords(strtolower($resume_data['Resume']['first_name'].' '.$resume_data['Resume']['last_name']));?></td>	
+									</tr>
+									
+									
+									
 									<tr class="">
 										<td width="120" class="tbl_column">Email</td>
 										<td><?php echo $this->Functions->get_format_text($resume_data['Resume']['email_id'], ';');?></td>	
@@ -143,6 +151,11 @@
 										<td width="120" class="tbl_column">Computer Skills	</td>
 										<td><?php echo ucwords(nl2br($resume_data['Resume']['skills']));?></td>	
 									</tr>
+									
+										
+										<tr class="">
+										<td width="120" class="tbl_column">Family (Dependants)</td>
+										<td><?php echo $resume_data['Resume']['family'];?></td>	
 									
 												
 								
@@ -248,7 +261,10 @@
 										<td width="120" class="tbl_column">Hobbies </td>
 										<td><?php echo ucwords($resume_data['Resume']['hobby']);?></td>	
 									</tr>
-									
+										<tr class="">
+										<td width="120" class="tbl_column">Nationality </td>
+										<td><?php echo ucfirst($resume_data['Resume']['nationality']);?></td>	
+									</tr>
 									<?php endif; ?>	
 									
 									
@@ -279,17 +295,7 @@
 									</tr>
 									
 									
-								<?php  if($resume_data['Position']['resume_type'] == 'F'):?>
-										
-										<tr class="">
-										<td width="120" class="tbl_column">Family (Dependants)</td>
-										<td><?php echo $resume_data['Resume']['family'];?></td>	
-									</tr>
-										<tr class="">
-										<td width="120" class="tbl_column">Nationality </td>
-										<td><?php echo ucfirst($resume_data['Resume']['nationality']);?></td>	
-									</tr>
-									<?php endif; ?>
+								
 								
 									
 										<tr>
@@ -530,7 +536,7 @@
 							<table class="table table-bordered  table-striped dataTable" style="margin-bottom:0">
 								<tbody>
 										<tr>
-										<td class="tbl_column">Program Title</td>
+										<td class="tbl_column" width="120">Program Title</td>
 										<td><?php echo ucwords($train['ResTraining']['prog_title']); ?></td>
 									</tr>
 									<tr>

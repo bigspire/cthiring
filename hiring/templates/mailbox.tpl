@@ -85,7 +85,6 @@
 										<th width="300"><a href="mailbox.php?field=message&order={$order}&page={$smarty.get.page}&keyword={$keyword}&f_date={$f_date}&t_date={$t_date}" class="{$sort_field_message}">Message</a></th>
 										<th width="90"><a href="mailbox.php?field=date&order={$order}&page={$smarty.get.page}&keyword={$keyword}&f_date={$f_date}&t_date={$t_date}" class="{$sort_field_date}">Date</a></th>
 										<th width="100"><a href="mailbox.php?field=created_by&order={$order}&page={$smarty.get.page}&keyword={$keyword}&f_date={$f_date}&t_date={$t_date}" class="{$sort_field_created_by}">Created by</a></th>
-										<th width="60">Attachment</a></th>
 									</tr>
 								</thead>
 								<tbody>	
@@ -96,7 +95,6 @@
 										<td><a href="view_mailbox.php?id={$item.id}">{$item.message}</a></td>
 										<td>{$item.created_date}</td>
 										<td>{$item.employee}</td>
-										<td>{$item.attachment}</td>
 									</tr>		
 								{/foreach}				
 								</tbody>

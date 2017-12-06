@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-11-02 20:06:01
+/* Smarty version 3.1.29, created on 2017-12-06 17:02:37
   from "C:\xampp\htdocs\ctsvn\cthiring\hiring\templates\view_mailbox.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_59fb2d51c83d85_75306090',
+  'unifunc' => 'content_5a27d555902be8_77197935',
   'file_dependency' => 
   array (
     '89e93366c77324f0e05871be8fbc472c5dba3aaf' => 
     array (
       0 => 'C:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\templates\\view_mailbox.tpl',
-      1 => 1509353743,
+      1 => 1512559956,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_59fb2d51c83d85_75306090 ($_smarty_tpl) {
+function content_5a27d555902be8_77197935 ($_smarty_tpl) {
 ?>
 
    
@@ -86,20 +86,16 @@ echo $_smarty_tpl->tpl_vars['data']->value['client_name'];?>
 									</tr>	
 										
 									<tr>
-										<td width="" class="tbl_column">Created Date </td>
+										<td width="" class="tbl_column">Sent Date </td>
 										<td><?php echo $_smarty_tpl->tpl_vars['created_date']->value;?>
 </td>
 									</tr>
 									<tr>
-										<td width="" class="tbl_column">Created By </td>
+										<td width="" class="tbl_column">Sent By </td>
 										<td><?php echo $_smarty_tpl->tpl_vars['data']->value['employee'];?>
 </td>
 									</tr>
-									<tr>
-										<td width="" class="tbl_column">Attachment </td>
-										<td><?php echo $_smarty_tpl->tpl_vars['data']->value['attachment'];?>
-</td>
-									</tr>
+									
 								</tbody>
 							</table>
 				</div>

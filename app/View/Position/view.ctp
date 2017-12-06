@@ -209,7 +209,12 @@
 										<td><?php echo ucwords(str_replace(',', ', ',$position_data['Position']['behav_skill']));?></td>
 											
 									</tr>
-								
+								<tr>
+										
+										<td class="tbl_column" style="width:140px;">Total Openings</td>
+										<td><?php echo $position_data['Position']['no_job'];?></td>
+											
+									</tr>
 									
 									
 										<tr>
@@ -275,12 +280,7 @@
 											
 									</tr>
 									
-										<tr>
 										
-										<td class="tbl_column" style="width:140px;">Total Openings</td>
-										<td><?php echo $position_data['Position']['no_job'];?></td>
-											
-									</tr>
 									<tr>
 										
 										<td class="tbl_column">Start Date</td>
@@ -1110,10 +1110,10 @@ $action = 1;?>
 <li><span class="btn btn-mini alert alert-success legendView"> S </span> - Shortlisted</li>
 <li><span class="btn btn-mini alert alert-error legendView"> R </span> - Rejected	</li>
 <li><span class="btn-mini alert alert-success alert-action legendView"> ISA  </span> - Interview Schedule Awaiting	</li>
-<li><span class="btn-mini alert alert-success alert-action legendView"> 1IS </span> - First Interview Scheduled</li>
-<li><span class="btn-mini alert alert-success alert-action legendView"> 2IS </span> - Second Interview Scheduled</li>
-<li><span class="btn-mini alert alert-success alert-action legendView"> 3IS </span> - Third Interview Scheduled</li>
-<li><span class="btn-mini alert alert-success alert-action legendView"> FIS </span> - Final Interview Scheduled</li>
+<li><span class="btn btn-mini alert alert-success alert-action legendView"> 1IS </span> - First Interview Scheduled</li>
+<li><span class="btn btn-mini alert alert-success alert-action legendView"> 2IS </span> - Second Interview Scheduled</li>
+<li><span class="btn btn-mini alert alert-success alert-action legendView"> 3IS </span> - Third Interview Scheduled</li>
+<li><span class="btn btn-mini alert alert-success alert-action legendView"> FIS </span> - Final Interview Scheduled</li>
 
 <li><span class="btn-mini alert alert-success alert-action legendView"> OP  </span> - Offer Pending</li>
 <li><span class="btn btn-mini alert alert-success legendView"> OA </span> - Offer Accepted</li>
