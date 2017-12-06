@@ -888,6 +888,7 @@ if(!empty($_POST)){
 			// call the next result
 			$mysql->next_query();	
 			
+			/*
 			// query to get account holder details
 			$query = "CALL get_accountholder_details('".$_SESSION['client']."')";
 			try{
@@ -905,36 +906,43 @@ if(!empty($_POST)){
 			}catch(Exception $e){
 				echo 'Caught exception: ',  $e->getMessage(), "\n";
 			}
+			*/
 			
 			
-			/*
 			// query to get account holder details
-			$query = "CALL get_accountholder_details('".$_SESSION['client']."')";
+			echo $query = "CALL get_accountholder_details('".$_SESSION['client']."')";
 			try{
 				if(!$result = $mysql->execute_query($query)){
 					throw new Exception('Problem in getting the AH Details');
 				}
-				$i = '0';
-				while($obj = $mysql->display_result($result)){
-					$ah_details[] = $obj;
-					$ah_details[$i]['ah_id'] = $ah_details['ah_id'];
-					$ah_details[$i]['ah_email'] = $ah_details['ah_email'];
-					$ah_details[$i]['ah_name'] = ucwords($ah_details['ah_name']);	
-					$i++;
+				while($row[] = $mysql->display_result($result)){
+					
 				}
+				// free the memory
+				$mysql->clear_result($result);
 				// call the next result
 				$mysql->next_query();
 			}catch(Exception $e){
 				echo 'Caught exception: ',  $e->getMessage(), "\n";
 			}
-			*/
 			
-			if(!empty($req_read)){
-				// send mail to account holder
-				$sub = "CTHiring -  Resume uploaded by " .$recruiter;
-				$msg = $content->get_create_resume_mail($_POST,$client_autoresume,$position_autoresume,$recruiter,$recruiter_email,$ah_name,$ah_email);
-				$mailer->send_mail($sub,$msg,$recruiter,$recruiter_email,$ah_name,$ah_email);
-				$successfull = '1';
+			// $count_emp = count($row);
+			
+			// iterate the employees
+			// for($i = 0; $i <= $count_emp; $i++){ 
+			$items = array();
+			$count = 0;
+			foreach($row as $i => $username) { 
+				$items[$count++] = $username; 
+				$ah_email = $username['ah_email'];
+				$ah_name = $username['ah_name'];
+				if(!empty($req_read)){
+					// send mail to account holder
+					$sub = "CTHiring -  Resume uploaded by " .$recruiter;
+					$msg = $content->get_create_resume_mail($_POST,$client_autoresume,$position_autoresume,$recruiter,$recruiter_email,$ah_name,$ah_email);
+					$mailer->send_mail($sub,$msg,$recruiter,$recruiter_email,$ah_name,$ah_email);
+					$successfull = '1';
+				}
 			}
 			
 			// for languages known
