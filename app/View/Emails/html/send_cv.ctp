@@ -6,7 +6,7 @@
 
 <body style="margin:0; padding:0; background:#e1e1e1;">
 
-<table width="700" border="0" align="center" cellpadding="0" cellspacing="0" style="border:2px solid #fff; background:#fff; margin-bottom:40px">
+<table width="700" border="0" align="left" cellpadding="0" cellspacing="0" style="border:2px solid #fff; background:#fff; margin-bottom:40px">
   <tr style="background:#438eb9;">
     <td width="436" height="80" style="padding-left:20px;color:#fff;font-family:arial;"><h1>MANAGE HIRING</h1></td>
     <td width="269" align="right" style="padding-right:20px;"></td>
@@ -26,7 +26,7 @@
           
           
 			
-			<tr style="background:#f5f4f4;">
+			<tr>
              
             <td><?php echo $msg;?></td>
 			  
