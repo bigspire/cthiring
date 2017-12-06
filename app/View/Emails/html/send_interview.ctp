@@ -19,14 +19,14 @@
       <tr>
         <td width="490" valign="top"  style="padding:0 20px;">
 		<h1 style="font:bold 15px Arial, Helvetica, sans-serif; color:#676767; margin:0 0 10px 0;">Dear <?php echo $to_name?>,</h1>
-          <p style="font:13px Arial, Helvetica, sans-serif; color:#676767; margin:0;">You have received a interview details from <?php echo $from_name;?>. Please check it and reply to this mail.</p><br />
+          <p style="font:13px Arial, Helvetica, sans-serif; color:#676767; margin:0;">You have received a interview details from <?php echo $from_name;?>. Please attend the interview with out fail.</p><br />
 
           <p style="font:normal 13px Arial, Helvetica, sans-serif; color:#676767; margin:0;">Please check the interview details below,</p>
           <table width="100%" border="0" cellspacing="2" cellpadding="10" style="border:1px solid #ededed; font:bold 13px Arial, Helvetica, sans-serif; color:#6f6e6e; margin:10px 0 20px 0;">
           
           
 			
-			<tr style="background:#f5f4f4;">
+			<tr>
              
             <td><?php echo $msg;?></td>
 			  

@@ -436,7 +436,7 @@ class ResumeController extends AppController {
 		$this->loadModel('ResInterview');		
 		$int_data = $this->ResInterview->find('all', array('fields' => array('int_date','stage_title','status_title',
 		'ReqResume.billing_date','ReqResume.bill_ctc','ReqResume.ctc_offer','ReqResume.joined_on','outcome','ReqResume.date_offer'),
-		'conditions' => array('req_resume_id' => $data2[0]['ReqResume']['id']), 'order' => array('int_date' => 'desc')));
+		'conditions' => array('req_resume_id' => $data2[0]['ReqResume']['id']), 'order' => array('ResInterview.id' => 'desc')));
 		$this->set('int_data', $int_data);
 		// get requirement details
 		$this->loadModel('ReqResume');

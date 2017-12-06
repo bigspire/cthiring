@@ -26,7 +26,7 @@
           
           
 			
-			<tr style="background:#f5f4f4;">
+			<tr>
              
             <td><?php echo $msg;?></td>
 			  

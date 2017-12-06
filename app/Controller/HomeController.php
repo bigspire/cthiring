@@ -473,7 +473,7 @@ class HomeController  extends AppController {
 		$this->set('position_data', $data);
 		$this->set('POS_TAB_COUNT', count($data));
 		// only for MOP for recruiters and account holders
-		if($this->Session->read('USER.Login.roles_id') == '30' || $this->Session->read('USER.Login.roles_id') == '34'){
+		if($this->Session->read('USER.Login.roles_id') == '30' || $dash_type == 'rec_view'){
 			// count the vacancy
 			foreach($data as $record){
 				$no_job += $record['ReqTeam']['no_req'];
@@ -579,7 +579,7 @@ class HomeController  extends AppController {
 		$cv_emp_cond,$date_cond), 'joins' => $count_options));
 		$this->set('INTERVIEW_TAB_COUNT', $cv_interview_count_tab);
 		
-		if($this->Session->read('USER.Login.roles_id') == '30' || $this->Session->read('USER.Login.roles_id') == '34'){
+		if($this->Session->read('USER.Login.roles_id') == '30' || $dash_type == 'rec_view' ){
 			// pecentage of final interview - MOP
 			$mop_options = array(			
 				array('table' => 'resume',
@@ -658,7 +658,7 @@ class HomeController  extends AppController {
 		$this->set('BILLED_TAB_COUNT', $billing_count_tab[0][0]['count']);
 		$this->set('BILLED_AMT_TAB_COUNT', $billing_count_tab[0][0]['ctc']);
 		// MOP Table for recruiter and account holders
-		if($this->Session->read('USER.Login.roles_id') == '30' || $this->Session->read('USER.Login.roles_id') == '34'){
+		if($this->Session->read('USER.Login.roles_id') == '30' || $dash_type == 'rec_view' ){
 		// get the data for MOP table 
 		$this->loadModel('TaskPlan');		
 		$date_cond = array('or' => array("DATE_FORMAT(TaskPlan.task_date, '%Y-%m-%d') between ? and ?" => array($start, $end)));

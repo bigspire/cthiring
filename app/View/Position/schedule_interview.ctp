@@ -45,7 +45,7 @@
 				<tbody> 
 				
 				<tr class="tbl_row" >
-					<td width="120" class="tbl_column">Candidate Name
+					<td width="150" class="tbl_column">Candidate Name
 					</td>
 						<td>
 						<?php echo $this->Form->input('candidate', array('div'=> false,'type' => 'text', 'label' => false, 'class' => 'span8', 'readonly' => 'readonly', 'value' => $candidate_name,   'required' => false, 'placeholder' => '')); ?> 					
@@ -76,7 +76,7 @@
 						</td>	
 				</tr>
 				
-				<tr class="tbl_row" >
+				<tr class="" >
 					<td width="120" class="tbl_column">Interview Mode <span class="f_req">*</span>
 					</td>
 						<td>
@@ -98,7 +98,7 @@
 						</td>	
 				</tr>
 				
-				<tr class="tbl_row">
+				<tr class="">
 					<td width="120" class="tbl_column">Interview Venue <span class="f_req">*</span>
 					</td>
 						<td>
@@ -122,7 +122,7 @@
 						</td>	
 				</tr>
 				
-					<tr class="tbl_row">
+					<tr class="">
 					<td width="120" class="tbl_column">Additional Info 
 					</td>
 						<td>
@@ -152,7 +152,7 @@
 					<td width="120" class="tbl_column">Subject <span class="f_req">*</span>
 					</td>
 						<td> 
-						<?php echo $this->Form->input('subject_client', array('div'=> false,'type' => 'text', 'label' => false, 'class' => 'span8', 'value' => $subject_3, 'required' => false, 'placeholder' => '')); ?> 					
+						<?php echo $this->Form->input('subject_candidate', array('div'=> false,'type' => 'text', 'label' => false, 'class' => 'span8', 'value' => $subject_3, 'required' => false, 'placeholder' => '')); ?> 					
 						</td>	
 				</tr>
 				
@@ -163,7 +163,7 @@
 					<td width="120" class="tbl_column">Message <span class="f_req">*</span>
 					</td>
 						<td>
-					<?php echo $this->Form->input('message_client', array('div'=> false,'type' => 'text', 'label' => false, 
+					<?php echo $this->Form->input('message_candidate', array('div'=> false,'type' => 'text', 'label' => false, 
 					'class' => 'span10 wysiwyg',  'cols' => '6', 'style' => 'height:180px', 
 					'required' => false, 'placeholder' => '', 'value' => $body_3, 
 					'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 
