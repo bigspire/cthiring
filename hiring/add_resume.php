@@ -200,7 +200,20 @@ if(!empty($_POST)){
 	// for retaining skills and rating
 	$smarty->assign('tsrData', $_POST['tsr']);
 	$smarty->assign('bsrData', $_POST['bsr']);
-	
+	// validate tech skills rating
+	foreach($_POST['tsr'] as $rate){
+		if($rate == ''){
+			$test = 'error';
+			$smarty->assign('techErr', 'Please rate all the technical skills');
+		}
+	}
+	// validate behavioural skills rating
+	foreach($_POST['bsr'] as $rate){
+		if($rate == ''){
+			$test = 'error';
+			$smarty->assign('behavErr', 'Please rate all the behavioural skills');
+		}
+	}	
 	// post of education fields value
 	for($i = 0; $i < $_POST['edu_count']; $i++){
 				

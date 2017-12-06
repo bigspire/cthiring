@@ -75,7 +75,7 @@
 										<td width="130" class="tbl_column">Candidate Name</td>
 										<td><?php echo ucwords(strtolower($resume_data['Resume']['first_name'].' '.$resume_data['Resume']['last_name']));?></td>	
 									</tr>
-										<tr>
+									
 									<td  class="tbl_column" width="">Code</td>
 										<td><?php 
 										if($resume_data['Resume']['code']):
@@ -84,7 +84,8 @@
 										echo 'MH-'.$resume_data['Resume']['id'];
 										endif; ?></td>	
 									</tr>
-									
+								
+									<tr>
 									<tr class="">
 										<td width="120" class="tbl_column">Email</td>
 										<td><?php echo $this->Functions->get_format_text($resume_data['Resume']['email_id'], ';');?></td>	
@@ -101,7 +102,7 @@
 									</tr>
 									
 									<?php endif; ?>
-
+		
 									
 									<tr>										
 										<td width="120" class="tbl_column">DOB</td>
@@ -118,20 +119,11 @@
 										<td><?php echo $this->Functions->show_exp_details($resume_data['Resume']['total_exp']);?></td>	
 									</tr>
 									
-									<tr>
-										
-										<td class="tbl_column">Resume</td>
-										<td>
-									<?php if($resume_data['ResDoc']['resume'] == ''):?>	
-										<a class="notify" data-notify-time = '7000' data-notify-title="In Progress!" data-notify-message="Downloading Resume... Please wait..."  href="<?php echo $this->webroot;?>hc/download/<?php echo $resume_data['Resume']['id']; ?>">Candidate Resume </a></td>
-									<?php else: ?>	
-									<a class="notify" data-notify-time = '2000' data-notify-title="In Progress!" data-notify-message="Downloading Resume... Please wait..."  href="<?php echo $this->webroot;?>resume/download_doc/<?php echo $resume_data['ResDoc']['resume']; ?>/">Candidate Resume </a></td>
-
-									<?php endif; ?>	
-	
-										
-										
-									</tr>
+								<tr>
+									<td  class="tbl_column" width="">Notice Period</td>
+										<td><?php echo $this->Functions->get_notice($resume_data['Resume']['notice_period']);?></td>	
+									</tr>										
+								
 									
 									<tr>
 										
@@ -141,17 +133,21 @@
 									</tr>
 									
 									
-									<?php  if($resume_data['Position']['resume_type'] == 'F'):?>
+										<?php  if($resume_data['Position']['resume_type'] == 'F'):?>
 										
 										<tr class="">
-										<td width="120" class="tbl_column">Family (Dependants)</td>
-										<td><?php echo $resume_data['Resume']['family'];?></td>	
+										<td width="120" class="tbl_column">Technical Expertise and Domain Expertise </td>
+										<td><?php echo ucwords(nl2br($resume_data['Resume']['tech_expert']));?></td>	
 									</tr>
-										<tr class="">
-										<td width="120" class="tbl_column">Nationality </td>
-										<td><?php echo ucfirst($resume_data['Resume']['nationality']);?></td>	
+									<tr class="">
+										<td width="120" class="tbl_column">Computer Skills	</td>
+										<td><?php echo ucwords(nl2br($resume_data['Resume']['skills']));?></td>	
 									</tr>
-									<?php endif; ?>
+									
+												
+								
+									<?php endif; ?>	
+									
 							
 									
 										
@@ -166,7 +162,10 @@
 							<div class="span7">
 							<table class="table table-bordered dataTable table-striped " style="margin-bottom:0">
 								<tbody>	
-								
+								<tr>
+										<td class="tbl_column">Gender</td>
+										<td><?php echo $this->Functions->check_gender($resume_data['Resume']['gender']);?></td>
+									</tr>
 							<?php  if($resume_data['Position']['resume_type'] == 'F'):?>
 										
 										<tr class="">
@@ -187,14 +186,7 @@
 										<?php echo $this->Functions->get_ctc_type($resume_data['Resume']['expected_ctc_type']);?>
 										</td>	
 									</tr>	
-									<tr>
-									<td  class="tbl_column" width="">Notice Period</td>
-										<td><?php echo $this->Functions->get_notice($resume_data['Resume']['notice_period']);?></td>	
-									</tr>										
-									<tr>
-										<td class="tbl_column">Gender</td>
-										<td><?php echo $this->Functions->check_gender($resume_data['Resume']['gender']);?></td>
-									</tr>
+									
 									<tr>
 										<td class="tbl_column">Marital Status</td>
 										<td><?php echo $this->Functions->check_marital($resume_data['Resume']['marital_status']);?></td>
@@ -207,7 +199,20 @@
 										<td width="" class="tbl_column">Native Location</td>
 										<td><?php echo ucfirst($resume_data['Resume']['native_location']);?></td>	
 									</tr>
-									
+										<tr>
+										
+										<td class="tbl_column">Resume</td>
+										<td>
+									<?php if($resume_data['ResDoc']['resume'] == ''):?>	
+										<a class="notify" data-notify-time = '7000' data-notify-title="In Progress!" data-notify-message="Downloading Resume... Please wait..."  href="<?php echo $this->webroot;?>hc/download/<?php echo $resume_data['Resume']['id']; ?>">Candidate Resume </a></td>
+									<?php else: ?>	
+									<a class="notify" data-notify-time = '2000' data-notify-title="In Progress!" data-notify-message="Downloading Resume... Please wait..."  href="<?php echo $this->webroot;?>resume/download_doc/<?php echo $resume_data['ResDoc']['resume']; ?>/">Candidate Resume </a></td>
+
+									<?php endif; ?>	
+	
+										
+										
+									</tr>
 									<tr>
 										
 										<?php  if($resume_data['Position']['resume_type'] == 'S'):
@@ -233,14 +238,6 @@
 									
 									<?php  if($resume_data['Position']['resume_type'] == 'F'):?>
 										
-										<tr class="">
-										<td width="120" class="tbl_column">Technical Expertise and Domain Expertise </td>
-										<td><?php echo ucwords(nl2br($resume_data['Resume']['tech_expert']));?></td>	
-									</tr>
-									<tr class="">
-										<td width="120" class="tbl_column">Computer Skills	</td>
-										<td><?php echo ucwords(nl2br($resume_data['Resume']['skills']));?></td>	
-									</tr>
 									
 												
 									<tr class="">
@@ -254,13 +251,7 @@
 									
 									<?php endif; ?>	
 									
-									<tr>
-										
-										<td class="tbl_column">Created By</td>
-										<td><?php echo $resume_data['Creator']['first_name'];?></td>
-											
-									</tr>
-										
+									
 									
 									
 									
@@ -288,15 +279,33 @@
 									</tr>
 									
 									
+								<?php  if($resume_data['Position']['resume_type'] == 'F'):?>
+										
+										<tr class="">
+										<td width="120" class="tbl_column">Family (Dependants)</td>
+										<td><?php echo $resume_data['Resume']['family'];?></td>	
+									</tr>
+										<tr class="">
+										<td width="120" class="tbl_column">Nationality </td>
+										<td><?php echo ucfirst($resume_data['Resume']['nationality']);?></td>	
+									</tr>
+									<?php endif; ?>
 								
+									
+										<tr>
+										
+										<td class="tbl_column">Created By</td>
+										<td><?php echo $resume_data['Creator']['first_name'];?></td>
+											
+									</tr>
 									<tr>
 										
 										<td class="tbl_column">Created</td>
 										<td><?php echo $this->Functions->format_date($resume_data['Resume']['created_date']);?></td>
 											
 									</tr>
-									
-										<tr>
+											
+									<tr>
 										
 										<td class="tbl_column">Modified</td>
 										<td><?php echo $this->Functions->format_date($resume_data['Resume']['modified_date']);?></td>

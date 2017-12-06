@@ -488,7 +488,7 @@
   {/if}
 {/foreach} 
 
-
+	<label for="" generated="true" class="error">{$techErr}</label>
 
 </ul>
  
@@ -525,7 +525,7 @@
   {/if}
 {/foreach} 
 
- 
+ <label for="" generated="true" class="error">{$behavErr}</label>
  
 </ul>
  
