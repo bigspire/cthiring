@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-11-06 09:22:26
+/* Smarty version 3.1.29, created on 2017-12-06 10:01:40
   from "C:\xampp\htdocs\2017\ctsvn\cthiring\hiring\templates\mailbox.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_59ffdc7a121844_52201643',
+  'unifunc' => 'content_5a2772ac6a3562_69708013',
   'file_dependency' => 
   array (
     '00d477005a4f3f1cd4d830fb0002b32dff223f52' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\templates\\mailbox.tpl',
-      1 => 1509595896,
+      1 => 1512473074,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_59ffdc7a121844_52201643 ($_smarty_tpl) {
+function content_5a2772ac6a3562_69708013 ($_smarty_tpl) {
 ?>
 
    
@@ -114,42 +114,42 @@ $_smarty_tpl->ext->_updateScope->updateScope($_smarty_tpl, 'hide', 0);?>
 							<table class="table table-striped table-bordered dataTable stickyTable">
 								<thead>
 									<tr>
-										<th width="80"><a href="mailbox.php?field=to&order=<?php echo $_smarty_tpl->tpl_vars['order']->value;?>
+										<th width="100"><a href="mailbox.php?field=to&order=<?php echo $_smarty_tpl->tpl_vars['order']->value;?>
 &page=<?php echo $_GET['page'];?>
 &keyword=<?php echo $_smarty_tpl->tpl_vars['keyword']->value;?>
 &f_date=<?php echo $_smarty_tpl->tpl_vars['f_date']->value;?>
 &t_date=<?php echo $_smarty_tpl->tpl_vars['t_date']->value;?>
 " class="<?php echo $_smarty_tpl->tpl_vars['sort_field_to']->value;?>
 ">To</a></th>
-										<th width="90"><a href="mailbox.php?field=subject&order=<?php echo $_smarty_tpl->tpl_vars['order']->value;?>
+										<th width="150"><a href="mailbox.php?field=subject&order=<?php echo $_smarty_tpl->tpl_vars['order']->value;?>
 &page=<?php echo $_GET['page'];?>
 &keyword=<?php echo $_smarty_tpl->tpl_vars['keyword']->value;?>
 &f_date=<?php echo $_smarty_tpl->tpl_vars['f_date']->value;?>
 &t_date=<?php echo $_smarty_tpl->tpl_vars['t_date']->value;?>
 " class="<?php echo $_smarty_tpl->tpl_vars['sort_field_subject']->value;?>
 ">Subject</a></th>
-										<th width="120"><a href="mailbox.php?field=message&order=<?php echo $_smarty_tpl->tpl_vars['order']->value;?>
+										<th width="300"><a href="mailbox.php?field=message&order=<?php echo $_smarty_tpl->tpl_vars['order']->value;?>
 &page=<?php echo $_GET['page'];?>
 &keyword=<?php echo $_smarty_tpl->tpl_vars['keyword']->value;?>
 &f_date=<?php echo $_smarty_tpl->tpl_vars['f_date']->value;?>
 &t_date=<?php echo $_smarty_tpl->tpl_vars['t_date']->value;?>
 " class="<?php echo $_smarty_tpl->tpl_vars['sort_field_message']->value;?>
 ">Message</a></th>
-										<th width="50"><a href="mailbox.php?field=date&order=<?php echo $_smarty_tpl->tpl_vars['order']->value;?>
+										<th width="90"><a href="mailbox.php?field=date&order=<?php echo $_smarty_tpl->tpl_vars['order']->value;?>
 &page=<?php echo $_GET['page'];?>
 &keyword=<?php echo $_smarty_tpl->tpl_vars['keyword']->value;?>
 &f_date=<?php echo $_smarty_tpl->tpl_vars['f_date']->value;?>
 &t_date=<?php echo $_smarty_tpl->tpl_vars['t_date']->value;?>
 " class="<?php echo $_smarty_tpl->tpl_vars['sort_field_date']->value;?>
 ">Date</a></th>
-										<th width="50"><a href="mailbox.php?field=created_by&order=<?php echo $_smarty_tpl->tpl_vars['order']->value;?>
+										<th width="100"><a href="mailbox.php?field=created_by&order=<?php echo $_smarty_tpl->tpl_vars['order']->value;?>
 &page=<?php echo $_GET['page'];?>
 &keyword=<?php echo $_smarty_tpl->tpl_vars['keyword']->value;?>
 &f_date=<?php echo $_smarty_tpl->tpl_vars['f_date']->value;?>
 &t_date=<?php echo $_smarty_tpl->tpl_vars['t_date']->value;?>
 " class="<?php echo $_smarty_tpl->tpl_vars['sort_field_created_by']->value;?>
 ">Created by</a></th>
-										<th width="50">Attachment</a></th>
+										<th width="60">Attachment</a></th>
 									</tr>
 								</thead>
 								<tbody>	
@@ -166,7 +166,7 @@ $_smarty_tpl->tpl_vars['item']->_loop = false;
 foreach ($_from as $_smarty_tpl->tpl_vars['key']->value => $_smarty_tpl->tpl_vars['item']->value) {
 $_smarty_tpl->tpl_vars['item']->_loop = true;
 $__foreach_item_0_saved_local_item = $_smarty_tpl->tpl_vars['item'];
-?>	
+?>
 									<tr>
 										<td><?php if ($_smarty_tpl->tpl_vars['item']->value['mail_type'] == 'C') {
 echo $_smarty_tpl->tpl_vars['item']->value['client_name'];?>
