@@ -1305,7 +1305,7 @@ class PositionController extends AppController {
 					)						
 				);
 					
-				$fields = array('Resume.first_name','Resume.last_name','Position.resume_type');
+				$fields = array('Resume.first_name','Resume.last_name');
 				$cand_data = $this->Position->find('all', array('fields' => $fields,'conditions' => array('Resume.id' => $chk_resume_id_ar),
 				'group' => array('Resume.id'),'joins' => $options));
 				foreach($cand_data as $cand){
@@ -1325,10 +1325,13 @@ class PositionController extends AppController {
 			$this->get_template_details($res_id,$pos_id, '1','',$cand_name,$chk_resume_id_ar);
 			
 		}
+		// get the req. resume id
+		$this->loadModel('ReqResume');
+		// get contact details		
+		$client_data = $this->ReqResume->Position->findById($pos_id, array('fields' => 'client_contact_id','job_title','location','resume_type'));
+			
 		// when the form submitted
-		if(!empty($this->request->data)){
-			// get the req. resume id
-			$this->loadModel('ReqResume');
+		if(!empty($this->request->data)){			
 			// iterate for multiple send CVs
 			foreach($req_res_ids as $req_res_id){
 				// save req resume table
@@ -1371,18 +1374,16 @@ class PositionController extends AppController {
 							$updated = $resume_file['Resume']['modified_date'] ? $resume_file['Resume']['modified_date'] : $resume_file['Resume']['created_date'];
 							$snap_file = substr($resume_file['ResDoc']['resume'], 0, strlen($resume_file['ResDoc']['resume']) - 5);
 							$pdf_date = date('d-m-Y', strtotime($updated));		
-							$resume_folder = $cand_data[0]['Position']['resume_type'] == 'F' ? 'autoresumepdf/' : 'snapshotwatermarked/';
-							// $resume_path = '../../hiring/uploads/snapshotmerged/'.$this->Functions->filter_file($snap_file).'_'.$pdf_date.'.pdf';
+							$resume_folder = $client_data['Position']['resume_type'] == 'F' ? 'autoresumepdf/' : 'snapshotwatermarked/';
 							$resume_path[] = '../../hiring/uploads/'.$resume_folder.$this->Functions->filter_file($snap_file).'_'.$pdf_date.'.pdf';
 						}						
 						// $this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>CV Sent Successfully', 'default', array('class' => 'alert alert-success'));									
 					}
 				}				
 			}
-			// get contact details		
-			$client_data = $this->ReqResume->Position->findById($pos_id, array('fields' => 'client_contact_id','job_title','location'));
 			$this->loadModel('Contact');
 			$contact_data = $this->Contact->findById($client_data['Position']['client_contact_id'], array('fields' => 'Contact.first_name','Contact.last_name','Contact.email'));
+		
 			// $sub = 'Manage Hiring - Resume sent by '.ucfirst($this->Session->read('USER.Login.first_name')).' '.ucfirst($this->Session->read('USER.Login.last_name'));
 			$from = ucfirst($this->Session->read('USER.Login.first_name')).' '.ucfirst($this->Session->read('USER.Login.last_name'));
 			$to_name = $contact_data['Contact']['first_name'].' '.$contact_data['Contact']['last_name'];

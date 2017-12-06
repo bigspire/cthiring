@@ -81,7 +81,7 @@
 										if($resume_data['Resume']['code']):
 										echo $resume_data['Resume']['code'];
 										else:
-										echo 'MH-'.$resume_data['Resume']['id'];
+										echo 'MH'.$resume_data['Resume']['id'];
 										endif; ?></td>	
 									</tr>
 								

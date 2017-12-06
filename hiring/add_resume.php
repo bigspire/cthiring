@@ -459,7 +459,7 @@ if(!empty($_POST)){
 		}
 		
 		// generate resume code
-		$code = 'MH-'.$resume_id;
+		$code = 'MH'.$resume_id;
 		// query to add resume code
 		$query = "CALL edit_resume_code('".$resume_id."','".$code."')";
 		try{
@@ -745,17 +745,10 @@ if(!empty($_POST)){
 			// for($i = 0; $i <= $count_emp; $i++){ 
 			$items = array();
 			$count = 0;
-<<<<<<< HEAD
-			foreach($row as $i => $username){
-				$items[$count++] = $username; 
-				$ah_email = $username['ah_email'];
-				$ah_name = $username['ah_name'];
-=======
 			foreach($row as $i => $username) { 
 				// $items[$count++] = $username;
 				$items[$count]['ah_email'] = $username['ah_email']; 				
 				$items[$count]['ah_name'] = $username['ah_name'];
->>>>>>> 4bb4015a07ef99e75bc8362091ecdc23b04511dd
 				if(!empty($req_read)){
 					// send mail to account holder
 					$sub = "Manage Hiring -  Resume uploaded by " .$recruiter;

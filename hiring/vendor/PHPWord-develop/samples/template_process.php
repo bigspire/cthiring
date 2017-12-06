@@ -11,7 +11,7 @@ $templateProcessor->setValue('CANDIDATE_NAME', ucwords($_POST['first_name'].' '.
 
 require_once "HTMLtoOpenXML.php";
 // to retain company name field
-$templateProcessor->setValue('CAND_CODE', 'MH-'.$getid,  1,0);  
+$templateProcessor->setValue('CAND_CODE', 'MH'.$getid,  1,0);  
 // to retain company name field
 $templateProcessor->setValue('COMPANY_NAME', ucwords($client_autoresume),  1,0);  
 // to retain company location field     
