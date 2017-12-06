@@ -57,7 +57,7 @@
 				</tbody>
 			</table>
 			<div class="form-actions">
-			<input name="submit" class="btn btn-gebo theForm" value="Save"  type="submit"/>
+			<input name="submit" class="btn btn-gebo theForm" value="Submit"  type="submit"/>
 					<a class="jsRedirect toggleSearch"  href="javascript:window.close()">
 					<input type="button" value="Cancel" id="cancel" class="btn cancel"/></a>
 					<input type="hidden" id="success_page" value="approve_billing.php?st=success"/>
@@ -76,14 +76,7 @@
 </div>
 			
 <script src="js/jquery.min.js"></script>		
-	 <input type="hidden" value="view_approve_billing.php" class="redirect_url"/>		
-	 <!-- main bootstrap js -->
-	 <script src="bootstrap/js/bootstrap.min.js"></script>			
-	 <script src="lib/jquery-ui/jquery-ui-1.8.20.custom.min.js"></script>
-	 <script src="js/gebo_common.js"></script>		
-	  <script src="js/application.js"></script>
-	<!-- datatable -->
-	<!-- jBreadcrumbs -->
+	 <input type="hidden" value="{$redirect_url}" class="redirect_url"/>		
 	 <script src="js/main.js"></script>	
 	 
 <script type="text/javascript">
@@ -97,16 +90,14 @@
 	});
 </script>
 {if $form_sent == '1'}
-	{literal} 
-	<script type="text/javascript">
-	$(document).ready(function(){
-		var status = $('#action').val() == 'approve' ? 'Approved' : 'Rejected';
-		self.parent.location.href = jQuery('#success_page').val()+'&status='+status;
-		parent.jQuery("#cboxClose").click();
-		close_popup();
-	});
-	</script>
-	{/literal}
+{literal}
+<script type="text/javascript">
+/* redirect to view billing page once approved / rejected successfully */
+self.parent.location.href = jQuery('.redirect_url').val();
+parent.$.colorbox.close();
+</script>
+{/literal}
 {/if}
+
 </body>
 </html>

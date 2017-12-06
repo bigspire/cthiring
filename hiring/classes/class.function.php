@@ -189,6 +189,17 @@ class fun{
 		}	
 	}
 	
+	
+	// function to show billing status in excel
+	public function billing_status($type){
+		if($type == "L1 - A" || $type == "L2 - A" || $type == "L1 - AL2 - A"){
+			$st = 'Approved';
+		}else if($type == "L1 - AL2 - P" || $type == "L1 - P" || $type == "L2 - P"){	
+	 		$st = 'Pending';
+		}
+		return $st;
+	}
+	
 	 // function to show period type for eligibility
 	public function period_fun($type){
 		if($type == 'D'){

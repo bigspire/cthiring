@@ -67,6 +67,7 @@ try{
 			$smarty->assign('position', $obj['position']);
 			$smarty->assign('bill_percent', $obj['bill_percent']);
 			$smarty->assign('recruiter', $obj['recruiter']);
+			$smarty->assign('ac_holder', $obj['ac_holder']);
 			$smarty->assign('client_name', $obj['client_name']);
 			$smarty->assign('ctc_offer', $obj['ctc_offer']);
 			$smarty->assign('billing_amount', $obj['billing_amount']);
@@ -79,6 +80,8 @@ try{
 	}
 	// free the memory
 	$mysql->clear_result($result);
+	// call the next result
+	$mysql->next_query();
 }catch(Exception $e){
 	echo 'Caught exception: ',  $e->getMessage(), "\n";
 }

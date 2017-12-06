@@ -125,9 +125,8 @@
 									<tr>
 										<td width="120" class="tbl_column">Billing Date <span class="f_req">*</span></td>
 										<td> 
-										<input type="text" class="span8"  name="billing_date"  value="{$billing_date}" class="datepick">									
+										<input type="text" name="billing_date"  value="{$billing_date}" class="datepick span8" id="HrEmployeeDob">									
 										<label for="reg_city" generated="true" class="error">{$billing_dateErr}</label>									
-						
 										</td>
 									</tr>
 													
@@ -148,7 +147,7 @@
 													
 								<input type="hidden" name="bill_can" value="billing.php" id="webroot">
 	<a href="javascript:void(0)" class="jsRedirect cancel_event">
-	<input type="button" value="Cancel" class="btn">
+	<input type="button" value="Cancel" class="btn cancelBtn">
 	</a>
 				 </div>
 		</form>
@@ -163,3 +162,20 @@
 	</div>	
 
 {include file='include/footer.tpl'}
+
+{literal}
+<script type="text/javascript">
+$(document).ready(function(){
+		/* when the form submitted */
+	$('.formID').submit(function(){ 		
+		// Disable the 'Next' button to prevent multiple clicks		
+		$('input[type=submit]', this).attr('value', 'Processing...');		
+		$('input[type=submit]', this).attr('disabled', 'disabled');
+		// hide cancel button
+		$('button[type=button]', this).hide();
+		$('.cancelBtn').hide();
+		
+	});
+});
+</script>	
+{/literal}

@@ -105,8 +105,9 @@ try{
  		$data[$i]['billing_date'] = $fun->convert_date_to_display($obj['billing_date']);
  		$data[$i]['status_check'] = $obj['st_status'];
  		$data[$i]['status'] = $fun->format_status($obj['st_status'],$obj['st_created'],$obj['st_user'],$obj['st_modified']);
+		// $data[$i]['pending_status'] = $fun->billing_status($fun->format_status($obj['st_status'],$obj['st_created'],$obj['st_user'],$obj['st_modified']));
  		$data[$i]['created_date'] = $fun->convert_date_to_display($obj['created_date']);
- 		$data[$i]['pending'] = $fun->time_diff($obj['created_date'], $ago_str=0, 0);
+ 		$data[$i]['pending'] = $fun->time_diff($obj['created_date'], $ago_str=0, 0);		
  		$i++;
  		$pno[]=$paging->print_no();
  		$smarty->assign('pno',$pno);
@@ -119,9 +120,9 @@ try{
 		include('classes/class.excel.php');
 		$excelObj = new libExcel();
 		// function to print the excel header
-      $excelObj->printHeader($header = array('Employee','Position','Client Name','Billing Amount','Billing Date','Candidate Name','Created Date','Status','Pending') ,$col = array('A','B','C','D','E','F','G','H','I'));  
+      $excelObj->printHeader($header = array('Position','Client Name','Billing Amount','Billing Date','Candidate Name','Created Date','Created By','Status','Pending') ,$col = array('A','B','C','D','E','F','G','H','I'));  
 		// function to print the excel data
-		$excelObj->printCell($data, $count,$col = array('A','B','C','D','E','F','G','H','I'), $field = array('employee','job_title','client_name','billing_amount','billing_date','candidate_name','created_date','status','pending'),'Approve Billing_'.$current_date);
+		$excelObj->printCell($data, $count,$col = array('A','B','C','D','E','F','G','H','I'), $field = array('job_title','client_name','billing_amount','billing_date','candidate_name','created_date','employee','status','pending'),'Approve Billing_'.$current_date);
 	}	
 	
 	// check the status of the billing for approval
@@ -137,7 +138,7 @@ try{
 	// approve or reject validation
 	if($_GET['status'] == 'Approved' || $_GET['status'] == 'Rejected'){
  		$success_msg = 'Billing ' . ucfirst($_GET['status']) . ' Successfully';
-	}
+	}	
 
 	// validating pagination
 	$total_pages = ceil($count / $limit);
