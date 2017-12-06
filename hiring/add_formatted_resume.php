@@ -910,7 +910,7 @@ if(!empty($_POST)){
 			
 			
 			// query to get account holder details
-			echo $query = "CALL get_accountholder_details('".$_SESSION['client']."')";
+			$query = "CALL get_accountholder_details('".$_SESSION['client']."')";
 			try{
 				if(!$result = $mysql->execute_query($query)){
 					throw new Exception('Problem in getting the AH Details');

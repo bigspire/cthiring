@@ -126,7 +126,8 @@ try{
 	
 	// create validation
 	if($_GET['status'] == 'created'){
- 	 $success_msg = 'Billing ' . ucfirst($_GET['status']) . ' Successfully';
+		// $success_msg = 'Billing ' . ucfirst($_GET['status']) . ' Successfully';
+		$success_msg = "Billing Created Successfully. After approval, it will be taken for incentive calculation";
 	}
 
 	// validating pagination

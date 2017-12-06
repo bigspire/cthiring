@@ -81,14 +81,6 @@
 										</td>
 									</tr>
 									
-									<tr >
-										<td width="120" class="tbl_column">Project Type <span class="f_req">*</span></td>
-										<td> 
-										<input type="radio" tabindex="20" tabindex="14" name="gender"{if isset($gender) && $gender == '1'}{'checked'}{/if} value="1"> RPO
-										<input type="radio" tabindex="21" tabindex="15" name="gender"{if isset($gender) && $gender == '2'}{'checked'}{/if} value="2"> Non RPO
-										<label for="reg_city" generated="true" class="error">{$genderErr} </label>																				
-										</td>
-									</tr>
 																			
 								</tbody>
 							</table>
@@ -125,9 +117,8 @@
 									<tr>
 										<td width="120" class="tbl_column">Billing Date <span class="f_req">*</span></td>
 										<td> 
-										<input type="text" class="span8"  name="billing_date"  value="{$billing_date}" class="datepick">									
+										<input type="text" name="billing_date"  value="{$billing_date}" class="datepick span8" id="HrEmployeeDob">									
 										<label for="reg_city" generated="true" class="error">{$billing_dateErr}</label>									
-						
 										</td>
 									</tr>
 													
@@ -148,7 +139,7 @@
 													
 								<input type="hidden" name="bill_can" value="billing.php" id="webroot">
 	<a href="javascript:void(0)" class="jsRedirect cancel_event">
-	<input type="button" value="Cancel" class="btn">
+	<input type="button" value="Cancel" class="btn cancelBtn">
 	</a>
 				 </div>
 		</form>
@@ -163,3 +154,20 @@
 	</div>	
 
 {include file='include/footer.tpl'}
+
+{literal}
+<script type="text/javascript">
+$(document).ready(function(){
+		/* when the form submitted */
+	$('.formID').submit(function(){ 		
+		// Disable the 'Next' button to prevent multiple clicks		
+		$('input[type=submit]', this).attr('value', 'Processing...');		
+		$('input[type=submit]', this).attr('disabled', 'disabled');
+		// hide cancel button
+		$('button[type=button]', this).hide();
+		$('.cancelBtn').hide();
+		
+	});
+});
+</script>	
+{/literal}

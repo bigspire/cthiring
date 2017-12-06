@@ -53,6 +53,10 @@
 										<td width="120" class="tbl_column">Recruiter </td>
 										<td>{$recruiter}</td>
 									</tr>
+									<tr>
+										<td width="120" class="tbl_column">Account Holder </td>
+										<td>{$ac_holder}</td>
+									</tr>
 									
 									<tr>
 										<td width="120" class="tbl_column">Billing % </td>

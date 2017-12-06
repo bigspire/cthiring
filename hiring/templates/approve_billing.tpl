@@ -71,7 +71,7 @@
 						<label>Billing Till: <input type="text" name="t_date" placeholder="dd/mm/yyyy" value="{$t_date}" style="width:70px;"  class="input-small datepick" aria-controls="dt_gal"></label>						
 						</span></span>
 						
-						<label>Employee: 
+						<label>Created By: 
 						<select name="employee" class="input-medium" placeholder="" style="clear:left" id="BillingEmpId">
 						<option value="">Select</option>
 							{html_options options=$emp_name selected=$employee}
@@ -93,14 +93,15 @@
 							<table class="table table-striped table-bordered dataTable stickyTable">
 								<thead>
 									<tr>
-										<th width="120"><a href="approve_billing.php?field=employee&order={$order}&page={$smarty.get.page}&keyword={$keyword}&f_date={$f_date}&t_date={$t_date}&employee={$employee}" class="{$sort_field_employee}">Employee</a></th>
+										
 										<th width="120"><a href="approve_billing.php?field=job_title&order={$order}&page={$smarty.get.page}&keyword={$keyword}&f_date={$f_date}&t_date={$t_date}&employee={$employee}" class="{$sort_field_job_title}">Position</a></th>
-										<th width="120"><a href="approve_billing.php?field=client&order={$order}&page={$smarty.get.page}&keyword={$keyword}&f_date={$f_date}&t_date={$t_date}&employee={$employee}" class="{$sort_field_client}">Client Name</a></th>
-										<th width="100"><a href="approve_billing.php?field=billing_amount&order={$order}&page={$smarty.get.page}&keyword={$keyword}&f_date={$f_date}&t_date={$t_date}&employee={$employee}" class="{$sort_field_billing_amonut}">Billing Amount</a></th>
-										<th width="80"><a href="approve_billing.php?field=billing_date&order={$order}&page={$smarty.get.page}&keyword={$keyword}&f_date={$f_date}&t_date={$t_date}&employee={$employee}" class="{$sort_field_billing_date}">Billing Date</a></th>
-										<th width="120"><a href="approve_billing.php?field=candidate&order={$order}&page={$smarty.get.page}&keyword={$keyword}&f_date={$f_date}&t_date={$t_date}&employee={$employee}" class="{$sort_field_candidate}">Candidate Name</a></th>
-										<th width="120"><a href="approve_billing.php?field=created&order={$order}&page={$smarty.get.page}&keyword={$keyword}&f_date={$f_date}&t_date={$t_date}&employee={$employee}" class="{$sort_field_created}">Created Date</a></th>
-										<th width="80">Status</th>
+										<th width="130"><a href="approve_billing.php?field=client&order={$order}&page={$smarty.get.page}&keyword={$keyword}&f_date={$f_date}&t_date={$t_date}&employee={$employee}" class="{$sort_field_client}">Client Name</a></th>
+										<th width="140"><a href="approve_billing.php?field=billing_amount&order={$order}&page={$smarty.get.page}&keyword={$keyword}&f_date={$f_date}&t_date={$t_date}&employee={$employee}" class="{$sort_field_billing_amonut}">Billing Amount</a></th>
+										<th width="130"><a href="approve_billing.php?field=billing_date&order={$order}&page={$smarty.get.page}&keyword={$keyword}&f_date={$f_date}&t_date={$t_date}&employee={$employee}" class="{$sort_field_billing_date}">Billing Date</a></th>
+										<th width="150"><a href="approve_billing.php?field=candidate&order={$order}&page={$smarty.get.page}&keyword={$keyword}&f_date={$f_date}&t_date={$t_date}&employee={$employee}" class="{$sort_field_candidate}">Candidate Name</a></th>
+										<th width="130"><a href="approve_billing.php?field=created&order={$order}&page={$smarty.get.page}&keyword={$keyword}&f_date={$f_date}&t_date={$t_date}&employee={$employee}" class="{$sort_field_created}">Created Date</a></th>
+										<th width="120"><a href="approve_billing.php?field=employee&order={$order}&page={$smarty.get.page}&keyword={$keyword}&f_date={$f_date}&t_date={$t_date}&employee={$employee}" class="{$sort_field_employee}">Created By</a></th>
+										<th width="50">Status</th>
 										<th width="70">Pending</th>
 										<th width="70" style="text-align:center">Actions</th>
 
@@ -110,13 +111,14 @@
 								{foreach from=$data item=item key=key}	
 									{* if $item.job_title *}
 									<tr>
-										<td>{ucwords($item.employee)}</td>
+										
 										<td>{ucwords($item.job_title)}</td>
 										<td>{ucwords($item.client_name)}</td>
 										<td>{$item.billing_amount}</td>
 										<td>{$item.billing_date}</td>
 										<td>{ucwords($item.candidate_name)}</td>
 										<td>{$item.created_date}</td>
+										<td>{ucwords($item.employee)}</td>
 										<td>{$item.status}</td>
 										{if $item.is_approved eq 'N'}
 										<td>{$item.pending}</td>

@@ -123,7 +123,7 @@ if($error){
 		}
 		
 		// send mail to employee
-		$sub = "CTHiring - Billing " .$mail_status.' '.ucwords($approval_user_name)."!";
+		$sub = "Manage Hiring - Billing " .$mail_status.' '.ucwords($approval_user_name)."!";
 		$msg = $content->get_level1_billing_mail($_POST,$rows,$user_name,$approval_user_name,$mail_status);
 		$mailer->send_mail($sub,$msg,$approval_user_name,$approval_user_email,$user_name,$user_email);
 		
@@ -186,7 +186,7 @@ if($error){
 			}
 				
 			// send mail to level2
-			$sub = "CTHiring -  " .$user_name." submitted billing details!";
+			$sub = "Manage Hiring -  " .$user_name." submitted billing details!";
 			$msg = $content->get_create_billing_mail($_POST,$rows,$user_name,$level2_name,$candidate_name);
 			$mailer->send_mail($sub,$msg,$user_name,$user_email,$level2_name,$level2_email);
 				
@@ -225,6 +225,8 @@ if($error){
 		if(!empty($affected_rows)){ 
 			// $alert_msg = 'Billing request approved and sent to user successfully. ';	
 			$smarty->assign('form_sent' , 1);	
+			$url = $_GET['action'] == 'approve' ? 'approve_billing.php?status=Approved' : 'approve_billing.php?status=Rejected';
+			$smarty->assign('redirect_url',$url);
 		}		
 }							
 $smarty->assign('alert_msg',$alert_msg);

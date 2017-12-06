@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-11-06 11:34:40
+/* Smarty version 3.1.29, created on 2017-12-06 16:39:49
   from "C:\xampp\htdocs\2017\ctsvn\cthiring\hiring\templates\add_billing.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_59fffb78060f61_98476266',
+  'unifunc' => 'content_5a27cffd8aeaa3_89626049',
   'file_dependency' => 
   array (
     '856b41824fe64a42b82e8f282557eeaec173a11d' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\templates\\add_billing.tpl',
-      1 => 1509948138,
+      1 => 1512558586,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_59fffb78060f61_98476266 ($_smarty_tpl) {
+function content_5a27cffd8aeaa3_89626049 ($_smarty_tpl) {
 ?>
 
    
@@ -153,6 +153,7 @@ echo $_POST['joined_date'];
 										
 										</td>
 									</tr>
+									
 																			
 								</tbody>
 							</table>
@@ -198,11 +199,10 @@ echo $_POST['bill_percent'];
 									<tr>
 										<td width="120" class="tbl_column">Billing Date <span class="f_req">*</span></td>
 										<td> 
-										<input type="text" class="span8"  name="billing_date"  value="<?php echo $_smarty_tpl->tpl_vars['billing_date']->value;?>
-" class="datepick">									
+										<input type="text" name="billing_date"  value="<?php echo $_smarty_tpl->tpl_vars['billing_date']->value;?>
+" class="datepick span8" id="HrEmployeeDob">									
 										<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['billing_dateErr']->value;?>
 </label>									
-						
 										</td>
 									</tr>
 													
@@ -224,7 +224,7 @@ echo $_POST['bill_percent'];
 													
 								<input type="hidden" name="bill_can" value="billing.php" id="webroot">
 	<a href="javascript:void(0)" class="jsRedirect cancel_event">
-	<input type="button" value="Cancel" class="btn">
+	<input type="button" value="Cancel" class="btn cancelBtn">
 	</a>
 				 </div>
 		</form>
@@ -239,5 +239,25 @@ echo $_POST['bill_percent'];
 	</div>	
 
 <?php $_smarty_tpl->smarty->ext->_subtemplate->render($_smarty_tpl, "file:include/footer.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
-}
+?>
+
+
+
+<?php echo '<script'; ?>
+ type="text/javascript">
+$(document).ready(function(){
+		/* when the form submitted */
+	$('.formID').submit(function(){ 		
+		// Disable the 'Next' button to prevent multiple clicks		
+		$('input[type=submit]', this).attr('value', 'Processing...');		
+		$('input[type=submit]', this).attr('disabled', 'disabled');
+		// hide cancel button
+		$('button[type=button]', this).hide();
+		$('.cancelBtn').hide();
+		
+	});
+});
+<?php echo '</script'; ?>
+>	
+<?php }
 }
