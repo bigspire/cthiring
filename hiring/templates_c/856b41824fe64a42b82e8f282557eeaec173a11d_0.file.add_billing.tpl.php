@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-12-06 12:20:32
+/* Smarty version 3.1.29, created on 2017-12-06 16:39:49
   from "C:\xampp\htdocs\2017\ctsvn\cthiring\hiring\templates\add_billing.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5a2793385ea378_97206000',
+  'unifunc' => 'content_5a27cffd8aeaa3_89626049',
   'file_dependency' => 
   array (
     '856b41824fe64a42b82e8f282557eeaec173a11d' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\templates\\add_billing.tpl',
-      1 => 1512543029,
+      1 => 1512558586,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5a2793385ea378_97206000 ($_smarty_tpl) {
+function content_5a27cffd8aeaa3_89626049 ($_smarty_tpl) {
 ?>
 
    
@@ -154,19 +154,6 @@ echo $_POST['joined_date'];
 										</td>
 									</tr>
 									
-									<tr >
-										<td width="120" class="tbl_column">Project Type <span class="f_req">*</span></td>
-										<td> 
-										<input type="radio" tabindex="20" tabindex="14" name="gender"<?php if (isset($_smarty_tpl->tpl_vars['gender']->value) && $_smarty_tpl->tpl_vars['gender']->value == '1') {
-echo 'checked';
-}?> value="1"> RPO
-										<input type="radio" tabindex="21" tabindex="15" name="gender"<?php if (isset($_smarty_tpl->tpl_vars['gender']->value) && $_smarty_tpl->tpl_vars['gender']->value == '2') {
-echo 'checked';
-}?> value="2"> Non RPO
-										<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['genderErr']->value;?>
- </label>																				
-										</td>
-									</tr>
 																			
 								</tbody>
 							</table>

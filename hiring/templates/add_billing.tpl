@@ -81,14 +81,6 @@
 										</td>
 									</tr>
 									
-									<tr >
-										<td width="120" class="tbl_column">Project Type <span class="f_req">*</span></td>
-										<td> 
-										<input type="radio" tabindex="20" tabindex="14" name="gender"{if isset($gender) && $gender == '1'}{'checked'}{/if} value="1"> RPO
-										<input type="radio" tabindex="21" tabindex="15" name="gender"{if isset($gender) && $gender == '2'}{'checked'}{/if} value="2"> Non RPO
-										<label for="reg_city" generated="true" class="error">{$genderErr} </label>																				
-										</td>
-									</tr>
 																			
 								</tbody>
 							</table>

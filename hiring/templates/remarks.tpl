@@ -59,7 +59,7 @@
 			<div class="form-actions">
 			<input name="submit" class="btn btn-gebo theForm" value="Submit"  type="submit"/>
 					<a class="jsRedirect toggleSearch"  href="javascript:window.close()">
-					<input type="button" value="Cancel" id="cancel" class="btn cancel"/></a>
+					<input type="button" value="Cancel" id="cancel" class="btn cancel cancelBtn"/></a>
 					<input type="hidden" id="success_page" value="approve_billing.php?st=success"/>
 					<input type="hidden" id="action" value="{$smarty.get.action}"/>
 			</div>
@@ -84,9 +84,16 @@
 		 parent.$.colorbox.close();
 	});
 	$(document).ready(function(){
-		$('.theForm').on('click', function() {
-			$('.cancel').hide();
-		});
+		/* when the form submitted */
+	$('.formID').submit(function(){ 		
+		// Disable the 'Next' button to prevent multiple clicks		
+		$('input[type=submit]', this).attr('value', 'Processing...');		
+		$('input[type=submit]', this).attr('disabled', 'disabled');
+		// hide cancel button
+		$('button[type=button]', this).hide();
+		$('.cancelBtn').hide();
+		
+	});
 	});
 </script>
 {if $form_sent == '1'}

@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-12-06 16:06:01
+/* Smarty version 3.1.29, created on 2017-12-06 16:29:36
   from "C:\xampp\htdocs\2017\ctsvn\cthiring\hiring\templates\remarks.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5a27c8112326f0_89635318',
+  'unifunc' => 'content_5a27cd98b32fe5_37737407',
   'file_dependency' => 
   array (
     '5451e8dea4bbc628533af1477f7431e4adc1a448' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\templates\\remarks.tpl',
-      1 => 1512556552,
+      1 => 1512557938,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_5a27c8112326f0_89635318 ($_smarty_tpl) {
+function content_5a27cd98b32fe5_37737407 ($_smarty_tpl) {
 ?>
 
    
@@ -86,7 +86,7 @@ echo $_POST['remarks'];
 			<div class="form-actions">
 			<input name="submit" class="btn btn-gebo theForm" value="Submit"  type="submit"/>
 					<a class="jsRedirect toggleSearch"  href="javascript:window.close()">
-					<input type="button" value="Cancel" id="cancel" class="btn cancel"/></a>
+					<input type="button" value="Cancel" id="cancel" class="btn cancel cancelBtn"/></a>
 					<input type="hidden" id="success_page" value="approve_billing.php?st=success"/>
 					<input type="hidden" id="action" value="<?php echo $_GET['action'];?>
 "/>
@@ -118,9 +118,16 @@ echo $_POST['remarks'];
 		 parent.$.colorbox.close();
 	});
 	$(document).ready(function(){
-		$('.theForm').on('click', function() {
-			$('.cancel').hide();
-		});
+		/* when the form submitted */
+	$('.formID').submit(function(){ 		
+		// Disable the 'Next' button to prevent multiple clicks		
+		$('input[type=submit]', this).attr('value', 'Processing...');		
+		$('input[type=submit]', this).attr('disabled', 'disabled');
+		// hide cancel button
+		$('button[type=button]', this).hide();
+		$('.cancelBtn').hide();
+		
+	});
 	});
 <?php echo '</script'; ?>
 >

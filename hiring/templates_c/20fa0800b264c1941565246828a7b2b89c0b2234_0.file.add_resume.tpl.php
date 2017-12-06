@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-11-28 14:48:13
+/* Smarty version 3.1.29, created on 2017-12-06 16:48:42
   from "C:\xampp\htdocs\2017\ctsvn\cthiring\hiring\templates\add_resume.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5a1d29d5c41929_14488259',
+  'unifunc' => 'content_5a27d2121980d7_73715459',
   'file_dependency' => 
   array (
     '20fa0800b264c1941565246828a7b2b89c0b2234' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\templates\\add_resume.tpl',
-      1 => 1511851262,
+      1 => 1512540667,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5a1d29d5c41929_14488259 ($_smarty_tpl) {
+function content_5a27d2121980d7_73715459 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -594,7 +594,8 @@ $_smarty_tpl->tpl_vars['ts_data'] = $__foreach_ts_data_0_saved_item;
 }
 ?> 
 
-
+	<label for="" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['techErr']->value;?>
+</label>
 
 </ul>
  
@@ -651,7 +652,8 @@ $_smarty_tpl->tpl_vars['bs_data'] = $__foreach_bs_data_1_saved_item;
 }
 ?> 
 
- 
+ <label for="" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['behavErr']->value;?>
+</label>
  
 </ul>
  

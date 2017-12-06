@@ -97,9 +97,14 @@ EOD;
 <body style="margin:0; padding:0; background:#e1e1e1;">
 
 <table width="700" border="0" align="left" cellpadding="0" cellspacing="0" style="border:2px solid #fff; background:#fff; margin-bottom:40px">
-  <tr style="background:#438eb9;">
+  <!-- tr style="background:#438eb9;">
     <td width="436" height="80" style="padding-left:20px;"><img src="<?php echo Configure::read('WEBSITE').$this->webroot; ?>img/logo2.png" border="0"  /></td>
     <td width="269" align="right" style="padding-right:20px;"></td>
+  </tr-->
+  
+   <tr style="background:rgb(67,142,185) none repeat scroll 0% 0%">
+    <td style="padding-left:20px;color:rgb(255,255,255);font-family:arial" width="436" height="80"><h1>MANAGE HIRING</h1></td>
+    <td style="padding-right:20px" width="269" align="right"></td>
   </tr>
   <tr>
     <td colspan="2">&nbsp;</td>
@@ -166,10 +171,16 @@ EOD;
 <body style="margin:0; padding:0; background:#e1e1e1;">
 
 <table width="700" border="0" align="left" cellpadding="0" cellspacing="0" style="border:2px solid #fff; background:#fff; margin-bottom:40px">
-  <tr style="background:#438eb9;">
+  <!-- tr style="background:#438eb9;">
     <td width="436" height="80" style="padding-left:20px;"><img src="<?php echo Configure::read('WEBSITE').$this->webroot; ?>img/logo2.png" border="0"  /></td>
     <td width="269" align="right" style="padding-right:20px;"></td>
+  </tr-->
+  
+   <tr style="background:rgb(67,142,185) none repeat scroll 0% 0%">
+    <td style="padding-left:20px;color:rgb(255,255,255);font-family:arial" width="436" height="80"><h1>MANAGE HIRING</h1></td>
+    <td style="padding-right:20px" width="269" align="right"></td>
   </tr>
+  
   <tr>
     <td colspan="2">&nbsp;</td>
   </tr>
