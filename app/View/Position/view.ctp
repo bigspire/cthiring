@@ -632,7 +632,7 @@
 										if($resume['Resume']['code']):
 										echo $resume['Resume']['code'];
 										else:
-										echo 'MH-'.$resume['Resume']['id'];
+										echo 'MH'.$resume['Resume']['id'];
 										endif; ?>
 								</td>
 								

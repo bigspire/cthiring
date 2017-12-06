@@ -459,7 +459,7 @@ if(!empty($_POST)){
 		}
 		
 		// generate resume code
-		$code = 'MH-'.$resume_id;
+		$code = 'MH'.$resume_id;
 		// query to add resume code
 		$query = "CALL edit_resume_code('".$resume_id."','".$code."')";
 		try{

@@ -55,9 +55,10 @@ class ResumeController extends AppController {
 		$exp_list = $this->Functions->get_experience();
 		$this->set('expList', $exp_list);	
 		// set keyword condition
-		if($this->params->query['keyword'] != '' && $this->params->query['report_status'] == ''){			
+		if($this->params->query['keyword'] != '' && $this->params->query['report_status'] == ''){
 			$keyCond = array("MATCH (ResLocation.location,Resume.first_name,Resume.last_name,Resume.present_employer,
-			present_location,Resume.skills,ResExp.skills) AGAINST ('".$this->Functions->format_search_keyword($this->params->query['keyword'])."' IN BOOLEAN MODE)");
+			present_location,native_location,Resume.email_id,Resume.mobile,Resume.mobile2,nationality,
+			Resume.skills,ResExp.skills,Resume.code,Client.client_name) AGAINST ('".$this->Functions->format_search_keyword($this->params->query['keyword'])."' IN BOOLEAN MODE)");
 		}else if($this->params->query['keyword'] != '' && $this->params->query['report_status'] != ''){
 			$keyCond = array('Client.client_name'  => $this->params->query['keyword']);
 
@@ -317,7 +318,7 @@ class ResumeController extends AppController {
 			$cond = array('ReqResume.bill_ctc >' => '0',  'ReqResume.status_title' => 'Joined');
 			break;
 			case '12':
-			$cond = array('ReqResume.bill_ctc >' => '0', 'ReqResume.status_title' => 'Joined');
+			$cond = array('ReqResume.stage_title' => 'Validation - Account Holder', 'ReqResume.status_title' => 'Pending');
 			break;
 			
 		}
@@ -492,18 +493,39 @@ class ResumeController extends AppController {
 	public function search(){
 		$this->layout = false;		
 		$q = trim(Sanitize::escape($_GET['q']));	
-		if(!empty($q)){
+			if(!empty($q)){
+				$options = array(	
+					array('table' => 'req_resume',
+						'alias' => 'ReqResume',					
+						'type' => 'LEFT',
+						'conditions' => array('`ReqResume`.`resume_id` = `Resume`.`id`')
+					),
+					array('table' => 'requirements',
+						'alias' => 'Position',					
+						'type' => 'LEFT',
+						'conditions' => array('`Position`.`id` = `ReqResume`.`requirements_id`')
+					),
+					array('table' => 'clients',
+						'alias' => 'Client',					
+						'type' => 'LEFT',
+						'conditions' => array('`Client`.`id` = `Position`.`clients_id`')
+					)
+				);
 			// execute only when the search keywork has value		
 			$this->set('keyword', $q);
+			/*
 			$start = date('Y-m-d H:i:s', strtotime('-6 month'));
 			$end = date('Y-m-d', strtotime('+1 day'));
 			// last year condition
 			$date_cond = array('or' => array("Resume.created_date between ? and ?" => 
 					array($start, $end)));
+			*/
 			$this->Resume->unBindModel(array('belongsTo' => array('Creator')));
-			$data = $this->Resume->find('all', array('fields' => array('ResLocation.location',"concat(first_name, ' ', last_name) as first_name",'present_employer'),
-			'group' => array('ResLocation.location','first_name','present_employer'), 'conditions' => 	array("OR" => array ('ResLocation.location like' => '%'.$q.'%',
-			'first_name like' => '%'.$q.'%', 'present_employer like' => '%'.$q.'%','code like' => '%'.$q.'%'), 'AND' => array('Resume.is_deleted' => 'N',$date_cond))));		
+			$data = $this->Resume->find('all', array('fields' => array('ResLocation.location',"concat(first_name, ' ', last_name) as first_name",'present_employer','Resume.code',
+			'Client.client_name','present_location','native_location'),'group' => array('ResLocation.location','first_name','present_employer','Client.client_name','present_location','native_location'), 'conditions' => 	array("OR" => array ('ResLocation.location like' => '%'.$q.'%',
+			'first_name like' => '%'.$q.'%', 'Client.client_name like' => '%'.$q.'%', 'present_employer like' => '%'.$q.'%','code like' => '%'.$q.'%',
+			'present_location like' => '%'.$q.'%','native_location like' => '%'.$q.'%'), 'AND' => array('Resume.is_deleted' => 'N')),
+			'joins' => $options));		
 			$this->set('results', $data);
 		}
     }
