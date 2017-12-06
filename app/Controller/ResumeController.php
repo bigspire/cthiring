@@ -57,7 +57,7 @@ class ResumeController extends AppController {
 		// set keyword condition
 		if($this->params->query['keyword'] != '' && $this->params->query['report_status'] == ''){			
 			$keyCond = array("MATCH (ResLocation.location,Resume.first_name,Resume.last_name,Resume.present_employer,
-			present_location,Resume.skills,ResExp.skills) AGAINST ('".$this->Functions->format_search_keyword($this->params->query['keyword'])."' IN BOOLEAN MODE)");
+			present_location,Resume.skills,ResExp.skills,Resume.code,Client.client_name) AGAINST ('".$this->Functions->format_search_keyword($this->params->query['keyword'])."' IN BOOLEAN MODE)");
 		}else if($this->params->query['keyword'] != '' && $this->params->query['report_status'] != ''){
 			$keyCond = array('Client.client_name'  => $this->params->query['keyword']);
 
@@ -501,7 +501,7 @@ class ResumeController extends AppController {
 			$date_cond = array('or' => array("Resume.created_date between ? and ?" => 
 					array($start, $end)));
 			$this->Resume->unBindModel(array('belongsTo' => array('Creator')));
-			$data = $this->Resume->find('all', array('fields' => array('ResLocation.location',"concat(first_name, ' ', last_name) as first_name",'present_employer'),
+			$data = $this->Resume->find('all', array('fields' => array('ResLocation.location',"concat(first_name, ' ', last_name) as first_name",'present_employer','Resume.code'),
 			'group' => array('ResLocation.location','first_name','present_employer'), 'conditions' => 	array("OR" => array ('ResLocation.location like' => '%'.$q.'%',
 			'first_name like' => '%'.$q.'%', 'present_employer like' => '%'.$q.'%','code like' => '%'.$q.'%'), 'AND' => array('Resume.is_deleted' => 'N',$date_cond))));		
 			$this->set('results', $data);
