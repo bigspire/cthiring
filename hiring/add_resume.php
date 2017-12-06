@@ -657,6 +657,7 @@ if(!empty($_POST)){
 			// call the next result
 			$mysql->next_query();
 			
+			/*
 			// query to get account holder details
 			$query = "CALL get_accountholder_details('".$_SESSION['client']."')";
 			try{
@@ -674,6 +675,8 @@ if(!empty($_POST)){
 			}catch(Exception $e){
 				echo 'Caught exception: ',  $e->getMessage(), "\n";
 			}
+			*/
+			
 			
 			// query to add req read details
 			$query = "CALL add_req_read('".$_SESSION['position_for']."','".$ah_id."','".$date."')";
@@ -705,12 +708,41 @@ if(!empty($_POST)){
 			// call the next result
 			$mysql->next_query();	
 			
-			if(!empty($req_read)){
-				// send mail to account holder
-				$sub = "CTHiring -  Resume uploaded by " .$recruiter;
-				$msg = $content->get_create_resume_mail($_POST,$client_autoresume,$position_autoresume,$recruiter,$recruiter_email,$ah_name,$ah_email);
-				$mailer->send_mail($sub,$msg,$recruiter,$recruiter_email,$ah_name,$ah_email);
-				$successfull = '1';
+			
+			// query to get account holder details
+			echo $query = "CALL get_accountholder_details('".$_SESSION['client']."')";
+			try{
+				if(!$result = $mysql->execute_query($query)){
+					throw new Exception('Problem in getting the AH Details');
+				}
+				while($row[] = $mysql->display_result($result)){
+					
+				}
+				// free the memory
+				$mysql->clear_result($result);
+				// call the next result
+				$mysql->next_query();
+			}catch(Exception $e){
+				echo 'Caught exception: ',  $e->getMessage(), "\n";
+			}
+			
+			// $count_emp = count($row);
+			
+			// iterate the employees
+			// for($i = 0; $i <= $count_emp; $i++){ 
+			$items = array();
+			$count = 0;
+			foreach($row as $i => $username) { 
+				$items[$count++] = $username; 
+				$ah_email = $username['ah_email'];
+				$ah_name = $username['ah_name'];
+				if(!empty($req_read)){
+					// send mail to account holder
+					$sub = "CTHiring -  Resume uploaded by " .$recruiter;
+					$msg = $content->get_create_resume_mail($_POST,$client_autoresume,$position_autoresume,$recruiter,$recruiter_email,$ah_name,$ah_email);
+					$mailer->send_mail($sub,$msg,$recruiter,$recruiter_email,$ah_name,$ah_email);
+					$successfull = '1';
+				}
 			}
 
 			//echo 'save data';
