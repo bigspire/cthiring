@@ -48,6 +48,7 @@ class AppController extends Controller {
 				$this->get_approve_req_count();
 				$this->get_approve_leave_count();
 				$this->get_position_unread_count();
+				$this->get_approve_billing_count();
 			}
 
 		}
@@ -99,6 +100,12 @@ class AppController extends Controller {
 		$this->set('new_pos_count', $count);
 	}
 	
+	/* function to get the approval billing count */
+	public function get_approve_billing_count(){
+		$this->loadModel('Position');
+		$count = $this->Position->get_billing_count($this->Session->read('USER.Login.id'));
+		$this->set('APR_BILLING_COUNT', $count);
+	}
 	
 			
 	/* get unread count for the approve client */
