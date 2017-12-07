@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-11-08 16:56:40
+/* Smarty version 3.1.29, created on 2017-12-07 12:55:45
   from "C:\xampp\htdocs\2017\ctsvn\cthiring\hiring\templates\view_mailbox.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5a02e9f0b9dae2_42416460',
+  'unifunc' => 'content_5a28ecf961be33_15973036',
   'file_dependency' => 
   array (
     'a32dce6196d7cbc5b2b28bb8c7a10b804b0e6778' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\templates\\view_mailbox.tpl',
-      1 => 1509423989,
+      1 => 1512631534,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5a02e9f0b9dae2_42416460 ($_smarty_tpl) {
+function content_5a28ecf961be33_15973036 ($_smarty_tpl) {
 ?>
 
    
@@ -75,6 +75,12 @@ echo $_smarty_tpl->tpl_vars['data']->value['client_name'];?>
 									</tr>
 									
 									<tr>
+										<td width="120" class="tbl_column">Client Name </td>
+										<td><?php echo ucwords($_smarty_tpl->tpl_vars['data']->value['client_name']);?>
+</td>
+									</tr>
+									
+									<tr>
 										<td width="" class="tbl_column">Subject  </td>
 										<td><?php echo $_smarty_tpl->tpl_vars['data']->value['subject'];?>
 </td>
@@ -86,20 +92,16 @@ echo $_smarty_tpl->tpl_vars['data']->value['client_name'];?>
 									</tr>	
 										
 									<tr>
-										<td width="" class="tbl_column">Created Date </td>
+										<td width="" class="tbl_column">Sent Date </td>
 										<td><?php echo $_smarty_tpl->tpl_vars['created_date']->value;?>
 </td>
 									</tr>
 									<tr>
-										<td width="" class="tbl_column">Created By </td>
+										<td width="" class="tbl_column">Sent By </td>
 										<td><?php echo $_smarty_tpl->tpl_vars['data']->value['employee'];?>
 </td>
 									</tr>
-									<tr>
-										<td width="" class="tbl_column">Attachment </td>
-										<td><?php echo $_smarty_tpl->tpl_vars['data']->value['attachment'];?>
-</td>
-									</tr>
+									
 								</tbody>
 							</table>
 				</div>

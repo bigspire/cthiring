@@ -51,7 +51,7 @@ try{
 	// count result
 	$count = $data_num['total'];
 	if($count == 0){
-		$alert_msg = 'This details is not in our database';
+		$alert_msg = 'This details are not in our database';
 	}
 	$page = $_GET['page'] ?  $_GET['page'] : 1;
 	$limit = 15;
@@ -67,8 +67,8 @@ try{
 
 // set the condition to check ascending or descending order		
 $order = ($_GET['order'] == 'desc') ? 'asc' :  'desc';	
-$sort_fields = array('1' => 'employee','job_title','client','billing_amount','billing_date','candidate','created');
-$org_fields = array('1' => 'employee','job_title','client_name','billing_amount','billing_date','candidate_name','created_date');
+$sort_fields = array('1' => 'employee','recruiter','ac_holder','job_title','client','billing_amount','billing_date','candidate','created');
+$org_fields = array('1' => 'employee','recruiter','ac_holder','job_title','client_name','billing_amount','billing_date','candidate_name','created_date');
 
 // to set the sorting image
 foreach($sort_fields as $key => $b_field){
@@ -105,7 +105,7 @@ try{
  		$data[$i]['billing_date'] = $fun->convert_date_to_display($obj['billing_date']);
  		$data[$i]['status_check'] = $obj['st_status'];
  		$data[$i]['status'] = $fun->format_status($obj['st_status'],$obj['st_created'],$obj['st_user'],$obj['st_modified']);
-		// $data[$i]['pending_status'] = $fun->billing_status($fun->format_status($obj['st_status'],$obj['st_created'],$obj['st_user'],$obj['st_modified']));
+		$data[$i]['pending_status'] = $fun->billing_status($obj['st_status']);
  		$data[$i]['created_date'] = $fun->convert_date_to_display($obj['created_date']);
  		$data[$i]['pending'] = $fun->time_diff($obj['created_date'], $ago_str=0, 0);		
  		$i++;
@@ -120,9 +120,9 @@ try{
 		include('classes/class.excel.php');
 		$excelObj = new libExcel();
 		// function to print the excel header
-      $excelObj->printHeader($header = array('Position','Client Name','Billing Amount','Billing Date','Candidate Name','Created Date','Created By','Status','Pending') ,$col = array('A','B','C','D','E','F','G','H','I'));  
+      $excelObj->printHeader($header = array('Candidate Name','Position','Client Name','Billing Amount','Billing Date','recruiter','ac_holder','Created Date','Status','Pending') ,$col = array('A','B','C','D','E','F','G','H','I','J'));  
 		// function to print the excel data
-		$excelObj->printCell($data, $count,$col = array('A','B','C','D','E','F','G','H','I'), $field = array('job_title','client_name','billing_amount','billing_date','candidate_name','created_date','employee','status','pending'),'Approve Billing_'.$current_date);
+		$excelObj->printCell($data, $count,$col = array('A','B','C','D','E','F','G','H','I','J'), $field = array('candidate_name','job_title','client_name','billing_amount','billing_date','recruiter','ac_holder','created_date','pending_status','pending'),'Approve Billing_'.$current_date);
 	}	
 	
 	// check the status of the billing for approval

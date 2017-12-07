@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-12-06 10:01:40
+/* Smarty version 3.1.29, created on 2017-12-07 12:39:48
   from "C:\xampp\htdocs\2017\ctsvn\cthiring\hiring\templates\mailbox.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5a2772ac6a3562_69708013',
+  'unifunc' => 'content_5a28e93c903251_05746124',
   'file_dependency' => 
   array (
     '00d477005a4f3f1cd4d830fb0002b32dff223f52' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\templates\\mailbox.tpl',
-      1 => 1512473074,
+      1 => 1512623642,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5a2772ac6a3562_69708013 ($_smarty_tpl) {
+function content_5a28e93c903251_05746124 ($_smarty_tpl) {
 ?>
 
    
@@ -149,7 +149,6 @@ $_smarty_tpl->ext->_updateScope->updateScope($_smarty_tpl, 'hide', 0);?>
 &t_date=<?php echo $_smarty_tpl->tpl_vars['t_date']->value;?>
 " class="<?php echo $_smarty_tpl->tpl_vars['sort_field_created_by']->value;?>
 ">Created by</a></th>
-										<th width="60">Attachment</a></th>
 									</tr>
 								</thead>
 								<tbody>	
@@ -183,8 +182,6 @@ echo $_smarty_tpl->tpl_vars['item']->value['candidate_name'];?>
 										<td><?php echo $_smarty_tpl->tpl_vars['item']->value['created_date'];?>
 </td>
 										<td><?php echo $_smarty_tpl->tpl_vars['item']->value['employee'];?>
-</td>
-										<td><?php echo $_smarty_tpl->tpl_vars['item']->value['attachment'];?>
 </td>
 									</tr>		
 								<?php

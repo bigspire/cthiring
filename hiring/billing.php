@@ -53,7 +53,7 @@ try{
 	// count result
 	$count = $data_num['total'];
 	if($count == 0){
-		$alert_msg = 'This details is not in our database';
+		$alert_msg = 'This details are not in our database';
 	}
 	$page = $_GET['page'] ?  $_GET['page'] : 1;
 	$limit = 15;
@@ -69,8 +69,8 @@ try{
 
 // set the condition to check ascending or descending order		
 $order = ($_GET['order'] == 'desc') ? 'asc' :  'desc';	
-$sort_fields = array('1' => 'job_title','client_name','billing_amount','billing_date','candidate_name');
-$org_fields = array('1' => 'job_title','client_name','billing_amount','billing_date','candidate_name');
+$sort_fields = array('1' => 'job_title','recruiter','ac_holder','client_name','billing_amount','billing_date','candidate_name');
+$org_fields = array('1' => 'job_title','recruiter','ac_holder','client_name','billing_amount','billing_date','candidate_name');
 
 // to set the sorting image
 foreach($sort_fields as $key => $b_field){
@@ -101,17 +101,21 @@ try{
 	}
 	// calling mysql fetch_result function
 	$i = '0';
+	// echo '<pre>';
 	while($obj = $mysql->display_result($result))
 	{
  		$data[] = $obj;
 		$data[$i]['created_date'] = $fun->convert_date_to_display($obj['created_date']);
  		$data[$i]['billing_date'] = $fun->convert_date_to_display($obj['billing_date']);
  		$data[$i]['status'] = $fun->format_status($obj['st_status'],$obj['st_created'],$obj['st_user'],$obj['st_modified']);
+		$data[$i]['pending_status'] = $fun->billing_status($obj['st_status']);
  		$i++;
  		$pno[]=$paging->print_no();
  		$smarty->assign('pno',$pno);
 	}
 	
+	//echo '<pre>';
+	//print_R($data);die;
 	// get current date 
 	$current_date = $fun->display_date();
 	// call to export the excel data
@@ -119,9 +123,9 @@ try{
 		include('classes/class.excel.php');
 		$excelObj = new libExcel();
 		// function to print the excel header
-      $excelObj->printHeader($header = array('Position','Client Name','Billing Amount','Candidate Name','Billing Date',) ,$col = array('A','B','C','D','E'));  
+      $excelObj->printHeader($header = array('Candidate Name','Position','Client Name','Billing Amount','Billing Date','Recruiter','Account Holder','Created Date','Status') ,$col = array('A','B','C','D','E','F','G','H','I'));  
 		// function to print the excel data
-		$excelObj->printCell($data, $count,$col = array('A','B','C','D','E'), $field = array('job_title','client_name','billing_amount','candidate_name',),'Billing_'.$current_date);
+		$excelObj->printCell($data, $count,$col = array('A','B','C','D','E','F','G','H','I'), $field = array('candidate_name','job_title','client_name','billing_amount','billing_date','recruiter','ac_holder','created_date','pending_status'),'Billing_'.$current_date);
 	}	
 	
 	// create validation

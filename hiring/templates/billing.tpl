@@ -88,11 +88,13 @@
 							<table class="table table-striped table-bordered dataTable stickyTable">
 								<thead>
 									<tr>
+									<th width="120"><a href="billing.php?field=candidate_name&order={$order}&page={$smarty.get.page}&keyword={$keyword}&f_date={$f_date}&t_date={$t_date}" class="{$sort_field_candidate_name}">Candidate Name</a></th>
 										<th width="180"><a href="billing.php?field=job_title&order={$order}&page={$smarty.get.page}&keyword={$keyword}&f_date={$f_date}&t_date={$t_date}" class="{$sort_field_job_title}">Position</a></th>
 										<th width="150"><a href="billing.php?field=client_name&order={$order}&page={$smarty.get.page}&keyword={$keyword}&f_date={$f_date}&t_date={$t_date}" class="{$sort_field_client_name}">Client Name</a></th>
 										<th width="90"><a href="billing.php?field=billing_amount&order={$order}&page={$smarty.get.page}&keyword={$keyword}&f_date={$f_date}&t_date={$t_date}" class="{$sort_field_billing_amount}">Billing Amount</a></th>
 										<th width="80"><a href="billing.php?field=billing_date&order={$order}&page={$smarty.get.page}&keyword={$keyword}&f_date={$f_date}&t_date={$t_date}" class="{$sort_field_billing_date}">Billing Date</a></th>
-										<th width="120"><a href="billing.php?field=candidate_name&order={$order}&page={$smarty.get.page}&keyword={$keyword}&f_date={$f_date}&t_date={$t_date}" class="{$sort_field_candidate_name}">Candidate Name</a></th>
+										<th width="150"><a href="billing.php?field=recruiter&order={$order}&page={$smarty.get.page}&keyword={$keyword}&f_date={$f_date}&t_date={$t_date}" class="{$sort_field_recruiter}">Recruiter</a></th>
+										<th width="150"><a href="billing.php?field=ac_holder&order={$order}&page={$smarty.get.page}&keyword={$keyword}&f_date={$f_date}&t_date={$t_date}" class="{$sort_field_ac_holder}">Account Holder</a></th>
 										<th width="80"><a href="billing.php?field=created_date&order={$order}&page={$smarty.get.page}&keyword={$keyword}&f_date={$f_date}&t_date={$t_date}" class="{$sort_field_created_date}">Created Date</a></th>
 										<th width="80">Status</a></th>
 									</tr>
@@ -101,11 +103,13 @@
 								{foreach from=$data item=item key=key}	
 									{* if $item.job_title *}
 									<tr>
-										<td><a  href="view_billing.php?id={$item.id}">{$item.job_title}</a></td>
+										<td><a  href="view_billing.php?id={$item.id}">{$item.candidate_name}</a></td>
+										<td>{$item.job_title}</td>
 										<td>{$item.client_name}</td>
 										<td>{$item.billing_amount}</td>
 										<td>{$item.billing_date}</td>
-										<td>{$item.candidate_name}</td>
+										<td>{$item.recruiter}</td>
+										<td>{$item.ac_holder}</td>
 										<td>{$item.created_date}</td>
 										<td>{$item.status}</td>	
 									</tr>		
