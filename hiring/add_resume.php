@@ -690,22 +690,7 @@ if(!empty($_POST)){
 			}
 			*/
 			
-			
-			// query to add req read details
-			$query = "CALL add_req_read('".$_SESSION['position_for']."','".$ah_id."','".$date."')";
-			try{
-				if(!$result = $mysql->execute_query($query)){
-					throw new Exception('Problem in adding req read');
-				}
-				$row = $mysql->display_result($result);
-				$req_read = $row['inserted_id'];
-				// free the memory
-				$mysql->clear_result($result);				
-				// call the next result
-				$mysql->next_query();
-			}catch(Exception $e){
-				echo 'Caught exception: ',  $e->getMessage(), "\n";
-			}
+		
 			
 			// get recruiter nameget_recruiter_name
 			$query =  "CALL get_recruiter_name('".$mysql->real_escape_str($_SESSION['user_id'])."')";
@@ -723,12 +708,12 @@ if(!empty($_POST)){
 			
 			
 			// query to get account holder details
-			echo $query = "CALL get_accountholder_details('".$_SESSION['client']."')";
+			$query = "CALL get_accountholder_details('".$_SESSION['client']."')";
 			try{
 				if(!$result = $mysql->execute_query($query)){
 					throw new Exception('Problem in getting the AH Details');
 				}
-				while($row[] = $mysql->display_result($result)){
+				while($row_account[] = $mysql->display_result($result)){
 					
 				}
 				// free the memory
@@ -739,24 +724,31 @@ if(!empty($_POST)){
 				echo 'Caught exception: ',  $e->getMessage(), "\n";
 			}
 			
-			// $count_emp = count($row);
 			
-			// iterate the employees
-			// for($i = 0; $i <= $count_emp; $i++){ 
-			$items = array();
-			$count = 0;
-			foreach($row as $i => $username) { 
-				// $items[$count++] = $username;
-				$items[$count]['ah_email'] = $username['ah_email']; 				
-				$items[$count]['ah_name'] = $username['ah_name'];
+			// update the account holders read status
+			foreach($row_account as $i => $username) { 					
+				// query to add req read details
+				$query = "CALL add_req_read('".$_SESSION['position_for']."','".$username['ah_id']."','".$date."')";
+				try{
+					if(!$result = $mysql->execute_query($query)){
+						throw new Exception('Problem in adding req read');
+					}
+					$row = $mysql->display_result($result);
+					$req_read = $row['inserted_id'];
+					// free the memory
+					$mysql->clear_result($result);				
+					// call the next result
+					$mysql->next_query();
+				}catch(Exception $e){
+					echo 'Caught exception: ',  $e->getMessage(), "\n";
+				}
 				if(!empty($req_read)){
 					// send mail to account holder
 					$sub = "Manage Hiring -  Resume uploaded by " .$recruiter;
-					$msg = $content->get_create_resume_mail($_POST,$client_autoresume,$position_autoresume,$recruiter,$recruiter_email,$items[$count]['ah_name'],$items[$count]['ah_email']);
-					$mailer->send_mail($sub,$msg,$recruiter,$recruiter_email,$items[$count]['ah_name'],$items[$count]['ah_email']);
+					$msg = $content->get_create_resume_mail($_POST,$client_autoresume,$position_autoresume,$recruiter,$recruiter_email,$username['ah_name'],$username['ah_email']);
+					$mailer->send_mail($sub,$msg,$recruiter,$recruiter_email,$username['ah_name'],$username['ah_email']);
 					$successfull = '1';
 				}
-				$count++;
 			}
 
 			//echo 'save data';
