@@ -56,7 +56,7 @@ try{
 	// count result
 	$count = $data_num['total'];
 	if($count == 0){
-		$alert_msg = 'This details is not in our database';
+		$alert_msg = 'This details are not in our database';
 	}
 	$page = $_GET['page'] ?  $_GET['page'] : 1;
 	$limit = 20;

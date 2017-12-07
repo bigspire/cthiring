@@ -62,7 +62,7 @@
 									<td>{$interview_data['current_status']}</td>
 								</tr>	
 								<tr>
-									<td class="tbl_column">Created By  </td>
+									<td class="tbl_column">Recruiter  </td>
 									<td>{$interview_data['created_by']}</td>
 								</tr>	
 								<tr>

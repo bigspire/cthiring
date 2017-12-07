@@ -104,7 +104,7 @@ try{
 	// count result
 	$count = $data_num['total'];
 	if($count == 0){
-		$alert_msg = 'This details is not in our database';
+		$alert_msg = 'This details are not in our database';
 	}
 	$page = $_GET['page'] ?  $_GET['page'] : 1;
 	$limit = 15;
@@ -172,9 +172,9 @@ try{
 		include('classes/class.excel.php');
 		$excelObj = new libExcel();
 		// function to print the excel header
-      $excelObj->printHeader($header = array('Candidate Name','Position','Company','Account Holder','Interview Date','Stage','Status','Created By','Created') ,$col = array('A','B','C','D','E','F','G','H','I'));  
+      $excelObj->printHeader($header = array('Candidate Name','Position','Company','Account Holder','Recruiter','Interview Date','Stage','Status','Created') ,$col = array('A','B','C','D','E','F','G','H','I'));  
 		// function to print the excel data
-		$excelObj->printCell($data, $count,$col = array('A','B','C','D','E','F','G','H','I'), $field = array('candidate_name','position','company','ac_holder','interview_date','stage','status','created_by','created_date'),'InterviewDetails'.date('dmy'));
+		$excelObj->printCell($data, $count,$col = array('A','B','C','D','E','F','G','H','I'), $field = array('candidate_name','position','company','ac_holder','created_by','interview_date','stage','status','created_date'),'InterviewDetails'.date('dmy'));
 	}	
 
 	// approve or reject validation

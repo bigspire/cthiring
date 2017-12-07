@@ -113,11 +113,11 @@
 										<th width="120"><a href="interview.php?field=candidate_name&order={$order}&page={$smarty.get.page}&keyword={$keyword}&f_date={$f_date}&t_date={$t_date}&employee={$employee}&branch={$branch}&status={$status}" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="{$sort_field_candidate_name}">Candidate Name</a></th>
 										<th width="150"><a href="interview.php?field=position&order={$order}&page={$smarty.get.page}&keyword={$keyword}&f_date={$f_date}&t_date={$t_date}&employee={$employee}&branch={$branch}&status={$status}" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="{$sort_field_position}">Position</a></th>
 										<th width="120"><a href="interview.php?field=company&order={$order}&page={$smarty.get.page}&keyword={$keyword}&f_date={$f_date}&t_date={$t_date}&employee={$employee}&branch={$branch}&status={$status}" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="{$sort_field_company}">Company</a></th>
-										<th width="80"><a href="interview.php?field=ac_holder&order={$order}&page={$smarty.get.page}&keyword={$keyword}&f_date={$f_date}&t_date={$t_date}&employee={$employee}&branch={$branch}&status={$status}" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="{$sort_field_ac_holder}">Account Holder</a></th>						
+										<th width="80"><a href="interview.php?field=ac_holder&order={$order}&page={$smarty.get.page}&keyword={$keyword}&f_date={$f_date}&t_date={$t_date}&employee={$employee}&branch={$branch}&status={$status}" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="{$sort_field_ac_holder}">Account Holder</a></th>	
+										<th width="90"><a href="interview.php?field=created_by&order={$order}&page={$smarty.get.page}&keyword={$keyword}&f_date={$f_date}&t_date={$t_date}&employee={$employee}&branch={$branch}&status={$status}" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="{$sort_field_created_by}">Recruiter</a></th>										
 										<th width="80"><a href="interview.php?field=interview_date&order={$order}&page={$smarty.get.page}&keyword={$keyword}&f_date={$f_date}&t_date={$t_date}&employee={$employee}&branch={$branch}&status={$status}" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="{$sort_field_interview_date}">Interview Date</a></th>
 										<th width="50"><a href="interview.php?field=stage&order={$order}&page={$smarty.get.page}&keyword={$keyword}&f_date={$f_date}&t_date={$t_date}&employee={$employee}&branch={$branch}&status={$status}" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="{$sort_field_stage}">Stage</a></th>
 										<th width="50"><a href="interview.php?field=current_status&order={$order}&page={$smarty.get.page}&keyword={$keyword}&f_date={$f_date}&t_date={$t_date}&employee={$employee}&branch={$branch}&current_status={$current_status}" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="{$sort_field_current_status}">Status</a></th>
-										<th width="90"><a href="interview.php?field=created_by&order={$order}&page={$smarty.get.page}&keyword={$keyword}&f_date={$f_date}&t_date={$t_date}&employee={$employee}&branch={$branch}&status={$status}" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="{$sort_field_created_by}">Created By</a></th>
 										<th width="50"><a href="interview.php?field=created_date&order={$order}&page={$smarty.get.page}&keyword={$keyword}&f_date={$f_date}&t_date={$t_date}&employee={$employee}&branch={$branch}&status={$status}" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="{$sort_field_created_date}">Created</a></th>
 									</tr>
 								</thead>
@@ -128,10 +128,10 @@
 										<td>{$item.position}</td>
 										<td>{$item.company}</td>
 										<td>{$item.ac_holder}</td>
+										<td>{$item.created_by}</td>
 										<td>{$item.interview_date}</td>
 										<td>{$item.stage}</td>
 										<td><span class="label label-{$item.status_cls}">{$item.status}</span></td>
-										<td>{$item.created_by}</td>
 										<td>{$item.created_date}</td>
 									</tr>
 								{/foreach}

@@ -192,10 +192,12 @@ class fun{
 	
 	// function to show billing status in excel
 	public function billing_status($type){
-		if($type == "L1 - A" || $type == "L2 - A" || $type == "L1 - AL2 - A"){
+		if($type == 'A' || $type == 'A,A'){
 			$st = 'Approved';
-		}else if($type == "L1 - AL2 - P" || $type == "L1 - P" || $type == "L2 - P"){	
+		}else if($type == 'W' || $type == 'W,W' || $type == 'A,W'){	
 	 		$st = 'Pending';
+		}else if($type == 'R' || $type == 'A,R'){	
+	 		$st = 'Rejected';
 		}
 		return $st;
 	}
