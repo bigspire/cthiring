@@ -1160,6 +1160,12 @@ class PositionController extends AppController {
 									// save the read status
 									$this->save_read_status($req_id,$member_data['PositionStatus']['member_id']);
 									
+									// update only if all team members are approved or rejected
+									$app_count = $this->ReqTeam->find('count', array('conditions' => array('ReqTeam.requirements_id' => $req_id,
+									'ReqTeam.is_approve' => 'W')));
+									if(!$app_count){
+										$this->Position->saveField('is_approve', 'A');
+									}
 									
 									
 								}
@@ -1178,6 +1184,13 @@ class PositionController extends AppController {
 								
 								// save the read status
 								$this->save_read_status($req_id,$member_data['PositionStatus']['member_id']);
+								
+								// update only if all team members are approved or rejected
+								$app_count = $this->ReqTeam->find('count', array('conditions' => array('ReqTeam.requirements_id' => $req_id,
+								'ReqTeam.is_approve' => 'W')));
+								if(!$app_count){
+									$this->Position->saveField('is_approve', 'A');
+								}
 							}
 							
 						}else{
@@ -1192,7 +1205,13 @@ class PositionController extends AppController {
 							'users_id' => $member_data['PositionStatus']['member_id']), 'fields' => array('ReqTeam.id'), 'order' => array('ReqTeam.id' => 'desc')));
 							$this->ReqTeam->id = $req_team_data[0]['ReqTeam']['id']; 
 							$this->ReqTeam->saveField('is_approve', 'R');
-
+							
+							// update only if all team members are approved or rejected
+							$app_count = $this->ReqTeam->find('count', array('conditions' => array('ReqTeam.requirements_id' => $req_id,
+							'ReqTeam.is_approve' => 'W')));
+							if(!$app_count){
+								$this->Position->saveField('is_approve', 'A');
+							}
 								
 							/*
 							$approval_data = $this->Approve->find('first', array('fields' => array('level1','level2'), 'conditions'=> array('Approve.users_id' => $user_id)));
@@ -1334,7 +1353,7 @@ class PositionController extends AppController {
 		// when the form submitted
 		if(!empty($this->request->data)){			
 			// iterate for multiple send CVs
-			foreach($req_res_ids as $req_res_id){
+			foreach($req_res_ids as $key => $req_res_id){
 				if($req_res_id != ''){
 					// save req resume table
 					$data = array('id' => $req_res_id ,'modified_date' => $this->Functions->get_current_date(),
@@ -1350,8 +1369,8 @@ class PositionController extends AppController {
 						if($this->ReqResumeStatus->save($data, array('validate' => false))){
 							// get mail contents
 							// for multi selection only
-							if($multi_chk  == '1'){
-								$message = $this->get_template_details($res_id,$pos_id, '1','',$cand_name,$chk_resume_id_ar);
+							if($multi_chk  == '1'){ 
+								$message = $this->get_template_details($chk_resume_id_ar[$key],$pos_id, '1','',$cand_name,$chk_resume_id_ar);
 								$candidate_msg_split = explode('|||', $message);
 								$message = $candidate_msg_split[0];
 								$subject = $candidate_msg_split[1];							
@@ -1476,7 +1495,8 @@ class PositionController extends AppController {
 				'Resume.interview_avail','ResDoc.resume','Position.job_title','Position.location','Position.job_desc','Contact.first_name','Contact.last_name'
 				,'Contact.mobile','Recruiter.first_name','Recruiter.last_name','Client.client_name','Recruiter.signature','Contact.title',
 				'Position.created_date', 'Position.modified_date');
-				$cand_data = $this->Position->find('all', array('fields' => $fields,'conditions' => array('Position.id' => $pos_id),
+				$cand_data = $this->Position->find('all', array('fields' => $fields,'conditions' => array('Position.id' => $pos_id,
+				'Resume.id' => $res_id),
 				'joins' => $options));
 				// print_r($cand_data);
 				$cand_name = ucwords($cand_data[0]['Resume']['first_name'].' '.$cand_data[0]['Resume']['last_name']);
@@ -1656,7 +1676,7 @@ class PositionController extends AppController {
 	}
 	
 		/* function to update the CV status */
-	public function update_position_status($id,$created,$st_id){
+	public function update_position_status($id,$st_id){
 		$this->layout = 'framebox';	
 		// load the functional area
 		$status_list = $this->Position->ReqStatus->find('list', array('fields' => array('status','title'), 

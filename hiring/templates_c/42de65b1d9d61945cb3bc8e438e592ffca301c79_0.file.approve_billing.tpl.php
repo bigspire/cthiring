@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-11-04 11:02:40
+/* Smarty version 3.1.29, created on 2017-12-07 16:59:49
   from "C:\xampp\htdocs\ctsvn\cthiring\hiring\templates\approve_billing.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_59fd50f80d1699_89756671',
+  'unifunc' => 'content_5a29262d1db4d5_65097141',
   'file_dependency' => 
   array (
     '42de65b1d9d61945cb3bc8e438e592ffca301c79' => 
     array (
       0 => 'C:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\templates\\approve_billing.tpl',
-      1 => 1509773557,
+      1 => 1512567431,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_59fd50f80d1699_89756671 ($_smarty_tpl) {
+function content_5a29262d1db4d5_65097141 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -114,7 +114,7 @@ $_smarty_tpl->ext->_updateScope->updateScope($_smarty_tpl, 'hide', 0);?>
 " style="width:70px;"  class="input-small datepick" aria-controls="dt_gal"></label>						
 						</span></span>
 						
-						<label>Employee: 
+						<label>Created By: 
 						<select name="employee" class="input-medium" placeholder="" style="clear:left" id="BillingEmpId">
 						<option value="">Select</option>
 							<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['emp_name']->value,'selected'=>$_smarty_tpl->tpl_vars['employee']->value),$_smarty_tpl);?>
@@ -137,14 +137,7 @@ $_smarty_tpl->ext->_updateScope->updateScope($_smarty_tpl, 'hide', 0);?>
 							<table class="table table-striped table-bordered dataTable stickyTable">
 								<thead>
 									<tr>
-										<th width="120"><a href="approve_billing.php?field=employee&order=<?php echo $_smarty_tpl->tpl_vars['order']->value;?>
-&page=<?php echo $_GET['page'];?>
-&keyword=<?php echo $_smarty_tpl->tpl_vars['keyword']->value;?>
-&f_date=<?php echo $_smarty_tpl->tpl_vars['f_date']->value;?>
-&t_date=<?php echo $_smarty_tpl->tpl_vars['t_date']->value;?>
-&employee=<?php echo $_smarty_tpl->tpl_vars['employee']->value;?>
-" class="<?php echo $_smarty_tpl->tpl_vars['sort_field_employee']->value;?>
-">Employee</a></th>
+										
 										<th width="120"><a href="approve_billing.php?field=job_title&order=<?php echo $_smarty_tpl->tpl_vars['order']->value;?>
 &page=<?php echo $_GET['page'];?>
 &keyword=<?php echo $_smarty_tpl->tpl_vars['keyword']->value;?>
@@ -153,7 +146,7 @@ $_smarty_tpl->ext->_updateScope->updateScope($_smarty_tpl, 'hide', 0);?>
 &employee=<?php echo $_smarty_tpl->tpl_vars['employee']->value;?>
 " class="<?php echo $_smarty_tpl->tpl_vars['sort_field_job_title']->value;?>
 ">Position</a></th>
-										<th width="120"><a href="approve_billing.php?field=client&order=<?php echo $_smarty_tpl->tpl_vars['order']->value;?>
+										<th width="130"><a href="approve_billing.php?field=client&order=<?php echo $_smarty_tpl->tpl_vars['order']->value;?>
 &page=<?php echo $_GET['page'];?>
 &keyword=<?php echo $_smarty_tpl->tpl_vars['keyword']->value;?>
 &f_date=<?php echo $_smarty_tpl->tpl_vars['f_date']->value;?>
@@ -161,7 +154,7 @@ $_smarty_tpl->ext->_updateScope->updateScope($_smarty_tpl, 'hide', 0);?>
 &employee=<?php echo $_smarty_tpl->tpl_vars['employee']->value;?>
 " class="<?php echo $_smarty_tpl->tpl_vars['sort_field_client']->value;?>
 ">Client Name</a></th>
-										<th width="100"><a href="approve_billing.php?field=billing_amount&order=<?php echo $_smarty_tpl->tpl_vars['order']->value;?>
+										<th width="140"><a href="approve_billing.php?field=billing_amount&order=<?php echo $_smarty_tpl->tpl_vars['order']->value;?>
 &page=<?php echo $_GET['page'];?>
 &keyword=<?php echo $_smarty_tpl->tpl_vars['keyword']->value;?>
 &f_date=<?php echo $_smarty_tpl->tpl_vars['f_date']->value;?>
@@ -169,7 +162,7 @@ $_smarty_tpl->ext->_updateScope->updateScope($_smarty_tpl, 'hide', 0);?>
 &employee=<?php echo $_smarty_tpl->tpl_vars['employee']->value;?>
 " class="<?php echo $_smarty_tpl->tpl_vars['sort_field_billing_amonut']->value;?>
 ">Billing Amount</a></th>
-										<th width="80"><a href="approve_billing.php?field=billing_date&order=<?php echo $_smarty_tpl->tpl_vars['order']->value;?>
+										<th width="130"><a href="approve_billing.php?field=billing_date&order=<?php echo $_smarty_tpl->tpl_vars['order']->value;?>
 &page=<?php echo $_GET['page'];?>
 &keyword=<?php echo $_smarty_tpl->tpl_vars['keyword']->value;?>
 &f_date=<?php echo $_smarty_tpl->tpl_vars['f_date']->value;?>
@@ -177,7 +170,7 @@ $_smarty_tpl->ext->_updateScope->updateScope($_smarty_tpl, 'hide', 0);?>
 &employee=<?php echo $_smarty_tpl->tpl_vars['employee']->value;?>
 " class="<?php echo $_smarty_tpl->tpl_vars['sort_field_billing_date']->value;?>
 ">Billing Date</a></th>
-										<th width="120"><a href="approve_billing.php?field=candidate&order=<?php echo $_smarty_tpl->tpl_vars['order']->value;?>
+										<th width="150"><a href="approve_billing.php?field=candidate&order=<?php echo $_smarty_tpl->tpl_vars['order']->value;?>
 &page=<?php echo $_GET['page'];?>
 &keyword=<?php echo $_smarty_tpl->tpl_vars['keyword']->value;?>
 &f_date=<?php echo $_smarty_tpl->tpl_vars['f_date']->value;?>
@@ -185,7 +178,7 @@ $_smarty_tpl->ext->_updateScope->updateScope($_smarty_tpl, 'hide', 0);?>
 &employee=<?php echo $_smarty_tpl->tpl_vars['employee']->value;?>
 " class="<?php echo $_smarty_tpl->tpl_vars['sort_field_candidate']->value;?>
 ">Candidate Name</a></th>
-										<th width="120"><a href="approve_billing.php?field=created&order=<?php echo $_smarty_tpl->tpl_vars['order']->value;?>
+										<th width="130"><a href="approve_billing.php?field=created&order=<?php echo $_smarty_tpl->tpl_vars['order']->value;?>
 &page=<?php echo $_GET['page'];?>
 &keyword=<?php echo $_smarty_tpl->tpl_vars['keyword']->value;?>
 &f_date=<?php echo $_smarty_tpl->tpl_vars['f_date']->value;?>
@@ -193,7 +186,15 @@ $_smarty_tpl->ext->_updateScope->updateScope($_smarty_tpl, 'hide', 0);?>
 &employee=<?php echo $_smarty_tpl->tpl_vars['employee']->value;?>
 " class="<?php echo $_smarty_tpl->tpl_vars['sort_field_created']->value;?>
 ">Created Date</a></th>
-										<th width="80">Status</th>
+										<th width="120"><a href="approve_billing.php?field=employee&order=<?php echo $_smarty_tpl->tpl_vars['order']->value;?>
+&page=<?php echo $_GET['page'];?>
+&keyword=<?php echo $_smarty_tpl->tpl_vars['keyword']->value;?>
+&f_date=<?php echo $_smarty_tpl->tpl_vars['f_date']->value;?>
+&t_date=<?php echo $_smarty_tpl->tpl_vars['t_date']->value;?>
+&employee=<?php echo $_smarty_tpl->tpl_vars['employee']->value;?>
+" class="<?php echo $_smarty_tpl->tpl_vars['sort_field_employee']->value;?>
+">Created By</a></th>
+										<th width="50">Status</th>
 										<th width="70">Pending</th>
 										<th width="70" style="text-align:center">Actions</th>
 
@@ -216,8 +217,7 @@ $__foreach_item_0_saved_local_item = $_smarty_tpl->tpl_vars['item'];
 ?>	
 									
 									<tr>
-										<td><?php echo ucwords($_smarty_tpl->tpl_vars['item']->value['employee']);?>
-</td>
+										
 										<td><?php echo ucwords($_smarty_tpl->tpl_vars['item']->value['job_title']);?>
 </td>
 										<td><?php echo ucwords($_smarty_tpl->tpl_vars['item']->value['client_name']);?>
@@ -229,6 +229,8 @@ $__foreach_item_0_saved_local_item = $_smarty_tpl->tpl_vars['item'];
 										<td><?php echo ucwords($_smarty_tpl->tpl_vars['item']->value['candidate_name']);?>
 </td>
 										<td><?php echo $_smarty_tpl->tpl_vars['item']->value['created_date'];?>
+</td>
+										<td><?php echo ucwords($_smarty_tpl->tpl_vars['item']->value['employee']);?>
 </td>
 										<td><?php echo $_smarty_tpl->tpl_vars['item']->value['status'];?>
 </td>

@@ -160,7 +160,7 @@
 										<td><?php echo $position_data['Creator']['first_name'];?></td>
 											
 									</tr>
-<?php  if($position_data['Position']['is_approve'] != 'W'):?>			
+<?php if($position_data['Position']['status'] == 'A'):?>			
 
 		<tr>
 										
@@ -170,7 +170,7 @@
 <span rel="tooltip" title="Requirement Status: <?php echo $position_data['ReqStatus']['title'];?> " class="label label-<?php echo $this->Functions->get_req_status_color($position_data['ReqStatus']['title']);?>"><?php echo $position_data['ReqStatus']['title'];?></span>	
 
 <?php if($this->Session->read('USER.Login.roles_id') == '34'):?>
-	<a rel="tooltip" val="40_60"  class="iframeBox" title="Change Status" href="<?php echo $this->webroot;?>position/update_position_status/<?php echo $this->request->params['pass'][0];?>/<?php echo $this->request->params['pass'][1];?>/<?php echo $position_data['ReqStatus']['id'];?>/"><i class="splashy-pencil"></i></a>
+	<a rel="tooltip" val="40_60"  class="iframeBox" title="Change Status" href="<?php echo $this->webroot;?>position/update_position_status/<?php echo $this->request->params['pass'][0];?>/<?php echo $position_data['ReqStatus']['id'];?>/"><i class="splashy-pencil"></i></a>
 <?php endif;?>
 
 </td>
@@ -332,7 +332,7 @@
 									
 									
 									
-									<?php if($position_data['Position']['modified_date']):?>
+									<?php //if($position_data['Position']['modified_date']):?>
 										<tr>
 										
 										<td class="tbl_column">Modified On</td>
@@ -340,7 +340,7 @@
 											
 									</tr>
 									
-									<?php endif; ?>
+									<?php //endif; ?>
 									
 								</tbody>
 							</table>
