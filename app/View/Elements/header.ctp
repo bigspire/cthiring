@@ -215,7 +215,15 @@
                                        <?php endif; ?>
 									   
 									   
-                                        <li class="dropdown">
+									   	<?php 
+										if($APR_BILLING_COUNT > 0):
+										$active2 = 'active2';
+										else:
+										$active2 = '';
+										endif;
+										?>
+										
+                                        <li class="dropdown  <?php echo $active2;?>">
                                             <a data-toggle="dropdown" class="dropdown-toggle " href="#"><i class="icon-file icon-white"></i> Incentive <b class="caret"></b></a>
                                            <ul class="dropdown-menu">
 										   <?php if($view_billing == '1'):?> 
@@ -223,7 +231,11 @@
 										   <?php endif; ?>
 											
 											 <?php if($approve_billing == '1'):?>	   
-											 <li><a href="<?php echo $this->webroot;?>hiring/approve_billing.php">Approve Billing</a></li>												
+											 <li><a href="<?php echo $this->webroot;?>hiring/approve_billing.php">Approve Billing
+											 <?php if($APR_BILLING_COUNT):?>
+												<span class="label-bub label-info white"><?php echo $APR_BILLING_COUNT;?></span>
+												<?php endif; ?>
+											 </a></li>												
 											 <?php endif; ?>
 											
 											<?php if($view_incentive == '1'):?> 

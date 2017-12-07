@@ -469,7 +469,19 @@ class Position extends AppModel {
 		return $this->get_team_mem($id, $show);
 	}
 	
+	/* function get the billing count */
+	public function get_approve_billing($id){		
+		$sql = "CALL count_approve_billing('$id')";		
+		$result = $this->query($sql);
+		return $result[0][0]['count'];
+	}
 	
+		
+	/* function to calculate the billing count */
+	public function get_billing_count($id){
+		$count = $this->get_approve_billing($id);
+		return $count;
+	}
 	
 	
 	

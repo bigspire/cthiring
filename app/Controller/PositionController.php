@@ -259,7 +259,7 @@ class PositionController extends AppController {
 		
 		// for unread status count
 		if($this->request->query['unread'] == '1'){
-			$stCond = array('Read.users_id' => $this->Session->read('USER.Login.id'), 'Read.status' => 'U');
+			$stCond = array('ReqRead.users_id' => $this->Session->read('USER.Login.id'), 'ReqRead.status' => 'U');
 		}
 		
 		$this->request->query['keyword'] = str_replace('||', '&', $this->params->query['keyword']);		
@@ -2446,6 +2446,7 @@ class PositionController extends AppController {
 	public function send_message(){
 		
 	}
+
 	
 	// check the role permissions
 	public function beforeFilter(){ 
