@@ -1340,8 +1340,10 @@ class HomeController  extends AppController {
 				$sub = 'Manage Hiring - Feedback received from '.ucfirst($this->Session->read('USER.Login.first_name')).' '.ucfirst($this->Session->read('USER.Login.last_name'));
 				$from = ucfirst($this->Session->read('USER.Login.first_name')).' '.ucfirst($this->Session->read('USER.Login.last_name'));
 				$vars = array('from_name' => $from, 'message' => $this->request->data['Home']['message']);
+				// get system admin email address
+				$admin_data = $this->Home->Creator->find('all', array('conditions' => array('roles_id' => '26'), 'fields' => array('email_id')));
 				// notify superiors						
-				if(!$this->send_email($sub, 'feedback', 'noreply@managehiring.in', 'ravi@bigspire.com',$vars)){	
+				if(!$this->send_email($sub, 'feedback', 'noreply@managehiring.in', $admin_data[0]['Creator']['email_id'],$vars)){	
 					// show the msg.								
 					$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Problem in sending the mail to admin...', 'default', array('class' => 'alert alert-error'));				
 				}else{
@@ -1369,8 +1371,10 @@ class HomeController  extends AppController {
 					$dest = 'uploads/message/'.time().'_'.$this->request->data['Home']['attachment']['name'];
 					$this->upload_file($src, $dest);
 				}
+				// get system admin email address
+				$admin_data = $this->Home->Creator->find('all', array('conditions' => array('roles_id' => '26'), 'fields' => array('email_id')));
 				// notify superiors						
-				if(!$this->send_email($sub, 'report_bug', 'noreply@managehiring.in', 'ravi@bigspire.com',$vars, $dest)){	
+				if(!$this->send_email($sub, 'report_bug', 'noreply@managehiring.in', $admin_data[0]['Creator']['email_id'],$vars, $dest)){	
 					// show the msg.								
 					$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Problem in sending the mail to admin...', 'default', array('class' => 'alert alert-error'));				
 				}else{

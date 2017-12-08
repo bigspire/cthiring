@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-12-02 13:06:53
+/* Smarty version 3.1.29, created on 2017-12-08 15:47:46
   from "C:\xampp\htdocs\ctsvn\cthiring\hiring\templates\interview.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5a22581566c006_73883971',
+  'unifunc' => 'content_5a2a66cadc5572_05413269',
   'file_dependency' => 
   array (
     '25b24ff4729c85f979ecfea9afe96fcfac22d4eb' => 
     array (
       0 => 'C:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\templates\\interview.tpl',
-      1 => 1512200203,
+      1 => 1512651320,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5a22581566c006_73883971 ($_smarty_tpl) {
+function content_5a2a66cadc5572_05413269 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -199,7 +199,17 @@ $_smarty_tpl->ext->_updateScope->updateScope($_smarty_tpl, 'hide', 0);?>
 &branch=<?php echo $_smarty_tpl->tpl_vars['branch']->value;?>
 &status=<?php echo $_smarty_tpl->tpl_vars['status']->value;?>
 " rel="tooltip" data-original-title="Sort by Ascending or Descending" class="<?php echo $_smarty_tpl->tpl_vars['sort_field_ac_holder']->value;?>
-">Account Holder</a></th>						
+">Account Holder</a></th>	
+										<th width="90"><a href="interview.php?field=created_by&order=<?php echo $_smarty_tpl->tpl_vars['order']->value;?>
+&page=<?php echo $_GET['page'];?>
+&keyword=<?php echo $_smarty_tpl->tpl_vars['keyword']->value;?>
+&f_date=<?php echo $_smarty_tpl->tpl_vars['f_date']->value;?>
+&t_date=<?php echo $_smarty_tpl->tpl_vars['t_date']->value;?>
+&employee=<?php echo $_smarty_tpl->tpl_vars['employee']->value;?>
+&branch=<?php echo $_smarty_tpl->tpl_vars['branch']->value;?>
+&status=<?php echo $_smarty_tpl->tpl_vars['status']->value;?>
+" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="<?php echo $_smarty_tpl->tpl_vars['sort_field_created_by']->value;?>
+">Recruiter</a></th>										
 										<th width="80"><a href="interview.php?field=interview_date&order=<?php echo $_smarty_tpl->tpl_vars['order']->value;?>
 &page=<?php echo $_GET['page'];?>
 &keyword=<?php echo $_smarty_tpl->tpl_vars['keyword']->value;?>
@@ -230,16 +240,6 @@ $_smarty_tpl->ext->_updateScope->updateScope($_smarty_tpl, 'hide', 0);?>
 &current_status=<?php echo $_smarty_tpl->tpl_vars['current_status']->value;?>
 " rel="tooltip" data-original-title="Sort by Ascending or Descending" class="<?php echo $_smarty_tpl->tpl_vars['sort_field_current_status']->value;?>
 ">Status</a></th>
-										<th width="90"><a href="interview.php?field=created_by&order=<?php echo $_smarty_tpl->tpl_vars['order']->value;?>
-&page=<?php echo $_GET['page'];?>
-&keyword=<?php echo $_smarty_tpl->tpl_vars['keyword']->value;?>
-&f_date=<?php echo $_smarty_tpl->tpl_vars['f_date']->value;?>
-&t_date=<?php echo $_smarty_tpl->tpl_vars['t_date']->value;?>
-&employee=<?php echo $_smarty_tpl->tpl_vars['employee']->value;?>
-&branch=<?php echo $_smarty_tpl->tpl_vars['branch']->value;?>
-&status=<?php echo $_smarty_tpl->tpl_vars['status']->value;?>
-" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="<?php echo $_smarty_tpl->tpl_vars['sort_field_created_by']->value;?>
-">Created By</a></th>
 										<th width="50"><a href="interview.php?field=created_date&order=<?php echo $_smarty_tpl->tpl_vars['order']->value;?>
 &page=<?php echo $_GET['page'];?>
 &keyword=<?php echo $_smarty_tpl->tpl_vars['keyword']->value;?>
@@ -278,6 +278,8 @@ $__foreach_item_0_saved_local_item = $_smarty_tpl->tpl_vars['item'];
 </td>
 										<td><?php echo $_smarty_tpl->tpl_vars['item']->value['ac_holder'];?>
 </td>
+										<td><?php echo $_smarty_tpl->tpl_vars['item']->value['created_by'];?>
+</td>
 										<td><?php echo $_smarty_tpl->tpl_vars['item']->value['interview_date'];?>
 </td>
 										<td><?php echo $_smarty_tpl->tpl_vars['item']->value['stage'];?>
@@ -285,8 +287,6 @@ $__foreach_item_0_saved_local_item = $_smarty_tpl->tpl_vars['item'];
 										<td><span class="label label-<?php echo $_smarty_tpl->tpl_vars['item']->value['status_cls'];?>
 "><?php echo $_smarty_tpl->tpl_vars['item']->value['status'];?>
 </span></td>
-										<td><?php echo $_smarty_tpl->tpl_vars['item']->value['created_by'];?>
-</td>
 										<td><?php echo $_smarty_tpl->tpl_vars['item']->value['created_date'];?>
 </td>
 									</tr>
