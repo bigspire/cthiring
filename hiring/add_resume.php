@@ -671,7 +671,7 @@ if(!empty($_POST)){
 		}
 		if($row['req_status_id'] == '0'){	
 			// query to add req resume details
-			$query = "CALL edit_requirement_status('2','".$_SESSION['position_for']."')";
+			$query = "CALL edit_requirement_status('1','".$_SESSION['position_for']."')";
 			try{
 				if(!$result = $mysql->execute_query($query)){
 					throw new Exception('Problem in adding requirement status details');

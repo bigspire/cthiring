@@ -97,6 +97,7 @@ try{
 	if($result->num_rows){
 		// calling mysql fetch_result function
 		while($obj = $mysql->display_result($result)){
+			$_SESSION['requirement_id'] = $obj['requirement_id'];
 			$smarty->assign('candidate_name', $obj['candidate_name']);
 			$smarty->assign('position', $obj['position']);
 			$smarty->assign('recruiter', $obj['recruiter']);

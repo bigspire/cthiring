@@ -221,6 +221,43 @@ if($error){
 				echo 'Caught exception: ',  $e->getMessage(), "\n";
 			}		
 		}
+		
+		// get total requirements
+		$query = "CALL get_total_requirements('".$_SESSION['requirement_id']."')";
+		// Calling the function that makes the insert
+		try{
+			// calling mysql exe_query function
+			if(!$result = $mysql->execute_query($query)){
+				throw new Exception('Problem in getting total requirements');
+			}
+			$row = $mysql->display_result($result);
+			// free the memory
+			$mysql->clear_result($result);
+			// call the next result
+			$mysql->next_query();
+		}catch(Exception $e){
+			echo 'Caught exception: ',  $e->getMessage(), "\n";
+		}
+		
+		if($row['no_job'] == $row['total_billing']){
+			// close the requirements
+			$query = "CALL edit_requirement_status('3','".$_SESSION['requirement_id']."')";
+			// Calling the function that makes the insert
+			try{
+				// calling mysql exe_query function
+				if(!$result = $mysql->execute_query($query)){
+					throw new Exception('Problem in closing the requirement');
+				}
+				$row = $mysql->display_result($result);
+				$close_requirement = $row['affected_rows'];
+				// free the memory
+				$mysql->clear_result($result);
+				// call the next result
+				$mysql->next_query();
+			}catch(Exception $e){
+				echo 'Caught exception: ',  $e->getMessage(), "\n";
+			}
+		}
 			
 		if(!empty($affected_rows)){ 
 			// $alert_msg = 'Billing request approved and sent to user successfully. ';	
