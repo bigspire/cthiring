@@ -33,10 +33,7 @@ class mailContent extends fun{
     <td width="269" align="right" style="padding-right:20px;"></td>
   </tr-->
   
-  <tr>
-    <td colspan="2">&nbsp;</td>
-  </tr>
-  <tr>
+ 
     <td colspan="2"><table width="100%" border="0" cellspacing="0" cellpadding="0">
       <tr>
         <td width="490" valign="top"  style="padding:0 20px;"><h1 style="font:bold 15px Arial, Helvetica, sans-serif; color:#676767; margin:0 0 10px 0;">Dear {$ah_name},</h1>
@@ -46,9 +43,9 @@ class mailContent extends fun{
           <p style="font:bold 13px Arial, Helvetica, sans-serif; color:#676767; margin:0;">Please check the details below,</p>
           <table width="100%" border="0" cellspacing="2" cellpadding="10" style="border:1px solid #ededed; font:bold 13px Arial, Helvetica, sans-serif; color:#6f6e6e; margin:10px 0 20px 0;">
 		   <tr style="background:#f5f4f4;">
-             	<td width="100">Candidate Name</td>
+             	<td width="130">Candidate Name</td>
               	<td style="color:#2a2a2a;">{$form_data['first_name']} {$form_data['last_name']}</td>
-              	<td width="100">Position</td>
+              	<td width="130">Position</td>
               	<td style="color:#2a2a2a;">{$position_autoresume}</td>	
              </tr>
              <tr style="background:#f5f4f4;">
@@ -106,9 +103,7 @@ EOD;
     <td style="padding-left:20px;color:rgb(255,255,255);font-family:arial" width="436" height="80"><h1>MANAGE HIRING</h1></td>
     <td style="padding-right:20px" width="269" align="right"></td>
   </tr>
-  <tr>
-    <td colspan="2">&nbsp;</td>
-  </tr>
+ 
   <tr>
     <td colspan="2"><table width="100%" border="0" cellspacing="0" cellpadding="0">
       <tr>
@@ -181,9 +176,7 @@ EOD;
     <td style="padding-right:20px" width="269" align="right"></td>
   </tr>
   
-  <tr>
-    <td colspan="2">&nbsp;</td>
-  </tr>
+  
   <tr>
   <td colspan="2"><table width="100%" border="0" cellspacing="0" cellpadding="0">
       <tr>
