@@ -24,7 +24,6 @@ if(empty($_SESSION['resume_doc_id'])){
 	header('Location: ../?access=invalid');
 }
 
-
 // when doc. extraction happen in first time
 if($_SESSION['extraction'] == '' || $_POST['RESUME_DATA'] == ''){
 	// fetch the resume data
@@ -668,29 +667,7 @@ if(!empty($_POST)){
 			// free the memory
 			$mysql->clear_result($result);
 			// call the next result
-			$mysql->next_query();
-			
-			/*
-			// query to get account holder details
-			$query = "CALL get_accountholder_details('".$_SESSION['client']."')";
-			try{
-				if(!$result = $mysql->execute_query($query)){
-					throw new Exception('Problem in getting the AH Details');
-				}
-				$row = $mysql->display_result($result);
-				$ah_id = $row['ah_id'];
-				$ah_email = $row['ah_email'];
-				$ah_name = ucwords($row['ah_name']);
-				// free the memory
-				$mysql->clear_result($result);					
-				// call the next result
-				$mysql->next_query();
-			}catch(Exception $e){
-				echo 'Caught exception: ',  $e->getMessage(), "\n";
-			}
-			*/
-			
-		
+			$mysql->next_query();					
 			
 			// get recruiter nameget_recruiter_name
 			$query =  "CALL get_recruiter_name('".$mysql->real_escape_str($_SESSION['user_id'])."')";
@@ -713,8 +690,8 @@ if(!empty($_POST)){
 				if(!$result = $mysql->execute_query($query)){
 					throw new Exception('Problem in getting the AH Details');
 				}
-				while($row_account[] = $mysql->display_result($result)){
-					
+				while($account = $mysql->display_result($result)){
+					$row_account[] = $account;
 				}
 				// free the memory
 				$mysql->clear_result($result);
@@ -726,7 +703,7 @@ if(!empty($_POST)){
 			
 			
 			// update the account holders read status
-			foreach($row_account as $i => $username) { 					
+			foreach($row_account as  $username) { 					
 				// query to add req read details
 				$query = "CALL add_req_read('".$_SESSION['position_for']."','".$username['ah_id']."','".$date."')";
 				try{
@@ -739,16 +716,14 @@ if(!empty($_POST)){
 					$mysql->clear_result($result);				
 					// call the next result
 					$mysql->next_query();
-				}catch(Exception $e){
-					echo 'Caught exception: ',  $e->getMessage(), "\n";
-				}
-				if(!empty($req_read)){
 					// send mail to account holder
 					$sub = "Manage Hiring -  Resume uploaded by " .$recruiter;
 					$msg = $content->get_create_resume_mail($_POST,$client_autoresume,$position_autoresume,$recruiter,$recruiter_email,$username['ah_name'],$username['ah_email']);
 					$mailer->send_mail($sub,$msg,$recruiter,$recruiter_email,$username['ah_name'],$username['ah_email']);
-					$successfull = '1';
+				}catch(Exception $e){
+					echo 'Caught exception: ',  $e->getMessage(), "\n";
 				}
+					
 			}
 
 			//echo 'save data';
@@ -836,19 +811,16 @@ if(!empty($_POST)){
 			// Download the package files
 			$myTaskWatermark->download('uploads/snapshotwatermarked/');
 			
-			
-			
-			
 			//include('vendor/ilovepdf-php-1.1.5/samples/merge_basic.php');
 			// unset the sessions
 			unset($_SESSION['position_for']);
 			unset($_SESSION['resume_doc']);
 			unset($_SESSION['clients_id']);
 			
-			if($successfull == '1'){
+			// if($successfull == '1'){
 				// header('Location: ../resume?action=created&download='.$snap_file_name.'_'.date('d-m-Y').'.pdf');
 				header('Location: ../resume?action=created');
-			}
+			// }
 		} 
 		}else{
 				$msg = "Resume with same email address and mobile no. already exists";
