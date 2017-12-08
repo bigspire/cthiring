@@ -254,15 +254,15 @@
 										|| $module['failure_report'] eq '1' || $module['revenue_report'] eq '1' || $module['tat_report'] eq '1'
 										|| $module['collection_report'] eq '1' || $module['client_retention_report'] eq '1' || $module['incentive_report'] eq '1'
 										|| $module['daily_report'] eq '1' || $module['weekly_report'] eq '1'}
-										<li class="dropdown">
+										<li class="dropdown {$report_menu}">
                                             <a data-toggle="dropdown" class="dropdown-toggle " href="#"><i class="icon-download-alt icon-white"></i> Reports <b class="caret"></b></a>
                                           <ul class="dropdown-menu">
 											{if $module['recruiter_report'] eq '1'}
-                                                <li><a href="#">Recruiter Performance</a></li>
+                                                <li><a href="recruiter_performance.php">Recruiter Performance</a></li>
 											{/if}
 										  
 											{if $module['account_holder_report'] eq '1'}
-                                                <li><a href="#">Account Holder Performance</a></li>
+                                                <li><a href="ah_performance.php">Account Holder Performance</a></li>
 										    {/if}
 											
 											{if $module['location_report'] eq '1'}

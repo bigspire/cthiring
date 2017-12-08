@@ -4,9 +4,11 @@
    
 
 			{include file='include/header.tpl'}
-		<!-- main content -->
-            <div id="contentwrapper">
+		     <div id="contentwrapper">
                 <div class="main_content">
+                
+				
+					
 										
 					<div class="row-fluid">
 						
@@ -16,7 +18,7 @@
                         <div id="jCrumbs" class="breadCrumb module">
                             <ul>
                                 <li>
-                                    <a href="{$smarty.const.webroot}home"><i class="icon-home"></i></a>
+                                    <a href="recruiter_dashboard.php"><i class="icon-home"></i></a>
                                 </li>
                                 <li>
                                     <a href="recruiter_performance.php">Recruiter Performance</a>
@@ -28,191 +30,370 @@
                             </ul>
                         </div>
                     </nav>
-				
-			<form>
+				<div class="srch_buttons">
+
+							<a class="jsRedirect" href="javascript:void(0)">
+							<input type="button" value="Search" class="homeSrch btn btn-success"></a>
+														 							
+							</div>
+							<form>
 															
-				<div class="dataTables_filter homeSrchBox srchBox" style="float:left;margin-left:;margin-top:15px"  id="dt_gal_filter">
-						<label>To Date: <input type="text" name="t_date" value="{$t_date}" class="input-small datepick" aria-controls="dt_gal"></label>
-						<label>From Date: <input type="text" class="input-small datepick" name="f_date" value="{$f_date}" aria-controls="dt_gal"></label>
+							<div class="dn dataTables_filter srchBox homeSrchBox" style="float:left;margin-left:;margin-top:15px"  id="dt_gal_filter">
+							<label style="margin-top:18px;"><a href="#"><input value="Print" type="button" class="btn btn-success"/></a></label>
+
+							<label style="margin-top:18px;"><a href="#"><input value="Export" type="button" class="btn btn-warning"/></a></label>
+
+							<label style="margin-top:18px;"><a href="recruiter_performance.php"><input value="Reset" type="button" class="btn"/></a></label>
+							<label style="margin-top:18px;"><input type="button" value="Submit" class="btn btn-gebo" /></label>
+							
 					
-						<label>Employee: 
-							<select name="emp_name" class="input-medium" placeholder="" style="clear:left" id="emp_name">
-								<option value="">Select</option>	
-								{html_options options=$emp_id selected=$smarty.get.emp_name}			    			
-							</select>
-						</label>
 						
-						<label>Client:
-							<select name="client_name" class="input-medium" placeholder="" style="clear:left" id="client_name">
-								<option value="">Select</option>	
-								{html_options options=$clients selected=$smarty.get.client_name}			    			
-							</select>
-						</label>
-						<label style="margin-top:18px;"><a href="javascript:void(0)">
-						<input value="Toggle Graph" type="button" class="btn hide_graph"/></a></label>
-						<label style="margin-top:18px;"><a href="#">
-						<input value="Export" type="button" class="btn btn-warning"/></a></label>
-						<label style="margin-top:18px;"><a href="recruiter_performance.php">
-						<input value="Reset" type="button" class="btn"/></a></label>
-						<label style="margin-top:18px;"><input type="submit" value="Submit" class="btn btn-gebo" />					
-						</label>
-				</div>
-					
-<input type="hidden" name="submit" id="submit"/>
-<input type="hidden" value="23/12/2016" id="end_date">
+							<label>Employee: 
+						<select name="data[emp_id]" class="input-medium" placeholder="" style="clear:left" id="emp_id">
+<option value="">Select</option>
+<option value="0">Bhargavi</option>
+<option value="1" selected="selected">Suganya</option>
+</select> 															
+													
+							</label>
+																	<label>Client: <input type="text" placeholder="Client Name" name="data[Home][client]" id = "SearchText" value="Amrutanjan" class="input-large" aria-controls="dt_gal"></label>
+				
+
+
+<label>To Date: <input type="text" name="data[Home][to]" value="30/09/2016" class="input-small datepick" aria-controls="dt_gal"></label>
+
+							<label>From Date: <input type="text" class="input-small datepick" name="data[Home][from]" value="01/09/2016" aria-controls="dt_gal"></label>
+							
+						
+														</div>
+<input type="hidden" name="data[srchSubmit]" id="srchSubmit"/><input type="hidden" value="23/12/2016" id="end_date">
 <input type="hidden" value="23/09/2016" id="start_date">
 		<input type="hidden" value="1" id="SearchKeywords">
 						<input type="hidden" value="home/" id="webroot">	
 <input type="hidden" name="data[type]" id="type"/>						
 						</form>
 						
+						<div class="row-fluid">		
+				<div class="span12">	
+				
+						<h3 class="heading" style="margin-bottom:0;border:;clear:left;">Business Conversion <small> List View</small>
+							</h3>
 						
-							<table class="table table-hover table-bordered  stickyTable" style="padding: 0px;">
-								<thead class="tableFloatingHeaderOriginal" style="position: static; margin-top: 0px; left: 31px; z-index: 3; width: 1287px; top: 0px;">
+							<table class="table table-hover table-bordered table-striped" style="margin: 15px 0px;">
+								<thead>
 									
 									<tr>
 
 										<th width="" style="min-width: 0px; max-width: none;"></th>										
-										<th width="" style="min-width: 0px; max-width: none;"></th>
-										<th width="260" style="text-align:center;min-width: 0px; max-width: none;" colspan="9">CTC wise Positions Worked (In Lacs)</th>
-										<th width="260" style="text-align:center;min-width: 0px; max-width: none;"  colspan="9">CTC wise Profiles Submitted (In Lacs)</th>
-										<th width="260" style="text-align:center;min-width: 0px; max-width: none;"  colspan="9">CTC wise Positions Closed (In Lacs)</th>
+										<th width="" style="text-align:center;min-width: 0px; max-width: none;" colspan="8">CTC value of the position (in Lacs) </th>
+										<th width="" style="min-width: 0px; max-width: none;text-align:center">Total</th>
 										
 									</tr>
 								
 									<tr>
 
-										<th width="100" style="min-width: 0px; max-width: none;"><a href="#">Recruiter</a></th>										
-										<th width="60" style="min-width: 0px; max-width: none;"><a href="#">Month</a></th>
+										<th width="100" style="min-width: 0px; max-width: none;"><a href="#">Performance Factors</a></th>										
 										
 										
-										<th width="85" style="min-width: 0px; max-width: none;text-align:center"><a href="#">0 - 1</a></a></th>
-										<th width="85" style="min-width: 0px; max-width: none;text-align:center" ><a href="#">1 - 2</a></th>
-										<th width="85" style="min-width: 0px; max-width: none;text-align:center"><a href="#">2 - 4</a></th>
-										<th width="85" style="min-width: 0px; max-width: none;text-align:center"><a href="#">4 - 8</a></th>
-										<th width="85" style="min-width: 0px; max-width: none;text-align:center"><a href="#">8 - 12</a></th>
-										<th width="120" style="min-width: 0px; max-width: none;text-align:center"><a href="#">12 - 20</a></th>
-										<th width="120" style="min-width: 0px; max-width: none;text-align:center"><a href="#">20 - 30</a></th>
-										<th width="120" style="min-width: 0px; max-width: none;text-align:center"><a href="#">30 - 40</a></th>
-										<th width="55" style="min-width: 0px; max-width: none;text-align:center"><a href="#">> 40</a></th>
+										<th width="50" style="min-width: 0px; max-width: none;text-align:center"><a href="#">0-1</a></a></th>
+										<th width="50" style="min-width: 0px; max-width: none;text-align:center" ><a href="#">1 - 2</a></th>
+										<th width="50" style="min-width: 0px; max-width: none;text-align:center"><a href="#">2 - 4</a> </th>
+										<th width="50" style="min-width: 0px; max-width: none;text-align:center"><a href="#">4 - 8</a> </th>
 										
-										<th width="85" style="min-width: 0px; max-width: none;text-align:center"><a href="#">0 - 1</a></th>
-										<th width="85" style="min-width: 0px; max-width: none;text-align:center" ><a href="#">1 - 2</a></th>
-										<th width="85" style="min-width: 0px; max-width: none;text-align:center"><a href="#">2 - 4</a></th>
-										<th width="85" style="min-width: 0px; max-width: none;text-align:center"><a href="#">4 - 8</a></th>
-										<th width="85" style="min-width: 0px; max-width: none;text-align:center"><a href="#">8 - 12</a></th>
-										<th width="120" style="min-width: 0px; max-width: none;text-align:center"><a href="#">12 - 20</a></th>
-										<th width="120" style="min-width: 0px; max-width: none;text-align:center"><a href="#">20 - 30</a></th>
-										<th width="120" style="min-width: 0px; max-width: none;text-align:center"><a href="#">30 - 40</a></th>
-										<th width="55" style="min-width: 0px; max-width: none;text-align:center"><a href="#">> 40</a></th>
+										<th width="50" style="min-width: 0px; max-width: none;text-align:center"><a href="#">8 - 12</a></th>
+										<th width="50" style="min-width: 0px; max-width: none;text-align:center" ><a href="#">12 - 20</a></th>
+										<th width="50" style="min-width: 0px; max-width: none;text-align:center"><a href="#">20 - 30</a> </th>
+										<th width="50" style="min-width: 0px; max-width: none;text-align:center"><a href="#">30 - 40</a> </th>
+										
+											<th width="50" style="min-width: 0px; max-width: none;text-align:center"></th>
 										
 										
-										<th width="85" style="min-width: 0px; max-width: none;text-align:center"><a href="#">0 - 1</a></th>
-										<th width="85" style="min-width: 0px; max-width: none;text-align:center" ><a href="#">1 - 2</a></th>
-										<th width="85" style="min-width: 0px; max-width: none;text-align:center"><a href="#">2 - 4</a></th>
-										<th width="85" style="min-width: 0px; max-width: none;text-align:center"><a href="#">4 - 8</a></th>
-										<th width="85" style="min-width: 0px; max-width: none;text-align:center"><a href="#">8 - 12</a></th>
-										<th width="120" style="min-width: 0px; max-width: none;text-align:center"><a href="#">12 - 20</a></th>
-										<th width="120" style="min-width: 0px; max-width: none;text-align:center"><a href="#">20 - 30</a></th>
-										<th width="120" style="min-width: 0px; max-width: none;text-align:center"><a href="#">30 - 40</a></th>
-										<th width="55" style="min-width: 0px; max-width: none;text-align:center"><a href="#">> 40</a></th>
-				
+										
+										
 									</tr>
-							
+								
+								
 								</thead>
-							
+								
+								
 								<tbody>
-								{foreach from=$data item=item key=key}	
-								<tr>
-										<td width=""><a href="#">{$item.recruiter_name}</a></td>
-										<td width="">09/2016</td>
+								
+								
 										
-										<td style="text-align:center"><a href="#">{$item.position_worked}</a></td>
-										<td style="text-align:center"><a href="#">{$item.position_worked}</a></td>
-										<td style="text-align:center"><a href="#">{$item.position_worked}</a></td>
-										<td style="text-align:center"><a href="#">{$item.position_worked}</a></td>
-										<td style="text-align:center"><a href="#">{$item.position_worked}</a></td>
-										<td style="text-align:center"><a href="#">{$item.position_worked}</a></td>
-										<td style="text-align:center"><a href="#">{$item.position_worked}</a></td>
-										<td style="text-align:center"><a href="#">{$item.position_worked}</a></td>
-										<td style="text-align:center"><a href="#">{$item.position_worked}</a></td>
+																		<tr>
+																				<td width="">Openings Worked</td>
 										
-										<td style="text-align:center"><a href="#">{$item.profile_submitted}</a></td>
-										<td style="text-align:center"><a href="#">{$item.profile_submitted}</a></td>
-										<td style="text-align:center"><a href="#">{$item.profile_submitted}</a></td>
-										<td style="text-align:center"><a href="#">{$item.profile_submitted}</a></td>
-										<td style="text-align:center"><a href="#">{$item.profile_submitted}</a></td>
-										<td style="text-align:center"><a href="#">{$item.profile_submitted}</a></td>
-										<td style="text-align:center"><a href="#">{$item.profile_submitted}</a></td>
-										<td style="text-align:center"><a href="#">{$item.profile_submitted}</a></td>
-										<td style="text-align:center"><a href="#">{$item.profile_submitted}</a></td>
+										<td style="text-align:center">33</td>
+										<td style="text-align:center">3</td>
+										<td style="text-align:center">76</td>
+										<td style="text-align:center">23</td>
+										
+										<td style="text-align:center">33</td>
+										<td style="text-align:center">3</td>
+										<td style="text-align:center">76</td>
+										<td style="text-align:center">23</td>
 										
 										
-										<td style="text-align:center"><a href="#">{$item.position_closed}</a></td>
-										<td style="text-align:center"><a href="#">{$item.position_closed}</a></td>
-										<td style="text-align:center"><a href="#">{$item.position_closed}</a></td>
-										<td style="text-align:center"><a href="#">{$item.position_closed}</a></td>
-										<td style="text-align:center"><a href="#">{$item.position_closed}</a></td>
-										<td style="text-align:center"><a href="#">{$item.position_closed}</a></td>
-										<td style="text-align:center"><a href="#">{$item.position_closed}</a></td>
-										<td style="text-align:center"><a href="#">{$item.position_closed}</a></td>
-										<td style="text-align:center"><a href="#">{$item.position_closed}</a></td>
+										
+									
+										
+									
+						
+						<td width="" style="text-align:center">12999						</td>
+						
+					
 								</tr>
-								{/foreach}																									
-						</tbody>
+								
+								<tr>
+																				<td width="">Openings Billed</td>
+										
+										<td style="text-align:center">33</td>
+										<td style="text-align:center">3</td>
+										<td style="text-align:center">76</td>
+										<td style="text-align:center">23</td>
+										
+										<td style="text-align:center">33</td>
+										<td style="text-align:center">3</td>
+										<td style="text-align:center">76</td>
+										<td style="text-align:center">23</td>
+										
+										
+										
+									
+										
+									
+						
+						<td width="" style="text-align:center">12999						</td>
+						
+					
+								</tr>
+								
+								
+								<tr>
+																				<td width="">Resumes Submitted</td>
+										
+										<td style="text-align:center">33</td>
+										<td style="text-align:center">3</td>
+										<td style="text-align:center">76</td>
+										<td style="text-align:center">23</td>
+										
+										<td style="text-align:center">33</td>
+										<td style="text-align:center">3</td>
+										<td style="text-align:center">76</td>
+										<td style="text-align:center">23</td>
+										<td width="" style="text-align:center">12999</td>
+						
+					
+								</tr>
+								
+																
+																</tbody>
 							</table>
-<!--div class="row" style="margin-left:0px;">
-<div class="span12">
-	<div class="dataTables_paginate paging_bootstrap pagination">
-<ul>
-
-<li class="disabled"><a>1</a></li> <li><a href="#">2</a></li> <li><a href="#">3</a></li> <li><a href="#">4</a></li> <li><a href="#">5</a></li> <li><a href="#">6</a></li> <li><a href="#">7</a></li> <li><a href="#">8</a></li> <li><a href="#">9</a></li>
-<li class="next"><a href="#" rel="next"> Next &gt;</a></li><li><a href="#" rel="last"> Last &gt;&gt;</a></li>
-
-</ul>
-</div>
-</div>
-</div-->
-
-<div class="row" style="margin-left:0px;">
-<div class="span12">					   
-<div class="" id="dt_gal_info">
-{$page_info}
-</div> 
-</div>
-
-<div class="span8">
-<div class="dataTables_paginate paging_bootstrap pagination">
-<ul>
-{$page_links}
-</ul>
-</div>
-</div>
-</div>
-
-<h3 class="heading" style="margin-bottom:0;">Recruiter Performance <small> Graphical View</small>
+				</div></div>
+				
+				
+	<div class="row-fluid">		
+<div class="span12">	
+<div class="span8">&nbsp;</div>
+<div class="span4">
+										<div><h3>Average Conversion of Openings: 44%</h3> </div>
+										<div><h3>Average Resumes Per Opening: 70%</h3>  
+										</div>
+										
+									</div>
+</div></div>
+				
+				<div class="row-fluid">						
+<div class="span6">
+				<h3 class="heading" style="margin-bottom:0;clear:left;">Recruiter Performance <small> Graphical View</small>
 							</h3>
 							
-							<!--div class="span10 graph" id="compare_chart" style="clear:both;border-bottom:1px dotted #efefef;  height:500px">
-							</div-->
 							
-							<div class="span10 graph" id="line_chart" style="clear:both;  margin:25px 0px 0px 25px ;">
+							<div class="span12 graph" id="line_chart" style="clear:both;  margin:25px 0px 0px 25px ;">
 							</div>
 					
-							<!--div class="span10 graph" id="profile_work" style="clear:both;border-bottom:1px dotted #efefef;  margin:25px;height:300px">
-							</div-->
-							
-							<!--div class="span10 graph"  id="coordinate_work" style="margin:25px ;border-bottom:1px dotted #efefef; height:300px">
-							</div-->
-							
-							<div class="span10 graph"  id="debt_work" style="margin:25px 40px; ;height:300px">
-							</div>
-							
 						
+						
+				</div>	
+
+		<div class="span6">
+				<h3 class="heading" style="margin-bottom:0;clear:left;">Bad Debts Performance <small> List View</small>
+							</h3>
 							
+							
+							<div class="span10 graph"  id="debt_work" style="margin:15px 40px;height:180px">
+							</div>
+
+							
+				
+						
+						
+				</div>	
+
+				
 					</div>
 					
-                        
+				<div class="row-fluid">		
+				<div class="span8">	
+					<h3 class="heading" style="margin-bottom:0;border:;clear:left;">Business Opportunity Conversion <small> List View</small>
+							</h3>
+							
+					<table class="table table-hover table-bordered table-striped" style="margin: 15px 0px">
+								<thead >
+									
+								
+									<tr>
+
+										<th width="180" style="min-width: 0px; max-width: none;"><a href="#">Performance Factors</a></th>										
+										
+										
+										<th width="40" style="min-width: 0px; max-width: none;text-align:center"><a href="#">Apr</a></a></th>
+										<th width="40" style="min-width: 0px; max-width: none;text-align:center" ><a href="#">May</a></th>
+										<th width="40" style="min-width: 0px; max-width: none;text-align:center"><a href="#">Jun</a> </th>
+										<th width="40" style="min-width: 0px; max-width: none;text-align:center"><a href="#">Jul</a> </th>
+										
+										<th width="40" style="min-width: 0px; max-width: none;text-align:center"><a href="#">Aug</a></th>
+										<th width="40" style="min-width: 0px; max-width: none;text-align:center" ><a href="#">Sep</a></th>
+										<th width="40" style="min-width: 0px; max-width: none;text-align:center"><a href="#">Oct</a> </th>
+										<th width="40" style="min-width: 0px; max-width: none;text-align:center"><a href="#">Nov</a> </th>
+										<th width="40" style="min-width: 0px; max-width: none;text-align:center"><a href="#">Dec</a> </th>
+										<th width="40" style="min-width: 0px; max-width: none;text-align:center"><a href="#">Jan</a> </th>
+										<th width="40" style="min-width: 0px; max-width: none;text-align:center"><a href="#">Feb</a> </th>
+										<th width="40" style="min-width: 0px; max-width: none;text-align:center"><a href="#">Mar</a> </th>
+										
+										
+										
+											<th width="50" style="min-width: 0px; max-width: none;text-align:center">Total</th>
+										
+										
+										
+										
+									</tr>
+								
+								
+								</thead>
+								
+								
+								<tbody>
+								
+								
+										
+																		<tr>
+																				<td width="">Candidates Attended Interview</td>
+										
+										<td style="text-align:center">33</td>
+										<td style="text-align:center">3</td>
+										<td style="text-align:center">76</td>
+										<td style="text-align:center">23</td>
+										
+										<td style="text-align:center">33</td>
+										<td style="text-align:center">3</td>
+										<td style="text-align:center">76</td>
+										<td style="text-align:center">23</td>
+										
+										
+										<td style="text-align:center">33</td>
+										<td style="text-align:center">3</td>
+										<td style="text-align:center">76</td>
+										<td style="text-align:center">23</td>
+									
+										
+									
+						
+						<td width="" style="text-align:center">12999						</td>
+						
+					
+								</tr>
+								
+								<tr>
+																				<td width="">No. of Offers Accepted</td>
+										
+										<td style="text-align:center">33</td>
+										<td style="text-align:center">3</td>
+										<td style="text-align:center">76</td>
+										<td style="text-align:center">23</td>
+										
+										<td style="text-align:center">33</td>
+										<td style="text-align:center">3</td>
+										<td style="text-align:center">76</td>
+										<td style="text-align:center">23</td>
+										
+										
+										<td style="text-align:center">33</td>
+										<td style="text-align:center">3</td>
+										<td style="text-align:center">76</td>
+										<td style="text-align:center">23</td>
+									
+										
+									
+						
+						<td width="" style="text-align:center">12999						</td>
+						
+					
+								</tr>
+								
+								
+								<tr>
+																				<td width="">VAlue of Offers Accepted</td>
+										
+										<td style="text-align:center">33</td>
+										<td style="text-align:center">3</td>
+										<td style="text-align:center">76</td>
+										<td style="text-align:center">23</td>
+										
+										<td style="text-align:center">33</td>
+										<td style="text-align:center">3</td>
+										<td style="text-align:center">76</td>
+										<td style="text-align:center">23</td>
+										
+										<td style="text-align:center">33</td>
+										<td style="text-align:center">3</td>
+										<td style="text-align:center">76</td>
+										<td style="text-align:center">23</td>
+								
+						<td width="" style="text-align:center">12999						</td>
+								</tr>
+								
+																
+																</tbody>
+							</table>
+							
+							
+				</div>	
+				
+				<div class="span4">
+					<h3 class="heading" style="margin-bottom:0;border:;clear:left;">Bad Debts Performance <small> List View</small>
+							</h3>		
+					<table class="table table-striped table-bordered table-condensed" style="margin:15px 0px;">
+										<thead>
+											<tr>
+												<th>Loss Period</th>
+												<th>Loss Value (Total)</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>Q1</td>
+												<td>44</td>
+											</tr>
+											<tr>
+												<td>Q2</td>
+												<td>14</td>
+											</tr>
+											<tr>
+												<td>Q3</td>
+												<td>34</td>
+											</tr>
+											<tr>
+												<td>Q4</td>
+												<td>67</td>
+											</tr>
+										</tbody>
+									</table>
+				</div>
+				</div>
+				
+              </div>	          
 					
 					</div>
                     
@@ -442,32 +623,34 @@
         // chart.draw(data, options);
       }
 	  
-    google.charts.setOnLoadCallback(drawChart_4);
+     google.charts.setOnLoadCallback(drawChart_4);
     function drawChart_4() {
 
       var data = new google.visualization.DataTable();
       data.addColumn('string', 'CTC wise');
-      data.addColumn('number', 'Positions Worked');
-      data.addColumn('number', 'Profiles Submitted');
-      data.addColumn('number', 'Positions Closed');
+      data.addColumn('number', 'Conversion of Openings');
 
       data.addRows([
-	      ['0',  0, 0, 0],
-          ['< 10 lacs',155,122,15],
-          ['10 - 25 lacs',120,78,12],
-          ['25 - 40 lacs',44,55,8],
-		  ['> 40 lacs',12,33,6 ]
+	      ['0-1', 4],
+          ['1-2',6],
+          ['2-4',15],
+          ['4-8',3],
+		  ['8-12',16 ],
+		  ['12-20',4 ],
+		  ['20-30',2 ],
+		  ['30-40',1 ],
+		  ['Above 40',1 ]
        
       ]);
 
       var options = {
-	   title: 'Suganya\'s Performance (in line chart)',
+	   title: 'Suganya\'s Performance',
         chart: {
-          title: 'Suganya\'s Performance (in line and bar chart)',
+          title: 'Suganya\'s Performance',
           subtitle: 'Aug, 2016'
         },
-        height: 300,
-		colors: ['#6688e9', '#fcea54', '#12de6d'],
+        height: 130,
+		colors: ['#12de6d', '#fcea54', '#12de6d'],
 		curveType: 'function',
 		pointSize: 6,
 		pointShape: 'circle',
@@ -479,6 +662,7 @@
 
       chart.draw(data, options);
     }
+	
 	
 	
 	google.charts.setOnLoadCallback(drawChart_5);
