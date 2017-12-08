@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-11-02 20:01:51
+/* Smarty version 3.1.29, created on 2017-12-08 15:56:44
   from "C:\xampp\htdocs\ctsvn\cthiring\hiring\templates\billing.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_59fb2c57d192f2_15699543',
+  'unifunc' => 'content_5a2a68e4a22ae8_06177456',
   'file_dependency' => 
   array (
     'fe7615ee2d3ad60c9f7f6d57d8edc5149abf157f' => 
     array (
       0 => 'C:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\templates\\billing.tpl',
-      1 => 1509460094,
+      1 => 1512651320,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_59fb2c57d192f2_15699543 ($_smarty_tpl) {
+function content_5a2a68e4a22ae8_06177456 ($_smarty_tpl) {
 ?>
 
    
@@ -128,6 +128,13 @@ $_smarty_tpl->ext->_updateScope->updateScope($_smarty_tpl, 'hide', 0);?>
 							<table class="table table-striped table-bordered dataTable stickyTable">
 								<thead>
 									<tr>
+									<th width="120"><a href="billing.php?field=candidate_name&order=<?php echo $_smarty_tpl->tpl_vars['order']->value;?>
+&page=<?php echo $_GET['page'];?>
+&keyword=<?php echo $_smarty_tpl->tpl_vars['keyword']->value;?>
+&f_date=<?php echo $_smarty_tpl->tpl_vars['f_date']->value;?>
+&t_date=<?php echo $_smarty_tpl->tpl_vars['t_date']->value;?>
+" class="<?php echo $_smarty_tpl->tpl_vars['sort_field_candidate_name']->value;?>
+">Candidate Name</a></th>
 										<th width="180"><a href="billing.php?field=job_title&order=<?php echo $_smarty_tpl->tpl_vars['order']->value;?>
 &page=<?php echo $_GET['page'];?>
 &keyword=<?php echo $_smarty_tpl->tpl_vars['keyword']->value;?>
@@ -156,13 +163,20 @@ $_smarty_tpl->ext->_updateScope->updateScope($_smarty_tpl, 'hide', 0);?>
 &t_date=<?php echo $_smarty_tpl->tpl_vars['t_date']->value;?>
 " class="<?php echo $_smarty_tpl->tpl_vars['sort_field_billing_date']->value;?>
 ">Billing Date</a></th>
-										<th width="120"><a href="billing.php?field=candidate_name&order=<?php echo $_smarty_tpl->tpl_vars['order']->value;?>
+										<th width="150"><a href="billing.php?field=recruiter&order=<?php echo $_smarty_tpl->tpl_vars['order']->value;?>
 &page=<?php echo $_GET['page'];?>
 &keyword=<?php echo $_smarty_tpl->tpl_vars['keyword']->value;?>
 &f_date=<?php echo $_smarty_tpl->tpl_vars['f_date']->value;?>
 &t_date=<?php echo $_smarty_tpl->tpl_vars['t_date']->value;?>
-" class="<?php echo $_smarty_tpl->tpl_vars['sort_field_candidate_name']->value;?>
-">Candidate Name</a></th>
+" class="<?php echo $_smarty_tpl->tpl_vars['sort_field_recruiter']->value;?>
+">Recruiter</a></th>
+										<th width="150"><a href="billing.php?field=ac_holder&order=<?php echo $_smarty_tpl->tpl_vars['order']->value;?>
+&page=<?php echo $_GET['page'];?>
+&keyword=<?php echo $_smarty_tpl->tpl_vars['keyword']->value;?>
+&f_date=<?php echo $_smarty_tpl->tpl_vars['f_date']->value;?>
+&t_date=<?php echo $_smarty_tpl->tpl_vars['t_date']->value;?>
+" class="<?php echo $_smarty_tpl->tpl_vars['sort_field_ac_holder']->value;?>
+">Account Holder</a></th>
 										<th width="80"><a href="billing.php?field=created_date&order=<?php echo $_smarty_tpl->tpl_vars['order']->value;?>
 &page=<?php echo $_GET['page'];?>
 &keyword=<?php echo $_smarty_tpl->tpl_vars['keyword']->value;?>
@@ -191,15 +205,19 @@ $__foreach_item_0_saved_local_item = $_smarty_tpl->tpl_vars['item'];
 									
 									<tr>
 										<td><a  href="view_billing.php?id=<?php echo $_smarty_tpl->tpl_vars['item']->value['id'];?>
-"><?php echo $_smarty_tpl->tpl_vars['item']->value['job_title'];?>
+"><?php echo $_smarty_tpl->tpl_vars['item']->value['candidate_name'];?>
 </a></td>
+										<td><?php echo $_smarty_tpl->tpl_vars['item']->value['job_title'];?>
+</td>
 										<td><?php echo $_smarty_tpl->tpl_vars['item']->value['client_name'];?>
 </td>
 										<td><?php echo $_smarty_tpl->tpl_vars['item']->value['billing_amount'];?>
 </td>
 										<td><?php echo $_smarty_tpl->tpl_vars['item']->value['billing_date'];?>
 </td>
-										<td><?php echo $_smarty_tpl->tpl_vars['item']->value['candidate_name'];?>
+										<td><?php echo $_smarty_tpl->tpl_vars['item']->value['recruiter'];?>
+</td>
+										<td><?php echo $_smarty_tpl->tpl_vars['item']->value['ac_holder'];?>
 </td>
 										<td><?php echo $_smarty_tpl->tpl_vars['item']->value['created_date'];?>
 </td>
