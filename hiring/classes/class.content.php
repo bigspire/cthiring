@@ -27,16 +27,12 @@ class mailContent extends fun{
     <td style="padding-left:20px;color:rgb(255,255,255);font-family:arial" width="436" height="80"><h1>MANAGE HIRING</h1></td>
     <td style="padding-right:20px" width="269" align="right"></td>
   </tr>
-  
- <!-tr style="background:#438eb9;">
-    <td width="436" height="80" style="padding-left:20px;"><img src="<?php echo Configure::read('WEBSITE').$this->webroot; ?>img/logo2.png" border="0"  /></td>
-    <td width="269" align="right" style="padding-right:20px;"></td>
-  </tr-->
-  
  
+  
+  <tr>
     <td colspan="2"><table width="100%" border="0" cellspacing="0" cellpadding="0">
       <tr>
-        <td width="490" valign="top"  style="padding:0 20px;"><h1 style="font:bold 15px Arial, Helvetica, sans-serif; color:#676767; margin:0 0 10px 0;">Dear {$ah_name},</h1>
+        <td width="490" valign="top"  style="padding:0 20px;"><br><h1 style="font:bold 15px Arial, Helvetica, sans-serif; color:#676767; margin:0 0 10px 0;">Dear {$ah_name},</h1>
           <p style="font:13px Arial, Helvetica, sans-serif; color:#676767; margin:0;">
 		  The following resume is uploaded by {$recruiter} . Please login to Manage Hiring and start sending the resume to this client.</p><br />
 		  
@@ -94,10 +90,6 @@ EOD;
 <body style="margin:0; padding:0; background:#e1e1e1;">
 
 <table width="700" border="0" align="left" cellpadding="0" cellspacing="0" style="border:2px solid #fff; background:#fff; margin-bottom:40px">
-  <!-- tr style="background:#438eb9;">
-    <td width="436" height="80" style="padding-left:20px;"><img src="<?php echo Configure::read('WEBSITE').$this->webroot; ?>img/logo2.png" border="0"  /></td>
-    <td width="269" align="right" style="padding-right:20px;"></td>
-  </tr-->
   
    <tr style="background:rgb(67,142,185) none repeat scroll 0% 0%">
     <td style="padding-left:20px;color:rgb(255,255,255);font-family:arial" width="436" height="80"><h1>MANAGE HIRING</h1></td>
@@ -107,7 +99,7 @@ EOD;
   <tr>
     <td colspan="2"><table width="100%" border="0" cellspacing="0" cellpadding="0">
       <tr>
-        <td width="490" valign="top"  style="padding:0 20px;"><h1 style="font:bold 15px Arial, Helvetica, sans-serif; color:#676767; margin:0 0 10px 0;">Dear {$approval_user_name},</h1>
+        <td width="490" valign="top"  style="padding:0 20px;"><br><h1 style="font:bold 15px Arial, Helvetica, sans-serif; color:#676767; margin:0 0 10px 0;">Dear {$approval_user_name},</h1>
           <p style="font:13px Arial, Helvetica, sans-serif; color:#676767; margin:0;">
 		  You have received a billing request from {$user_name}. Please login to Manage Hiring and update the status of the request.</p><br />
 		  
@@ -166,21 +158,17 @@ EOD;
 <body style="margin:0; padding:0; background:#e1e1e1;">
 
 <table width="700" border="0" align="left" cellpadding="0" cellspacing="0" style="border:2px solid #fff; background:#fff; margin-bottom:40px">
-  <!-- tr style="background:#438eb9;">
-    <td width="436" height="80" style="padding-left:20px;"><img src="<?php echo Configure::read('WEBSITE').$this->webroot; ?>img/logo2.png" border="0"  /></td>
-    <td width="269" align="right" style="padding-right:20px;"></td>
-  </tr-->
+
   
    <tr style="background:rgb(67,142,185) none repeat scroll 0% 0%">
     <td style="padding-left:20px;color:rgb(255,255,255);font-family:arial" width="436" height="80"><h1>MANAGE HIRING</h1></td>
     <td style="padding-right:20px" width="269" align="right"></td>
   </tr>
-  
-  
+
   <tr>
   <td colspan="2"><table width="100%" border="0" cellspacing="0" cellpadding="0">
       <tr>
-        <td width="490" valign="top"  style="padding:0 20px;"><h1 style="font:bold 15px Arial, Helvetica, sans-serif; color:#676767; margin:0 0 10px 0;">Dear {$user_name},</h1>
+        <td width="490" valign="top"  style="padding:0 20px;"><br><h1 style="font:bold 15px Arial, Helvetica, sans-serif; color:#676767; margin:0 0 10px 0;">Dear {$user_name},</h1>
           <p style="font:13px Arial, Helvetica, sans-serif; color:#676767; margin:0;">
           Your billing request has been
 		  {$mail_status}  {$approval_user_name}. Please login to Manage Hiring and check the details.</p><br />

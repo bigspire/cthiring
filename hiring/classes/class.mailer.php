@@ -16,7 +16,14 @@ class phpMail{
 		$mail->Password = 'bigspire1230';                           // SMTP password
 		// $mail->SMTPSecure = 'ssl';                            // Enable TLS encryption, `ssl` also accepted
 		$mail->Port = 465;                                    // TCP port to connect to
-	
+		
+		$mail->SMTPOptions = array(
+			'ssl' => array(
+				'verify_peer' => false,
+				'verify_peer_name' => false,
+				'allow_self_signed' => true
+			)
+		);
 		
 		$mail->setFrom($from_email, $from);
 		$mail->addAddress($recipient_email, $recipient);     // Add a recipient
@@ -35,10 +42,10 @@ class phpMail{
 		// $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
 		if(!$mail->send()){
-			// echo 'Message could not be sent.';
-			// echo 'Mailer Error: ' . $mail->ErrorInfo;
+			echo 'Message could not be sent.';
+			echo 'Mailer Error: ' . $mail->ErrorInfo;
 		} else {
-			// echo 'Message has been sent';
+			 echo 'Message has been sent';
 		}
 	}
 }
