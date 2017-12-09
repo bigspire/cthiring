@@ -36,6 +36,7 @@ try{
 	echo 'Caught exception: ',  $e->getMessage(), "\n";
 }
 
+/*
 // fetch grade menu count
 $query = 'CALL count_grade()';
 try{
@@ -91,6 +92,7 @@ try{
 }catch(Exception $e){
 	echo 'Caught exception: ',  $e->getMessage(), "\n";
 }
+*/
 
 // fetch approve billing menu count
 $query = "CALL count_approve_billing('".$_SESSION['user_id']."')";
@@ -181,6 +183,7 @@ try{
 	echo 'Caught exception: ',  $e->getMessage(), "\n";
 }
 
+/*
 // fetch roles menu count
 $query = 'CALL count_roles()';
 try{
@@ -198,6 +201,8 @@ try{
 }catch(Exception $e){
 	echo 'Caught exception: ',  $e->getMessage(), "\n";
 }
+
+*/
 
 // fetch client menu count
 $query = "CALL count_client()";
