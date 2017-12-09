@@ -353,7 +353,8 @@
 														<li><a href="<?php echo $this->webroot;?>hiring/eligibility.php">Eligibility</a></li>
 														<li><a href="<?php echo $this->webroot;?>hiring/sharing_criteria.php">Sharing Criteria</a></li>	
 														<li><a href="<?php echo $this->webroot;?>hiring/salary.php">Salary</a></li>
-														<li><a href="<?php echo $this->webroot;?>hiring/emp_leaves.php">Employee Leaves</a></li>														
+														<li><a href="<?php echo $this->webroot;?>hiring/holidays.php">Holidays</a></li>	
+														
 													</ul>
 												</li>
 												<?php endif; ?>	

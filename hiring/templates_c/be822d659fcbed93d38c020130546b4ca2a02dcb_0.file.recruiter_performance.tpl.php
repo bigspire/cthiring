@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-12-08 21:30:05
+/* Smarty version 3.1.29, created on 2017-12-09 19:27:20
   from "C:\xampp\htdocs\ctsvn\cthiring\hiring\templates\recruiter_performance.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5a2ab705e376e1_87834788',
+  'unifunc' => 'content_5a2bebc0c76dc9_39837165',
   'file_dependency' => 
   array (
     'be822d659fcbed93d38c020130546b4ca2a02dcb' => 
     array (
       0 => 'C:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\templates\\recruiter_performance.tpl',
-      1 => 1512748749,
+      1 => 1512827838,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5a2ab705e376e1_87834788 ($_smarty_tpl) {
+function content_5a2bebc0c76dc9_39837165 ($_smarty_tpl) {
 ?>
 
    
@@ -57,51 +57,103 @@ function content_5a2ab705e376e1_87834788 ($_smarty_tpl) {
                     </nav>
 				<div class="srch_buttons">
 
-							<a class="jsRedirect" href="javascript:void(0)">
+							<a class="jsRedirect toggleSearch" href="javascript:void(0)">
 							<input type="button" value="Search" class="homeSrch btn btn-success"></a>
 														 							
 							</div>
 							<form>
 															
-							<div class="dn dataTables_filter srchBox homeSrchBox" style="float:left;margin-left:;margin-top:15px"  id="dt_gal_filter">
-							<label style="margin-top:18px;"><a href="#"><input value="Print" type="button" class="btn btn-success"/></a></label>
+						<div class="dn dataTables_filter srchBox homeSrchBox" id="dt_gal_filter" style="display: block;">
+							
+							
+							<span id="sandbox-container">
+						<span class="input-daterange" id="datepicker">	
+							<label style="margin-left:0" >From Date: <input placeholder="dd/mm/yyyy" type="text" class="input-small" name="data[Position][from]" value="" aria-controls="dt_gal"></label>
+
+							<label>To Date: <input placeholder="dd/mm/yyyy" type="text" name="data[Position][to]" value="" class="input-small" aria-controls="dt_gal"></label>
+
+						</span>	
+						</span>	
+							
+							
+								
+											
+							</label>
+														<label>Employee: 
+						<select name="data[Position][emp_id]" class="input-medium" placeholder="" style="clear:left" id="PositionEmpId">
+<option value="">Select</option>
+<option value="4">Admin </option>
+<option value="97">Anand </option>
+<option value="66">Bhargavi M</option>
+<option value="98">Chetan S</option>
+<option value="96">Eresh Choudhary</option>
+<option value="102">Guru Vishnu Test</option>
+<option value="94">Jagadeesh </option>
+<option value="91">Kamesh K</option>
+<option value="74">Karthick Kumar </option>
+<option value="37">Karthikeyan S</option>
+<option value="95">Kumaresh </option>
+<option value="89">Kumari </option>
+<option value="45">Lavanya Venkateshappa</option>
+<option value="92">Magimai Tamil Azhagan </option>
+<option value="54">Mary Paulina </option>
+<option value="86">Mohammed Aslam 0</option>
+<option value="79">Mohan Reddy </option>
+<option value="100">Muthu Kumar</option>
+<option value="76">Nandhakumar </option>
+<option value="29">Praveena E</option>
+<option value="80">Prerna Khanudi </option>
+<option value="58">Priyanka </option>
+<option value="33">Rajalakshmi S</option>
+<option value="38">Ranjeet Rajpurohit</option>
+<option value="101">Siva Kumar</option>
+<option value="81">Suganya Pillai </option>
+<option value="90">Sumir </option>
+<option value="93">Sumitha </option>
+<option value="103">Vinoth Kumar</option>
+<option value="99">Vinoth Kumar</option>
+</select> 					
+							</label>
+												
+							
+							<label>
+							Branch: 
+							<select name="data[Position][loc]" class="input-medium" placeholder="" style="clear:left" id="PositionLoc">
+<option value="">Select</option>
+<option value="104">Ahmadabad</option>
+<option value="102">Bangalore</option>
+<option value="103">Chennai</option>
+<option value="105">Hyderabad</option>
+</select> 
+							</label>
+												
+				
+						
+							
+							
+							
+
+				<label style="margin-top:18px;"><input type="submit" value="Submit" class="btn btn-gebo"></label>
+
+							<label style="margin-top:18px;"><a class="jsRedirect" href="/ctsvn/cthiring/position/index/"><input value="Reset" type="button" class="btn"></a></label>
+
+					<label style="margin-top:18px;"><a href="#"><input value="Print" type="button" class="btn btn-success"/></a></label>
 
 							<label style="margin-top:18px;"><a href="#"><input value="Export" type="button" class="btn btn-warning"/></a></label>
-
-							<label style="margin-top:18px;"><a href="recruiter_performance.php"><input value="Reset" type="button" class="btn"/></a></label>
-							<label style="margin-top:18px;"><input type="button" value="Submit" class="btn btn-gebo" /></label>
-							
-					
-						
-							<label>Employee: 
-						<select name="data[emp_id]" class="input-medium" placeholder="" style="clear:left" id="emp_id">
-<option value="">Select</option>
-<option value="0">Bhargavi</option>
-<option value="1" selected="selected">Suganya</option>
-</select> 															
-													
-							</label>
-																	<label>Client: <input type="text" placeholder="Client Name" name="data[Home][client]" id = "SearchText" value="Amrutanjan" class="input-large" aria-controls="dt_gal"></label>
-				
-
-
-<label>To Date: <input type="text" name="data[Home][to]" value="30/09/2016" class="input-small datepick" aria-controls="dt_gal"></label>
-
-							<label>From Date: <input type="text" class="input-small datepick" name="data[Home][from]" value="01/09/2016" aria-controls="dt_gal"></label>
-							
-						
+		
 														</div>
-<input type="hidden" name="data[srchSubmit]" id="srchSubmit"/><input type="hidden" value="23/12/2016" id="end_date">
-<input type="hidden" value="23/09/2016" id="start_date">
-		<input type="hidden" value="1" id="SearchKeywords">
-						<input type="hidden" value="home/" id="webroot">	
-<input type="hidden" name="data[type]" id="type"/>						
+					
+<input type="hidden" name="data[srchSubmit]" id="srchSubmit"/>
+<input type="hidden" value="1" id="SearchKeywords">
+<input type="hidden" value="home/" id="webroot">	
+<input type="hidden" name="data[type]" id="type"/>	
+					
 						</form>
 						
 						<div class="row-fluid">		
 				<div class="span12">	
 				
-						<h3 class="heading" style="margin-bottom:0;border:;clear:left;">Business Conversion <small> List View</small>
+						<h3 class="heading" style="margin-bottom:0;border:;clear:left;">Business Conversion <small> For the year 2016 - 2017</small>
 							</h3>
 						
 							<table class="table table-hover table-bordered table-striped" style="margin: 15px 0px;">
@@ -150,13 +202,13 @@ function content_5a2ab705e376e1_87834788 ($_smarty_tpl) {
 										
 										<td style="text-align:center">33</td>
 										<td style="text-align:center">3</td>
-										<td style="text-align:center">76</td>
 										<td style="text-align:center">23</td>
+										<td style="text-align:center">54</td>
 										
-										<td style="text-align:center">33</td>
-										<td style="text-align:center">3</td>
-										<td style="text-align:center">76</td>
-										<td style="text-align:center">23</td>
+										<td style="text-align:center">2</td>
+										<td style="text-align:center">13</td>
+										<td style="text-align:center">36</td>
+										<td style="text-align:center">13</td>
 										
 										
 										
@@ -164,7 +216,7 @@ function content_5a2ab705e376e1_87834788 ($_smarty_tpl) {
 										
 									
 						
-						<td width="" style="text-align:center">12999						</td>
+						<td width="" style="text-align:center">88						</td>
 						
 					
 								</tr>
@@ -172,15 +224,15 @@ function content_5a2ab705e376e1_87834788 ($_smarty_tpl) {
 								<tr>
 																				<td width="">Openings Billed</td>
 										
-										<td style="text-align:center">33</td>
+										<td style="text-align:center">2</td>
 										<td style="text-align:center">3</td>
-										<td style="text-align:center">76</td>
+										<td style="text-align:center">12</td>
 										<td style="text-align:center">23</td>
 										
-										<td style="text-align:center">33</td>
-										<td style="text-align:center">3</td>
-										<td style="text-align:center">76</td>
-										<td style="text-align:center">23</td>
+										<td style="text-align:center">16</td>
+										<td style="text-align:center">13</td>
+										<td style="text-align:center">10</td>
+										<td style="text-align:center">12</td>
 										
 										
 										
@@ -188,7 +240,7 @@ function content_5a2ab705e376e1_87834788 ($_smarty_tpl) {
 										
 									
 						
-						<td width="" style="text-align:center">12999						</td>
+						<td width="" style="text-align:center">90						</td>
 						
 					
 								</tr>
@@ -206,7 +258,7 @@ function content_5a2ab705e376e1_87834788 ($_smarty_tpl) {
 										<td style="text-align:center">3</td>
 										<td style="text-align:center">76</td>
 										<td style="text-align:center">23</td>
-										<td width="" style="text-align:center">12999</td>
+										<td width="" style="text-align:center">56</td>
 						
 					
 								</tr>
@@ -230,7 +282,7 @@ function content_5a2ab705e376e1_87834788 ($_smarty_tpl) {
 				
 				<div class="row-fluid">						
 <div class="span6">
-				<h3 class="heading" style="margin-bottom:0;clear:left;">Recruiter Performance <small> Graphical View</small>
+				<h3 class="heading" style="margin-bottom:0;clear:left;">Recruiter Performance <small> For the year 2016 - 2017</small>
 							</h3>
 							
 							
@@ -241,8 +293,8 @@ function content_5a2ab705e376e1_87834788 ($_smarty_tpl) {
 						
 				</div>	
 
-		<div class="span6">
-				<h3 class="heading" style="margin-bottom:0;clear:left;">Bad Debts Performance <small> List View</small>
+		<div class="span4">
+				<h3 class="heading" style="margin-bottom:0;clear:left;">Bad Debts Performance <small> For the year 2016 - 2017</small>
 							</h3>
 							
 							
@@ -255,12 +307,43 @@ function content_5a2ab705e376e1_87834788 ($_smarty_tpl) {
 						
 				</div>	
 
+				<div class="span2">
+							
+					<table class="table table-striped table-bordered table-condensed" style="margin:45px 0px;">
+										<thead>
+											<tr>
+												<th>Loss Period</th>
+												<th>Loss Value (Total)</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>Q1</td>
+												<td>44</td>
+											</tr>
+											<tr>
+												<td>Q2</td>
+												<td>14</td>
+											</tr>
+											<tr>
+												<td>Q3</td>
+												<td>34</td>
+											</tr>
+											<tr>
+												<td>Q4</td>
+												<td>67</td>
+											</tr>
+										</tbody>
+									</table>
+				</div>
+				
 				
 					</div>
 					
 				<div class="row-fluid">		
-				<div class="span8">	
-					<h3 class="heading" style="margin-bottom:0;border:;clear:left;">Business Opportunity Conversion <small> List View</small>
+				<div class="span12">	
+					<h3 class="heading" style="margin-bottom:0;border:;clear:left;">Business Opportunity Conversion <small>
+					For the year 2016 - 2017</small>
 							</h3>
 							
 					<table class="table table-hover table-bordered table-striped" style="margin: 15px 0px">
@@ -325,7 +408,7 @@ function content_5a2ab705e376e1_87834788 ($_smarty_tpl) {
 										
 									
 						
-						<td width="" style="text-align:center">12999						</td>
+						<td width="" style="text-align:center">44						</td>
 						
 					
 								</tr>
@@ -352,14 +435,14 @@ function content_5a2ab705e376e1_87834788 ($_smarty_tpl) {
 										
 									
 						
-						<td width="" style="text-align:center">12999						</td>
+						<td width="" style="text-align:center">76						</td>
 						
 					
 								</tr>
 								
 								
 								<tr>
-																				<td width="">VAlue of Offers Accepted</td>
+																				<td width="">Value of Offers Accepted</td>
 										
 										<td style="text-align:center">33</td>
 										<td style="text-align:center">3</td>
@@ -376,7 +459,7 @@ function content_5a2ab705e376e1_87834788 ($_smarty_tpl) {
 										<td style="text-align:center">76</td>
 										<td style="text-align:center">23</td>
 								
-						<td width="" style="text-align:center">12999						</td>
+						<td width="" style="text-align:center">89						</td>
 								</tr>
 								
 																
@@ -386,36 +469,8 @@ function content_5a2ab705e376e1_87834788 ($_smarty_tpl) {
 							
 				</div>	
 				
-				<div class="span4">
-					<h3 class="heading" style="margin-bottom:0;border:;clear:left;">Bad Debts Performance <small> List View</small>
-							</h3>		
-					<table class="table table-striped table-bordered table-condensed" style="margin:15px 0px;">
-										<thead>
-											<tr>
-												<th>Loss Period</th>
-												<th>Loss Value (Total)</th>
-											</tr>
-										</thead>
-										<tbody>
-											<tr>
-												<td>Q1</td>
-												<td>44</td>
-											</tr>
-											<tr>
-												<td>Q2</td>
-												<td>14</td>
-											</tr>
-											<tr>
-												<td>Q3</td>
-												<td>34</td>
-											</tr>
-											<tr>
-												<td>Q4</td>
-												<td>67</td>
-											</tr>
-										</tbody>
-									</table>
-				</div>
+				
+				
 				</div>
 				
               </div>	          
@@ -587,70 +642,38 @@ function content_5a2ab705e376e1_87834788 ($_smarty_tpl) {
         // chart.draw(data, options);
       }
 	  
-	  google.charts.setOnLoadCallback(drawChart_3);
-      
-	function drawChart_3() {       
-		 
-		var data = new google.visualization.DataTable();
-		
-		data.addColumn('string', 'CTC wise');
-		data.addColumn('number', 'Bad Debts');
-			  
-		data.addRows([
-		  ['Candidate Exit',12000],
-          ['Verification',34555],
-          ['Inability to Pay',23000],
-		  ['Duplication',89900],
-		  ['Lack of Agreement',1200]
-		 ]);
-		 
-		 /*
-		 var data = google.visualization.arrayToDataTable([
-          ['Amount','Positions Worked', 'Profiles Submitted','Positions Closed'],
-          ['< 10 lacs',155,122,15],
-          ['10 - 25 lacs',120,78,12],
-          ['25 - 40 lacs',44,55,8],
-		  ['> 40 lacs',12,33,6 ]
+	       google.charts.setOnLoadCallback(drawChart_3);
+      function drawChart_3() {       
+		  var data = google.visualization.arrayToDataTable([
+		  ['Activity','Nos.', { role: 'style' }],
+          ['Candidate Exit',3,'#fabec2'],
+          ['Verification',4,'#c8c3c3'],
+          ['Inability to Pay',1,'#d7f477'],
+		  ['Duplication',1,'#09418d'],
+		  ['Lack of Agreement',6,'#ab1f57']
         ]);
-		*/
-		
-	function getValueAt(column, dataTable, row) {
-			return dataTable.getFormattedValue(row, column);
-	}
 	
-	var view = new google.visualization.DataView(data);
-      view.setColumns([0, 
-	  1,{ calc: getValueAt.bind(undefined, 1),  sourceColumn: 1,     type: "string",   role: "annotation" }]
-	  );
-					   
 		  var options = {
-		   title: 'Bad Debts Performance',
           chart: {
             title: 'Bad Debts Performance',
-            subtitle: 'Aug, 2016',
+            subtitle: 'For the year 2016 - 2017',
 			
-          }, 
-		  vAxis: {
-          title: 'Money lost due to',
+          },
+		vAxis: {
+          title: 'Numbers'
         },
-		 hAxis: {
-          title: 'Numbers',
-		  gridlines:{color:'#fff'},
-
-        },
-
-		   legend: {position: 'right', maxLines:1, textStyle: {color: '', fontSize: 12}},
-          dataOpacity: 0.8,
-		  isStacked: true,
-		  bar: { groupWidth: '55%' },
-		  chartArea:{width:"75%"},
+		  legend: {position: 'none', maxLines:1, textStyle: {color: '', fontSize: 12}},
+          dataOpacity: 0.7,
+		  isStacked: false,
+		  bar: { groupWidth: '45' },
+		  chartArea:{width:"75%",height:'60%',top:5},
 		  tooltip:{textStyle: {color: '', fontSize: 13}},
 		  titleTextStyle:{ fontSize: 15},
         };
-		var chart = new google.visualization.BarChart(document.getElementById('debt_work'));
-       // var chart = new google.charts.Bar(document.getElementById('profile_work'));
-		chart.draw(view, options);
-        // chart.draw(data, options);
+
+        var chart = new google.charts.Bar(document.getElementById('debt_work'));
+
+        chart.draw(data, options);
       }
 	  
      google.charts.setOnLoadCallback(drawChart_4);
