@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-11-06 09:22:12
+/* Smarty version 3.1.29, created on 2017-12-09 10:18:43
   from "C:\xampp\htdocs\2017\ctsvn\cthiring\hiring\templates\include\footer.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_59ffdc6c61bce1_85934733',
+  'unifunc' => 'content_5a2b6b2b9597d0_12209447',
   'file_dependency' => 
   array (
     '884db102a25bdd998667f723fc832ca34c479084' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\templates\\include\\footer.tpl',
-      1 => 1509423989,
+      1 => 1512794919,
       2 => 'file',
     ),
   ),
@@ -19,13 +19,16 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_59ffdc6c61bce1_85934733 ($_smarty_tpl) {
+function content_5a2b6b2b9597d0_12209447 ($_smarty_tpl) {
 ?>
 <div id="footer">
 
 <p><span>Copyright © 2016 Career Tree. Powered by <a  class="theme_link" href="http://bigspire.com" target="_blank" title="BigSpire Software">BigSpire</a></span>
 		
-<span style="float:right;margin-right:20px;"><a href="javascript:void(0)" val="50_50" class="theme_link">Feedback / Suggestions</a> <span class="font-grey-4">|</span> <a  class="theme_link"  val="50_50"  href="javascript:void(0)">Report a Bug</a> </span>
+<span style="float:right;margin-right:20px;"><a href="<?php echo @constant('webroot');?>
+home/add_feedback" val="50_50" class="iframeBox theme_link cboxElement">Feedback / Suggestions</a> 
+<span class="font-grey-4">|</span> <a  class="iframeBox theme_link cboxElement"  val="50_50"  href="<?php echo @constant('webroot');?>
+home/add_feedback">Report a Bug</a> </span>
 		
 </p>		
 </div>

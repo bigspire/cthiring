@@ -27,6 +27,13 @@
                <div class="main_content" style="min-height:auto;">
             <div class="row-fluid">
 				 <div class="span12">
+				 
+				 {if $ALERT_MSG}
+							<div class="alert alert-info">
+								<a class="close" data-dismiss="alert">×</a>
+								{$ALERT_MSG}
+							</div>
+						{/if}
 			 		
 <form action="upload_resume.php?client_id={$client_id}&req_id={$req_id}" class="formID" id="formID" method="post" enctype="multipart/form-data" accept-charset="utf-8">
 <div class="box">
