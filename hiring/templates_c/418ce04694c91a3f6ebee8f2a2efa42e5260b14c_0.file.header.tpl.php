@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-11-24 15:44:17
+/* Smarty version 3.1.29, created on 2017-12-11 11:05:09
   from "C:\xampp\htdocs\2017\ctsvn\cthiring\hiring\templates\include\header.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5a17f0f9d669d7_87896821',
+  'unifunc' => 'content_5a2e190dcd1261_46027793',
   'file_dependency' => 
   array (
     '418ce04694c91a3f6ebee8f2a2efa42e5260b14c' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\templates\\include\\header.tpl',
-      1 => 1511518453,
+      1 => 1512964912,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_5a17f0f9d669d7_87896821 ($_smarty_tpl) {
+function content_5a2e190dcd1261_46027793 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -311,15 +311,16 @@ resume/">Search Resume <!-- span class="label-bub label-info white"><?php echo $
 										<?php }?>
 										
 										<?php if ($_smarty_tpl->tpl_vars['module']->value['recruiter_report'] == '1' || $_smarty_tpl->tpl_vars['module']->value['account_holder_report'] == '1' || $_smarty_tpl->tpl_vars['module']->value['location_report'] == '1' || $_smarty_tpl->tpl_vars['module']->value['failure_report'] == '1' || $_smarty_tpl->tpl_vars['module']->value['revenue_report'] == '1' || $_smarty_tpl->tpl_vars['module']->value['tat_report'] == '1' || $_smarty_tpl->tpl_vars['module']->value['collection_report'] == '1' || $_smarty_tpl->tpl_vars['module']->value['client_retention_report'] == '1' || $_smarty_tpl->tpl_vars['module']->value['incentive_report'] == '1' || $_smarty_tpl->tpl_vars['module']->value['daily_report'] == '1' || $_smarty_tpl->tpl_vars['module']->value['weekly_report'] == '1') {?>
-										<li class="dropdown">
+										<li class="dropdown <?php echo $_smarty_tpl->tpl_vars['report_menu']->value;?>
+">
                                             <a data-toggle="dropdown" class="dropdown-toggle " href="#"><i class="icon-download-alt icon-white"></i> Reports <b class="caret"></b></a>
                                           <ul class="dropdown-menu">
 											<?php if ($_smarty_tpl->tpl_vars['module']->value['recruiter_report'] == '1') {?>
-                                                <li><a href="#">Recruiter Performance</a></li>
+                                                <li><a href="recruiter_performance.php">Recruiter Performance</a></li>
 											<?php }?>
 										  
 											<?php if ($_smarty_tpl->tpl_vars['module']->value['account_holder_report'] == '1') {?>
-                                                <li><a href="#">Account Holder Performance</a></li>
+                                                <li><a href="ah_performance.php">Account Holder Performance</a></li>
 										    <?php }?>
 											
 											<?php if ($_smarty_tpl->tpl_vars['module']->value['location_report'] == '1') {?>
@@ -430,7 +431,7 @@ resume/">Search Resume <!-- span class="label-bub label-info white"><?php echo $
 														<li><a href="sharing_criteria.php">Sharing Criteria</a></li>	
 														<!--li><a href="holidays.php">Holidays</a></li-->
 														<li><a href="salary.php">Salary</a></li>
-														<li><a href="emp_leaves.php">Employee Leaves</a></li>
+														<li><a href="holidays.php">Holidays</a></li>
 														<!--li><a href="bonus_share.php">Bonus Share</a></li-->														
 													</ul>
 												</li>

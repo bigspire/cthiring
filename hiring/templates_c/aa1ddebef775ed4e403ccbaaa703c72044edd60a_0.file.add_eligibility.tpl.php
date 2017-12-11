@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-12-05 18:10:26
+/* Smarty version 3.1.29, created on 2017-12-11 11:21:02
   from "C:\xampp\htdocs\2017\ctsvn\cthiring\hiring\templates\add_eligibility.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5a2693ba2d1613_54073258',
+  'unifunc' => 'content_5a2e1cc68896b4_37773871',
   'file_dependency' => 
   array (
     'aa1ddebef775ed4e403ccbaaa703c72044edd60a' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\templates\\add_eligibility.tpl',
-      1 => 1512477624,
+      1 => 1512971455,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5a2693ba2d1613_54073258 ($_smarty_tpl) {
+function content_5a2e1cc68896b4_37773871 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -192,7 +192,7 @@ home"><i class="icon-home"></i></a>
 
 <?php echo '<script'; ?>
  type="text/javascript">
-/*
+
 $(document).ready(function(){
 	// function to change the amount
 	$('.change_amount_type').change(function(){ 
@@ -218,12 +218,16 @@ $(document).ready(function(){
 			$('.amount_Validity').hide();
 		}else if($('.change_amount_type:selected').val() == 'H'){
 			$('.amount_Validity').hide();
+		}else if(($('.change_amount_type:selected').val() == 'M') && ($('.change_amount_type:selected').val() == 'PS')){
+			$('.amount_Validity').hide();
+		}else if(($('.change_amount_type:selected').val() == 'H') && ($('.change_amount_type:selected').val() == 'PS')){
+			$('.amount_Validity').hide();
 		}else{
 			$('.amount_Validity').show();
 		}
 	}
 
-	
+	/*
 	// function to change the amount
 	$('.change_periodType_amount_type').change(function(){ 
 		if($(this).val() == 'M'){
@@ -244,9 +248,9 @@ $(document).ready(function(){
 			$('.amount_Validity').show();
 		}
 	}
-
+	*/
 });
-*/
+
 <?php echo '</script'; ?>
 >	
 <?php }
