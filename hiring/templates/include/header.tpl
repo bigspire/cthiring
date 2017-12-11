@@ -266,7 +266,7 @@
 										    {/if}
 											
 											{if $module['location_report'] eq '1'}
-												<li><a href="#">Location Performance</a></li>
+											<li><a href="location_performance.php">Location Performance</a></li>
                                                <!-- <li><a href="#">Clientwise Performance</a></li>-->
 											{/if}
 											
@@ -274,8 +274,9 @@
 											   <li><a href="#">Recruiter Performance(Failure Root Cause Analysis )</a></li>
 											{/if}
 											
+											
 											{if $module['revenue_report'] eq '1'}
-												<li><a href="#">Revenue </a></li>
+												<li><a href="#">Revenue</a></li>
 											{/if}
 											
 											{if $module['tat_report'] eq '1'}
@@ -283,23 +284,23 @@
 											{/if}
 											
 											{if $module['collection_report'] eq '1'}
-												<li><a href="#">Collection Table </a></li>
+												<li><a href="collection_table.php">Collection Table </a></li>
 											{/if}
 											
 											{if $module['client_retention_report'] eq '1'}
-												<li><a href="#">Client Retention Table </a></li>
+												<li><a href="client_retention.php">Client Retention Table </a></li>
 											{/if}
 											
 											{if $module['incentive_report'] eq '1'}
-												<li><a href="#">Incentive </a></li>
+												<li><a href="incentive_report.php">Incentive </a></li>
 											{/if}
 											
 											{if $module['daily_report'] eq '1'}
-												<li><a href="#">Daily Performance </a></li>
+												<li><a href="daily_performance.php">Daily Performance </a></li>
 											{/if}
 											
 											{if $module['weekly_report'] eq '1'}
-												<li><a href="#">Weekly Performance </a></li>
+												<li><a href="weekly_performance.php">Weekly Performance </a></li>
 											{/if}
                                             </ul>
 										</li>

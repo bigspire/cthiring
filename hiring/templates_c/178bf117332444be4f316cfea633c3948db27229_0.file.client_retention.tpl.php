@@ -1,9 +1,34 @@
-{* Purpose : To show location performance report.
-   Created : Nikitasa
-   Date : 23-06-2017 *}
+<?php
+/* Smarty version 3.1.29, created on 2017-12-11 17:39:58
+  from "C:\xampp\htdocs\ctsvn\cthiring\hiring\templates\client_retention.tpl" */
+
+if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
+  'has_nocache_code' => false,
+  'version' => '3.1.29',
+  'unifunc' => 'content_5a2e7596d2f439_60819604',
+  'file_dependency' => 
+  array (
+    '178bf117332444be4f316cfea633c3948db27229' => 
+    array (
+      0 => 'C:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\templates\\client_retention.tpl',
+      1 => 1512994196,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+    'file:include/header.tpl' => 1,
+    'file:include/footer.tpl' => 1,
+  ),
+),false)) {
+function content_5a2e7596d2f439_60819604 ($_smarty_tpl) {
+?>
+
    
 
-			{include file='include/header.tpl'}	
+			<?php $_smarty_tpl->smarty->ext->_subtemplate->render($_smarty_tpl, "file:include/header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
+	
 		<!-- main content -->
             <div id="contentwrapper">
                 <div class="main_content">
@@ -19,7 +44,8 @@
                         <div id="jCrumbs" class="breadCrumb module">
                             <ul>
                                 <li>
-                                    <a href="{$smarty.const.webroot}home"><i class="icon-home"></i></a>
+                                    <a href="<?php echo @constant('webroot');?>
+home"><i class="icon-home"></i></a>
                                 </li>
                                   <li>
                                      <a href="client_retention.php">Client Retention</a> 
@@ -271,4 +297,6 @@ Page <span>1</span> of <span>14</span> <b>Total:</b> <span>100</span>
 	</div>
 		
 		
-{include file='include/footer.tpl'}
+<?php $_smarty_tpl->smarty->ext->_subtemplate->render($_smarty_tpl, "file:include/footer.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+}
+}

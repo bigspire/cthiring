@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-11-07 20:31:33
+/* Smarty version 3.1.29, created on 2017-12-11 17:39:30
   from "C:\xampp\htdocs\ctsvn\cthiring\hiring\templates\weekly_performance.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5a01cacdc11e29_90368875',
+  'unifunc' => 'content_5a2e757ad895c0_28464981',
   'file_dependency' => 
   array (
     'eb380a0713ef2974c255e9a3981f9003433b9926' => 
     array (
       0 => 'C:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\templates\\weekly_performance.tpl',
-      1 => 1498904389,
+      1 => 1512994156,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5a01cacdc11e29_90368875 ($_smarty_tpl) {
+function content_5a2e757ad895c0_28464981 ($_smarty_tpl) {
 ?>
 
    
@@ -52,10 +52,25 @@ home"><i class="icon-home"></i></a>
                             </ul>
                         </div>
                     </nav>
-				
+					<div class="srch_buttons">
+
+							<a class="jsRedirect toggleSearch" href="javascript:void(0)">
+							<input type="button" value="Search" class="homeSrch btn btn-success"></a>
+														 							
+							</div>
 							<form>
 															
-							<div class="dataTables_filter homeSrchBox srchBox" style="float:left;margin-left:-10px;margin-top:15px"  id="dt_gal_filter">
+							<div class="dataTables_filter homeSrchBox srchBox" id="dt_gal_filter">
+						
+							<span id="sandbox-container">
+						<span class="input-daterange" id="datepicker">	
+							<label style="margin-left:0" >From Date: <input placeholder="dd/mm/yyyy" type="text" class="input-small" name="data[Position][from]" value="" aria-controls="dt_gal"></label>
+
+							<label>To Date: <input placeholder="dd/mm/yyyy" type="text" name="data[Position][to]" value="" class="input-small" aria-controls="dt_gal"></label>
+
+						</span>	
+						</span>	
+						
 						
 							<label>Employee: 
 						<select name="data[emp_id]" class="input-medium" placeholder="" style="clear:left" id="emp_id">
@@ -66,13 +81,20 @@ home"><i class="icon-home"></i></a>
 													
 							</label>
 			<label>Client: <input type="text" placeholder="Client Name" name="data[Home][client]" id = "SearchText" value="Amrutanjan" class="input-large" aria-controls="dt_gal"></label>
-				
-	<label>From Date: <input type="text" class="input-small datepick" name="data[Home][from]" value="01/09/2016" aria-controls="dt_gal"></label>
+					<label>
+							Branch: 
+							<select name="data[Position][loc]" class="input-medium" placeholder="" style="clear:left" id="PositionLoc">
+<option value="">Select</option>
+<option value="104">Ahmadabad</option>
+<option value="102">Bangalore</option>
+<option value="103">Chennai</option>
+<option value="105">Hyderabad</option>
+</select> 
+							</label>
+										
+	
 						
-
-<label>To Date: <input type="text" name="data[Home][to]" value="30/09/2016" class="input-small datepick" aria-controls="dt_gal"></label>
-
-							<label style="margin-top:18px;"><input type="button" value="Submit" class="btn btn-gebo" /></label>
+												<label style="margin-top:18px;"><input type="button" value="Submit" class="btn btn-gebo" /></label>
 							<label style="margin-top:18px;"><a href="weekly_performance.php"><input value="Reset" type="button" class="btn"/></a></label>
 							
 						<label style="margin-top:18px;"><a href="#"><input value="Export" type="button" class="btn btn-warning"/></a></label>
@@ -83,7 +105,9 @@ home"><i class="icon-home"></i></a>
 <input type="hidden" value="23/09/2016" id="start_date">
 		<input type="hidden" value="1" id="SearchKeywords">
 						<input type="hidden" value="home/" id="webroot">	
-<input type="hidden" name="data[type]" id="type"/>						
+<input type="hidden" name="data[type]" id="type"/>
+
+						
 						</form>
 						
 						

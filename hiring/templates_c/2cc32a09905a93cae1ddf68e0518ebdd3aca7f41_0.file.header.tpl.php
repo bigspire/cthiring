@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-12-09 12:53:57
+/* Smarty version 3.1.29, created on 2017-12-11 17:25:16
   from "C:\xampp\htdocs\ctsvn\cthiring\hiring\templates\include\header.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5a2b8f8daa1ea0_63848451',
+  'unifunc' => 'content_5a2e7224d2c9a1_29495775',
   'file_dependency' => 
   array (
     '2cc32a09905a93cae1ddf68e0518ebdd3aca7f41' => 
     array (
       0 => 'C:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\templates\\include\\header.tpl',
-      1 => 1512804200,
+      1 => 1512993315,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_5a2b8f8daa1ea0_63848451 ($_smarty_tpl) {
+function content_5a2e7224d2c9a1_29495775 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -324,7 +324,7 @@ resume/">Search Resume <!-- span class="label-bub label-info white"><?php echo $
 										    <?php }?>
 											
 											<?php if ($_smarty_tpl->tpl_vars['module']->value['location_report'] == '1') {?>
-												<li><a href="#">Location Performance</a></li>
+											<li><a href="location_performance.php">Location Performance</a></li>
                                                <!-- <li><a href="#">Clientwise Performance</a></li>-->
 											<?php }?>
 											
@@ -332,8 +332,9 @@ resume/">Search Resume <!-- span class="label-bub label-info white"><?php echo $
 											   <li><a href="#">Recruiter Performance(Failure Root Cause Analysis )</a></li>
 											<?php }?>
 											
+											
 											<?php if ($_smarty_tpl->tpl_vars['module']->value['revenue_report'] == '1') {?>
-												<li><a href="#">Revenue </a></li>
+												<li><a href="#">Revenue</a></li>
 											<?php }?>
 											
 											<?php if ($_smarty_tpl->tpl_vars['module']->value['tat_report'] == '1') {?>
@@ -341,23 +342,23 @@ resume/">Search Resume <!-- span class="label-bub label-info white"><?php echo $
 											<?php }?>
 											
 											<?php if ($_smarty_tpl->tpl_vars['module']->value['collection_report'] == '1') {?>
-												<li><a href="#">Collection Table </a></li>
+												<li><a href="collection_table.php">Collection Table </a></li>
 											<?php }?>
 											
 											<?php if ($_smarty_tpl->tpl_vars['module']->value['client_retention_report'] == '1') {?>
-												<li><a href="#">Client Retention Table </a></li>
+												<li><a href="client_retention.php">Client Retention Table </a></li>
 											<?php }?>
 											
 											<?php if ($_smarty_tpl->tpl_vars['module']->value['incentive_report'] == '1') {?>
-												<li><a href="#">Incentive </a></li>
+												<li><a href="incentive_report.php">Incentive </a></li>
 											<?php }?>
 											
 											<?php if ($_smarty_tpl->tpl_vars['module']->value['daily_report'] == '1') {?>
-												<li><a href="#">Daily Performance </a></li>
+												<li><a href="daily_performance.php">Daily Performance </a></li>
 											<?php }?>
 											
 											<?php if ($_smarty_tpl->tpl_vars['module']->value['weekly_report'] == '1') {?>
-												<li><a href="#">Weekly Performance </a></li>
+												<li><a href="weekly_performance.php">Weekly Performance </a></li>
 											<?php }?>
                                             </ul>
 										</li>

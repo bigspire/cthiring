@@ -133,8 +133,7 @@
 								<div class="row-fluid">		
 				<div class="span12">	
 				
-						<h3 class="heading" style="margin-bottom:0;border:;clear:left;">Business Conversion <small> For the year 2016 - 2017</small>
-							</h3>
+<h3 class="heading" style="margin-bottom:0;border:;clear:left;">Business Conversion <small> For the year 2016 - 2017</small></h3>
 						
 							<table class="table table-hover table-bordered table-striped" style="margin: 15px 0px;">
 								<thead>

@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-12-09 19:28:54
+/* Smarty version 3.1.29, created on 2017-12-11 12:12:43
   from "C:\xampp\htdocs\ctsvn\cthiring\hiring\templates\ah_performance.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5a2bec1e8525a5_19402499',
+  'unifunc' => 'content_5a2e28e3034f36_76546917',
   'file_dependency' => 
   array (
     '69605c85b1662187aee314cac8cf611b76faede7' => 
     array (
       0 => 'C:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\templates\\ah_performance.tpl',
-      1 => 1512827931,
+      1 => 1512973931,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5a2bec1e8525a5_19402499 ($_smarty_tpl) {
+function content_5a2e28e3034f36_76546917 ($_smarty_tpl) {
 ?>
 
    
@@ -158,8 +158,7 @@ function content_5a2bec1e8525a5_19402499 ($_smarty_tpl) {
 								<div class="row-fluid">		
 				<div class="span12">	
 				
-						<h3 class="heading" style="margin-bottom:0;border:;clear:left;">Business Conversion <small> For the year 2016 - 2017</small>
-							</h3>
+<h3 class="heading" style="margin-bottom:0;border:;clear:left;">Business Conversion <small> For the year 2016 - 2017</small></h3>
 						
 							<table class="table table-hover table-bordered table-striped" style="margin: 15px 0px;">
 								<thead>

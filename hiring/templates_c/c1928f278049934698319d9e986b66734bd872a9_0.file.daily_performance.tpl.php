@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-11-06 18:40:53
+/* Smarty version 3.1.29, created on 2017-12-11 17:39:24
   from "C:\xampp\htdocs\ctsvn\cthiring\hiring\templates\daily_performance.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5a005f5daf87b4_55713109',
+  'unifunc' => 'content_5a2e757473deb5_21992370',
   'file_dependency' => 
   array (
     'c1928f278049934698319d9e986b66734bd872a9' => 
     array (
       0 => 'C:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\templates\\daily_performance.tpl',
-      1 => 1498904389,
+      1 => 1512994163,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5a005f5daf87b4_55713109 ($_smarty_tpl) {
+function content_5a2e757473deb5_21992370 ($_smarty_tpl) {
 ?>
 
    
@@ -52,11 +52,27 @@ home"><i class="icon-home"></i></a>
                             </ul>
                         </div>
                     </nav>
-				
+					<div class="srch_buttons">
+
+							<a class="jsRedirect toggleSearch" href="javascript:void(0)">
+							<input type="button" value="Search" class="homeSrch btn btn-success"></a>
+														 							
+							</div>
 							<form>
 															
-							<div class="dataTables_filter homeSrchBox srchBox" style="float:left;margin-left:-10px;margin-top:15px"  id="dt_gal_filter">
-							
+							<div class="dataTables_filter homeSrchBox srchBox" id="dt_gal_filter">
+				
+
+				<span id="sandbox-container">
+						<span class="input-daterange" id="datepicker">	
+							<label style="margin-left:0" >From Date: <input placeholder="dd/mm/yyyy" type="text" class="input-small" name="data[Position][from]" value="" aria-controls="dt_gal"></label>
+
+							<label>To Date: <input placeholder="dd/mm/yyyy" type="text" name="data[Position][to]" value="" class="input-small" aria-controls="dt_gal"></label>
+
+						</span>	
+						</span>	
+						
+						
 							<label>Employee: 
 						<select name="data[emp_id]" class="input-medium" placeholder="" style="clear:left" id="emp_id">
 <option value="">Select</option>
@@ -67,13 +83,19 @@ home"><i class="icon-home"></i></a>
 							</label>
 			<label>Client: <input type="text" placeholder="Client Name" name="data[Home][client]" id = "SearchText" value="Amrutanjan" class="input-large" aria-controls="dt_gal"></label>
 				
-<label>From Date: <input type="text" class="input-small datepick" name="data[Home][from]" value="01/09/2016" aria-controls="dt_gal"></label>
-							
-
-<label>To Date: <input type="text" name="data[Home][to]" value="30/09/2016" class="input-small datepick" aria-controls="dt_gal"></label>
-
-							
-							<label style="margin-top:18px;"><input type="button" value="Submit" class="btn btn-gebo" /></label>
+		<label>
+							Branch: 
+							<select name="data[Position][loc]" class="input-medium" placeholder="" style="clear:left" id="PositionLoc">
+<option value="">Select</option>
+<option value="104">Ahmadabad</option>
+<option value="102">Bangalore</option>
+<option value="103">Chennai</option>
+<option value="105">Hyderabad</option>
+</select> 
+							</label>
+										
+					
+												<label style="margin-top:18px;"><input type="button" value="Submit" class="btn btn-gebo" /></label>
 							
 							<label style="margin-top:18px;"><a href="daily_performance.php"><input value="Reset" type="button" class="btn"/></a></label>
 							<label style="margin-top:18px;"><a href="#"><input value="Export" type="button" class="btn btn-warning"/></a></label>

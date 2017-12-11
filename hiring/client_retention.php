@@ -30,8 +30,8 @@ $smarty->assign('module',$module_access);
 // assign page title
 $smarty->assign('page_title' , 'Client Retention - Manage Hiring');  
 // assigning active class status to smarty menu.tpl
-$smarty->assign('report_active','active');
+$smarty->assign('report_menu','active');
 // $smarty->assign('setting_active', $fun->set_menu_active('billing'));
 // display smarty file
-$smarty->display('location_performance.tpl');
+$smarty->display('client_retention.tpl');
 ?>

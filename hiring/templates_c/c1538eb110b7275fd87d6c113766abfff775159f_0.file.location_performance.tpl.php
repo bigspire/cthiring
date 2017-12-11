@@ -1,9 +1,34 @@
-{* Purpose : To show location performance report.
-   Created : Nikitasa
-   Date : 23-06-2017 *}
+<?php
+/* Smarty version 3.1.29, created on 2017-12-11 13:08:39
+  from "C:\xampp\htdocs\ctsvn\cthiring\hiring\templates\location_performance.tpl" */
+
+if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
+  'has_nocache_code' => false,
+  'version' => '3.1.29',
+  'unifunc' => 'content_5a2e35ff6c9938_52941821',
+  'file_dependency' => 
+  array (
+    'c1538eb110b7275fd87d6c113766abfff775159f' => 
+    array (
+      0 => 'C:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\templates\\location_performance.tpl',
+      1 => 1512977916,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+    'file:include/header.tpl' => 1,
+    'file:include/footer.tpl' => 1,
+  ),
+),false)) {
+function content_5a2e35ff6c9938_52941821 ($_smarty_tpl) {
+?>
+
    
 
-			{include file='include/header.tpl'}	
+			<?php $_smarty_tpl->smarty->ext->_subtemplate->render($_smarty_tpl, "file:include/header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
+	
 
 			<!-- main content -->
             <div id="contentwrapper">
@@ -18,7 +43,8 @@
                         <div id="jCrumbs" class="breadCrumb module">
                             <ul>
                                 <li>
-                                    <a href="{$smarty.const.webroot}home"><i class="icon-home"></i></a>
+                                    <a href="<?php echo @constant('webroot');?>
+home"><i class="icon-home"></i></a>
                                 </li>
                                 <li>
                                     <a href="location_performance.php">Location Performance</a>
@@ -268,9 +294,12 @@
             </div>
             
 		
-{literal}
-	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-	<script>
+
+	<?php echo '<script'; ?>
+ type="text/javascript" src="https://www.gstatic.com/charts/loader.js"><?php echo '</script'; ?>
+>
+	<?php echo '<script'; ?>
+>
 	 google.charts.load('current', {'packages':['corechart', 'line']});
      //  google.charts.setOnLoadCallback(drawChart_1);
       function drawChart_1() {       
@@ -456,12 +485,15 @@ google.charts.setOnLoadCallback(drawChart_4);
         chart_pie.draw(data, options);
 	}
 	
-	  </script>
-	{/literal}
+	  <?php echo '</script'; ?>
+>
+	
 		
 		</div>
 		
 	</div>
 		
 				
-{include file='include/footer.tpl'}
+<?php $_smarty_tpl->smarty->ext->_subtemplate->render($_smarty_tpl, "file:include/footer.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+}
+}

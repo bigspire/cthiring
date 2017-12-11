@@ -26,10 +26,25 @@
                             </ul>
                         </div>
                     </nav>
-				
+					<div class="srch_buttons">
+
+							<a class="jsRedirect toggleSearch" href="javascript:void(0)">
+							<input type="button" value="Search" class="homeSrch btn btn-success"></a>
+														 							
+							</div>
 							<form>
 															
-							<div class="dataTables_filter homeSrchBox srchBox" style="float:left;margin-left:-10px;margin-top:15px"  id="dt_gal_filter">
+							<div class="dataTables_filter homeSrchBox srchBox" id="dt_gal_filter">
+						
+							<span id="sandbox-container">
+						<span class="input-daterange" id="datepicker">	
+							<label style="margin-left:0" >From Date: <input placeholder="dd/mm/yyyy" type="text" class="input-small" name="data[Position][from]" value="" aria-controls="dt_gal"></label>
+
+							<label>To Date: <input placeholder="dd/mm/yyyy" type="text" name="data[Position][to]" value="" class="input-small" aria-controls="dt_gal"></label>
+
+						</span>	
+						</span>	
+						
 						
 							<label>Employee: 
 						<select name="data[emp_id]" class="input-medium" placeholder="" style="clear:left" id="emp_id">
@@ -40,13 +55,20 @@
 													
 							</label>
 			<label>Client: <input type="text" placeholder="Client Name" name="data[Home][client]" id = "SearchText" value="Amrutanjan" class="input-large" aria-controls="dt_gal"></label>
-				
-	<label>From Date: <input type="text" class="input-small datepick" name="data[Home][from]" value="01/09/2016" aria-controls="dt_gal"></label>
+					<label>
+							Branch: 
+							<select name="data[Position][loc]" class="input-medium" placeholder="" style="clear:left" id="PositionLoc">
+<option value="">Select</option>
+<option value="104">Ahmadabad</option>
+<option value="102">Bangalore</option>
+<option value="103">Chennai</option>
+<option value="105">Hyderabad</option>
+</select> 
+							</label>
+										
+	
 						
-
-<label>To Date: <input type="text" name="data[Home][to]" value="30/09/2016" class="input-small datepick" aria-controls="dt_gal"></label>
-
-							<label style="margin-top:18px;"><input type="button" value="Submit" class="btn btn-gebo" /></label>
+												<label style="margin-top:18px;"><input type="button" value="Submit" class="btn btn-gebo" /></label>
 							<label style="margin-top:18px;"><a href="weekly_performance.php"><input value="Reset" type="button" class="btn"/></a></label>
 							
 						<label style="margin-top:18px;"><a href="#"><input value="Export" type="button" class="btn btn-warning"/></a></label>
@@ -57,7 +79,9 @@
 <input type="hidden" value="23/09/2016" id="start_date">
 		<input type="hidden" value="1" id="SearchKeywords">
 						<input type="hidden" value="home/" id="webroot">	
-<input type="hidden" name="data[type]" id="type"/>						
+<input type="hidden" name="data[type]" id="type"/>
+
+						
 						</form>
 						
 						

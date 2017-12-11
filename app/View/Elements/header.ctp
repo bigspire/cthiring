@@ -262,7 +262,7 @@
                                                 <li><a href="<?php echo $this->webroot;?>hiring/ah_performance.php">Account Holder Performance</a></li>
 													<?php endif; ?>	
 												 <?php if($location_report == '1'):?> 
-												<li><a href="#">Location Performance</a></li>
+												<li><a href="<?php echo $this->webroot;?>hiring/location_performance.php">Location Performance</a></li>
 													<?php endif; ?>	
                                                <!-- <li><a href="#">Clientwise Performance</a></li>-->
 											    <?php // if($failure_report == '1'):?> 
@@ -275,19 +275,19 @@
 												<li><a href="#">TAT Time </a></li>
 													<?php endif; ?>	
 												 <?php if($collection_report == '1'):?> 
-												<li><a href="#">Collection Table </a></li>
+												<li><a href="<?php echo $this->webroot;?>hiring/collection_table.php">Collection Table </a></li>
 													<?php endif; ?>	
 												 <?php if($client_retention_report == '1'):?> 
-												<li><a href="#">Client Retention Table </a></li>
+												<li><a href="<?php echo $this->webroot;?>hiring/client_retention.php">Client Retention Table </a></li>
 													<?php endif; ?>	
 												 <?php if($incentive_report == '1'):?> 
-												<li><a href="#">Incentive </a></li>
+												<li><a href="<?php echo $this->webroot;?>hiring/incentive_report.php">Incentive </a></li>
 													<?php endif; ?>	
 												 <?php if($daily_report == '1'):?> 
-												<li><a href="#">Daily Performance </a></li>
+												<li><a href="<?php echo $this->webroot;?>hiring/daily_performance.php">Daily Performance </a></li>
 													<?php endif; ?>	
 												 <?php if($weekly_report == '1'):?> 
-												<li><a href="#">Weekly Performance </a></li>
+												<li><a href="<?php echo $this->webroot;?>hiring/weekly_performance.php">Weekly Performance </a></li>
 													<?php endif; ?>	
 												
                                             </ul>
