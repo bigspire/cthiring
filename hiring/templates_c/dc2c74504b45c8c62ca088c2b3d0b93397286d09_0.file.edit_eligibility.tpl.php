@@ -1,9 +1,35 @@
-{* Purpose : To edit eligibility.
-   Created : Nikitasa
-   Date : 29-01-2017 *}
+<?php
+/* Smarty version 3.1.29, created on 2017-12-11 17:20:48
+  from "C:\xampp\htdocs\2017\ctsvn\cthiring\hiring\templates\edit_eligibility.tpl" */
+
+if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
+  'has_nocache_code' => false,
+  'version' => '3.1.29',
+  'unifunc' => 'content_5a2e711866d4c9_97321149',
+  'file_dependency' => 
+  array (
+    'dc2c74504b45c8c62ca088c2b3d0b93397286d09' => 
+    array (
+      0 => 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\templates\\edit_eligibility.tpl',
+      1 => 1512993046,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+    'file:include/header.tpl' => 1,
+    'file:include/footer.tpl' => 1,
+  ),
+),false)) {
+function content_5a2e711866d4c9_97321149 ($_smarty_tpl) {
+if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
+?>
+
    
 
-			{include file='include/header.tpl'}
+			<?php $_smarty_tpl->smarty->ext->_subtemplate->render($_smarty_tpl, "file:include/header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
+
 			
 			<!-- main content -->
             <div id="contentwrapper">
@@ -14,7 +40,8 @@
                         <div id="jCrumbs" class="breadCrumb module">
                             <ul>
                                 <li>
-                                    <a href="{$smarty.const.webroot}home"><i class="icon-home"></i></a>
+                                    <a href="<?php echo @constant('webroot');?>
+home"><i class="icon-home"></i></a>
                                 </li>
                                 <li>
                                     <a href="eligibility.php">Eligibility</a>
@@ -26,9 +53,10 @@
                             </ul>
                         </div>
                     </nav>
-				{if $EXIST_MSG}
-				 <div id="flashMessage" class="alert alert-error"><button type="button" class="close" data-dismiss="alert">×</button>{$EXIST_MSG}</div>					
-				{/if}
+				<?php if ($_smarty_tpl->tpl_vars['EXIST_MSG']->value) {?>
+				 <div id="flashMessage" class="alert alert-error"><button type="button" class="close" data-dismiss="alert">×</button><?php echo $_smarty_tpl->tpl_vars['EXIST_MSG']->value;?>
+</div>					
+				<?php }?>
 <form action="" id="formID" class="formID" method="post" accept-charset="utf-8">
 	<div class="box">
 		<div class="box-title mb5">
@@ -42,9 +70,11 @@
 							<td width="120" class="tbl_column change_amount_type">Period Type <span class="f_req">*</span></td>
 							<td>										
 							<select name="period"  tabindex="3" class="span8 change_amount_type">
-							{html_options options=$period_type selected=$period}			    			
+							<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['period_type']->value,'selected'=>$_smarty_tpl->tpl_vars['period']->value),$_smarty_tpl);?>
+			    			
 							</select>
-								<label for="reg_city" generated="true" class="error">{$period_typeErr}</label>									
+								<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['period_typeErr']->value;?>
+</label>									
 							</td>	
 						</tr>
 						<tr>
@@ -52,44 +82,54 @@
 							<td>										
 							<select name="ctc_from" tabindex="1" rel="maxDrop" class="span4 minDrop" id="minDrop">
 							<option value="">Min.</option>	
-							{html_options options=$target selected=$ctc_from}			    			
+							<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['target']->value,'selected'=>$_smarty_tpl->tpl_vars['ctc_from']->value),$_smarty_tpl);?>
+			    			
 							</select>	
 						
 							<select name="ctc_to"  tabindex="2" id="maxDrop" class="inline_text span4 maxDrop">
 							<option value="">Select</option>	
-							{html_options options=$target selected=$ctc_to}			    			
+							<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['target']->value,'selected'=>$_smarty_tpl->tpl_vars['ctc_to']->value),$_smarty_tpl);?>
+			    			
 							</select>
-							<label for="reg_city" generated="true" class="error">{$target_from_Err} </label>									
-							<label for="reg_city" generated="true" class="error">{$target_to_Err}</label>									
+							<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['target_from_Err']->value;?>
+ </label>									
+							<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['target_to_Err']->value;?>
+</label>									
 							</td>	
 						</tr>	
 						<tr class="tbl_row">
 							<td width="120" class="tbl_column">No of Resume  <span class="f_req">*</span></td>
 							<td>										
-								<input type="text" tabindex="4" name="no_resumes" value="{$no_resumes}" class="span8">
-								<label for="reg_city" generated="true" class="error">{$no_resumeErr} </label>									
+								<input type="text" tabindex="4" name="no_resumes" value="<?php echo $_smarty_tpl->tpl_vars['no_resumes']->value;?>
+" class="span8">
+								<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['no_resumeErr']->value;?>
+ </label>									
 							</td>	
 						</tr>
 						
-						{if $amount neq '0' || $smarty.post.period eq 'D' || $smarty.post.period eq 'PS'}
+						<?php if ($_smarty_tpl->tpl_vars['amount']->value != '0' || $_POST['period'] == 'D' || $_POST['period'] == 'PS') {?>
 						<tr>
 							<td width="120" class="tbl_column amount_Validity">Amount (INR) <span class="f_req">*</span></td>
 							<td class = "amount_Validity">										
-								<input type="text" tabindex="4" name="amount" value="{$amount}" class="span8 amount_Validity">
-								<label for="reg_city" generated="true" class="error amount_Validity">{$amountErr} </label>									
+								<input type="text" tabindex="4" name="amount" value="<?php echo $_smarty_tpl->tpl_vars['amount']->value;?>
+" class="span8 amount_Validity">
+								<label for="reg_city" generated="true" class="error amount_Validity"><?php echo $_smarty_tpl->tpl_vars['amountErr']->value;?>
+ </label>									
 							</td>	
 						</tr>	
-						{/if}		
+						<?php }?>		
 
-						{if $smarty.post.period eq 'D' || $smarty.post.period eq 'PS'}
+						
 						<tr>
 							<td width="120" class="tbl_column amount_Vali">Amount (INR) <span class="f_req">*</span></td>
 							<td class = "amount_Vali">										
-								<input type="text" tabindex="4" name="amount" value="{$amount}" class="span8 amount_Vali">
-								<label for="reg_city" generated="true" class="error amount_Vali">{$amountErr} </label>									
+								<input type="text" tabindex="4" name="amount" value="<?php echo $_smarty_tpl->tpl_vars['amount']->value;?>
+" class="span8 amount_Vali">
+								<label for="reg_city" generated="true" class="error amount_Vali"><?php echo $_smarty_tpl->tpl_vars['amountErr']->value;?>
+ </label>									
 							</td>
 						</tr>	
-						{/if}	
+						
 				</tbody>
 			</table>
 		</div>
@@ -101,18 +141,22 @@
 							<td width="120" class="tbl_column">User Type <span class="f_req">*</span></td>
 							<td>										
 							<select name="user_type" tabindex="3" class="span8">
-							{html_options options=$user selected=$user_type}			    			
+							<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['user']->value,'selected'=>$_smarty_tpl->tpl_vars['user_type']->value),$_smarty_tpl);?>
+			    			
 							</select>
-								<label for="reg_city" generated="true" class="error">{$user_typeErr}</label>									
+								<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['user_typeErr']->value;?>
+</label>									
 							</td>	
 						</tr>
 					<tr>
 							<td width="120" class="tbl_column">Type <span class="f_req">*</span></td>
 							<td>										
 							<select name="type" id="type" tabindex="3" class="span8 change_amount_type">
-							{html_options options=$types selected=$type}			    			
+							<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['types']->value,'selected'=>$_smarty_tpl->tpl_vars['type']->value),$_smarty_tpl);?>
+			    			
 							</select>
-								<label for="reg_city" generated="true" class="error">{$typesErr}</label>									
+								<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['typesErr']->value;?>
+</label>									
 							</td>	
 						</tr>	
 						 
@@ -120,9 +164,11 @@
 						<td width="120" class="tbl_column">Status <span class="f_req">*</span></td>
 						<td>	
 						<select name=status id="status" tabindex="5" class="span8">
-							{html_options  options=$grade_status selected=$status}		
+							<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['grade_status']->value,'selected'=>$_smarty_tpl->tpl_vars['status']->value),$_smarty_tpl);?>
+		
 						</select>
-							<label for="reg_city" generated="true" class="error">{$statusErr}</label>											
+							<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['statusErr']->value;?>
+</label>											
 						</td>	
 				  </tr>									
 				</tbody>
@@ -149,10 +195,13 @@
 </div>
  </div>
 </div>		
-{include file='include/footer.tpl'}
+<?php $_smarty_tpl->smarty->ext->_subtemplate->render($_smarty_tpl, "file:include/footer.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
 
-{literal}
-<script type="text/javascript">
+
+
+<?php echo '<script'; ?>
+ type="text/javascript">
 
 $(document).ready(function(){
 	// function to change the amount
@@ -245,5 +294,7 @@ $(document).ready(function(){
 	*/
 });
 
-</script>	
-{/literal}
+<?php echo '</script'; ?>
+>	
+<?php }
+}

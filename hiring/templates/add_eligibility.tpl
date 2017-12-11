@@ -144,7 +144,7 @@
 
 {literal}
 <script type="text/javascript">
-/*
+
 $(document).ready(function(){
 	// function to change the amount
 	$('.change_amount_type').change(function(){ 
@@ -170,12 +170,16 @@ $(document).ready(function(){
 			$('.amount_Validity').hide();
 		}else if($('.change_amount_type:selected').val() == 'H'){
 			$('.amount_Validity').hide();
+		}else if(($('.change_amount_type:selected').val() == 'M') && ($('.change_amount_type:selected').val() == 'PS')){
+			$('.amount_Validity').hide();
+		}else if(($('.change_amount_type:selected').val() == 'H') && ($('.change_amount_type:selected').val() == 'PS')){
+			$('.amount_Validity').hide();
 		}else{
 			$('.amount_Validity').show();
 		}
 	}
 
-	
+	/*
 	// function to change the amount
 	$('.change_periodType_amount_type').change(function(){ 
 		if($(this).val() == 'M'){
@@ -196,8 +200,8 @@ $(document).ready(function(){
 			$('.amount_Validity').show();
 		}
 	}
-
+	*/
 });
-*/
+
 </script>	
 {/literal}
