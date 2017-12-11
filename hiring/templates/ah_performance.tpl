@@ -5,16 +5,22 @@
 
 			{include file='include/header.tpl'}	
 
-				   <!-- main content -->
+				
 			<div id="contentwrapper">
-                <div class="main_content">							
-					<div class="row-fluid">			  
+                <div class="main_content">
+                
+				
+					
+										
+					<div class="row-fluid">
+						
+					  
 					  <div class="span12" style="margin:0;">
 					  <nav>
                         <div id="jCrumbs" class="breadCrumb module">
                             <ul>
                                 <li>
-                                    <a href="{$smarty.const.webroot}home"><i class="icon-home"></i></a>
+                                    <a href="recruiter_dashboard.php"><i class="icon-home"></i></a>
                                 </li>
                                 <li>
                                     <a href="ah_performance.php">Account Holder Performance</a>
@@ -27,50 +33,412 @@
                         </div>
                     </nav>
 
-							
-					<form>
+						<div class="srch_buttons">
+
+							<a class="jsRedirect toggleSearch" href="javascript:void(0)">
+							<input type="button" value="Search" class="homeSrch btn btn-success"></a>
+														 							
+							</div>	
+								<form>
 															
-						<div class="dataTables_filter homeSrchBox srchBox" style="float:left;margin-left:;margin-top:15px"  id="dt_gal_filter">
-						<label>Employee: 
-						<select name="data[emp_id]" class="input-medium" placeholder="" style="clear:left" id="emp_id">
-							<option value="">Select</option>
-							<option value="0">Bhargavi</option>
-							<option value="1" selected="selected">Suganya</option>
-						</select> 															
-													
-						</label>
-						<label>Client: <input type="text" placeholder="Client Name" name="data[Home][client]" id = "SearchText" value="Amrutanjan" class="input-large" aria-controls="dt_gal"></label>
-						<label>From Date: <input type="text" class="input-small datepick" name="data[Home][from]" value="01/09/2016" aria-controls="dt_gal"></label>
+						<div class="dn dataTables_filter srchBox homeSrchBox" id="dt_gal_filter" style="display: block;">
+							
+							
+							<span id="sandbox-container">
+						<span class="input-daterange" id="datepicker">	
+							<label style="margin-left:0">From Date: <input placeholder="dd/mm/yyyy" type="text" class="input-small" name="data[Position][from]" value="" aria-controls="dt_gal"></label>
+
+							<label>To Date: <input placeholder="dd/mm/yyyy" type="text" name="data[Position][to]" value="" class="input-small" aria-controls="dt_gal"></label>
+
+						</span>	
+						</span>	
+							
+							
+								
+											
+							</label>
+														<label>Employee: 
+						<select name="data[Position][emp_id]" class="input-medium" placeholder="" style="clear:left" id="PositionEmpId">
+<option value="">Select</option>
+<option value="4">Admin </option>
+<option value="97">Anand </option>
+<option value="66">Bhargavi M</option>
+<option value="98">Chetan S</option>
+<option value="96">Eresh Choudhary</option>
+<option value="102">Guru Vishnu Test</option>
+<option value="94">Jagadeesh </option>
+<option value="91">Kamesh K</option>
+<option value="74">Karthick Kumar </option>
+<option value="37">Karthikeyan S</option>
+<option value="95">Kumaresh </option>
+<option value="89">Kumari </option>
+<option value="45">Lavanya Venkateshappa</option>
+<option value="92">Magimai Tamil Azhagan </option>
+<option value="54">Mary Paulina </option>
+<option value="86">Mohammed Aslam 0</option>
+<option value="79">Mohan Reddy </option>
+<option value="100">Muthu Kumar</option>
+<option value="76">Nandhakumar </option>
+<option value="29">Praveena E</option>
+<option value="80">Prerna Khanudi </option>
+<option value="58">Priyanka </option>
+<option value="33">Rajalakshmi S</option>
+<option value="38">Ranjeet Rajpurohit</option>
+<option value="101">Siva Kumar</option>
+<option value="81">Suganya Pillai </option>
+<option value="90">Sumir </option>
+<option value="93">Sumitha </option>
+<option value="103">Vinoth Kumar</option>
+<option value="99">Vinoth Kumar</option>
+</select> 					
+							</label>
+												
+							
+							<label>
+							Branch: 
+							<select name="data[Position][loc]" class="input-medium" placeholder="" style="clear:left" id="PositionLoc">
+<option value="">Select</option>
+<option value="104">Ahmadabad</option>
+<option value="102">Bangalore</option>
+<option value="103">Chennai</option>
+<option value="105">Hyderabad</option>
+</select> 
+							</label>
+												
+				
 						
-						<label>To Date: <input type="text" name="data[Home][to]" value="30/09/2016" class="input-small datepick" aria-controls="dt_gal"></label>
+							
+							
+							
 
-						<label style="margin-top:18px;"><input type="submit" value="Submit" class="btn btn-gebo" /></label>
-						<label style="margin-top:18px;"><a href="ah_performance.php"><input value="Reset" type="button" class="btn"/></a></label>
+				<label style="margin-top:18px;"><input type="submit" value="Submit" class="btn btn-gebo"></label>
 
-						</div>
-<input type="hidden" name="data[srchSubmit]" id="srchSubmit"/><input type="hidden" value="23/12/2016" id="end_date">
-<input type="hidden" value="23/09/2016" id="start_date">
+							<label style="margin-top:18px;"><a class="jsRedirect" href="/ctsvn/cthiring/position/index/"><input value="Reset" type="button" class="btn"></a></label>
+
+					<label style="margin-top:18px;"><a href="#"><input value="Print" type="button" class="btn btn-success"/></a></label>
+
+							<label style="margin-top:18px;"><a href="#"><input value="Export" type="button" class="btn btn-warning"/></a></label>
+		
+														</div>
+					
+<input type="hidden" name="data[srchSubmit]" id="srchSubmit"/>
+
 		<input type="hidden" value="1" id="SearchKeywords">
 						<input type="hidden" value="home/" id="webroot">	
 <input type="hidden" name="data[type]" id="type"/>						
 						</form>
 						
 						
+						
+								<div class="row-fluid">		
+				<div class="span12">	
+				
+						<h3 class="heading" style="margin-bottom:0;border:;clear:left;">Business Conversion <small> For the year 2016 - 2017</small>
+							</h3>
+						
+							<table class="table table-hover table-bordered table-striped" style="margin: 15px 0px;">
+								<thead>
+									
+									<tr>
+
+										<th width="" style="min-width: 0px; max-width: none;"></th>										
+										<th width="" style="text-align:center;min-width: 0px; max-width: none;" colspan="8">CTC value of the position (in Lacs) </th>
+										<th width="" style="min-width: 0px; max-width: none;text-align:center">Total</th>
+										
+									</tr>
+								
+									<tr>
+
+										<th width="100" style="min-width: 0px; max-width: none;"><a href="#">Performance Factors</a></th>										
+										
+										
+										<th width="50" style="min-width: 0px; max-width: none;text-align:center"><a href="#">0-1</a></a></th>
+										<th width="50" style="min-width: 0px; max-width: none;text-align:center" ><a href="#">1 - 2</a></th>
+										<th width="50" style="min-width: 0px; max-width: none;text-align:center"><a href="#">2 - 4</a> </th>
+										<th width="50" style="min-width: 0px; max-width: none;text-align:center"><a href="#">4 - 8</a> </th>
+										
+										<th width="50" style="min-width: 0px; max-width: none;text-align:center"><a href="#">8 - 12</a></th>
+										<th width="50" style="min-width: 0px; max-width: none;text-align:center" ><a href="#">12 - 20</a></th>
+										<th width="50" style="min-width: 0px; max-width: none;text-align:center"><a href="#">20 - 30</a> </th>
+										<th width="50" style="min-width: 0px; max-width: none;text-align:center"><a href="#">30 - 40</a> </th>
+										<th width="50" style="min-width: 0px; max-width: none;text-align:center"></th>
+										
+										
+										
+										
+									</tr>
+								
+								
+								</thead>
+								
+								
+								<tbody>
+								
+								
+										
+																		<tr>
+																				<td width="">Openings Worked</td>
+										
+										<td style="text-align:center">33</td>
+										<td style="text-align:center">3</td>
+										<td style="text-align:center">76</td>
+										<td style="text-align:center">23</td>
+										
+										<td style="text-align:center">33</td>
+										<td style="text-align:center">3</td>
+										<td style="text-align:center">76</td>
+										<td style="text-align:center">23</td>
+										
+										
+										
+									
+										
+									
+						<td width="" style="text-align:center">89						</td>
+						
+						
+					
+								</tr>
+								
+								<tr>
+																				<td width="">Openings Billed</td>
+										
+										<td style="text-align:center">55</td>
+										<td style="text-align:center">33</td>
+										<td style="text-align:center">12</td>
+										<td style="text-align:center">7</td>
+										
+										<td style="text-align:center">2</td>
+										<td style="text-align:center">13</td>
+										<td style="text-align:center">76</td>
+										<td style="text-align:center">12</td>
+										
+										
+										
+									
+										
+									
+						
+						<td width="" style="text-align:center">90						</td>
+						
+					
+								</tr>
+								
+								
+								<tr>
+																				<td width="">Resumes Submitted</td>
+										
+										<td style="text-align:center">12</td>
+										<td style="text-align:center">33</td>
+										<td style="text-align:center">76</td>
+										<td style="text-align:center">66</td>
+										
+										<td style="text-align:center">12</td>
+										<td style="text-align:center">31</td>
+										<td style="text-align:center">87</td>
+										<td style="text-align:center">12</td>
+										<td width="" style="text-align:center">60</td>
+						
+					
+								</tr>
+								
+																
+																</tbody>
+							</table>
+				</div></div>
+				
+					<div class="row-fluid">		
+<div class="span12">	
+<div class="span8">&nbsp;</div>
+<div class="span4">
+										<div><h3>Average Conversion of Openings: 44%</h3> </div>
+										<div><h3>Average Resumes Per Opening: 70%</h3>  
+										</div>
+										
+									</div>
+</div></div>
+			
+			
+			
 							<div class="span5" id="client_chart" style="clear:both;padding-right:25px;border-right:1px dotted #efefef;  margin:25px;height:300px">
 							</div>
 														
-							<div class="span5" id="profile_work" style="margin:25px;height:300px">
-							</div>
 							
-							<div class="span5"  id="coordinate_work" style="padding-right:25px;border-right:1px dotted #efefef; margin:25px;height:300px">
+								<div class="span5 graph"  id="debt_work" style="margin:15px 40px;height:300px">
 							</div>
+
 							
-							<div class="span5"  id="debt_work" style="margin:25px;height:300px">
-							</div>		
+						
+							
+							
 							
 					</div>
 					
+                     		<div class="row-fluid">		
+				<div class="span8">	
+					<h3 class="heading" style="margin-bottom:0;border:;clear:left;">Client wise Billing for the year 2016 - 2017<small> (in Lacs)</small>
+							</h3>
+							
+					<table class="table table-hover table-bordered table-striped" style="margin: 15px 0px">
+								<thead >
+									
+								
+									<tr>
+
+										<th width="120" style="min-width: 0px; max-width: none;"><a href="#">Client Name</a></th>										
+										
+										
+										<th width="50" style="min-width: 0px; max-width: none;text-align:center"><a href="#">Apr</a></a></th>
+										<th width="50" style="min-width: 0px; max-width: none;text-align:center" ><a href="#">May</a></th>
+										<th width="50" style="min-width: 0px; max-width: none;text-align:center"><a href="#">Jun</a> </th>
+										<th width="50" style="min-width: 0px; max-width: none;text-align:center"><a href="#">Jul</a> </th>
+										
+										<th width="50" style="min-width: 0px; max-width: none;text-align:center"><a href="#">Aug</a></th>
+										<th width="50" style="min-width: 0px; max-width: none;text-align:center" ><a href="#">Sep</a></th>
+										<th width="50" style="min-width: 0px; max-width: none;text-align:center"><a href="#">Oct</a> </th>
+										<th width="50" style="min-width: 0px; max-width: none;text-align:center"><a href="#">Nov</a> </th>
+										<th width="50" style="min-width: 0px; max-width: none;text-align:center"><a href="#">Dec</a> </th>
+										<th width="50" style="min-width: 0px; max-width: none;text-align:center"><a href="#">Jan</a> </th>
+										<th width="50" style="min-width: 0px; max-width: none;text-align:center"><a href="#">Feb</a> </th>
+										<th width="50" style="min-width: 0px; max-width: none;text-align:center"><a href="#">Mar</a> </th>
+										
+										
+										
+											<th width="50" style="min-width: 0px; max-width: none;text-align:center">Total</th>
+										
+										
+										
+										
+									</tr>
+								
+								
+								</thead>
+								
+								
+								<tbody>
+								
+								
+										
+																		<tr>
+																				<td width="">Wipro</td>
+										
+										<td style="text-align:center">2.3</td>
+										<td style="text-align:center">3.6</td>
+										<td style="text-align:center">5</td>
+										<td style="text-align:center">6</td>
+										
+										<td style="text-align:center">22</td>
+										<td style="text-align:center">3</td>
+										<td style="text-align:center">14.5</td>
+										<td style="text-align:center">12</td>
+										
+										
+										<td style="text-align:center">12</td>
+										<td style="text-align:center">3</td>
+										<td style="text-align:center">12</td>
+										<td style="text-align:center">17.4</td>
+									
+										
+									
+						
+						<td width="" style="text-align:center">83.4						</td>
+						
+					
+								</tr>
+								
+								<tr>
+																				<td width="">Infosys</td>
+										
+										<td style="text-align:center">12.5</td>
+										<td style="text-align:center">30</td>
+										<td style="text-align:center">12.5</td>
+										<td style="text-align:center">32</td>
+										
+										<td style="text-align:center">10</td>
+										<td style="text-align:center">3</td>
+										<td style="text-align:center">2.5</td>
+										<td style="text-align:center">6</td>
+										
+										
+										<td style="text-align:center">12</td>
+										<td style="text-align:center">13</td>
+										<td style="text-align:center">33</td>
+										<td style="text-align:center">12</td>
+									
+										
+									
+						
+						<td width="" style="text-align:center">93.5</td>
+						
+					
+								</tr>
+								
+								
+								<tr>
+																				<td width="">Tech Mahindra</td>
+										
+										<td style="text-align:center">33</td>
+										<td style="text-align:center">3</td>
+										<td style="text-align:center">76</td>
+										<td style="text-align:center">23</td>
+										
+										<td style="text-align:center">33</td>
+										<td style="text-align:center">3</td>
+										<td style="text-align:center">76</td>
+										<td style="text-align:center">23</td>
+										
+										<td style="text-align:center">33</td>
+										<td style="text-align:center">3</td>
+										<td style="text-align:center">76</td>
+										<td style="text-align:center">23</td>
+								
+						<td width="" style="text-align:center">12999						</td>
+								</tr>
+								
+																
+																</tbody>
+							</table>
+							
+							
+				</div>	
+				
+				<div class="span4">
+					<h3 class="heading" style="margin-bottom:0;border:;clear:left;">Bad Debts Performance <small> For the year 2016 - 2017</small>
+							</h3>		
+					<table class="table table-striped table-bordered table-condensed" style="margin:15px 0px;">
+										<thead>
+											<tr>
+												<th>Loss Period</th>
+												<th>Loss Value (Total)</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>Q1</td>
+												<td>44</td>
+											</tr>
+											<tr>
+												<td>Q2</td>
+												<td>14</td>
+											</tr>
+											<tr>
+												<td>Q3</td>
+												<td>34</td>
+											</tr>
+											<tr>
+												<td>Q4</td>
+												<td>67</td>
+											</tr>
+										</tbody>
+									</table>
+				</div>
+				</div>   
+					
 					</div>
+                    
+					
+				
+
 				    
                 </div>
             </div>
@@ -92,7 +460,7 @@
         ]);
 
         var options = {
-          title: 'Clients Handled, Aug \'16',
+          title: 'Clients Handled, For the year 2016 - 2017',
 		  titleTextStyle: { fontSize: 16,color:'#918f8f',fontName:'Roboto', bold:false},
 		  pieSliceText: 'label',
 		   
@@ -184,7 +552,7 @@
 		  var options = {
           chart: {
             title: 'Bad Debts Performance',
-            subtitle: 'Aug, 2016',
+            subtitle: 'For the year 2016 - 2017',
 			
           },
 		vAxis: {

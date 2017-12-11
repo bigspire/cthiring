@@ -252,14 +252,14 @@
 	 <?php if($recruiter_report == '1' || $account_holder_report == '1' || $location_report == '1' || $failure_report == '1'
 || 	$revenue_report == '1' || $tat_report == '1' || $collection_report == '1' || $client_retention_report == '1' || $incentive_report == '1'
 || $incentive_report == '1' || $daily_report == '1' || $weekly_report == '1'):?> 
-										 <li class="dropdown">
+										 <li class="dropdown <?php echo $report_menu ?>">
                                             <a data-toggle="dropdown" class="dropdown-toggle " href="#"><i class="icon-download-alt icon-white"></i> Reports <b class="caret"></b></a>
                                           <ul class="dropdown-menu">
 										    <?php if($recruiter_report == '1'):?> 
-                                                <li><a href="#">Recruiter Performance</a></li>
+                                                <li><a href="<?php echo $this->webroot;?>hiring/recruiter_performance.php">Recruiter Performance</a></li>
 											<?php endif; ?>	
 											 <?php if($account_holder_report == '1'):?> 
-                                                <li><a href="#">Account Holder Performance</a></li>
+                                                <li><a href="<?php echo $this->webroot;?>hiring/ah_performance.php">Account Holder Performance</a></li>
 													<?php endif; ?>	
 												 <?php if($location_report == '1'):?> 
 												<li><a href="#">Location Performance</a></li>
@@ -353,7 +353,8 @@
 														<li><a href="<?php echo $this->webroot;?>hiring/eligibility.php">Eligibility</a></li>
 														<li><a href="<?php echo $this->webroot;?>hiring/sharing_criteria.php">Sharing Criteria</a></li>	
 														<li><a href="<?php echo $this->webroot;?>hiring/salary.php">Salary</a></li>
-														<li><a href="<?php echo $this->webroot;?>hiring/emp_leaves.php">Employee Leaves</a></li>														
+														<li><a href="<?php echo $this->webroot;?>hiring/holidays.php">Holidays</a></li>	
+														
 													</ul>
 												</li>
 												<?php endif; ?>	
