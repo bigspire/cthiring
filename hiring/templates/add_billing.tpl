@@ -169,5 +169,35 @@ $(document).ready(function(){
 		
 	});
 });
+
+/*	
+	// function to change the amount
+	$('.change_bill_amount').change(function(){ 
+		if($(this).val() != ''){
+			$percentChange = (1 - $ctc_offer / $bill_percent) * 100;
+			$('.amount_Validity').hide();
+		}else{
+			$('.amount_Validity').show();
+		}
+	});
+	
+	if($('.change_bill_amount').length > 0){
+		if($('.change_amount_type:selected').val() == 'PS'){
+			$('.amount_Validity').hide();
+		}else{
+			$('.amount_Validity').show();
+		}
+	}
+
+function calculatePercentage($ctc_offer, $bill_percent) {
+        if (($ctc_offer != 0) && ($bill_percent != 0)) {
+            $percentChange = (1 - $ctc_offer / $bill_percent) * 100;
+        }
+        else {
+            $percentChange = null;
+        }
+        return $percentChange;
+}
+*/
 </script>	
 {/literal}

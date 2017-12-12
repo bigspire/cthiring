@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-12-11 17:20:48
+/* Smarty version 3.1.29, created on 2017-12-12 14:32:39
   from "C:\xampp\htdocs\2017\ctsvn\cthiring\hiring\templates\edit_eligibility.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5a2e711866d4c9_97321149',
+  'unifunc' => 'content_5a2f9b2f079d07_13555178',
   'file_dependency' => 
   array (
     'dc2c74504b45c8c62ca088c2b3d0b93397286d09' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\templates\\edit_eligibility.tpl',
-      1 => 1512993046,
+      1 => 1513069177,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5a2e711866d4c9_97321149 ($_smarty_tpl) {
+function content_5a2f9b2f079d07_13555178 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -119,7 +119,7 @@ home"><i class="icon-home"></i></a>
 						</tr>	
 						<?php }?>		
 
-						
+						<?php if ($_POST['period'] == 'D' || $_POST['period'] == 'PS') {?>
 						<tr>
 							<td width="120" class="tbl_column amount_Vali">Amount (INR) <span class="f_req">*</span></td>
 							<td class = "amount_Vali">										
@@ -129,7 +129,7 @@ home"><i class="icon-home"></i></a>
  </label>									
 							</td>
 						</tr>	
-						
+						<?php }?>	
 				</tbody>
 			</table>
 		</div>
@@ -202,7 +202,7 @@ home"><i class="icon-home"></i></a>
 
 <?php echo '<script'; ?>
  type="text/javascript">
-
+/*
 $(document).ready(function(){
 	// function to change the amount
 	$('.change_amount_type').change(function(){ 
@@ -293,7 +293,7 @@ $(document).ready(function(){
 	}
 	*/
 });
-
+*/
 <?php echo '</script'; ?>
 >	
 <?php }

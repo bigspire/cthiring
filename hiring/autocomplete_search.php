@@ -204,9 +204,9 @@ elseif($_GET['page'] == 'list_eligibility'){
 		}
 		// iterate until get the matched results
 		while($obj = $mysql->display_result($result)){
-			$data[] = strtolower($fun->match_results($keyword,$obj['full_name']));
-			$data[] = strtolower($fun->match_results($keyword,$obj['position']));	
-			$data[] = strtolower($fun->match_results($keyword,$obj['company']));		
+			$data[] = strtolower($fun->match_results($keyword,$obj['candidate_name']));
+			$data[] = strtolower($fun->match_results($keyword,$obj['job_title']));	
+			$data[] = strtolower($fun->match_results($keyword,$obj['client_name']));		
 		}
 		
 		// filter the duplicate values

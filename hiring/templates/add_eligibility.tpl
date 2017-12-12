@@ -63,9 +63,9 @@
 							</td>	
 						</tr>	
 						<tr class="tbl_row">
-							<td width="120" class="tbl_column">No of Resume  <span class="f_req">*</span></td>
+							<td width="120" class="tbl_column no_resume_validation">No of Resume  <span class="f_req">*</span></td>
 							<td>										
-								<input type="text" tabindex="4" name="no_resume" value="{$smarty.post.no_resume}" class="span8">
+								<input type="text" tabindex="4" name="no_resume" value="{$smarty.post.no_resume}" class="span8 no_resume_validation">
 								<label for="reg_city" generated="true" class="error">{$no_resumeErr} </label>									
 							</td>	
 						</tr>
@@ -150,16 +150,15 @@ $(document).ready(function(){
 	$('.change_amount_type').change(function(){ 
 		if($(this).val() == 'PS'){
 			$('.amount_Validity').hide();
-		}else if($(this).val()  == 'M' && $(this).val() == 'PS'){
-			$('.amount_Validity').hide();
-		}else if($(this).val()  == 'H' && $(this).val() == 'PS'){
+		}else if($(this).val()  == 'D' && $(this).val() == 'PS'){
 			$('.amount_Validity').hide();
 		}else if($(this).val()  == 'M'){
-			$('.amount_Validity').hide();
+			$('.no_resume_validation').hide();
 		}else if($(this).val()  == 'H'){
-			$('.amount_Validity').hide();
+			$('.no_resume_validation').hide();
 		}else{
 			$('.amount_Validity').show();
+			$('.no_resume_validation').show();
 		}
 	});
 	
@@ -167,11 +166,11 @@ $(document).ready(function(){
 		if($('.change_amount_type:selected').val() == 'PS'){
 			$('.amount_Validity').hide();
 		}else if($('.change_amount_type:selected').val() == 'M'){
-			$('.amount_Validity').hide();
+			$('.no_resume_validation').hide();
 		}else if($('.change_amount_type:selected').val() == 'H'){
 			$('.amount_Validity').hide();
-		}else if(($('.change_amount_type:selected').val() == 'M') && ($('.change_amount_type:selected').val() == 'PS')){
-			$('.amount_Validity').hide();
+		}else if(($('.change_amount_type:selected').val() == 'M') && ($('.change_amount_type:selected').val() == 'PI')){
+			$('.no_resume_validation').hide();
 		}else if(($('.change_amount_type:selected').val() == 'H') && ($('.change_amount_type:selected').val() == 'PS')){
 			$('.amount_Validity').hide();
 		}else{

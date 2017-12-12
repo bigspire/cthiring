@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-12-11 11:21:02
+/* Smarty version 3.1.29, created on 2017-12-12 14:48:32
   from "C:\xampp\htdocs\2017\ctsvn\cthiring\hiring\templates\add_eligibility.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5a2e1cc68896b4_37773871',
+  'unifunc' => 'content_5a2f9ee8853ba3_54920772',
   'file_dependency' => 
   array (
     'aa1ddebef775ed4e403ccbaaa703c72044edd60a' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\templates\\add_eligibility.tpl',
-      1 => 1512971455,
+      1 => 1513070302,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5a2e1cc68896b4_37773871 ($_smarty_tpl) {
+function content_5a2f9ee8853ba3_54920772 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -97,10 +97,10 @@ home"><i class="icon-home"></i></a>
 							</td>	
 						</tr>	
 						<tr class="tbl_row">
-							<td width="120" class="tbl_column">No of Resume  <span class="f_req">*</span></td>
+							<td width="120" class="tbl_column no_resume_validation">No of Resume  <span class="f_req">*</span></td>
 							<td>										
 								<input type="text" tabindex="4" name="no_resume" value="<?php echo $_POST['no_resume'];?>
-" class="span8">
+" class="span8 no_resume_validation">
 								<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['no_resumeErr']->value;?>
  </label>									
 							</td>	
@@ -198,16 +198,15 @@ $(document).ready(function(){
 	$('.change_amount_type').change(function(){ 
 		if($(this).val() == 'PS'){
 			$('.amount_Validity').hide();
-		}else if($(this).val()  == 'M' && $(this).val() == 'PS'){
-			$('.amount_Validity').hide();
-		}else if($(this).val()  == 'H' && $(this).val() == 'PS'){
+		}else if($(this).val()  == 'D' && $(this).val() == 'PS'){
 			$('.amount_Validity').hide();
 		}else if($(this).val()  == 'M'){
-			$('.amount_Validity').hide();
+			$('.no_resume_validation').hide();
 		}else if($(this).val()  == 'H'){
-			$('.amount_Validity').hide();
+			$('.no_resume_validation').hide();
 		}else{
 			$('.amount_Validity').show();
+			$('.no_resume_validation').show();
 		}
 	});
 	
@@ -215,11 +214,11 @@ $(document).ready(function(){
 		if($('.change_amount_type:selected').val() == 'PS'){
 			$('.amount_Validity').hide();
 		}else if($('.change_amount_type:selected').val() == 'M'){
-			$('.amount_Validity').hide();
+			$('.no_resume_validation').hide();
 		}else if($('.change_amount_type:selected').val() == 'H'){
 			$('.amount_Validity').hide();
-		}else if(($('.change_amount_type:selected').val() == 'M') && ($('.change_amount_type:selected').val() == 'PS')){
-			$('.amount_Validity').hide();
+		}else if(($('.change_amount_type:selected').val() == 'M') && ($('.change_amount_type:selected').val() == 'PI')){
+			$('.no_resume_validation').hide();
 		}else if(($('.change_amount_type:selected').val() == 'H') && ($('.change_amount_type:selected').val() == 'PS')){
 			$('.amount_Validity').hide();
 		}else{
