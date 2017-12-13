@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-12-06 16:39:49
+/* Smarty version 3.1.29, created on 2017-12-13 15:42:43
   from "C:\xampp\htdocs\2017\ctsvn\cthiring\hiring\templates\add_billing.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5a27cffd8aeaa3_89626049',
+  'unifunc' => 'content_5a30fd1ba92af5_04756270',
   'file_dependency' => 
   array (
     '856b41824fe64a42b82e8f282557eeaec173a11d' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\templates\\add_billing.tpl',
-      1 => 1512558586,
+      1 => 1513159961,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5a27cffd8aeaa3_89626049 ($_smarty_tpl) {
+function content_5a30fd1ba92af5_04756270 ($_smarty_tpl) {
 ?>
 
    
@@ -165,7 +165,7 @@ echo $_POST['joined_date'];
 									<tr class="tbl_row">
 										<td width="120" class="tbl_column">CTC Offered <span class="f_req">*</span></td>
 										<td> 
-										<input type="text" class="span8"  name="ctc_offer"  value="<?php echo $_smarty_tpl->tpl_vars['ctc_offer']->value;?>
+										<input type="text" class="span8"  id="ctc_offer" name="ctc_offer"  value="<?php echo $_smarty_tpl->tpl_vars['ctc_offer']->value;?>
 ">
 										<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['ctc_offerErr']->value;?>
 </label>									
@@ -176,7 +176,7 @@ echo $_POST['joined_date'];
 									<tr>
 										<td width="120" class="tbl_column">Billing % <span class="f_req"></span></td>
 										<td> 
-										<input type="text" class="span8"  name="bill_percent"  value="<?php if ($_smarty_tpl->tpl_vars['bill_percent']->value) {
+										<input type="text" class="span8"  id="bill_percent" name="bill_percent"  value="<?php if ($_smarty_tpl->tpl_vars['bill_percent']->value) {
 echo $_smarty_tpl->tpl_vars['bill_percent']->value;
 } else {
 echo $_POST['bill_percent'];
@@ -189,7 +189,7 @@ echo $_POST['bill_percent'];
 									<tr class="tbl_row">
 										<td width="120" class="tbl_column">Billing Amount <span class="f_req">*</span></td>
 										<td> 
-										<input type="text" class="span8"  name="billing_amount"  value="<?php echo $_smarty_tpl->tpl_vars['billing_amount']->value;?>
+										<input type="text" class="span8"  id="result" name="billing_amount"  value="<?php echo $_smarty_tpl->tpl_vars['billing_amount']->value;?>
 ">
 										<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['billing_amountErr']->value;?>
 </label>									
@@ -223,6 +223,9 @@ echo $_POST['bill_percent'];
 					 			<input name="submit" class="btn btn-gebo submit" value="Submit" type="submit"/>
 													
 								<input type="hidden" name="bill_can" value="billing.php" id="webroot">
+								<input type="hidden" name="balc" value="add_billing.php?res_id=<?php echo $_GET['res_id'];?>
+&req_res_id=<?php echo $_GET['req_res_id'];?>
+" id="balc">
 	<a href="javascript:void(0)" class="jsRedirect cancel_event">
 	<input type="button" value="Cancel" class="btn cancelBtn">
 	</a>
@@ -256,6 +259,24 @@ $(document).ready(function(){
 		$('.cancelBtn').hide();
 		
 	});
+});
+	
+	
+
+
+$(document).on("change keyup blur", "#bill_percent", function() {
+var main = $('#ctc_offer').val();
+var disc = $('#bill_percent').val();
+var discont = main*(disc/100).toFixed(2); //its convert 10 into 0.10
+if(main > discont){
+	$('#result').val(discont);
+}else{
+	smoke.signal("Please prove valid percentage (%)", function(e){
+	}, {
+		duration: 1000,
+		classname: "custom-class"
+	});
+}
 });
 <?php echo '</script'; ?>
 >	
