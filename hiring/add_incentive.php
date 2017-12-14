@@ -355,8 +355,11 @@ if(!empty($_POST)){
 				$emp_name = $record['emp_name'];
 				
 				$year_month = $incentive_year.'-'.$incentive_month;
-					// get employee billing details
-				$query = "CALL get_inc_emp_billing_ctc('".$emp_id."','".$year_month."')";
+				
+				$year_month2 = date('Y-m', strtotime(date("Y-m", strtotime($incentive_year.'-'.$incentive_month)) . " +5 month"));
+
+				// get employee billing details
+				$query = "CALL get_inc_emp_billing_ctc('".$year_month."','".$year_month2."')";
 				
 				try{
 					// calling mysql exe_query function
@@ -466,7 +469,7 @@ if(!empty($_POST)){
 				
 				if($check['total'] == '0'){						
 					if($incentive_amount > 0){
-						$date = date('Y-m-d', strtotime($incentive_year.'-'.$incentive_month.'-1'));	
+						$date = date('Y-m-d', strtotime($incentive_year.'-'.$incentive_month.'-01'));	
 						// save the incentive details of the candidates
 						$query = "CALL save_candidate_incentive('".$emp_id."','J','".$date."','".$incentive_amount."','".$_SESSION['user_id']."','".$created_date."')";
 						try{
@@ -502,7 +505,7 @@ if(!empty($_POST)){
 $smarty->assign('types', array('' => 'Select', 'I' => 'Profile Short-listing & Interviewing', 'J' => 'Position Closure'));
 
 // smarty drop down array for status
-$smarty->assign('position_months', array('' => 'Month', '06' => 'Apr - Jun', '09' => 'Jul - Sep', '12' => 'Oct - Dec', '03' => 'Jan - Mar'));
+$smarty->assign('position_months', array('' => 'Month', '04' => 'Apr - Sep','10' => 'Oct - Mar'));
 
 // smarty drop down array for status
 $smarty->assign('ps_months', array('' => 'Month', '01' => 'Jan', '02' => 'Feb', '03' => 'Mar', '04' => 'Apr', '05' => 'May', '06' => 'Jun', '07' => 'Jul'
