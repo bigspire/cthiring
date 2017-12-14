@@ -125,8 +125,8 @@ try{
 	// approve or reject validation
 	if($_GET['status'] == 'created'){
  		$success_msg = 'Incentive  ' . ucfirst($_GET['status']) . ' Successfully';
-	}else if($_GET['status'] == 'not_found'){
-		$success_msg = 'No Incentive Found';
+	}else if($_GET['status'] == 'updated'){
+		$success_msg = 'Incentive  ' . ucfirst($_GET['status']) . ' Successfully';
 	}
 
 	// validating pagination
