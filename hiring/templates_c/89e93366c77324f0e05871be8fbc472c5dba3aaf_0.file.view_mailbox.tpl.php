@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-12-06 17:02:37
+/* Smarty version 3.1.29, created on 2017-12-14 19:19:50
   from "C:\xampp\htdocs\ctsvn\cthiring\hiring\templates\view_mailbox.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5a27d555902be8_77197935',
+  'unifunc' => 'content_5a32817e5e16c9_81220872',
   'file_dependency' => 
   array (
     '89e93366c77324f0e05871be8fbc472c5dba3aaf' => 
     array (
       0 => 'C:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\templates\\view_mailbox.tpl',
-      1 => 1512559956,
+      1 => 1512651320,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5a27d555902be8_77197935 ($_smarty_tpl) {
+function content_5a32817e5e16c9_81220872 ($_smarty_tpl) {
 ?>
 
    
@@ -72,6 +72,12 @@ echo ucwords($_smarty_tpl->tpl_vars['data']->value['candidate_name']);?>
 echo $_smarty_tpl->tpl_vars['data']->value['client_name'];?>
  (<?php echo $_smarty_tpl->tpl_vars['data']->value['email'];?>
 )<?php }?> </td>
+									</tr>
+									
+									<tr>
+										<td width="120" class="tbl_column">Client Name </td>
+										<td><?php echo ucwords($_smarty_tpl->tpl_vars['data']->value['client_name']);?>
+</td>
 									</tr>
 									
 									<tr>

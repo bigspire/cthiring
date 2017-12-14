@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-11-02 20:04:16
+/* Smarty version 3.1.29, created on 2017-12-14 19:54:42
   from "C:\xampp\htdocs\ctsvn\cthiring\hiring\templates\remarks.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_59fb2ce8d6b176_48525593',
+  'unifunc' => 'content_5a3289aa315e85_75498585',
   'file_dependency' => 
   array (
     '0c9c74708a3ca6097dcc519ba3941161fe6b06b7' => 
     array (
       0 => 'C:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\templates\\remarks.tpl',
-      1 => 1499098727,
+      1 => 1512567431,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_59fb2ce8d6b176_48525593 ($_smarty_tpl) {
+function content_5a3289aa315e85_75498585 ($_smarty_tpl) {
 ?>
 
    
@@ -84,9 +84,9 @@ echo $_POST['remarks'];
 				</tbody>
 			</table>
 			<div class="form-actions">
-			<input name="submit" class="btn btn-gebo theForm" value="Save"  type="submit"/>
+			<input name="submit" class="btn btn-gebo theForm" value="Submit"  type="submit"/>
 					<a class="jsRedirect toggleSearch"  href="javascript:window.close()">
-					<input type="button" value="Cancel" id="cancel" class="btn cancel"/></a>
+					<input type="button" value="Cancel" id="cancel" class="btn cancel cancelBtn"/></a>
 					<input type="hidden" id="success_page" value="approve_billing.php?st=success"/>
 					<input type="hidden" id="action" value="<?php echo $_GET['action'];?>
 "/>
@@ -106,22 +106,8 @@ echo $_POST['remarks'];
 <?php echo '<script'; ?>
  src="js/jquery.min.js"><?php echo '</script'; ?>
 >		
-	 <input type="hidden" value="view_approve_billing.php" class="redirect_url"/>		
-	 <!-- main bootstrap js -->
-	 <?php echo '<script'; ?>
- src="bootstrap/js/bootstrap.min.js"><?php echo '</script'; ?>
->			
-	 <?php echo '<script'; ?>
- src="lib/jquery-ui/jquery-ui-1.8.20.custom.min.js"><?php echo '</script'; ?>
->
-	 <?php echo '<script'; ?>
- src="js/gebo_common.js"><?php echo '</script'; ?>
->		
-	  <?php echo '<script'; ?>
- src="js/application.js"><?php echo '</script'; ?>
->
-	<!-- datatable -->
-	<!-- jBreadcrumbs -->
+	 <input type="hidden" value="<?php echo $_smarty_tpl->tpl_vars['redirect_url']->value;?>
+" class="redirect_url"/>		
 	 <?php echo '<script'; ?>
  src="js/main.js"><?php echo '</script'; ?>
 >	
@@ -132,26 +118,31 @@ echo $_POST['remarks'];
 		 parent.$.colorbox.close();
 	});
 	$(document).ready(function(){
-		$('.theForm').on('click', function() {
-			$('.cancel').hide();
-		});
+		/* when the form submitted */
+	$('.formID').submit(function(){ 		
+		// Disable the 'Next' button to prevent multiple clicks		
+		$('input[type=submit]', this).attr('value', 'Processing...');		
+		$('input[type=submit]', this).attr('disabled', 'disabled');
+		// hide cancel button
+		$('button[type=button]', this).hide();
+		$('.cancelBtn').hide();
+		
+	});
 	});
 <?php echo '</script'; ?>
 >
 <?php if ($_smarty_tpl->tpl_vars['form_sent']->value == '1') {?>
-	 
-	<?php echo '<script'; ?>
+
+<?php echo '<script'; ?>
  type="text/javascript">
-	$(document).ready(function(){
-		var status = $('#action').val() == 'approve' ? 'Approved' : 'Rejected';
-		self.parent.location.href = jQuery('#success_page').val()+'&status='+status;
-		parent.jQuery("#cboxClose").click();
-		close_popup();
-	});
-	<?php echo '</script'; ?>
+/* redirect to view billing page once approved / rejected successfully */
+self.parent.location.href = jQuery('.redirect_url').val();
+parent.$.colorbox.close();
+<?php echo '</script'; ?>
 >
-	
+
 <?php }?>
+
 </body>
 </html><?php }
 }

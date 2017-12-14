@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-12-05 19:59:11
+/* Smarty version 3.1.29, created on 2017-12-14 19:53:20
   from "C:\xampp\htdocs\ctsvn\cthiring\hiring\templates\view_billing.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5a26ad3754dbd8_33677240',
+  'unifunc' => 'content_5a328958be4bf1_49628149',
   'file_dependency' => 
   array (
     '98114678e52131c34dc4b828dde4c9dd55fb15a3' => 
     array (
       0 => 'C:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\templates\\view_billing.tpl',
-      1 => 1509972659,
+      1 => 1512567431,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5a26ad3754dbd8_33677240 ($_smarty_tpl) {
+function content_5a328958be4bf1_49628149 ($_smarty_tpl) {
 ?>
 
    
@@ -81,6 +81,11 @@ home"><i class="icon-home"></i></a>
 									<tr>
 										<td width="120" class="tbl_column">Recruiter </td>
 										<td><?php echo $_smarty_tpl->tpl_vars['recruiter']->value;?>
+</td>
+									</tr>
+									<tr>
+										<td width="120" class="tbl_column">Account Holder </td>
+										<td><?php echo $_smarty_tpl->tpl_vars['ac_holder']->value;?>
 </td>
 									</tr>
 									
