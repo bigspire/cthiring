@@ -367,24 +367,55 @@ if(!empty($_POST)){
 					while($ctc_row = $mysql->display_result($result)){							
 						$bill_ctc[] = $ctc_row['bill_ctc'];
 						$req_ctc[] = $ctc_row['req_ctc'];
-						$role_name[] = $ctc_row['role_name'];
-						$employee_salary = $ctc_row['employee_salary'];				
-							
+						// $role_name[] = $ctc_row['role_name'];
+						$employee_salary = $ctc_row['employee_salary'];	
+						$ah_id = $ctc_row['account_holder_id'];
+						$rec_id = $ctc_row['recruiter_id'];
+						// explode the account holder for account holder percentage calculation
+						$indiv_ah_percent = '';
+						$rec_billing = '';
+						$ah_billing  = '';
+						$billing_amt = '';
+						$ah_split_id = explode(',', $ah_id);
+						$count_ah = count($ah_split_id);
+						$indiv_ah_percent = round(34/$count_ah, 1);
+						foreach($ah_split_id as $ah_new){
+							if($ah_new == $emp_id){
+								$ah_billing = round($ctc_row['bill_ctc'] * ($indiv_ah_percent/100), 1);
+								$bill_user_type[] = 'AH';
+							}
+						}
+						// for recruiter percentage calculation
+						if($rec_id == $emp_id){
+							$rec_billing = round($ctc_row['bill_ctc'] * (66/100), 1);
+							$bill_user_type[] = 'R';
+						}
+						$total_billing += $ah_billing + $rec_billing;	
+										if($emp_id =='98'){
+											 // echo 'AH ';  echo $ah_billing; echo "\t"; echo 'REC '; echo $rec_billing; echo "<br>";
+										}						
 					}
-						$total_billing = array_sum($bill_ctc);
+					
+					if($emp_id =='29'){
+						//echo $ah_billing; echo "\t"; echo '|'; echo $rec_billing;echo "<br>";
+						//echo '<pre>'; print_r($total_billing);
+					}					
+						
 						// free the memory
 						$mysql->clear_result($result);
 						// next query execution
 						$mysql->next_query();						
-						// calculate incentive
-						
-						// echo $total_billing; echo "\t"; echo ($employee_salary * 3);echo "<br>"; 
-						
+						// calculate incentive if eligible
 						if($total_billing >= ($employee_salary * 3)){ 
 							// iterate all the values in the bill
 							foreach($req_ctc as $key => $pos_ctc){
 								// get the incentive amount for the position CTC from eligibility table
-								$query = "CALL get_incentive_amount_ctc('".$pos_ctc."','".$fun->user_type_fun($role_name[$key])."','H','PC')";
+								$query = "CALL get_incentive_amount_ctc('".$pos_ctc."','".$bill_user_type[$key]."','H','PC')";
+								
+								if($emp_id =='29'){
+									//die;
+								}	
+					
 								try{
 									// calling mysql exe_query function
 									if(!$result = $mysql->execute_query($query)){
