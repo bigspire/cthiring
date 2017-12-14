@@ -150,7 +150,7 @@ if(!empty($_POST)){
 
 						// query to check whether it is exist or not. 
 						$query = "CALL check_incentive_exist('".$emp_id."','".$mysql->real_escape_str($_POST['type'])."',
-						'".$mysql->real_escape_str($date)."')";
+						'".$mysql->real_escape_str($date)."','')";
 						// Calling the function that makes the insert
 						try{
 							// calling mysql exe_query function
@@ -349,6 +349,7 @@ if(!empty($_POST)){
 			$no_days = date('t', strtotime($incentive_year.'-'.$incentive_month.'-01'));
 			$count_emp = count($row);
 			
+			
 			// iterate the employees
 			foreach($row as $record){ 
 				$emp_id = $record['id'];
@@ -393,16 +394,10 @@ if(!empty($_POST)){
 							$rec_billing = round($ctc_row['bill_ctc'] * (66/100), 1);
 							$bill_user_type[] = 'R';
 						}
-						$total_billing += $ah_billing + $rec_billing;	
-										if($emp_id =='98'){
-											 // echo 'AH ';  echo $ah_billing; echo "\t"; echo 'REC '; echo $rec_billing; echo "<br>";
-										}						
+						$total_billing += $ah_billing + $rec_billing;						
 					}
 					
-					if($emp_id =='29'){
-						//echo $ah_billing; echo "\t"; echo '|'; echo $rec_billing;echo "<br>";
-						//echo '<pre>'; print_r($total_billing);
-					}					
+										
 						
 						// free the memory
 						$mysql->clear_result($result);
@@ -414,10 +409,7 @@ if(!empty($_POST)){
 							foreach($req_ctc as $key => $pos_ctc){
 								// get the incentive amount for the position CTC from eligibility table
 								$query = "CALL get_incentive_amount_ctc('".$pos_ctc."','".$bill_user_type[$key]."','H','PC')";
-								
-								if($emp_id =='29'){
-									//die;
-								}	
+									
 					
 								try{
 									// calling mysql exe_query function
@@ -451,7 +443,7 @@ if(!empty($_POST)){
 				
 				// query to check whether it is exist or not. 
 				$query = "CALL check_incentive_exist('".$emp_id."','".$mysql->real_escape_str($_POST['type'])."',
-				'".$mysql->real_escape_str($date)."')";
+				'".$mysql->real_escape_str($year_month2)."','".$year_month."')";
 				// Calling the function that makes the insert
 				try{
 					// calling mysql exe_query function
@@ -459,6 +451,7 @@ if(!empty($_POST)){
 						throw new Exception('Problem in executing to check incetive exist');
 					}
 					$check = $mysql->display_result($result);
+					$total = count($check['id']);
 					// free the memory
 					$mysql->clear_result($result);
 					// call the next result
@@ -467,7 +460,7 @@ if(!empty($_POST)){
 					echo 'Caught exception: ',  $e->getMessage(), "\n";
 				}
 				
-				if($check['total'] == '0'){						
+				if($total == '0'){						
 					if($incentive_amount > 0){
 						$date = date('Y-m-d', strtotime($incentive_year.'-'.$incentive_month.'-01'));	
 						// save the incentive details of the candidates
@@ -489,13 +482,35 @@ if(!empty($_POST)){
 						$incentive_amount = '';
 					}	
 				}else{
-					// $msg = "Incentive already exists";
-					$smarty->assign('EXIST_MSG',$msg); 
+					
+						$date = date('Y-m-d', strtotime($incentive_year.'-'.$incentive_month.'-01'));	
+						// edit the incentive details of the candidates
+						$query = "CALL edit_candidate_incentive('".$check['id']."','".$emp_id."','J','".$date."','".$incentive_amount."','".$_SESSION['user_id']."','".$created_date."')";
+						try{
+							// calling mysql exe_query function
+							if(!$result = $mysql->execute_query($query)){
+								throw new Exception('Problem in editing the incentive details');
+							}
+							$row = $mysql->display_result($result);
+							$affected_rows = $row['affected_rows'];
+							// free the memory
+							$mysql->clear_result($result);
+							// next query execution
+							$mysql->next_query();
+						}catch(Exception $e){
+							echo 'Caught exception: ',  $e->getMessage(), "\n";
+						}
+						$incentive_amount = '';
+				
 				}
 			}
-			// redirecting to list page
-			header("Location: incentive.php?status=created");
-			// header("Location: incentive.php?status=not_found");
+			if($last_id != ''){
+				// redirecting to list page
+				header("Location: incentive.php?status=created");
+			}else if($affected_rows != ''){
+				// redirecting to list page
+				header("Location: incentive.php?status=updated");
+			}
 				
 		}
 	}
