@@ -92,7 +92,7 @@
 									<tr class="tbl_row">
 										<td width="120" class="tbl_column">CTC Offered <span class="f_req">*</span></td>
 										<td> 
-										<input type="text" class="span8"  name="ctc_offer"  value="{$ctc_offer}">
+										<input type="text" class="span8"  id="ctc_offer" name="ctc_offer"  value="{$ctc_offer}">
 										<label for="reg_city" generated="true" class="error">{$ctc_offerErr}</label>									
 						
 										</td>
@@ -101,7 +101,7 @@
 									<tr>
 										<td width="120" class="tbl_column">Billing % <span class="f_req"></span></td>
 										<td> 
-										<input type="text" class="span8"  name="bill_percent"  value="{if $bill_percent}{$bill_percent}{else}{$smarty.post.bill_percent}{/if}">
+										<input type="text" class="span8"  id="bill_percent" name="bill_percent"  value="{if $bill_percent}{$bill_percent}{else}{$smarty.post.bill_percent}{/if}">
 										<label for="reg_city" generated="true" class="error">{$bill_percentErr}</label>
 										</td>
 									</tr>
@@ -109,7 +109,7 @@
 									<tr class="tbl_row">
 										<td width="120" class="tbl_column">Billing Amount <span class="f_req">*</span></td>
 										<td> 
-										<input type="text" class="span8"  name="billing_amount"  value="{$billing_amount}">
+										<input type="text" class="span8"  id="result" name="billing_amount"  value="{$billing_amount}">
 										<label for="reg_city" generated="true" class="error">{$billing_amountErr}</label>									
 						
 										</td>
@@ -138,6 +138,7 @@
 					 			<input name="submit" class="btn btn-gebo submit" value="Submit" type="submit"/>
 													
 								<input type="hidden" name="bill_can" value="billing.php" id="webroot">
+								<input type="hidden" name="balc" value="add_billing.php?res_id={$smarty.get.res_id}&req_res_id={$smarty.get.req_res_id}" id="balc">
 	<a href="javascript:void(0)" class="jsRedirect cancel_event">
 	<input type="button" value="Cancel" class="btn cancelBtn">
 	</a>
@@ -168,6 +169,24 @@ $(document).ready(function(){
 		$('.cancelBtn').hide();
 		
 	});
+});
+	
+	
+
+
+$(document).on("change keyup blur", "#bill_percent", function() {
+var main = $('#ctc_offer').val();
+var disc = $('#bill_percent').val();
+var discont = main*(disc/100).toFixed(2); //its convert 10 into 0.10
+if(main > discont){
+	$('#result').val(discont);
+}else{
+	smoke.signal("Please prove valid percentage (%)", function(e){
+	}, {
+		duration: 1000,
+		classname: "custom-class"
+	});
+}
 });
 </script>	
 {/literal}

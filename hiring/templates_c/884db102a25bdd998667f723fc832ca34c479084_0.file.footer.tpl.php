@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-12-09 10:18:43
+/* Smarty version 3.1.29, created on 2017-12-13 15:59:40
   from "C:\xampp\htdocs\2017\ctsvn\cthiring\hiring\templates\include\footer.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5a2b6b2b9597d0_12209447',
+  'unifunc' => 'content_5a310114d10194_25411619',
   'file_dependency' => 
   array (
     '884db102a25bdd998667f723fc832ca34c479084' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\templates\\include\\footer.tpl',
-      1 => 1512794919,
+      1 => 1513160975,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_5a2b6b2b9597d0_12209447 ($_smarty_tpl) {
+function content_5a310114d10194_25411619 ($_smarty_tpl) {
 ?>
 <div id="footer">
 

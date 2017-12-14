@@ -63,7 +63,7 @@ if($_GET['page'] == 'list_grade'){
    }
 }elseif($_GET['page'] == 'mail_box'){
 	// get matched data from base target
-	$query = "CALL search_mail_box('".$keyword."')";
+	$query = "CALL search_mail_box('".$keyword."','".$_SESSION['user_id']."')";
 	try{	
 		if(!$result = $mysql->execute_query($query)){
 			throw new Exception('Problem in executing mail box page');
@@ -204,9 +204,9 @@ elseif($_GET['page'] == 'list_eligibility'){
 		}
 		// iterate until get the matched results
 		while($obj = $mysql->display_result($result)){
-			$data[] = strtolower($fun->match_results($keyword,$obj['full_name']));
-			$data[] = strtolower($fun->match_results($keyword,$obj['position']));	
-			$data[] = strtolower($fun->match_results($keyword,$obj['company']));		
+			$data[] = strtolower($fun->match_results($keyword,$obj['candidate_name']));
+			$data[] = strtolower($fun->match_results($keyword,$obj['job_title']));	
+			$data[] = strtolower($fun->match_results($keyword,$obj['client_name']));		
 		}
 		
 		// filter the duplicate values

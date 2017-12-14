@@ -153,7 +153,7 @@
 
 {literal}
 <script type="text/javascript">
-
+/*
 $(document).ready(function(){
 	// function to change the amount
 	$('.change_amount_type').change(function(){ 
@@ -244,6 +244,6 @@ $(document).ready(function(){
 	}
 	*/
 });
-
+*/
 </script>	
 {/literal}
