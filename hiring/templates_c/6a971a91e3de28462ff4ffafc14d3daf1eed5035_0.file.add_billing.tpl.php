@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-12-05 19:54:41
+/* Smarty version 3.1.29, created on 2017-12-14 19:50:22
   from "C:\xampp\htdocs\ctsvn\cthiring\hiring\templates\add_billing.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5a26ac29f105a5_79515810',
+  'unifunc' => 'content_5a3288a65790a3_44849453',
   'file_dependency' => 
   array (
     '6a971a91e3de28462ff4ffafc14d3daf1eed5035' => 
     array (
       0 => 'C:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\templates\\add_billing.tpl',
-      1 => 1510318419,
+      1 => 1513246468,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5a26ac29f105a5_79515810 ($_smarty_tpl) {
+function content_5a3288a65790a3_44849453 ($_smarty_tpl) {
 ?>
 
    
@@ -154,19 +154,6 @@ echo $_POST['joined_date'];
 										</td>
 									</tr>
 									
-									<tr >
-										<td width="120" class="tbl_column">Project Type <span class="f_req">*</span></td>
-										<td> 
-										<input type="radio" tabindex="20" tabindex="14" name="gender"<?php if (isset($_smarty_tpl->tpl_vars['gender']->value) && $_smarty_tpl->tpl_vars['gender']->value == '1') {
-echo 'checked';
-}?> value="1"> RPO
-										<input type="radio" tabindex="21" tabindex="15" name="gender"<?php if (isset($_smarty_tpl->tpl_vars['gender']->value) && $_smarty_tpl->tpl_vars['gender']->value == '2') {
-echo 'checked';
-}?> value="2"> Non RPO
-										<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['genderErr']->value;?>
- </label>																				
-										</td>
-									</tr>
 																			
 								</tbody>
 							</table>
@@ -178,7 +165,7 @@ echo 'checked';
 									<tr class="tbl_row">
 										<td width="120" class="tbl_column">CTC Offered <span class="f_req">*</span></td>
 										<td> 
-										<input type="text" class="span8"  name="ctc_offer"  value="<?php echo $_smarty_tpl->tpl_vars['ctc_offer']->value;?>
+										<input type="text" class="span8"  id="ctc_offer" name="ctc_offer"  value="<?php echo $_smarty_tpl->tpl_vars['ctc_offer']->value;?>
 ">
 										<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['ctc_offerErr']->value;?>
 </label>									
@@ -189,7 +176,7 @@ echo 'checked';
 									<tr>
 										<td width="120" class="tbl_column">Billing % <span class="f_req"></span></td>
 										<td> 
-										<input type="text" class="span8"  name="bill_percent"  value="<?php if ($_smarty_tpl->tpl_vars['bill_percent']->value) {
+										<input type="text" class="span8"  id="bill_percent" name="bill_percent"  value="<?php if ($_smarty_tpl->tpl_vars['bill_percent']->value) {
 echo $_smarty_tpl->tpl_vars['bill_percent']->value;
 } else {
 echo $_POST['bill_percent'];
@@ -202,7 +189,7 @@ echo $_POST['bill_percent'];
 									<tr class="tbl_row">
 										<td width="120" class="tbl_column">Billing Amount <span class="f_req">*</span></td>
 										<td> 
-										<input type="text" class="span8"  name="billing_amount"  value="<?php echo $_smarty_tpl->tpl_vars['billing_amount']->value;?>
+										<input type="text" class="span8"  id="result" name="billing_amount"  value="<?php echo $_smarty_tpl->tpl_vars['billing_amount']->value;?>
 ">
 										<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['billing_amountErr']->value;?>
 </label>									
@@ -212,11 +199,10 @@ echo $_POST['bill_percent'];
 									<tr>
 										<td width="120" class="tbl_column">Billing Date <span class="f_req">*</span></td>
 										<td> 
-										<input type="text" class="span8"  name="billing_date"  value="<?php echo $_smarty_tpl->tpl_vars['billing_date']->value;?>
-" class="datepick">									
+										<input type="text" name="billing_date"  value="<?php echo $_smarty_tpl->tpl_vars['billing_date']->value;?>
+" class="datepick span8" id="HrEmployeeDob">									
 										<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['billing_dateErr']->value;?>
 </label>									
-						
 										</td>
 									</tr>
 													
@@ -237,8 +223,11 @@ echo $_POST['bill_percent'];
 					 			<input name="submit" class="btn btn-gebo submit" value="Submit" type="submit"/>
 													
 								<input type="hidden" name="bill_can" value="billing.php" id="webroot">
+								<input type="hidden" name="balc" value="add_billing.php?res_id=<?php echo $_GET['res_id'];?>
+&req_res_id=<?php echo $_GET['req_res_id'];?>
+" id="balc">
 	<a href="javascript:void(0)" class="jsRedirect cancel_event">
-	<input type="button" value="Cancel" class="btn">
+	<input type="button" value="Cancel" class="btn cancelBtn">
 	</a>
 				 </div>
 		</form>
@@ -253,5 +242,43 @@ echo $_POST['bill_percent'];
 	</div>	
 
 <?php $_smarty_tpl->smarty->ext->_subtemplate->render($_smarty_tpl, "file:include/footer.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
+
+
+
+<?php echo '<script'; ?>
+ type="text/javascript">
+$(document).ready(function(){
+		/* when the form submitted */
+	$('.formID').submit(function(){ 		
+		// Disable the 'Next' button to prevent multiple clicks		
+		$('input[type=submit]', this).attr('value', 'Processing...');		
+		$('input[type=submit]', this).attr('disabled', 'disabled');
+		// hide cancel button
+		$('button[type=button]', this).hide();
+		$('.cancelBtn').hide();
+		
+	});
+});
+	
+	
+
+
+$(document).on("change keyup blur", "#bill_percent", function() {
+var main = $('#ctc_offer').val();
+var disc = $('#bill_percent').val();
+var discont = main*(disc/100).toFixed(2); //its convert 10 into 0.10
+if(main > discont){
+	$('#result').val(discont);
+}else{
+	smoke.signal("Please prove valid percentage (%)", function(e){
+	}, {
+		duration: 1000,
+		classname: "custom-class"
+	});
 }
+});
+<?php echo '</script'; ?>
+>	
+<?php }
 }
