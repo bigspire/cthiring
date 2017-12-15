@@ -31,7 +31,54 @@
 							<a href="view_incentive.php?id={$smarty.get.id}&emp_id={$smarty.get.emp_id}&action=export">
 							<button type="button" val="view_incentive.php?id={$smarty.get.id}&emp_id={$smarty.get.emp_id}&action=export" name="export" class="jsRedirect btn btn-warning" >Export</button></a></a>							
 						</div>
+						{if $incentive_data['incentive_type'] eq 'I'}	
+						<div class="row-fluid">
+							<div class="span6">
+							<table class="table table-striped table-bordered dataTable" style="margin-bottom:0;">
+								<tbody>
+									<tr>
+										<td width="120" class="tbl_column">Employee</td>
+										<td>{$incentive_data['employee']}</td>
+									</tr>
+									
+									<tr>
+										<td width="" class="tbl_column">Incentive Type </td>
+										<td>{$incentive_type}</td>
+									</tr>
+									<tr>
+										<td width="" class="tbl_column">Period </td>
+										<td>{$period}</td>
+									</tr>	
+									
+								</tbody>
+							</table>
+							</div>
 							
+							<div class="span6">
+							<table class="table table-striped table-bordered dataTable" style="margin-bottom:0;">
+								<tbody>
+								
+								<tr>
+									<td width="" class="tbl_column">Amount</td>
+									<td>{$incentive_data['eligible_incentive_amt']}</td>
+								</tr>
+								<tr>
+									<td width="120"  class="tbl_column">Created Date</td>
+									<td>{$created_date}</td>
+								</tr>	
+									
+								<tr>
+									<td width=""  class="tbl_column">Modified Date </td>
+									<td>{$modified_date}</td>
+								</tr>	
+								</tbody>
+							</table>
+							</div>
+						
+                 </div>
+				 {/if}
+				 
+				 {if $incentive_data['incentive_type'] eq 'J'}	
 						<div class="row-fluid">
 							<div class="span6">
 							<table class="table table-striped table-bordered dataTable" style="margin-bottom:0;">
@@ -51,9 +98,9 @@
 									</tr>	
 									
 									<tr>
-										<td width="" class="tbl_column">Amount</td>
-										<td>{$incentive_data['eligible_incentive_amt']}</td>
-									</tr>
+									<td width="120"  class="tbl_column">Created Date</td>
+									<td>{$created_date}</td>
+								</tr>
 								</tbody>
 							</table>
 							</div>
@@ -61,17 +108,7 @@
 							<div class="span6">
 							<table class="table table-striped table-bordered dataTable" style="margin-bottom:0;">
 								<tbody>
-								<tr>
-									<td width="120"  class="tbl_column">Created Date</td>
-									<td>{$created_date}</td>
-								</tr>	
-									
-								<tr>
-									<td width=""  class="tbl_column">Modified Date </td>
-									<td>{$modified_date}</td>
-								</tr>
 
-								{if $incentive_data['incentive_type'] neq 'I'}
 								<tr>
 									<td  width=""  class="tbl_column">Billing Amount</td>
 									<td>{$incentive_data['achievement_amt']}</td>
@@ -85,13 +122,18 @@
 									<td  width="" class="tbl_column">Eligibility Amount </td>
 									<td>{$incentive_data['eligible_incentive_amt']}</td>
 								</tr>
-								
-								{/if}	
+									
+									
+								<tr>
+									<td width=""  class="tbl_column">Modified Date </td>
+									<td>{$modified_date}</td>
+								</tr>
 								</tbody>
 							</table>
 							</div>
 						
                  </div>
+				 {/if}
 				 
                  <br>
                  <br>
