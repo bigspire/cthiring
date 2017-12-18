@@ -590,7 +590,7 @@ if(!empty($_POST)){
 			$row = $mysql->display_result($result);
 			$desigStr = $row['desig'];
 			$mysql->next_query();
-			$snap_exp .=  $expStr.', '.ucwords($companyData).', '.ucwords($desigStr).', '.ucfirst($locationData).'<br>';
+			$snap_exp .=  "<div style='margin-bottom:7px;'>".$expStr.'<br>'.ucwords($companyData).', '.ucwords($desigStr).', '.ucfirst($locationData).'</div>';
 			$snap_skill .= $areaData.' ';
 			
 			// query to add experience details
@@ -831,17 +831,35 @@ if(!empty($_POST)){
 			$file1 = $myTaskWatermark->addFile(dirname(__FILE__).'/uploads/snapshotmerged/'.$snap_file_name.'_'.date('d-m-Y').'.pdf');
 			// Select watermark parameters
 			$myTaskWatermark->setText('CareerTree HR Solutions');
-			// $myTaskWatermark->setImage('uploads/template/watermark.jpg');			
+			$myTaskWatermark->setRotation(30);
+			// $myTaskWatermark->setImage('watermark.jpg');			
 			$myTaskWatermark->setPages('3-end');
-			// $myTaskWatermark->setOpacity(50);
-			$myTaskWatermark->setVerticalPosition('top');
-			$myTaskWatermark->setHorizontalPosition('right');
-			// $myTaskWatermark->setFontFamily('courier');
-			$myTaskWatermark->setFontSize(24);
-			$myTaskWatermark->setFontColor('#c7c3be');
+			// $myTaskWatermark->setOpacity(70);
+			$myTaskWatermark->setLayer('below');
+			$myTaskWatermark->setVerticalPosition('middle');
+			$myTaskWatermark->setHorizontalPosition('center');
+			$myTaskWatermark->setFontFamily('Comic Sans MS');
+			$myTaskWatermark->setFontSize(43);
+			$myTaskWatermark->setFontColor('#f5f0f0');
 			$myTaskWatermark->execute();
 			// Download the package files
 			$myTaskWatermark->download('uploads/snapshotwatermarked/');
+			// set page numbers
+			// Create a new task
+			$myTaskPageNumbers = $ilovepdf->newTask('pagenumber');
+			// Add files to task for upload
+			$file1 = $myTaskPageNumbers->addFile(dirname(__FILE__).'/uploads/snapshotwatermarked/'.$snap_file_name.'_'.date('d-m-Y').'.pdf');
+			// Set your tool options
+			$myTaskPageNumbers->setPages('3-end');
+			// $myTaskPageNumbers->setFontFamily('arial');
+			$myTaskPageNumbers->setFontSize(13);
+			$myTaskPageNumbers->setFontColor('#757070');
+			$myTaskPageNumbers->setVerticalPosition('bottom');
+			$myTaskPageNumbers->setHorizontalPosition('left');
+			// Execute the task
+			$myTaskPageNumbers->execute();                               
+			// Download the package files
+			$myTaskPageNumbers->download('uploads/snapshotwatermarked/');
 			
 			//include('vendor/ilovepdf-php-1.1.5/samples/merge_basic.php');
 			// unset the sessions

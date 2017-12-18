@@ -288,7 +288,7 @@
 										<td class="optional">Avg Lead Time for Billing (Days)</td>
 										<td style="text-align:center" class="optional">-</td>
 										<td  class="essential persist">Billing Value (₹)</td>
-										<td style="text-align:center" class="optional"><?php echo $BILLED_AMT_TAB_COUNT ? (int)$BILLED_AMT_TAB_COUNT  : 0;?> Lacs</td>
+										<td style="text-align:center" class="optional"><?php echo $BILLED_AMT_TAB_AVG_COUNT ? $BILLED_AMT_TAB_AVG_COUNT  : 0;?> Lacs</td>
 									</tr>
 									<tr>
 										<th class="optional">Business Conversion</th>

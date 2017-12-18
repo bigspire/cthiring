@@ -7,6 +7,7 @@ $phpWord = new \PhpOffice\PhpWord\PhpWord();
 
 // New portrait section
 $section = $phpWord->addSection();
+$section->getStyle()->setPageNumberingStart(3);
 
 // Add first page header
 $header = $section->addHeader();
