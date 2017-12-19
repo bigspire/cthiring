@@ -121,8 +121,10 @@
 										<label for="reg_city" generated="true" class="error">{$billing_dateErr}</label>									
 										</td>
 									</tr>
-													
-									
+				
+					<input type="hidden" id="start_date" name="start_date" value="{$noformat_joined_date}">
+
+															
 								</tbody>
 							</table>
 						</div>

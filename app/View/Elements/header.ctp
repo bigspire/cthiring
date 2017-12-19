@@ -224,7 +224,7 @@
 										?>
 										
                                         <li class="dropdown  <?php echo $active2;?>">
-                                            <a data-toggle="dropdown" class="dropdown-toggle " href="#"><i class="icon-file icon-white"></i> Incentive <b class="caret"></b></a>
+                                            <a data-toggle="dropdown" class="dropdown-toggle " href="#"><i class="icon-file icon-white"></i> Performance Reward <b class="caret"></b></a>
                                            <ul class="dropdown-menu">
 										   <?php if($view_billing == '1'):?> 
                                                 <li><a href="<?php echo $this->webroot;?>hiring/billing.php">Search Billing</a></li>

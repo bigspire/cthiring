@@ -988,5 +988,6 @@ ul.ratingList{margin:0px !important;}
 .navbar .nav .active2 > a, .navbar .nav .active2 > a:hover{border-bottom:2px solid #f4f141 !important;margin:0px 5px;}
 .view_label{margin-top:5px}
 .viewLabelHead{font-weight:bold;}
-ul.statusLegend li{width:220px;float:left;list-style-type:none;margin:3px;height:20px;}
+ul.statusLegend li{width:250px;float:left;list-style-type:none;margin:3px;height:20px;}
 .bootstrap-tagsinput input{width:300px !important}
+.legendBg{font-weight:bold;background:#efefef;padding:2px 5px}

@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-12-14 19:50:22
+/* Smarty version 3.1.29, created on 2017-12-19 18:51:10
   from "C:\xampp\htdocs\ctsvn\cthiring\hiring\templates\add_billing.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5a3288a65790a3_44849453',
+  'unifunc' => 'content_5a391246b72c24_72039067',
   'file_dependency' => 
   array (
     '6a971a91e3de28462ff4ffafc14d3daf1eed5035' => 
     array (
       0 => 'C:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\templates\\add_billing.tpl',
-      1 => 1513246468,
+      1 => 1513689667,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5a3288a65790a3_44849453 ($_smarty_tpl) {
+function content_5a391246b72c24_72039067 ($_smarty_tpl) {
 ?>
 
    
@@ -205,8 +205,11 @@ echo $_POST['bill_percent'];
 </label>									
 										</td>
 									</tr>
-													
-									
+				
+					<input type="hidden" id="start_date" name="start_date" value="<?php echo $_smarty_tpl->tpl_vars['noformat_joined_date']->value;?>
+">
+
+															
 								</tbody>
 							</table>
 						</div>

@@ -186,7 +186,7 @@
 								<tbody>									
 									<tr>
 										
-										<td class="tbl_column">Account Holder </td>
+										<td class="tbl_column"><span rel="tooltip"  title="Client Relationship Manager">CRM</span> </td>
 										<td><?php echo $position_data[0]['ac_holder'];?></td>
 											
 									</tr>
@@ -582,10 +582,12 @@
 														<th  width="85">Exp. CTC</th>
 														<th  width="80"  class="noticePeriod">Notice</th>
 														<th  width="140" class="">Owner</th>
+														<th style="text-align:center" width="75">Download</th>
+														<th style="text-align:center"  width="75" class="upload_row">Action</th>
 														<th  width="120" class="">Created</th>
 														<th  width="120" class="sent_col">Sent</th>
-														<th style="text-align:center"  width="75" class="upload_row">Action</th>
-														<th style="text-align:center" width="75">Download</th>
+														
+														
 													</tr>
 													
 												
@@ -664,10 +666,70 @@
 										
 														<td  class="noticePeriod"><?php echo $this->Functions->get_notice($resume['Resume']['notice_period']);?></td>
 														<td><?php echo $resume['Creator']['first_name'];?></td>
-<td><?php echo $this->Functions->format_date($resume['ReqResume']['created_date']);?></td>
 														
-	<td class="sent_col"><?php echo $this->Functions->format_date($resume['ReqResume']['cv_sent_date']);?></td>
+														
+														<td class="actionItem" style="text-align:center">
+															
 													
+					
+<div class="btn-group">
+									
+	
+		
+	<span data-toggle="dropdown" style="padding-top:1px;margin-left:1px;border-radius:0px;border:1px solid #fbfcbd" class=" dropdown-toggle">
+	<span class="caret" style="margin-top:7px;"></span></span>
+	<ul class="dropdown-menu">										
+
+	<li>
+			<?php $date = $resume['Resume']['modified_date'] ? $resume['Resume']['modified_date']: $resume['Resume']['created_date']?>
+									
+														
+	<?php  if($resume['ResDoc']['resume'] == ''):?>																
+																
+	<a rel="tooltip" title="Download" class="notify" data-notify-time = '7000' data-notify-title="In Progress!" data-notify-message="Downloading Resume... Please wait..."   href="<?php echo $this->webroot;?>hc/download/<?php echo $resume['Resume']['id']; ?>">Download Resume</a>
+	
+	<?php elseif($position_data['Position']['resume_type'] == 'F'):?>
+
+	<a rel="tooltip" title="Download"  class="notify" data-notify-time = '3000' data-notify-title="In Progress!" data-notify-message="Downloading Fully Formatted Resume... Please wait..."   href="<?php echo $this->webroot;?>resume/autoresume/<?php echo $resume['ResDoc']['resume']; ?>/<?php echo strtotime($date);?>/">Download Resume</a>
+
+	<?php elseif($position_data['Position']['resume_type'] == 'S'):?>
+
+	<a rel="tooltip" title="Download"  class="notify" data-notify-time = '3000' data-notify-title="In Progress!" data-notify-message="Downloading Resume... Please wait..."   href="<?php echo $this->webroot;?>resume/profile_snapshot/<?php echo $resume['ResDoc']['resume']; ?>/<?php echo strtotime($date);?>/">Download Resume</a>
+	
+	<?php elseif($position_data['Position']['resume_type'] == ''):?>
+
+	<a rel="tooltip" title="Download"  class="notify" data-notify-time = '3000' data-notify-title="In Progress!" data-notify-message="Downloading Resume... Please wait..."   href="<?php echo $this->webroot;?>resume/download_doc/<?php echo $resume['ResDoc']['resume']; ?>/">Download Resume</a>
+															
+		
+	<?php endif; ?>
+	
+	</li>
+	
+	<li>
+									
+	
+	<?php if($position_data['Position']['resume_type'] == 'F'):?>
+	<a rel="tooltip" title="View"  class="iframeBox" val="70_100"  href="<?php echo $this->webroot;?>resume/autoresume/<?php echo $resume['ResDoc']['resume']; ?>/<?php echo strtotime($date);?>/view">View Resume</a>
+	<?php elseif($position_data['Position']['resume_type'] == 'S'):?>
+	<a rel="tooltip" title="View"  class="iframeBox" val="70_100"  href="<?php echo $this->webroot;?>resume/profile_snapshot/<?php echo $resume['ResDoc']['resume']; ?>/<?php echo strtotime($date);?>/view">View Resume</a>
+	<?php endif; ?>
+	
+	</li>
+	
+	</ul>
+																				
+</div>
+
+					
+															
+													
+				
+																
+															
+																									
+														</td>
+
+														
 														<td style="text-align:center" class="actionItem upload_row">
 			<?php if($resume['ReqResume']['stage_title'] == 'Validation - Account Holder' &&
 										$resume['ReqResume']['status_title'] == 'Validated'  && $this->Session->read('USER.Login.roles_id') == '34'  && in_array($this->Session->read('USER.Login.id'), $ac_member)):
@@ -707,38 +769,16 @@
 													
 										</td>
 														
-														
-															<td class="actionItem" style="text-align:center">
-															
 													
-															
-															
 													
-						<?php $date = $resume['Resume']['modified_date'] ? $resume['Resume']['modified_date']: $resume['Resume']['created_date']?>
-									
+													
+<td><?php echo $this->Functions->format_date($resume['ReqResume']['created_date']);?></td>
 														
-	<?php  if($resume['ResDoc']['resume'] == ''):?>																
-																
-	<a rel="tooltip" title="Download" class="notify" data-notify-time = '7000' data-notify-title="In Progress!" data-notify-message="Downloading Resume... Please wait..."   href="<?php echo $this->webroot;?>hc/download/<?php echo $resume['Resume']['id']; ?>"><i  class="splashy-document_letter_download"></i></a>
+	<td class="sent_col"><?php echo $this->Functions->format_date($resume['ReqResume']['cv_sent_date']);?></td>
+										
+
 	
-	<?php elseif($position_data['Position']['resume_type'] == 'F'):?>
-
-	<a rel="tooltip" title="Download"  class="notify" data-notify-time = '3000' data-notify-title="In Progress!" data-notify-message="Downloading Fully Formatted Resume... Please wait..."   href="<?php echo $this->webroot;?>resume/autoresume/<?php echo $resume['ResDoc']['resume']; ?>/<?php echo strtotime($date);?>/"><i  class="splashy-document_letter_download"></i></a>
-
-	<?php elseif($position_data['Position']['resume_type'] == 'S'):?>
-
-	<a rel="tooltip" title="Download"  class="notify" data-notify-time = '3000' data-notify-title="In Progress!" data-notify-message="Downloading Resume... Please wait..."   href="<?php echo $this->webroot;?>resume/profile_snapshot/<?php echo $resume['ResDoc']['resume']; ?>/<?php echo strtotime($date);?>/"><i  class="splashy-document_letter_download"></i></a>
-	
-	<?php elseif($position_data['Position']['resume_type'] == ''):?>
-
-	<a rel="tooltip" title="Download"  class="notify" data-notify-time = '3000' data-notify-title="In Progress!" data-notify-message="Downloading Resume... Please wait..."   href="<?php echo $this->webroot;?>resume/download_doc/<?php echo $resume['ResDoc']['resume']; ?>/"><i  class="splashy-document_letter_download"></i></a>
 															
-		
-	<?php endif; ?>
-																
-															
-																									
-														</td>
 														
 														
 														
@@ -852,7 +892,7 @@
 									
 									<div class="btn-group">
 									
-										<?php if($resume['ReqResume']['status_title'] == 'Scheduled'  || $resume['ReqResume']['status_title'] == 'Cancelled' || $resume['ReqResume']['status_title'] == 'No Show'):?>
+										<?php if($resume['ReqResume']['status_title'] == 'Scheduled' || $resume['ReqResume']['status_title'] == 'Re-Scheduled'):?>
 										
 										<span class="btn-mini alert alert-success alert-action legendView" rel="tooltip" title="<?php echo $int_level[0];?> Interview Scheduled" style="">
 										<?php echo $int_lev_same;?> IS 
@@ -998,7 +1038,7 @@ $action = 1;?>
 										
 									
 										<ul class="dropdown-menu">
-											<li><a  href="<?php echo $this->webroot;?>position/update_joining/<?php echo  $resume['Resume']['id'];?>/<?php echo $this->request->params['pass'][0];?>/<?php echo  $resume['ReqResume']['id'];?>/joined/" val="40_60"  class="iframeBox sepV_a cboxElement">Joined</a></li>
+											<li><a  href="<?php echo $this->webroot;?>position/update_joining/<?php echo  $resume['Resume']['id'];?>/<?php echo $this->request->params['pass'][0];?>/<?php echo  $resume['ReqResume']['id'];?>/joined/" val="40_70"  class="iframeBox sepV_a cboxElement">Joined</a></li>
 											<li><a  href="<?php echo $this->webroot;?>position/update_joining/<?php echo  $resume['Resume']['id'];?>/<?php echo $this->request->params['pass'][0];?>/<?php echo  $resume['ReqResume']['id'];?>/not_joined/" val="40_70"  class="iframeBox sepV_a cboxElement">Not Joined</a></li>
 											<li><a  href="<?php echo $this->webroot;?>position/update_joining/<?php echo  $resume['Resume']['id'];?>/<?php echo $this->request->params['pass'][0];?>/<?php echo  $resume['ReqResume']['id'];?>/deferred/" val="40_70"  class="iframeBox sepV_a cboxElement">Deferred</a></li>
 										</ul>
@@ -1034,8 +1074,8 @@ $action = 1;?>
 									
 									<div class="btn-group">
 										
-										<span class="btn-mini alert alert-success alert-action legendView" rel="tooltip" title="Billing Awaiting"   style="">
-										BA  
+										<span class="btn-mini alert alert-success alert-action legendView" rel="tooltip" title="Billing Pending"   style="">
+										BP  
 										</span>
 									<?php if($this->Session->read('USER.Login.roles_id') == '34'):?>		
 										<span data-toggle="dropdown" style="padding-top:1px;margin-left:1px;border:1px solid #fbfcbd" class=" dropdown-toggle  alert-action"><span class="caret" style="margin-top:7px;"></span></span>
@@ -1107,22 +1147,21 @@ $action = 1;?>
 
 		<hr class="status_row dn">										
 <ul class="status_row dn statusLegend" style="margin-left:10px;">	
-<li><span class="btn btn-mini alert alert-success legendView"> S </span> - Shortlisted</li>
-<li><span class="btn btn-mini alert alert-error legendView"> R </span> - Rejected	</li>
-<li><span class="btn-mini alert alert-success alert-action legendView"> ISA  </span> - Interview Schedule Awaiting	</li>
-<li><span class="btn btn-mini alert alert-success alert-action legendView"> 1IS </span> - First Interview Scheduled</li>
-<li><span class="btn btn-mini alert alert-success alert-action legendView"> 2IS </span> - Second Interview Scheduled</li>
-<li><span class="btn btn-mini alert alert-success alert-action legendView"> 3IS </span> - Third Interview Scheduled</li>
-<li><span class="btn btn-mini alert alert-success alert-action legendView"> FIS </span> - Final Interview Scheduled</li>
+<li><span class="btn-mini legendBg" style="padding:0px 10px !important"> S </span> &nbsp; Shortlisted</li>
+<li><span class="btn-mini legendBg" style="padding:0px 10px !important"> R </span> &nbsp; Rejected	</li>
+<li><span class="btn-mini legendBg"> ISA  </span> &nbsp; Interview Schedule Awaited	</li>
+<li><span class="btn-mini legendBg"> IS </span> &nbsp; Interview Scheduled / Re-Scheduled</li>
+<li><span class="btn-mini legendBg"> FIS </span> &nbsp; Final Interview Scheduled</li>
+<li><span class="btn-mini legendBg" style="padding:0px 7px !important"> OP  </span> &nbsp; Offer Pending</li>
+<li><span class="btn-mini legendBg" style="padding:0px 7px !important"> OA </span> &nbsp; Offer Accepted</li>
+<li><span class="btn-mini legendBg" style="padding:0px 7px !important"> OR </span> &nbsp; Offer Rejected</li>
+<li><span class="btn-mini legendBg" style="padding:0px 7px !important"> JA  </span> &nbsp; Joining Awaited	</li>
+<li><span class="btn-mini legendBg" style="padding:0px 10px !important"> J </span> &nbsp; Joined</li>
+<li><span class="btn-mini legendBg" style="padding:0px 10px !important"> NJ </span> &nbsp; Not Joined</li>
 
-<li><span class="btn-mini alert alert-success alert-action legendView"> OP  </span> - Offer Pending</li>
-<li><span class="btn btn-mini alert alert-success legendView"> OA </span> - Offer Accepted</li>
-<li><span class="btn btn-mini alert alert-error legendView"> OR </span> - Offer Rejected</li>
-<li><span class="btn-mini alert alert-success alert-action legendView"> JA  </span> - Joining Awaiting	</li>
-<li><span class="btn btn-mini alert alert-success legendView"> J </span> - Joined</li>
-<li><span class="btn btn-mini alert alert-success legendView"> JD </span> - Deferred</li>
-<li><span class="btn btn-mini alert alert-success legendView"> BA </span> - Billing Awaited</li>
-<li><span class="btn btn-mini alert alert-success legendView"> B </span> - Billed </li>
+<li><span class="btn-mini legendBg" style="padding:0px 7px !important"> JD </span> &nbsp; Joining Deferred</li>
+<li><span class="btn-mini legendBg" style="padding:0px 7px !important"> BP </span> &nbsp; Billing Pending</li>
+<li><span class="btn-mini legendBg" style="padding:0px 10px !important"> B </span> &nbsp; Billed </li>
 </ul>
 											<div class="alert alert-login no_record dn">
 								<a class="close" data-dismiss="alert">×</a>

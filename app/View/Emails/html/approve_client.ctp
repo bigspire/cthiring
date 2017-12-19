@@ -46,7 +46,7 @@
 			
 			  <tr style="background:#f5f4f4;">
             
-              <td>Account Holder(s)</td>
+              <td>CRM</td>
               <td  style="color:#2a2a2a;"><?php echo $account_holder; ?></td>
 			  
 			  <td width="100">Created By</td>

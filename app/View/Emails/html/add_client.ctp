@@ -19,7 +19,7 @@
       <tr>
         <td width="490" valign="top"  style="padding:0 20px;">
 		<h1 style="font:bold 15px Arial, Helvetica, sans-serif; color:#676767; margin:0 0 10px 0;">Dear <?php echo $to_name?>,</h1>
-          <p style="font:13px Arial, Helvetica, sans-serif; color:#676767; margin:0;">The following client is created by <?php echo $from_name;?>. Please login to manage hiring and approve the client quickly. After your approval only account holders can create requirements for this client.</p><br />
+          <p style="font:13px Arial, Helvetica, sans-serif; color:#676767; margin:0;">The following client is created by <?php echo $from_name;?>. Please login to manage hiring and approve the client quickly. After your approval only client relationship managers can create requirements for this client.</p><br />
 
           <p style="font:normal 13px Arial, Helvetica, sans-serif; color:#676767; margin:0;">Please check the details below,</p>
           <table width="100%" border="0" cellspacing="2" cellpadding="10" style="border:1px solid #ededed; font:bold 13px Arial, Helvetica, sans-serif; color:#6f6e6e; margin:10px 0 20px 0;">
@@ -40,7 +40,7 @@
 			
 			  <tr style="background:#f5f4f4;">
             
-              <td>Account Holder(s)</td>
+              <td>CRM</td>
               <td  style="color:#2a2a2a;"><?php echo $account_holder; ?></td>
 			  
 			  <td width="100">Created By</td>

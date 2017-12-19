@@ -94,7 +94,7 @@
 										<th width="90"><a href="billing.php?field=billing_amount&order={$order}&page={$smarty.get.page}&keyword={$keyword}&f_date={$f_date}&t_date={$t_date}" class="{$sort_field_billing_amount}">Billing Amount</a></th>
 										<th width="80"><a href="billing.php?field=billing_date&order={$order}&page={$smarty.get.page}&keyword={$keyword}&f_date={$f_date}&t_date={$t_date}" class="{$sort_field_billing_date}">Billing Date</a></th>
 										<th width="150"><a href="billing.php?field=recruiter&order={$order}&page={$smarty.get.page}&keyword={$keyword}&f_date={$f_date}&t_date={$t_date}" class="{$sort_field_recruiter}">Recruiter</a></th>
-										<th width="150"><a href="billing.php?field=ac_holder&order={$order}&page={$smarty.get.page}&keyword={$keyword}&f_date={$f_date}&t_date={$t_date}" class="{$sort_field_ac_holder}">Account Holder</a></th>
+										<th width="150"><a href="billing.php?field=ac_holder&order={$order}&page={$smarty.get.page}&keyword={$keyword}&f_date={$f_date}&t_date={$t_date}" class="{$sort_field_ac_holder}">CRM</a></th>
 										<th width="80"><a href="billing.php?field=created_date&order={$order}&page={$smarty.get.page}&keyword={$keyword}&f_date={$f_date}&t_date={$t_date}" class="{$sort_field_created_date}">Created Date</a></th>
 										<th width="80">Status</a></th>
 									</tr>

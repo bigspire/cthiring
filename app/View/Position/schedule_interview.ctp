@@ -211,6 +211,7 @@
 			<div class="form-actions">
 			
 			<input type="hidden" id="start_date" name="start_date" value="<?php echo date('d/m/Y');?>">
+			
 			<input type="hidden" id="tiny_readonly" name="tiny_readonly" value="<?php echo $tiny_readonly;?>">
 
 

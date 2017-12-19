@@ -90,7 +90,8 @@
 				</tbody>
 			</table>
 			<div class="form-actions">
-						<input type="hidden" id="start_date" name="start_date" value="<?php echo date('d/m/Y');?>">
+						<input type="hidden" id="end_date" name="end_date" value="<?php echo date('d/m/Y');?>">
+						<input type="hidden" id="start_date" name="start_date" value="<?php echo date('d/m/Y', strtotime($int_select_date));?>">
 
 			<input name="submit" class="btn btn-gebo theForm" value="Submit"  type="submit"/>
 					<a class="jsRedirect toggleSearch"  href="javascript:window.close()">
