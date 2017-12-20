@@ -107,6 +107,14 @@ class AppController extends Controller {
 		$this->set('APR_BILLING_COUNT', $count);
 	}
 	
+	/* function to show the notification count */
+	public function get_notification_count(){		
+		if($this->Session->read('USER.Login.roles_id') == '34' && $this->Session->read('USER.Login.notification') == ''){
+			$this->redirect('/notification/');
+		}
+	}
+	
+	
 			
 	/* get unread count for the approve client */
 	public function get_approve_client_count(){
