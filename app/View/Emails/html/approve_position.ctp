@@ -82,7 +82,7 @@
   <tr>
     <td height="80" colspan="2" valign="top" bgcolor="#ededed" style="font:normal 12px Arial, Helvetica, sans-serif; color:#6f6e6e; padding:0 20px">
     <p >Note: This is system generated mail. Please do not reply to this email ID. if you have a query or need 
-any clarification you may email us.  <a href="mailto:hr@career-tree.in" style="color:#e56712;">hr@career-tree.in</a> 
+any clarification you may email us.  <a href="mailto:es@career-tree.in" style="color:#e56712;">es@career-tree.in</a> 
 </p>
     </td>
   </tr>

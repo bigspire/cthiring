@@ -74,10 +74,12 @@
 					
 					</td>
 						<td>
-						<?php echo $this->Form->input('next_interview', array('div'=> false,'type' => 'radio', 'label' => false,  'style' => 'margin:4px 2px', 'class' => '', 
-	'options' => array('Y' => 'Applicable', 'N' => 'Not Applicable'), 'separator' => ' ', 'id' => '',  'required' => false, 'placeholder' => '', 
+						<?php echo $this->Form->input('next_interview', array('div'=> false,'type' => 'radio', 'label' => false,  'style' => 'margin:4px 2px', 'class' => 'next_inter', 
+	'options' => array('Y' => 'Applicable', 'N' => 'Not Applicable'), 'separator' => ' ', 'id' => 'next_inter',  'required' => false, 'placeholder' => '', 
 	'legend' => false, 'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?>
 
+	<div id="flashMessage" class="dn alert offer-info" style="width:65%;margin-top:15px">
+	This CV will now be moved to Offer Status </div>
 						</td>	
 				</tr>
 				<?php endif; ?>

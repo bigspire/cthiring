@@ -18,7 +18,7 @@
                                     <a href="<?php echo $this->webroot;?>home/"><i class="icon-home"></i></a>
                                 </li>
                                 <li>
-                                    <a href="<?php echo $this->webroot;?>notifications/">Alerts</a>
+                                    <a href="<?php echo $this->webroot;?>notification/">Alerts</a>
                                 </li>
                             
                                 <li>
@@ -42,7 +42,7 @@
 
 				<div class="row-fluid">	
 
-			<div class="span7">			
+			<div class="span12">			
 <h3 class="heading">Resumes</h3>
 						
 					<table class="table table-striped table-bordered dataTable stickyTable"   id="dt_j">
@@ -132,9 +132,7 @@
 								<?php endforeach; ?>
 								</tbody>
 							</table>
-						</div>	
-	
-			<div class="span5">
+						
 			
 			<h3 class="heading">Positions</h3>
 			

@@ -599,7 +599,7 @@ $(document).ready(function() {
 		 return val.split( /,\s*/ );
 	}
 	
-	
+
 	
 	/* multiple option for add client contacts */
 	$(document).ready(function(){

@@ -27,6 +27,18 @@
 		$('.cancelBtn').hide();
 		
 	});
+	
+	/* when account holder choose not applicable in interview */
+	if($('.next_inter').length > 0){
+		$('.next_inter').click(function(){
+			if($(this).val() == 'N'){
+				$('.offer-info').show();
+			}else{
+				$('.offer-info').hide();
+			}
+		});
+	}
+	
 		/* editor */
 	/* editor for position page*/ 
 	if($('.wysiwyg').length > 0){

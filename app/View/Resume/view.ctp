@@ -565,22 +565,22 @@
 								<tbody>
 								
 							
-									<tr  class="tbl_row">
+									<!--tr  class="tbl_row">
 										<td width="150" class="tbl_column">Candidates Outlook on Company</td>
 										<td><?php echo ucfirst($resume_data['Resume']['about_company']); ?></td>	
-									</tr>
-									<tr  class="">
+									</tr-->
+									<tr  class="tbl_row">
 										<td width="150" class="tbl_column">Candidates Personality</td>
 										<td><?php echo ucfirst($resume_data['Resume']['personality']); ?></td>	
 									</tr>
-									<tr  class="tbl_row">
+									<tr  class="">
 										<td width="150" class="tbl_column">Relevant Exposure</td>
 										<td><?php echo ucfirst($resume_data['Resume']['relevant_exposure']); ?></td>	
 									</tr>
-									<tr  class="">
+									<!--tr  class="">
 										<td width="150" class="tbl_column">Credentials considered for Shortlisting</td>
 										<td><?php echo ucfirst($resume_data['Resume']['credential_shortlisting']); ?></td>	
-									</tr>
+									</tr-->
 									<tr  class="tbl_row">
 										<td width="150" class="tbl_column">Any other vital inputs for the interview</td>
 										<td><?php echo ucfirst($resume_data['Resume']['vital_info_interview']); ?></td>	
@@ -602,10 +602,10 @@
 										<td width="150" class="tbl_column">Demonstrated Achievements</td>
 										<td><?php echo ucfirst($resume_data['Resume']['achievement']); ?></td>	
 									</tr>
-									<tr  class="tbl_row">
+									<!--tr  class="tbl_row">
 										<td width="150" class="tbl_column">Candidate Brief</td>
 										<td><?php echo ucfirst($resume_data['Resume']['candidate_brief']); ?></td>	
-									</tr>
+									</tr-->
 									
 									
 								</tbody>	

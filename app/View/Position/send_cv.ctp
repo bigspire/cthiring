@@ -30,10 +30,18 @@
 				<tbody> 
 				
 				<tr class="tbl_row" >
+					<td width="120" class="tbl_column">Client Name 
+					</td>
+						<td>
+						<?php echo $this->Form->input('client_name', array('div'=> false,'type' => 'text', 'label' => false, 'class' => 'span8', 'readonly' => 'readonly', 'value' => $this->request->query['client_name'],   'required' => false, 'placeholder' => '')); ?> 					
+						</td>	
+				</tr>
+				
+				<tr class="tbl_row" >
 					<td width="120" class="tbl_column">Candidate Name 
 					</td>
 						<td>
-						<?php echo $this->Form->input('candidate', array('div'=> false,'type' => 'text', 'label' => false, 'class' => 'span8', 'readonly' => 'readonly', 'value' => $candidate_name,   'required' => false, 'placeholder' => '')); ?> 					
+						<?php echo $this->Form->input('candidate', array('div'=> false,'type' => 'text', 'label' => false, 'class' => 'span8', 'readonly' => 'readonly', 'value' => $candidate_to,   'required' => false, 'placeholder' => '')); ?> 					
 						</td>	
 				</tr>
 				
@@ -41,7 +49,8 @@
 					<td width="120" class="tbl_column">Subject <span class="f_req">*</span>
 					</td>
 						<td>
-						<?php echo $this->Form->input('subject', array('div'=> false,'type' => 'text', 'label' => false, 'class' => 'span8', 'value' => $subject_1, 'required' => false, 'placeholder' => '')); ?> 					
+						<?php echo $this->Form->input('subject', array('div'=> false,'type' => 'text', 'label' => false, 'class' => 'span8', 'value' => $subject_1,
+						'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')), 'required' => false, 'placeholder' => '')); ?> 					
 						</td>	
 				</tr>
 				

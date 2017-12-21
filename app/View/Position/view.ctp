@@ -39,11 +39,12 @@
 					
 					<?php $team = explode(',', $position_data[0]['team_mem_id']);?>
 					<?php if($create_resume == '1' && $position_data['Position']['status'] == 'A' && in_array($this->Session->read('USER.Login.id'), $team)):?>
+					<?php if($position_data['Position']['req_status_id'] == '0' || $position_data['Position']['req_status_id'] == '1'):?>
 					<a rel="tooltip"  title="Upload New Resume" href="<?php echo $this->webroot;?>hiring/upload_resume.php?client_id=<?php echo $position_data['Client']['id'];?>&req_id=<?php echo $this->request->params['pass'][0];?>"
 					 val="40_50"  class="iframeBox sepV_a cboxElement">
 					<input value="Upload Resume" type="button" class="btn btn-warning"></a>					
 						<?php endif; ?>
-
+						<?php endif; ?>
 						</div>
 							
 							
@@ -78,7 +79,7 @@
 									<tr>
 										
 										<td width="120" class="tbl_column">SPOC Details</td>
-										<td><?php echo $position_data['Contact']['first_name'];?>, 
+										<td><?php echo ucwords($position_data['Contact']['first_name'].' '.$position_data['Contact']['last_name']);?>, 
 										<?php echo $position_data['Contact']['email'];?>. 
 										<?php											
 											echo $position_data['Contact']['phone'];?>
@@ -170,7 +171,11 @@
 <span rel="tooltip" title="Requirement Status: <?php echo $position_data['ReqStatus']['title'];?> " class="label label-<?php echo $this->Functions->get_req_status_color($position_data['ReqStatus']['title']);?>"><?php echo $position_data['ReqStatus']['title'];?></span>	
 
 <?php if($this->Session->read('USER.Login.roles_id') == '34'):?>
-	<a rel="tooltip" val="40_60"  class="iframeBox" title="Change Status" href="<?php echo $this->webroot;?>position/update_position_status/<?php echo $this->request->params['pass'][0];?>/<?php echo $position_data['ReqStatus']['id'];?>/"><i class="splashy-pencil"></i></a>
+	<a rel="tooltip" val="40_60"  class="iframeBox" title="<?php echo $status_txt = $position_data['ReqStatus']['id'] == '10' ? 'Reactive' : 'Change Status';?>" href="<?php echo $this->webroot;?>position/update_position_status/<?php echo $this->request->params['pass'][0];?>/<?php echo $position_data['ReqStatus']['id'];?>/"><i class="splashy-pencil"></i></a>
+<?php endif;?>
+
+<?php if($position_data['Reason2']['reason'] && $position_data['ReqStatus']['id'] == '10'):?>
+<?php echo '('.$position_data['Reason2']['reason'].')'?>			
 <?php endif;?>
 
 </td>
@@ -735,7 +740,7 @@
 										$resume['ReqResume']['status_title'] == 'Validated'  && $this->Session->read('USER.Login.roles_id') == '34'  && in_array($this->Session->read('USER.Login.id'), $ac_member)):
 										$multi_send_cv = '1';?>
 															
-					<span rel="tooltip" style="cursor:pointer" data-original-title="Send CV"><a href="<?php echo $this->webroot;?>position/send_cv/<?php echo $resume['Resume']['id']; ?>/<?php echo $this->request->params['pass'][0];?>/<?php echo $resume['ReqResume']['id']; ?>/" val="65_90"  class="iframeBox"><i class="splashy-arrow_medium_upper_right"></i></a></span>
+					<span rel="tooltip" style="cursor:pointer" data-original-title="Send CV"><a href="<?php echo $this->webroot;?>position/send_cv/<?php echo $resume['Resume']['id']; ?>/<?php echo $this->request->params['pass'][0];?>/<?php echo $resume['ReqResume']['id']; ?>/?client_name=<?php echo $position_data['Client']['client_name'];?> <<?php echo ucwords($position_data['Contact']['first_name'].' '.$position_data['Contact']['last_name']);?>> <<?php echo $position_data['Contact']['email'];?>>" val="65_90"  class="iframeBox"><i class="splashy-arrow_medium_upper_right"></i></a></span>
 																
 										<?php elseif($resume['ReqResume']['stage_title'] == 'Validation - Account Holder' &&
 										$resume['ReqResume']['status_title'] == 'Pending'  && $this->Session->read('USER.Login.roles_id') == '34'  && in_array($this->Session->read('USER.Login.id'), $ac_member)):?>

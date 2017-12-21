@@ -366,6 +366,15 @@ class Position extends AppModel {
                 'message'  => 'Please select the next interview'
             )
         )
+		,
+		'status_remark' => array(
+            'empty' => array(
+                'rule'     => 'notEmpty',
+                'required' => true,
+                'message'  => 'Please enter the remarks'
+            )
+        )
+				
 	);
 	
 	/* function to validate the team members */

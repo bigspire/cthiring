@@ -53,7 +53,7 @@ class NotificationController extends AppController {
 				)
 			);				
 		$this->paginate = array('fields' => $fields,'limit' => '100','conditions' => array($date_cond, 'Notification.created_by' => $this->Session->read('USER.Login.id'),
-		'Notification.is_deleted' => 'N', 'Notification.status' => 'A'), 'order' => array('Notification.created_date' => 'desc'),	'group' => array('Notification.id'), 'joins' => $options);
+		'Notification.is_deleted' => 'N', 'Notification.status' => 'A','Notification.req_status_id' => array('0','1')), 'order' => array('Notification.created_date' => 'desc'),	'group' => array('Notification.id'), 'joins' => $options);
 		$data = $this->paginate('Notification');
 		$this->set('data', $data);
 		
@@ -136,8 +136,48 @@ class NotificationController extends AppController {
 					'remark_not_billable' => $this->request->data['Notification']['remark_not_billable'],
 					'modified_by' => $this->Session->read('USER.Login.id'), 'req_status_id' => '9');
 					// save  req resume
-					if($this->Notification->save($data, array('validate' => false))){										
-						// if successfully update
+					if($this->Notification->save($data, array('validate' => false))){
+						// send mail to recruiters
+						$options = array(			
+							array('table' => 'reason',
+									'alias' => 'Reason2',					
+									'type' => 'LEFT',
+									'conditions' => array('`Reason2.id` = `Notification`.`reason_not_billable`')
+							)
+						);
+						// get the position details
+						$position_data = $this->Notification->find('all', array('conditions' => array('Notification.id' => $id),
+						'fields' => array( 'Client.client_name','Notification.job_title','Notification.location','Reason2.reason'),
+						'joins' => $options));
+						// get the recruiters
+						$this->loadModel('ReqTeam');
+						$options = array(			
+							array('table' => 'users',
+									'alias' => 'Creator',					
+									'type' => 'LEFT',
+									'conditions' => array('`Creator.id` = `ReqTeam`.`users_id`')
+							)
+						);
+						$user_data = $this->ReqTeam->find('all', array('conditions' => array('ReqTeam.requirements_id' => $id,
+						'ReqTeam.is_approve' => 'A'),'fields' => array('Creator.first_name','Creator.last_name','Creator.email_id'),
+						'joins' => $options));						
+						// send mail to account holder and recruiters
+						foreach($user_data as $user){						
+							$from = ucfirst($user['Creator']['first_name']).' '.ucfirst($user['Creator']['last_name']);									
+							$vars = array('to_name' => $from, 'from_name' => ucwords($this->Session->read('USER.Login.first_name').' '.$this->Session->read('USER.Login.last_name')), 
+							'position' => $position_data[0]['Notification']['job_title'],'client_name' => $position_data[0]['Client']['client_name'], 
+							'location' => $position_data[0]['Notification']['location'], 
+							'remarks' => $this->request->data['Notification']['remark_not_billable'],
+							'reason' => $position_data[0]['Reason2']['reason']);					
+							// notify employee						
+							if(!$this->send_email('Manage Hiring - Position status changed to Not Billable by '.ucfirst($this->Session->read('USER.Login.first_name')).' '.ucfirst($this->Session->read('USER.Login.last_name')),
+							'position_status', 'noreply@managehiring.com', $user['Creator']['email_id'],$vars)){		
+								// show the msg.								
+								$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Problem in sending the mail to user...', 'default', array('class' => 'alert alert-error'));				
+							}else{
+								$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Position '.$approve_msg.' Successfully.', 'default', array('class' => 'alert alert-success'));
+							}
+						}
 						// if successfully update
 						$this->set('form_status', 1);
 						$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Status Updated Successfully', 'default', array('class' => 'alert alert-success'));									

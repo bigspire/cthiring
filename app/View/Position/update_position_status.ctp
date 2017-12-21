@@ -47,6 +47,11 @@
 				
 				<tr class="" >
 					<td width="120" class="tbl_column">Remarks
+					
+					<?php if($this->request->params['pass']['1'] == '10'):?>
+					 <span class="f_req">*</span>
+					<?php endif; ?>
+					 
 					</td>
 						<td>
 					<?php echo $this->Form->input('status_remark', array('div'=> false,'type' => 'text', 'label' => false, 'class' => 'span8',  'rows' => '3',
