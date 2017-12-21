@@ -17,6 +17,10 @@ $mysql->connect_database();
 include('classes/class.function.php');
 // add menu count
 include('menu_count.php');
+// mailing class
+include('classes/class.mailer.php');
+// content class
+include('classes/class.content.php');
 
 // role based validation
 $module_access = $fun->check_role_access('33',$modules);
@@ -125,11 +129,73 @@ if(!empty($_POST)){
 			// clear the results	    			
 			$mysql->clear_result($result);
 			// next query execution
-			$mysql->next_query();	
+			$mysql->next_query();		
 		}catch(Exception $e){
 			echo 'Caught exception: ',  $e->getMessage(), "\n";
 			die;
 		}
+		
+		$template_id = $_POST['template_id'] ? $_POST['template_id'] : $_POST['template'];
+			// query to fetch BH/Director details 
+			$query = "CALL get_template_byid('".$template_id."')";
+			try{
+				// calling mysql exe_query function
+				if(!$result = $mysql->execute_query($query)){
+					throw new Exception('Problem in getting template name');
+				}
+				$temp_name = $mysql->display_result($result);
+				// free the memory
+				$mysql->clear_result($result);
+				// call the next result
+				$mysql->next_query();
+			}catch(Exception $e){
+				echo 'Caught exception: ',  $e->getMessage(), "\n";
+			}
+				
+			// query to fetch admin details. 
+			$query = "CALL get_BH_Director_employee_details('A','".$_SESSION['user_id']."')";
+			try{
+				// calling mysql exe_query function
+				if(!$result = $mysql->execute_query($query)){
+					throw new Exception('Problem in getting employee details');
+				}
+				$obj = $mysql->display_result($result);
+				$user_name = $obj['user_name'];
+				$user_email_id = $obj['email_id'];
+						
+				// free the memory
+				$mysql->clear_result($result);
+				// call the next result
+				$mysql->next_query();
+			}catch(Exception $e){
+				echo 'Caught exception: ',  $e->getMessage(), "\n";
+			}
+				
+			// query to fetch BH/Director details 
+			$query = "CALL get_BH_Director_employee_details('D','')";
+			try{
+				// calling mysql exe_query function
+				if(!$result = $mysql->execute_query($query)){
+					throw new Exception('Problem in getting approval user details');
+				}
+				while($account = $mysql->display_result($result)){
+					$row_account[] = $account;
+				}
+				// free the memory
+				$mysql->clear_result($result);
+				// call the next result
+				$mysql->next_query();
+			}catch(Exception $e){
+				echo 'Caught exception: ',  $e->getMessage(), "\n";
+			}
+			$modified_date = $fun->convert_date_to_display($date);
+
+			// send mail to BH/Director
+			foreach($row_account as  $approval_user){ 					
+				$sub = "Manage Hiring -  " .$user_name." edited Mailer Template!";
+				$msg = $content->get_edit_mailer_template_details($_POST,$user_name,$approval_user['approval_name'],$temp_name['subject'],$temp_name['template'],$modified_date);
+				$mailer->send_mail($sub,$msg,$user_name,$user_email,$approval_user['approval_name'],$approval_user['email_id']);	
+			}
 	}elseif(empty($test) && $getid == 'new'){ 
 
 		// query to add template. 

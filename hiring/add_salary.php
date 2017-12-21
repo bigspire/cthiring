@@ -16,7 +16,10 @@ $mysql->connect_database();
 include('classes/class.function.php');
 // add menu count
 include('menu_count.php');
-
+// mailing class
+include('classes/class.mailer.php');
+// content class
+include('classes/class.content.php');
 
 // to download template file
 if($_GET['action'] == 'download'){
@@ -153,6 +156,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 							}catch(Exception $e){
 								echo 'Caught exception: ',  $e->getMessage(), "\n";die;
 							}
+							
 						}
 						
 					}
