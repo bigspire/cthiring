@@ -335,8 +335,12 @@ class AppController extends Controller {
 	
 	/* function to get the status details */
 	public function get_status_details(){
-		$st = array('12' => 'AH Pending',  '1' => 'CV Sent', '2' => 'Shortlisted', '3' => 'CV Rejected','4' => 'Feedback Awaited','5' => 'Candidates Interviewed','6' => 'Interview Dropouts',
-		'7' => 'Interview Rejected','8' => 'Candidates Offered','9' => 'Offer Dropouts','10' => 'Candidates Joined','11' => 'Candidates Billed');
+		$st = array('12' => 'AH Pending',  '13' => 'AH Validated', '1' => 'CV Sent', '2' => 'Shortlisted', '3' => 'CV Rejected','4' => 'Feedback Awaiting','5' => 'Interview Scheduled',
+		'17' => 'Interview Re-Scheduled',
+		'14' => 'Interview Selected', '7' => 'Interview Rejected','8' => 'Offer Pending','10' => 'Joined',
+		'15' => 'Not Joined',
+		'16' => 'Deferred',
+		'11' => 'Billed');
 		return $st;
 	}
 	

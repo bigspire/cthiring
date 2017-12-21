@@ -47,6 +47,11 @@ class Client extends AppModel {
                 'rule'     => 'notEmpty',
                 'required' => true,
                 'message'  => 'Please enter the client name'
+            ),
+			'client_exists' => array(
+                'rule'     => 'client_exists',
+                'required' => true,
+                'message'  => 'Client name already exists'
             )
         ),
 		'city' => array(		
@@ -86,7 +91,7 @@ class Client extends AppModel {
             'empty' => array(
                 'rule'     => 'validate_account',
                 'required' => true,
-                'message'  => 'Please select the account holder'
+                'message'  => 'Please select the client relationship manager'
             )
         ),
 				
@@ -112,6 +117,26 @@ class Client extends AppModel {
             )
         )
 	);
+	
+	
+	
+	/* function to check company already exists */
+	public function client_exists(){
+		// for edit page
+		if($this->data['Client']['page'] == 'edit_client'){
+			$cond = array('Client.id !=' => $this->data['Client']['id']);
+		}
+		$count = $this->find('count', array('conditions' => array('client_name' => $this->data['Client']['client_name'],
+		'res_location_id' => $this->data['Client']['res_location_id'],  'Client.status' => '0', 'Client.is_deleted' => 'N', $cond)));
+		if($count){
+			return false;
+		}else{
+			return true;
+		}
+	}
+	
+	
+	
 
 	/* function to validate the permissions */
 	public function validate_account(){ 

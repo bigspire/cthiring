@@ -114,7 +114,7 @@
 										<th style="text-align:center" width="70"><?php echo $this->Paginator->sort('no_pos', 'Positions', array('escape' => false, 'direction' => 'desc', 'rel' => 'tooltip', 'title' => 'Sort by Ascending or Descending'));?></th>
 										<?php endif; ?>
 										<th style="text-align:center" width="70"><?php echo $this->Paginator->sort('no_contact', 'Contact', array('escape' => false, 'direction' => 'desc', 'rel' => 'tooltip', 'title' => 'Sort by Ascending or Descending'));?></th>
-										<th width="150"><?php echo $this->Paginator->sort('account_holder', 'Account Holder', array('escape' => false, 'direction' => 'desc', 'rel' => 'tooltip', 'title' => 'Sort by Ascending or Descending'));?></th>
+										<th width="150"><?php echo $this->Paginator->sort('account_holder', 'CRM', array('escape' => false, 'direction' => 'desc', 'rel' => 'tooltip', 'title' => 'Sort by Ascending or Descending'));?></th>
 										<th style="text-align:center" width="70"><?php echo $this->Paginator->sort('status', 'Status', array('escape' => false, 'direction' => 'desc', 'rel' => 'tooltip', 'title' => 'Sort by Ascending or Descending'));?></th>
 										<?php if($this->request->params['pass'][0] == 'pending'):?>
 										<th style="text-align:center" width="90">Pending</th>

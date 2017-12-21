@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-12-11 17:25:16
+/* Smarty version 3.1.29, created on 2017-12-19 17:03:36
   from "C:\xampp\htdocs\ctsvn\cthiring\hiring\templates\include\header.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5a2e7224d2c9a1_29495775',
+  'unifunc' => 'content_5a38f910cc8666_08852312',
   'file_dependency' => 
   array (
     '2cc32a09905a93cae1ddf68e0518ebdd3aca7f41' => 
     array (
       0 => 'C:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\templates\\include\\header.tpl',
-      1 => 1512993315,
+      1 => 1513683210,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_5a2e7224d2c9a1_29495775 ($_smarty_tpl) {
+function content_5a38f910cc8666_08852312 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -283,7 +283,7 @@ resume/">Search Resume <!-- span class="label-bub label-info white"><?php echo $
  dropdown">
 										 <?php }?>
                                         
-                                            <a data-toggle="dropdown" class="dropdown-toggle " href="#"><i class="icon-file icon-white"></i> Incentive <!-- span class="label-bub label-info white"><?php echo $_smarty_tpl->tpl_vars['approve_billing_count']->value;?>
+                                            <a data-toggle="dropdown" class="dropdown-toggle " href="#"><i class="icon-file icon-white"></i> Performance Reward <!-- span class="label-bub label-info white"><?php echo $_smarty_tpl->tpl_vars['approve_billing_count']->value;?>
 </span><b class="caret"></b--></a>
                                            <ul class="dropdown-menu">
 										   <?php if ($_smarty_tpl->tpl_vars['module']->value['view_billing'] == '1') {?>

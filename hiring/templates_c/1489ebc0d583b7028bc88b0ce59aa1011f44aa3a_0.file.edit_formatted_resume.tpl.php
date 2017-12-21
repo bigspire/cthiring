@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-11-29 18:47:13
+/* Smarty version 3.1.29, created on 2017-12-18 16:02:36
   from "C:\xampp\htdocs\ctsvn\cthiring\hiring\templates\edit_formatted_resume.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5a1eb3593f60e2_97908286',
+  'unifunc' => 'content_5a3799445a2df4_49028800',
   'file_dependency' => 
   array (
     '1489ebc0d583b7028bc88b0ce59aa1011f44aa3a' => 
     array (
       0 => 'C:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\templates\\edit_formatted_resume.tpl',
-      1 => 1510901869,
+      1 => 1513592875,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5a1eb3593f60e2_97908286 ($_smarty_tpl) {
+function content_5a3799445a2df4_49028800 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -803,7 +803,7 @@ echo $_POST['interview_availability'];
 										</td>	
 									</tr>		
 									<tr class="">
-										<td width="120" class="tbl_column">Achievements  </td>
+										<td width="120" class="tbl_column">Demonstrated Achievements  </td>
 										<td> 
 									   <textarea name="achievement"  tabindex="7" rows="3" class="span12 wysiwyg1"><?php if ($_smarty_tpl->tpl_vars['achievement']->value) {
 echo $_smarty_tpl->tpl_vars['achievement']->value;

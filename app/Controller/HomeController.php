@@ -657,6 +657,7 @@ class HomeController  extends AppController {
 		'ReqResume.bill_ctc >' => '0'), 'joins' => $count_options));
 		$this->set('BILLED_TAB_COUNT', $billing_count_tab[0][0]['count']);
 		$this->set('BILLED_AMT_TAB_COUNT', $billing_count_tab[0][0]['ctc']);
+		$this->set('BILLED_AMT_TAB_AVG_COUNT', round($billing_count_tab[0][0]['ctc']/100000, 1));
 		// MOP Table for recruiter and account holders
 		if($this->Session->read('USER.Login.roles_id') == '30' || $dash_type == 'rec_view' ){
 		// get the data for MOP table 

@@ -67,7 +67,12 @@ $str = <<<EOD
   
   <style>
   
-
+body {
+    color: #4a4a4a;
+    font-size: 1.1rem;
+    font-weight: 400;
+    line-height: 1.5;
+}
 		/*  
 		 * Rating styles
 		 */
@@ -112,8 +117,6 @@ $str = <<<EOD
 			width:50%
 			
 		}
-		.titleLeft{margin-left:25% !important;}
-		.titleLogo{margin-left:10% !important}
   </style>
   <body>
   
@@ -121,28 +124,22 @@ $str = <<<EOD
   <section class="section">
     <div class="container">
 	
-	<div class="columns" style="margin-bottom:0rem;">
-	 <div class="column  title has-text-centered titleLeft"  style="padding:0.1rem;color:#826386 !important;">PROFILE SNAPSHOT 
-	 <img  class="titleLogo" src="http://bigspire.in/ct/career-tree-logo-CMYK_resiz.png">
+	<div class="has-text-right"><img  class="" src="http://bigspire.in/ct/career-tree-logo-CMYK_resiz.png"></div>
+	<div class="" style="margin-bottom:0.3rem;">
+	 <div class=" title has-text-centered"  style="color:#826386 !important;">PROFILE SNAPSHOT 
+	 
 	 </div>
 	</div>
-	<table class="table content box is-radius" style="clear:left;">
+	<table class="table content" style="clear:left;">
   <thead >
-    <tr  class="is-selected" style="background: #826386 ">
+    <tr  class="is-selected" style="background: #826386">
       <th class=" has-text-centered"width="5%">S.No</th>
-      <th class="" width="22%">Criteria</th>
+      <th class="" width="23%">Criteria</th>
      
-      <th class="" width="73%">Candidate Credentials</th>
+      <th class="" width="72%">Candidate Credentials</th>
     </tr>
   </thead>
-  <tfoot>
-    <tr>
-      <th></th>
-      <th></th>
-     
-      <th></th>
-    </tr>
-  </tfoot>
+
   <tbody>
   <tr>
 	 <td class="has-text-centered">1</td>
@@ -173,7 +170,7 @@ $str = <<<EOD
 	
 	<tr>
       <td class="has-text-centered">5</td>
-      <td>Career Highlights</td>
+      <td>Career Graph</td>
      
       <td>$snap_exp</td>
     </tr>

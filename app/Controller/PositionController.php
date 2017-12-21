@@ -1537,7 +1537,7 @@ class PositionController extends AppController {
 				'company','other_info','Designation.designation','Resume.first_name','Resume.last_name'),  'joins' => $options));
 				// iterate the experience details
 				$exp_table .= "<table  width='90%' border='0' cellspacing='2' cellpadding='5' style='border:1px solid #ededed; font:bold 13px Arial'>";
-				$exp_table .= "<tr><td>S. No.</td><td>Candidate Name</td><td>Present Company</td><td>Present Designation</td></tr>";
+				$exp_table .= "<tr><td>S. No.</td><td>Candidate Name</td><td>Present Designation</td><td>Present Company</td></tr>";
 				foreach($exp_data as $key => $exp){
 					$exp_table .= "<tr  style='font-weight:normal'>";
 					$exp_table .= "<td width='50'>";
@@ -1587,7 +1587,7 @@ class PositionController extends AppController {
 				'group' => array('Resume.id'), 'joins' => $options));
 				// iterate the experience details
 				$prev_exp_table .= "<table  width='90%' border='0' cellspacing='2' cellpadding='5' style='border:1px solid #ededed; font:bold 13px Arial'>";
-				$prev_exp_table .= "<tr><td>S. No.</td><td>Candidate Name</td><td>Present Company</td><td>Present Designation</td></tr>";
+				$prev_exp_table .= "<tr><td>S. No.</td><td>Candidate Name</td><td>Present Designation</td><td>Present Company</td></tr>";
 				foreach($prev_exp_data as $key => $exp){
 					$prev_exp_table .= "<tr  style='font-weight:normal'>";
 					$prev_exp_table .= "<td width='50'>";
@@ -1830,6 +1830,11 @@ class PositionController extends AppController {
 		$this->set('candidate_name', $cand_name);
 		// get rejection status drop down
 		$this->get_reject_drop('Offer Candiate Reject','Offer Client Reject');
+		// get the offer end date
+		$this->loadModel('ResInterview');
+		$interview_data = $this->ResInterview->find('all', array('conditions' => array('ResInterview.req_resume_id' => $req_res_id,
+		'ResInterview.status_title' => 'Selected'), 'fields' => array('ResInterview.int_date')));
+		$this->set('int_select_date', $interview_data[0]['ResInterview']['int_date']);
 		if(!empty($this->request->data)){
 			// set the validation
 			$this->Position->set($this->request->data);
@@ -1891,7 +1896,11 @@ class PositionController extends AppController {
 		$cand_data = $this->Resume->findById($id, array('fields' => 'first_name','last_name'));
 		$cand_name = ucwords($cand_data['Resume']['first_name'].' '.$cand_data['Resume']['last_name']);
 		$this->set('candidate_name', $cand_name);
-		
+		// get the joining end date
+		$this->loadModel('ReqResume');
+		$offer_data = $this->ReqResume->find('all', array('conditions' => array('ReqResume.id' => $req_res_id), 
+		'fields' => array('ReqResume.date_offer')));
+		$this->set('offer_select_date', $offer_data[0]['ReqResume']['date_offer']);
 		if(!empty($this->request->data)){
 			// set the validation
 			$this->Position->set($this->request->data);
@@ -1905,7 +1914,6 @@ class PositionController extends AppController {
 			// if validation pass
 			if($validate){
 				// get the req. resume id
-				$this->loadModel('ReqResume');
 				//$req_res_id = $this->ReqResume->find('all', array('fields' => array('ReqResume.id'), 
 				//'conditions' => array('requirements_id' => $pos_id, 'resume_id' => $id)));
 				// save req resume table
@@ -1944,7 +1952,7 @@ class PositionController extends AppController {
 		$cand_name = ucwords($cand_data['Resume']['first_name'].' '.$cand_data['Resume']['last_name']);
 		$this->set('candidate_name', $cand_name);
 		// get rejection status drop down
-		$this->get_reject_drop('Interview Reject');
+		$this->get_reject_drop('Interview Reject');		
 		// when the form submitted
 		if(!empty($this->request->data)){		
 			// set the validation
@@ -1975,7 +1983,7 @@ class PositionController extends AppController {
 						// save interview status
 						$this->loadModel('ResInterview');
 						$interview_id = $this->ResInterview->find('all', array('conditions' => array('ResInterview.req_resume_id' => $req_res_id,
-						'ResInterview.stage_title' => $this->Functions->get_level_text($int_level))));
+						'ResInterview.stage_title' => $this->Functions->get_level_text($int_level)), 'fields' => array('ResInterview.id')));
 						$data = array('id' => $interview_id[0]['ResInterview']['id'],'reason_id' => $this->request->data['Position']['reason_id'],  'req_resume_id' => $req_res_id, 'modified_date' => $this->Functions->get_current_date(),
 						'modified_by' => $this->Session->read('USER.Login.id'), 'status_title' => $status);
 						$this->ResInterview->save($data, array('validate' => false));					

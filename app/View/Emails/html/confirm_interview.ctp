@@ -8,7 +8,7 @@
 
 <table width="700" border="0" align="left" cellpadding="0" cellspacing="0" style="border:2px solid #fff; background:#fff; margin-bottom:40px">
   <tr style="background:#438eb9;">
-    <td width="436" height="80" style="padding-left:20px;color:#fff;font-family:arial;"><h1>MANAGE HIRING</h1></td>
+    <td width="436" height="80" style="padding-left:20px;color:#fff;font-family:arial;"><h1>Career Tree</h1></td>
     <td width="269" align="right" style="padding-right:20px;"></td>
   </tr>
   <tr>
@@ -47,9 +47,8 @@
   
   <tr>
     <td height="80" colspan="2" valign="top" bgcolor="#ededed" style="font:normal 12px Arial, Helvetica, sans-serif; color:#6f6e6e; padding:0 20px">
-    <!--p >Note: This is system generated mail. Please do not reply to this email ID. if you have a query or need 
-any clarification you may email us.  <a href="mailto:hr@career-tree.in" style="color:#e56712;">hr@career-tree.in</a> 
-</p-->
+        <p>Note: This mail was sent from CareerTree HR Solutions. If you have a query or need any clarification you may email us.  <a href="mailto:es@career-tree.in" style="color:#e56712;">es@career-tree.in</a> 
+
     </td>
   </tr>
 </table>

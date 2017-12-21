@@ -299,7 +299,7 @@ class ResumeController extends AppController {
 			$cond = array('ReqResume.status_title' => 'YRF');
 			break;
 			case '5':
-			$cond = array('ReqResume.stage_title like' => '%Interview');
+			$cond = array('ReqResume.stage_title like' => '%Interview','ReqResume.status_title' => 'Scheduled');
 			break;
 			case '6':
 			$cond = array('ReqResume.stage_title like' => '%Interview','ReqResume.status_title' => 'No Show' );
@@ -308,7 +308,7 @@ class ResumeController extends AppController {
 			$cond = array('ReqResume.status_title like' => '%Interview','ReqResume.status_title' => 'Rejected');
 			break;
 			case '8':
-			$cond = array('ReqResume.stage_title' => 'Offer', 'ReqResume.status_title !=' => array('Offer Pending','Rejected', 'Not Interested','Quit'));
+			$cond = array('ReqResume.stage_title' => 'Offer', 'ReqResume.status_title !=' => array('Offer Pending'));
 			break;
 			case '9':
 			$cond = array('ReqResume.stage_title' => 'Offer','ReqResume.status_title' => array('Rejected', 'Not Interested','Quit'));
@@ -322,7 +322,21 @@ class ResumeController extends AppController {
 			case '12':
 			$cond = array('ReqResume.stage_title' => 'Validation - Account Holder', 'ReqResume.status_title' => 'Pending');
 			break;
-			
+			case '13':
+			$cond = array('ReqResume.stage_title' => 'Validation - Account Holder', 'ReqResume.status_title' => 'Validated');
+			break;
+			case '14':
+			$cond = array('ReqResume.status_title like' => '%Interview','ReqResume.status_title' => 'Selected');
+			break;
+			case '15':
+			$cond = array('ReqResume.stage_title' => 'Joining','ReqResume.status_title' => 'Not Joined');
+			break;
+			case '16':
+			$cond = array('ReqResume.stage_title' => 'Joining','ReqResume.status_title' => 'Deferred');
+			break;
+			case '17':
+			$cond = array('ReqResume.stage_title like' => '%Interview','ReqResume.status_title' => 'Re-Scheduled');
+			break;
 		}
 		return $cond;
 	}

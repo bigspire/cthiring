@@ -86,10 +86,16 @@
 					<a class="jsRedirect toggleSearch"  href="javascript:window.close()">
 					<input type="button" value="Cancel" id="cancel" class="btn cancel"/></a>
 					
-					
+
 					<?php if($field_name == 'plan_join_date'):?>
-					<input type="hidden" id="start_date" name="start_date" value="<?php echo date('d/m/Y');?>">
+					<input type="hidden" id="start_date" name="start_date" value="<?php echo date('d/m/Y', strtotime('+1 day'));?>">
 					<?php endif; ?>
+					
+					<?php if($field_name == 'joined_on'):?>
+					<input type="hidden" id="start_date" name="start_date" value="<?php echo date('d/m/Y', strtotime($offer_select_date));?>">
+					<?php endif; ?>
+					
+					
 			</div>
 		</div>
 	</div>

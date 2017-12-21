@@ -128,7 +128,7 @@
 
 							
 							<tr class="">
-						<td width="120" class="tbl_column">Account Holder <span class="f_req">*</span></td>
+						<td width="120" class="tbl_column"><span rel="tooltip"  title="Client Relationship Manager">CRM</span> <span class="f_req">*</span></td>
 						<td>	
 						
 	<?php echo $this->Form->input('account_holder', array('div'=> false,'type' => 'select', 'label' => false, 
@@ -340,7 +340,7 @@
 
 	echo $this->Form->input('contact_count', array('type' => 'hidden', 'value' => $count, 'id' => 'contact_count'));
 ?>
-<?php echo $this->Form->input('add_client', array('type' => 'hidden',  'id' => 'add_client')); ?>
+<?php echo $this->Form->input('page', array('type' => 'hidden',  'id' => 'edit_client')); ?>
 
 <?php echo $this->Form->input('webroot', array('type' => 'hidden', 'value' => $this->webroot.'client/', 'id' => 'webroot')); ?>
 

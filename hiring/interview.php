@@ -236,8 +236,7 @@ try{
 } 
 
 // smarty drop down array for current status
-$smarty->assign('status_type', array('' => 'Select', '1' => 'Scheduled', '2' => 'Re-Scheduled',
-					'3' => 'OnHold', '4' => 'Qualified', '5' => 'Cancelled', '6' => 'Rejected'));
+$smarty->assign('status_type', array('' => 'Select', '1' => 'Scheduled', '2' => 'Re-Scheduled',	 '4' => 'Selected', '6' => 'Rejected'));
 
 // calling mysql close db connection function
 $c_c = $mysql->close_connection();

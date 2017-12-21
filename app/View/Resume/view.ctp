@@ -599,7 +599,7 @@
 									</tr>
 									
 										<tr  class="">
-										<td width="150" class="tbl_column">Achievements</td>
+										<td width="150" class="tbl_column">Demonstrated Achievements</td>
 										<td><?php echo ucfirst($resume_data['Resume']['achievement']); ?></td>	
 									</tr>
 									<tr  class="tbl_row">

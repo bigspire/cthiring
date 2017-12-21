@@ -225,7 +225,7 @@
 											<li class="{$billings_active} dropdown">
 										 {/if}
                                         
-                                            <a data-toggle="dropdown" class="dropdown-toggle " href="#"><i class="icon-file icon-white"></i> Incentive {* if $module['approve_billing'] eq '1' and $approve_billing_count *}<!-- span class="label-bub label-info white">{$approve_billing_count}</span>{* /if *}<b class="caret"></b--></a>
+                                            <a data-toggle="dropdown" class="dropdown-toggle " href="#"><i class="icon-file icon-white"></i> Performance Reward {* if $module['approve_billing'] eq '1' and $approve_billing_count *}<!-- span class="label-bub label-info white">{$approve_billing_count}</span>{* /if *}<b class="caret"></b--></a>
                                            <ul class="dropdown-menu">
 										   {if $module['view_billing'] eq '1'}
 												<li><a href="billing.php">Search Billing</a></li>

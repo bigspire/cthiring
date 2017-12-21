@@ -132,7 +132,7 @@
 										<th width="180"><?php echo $this->Paginator->sort('job_title', 'Job Title', array('escape' => false, 'direction' => 'desc', 'rel' => 'tooltip', 'title' => 'Sort by Ascending or Descending'));?></th>										
 										<th width="180"><?php echo $this->Paginator->sort('Client.client_name', 'Client', array('escape' => false, 'direction' => 'desc', 'rel' => 'tooltip', 'title' => 'Sort by Ascending or Descending'));?></th>
 										<th width="120"  style="text-align:center"><?php echo $this->Paginator->sort('no_job', 'Total Openings', array('escape' => false, 'direction' => 'desc', 'rel' => 'tooltip', 'title' => 'Sort by Ascending or Descending'));?></th>
-										<th width="150"><?php echo $this->Paginator->sort('ac_holder', 'Account Holders', array('escape' => false, 'direction' => 'desc', 'rel' => 'tooltip', 'title' => 'Sort by Ascending or Descending'));?></th>
+										<th width="150"><?php echo $this->Paginator->sort('ac_holder', 'CRM', array('escape' => false, 'direction' => 'desc', 'rel' => 'tooltip', 'title' => 'Sort by Ascending or Descending'));?></th>
 										<th width="150"><?php echo $this->Paginator->sort('team_member', 'Recruiters', array('escape' => false, 'direction' => 'desc', 'rel' => 'tooltip', 'title' => 'Sort by Ascending or Descending'));?></th>
 
 										<?php if($this->request->params['pass'][0] != 'pending'):?>	

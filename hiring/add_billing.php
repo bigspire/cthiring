@@ -23,7 +23,7 @@ include('classes/class.content.php');
 // role based validation
 $module_access = $fun->check_role_access('36',$modules);
 $smarty->assign('module',$module_access);
-
+$smarty->assign('today' , date('Y-m-d'));
 if(!empty($_GET['res_id']) && !empty($_GET['req_res_id'])){
 	
 	// query to fetch approval user id. 
@@ -48,6 +48,7 @@ if(!empty($_GET['res_id']) && !empty($_GET['req_res_id'])){
 				$smarty->assign('bill_percent', $obj['bill_percent']);
 				$smarty->assign('billing_date' , $fun->convert_date_to_display($obj['billing_date']));
 				$smarty->assign('joined_date' , $fun->convert_date_to_display($obj['joined_date']));
+				$smarty->assign('noformat_joined_date', date('d/m/Y', strtotime($obj['joined_date'])));
 			}
 		}else{
 			header('Location: ../?access=invalid');

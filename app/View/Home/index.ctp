@@ -246,7 +246,7 @@
 							
 							<thead class="">
 									<tr>
-										<th style="text-align:center" colspan="2">Vacancies Related</th>
+										<th style="text-align:center" colspan="2">Openings Related</th>
 										<th  style="text-align:center"  colspan="2">CV Quality & Contribution</th>
 									</tr>
 								</thead>
@@ -256,23 +256,23 @@
 									<tr>
 										<td class="optional" width="300">Positions Worked</td>
 										<td style="text-align:center" width="100" class="optional"><?php echo $POS_TAB_COUNT;?></td>
-										<td  class="essential persist" width="300">CVs Submitted</td>
+										<td  class="essential persist" width="300">CV Sent</td>
 										<td style="text-align:center" width="100" class="optional"><?php echo $RESUME_SENT_MOP_COUNT;?></td>
 									</tr>
 									<tr>
-										<td class="optional">Vacancies Handled</td>
+										<td class="optional">Openings Handled</td>
 										<td style="text-align:center" class="optional"><?php echo $VACANCY_MOP_COUNT;?></td>
 										<td  class="essential persist">Average Lead Time (Days)</td>
 										<td style="text-align:center" class="optional">-</td>
 									</tr>
 									<tr>
-										<td class="optional">Vacancies Billed</td>
+										<td class="optional">Openings Billed</td>
 										<td style="text-align:center" class="optional"><?php echo $JOINED_TAB_COUNT; ?></td>
 										<td  class="essential persist">CVs Billed</td>
 										<td style="text-align:center" class="optional"><?php echo $JOINED_TAB_COUNT; ?></td>
 									</tr>
 									<tr>
-										<td class="optional">Vacancies Not Billed</td>
+										<td class="optional">Openings Not Billed</td>
 										<td style="text-align:center" class="optional"><?php echo $VACANCY_MOP_COUNT - $JOINED_TAB_COUNT ;?></td>
 										<td  class="essential persist">CVs Not Billed</td>
 										<td style="text-align:center" class="optional"><?php echo $RESUME_SENT_MOP_COUNT - $JOINED_TAB_COUNT ;?></td>
@@ -288,7 +288,7 @@
 										<td class="optional">Avg Lead Time for Billing (Days)</td>
 										<td style="text-align:center" class="optional">-</td>
 										<td  class="essential persist">Billing Value (₹)</td>
-										<td style="text-align:center" class="optional"><?php echo $BILLED_AMT_TAB_COUNT ? (int)$BILLED_AMT_TAB_COUNT  : 0;?> Lacs</td>
+										<td style="text-align:center" class="optional"><?php echo $BILLED_AMT_TAB_AVG_COUNT ? $BILLED_AMT_TAB_AVG_COUNT  : 0;?> Lacs</td>
 									</tr>
 									<tr>
 										<th class="optional">Business Conversion</th>

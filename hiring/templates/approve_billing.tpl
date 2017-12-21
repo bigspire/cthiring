@@ -99,7 +99,7 @@
 										<th width="140"><a href="approve_billing.php?field=billing_amount&order={$order}&page={$smarty.get.page}&keyword={$keyword}&f_date={$f_date}&t_date={$t_date}&employee={$employee}" class="{$sort_field_billing_amonut}">Billing Amount</a></th>
 										<th width="130"><a href="approve_billing.php?field=billing_date&order={$order}&page={$smarty.get.page}&keyword={$keyword}&f_date={$f_date}&t_date={$t_date}&employee={$employee}" class="{$sort_field_billing_date}">Billing Date</a></th>
 										<th width="120"><a href="approve_billing.php?field=recruiter&order={$order}&page={$smarty.get.page}&keyword={$keyword}&f_date={$f_date}&t_date={$t_date}&employee={$employee}" class="{$sort_field_recruiter}">Recruiter</a></th>
-										<th width="120"><a href="approve_billing.php?field=ac_holder&order={$order}&page={$smarty.get.page}&keyword={$keyword}&f_date={$f_date}&t_date={$t_date}&employee={$employee}" class="{$sort_field_ac_holder}">Account Holder</a></th>
+										<th width="120"><a href="approve_billing.php?field=ac_holder&order={$order}&page={$smarty.get.page}&keyword={$keyword}&f_date={$f_date}&t_date={$t_date}&employee={$employee}" class="{$sort_field_ac_holder}">CRM</a></th>
 										<th width="130"><a href="approve_billing.php?field=created&order={$order}&page={$smarty.get.page}&keyword={$keyword}&f_date={$f_date}&t_date={$t_date}&employee={$employee}" class="{$sort_field_created}">Created Date</a></th>
 										<th width="50">Status</th>
 										<th width="70">Pending</th>

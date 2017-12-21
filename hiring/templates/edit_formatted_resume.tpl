@@ -656,7 +656,7 @@
 										</td>	
 									</tr>		
 									<tr class="">
-										<td width="120" class="tbl_column">Achievements  </td>
+										<td width="120" class="tbl_column">Demonstrated Achievements  </td>
 										<td> 
 									   <textarea name="achievement"  tabindex="7" rows="3" class="span12 wysiwyg1">{if $achievement}{$achievement}{else}{$smarty.post.achievement}{/if}</textarea>									
 										</td>
