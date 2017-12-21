@@ -110,7 +110,7 @@
 										<td width="120" class="tbl_column">Billing Amount <span class="f_req">*</span></td>
 										<td> 
 										<input type="text" class="span8"  id="result" name="billing_amount"  value="{$billing_amount}">
-										<label for="reg_city" generated="true" class="error">{$billing_amountErr}</label>									
+										<label for="reg_city" generated="true" class="error">{$billing_amountErr}{$billing_amountEr}</label>									
 						
 										</td>
 									</tr>

@@ -58,9 +58,32 @@ try{
 	echo 'Caught exception: ',  $e->getMessage(), "\n";
 }
 
+if($row['incentive_type'] == 'I'){
+	$period1 = date('Y-m',strtotime($row['period']));
+}else if($row['incentive_type'] == 'J'){
+	$period = explode("-",$fun->convert_period(date('m',$row['period'])));
+	$period1 = date('Y',strtotime($row['period'])).'-'.$period[0];
+	$period2 = (date('Y',strtotime($row['period']))  + 1).'-'.$period[1];
+}
+
+// select and execute query and fetch the result
+$query = "CALL get_user_type('".$emp_id."')";
+try{
+	if(!$result = $mysql->execute_query($query)){
+		throw new Exception('Problem in getting user type');
+	}
+	$row = $mysql->display_result($result);
+	// free the memory
+	$mysql->clear_result($result);
+	// call the next result
+	$mysql->next_query();
+}catch(Exception $e){
+	echo 'Caught exception: ',  $e->getMessage(), "\n";
+}
+
 if(!empty($row)){
 	// select and execute query and fetch the result
-	$query = "CALL view_approved_billing_details('".$emp_id."','".$row['incentive_type']."','".$row['period']."')";
+	$query = "CALL view_approved_billing_details('".$emp_id."','".$row['incentive_type']."','".$period1."','".$period2."','R')";
 	try{
 		if(!$result = $mysql->execute_query($query)){
 			throw new Exception('Problem in executing view interview page');

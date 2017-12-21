@@ -91,20 +91,34 @@
 								<thead>
 									<tr>
 										<th width="180"><a href="incentive.php?field=employee&order={$order}&page={$smarty.get.page}&f_date={$f_date}&t_date={$t_date}&employee={$employee}" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="{$sort_field_employee}">Employee</a></th>										
-										<th width="180"><a href="incentive.php?field=incentive_type&order={$order}&page={$smarty.get.page}&f_date={$f_date}&t_date={$t_date}&employee={$employee}" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="{$sort_field_incentive_type}">Incentive Type </a></th>
 										<th width="100"><a href="incentive.php?field=period&order={$order}&page={$smarty.get.page}&f_date={$f_date}&t_date={$t_date}&employee={$employee}" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="{$sort_field_period}">Period</a></th>
+										<th width="100"><a href="incentive.php?field=productivity&order={$order}&page={$smarty.get.page}&f_date={$f_date}&t_date={$t_date}&employee={$employee}" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="{$sort_field_productivity}">Productivity %</a></th>
+										<th width="100"><a href="incentive.php?field=int_fst&order={$order}&page={$smarty.get.page}&f_date={$f_date}&t_date={$t_date}&employee={$employee}" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="{$sort_field_pint_fst}">No. of Candidates Interviewed for the first time</a></th>
 										<th width="180"><a href="incentive.php?field=eligible_incentive_amt&order={$order}&page={$smarty.get.page}&f_date={$f_date}&t_date={$t_date}&employee={$employee}" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="{$sort_field_eligible_incentive_amt}">Incentive Amt. </a></th>
+										<th width="100"><a href="incentive.php?field=contribution&order={$order}&page={$smarty.get.page}&f_date={$f_date}&t_date={$t_date}&employee={$employee}" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="{$sort_field_contribution}">Incentive Contribution (YTD)</a></th>
+										<th width="100"><a href="incentive.php?field=pr_targer&order={$order}&page={$smarty.get.page}&f_date={$f_date}&t_date={$t_date}&employee={$employee}" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="{$sort_field_pr_targer}">Min. Performance Target</a></th>
+										<th width="100"><a href="incentive.php?field=ind_contribution&order={$order}&page={$smarty.get.page}&f_date={$f_date}&t_date={$t_date}&employee={$employee}" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="{$sort_field_ind_contribution}">Actual Individual Contribution</a></th>
+										<th width="100"><a href="incentive.php?field=no_cand_billed&order={$order}&page={$smarty.get.page}&f_date={$f_date}&t_date={$t_date}&employee={$employee}" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="{$sort_field_no_cand_billed}">No. of Candidates Billed</a></th>
+										<th width="180"><a href="incentive.php?field=incentive_type&order={$order}&page={$smarty.get.page}&f_date={$f_date}&t_date={$t_date}&employee={$employee}" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="{$sort_field_incentive_type}">Incentive Type </a></th>
 										<th width="120"><a href="incentive.php?field=created_date&order={$order}&page={$smarty.get.page}&f_date={$f_date}&t_date={$t_date}&employee={$employee}" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="{$sort_field_created_date}">Created</a></th>
 									</tr>
+
+
 								</thead>
 
 								<tbody>
 									{foreach from=$data item=item key=key}	
 									<tr>
 										<td width=""><a href="view_incentive.php?id={$item.id}&emp_id={$item.emp_id}">{$item.employee}</a></td>
-										<td width="" >{$item.incentive_type}</td>	
-										<td width="">{$item.period}</td>										
+										<td width="">{$item.period}</td>
+										<td width=""></td>
+										<td width=""></td>
 										<td width="">{$item.eligible_incentive_amt}</td>
+										<td width=""></td>	
+										<td width=""></td>
+										<td width=""></td>										
+										<td width=""></td>									
+										<td width="" >{$item.incentive_type}</td>	
 										<td width="">{$item.created_date}</td>
 									</tr>
 								{/foreach}

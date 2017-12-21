@@ -80,6 +80,11 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 		$smarty->assign('billing_amount',$_POST['billing_amount']);
 	}
 	
+	if($_POST['billing_amount'] != '' && ($_POST['billing_amount'] > $_POST['ctc_offer'])){
+		$smarty->assign('billing_amountEr','Billing amount should be lesser than CTC offered');
+		$test = 'error';
+	}
+	
 	if($_POST['billing_date'] == '' || $_POST['billing_date'] == '0000-00-00'){
 		$smarty->assign('billing_dateErr','Please enter the billing date');
 		$test = 'error';
@@ -93,6 +98,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 	}else{
 		$smarty->assign('bill_percent',$_POST['bill_percent']);
 	}
+	
+	
 	
 	if(empty($test)){
 		

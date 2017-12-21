@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-12-07 13:11:22
+/* Smarty version 3.1.29, created on 2017-12-21 11:41:41
   from "C:\xampp\htdocs\2017\ctsvn\cthiring\hiring\templates\interview.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5a28f0a2c9a753_93620732',
+  'unifunc' => 'content_5a3b509d80bac8_06928594',
   'file_dependency' => 
   array (
     'f6a289244f814d0ad89821cb8c5c16d091402940' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\templates\\interview.tpl',
-      1 => 1512632431,
+      1 => 1513743116,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5a28f0a2c9a753_93620732 ($_smarty_tpl) {
+function content_5a3b509d80bac8_06928594 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -199,7 +199,7 @@ $_smarty_tpl->ext->_updateScope->updateScope($_smarty_tpl, 'hide', 0);?>
 &branch=<?php echo $_smarty_tpl->tpl_vars['branch']->value;?>
 &status=<?php echo $_smarty_tpl->tpl_vars['status']->value;?>
 " rel="tooltip" data-original-title="Sort by Ascending or Descending" class="<?php echo $_smarty_tpl->tpl_vars['sort_field_ac_holder']->value;?>
-">Account Holder</a></th>	
+">CRM</a></th>	
 										<th width="90"><a href="interview.php?field=created_by&order=<?php echo $_smarty_tpl->tpl_vars['order']->value;?>
 &page=<?php echo $_GET['page'];?>
 &keyword=<?php echo $_smarty_tpl->tpl_vars['keyword']->value;?>

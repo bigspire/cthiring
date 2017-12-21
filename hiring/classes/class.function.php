@@ -326,6 +326,20 @@ class fun{
 		}
 	}
 	
+	// function to validate incentive period 
+	public function convert_period($month){
+		if(($month != '') && ($month != '0')){
+			if($month == '04' || $month == '05' || $month == '06' || $month == '07' || $month == '08' || $month == '09'){
+				$period1 = '04';
+				$period2 = '09';
+			}elseif($month == '10' || $month == '11' || $month == '12' || $month == '01' || $month == '02' || $month == '03'){	
+				$period1 = '10';
+				$period2 = '03';
+			}
+		}
+		return $period1.'-'.$period2;
+	}
+	
 	public function display_quater($quater){
 		if($quater == 'Mar'){
 			$quater_st = 'Jan - Mar';

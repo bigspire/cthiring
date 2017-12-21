@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-12-07 15:35:24
+/* Smarty version 3.1.29, created on 2017-12-21 11:54:36
   from "C:\xampp\htdocs\2017\ctsvn\cthiring\hiring\templates\approve_billing.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5a291264c146f6_06983277',
+  'unifunc' => 'content_5a3b53a4e0c327_05729111',
   'file_dependency' => 
   array (
     '98d35c6c124046cfa0fb325a72f60608728f355f' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\templates\\approve_billing.tpl',
-      1 => 1512641122,
+      1 => 1513743116,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5a291264c146f6_06983277 ($_smarty_tpl) {
+function content_5a3b53a4e0c327_05729111 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -192,7 +192,7 @@ $_smarty_tpl->ext->_updateScope->updateScope($_smarty_tpl, 'hide', 0);?>
 &t_date=<?php echo $_smarty_tpl->tpl_vars['t_date']->value;?>
 &employee=<?php echo $_smarty_tpl->tpl_vars['employee']->value;?>
 " class="<?php echo $_smarty_tpl->tpl_vars['sort_field_ac_holder']->value;?>
-">Account Holder</a></th>
+">CRM</a></th>
 										<th width="130"><a href="approve_billing.php?field=created&order=<?php echo $_smarty_tpl->tpl_vars['order']->value;?>
 &page=<?php echo $_GET['page'];?>
 &keyword=<?php echo $_smarty_tpl->tpl_vars['keyword']->value;?>
