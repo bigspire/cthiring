@@ -2460,7 +2460,7 @@ class PositionController extends AppController {
 	public function beforeFilter(){ 
 		$this->check_session();
 		$this->check_role_access(5);
-		$this->get_notification_count();
+		// $this->get_notification_count();
 		
 	}
 }

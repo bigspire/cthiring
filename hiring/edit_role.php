@@ -206,6 +206,50 @@ if(!empty($_POST)){
 						echo 'Caught exception: ',  $e->getMessage(), "\n";
 					}
 				}
+				
+				// query to fetch admin details. 
+				echo $query = "CALL get_BH_Director_employee_details('A')";
+				try{
+					// calling mysql exe_query function
+					if(!$result = $mysql->execute_query($query)){
+						throw new Exception('Problem in getting employee details');
+					}
+					$obj = $mysql->display_result($result);
+					$user_name = $obj['first_name'].' '.$obj['last_name'];
+					$user_email_id = $obj['email_id'];
+						
+					// free the memory
+					$mysql->clear_result($result);
+					// call the next result
+					$mysql->next_query();
+				}catch(Exception $e){
+					echo 'Caught exception: ',  $e->getMessage(), "\n";
+				}
+			
+				// query to fetch BH/Director details 
+				echo $query = "CALL get_BH_Director_employee_details('D')";die;
+				try{
+					// calling mysql exe_query function
+					if(!$result = $mysql->execute_query($query)){
+						throw new Exception('Problem in getting approval user details');
+					}
+					$row = $mysql->display_result($result);
+					// get approval user details
+					$approval_user_name = ucwords($row['approval_name']);
+					$approval_user_email = $row['email_id'];
+					// free the memory
+					$mysql->clear_result($result);
+					// call the next result
+					$mysql->next_query();
+				}catch(Exception $e){
+					echo 'Caught exception: ',  $e->getMessage(), "\n";
+				}
+				
+				// send mail to approval user
+				$sub = "Manage Hiring -  " .$user_name." Edited role!";
+				$msg = $content->get_create_billing_mail($_POST,$obj,$user_name,$approval_user_name,$candidate_name);
+				$mailer->send_mail($sub,$msg,$user_name,$user_email,$approval_user_name,$approval_user_email);
+	
 				if(!empty($last_id)){
 					// redirecting to list roles page
 					header('Location: roles.php?status=updated');		
