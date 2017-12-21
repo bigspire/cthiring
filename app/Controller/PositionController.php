@@ -1829,7 +1829,7 @@ class PositionController extends AppController {
 		$cand_name = ucwords($cand_data['Resume']['first_name'].' '.$cand_data['Resume']['last_name']);
 		$this->set('candidate_name', $cand_name);
 		// get rejection status drop down
-		$this->get_reject_drop('Offer Candiate Reject','Offer Client Reject');
+		$this->get_reject_drop('Offer Candidate Reject','Offer Client Reject');
 		// get the offer end date
 		$this->loadModel('ResInterview');
 		$interview_data = $this->ResInterview->find('all', array('conditions' => array('ResInterview.req_resume_id' => $req_res_id,
@@ -2460,6 +2460,7 @@ class PositionController extends AppController {
 	public function beforeFilter(){ 
 		$this->check_session();
 		$this->check_role_access(5);
+		$this->get_notification_count();
 		
 	}
 }

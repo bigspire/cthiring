@@ -75,6 +75,9 @@ $(document).ready(function() {
 		gebo_datatbles.dt_a();
 		gebo_datatbles.dt_z();
 		gebo_datatbles.dt_k();
+		
+		gebo_datatbles.dt_i();
+		gebo_datatbles.dt_j();
 		// horizontal scroll
 		//gebo_datatbles.dt_b();
 		//* large table
@@ -129,6 +132,61 @@ $(document).ready(function() {
                 "oLanguage": {
                     "sLengthMenu": "_MENU_ records per page"
                 }
+            });
+		},
+		dt_i: function() {
+			$('#dt_i').dataTable({
+                "sDom": "<'row'<'span6'<'dt_actions'>1><'span12'f>r>t<'row'<'span6'><'span6'p>>",
+				 "info":     true,
+				"iDisplayLength": 7,
+				 "ordering": false,
+				  "aaSorting": [],
+				"bFilter": false,
+                "sPaginationType": "bootstrap_alt",
+                "oLanguage": {
+                    "sLengthMenu": "_MENU_ records per page"
+                },
+				 "fnRowCallback": function( nRow, aData, iDisplayIndex, iDisplayIndexFull ) { 
+					  // Bold the grade for all 'A' grade browsers
+					 /*
+					 if ( aData[4] == "A" )
+					  {
+						$('td:eq(4)', nRow).html( '<b>A</b>' );
+					  }
+					*/  
+					  $('.iframeBox').click(function(){
+						load_colorBox(this, $(this).attr('val'));	
+					});
+					
+					}
+            });
+		},
+		dt_j: function() {
+			$('#dt_j').dataTable({
+                "sDom": "<'row'<'span6'<'dt_actions'>1><'span12'f>r>t<'row'<'span6'><'span6'p>>",
+				 "info":     true,
+				"iDisplayLength": 7,
+				 "ordering": false,
+				  "aaSorting": [],
+				"bFilter": false,
+                "sPaginationType": "bootstrap_alt",
+                "oLanguage": {
+                    "sLengthMenu": "_MENU_ records per page"
+                },
+				 "fnRowCallback": function( nRow, aData, iDisplayIndex, iDisplayIndexFull ) { 
+					  // Bold the grade for all 'A' grade browsers
+					 /*
+					 if ( aData[4] == "A" )
+					  {
+						$('td:eq(4)', nRow).html( '<b>A</b>' );
+					  }
+					*/  
+					  $('.iframeBox').click(function(){
+						load_colorBox(this, $(this).attr('val'));	
+					});
+					
+					}
+						
             });
 		},
         dt_b: function() {
