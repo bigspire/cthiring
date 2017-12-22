@@ -91,9 +91,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 			foreach($salary_data as  $key => $salary){ 
 				if($key > 1 && $salary['A'] != ''){ 
 					$employee = $mysql->real_escape_str($salary['A']);
-					$salary_date = $fun->convert_date($mysql->real_escape_str($salary['B']));
-					$ctc = $mysql->real_escape_str($salary['C']);
-					
+					$emplyee_list .= $employee."<br>";
+					$from_salary_date = $fun->convert_date($mysql->real_escape_str($salary['B']));
+					$to_salary_date = $fun->convert_date($mysql->real_escape_str($salary['C']));
+					$ctc = $mysql->real_escape_str($salary['D']);
+					if($from_salary_date < $to_salary_date){
+						
+					}
 					$query = "CALL get_emp_id_byname('".$employee."')";
 					try{
 						if(!$result = $mysql->execute_query($query)){
@@ -166,7 +170,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 			
 			if($affected_rows != ''){
 				// query to fetch admin details. 
-				$query = "CALL get_BH_Director_employee_details('A','".$_SESSION['user_id']."')";
+				$query = "CALL get_bh_director_employee_details('A','".$_SESSION['user_id']."')";
 				try{
 					// calling mysql exe_query function
 					if(!$result = $mysql->execute_query($query)){
@@ -185,7 +189,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 				}
 					
 				// query to fetch BH/Director details 
-				$query = "CALL get_BH_Director_employee_details('D','')";
+				$query = "CALL get_bh_director_employee_details('D','')";
 				try{
 					// calling mysql exe_query function
 					if(!$result = $mysql->execute_query($query)){
@@ -202,16 +206,17 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 					echo 'Caught exception: ',  $e->getMessage(), "\n";
 				}
 				
-				
+				/*
 				foreach($salary_data as  $key => $salary){
 				$arrayString = print_r($salary[A], true);
 				$employee_name = str_replace("", ",", $arrayString);
-				}
+				}*/
+				
 				$modified_date = $fun->convert_date_time_display($created_date);
 				// send mail to BH/Director
 				foreach($row_account as  $approval_user){ 					
 					$sub = "Manage Hiring - Salary details updated by " .$user_name;
-					$msg = $content->get_edit_salary_details($_POST,$user_name,$approval_user['approval_name'],$employee_name,$modified_date);
+					$msg = $content->get_edit_salary_details($_POST,$user_name,$approval_user['approval_name'],$emplyee_list,$modified_date);
 					$mailer->send_mail($sub,$msg,$user_name,$user_email,$approval_user['approval_name'],$approval_user['email_id']);	
 				}
 			}

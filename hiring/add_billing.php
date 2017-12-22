@@ -109,10 +109,10 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 	$req_size =  5242880;
 
 	// upload the file if attached
-	if(!empty($_FILES['resume']['name'])){
+	if(!empty($_FILES['offer']['name'])){
 		// upload directory
 		$uploaddir = 'uploads/offer/'; 
-		echo $attachmentsize = $_FILES['offer']['size'];die;
+		$attachmentsize = $_FILES['offer']['size'];
 		$attachmenttype = pathinfo($_FILES['offer']['name']);
 		$extension = $attachmenttype['extension'];	
 		// file extensions
@@ -184,6 +184,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 			}catch(Exception $e){
 				echo 'Caught exception: ',  $e->getMessage(), "\n";
 			}	
+
 			
 			$prefix = substr(time(), 2,5).rand(1000,10000000).'_';
 			$new_file = $prefix.$_FILES['offer']['name'];

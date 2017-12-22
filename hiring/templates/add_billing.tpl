@@ -29,7 +29,7 @@
 				{if $EXIST_MSG}
 				 <div id="flashMessage" class="alert alert-error"><button type="button" class="close" data-dismiss="alert">×</button>{$EXIST_MSG}</div>					
 				{/if}
-<form action="add_billing.php?res_id={$smarty.get.res_id}&req_res_id={$smarty.get.req_res_id}" id="formID"  name="searchFrm" class="formID" method="post" accept-charset="utf-8">
+<form action="add_billing.php?res_id={$smarty.get.res_id}&req_res_id={$smarty.get.req_res_id}" id="formID"  enctype="multipart/form-data" name="searchFrm" class="formID" method="post" accept-charset="utf-8">
 	<div class="box">
 		<div class="row-fluid">
 		<div class="span12">
@@ -83,8 +83,8 @@
 										<tr>
 										<td width="120" class="tbl_column">Proof of Offer <span class="f_req">*</span></td>
 										<td> 
-										<input type="file" tabindex="3" name="resume" class="upload" id="resume"/>
-										<label class="error">{$resumeErr}{$attachmentuploadErr} </label>
+										<input type="file" tabindex="3" name="offer" class="upload" id="offer"/>
+										<label class="error">{$offerErr}{$attachmentuploadErr} </label>
 										</td>
 									</tr>
 									

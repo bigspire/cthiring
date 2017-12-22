@@ -71,6 +71,7 @@ try{
 			$smarty->assign('client_name', $obj['client_name']);
 			$smarty->assign('ctc_offer', $obj['ctc_offer']);
 			$smarty->assign('billing_amount', $obj['billing_amount']);
+			$smarty->assign('proof_attach', $obj['proof_attach']);
 			$smarty->assign('billing_date' , $fun->convert_date_to_display($obj['billing_date']));
 			$smarty->assign('joined_date' , $fun->convert_date_to_display($obj['joined_date']));
 			$data[] = $obj;
@@ -88,6 +89,12 @@ try{
 
 // calling mysql close db connection function
 $c_c = $mysql->close_connection();
+
+// to download files
+if($_GET['action'] == 'download'){
+	$path = 'uploads/offer/'.$_GET['file'];
+	$fun->download_file($path);
+}
 
 // here assign smarty variables
 $smarty->assign('id' , $_GET['id']); 

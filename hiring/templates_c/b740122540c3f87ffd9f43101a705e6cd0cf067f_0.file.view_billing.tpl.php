@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-12-06 12:50:01
+/* Smarty version 3.1.29, created on 2017-12-22 16:49:59
   from "C:\xampp\htdocs\2017\ctsvn\cthiring\hiring\templates\view_billing.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5a279a21508597_49880657',
+  'unifunc' => 'content_5a3cea5fd27875_06451524',
   'file_dependency' => 
   array (
     'b740122540c3f87ffd9f43101a705e6cd0cf067f' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\templates\\view_billing.tpl',
-      1 => 1512544783,
+      1 => 1513941589,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5a279a21508597_49880657 ($_smarty_tpl) {
+function content_5a3cea5fd27875_06451524 ($_smarty_tpl) {
 ?>
 
    
@@ -100,8 +100,17 @@ echo $_smarty_tpl->tpl_vars['bill_percent']->value;
 									<td class="tbl_column">Billing Amount</td>
 									<td><?php echo $_smarty_tpl->tpl_vars['billing_amount']->value;?>
 </td>
+								<tr>
+									<td class="tbl_column">Proof of Offer</td>
+									<td>
+									<a href = "view_billing.php?id=<?php echo $_GET['id'];?>
+&action=download&file=<?php echo $_smarty_tpl->tpl_vars['proof_attach']->value;?>
+">
+									<?php echo $_smarty_tpl->tpl_vars['proof_attach']->value;?>
+
+									</a>
+									</td>
 								</tr>
-									
 								</tbody>
 							</table>
 				</div>
