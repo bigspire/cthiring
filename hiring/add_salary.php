@@ -92,12 +92,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 				if($key > 1 && $salary['A'] != ''){ 
 					$employee = $mysql->real_escape_str($salary['A']);
 					$emplyee_list .= $employee."<br>";
-					$from_salary_date = $fun->convert_date($mysql->real_escape_str($salary['B']));
-					$to_salary_date = $fun->convert_date($mysql->real_escape_str($salary['C']));
+					$salary_date = $fun->convert_date($mysql->real_escape_str($salary['B']));
+					// $from_salary_date = $fun->convert_date($mysql->real_escape_str($salary['B']));
+					// $to_salary_date = $fun->convert_date($mysql->real_escape_str($salary['C']));
 					$ctc = $mysql->real_escape_str($salary['D']);
-					if($from_salary_date < $to_salary_date){
-						
-					}
+
 					$query = "CALL get_emp_id_byname('".$employee."')";
 					try{
 						if(!$result = $mysql->execute_query($query)){
