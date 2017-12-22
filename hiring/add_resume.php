@@ -410,7 +410,6 @@ if(!empty($_POST)){
 	$date =  $fun->current_date();
 	$created_by = $_SESSION['user_id'];
 	$total_exp = $_POST['year_of_exp'].'.'.$_POST['month_of_exp'];
-	
 	// save all the data
 	if($test != 'error'){
 	  if($check['total'] == '0'){
@@ -687,9 +686,9 @@ if(!empty($_POST)){
 			}
 		}
 
-		if(!empty($edu_id) && !empty($res_id) && !empty($requirement_id) && !empty($exp_id) && !empty($resume_id) && !empty($position_id) && !empty($req_res_id)){
+		if(!empty($edu_id) && !empty($res_id) && !empty($exp_id) && !empty($resume_id) && !empty($position_id) && !empty($req_res_id)){
 			
-			$query =  "CALL get_personal_skills('$resume_id')";
+			echo $query =  "CALL get_personal_skills('$resume_id')";
 			if(!$result = $mysql->execute_query($query)){
 					throw new Exception('Problem in getting skills details');
 			}
@@ -860,7 +859,7 @@ if(!empty($_POST)){
 			$myTaskPageNumbers->execute();                               
 			// Download the package files
 			$myTaskPageNumbers->download('uploads/snapshotwatermarked/');
-			
+			$req_id = $_SESSION['position_for'];
 			//include('vendor/ilovepdf-php-1.1.5/samples/merge_basic.php');
 			// unset the sessions
 			unset($_SESSION['position_for']);
@@ -869,7 +868,7 @@ if(!empty($_POST)){
 			
 			// if($successfull == '1'){
 				// header('Location: ../resume?action=created&download='.$snap_file_name.'_'.date('d-m-Y').'.pdf');
-				header('Location: ../resume?action=created');
+				header('Location: ../position/view/'.$req_id.'?action=created');
 			// }
 		} 
 		}else{

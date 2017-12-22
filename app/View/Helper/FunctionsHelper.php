@@ -694,8 +694,14 @@ class FunctionsHelper extends AppHelper {
 			case 'Second':
 			$value = '2';
 			break;	
-			case 'Final':
+			case 'Third':
 			$value = '3';
+			break;	
+			case 'Forth':
+			$value = '4';
+			break;	
+			case 'Final':
+			$value = 'Final';
 			break;			
 		}
 		return $value;
@@ -714,8 +720,14 @@ class FunctionsHelper extends AppHelper {
 			case 'Second':
 			$value = '3';
 			break;	
+			case 'Third':
+			$value = '4';
+			break;	
+			case 'Forth':
+			$value = '5';
+			break;	
 			case 'Final':
-			$value = '3';
+			$value = 'Final';
 			break;				
 		}
 		return $value;
@@ -731,8 +743,14 @@ class FunctionsHelper extends AppHelper {
 			$value = 'Second';
 			break;
 			case 'Second':
+			$value = 'Third';
+			break;
+			case 'Third':
+			$value = 'Forth';
+			break;	
+			case 'Forth':
 			$value = 'Final';
-			break;							
+			break;
 		}
 		return $value;
    }
@@ -748,6 +766,12 @@ class FunctionsHelper extends AppHelper {
 			$value = 'Second Interview';
 			break;	
 			case '3':
+			$value = 'Third Interview';
+			break;	
+			case '4':
+			$value = 'Forth Interview';
+			break;	
+			case '5':
 			$value = 'Final Interview';
 			break;				
 		}

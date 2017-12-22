@@ -72,7 +72,7 @@
 					<td width="120" class="tbl_column">Interview Level <span class="f_req">*</span>
 					</td>
 						<td>
-		<?php echo $this->Form->input('interview_level', array('div'=> false,'type' => 'radio', 'label' => false, 'style' => 'margin:4px 2px', 'class' => 'input-xlarge',  'options' => $int_levels, 'separator' => ' ',  'required' => false, 'placeholder' => '', 'legend' => false, 'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?>
+		<?php echo $this->Form->input('interview_level', array('div'=> false,'type' => 'radio', 'value' => $interview_record['ResInterview']['interview_level'], 'label' => false, 'style' => 'margin:4px 2px', 'class' => 'input-xlarge',  'options' => $int_levels, 'separator' => ' ',  'required' => false, 'placeholder' => '', 'legend' => false, 'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?>
 						</td>	
 				</tr>
 				
@@ -80,7 +80,7 @@
 					<td width="120" class="tbl_column">Interview Mode <span class="f_req">*</span>
 					</td>
 						<td>
-		<?php echo $this->Form->input('interview_stage_id', array('div'=> false,'type' => 'radio',  'label' => false, 'style' => 'margin:4px 2px', 'class' => 'input-xlarge',  'options' => $stageList, 'separator' => ' ',  'required' => false, 'placeholder' => '', 'legend' => false, 'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?>
+		<?php echo $this->Form->input('interview_stage_id', array('div'=> false,'type' => 'radio',  'value' => $interview_record['ResInterview']['interview_stage_id'], 'label' => false, 'style' => 'margin:4px 2px', 'class' => 'input-xlarge',  'options' => $stageList, 'separator' => ' ',  'required' => false, 'placeholder' => '', 'legend' => false, 'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?>
 						</td>	
 				</tr>
 				
@@ -88,11 +88,11 @@
 					<td width="120" class="tbl_column">Interview Date <span class="f_req">*</span>
 					</td>
 						<td>
-						<?php echo $this->Form->input('int_date', array('div'=> false,'type' => 'text', 'label' => false, 'class' => 'span3 datepick',   'required' => false,'placeholder' => '', 'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 					
+						<?php echo $this->Form->input('int_date', array('div'=> false,'type' => 'text', 'label' => false,  'class' => 'span3 datepick',   'required' => false,'placeholder' => '', 'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 					
 
-						<?php echo $this->Form->input('int_time', array('div'=> false,'type' => 'text', 'label' => false, 'class' => 'span3 datetimepick', 'required' => false, 'style' => 'float:left;margin-right:5px;', 'placeholder' => '', 'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 	
+						<?php echo $this->Form->input('int_time', array('div'=> false,'type' => 'text',   'label' => false, 'class' => 'span3 datetimepick', 'required' => false, 'style' => 'float:left;margin-right:5px;', 'placeholder' => '', 'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 	
 
-<?php echo $this->Form->input('int_duration', array('div'=> false,'type' => 'select', 'empty' => 'Duration', 'options' => $int_duration, 'label' => false, 'class' => 'span2',   'required' => false, 'placeholder' => '', 'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 	
+<?php echo $this->Form->input('int_duration', array('div'=> false,'type' => 'select',  'value' => $interview_record['ResInterview']['int_duration'],  'empty' => 'Duration', 'options' => $int_duration, 'label' => false, 'class' => 'span2',   'required' => false, 'placeholder' => '', 'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 	
 
 						
 						</td>	
@@ -102,7 +102,7 @@
 					<td width="120" class="tbl_column">Interview Venue <span class="f_req">*</span>
 					</td>
 						<td>
-<?php echo $this->Form->input('venue', array('div'=> false,'type' => 'textarea', 'label' => false, 'class' => 'span8 wysiwyg1', 'required' => false, 'placeholder' => '', 'rows' => '2', 'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 	
+<?php echo $this->Form->input('venue', array('div'=> false,'type' => 'textarea', 'value' => $interview_record['ResInterview']['venue'],  'label' => false, 'class' => 'span8 wysiwyg1', 'required' => false, 'placeholder' => '', 'rows' => '2', 'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 	
 		
 										
 						</td>	
@@ -116,9 +116,9 @@
 					
 					
 						<td>
-<?php echo $this->Form->input('contact_name', array('div'=> false,'type' => 'text', 'label' => false, 'class' => 'span4 wysiwyg1', 'required' => false, 'placeholder' => 'Contact Person Name', 'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 	
+<?php echo $this->Form->input('contact_name', array('div'=> false, 'value' => $interview_record['ResInterview']['contact_name'],  'type' => 'text', 'label' => false, 'class' => 'span4 wysiwyg1', 'required' => false, 'placeholder' => 'Contact Person Name', 'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 	
 							
-<?php echo $this->Form->input('contact_no', array('div'=> false,'type' => 'text', 'label' => false, 'class' => 'span4 inline_text wysiwyg1', 'required' => false, 'placeholder' => 'Contact Mobile No.', 'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 										
+<?php echo $this->Form->input('contact_no', array('div'=> false, 'value' => $interview_record['ResInterview']['contact_no'],  'type' => 'text', 'label' => false, 'class' => 'span4 inline_text wysiwyg1', 'required' => false, 'placeholder' => 'Contact Mobile No.', 'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 										
 						</td>	
 				</tr>
 				
@@ -126,7 +126,7 @@
 					<td width="120" class="tbl_column">Additional Info 
 					</td>
 						<td>
-<?php echo $this->Form->input('additional', array('div'=> false,'type' => 'textarea', 'label' => false, 'class' => 'span8', 'required' => false, 'placeholder' => '', 'rows' => '3', 'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 	
+<?php echo $this->Form->input('additional', array('div'=> false,'type' => 'textarea', 'label' => false, 'value' => $interview_record['ResInterview']['additional'],  'class' => 'span8', 'required' => false, 'placeholder' => '', 'rows' => '3', 'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 	
 		
 										
 						</td>	

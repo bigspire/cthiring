@@ -53,7 +53,7 @@ class PositionController extends AppController {
 		'group_concat(ReqResume.status_title) joined','count(distinct Read.id) read_count', "group_concat(distinct TeamMember.first_name
 		SEPARATOR ', ') team_member", "group_concat(distinct CAH.first_name	SEPARATOR ', ') ac_holder",'Position.created_by','Position.is_approve','Position.status', "max(PositionStatus.id) st_id",
 		"max(PositionStatus.users_id) st_user_id",'PositionStatus.member_approve', 'ReqRead.status','Position.req_status_id',
-		'sum(ReqTeam.no_req) no_job', 'ReqRead.id');
+		'sum(ReqTeam.no_req) no_job', 'group_concat(distinct ReqRead.id) req_read_id');
 				
 		$options = array(			
 			array('table' => 'users',
@@ -892,10 +892,14 @@ class PositionController extends AppController {
 		$ret_value = $this->auth_action($id, $st_id);
 		// update the read req.
 		if($this->request->params['pass'][2] != '' && $this->request->params['pass'][3] == 'U'){
-			$this->loadModel('ReqRead');
-			$this->ReqRead->id = $this->request->params['pass'][2];
-			$this->ReqRead->saveField('modified_date', $this->Functions->get_current_date());
-			$this->ReqRead->saveField('status', 'R');
+			$req_id = explode(',', $this->request->params['pass'][2]);
+			// update all the resumes update
+			foreach($req_id as $req_read_id){
+				$this->loadModel('ReqRead');
+				$this->ReqRead->id = $req_read_id;
+				$this->ReqRead->saveField('modified_date', $this->Functions->get_current_date());
+				$this->ReqRead->saveField('status', 'R');
+			}
 		}
 		if($ret_value == 'pass'){
 			// get the team members
@@ -1999,8 +2003,10 @@ class PositionController extends AppController {
 			$this->Position->set($this->request->data);
 			if($status == 'Rejected'){
 				$validate = $this->Position->validates(array('fieldList' => array('reason_id')));
-			}else{
+			}else if($int_level != '5'){
 				$validate = $this->Position->validates(array('fieldList' => array('next_interview')));
+			}else{
+				$validate = 1;
 			}
 			// if validation pass
 			if($validate){			
@@ -2060,15 +2066,19 @@ class PositionController extends AppController {
 		// validate the fields
 		if(!empty($id) && !empty($pos_id)){		
 			// get interview levels
-			$int_levels = array('First Interview', 'Second Interview', 'Final Interview');
+			$int_levels = array('First Interview', 'Second Interview', 'Third Interview', 'Forth Interview', 'Final Interview');
 			$this->set('int_levels', $int_levels);
 			// get interview levels
 			if($interview_level == '2'){
-				$int_levels = array('Second Interview' => 'Second Interview', 'Final Interview' => 'Final Interview');
+				$int_levels = array('Second Interview' => 'Second Interview', 'Third Interview', 'Forth Interview','Final Interview' => 'Final Interview');
 			}else if($interview_level == '3'){
+				$int_levels = array('Third Interview' => 'Third Interview', 'Forth Interview' => 'Forth Interview','Final Interview' => 'Final Interview');
+			}else if($interview_level == '4'){
+				$int_levels = array('Forth Interview' => 'Forth Interview','Final Interview' => 'Final Interview');
+			}else if($interview_level == '5'){
 				$int_levels = array('Final Interview' => 'Final Interview');
 			}if($interview_level == '1' || $interview_level == ''){
-				$int_levels = array('First Interview' => 'First Interview' , 'Second Interview' => 'Second Interview', 'Final Interview' => 'Final Interview');
+				$int_levels = array('First Interview' => 'First Interview' , 'Second Interview' => 'Second Interview','Third Interview' => 'Third Interview', 'Forth Interview' => 'Forth Interview', 'Final Interview' => 'Final Interview');
 			}
 			// for reschedule
 			if($schedule_type == 'reschedule'){
@@ -2076,6 +2086,22 @@ class PositionController extends AppController {
 				$this->get_reject_drop('Interview Reschedule');
 				$reason_id = 'reason_id';
 				$this->set('reschedule', 1);
+				// get the interview details to retain in the form
+				$this->loadModel('ResInterview');
+				// $int_text = $this->Functions->get_level_text($int_level);
+				$options = array(				
+					array('table' => 'resume',
+							'alias' => 'Resume',					
+							'type' => 'LEFT',
+							'conditions' => array('`Resume.id` = `ReqResume`.`resume_id`')
+					)					
+				);
+				$data = $this->ResInterview->find('all', array('fields' => array('int_date','int_duration','Resume.first_name','Resume.last_name'
+				,'InterviewStage.interview_stage','venue','additional','contact_name','contact_no','stage_title','interview_stage_id'),
+				'conditions' => array('req_resume_id' => $req_res_id), 'order' => array('ResInterview.id' => 'desc'), 'limit' => '1', 'joins' => $options));
+				$this->set('interview_record', $data[0]);
+				//$int_date = explode(' ', $data[0]['ResInterview']['int_date']);
+				//$this->set('interview_date', $this->Functions->format_date_show($int_date[0]));
 			}
 			
 			$this->set('int_levels', $int_levels);
@@ -2307,7 +2333,7 @@ class PositionController extends AppController {
 	public function view_interview_schedule($id, $int_level){
 		$this->layout = 'framebox';
 		$this->loadModel('ResInterview');
-		$int_text = $this->Functions->get_level_text($int_level);
+		// $int_text = $this->Functions->get_level_text($int_level);
 		$options = array(				
 			
 			array('table' => 'resume',
@@ -2337,10 +2363,9 @@ class PositionController extends AppController {
 					'conditions' => array('`ReqTeam.users_id` = `TeamMember`.`id`', )
 			)*/
 		);
-		$this->set('interview_level', $int_text);
 		$data = $this->ResInterview->find('all', array('fields' => array('int_date','int_duration','Resume.first_name','Resume.last_name'
-		,'InterviewStage.interview_stage','venue','additional','contact_name','contact_no'),
-		'conditions' => array('req_resume_id' => $id, 'ResInterview.stage_title' => $int_text), 'joins' => $options));
+		,'InterviewStage.interview_stage','venue','additional','contact_name','contact_no','stage_title'),
+		'conditions' => array('req_resume_id' => $id), 'order' => array('ResInterview.id' => 'desc'), 'limit' => '1', 'joins' => $options));
 		$this->set('interview_data', $data[0]);
 	}
 	

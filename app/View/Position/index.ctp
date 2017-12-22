@@ -159,12 +159,12 @@
 									<?php foreach($data as $req):?>
 									<tr>
 										<?php if(!empty($noHead)): $target = "target='_blank'"; endif;?>
-										<td width=""><a <?php echo $target;?> href="<?php echo $this->webroot;?>position/view/<?php echo $req['Position']['id'];?>/<?php echo $req[0]['st_id'];?>/<?php echo $this->request->params['pass'][0];?><?php echo $req['ReqRead']['id'];?>/<?php echo $req['ReqRead']['status'];?>/"><?php echo ucwords($req['Position']['job_title']);?></a>
-										<?php  if($req['ReqRead']['id'] != '' && $req['ReqRead']['status'] == 'U' && $this->Session->read('USER.Login.roles_id') == '30'):?>
+										<td width=""><a <?php echo $target;?> href="<?php echo $this->webroot;?>position/view/<?php echo $req['Position']['id'];?>/<?php echo $req[0]['st_id'];?>/<?php echo $this->request->params['pass'][0];?><?php echo $req[0]['req_read_id'];?>/<?php echo $req['ReqRead']['status'];?>/"><?php echo ucwords($req['Position']['job_title']);?></a>
+										<?php  if($req[0]['req_read_id'] != '' && $req['ReqRead']['status'] == 'U' && $this->Session->read('USER.Login.roles_id') == '30'):?>
 										<span rel="tooltip" title="New Position" class="label label-warning">New</span>			
 										<?php endif; ?>
 										
-										<?php  if($req['ReqRead']['id'] != '' && $req['ReqRead']['status'] == 'U' && $this->Session->read('USER.Login.roles_id') == '34'):?>
+										<?php  if($req[0]['req_read_id'] != '' && $req['ReqRead']['status'] == 'U' && $this->Session->read('USER.Login.roles_id') == '34'):?>
 								<span style="margin-left:5px;" rel="tooltip" title="New Resumes Uploaded" class="label label-success">New</span>			
 								<?php endif; ?>
 								

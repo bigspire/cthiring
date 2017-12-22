@@ -96,7 +96,7 @@ class AppController extends Controller {
 	public function get_position_unread_count(){
 		$this->loadModel('ReqRead');
 		$count = $this->ReqRead->find('count', array('conditions' => array('users_id' => $this->Session->read('USER.Login.id'),
-		'ReqRead.status' => 'U'),'group' => array('ReqRead.id')));
+		'ReqRead.status' => 'U'),'group' => array('ReqRead.requirements_id')));
 		$this->set('new_pos_count', $count);
 	}
 	

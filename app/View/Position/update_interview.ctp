@@ -66,7 +66,7 @@
 
 						</td>	
 				</tr>
-					<?php if($validation):?>
+					<?php if($validation && $this->request->params['pass'][4] != '5'):?>
 					<tr class="" >
 					<td width="120" class="tbl_column">Next Interview
 					
