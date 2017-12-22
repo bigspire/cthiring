@@ -59,6 +59,14 @@
 									<td class="tbl_column">Billing Amount</td>
 									<td>{$billing_amount}</td>
 								</tr>	
+								<tr>
+									<td class="tbl_column">Proof of Offer</td>
+									<td>
+									<a href = "view_approve_billing.php?id={$smarty.get.id}&emp_id={$smarty.get.emp_id}&status_id={$smarty.get.status_id}&action=download&file={$proof_attach}">
+									{$proof_attach}
+									</a>
+									</td>
+								</tr>
 									
 								
 								</tbody>

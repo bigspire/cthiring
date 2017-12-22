@@ -99,7 +99,42 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 		$smarty->assign('bill_percent',$_POST['bill_percent']);
 	}
 	
+	if(!isset($_POST['offer']) && empty($_FILES['offer']['name'])){
+		$smarty->assign('offerErr','Please upload the proof of offer');	
+		$test = 'error';			
+	}else{
+		$smarty->assign('offer',$_POST['offer']);
+	}
 	
+	$req_size =  5242880;
+
+	// upload the file if attached
+	if(!empty($_FILES['offer']['name'])){
+		// upload directory
+		$uploaddir = 'uploads/offer/'; 
+		$attachmentsize = $_FILES['offer']['size'];
+		$attachmenttype = pathinfo($_FILES['offer']['name']);
+		$extension = $attachmenttype['extension'];	
+		// file extensions
+		$extensions = array('docx'); 
+		
+		// checking the file extension is doc,docx
+		if($fun->extension_validation($extension,$extensions) == true){		
+			$attachmentuploadErr = 'Attachment must be .docx';
+			$test = 'error';
+		}
+		// checking the file size is less than 1 MB		
+		else if($fun->size_validation($attachmentsize,$req_size)){
+			$attachmentuploadErr = 'Attachment file size must be less than 5 MB';
+			$test = 'error';
+		}
+		// checking the file size is less than 1 MB		
+		else if(empty($attachmentsize)){
+			$attachmentuploadErr = 'Attachment file size must be less than 5 MB';
+			$test = 'error';
+		}				
+	}	
+	$smarty->assign('attachmentuploadErr', $attachmentuploadErr);
 	
 	if(empty($test)){
 		
@@ -149,6 +184,27 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 			}catch(Exception $e){
 				echo 'Caught exception: ',  $e->getMessage(), "\n";
 			}	
+
+			
+			$prefix = substr(time(), 2,5).rand(1000,10000000).'_';
+			$new_file = $prefix.$_FILES['offer']['name'];
+			$path = $uploaddir.$new_file;
+			move_uploaded_file($_FILES['offer']['tmp_name'], $path);
+			// query to update the file
+			$query = "CALL upload_offer('".$new_file."','".$billing_id."')";
+			try{
+				if(!$result = $mysql->execute_query($query)){
+					throw new Exception('Problem in uploading offer proof');
+				}
+				$row = $mysql->display_result($result);
+				$offer_id = $row['affected_rows'];
+				// free the memory
+				$mysql->clear_result($result);
+				// call the next result
+				$mysql->next_query();
+			}catch(Exception $e){
+				echo 'Caught exception: ',  $e->getMessage(), "\n";
+			}
 
 			// query to insert into database. 
 			$query = "CALL edit_billing_req_resume('".$fun->is_white_space($mysql->real_escape_str($_POST['ctc_offer']))."',
@@ -207,6 +263,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 				echo 'Caught exception: ',  $e->getMessage(), "\n";
 			}
 			
+			
 			// query to fetch billing employee details. 
 			$query = "CALL get_employee_by_id('".$billing_user_id."')";
 			try{
@@ -258,7 +315,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 			$msg = $content->get_create_billing_mail($_POST,$obj,$user_name,$approval_user_name,$candidate_name);
 			$mailer->send_mail($sub,$msg,$user_name,$user_email,$approval_user_name,$approval_user_email);
 	
-			if(!empty($last_inserted_id) && empty($test) && !empty($req_res_id) && !empty($billing_id)){ 
+			if(!empty($last_inserted_id) && empty($test) && !empty($req_res_id) && !empty($billing_id) && !empty($offer_id)){ 
 				// redirecting to list page
 				header("Location: billing.php?status=created");		
 			}

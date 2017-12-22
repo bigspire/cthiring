@@ -727,10 +727,9 @@ if(!empty($_POST)){
 	}
 	
 	// array for printing correct field name in error message for consultant
-	$fieldtype1 = array('0','0','0','0');
-	$actualfield1 = array('personality','interview availability','credentials considered for shortlisting','relevant exposure');
-	$field1 = array('personality' => 'personalityErr','interview_availability' => 'interview_availabilityErr',
-		'credential_shortlisting' => 'credential_shortlistingErr', 'relevant_exposure' => 'relevant_exposureErr');
+	$fieldtype1 = array('0','0','0');
+	$actualfield1 = array('personality','interview availability','relevant exposure');
+	$field1 = array('personality' => 'personalityErr','interview_availability' => 'interview_availabilityErr', 'relevant_exposure' => 'relevant_exposureErr');
 	$j = 0;
 	foreach ($field1 as $field1 => $er_var){ 
 		if($_POST[$field1] == ''){

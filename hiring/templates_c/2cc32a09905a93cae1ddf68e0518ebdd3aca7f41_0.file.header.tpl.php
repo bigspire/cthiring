@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-12-19 17:03:36
+/* Smarty version 3.1.29, created on 2017-12-22 19:14:02
   from "C:\xampp\htdocs\ctsvn\cthiring\hiring\templates\include\header.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5a38f910cc8666_08852312',
+  'unifunc' => 'content_5a3d0c22809639_84118267',
   'file_dependency' => 
   array (
     '2cc32a09905a93cae1ddf68e0518ebdd3aca7f41' => 
     array (
       0 => 'C:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\templates\\include\\header.tpl',
-      1 => 1513683210,
+      1 => 1513950124,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_5a38f910cc8666_08852312 ($_smarty_tpl) {
+function content_5a3d0c22809639_84118267 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -427,7 +427,7 @@ resume/">Search Resume <!-- span class="label-bub label-info white"><?php echo $
                                            <li class="dropdown">
 													<a href="#">Incentive <b class="caret-right"></b></a>
 													<ul class="dropdown-menu">
-														<li><a href="base_target.php">Base Target</a></li>
+														<!--li><a href="base_target.php">Base Target</a></li-->
 														<li><a href="eligibility.php">Eligibility</a></li>
 														<li><a href="sharing_criteria.php">Sharing Criteria</a></li>	
 														<!--li><a href="holidays.php">Holidays</a></li-->

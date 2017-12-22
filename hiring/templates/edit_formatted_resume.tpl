@@ -603,12 +603,12 @@
 <div class="span6">
 			<table class="table table-bordered dataTable" style="margin-bottom:0;">
 						<tbody>		
-									<tr class="tbl_row">
+									<!--tr class="tbl_row">
 									<td width="120" class="tbl_column">Candidates Outlook on Company   </td>
 									<td> 
 										<textarea name="about_company" tabindex="1"  rows="3" class="span12 wysiwyg1">{if $about_company}{$about_company}{else}{$smarty.post.about_company}{/if}</textarea>									
 									</td>
-									</tr>
+									</tr-->
 			
 									<tr class="">
 										<td width="120" class="tbl_column">Candidates Personality <span class="f_req">*</span>
@@ -626,13 +626,13 @@
 									</td>
 									</tr>
 									
-									<tr class="">
+									<!-- tr class="">
 				<td width="120" class="tbl_column">Credentials considered for Shortlisting <span class="f_req">*</span></td>
 				<td> 
 					<textarea name="credential_shortlisting" tabindex="4" rows="3" class="span12 wysiwyg1">{if $credential_shortlisting}{$credential_shortlisting}{else}{$smarty.post.credential_shortlisting}{/if}</textarea>									
 					<label for="reg_city" generated="true" class="error">{$credential_shortlistingErr}</label>	
 					</td>
-			</tr>
+			</tr-->
 			<tr class="tbl_row">
 									<td width="120" class="tbl_column">Any other vital inputs for the interview  </td>
 									<td> 
@@ -664,12 +664,12 @@
 									
 			
 				
-			<tr class="tbl_row">
+			<!--tr class="tbl_row">
 				<td width="120" class="tbl_column">Candidate Brief </td>
 				<td> 
 				   <textarea name="candidate_brief" tabindex="8"  rows="3" class="span12 wysiwyg1">{if $candidate_brief}{$candidate_brief}{else}{$smarty.post.candidate_brief}{/if}</textarea>									
 				</td>
-			</tr>										
+			</tr-->										
 		</tbody>
 	</table>
 </div>
