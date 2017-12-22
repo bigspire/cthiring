@@ -80,6 +80,14 @@
 										
 										</td>
 									</tr>
+										<tr>
+										<td width="120" class="tbl_column">Proof of Offer <span class="f_req">*</span></td>
+										<td> 
+										<input type="file" tabindex="3" name="resume" class="upload" id="resume"/>
+										<label class="error">{$resumeErr}{$attachmentuploadErr} </label>
+										</td>
+									</tr>
+									
 									
 																			
 								</tbody>

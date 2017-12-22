@@ -170,6 +170,58 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 				}
 			//}
 			
+			if($affected_rows != ''){
+				// query to fetch admin details. 
+				$query = "CALL get_BH_Director_employee_details('A','".$_SESSION['user_id']."')";
+				try{
+					// calling mysql exe_query function
+					if(!$result = $mysql->execute_query($query)){
+						throw new Exception('Problem in getting employee details');
+					}
+					$obj = $mysql->display_result($result);
+					$user_name = $obj['user_name'];
+					$user_email_id = $obj['email_id'];
+							
+					// free the memory
+					$mysql->clear_result($result);
+					// call the next result
+					$mysql->next_query();
+				}catch(Exception $e){
+					echo 'Caught exception: ',  $e->getMessage(), "\n";
+				}
+					
+				// query to fetch BH/Director details 
+				$query = "CALL get_BH_Director_employee_details('D','')";
+				try{
+					// calling mysql exe_query function
+					if(!$result = $mysql->execute_query($query)){
+						throw new Exception('Problem in getting approval user details');
+					}
+					while($account = $mysql->display_result($result)){
+						$row_account[] = $account;
+					}
+					// free the memory
+					$mysql->clear_result($result);
+					// call the next result
+					$mysql->next_query();
+				}catch(Exception $e){
+					echo 'Caught exception: ',  $e->getMessage(), "\n";
+				}
+				
+				
+				foreach($salary_data as  $key => $salary){
+				$arrayString = print_r($salary[A], true);
+				$employee_name = str_replace("", ",", $arrayString);
+				}
+				$modified_date = $fun->convert_date_time_display($created_date);
+				// send mail to BH/Director
+				foreach($row_account as  $approval_user){ 					
+					$sub = "Manage Hiring - Holiday details updated by " .$user_name;
+					$msg = $content->get_edit_holiday_details($_POST,$user_name,$approval_user['approval_name'],$employee_name,$modified_date);
+					$mailer->send_mail($sub,$msg,$user_name,$user_email,$approval_user['approval_name'],$approval_user['email_id']);	
+				}
+			}
+			
 			$smarty->assign('form_sent' , 1);
 		}
 	}

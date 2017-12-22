@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-12-07 17:16:36
+/* Smarty version 3.1.29, created on 2017-12-22 12:57:50
   from "C:\xampp\htdocs\2017\ctsvn\cthiring\hiring\templates\billing.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5a292a1c537b00_38345512',
+  'unifunc' => 'content_5a3cb3f68dbfa9_29455503',
   'file_dependency' => 
   array (
     '50cf885d3bb20c9a385c0b3e6e66e6afa91cfee8' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\templates\\billing.tpl',
-      1 => 1512647194,
+      1 => 1513743116,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5a292a1c537b00_38345512 ($_smarty_tpl) {
+function content_5a3cb3f68dbfa9_29455503 ($_smarty_tpl) {
 ?>
 
    
@@ -176,7 +176,7 @@ $_smarty_tpl->ext->_updateScope->updateScope($_smarty_tpl, 'hide', 0);?>
 &f_date=<?php echo $_smarty_tpl->tpl_vars['f_date']->value;?>
 &t_date=<?php echo $_smarty_tpl->tpl_vars['t_date']->value;?>
 " class="<?php echo $_smarty_tpl->tpl_vars['sort_field_ac_holder']->value;?>
-">Account Holder</a></th>
+">CRM</a></th>
 										<th width="80"><a href="billing.php?field=created_date&order=<?php echo $_smarty_tpl->tpl_vars['order']->value;?>
 &page=<?php echo $_GET['page'];?>
 &keyword=<?php echo $_smarty_tpl->tpl_vars['keyword']->value;?>

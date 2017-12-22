@@ -376,6 +376,13 @@ class fun{
 		}
 	}
 	
+	// function to display date and time
+	public function convert_date_time_display($created_date){
+		if(($created_date != '') && ($created_date != '0000-00-00 00:00:00')){
+			$c_d = date('d-M-Y h:i a', strtotime($created_date));
+			return $c_d;
+		}
+	}
 	// function to validate database created_date field 
 	public function convert_month_year_display($created_date){
 		if(($created_date != '') && ($created_date != '0000-00-00') && ($created_date != '0000-00-00 00:00:00')){

@@ -67,7 +67,10 @@
 									<td class="tbl_column">Billing Amount</td>
 									<td>{$billing_amount}</td>
 								</tr>
-									
+									<tr>
+									<td class="tbl_column">Proof of Offer</td>
+									<td>{$proof_attach}</td>
+								</tr>
 								</tbody>
 							</table>
 				</div>

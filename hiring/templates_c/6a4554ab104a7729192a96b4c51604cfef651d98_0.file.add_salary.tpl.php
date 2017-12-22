@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-11-13 12:55:27
+/* Smarty version 3.1.29, created on 2017-12-22 11:32:23
   from "C:\xampp\htdocs\2017\ctsvn\cthiring\hiring\templates\add_salary.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5a0948e7df2280_24292088',
+  'unifunc' => 'content_5a3c9fef3e0c33_84687035',
   'file_dependency' => 
   array (
     '6a4554ab104a7729192a96b4c51604cfef651d98' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\templates\\add_salary.tpl',
-      1 => 1510557922,
+      1 => 1513922537,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_5a0948e7df2280_24292088 ($_smarty_tpl) {
+function content_5a3c9fef3e0c33_84687035 ($_smarty_tpl) {
 ?>
 
 
@@ -131,6 +131,18 @@ parent.$.colorbox.close();
 
 <?php echo '<script'; ?>
  type="text/javascript">
+$(document).ready(function(){
+		/* when the form submitted */
+	$('.formID').submit(function(){ 		
+		// Disable the 'Next' button to prevent multiple clicks		
+		$('input[type=submit]', this).attr('value', 'Processing...');		
+		$('input[type=submit]', this).attr('disabled', 'disabled');
+		// hide cancel button
+		$('button[type=button]', this).hide();
+		$('.cancelBtn').hide();
+		
+	});
+});
 $(".cancel").click(function(){
 	parent.$.colorbox.close();
 });
