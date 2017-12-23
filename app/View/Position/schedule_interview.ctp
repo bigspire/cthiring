@@ -44,8 +44,18 @@
 														<table class="table table-bordered dataTable" align="centre">
 				<tbody> 
 				
+					
 				<tr class="tbl_row" >
-					<td width="150" class="tbl_column">Candidate Name
+					<td width="120" class="tbl_column">Client  
+					</td>
+						<td>
+						<?php echo $this->Form->input('client_name', array('div'=> false,'type' => 'text', 'label' => false, 'class' => 'span8', 'readonly' => 'readonly', 'value' => $this->request->query['client_name'],   'required' => false, 'placeholder' => '')); ?> 					
+						</td>	
+				</tr>
+				
+				
+				<tr class="tbl_row" >
+					<td width="150" class="tbl_column">Candidate(s)
 					</td>
 						<td>
 						<?php echo $this->Form->input('candidate', array('div'=> false,'type' => 'text', 'label' => false, 'class' => 'span8', 'readonly' => 'readonly', 'value' => $candidate_name,   'required' => false, 'placeholder' => '')); ?> 					

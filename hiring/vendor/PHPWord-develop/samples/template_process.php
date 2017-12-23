@@ -26,12 +26,27 @@ $templateProcessor->setValue('CURRENT_DATE', date('d-M-Y'),  1,0);
 $templateProcessor->setValue('DESIGNATION', ucwords($position_autoresume),  1,0); 
 // to retain candidate address field 
 $templateProcessor->setValue('CANDIDATE_ADDRESS', ucwords($_POST['address']),  1,0);  
+
+// for hiding the contacts
+if($hide_contact == '1'){
+	$telephone_item = '**********';
+	$mobile_item = '**********';
+	$mail_item = '**********';
+}else{
+	$telephone_item = $_POST['telephone'];
+	$mobile_item = $_POST['mobile'];
+	$mail_item = $_POST['email'];
+}
+
 // to retain candidate phone number field   
-$templateProcessor->setValue('CANDIDATE_PHONE', $_POST['telephone'],  1,0);    
+$templateProcessor->setValue('CANDIDATE_PHONE', $telephone_item,  1,0);   
 // to retain candidate mobile number field 
-$templateProcessor->setValue('CANDIDATE_MOBILE', $_POST['mobile'],  1,0); 
+$templateProcessor->setValue('CANDIDATE_MOBILE', $mobile_item,  1,0); 
 // to retain candidate email id field    
-$templateProcessor->setValue('CANDIDATE_EMAIL', $_POST['email'],  1,0);    
+$templateProcessor->setValue('CANDIDATE_EMAIL', $mail_item,  1,0);   
+
+
+ 
 // to retain candidate dob field    
 	$date_format = $fun->convert_date($_POST['dob_field']);
 	// $date_day = explode('-', );

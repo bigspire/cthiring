@@ -755,7 +755,7 @@
 										$resume['ReqResume']['status_title'] == 'Validated'  && $this->Session->read('USER.Login.roles_id') == '34'  && in_array($this->Session->read('USER.Login.id'), $ac_member)):
 										$multi_send_cv = '1';?>
 															
-					<span rel="tooltip" style="cursor:pointer" data-original-title="Send CV"><a href="<?php echo $this->webroot;?>position/send_cv/<?php echo $resume['Resume']['id']; ?>/<?php echo $this->request->params['pass'][0];?>/<?php echo $resume['ReqResume']['id']; ?>/?client_name=<?php echo $position_data['Client']['client_name'];?> <<?php echo ucwords($position_data['Contact']['first_name'].' '.$position_data['Contact']['last_name']);?>> <<?php echo $position_data['Contact']['email'];?>>" val="65_90"  class="iframeBox"><i class="splashy-arrow_medium_upper_right"></i></a></span>
+					<span rel="tooltip" style="cursor:pointer" data-original-title="Send CV"><a href="<?php echo $this->webroot;?>position/send_cv/<?php echo $resume['Resume']['id']; ?>/<?php echo $this->request->params['pass'][0];?>/<?php echo $resume['ReqResume']['id']; ?>/?client_name=<?php echo $position_data['Client']['client_name'];?> <<?php echo ucwords($position_data['Contact']['first_name'].' '.$position_data['Contact']['last_name']);?>> <<?php echo $position_data['Contact']['email'];?>>" val="65_94"  class="iframeBox"><i class="splashy-arrow_medium_upper_right"></i></a></span>
 																
 										<?php elseif($resume['ReqResume']['stage_title'] == 'Validation - Account Holder' &&
 										$resume['ReqResume']['status_title'] == 'Pending'  && $this->Session->read('USER.Login.roles_id') == '34'  && in_array($this->Session->read('USER.Login.id'), $ac_member)):?>
@@ -934,14 +934,14 @@
 										
 										<ul class="dropdown-menu">
 										<?php if($resume['ReqResume']['status_title'] == 'Shortlisted' || $resume['ReqResume']['status_title'] == 'Selected' || $resume['ReqResume']['status_title'] == 'Cancelled' || $resume['ReqResume']['status_title'] == 'No Show'):?>
-										<li><a  href="<?php echo $this->webroot;?>position/schedule_interview/<?php echo  $resume['Resume']['id'];?>/<?php echo $this->request->params['pass'][0];?>/<?php echo $resume['ReqResume']['id'];?>/<?php echo $int_lev;?>/" val="65_90"  class="iframeBox sepV_a cboxElement">Schedule Interview</a></li>
+										<li><a  href="<?php echo $this->webroot;?>position/schedule_interview/<?php echo  $resume['Resume']['id'];?>/<?php echo $this->request->params['pass'][0];?>/<?php echo $resume['ReqResume']['id'];?>/<?php echo $int_lev;?>/?client_name=<?php echo $position_data['Client']['client_name'];?> <<?php echo ucwords($position_data['Contact']['first_name'].' '.$position_data['Contact']['last_name']);?>> <<?php echo $position_data['Contact']['email'];?>>" val="65_94"  class="iframeBox sepV_a cboxElement">Schedule Interview</a></li>
 
 										<?php elseif($int_lev_same > 0 || $int_level_same == 'F'): ?>
 										<li><a  href="<?php echo $this->webroot;?>position/view_interview_schedule/<?php echo  $resume['ReqResume']['id'];?>/<?php echo $int_lev_same;?>/" val="65_90"  class="iframeBox sepV_a cboxElement">View Interview Details</a></li>
 										<?php endif; ?>
 										
 										<?php if($resume['ReqResume']['status_title'] == 'Scheduled'): $reschedule = '1';?>										
-										<li><a  href="<?php echo $this->webroot;?>position/schedule_interview/<?php echo  $resume['Resume']['id'];?>/<?php echo $this->request->params['pass'][0];?>/<?php echo $resume['ReqResume']['id'];?>/<?php echo $int_lev_same == 'Final' ? '5' : $int_lev_same;?>/reschedule/" val="65_90"  class="iframeBox sepV_a cboxElement">Re-Schedule Interview</a></li>
+										<li><a  href="<?php echo $this->webroot;?>position/schedule_interview/<?php echo  $resume['Resume']['id'];?>/<?php echo $this->request->params['pass'][0];?>/<?php echo $resume['ReqResume']['id'];?>/<?php echo $int_lev_same == 'Final' ? '5' : $int_lev_same;?>/reschedule/?client_name=<?php echo $position_data['Client']['client_name'];?> <<?php echo ucwords($position_data['Contact']['first_name'].' '.$position_data['Contact']['last_name']);?>> <<?php echo $position_data['Contact']['email'];?>>" val="65_94"  class="iframeBox sepV_a cboxElement">Re-Schedule Interview</a></li>
 										
 										<li class="divider"></li>
 										
