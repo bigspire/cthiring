@@ -41,7 +41,7 @@ preg_match_all("#(\d{12}|\d{11}|\d{10})#", $string, $found);
 foreach($found as $key => $phone_number) {
 	  if(strlen($phone_number[$key]) >= 10){ 
 		$mobile = $phone_number[$key];
-		// break;
+		break;
 	  };
 	  // save for hiding contacts
 	  $phone_nos = $phone_number;
@@ -62,9 +62,9 @@ foreach($string as $mail){
 	
 // extract the candidate name
 foreach($string as $name_key => $name){
-	$name = trim($name);
-	if($name != 'Name' && $name != 'Name:' && $name != 'vitae' && $name != 'CURRICULUM' && $name != 'Curriculum' && $name != 'Curriculam' && $name != 'Vitae' && $name != 'VITAE' && $name != 'RESUME' && $name != ''
-		&& $name != 'Mailing' && $name != 'Address' && $name != ':' && $name != '' && !is_numeric($name)){
+	$name = trim(strtolower($name));
+	if($name != 'name' && $name != 'name:' && $name != 'vitae' && $name != 'curriculam' && $name != 'curriculum' && $name != 'vitae' && $name != 'RESUME' && $name != ''
+		&& $name != 'mailing' && $name != 'address' && $name != ':' && $name != '' && !is_numeric($name)){
 			break;
 	}else{
 		continue;
