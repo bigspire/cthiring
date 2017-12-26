@@ -3,7 +3,7 @@ require 'vendor/phpmailer/PHPMailerAutoload.php';
 
 class phpMail{
 
-	function send_mail($sub,$msg,$from,$from_email,$recipient, $recipient_email){
+	function send_mail($sub,$msg,$from,$from_email,$recipient, $recipient_email,$file){
 		$mail = new PHPMailer;
 
 		//$mail->SMTPDebug = 3;                               // Enable verbose debug output
@@ -16,7 +16,9 @@ class phpMail{
 		$mail->Password = 'bigspire1230';                           // SMTP password
 		// $mail->SMTPSecure = 'ssl';                            // Enable TLS encryption, `ssl` also accepted
 		$mail->Port = 465;                                    // TCP port to connect to
-		
+		$file_to_attach = $file;
+
+		$mail->AddAttachment( $file_to_attach , 'Candidate Resume' );
 		$mail->SMTPOptions = array(
 			'ssl' => array(
 				'verify_peer' => false,
@@ -42,11 +44,11 @@ class phpMail{
 		// $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
 		if(!$mail->send()){
-			echo 'Message could not be sent.';
-			echo 'Mailer Error: ' . $mail->ErrorInfo;
+			// echo 'Message could not be sent.';
+			// echo 'Mailer Error: ' . $mail->ErrorInfo;
 		} else {
-			 echo 'Message has been sent';
+			 //echo 'Message has been sent';
 		}
-	}
+	} 
 }
 $mailer = new phpMail();
