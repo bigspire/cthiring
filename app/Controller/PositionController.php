@@ -1430,7 +1430,7 @@ class PositionController extends AppController {
 				$contact_data['Contact']['email'] = 'testing7@bigspire.com'; // for testing
 				$vars = array('from_name' => $from, 'to_name' => ucwords($to_name), 'position' => $this->request->data['Position']['job_title'],'msg'=> $message, 'location' => $this->request->data['Position']['location']);
 				// save the mail box
-				$this->save_mail_box($subject, $message, $req_res_id);
+				$this->save_mail_box($subject, $message, $req_res_id, 'C');
 				if(!$this->send_email($subject, 'send_cv', $this->Session->read('USER.Login.email_id'), $contact_data['Contact']['email'],$vars,$resume_path)){	
 					// show the msg.								
 					$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Problem in sending the mail to client...', 'default', array('class' => 'alert alert-error'));				
@@ -1448,11 +1448,11 @@ class PositionController extends AppController {
 
 
 	/* function to save the mail box */
-	public function save_mail_box($sub, $msg, $req_res_id){
+	public function save_mail_box($sub, $msg, $req_res_id,$type){
 		$this->loadModel('MailBox');
 		$this->MailBox->id = '';
 		$data = array('created_date' => $this->Functions->get_current_date(),
-		'created_by' => $this->Session->read('USER.Login.id'), 'req_resume_id' => $req_res_id, 'subject' => $sub, 'message' => $msg);
+		'created_by' => $this->Session->read('USER.Login.id'), 'req_resume_id' => $req_res_id, 'subject' => $sub, 'message' => $msg, 'mail_type' => $type);
 		// save  mail box resume
 		if($this->MailBox->save($data, array('validate' => false))){
 			
@@ -2318,7 +2318,7 @@ class PositionController extends AppController {
 								$resume_data['Resume']['email_id'] = 'testing7@bigspire.com'; // for testing
 								$vars = array('from_name' => $from, 'to_name' => ucwords($to_name), 'msg'=> $message);
 								// save the mail box
-								$this->save_mail_box($subject, $message, $req_res_id);
+								$this->save_mail_box($subject, $message, $req_res_id, 'R');
 								// send mail
 								if(!$this->send_email($subject, 'send_interview', $this->Session->read('USER.Login.email_id'), $resume_data['Resume']['email_id'], $vars)){	
 									// show the msg.								
@@ -2383,7 +2383,7 @@ class PositionController extends AppController {
 					$contact_data['Contact']['email'] = 'testing7@bigspire.com'; // for testing
 					$vars = array('from_name' => $from, 'to_name' => ucwords($to_name),'msg'=> $message);
 					// save the mail box
-					$this->save_mail_box($subject, $message, $req_res_id);
+					$this->save_mail_box($subject, $message, $req_res_id, 'C');
 					
 					// send mail
 					if(!$this->send_email($subject, 'confirm_interview', $this->Session->read('USER.Login.email_id'), $contact_data['Contact']['email'], $vars)){	
