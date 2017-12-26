@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-11-06 16:24:03
+/* Smarty version 3.1.29, created on 2017-12-26 12:59:13
   from "C:\xampp\htdocs\ctsvn\cthiring\hiring\templates\mailer_template.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5a003f4b0f6174_83389369',
+  'unifunc' => 'content_5a41fa49b34fb1_49058173',
   'file_dependency' => 
   array (
     'dc854153faffc98c44c345c128be3b590687a290' => 
     array (
       0 => 'C:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\templates\\mailer_template.tpl',
-      1 => 1509379758,
+      1 => 1514273261,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5a003f4b0f6174_83389369 ($_smarty_tpl) {
+function content_5a41fa49b34fb1_49058173 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -120,6 +120,8 @@ home"><i class="icon-home"></i></a>
 									</tr>	
 									
 									<tr class="tbl_row">
+									
+									
 										<td width="120" class="tbl_column">Message <span class="f_req">*</span></td>										
 										<td><textarea name="message"  tabindex="8" id="message" cols="10" rows="12" class="span10 wysiwyg"><?php if ($_smarty_tpl->tpl_vars['smart']->value['post']['message']) {
 echo nl2br($_smarty_tpl->tpl_vars['smart']->value['post']['message']);
@@ -129,7 +131,9 @@ echo nl2br($_smarty_tpl->tpl_vars['message']->value);
 										<br>
 										<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['messageErr']->value;?>
 </label>
+										<div style="width:95%">
 										<h3>Tags</h3>
+										
 										<?php
 $_from = $_smarty_tpl->tpl_vars['data']->value;
 if (!is_array($_from) && !is_object($_from)) {
@@ -144,10 +148,12 @@ foreach ($_from as $_smarty_tpl->tpl_vars['key']->value => $_smarty_tpl->tpl_var
 $_smarty_tpl->tpl_vars['item']->_loop = true;
 $__foreach_item_0_saved_local_item = $_smarty_tpl->tpl_vars['item'];
 ?>
-										<a href="javascript:void(0)"  rel="<?php echo $_smarty_tpl->tpl_vars['item']->value['tag'];?>
-" rel="tooltip"  style="margin-top:8px" class="btn tag_name btn-mini btn-info" title="<?php echo $_smarty_tpl->tpl_vars['item']->value['tag_desc'];?>
+										<div style="float:left;width:160px;text-align:left;">
+										<a href="javascript:void(0)"  data-trigger="click" data-toggle="popover"  title="Copied!" data-placement="bottom" data-clipboard-text="<?php echo $_smarty_tpl->tpl_vars['item']->value['tag'];?>
+"   style="margin-top:8px" class="btn tag_name btn-mini btn-info copy_btn" data-content="<?php echo $_smarty_tpl->tpl_vars['item']->value['tag_desc'];?>
 "><?php echo $_smarty_tpl->tpl_vars['item']->value['tag_name'];?>
 </a>
+										</div>
 										<?php
 $_smarty_tpl->tpl_vars['item'] = $__foreach_item_0_saved_local_item;
 }
@@ -158,7 +164,7 @@ if ($__foreach_item_0_saved_key) {
 $_smarty_tpl->tpl_vars['key'] = $__foreach_item_0_saved_key;
 }
 ?>
-										
+										</div>
 										</td>		
 										<td>
 										

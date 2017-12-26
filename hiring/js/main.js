@@ -1,7 +1,7 @@
 $(document).ready(function() {
 		
     $(".tag_name").click(function(){
-        $("p").append($(this).attr('rel'));
+        // InsertText($(this).attr('rel'));
     });
 
 	/* function to redirect according to drop down */   
@@ -15,6 +15,21 @@ $(document).ready(function() {
 			buttonWidth: '400px',
 			height:220}); 
 	}
+	
+	/* function to copy the text */
+	if($('.copy_btn').length > 0){
+		
+		var clipboard = new Clipboard('.copy_btn');
+		clipboard.on('success', function(e) {
+			// console.log(e);			
+		});
+		clipboard.on('error', function(e) {
+			// console.log(e);
+		});		
+	}
+	
+	$('[data-toggle="popover"]').popover(); 
+
 		
 	/* for multi select options */
 	if($(".chosen-select").length > 0){
@@ -1606,5 +1621,38 @@ function check_in_out(){
 	}).on('changeDate', function(ev) {
 	  checkout.hide();
 	}).data('datepicker');
+}
+*/
+
+/* functions to identify the curssor position inside the div 
+function getCaret(el){
+    if (el.selectionStart) {
+        return el.selectionStart;
+    } else if (document.selection){
+        el.focus();
+
+        var r = document.selection.createRange();
+        if (r == null) {
+            return 0;
+        }
+
+        var re = el.createTextRange(),
+            rc = re.duplicate();
+        re.moveToBookmark(r.getBookmark());
+        rc.setEndPoint('EndToStart', re);
+
+        return rc.text.length;
+    }
+    return 0;
+}
+
+function InsertText(val){
+    var textarea = document.getElementById('message');
+    var currentPos = getCaret(textarea);
+    var strLeft = textarea.value.substring(0, currentPos);
+    var strMiddle = val;
+    var strRight = textarea.value.substring(currentPos, textarea.value.length);
+	alert(strLeft + strMiddle + strRight);
+    textarea.value = strLeft + strMiddle + strRight;
 }
 */

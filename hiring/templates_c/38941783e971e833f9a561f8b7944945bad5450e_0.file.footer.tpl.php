@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-12-09 12:45:20
+/* Smarty version 3.1.29, created on 2017-12-26 11:26:48
   from "C:\xampp\htdocs\ctsvn\cthiring\hiring\templates\include\footer.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5a2b8d88bd9cb8_10247385',
+  'unifunc' => 'content_5a41e4a021b180_26669993',
   'file_dependency' => 
   array (
     '38941783e971e833f9a561f8b7944945bad5450e' => 
     array (
       0 => 'C:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\templates\\include\\footer.tpl',
-      1 => 1512803416,
+      1 => 1514267804,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_5a2b8d88bd9cb8_10247385 ($_smarty_tpl) {
+function content_5a41e4a021b180_26669993 ($_smarty_tpl) {
 ?>
 <div id="footer">
 
@@ -154,6 +154,9 @@ home/add_feedback">Report a Bug</a> </span>
  src="lib_cthiring/jBreadcrumbs/js/jquery.jBreadCrumb.1.1.min.js"><?php echo '</script'; ?>
 >
 <!-- datatable --> 
+<?php echo '<script'; ?>
+ src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js"><?php echo '</script'; ?>
+>
 
 <?php echo '<script'; ?>
  src="vendor/node_modules/bootstrap-rating/bootstrap-rating.min.js"><?php echo '</script'; ?>
