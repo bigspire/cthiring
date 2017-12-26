@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-12-26 13:02:56
+/* Smarty version 3.1.29, created on 2017-12-26 16:34:36
   from "C:\xampp\htdocs\2017\ctsvn\cthiring\hiring\templates\view_mailbox.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5a41fb28ee9527_51830847',
+  'unifunc' => 'content_5a422cc4d005e8_76748033',
   'file_dependency' => 
   array (
     'a32dce6196d7cbc5b2b28bb8c7a10b804b0e6778' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\templates\\view_mailbox.tpl',
-      1 => 1514273574,
+      1 => 1514286272,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5a41fb28ee9527_51830847 ($_smarty_tpl) {
+function content_5a422cc4d005e8_76748033 ($_smarty_tpl) {
 ?>
 
    
@@ -75,7 +75,7 @@ home"><i class="icon-home"></i></a>
 echo ucwords($_smarty_tpl->tpl_vars['data']->value['candidate_name']);?>
  (<?php echo $_smarty_tpl->tpl_vars['data']->value['email_id'];?>
 )<?php } else {
-echo $_smarty_tpl->tpl_vars['data']->value['client_name'];?>
+echo $_smarty_tpl->tpl_vars['data']->value['client_con_name'];?>
  (<?php echo $_smarty_tpl->tpl_vars['data']->value['email'];?>
 )<?php }?> </td>
 									</tr>
@@ -120,7 +120,7 @@ echo $_smarty_tpl->tpl_vars['data']->value['client_name'];?>
 					</div>
 					</div>
 						<div class="form-actions">
-								<input name="submit" class="btn btn-gebo theForm" value="Re-Send" type="submit"/>
+								<input name="submit" class="btn btn-gebo theForm" value="Resend" type="submit"/>
 								<a href="mailbox.php" class="jsRedirect cancelBtn"><input type="button" value="Back" class="btn">
 						</div>
 

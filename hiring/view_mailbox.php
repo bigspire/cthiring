@@ -80,13 +80,52 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 	}
 	
 	if($obj['email'] != ''){
+		/*
+		$filebroken = explode( '.', $obj['resume']);
+		$extension = array_pop($filebroken);
+		$file = implode('.', $filebroken); */
+		
+		$output = substr($obj['resume'], 0, strlen($obj['resume'])-5);
+		$file = str_replace('_', '', $output);
+		
+		if($obj['resume_type'] == 'S'){
+			if($obj['modified_date'] != '0000-00-00 00:00:00' && $obj['modified_date'] != ''){
+				   $resume_type =  "uploads/snapshotwatermarked/".$file.'_'.$fun->convert_date_type_display($obj['modified_date']).'.pdf';
+			}else{
+				   $resume_type =  "uploads/snapshotwatermarked/".$file.'_'.$fun->convert_date_type_display($obj['created_date']).'.pdf';
+			}
+		}else if($obj['resume_type'] == 'F'){
+			if($obj['modified_date'] != '0000-00-00 00:00:00' && $obj['modified_date'] != ''){
+				   $resume_type =  "uploads/autoresumepdf/".$file.'_'.$fun->convert_date_type_display($obj['modified_date']).'.pdf';
+			}else{
+				  $resume_type =  "uploads/autoresumepdf/".$file.'_'.$fun->convert_date_type_display($obj['created_date']).'.pdf';
+			}
+		}
+		
 		// send mail to client					
 		$msg = $content->send_mail_to_client($obj,$emp_name);
-		$file = "C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\uploads\\resume\\".$obj['resume'];
-		$mailer->send_mail($obj['subject'],$msg,$emp_name,$emp_email_id,$obj['client_name'],$obj['email'],$file);	
-		$success = '1';
+		$mailer->send_mail_to_client($obj['subject'],$msg,$emp_name,$emp_email_id,$obj['client_name'],$obj['email'],$resume_type,$file);	
+		
+		// assigning the date
+		$date =  $fun->current_date();
+		// query to insert mailbox. 
+		$query = "CALL add_mailbox('".$obj['subject']."','".$obj['message']."','".$date."','".$_SESSION['user_id']."',
+		'".$obj['mail_type']."','".$obj['req_resume_id']."')";
+		// Calling the function that makes the insert
+		try{
+			// calling mysql exe_query function
+			if(!$result = $mysql->execute_query($query)){
+				throw new Exception('Problem in executing add mailbox');
+			}
+			$row = $mysql->display_result($result);
+			$last_id = $row['inserted_id'];
+			// free the memory
+			$mysql->clear_result($result);
+		}catch(Exception $e){
+			echo 'Caught exception: ',  $e->getMessage(), "\n";
+		}
 	}
-	if($success == '1'){
+	if(!empty($last_id)){
 		$smarty->assign('EXIST_MSG' , 'Mail Sent Successfully.');
 	}
 }

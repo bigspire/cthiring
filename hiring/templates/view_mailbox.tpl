@@ -43,7 +43,7 @@
 								<tbody>
 									<tr>
 										<td width="120" class="tbl_column">To </td>
-										<td>{if $data.mail_type == 'R'}{ucwords($data.candidate_name)} ({$data.email_id}){else}{$data.client_name} ({$data.email}){/if} </td>
+										<td>{if $data.mail_type == 'R'}{ucwords($data.candidate_name)} ({$data.email_id}){else}{$data.client_con_name} ({$data.email}){/if} </td>
 									</tr>
 									
 									<tr>
@@ -81,7 +81,7 @@
 					</div>
 					</div>
 						<div class="form-actions">
-								<input name="submit" class="btn btn-gebo theForm" value="Re-Send" type="submit"/>
+								<input name="submit" class="btn btn-gebo theForm" value="Resend" type="submit"/>
 								<a href="mailbox.php" class="jsRedirect cancelBtn"><input type="button" value="Back" class="btn">
 						</div>
 
