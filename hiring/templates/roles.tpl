@@ -91,7 +91,7 @@
 										<td>{$item.modified_date}</td>
 										<td class="actionItem" style="text-align:center">
 										<a href="edit_role.php?id={$item.id}" class="btn  btn-mini"   rel="tooltip" class="sepV_a" title="Edit"><i class="icon-pencil"></i></a>
-										<a id="{$item.id}" href="javascript:void(0)" rel="tooltip" class="btn Confirm btn-mini"  title="Delete"><i class="icon-trash"></i></a>
+										<!-- a id="{$item.id}" href="javascript:void(0)" rel="tooltip" class="btn Confirm btn-mini"  title="Delete"><i class="icon-trash"></i></a-->
 										</td>	</tr>
 								{/foreach}				
 								</tbody>
