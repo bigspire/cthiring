@@ -28,7 +28,7 @@
 					{if $EXIST_MSG}
 				 <div id="flashMessage" class="alert alert-success"><button type="button" class="close" data-dismiss="alert">×</button>{$EXIST_MSG}</div>					
 				{/if}
-		<form action="view_mailbox.php?id={$smarty.get.id}" class="formID" id="formID" method="post" enctype="multipart/form-data" accept-charset="utf-8">
+		<form action="view_mailbox.php?id={$smarty.get.id}" name="formID" class="formID" id="formID" method="post" enctype="multipart/form-data" accept-charset="utf-8">
 					
 		<div class="box">
 		<div class="row-fluid">
@@ -81,7 +81,7 @@
 					</div>
 					</div>
 						<div class="form-actions">
-								<input name="submit" class="btn btn-gebo theForm" value="Resend" type="submit"/>
+								<input name="resend" id="resend" class="btn btn-gebo confirm_btn" value="Resend" type="submit"/>
 								<a href="mailbox.php" class="jsRedirect cancelBtn"><input type="button" value="Back" class="btn">
 						</div>
 
@@ -94,20 +94,6 @@
 </div>
 </div>
 			
-{literal}
-<script type="text/javascript">
-$(document).ready(function(){
-		/* when the form submitted */
-	$('.formID').submit(function(){ 		
-		// Disable the 'Next' button to prevent multiple clicks		
-		$('input[type=submit]', this).attr('value', 'Processing...');		
-		$('input[type=submit]', this).attr('disabled', 'disabled');
-		// hide cancel button
-		$('button[type=button]', this).hide();
-		$('.cancelBtn').hide();
-	});
-});
-</script>	
-{/literal}
+
 
 {include file='include/footer.tpl'}

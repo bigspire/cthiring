@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-12-26 16:34:36
+/* Smarty version 3.1.29, created on 2017-12-26 17:41:14
   from "C:\xampp\htdocs\2017\ctsvn\cthiring\hiring\templates\view_mailbox.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5a422cc4d005e8_76748033',
+  'unifunc' => 'content_5a423c6228b273_52573718',
   'file_dependency' => 
   array (
     'a32dce6196d7cbc5b2b28bb8c7a10b804b0e6778' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\templates\\view_mailbox.tpl',
-      1 => 1514286272,
+      1 => 1514290272,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5a422cc4d005e8_76748033 ($_smarty_tpl) {
+function content_5a423c6228b273_52573718 ($_smarty_tpl) {
 ?>
 
    
@@ -56,7 +56,7 @@ home"><i class="icon-home"></i></a>
 </div>					
 				<?php }?>
 		<form action="view_mailbox.php?id=<?php echo $_GET['id'];?>
-" class="formID" id="formID" method="post" enctype="multipart/form-data" accept-charset="utf-8">
+" name="formID" class="formID" id="formID" method="post" enctype="multipart/form-data" accept-charset="utf-8">
 					
 		<div class="box">
 		<div class="row-fluid">
@@ -120,7 +120,7 @@ echo $_smarty_tpl->tpl_vars['data']->value['client_con_name'];?>
 					</div>
 					</div>
 						<div class="form-actions">
-								<input name="submit" class="btn btn-gebo theForm" value="Resend" type="submit"/>
+								<input name="resend" id="resend" class="btn btn-gebo confirm_btn" value="Resend" type="submit"/>
 								<a href="mailbox.php" class="jsRedirect cancelBtn"><input type="button" value="Back" class="btn">
 						</div>
 
@@ -133,22 +133,6 @@ echo $_smarty_tpl->tpl_vars['data']->value['client_con_name'];?>
 </div>
 </div>
 			
-
-<?php echo '<script'; ?>
- type="text/javascript">
-$(document).ready(function(){
-		/* when the form submitted */
-	$('.formID').submit(function(){ 		
-		// Disable the 'Next' button to prevent multiple clicks		
-		$('input[type=submit]', this).attr('value', 'Processing...');		
-		$('input[type=submit]', this).attr('disabled', 'disabled');
-		// hide cancel button
-		$('button[type=button]', this).hide();
-		$('.cancelBtn').hide();
-	});
-});
-<?php echo '</script'; ?>
->	
 
 
 <?php $_smarty_tpl->smarty->ext->_subtemplate->render($_smarty_tpl, "file:include/footer.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);

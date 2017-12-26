@@ -180,6 +180,19 @@ $(document).ready(function() {
 					cancel: "No"
 				});
 	});		
+	
+	/* function to show the alert message for single record delete */   
+	$(".confirm_btn").click( function(s) {								
+		s.preventDefault();
+		jConfirm('Are you sure you want to process?', 'Confirmation!', function(r) {
+			if(r){
+				$("#formID").submit();	
+			}else{
+				return false;	
+			}
+		});
+	});
+	
 		
 	$( "#clickme" ).click(function() {
 	  $( ".extraHome" ).slideToggle( 600, function() {
