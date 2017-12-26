@@ -84,15 +84,21 @@
 									</tr>	
 									
 									<tr class="tbl_row">
+									
+									
 										<td width="120" class="tbl_column">Message <span class="f_req">*</span></td>										
 										<td><textarea name="message"  tabindex="8" id="message" cols="10" rows="12" class="span10 wysiwyg">{if $smart.post.message}{$smart.post.message|nl2br}{else}{$message|nl2br}{/if}</textarea>
 										<br>
 										<label for="reg_city" generated="true" class="error">{$messageErr}</label>
+										<div style="width:95%">
 										<h3>Tags</h3>
-										{foreach from=$data item=item key=key}
-										<a href="javascript:void(0)"  rel="{$item.tag}" rel="tooltip"  style="margin-top:8px" class="btn tag_name btn-mini btn-info" title="{$item.tag_desc}">{$item.tag_name}</a>
-										{/foreach}
 										
+										{foreach from=$data item=item key=key}
+										<div style="float:left;width:160px;text-align:left;">
+										<a href="javascript:void(0)"  data-trigger="click" data-toggle="popover"  title="Copied!" data-placement="bottom" data-clipboard-text="{$item.tag}"   style="margin-top:8px" class="btn tag_name btn-mini btn-info copy_btn" data-content="{$item.tag_desc}">{$item.tag_name}</a>
+										</div>
+										{/foreach}
+										</div>
 										</td>		
 										<td>
 										

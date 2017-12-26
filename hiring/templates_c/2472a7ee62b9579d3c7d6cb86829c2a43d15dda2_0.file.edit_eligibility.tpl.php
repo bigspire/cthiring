@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-12-03 15:25:35
+/* Smarty version 3.1.29, created on 2017-12-26 13:19:43
   from "C:\xampp\htdocs\ctsvn\cthiring\hiring\templates\edit_eligibility.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5a23ca17072f36_41179136',
+  'unifunc' => 'content_5a41ff170ac098_20102070',
   'file_dependency' => 
   array (
     '2472a7ee62b9579d3c7d6cb86829c2a43d15dda2' => 
     array (
       0 => 'C:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\templates\\edit_eligibility.tpl',
-      1 => 1504005552,
+      1 => 1513246468,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5a23ca17072f36_41179136 ($_smarty_tpl) {
+function content_5a41ff170ac098_20102070 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -67,9 +67,9 @@ home"><i class="icon-home"></i></a>
 			<table class="table table-bordered dataTable" style="margin-bottom:0;">
 				<tbody>
 						<tr class="tbl_row">
-							<td width="120" class="tbl_column">Period Type <span class="f_req">*</span></td>
+							<td width="120" class="tbl_column change_amount_type">Period Type <span class="f_req">*</span></td>
 							<td>										
-							<select name="period"  tabindex="3" class="span8">
+							<select name="period"  tabindex="3" class="span8 change_amount_type">
 							<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['period_type']->value,'selected'=>$_smarty_tpl->tpl_vars['period']->value),$_smarty_tpl);?>
 			    			
 							</select>
@@ -106,15 +106,30 @@ home"><i class="icon-home"></i></a>
  </label>									
 							</td>	
 						</tr>
+						
+						<?php if ($_smarty_tpl->tpl_vars['amount']->value != '0' || $_POST['period'] == 'D' || $_POST['period'] == 'PS') {?>
 						<tr>
-							<td width="120" class="tbl_column">Amount (INR) <span class="f_req">*</span></td>
-							<td>										
+							<td width="120" class="tbl_column amount_Validity">Amount (INR) <span class="f_req">*</span></td>
+							<td class = "amount_Validity">										
 								<input type="text" tabindex="4" name="amount" value="<?php echo $_smarty_tpl->tpl_vars['amount']->value;?>
-" class="span8">
-								<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['amountErr']->value;?>
+" class="span8 amount_Validity">
+								<label for="reg_city" generated="true" class="error amount_Validity"><?php echo $_smarty_tpl->tpl_vars['amountErr']->value;?>
  </label>									
 							</td>	
-						</tr>						
+						</tr>	
+						<?php }?>		
+
+						<?php if ($_POST['period'] == 'D' || $_POST['period'] == 'PS') {?>
+						<tr>
+							<td width="120" class="tbl_column amount_Vali">Amount (INR) <span class="f_req">*</span></td>
+							<td class = "amount_Vali">										
+								<input type="text" tabindex="4" name="amount" value="<?php echo $_smarty_tpl->tpl_vars['amount']->value;?>
+" class="span8 amount_Vali">
+								<label for="reg_city" generated="true" class="error amount_Vali"><?php echo $_smarty_tpl->tpl_vars['amountErr']->value;?>
+ </label>									
+							</td>
+						</tr>	
+						<?php }?>	
 				</tbody>
 			</table>
 		</div>
@@ -136,7 +151,7 @@ home"><i class="icon-home"></i></a>
 					<tr>
 							<td width="120" class="tbl_column">Type <span class="f_req">*</span></td>
 							<td>										
-							<select name="type" id="type" tabindex="3" class="span8">
+							<select name="type" id="type" tabindex="3" class="span8 change_amount_type">
 							<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['types']->value,'selected'=>$_smarty_tpl->tpl_vars['type']->value),$_smarty_tpl);?>
 			    			
 							</select>
@@ -149,10 +164,8 @@ home"><i class="icon-home"></i></a>
 						<td width="120" class="tbl_column">Status <span class="f_req">*</span></td>
 						<td>	
 						<select name=status id="status" tabindex="5" class="span8">
-							
-								<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['grade_status']->value,'selected'=>$_smarty_tpl->tpl_vars['status']->value),$_smarty_tpl);?>
+							<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['grade_status']->value,'selected'=>$_smarty_tpl->tpl_vars['status']->value),$_smarty_tpl);?>
 		
-							
 						</select>
 							<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['statusErr']->value;?>
 </label>											
@@ -183,5 +196,105 @@ home"><i class="icon-home"></i></a>
  </div>
 </div>		
 <?php $_smarty_tpl->smarty->ext->_subtemplate->render($_smarty_tpl, "file:include/footer.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
-}
+?>
+
+
+
+<?php echo '<script'; ?>
+ type="text/javascript">
+/*
+$(document).ready(function(){
+	// function to change the amount
+	$('.change_amount_type').change(function(){ 
+		if($(this).val() == 'PS'){
+			$('.amount_Validity').hide();
+		}else if($(this).val()  == 'M' && $(this).val() == 'PS'){
+			$('.amount_Validity').hide();
+		}else if($(this).val()  == 'H' && $(this).val() == 'PS'){
+			$('.amount_Validity').hide();
+		}else if($(this).val()  == 'M'){
+			$('.amount_Validity').hide();
+		}else if($(this).val()  == 'H'){
+			$('.amount_Validity').hide();
+		}else{
+			$('.amount_Validity').show();
+		}
+	});
+	
+	if($('.change_amount_type').length > 0){
+		if($('.change_amount_type:selected').val() == 'PS'){
+			$('.amount_Validity').hide();
+		}else if($('.change_amount_type:selected').val() == 'M'){
+			$('.amount_Validity').hide();
+		}else if($('.change_amount_type:selected').val() == 'H'){
+			$('.amount_Validity').hide();
+		}else if(($('.change_amount_type:selected').val() == 'M') && ($('.change_amount_type:selected').val() == 'PS')){
+			$('.amount_Validity').hide();
+		}else if(($('.change_amount_type:selected').val() == 'H') && ($('.change_amount_type:selected').val() == 'PS')){
+			$('.amount_Validity').hide();
+		}else{
+			$('.amount_Validity').show();
+		}
+	}
+
+	// function to change the amount
+	$('.change_amount_type').change(function(){ 
+		if($(this).val() == 'PS'){
+			$('.amount_Vali').hide();
+		}else if($(this).val()  == 'M' && $(this).val() == 'PS'){
+			$('.amount_Vali').hide();
+		}else if($(this).val()  == 'H' && $(this).val() == 'PS'){
+			$('.amount_Vali').hide();
+		}else if($(this).val()  == 'M'){
+			$('.amount_Vali').hide();
+		}else if($(this).val()  == 'H'){
+			$('.amount_Vali').hide();
+		}else{
+			$('.amount_Vali').show();
+		}
+	});
+	
+	if($('.change_amount_type').length > 0){
+		if($('.change_amount_type:selected').val() == 'PS'){
+			$('.amount_Vali').hide();
+		}else if($('.change_amount_type:selected').val() == 'M'){
+			$('.amount_Vali').hide();
+		}else if($('.change_amount_type:selected').val() == 'H'){
+			$('.amount_Vali').hide();
+		}else if(($('.change_amount_type:selected').val() == 'M') && ($('.change_amount_type:selected').val() == 'PS')){
+			$('.amount_Vali').hide();
+		}else if(($('.change_amount_type:selected').val() == 'H') && ($('.change_amount_type:selected').val() == 'PS')){
+			$('.amount_Vali').hide();
+		}else{
+			$('.amount_Vali').show();
+		}
+	}
+	
+	/*
+	// function to change the amount
+	$('.change_periodType_amount_type').change(function(){ 
+		if($(this).val() == 'M'){
+			$('.amount_Validity').hide();
+		}else if($(this).val() == 'H'){
+			$('.amount_Validity').hide();
+		}else{
+			$('.amount_Validity').show();
+		}
+	});
+	
+	if($('.change_periodType_amount_type').length > 0){
+		if($('.change_periodType_amount_type:selected').val() == 'M'){
+			$('.amount_Validity').hide();
+		}else if($('.change_periodType_amount_type:selected').val() == 'H'){
+			$('.amount_Validity').hide();
+		}else{
+			$('.amount_Validity').show();
+		}
+	}
+	*/
+});
+*/
+<?php echo '</script'; ?>
+>	
+<?php }
 }

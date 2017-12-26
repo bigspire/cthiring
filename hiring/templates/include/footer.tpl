@@ -64,6 +64,7 @@
 <!-- jBreadcrumbs -->
 <script src="lib_cthiring/jBreadcrumbs/js/jquery.jBreadCrumb.1.1.min.js"></script>
 <!-- datatable --> 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js"></script>
 
 <script src="vendor/node_modules/bootstrap-rating/bootstrap-rating.min.js"></script>
                                                                                                                                                                                         
