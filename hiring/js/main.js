@@ -958,12 +958,18 @@ $(document).ready(function() {
 				data_sel = 1;
 			}
 		}); 
+		
+		var client_mail = $('#client_mail').val();
+		var client_person = $('#client_person').val();
+		
+		var client = $('#client').val()+client_person+client_mail;
+		
 		// if no records selected
 		if(data_sel != '1' && sel_item != undefined){
 			alert('Please select atleast a record to proceed!');
 			return false;
 		}else{
-			$(this).colorbox({href:$('#int_url').val()+'multi_select/'+sel_item, iframe:true, rel: 'nofollow',  width:'65%', height:'90%',opacity:   '.8', 	  scrolling: true, fixed:true,overlayClose:false, escKey: false,
+			$(this).colorbox({href:$('#int_url').val()+'multi_select/'+sel_item+'/?client_name='+client, iframe:true, rel: 'nofollow',  width:'65%', height:'94%',opacity:   '.8', 	  scrolling: true, fixed:true,overlayClose:false, escKey: false,
 			onClosed:function(){					
 			
 				}
@@ -981,12 +987,17 @@ $(document).ready(function() {
 				data_sel = 1;
 			}
 		});
+		var client_mail = $('#client_mail').val();
+		var client_person = $('#client_person').val();
+		
+		var client = $('#client').val()+client_person+client_mail;
+
 		// if no records selected
 		if(data_sel != '1'){
 			alert('Please select atleast a record to proceed!');
 			return false;
 		}else{
-			$(this).colorbox({href:$('#cv_url').val()+'multi_select/'+sel_item, iframe:true, rel: 'nofollow',  width:'65%', height:'90%',opacity:   '.8', 	  scrolling: true, fixed:true,overlayClose:false, escKey: false,
+			$(this).colorbox({href:$('#cv_url').val()+'multi_select/'+sel_item+'/?client_name='+client, iframe:true, rel: 'nofollow',  width:'65%', height:'94%',opacity:   '.8', 	  scrolling: true, fixed:true,overlayClose:false, escKey: false,
 			onClosed:function(){					
 			
 				}

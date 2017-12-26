@@ -207,6 +207,12 @@ class FunctionsComponent extends Component {
 			$value = 'Second Interview';
 			break;	
 			case '3':
+			$value = 'Third Interview';
+			break;	
+			case '4':
+			$value = 'Forth Interview';
+			break;	
+			case '5':
 			$value = 'Final Interview';
 			break;				
 		}

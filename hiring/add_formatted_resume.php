@@ -276,6 +276,7 @@ try{
 		$position_autoresume = $row['job_title'];
 		$state_autoresume = $row['state'];
 		$city_autoresume = $row['city'];
+		$hide_contact = $row['hide_contact'];
 	}
 	
 	$smarty->assign('position',$position);
@@ -973,8 +974,12 @@ if(!empty($_POST)){
 			// Download the package files
 			$myTaskConvertOffice->download('uploads/autoresumepdf/');   
 			
+			$req_id = $_SESSION['position_for'];
 			
-				
+			// unset the sessions
+			unset($_SESSION['position_for']);
+			unset($_SESSION['resume_doc']);
+			unset($_SESSION['clients_id']);	
 			
 			/*
 			// water mark the pdf
@@ -998,7 +1003,8 @@ if(!empty($_POST)){
 			
 			// if($successfull == '1'){
 				// once successfully created, redirect the page
-				header('Location: ../resume/?action=auto_created');
+				// header('Location: ../resume/?action=auto_created');
+				header('Location: ../position/view/'.$req_id.'?action=created');
 			// }
 		} 
 		}else{

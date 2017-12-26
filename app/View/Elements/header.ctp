@@ -349,7 +349,7 @@
                                            <li class="dropdown">
 													<a href="#">Incentive <b class="caret-right"></b></a>
 													<ul class="dropdown-menu">
-														<li><a href="<?php echo $this->webroot;?>hiring/base_target.php">Base Target</a></li>
+														<!--li><a href="<?php echo $this->webroot;?>hiring/base_target.php">Base Target</a></li-->
 														<li><a href="<?php echo $this->webroot;?>hiring/eligibility.php">Eligibility</a></li>
 														<li><a href="<?php echo $this->webroot;?>hiring/sharing_criteria.php">Sharing Criteria</a></li>	
 														<li><a href="<?php echo $this->webroot;?>hiring/salary.php">Salary</a></li>

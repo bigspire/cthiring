@@ -134,9 +134,9 @@ body {
   <thead >
     <tr  class="is-selected" style="background: #826386">
       <th class=" has-text-centered"width="5%">S.No</th>
-      <th class="" width="23%">Criteria</th>
+      <th class="" width="24%">Criteria</th>
      
-      <th class="" width="72%">Candidate Credentials</th>
+      <th class="" width="71%">Candidate Credentials</th>
     </tr>
   </thead>
 

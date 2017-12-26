@@ -446,6 +446,7 @@ try{
 		$position_autoresume = $row['job_title'];
 		$state_autoresume = $row['state'];
 		$city_autoresume = $row['city'];
+		$hide_contact = $row['hide_contact'];
 	}
 	
 	$smarty->assign('position',$position);

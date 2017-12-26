@@ -46,7 +46,7 @@
 					<td width="120" class="tbl_column">Interview Level 
 					</td>
 						<td>
-						<?php echo $interview_level;?>
+						<?php echo $interview_data['ResInterview']['stage_title'];?>
 						</td>	
 				</tr>
 				
