@@ -20,6 +20,10 @@ include('classes/class.function.php');
 include('classes/class.paging.php');
 // add menu count
 include('menu_count.php');
+// mailing class
+include('classes/class.mailer.php');
+// content class
+include('classes/class.content.php');
 
 // role based validation
 $module_access = $fun->check_role_access('29',$modules);
@@ -49,8 +53,42 @@ try{
 	}
 	// free the memory
 	$mysql->clear_result($result);
+	// call the next result
+	$mysql->next_query();
 }catch(Exception $e){
 	echo 'Caught exception: ',  $e->getMessage(), "\n";
+}
+
+if($_SERVER["REQUEST_METHOD"] == "POST"){
+	// query to fetch admin details. 
+	$query = "CALL get_employee_by_id('".$_SESSION['user_id']."')";
+	try{
+		// calling mysql exe_query function
+		if(!$result = $mysql->execute_query($query)){
+			throw new Exception('Problem in getting employee details');
+		}
+		$row = $mysql->display_result($result);
+		$emp_name = $row['first_name'].' '.$row['last_name'];
+		$emp_email_id = $row['email_id'];
+						
+		// free the memory
+		$mysql->clear_result($result);
+		// call the next result
+		$mysql->next_query();
+	}catch(Exception $e){
+		echo 'Caught exception: ',  $e->getMessage(), "\n";
+	}
+	
+	if($obj['email'] != ''){
+		// send mail to client					
+		$msg = $content->send_mail_to_client($obj,$emp_name);
+		$file = "C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\uploads\\resume\\".$obj['resume'];
+		$mailer->send_mail($obj['subject'],$msg,$emp_name,$emp_email_id,$obj['client_name'],$obj['email'],$file);	
+		$success = '1';
+	}
+	if($success == '1'){
+		$smarty->assign('EXIST_MSG' , 'Mail Sent Successfully.');
+	}
 }
 
 // calling mysql close db connection function

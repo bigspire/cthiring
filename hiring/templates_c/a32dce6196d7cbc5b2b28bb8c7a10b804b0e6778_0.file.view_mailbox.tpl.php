@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-12-07 12:55:45
+/* Smarty version 3.1.29, created on 2017-12-26 13:02:56
   from "C:\xampp\htdocs\2017\ctsvn\cthiring\hiring\templates\view_mailbox.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5a28ecf961be33_15973036',
+  'unifunc' => 'content_5a41fb28ee9527_51830847',
   'file_dependency' => 
   array (
     'a32dce6196d7cbc5b2b28bb8c7a10b804b0e6778' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\templates\\view_mailbox.tpl',
-      1 => 1512631534,
+      1 => 1514273574,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5a28ecf961be33_15973036 ($_smarty_tpl) {
+function content_5a41fb28ee9527_51830847 ($_smarty_tpl) {
 ?>
 
    
@@ -51,7 +51,13 @@ home"><i class="icon-home"></i></a>
                             </ul>
                         </div>
                     </nav>
-							
+					<?php if ($_smarty_tpl->tpl_vars['EXIST_MSG']->value) {?>
+				 <div id="flashMessage" class="alert alert-success"><button type="button" class="close" data-dismiss="alert">×</button><?php echo $_smarty_tpl->tpl_vars['EXIST_MSG']->value;?>
+</div>					
+				<?php }?>
+		<form action="view_mailbox.php?id=<?php echo $_GET['id'];?>
+" class="formID" id="formID" method="post" enctype="multipart/form-data" accept-charset="utf-8">
+					
 		<div class="box">
 		<div class="row-fluid">
 		<div class="span12">
@@ -114,10 +120,12 @@ echo $_smarty_tpl->tpl_vars['data']->value['client_name'];?>
 					</div>
 					</div>
 						<div class="form-actions">
-								<a href="mailbox.php" class="jsRedirect"><button class="btn">Back</button></a>
+								<input name="submit" class="btn btn-gebo theForm" value="Re-Send" type="submit"/>
+								<a href="mailbox.php" class="jsRedirect cancelBtn"><input type="button" value="Back" class="btn">
 						</div>
+
                </div>
-					
+			</form>		
           </div>
        </div>
       </div>
@@ -125,6 +133,26 @@ echo $_smarty_tpl->tpl_vars['data']->value['client_name'];?>
 </div>
 </div>
 			
+
+<?php echo '<script'; ?>
+ type="text/javascript">
+$(document).ready(function(){
+		/* when the form submitted */
+	$('.formID').submit(function(){ 		
+		// Disable the 'Next' button to prevent multiple clicks		
+		$('input[type=submit]', this).attr('value', 'Processing...');		
+		$('input[type=submit]', this).attr('disabled', 'disabled');
+		// hide cancel button
+		$('button[type=button]', this).hide();
+		$('.cancelBtn').hide();
+	});
+});
+<?php echo '</script'; ?>
+>	
+
+
 <?php $_smarty_tpl->smarty->ext->_subtemplate->render($_smarty_tpl, "file:include/footer.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
-}
+?>
+
+<?php }
 }
