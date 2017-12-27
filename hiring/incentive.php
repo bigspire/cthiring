@@ -104,6 +104,15 @@ try{
  		$data[$i]['period'] = '01'.'-'.$fun->convert_quater_month($obj['period']).'-'.$fun->convert_quater_year($obj['period']);
 		$data[$i]['created_date'] = $fun->convert_date_to_display($obj['created_date']);
 		$data[$i]['incentive_type'] = $fun->check_incentive_type($obj['incentive_type']);
+		$data[$i]['incent_type'] = $obj['incentive_type'];
+		// for incentive display
+		if($obj['incentive_type'] == 'I'){
+			$data[$i]['incent_period_display'] = date('M, Y', strtotime($obj['period']));
+		}else{
+			$display = $obj['period'] == '2017-10-01' ? 'Oct - Mar, '.date('Y', strtotime($obj['period'])) : 'Apr - Sep, '.date('Y', strtotime($obj['period']));
+			$data[$i]['incent_period_display'] = $display;
+		}
+		
 		// $data[$i]['inc_type'] = $obj['incentive_type'];
  		$i++;
  		$pno[]=$paging->print_no();
