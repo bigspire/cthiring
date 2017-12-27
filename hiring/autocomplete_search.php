@@ -72,6 +72,8 @@ if($_GET['page'] == 'list_grade'){
 		while($obj = $mysql->display_result($result)){
 			$data[] = strtolower($fun->match_results($keyword,$obj['client_name']));		
 			$data[] = strtolower($fun->match_results($keyword,$obj['candidate_name']));
+			$data[] = strtolower($fun->match_results($keyword,$obj['job_title']));
+			$data[] = strtolower($fun->match_results($keyword,$obj['first_name']));
 		}
 		
 		// filter the duplicate values

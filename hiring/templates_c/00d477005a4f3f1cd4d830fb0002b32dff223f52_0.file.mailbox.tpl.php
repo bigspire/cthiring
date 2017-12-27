@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-12-07 12:39:48
+/* Smarty version 3.1.29, created on 2017-12-27 15:53:39
   from "C:\xampp\htdocs\2017\ctsvn\cthiring\hiring\templates\mailbox.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5a28e93c903251_05746124',
+  'unifunc' => 'content_5a4374ab692e02_37007387',
   'file_dependency' => 
   array (
     '00d477005a4f3f1cd4d830fb0002b32dff223f52' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\templates\\mailbox.tpl',
-      1 => 1512623642,
+      1 => 1514370217,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,8 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5a28e93c903251_05746124 ($_smarty_tpl) {
+function content_5a4374ab692e02_37007387 ($_smarty_tpl) {
+if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
    
@@ -78,7 +79,7 @@ home"><i class="icon-home"></i></a>
 							</div>
 						<?php }?>
 						
-						<?php if ($_smarty_tpl->tpl_vars['keyword']->value || $_smarty_tpl->tpl_vars['f_date']->value || $_smarty_tpl->tpl_vars['t_date']->value) {?>
+						<?php if ($_smarty_tpl->tpl_vars['keyword']->value || $_smarty_tpl->tpl_vars['f_date']->value || $_smarty_tpl->tpl_vars['t_date']->value || $_smarty_tpl->tpl_vars['type']->value) {?>
 						  <?php $_smarty_tpl->tpl_vars['hide'] = new Smarty_Variable('', null);
 $_smarty_tpl->ext->_updateScope->updateScope($_smarty_tpl, 'hide', 0);?>
 						<?php } else { ?>
@@ -99,7 +100,13 @@ $_smarty_tpl->ext->_updateScope->updateScope($_smarty_tpl, 'hide', 0);?>
 						<label>Till: <input type="text" name="t_date" placeholder="dd/mm/yyyy" value="<?php echo $_smarty_tpl->tpl_vars['t_date']->value;?>
 " style="width:70px;"  class="input-small datepick" aria-controls="dt_gal"></label>						
 						</span></span>
-						
+						<label>Type: 
+						<select name="type" class="input-xlarge" placeholder="" style="clear:left" id="InterviewEmpId">
+							<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['mail_type']->value,'selected'=>$_smarty_tpl->tpl_vars['type']->value),$_smarty_tpl);?>
+
+						</option>
+						</select> 
+						</label>
 								<label style="margin-top:18px;"><input type="submit" value="Submit" class="btn btn-gebo" /></label>					
 							<label style="margin-top:18px;"><a href="mailbox.php" class="jsRedirect"><input value="Reset" type="button" class="btn"/></a></label>
 							
@@ -119,6 +126,7 @@ $_smarty_tpl->ext->_updateScope->updateScope($_smarty_tpl, 'hide', 0);?>
 &keyword=<?php echo $_smarty_tpl->tpl_vars['keyword']->value;?>
 &f_date=<?php echo $_smarty_tpl->tpl_vars['f_date']->value;?>
 &t_date=<?php echo $_smarty_tpl->tpl_vars['t_date']->value;?>
+&type=<?php echo $_smarty_tpl->tpl_vars['type']->value;?>
 " class="<?php echo $_smarty_tpl->tpl_vars['sort_field_to']->value;?>
 ">To</a></th>
 										<th width="150"><a href="mailbox.php?field=subject&order=<?php echo $_smarty_tpl->tpl_vars['order']->value;?>
@@ -126,6 +134,7 @@ $_smarty_tpl->ext->_updateScope->updateScope($_smarty_tpl, 'hide', 0);?>
 &keyword=<?php echo $_smarty_tpl->tpl_vars['keyword']->value;?>
 &f_date=<?php echo $_smarty_tpl->tpl_vars['f_date']->value;?>
 &t_date=<?php echo $_smarty_tpl->tpl_vars['t_date']->value;?>
+&type=<?php echo $_smarty_tpl->tpl_vars['type']->value;?>
 " class="<?php echo $_smarty_tpl->tpl_vars['sort_field_subject']->value;?>
 ">Subject</a></th>
 										<th width="300"><a href="mailbox.php?field=message&order=<?php echo $_smarty_tpl->tpl_vars['order']->value;?>
@@ -133,22 +142,33 @@ $_smarty_tpl->ext->_updateScope->updateScope($_smarty_tpl, 'hide', 0);?>
 &keyword=<?php echo $_smarty_tpl->tpl_vars['keyword']->value;?>
 &f_date=<?php echo $_smarty_tpl->tpl_vars['f_date']->value;?>
 &t_date=<?php echo $_smarty_tpl->tpl_vars['t_date']->value;?>
+&type=<?php echo $_smarty_tpl->tpl_vars['type']->value;?>
 " class="<?php echo $_smarty_tpl->tpl_vars['sort_field_message']->value;?>
 ">Message</a></th>
+										<th width="300"><a href="mailbox.php?field=type&order=<?php echo $_smarty_tpl->tpl_vars['order']->value;?>
+&page=<?php echo $_GET['page'];?>
+&keyword=<?php echo $_smarty_tpl->tpl_vars['keyword']->value;?>
+&f_date=<?php echo $_smarty_tpl->tpl_vars['f_date']->value;?>
+&t_date=<?php echo $_smarty_tpl->tpl_vars['t_date']->value;?>
+&type=<?php echo $_smarty_tpl->tpl_vars['type']->value;?>
+" class="<?php echo $_smarty_tpl->tpl_vars['sort_field_type']->value;?>
+">Type</a></th>
 										<th width="90"><a href="mailbox.php?field=date&order=<?php echo $_smarty_tpl->tpl_vars['order']->value;?>
 &page=<?php echo $_GET['page'];?>
 &keyword=<?php echo $_smarty_tpl->tpl_vars['keyword']->value;?>
 &f_date=<?php echo $_smarty_tpl->tpl_vars['f_date']->value;?>
 &t_date=<?php echo $_smarty_tpl->tpl_vars['t_date']->value;?>
+&type=<?php echo $_smarty_tpl->tpl_vars['type']->value;?>
 " class="<?php echo $_smarty_tpl->tpl_vars['sort_field_date']->value;?>
-">Date</a></th>
+">Sent Date</a></th>
 										<th width="100"><a href="mailbox.php?field=created_by&order=<?php echo $_smarty_tpl->tpl_vars['order']->value;?>
 &page=<?php echo $_GET['page'];?>
 &keyword=<?php echo $_smarty_tpl->tpl_vars['keyword']->value;?>
 &f_date=<?php echo $_smarty_tpl->tpl_vars['f_date']->value;?>
 &t_date=<?php echo $_smarty_tpl->tpl_vars['t_date']->value;?>
+&type=<?php echo $_smarty_tpl->tpl_vars['type']->value;?>
 " class="<?php echo $_smarty_tpl->tpl_vars['sort_field_created_by']->value;?>
-">Created by</a></th>
+">Sent by</a></th>
 									</tr>
 								</thead>
 								<tbody>	
@@ -168,17 +188,20 @@ $__foreach_item_0_saved_local_item = $_smarty_tpl->tpl_vars['item'];
 ?>
 									<tr>
 										<td><?php if ($_smarty_tpl->tpl_vars['item']->value['mail_type'] == 'C') {
-echo $_smarty_tpl->tpl_vars['item']->value['client_name'];?>
- (<?php echo $_smarty_tpl->tpl_vars['item']->value['email'];?>
+echo $_smarty_tpl->tpl_vars['item']->value['company_name'];?>
+, (<?php echo $_smarty_tpl->tpl_vars['item']->value['client_name'];?>
+), (<?php echo $_smarty_tpl->tpl_vars['item']->value['email'];?>
 )<?php } else {
 echo $_smarty_tpl->tpl_vars['item']->value['candidate_name'];?>
- (<?php echo $_smarty_tpl->tpl_vars['item']->value['email_id'];?>
+, (<?php echo $_smarty_tpl->tpl_vars['item']->value['email_id'];?>
 )<?php }?></td>
 										<td><?php echo $_smarty_tpl->tpl_vars['item']->value['subject'];?>
 </td>
 										<td><a href="view_mailbox.php?id=<?php echo $_smarty_tpl->tpl_vars['item']->value['id'];?>
 "><?php echo $_smarty_tpl->tpl_vars['item']->value['message'];?>
 </a></td>
+										<td><?php echo $_smarty_tpl->tpl_vars['item']->value['template'];?>
+</td>
 										<td><?php echo $_smarty_tpl->tpl_vars['item']->value['created_date'];?>
 </td>
 										<td><?php echo $_smarty_tpl->tpl_vars['item']->value['employee'];?>

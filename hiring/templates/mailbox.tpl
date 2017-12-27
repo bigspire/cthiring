@@ -50,7 +50,7 @@
 							</div>
 						{/if}
 						
-						{if $keyword || $f_date || $t_date}
+						{if $keyword || $f_date || $t_date || $type}
 						  {assign var=hide value=''}
 						{else}
 							{assign var=hide value=dn}
@@ -65,7 +65,12 @@
 						<label>From: <input type="text" class="input-small datepick" name="f_date" placeholder="dd/mm/yyyy" style="width:70px;"  value="{$f_date}" aria-controls="dt_gal"></label>
 						<label>Till: <input type="text" name="t_date" placeholder="dd/mm/yyyy" value="{$t_date}" style="width:70px;"  class="input-small datepick" aria-controls="dt_gal"></label>						
 						</span></span>
-						
+						<label>Type: 
+						<select name="type" class="input-xlarge" placeholder="" style="clear:left" id="InterviewEmpId">
+							{html_options options=$mail_type selected=$type}
+						</option>
+						</select> 
+						</label>
 								<label style="margin-top:18px;"><input type="submit" value="Submit" class="btn btn-gebo" /></label>					
 							<label style="margin-top:18px;"><a href="mailbox.php" class="jsRedirect"><input value="Reset" type="button" class="btn"/></a></label>
 							
@@ -80,19 +85,21 @@
 							<table class="table table-striped table-bordered dataTable stickyTable">
 								<thead>
 									<tr>
-										<th width="100"><a href="mailbox.php?field=to&order={$order}&page={$smarty.get.page}&keyword={$keyword}&f_date={$f_date}&t_date={$t_date}" class="{$sort_field_to}">To</a></th>
-										<th width="150"><a href="mailbox.php?field=subject&order={$order}&page={$smarty.get.page}&keyword={$keyword}&f_date={$f_date}&t_date={$t_date}" class="{$sort_field_subject}">Subject</a></th>
-										<th width="300"><a href="mailbox.php?field=message&order={$order}&page={$smarty.get.page}&keyword={$keyword}&f_date={$f_date}&t_date={$t_date}" class="{$sort_field_message}">Message</a></th>
-										<th width="90"><a href="mailbox.php?field=date&order={$order}&page={$smarty.get.page}&keyword={$keyword}&f_date={$f_date}&t_date={$t_date}" class="{$sort_field_date}">Date</a></th>
-										<th width="100"><a href="mailbox.php?field=created_by&order={$order}&page={$smarty.get.page}&keyword={$keyword}&f_date={$f_date}&t_date={$t_date}" class="{$sort_field_created_by}">Created by</a></th>
+										<th width="100"><a href="mailbox.php?field=to&order={$order}&page={$smarty.get.page}&keyword={$keyword}&f_date={$f_date}&t_date={$t_date}&type={$type}" class="{$sort_field_to}">To</a></th>
+										<th width="150"><a href="mailbox.php?field=subject&order={$order}&page={$smarty.get.page}&keyword={$keyword}&f_date={$f_date}&t_date={$t_date}&type={$type}" class="{$sort_field_subject}">Subject</a></th>
+										<th width="300"><a href="mailbox.php?field=message&order={$order}&page={$smarty.get.page}&keyword={$keyword}&f_date={$f_date}&t_date={$t_date}&type={$type}" class="{$sort_field_message}">Message</a></th>
+										<th width="300"><a href="mailbox.php?field=type&order={$order}&page={$smarty.get.page}&keyword={$keyword}&f_date={$f_date}&t_date={$t_date}&type={$type}" class="{$sort_field_type}">Type</a></th>
+										<th width="90"><a href="mailbox.php?field=date&order={$order}&page={$smarty.get.page}&keyword={$keyword}&f_date={$f_date}&t_date={$t_date}&type={$type}" class="{$sort_field_date}">Sent Date</a></th>
+										<th width="100"><a href="mailbox.php?field=created_by&order={$order}&page={$smarty.get.page}&keyword={$keyword}&f_date={$f_date}&t_date={$t_date}&type={$type}" class="{$sort_field_created_by}">Sent by</a></th>
 									</tr>
 								</thead>
 								<tbody>	
 								{foreach from=$data item=item key=key}
 									<tr>
-										<td>{if $item.mail_type == 'C'}{$item.client_name} ({$item.email}){else}{$item.candidate_name} ({$item.email_id}){/if}</td>
+										<td>{if $item.mail_type == 'C'}{$item.company_name}, ({$item.client_name}), ({$item.email}){else}{$item.candidate_name}, ({$item.email_id}){/if}</td>
 										<td>{$item.subject}</td>
 										<td><a href="view_mailbox.php?id={$item.id}">{$item.message}</a></td>
+										<td>{$item.template}</td>
 										<td>{$item.created_date}</td>
 										<td>{$item.employee}</td>
 									</tr>		
