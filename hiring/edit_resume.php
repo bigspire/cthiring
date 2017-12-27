@@ -679,7 +679,9 @@ if(!empty($_POST)){
 			$mysql->next_query();
 			$snap_exp .=  "<div style='margin-bottom:7px;'>".$expStr.'<br>'.ucwords($companyData).', '.ucwords($desigStr).', '.ucfirst($locationData).'</div>';
 			$snap_skill .= $areaData.' ';
+			$snap_exp = $from_month_expData == '' ? 'Fresher' : $snap_exp;
 			
+
 			// query to add experience details
 			$query = "CALL add_res_experience('".$mysql->real_escape_str($desigData)."',
 			    '".$mysql->real_escape_str($from_month_expData)."',

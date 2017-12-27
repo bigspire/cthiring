@@ -414,19 +414,20 @@ if(!empty($_POST)){
 	if($test != 'error'){
 	  if($check['total'] == '0'){
 		// for saving purpose of tech skills
-		foreach($_POST['ts'] as $key => $ts){
+		foreach($_POST['ts'] as $key => $ts){ 
 			if($ts){
-				$ts_data[$ts] = $_POST['tsr'][$key];
+				$ts_data2[$ts] = $_POST['tsr'][$key];
 			}
 		}
+
 		// for saving purpose of behav skills
 		foreach($_POST['bs'] as $key => $bs){
 			if($bs){
-				$bs_data[$bs] = $_POST['bsr'][$key];
+				$bs_data2[$bs] = $_POST['bsr'][$key];
 			}
 		}
-		$tech_skill = serialize($ts_data);
-		$behav_skill = serialize($bs_data);
+		$tech_skill = serialize($ts_data2);
+		$behav_skill = serialize($bs_data2);
 		// query to add personal details
 		$query = "CALL add_res_personal('".$fun->is_white_space($mysql->real_escape_str($_POST['first_name']))."',
 			'".$fun->is_white_space($mysql->real_escape_str($_POST['last_name']))."',
@@ -591,6 +592,7 @@ if(!empty($_POST)){
 			$mysql->next_query();
 			$snap_exp .=  "<div style='margin-bottom:7px;'>".$expStr.'<br>'.ucwords($companyData).', '.ucwords($desigStr).', '.ucfirst($locationData).'</div>';
 			$snap_skill .= $areaData.' ';
+			$snap_exp = $from_month_expData == '' ? 'Fresher' : $snap_exp;
 			
 			// query to add experience details
 			$query = "CALL add_res_experience('".$mysql->real_escape_str($desigData)."',
@@ -830,16 +832,16 @@ if(!empty($_POST)){
 			$file1 = $myTaskWatermark->addFile(dirname(__FILE__).'/uploads/snapshotmerged/'.$snap_file_name.'_'.date('d-m-Y').'.pdf');
 			// Select watermark parameters
 			$myTaskWatermark->setText('CareerTree HR Solutions');
-			$myTaskWatermark->setRotation(30);
+			//$myTaskWatermark->setRotation(45); 
 			// $myTaskWatermark->setImage('watermark.jpg');			
 			$myTaskWatermark->setPages('3-end');
 			// $myTaskWatermark->setOpacity(70);
 			$myTaskWatermark->setLayer('below');
 			$myTaskWatermark->setVerticalPosition('middle');
 			$myTaskWatermark->setHorizontalPosition('center');
-			$myTaskWatermark->setFontFamily('Comic Sans MS');
-			$myTaskWatermark->setFontSize(43);
-			$myTaskWatermark->setFontColor('#f5f0f0');
+			$myTaskWatermark->setFontSize(48);
+			$myTaskWatermark->setFontFamily('Arial Unicode MS');
+			$myTaskWatermark->setFontColor('#f0d1ff');
 			$myTaskWatermark->execute();
 			// Download the package files
 			$myTaskWatermark->download('uploads/snapshotwatermarked/');
