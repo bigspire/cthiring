@@ -28,16 +28,18 @@ $f_date = $_POST['f_date'] ? $_POST['f_date'] : $_GET['f_date'];
 $t_date = $_POST['t_date'] ? $_POST['t_date'] : $_GET['t_date']; 
 $from_date = $fun->convert_date($f_date);
 $to_date = $fun->convert_date($t_date);
+$type = $_POST['type'] ? $_POST['type'] : $_GET['type']; 
 
 //post url for paging
 if($_POST){
 	$post_url .= '&keyword='.$keyword;
 	$post_url .= '&f_date='.$f_date;
 	$post_url .= '&t_date='.$t_date;
+	$post_url .= '&type='.$type;
 }
 
 // count the total no. of records
-$query = "CALL list_mail_box('".$_SESSION['user_id']."','".$keyword."','".$from_date."','".$to_date."','0','0','','','".$cond."')";
+$query = "CALL list_mail_box('".$_SESSION['user_id']."','".$keyword."','".$type."','".$from_date."','".$to_date."','0','0','','','".$cond."')";
 try{
 	if(!$result = $mysql->execute_query($query)){
 		throw new Exception('Problem in executing mail box page');
@@ -65,8 +67,8 @@ try{
 
 // set the condition to check ascending or descending order		
 $order = ($_GET['order'] == 'desc') ? 'asc' :  'desc';	
-$sort_fields = array('1' => 'to','to','subject','message','date','created_by');
-$org_fields = array('1' => 'candidate_name','client_name','subject','message','created_date','employee');
+$sort_fields = array('1' => 'to','to','subject','message','date','created_by','type');
+$org_fields = array('1' => 'candidate_name','client_name','subject','message','created_date','employee','template');
 
 // to set the sorting image
 foreach($sort_fields as $key => $b_field){
@@ -91,7 +93,7 @@ if($search_key = array_search($_GET['field'], $sort_fields)){
 
 
 // fetch all records
-$query = "CALL list_mail_box('".$_SESSION['user_id']."','".$keyword."','".$from_date."','".$to_date."','$start','$limit','".$field."','".$order."','".$cond."')";
+$query = "CALL list_mail_box('".$_SESSION['user_id']."','".$keyword."','".$type."','".$from_date."','".$to_date."','$start','$limit','".$field."','".$order."','".$cond."')";
 
 try{
 	if(!$result = $mysql->execute_query($query)){
@@ -121,6 +123,9 @@ try{
 	echo 'Caught exception: ',  $e->getMessage(), "\n";
 }
 
+// smarty drop down array for current status
+$smarty->assign('mail_type', array('' => 'Select', '1' => 'Send CV To Client', '2' => 'Interview Confirmation to Client','3' => 'Schedule Interview to Candidates'));
+
 // calling mysql close db connection function
 $c_c = $mysql->close_connection();
 $paging->posturl($post_url);
@@ -134,9 +139,7 @@ $smarty->assign('total_pages' , $total_pages);
 $smarty->assign('keyword' , $keyword); 	
 $smarty->assign('f_date', $f_date);
 $smarty->assign('t_date', $t_date);
-$smarty->assign('employee' , $employee); 
-$smarty->assign('branch' , $branch); 
-$smarty->assign('current_status' , $current_status); 
+$smarty->assign('type', $type);
 $smarty->assign('ALERT_MSG', $alert_msg);
 $smarty->assign('SUCCESS_MSG', $success_msg);
 // assign page title
