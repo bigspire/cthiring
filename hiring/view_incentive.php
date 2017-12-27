@@ -86,7 +86,7 @@ if(!empty($row)){
 	$query = "CALL view_approved_billing_details('".$emp_id."','".$row['incentive_type']."','".$period1."','".$period2."','R')";
 	try{
 		if(!$result = $mysql->execute_query($query)){
-			throw new Exception('Problem in executing view interview page');
+			throw new Exception('Problem in executing view billing details');
 		}
 		// check record exists
 		$i = '0';
