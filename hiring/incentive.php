@@ -52,7 +52,7 @@ try{
 		$alert_msg = 'This details are not in our database';
 	}
 	$page = $_GET['page'] ?  $_GET['page'] : 1;
-	$limit = 15;
+	$limit = 50;
 
    include('paging_call.php');	
 	// free the memory
@@ -65,8 +65,8 @@ try{
 
 // set the condition to check ascending or descending order		
 $order = ($_GET['order'] == 'desc') ? 'asc' :  'desc';	
-$sort_fields = array('1' => 'employee','period','eligible_incentive_amt','incentive_type','created_date');
-$org_fields = array('1' => 'employee','period','eligible_incentive_amt','incentive_type','created_date');
+$sort_fields = array('1' => 'employee','period','eligible_incentive_amt','incentive_type','created_date','target_amt','achieve_amt','candidate_billed','interview_candidate');
+$org_fields = array('1' => 'employee','period','eligible_incentive_amt','incentive_type','created_date','incentive_target_amt','achievement_amt','candidate_billed','interview_candidate');
 
 // to set the sorting image
 foreach($sort_fields as $key => $b_field){
@@ -105,13 +105,17 @@ try{
 		$data[$i]['created_date'] = $fun->convert_date_to_display($obj['created_date']);
 		$data[$i]['incentive_type'] = $fun->check_incentive_type($obj['incentive_type']);
 		$data[$i]['incent_type'] = $obj['incentive_type'];
+		$data[$i]['incent_period_display'] = date('M, Y', strtotime($obj['period']));
+		
 		// for incentive display
+		/*
 		if($obj['incentive_type'] == 'I'){
 			$data[$i]['incent_period_display'] = date('M, Y', strtotime($obj['period']));
 		}else{
 			$display = $obj['period'] == '2017-10-01' ? 'Oct - Mar, '.date('Y', strtotime($obj['period'])) : 'Apr - Sep, '.date('Y', strtotime($obj['period']));
 			$data[$i]['incent_period_display'] = $display;
 		}
+		*/
 		
 		// $data[$i]['inc_type'] = $obj['incentive_type'];
  		$i++;
