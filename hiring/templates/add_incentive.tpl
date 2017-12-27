@@ -32,7 +32,7 @@
 <form action="" id="formID" class="formID" method="post" accept-charset="utf-8">
 	<div class="box">
 		<div class="box-title mb5">
-			<h4><i class="icon-list"></i> Incentive Details </h4>
+			<h4><i class="icon-list"></i> Add Incentive </h4>
 		</div>
 		<div class="row-fluid">
 		<div class="span6">

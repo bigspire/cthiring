@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-12-14 20:18:26
+/* Smarty version 3.1.29, created on 2017-12-27 11:03:59
   from "C:\xampp\htdocs\ctsvn\cthiring\hiring\templates\add_incentive.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5a328f3a12faf7_89702787',
+  'unifunc' => 'content_5a4330c78b3ae4_35737328',
   'file_dependency' => 
   array (
     '26f219ce53db017b2b5829caf169a2be23ab9fde' => 
     array (
       0 => 'C:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\templates\\add_incentive.tpl',
-      1 => 1511872791,
+      1 => 1514352795,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5a328f3a12faf7_89702787 ($_smarty_tpl) {
+function content_5a4330c78b3ae4_35737328 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -60,7 +60,7 @@ home"><i class="icon-home"></i></a>
 <form action="" id="formID" class="formID" method="post" accept-charset="utf-8">
 	<div class="box">
 		<div class="box-title mb5">
-			<h4><i class="icon-list"></i> Incentive Details </h4>
+			<h4><i class="icon-list"></i> Add Incentive </h4>
 		</div>
 		<div class="row-fluid">
 		<div class="span6">

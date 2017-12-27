@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-12-14 20:28:43
+/* Smarty version 3.1.29, created on 2017-12-27 12:19:42
   from "C:\xampp\htdocs\ctsvn\cthiring\hiring\templates\view_incentive.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5a3291a3130f10_47662785',
+  'unifunc' => 'content_5a43428680ea92_08550633',
   'file_dependency' => 
   array (
     '87aac4cd9c7cdb6206294a41d69d25de4d29e559' => 
     array (
       0 => 'C:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\templates\\view_incentive.tpl',
-      1 => 1512227777,
+      1 => 1513850064,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5a3291a3130f10_47662785 ($_smarty_tpl) {
+function content_5a43428680ea92_08550633 ($_smarty_tpl) {
 ?>
 
    
@@ -62,7 +62,60 @@ home"><i class="icon-home"></i></a>
 &emp_id=<?php echo $_GET['emp_id'];?>
 &action=export" name="export" class="jsRedirect btn btn-warning" >Export</button></a></a>							
 						</div>
+						<?php if ($_smarty_tpl->tpl_vars['incentive_data']->value['incentive_type'] == 'I') {?>	
+						<div class="row-fluid">
+							<div class="span6">
+							<table class="table table-striped table-bordered dataTable" style="margin-bottom:0;">
+								<tbody>
+									<tr>
+										<td width="120" class="tbl_column">Employee</td>
+										<td><?php echo $_smarty_tpl->tpl_vars['incentive_data']->value['employee'];?>
+</td>
+									</tr>
+									
+									<tr>
+										<td width="" class="tbl_column">Incentive Type </td>
+										<td><?php echo $_smarty_tpl->tpl_vars['incentive_type']->value;?>
+</td>
+									</tr>
+									<tr>
+										<td width="" class="tbl_column">Period </td>
+										<td><?php echo $_smarty_tpl->tpl_vars['period']->value;?>
+</td>
+									</tr>	
+									
+								</tbody>
+							</table>
+							</div>
 							
+							<div class="span6">
+							<table class="table table-striped table-bordered dataTable" style="margin-bottom:0;">
+								<tbody>
+								
+								<tr>
+									<td width="" class="tbl_column">Amount</td>
+									<td><?php echo $_smarty_tpl->tpl_vars['incentive_data']->value['eligible_incentive_amt'];?>
+</td>
+								</tr>
+								<tr>
+									<td width="120"  class="tbl_column">Created Date</td>
+									<td><?php echo $_smarty_tpl->tpl_vars['created_date']->value;?>
+</td>
+								</tr>	
+									
+								<tr>
+									<td width=""  class="tbl_column">Modified Date </td>
+									<td><?php echo $_smarty_tpl->tpl_vars['modified_date']->value;?>
+</td>
+								</tr>	
+								</tbody>
+							</table>
+							</div>
+						
+                 </div>
+				 <?php }?>
+				 
+				 <?php if ($_smarty_tpl->tpl_vars['incentive_data']->value['incentive_type'] == 'J') {?>	
 						<div class="row-fluid">
 							<div class="span6">
 							<table class="table table-striped table-bordered dataTable" style="margin-bottom:0;">
@@ -85,10 +138,10 @@ home"><i class="icon-home"></i></a>
 									</tr>	
 									
 									<tr>
-										<td width="" class="tbl_column">Amount</td>
-										<td><?php echo $_smarty_tpl->tpl_vars['incentive_data']->value['eligible_incentive_amt'];?>
+									<td width="120"  class="tbl_column">Created Date</td>
+									<td><?php echo $_smarty_tpl->tpl_vars['created_date']->value;?>
 </td>
-									</tr>
+								</tr>
 								</tbody>
 							</table>
 							</div>
@@ -96,19 +149,7 @@ home"><i class="icon-home"></i></a>
 							<div class="span6">
 							<table class="table table-striped table-bordered dataTable" style="margin-bottom:0;">
 								<tbody>
-								<tr>
-									<td width="120"  class="tbl_column">Created Date</td>
-									<td><?php echo $_smarty_tpl->tpl_vars['created_date']->value;?>
-</td>
-								</tr>	
-									
-								<tr>
-									<td width=""  class="tbl_column">Modified Date </td>
-									<td><?php echo $_smarty_tpl->tpl_vars['modified_date']->value;?>
-</td>
-								</tr>
 
-								<?php if ($_smarty_tpl->tpl_vars['incentive_data']->value['incentive_type'] != 'I') {?>
 								<tr>
 									<td  width=""  class="tbl_column">Billing Amount</td>
 									<td><?php echo $_smarty_tpl->tpl_vars['incentive_data']->value['achievement_amt'];?>
@@ -125,13 +166,19 @@ home"><i class="icon-home"></i></a>
 									<td><?php echo $_smarty_tpl->tpl_vars['incentive_data']->value['eligible_incentive_amt'];?>
 </td>
 								</tr>
-								
-								<?php }?>	
+									
+									
+								<tr>
+									<td width=""  class="tbl_column">Modified Date </td>
+									<td><?php echo $_smarty_tpl->tpl_vars['modified_date']->value;?>
+</td>
+								</tr>
 								</tbody>
 							</table>
 							</div>
 						
                  </div>
+				 <?php }?>
 				 
                  <br>
                  <br>

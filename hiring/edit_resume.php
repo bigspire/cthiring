@@ -823,16 +823,16 @@ if(!empty($_POST)){
 			$file1 = $myTaskWatermark->addFile(dirname(__FILE__).'/uploads/snapshotmerged/'.$snap_file_name.'_'.date('d-m-Y').'.pdf');
 			// Select watermark parameters
 			$myTaskWatermark->setText('CareerTree HR Solutions');
-			$myTaskWatermark->setRotation(30);
+			//$myTaskWatermark->setRotation(45); 
 			// $myTaskWatermark->setImage('watermark.jpg');			
 			$myTaskWatermark->setPages('3-end');
 			// $myTaskWatermark->setOpacity(70);
 			$myTaskWatermark->setLayer('below');
 			$myTaskWatermark->setVerticalPosition('middle');
 			$myTaskWatermark->setHorizontalPosition('center');
-			$myTaskWatermark->setFontFamily('Comic Sans MS');
-			$myTaskWatermark->setFontSize(43);
-			$myTaskWatermark->setFontColor('#f5f0f0');
+			$myTaskWatermark->setFontSize(48);
+			$myTaskWatermark->setFontFamily('Arial Unicode MS');
+			$myTaskWatermark->setFontColor('#f0d1ff');
 			$myTaskWatermark->execute();
 			// Download the package files
 			$myTaskWatermark->download('uploads/snapshotwatermarked/');

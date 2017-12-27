@@ -125,12 +125,12 @@ body {
     <div class="container">
 	
 	<div class="has-text-right"><img  class="" src="http://bigspire.in/ct/career-tree-logo-CMYK_resiz.png"></div>
-	<div class="" style="margin-bottom:0.3rem;">
+	<div class="" style="margin-top:1.5rem;">
 	 <div class=" title has-text-centered"  style="color:#826386 !important;">PROFILE SNAPSHOT 
 	 
 	 </div>
 	</div>
-	<table class="table content" style="clear:left;">
+	<table class="table content" style="clear:left;margin-top:1rem;">
   <thead >
     <tr  class="is-selected" style="background: #826386">
       <th class=" has-text-centered"width="5%">S.No</th>
