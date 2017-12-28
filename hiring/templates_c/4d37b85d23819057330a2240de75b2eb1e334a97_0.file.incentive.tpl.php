@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-12-27 17:34:23
+/* Smarty version 3.1.29, created on 2017-12-28 11:34:06
   from "C:\xampp\htdocs\ctsvn\cthiring\hiring\templates\incentive.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5a438c47014868_25247388',
+  'unifunc' => 'content_5a448956dd3564_12377189',
   'file_dependency' => 
   array (
     '4d37b85d23819057330a2240de75b2eb1e334a97' => 
     array (
       0 => 'C:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\templates\\incentive.tpl',
-      1 => 1514376261,
+      1 => 1514441042,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5a438c47014868_25247388 ($_smarty_tpl) {
+function content_5a448956dd3564_12377189 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -138,13 +138,13 @@ $_smarty_tpl->ext->_updateScope->updateScope($_smarty_tpl, 'hide', 0);?>
 &employee=<?php echo $_smarty_tpl->tpl_vars['employee']->value;?>
 " rel="tooltip" data-original-title="Sort by Ascending or Descending" class="<?php echo $_smarty_tpl->tpl_vars['sort_field_employee']->value;?>
 ">Employee</a></th>	
-										<th width="180"><a href="incentive.php?field=incentive_type&order=<?php echo $_smarty_tpl->tpl_vars['order']->value;?>
+										<th width="80"><a href="incentive.php?field=incentive_type&order=<?php echo $_smarty_tpl->tpl_vars['order']->value;?>
 &page=<?php echo $_GET['page'];?>
 &f_date=<?php echo $_smarty_tpl->tpl_vars['f_date']->value;?>
 &t_date=<?php echo $_smarty_tpl->tpl_vars['t_date']->value;?>
 &employee=<?php echo $_smarty_tpl->tpl_vars['employee']->value;?>
 " rel="tooltip" data-original-title="Sort by Ascending or Descending" class="<?php echo $_smarty_tpl->tpl_vars['sort_field_incentive_type']->value;?>
-">Incentive Type </a></th>
+">Type </a></th>
 										
 										<th width="120"><a href="incentive.php?field=period&order=<?php echo $_smarty_tpl->tpl_vars['order']->value;?>
 &page=<?php echo $_GET['page'];?>
@@ -209,7 +209,14 @@ $_smarty_tpl->ext->_updateScope->updateScope($_smarty_tpl, 'hide', 0);?>
 &employee=<?php echo $_smarty_tpl->tpl_vars['employee']->value;?>
 " rel="tooltip" data-original-title="Sort by Ascending or Descending" class="<?php echo $_smarty_tpl->tpl_vars['sort_field_created_date']->value;?>
 ">Created</a></th>
-									</tr>
+										<th width="120"><a href="incentive.php?field=modified_date&order=<?php echo $_smarty_tpl->tpl_vars['order']->value;?>
+&page=<?php echo $_GET['page'];?>
+&f_date=<?php echo $_smarty_tpl->tpl_vars['f_date']->value;?>
+&t_date=<?php echo $_smarty_tpl->tpl_vars['t_date']->value;?>
+&employee=<?php echo $_smarty_tpl->tpl_vars['employee']->value;?>
+" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="<?php echo $_smarty_tpl->tpl_vars['sort_field_modified']->value;?>
+">Modified</a></th>
+	</tr>
 
 
 								</thead>
@@ -232,7 +239,7 @@ $__foreach_item_0_saved_local_item = $_smarty_tpl->tpl_vars['item'];
 									<tr>
 										<td width=""><a href="view_incentive.php?id=<?php echo $_smarty_tpl->tpl_vars['item']->value['id'];?>
 &emp_id=<?php echo $_smarty_tpl->tpl_vars['item']->value['emp_id'];?>
-"><?php echo $_smarty_tpl->tpl_vars['item']->value['employee'];?>
+"><?php echo ucwords($_smarty_tpl->tpl_vars['item']->value['employee']);?>
 </a></td>
 										<td width=""><?php echo $_smarty_tpl->tpl_vars['item']->value['incentive_type'];?>
 </td>
@@ -254,6 +261,8 @@ echo $_smarty_tpl->tpl_vars['item']->value['interview_candidate'];?>
 										
 										<td width="">-</td>									
 										<td width=""><?php echo $_smarty_tpl->tpl_vars['item']->value['created_date'];?>
+</td>
+										<td width=""><?php echo $_smarty_tpl->tpl_vars['item']->value['modified_date'];?>
 </td>
 									</tr>
 								<?php
