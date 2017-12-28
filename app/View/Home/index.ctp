@@ -263,19 +263,19 @@
 										<td class="optional">Openings Handled</td>
 										<td style="text-align:center" class="optional"><?php echo $VACANCY_MOP_COUNT;?></td>
 										<td  class="essential persist">Average Lead Time (Days)</td>
-										<td style="text-align:center" class="optional">-</td>
+										<td style="text-align:center" class="optional"><?php echo $AVG_CV_LEAD_DAY;?></td>
 									</tr>
 									<tr>
 										<td class="optional">Openings Billed</td>
 										<td style="text-align:center" class="optional"><?php echo $JOINED_TAB_COUNT; ?></td>
 										<td  class="essential persist">CVs Billed</td>
-										<td style="text-align:center" class="optional"><?php echo $JOINED_TAB_COUNT; ?></td>
+										<td style="text-align:center" class="optional"><?php echo $BILLED_TAB_COUNT; ?></td>
 									</tr>
 									<tr>
 										<td class="optional">Openings Not Billed</td>
 										<td style="text-align:center" class="optional"><?php echo $VACANCY_MOP_COUNT - $JOINED_TAB_COUNT ;?></td>
 										<td  class="essential persist">CVs Not Billed</td>
-										<td style="text-align:center" class="optional"><?php echo $RESUME_SENT_MOP_COUNT - $JOINED_TAB_COUNT ;?></td>
+										<td style="text-align:center" class="optional"><?php echo $RESUME_SENT_MOP_COUNT - $BILLED_TAB_COUNT ;?></td>
 									</tr>
 									
 									<tr>
@@ -286,7 +286,7 @@
 									</tr>
 									<tr>
 										<td class="optional">Avg Lead Time for Billing (Days)</td>
-										<td style="text-align:center" class="optional">-</td>
+										<td style="text-align:center" class="optional"><?php echo $AVG_BILLING_DAY; ?></td>
 										<td  class="essential persist">Billing Value (₹)</td>
 										<td style="text-align:center" class="optional"><?php echo $BILLED_AMT_TAB_AVG_COUNT ? $BILLED_AMT_TAB_AVG_COUNT  : 0;?> Lacs</td>
 									</tr>
@@ -294,7 +294,7 @@
 										<th class="optional">Business Conversion</th>
 										<th style="text-align:center" class="optional"><?php echo round($BILLED_TAB_COUNT/$BUSINESS_VALUE_MOP_COUNT, 1).'%'; ?></td>
 										<th  class="essential persist">Individual Contribution</th>
-										<th style="text-align:center" class="optional">-</th>
+										<th style="text-align:center" class="optional"><?php echo $BILLED_AMT_INDIVIDUAL; ?> Lacs</th>
 									</tr>
 								</tbody>
 								

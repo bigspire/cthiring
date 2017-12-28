@@ -85,7 +85,7 @@
 								<tbody>
 									<tr>
 										<td width="120" class="tbl_column">Employee</td>
-										<td>{$incentive_data['employee']}</td>
+										<td>{$incentive_data['employee']|ucwords}</td>
 									</tr>
 									
 									<tr>

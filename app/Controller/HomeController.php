@@ -657,7 +657,10 @@ class HomeController  extends AppController {
 		'ReqResume.bill_ctc >' => '0'), 'joins' => $count_options));
 		$this->set('BILLED_TAB_COUNT', $billing_count_tab[0][0]['count']);
 		$this->set('BILLED_AMT_TAB_COUNT', $billing_count_tab[0][0]['ctc']);
-		$this->set('BILLED_AMT_TAB_AVG_COUNT', round($billing_count_tab[0][0]['ctc']/100000, 1));
+		$billing_lacs = round($billing_count_tab[0][0]['ctc']/100000, 2);
+		$this->set('BILLED_AMT_TAB_AVG_COUNT', $billing_lacs);
+		$this->set('BILLED_AMT_INDIVIDUAL', round(($billing_lacs*66)/100, 2));
+
 		// MOP Table for recruiter and account holders
 		if($this->Session->read('USER.Login.roles_id') == '30' || $dash_type == 'rec_view' ){
 		// get the data for MOP table 
@@ -707,6 +710,30 @@ class HomeController  extends AppController {
 			$this->set('prod_ar', $prod_ar);			
 			$this->set('overall_prod', $overall_prod);
 			$this->set('RESUME_SENT_MOP_COUNT', $resume_sent_mop);
+			// get the avg. lead billing
+			$this->loadModel('ApproveBilling');
+			$date_cond = array('or' => array("DATE_FORMAT(ApproveBilling.created_date, '%Y-%m-%d') between ? and ?" => array($start, $end)));
+			$billing_data = $this->ApproveBilling->find('all', array('fields' => array('Position.created_date','ApproveBilling.created_date'),
+			'conditions' => array('Resume.created_by' => $this->Session->read('USER.Login.id'),$date_cond, 'ApproveBilling.is_deleted' => 'N',
+			'ApproveBilling.is_approved' => 'Y'), 'group' => array('ApproveBilling.id')));
+			$count_bill = count($billing_data);
+			foreach($billing_data as $bill){
+				$billing_day += $this->Home->diff_date($bill['Position']['created_date'], $bill['ApproveBilling']['created_date']);
+			}
+			$avg_bill_day = round($billing_day/$count_bill, 0);
+			$this->set('AVG_BILLING_DAY', $avg_bill_day);
+			// get the avg. cv lead time
+			$date_cond = array('or' => array("DATE_FORMAT(Resume.created_date, '%Y-%m-%d') between ? and ?" => array($start, $end)));
+			$cv_lead_data = $this->ReqResume->find('all', array('fields' => array('Position.created_date','Resume.created_date'),
+			'conditions' => array('Resume.created_by' => $this->Session->read('USER.Login.id'),$date_cond, 'Resume.is_deleted' => 'N',
+			'ReqResume.status_title !=' => 'Pending'), 'group' => array('Resume.id')));
+			$cv_lead_count = count($cv_lead_data);
+			foreach($cv_lead_data as $cv_lead){			
+				$cv_lead_day += $this->Home->diff_date($cv_lead['Position']['created_date'], $cv_lead['Resume']['created_date']);
+			}
+			$avg_cv_lead_day = round($cv_lead_day/$cv_lead_count, 0);
+			$this->set('AVG_CV_LEAD_DAY', $avg_cv_lead_day);
+			
 		}
 	}
 	

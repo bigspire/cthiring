@@ -99,7 +99,7 @@
 								<thead>
 									<tr>
 										<th width="180"><a href="incentive.php?field=employee&order={$order}&page={$smarty.get.page}&f_date={$f_date}&t_date={$t_date}&employee={$employee}" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="{$sort_field_employee}">Employee</a></th>	
-										<th width="180"><a href="incentive.php?field=incentive_type&order={$order}&page={$smarty.get.page}&f_date={$f_date}&t_date={$t_date}&employee={$employee}" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="{$sort_field_incentive_type}">Incentive Type </a></th>
+										<th width="80"><a href="incentive.php?field=incentive_type&order={$order}&page={$smarty.get.page}&f_date={$f_date}&t_date={$t_date}&employee={$employee}" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="{$sort_field_incentive_type}">Type </a></th>
 										
 										<th width="120"><a href="incentive.php?field=period&order={$order}&page={$smarty.get.page}&f_date={$f_date}&t_date={$t_date}&employee={$employee}" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="{$sort_field_period}">Period</a></th>
 										<th width="100"><a href="incentive.php?field=productivity&order={$order}&page={$smarty.get.page}&f_date={$f_date}&t_date={$t_date}&employee={$employee}" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="{$sort_field_productivity}">Productivity %</a></th>
@@ -110,7 +110,8 @@
 										<th width="180"><a href="incentive.php?field=eligible_incentive_amt&order={$order}&page={$smarty.get.page}&f_date={$f_date}&t_date={$t_date}&employee={$employee}" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="{$sort_field_eligible_incentive_amt}">Incentive Amt. (In Rs.) </a></th>
 										<th width="100"><a href="incentive.php?field=contribution&order={$order}&page={$smarty.get.page}&f_date={$f_date}&t_date={$t_date}&employee={$employee}" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="{$sort_field_contribution}">Individual Contribution - YTD (In Rs.)</a></th>
 										<th width="120"><a href="incentive.php?field=created_date&order={$order}&page={$smarty.get.page}&f_date={$f_date}&t_date={$t_date}&employee={$employee}" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="{$sort_field_created_date}">Created</a></th>
-									</tr>
+										<th width="120"><a href="incentive.php?field=modified_date&order={$order}&page={$smarty.get.page}&f_date={$f_date}&t_date={$t_date}&employee={$employee}" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="{$sort_field_modified}">Modified</a></th>
+	</tr>
 
 
 								</thead>
@@ -118,7 +119,7 @@
 								<tbody>
 									{foreach from=$data item=item key=key}	
 									<tr>
-										<td width=""><a href="view_incentive.php?id={$item.id}&emp_id={$item.emp_id}">{$item.employee}</a></td>
+										<td width=""><a href="view_incentive.php?id={$item.id}&emp_id={$item.emp_id}">{$item.employee|ucwords}</a></td>
 										<td width="">{$item.incentive_type}</td>
 										<td width="">{$item.incent_period_display}</td>
 										<td width="">{if $item.incent_type eq 'J'}N/A {else} {$item.productivity}%{/if}</td>
@@ -130,6 +131,7 @@
 										
 										<td width="">-</td>									
 										<td width="">{$item.created_date}</td>
+										<td width="">{$item.modified_date}</td>
 									</tr>
 								{/foreach}
 								</tbody>
