@@ -77,6 +77,14 @@
 							{html_options options=$emp_name selected=$employee}
 						</option>
 						</select> </label>
+						
+						<label>Type: 
+						<select name="type" class="input-medium" placeholder="" style="clear:left" id="InterviewEmpId">
+						<option value="">Select</option>
+							{html_options options=$inc_type selected=$type}
+						</option>
+						</select> 
+						</label>
 							<label style="margin-top:18px;"><input type="submit" value="Submit" class="btn btn-gebo" /></label>
 					<label style="margin-top:18px;"><a class="jsRedirect" href="incentive.php"><input value="Reset" type="button" class="btn"/></a></label>																		
 					</div>

@@ -176,7 +176,8 @@ try{
 // smarty drop down array for current status
 $smarty->assign('status_type', array('' => 'Select', '1' => 'Scheduled', '2' => 'Re-Scheduled',
 					'3' => 'OnHold', '4' => 'Qualified', '5' => 'Cancelled', '6' => 'Rejected'));
-
+// smarty drop down array for incentive type
+$smarty->assign('inc_type', array('' => 'Select', 'I' => 'Profile Short-listing & Interviewing', 'J' => 'Position Closure'));
 // calling mysql close db connection function
 $c_c = $mysql->close_connection();
 $paging->posturl($post_url);
