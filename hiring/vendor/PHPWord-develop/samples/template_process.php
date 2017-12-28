@@ -59,17 +59,17 @@ $templateProcessor->setValue('CANDIDATE_EMAIL', $mail_item,  1,0);
 // to retain candidate marital status field 
 	$templateProcessor->setValue('MARITAL', $fun->marital_status($_POST['marital_status']),   1, 0);
 // to retain relevant exposure
-$templateProcessor->setValue('RELEVANTEXPOSURE', ucfirst($_POST['relevant_exposure']),   1, 0);
+$templateProcessor->setValue('RELEVANTEXPOSURE', ucfirst(trim($_POST['relevant_exposure'])),   1, 0);
 // to retain CREDENTIALS CONSIDERED field
-$templateProcessor->setValue('CREDENTIALSCONSIDERED', ucfirst($_POST['credential_shortlisting']),  1,0); 
+$templateProcessor->setValue('CREDENTIALSCONSIDERED', ucfirst(trim($_POST['credential_shortlisting'])),  1,0); 
 // to retain VITAL INPUTS field
-$templateProcessor->setValue('VITALINPUTS', ucfirst($_POST['vital_info_interview']),  1,0); 
+$templateProcessor->setValue('VITALINPUTS', ucfirst(trim($_POST['vital_info_interview'])),  1,0); 
 // to retain INTERVIEW AVAILABILITY field
-$templateProcessor->setValue('INTERVIEWAVAILABILITY', ucfirst($_POST['interview_availability']),  1,0); 
+$templateProcessor->setValue('INTERVIEWAVAILABILITY', ucfirst(trim($_POST['interview_availability'])),  1,0); 
 // to retain ACHIVEMENTS field
-$templateProcessor->setValue('ACHIVEMENTS', ucfirst($_POST['achievement']),  1,0); 
+$templateProcessor->setValue('ACHIVEMENTS', ucfirst(trim($_POST['achievement'])),  1,0); 
 // to retain CANDIDATE BRIEF field
-$templateProcessor->setValue('CANDIDATEBRIEF', ucfirst($_POST['candidate_brief']),  1,0); 
+$templateProcessor->setValue('CANDIDATEBRIEF', ucfirst(trim($_POST['candidate_brief'])),  1,0); 
 
 
 // to retain candidate language field 
@@ -97,7 +97,7 @@ $templateProcessor->setValue('CANDIDATEBRIEF', ucfirst($_POST['candidate_brief']
 	
 	
 // to retain candidate hobbies field 	
-	$templateProcessor->setValue('HOBBIESDETAIL', ucwords($_POST['hobby']),   1, 0);
+	$templateProcessor->setValue('HOBBIESDETAIL', ucwords(trim($_POST['hobby'])),   1, 0);
 // to retain candidate's computer skills field 
 	$templateProcessor->setValue('COMPUTERSKILLS', ucwords($_POST['skills']),   1, 0);
 // to retain compansation amount field 
@@ -105,19 +105,19 @@ $templateProcessor->setValue('CANDIDATEBRIEF', ucfirst($_POST['candidate_brief']
 // to retain notice period field 	
     $templateProcessor->setValue('NOTICEPERIOD', $fun->get_notice($_POST['notice_period']),   1, 0);
 // to retain appraisal field 
-	$templateProcessor->setValue('CANDIDATEAPPRAISAL', ucfirst($_POST['candidate_brief']),   1, 0);
+	$templateProcessor->setValue('CANDIDATEAPPRAISAL', ucfirst(trim($_POST['candidate_brief'])),   1, 0);
 // to retain technical expertise field 
-	$templateProcessor->setValue('TECHNICALEXPERTISE', ucfirst($_POST['tech_expert']),   1, 0);
+	$templateProcessor->setValue('TECHNICALEXPERTISE', ucfirst(trim($_POST['tech_expert'])),   1, 0);
 // to retain personality field 
-	$templateProcessor->setValue('PERSONALITYCANDIDATE', ucfirst($_POST['personality']),   1, 0);
+	$templateProcessor->setValue('PERSONALITYCANDIDATE', ucfirst(trim($_POST['personality'])),   1, 0);
 // to retain outlook on company field 	
-	$templateProcessor->setValue('OUTLOOKCOMPANY',  ucfirst($_POST['about_company']),   1, 0);
+	$templateProcessor->setValue('OUTLOOKCOMPANY',  ucfirst(trim($_POST['about_company'])),   1, 0);
 	
 	
 // to retain key achievements field 	
-	$key_achievementData = $_POST['key_achievement_0'];
+	$tech_expert_data = trim($_POST['tech_expert']);
 
-	$html = explode("\n", $key_achievementData);
+	$html = explode("\n", $tech_expert_data);
 	$track_tot = count($html);
 	$templateProcessor->cloneRow('TRACKRECORDS', $track_tot); // $_POST['exp_count']);
 	$train_flags = 1;
@@ -140,7 +140,7 @@ $templateProcessor->setValue('CANDIDATEBRIEF', ucfirst($_POST['candidate_brief']
 	$train_flag = 1;
 	for($i = 0; $i < $_POST['train_count']; $i++){
 			$train_yearData = $_POST['train_year_'.$i];
-			$descriptionData = ucfirst($_POST['description_'.$i]);
+			$descriptionData = ucfirst(trim($_POST['description_'.$i]));
 			$programtitleData = ucwords($_POST['programtitle_'.$i]);
 			$train_locationData = ucfirst($_POST['train_location_'.$i]);
 	
@@ -214,11 +214,11 @@ for($i = 0; $i < $_POST['exp_count']; $i++){
 			$areaData = $_POST['area_'.$i];
 			$companyData = ucwords($_POST['company_'.$i]);
 			$vitalData = $_POST['vital_'.$i];
-			$company_profileData = $_POST['company_profile_'.$i];
+			$company_profileData = trim($_POST['company_profile_'.$i]);
 			$worklocData = ucfirst($_POST['workloc_'.$i]);
-			$key_responsibilityData = $_POST['key_responsibility_'.$i];
-			$key_achievementData = $_POST['key_achievement_'.$i];
-			$reporting_toData = $_POST['reporting_to_'.$i];
+			$key_responsibilityData = trim($_POST['key_responsibility_'.$i]);
+			$key_achievementData = trim($_POST['key_achievement_'.$i]);
+			$reporting_toData = trim($_POST['reporting_to_'.$i]);
 		
 			$query = "CALL get_designation_details('$desigData')";
 			try{
@@ -259,11 +259,11 @@ for($i = 0; $i < $_POST['exp_count']; $i++){
 			$to_month_exp = $_POST['to_month_of_exp_'.$i];
 			$areaData = $_POST['area_'.$i];
 			$companyData = $_POST['company_'.$i];
-			$company_profileData = ucfirst($_POST['company_profile_'.$i]);
+			$company_profileData = ucfirst(trim($_POST['company_profile_'.$i]));
 			$worklocData = ucfirst($_POST['workloc_'.$i]);
-			$key_responsibilityData = $_POST['key_responsibility_'.$i];
-			$key_achievementData = $_POST['key_achievement_'.$i];
-			$reporting_toData = ucfirst($_POST['reporting_to_'.$i]);
+			$key_responsibilityData = trim($_POST['key_responsibility_'.$i]);
+			$key_achievementData = trim($_POST['key_achievement_'.$i]);
+			$reporting_toData = ucfirst(trim($_POST['reporting_to_'.$i]));
 			
 			$query = "CALL get_designation_details('$desigData')";
 			try{
