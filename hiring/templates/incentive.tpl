@@ -55,7 +55,7 @@
 							</div>
 						{/if}
 						
-						{if $employee || $f_date || $t_date}
+						{if $employee || $f_date || $t_date || $type}
 						  {assign var=hide value=''}
 						{else}
 							{assign var=hide value=dn}
@@ -79,8 +79,7 @@
 						</select> </label>
 						
 						<label>Type: 
-						<select name="type" class="input-medium" placeholder="" style="clear:left" id="InterviewEmpId">
-						<option value="">Select</option>
+						<select name="type" class="input-large" placeholder="" style="clear:left" id="InterviewEmpId">
 							{html_options options=$inc_type selected=$type}
 						</option>
 						</select> 
