@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-12-15 11:33:58
+/* Smarty version 3.1.29, created on 2017-12-28 12:37:31
   from "C:\xampp\htdocs\2017\ctsvn\cthiring\hiring\templates\view_incentive.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5a3365ce839dd9_39036881',
+  'unifunc' => 'content_5a449833428c28_54563574',
   'file_dependency' => 
   array (
     '47799b87b75e1cd9060f2865839cecf00b9add1a' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\templates\\view_incentive.tpl',
-      1 => 1513317836,
+      1 => 1514444093,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5a3365ce839dd9_39036881 ($_smarty_tpl) {
+function content_5a449833428c28_54563574 ($_smarty_tpl) {
 ?>
 
    
@@ -122,7 +122,7 @@ home"><i class="icon-home"></i></a>
 								<tbody>
 									<tr>
 										<td width="120" class="tbl_column">Employee</td>
-										<td><?php echo $_smarty_tpl->tpl_vars['incentive_data']->value['employee'];?>
+										<td><?php echo ucwords($_smarty_tpl->tpl_vars['incentive_data']->value['employee']);?>
 </td>
 									</tr>
 									

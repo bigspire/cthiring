@@ -28,16 +28,66 @@ $t_date = $_POST['t_date'] ? $_POST['t_date'] : $_GET['t_date'];
 $from_date = $fun->convert_date($f_date);
 $to_date = $fun->convert_date($t_date);
 $employee = $_POST['employee'] ? $_POST['employee'] : $_GET['employee'];
+$type = $_POST['type'] ? $_POST['type'] : $_GET['type']; 
 
 //post url for paging
 if($_POST){
 	$post_url .= '&f_date='.$f_date;
 	$post_url .= '&t_date='.$t_date;
 	$post_url .= '&employee='.$employee;
+	$post_url .= '&type='.$type;
 }
 
+
+// for director and BH and admin
+if($_SESSION['roles_id'] == '33' || $_SESSION['roles_id'] == '35' || $_SESSION['roles_id'] == '26'){
+	$show = 'all';
+	$team_cond = false;
+}else{
+	$team_cond = true;
+}
+// call the next result
+$mysql->next_query();
+$id = $_SESSION['user_id'];
+// get the team members
+if($show != 'all'){
+	$qryCond = "(a.level1 = '$id' or a.level2 = '$id') and ";
+}		
+$sql = "select u.id, u.first_name, u.last_name from users u left join	approval a  on (a.users_id = u.id) where
+		$qryCond u.is_deleted = 'N' and u.status = '0' group by u.id order by u.first_name asc";		
+$result = $mysql->execute_query($sql);		
+while($row = $mysql->display_result($result)){
+	$emp_name[$row['id']] = ucwords($row['first_name'].' '.$row['last_name']);
+	// concatenate the list of team members
+	$id_str .=  $row['id'].', ';
+}
+	
+// if not director or BH 
+if(!empty($emp_name)){
+	$smarty->assign('approveUser', '1');	
+	if($team_cond){
+		$cond .= ' or inc.users_id in('.substr($id_str, 0, strlen($id_str)-2).')';				
+	}
+	$smarty->assign('emp_name',$emp_name);
+}
+		
+// if branch admmin
+if($_SESSION['roles_id'] == '35'){
+	$loc = $_SESSION['location_id'];
+	$sql = "select u.id from users where u.is_deleted = 'N' and u.status = '0' and u.location_id = '$loc'  group by u.id order by u.first_name asc";		
+	$result = $mysql->execute_query($sql);		
+	while($row = $mysql->display_result($result)){
+		$emp_name[$row['id']] = ucwords($row['first_name'].' '.$row['last_name']);
+		// concatenate the list of team members
+		$id_str .=  $row['id'].', ';
+	}
+	$smarty->assign('approveUser', '1');	
+	$cond .= 'and ( inc.users_id in('.substr($id_str, 0, strlen($id_str)-2).') )';
+	$smarty->assign('emp_name',$emp_name);
+}
+		
 // count the total no. of records
-$query = "CALL list_incentive('".$employee."','".$_SESSION['roles_id']."','".$from_date."','".$to_date."','0','0','','','".$_GET['action']."')";
+$query = "CALL list_incentive('".$employee."','".$type."','".$_SESSION['roles_id']."','".$from_date."','".$to_date."','0','0','','','".$_GET['action']."','".$cond."')";
 try{
 	if(!$result = $mysql->execute_query($query)){
 		throw new Exception('Problem in executing count incentive page');
@@ -90,7 +140,7 @@ if($search_key = array_search($_GET['field'], $sort_fields)){
 }
 
 // fetch all records
-$query =  "CALL list_incentive('".$employee."','".$_SESSION['roles_id']."','".$from_date."','".$to_date."','$start','$limit','".$field."','".$order."','".$_GET['action']."')";
+$query =  "CALL list_incentive('".$employee."','".$type."','".$_SESSION['roles_id']."','".$from_date."','".$to_date."','$start','$limit','".$field."','".$order."','".$_GET['action']."','".$cond."')";
 try{
 	if(!$result = $mysql->execute_query($query)){
 		throw new Exception('Problem in executing list incentive page');
@@ -153,7 +203,7 @@ try{
 }catch(Exception $e){
 	echo 'Caught exception: ',  $e->getMessage(), "\n";
 }
-
+/*
 // query to fetch all employee names. 
 $query = 'CALL get_employee()';
 try{
@@ -172,12 +222,13 @@ try{
 	$mysql->next_query();
 }catch(Exception $e){
 	echo 'Caught exception: ',  $e->getMessage(), "\n";
-} 
+} */
 
 // smarty drop down array for current status
 $smarty->assign('status_type', array('' => 'Select', '1' => 'Scheduled', '2' => 'Re-Scheduled',
 					'3' => 'OnHold', '4' => 'Qualified', '5' => 'Cancelled', '6' => 'Rejected'));
-
+// smarty drop down array for incentive type
+$smarty->assign('inc_type', array('' => 'Select', 'I' => 'Profile Short-listing & Interviewing', 'J' => 'Position Closure'));
 // calling mysql close db connection function
 $c_c = $mysql->close_connection();
 $paging->posturl($post_url);
@@ -191,6 +242,7 @@ $smarty->assign('total_pages' , $total_pages);
 $smarty->assign('keyword' , $keyword); 	
 $smarty->assign('f_date', $f_date);
 $smarty->assign('t_date', $t_date);
+$smarty->assign('type', $type);
 $smarty->assign('employee' , $employee); 
 $smarty->assign('branch' , $branch); 
 $smarty->assign('current_status' , $current_status); 

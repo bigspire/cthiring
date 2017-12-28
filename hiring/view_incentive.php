@@ -48,7 +48,7 @@ try{
 	$smarty->assign('modified_date' , $modified_date);
 	$incentive_type = $fun->check_incentive_type($row['incentive_type']);
 	$smarty->assign('incentive_type' , $incentive_type);
-	$period = $fun->convert_date_to_display($row['period']);
+	$period = date('M, Y', strtotime($row['period']));
 	$smarty->assign('period' ,$period);
 	// free the memory
 	$mysql->clear_result($result);

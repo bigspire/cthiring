@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-12-21 12:31:52
+/* Smarty version 3.1.29, created on 2017-12-28 13:13:54
   from "C:\xampp\htdocs\2017\ctsvn\cthiring\hiring\templates\incentive.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5a3b5c60068184_28964375',
+  'unifunc' => 'content_5a44a0ba72db24_13387136',
   'file_dependency' => 
   array (
     'eb99508c2f1c6575b67c530e753fbe03facaea6a' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\templates\\incentive.tpl',
-      1 => 1513839710,
+      1 => 1514447027,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5a3b5c60068184_28964375 ($_smarty_tpl) {
+function content_5a44a0ba72db24_13387136 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -90,7 +90,7 @@ home"><i class="icon-home"></i></a>
 							</div>
 						<?php }?>
 						
-						<?php if ($_smarty_tpl->tpl_vars['employee']->value || $_smarty_tpl->tpl_vars['f_date']->value || $_smarty_tpl->tpl_vars['t_date']->value) {?>
+						<?php if ($_smarty_tpl->tpl_vars['employee']->value || $_smarty_tpl->tpl_vars['f_date']->value || $_smarty_tpl->tpl_vars['t_date']->value || $_smarty_tpl->tpl_vars['type']->value) {?>
 						  <?php $_smarty_tpl->tpl_vars['hide'] = new Smarty_Variable('', null);
 $_smarty_tpl->ext->_updateScope->updateScope($_smarty_tpl, 'hide', 0);?>
 						<?php } else { ?>
@@ -118,6 +118,14 @@ $_smarty_tpl->ext->_updateScope->updateScope($_smarty_tpl, 'hide', 0);?>
 
 						</option>
 						</select> </label>
+						
+						<label>Type: 
+						<select name="type" class="input-large" placeholder="" style="clear:left" id="InterviewEmpId">
+							<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['inc_type']->value,'selected'=>$_smarty_tpl->tpl_vars['type']->value),$_smarty_tpl);?>
+
+						</option>
+						</select> 
+						</label>
 							<label style="margin-top:18px;"><input type="submit" value="Submit" class="btn btn-gebo" /></label>
 					<label style="margin-top:18px;"><a class="jsRedirect" href="incentive.php"><input value="Reset" type="button" class="btn"/></a></label>																		
 					</div>
@@ -137,8 +145,16 @@ $_smarty_tpl->ext->_updateScope->updateScope($_smarty_tpl, 'hide', 0);?>
 &t_date=<?php echo $_smarty_tpl->tpl_vars['t_date']->value;?>
 &employee=<?php echo $_smarty_tpl->tpl_vars['employee']->value;?>
 " rel="tooltip" data-original-title="Sort by Ascending or Descending" class="<?php echo $_smarty_tpl->tpl_vars['sort_field_employee']->value;?>
-">Employee</a></th>										
-										<th width="100"><a href="incentive.php?field=period&order=<?php echo $_smarty_tpl->tpl_vars['order']->value;?>
+">Employee</a></th>	
+										<th width="80"><a href="incentive.php?field=incentive_type&order=<?php echo $_smarty_tpl->tpl_vars['order']->value;?>
+&page=<?php echo $_GET['page'];?>
+&f_date=<?php echo $_smarty_tpl->tpl_vars['f_date']->value;?>
+&t_date=<?php echo $_smarty_tpl->tpl_vars['t_date']->value;?>
+&employee=<?php echo $_smarty_tpl->tpl_vars['employee']->value;?>
+" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="<?php echo $_smarty_tpl->tpl_vars['sort_field_incentive_type']->value;?>
+">Type </a></th>
+										
+										<th width="120"><a href="incentive.php?field=period&order=<?php echo $_smarty_tpl->tpl_vars['order']->value;?>
 &page=<?php echo $_GET['page'];?>
 &f_date=<?php echo $_smarty_tpl->tpl_vars['f_date']->value;?>
 &t_date=<?php echo $_smarty_tpl->tpl_vars['t_date']->value;?>
@@ -152,55 +168,48 @@ $_smarty_tpl->ext->_updateScope->updateScope($_smarty_tpl, 'hide', 0);?>
 &employee=<?php echo $_smarty_tpl->tpl_vars['employee']->value;?>
 " rel="tooltip" data-original-title="Sort by Ascending or Descending" class="<?php echo $_smarty_tpl->tpl_vars['sort_field_productivity']->value;?>
 ">Productivity %</a></th>
-										<th width="100"><a href="incentive.php?field=int_fst&order=<?php echo $_smarty_tpl->tpl_vars['order']->value;?>
+										<th width="100"><a href="incentive.php?field=interview_candidate&order=<?php echo $_smarty_tpl->tpl_vars['order']->value;?>
 &page=<?php echo $_GET['page'];?>
 &f_date=<?php echo $_smarty_tpl->tpl_vars['f_date']->value;?>
 &t_date=<?php echo $_smarty_tpl->tpl_vars['t_date']->value;?>
 &employee=<?php echo $_smarty_tpl->tpl_vars['employee']->value;?>
-" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="<?php echo $_smarty_tpl->tpl_vars['sort_field_pint_fst']->value;?>
-">No. of Candidates Interviewed for the first time</a></th>
+" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="<?php echo $_smarty_tpl->tpl_vars['sort_field_interview_candidate']->value;?>
+">No. of Candidates Interviewed</a></th>
+										<th width="100"><a href="incentive.php?field=target_amt&order=<?php echo $_smarty_tpl->tpl_vars['order']->value;?>
+&page=<?php echo $_GET['page'];?>
+&f_date=<?php echo $_smarty_tpl->tpl_vars['f_date']->value;?>
+&t_date=<?php echo $_smarty_tpl->tpl_vars['t_date']->value;?>
+&employee=<?php echo $_smarty_tpl->tpl_vars['employee']->value;?>
+" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="<?php echo $_smarty_tpl->tpl_vars['sort_field_target_amt']->value;?>
+">Min. Performance Target (In Rs.)</a></th>
+										<th width="100"><a href="incentive.php?field=achieve_amt&order=<?php echo $_smarty_tpl->tpl_vars['order']->value;?>
+&page=<?php echo $_GET['page'];?>
+&f_date=<?php echo $_smarty_tpl->tpl_vars['f_date']->value;?>
+&t_date=<?php echo $_smarty_tpl->tpl_vars['t_date']->value;?>
+&employee=<?php echo $_smarty_tpl->tpl_vars['employee']->value;?>
+" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="<?php echo $_smarty_tpl->tpl_vars['sort_field_achieve_amt']->value;?>
+">Actual Individual Contribution (In Rs.)</a></th>
+										<th width="100"><a href="incentive.php?field=candidate_billed&order=<?php echo $_smarty_tpl->tpl_vars['order']->value;?>
+&page=<?php echo $_GET['page'];?>
+&f_date=<?php echo $_smarty_tpl->tpl_vars['f_date']->value;?>
+&t_date=<?php echo $_smarty_tpl->tpl_vars['t_date']->value;?>
+&employee=<?php echo $_smarty_tpl->tpl_vars['employee']->value;?>
+" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="<?php echo $_smarty_tpl->tpl_vars['sort_field_candidate_billed']->value;?>
+">No. of Candidates Billed</a></th>
 										<th width="180"><a href="incentive.php?field=eligible_incentive_amt&order=<?php echo $_smarty_tpl->tpl_vars['order']->value;?>
 &page=<?php echo $_GET['page'];?>
 &f_date=<?php echo $_smarty_tpl->tpl_vars['f_date']->value;?>
 &t_date=<?php echo $_smarty_tpl->tpl_vars['t_date']->value;?>
 &employee=<?php echo $_smarty_tpl->tpl_vars['employee']->value;?>
 " rel="tooltip" data-original-title="Sort by Ascending or Descending" class="<?php echo $_smarty_tpl->tpl_vars['sort_field_eligible_incentive_amt']->value;?>
-">Incentive Amt. </a></th>
+">Incentive Amt. (In Rs.) </a></th>
 										<th width="100"><a href="incentive.php?field=contribution&order=<?php echo $_smarty_tpl->tpl_vars['order']->value;?>
 &page=<?php echo $_GET['page'];?>
 &f_date=<?php echo $_smarty_tpl->tpl_vars['f_date']->value;?>
 &t_date=<?php echo $_smarty_tpl->tpl_vars['t_date']->value;?>
 &employee=<?php echo $_smarty_tpl->tpl_vars['employee']->value;?>
 " rel="tooltip" data-original-title="Sort by Ascending or Descending" class="<?php echo $_smarty_tpl->tpl_vars['sort_field_contribution']->value;?>
-">Incentive Contribution (YTD)</a></th>
-										<th width="100"><a href="incentive.php?field=pr_targer&order=<?php echo $_smarty_tpl->tpl_vars['order']->value;?>
-&page=<?php echo $_GET['page'];?>
-&f_date=<?php echo $_smarty_tpl->tpl_vars['f_date']->value;?>
-&t_date=<?php echo $_smarty_tpl->tpl_vars['t_date']->value;?>
-&employee=<?php echo $_smarty_tpl->tpl_vars['employee']->value;?>
-" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="<?php echo $_smarty_tpl->tpl_vars['sort_field_pr_targer']->value;?>
-">Min. Performance Target</a></th>
-										<th width="100"><a href="incentive.php?field=ind_contribution&order=<?php echo $_smarty_tpl->tpl_vars['order']->value;?>
-&page=<?php echo $_GET['page'];?>
-&f_date=<?php echo $_smarty_tpl->tpl_vars['f_date']->value;?>
-&t_date=<?php echo $_smarty_tpl->tpl_vars['t_date']->value;?>
-&employee=<?php echo $_smarty_tpl->tpl_vars['employee']->value;?>
-" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="<?php echo $_smarty_tpl->tpl_vars['sort_field_ind_contribution']->value;?>
-">Actual Individual Contribution</a></th>
-										<th width="100"><a href="incentive.php?field=no_cand_billed&order=<?php echo $_smarty_tpl->tpl_vars['order']->value;?>
-&page=<?php echo $_GET['page'];?>
-&f_date=<?php echo $_smarty_tpl->tpl_vars['f_date']->value;?>
-&t_date=<?php echo $_smarty_tpl->tpl_vars['t_date']->value;?>
-&employee=<?php echo $_smarty_tpl->tpl_vars['employee']->value;?>
-" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="<?php echo $_smarty_tpl->tpl_vars['sort_field_no_cand_billed']->value;?>
-">No. of Candidates Billed</a></th>
-										<th width="180"><a href="incentive.php?field=incentive_type&order=<?php echo $_smarty_tpl->tpl_vars['order']->value;?>
-&page=<?php echo $_GET['page'];?>
-&f_date=<?php echo $_smarty_tpl->tpl_vars['f_date']->value;?>
-&t_date=<?php echo $_smarty_tpl->tpl_vars['t_date']->value;?>
-&employee=<?php echo $_smarty_tpl->tpl_vars['employee']->value;?>
-" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="<?php echo $_smarty_tpl->tpl_vars['sort_field_incentive_type']->value;?>
-">Incentive Type </a></th>
+">Individual Contribution - YTD (In Rs.)</a></th>
 										<th width="120"><a href="incentive.php?field=created_date&order=<?php echo $_smarty_tpl->tpl_vars['order']->value;?>
 &page=<?php echo $_GET['page'];?>
 &f_date=<?php echo $_smarty_tpl->tpl_vars['f_date']->value;?>
@@ -208,7 +217,14 @@ $_smarty_tpl->ext->_updateScope->updateScope($_smarty_tpl, 'hide', 0);?>
 &employee=<?php echo $_smarty_tpl->tpl_vars['employee']->value;?>
 " rel="tooltip" data-original-title="Sort by Ascending or Descending" class="<?php echo $_smarty_tpl->tpl_vars['sort_field_created_date']->value;?>
 ">Created</a></th>
-									</tr>
+										<th width="120"><a href="incentive.php?field=modified_date&order=<?php echo $_smarty_tpl->tpl_vars['order']->value;?>
+&page=<?php echo $_GET['page'];?>
+&f_date=<?php echo $_smarty_tpl->tpl_vars['f_date']->value;?>
+&t_date=<?php echo $_smarty_tpl->tpl_vars['t_date']->value;?>
+&employee=<?php echo $_smarty_tpl->tpl_vars['employee']->value;?>
+" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="<?php echo $_smarty_tpl->tpl_vars['sort_field_modified']->value;?>
+">Modified</a></th>
+	</tr>
 
 
 								</thead>
@@ -231,21 +247,30 @@ $__foreach_item_0_saved_local_item = $_smarty_tpl->tpl_vars['item'];
 									<tr>
 										<td width=""><a href="view_incentive.php?id=<?php echo $_smarty_tpl->tpl_vars['item']->value['id'];?>
 &emp_id=<?php echo $_smarty_tpl->tpl_vars['item']->value['emp_id'];?>
-"><?php echo $_smarty_tpl->tpl_vars['item']->value['employee'];?>
+"><?php echo ucwords($_smarty_tpl->tpl_vars['item']->value['employee']);?>
 </a></td>
-										<td width=""><?php echo $_smarty_tpl->tpl_vars['item']->value['period'];?>
+										<td width=""><?php echo $_smarty_tpl->tpl_vars['item']->value['incentive_type'];?>
 </td>
-										<td width=""></td>
-										<td width=""></td>
-										<td width=""><?php echo $_smarty_tpl->tpl_vars['item']->value['eligible_incentive_amt'];?>
+										<td width=""><?php echo $_smarty_tpl->tpl_vars['item']->value['incent_period_display'];?>
 </td>
-										<td width=""></td>	
-										<td width=""></td>
-										<td width=""></td>										
-										<td width=""></td>									
-										<td width="" ><?php echo $_smarty_tpl->tpl_vars['item']->value['incentive_type'];?>
-</td>	
+										<td width=""><?php if ($_smarty_tpl->tpl_vars['item']->value['incent_type'] == 'J') {?>N/A <?php } else { ?> <?php echo $_smarty_tpl->tpl_vars['item']->value['productivity'];?>
+%<?php }?></td>
+										<td width=""><?php if ($_smarty_tpl->tpl_vars['item']->value['incent_type'] == 'J') {?>N/A <?php } else {
+echo $_smarty_tpl->tpl_vars['item']->value['interview_candidate'];?>
+ <?php }?></td>
+										<td width=""><?php if ($_smarty_tpl->tpl_vars['item']->value['incent_type'] == 'I') {?>N/A <?php } else { ?> ₹<?php echo $_smarty_tpl->tpl_vars['item']->value['incentive_target_amt'];
+}?></td>	
+										<td width=""><?php if ($_smarty_tpl->tpl_vars['item']->value['incent_type'] == 'I') {?>N/A <?php } else { ?> ₹<?php echo $_smarty_tpl->tpl_vars['item']->value['achievement_amt'];
+}?></td>
+										<td width=""><?php if ($_smarty_tpl->tpl_vars['item']->value['incent_type'] == 'I') {?>N/A <?php } else { ?> <?php echo intval($_smarty_tpl->tpl_vars['item']->value['candidate_billed']);?>
+ <?php }?></td>		
+										<td width="">₹<?php echo $_smarty_tpl->tpl_vars['item']->value['eligible_incentive_amt'];?>
+</td>
+										
+										<td width="">-</td>									
 										<td width=""><?php echo $_smarty_tpl->tpl_vars['item']->value['created_date'];?>
+</td>
+										<td width=""><?php echo $_smarty_tpl->tpl_vars['item']->value['modified_date'];?>
 </td>
 									</tr>
 								<?php

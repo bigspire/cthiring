@@ -55,7 +55,7 @@
 							</div>
 						{/if}
 						
-						{if $employee || $f_date || $t_date}
+						{if $employee || $f_date || $t_date || $type}
 						  {assign var=hide value=''}
 						{else}
 							{assign var=hide value=dn}
@@ -77,6 +77,13 @@
 							{html_options options=$emp_name selected=$employee}
 						</option>
 						</select> </label>
+						
+						<label>Type: 
+						<select name="type" class="input-large" placeholder="" style="clear:left" id="InterviewEmpId">
+							{html_options options=$inc_type selected=$type}
+						</option>
+						</select> 
+						</label>
 							<label style="margin-top:18px;"><input type="submit" value="Submit" class="btn btn-gebo" /></label>
 					<label style="margin-top:18px;"><a class="jsRedirect" href="incentive.php"><input value="Reset" type="button" class="btn"/></a></label>																		
 					</div>
