@@ -66,6 +66,7 @@ if($row['incentive_type'] == 'I'){
 	$period2 = (date('Y',strtotime($row['period']))  + 1).'-'.$period[1];
 }
 
+/*
 // select and execute query and fetch the result
 $query = "CALL get_user_type('".$emp_id."')";
 try{
@@ -81,9 +82,11 @@ try{
 	echo 'Caught exception: ',  $e->getMessage(), "\n";
 }
 
+*/
+
 if(!empty($row)){
 	// select and execute query and fetch the result
-	$query = "CALL view_approved_billing_details('".$emp_id."','".$row['incentive_type']."','".$period1."','".$period2."','R')";
+	$query = "CALL view_approved_billing_details('".$emp_id."','".$row['incentive_type']."','".$period1."','".$period2."')";
 	try{
 		if(!$result = $mysql->execute_query($query)){
 			throw new Exception('Problem in executing view billing details');
@@ -95,6 +98,7 @@ if(!empty($row)){
 			$data[] = $obj;
 			$data[$i]['int_date'] = $fun->convert_date_to_display($obj['int_date']);
 			$data[$i]['billing_date'] = $fun->convert_date_to_display($obj['billing_date']);
+			$data[$i]['user_type'] = $obj['user_type'] == 'R' ? 'Recruiter' : 'CRM';
 			$i++;
 		}
 		// free the memory

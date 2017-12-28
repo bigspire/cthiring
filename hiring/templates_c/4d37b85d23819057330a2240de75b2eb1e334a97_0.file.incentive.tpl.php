@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-12-28 11:34:06
+/* Smarty version 3.1.29, created on 2017-12-28 12:55:06
   from "C:\xampp\htdocs\ctsvn\cthiring\hiring\templates\incentive.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5a448956dd3564_12377189',
+  'unifunc' => 'content_5a449c52b6cce3_22864056',
   'file_dependency' => 
   array (
     '4d37b85d23819057330a2240de75b2eb1e334a97' => 
     array (
       0 => 'C:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\templates\\incentive.tpl',
-      1 => 1514441042,
+      1 => 1514445629,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5a448956dd3564_12377189 ($_smarty_tpl) {
+function content_5a449c52b6cce3_22864056 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -194,7 +194,7 @@ $_smarty_tpl->ext->_updateScope->updateScope($_smarty_tpl, 'hide', 0);?>
 &t_date=<?php echo $_smarty_tpl->tpl_vars['t_date']->value;?>
 &employee=<?php echo $_smarty_tpl->tpl_vars['employee']->value;?>
 " rel="tooltip" data-original-title="Sort by Ascending or Descending" class="<?php echo $_smarty_tpl->tpl_vars['sort_field_eligible_incentive_amt']->value;?>
-">Incentive Amt. (In Rs.) </a></th>
+">Incentive Amount (In Rs.) </a></th>
 										<th width="100"><a href="incentive.php?field=contribution&order=<?php echo $_smarty_tpl->tpl_vars['order']->value;?>
 &page=<?php echo $_GET['page'];?>
 &f_date=<?php echo $_smarty_tpl->tpl_vars['f_date']->value;?>

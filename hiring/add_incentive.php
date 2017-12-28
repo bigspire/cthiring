@@ -310,7 +310,7 @@ if(!empty($_POST)){
 							// save the incentive details of the candidates
 							$incentive_period = date('Y-m-d', strtotime($incentive_year.'-'.$incentive_month.'-01'));	
 							$query = "CALL save_candidate_incentive('".$id."','I','".$incentive_period."','".$incentive_amount."','".$_SESSION['user_id']."','".$created_date."','','',
-							'".$avg_user."','".$n."')";
+							'".$avg_user."','".$n."','')";
 								try{
 									// calling mysql exe_query function
 									if(!$result = $mysql->execute_query($query)){
@@ -553,7 +553,8 @@ if(!empty($_POST)){
 					if($total == '0'){						
 						//if($incentive_amount > 0){
 							// save the incentive details of the candidates
-							$query = "CALL save_candidate_incentive('".$emp_id."','J','".$date."','".$incentive_amount."','".$_SESSION['user_id']."','".$created_date."','".$incentive_target."','".$total_billing."','','')";
+							$query = "CALL save_candidate_incentive('".$emp_id."','J','".$date."','".$incentive_amount."','".$_SESSION['user_id']."','".$created_date."',
+							'".$incentive_target."','".$total_billing."','','','".count($bill_ctc)."')";
 							try{
 								// calling mysql exe_query function
 								if(!$result = $mysql->execute_query($query)){

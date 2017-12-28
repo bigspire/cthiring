@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-12-28 11:34:03
+/* Smarty version 3.1.29, created on 2017-12-28 14:17:01
   from "C:\xampp\htdocs\ctsvn\cthiring\hiring\templates\view_incentive.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5a448953cd5a32_66171098',
+  'unifunc' => 'content_5a44af85a99326_96952109',
   'file_dependency' => 
   array (
     '87aac4cd9c7cdb6206294a41d69d25de4d29e559' => 
     array (
       0 => 'C:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\templates\\view_incentive.tpl',
-      1 => 1514441038,
+      1 => 1514450818,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5a448953cd5a32_66171098 ($_smarty_tpl) {
+function content_5a44af85a99326_96952109 ($_smarty_tpl) {
 ?>
 
    
@@ -68,7 +68,7 @@ home"><i class="icon-home"></i></a>
 							<table class="table table-striped table-bordered dataTable" style="margin-bottom:0;">
 								<tbody>
 									<tr>
-										<td width="120" class="tbl_column">Employee</td>
+										<td width="180" class="tbl_column">Employee</td>
 										<td><?php echo $_smarty_tpl->tpl_vars['incentive_data']->value['employee'];?>
 </td>
 									</tr>
@@ -82,8 +82,19 @@ home"><i class="icon-home"></i></a>
 										<td width="" class="tbl_column">Period </td>
 										<td><?php echo $_smarty_tpl->tpl_vars['period']->value;?>
 </td>
+									</tr>
+									<tr>
+										<td width="" class="tbl_column">Productivity % </td>
+										<td><?php echo $_smarty_tpl->tpl_vars['incentive_data']->value['productivity'];?>
+%</td>
 									</tr>	
-									
+
+											<tr>
+									<td width="" class="tbl_column">Incentive Amount (In Rs.)</td>
+									<td>₹<?php echo $_smarty_tpl->tpl_vars['incentive_data']->value['eligible_incentive_amt'];?>
+</td>
+								</tr>									
+										
 								</tbody>
 							</table>
 							</div>
@@ -91,14 +102,17 @@ home"><i class="icon-home"></i></a>
 							<div class="span6">
 							<table class="table table-striped table-bordered dataTable" style="margin-bottom:0;">
 								<tbody>
-								
 								<tr>
-									<td width="" class="tbl_column">Amount</td>
-									<td><?php echo $_smarty_tpl->tpl_vars['incentive_data']->value['eligible_incentive_amt'];?>
+										<td width="180" class="tbl_column">No. of Candidates Interviewed </td>
+										<td><?php echo $_smarty_tpl->tpl_vars['incentive_data']->value['interview_candidate'];?>
 </td>
-								</tr>
+									</tr>
+							<tr>
+										<td width="" class="tbl_column">Individual Contribution - YTD <br>(In Rs.) </td>
+										<td>-</td>
+									</tr>
 								<tr>
-									<td width="120"  class="tbl_column">Created Date</td>
+									<td width=""  class="tbl_column">Created Date</td>
 									<td><?php echo $_smarty_tpl->tpl_vars['created_date']->value;?>
 </td>
 								</tr>	
@@ -121,7 +135,7 @@ home"><i class="icon-home"></i></a>
 							<table class="table table-striped table-bordered dataTable" style="margin-bottom:0;">
 								<tbody>
 									<tr>
-										<td width="120" class="tbl_column">Employee</td>
+										<td width="180" class="tbl_column">Employee</td>
 										<td><?php echo ucwords($_smarty_tpl->tpl_vars['incentive_data']->value['employee']);?>
 </td>
 									</tr>
@@ -137,11 +151,26 @@ home"><i class="icon-home"></i></a>
 </td>
 									</tr>	
 									
+							
 									<tr>
-									<td width="120"  class="tbl_column">Created Date</td>
-									<td><?php echo $_smarty_tpl->tpl_vars['created_date']->value;?>
+									<td width=""  class="tbl_column">Min. Performance Target (In Rs.)</td>
+									<td>₹<?php echo $_smarty_tpl->tpl_vars['incentive_data']->value['incentive_target_amt'];?>
 </td>
 								</tr>
+								<tr>
+									<td  width=""  class="tbl_column">Actual Individual Contribution (In Rs.)</td>
+									<td>₹<?php echo $_smarty_tpl->tpl_vars['incentive_data']->value['achievement_amt'];?>
+</td>
+								</tr>	
+										
+									
+										<tr>
+									<td  width="" class="tbl_column">Incentive Amount (In Rs.) </td>
+									<td>₹<?php echo $_smarty_tpl->tpl_vars['incentive_data']->value['eligible_incentive_amt'];?>
+</td>
+								</tr>
+									
+									
 								</tbody>
 							</table>
 							</div>
@@ -149,24 +178,25 @@ home"><i class="icon-home"></i></a>
 							<div class="span6">
 							<table class="table table-striped table-bordered dataTable" style="margin-bottom:0;">
 								<tbody>
+								
+								
+									<tr>
+									<td width=""  class="tbl_column">No. of Candidates Billed </td>
+									<td><?php echo $_smarty_tpl->tpl_vars['incentive_data']->value['candidate_billed'];?>
+</td>
+								</tr>
+								
 
-								<tr>
-									<td  width=""  class="tbl_column">Billing Amount</td>
-									<td><?php echo $_smarty_tpl->tpl_vars['incentive_data']->value['achievement_amt'];?>
-</td>
-								</tr>	
-									
-								<tr>
-									<td width=""  class="tbl_column">Target Amount </td>
-									<td><?php echo $_smarty_tpl->tpl_vars['incentive_data']->value['incentive_target_amt'];?>
-</td>
-								</tr>
-								<tr>
-									<td  width="" class="tbl_column">Eligibility Amount </td>
-									<td><?php echo $_smarty_tpl->tpl_vars['incentive_data']->value['eligible_incentive_amt'];?>
+									<tr>
+										<td width="180" class="tbl_column">Individual Contribution - YTD <br>(In Rs.) </td>
+										<td>-</td>
+									</tr>	
+								
+						<tr>
+									<td width=""  class="tbl_column">Created Date</td>
+									<td><?php echo $_smarty_tpl->tpl_vars['created_date']->value;?>
 </td>
 								</tr>
-									
 									
 								<tr>
 									<td width=""  class="tbl_column">Modified Date </td>
@@ -192,13 +222,18 @@ home"><i class="icon-home"></i></a>
 													<th class="allCol position">Position</th>
 													<th class="allCol position">Client</th>
 													<th class="allCol position">Candidate Name</th>
+													<?php if ($_smarty_tpl->tpl_vars['incentive_data']->value['incentive_type'] == 'I') {?>
 													<th class="allCol position">Interview Level</th>
 													<th class="allCol position">Interview Date</th>
 													<th class="allCol position">Interview Status</th>
-													<?php if ($_smarty_tpl->tpl_vars['incentive_data']->value['incentive_type'] != 'I') {?>
+													<?php }?>
+													<?php if ($_smarty_tpl->tpl_vars['incentive_data']->value['incentive_type'] == 'J') {?>
+													<th class="allCol position">Position CTC</th>
 													<th class="allCol position">Billing Amount</th>
 													<th class="allCol position">Offer CTC</th>
-													<th class="allCol position">Billing Date</th>	
+													<th class="allCol position">Billing Date</th>
+													<th class="allCol position">Account Type</th>
+													<th class="allCol position">Individual Contribution (In Rs.)</th>													
 													<?php }?>
 													</tr>
 												</thead>
@@ -225,19 +260,28 @@ $__foreach_item_0_saved_local_item = $_smarty_tpl->tpl_vars['item'];
 </td>
 												<td class="allCol position"><?php echo $_smarty_tpl->tpl_vars['item']->value['candidate_name'];?>
 </td>
+												<?php if ($_smarty_tpl->tpl_vars['incentive_data']->value['incentive_type'] == 'I') {?>
 												<td class="allCol position"><?php echo $_smarty_tpl->tpl_vars['item']->value['stage_title'];?>
 </td>
 												<td class="allCol position"><?php echo $_smarty_tpl->tpl_vars['item']->value['int_date'];?>
 </td>
 												<td class="allCol position"><?php echo $_smarty_tpl->tpl_vars['item']->value['status_title'];?>
 </td>
-												<?php if ($_smarty_tpl->tpl_vars['incentive_data']->value['incentive_type'] != 'I') {?>
+												<?php }?>
+												<?php if ($_smarty_tpl->tpl_vars['incentive_data']->value['incentive_type'] == 'J') {?>
+												<td class="allCol position"><?php echo $_smarty_tpl->tpl_vars['item']->value['ctc'];?>
+ Lacs</td>	
 												<td class="allCol position"><?php echo $_smarty_tpl->tpl_vars['item']->value['ctc_offer'];?>
 </td>																 													
 												<td class="allCol position"><?php echo $_smarty_tpl->tpl_vars['item']->value['billing_amount'];?>
 </td>																 										
 												<td class="allCol position"><?php echo $_smarty_tpl->tpl_vars['item']->value['billing_date'];?>
 </td>	
+												<td class="allCol position"><?php echo $_smarty_tpl->tpl_vars['item']->value['user_type'];?>
+</td>																 										
+												<td class="allCol position"><?php echo $_smarty_tpl->tpl_vars['item']->value['amount'];?>
+</td>
+												
 												<?php }?>												
 												</tr>
 												<?php

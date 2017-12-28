@@ -37,7 +37,7 @@
 							<table class="table table-striped table-bordered dataTable" style="margin-bottom:0;">
 								<tbody>
 									<tr>
-										<td width="120" class="tbl_column">Employee</td>
+										<td width="180" class="tbl_column">Employee</td>
 										<td>{$incentive_data['employee']}</td>
 									</tr>
 									
@@ -48,8 +48,17 @@
 									<tr>
 										<td width="" class="tbl_column">Period </td>
 										<td>{$period}</td>
+									</tr>
+									<tr>
+										<td width="" class="tbl_column">Productivity % </td>
+										<td>{$incentive_data['productivity']}%</td>
 									</tr>	
-									
+
+											<tr>
+									<td width="" class="tbl_column">Incentive Amount (In Rs.)</td>
+									<td>₹{$incentive_data['eligible_incentive_amt']}</td>
+								</tr>									
+										
 								</tbody>
 							</table>
 							</div>
@@ -57,13 +66,16 @@
 							<div class="span6">
 							<table class="table table-striped table-bordered dataTable" style="margin-bottom:0;">
 								<tbody>
-								
 								<tr>
-									<td width="" class="tbl_column">Amount</td>
-									<td>{$incentive_data['eligible_incentive_amt']}</td>
-								</tr>
+										<td width="180" class="tbl_column">No. of Candidates Interviewed </td>
+										<td>{$incentive_data['interview_candidate']}</td>
+									</tr>
+							<tr>
+										<td width="" class="tbl_column">Individual Contribution - YTD <br>(In Rs.) </td>
+										<td>-</td>
+									</tr>
 								<tr>
-									<td width="120"  class="tbl_column">Created Date</td>
+									<td width=""  class="tbl_column">Created Date</td>
 									<td>{$created_date}</td>
 								</tr>	
 									
@@ -84,7 +96,7 @@
 							<table class="table table-striped table-bordered dataTable" style="margin-bottom:0;">
 								<tbody>
 									<tr>
-										<td width="120" class="tbl_column">Employee</td>
+										<td width="180" class="tbl_column">Employee</td>
 										<td>{$incentive_data['employee']|ucwords}</td>
 									</tr>
 									
@@ -97,10 +109,23 @@
 										<td>{$period}</td>
 									</tr>	
 									
+							
 									<tr>
-									<td width="120"  class="tbl_column">Created Date</td>
-									<td>{$created_date}</td>
+									<td width=""  class="tbl_column">Min. Performance Target (In Rs.)</td>
+									<td>₹{$incentive_data['incentive_target_amt']}</td>
 								</tr>
+								<tr>
+									<td  width=""  class="tbl_column">Actual Individual Contribution (In Rs.)</td>
+									<td>₹{$incentive_data['achievement_amt']}</td>
+								</tr>	
+										
+									
+										<tr>
+									<td  width="" class="tbl_column">Incentive Amount (In Rs.) </td>
+									<td>₹{$incentive_data['eligible_incentive_amt']}</td>
+								</tr>
+									
+									
 								</tbody>
 							</table>
 							</div>
@@ -108,21 +133,23 @@
 							<div class="span6">
 							<table class="table table-striped table-bordered dataTable" style="margin-bottom:0;">
 								<tbody>
+								
+								
+									<tr>
+									<td width=""  class="tbl_column">No. of Candidates Billed </td>
+									<td>{$incentive_data['candidate_billed']}</td>
+								</tr>
+								
 
-								<tr>
-									<td  width=""  class="tbl_column">Billing Amount</td>
-									<td>{$incentive_data['achievement_amt']}</td>
-								</tr>	
-									
-								<tr>
-									<td width=""  class="tbl_column">Target Amount </td>
-									<td>{$incentive_data['incentive_target_amt']}</td>
+									<tr>
+										<td width="180" class="tbl_column">Individual Contribution - YTD <br>(In Rs.) </td>
+										<td>-</td>
+									</tr>	
+								
+						<tr>
+									<td width=""  class="tbl_column">Created Date</td>
+									<td>{$created_date}</td>
 								</tr>
-								<tr>
-									<td  width="" class="tbl_column">Eligibility Amount </td>
-									<td>{$incentive_data['eligible_incentive_amt']}</td>
-								</tr>
-									
 									
 								<tr>
 									<td width=""  class="tbl_column">Modified Date </td>
@@ -147,13 +174,18 @@
 													<th class="allCol position">Position</th>
 													<th class="allCol position">Client</th>
 													<th class="allCol position">Candidate Name</th>
+													{if $incentive_data['incentive_type'] eq 'I'}
 													<th class="allCol position">Interview Level</th>
 													<th class="allCol position">Interview Date</th>
 													<th class="allCol position">Interview Status</th>
-													{if $incentive_data['incentive_type'] neq 'I'}
+													{/if}
+													{if $incentive_data['incentive_type'] eq 'J'}
+													<th class="allCol position">Position CTC</th>
 													<th class="allCol position">Billing Amount</th>
 													<th class="allCol position">Offer CTC</th>
-													<th class="allCol position">Billing Date</th>	
+													<th class="allCol position">Billing Date</th>
+													<th class="allCol position">Account Type</th>
+													<th class="allCol position">Individual Contribution (In Rs.)</th>													
 													{/if}
 													</tr>
 												</thead>
@@ -164,13 +196,19 @@
 												<td class="allCol position">{$item.position}</td>
 												<td class="allCol position">{$item.client_name}</td>
 												<td class="allCol position">{$item.candidate_name}</td>
+												{if $incentive_data['incentive_type'] eq 'I'}
 												<td class="allCol position">{$item.stage_title}</td>
 												<td class="allCol position">{$item.int_date}</td>
 												<td class="allCol position">{$item.status_title}</td>
-												{if $incentive_data['incentive_type'] neq 'I'}
+												{/if}
+												{if $incentive_data['incentive_type'] eq 'J'}
+												<td class="allCol position">{$item.ctc} Lacs</td>	
 												<td class="allCol position">{$item.ctc_offer}</td>																 													
 												<td class="allCol position">{$item.billing_amount}</td>																 										
 												<td class="allCol position">{$item.billing_date}</td>	
+												<td class="allCol position">{$item.user_type}</td>																 										
+												<td class="allCol position">{$item.amount}</td>
+												
 												{/if}												
 												</tr>
 												{/foreach} 
