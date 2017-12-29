@@ -38,7 +38,6 @@ if($_POST){
 	$post_url .= '&type='.$type;
 }
 
-
 // for director and BH and admin
 if($_SESSION['roles_id'] == '33' || $_SESSION['roles_id'] == '35' || $_SESSION['roles_id'] == '26'){
 	$show = 'all';
@@ -66,7 +65,7 @@ while($row = $mysql->display_result($result)){
 if(!empty($emp_name)){
 	$smarty->assign('approveUser', '1');	
 	if($team_cond){
-		$cond .= ' or inc.users_id in('.substr($id_str, 0, strlen($id_str)-2).')';				
+		$cond .= ' or inc.users_id in('.substr($id_str, 0, strlen($id_str)-2).'))';				
 	}
 	$smarty->assign('emp_name',$emp_name);
 }
