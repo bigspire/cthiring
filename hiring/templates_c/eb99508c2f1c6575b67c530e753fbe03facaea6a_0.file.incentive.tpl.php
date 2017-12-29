@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-12-28 13:13:54
+/* Smarty version 3.1.29, created on 2017-12-28 16:03:53
   from "C:\xampp\htdocs\2017\ctsvn\cthiring\hiring\templates\incentive.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5a44a0ba72db24_13387136',
+  'unifunc' => 'content_5a44c891af2d44_74481079',
   'file_dependency' => 
   array (
     'eb99508c2f1c6575b67c530e753fbe03facaea6a' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\templates\\incentive.tpl',
-      1 => 1514447027,
+      1 => 1514457231,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5a44a0ba72db24_13387136 ($_smarty_tpl) {
+function content_5a44c891af2d44_74481079 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -202,7 +202,7 @@ $_smarty_tpl->ext->_updateScope->updateScope($_smarty_tpl, 'hide', 0);?>
 &t_date=<?php echo $_smarty_tpl->tpl_vars['t_date']->value;?>
 &employee=<?php echo $_smarty_tpl->tpl_vars['employee']->value;?>
 " rel="tooltip" data-original-title="Sort by Ascending or Descending" class="<?php echo $_smarty_tpl->tpl_vars['sort_field_eligible_incentive_amt']->value;?>
-">Incentive Amt. (In Rs.) </a></th>
+">Incentive Amount (In Rs.) </a></th>
 										<th width="100"><a href="incentive.php?field=contribution&order=<?php echo $_smarty_tpl->tpl_vars['order']->value;?>
 &page=<?php echo $_GET['page'];?>
 &f_date=<?php echo $_smarty_tpl->tpl_vars['f_date']->value;?>
@@ -253,17 +253,16 @@ $__foreach_item_0_saved_local_item = $_smarty_tpl->tpl_vars['item'];
 </td>
 										<td width=""><?php echo $_smarty_tpl->tpl_vars['item']->value['incent_period_display'];?>
 </td>
-										<td width=""><?php if ($_smarty_tpl->tpl_vars['item']->value['incent_type'] == 'J') {?>N/A <?php } else { ?> <?php echo $_smarty_tpl->tpl_vars['item']->value['productivity'];?>
-%<?php }?></td>
-										<td width=""><?php if ($_smarty_tpl->tpl_vars['item']->value['incent_type'] == 'J') {?>N/A <?php } else {
-echo $_smarty_tpl->tpl_vars['item']->value['interview_candidate'];?>
- <?php }?></td>
-										<td width=""><?php if ($_smarty_tpl->tpl_vars['item']->value['incent_type'] == 'I') {?>N/A <?php } else { ?> ₹<?php echo $_smarty_tpl->tpl_vars['item']->value['incentive_target_amt'];
-}?></td>	
-										<td width=""><?php if ($_smarty_tpl->tpl_vars['item']->value['incent_type'] == 'I') {?>N/A <?php } else { ?> ₹<?php echo $_smarty_tpl->tpl_vars['item']->value['achievement_amt'];
-}?></td>
-										<td width=""><?php if ($_smarty_tpl->tpl_vars['item']->value['incent_type'] == 'I') {?>N/A <?php } else { ?> <?php echo intval($_smarty_tpl->tpl_vars['item']->value['candidate_billed']);?>
- <?php }?></td>		
+										<td width=""><?php echo $_smarty_tpl->tpl_vars['item']->value['productivity'];?>
+%</td>
+										<td width=""><?php echo $_smarty_tpl->tpl_vars['item']->value['interview_candidate'];?>
+</td>
+										<td width=""><?php echo $_smarty_tpl->tpl_vars['item']->value['incentive_target_amt'];?>
+</td>	
+										<td width=""><?php echo $_smarty_tpl->tpl_vars['item']->value['achievement_amt'];?>
+</td>
+										<td width=""><?php echo intval($_smarty_tpl->tpl_vars['item']->value['candidate_billed']);?>
+</td>		
 										<td width="">₹<?php echo $_smarty_tpl->tpl_vars['item']->value['eligible_incentive_amt'];?>
 </td>
 										
