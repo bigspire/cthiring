@@ -114,8 +114,8 @@ try{
 
 // set the condition to check ascending or descending order		
 $order = ($_GET['order'] == 'desc') ? 'asc' :  'desc';	
-$sort_fields = array('1' => 'employee','period','eligible_incentive_amt','incentive_type','created_date','target_amt','achieve_amt','candidate_billed','interview_candidate','modified','productivity');
-$org_fields = array('1' => 'employee','period','eligible_incentive_amt','incentive_type','created_date','incentive_target_amt','achievement_amt','candidate_billed','interview_candidate','modified_date','productivity');
+$sort_fields = array('1' => 'employee','period','eligible_incentive_amt','incentive_type','created_date','target_amt','achieve_amt','candidate_billed','interview_candidate','modified','productivity','ytd');
+$org_fields = array('1' => 'employee','period','eligible_incentive_amt','incentive_type','created_date','incentive_target_amt','achievement_amt','candidate_billed','interview_candidate','modified_date','productivity','productivity');
 
 // to set the sorting image
 foreach($sort_fields as $key => $b_field){
