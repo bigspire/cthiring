@@ -121,7 +121,7 @@
 										<td width=""><a href="view_incentive.php?id={$item.id}&emp_id={$item.emp_id}">{$item.employee|ucwords}</a></td>
 										<td width="">{$item.incentive_type}</td>
 										<td width="">{$item.incent_period_display}</td>
-										<td width="">{$item.productivity}%</td>
+										<td width="">{$item.productivity}</td>
 										<td width="">{$item.interview_candidate}</td>
 										<td width="">{$item.incentive_target_amt}</td>	
 										<td width="">{$item.achievement_amt}</td>

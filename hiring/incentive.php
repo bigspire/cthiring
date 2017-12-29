@@ -159,7 +159,7 @@ try{
 			$data[$i]['productivity'] = 'N/A';
 			$data[$i]['interview_candidate'] = 'N/A';
 		}else{
-			$data[$i]['productivity'] = $obj['productivity'];
+			$data[$i]['productivity'] = $obj['productivity'].'%';
 			$data[$i]['interview_candidate'] = $obj['interview_candidate'];
 		}
 		if($data[$i]['incent_type'] != 'J' && $data[$i]['incent_type'] == 'I'){
