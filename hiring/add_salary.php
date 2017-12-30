@@ -89,7 +89,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 		
 			// iterate the holidays data
 			foreach($salary_data as  $key => $salary){ 
-				if($key > 1 && $salary['A'] != ''){ 
+				if($key > 1 && $salary['A'] != ''){
 					$employee = $mysql->real_escape_str($salary['A']);
 					$emplyee_list .= $employee."<br>";
 					$salary_date = $fun->convert_date($mysql->real_escape_str($salary['B']));
@@ -104,7 +104,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 						}
 						$row = $mysql->display_result($result);
 						$emp_id = $row['id'];
-				
+						// free the memory
+						$mysql->clear_result($result);
 						// call the next result
 						$mysql->next_query();
 					}catch(Exception $e){
@@ -128,7 +129,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 						}catch(Exception $e){
 							echo 'Caught exception: ',  $e->getMessage(), "\n";
 						}
-		
+
 						if($check['id'] == ''){
 							// query to import the file
 							$query = "CALL add_salary('".$emp_id."','".$salary_date."','".$ctc."','".$created_date."','".$_SESSION['user_id']."')";
