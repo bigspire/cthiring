@@ -68,7 +68,7 @@ if($_POST){
 		if(!empty($emp_name)){
 			$smarty->assign('approveUser', '1');	
 			if($team_cond){
-				$cond .= 'or ( rr.created_by in('.substr($id_str, 0, strlen($id_str)-2).'))';
+				$cond .= 'or ( rr.created_by in('.substr($id_str, 0, strlen($id_str)-2).')';
 				$cond .= ' or cah.users_id in('.substr($id_str, 0, strlen($id_str)-2).'))';				
 			}
 			$smarty->assign('emp_name',$emp_name);
