@@ -129,21 +129,36 @@ class libExcel{
 			$this->objPHPExcel->getActiveSheet()->getColumnDimension('A3')->setAutoSize(true);	
 			$this->objPHPExcel->getActiveSheet()->setCellValue('B3', $period);
 			
-			$this->objPHPExcel->getActiveSheet()->setCellValue('C1', 'Amount');
+			$this->objPHPExcel->getActiveSheet()->setCellValue('A4', 'Productivity %');
+			$this->objPHPExcel->getActiveSheet()->getStyle('A4')->getFont()->setBold(true);	
+			$this->objPHPExcel->getActiveSheet()->getColumnDimension('A4')->setAutoSize(true);	
+			$this->objPHPExcel->getActiveSheet()->setCellValue('B4', $data2['productivity']);
+			
+			$this->objPHPExcel->getActiveSheet()->setCellValue('A5', 'Incentive Amount (In Rs.)');
+			$this->objPHPExcel->getActiveSheet()->getStyle('A5')->getFont()->setBold(true);	
+			$this->objPHPExcel->getActiveSheet()->getColumnDimension('A5')->setAutoSize(true);	
+			$this->objPHPExcel->getActiveSheet()->setCellValue('B5', $data2['eligible_incentive_amt']);
+							
+				
+			$this->objPHPExcel->getActiveSheet()->setCellValue('C1', 'No. of Candidates Interviewed');
 			$this->objPHPExcel->getActiveSheet()->getStyle('C1')->getFont()->setBold(true);	
 			$this->objPHPExcel->getActiveSheet()->getColumnDimension('C1')->setAutoSize(true);	
-			$this->objPHPExcel->getActiveSheet()->setCellValue('D1', $data2['eligible_incentive_amt']);
+			$this->objPHPExcel->getActiveSheet()->setCellValue('D1', $data2['interview_candidate']);
 			
-			
-			$this->objPHPExcel->getActiveSheet()->setCellValue('C2', 'Created Date');
+			$this->objPHPExcel->getActiveSheet()->setCellValue('C2', 'Individual Contribution - YTD (In Rs.)');
 			$this->objPHPExcel->getActiveSheet()->getStyle('C2')->getFont()->setBold(true);	
 			$this->objPHPExcel->getActiveSheet()->getColumnDimension('C2')->setAutoSize(true);	
-			$this->objPHPExcel->getActiveSheet()->setCellValue('D2', $created_date);
+			$this->objPHPExcel->getActiveSheet()->setCellValue('D2', '-');
 			
-			$this->objPHPExcel->getActiveSheet()->setCellValue('C3', 'Modified Date');
+			$this->objPHPExcel->getActiveSheet()->setCellValue('C3', 'Created Date');
 			$this->objPHPExcel->getActiveSheet()->getStyle('C3')->getFont()->setBold(true);	
 			$this->objPHPExcel->getActiveSheet()->getColumnDimension('C3')->setAutoSize(true);	
-			$this->objPHPExcel->getActiveSheet()->setCellValue('D3', $modified_date);
+			$this->objPHPExcel->getActiveSheet()->setCellValue('D3', $created_date);
+			
+			$this->objPHPExcel->getActiveSheet()->setCellValue('C4', 'Modified Date');
+			$this->objPHPExcel->getActiveSheet()->getStyle('C4')->getFont()->setBold(true);	
+			$this->objPHPExcel->getActiveSheet()->getColumnDimension('C4')->setAutoSize(true);	
+			$this->objPHPExcel->getActiveSheet()->setCellValue('D4', $modified_date);
 			
 			
 			// iterate the multiple rows
@@ -154,6 +169,64 @@ class libExcel{
 				$k++;
 			}
 		
+		}elseif($module == 'view_incentive2'){
+			$this->objPHPExcel->getActiveSheet()->setCellValue('A1', 'Employee');
+			$this->objPHPExcel->getActiveSheet()->getStyle('A1')->getFont()->setBold(true);
+			$this->objPHPExcel->getActiveSheet()->getColumnDimension('A1')->setAutoSize(true);			
+			$this->objPHPExcel->getActiveSheet()->setCellValue('B1', $data2['employee']);
+			
+			$this->objPHPExcel->getActiveSheet()->setCellValue('A2', 'Incentive Type');
+			$this->objPHPExcel->getActiveSheet()->getStyle('A2')->getFont()->setBold(true);	
+			$this->objPHPExcel->getActiveSheet()->getColumnDimension('A2')->setAutoSize(true);	
+			$this->objPHPExcel->getActiveSheet()->setCellValue('B2', $incentive_type);
+			
+			$this->objPHPExcel->getActiveSheet()->setCellValue('A3', 'Period');
+			$this->objPHPExcel->getActiveSheet()->getStyle('A3')->getFont()->setBold(true);	
+			$this->objPHPExcel->getActiveSheet()->getColumnDimension('A3')->setAutoSize(true);	
+			$this->objPHPExcel->getActiveSheet()->setCellValue('B3', $period);
+			
+			$this->objPHPExcel->getActiveSheet()->setCellValue('A4', 'Min. Performance Target (In Rs.)');
+			$this->objPHPExcel->getActiveSheet()->getStyle('A4')->getFont()->setBold(true);	
+			$this->objPHPExcel->getActiveSheet()->getColumnDimension('A4')->setAutoSize(true);	
+			$this->objPHPExcel->getActiveSheet()->setCellValue('B4', $data2['incentive_target_amt']);
+			
+			$this->objPHPExcel->getActiveSheet()->setCellValue('A5', 'Actual Individual Contribution (In Rs.)');
+			$this->objPHPExcel->getActiveSheet()->getStyle('A5')->getFont()->setBold(true);	
+			$this->objPHPExcel->getActiveSheet()->getColumnDimension('A5')->setAutoSize(true);	
+			$this->objPHPExcel->getActiveSheet()->setCellValue('B5', $data2['achievement_amt']);
+			
+			$this->objPHPExcel->getActiveSheet()->setCellValue('C1', 'Incentive Amount (In Rs.)');
+			$this->objPHPExcel->getActiveSheet()->getStyle('C1')->getFont()->setBold(true);	
+			$this->objPHPExcel->getActiveSheet()->getColumnDimension('C1')->setAutoSize(true);	
+			$this->objPHPExcel->getActiveSheet()->setCellValue('D1', $data2['eligible_incentive_amt']);
+			
+			$this->objPHPExcel->getActiveSheet()->setCellValue('C2', 'No. of Candidates Billed');
+			$this->objPHPExcel->getActiveSheet()->getStyle('C2')->getFont()->setBold(true);	
+			$this->objPHPExcel->getActiveSheet()->getColumnDimension('C2')->setAutoSize(true);	
+			$this->objPHPExcel->getActiveSheet()->setCellValue('D2', $data2['candidate_billed']);
+			
+			$this->objPHPExcel->getActiveSheet()->setCellValue('C3', 'Individual Contribution - YTD (In Rs.)');
+			$this->objPHPExcel->getActiveSheet()->getStyle('C3')->getFont()->setBold(true);	
+			$this->objPHPExcel->getActiveSheet()->getColumnDimension('C3')->setAutoSize(true);	
+			$this->objPHPExcel->getActiveSheet()->setCellValue('D3', '-');
+
+			$this->objPHPExcel->getActiveSheet()->setCellValue('C4', 'Created Date');
+			$this->objPHPExcel->getActiveSheet()->getStyle('C4')->getFont()->setBold(true);	
+			$this->objPHPExcel->getActiveSheet()->getColumnDimension('C4')->setAutoSize(true);	
+			$this->objPHPExcel->getActiveSheet()->setCellValue('D4', $created_date);
+			
+			$this->objPHPExcel->getActiveSheet()->setCellValue('C5', 'Modified Date');
+			$this->objPHPExcel->getActiveSheet()->getStyle('C5')->getFont()->setBold(true);	
+			$this->objPHPExcel->getActiveSheet()->getColumnDimension('C5')->setAutoSize(true);	
+			$this->objPHPExcel->getActiveSheet()->setCellValue('D5', $modified_date);
+		
+			// iterate the multiple rows
+			for($i = 9; $i <= $total+8; $i++){
+				for($j = 0; $j < $field_count; $j++){
+					$this->objPHPExcel->getActiveSheet()->setCellValue($col[$j] . $i, strip_tags($data[$k][$field[$j]]));
+				}
+				$k++;
+			}
 		}else{
 			for($i = 2; $i <= $total+1; $i++){
 				for($j = 0; $j < $field_count; $j++){ 
@@ -181,6 +254,11 @@ class libExcel{
 			$this->objPHPExcel->getActiveSheet()->setAutoFilter('A7:F7');
 			$this->objPHPExcel->getActiveSheet()->getStyle('A7:N7')->getFont()->setBold(true);		
 
+		}else if($module == 'view_incentive2'){
+			// for view incentive 2
+			$i = 8;
+			$this->objPHPExcel->getActiveSheet()->setAutoFilter('A8:I8');
+			$this->objPHPExcel->getActiveSheet()->getStyle('A8:N8')->getFont()->setBold(true);		
 		}else{
 			$i = 1; 
 			//$this->objPHPExcel->getActiveSheet()->setAutoFilter('A1:F1');

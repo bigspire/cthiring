@@ -121,11 +121,11 @@
 										<td width=""><a href="view_incentive.php?id={$item.id}&emp_id={$item.emp_id}">{$item.employee|ucwords}</a></td>
 										<td width="">{$item.incentive_type}</td>
 										<td width="">{$item.incent_period_display}</td>
-										<td width="">{if $item.incent_type eq 'J'}N/A {else} {$item.productivity}%{/if}</td>
-										<td width="">{if $item.incent_type eq 'J'}N/A {else}{$item.interview_candidate} {/if}</td>
-										<td width="">{if $item.incent_type eq 'I'}N/A {else} ₹{$item.incentive_target_amt}{/if}</td>	
-										<td width="">{if $item.incent_type eq 'I'}N/A {else} ₹{$item.achievement_amt}{/if}</td>
-										<td width="">{if $item.incent_type eq 'I'}N/A {else} {$item.candidate_billed|intval} {/if}</td>		
+										<td width="">{$item.productivity}</td>
+										<td width="">{$item.interview_candidate}</td>
+										<td width="">{$item.incentive_target_amt}</td>	
+										<td width="">{$item.achievement_amt}</td>
+										<td width="">{$item.candidate_billed|intval}</td>		
 										<td width="">₹{$item.eligible_incentive_amt}</td>
 										
 										<td width="">-</td>									

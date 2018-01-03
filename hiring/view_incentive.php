@@ -123,12 +123,11 @@ if($_GET['action'] == 'export'){
 		$excelObj->printCell($data, $i,$col = array('A','B','C','D','E','F'), $field = array('position','client_name','candidate_name','stage_title','int_date','status_title'),'Incentive_'.$current_date, 'view_incentive1',$row,$incentive_type,$period,$created_date,$modified_date);
 	}else if($row['incentive_type'] == 'J'){
 		// function to print the excel header
-		$excelObj->printHeader($header = array('Position','Client','Candidate Name','Interview Level','Interview Date','Interview Status') ,$col = array('A','B','C','D','E','F'), 'view_incentive2');  
+		$excelObj->printHeader($header = array('Position','Client','Candidate Name','Position CTC','Billing Amount','Offer CTC','Billing Date','Account Type','Individual Contribution (In Rs.)') ,$col = array('A','B','C','D','E','F','G','H','I'), 'view_incentive2');  
 		// function to print the excel data
-		$excelObj->printCell($data, $i,$col = array('A','B','C','D','E','F'), $field = array('position','client_name','candidate_name','stage_title','int_date','status_title'),'Incentive_'.$current_date, 'view_incentive1',$row,$incentive_type,$period,$created_date,$modified_date);
+		$excelObj->printCell($data, $i,$col = array('A','B','C','D','E','F','G','H','I'), $field = array('position','client_name','candidate_name','ctc','billing_amount','ctc_offer','billing_date','user_type','amount'),'Incentive_'.$current_date, 'view_incentive2',$row,$incentive_type,$period,$created_date,$modified_date);
 	}
 }
-
 	
 // calling mysql close db connection function
 $c_c = $mysql->close_connection();

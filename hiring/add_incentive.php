@@ -622,7 +622,7 @@ $smarty->assign('ps_months', array('' => 'Month', '01' => 'Jan', '02' => 'Feb', 
 
 // smarty drop down array for no of times
 $years = array();
-for($i = date('Y'); $i <= 2017; $i++){
+for($i = 2017; $i <= date('Y'); $i++){
 	$years[$i] = $i;
 }
 $smarty->assign('years', $years);

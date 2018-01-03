@@ -38,7 +38,6 @@ if($_POST){
 	$post_url .= '&type='.$type;
 }
 
-
 // for director and BH and admin
 if($_SESSION['roles_id'] == '33' || $_SESSION['roles_id'] == '35' || $_SESSION['roles_id'] == '26'){
 	$show = 'all';
@@ -66,7 +65,7 @@ while($row = $mysql->display_result($result)){
 if(!empty($emp_name)){
 	$smarty->assign('approveUser', '1');	
 	if($team_cond){
-		$cond .= ' or inc.users_id in('.substr($id_str, 0, strlen($id_str)-2).')';				
+		$cond .= ' or inc.users_id in('.substr($id_str, 0, strlen($id_str)-2).'))';				
 	}
 	$smarty->assign('emp_name',$emp_name);
 }
@@ -156,6 +155,22 @@ try{
 		$data[$i]['modified_date'] = $fun->convert_date_to_display($obj['modified_date']);
 		$data[$i]['incentive_type'] = $obj['incentive_type'] == 'I' ? 'PS & I' : 'PC'; //$fun->check_incentive_type($obj['incentive_type']);
 		$data[$i]['incent_type'] = $obj['incentive_type'];
+		if($data[$i]['incent_type'] == 'J' && $data[$i]['incent_type'] != 'I'){
+			$data[$i]['productivity'] = 'N/A';
+			$data[$i]['interview_candidate'] = 'N/A';
+		}else{
+			$data[$i]['productivity'] = $obj['productivity'].'%';
+			$data[$i]['interview_candidate'] = $obj['interview_candidate'];
+		}
+		if($data[$i]['incent_type'] != 'J' && $data[$i]['incent_type'] == 'I'){
+			$data[$i]['incentive_target_amt'] = 'N/A';
+			$data[$i]['achievement_amt'] = 'N/A';
+			$data[$i]['candidate_billed'] = 'N/A';
+		}else{
+			$data[$i]['incentive_target_amt'] = '₹'.$obj['incentive_target_amt'];
+			$data[$i]['achievement_amt'] = '₹'.$obj['achievement_amt'];
+			$data[$i]['candidate_billed'] = intval($obj['candidate_billed']);
+		}
 		$data[$i]['incent_period_display'] = date('M, Y', strtotime($obj['period']));
 		
 		// for incentive display
@@ -181,9 +196,13 @@ try{
 		include('classes/class.excel.php');
 		$excelObj = new libExcel();
 		// function to print the excel header
-		$excelObj->printHeader($header = array('Employee','Incentive Type','Period','Incentive Amt.','Created') ,$col = array('A','B','C','D','E'));  
+		$excelObj->printHeader($header = array('Employee','Type','Period','Productivity %','No. of Candidates Interviewed','Min. Performance Target (In Rs.)',
+		'Actual Individual Contribution (In Rs.)','No. of Candidates Billed','Incentive Amt. (In Rs.)','Individual Contribution - YTD (In Rs.)',
+		'Created','Modified') ,$col = array('A','B','C','D','E','F','G','H','I','J','K','L'));  
 		// function to print the excel data
-		$excelObj->printCell($data, $count,$col = array('A','B','C','D','E'), $field = array('employee','incentive_type','period','eligible_incentive_amt','created_date'),'Incentive_'.$current_date);
+		$excelObj->printCell($data, $count,$col = array('A','B','C','D','E','F','G','H','I','J','K','L'), $field = array('employee','incentive_type',
+		'incent_period_display','productivity','interview_candidate','incentive_target_amt','achievement_amt',
+		'candidate_billed','eligible_incentive_amt','created_date','modified_date'),'Incentive_'.$current_date);
 	}	
 
 	// approve or reject validation

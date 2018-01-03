@@ -278,7 +278,7 @@
 									<tr class="tbl_row">
 										<td width="120" class="tbl_column">Qualification <span class="f_req">*</span></td>
 										<td>
-										<select name="qualification_#index#" tabindex="1" class="span8 qualification_id"  id="qualification_#index#">	
+										<select name="qualification_#index#" tabindex="" class="span8 qualification_id"  id="qualification_#index#">	
 											<option value="">Select</option>
 											{html_options options=$qual}															
 										</select>						
@@ -287,7 +287,7 @@
 									<tr>
 										<td width="120" class="tbl_column">Degree <span class="f_req">*</span></td>
 										<td> 
-					<select name="degree_#index#" tabindex="2" class="span8 degree_id"  id="degree_#index#">
+					<select name="degree_#index#" tabindex="" class="span8 degree_id"  id="degree_#index#">
 					<option value="">Select</option>
 					</select>
 					<label for="reg_city" generated="true" class="error" id="degree_Err_#index#"></label>										
@@ -296,7 +296,7 @@
 									<tr class="tbl_row">
 										<td width="120" class="tbl_column"> Specialization <span class="f_req">*</span></td>
 										<td> 
-					<select name="specialization_#index#" tabindex="3" class="span8"  id="specialization_#index#">	
+					<select name="specialization_#index#" tabindex="" class="span8"  id="specialization_#index#">	
 					<option value="">Select</option>
 						{html_options options=$spec}							
 					</select>
@@ -306,7 +306,7 @@
 						         <tr>
 										<td width="120" class="tbl_column">University <span class="f_req"></span></td>
 										<td> 
-									<input type="text" tabindex="4" name="university_#index#" id="university_#index#" class="span8" >										
+									<input type="text" tabindex="" name="university_#index#" id="university_#index#" class="span8" >										
 								</td>	
 									</tr>
 	
@@ -321,7 +321,7 @@
 									<tr  class="tbl_row">
 										<td width="120" class="tbl_column">Location <span class="f_req">*</span></td>
 										<td>
-										<input type="text" tabindex="5" name="location_#index#" id="location_#index#" value="" class="span8">
+										<input type="text" tabindex="" name="location_#index#" id="location_#index#" value="" class="span8">
 									<label for="reg_city" generated="true" class="error" id="locationErr_#index#"> </label> 
 										</td>	
 										</tr>
@@ -329,15 +329,15 @@
 									<tr>
 										<td width="120" class="tbl_column"> College <span class="f_req"></span></td>
 										<td> 
-					<input type="text" tabindex="6" name="college_#index#" id="college_#index#" class="span8" >										
+					<input type="text" tabindex="" name="college_#index#" id="college_#index#" class="span8" >										
 					<label for="reg_city" generated="true" class="error">{$collegeErr}</labe>									
 				</td>		
 									</tr>
 									<tr class="tbl_row">
 										<td width="120" class="tbl_column"> % of Marks  <span class="f_req">*</span></td>
 										<td> 
-									<input type="text" tabindex="7" name="grade_#index#" id="grade_#index#" value="{$grade}" class="span4" >
-									<select name="grade_type_#index#" tabindex="8" class="inline_text span4"  id="grade_type_#index#">
+									<input type="text" tabindex="" name="grade_#index#" id="grade_#index#" value="{$grade}" class="span4" >
+									<select name="grade_type_#index#" tabindex="" class="inline_text span4"  id="grade_type_#index#">
 										{html_options options=$grade_drop} 
 									</select>
 									<label for="reg_city" generated="true" class="error" id="gradeErr_#index#"></label>	
@@ -349,7 +349,7 @@
 									<tr>
 										<td width="120" class="tbl_column">Year of passing <span class="f_req">*</span></td>										
 								<td>
-									<select name="from_yr_#index#" id="from_yr_#index#" tabindex="9" class="span4">
+									<select name="from_yr_#index#" id="from_yr_#index#" tabindex="" class="span4">
 									<option value="">Select</option>
 										{html_options options=$year_of_pass} 
 									</select>
@@ -398,7 +398,7 @@
 					<tr class="tbl_row">
 										<td width="120" class="tbl_column">Designation <span class="f_req">*</span></td>
 										<td> 
-										<select tabindex="1" name="desig_#index#" class="span8"  id="desig_#index#">	
+										<select tabindex="" name="desig_#index#" class="span8"  id="desig_#index#">	
 											<option value="">Select</option>
 											{html_options options=$desig_name}															
 										</select>
@@ -408,21 +408,21 @@
 								<tr>
 										<td width="120" class="tbl_column">Employment Period<span class="f_req"> *</span></td>
 										<td>
-										<select name="from_month_of_exp_#index#" id = "from_month_of_exp_#index#" tabindex="2" class="span2">
+										<select name="from_month_of_exp_#index#" id = "from_month_of_exp_#index#" tabindex="" class="span2">
 										<option value="">From Month</option>
 										{html_options options=$exp_month} 
 										</select>
-										<select name="from_year_of_exp_#index#" id = "from_year_of_exp_#index#" rel="maxDrop_#index#" tabindex="3" class="minExpDrop inline_text span2">
+										<select name="from_year_of_exp_#index#" id = "from_year_of_exp_#index#" rel="maxDrop_#index#" tabindex="" class="minExpDrop inline_text span2">
 										<option value="">From Year</option>
 										{html_options options=$exp_yr} 
 										</select>
 										
-										<select name="to_month_of_exp_#index#" id = "to_month_of_exp_#index#" tabindex="4" class=" inline_text span2">
+										<select name="to_month_of_exp_#index#" id = "to_month_of_exp_#index#" tabindex="" class=" inline_text span2">
 										<option value="">To Month</option>
 										{html_options options=$exp_month} 
 										</select>
 										
-										<select name="to_year_of_exp_#index#" id = "maxDrop_#index#" tabindex="5" class="inline_text span2">
+										<select name="to_year_of_exp_#index#" id = "maxDrop_#index#" tabindex="" class="inline_text span2">
 										<option value="">To Year</option>
 										{html_options options=$exp_yr} 
 										</select>
@@ -436,7 +436,7 @@
 							<tr class="tbl_row">
 										<td width="120" class="tbl_column">Location of Work <span class="f_req">*</span></td>
 										<td> 
-										<input type="text"  tabindex="6" name="workloc_#index#" id="workloc_#index#" value="" class="span8" />										
+										<input type="text"  tabindex="" name="workloc_#index#" id="workloc_#index#" value="" class="span8" />										
 										<label for="reg_city" generated="true" class="error" id="worklocErr_#index#"></label>										
 										</td>
 										
@@ -444,21 +444,21 @@
 							<tr>
 										<td width="120" class="tbl_column">Area of Specialization/Expertise  <span class="f_req">*</span></td>
 										<td> 
-										<input type="text" value=""  name="area_#index#" id="area_#index#"  tabindex="7" class="span8" />
+										<input type="text" value=""  name="area_#index#" id="area_#index#"  tabindex="" class="span8" />
 										<label for="reg_city" generated="true" class="error" id="areaErr_#index#"></label>										
 										</td>
 							</tr>
 								<tr class="tbl_row">
 										<td width="120" class="tbl_column">Company Name <span class="f_req">*</span></td>
 										<td> 
-										<input type="text"  tabindex="8" name="company_#index#" value="" id="company_#index#"  class="span8" />
+										<input type="text"  tabindex="" name="company_#index#" value="" id="company_#index#"  class="span8" />
 										<label for="reg_city" generated="true" class="error" id="companyErr_#index#"></label>										
 										</td>
 							</tr>	
 							<tr>
 								<td width="120" class="tbl_column">Company Profile <span class="f_req">*</span></td>
 								<td>
-								<textarea name="company_profile_#index#" tabindex="9" id="company_profile_#index#" cols="10" rows="3" class="span8 wysiwyg1"></textarea>									
+								<textarea name="company_profile_#index#" tabindex="" id="company_profile_#index#" cols="10" rows="3" class="span8 wysiwyg1"></textarea>									
 								<label for="reg_city" generated="true" class="error" id="company_profileErr_#index#"></label>
 								</td>	
 							</tr>							
@@ -537,7 +537,7 @@
 									<tr class="tbl_row">
 										<td width="120" class="tbl_column">Year <span class="f_req">*</span></td>
 										<td>
-								<select name="train_year_#index#" class="span8" tabindex="1" id="train_year_#index#">	
+								<select name="train_year_#index#" class="span8" tabindex="" id="train_year_#index#">	
 									<option value="">Year</option>
 										{html_options options=$year_of_pass} 
 									</select>
@@ -548,7 +548,7 @@
 									<tr>
 										<td width="120" class="tbl_column"> Description  <span class="f_req">*</span></td>
 										<td>
-										<textarea name="description_#index#" tabindex="2" id="description_#index#" cols="10" rows="3" class="span8 wysiwyg1"></textarea>									
+										<textarea name="description_#index#" tabindex="" id="description_#index#" cols="10" rows="3" class="span8 wysiwyg1"></textarea>									
 									<label for="reg_city" generated="true" class="error" id="descriptionErr_#index#"></label>							
 										</td>		
 									</tr>
@@ -562,7 +562,7 @@
 									<tr class="tbl_row">
 										<td width="120" class="tbl_column">Program Title <span class="f_req">*</span></td>
 										<td>
-		<input type="text" tabindex="3" name="programtitle_#index#" id="programtitle_#index#" value="" class="span8">
+		<input type="text" tabindex="" name="programtitle_#index#" id="programtitle_#index#" value="" class="span8">
 									<label for="reg_city" generated="true" class="error" id="programtitleErr_#index#"></label>
 										</td>	
 									</tr>
@@ -570,7 +570,7 @@
 									<tr>
 										<td width="120" class="tbl_column"> Location <span class="f_req">*</span></td>
 										<td>
-										<input type="text" tabindex="4" name="train_location_#index#" id="train_location_#index#" value="" class="span8 ui-autocomplete-input" autocomplete="off">							
+										<input type="text" tabindex="" name="train_location_#index#" id="train_location_#index#" value="" class="span8 ui-autocomplete-input" autocomplete="off">							
 									<label for="reg_city" generated="true" class="error" id="train_locationErr_#index#"></label>							
 										</td>		
 									</tr>
