@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-12-19 18:51:10
+/* Smarty version 3.1.29, created on 2017-12-28 18:39:09
   from "C:\xampp\htdocs\ctsvn\cthiring\hiring\templates\add_billing.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5a391246b72c24_72039067',
+  'unifunc' => 'content_5a44ecf5803548_86266407',
   'file_dependency' => 
   array (
     '6a971a91e3de28462ff4ffafc14d3daf1eed5035' => 
     array (
       0 => 'C:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\templates\\add_billing.tpl',
-      1 => 1513689667,
+      1 => 1513950124,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5a391246b72c24_72039067 ($_smarty_tpl) {
+function content_5a44ecf5803548_86266407 ($_smarty_tpl) {
 ?>
 
    
@@ -58,7 +58,7 @@ home"><i class="icon-home"></i></a>
 				<?php }?>
 <form action="add_billing.php?res_id=<?php echo $_GET['res_id'];?>
 &req_res_id=<?php echo $_GET['req_res_id'];?>
-" id="formID"  name="searchFrm" class="formID" method="post" accept-charset="utf-8">
+" id="formID"  enctype="multipart/form-data" name="searchFrm" class="formID" method="post" accept-charset="utf-8">
 	<div class="box">
 		<div class="row-fluid">
 		<div class="span12">
@@ -153,6 +153,16 @@ echo $_POST['joined_date'];
 										
 										</td>
 									</tr>
+										<tr>
+										<td width="120" class="tbl_column">Proof of Offer <span class="f_req">*</span></td>
+										<td> 
+										<input type="file" tabindex="3" name="offer" class="upload" id="offer"/>
+										<label class="error"><?php echo $_smarty_tpl->tpl_vars['offerErr']->value;
+echo $_smarty_tpl->tpl_vars['attachmentuploadErr']->value;?>
+ </label>
+										</td>
+									</tr>
+									
 									
 																			
 								</tbody>
@@ -191,7 +201,8 @@ echo $_POST['bill_percent'];
 										<td> 
 										<input type="text" class="span8"  id="result" name="billing_amount"  value="<?php echo $_smarty_tpl->tpl_vars['billing_amount']->value;?>
 ">
-										<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['billing_amountErr']->value;?>
+										<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['billing_amountErr']->value;
+echo $_smarty_tpl->tpl_vars['billing_amountEr']->value;?>
 </label>									
 						
 										</td>

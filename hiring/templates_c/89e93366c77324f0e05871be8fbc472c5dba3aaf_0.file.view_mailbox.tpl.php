@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-12-14 19:19:50
+/* Smarty version 3.1.29, created on 2017-12-28 18:20:40
   from "C:\xampp\htdocs\ctsvn\cthiring\hiring\templates\view_mailbox.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5a32817e5e16c9_81220872',
+  'unifunc' => 'content_5a44e8a01c9599_00184490',
   'file_dependency' => 
   array (
     '89e93366c77324f0e05871be8fbc472c5dba3aaf' => 
     array (
       0 => 'C:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\templates\\view_mailbox.tpl',
-      1 => 1512651320,
+      1 => 1514291743,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5a32817e5e16c9_81220872 ($_smarty_tpl) {
+function content_5a44e8a01c9599_00184490 ($_smarty_tpl) {
 ?>
 
    
@@ -51,7 +51,13 @@ home"><i class="icon-home"></i></a>
                             </ul>
                         </div>
                     </nav>
-							
+					<?php if ($_smarty_tpl->tpl_vars['EXIST_MSG']->value) {?>
+				 <div id="flashMessage" class="alert alert-success"><button type="button" class="close" data-dismiss="alert">×</button><?php echo $_smarty_tpl->tpl_vars['EXIST_MSG']->value;?>
+</div>					
+				<?php }?>
+		<form action="view_mailbox.php?id=<?php echo $_GET['id'];?>
+" name="formID" class="formID" id="formID" method="post" enctype="multipart/form-data" accept-charset="utf-8">
+					
 		<div class="box">
 		<div class="row-fluid">
 		<div class="span12">
@@ -69,7 +75,7 @@ home"><i class="icon-home"></i></a>
 echo ucwords($_smarty_tpl->tpl_vars['data']->value['candidate_name']);?>
  (<?php echo $_smarty_tpl->tpl_vars['data']->value['email_id'];?>
 )<?php } else {
-echo $_smarty_tpl->tpl_vars['data']->value['client_name'];?>
+echo $_smarty_tpl->tpl_vars['data']->value['client_con_name'];?>
  (<?php echo $_smarty_tpl->tpl_vars['data']->value['email'];?>
 )<?php }?> </td>
 									</tr>
@@ -114,10 +120,12 @@ echo $_smarty_tpl->tpl_vars['data']->value['client_name'];?>
 					</div>
 					</div>
 						<div class="form-actions">
-								<a href="mailbox.php" class="jsRedirect"><button class="btn">Back</button></a>
+								<input name="resend" id="resend" class="btn btn-gebo confirm_btn" value="Resend" type="submit"/>
+								<a href="mailbox.php" class="jsRedirect cancelBtn"><input type="button" value="Back" class="btn">
 						</div>
+
                </div>
-					
+			</form>		
           </div>
        </div>
       </div>
@@ -125,6 +133,10 @@ echo $_smarty_tpl->tpl_vars['data']->value['client_name'];?>
 </div>
 </div>
 			
+
+
 <?php $_smarty_tpl->smarty->ext->_subtemplate->render($_smarty_tpl, "file:include/footer.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
-}
+?>
+
+<?php }
 }
