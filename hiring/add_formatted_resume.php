@@ -215,7 +215,8 @@ for($l = 1; $l <= 11; $l++){
 $smarty->assign('total_exp_month', $total_exp_month);
 
 // smarty drop down array for current ctc
-$smarty->assign('ctc_type', array('' => 'Select', 'T' => 'Thousand', 'L' => 'Lacs', 'C' => 'Crore'));
+// $smarty->assign('ctc_type', array('' => 'Select', 'T' => 'Thousand', 'L' => 'Lacs', 'C' => 'Crore'));
+$smarty->assign('ctc_type', array('L' => 'Lacs'));
 
 // smarty drop down array for notice period  
 $smarty->assign('n_p' , $notice_period = array('' => 'Select','0' => 'Immediate', '15' => '15 Days', '30' => '30 Days', 
@@ -514,7 +515,7 @@ if(!empty($_POST)){
 	$actualfield = array('first name', 'last name','email', 'mobile','dob',
 						'current designation', 'total years of experience','total months of experience',
 						'present CTC','expected CTC','present CTC type','expected CTC type',
-						'notice period','gender', 'present location','nationality', 'language','address','technical expertise and domain expertise');
+						'notice period','gender', 'present location','nationality', 'language','address','domain expertise & exposure');
    $field = array('first_name' => 'first_nameErr', 'last_name' => 'last_nameErr','email' => 'emailErr',
     'mobile' => 'mobileErr','dob_field' => 'dobErr',
     'designation_id' => 'positionErr','year_of_exp' => 'year_of_expErr', 'month_of_exp' => 'month_of_expErr',
@@ -559,7 +560,7 @@ if(!empty($_POST)){
 	
 	// array for printing correct field name in error message for consultant
 	$fieldtype1 = array('0','0','0');
-	$actualfield1 = array('personality','interview availability','relevant exposure');
+	$actualfield1 = array('personality','interview availability','relevant experience');
 	$field1 = array('personality' => 'personalityErr','interview_availability' => 'interview_availabilityErr', 'relevant_exposure' => 'relevant_exposureErr');
 	$j = 0;
 	foreach ($field1 as $field1 => $er_var){ 

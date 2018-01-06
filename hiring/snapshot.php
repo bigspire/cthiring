@@ -263,9 +263,20 @@ body {
 	  </td>
     </tr>
 	
-	 
-    <tr>
+	
+	<tr>
       <td class="has-text-centered">17</td>
+      <td class="">Other Inputs</td>
+    
+      <td>
+	  
+	  $_POST[other_input]
+	  
+	  </td>
+    </tr>
+	
+    <tr>
+      <td class="has-text-centered">18</td>
       <td class="">Interview Availability</td>
     
       <td>

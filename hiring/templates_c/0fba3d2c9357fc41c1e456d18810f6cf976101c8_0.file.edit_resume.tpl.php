@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-12-30 12:17:05
+/* Smarty version 3.1.29, created on 2018-01-06 11:49:00
   from "C:\xampp\htdocs\2017\ctsvn\cthiring\hiring\templates\edit_resume.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5a473669eeee13_82622805',
+  'unifunc' => 'content_5a506a54b13369_78293819',
   'file_dependency' => 
   array (
     '0fba3d2c9357fc41c1e456d18810f6cf976101c8' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\templates\\edit_resume.tpl',
-      1 => 1514616236,
+      1 => 1515219337,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5a473669eeee13_82622805 ($_smarty_tpl) {
+function content_5a506a54b13369_78293819 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -616,7 +616,16 @@ echo $_POST['consultant'];
 </label>
 										</td>	
 									</tr>	
-																						
+									<tr class="">
+										<td width="120" class="tbl_column">Any Other Inputs <span class="f_req"></span></td>
+										<td>
+<textarea placeholder="" name="other_input" tabindex="1" id="other_input" cols="10" rows="3" class="span10 wysiwyg1"><?php if ($_smarty_tpl->tpl_vars['other_input']->value) {
+echo $_smarty_tpl->tpl_vars['other_input']->value;
+} else {
+echo $_POST['other_input'];
+}?></textarea>
+										</td>	
+									</tr>													
 								</tbody>
 							</table>
 						</div>

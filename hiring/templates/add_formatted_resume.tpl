@@ -231,7 +231,7 @@
 									
 									
 									<tr>
-										<td width="120" class="tbl_column">Technical Expertise and Domain Expertise <span class="f_req">*</span></td>
+										<td width="120" class="tbl_column">Domain Expertise & Exposure <span class="f_req">*</span></td>
 										<td> 
 									   <textarea name="tech_expert" tabindex="24" cols="10" rows="3" class="span8 wysiwyg1">{if $tech_expert}{$tech_expert}{else}{$smarty.post.tech_expert}{/if}</textarea>									
 										<label for="reg_city" generated="true" class="error">{$tech_expertErr} </label>	
@@ -619,7 +619,7 @@
 										</td>	
 									</tr>
 									<tr class="tbl_row">
-									<td width="120" class="tbl_column">Relevant Exposure <span class="f_req">*</span></td>
+									<td width="120" class="tbl_column">Relevant Experience <span class="f_req">*</span></td>
 									<td> 
 									<textarea name="relevant_exposure" tabindex="3"  rows="3" class="span12 wysiwyg1">{if $relevant_exposure}{$relevant_exposure}{else}{$smarty.post.relevant_exposure}{/if}</textarea>									
 									<label for="reg_city" generated="true" class="error">{$relevant_exposureErr}</label>	

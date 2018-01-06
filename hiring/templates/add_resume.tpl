@@ -505,6 +505,14 @@
 										<label for="reg_city" generated="true" class="error">{$consultantErr}</label>
 										</td>	
 									</tr>	
+									
+									
+									<tr class="">
+										<td width="120" class="tbl_column">Any Other Inputs <span class="f_req"></span></td>
+										<td>
+<textarea placeholder="" name="other_input" tabindex="1" id="other_input" cols="10" rows="3" class="span10 wysiwyg1">{$smarty.post.other_input}</textarea>
+										</td>	
+									</tr>
 																						
 								</tbody>
 							</table>
@@ -606,7 +614,6 @@
 		<input type="hidden" id="degreeSelData_{$i}" name="degreeSelData_{$i}" value="{$degree[$i]}">
 		<input type="hidden" id="specializationSelData_{$i}" name="specializationSelData_{$i}" value="{$spec[$i]}">
 
-		<!--input type="hidden" id="degreeData_{$i}" name="degreeData_{$i}" value="{$smarty.session[$i].degreeData}"-->
 		<input type="hidden" id="gradeData_{$i}" name="gradeData_{$i}" value="{$gradeData[$i]}">
 		<input type="hidden" id="grade_typeData_{$i}" name="grade_typeData_{$i}" value="{$grade_typeData[$i]}">
 		<input type="hidden" id="universityData_{$i}" name="universityData_{$i}" value="{$universityData[$i]}">
