@@ -505,6 +505,14 @@
 										<label for="reg_city" generated="true" class="error">{$consultantErr}</label>
 										</td>	
 									</tr>	
+									
+									
+									<tr class="">
+										<td width="120" class="tbl_column">Any Other Inputs <span class="f_req"></span></td>
+										<td>
+<textarea placeholder="" name="other_input" tabindex="1" id="other_input" cols="10" rows="3" class="span10 wysiwyg1">{$smarty.post.other_input}</textarea>
+										</td>	
+									</tr>
 																						
 								</tbody>
 							</table>

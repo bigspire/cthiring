@@ -175,6 +175,7 @@
 													<th class="allCol position">Client</th>
 													<th class="allCol position">Candidate Name</th>
 													{if $incentive_data['incentive_type'] eq 'I'}
+													<th class="allCol position">Position CTC</th>
 													<th class="allCol position">Interview Level</th>
 													<th class="allCol position">Interview Date</th>
 													<th class="allCol position">Interview Status</th>
@@ -197,12 +198,13 @@
 												<td class="allCol position">{$item.client_name}</td>
 												<td class="allCol position">{$item.candidate_name}</td>
 												{if $incentive_data['incentive_type'] eq 'I'}
+												<td class="allCol position">{if $item.ctc}{$item.ctc} Lacs{/if}</td>	
 												<td class="allCol position">{$item.stage_title}</td>
 												<td class="allCol position">{$item.int_date}</td>
 												<td class="allCol position">{$item.status_title}</td>
 												{/if}
 												{if $incentive_data['incentive_type'] eq 'J'}
-												<td class="allCol position">{$item.ctc} Lacs</td>	
+												<td class="allCol position">{if $item.ctc}{$item.ctc} Lacs{/if}</td>	
 												<td class="allCol position">{$item.ctc_offer}</td>																 													
 												<td class="allCol position">{$item.billing_amount}</td>																 										
 												<td class="allCol position">{$item.billing_date}</td>	

@@ -442,9 +442,8 @@ if(!empty($_POST)){
  			'".$date."','".$created_by."','N','".$mysql->real_escape_str($_SESSION['resume_doc_id'])."',
  			'".$fun->is_white_space($mysql->real_escape_str($_POST['consultant']))."',
  			'".$fun->is_white_space($mysql->real_escape_str($_POST['interview_availability']))."',
-			'".$fun->is_white_space($mysql->real_escape_str($_POST['certification']))."',
-			'".$tech_skill."',
-			'".$behav_skill."')";
+			'".$fun->is_white_space($mysql->real_escape_str($_POST['certification']))."','".$tech_skill."',
+			'".$behav_skill."','".$fun->is_white_space($mysql->real_escape_str($_POST['other_input']))."')";
 		try{
 			if(!$result = $mysql->execute_query($query)){
 				throw new Exception('Problem in adding personal details');
@@ -927,7 +926,8 @@ for($l = 1; $l <= 11; $l++){
 $smarty->assign('tot_exp_month', $tot_exp_month);
 
 // smarty drop down array for current ctc
-$smarty->assign('ctc_type', array('' => 'Select', 'T' => 'Thousand', 'L' => 'Lacs', 'C' => 'Crore'));
+// $smarty->assign('ctc_type', array('' => 'Select', 'T' => 'Thousand', 'L' => 'Lacs', 'C' => 'Crore'));
+$smarty->assign('ctc_type', array('L' => 'Lacs'));
 
 // smarty drop down array for notice period  
 $smarty->assign('n_p' , $notice_period = array('' => 'Select','0' => 'Immediate', '15' => '15 Days', '30' => '30 Days', 
