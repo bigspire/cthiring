@@ -78,7 +78,7 @@
 									
 										<tr>
 										
-										<td width="" class="tbl_column">Account Holder</td>
+										<td width="" class="tbl_column"><span rel="tooltip"  title="Client Relationship Manager">CRM</span></td>
 										<td><?php echo $accountList;?></td>
 											
 									</tr>

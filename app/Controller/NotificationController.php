@@ -46,7 +46,7 @@ class NotificationController extends AppController {
 			)
 			*/
 		);		
-		$last_updated = date('Y-m-d', strtotime('-30 days'));	
+		$last_updated = date('Y-m-d', strtotime('-1 days'));	
 		$date_cond = array('OR' => array(
 					array('Notification.modified_date <=' =>  $last_updated, 'Notification.modified_date' => NULL),
 					array('Notification.modified_date <=' =>  $last_updated)					
@@ -86,7 +86,7 @@ class NotificationController extends AppController {
 				)
 			
 			);		
-		$last_updated = date('Y-m-d', strtotime('-30 days'));	
+		$last_updated = date('Y-m-d', strtotime('-1 days'));	
 		$date_cond = array('OR' => array(
 					array('ReqResume.created_date <=' =>  $last_updated, 'ReqResume.modified_date' => NULL),
 					array('ReqResume.modified_date <=' =>  $last_updated),
