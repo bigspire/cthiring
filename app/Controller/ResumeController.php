@@ -337,6 +337,9 @@ class ResumeController extends AppController {
 			case '17':
 			$cond = array('ReqResume.stage_title like' => '%Interview','ReqResume.status_title' => 'Re-Scheduled');
 			break;
+			case '18':
+			$cond = array('ReqResume.stage_title like' => 'In-Active','ReqResume.status_title' => 'Not Billable');
+			break;
 		}
 		return $cond;
 	}
@@ -376,10 +379,28 @@ class ResumeController extends AppController {
 			$cond = array('ReqResumeStatus.stage_title' => 'Joining','ReqResumeStatus.status_title' => 'Joined');
 			break;
 			case '11':
-			$cond = array('ReqResume.bill_ctc >' => '0' , 'ReqResume.status_title' => 'Joined');
+			$cond = array('ReqResume.bill_ctc >' => '0' , 'ReqResumeStatus.status_title' => 'Joined');
 			break;
 			case '12':
-			$cond = array('ReqResume.bill_ctc >' => '0' , 'ReqResume.status_title' => 'Joined');
+			$cond = array('ReqResume.bill_ctc >' => '0' , 'ReqResumeStatus.status_title' => 'Joined');
+			break;
+			case '13':
+			$cond = array('ReqResumeStatus.stage_title' => 'Validation - Account Holder', 'ReqResumeStatus.status_title' => 'Validated');
+			break;
+			case '14':
+			$cond = array('ReqResumeStatus.status_title like' => '%Interview','ReqResumeStatus.status_title' => 'Selected');
+			break;
+			case '15':
+			$cond = array('ReqResumeStatus.stage_title' => 'Joining','ReqResumeStatus.status_title' => 'Not Joined');
+			break;
+			case '16':
+			$cond = array('ReqResumeStatus.stage_title' => 'Joining','ReqResumeStatus.status_title' => 'Deferred');
+			break;
+			case '17':
+			$cond = array('ReqResumeStatus.stage_title like' => '%Interview','ReqResumeStatus.status_title' => 'Re-Scheduled');
+			break;
+			case '18':
+			$cond = array('ReqResumeStatus.stage_title like' => 'In-Active','ReqResumeStatus.status_title' => 'Not Billable');
 			break;
 			
 		}
@@ -422,13 +443,20 @@ class ResumeController extends AppController {
 				'type' => 'LEFT',
 				'conditions' => array('`Language`.`id` = `ResLanguage`.`language_id`')
 			)
+			,
+			array(
+				'table' => 'reason',
+				'alias' => 'ResReason',					
+				'type' => 'LEFT',
+				'conditions' => array('`ResReason`.`id` = `Resume`.`reason_not_billable`')
+			),
 		);
 		$fields = array('id','ReqResume.id','first_name','last_name','email_id','mobile','mobile2','total_exp','education','present_employer',
 		'ResLocation.location', 'present_ctc','expected_ctc', 'Creator.first_name','created_date','notice_period',
 		'Resume.modified_date','ReqResume.stage_title','ReqResume.status_title','Designation.designation','present_ctc_type','expected_ctc_type',
 		'gender','marital_status','family','present_location','native_location', 'dob','consultant_assess','interview_avail','ResDoc.resume',
 		'Position.job_title','Resume.skills','Resume.created_by','Resume.tech_skill_rate','Resume.behav_skill_rate','Position.id','Position.resume_type','certification',
-		'personality','achievement','about_company','candidate_brief','credential_shortlisting','vital_info_interview','relevant_exposure','nationality',
+		'personality','achievement','about_company','candidate_brief','credential_shortlisting','vital_info_interview','relevant_exposure','nationality','ResReason.reason',
 		"group_concat(Language.language SEPARATOR ', ') language",'hobby','tech_expert','address1');
 		$data2 = $this->Resume->find('all', array('fields' => $fields,'conditions' => array('Resume.id' => $id),
 		'order' => array('ReqResume.id' => 'desc'),'joins' => $options));

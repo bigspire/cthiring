@@ -68,10 +68,23 @@
 		self.parent.location.href = jQuery('#success_page').val();
 		parent.jQuery("#cboxClose").click();
 	});
-
-	</script>
 	
-<?php endif; ?>
+		</script>
+	<?php endif; ?>
+	
+	
+	<?php  
+	 if($redirect_popup == '1'): ?>
+	 
+	<script type="text/javascript">
+	$(document).ready(function(){ 
+		self.parent.location.href = jQuery('#fail_page').val();
+		parent.jQuery("#cboxClose").click();
+	});
+	</script>
+	<?php endif; ?>
+
+	
 
 </body>
 </html>

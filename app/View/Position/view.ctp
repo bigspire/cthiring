@@ -177,7 +177,7 @@
 <span rel="tooltip" title="Requirement Status: <?php echo $position_data['ReqStatus']['title'];?> " class="label label-<?php echo $this->Functions->get_req_status_color($position_data['ReqStatus']['title']);?>"><?php echo $position_data['ReqStatus']['title'];?></span>	
 
 <?php if($this->Session->read('USER.Login.roles_id') == '34'):?>
-	<a rel="tooltip" val="40_60"  class="iframeBox" title="<?php echo $status_txt = $position_data['ReqStatus']['id'] == '10' ? 'Reactive' : 'Change Status';?>" href="<?php echo $this->webroot;?>position/update_position_status/<?php echo $this->request->params['pass'][0];?>/<?php echo $position_data['ReqStatus']['id'];?>/"><i class="splashy-pencil"></i></a>
+	<a rel="tooltip" val="40_60"  class="iframeBox" title="<?php echo $status_txt = $position_data['ReqStatus']['id'] == '10' ? 'Reactivate' : 'Change Status';?>" href="<?php echo $this->webroot;?>position/update_position_status/<?php echo $this->request->params['pass'][0];?>/<?php echo $position_data['ReqStatus']['id'];?>/"><i class="splashy-pencil"></i></a>
 <?php endif;?>
 
 <?php if($position_data['Reason2']['reason'] && $position_data['ReqStatus']['id'] == '10'):?>
@@ -775,14 +775,14 @@
 											<?php elseif($resume['ReqResume']['stage_title'] == 'Validation - Account Holder' &&
 										$resume['ReqResume']['status_title'] == 'Rejected'):?>
 										<?php $reject_reason = $resume['Reason']['reason'] ? ', '.$resume['Reason']['reason'] : '';?>
-										<span rel="tooltip" style="cursor:" data-original-title="Account Holder - Rejected, <?php echo $reject_reason;?>"><i class="splashy-thumb_down"></i></span>
+										<span rel="tooltip" style="cursor:" data-original-title="CRM - Rejected, <?php echo $reject_reason;?>"><i class="splashy-thumb_down"></i></span>
 										
 											<?php elseif($resume['ReqResume']['stage_title'] == 'Validation - Account Holder' &&
 										$resume['ReqResume']['status_title'] == 'Pending'):?>
-			<span rel="tooltip" style="cursor:" data-original-title="Account Holder - Pending"><i class="splashy-sprocket_light"></i></span>		
+			<span rel="tooltip" style="cursor:" data-original-title="CRM - Pending"><i class="splashy-sprocket_light"></i></span>		
 
 											<?php else:?>										
-										<span rel="tooltip" style="cursor:" data-original-title="Account Holder - Validated"><i class="splashy-thumb_up"></i></span>		
+										<span rel="tooltip" style="cursor:" data-original-title="CRM - Validated"><i class="splashy-thumb_up"></i></span>		
 
 										<?php endif; ?>	
 														
@@ -1221,15 +1221,15 @@ $ac_reject =  $this->Functions->get_req_tab_count($resume_data, 'rejected','','v
 													</tr>
 											<tbody>
 												<tr class="">
-														<td>AH Validation Pending</td>
+														<td>CRM Validation Pending</td>
 														<th  style="text-align:center"><?php echo $pending;?></th>
 														</tr>
 														<tr class="">
-														<td>AH Validated</td>
+														<td>CRM Validated</td>
 														<th  style="text-align:center"><?php echo $validate;?></th>
 														</tr>
 															<tr class="">
-														<td>AH Rejected</td>
+														<td>CRM Rejected</td>
 														<th  style="text-align:center"><?php echo $ac_reject;?></th>
 														</tr>
 																												

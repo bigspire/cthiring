@@ -93,6 +93,8 @@
 					
 					<?php if($field_name == 'joined_on'):?>
 					<input type="hidden" id="start_date" name="start_date" value="<?php echo date('d/m/Y', strtotime($offer_select_date));?>">
+					<input type="hidden" id="end_date" name="end_date" value="<?php echo date('d/m/Y');?>">
+
 					<?php endif; ?>
 					
 					

@@ -136,7 +136,13 @@
 									<tr>
 										
 										<td  class="tbl_column" width="120"><b>Current Status</b></td>
-										<td><?php echo $this->Functions->get_status_crisp($resume_data['ReqResume']['stage_title'],$resume_data['ReqResume']['status_title']);?></td>
+										<td><?php echo $this->Functions->get_status_crisp($resume_data['ReqResume']['stage_title'],$resume_data['ReqResume']['status_title']);?>
+										
+										<?php 
+										if($resume_data['ResReason']['reason']):
+										echo ', '.$resume_data['ResReason']['reason'];
+										endif; ?>
+										</td>
 											
 									</tr>
 									

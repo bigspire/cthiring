@@ -302,7 +302,7 @@ class PositionController extends AppController {
 		// get exp list
 		$this->set('expList', $this->Functions->get_experience());
 		// assign the ctc type
-		$this->set('ctcList', array('T' => 'Thousands', 'L' => 'Lacs'));
+		$this->set('ctcList', array('L' => 'Lacs'));
 		// resume hide and resume types
 		$this->set('hide_contacts', array('1' => 'Yes', '0' => 'No'));
 		$this->set('resume_types', array('S' => 'Snapshot', 'F' => 'Fully Formatted Resume'));
@@ -452,7 +452,7 @@ class PositionController extends AppController {
 				// get exp list
 				$this->set('expList', $this->Functions->get_experience());
 				// assign the ctc type
-				$this->set('ctcList', array('T' => 'Thousands', 'L' => 'Lacs'));
+				$this->set('ctcList', array('L' => 'Lacs'));
 				// resume hide and resume types
 				$this->set('hide_contacts', array('1' => 'Yes', '0' => 'No'));
 				$this->set('resume_types', array('S' => 'Snapshot', 'F' => 'Fully Formatted Resume'));
@@ -2056,59 +2056,74 @@ class PositionController extends AppController {
 		if(!empty($this->request->data)){		
 			// set the validation
 			$this->Position->set($this->request->data);
-			if($status == 'Rejected'){
-				$validate = $this->Position->validates(array('fieldList' => array('reason_id')));
-			}else if($int_level != '5'){
-				$validate = $this->Position->validates(array('fieldList' => array('next_interview')));
-			}else{
-				$validate = 1;
+			$validate_interview_date = 1;
+			// get the interview date
+			$this->loadModel('ResInterview');
+			$int_data =  $this->ResInterview->find('all', array('fields' => array('ResInterview.int_date'),
+			'conditions' => array('ResInterview.req_resume_id' => $req_res_id),
+			'order' => array('ResInterview.id' => 'desc')));
+			$interview_date = $int_data[0]['ResInterview']['int_date']; 
+			if(strtotime(date('Y-m-d')) < strtotime($interview_date)){
+				$validate_interview_date = 0;
+				$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>You cannot update the interview status before the interview date', 'default', array('class' => 'alert alert-error'));
 			}
-			// if validation pass
-			if($validate){			
-				// get the req. resume id
-				$this->loadModel('ReqResume');
-				//$req_res_id = $this->ReqResume->find('all', array('fields' => array('ReqResume.id'), 
-				//'conditions' => array('requirements_id' => $pos_id, 'resume_id' => $id)));
-				// save req resume table
-				$data = array('id' => $req_res_id,'modified_date' => $this->Functions->get_current_date(),
-				'modified_by' => $this->Session->read('USER.Login.id'),	 'status_title' => $status);
-				// save  req resume
-				if($this->ReqResume->save($data, array('validate' => false))){		
-					// save req resume status
-					$this->loadModel('ReqResumeStatus');
-					$data = array('req_resume_id' => $req_res_id, 'created_date' => $this->Functions->get_current_date(),	
-					'created_by' => $this->Session->read('USER.Login.id'), 'stage_title' => $this->Functions->get_level_text($int_level),	
-					'status_title' => $status, 'note' => $this->request->data['Position']['note'],
-					'reason_id' => $this->request->data['Position']['reason_id']);
-					if($this->ReqResumeStatus->save($data, array('validate' => false))){
-						// save interview status
-						$this->loadModel('ResInterview');
-						$interview_id = $this->ResInterview->find('all', array('conditions' => array('ResInterview.req_resume_id' => $req_res_id,
-						'ResInterview.stage_title' => $this->Functions->get_level_text($int_level)), 'fields' => array('ResInterview.id')));
-						$data = array('id' => $interview_id[0]['ResInterview']['id'],'reason_id' => $this->request->data['Position']['reason_id'],  'req_resume_id' => $req_res_id, 'modified_date' => $this->Functions->get_current_date(),
-						'modified_by' => $this->Session->read('USER.Login.id'), 'status_title' => $status);
-						$this->ResInterview->save($data, array('validate' => false));					
-						// if next interview not applicable proceed to Offer Status
-						if($this->request->data['Position']['next_interview'] == 'N' && $st == 'shortlist'){
-							// Change Offer status pending
-							$data = array('id' => $req_res_id,'modified_date' => $this->Functions->get_current_date(),
-							'modified_by' => $this->Session->read('USER.Login.id'),	'stage_title' => 'Offer', 'status_title' => 'Offer Pending');
-							// save  req resume
-							if($this->ReqResume->save($data, array('validate' => false))){		
-								// save req resume status
-								$this->ReqResumeStatus->id = '';
-								$this->loadModel('ReqResumeStatus');
-								$data = array('req_resume_id' => $req_res_id, 'created_date' => $this->Functions->get_current_date(),	
-								'created_by' => $this->Session->read('USER.Login.id'), 'stage_title' => 'Offer',	'status_title' => 'Offer Pending', 
-								'note' => $this->request->data['Position']['note'],'reason_id' => $this->request->data['Position']['reason_id']);
-								if($this->ReqResumeStatus->save($data, array('validate' => false))){
-									
-								}							
+			// process after the interview date
+			if($validate_interview_date == '1'){
+				// validate the form
+				if($status == 'Rejected'){
+					$validate = $this->Position->validates(array('fieldList' => array('reason_id')));
+				}else if($int_level != '5'){
+					$validate = $this->Position->validates(array('fieldList' => array('next_interview')));
+				}else{
+					$validate = 1;
+				}
+				// if validation pass
+				if($validate){			
+					// get the req. resume id
+					//$req_res_id = $this->ReqResume->find('all', array('fields' => array('ReqResume.id'), 
+					//'conditions' => array('requirements_id' => $pos_id, 'resume_id' => $id)));
+					// save req resume table
+					$this->loadModel('ReqResume');
+					$data = array('id' => $req_res_id,'modified_date' => $this->Functions->get_current_date(),
+					'modified_by' => $this->Session->read('USER.Login.id'),	 'status_title' => $status);
+					// save  req resume
+					if($this->ReqResume->save($data, array('validate' => false))){		
+						// save req resume status
+						$this->loadModel('ReqResumeStatus');
+						$data = array('req_resume_id' => $req_res_id, 'created_date' => $this->Functions->get_current_date(),	
+						'created_by' => $this->Session->read('USER.Login.id'), 'stage_title' => $this->Functions->get_level_text($int_level),	
+						'status_title' => $status, 'note' => $this->request->data['Position']['note'],
+						'reason_id' => $this->request->data['Position']['reason_id']);
+						if($this->ReqResumeStatus->save($data, array('validate' => false))){
+							// save interview status
+							$this->loadModel('ResInterview');
+							$interview_id = $this->ResInterview->find('all', array('conditions' => array('ResInterview.req_resume_id' => $req_res_id,
+							'ResInterview.stage_title' => $this->Functions->get_level_text($int_level)), 'fields' => array('ResInterview.id')));
+							$data = array('id' => $interview_id[0]['ResInterview']['id'],'reason_id' => $this->request->data['Position']['reason_id'],  'req_resume_id' => $req_res_id, 'modified_date' => $this->Functions->get_current_date(),
+							'modified_by' => $this->Session->read('USER.Login.id'), 'status_title' => $status);
+							$this->ResInterview->save($data, array('validate' => false));					
+							// if next interview not applicable proceed to Offer Status
+							if($this->request->data['Position']['next_interview'] == 'N' && $st == 'shortlist'){
+								// Change Offer status pending
+								$data = array('id' => $req_res_id,'modified_date' => $this->Functions->get_current_date(),
+								'modified_by' => $this->Session->read('USER.Login.id'),	'stage_title' => 'Offer', 'status_title' => 'Offer Pending');
+								// save  req resume
+								if($this->ReqResume->save($data, array('validate' => false))){		
+									// save req resume status
+									$this->ReqResumeStatus->id = '';
+									$this->loadModel('ReqResumeStatus');
+									$data = array('req_resume_id' => $req_res_id, 'created_date' => $this->Functions->get_current_date(),	
+									'created_by' => $this->Session->read('USER.Login.id'), 'stage_title' => 'Offer',	'status_title' => 'Offer Pending', 
+									'note' => $this->request->data['Position']['note'],'reason_id' => $this->request->data['Position']['reason_id']);
+									if($this->ReqResumeStatus->save($data, array('validate' => false))){
+										
+									}							
+								}
 							}
-						}
-						$this->set('cv_update_status', 1);
-						$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Interview Details Updated Successfully', 'default', array('class' => 'alert alert-success'));									
+							$this->set('cv_update_status', 1);
+							$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Interview Details Updated Successfully', 'default', array('class' => 'alert alert-success'));									
 
+						}
 					}
 				}
 			}
@@ -2595,7 +2610,10 @@ class PositionController extends AppController {
 	public function beforeFilter(){ 
 		$this->check_session();
 		$this->check_role_access(5);
-		// $this->get_notification_count();
+		// exception for the positions where we updated resume status
+		if($this->request->params['controller'] == 'position' && $this->request->params['action'] == 'index'){
+			$this->get_notification_count();
+		}
 		
 	}
 }

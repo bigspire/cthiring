@@ -15,6 +15,10 @@
 		<?php endif; ?>	
 
 		
+									<?php echo $this->Session->flash();?>
+
+									
+									
 	<?php if($cv_update_status == ''):?>							
 <?php echo $this->Form->create('Position', array('id' => '', 'class' => 'formID')); ?>
 	<div class="box">

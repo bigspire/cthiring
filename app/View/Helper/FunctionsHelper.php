@@ -465,11 +465,11 @@ class FunctionsHelper extends AppHelper {
    public function  get_status_crisp($stage, $status){
 		$short_stage = explode(' ', $stage);
 		if($stage == 'Validation - Account Holder' && $status == 'Pending'){
-			$new_status = 'AH Pending';
+			$new_status = 'CRM Validation Pending ';
 		}else if($stage == 'Validation - Account Holder' && $status == 'Rejected'){
-			$new_status = 'AH Rejected';
+			$new_status = 'CRM Rejected';
 		}else if($stage == 'Validation - Account Holder' && $status == 'Validated'){
-			$new_status = 'AH Validated';
+			$new_status = 'CRM Validated';
 		}else if($stage == 'Shortlist' && $status == 'Shortlisted'){
 			$new_status = 'CV Shortlisted';
 		}else if($stage == 'Shortlist' && $status == 'CV-Sent'){
@@ -486,6 +486,8 @@ class FunctionsHelper extends AppHelper {
 			$new_status = 'Joined';
 		}else if($stage == 'Joining' && $status == 'Not Joined'){
 			$new_status = 'Not Joined';
+		}else if($stage == 'In-Active'){
+			$new_status = $stage.' ('.$status.')';
 		}else{
 			$new_status =  $stage.' - '.$status;
 		}

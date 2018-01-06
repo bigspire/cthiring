@@ -133,7 +133,7 @@
 										
 		<?php echo $this->Form->input('ctc_from_type', array('div'=> false,'type' => 'select', 'label' => false, 
 		'class' => 'span2', 'empty' => 'Select', 'required' => false, 'placeholder' => '', 
-		'style' => "clear:left", 'options' => $ctcList, 'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 
+		'style' => "clear:left",'default' => 'L',  'options' => $ctcList, 'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 
 				
 
 				
@@ -144,7 +144,7 @@
 										
 				<?php echo $this->Form->input('ctc_to_type', array('div'=> false,'type' => 'select', 'label' => false, 
 		'class' => 'span2', 'empty' => 'Select', 'required' => false, 'placeholder' => '', 
-		'style' => "clear:left", 'options' => $ctcList, 'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 
+		'style' => "clear:left", 'default' => 'L', 'options' => $ctcList, 'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 
 												
 										</td>												
 									</tr>	

@@ -136,9 +136,9 @@ $(document).ready(function() {
 		},
 		dt_i: function() {
 			$('#dt_i').dataTable({
-                "sDom": "<'row'<'span6'<'dt_actions'>1><'span12'f>r>t<'row'<'span6'><'span6'p>>",
-				 "info":     true,
-				"iDisplayLength": 7,
+                // "sDom": "<'row'<'span6'<'dt_actions'>1><'span12'f>r>t<'row'<'span6'><'span6'p>>",
+				//  "info":     true,
+				"iDisplayLength": 10,
 				 "ordering": false,
 				  "aaSorting": [],
 				"bFilter": false,
@@ -163,9 +163,9 @@ $(document).ready(function() {
 		},
 		dt_j: function() {
 			$('#dt_j').dataTable({
-                "sDom": "<'row'<'span6'<'dt_actions'>1><'span12'f>r>t<'row'<'span6'><'span6'p>>",
-				 "info":     true,
-				"iDisplayLength": 7,
+                //"sDom": "<'row'<'span6'<'dt_actions'>1><'span12'f>r>t<'row'<'span6'><'span6'p>>",
+				// "info":     true,
+				"iDisplayLength": 10,
 				 "ordering": false,
 				  "aaSorting": [],
 				"bFilter": false,

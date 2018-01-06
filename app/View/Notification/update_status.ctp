@@ -1,3 +1,5 @@
+<?php if(empty($redirect_popup)):?>
+
 <div id="container">
 		<div id="content">
 			<div id="maincontainer" class="clearfix">
@@ -7,6 +9,13 @@
                <div class="main_content" style="min-height:auto;">
             <div class="row-fluid">
 				 <div class="span12">
+				 
+				 
+
+
+
+
+
 		<?php
 		if($form_status == '1'):?>					
 		<div id="flashMessage" class="alert alert-success">
@@ -85,9 +94,37 @@
 <?php endif; ?>	
 
 <input type="hidden" id="success_page" value="<?php echo $this->webroot;?>notification/"/>
+
+
+
   </div>
 </div>
 </div> 
+</div>
+</div>
+</div>
+<?php endif; ?>
+
+<input type="hidden" id="fail_page" value="<?php echo $this->webroot;?>position/view/<?php echo $this->request->params['pass']['0'];?>/?alert=notification"/>
+
+<div id="container">
+		<div id="content">
+			<div id="maincontainer" class="clearfix">
+			
+			<!-- main content -->
+            <div id="contentwrapper">
+               <div class="main_content" style="min-height:auto;">
+            <div class="row-fluid">
+				 <div class="span12">
+<?php if($redirect_popup == '1'):?>
+
+Redirecting page.. Pls wait..
+
+<?php endif; ?>
+  </div>
+</div>
+</div> 
+</div>
 </div>
 </div>
 </div>
