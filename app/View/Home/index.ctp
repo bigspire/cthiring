@@ -386,9 +386,9 @@
 										<ul class="dropdown-menu filter">
 											<li class="active"><a href="javascript:void(0)" id="filter-none2">All</a></li>
 											
-											<li><a href="javascript:void(0)" id="filter-1">AH Pending</a></li>
-											<li><a href="javascript:void(0)" id="filter-2">AH Rejected</a></li>
-											<li><a href="javascript:void(0)" id="filter-3">AH Validated</a></li>
+											<li><a href="javascript:void(0)" id="filter-1">CRM Pending</a></li>
+											<li><a href="javascript:void(0)" id="filter-2">CRM Rejected</a></li>
+											<li><a href="javascript:void(0)" id="filter-3">CRM Validated</a></li>
 											<li><a href="javascript:void(0)" id="filter-4">CV Sent</a></li>
 											<li><a href="javascript:void(0)" id="filter-5">CV Shortlisted</a></li>
 											<li><a href="javascript:void(0)" id="filter-6">CV Rejected</a></li>

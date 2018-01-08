@@ -445,7 +445,7 @@
 				$('ul.filter li').removeClass('active');
 				$(this).parent('li').addClass('active');
 				userList.filter(function(item) {
-					if (item.values().sl_status2 == "AH Pending") {
+					if (item.values().sl_status2 == "CRM Pending") {
 						return true;
 					} else {
 						return false;
@@ -459,7 +459,7 @@
 				$('ul.filter li').removeClass('active');
 				$(this).parent('li').addClass('active');
 				userList.filter(function(item) {
-					if (item.values().sl_status2 == "AH Rejected") {
+					if (item.values().sl_status2 == "CRM Rejected") {
 						return true;
 					} else {
 						return false;
@@ -472,7 +472,7 @@
 				$('ul.filter li').removeClass('active');
 				$(this).parent('li').addClass('active');
 				userList.filter(function(item) {
-					if (item.values().sl_status2 == "AH Validated") {
+					if (item.values().sl_status2 == "CRM Validated") {
 						return true;
 					} else {
 						return false;
