@@ -15,6 +15,14 @@ class FunctionsHelper extends AppHelper {
 		}
 	}
 	
+	/* function to format the date to show */
+	public function format_date_time_show($date){ 
+		if(!empty($date) && $date!= '0000-00-00' && $date!= '0000-00-00 00:00:00'){
+			$exp_date =  split("[-: ]", $date);
+			return $exp_date[0].'-'.$exp_date[1].'-'.$exp_date[2];
+		}
+	}
+	
 	/* string truncate*/
 	function string_truncate($message,$length){ 	
 		$message = strip_tags($message);
@@ -32,6 +40,20 @@ class FunctionsHelper extends AppHelper {
 			return $message;		
 		}			
 	}
+	
+	
+		   /* function used to format the date and time */
+	public function show_event_date($date){
+		if(!empty($date) && $date!= '0000-00-00' && $date!= '0000-00-00 00:00:00'){
+			$date =  split("[-: ]", $date);
+			if($date[3] == '00'){
+				return date('d M Y',mktime($date[3],$date[4],$date[5],$date[1],$date[2],$date[0]));
+			}else{
+				return date('d M Y h:i a',mktime($date[3],$date[4],$date[5],$date[1],$date[2],$date[0]));
+			}
+		}
+	 }
+	 
 	
 	/* function to get total joined */
 	public function get_total_joined($join,$req_res_id){

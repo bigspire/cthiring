@@ -27,8 +27,7 @@ $(document).ready(function() {
 		
 	});
 	
-	
-	
+
 	/* load when the view position started */
 	if($('.tabChange').length > 0){
 		$('.allRow').show();

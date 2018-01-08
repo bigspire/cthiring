@@ -109,7 +109,7 @@
 										
 										<th width="100"><?php echo $this->Paginator->sort('leave_to', 'Leave To', array('escape' => false, 'direction' => 'desc', 'rel' => 'tooltip', 'title' => 'Sort by Ascending or Descending'));?></th>
 	
-		<th width="300"  style="text-align:"><?php echo $this->Paginator->sort('leave_reason', 'Reason', array('escape' => false, 'direction' => 'desc', 'rel' => 'tooltip', 'title' => 'Sort by Ascending or Descending'));?></th>
+		<th width="300"  style="text-align:"><?php echo $this->Paginator->sort('reason_leave', 'Reason', array('escape' => false, 'direction' => 'desc', 'rel' => 'tooltip', 'title' => 'Sort by Ascending or Descending'));?></th>
 
 																				
 										<th width="100"  style="text-align:"><?php echo $this->Paginator->sort('session', 'Session', array('escape' => false, 'direction' => 'desc', 'rel' => 'tooltip', 'title' => 'Sort by Ascending or Descending'));?></th>

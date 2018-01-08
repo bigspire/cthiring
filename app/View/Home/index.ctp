@@ -344,7 +344,14 @@
 							
 						</div>
 						<div class="span6">
-							<h3 class="heading">Calendar</h3>
+							
+							    <div class="heading clearfix">
+								<h3 class="pull-left">Calendar <!--small>last 24 hours</small--></h3>
+								<h3 class="pull-right label label-warning"><a href="<?php echo $this->webroot;?>event/"  style="color:#ffffff;">View All</a></h3>
+							</div>
+							
+						
+							
 		<iframe id="eventFrame" src="<?php echo $this->webroot;?>full_calendar/" width="100%" height="500px" frameborder="0"></iframe> 
 
                         </div>

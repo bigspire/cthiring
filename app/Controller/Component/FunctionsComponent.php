@@ -44,6 +44,20 @@ class FunctionsComponent extends Component {
 		return $format_amp;
 	}
 	
+	/* function to format the date to show */
+	public function format_date_time_show($date){ 
+		if(!empty($date) && $date!= '0000-00-00' && $date!= '0000-00-00 00:00:00'){
+			$split_date =  split("[-: ]", $date); 
+			return $split_date[2].'/'.$split_date[1].'/'.$split_date[0].' '.$split_date[3].':'.$split_date[4];
+		}
+	}
+	
+		/* function to format the date to save */
+	public function format_date_time_save($date){ 
+		$split_date =  split("[/: ]", $date); 
+		return $split_date[2].'-'.$split_date[1].'-'.$split_date[0].' '.$split_date[3].':'.$split_date[4];
+	}
+	
 	/* function to format the date to save */
 	public function format_date_save($date){
 		if(!empty($date)){

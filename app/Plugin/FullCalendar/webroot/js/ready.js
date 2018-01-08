@@ -125,7 +125,9 @@ $(document).ready(function() {
 		header: {
 					left: 'prev,next',
 					center: 'title,today',
-					right: 'month,agendaWeek,agendaDay'
+					// right: 'month,agendaWeek,agendaDay'
+					right: 'month,agendaWeek,agendaDay,listWeek'
+
 				},
 				buttonText: {
 					prev: '<i class="icon-chevron-left cal_prev" />',

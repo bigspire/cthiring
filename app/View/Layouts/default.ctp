@@ -57,6 +57,7 @@
 			
 	<link rel="stylesheet" href="<?php echo $this->webroot;?>hiring/css/bootstrap-tagsinput.css" />
 
+	<link rel="stylesheet" type="text/css" href="<?php echo $this->webroot;?>hiring/css/jquery.datetimepicker.css"/>
 
 						
 			<link rel="stylesheet" media="screen" href="<?php echo $this->webroot;?>hiring/css/datepicker/datepicker.css"/>	   
@@ -180,6 +181,8 @@
 		
 			<script src="<?php echo $this->webroot;?>hiring/vendor/node_modules/bootstrap-rating/bootstrap-rating.min.js"></script>
 
+			<script src="<?php echo $this->webroot;?>hiring/js/jquery.datetimepicker.js"></script>	
+			
 			<!-- auto size text area -->
 			<script src="<?php echo $this->webroot;?>hiring/js/autosize.min.js"></script>			
 			<script src="<?php echo $this->webroot;?>hiring/js/jquery.slimscroll.min.js"></script>
