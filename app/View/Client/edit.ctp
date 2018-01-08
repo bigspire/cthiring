@@ -342,6 +342,7 @@
 ?>
 <?php echo $this->Form->input('page', array('type' => 'hidden',  'id' => 'edit_client', 'value' => 'edit_client')); ?>
 
+
 <?php echo $this->Form->input('webroot', array('type' => 'hidden', 'value' => $this->webroot.'client/', 'id' => 'webroot')); ?>
 
 <?php echo $this->Form->input('Client.id', array('type' => 'hidden')); ?>
