@@ -159,16 +159,16 @@
 									</tr>
 									
 										
-										<tr class="">
-										<td width="120" class="tbl_column">Family (Dependants)</td>
-										<td><?php echo $resume_data['Resume']['family'];?></td>	
 									
 												
 								
 									<?php endif; ?>	
 									
 							
-									
+										<tr class="">
+										<td width="120" class="tbl_column">Family (Dependants)</td>
+										<td><?php echo $resume_data['Resume']['family'];?></td>	
+										</tr>
 										
 								
 									
@@ -352,6 +352,11 @@
 										<td><?php echo ucwords($edu['ResEdu']['college']); ?></td>
 									</tr>
 									
+									<tr>
+										<td  class="tbl_column" width="120">Year of Passing </td>
+										<td><?php echo $edu['ResEdu']['year_passing']; ?></td>
+									</tr>	
+									
 									<?php  if($resume_data['Position']['resume_type'] == 'F'):?>
 									<tr>
 										<td class="tbl_column">Location</td>
@@ -378,7 +383,8 @@
 										<td><?php echo $this->Functions->get_course_type($edu['ResEdu']['course_type']); ?></td>
 									</tr>	
 									
-									
+						
+										
 								
 									
 								</tbody>
@@ -655,7 +661,14 @@ foreach($skill_parse as $key => $skill):?>
     <!-- Custom CSS -->
  
 										</td>	
-									</tr>								
+									</tr>
+
+	<tr  class="tbl_row">
+										<td width="150" class="tbl_column">Any Other Inputs</td>
+										<td><?php echo ucfirst($resume_data['Resume']['other_input']); ?></td>	
+									</tr>
+
+									
 								</tbody>
 							</table>
 							</div>
