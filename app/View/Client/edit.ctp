@@ -345,8 +345,6 @@
 <?php echo $this->Form->input('webroot', array('type' => 'hidden', 'value' => $this->webroot.'client/', 'id' => 'webroot')); ?>
 
 <?php echo $this->Form->input('Client.id', array('type' => 'hidden')); ?>
-
-
 				
 				<input class="btn btn-gebo" type="submit" value="Submit">
 					<a href="javascript:void(0)" class="cancelBtn cancel_event jsRedirect">
