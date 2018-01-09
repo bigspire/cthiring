@@ -108,7 +108,7 @@
 										
 										<th width="200"><?php echo $this->Paginator->sort('Client.client_name', 'Client', array('escape' => false, 'direction' => 'desc', 'rel' => 'tooltip', 'title' => 'Sort by Ascending or Descending'));?></th>
 										
-										<th width="100"><?php echo $this->Paginator->sort('Position.ctc', 'CTC (In Lacs)', array('escape' => false, 'direction' => 'desc', 'rel' => 'tooltip', 'title' => 'Sort by Ascending or Descending'));?></th>										
+										<th width="100"><?php echo $this->Paginator->sort('TaskPlan.ctc', 'CTC (In Lacs)', array('escape' => false, 'direction' => 'desc', 'rel' => 'tooltip', 'title' => 'Sort by Ascending or Descending'));?></th>										
 
 																				
 										

@@ -456,7 +456,7 @@ class ResumeController extends AppController {
 		'Resume.modified_date','ReqResume.stage_title','ReqResume.status_title','Designation.designation','present_ctc_type','expected_ctc_type',
 		'gender','marital_status','family','present_location','native_location', 'dob','consultant_assess','interview_avail','ResDoc.resume',
 		'Position.job_title','Resume.skills','Resume.created_by','Resume.tech_skill_rate','Resume.behav_skill_rate','Position.id','Position.resume_type','certification',
-		'personality','achievement','about_company','candidate_brief','credential_shortlisting','vital_info_interview','relevant_exposure','nationality','ResReason.reason',
+		'personality','achievement','about_company','candidate_brief','credential_shortlisting','vital_info_interview','relevant_exposure','nationality','ResReason.reason','other_input',
 		"group_concat(Language.language SEPARATOR ', ') language",'hobby','tech_expert','address1');
 		$data2 = $this->Resume->find('all', array('fields' => $fields,'conditions' => array('Resume.id' => $id),
 		'order' => array('ReqResume.id' => 'desc'),'joins' => $options));

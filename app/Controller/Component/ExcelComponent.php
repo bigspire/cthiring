@@ -271,6 +271,7 @@ class ExcelComponent extends Component {
 					$this->sheet->setCellValueByColumnAndRow($j++,$i,ucfirst($this->get_session($value['Leave']['session'])));
 					$this->sheet->setCellValueByColumnAndRow($j++,$i,$this->get_leave_type($value['Leave']['leave_type']));
 					$this->sheet->setCellValueByColumnAndRow($j++,$i,ucfirst($value['Leave']['reason_leave']));
+					$this->sheet->setCellValueByColumnAndRow($j++,$i,$this->get_leave_status($value['Leave']['is_approve']));
 					$this->sheet->setCellValueByColumnAndRow($j++,$i,$this->format_date($value['Leave']['created_date']));
 					$this->sheet->setCellValueByColumnAndRow($j++,$i,ucwords($value['Creator']['first_name'].' '.$value['Creator']['last_name']));
 					$i++;
@@ -295,6 +296,27 @@ class ExcelComponent extends Component {
 		}
 		return $count;
 	}
+	
+	
+		/* function to get leave types */
+	public function get_leave_status($type){
+		switch($type){
+			case 'W':
+			$value = 'Awaiting Approval';
+			break;
+			case 'A':
+			$value = 'Approved';			
+			break;	
+			case 'R':
+			$value = 'Rejected';			
+			break;	
+			case 'C':
+			$value = 'Cancelled';			
+			break;						
+		}
+		return $value;
+	}
+	
 	
 		/* function to get leave types */
 	public function get_leave_type($type){

@@ -324,6 +324,9 @@ class AppController extends Controller {
 					case 49:					
 					$this->set('view_task', 1);
 					break;
+					case 50:					
+					$this->set('my_event', 1);
+					break;
 				}				
 			}
 		}

@@ -344,7 +344,14 @@
 							
 						</div>
 						<div class="span6">
-							<h3 class="heading">Calendar</h3>
+							
+							    <div class="heading clearfix">
+								<h3 class="pull-left">Calendar <!--small>last 24 hours</small--></h3>
+								<h3 class="pull-right label label-warning"><a href="<?php echo $this->webroot;?>event/"  style="color:#ffffff;">View All</a></h3>
+							</div>
+							
+						
+							
 		<iframe id="eventFrame" src="<?php echo $this->webroot;?>full_calendar/" width="100%" height="500px" frameborder="0"></iframe> 
 
                         </div>
@@ -379,9 +386,9 @@
 										<ul class="dropdown-menu filter">
 											<li class="active"><a href="javascript:void(0)" id="filter-none2">All</a></li>
 											
-											<li><a href="javascript:void(0)" id="filter-1">AH Pending</a></li>
-											<li><a href="javascript:void(0)" id="filter-2">AH Rejected</a></li>
-											<li><a href="javascript:void(0)" id="filter-3">AH Validated</a></li>
+											<li><a href="javascript:void(0)" id="filter-1">CRM Pending</a></li>
+											<li><a href="javascript:void(0)" id="filter-2">CRM Rejected</a></li>
+											<li><a href="javascript:void(0)" id="filter-3">CRM Validated</a></li>
 											<li><a href="javascript:void(0)" id="filter-4">CV Sent</a></li>
 											<li><a href="javascript:void(0)" id="filter-5">CV Shortlisted</a></li>
 											<li><a href="javascript:void(0)" id="filter-6">CV Rejected</a></li>
