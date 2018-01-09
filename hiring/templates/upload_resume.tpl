@@ -34,6 +34,12 @@
 								{$ALERT_MSG}
 							</div>
 						{/if}
+						{if $typeErr}
+							<div class="alert alert-info">
+								<a class="close" data-dismiss="alert">×</a>
+								{$typeErr}
+							</div>
+						{/if}
 			 		
 <form action="upload_resume.php?client_id={$client_id}&req_id={$req_id}" class="formID" id="formID" method="post" enctype="multipart/form-data" accept-charset="utf-8">
 <div class="box">

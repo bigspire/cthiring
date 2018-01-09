@@ -26,7 +26,7 @@ if($_GET['client_id'] != ''  and $_GET['req_id'] != ''){
 	$_SESSION['req_id'] = $_GET['req_id'];
 	$smarty->assign('client_id',$_SESSION['client_id']);
 	$smarty->assign('req_id',$_SESSION['req_id'] );
-	
+		
 	// query to fetch all clients names. 
 	$query = "CALL get_clients_position('".$_SESSION['client_id']."','".$_SESSION['req_id']."')";
 	try{
@@ -37,7 +37,7 @@ if($_GET['client_id'] != ''  and $_GET['req_id'] != ''){
 		$row = $mysql->display_result($result);
 		$smarty->assign('client',ucwords($row['client_name']));
 		$smarty->assign('position_for',ucwords($row['job_title']));
-		
+			
 		$url = $row['resume_type'] == 'F' ? 'add_formatted_resume.php' : 'add_resume.php';
 		// $id = '144576';
 		// $smarty->assign('redirect_url',$url.'?id='.$id);
@@ -50,7 +50,7 @@ if($_GET['client_id'] != ''  and $_GET['req_id'] != ''){
 		echo 'Caught exception: ',  $e->getMessage(), "\n";
 	}
 }else{
-	
+		
 	$clients = array();
 	// query to fetch all clients names. 
 	$query = "CALL get_clients('".$_SESSION['user_id']."')";
@@ -93,7 +93,7 @@ if($_GET['client_id'] != ''  and $_GET['req_id'] != ''){
 	}catch(Exception $e){
 		echo 'Caught exception: ',  $e->getMessage(), "\n";
 	} 
-	
+		
 	// query to fetch all clients names. 
 	$query = "CALL get_clients_position('".$_POST['client']."','".$_POST['position_for']."')";
 	try{
@@ -170,66 +170,89 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 	$date =  $fun->current_date();
 	$type = 'D';
 	
+	
+	// query to fetch all clients names. 
+	$query = "CALL get_resumetype_is_exist('".$_SESSION['req_id']."')";
+	try{
+		// calling mysql exe_query function
+		if(!$result = $mysql->execute_query($query)){
+			throw new Exception('Problem in getting resume type details');
+		}
+		$check = $mysql->display_result($result);
+		 
+		// free the memory
+		$mysql->clear_result($result);
+		// call the next result
+		$mysql->next_query();
+	}catch(Exception $e){
+		echo 'Caught exception: ',  $e->getMessage(), "\n";
+	}
+
+	
 	if(empty($test)){ 
-		//update the attached file
-		if(!empty($_FILES['resume']['name'])){
-			$requirement_id = $_POST['position_for'] ? $_POST['position_for'] : $_SESSION['req_id'];
-			// get requirement status details
-			$query = "CALL get_requirement_status('".$requirement_id."')";
-			try{
-				if(!$result = $mysql->execute_query($query)){
-					throw new Exception('Problem in getting requirement status details');
-				}
-				$row = $mysql->display_result($result);
-				// free the memory
-				$mysql->clear_result($result);
-				// call the next result
-				$mysql->next_query();
-			}catch(Exception $e){
-				echo 'Caught exception: ',  $e->getMessage(), "\n";
-			}
-			
-			if($row['req_status_id'] != '2' && $row['req_status_id'] != '3' && $row['req_status_id'] != '4'){	
-				// upload the file
-				$prefix = substr(time(), 2,5).rand(1000,10000000).'_';
-				$new_file = $prefix.$_FILES['resume']['name'];
-				$path = $uploaddir.$new_file;
-				move_uploaded_file($_FILES['resume']['tmp_name'], $path);
-				// query to update the file
-				$query = "CALL upload_resume('".$new_file."','".$type."','".$_SESSION['user_id']."','".$date."')";
+		if($check['resume_type'] != ''){
+			//update the attached file
+			if(!empty($_FILES['resume']['name'])){
+				$requirement_id = $_POST['position_for'] ? $_POST['position_for'] : $_SESSION['req_id'];
+				// get requirement status details
+				$query = "CALL get_requirement_status('".$requirement_id."')";
 				try{
 					if(!$result = $mysql->execute_query($query)){
-						throw new Exception('Problem in uploading resume');
+						throw new Exception('Problem in getting requirement status details');
 					}
 					$row = $mysql->display_result($result);
-					$last_id = $row['inserted_id'];
-					$_SESSION['resume_doc_id'] = $last_id;
-					// write the session to server
-					$_SESSION['resume_doc'] = $new_file;
-					// when user come from view position 
-					/* if(empty($_SESSION['client_id']) && empty($_SESSION['req_id'])){
-						$_SESSION['client'] = $_POST['client'];
-						$_SESSION['position_for'] = $_POST['position_for'];
-					}else{
-						$_SESSION['client'] = $_SESSION['client_id'];
-						$_SESSION['position_for'] = $_SESSION['req_id'];
-					}*/
-					
-					$_SESSION['client'] = $_POST['client'];
-					$_SESSION['position_for'] = $_POST['position_for'];
+					// free the memory
+					$mysql->clear_result($result);
 					// call the next result
 					$mysql->next_query();
 				}catch(Exception $e){
 					echo 'Caught exception: ',  $e->getMessage(), "\n";
 				}
-			}else{
-				$smarty->assign('ALERT_MSG', 'Requirement status is not In-Process');
+				
+				if($row['req_status_id'] != '2' && $row['req_status_id'] != '3' && $row['req_status_id'] != '4'){	
+					// upload the file
+					$prefix = substr(time(), 2,5).rand(1000,10000000).'_';
+					$new_file = $prefix.$_FILES['resume']['name'];
+					$path = $uploaddir.$new_file;
+					move_uploaded_file($_FILES['resume']['tmp_name'], $path);
+					// query to update the file
+					$query = "CALL upload_resume('".$new_file."','".$type."','".$_SESSION['user_id']."','".$date."')";
+					try{
+						if(!$result = $mysql->execute_query($query)){
+							throw new Exception('Problem in uploading resume');
+						}
+						$row = $mysql->display_result($result);
+						$last_id = $row['inserted_id'];
+						$_SESSION['resume_doc_id'] = $last_id;
+						// write the session to server
+						$_SESSION['resume_doc'] = $new_file;
+						// when user come from view position 
+						/* if(empty($_SESSION['client_id']) && empty($_SESSION['req_id'])){
+							$_SESSION['client'] = $_POST['client'];
+							$_SESSION['position_for'] = $_POST['position_for'];
+						}else{
+							$_SESSION['client'] = $_SESSION['client_id'];
+							$_SESSION['position_for'] = $_SESSION['req_id'];
+						}*/
+						
+						$_SESSION['client'] = $_POST['client'];
+						$_SESSION['position_for'] = $_POST['position_for'];
+						// call the next result
+						$mysql->next_query();
+					}catch(Exception $e){
+						echo 'Caught exception: ',  $e->getMessage(), "\n";
+					}
+				}else{
+					$smarty->assign('ALERT_MSG', 'Requirement status is not In-Process');
+				}
 			}
+		}else{
+			$smarty->assign('typeErr', 'You cannot upload the resume if  resume type has not set for the position. Pls contact your CRM');	
 		}
-		if(!empty($last_id)){
-			$smarty->assign('form_sent' , 1);	
-		} 
 	}
+	if(!empty($last_id)){
+		$smarty->assign('form_sent' , 1);	
+	} 
 }
 
 // closing mysql
