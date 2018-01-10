@@ -112,8 +112,9 @@ class NotificationController extends AppController {
 		if(!empty($data) || !empty($data2)){
 			$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Oops! You need to resolve the issues now to view the positions.', 'default', array('class' => 'alert alert-error'));
 		}else{
-			$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Great. It Sounds Good! You have no positions or resumes to update the status', 'default', array('class' => 'alert alert-success'));
+			//$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Great. It Sounds Good! You have no positions or resumes to update the status', 'default', array('class' => 'alert alert-success'));
 			$this->Session->write('USER.Login.notification', 'Done');
+			$this->redirect('/position/');
 		}		
 	}
 	

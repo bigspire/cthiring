@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-12-28 14:55:51
+/* Smarty version 3.1.29, created on 2018-01-08 18:03:31
   from "C:\xampp\htdocs\ctsvn\cthiring\hiring\templates\incentive.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5a44b89ff3a353_48975721',
+  'unifunc' => 'content_5a53651b7cceb4_10842263',
   'file_dependency' => 
   array (
     '4d37b85d23819057330a2240de75b2eb1e334a97' => 
     array (
       0 => 'C:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\templates\\incentive.tpl',
-      1 => 1514453149,
+      1 => 1514984762,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5a44b89ff3a353_48975721 ($_smarty_tpl) {
+function content_5a53651b7cceb4_10842263 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -253,17 +253,16 @@ $__foreach_item_0_saved_local_item = $_smarty_tpl->tpl_vars['item'];
 </td>
 										<td width=""><?php echo $_smarty_tpl->tpl_vars['item']->value['incent_period_display'];?>
 </td>
-										<td width=""><?php if ($_smarty_tpl->tpl_vars['item']->value['incent_type'] == 'J') {?>N/A <?php } else { ?> <?php echo $_smarty_tpl->tpl_vars['item']->value['productivity'];?>
-%<?php }?></td>
-										<td width=""><?php if ($_smarty_tpl->tpl_vars['item']->value['incent_type'] == 'J') {?>N/A <?php } else {
-echo $_smarty_tpl->tpl_vars['item']->value['interview_candidate'];?>
- <?php }?></td>
-										<td width=""><?php if ($_smarty_tpl->tpl_vars['item']->value['incent_type'] == 'I') {?>N/A <?php } else { ?> ₹<?php echo $_smarty_tpl->tpl_vars['item']->value['incentive_target_amt'];
-}?></td>	
-										<td width=""><?php if ($_smarty_tpl->tpl_vars['item']->value['incent_type'] == 'I') {?>N/A <?php } else { ?> ₹<?php echo $_smarty_tpl->tpl_vars['item']->value['achievement_amt'];
-}?></td>
-										<td width=""><?php if ($_smarty_tpl->tpl_vars['item']->value['incent_type'] == 'I') {?>N/A <?php } else { ?> <?php echo intval($_smarty_tpl->tpl_vars['item']->value['candidate_billed']);?>
- <?php }?></td>		
+										<td width=""><?php echo $_smarty_tpl->tpl_vars['item']->value['productivity'];?>
+</td>
+										<td width=""><?php echo $_smarty_tpl->tpl_vars['item']->value['interview_candidate'];?>
+</td>
+										<td width=""><?php echo $_smarty_tpl->tpl_vars['item']->value['incentive_target_amt'];?>
+</td>	
+										<td width=""><?php echo $_smarty_tpl->tpl_vars['item']->value['achievement_amt'];?>
+</td>
+										<td width=""><?php echo intval($_smarty_tpl->tpl_vars['item']->value['candidate_billed']);?>
+</td>		
 										<td width="">₹<?php echo $_smarty_tpl->tpl_vars['item']->value['eligible_incentive_amt'];?>
 </td>
 										

@@ -929,7 +929,7 @@ class ClientController extends AppController {
 						// If approved and first time add only
 						if($status == 'A' && $creator_data[0]['Client']['modified_date'] == ''){
 							// Send mail to all BDs (Biz. head, branch head, biz. dev. executive & director)
-							$bd_user = $this->Client->Creator->find('all', array('conditions' => array('Creator.roles_id' => array('39','36','38','33')),
+							$bd_user = $this->Client->Creator->find('all', array('conditions' => array('Creator.roles_id' => array('39','36','38','33'), 'Creator.status' => 0, 'Creator.is_deleted' =>'N'),
 							'fields' => array('Creator.id', 'Creator.first_name','Creator.last_name', 'Creator.email_id')));
 							foreach($bd_user as $user){
 								$vars = array('to_name' =>  ucwords($user['Creator']['first_name'].' '.$user['Creator']['last_name']), 'from_name' => $from, 'client_name' => $creator_data[0]['Client']['client_name'], 
