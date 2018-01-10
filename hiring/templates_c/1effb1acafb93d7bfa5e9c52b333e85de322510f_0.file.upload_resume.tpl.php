@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-12-09 10:30:45
+/* Smarty version 3.1.29, created on 2018-01-09 11:10:40
   from "C:\xampp\htdocs\2017\ctsvn\cthiring\hiring\templates\upload_resume.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5a2b6dfdf34582_26583257',
+  'unifunc' => 'content_5a5455d8dbcc31_63345907',
   'file_dependency' => 
   array (
     '1effb1acafb93d7bfa5e9c52b333e85de322510f' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\templates\\upload_resume.tpl',
-      1 => 1512795631,
+      1 => 1515475841,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_5a2b6dfdf34582_26583257 ($_smarty_tpl) {
+function content_5a5455d8dbcc31_63345907 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -54,6 +54,13 @@ if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdoc
 							<div class="alert alert-info">
 								<a class="close" data-dismiss="alert">×</a>
 								<?php echo $_smarty_tpl->tpl_vars['ALERT_MSG']->value;?>
+
+							</div>
+						<?php }?>
+						<?php if ($_smarty_tpl->tpl_vars['typeErr']->value) {?>
+							<div class="alert alert-info">
+								<a class="close" data-dismiss="alert">×</a>
+								<?php echo $_smarty_tpl->tpl_vars['typeErr']->value;?>
 
 							</div>
 						<?php }?>
