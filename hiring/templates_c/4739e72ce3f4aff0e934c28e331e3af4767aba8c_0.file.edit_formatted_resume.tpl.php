@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-12-30 12:19:55
+/* Smarty version 3.1.29, created on 2018-01-10 13:03:38
   from "C:\xampp\htdocs\2017\ctsvn\cthiring\hiring\templates\edit_formatted_resume.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5a473713f18c55_37142540',
+  'unifunc' => 'content_5a55c1d2d74748_65790629',
   'file_dependency' => 
   array (
     '4739e72ce3f4aff0e934c28e331e3af4767aba8c' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\templates\\edit_formatted_resume.tpl',
-      1 => 1514616590,
+      1 => 1515218616,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5a473713f18c55_37142540 ($_smarty_tpl) {
+function content_5a55c1d2d74748_65790629 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -320,7 +320,7 @@ echo 'checked';?>
 									
 									
 									<tr>
-										<td width="120" class="tbl_column">Technical Expertise and Domain Expertise <span class="f_req">*</span></td>
+										<td width="120" class="tbl_column">Domain Expertise & Exposure <span class="f_req">*</span></td>
 										<td> 
 									   <textarea name="tech_expert" tabindex="24" cols="10" rows="3" class="span8 wysiwyg1"><?php if ($_smarty_tpl->tpl_vars['tech_expert']->value) {
 echo $_smarty_tpl->tpl_vars['tech_expert']->value;
@@ -747,7 +747,7 @@ echo $_POST['personality'];
 										</td>	
 									</tr>
 									<tr class="tbl_row">
-									<td width="120" class="tbl_column">Relevant Exposure <span class="f_req">*</span></td>
+									<td width="120" class="tbl_column">Relevant Experience <span class="f_req">*</span></td>
 									<td> 
 									<textarea name="relevant_exposure" tabindex="3"  rows="3" class="span12 wysiwyg1"><?php if ($_smarty_tpl->tpl_vars['relevant_exposure']->value) {
 echo $_smarty_tpl->tpl_vars['relevant_exposure']->value;
