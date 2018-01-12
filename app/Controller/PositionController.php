@@ -2612,7 +2612,7 @@ class PositionController extends AppController {
 		$this->check_role_access(5);
 		// exception for the positions where we updated resume status
 		if($this->request->params['controller'] == 'position' && $this->request->params['action'] == 'index'){
-			$this->get_notification_count();
+			// $this->get_notification_count();
 		}
 		
 	}
