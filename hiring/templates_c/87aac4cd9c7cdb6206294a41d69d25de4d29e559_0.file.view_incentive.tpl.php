@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-12-28 14:17:01
+/* Smarty version 3.1.29, created on 2018-01-11 17:11:05
   from "C:\xampp\htdocs\ctsvn\cthiring\hiring\templates\view_incentive.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5a44af85a99326_96952109',
+  'unifunc' => 'content_5a574d51279ab6_56246006',
   'file_dependency' => 
   array (
     '87aac4cd9c7cdb6206294a41d69d25de4d29e559' => 
     array (
       0 => 'C:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\templates\\view_incentive.tpl',
-      1 => 1514450818,
+      1 => 1515234216,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5a44af85a99326_96952109 ($_smarty_tpl) {
+function content_5a574d51279ab6_56246006 ($_smarty_tpl) {
 ?>
 
    
@@ -223,6 +223,7 @@ home"><i class="icon-home"></i></a>
 													<th class="allCol position">Client</th>
 													<th class="allCol position">Candidate Name</th>
 													<?php if ($_smarty_tpl->tpl_vars['incentive_data']->value['incentive_type'] == 'I') {?>
+													<th class="allCol position">Position CTC</th>
 													<th class="allCol position">Interview Level</th>
 													<th class="allCol position">Interview Date</th>
 													<th class="allCol position">Interview Status</th>
@@ -261,6 +262,9 @@ $__foreach_item_0_saved_local_item = $_smarty_tpl->tpl_vars['item'];
 												<td class="allCol position"><?php echo $_smarty_tpl->tpl_vars['item']->value['candidate_name'];?>
 </td>
 												<?php if ($_smarty_tpl->tpl_vars['incentive_data']->value['incentive_type'] == 'I') {?>
+												<td class="allCol position"><?php if ($_smarty_tpl->tpl_vars['item']->value['ctc']) {
+echo $_smarty_tpl->tpl_vars['item']->value['ctc'];?>
+ Lacs<?php }?></td>	
 												<td class="allCol position"><?php echo $_smarty_tpl->tpl_vars['item']->value['stage_title'];?>
 </td>
 												<td class="allCol position"><?php echo $_smarty_tpl->tpl_vars['item']->value['int_date'];?>
@@ -269,8 +273,9 @@ $__foreach_item_0_saved_local_item = $_smarty_tpl->tpl_vars['item'];
 </td>
 												<?php }?>
 												<?php if ($_smarty_tpl->tpl_vars['incentive_data']->value['incentive_type'] == 'J') {?>
-												<td class="allCol position"><?php echo $_smarty_tpl->tpl_vars['item']->value['ctc'];?>
- Lacs</td>	
+												<td class="allCol position"><?php if ($_smarty_tpl->tpl_vars['item']->value['ctc']) {
+echo $_smarty_tpl->tpl_vars['item']->value['ctc'];?>
+ Lacs<?php }?></td>	
 												<td class="allCol position"><?php echo $_smarty_tpl->tpl_vars['item']->value['ctc_offer'];?>
 </td>																 													
 												<td class="allCol position"><?php echo $_smarty_tpl->tpl_vars['item']->value['billing_amount'];?>

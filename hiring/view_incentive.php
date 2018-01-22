@@ -48,7 +48,17 @@ try{
 	$smarty->assign('modified_date' , $modified_date);
 	$incentive_type = $fun->check_incentive_type($row['incentive_type']);
 	$smarty->assign('incentive_type' , $incentive_type);
-	$period = date('M, Y', strtotime($row['period']));
+	//$period = date('M, Y', strtotime($row['period']));
+	//$smarty->assign('period' ,$period);
+	
+	if($row['incentive_type'] == 'I'){
+		$period = date('M, Y', strtotime($row['period']));
+	}else{
+		$explode_year = explode('-', $row['period']); 
+		$display = $explode_year[1] == '10' ? 'Oct - Mar,  '.date('Y', strtotime($row['period'])) : 'Apr - Sep, '.date('Y', strtotime($row['period']));
+		$period = $display;
+	}
+	
 	$smarty->assign('period' ,$period);
 	// free the memory
 	$mysql->clear_result($result);

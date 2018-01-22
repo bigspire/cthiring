@@ -171,18 +171,17 @@ try{
 			$data[$i]['achievement_amt'] = '₹'.$obj['achievement_amt'];
 			$data[$i]['candidate_billed'] = intval($obj['candidate_billed']);
 		}
-		$data[$i]['incent_period_display'] = date('M, Y', strtotime($obj['period']));
+		// $data[$i]['incent_period_display'] = date('M, Y', strtotime($obj['period']));
 		
-		// for incentive display
-		/*
+		// for incentive display		
 		if($obj['incentive_type'] == 'I'){
 			$data[$i]['incent_period_display'] = date('M, Y', strtotime($obj['period']));
 		}else{
-			$display = $obj['period'] == '2017-10-01' ? 'Oct - Mar, '.date('Y', strtotime($obj['period'])) : 'Apr - Sep, '.date('Y', strtotime($obj['period']));
+			$explode_year = explode('-', $obj['period']); 
+			$display = $explode_year[1] == '10' ? 'Oct - Mar, '.date('Y', strtotime($obj['period'])) : 'Apr - Sep, '.date('Y', strtotime($obj['period']));
 			$data[$i]['incent_period_display'] = $display;
 		}
-		*/
-		
+				
 		// $data[$i]['inc_type'] = $obj['incentive_type'];
  		$i++;
  		$pno[]=$paging->print_no();

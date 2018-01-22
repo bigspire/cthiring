@@ -400,24 +400,7 @@ if(!empty($_POST)){
 				
 			$year_month2 = date('Y-m', strtotime(date("Y-m", strtotime($incentive_year.'-'.$incentive_month)) . " +5 month"));
 			
-			// get the incentive amount for the position CTC from eligibility table
-			$query = "CALL get_employee_salary('".$year_month."','".$year_month2."')";
-			try{
-				// calling mysql exe_query function
-				if(!$result = $mysql->execute_query($query)){
-					throw new Exception('Problem in getting employee salary details');
-				}
-				while($row_sal = $mysql->display_result($result)){
-					$employee_sal[$row_sal['users_id']][$row_sal['sal_month']] = $row_sal['employee_salary'];
-				}
-
-				// free the memory
-				$mysql->clear_result($result);
-				// next query execution
-				$mysql->next_query();
-			}catch(Exception $e){
-				echo 'Caught exception: ',  $e->getMessage(), "\n";
-			}
+	
 			
 			// iterate the employees
 			foreach($row as $record){ 
@@ -425,10 +408,28 @@ if(!empty($_POST)){
 				$emp_name = $record['emp_name'];
 				$inc_month = 1;
 				$year_month = $incentive_year.'-'.$incentive_month;
+				$employee_sal = '';
+				// get the incentive amount for the position CTC from eligibility table
+				$query = "CALL get_employee_salary('".$emp_id."','".$year_month."','".$year_month2."')";
+				try{
+					// calling mysql exe_query function
+					if(!$result = $mysql->execute_query($query)){
+						throw new Exception('Problem in getting employee salary details');
+					}
+					while($row_sal = $mysql->display_result($result)){
+						$employee_sal += $row_sal['employee_salary'];
+					}
+					// free the memory
+					$mysql->clear_result($result);
+					// next query execution
+					$mysql->next_query();
+				}catch(Exception $e){
+					echo 'Caught exception: ',  $e->getMessage(), "\n";
+				}
 				// get monthly billing until 6 months
-				while($inc_month <= 6){
+				//while($inc_month <= 6){
 					// get employee billing details
-					$query = "CALL get_inc_emp_billing_ctc('".$year_month."')";
+					$query = "CALL get_inc_emp_billing_ctc('".$emp_id."','".$year_month."','".$year_month2."')";
 					
 					try{
 						// calling mysql exe_query function
@@ -477,9 +478,9 @@ if(!empty($_POST)){
 							// next query execution
 							$mysql->next_query();							
 							// get the employee salary
-							$employee_salary = $employee_sal[$emp_id][$year_month];
+							// $employee_salary = $employee_sal[$emp_id][$year_month];
 							// calculate incentive if eligible
-							$incentive_target = $employee_salary * 3;
+							$incentive_target = $employee_sal * 3;
 							$total_billing ; echo '<br>';
 							if($total_billing >= $incentive_target && !empty($employee_salary)){
 								// iterate all the values in the bill
@@ -591,7 +592,7 @@ if(!empty($_POST)){
 				
 					$inc_month++;	
 					$year_month = date('Y-m', strtotime($year_month . "+1 months"));					
-				}
+				//}
 				
 			}
 			
