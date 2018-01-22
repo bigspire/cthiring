@@ -20,7 +20,7 @@ include('classes/class.function.php');
 include('menu_count.php');
 
 // role based validation
-$module_access = $fun->check_role_access('',$modules, 'view_profile');
+$module_access = $fun->check_role_access('',$modules, 'update_api_key');
 $smarty->assign('module',$module_access);
 
 // select and execute query and fetch the result

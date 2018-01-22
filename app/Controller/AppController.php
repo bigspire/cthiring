@@ -327,6 +327,9 @@ class AppController extends Controller {
 					case 50:					
 					$this->set('my_event', 1);
 					break;
+					case 51:					
+					$this->set('api_keys', 1);
+					break;
 				}				
 			}
 		}

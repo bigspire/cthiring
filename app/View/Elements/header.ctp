@@ -38,6 +38,8 @@
 									</li>
 																			<li class="divider"></li>
 	
+	
+	
 										<li><a href="<?php echo $this->webroot;?>hiring/view_profile.php">View Profile</a></li>
 				
 										<li><a href="<?php echo $this->webroot;?>login/logout/">Log Out</a></li>
@@ -314,7 +316,7 @@
 										 
 										
 									  <?php if($manage_grade == '1' || $manage_users == '1' || $manage_roles == '1' || $manage_mailer_template == '1'
-									  || $manage_incentive == '1'):?> 	
+									  || $manage_incentive == '1'  || $api_keys == '1'):?> 	
 										 <li class="dropdown">
                                             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
 											<i class="icon-cog icon-white"></i> Settings <b class="caret"></b></a>
@@ -331,6 +333,12 @@
                                                 <li><a href="<?php echo $this->webroot;?>hiring/functional_area.php">Functional Area <!--span class="label-bub label-info white">102</span--></a></li>
 												<?php endif; ?>	
 												
+												
+												<?php if($api_keys == '1'):?>
+													<li><a href="<?php echo $this->webroot;?>hiring/view_resume_api.php">Resume API</a></li>
+													<?php endif; ?>
+	
+	
 										   <?php if($manage_grade == '1'):?> 
                                                 <li><a href="<?php echo $this->webroot;?>hiring/grade.php">Grade <!--span class="label-bub label-info white">102</span--></a></li>
 												<?php endif; ?>	
