@@ -56,127 +56,153 @@ if($getid !=''){
 	}
 	
 
-// get database values
-if(empty($_POST)){
-	$query = "CALL get_res_personal_byid('$getid')";
-	try{
-		// calling mysql exe_query function
-		if(!$result = $mysql->execute_query($query)){ 
-			throw new Exception('Problem in executing get resume personal');
-		}
-		$row = $mysql->display_result($result);
-		$_SESSION['clients_id'] = $row['clients_id'];
-		$_SESSION['position_for'] = $row['position_for'];
-		$_SESSION['resume_doc'] = $row['resume'];
-		$smarty->assign('dob', $fun->convert_date_display($row['dob_field']));
-		$total_exp  = $row['total_exp'];
-		$total_exp_yrs = explode(".", $total_exp);
-		// get skills
-		$tech_skill  = unserialize($row['tech_skill_rate']);
-		$behav_skill  = unserialize($row['behav_skill_rate']);
-		$smarty->assign('tsData', $tech_skill);
-		$smarty->assign('bsData', $behav_skill);
-		
-		
-		if($total_exp == '0'){
-			$smarty->assign('year_of_exp',0);
-			$smarty->assign('month_of_exp',0);
-		}else if(empty($total_exp_yrs[1])){
-			$smarty->assign('year_of_exp',$total_exp_yrs[0]);
-			$smarty->assign('month_of_exp',0);
-		}else{
-			$smarty->assign('year_of_exp',$total_exp_yrs[0]);
-			$smarty->assign('month_of_exp',$total_exp_yrs[1]);
-		}
-		$smarty->assign('rows',$row);
-		// assign the db values into session
-		foreach($row as $key => $record){
-			$smarty->assign($key,$record);		
-		}   
-		// free the memory
-		$mysql->clear_result($result);
-		// next query execution
-		$mysql->next_query();
-	}catch(Exception $e){
-		echo 'Caught exception: ',  $e->getMessage(), "\n";
-	}	
-	
-	$query = "CALL get_res_edu_byid('$getid')";
-	try{
-		// calling mysql exe_query function
-		if(!$result = $mysql->execute_query($query)){ 
-			throw new Exception('Problem in executing get resume education');
-		}
-		$edu_tot = 0;
-		while($row = $mysql->display_result($result)){
-
-			// post of assign asset fields value
-			$collegeData[$edu_tot] = $row['college'];
-			$qualificationData[$edu_tot] = $row['resume_program_id'];
-			$specializationData[$edu_tot] = $row['resume_spec_id'];
-			$degreeData[$edu_tot] = $row['resume_degree_id'];
-			$gradeData[$edu_tot] = $row['percent_mark'];
-			$grade_typeData[$edu_tot] = $row['course_type'];
-			$year_of_passData[$edu_tot] = $row['year_passing'];
-			$universityData[$edu_tot] = $row['university'];
-			$edu_tot++;
+	// get database values
+	if(empty($_POST)){
+		$query = "CALL get_res_personal_byid('$getid')";
+		try{
+			// calling mysql exe_query function
+			if(!$result = $mysql->execute_query($query)){ 
+				throw new Exception('Problem in executing get resume personal');
+			}
+			$row = $mysql->display_result($result);
+			$_SESSION['clients_id'] = $row['clients_id'];
+			$_SESSION['position_for'] = $row['position_for'];
+			$_SESSION['resume_doc'] = $row['resume'];
+			$smarty->assign('dob', $fun->convert_date_display($row['dob_field']));
+			$total_exp  = $row['total_exp'];
+			$total_exp_yrs = explode(".", $total_exp);
+			// get skills
+			$tech_skill  = unserialize($row['tech_skill_rate']);
+			$behav_skill  = unserialize($row['behav_skill_rate']);
+			$smarty->assign('tsData', $tech_skill);
+			$smarty->assign('bsData', $behav_skill);
+			
+			
+			if($total_exp == '0'){
+				$smarty->assign('year_of_exp',0);
+				$smarty->assign('month_of_exp',0);
+			}else if(empty($total_exp_yrs[1])){
+				$smarty->assign('year_of_exp',$total_exp_yrs[0]);
+				$smarty->assign('month_of_exp',0);
+			}else{
+				$smarty->assign('year_of_exp',$total_exp_yrs[0]);
+				$smarty->assign('month_of_exp',$total_exp_yrs[1]);
+			}
+			$smarty->assign('rows',$row);
+			// assign the db values into session
+			foreach($row as $key => $record){
+				$smarty->assign($key,$record);		
+			}   
+			// free the memory
+			$mysql->clear_result($result);
+			// next query execution
+			$mysql->next_query();
+		}catch(Exception $e){
+			echo 'Caught exception: ',  $e->getMessage(), "\n";
 		}	
 		
-		$smarty->assign('collegeData', $collegeData);
-		$smarty->assign('universityData', $universityData);
-		$smarty->assign('gradeData', $gradeData);
-		$smarty->assign('grade_typeData', $grade_typeData);
-		$smarty->assign('year_of_passData', $year_of_passData);
-		$smarty->assign('qualificationData', $qualificationData);
-		$smarty->assign('specializationData', $specializationData);
-		$smarty->assign('degreeData', $degreeData);
-		$smarty->assign('eduCount', $edu_tot);
+		$query = "CALL get_res_edu_byid('$getid')";
+		try{
+			// calling mysql exe_query function
+			if(!$result = $mysql->execute_query($query)){ 
+				throw new Exception('Problem in executing get resume education');
+			}
+			$edu_tot = 0;
+			while($row = $mysql->display_result($result)){
+
+				// post of assign asset fields value
+				$collegeData[$edu_tot] = $row['college'];
+				$qualificationData[$edu_tot] = $row['resume_program_id'];
+				$specializationData[$edu_tot] = $row['resume_spec_id'];
+				$degreeData[$edu_tot] = $row['resume_degree_id'];
+				$gradeData[$edu_tot] = $row['percent_mark'];
+				$grade_typeData[$edu_tot] = $row['course_type'];
+				$year_of_passData[$edu_tot] = $row['year_passing'];
+				$universityData[$edu_tot] = $row['university'];
+				$edu_tot++;
+			}	
+			
+			$smarty->assign('collegeData', $collegeData);
+			$smarty->assign('universityData', $universityData);
+			$smarty->assign('gradeData', $gradeData);
+			$smarty->assign('grade_typeData', $grade_typeData);
+			$smarty->assign('year_of_passData', $year_of_passData);
+			$smarty->assign('qualificationData', $qualificationData);
+			$smarty->assign('specializationData', $specializationData);
+			$smarty->assign('degreeData', $degreeData);
+			$smarty->assign('eduCount', $edu_tot);
+			
+			$smarty->assign('totCount_edu', $edu_tot);
+			
+			// free the memory
+			$mysql->clear_result($result);
+			// call the next result
+			$mysql->next_query();
+		}catch(Exception $e){
+			echo 'Caught exception: ',  $e->getMessage(), "\n";
+		}
 		
-		$smarty->assign('totCount_edu', $edu_tot);
-		
-		// free the memory
-		$mysql->clear_result($result);
-		// call the next result
-		$mysql->next_query();
-	}catch(Exception $e){
-		echo 'Caught exception: ',  $e->getMessage(), "\n";
+		$query = "CALL get_res_exp_byid('$getid')";
+		try{
+			// calling mysql exe_query function
+			if(!$result = $mysql->execute_query($query)){ 
+				throw new Exception('Problem in executing get resume exp');
+			}
+			$tot = 0;
+			while($row = $mysql->display_result($result)){
+				// post of assign asset fields value
+				$from_year_of_expData[$tot] = $row['from_year'];
+				$from_month_of_expData[$tot] = $row['from_month'];
+				$to_year_of_expData[$tot] = $row['to_year'];
+				$to_month_of_expData[$tot] = $row['to_month'];
+				
+				$desigData[$tot] = $row['designation_id'];
+				$areaData[$tot] = $row['skills'];
+				$companyData[$tot] = $row['company'];
+				$locationData[$tot] = $row['work_location'];
+				$vitalData[$tot] = $row['other_info'];			
+				$tot++;
+			}
+				
+			$smarty->assign('desigData', $desigData);
+			$smarty->assign('areaData', $areaData);
+			$smarty->assign('from_year_of_expData', $from_year_of_expData);
+			$smarty->assign('from_month_of_expData', $from_month_of_expData);
+			$smarty->assign('to_year_of_expData', $to_year_of_expData);
+			$smarty->assign('to_month_of_expData', $to_month_of_expData);
+			$smarty->assign('companyData', $companyData);
+			$smarty->assign('locationData', $locationData);
+			$smarty->assign('vitalData', $vitalData);
+			$smarty->assign('expCount', $tot);
+
+			$smarty->assign('totCount_exp', $tot);
+			
+			// free the memory
+			$mysql->clear_result($result);
+			// call the next result
+			$mysql->next_query();
+		}catch(Exception $e){
+			echo 'Caught exception: ',  $e->getMessage(), "\n";
+		}
 	}
-	
-	$query = "CALL get_res_exp_byid('$getid')";
+
+	// query to fetch client and position details. 
+	$query = "CALL get_res_client_details('".$_SESSION['clients_id']."','".$_SESSION['position_for']."')";
 	try{
 		// calling mysql exe_query function
-		if(!$result = $mysql->execute_query($query)){ 
-			throw new Exception('Problem in executing get resume exp');
+		if(!$result = $mysql->execute_query($query)){
+			throw new Exception('Problem in getting client and position details');
 		}
-		$tot = 0;
-		while($row = $mysql->display_result($result)){
-			// post of assign asset fields value
-			$from_year_of_expData[$tot] = $row['from_year'];
-			$from_month_of_expData[$tot] = $row['from_month'];
-			$to_year_of_expData[$tot] = $row['to_year'];
-			$to_month_of_expData[$tot] = $row['to_month'];
-			
-			$desigData[$tot] = $row['designation_id'];
-			$areaData[$tot] = $row['skills'];
-			$companyData[$tot] = $row['company'];
-			$locationData[$tot] = $row['work_location'];
-			$vitalData[$tot] = $row['other_info'];			
-			$tot++;
+		while($row = $mysql->display_result($result))
+		{
+			$position = ucwords($row['job_title']).' ( '.($row['client_name']).' )';
+			$client_autoresume = $row['client_name'];
+			$position_autoresume = $row['job_title'];
+			$state_autoresume = $row['state'];
+			$city_autoresume = $row['city'];
+			$hide_contact = $row['hide_contact'];
 		}
-			
-		$smarty->assign('desigData', $desigData);
-		$smarty->assign('areaData', $areaData);
-		$smarty->assign('from_year_of_expData', $from_year_of_expData);
-		$smarty->assign('from_month_of_expData', $from_month_of_expData);
-		$smarty->assign('to_year_of_expData', $to_year_of_expData);
-		$smarty->assign('to_month_of_expData', $to_month_of_expData);
-		$smarty->assign('companyData', $companyData);
-		$smarty->assign('locationData', $locationData);
-		$smarty->assign('vitalData', $vitalData);
-		$smarty->assign('expCount', $tot);
-
-		$smarty->assign('totCount_exp', $tot);
-		
+		$smarty->assign('position',$position);
 		// free the memory
 		$mysql->clear_result($result);
 		// call the next result
@@ -184,32 +210,6 @@ if(empty($_POST)){
 	}catch(Exception $e){
 		echo 'Caught exception: ',  $e->getMessage(), "\n";
 	}
-}
-
-// query to fetch client and position details. 
-$query = "CALL get_res_client_details('".$_SESSION['clients_id']."','".$_SESSION['position_for']."')";
-try{
-	// calling mysql exe_query function
-	if(!$result = $mysql->execute_query($query)){
-		throw new Exception('Problem in getting client and position details');
-	}
-	while($row = $mysql->display_result($result))
-	{
- 		$position = ucwords($row['job_title']).' ( '.($row['client_name']).' )';
-		$client_autoresume = $row['client_name'];
-		$position_autoresume = $row['job_title'];
-		$state_autoresume = $row['state'];
-		$city_autoresume = $row['city'];
-		$hide_contact = $row['hide_contact'];
-	}
-	$smarty->assign('position',$position);
-	// free the memory
-	$mysql->clear_result($result);
-	// call the next result
-	$mysql->next_query();
-}catch(Exception $e){
-	echo 'Caught exception: ',  $e->getMessage(), "\n";
-}
 
 }
 

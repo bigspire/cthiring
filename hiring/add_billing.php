@@ -46,7 +46,7 @@ if(!empty($_GET['res_id']) && !empty($_GET['req_res_id'])){
 				$smarty->assign('ctc_offer', $obj['ctc_offer']);
 				$smarty->assign('billing_amount', $obj['billing_amount']);
 				$smarty->assign('bill_percent', $obj['bill_percent']);
-				$smarty->assign('billing_date' , $fun->convert_date_to_display($obj['billing_date']));
+				// $smarty->assign('billing_date' , date('d/m/Y',$obj['billing_date']));
 				$smarty->assign('joined_date' , $fun->convert_date_to_display($obj['joined_date']));
 				$smarty->assign('noformat_joined_date', date('d/m/Y', strtotime($obj['joined_date'])));
 			}
@@ -209,7 +209,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 			// query to insert into database. 
 			$query = "CALL edit_billing_req_resume('".$fun->is_white_space($mysql->real_escape_str($_POST['ctc_offer']))."',
 			'".$fun->is_white_space($mysql->real_escape_str($_POST['billing_amount']))."',
-			'".$fun->is_white_space($mysql->real_escape_str($fun->convert_date_format($_POST['billing_date'])))."',
+			'".$fun->is_white_space(date('Y-d-m',strtotime($_POST['billing_date'])))."',
 			'".$_GET['req_res_id']."','".$fun->is_white_space($mysql->real_escape_str($_POST['bill_percent']))."')";
 
 			// Calling the function that makes the insert
