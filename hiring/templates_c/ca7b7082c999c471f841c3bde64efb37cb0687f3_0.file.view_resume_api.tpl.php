@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-01-22 15:42:01
+/* Smarty version 3.1.29, created on 2018-01-22 19:27:59
   from "C:\xampp\htdocs\ctsvn\cthiring\hiring\templates\view_resume_api.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5a65b8f1ace089_44664613',
+  'unifunc' => 'content_5a65ede7c6d2b9_66047778',
   'file_dependency' => 
   array (
     'ca7b7082c999c471f841c3bde64efb37cb0687f3' => 
     array (
       0 => 'C:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\templates\\view_resume_api.tpl',
-      1 => 1516615716,
+      1 => 1516620220,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5a65b8f1ace089_44664613 ($_smarty_tpl) {
+function content_5a65ede7c6d2b9_66047778 ($_smarty_tpl) {
 ?>
 
    
@@ -86,13 +86,23 @@ home"><i class="icon-home"></i></a>
 													</div>
 												</div>
 											</div>
-																				
+											
+											<div class="control-group formSep">
+												<label for="sec_key" class="control-label viewLabelHead">Created Date</label>
+												<div class="controls">
+													<div class="sepH_b view_label">
+														<?php echo $_smarty_tpl->tpl_vars['created_date']->value;?>
+
+													</div>
+												</div>
+											</div>
+																		
 											<div class="control-group">
 												<div class="controls">						
 												<!--a href="<?php echo @constant('webroot');?>
 home" class="jsRedirect"><button type="button" class="btn">Edit</button></a-->
 												<a href="edit_resume_api.php?id=<?php echo $_smarty_tpl->tpl_vars['api_data']->value['id'];?>
-" rel="tooltip" class="btn" title="Edit">Edit</a>
+" rel="tooltip" class="btn btn-info" title="Edit">Edit</a>
 												<!-- a href="<?php echo @constant('webroot');?>
 home" class="jsRedirect"><button type="button" class="btn">Cancel</button></a-->
 												</div>

@@ -147,9 +147,8 @@ class fun{
 					$mod['create_todays_plan'] = 1;
 					break;
 					case 51:					
-					$mod['update_api_key'] = 1;
+					$mod['api_keys'] = 1;
 					break;
-					
 				}				
 			}
 		}

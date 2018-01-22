@@ -56,11 +56,20 @@ Date : 22-01-2018 *}
 													</div>
 												</div>
 											</div>
-																				
+											
+											<div class="control-group formSep">
+												<label for="sec_key" class="control-label viewLabelHead">Created Date</label>
+												<div class="controls">
+													<div class="sepH_b view_label">
+														{$created_date}
+													</div>
+												</div>
+											</div>
+																		
 											<div class="control-group">
 												<div class="controls">						
 												<!--a href="{$smarty.const.webroot}home" class="jsRedirect"><button type="button" class="btn">Edit</button></a-->
-												<a href="edit_resume_api.php?id={$api_data.id}" rel="tooltip" class="btn" title="Edit">Edit</a>
+												<a href="edit_resume_api.php?id={$api_data.id}" rel="tooltip" class="btn btn-info" title="Edit">Edit</a>
 												<!-- a href="{$smarty.const.webroot}home" class="jsRedirect"><button type="button" class="btn">Cancel</button></a-->
 												</div>
 											</div>
