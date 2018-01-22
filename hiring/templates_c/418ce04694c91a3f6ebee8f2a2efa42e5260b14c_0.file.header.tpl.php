@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-12-22 16:44:23
+/* Smarty version 3.1.29, created on 2018-01-22 10:57:44
   from "C:\xampp\htdocs\2017\ctsvn\cthiring\hiring\templates\include\header.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5a3ce90f5dfb82_73860164',
+  'unifunc' => 'content_5a657650e1e6f1_86405239',
   'file_dependency' => 
   array (
     '418ce04694c91a3f6ebee8f2a2efa42e5260b14c' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn\\cthiring\\hiring\\templates\\include\\header.tpl',
-      1 => 1513941259,
+      1 => 1516598794,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_5a3ce90f5dfb82_73860164 ($_smarty_tpl) {
+function content_5a657650e1e6f1_86405239 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -117,7 +117,7 @@ home">
 								<li class="divider"></li>
 
 										<li><a href="view_profile.php">View Profile</a></li>
-
+										<li><a href="view_resume_api.php">View Resume API</a></li>
 										<li><a href="<?php echo webroot;?>
 login/logout/">Log Out</a></li>
                                     </ul>

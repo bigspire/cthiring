@@ -90,7 +90,7 @@
 								<li class="divider"></li>
 
 										<li><a href="view_profile.php">View Profile</a></li>
-
+										<li><a href="view_resume_api.php">View Resume API</a></li>
 										<li><a href="{webroot}login/logout/">Log Out</a></li>
                                     </ul>
                                 </li>
