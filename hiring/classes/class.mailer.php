@@ -10,13 +10,14 @@ class phpMail{
 	
 		
 		$mail->isSMTP();                                      // Set mailer to use SMTP
-		$mail->Host = 'ssl://smtp.gmail.com';  // Specify main and backup SMTP servers
+		$mail->Host = 'tls://smtp.gmail.com';  // Specify main and backup SMTP servers
 		$mail->SMTPAuth = true;                               // Enable SMTP authentication
 		$mail->Username = 'testing@bigspire.com';                 // SMTP username
 		$mail->Password = 'bigspire1230';                           // SMTP password
 		// $mail->SMTPSecure = 'ssl';                            // Enable TLS encryption, `ssl` also accepted
-		$mail->Port = 465;                                    // TCP port to connect to
+		$mail->Port = 587;                                    // TCP port to connect to
 
+		/*
 		$mail->SMTPOptions = array(
 			'ssl' => array(
 				'verify_peer' => false,
@@ -24,6 +25,7 @@ class phpMail{
 				'allow_self_signed' => true
 			)
 		);
+		*/
 		
 		$mail->setFrom($from_email, $from);
 		$mail->addAddress($recipient_email, $recipient);     // Add a recipient
@@ -52,13 +54,15 @@ class phpMail{
 	function send_mail_to_client($sub,$msg,$from,$from_email,$recipient, $recipient_email,$resume_type,$file){
 		$mail = new PHPMailer;
 		$mail->isSMTP();                                      // Set mailer to use SMTP
-		$mail->Host = 'ssl://smtp.gmail.com';  // Specify main and backup SMTP servers
+		$mail->Host = 'tls://smtp.gmail.com';  // Specify main and backup SMTP servers
 		$mail->SMTPAuth = true;                               // Enable SMTP authentication
 		$mail->Username = 'testing@bigspire.com';                 // SMTP username
 		$mail->Password = 'bigspire1230';                           // SMTP password
-		$mail->Port = 465;                                    // TCP port to connect to
+		$mail->Port = 587;                                    // TCP port to connect to
 
 		$mail->AddAttachment($resume_type, $file);
+
+		/*		
 		$mail->SMTPOptions = array(
 			'ssl' => array(
 				'verify_peer' => false,
@@ -66,6 +70,7 @@ class phpMail{
 				'allow_self_signed' => true
 			)
 		);
+		*/
 		
 		$mail->setFrom($from_email, $from);
 		$mail->addAddress($recipient_email, $recipient);     // Add a recipient

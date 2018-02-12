@@ -190,6 +190,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
 	
 	if(empty($test)){ 
+		$check['resume_type'] = 4;
 		if($check['resume_type'] != ''){
 			//update the attached file
 			if(!empty($_FILES['resume']['name'])){

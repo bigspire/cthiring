@@ -388,7 +388,8 @@ class AppController extends Controller {
 			$Email->send();
 			return true;
 		}catch (Exception $e){
-			//$this->write_log($e->getMessage().$this->Functions->get_current_date());			
+			// phpinfo();
+			// print_r($e->getMessage());		die;	
 			return false;
 		}
 				

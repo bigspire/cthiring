@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-11-17 14:57:18
+/* Smarty version 3.1.29, created on 2018-01-27 13:17:40
   from "C:\xampp\htdocs\ctsvn\cthiring\hiring\templates\sharing_criteria.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5a0eab765314b1_90462260',
+  'unifunc' => 'content_5a6c2e9cc3fd78_22142412',
   'file_dependency' => 
   array (
     '1649f47bbc4bb15938838760d56fd4e02127984d' => 
     array (
       0 => 'C:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\templates\\sharing_criteria.tpl',
-      1 => 1510657612,
+      1 => 1514283097,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5a0eab765314b1_90462260 ($_smarty_tpl) {
+function content_5a6c2e9cc3fd78_22142412 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -184,8 +184,8 @@ $__foreach_item_0_saved_local_item = $_smarty_tpl->tpl_vars['item'];
 										<td class="actionItem" style="text-align:center">
 										<a href="edit_sharing_criteria.php?id=<?php echo $_smarty_tpl->tpl_vars['item']->value['id'];?>
 " class="btn  btn-mini"  rel="tooltip" class="sepV_a" title="Edit"><i class="icon-pencil"></i></a>
-										<a id="<?php echo $_smarty_tpl->tpl_vars['item']->value['id'];?>
-" href="javascript:void(0)" rel="tooltip" class="btn Confirm btn-mini" value="#"  title="Delete"><i class="icon-trash"></i></a>
+										<!-- a id="<?php echo $_smarty_tpl->tpl_vars['item']->value['id'];?>
+" href="javascript:void(0)" rel="tooltip" class="btn Confirm btn-mini" value="#"  title="Delete"><i class="icon-trash"></i></a-->
 										</td>	
 									</tr>
 									<?php }?>
