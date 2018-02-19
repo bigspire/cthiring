@@ -317,7 +317,7 @@ for($i = 0; $i < $_POST['exp_count']; $i++){
 
 
 
-echo date('H:i:s'), ' Saving the result document...', EOL;
+// echo date('H:i:s'), ' Saving the result document...', EOL;
 // $templateProcessor->saveAs('results/EWKI - 2.docx');
 $templateProcessor->saveAs($resume_path);
 

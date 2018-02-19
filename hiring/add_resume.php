@@ -5,6 +5,7 @@ Created : Nikitasa
 Date : 09-03-2017
 */
 session_start();
+ob_start();
 use Ilovepdf\Ilovepdf;
 // including smarty config
 include 'configs/smartyconfig.php';
@@ -689,7 +690,7 @@ if(!empty($_POST)){
 
 		if(!empty($edu_id) && !empty($res_id) && !empty($exp_id) && !empty($resume_id) && !empty($position_id) && !empty($req_res_id)){
 			
-			echo $query =  "CALL get_personal_skills('$resume_id')";
+			$query =  "CALL get_personal_skills('$resume_id')";
 			if(!$result = $mysql->execute_query($query)){
 					throw new Exception('Problem in getting skills details');
 			}

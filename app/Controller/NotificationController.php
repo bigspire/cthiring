@@ -46,14 +46,17 @@ class NotificationController extends AppController {
 			)
 			*/
 		);		
-		$last_updated = date('Y-m-d', strtotime('-60 days'));	
+		/*
+		$last_updated = date('Y-m-d', strtotime('-10 days'));	
 		$date_cond = array('OR' => array(
 					array('Notification.modified_date <=' =>  $last_updated, 'Notification.modified_date' => NULL),
 					array('Notification.modified_date <=' =>  $last_updated)					
 				)
 			);				
+		*/
 		$this->paginate = array('fields' => $fields,'limit' => '100','conditions' => array($date_cond, 'Notification.created_by' => $this->Session->read('USER.Login.id'),
 		'Notification.is_deleted' => 'N', 'Notification.status' => 'A','Notification.req_status_id' => array('0','1')), 'order' => array('Notification.created_date' => 'desc'),	'group' => array('Notification.id'), 'joins' => $options);
+		
 		$data = $this->paginate('Notification');
 		$this->set('data', $data);
 		
@@ -88,7 +91,7 @@ class NotificationController extends AppController {
 			);	
 		$status_list = array('Pending','Validated','CV-Sent','Shortlisted','Scheduled','Re-Scheduled','Offer Pending','Selected',
 		'Offer Accepted','Joined','Deferred');
-		$last_updated = date('Y-m-d', strtotime('-60 days'));	
+		$last_updated = date('Y-m-d', strtotime('-30 days'));	
 		$date_cond = array('OR' => array(
 					array('ReqResume.created_date <=' =>  $last_updated, 'ReqResume.modified_date' => NULL),
 					array('ReqResume.modified_date <=' =>  $last_updated),

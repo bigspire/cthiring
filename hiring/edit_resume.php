@@ -6,6 +6,7 @@ Date : 11-05-2017
 */
 
 session_start();
+ob_start();
 use Ilovepdf\Ilovepdf;
 // including smarty config
 include 'configs/smartyconfig.php';

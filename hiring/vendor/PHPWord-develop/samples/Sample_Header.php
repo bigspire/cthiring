@@ -1,10 +1,11 @@
 <?php
+ob_start();
 require_once __DIR__ . '/../bootstrap.php';
 
 use PhpOffice\PhpWord\Settings;
 
 date_default_timezone_set('UTC');
-error_reporting(E_ALL);
+// error_reporting(E_ALL);
 define('CLI', (PHP_SAPI == 'cli') ? true : false);
 define('EOL', CLI ? PHP_EOL : '<br />');
 define('SCRIPT_FILENAME', basename($_SERVER['SCRIPT_FILENAME'], '.php'));
@@ -89,8 +90,8 @@ function getEndingNotes($writers)
 
     // Do not show execution time for index
     if (!IS_INDEX) {
-        $result .= date('H:i:s') . " Done writing file(s)" . EOL;
-        $result .= date('H:i:s') . " Peak memory usage: " . (memory_get_peak_usage(true) / 1024 / 1024) . " MB" . EOL;
+        //$result .= date('H:i:s') . " Done writing file(s)" . EOL;
+        //$result .= date('H:i:s') . " Peak memory usage: " . (memory_get_peak_usage(true) / 1024 / 1024) . " MB" . EOL;
     }
 
     // Return
@@ -99,8 +100,8 @@ function getEndingNotes($writers)
     } else {
         if (!IS_INDEX) {
             $types = array_values($writers);
-            $result .= '<p>&nbsp;</p>';
-            $result .= '<p>Results: ';
+           // $result .= '<p>&nbsp;</p>';
+            //$result .= '<p>Results: ';
             foreach ($types as $type) {
                 if (!is_null($type)) {
                     $resultFile = 'results/' . SCRIPT_FILENAME . '.' . $type;
@@ -116,5 +117,4 @@ function getEndingNotes($writers)
     return $result;
 }
 ?>
-
-<?php echo $pageHeading; ?>
+<?php //echo $pageHeading; ?>

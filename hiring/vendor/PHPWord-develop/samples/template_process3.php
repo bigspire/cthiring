@@ -24,7 +24,7 @@ $templateProcessor->setValue('CURRENT_DATE', date('d-M-Y'),  1,0);
 // to retain designation field 
 $templateProcessor->setValue('DESIGNATION', ucwords($position_autoresume),  1,0); 
 
-echo date('H:i:s'), ' Saving the result document...', EOL;
+// echo date('H:i:s'), ' Saving the result document...', EOL;
 // $templateProcessor->saveAs('results/EWKI - 2.docx');
 $templateProcessor->saveAs($resume_path);
 

@@ -177,13 +177,8 @@
 										<th width="75"><?php echo $this->Paginator->sort('Creator.first_name', 'Created By', array('escape' => false, 'direction' => 'desc'));?></th>
 										
 										<th width="75"><?php echo $this->Paginator->sort('Resume.resume_type', 'Type', array('escape' => false, 'direction' => 'desc'));?></th>
-										<?php if($this->Session->read('USER.Login.roles_id') == '30'):
-										$width = '90px';
-										else:
-										$width  = '50px';
-										endif; 
-										?>
-										<th width="<?php echo $width;?>" style="text-align:center">Actions</th>
+										
+										<th width="90px" style="text-align:center">Actions</th>
 										<th width="75"><?php echo $this->Paginator->sort('created_date', 'Created', array('escape' => false, 'direction' => 'desc'));?></th>
 										<th width="75"><?php echo $this->Paginator->sort('modified_date', 'Modified', array('escape' => false, 'direction' => 'desc'));?></th>
 										
