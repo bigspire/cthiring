@@ -4,7 +4,6 @@ Purpose : To edit resume.
 Created : Nikitasa
 Date : 11-05-2017
 */
-
 session_start();
 ob_start();
 use Ilovepdf\Ilovepdf;
@@ -806,7 +805,7 @@ if(!empty($_POST)){
 			$myTaskConvertOffice2->execute();
 			// Download the package files
 			$myTaskConvertOffice2->download('uploads/introductionpdf/');		
-			
+			/*
 			// merge the snapshot pdf and resume pdf
 			// and get the task tool
 			$myTask = $ilovepdf->newTask('merge');
@@ -820,11 +819,24 @@ if(!empty($_POST)){
 			$myTask->execute();
 			// and finally download file. If no path is set, it will be downloaded on current folder
 			$myTask->download('uploads/snapshotmerged/');
+			*/
+			// for merge pdf using mpdf
+			$fileZ = dirname(__FILE__).'/uploads/introductionpdf/'.$snap_file_name.'.pdf';
+			$fileA = dirname(__FILE__).'/uploads/snapshot/'.$snap_file_name.'.pdf';
+			$fileB = dirname(__FILE__).'/uploads/resumepdf/'.$snap_file_name.'.pdf';
+			$files = array($fileZ,$fileA,$fileB);
+			$merge_path = dirname(__FILE__).'/uploads/snapshotmerged/'.$snap_file_name.'_'.date('d-m-Y').'.pdf';
+			require_once('vendor/mpdf_vendor/merge.php');			
+			$output_path = dirname(__FILE__).'/uploads/snapshotwatermarked/'.$snap_file_name.'_'.date('d-m-Y').'.pdf';
+			$img_path = dirname(__FILE__).'/uploads/template/ct_mail_logo4.png';
+			// for watermarking and page numbers
+			require_once('vendor/mpdf_vendor/mpdf.php');	
+			/*
 			// water mark the pdf
 			$myTaskWatermark = $ilovepdf->newTask('watermark');
 			// Add files to task for upload
 			$file1 = $myTaskWatermark->addFile(dirname(__FILE__).'/uploads/snapshotmerged/'.$snap_file_name.'_'.date('d-m-Y').'.pdf');
-			// Select watermark parameters
+			// Select watermark parameters			
 			$myTaskWatermark->setText('CareerTree HR Solutions');
 			//$myTaskWatermark->setRotation(45); 
 			// $myTaskWatermark->setImage('watermark.jpg');			
@@ -855,7 +867,7 @@ if(!empty($_POST)){
 			$myTaskPageNumbers->execute();                               
 			// Download the package files
 			$myTaskPageNumbers->download('uploads/snapshotwatermarked/');
-			
+			*/
 			// unset the sessions
 			unset($_SESSION['position_for']);
 			unset($_SESSION['resume_doc']);

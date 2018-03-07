@@ -812,6 +812,19 @@ if(!empty($_POST)){
 			// Download the package files
 			$myTaskConvertOffice2->download('uploads/introductionpdf/');
 			
+			// for merge pdf using mpdf
+			$fileZ = dirname(__FILE__).'/uploads/introductionpdf/'.$snap_file_name.'.pdf';
+			$fileA = dirname(__FILE__).'/uploads/snapshot/'.$snap_file_name.'.pdf';
+			$fileB = dirname(__FILE__).'/uploads/resumepdf/'.$snap_file_name.'.pdf';
+			$files = array($fileZ,$fileA,$fileB);
+			$merge_path = dirname(__FILE__).'/uploads/snapshotmerged/'.$snap_file_name.'_'.date('d-m-Y').'.pdf';
+			require_once('vendor/mpdf_vendor/merge.php');			
+			$output_path = dirname(__FILE__).'/uploads/snapshotwatermarked/'.$snap_file_name.'_'.date('d-m-Y').'.pdf';
+			$img_path = dirname(__FILE__).'/uploads/template/ct_mail_logo4.png';
+			// for watermarking and page numbers
+			require_once('vendor/mpdf_vendor/mpdf.php');
+			
+			/*
 			// include('vendor/ilovepdf-php-1.1.5/samples/resume.php');
 			// merge the snapshot pdf and resume pdf
 			// and get the task tool
@@ -861,6 +874,7 @@ if(!empty($_POST)){
 			$myTaskPageNumbers->execute();                               
 			// Download the package files
 			$myTaskPageNumbers->download('uploads/snapshotwatermarked/');
+			*/
 			$req_id = $_SESSION['position_for'];
 			//include('vendor/ilovepdf-php-1.1.5/samples/merge_basic.php');
 			// unset the sessions
