@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-03-08 11:04:12
+/* Smarty version 3.1.29, created on 2018-03-08 18:41:33
   from "C:\xampp\htdocs\2017\ctsvn2\cthiring\hiring\templates\add_degree.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5aa0cb54c731d0_67907552',
+  'unifunc' => 'content_5aa13685d18974_47308553',
   'file_dependency' => 
   array (
     'a3b9ab40a4eff26ebfcd73d3195f8d44a3615ade' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn2\\cthiring\\hiring\\templates\\add_degree.tpl',
-      1 => 1520487173,
+      1 => 1520514672,
       2 => 'file',
     ),
   ),
@@ -21,11 +21,9 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5aa0cb54c731d0_67907552 ($_smarty_tpl) {
+function content_5aa13685d18974_47308553 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\2017\\ctsvn2\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
-
-      
 
 			<?php $_smarty_tpl->smarty->ext->_subtemplate->render($_smarty_tpl, "file:include/header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
@@ -66,6 +64,18 @@ home"><i class="icon-home"></i></a>
 		<div class="span6">
 			<table class="table table-bordered dataTable" style="margin-bottom:0;">
 				<tbody>
+				<tr class="tbl_row">
+							<td width="120" class="tbl_column">Qualification <span class="f_req">*</span></td>
+							<td>										
+									<select name="qualification" tabindex="2" class="span8"  id="PositionEmpId">
+									<option value="">Select</option>
+									<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['qual']->value,'selected'=>$_smarty_tpl->tpl_vars['qualification']->value),$_smarty_tpl);?>
+	
+								<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['qualificationErr']->value;?>
+ </label>									
+							</td>	
+						</tr>
+						
 						<tr class="tbl_row">
 							<td width="120" class="tbl_column">Degree <span class="f_req">*</span></td>
 							<td>										

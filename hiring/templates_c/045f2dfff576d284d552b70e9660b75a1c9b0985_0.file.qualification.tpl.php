@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-03-08 15:55:02
-  from "C:\xampp\htdocs\2017\ctsvn2\cthiring\hiring\templates\specialization.tpl" */
+/* Smarty version 3.1.29, created on 2018-03-08 17:06:58
+  from "C:\xampp\htdocs\2017\ctsvn2\cthiring\hiring\templates\qualification.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5aa10f7e42bf32_17023611',
+  'unifunc' => 'content_5aa1205a770461_50734797',
   'file_dependency' => 
   array (
-    'd10ad7e56731e563cac07095f40782c138dfd58d' => 
+    '045f2dfff576d284d552b70e9660b75a1c9b0985' => 
     array (
-      0 => 'C:\\xampp\\htdocs\\2017\\ctsvn2\\cthiring\\hiring\\templates\\specialization.tpl',
-      1 => 1520504690,
+      0 => 'C:\\xampp\\htdocs\\2017\\ctsvn2\\cthiring\\hiring\\templates\\qualification.tpl',
+      1 => 1520509016,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5aa10f7e42bf32_17023611 ($_smarty_tpl) {
+function content_5aa1205a770461_50734797 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\2017\\ctsvn2\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -50,11 +50,11 @@ if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdoc
 home"><i class="icon-home"></i></a>
                                 </li>
                                 <li>
-                                    <a href="specialization.php">Specialization</a>
+                                    <a href="qualification.php">Qualification</a>
                                 </li>
                             
                                 <li>
-                                   Search Specialization
+                                   Search Qualification
                                 </li>
                             </ul>
                         </div>
@@ -64,16 +64,16 @@ home"><i class="icon-home"></i></a>
 								<a class="jsRedirect toggleSearch"  href="javascript:void(0)">
 							<input type="button" value="Search" class="btn btn-success"/></a>
 							<?php if (!$_smarty_tpl->tpl_vars['ALERT_MSG']->value) {?>
-								<a href="specialization.php?action=export&keyword=<?php echo $_POST['keyword'];?>
+								<a href="qualification.php?action=export&keyword=<?php echo $_POST['keyword'];?>
 
 								&status=<?php echo $_smarty_tpl->tpl_vars['status']->value;?>
 " class="jsRedirect">
-								<button type="button" val="specialization.php?action=export&keyword=<?php echo $_POST['keyword'];?>
+								<button type="button" val="qualification.php?action=export&keyword=<?php echo $_POST['keyword'];?>
 &status=<?php echo $_smarty_tpl->tpl_vars['status']->value;?>
 " name="export" class="btn btn-warning" >Export Excel</button></a>
 							<?php }?>
-							<a class="jsRedirect" data-notify-time = '3000'   href="add_specialization.php">
-							<input type="button" value="Create Specialization" class="btn btn-info"/></a>	
+							<a class="jsRedirect" data-notify-time = '3000'   href="add_qualification.php">
+							<input type="button" value="Create Qualification" class="btn btn-info"/></a>	
 						</div>
 						
 						<?php if ($_smarty_tpl->tpl_vars['SUCCESS_MSG']->value) {?>
@@ -104,7 +104,7 @@ $_smarty_tpl->ext->_updateScope->updateScope($_smarty_tpl, 'hide', 0);?>
 							<div class="<?php echo $_smarty_tpl->tpl_vars['hide']->value;?>
  dataTables_filter srchBox" style="float:left;" id="dt_gal_filter">
 							
-								<label style="margin-left:0;">Keyword: <input type="text" placeholder="Degree / Specialization Name" name="keyword" id="keyword" value="<?php echo $_smarty_tpl->tpl_vars['keyword']->value;?>
+								<label style="margin-left:0;">Keyword: <input type="text" placeholder="Qualification Name" name="keyword" id="keyword" value="<?php echo $_smarty_tpl->tpl_vars['keyword']->value;?>
 " class="input-large" aria-controls="dt_gal"></label>
 								<label>Status: 
 							<select name="status" class="input-small" style="clear:left" id="ClientStatus">
@@ -114,7 +114,7 @@ $_smarty_tpl->ext->_updateScope->updateScope($_smarty_tpl, 'hide', 0);?>
 							</label>
 						
 							<label style="margin-top:18px;"><input type="submit" value="Submit" class="btn btn-gebo" /></label>					
-							<label style="margin-top:18px;"><a href="specialization.php" class="jsRedirect"><input value="Reset" type="button" class="btn"/></a></label>
+							<label style="margin-top:18px;"><a href="qualification.php" class="jsRedirect"><input value="Reset" type="button" class="btn"/></a></label>
 							
 							</div>
 
@@ -126,28 +126,29 @@ $_smarty_tpl->ext->_updateScope->updateScope($_smarty_tpl, 'hide', 0);?>
 							
 							<table class="table table-striped table-bordered dataTable stickyTable">
 								<thead>
-									<tr><th width="180"><a href="degree.php?field=specialization&order=<?php echo $_smarty_tpl->tpl_vars['order']->value;?>
+									<tr>
+										<th width="180"><a href="qualification.php?field=program&order=<?php echo $_smarty_tpl->tpl_vars['order']->value;?>
 &page=<?php echo $_GET['page'];?>
 &keyword=<?php echo $_smarty_tpl->tpl_vars['keyword']->value;?>
 &f_date=<?php echo $_smarty_tpl->tpl_vars['f_date']->value;?>
 &t_date=<?php echo $_smarty_tpl->tpl_vars['t_date']->value;?>
-" class="<?php echo $_smarty_tpl->tpl_vars['sort_field_degree']->value;?>
-">Degree</a></th>
-										<th width="180"><a href="specialization.php?field=specialization&order=<?php echo $_smarty_tpl->tpl_vars['order']->value;?>
+" class="<?php echo $_smarty_tpl->tpl_vars['sort_field_program']->value;?>
+">Qualification</a></th>
+										<th width="180"><a href="qualification.php?field=no_of_degree&order=<?php echo $_smarty_tpl->tpl_vars['order']->value;?>
 &page=<?php echo $_GET['page'];?>
 &keyword=<?php echo $_smarty_tpl->tpl_vars['keyword']->value;?>
 &f_date=<?php echo $_smarty_tpl->tpl_vars['f_date']->value;?>
 &t_date=<?php echo $_smarty_tpl->tpl_vars['t_date']->value;?>
-" class="<?php echo $_smarty_tpl->tpl_vars['sort_field_specialization']->value;?>
-">Specialization</a></th>
+" class="<?php echo $_smarty_tpl->tpl_vars['sort_field_no_of_degree']->value;?>
+">No. of Degree</a></th>
 										<th width="80">Status</a></th>
-										<th width="80"><a href="specialization.php?field=created_date&order=<?php echo $_smarty_tpl->tpl_vars['order']->value;?>
+										<th width="80"><a href="qualification.php?field=created_date&order=<?php echo $_smarty_tpl->tpl_vars['order']->value;?>
 &page=<?php echo $_GET['page'];?>
 &keyword=<?php echo $_smarty_tpl->tpl_vars['keyword']->value;?>
 &status=<?php echo $_smarty_tpl->tpl_vars['status']->value;?>
 " class="<?php echo $_smarty_tpl->tpl_vars['sort_field_created_date']->value;?>
 ">Created Date</a></th>
-										<th width="80"><a href="specialization.php?field=modified_date&order=<?php echo $_smarty_tpl->tpl_vars['order']->value;?>
+										<th width="80"><a href="qualification.php?field=modified_date&order=<?php echo $_smarty_tpl->tpl_vars['order']->value;?>
 &page=<?php echo $_GET['page'];?>
 &keyword=<?php echo $_smarty_tpl->tpl_vars['keyword']->value;?>
 &status=<?php echo $_smarty_tpl->tpl_vars['status']->value;?>
@@ -172,9 +173,9 @@ $_smarty_tpl->tpl_vars['item']->_loop = true;
 $__foreach_item_0_saved_local_item = $_smarty_tpl->tpl_vars['item'];
 ?>	
 									<tr>
-										<td><?php echo $_smarty_tpl->tpl_vars['item']->value['branch'];?>
+										<td><?php echo $_smarty_tpl->tpl_vars['item']->value['program'];?>
 </td>
-										<td><?php echo $_smarty_tpl->tpl_vars['item']->value['branch'];?>
+										<td><?php echo $_smarty_tpl->tpl_vars['item']->value['no_of_degree'];?>
 </td>
 										<td><span class='label label-<?php echo $_smarty_tpl->tpl_vars['item']->value['status_cls'];?>
 '><?php echo $_smarty_tpl->tpl_vars['item']->value['status'];?>
@@ -184,7 +185,7 @@ $__foreach_item_0_saved_local_item = $_smarty_tpl->tpl_vars['item'];
 										<td><?php echo $_smarty_tpl->tpl_vars['item']->value['modified_date'];?>
 </td>
 										<td class="actionItem" style="text-align:center">
-										<a href="edit_specialization.php?id=<?php echo $_smarty_tpl->tpl_vars['item']->value['id'];?>
+										<a href="edit_qualification.php?id=<?php echo $_smarty_tpl->tpl_vars['item']->value['id'];?>
 " rel="tooltip" class="btn  btn-mini" class="sepV_a" title="Edit"><i class="icon-pencil"></i></a>
 										<a id="<?php echo $_smarty_tpl->tpl_vars['item']->value['id'];?>
 " href="javascript:void(0)" rel="tooltip" class="btn Confirm btn-mini" value="#"  title="Delete"><i class="icon-trash"></i></a>
@@ -220,8 +221,8 @@ $_smarty_tpl->tpl_vars['key'] = $__foreach_item_0_saved_key;
 </div>
 </div>
 </div>
-<input type="hidden" id="page" value="list_specialization">
-<input type="hidden" id="web_root" value="delete_specialization.php">	
+<input type="hidden" id="page" value="list_qualification">
+<input type="hidden" id="web_root" value="delete_qualification.php">	
               </div>
             </div>
      </div>

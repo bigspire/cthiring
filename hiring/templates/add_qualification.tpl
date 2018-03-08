@@ -17,11 +17,11 @@
                                     <a href="{$smarty.const.webroot}home"><i class="icon-home"></i></a>
                                 </li>
                                 <li>
-                                    <a href="specialization.php">Specialization</a>
+                                    <a href="qualification.php">Qualification</a>
                                 </li>
                             
                                 <li>
-                                   Add Specialization
+                                   Add Qualification
                                 </li>
                             </ul>
                         </div>
@@ -32,29 +32,19 @@
 <form action="" id="formID" class="formID" method="post" accept-charset="utf-8">
 	<div class="box">
 		<div class="box-title mb5">
-			<h4><i class="icon-list"></i>Specialization Details </h4>
+			<h4><i class="icon-list"></i>Qualification Details </h4>
 		</div>
 		<div class="row-fluid">
 		<div class="span6">
 			<table class="table table-bordered dataTable" style="margin-bottom:0;">
 				<tbody>
 						<tr class="tbl_row">
-							<td width="120" class="tbl_column">Degree <span class="f_req">*</span></td>
-							<td>					
-								<select name="degree_id" tabindex="2" class="span8"  id="PositionEmpId">
-								{html_options options=$degree_id selected=$status}
-								<label for="reg_city" generated="true" class="error">{$degree_idErr} </label>									
-							</td>	
-						</tr>	
-							<tr class="tbl_row">
-							<td width="120" class="tbl_column">Specialization <span class="f_req">*</span></td>
+							<td width="120" class="tbl_column">Qualification <span class="f_req">*</span></td>
 							<td>										
-								<input type="text" tabindex="1" id="specialization_#index#" name="specialization_#index#"  class="span8 ui-autocomplete-input" autocomplete="off">
-								<label for="reg_city" generated="true" id="specialization_Err_#index#" class="error"></label>									
-							</td>						
-						
-									
-						
+								<input type="text" tabindex="1" name="qualification" value="{$qualification}" class="span8 ui-autocomplete-input" autocomplete="off">
+								<label for="reg_city" generated="true" class="error">{$degreeErr} </label>									
+							</td>	
+						</tr>																											
 				</tbody>
 			</table>
 		</div>
@@ -67,9 +57,9 @@
 						<td>	
 							<select name="status" tabindex="2" class="span8"  id="PositionEmpId">
 							{if isset($status)}
-								{html_options options=$specialization_status selected=$status}	
+								{html_options options=$qualification_status selected=$status}	
 							{else}
-								{html_options options=$specialization_status selected='1'}	
+								{html_options options=$qualification_status selected='1'}	
 							{/if}	
 							<label for="reg_city" generated="true" class="error">{$statusErr}</label>											
 						</td>	
@@ -77,14 +67,14 @@
 				</tbody>
 			</table>
 		</div>
-		</div>		
+		</div>	
 	<div>
 </div>
 </div>
 <div class="form-actions">
 				<input name="submit" class="btn btn-gebo" value="Submit" type="submit"/>
-				<input type="hidden" name="data[Client][webroot]" value="specialization.php" id="webroot">
-<input type="hidden" id="edu_count" name="edu_count" value="{$eduCount}">
+				<input type="hidden" name="data[Client][webroot]" value="qualification.php" id="webroot">
+
 	<a href="javascript:void(0)" class="jsRedirect cancelBtn cancel_event">
 	<input type="button" value="Cancel" class="btn">
 	</a>
@@ -100,34 +90,3 @@
  </div>
 </div>		
 {include file='include/footer.tpl'}
-{literal}	 
-<script type="text/javascript">	
-$(document).ready(function(){
-   var sheepAdd = {};
-	if($('#sheepItForm').length > 0){ 
-	var sheepAdd = $('#sheepItForm').sheepIt({
-		   separator: '',
-		   allowRemoveLast: true,
-		   allowRemoveCurrent: true,
-		   allowRemoveAll: true,
-		   allowAdd: true,
-		   allowAddN: true,
-		   maxFormsCount: 10,
-		   minFormsCount: 1,
-		   iniFormsCount: $('#edu_count').val() ? $('#edu_count').val() : '1',
-		   removeLastConfirmation: true,
-		   removeCurrentConfirmation: true,
-		   removeLastConfirmationMsg: 'Are you sure?',
-		   removeCurrentConfirmationMsg: 'Are you sure?',
-		   continuousIndex: true,
-		   afterAdd: function(source, newForm) {
-			 $('#edu_count').attr('value',source.getFormsCount());
-		   },
-		   afterRemoveCurrent: function(source) {		
-			 $('#edu_count').attr('value',source.getFormsCount());
-		  }
-	   });	   
-	}
-});	
-</script>	
-{/literal}

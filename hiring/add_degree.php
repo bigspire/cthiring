@@ -26,9 +26,9 @@ $smarty->assign('module',$module_access);
 
 if(!empty($_POST)){	
 	// array for printing correct field name in error message
-	$fieldtype = array('0', '1');
-	$actualfield = array('degree ', 'status');
-   $field = array('degree' => 'degreeErr', 'status' => 'statusErr');
+	$fieldtype = array('1','0', '1');
+	$actualfield = array('qualification','degree ', 'status');
+   $field = array('qualification' => 'qualificationErr','degree' => 'degreeErr', 'status' => 'statusErr');
 	$j = 0;
 	foreach ($field as $field => $er_var){ 
 		if($_POST[$field] == ''){
@@ -64,9 +64,8 @@ if(!empty($_POST)){
 	if(empty($test)){
 		if($row['total'] == '0'){
 			// query to insert degree. 
-			$query = "CALL add_degree('".$_SESSION['user_id']."',
-			'".$fun->is_white_space($mysql->real_escape_str($_POST['degree']))."',
-			'".$date."','".$mysql->real_escape_str($_POST['status'])."')";
+			echo $query = "CALL add_degree('".$fun->is_white_space($mysql->real_escape_str($_POST['degree']))."',
+			'".$date."','".$mysql->real_escape_str($_POST['status'])."','".$mysql->real_escape_str($_POST['qualification'])."')";die;
 			// Calling the function that makes the insert
 			try{
 				// calling mysql exe_query function
@@ -81,6 +80,8 @@ if(!empty($_POST)){
 					}
 				// free the memory
 				$mysql->clear_result($result);
+				// call the next result
+				$mysql->next_query();
 			}catch(Exception $e){
 				echo 'Caught exception: ',  $e->getMessage(), "\n";
 			}
@@ -92,6 +93,26 @@ if(!empty($_POST)){
 }
 // smarty dropdown array for status
 $smarty->assign('degree_status', array('' => 'Select', '1' => 'Active', '2' => 'Inactive'));
+
+// query to fetch all program details. 
+$query = 'CALL get_qual_program()';
+try{
+	// calling mysql exe_query function
+	if(!$result = $mysql->execute_query($query)){
+		throw new Exception('Problem in getting program qualifications');
+	}
+	while($row = $mysql->display_result($result))
+	{
+ 		$program_name[$row['id']] = ucwords($row['program']);
+	}
+	$smarty->assign('qual',$program_name);
+	// free the memory
+	$mysql->clear_result($result);
+	// call the next result
+	$mysql->next_query();
+}catch(Exception $e){
+	echo 'Caught exception: ',  $e->getMessage(), "\n";
+}
 
 // closing mysql
 $mysql->close_connection();

@@ -1,8 +1,6 @@
 {* Purpose : To add contact branch.
  Created : Nikitasa
    Date : 27-10-2017 *}
-      
-
 			{include file='include/header.tpl'}
 
 			<!-- main content -->
@@ -38,6 +36,16 @@
 		<div class="span6">
 			<table class="table table-bordered dataTable" style="margin-bottom:0;">
 				<tbody>
+				<tr class="tbl_row">
+							<td width="120" class="tbl_column">Qualification <span class="f_req">*</span></td>
+							<td>										
+									<select name="qualification" tabindex="2" class="span8"  id="PositionEmpId">
+									<option value="">Select</option>
+									{html_options options=$qual selected=$qualification}	
+								<label for="reg_city" generated="true" class="error">{$qualificationErr} </label>									
+							</td>	
+						</tr>
+						
 						<tr class="tbl_row">
 							<td width="120" class="tbl_column">Degree <span class="f_req">*</span></td>
 							<td>										

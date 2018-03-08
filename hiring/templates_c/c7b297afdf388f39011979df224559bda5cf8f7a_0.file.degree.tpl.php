@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-03-08 11:50:02
+/* Smarty version 3.1.29, created on 2018-03-08 17:23:59
   from "C:\xampp\htdocs\2017\ctsvn2\cthiring\hiring\templates\degree.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5aa0d6128beaf3_05871784',
+  'unifunc' => 'content_5aa12457c5dd75_59423814',
   'file_dependency' => 
   array (
     'c7b297afdf388f39011979df224559bda5cf8f7a' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn2\\cthiring\\hiring\\templates\\degree.tpl',
-      1 => 1520487282,
+      1 => 1520509581,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5aa0d6128beaf3_05871784 ($_smarty_tpl) {
+function content_5aa12457c5dd75_59423814 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\2017\\ctsvn2\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -127,6 +127,13 @@ $_smarty_tpl->ext->_updateScope->updateScope($_smarty_tpl, 'hide', 0);?>
 							<table class="table table-striped table-bordered dataTable stickyTable">
 								<thead>
 									<tr>
+									<th width="180"><a href="degree.php?field=qual&order=<?php echo $_smarty_tpl->tpl_vars['order']->value;?>
+&page=<?php echo $_GET['page'];?>
+&keyword=<?php echo $_smarty_tpl->tpl_vars['keyword']->value;?>
+&f_date=<?php echo $_smarty_tpl->tpl_vars['f_date']->value;?>
+&t_date=<?php echo $_smarty_tpl->tpl_vars['t_date']->value;?>
+" class="<?php echo $_smarty_tpl->tpl_vars['sort_field_qual']->value;?>
+">Qualification</a></th>
 										<th width="180"><a href="degree.php?field=degree&order=<?php echo $_smarty_tpl->tpl_vars['order']->value;?>
 &page=<?php echo $_GET['page'];?>
 &keyword=<?php echo $_smarty_tpl->tpl_vars['keyword']->value;?>
@@ -134,6 +141,13 @@ $_smarty_tpl->ext->_updateScope->updateScope($_smarty_tpl, 'hide', 0);?>
 &t_date=<?php echo $_smarty_tpl->tpl_vars['t_date']->value;?>
 " class="<?php echo $_smarty_tpl->tpl_vars['sort_field_degree']->value;?>
 ">Degree</a></th>
+										<th width="180"><a href="degree.php?field=no_of_spec&order=<?php echo $_smarty_tpl->tpl_vars['order']->value;?>
+&page=<?php echo $_GET['page'];?>
+&keyword=<?php echo $_smarty_tpl->tpl_vars['keyword']->value;?>
+&f_date=<?php echo $_smarty_tpl->tpl_vars['f_date']->value;?>
+&t_date=<?php echo $_smarty_tpl->tpl_vars['t_date']->value;?>
+" class="<?php echo $_smarty_tpl->tpl_vars['sort_field_no_of_spec']->value;?>
+">No. of Specialization</a></th>
 										<th width="80">Status</a></th>
 										<th width="80"><a href="degree.php?field=created_date&order=<?php echo $_smarty_tpl->tpl_vars['order']->value;?>
 &page=<?php echo $_GET['page'];?>
@@ -166,7 +180,11 @@ $_smarty_tpl->tpl_vars['item']->_loop = true;
 $__foreach_item_0_saved_local_item = $_smarty_tpl->tpl_vars['item'];
 ?>	
 									<tr>
-										<td><?php echo $_smarty_tpl->tpl_vars['item']->value['branch'];?>
+										<td><?php echo $_smarty_tpl->tpl_vars['item']->value['qual'];?>
+</td>
+										<td><?php echo $_smarty_tpl->tpl_vars['item']->value['degree'];?>
+</td>
+										<td><?php echo $_smarty_tpl->tpl_vars['item']->value['no_of_spec'];?>
 </td>
 										<td><span class='label label-<?php echo $_smarty_tpl->tpl_vars['item']->value['status_cls'];?>
 '><?php echo $_smarty_tpl->tpl_vars['item']->value['status'];?>
