@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-12-27 20:35:05
+/* Smarty version 3.1.29, created on 2018-02-17 14:56:52
   from "C:\xampp\htdocs\ctsvn\cthiring\hiring\templates\edit_resume.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5a43b6a13cc260_07326839',
+  'unifunc' => 'content_5a87f55c0cd928_01042641',
   'file_dependency' => 
   array (
     'e29597762f6d0a14ed81a6e64438e7f8f2321b30' => 
     array (
       0 => 'C:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\templates\\edit_resume.tpl',
-      1 => 1514386087,
+      1 => 1515234216,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5a43b6a13cc260_07326839 ($_smarty_tpl) {
+function content_5a87f55c0cd928_01042641 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -306,7 +306,7 @@ echo $_POST['native_location'];
 			<tr class="tbl_row">
 				<td width="120" class="tbl_column">Qualification <span class="f_req">*</span></td>		
 				<td>								
-				<select name="qualification_#index#" tabindex="1" class="span8 qualification_id"  id="qualification_#index#">	
+				<select name="qualification_#index#" tabindex="" class="span8 qualification_id"  id="qualification_#index#">	
 					<option value="">Select</option>
 					<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['qual']->value),$_smarty_tpl);?>
 															
@@ -318,7 +318,7 @@ echo $_POST['native_location'];
 			<tr>
 				<td width="120" class="tbl_column">Degree <span class="f_req">*</span></td>
 				<td> 
-					<select name="degree_#index#" tabindex="2" class="span8 degree_id"  id="degree_#index#">
+					<select name="degree_#index#" tabindex="" class="span8 degree_id"  id="degree_#index#">
 					<option value="">Select</option>						
 					</select>
 					<label for="reg_city" generated="true" class="error" id="degree_Err_#index#"></label>										
@@ -328,7 +328,7 @@ echo $_POST['native_location'];
 			<tr>
 				<td width="120" class="tbl_column">Specialization <span class="f_req">*</span></td>
 				<td> 
-					<select name="specialization_#index#" tabindex="3" class="span8"  id="specialization_#index#">	
+					<select name="specialization_#index#" tabindex="" class="span8"  id="specialization_#index#">	
 					<option value="">Select</option>
 						<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['spec']->value),$_smarty_tpl);?>
 							
@@ -340,7 +340,7 @@ echo $_POST['native_location'];
 			<tr class="tbl_row">
 				<td width="120" class="tbl_column">College <span class="f_req"></span></td>
 				<td> 
-					<input type="text" tabindex="4" name="college_#index#" id="college_#index#" class="span8" >										
+					<input type="text" tabindex="" name="college_#index#" id="college_#index#" class="span8" >										
 					<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['collegeErr']->value;?>
 </labe>									
 				</td>
@@ -356,8 +356,8 @@ echo $_POST['native_location'];
 							<tr  class="tbl_row">
 								<td width="120" class="tbl_column">% of Marks / Grade <span class="f_req"></span></td>
 								<td> 
-									<input type="text" tabindex="5" name="grade_#index#" id="grade_#index#" class="span4" >
-									<select name="grade_type_#index#" class="inline_text span4" tabindex="6" id="grade_type_#index#">
+									<input type="text" tabindex="" name="grade_#index#" id="grade_#index#" class="span4" >
+									<select name="grade_type_#index#" class="inline_text span4" tabindex="" id="grade_type_#index#">
 										<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['grade_drop']->value),$_smarty_tpl);?>
  
 									</select>
@@ -366,7 +366,7 @@ echo $_POST['native_location'];
 							<tr class="tbl_row">
 							<td width="120" class="tbl_column">Year of Passing <span class="f_req">*</span></td>										
 								<td>
-									<select name="year_of_pass_#index#" id="year_of_pass_#index#" tabindex="7" class="span8">
+									<select name="year_of_pass_#index#" id="year_of_pass_#index#" tabindex="" class="span8">
 									<option value="">Year</option>
 										<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['year_of_pass']->value),$_smarty_tpl);?>
  
@@ -377,7 +377,7 @@ echo $_POST['native_location'];
 							<tr>
 								<td width="120" class="tbl_column">University <span class="f_req"></span></td>
 								<td> 
-									<input type="text" tabindex="8" name="university_#index#" id="university_#index#" class="span8" >										
+									<input type="text" tabindex="" name="university_#index#" id="university_#index#" class="span8" >										
 								</td>
 							</tr>
 							
@@ -424,7 +424,7 @@ echo $_POST['native_location'];
 							<tr class="tbl_row">
 										<td width="120" class="tbl_column">Designation <span class="f_req">*</span></td>
 										<td> 
-										<select name="desig_#index#" class="span8"  tabindex="1" id="desig_#index#">
+										<select name="desig_#index#" class="span8"  tabindex="" id="desig_#index#">
 										<option value="">Select</option>	
 											<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['desig_name']->value),$_smarty_tpl);?>
 															
@@ -435,24 +435,24 @@ echo $_POST['native_location'];
 								<tr>
 										<td width="120" class="tbl_column">Employment Period<span class="f_req"> *</span></td>
 										<td>
-										<select name="from_month_of_exp_#index#" id = "from_month_of_exp_#index#" tabindex="2" class="span2">
+										<select name="from_month_of_exp_#index#" id = "from_month_of_exp_#index#" tabindex="" class="span2">
 										<option value="">From</option>
 										<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['exp_month']->value),$_smarty_tpl);?>
  
 										</select>
-										<select name="from_year_of_exp_#index#" id = "from_year_of_exp_#index#" rel="maxDrop_#index#"  tabindex="3" class="minExpDrop inline_text span2">
+										<select name="from_year_of_exp_#index#" id = "from_year_of_exp_#index#" rel="maxDrop_#index#"  tabindex="" class="minExpDrop inline_text span2">
 										<option value="">From</option>
 										<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['exp_yr']->value),$_smarty_tpl);?>
  
 										</select>
 										
-										<select name="to_month_of_exp_#index#" id = "to_month_of_exp_#index#" tabindex="4" class="inline_text span2">
+										<select name="to_month_of_exp_#index#" id = "to_month_of_exp_#index#" tabindex="" class="inline_text span2">
 										<option value="">To</option>
 										<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['exp_month']->value),$_smarty_tpl);?>
  
 										</select>
 										
-										<select name="to_year_of_exp_#index#"  id = "maxDrop_#index#"  tabindex="5" class="inline_text span2">
+										<select name="to_year_of_exp_#index#"  id = "maxDrop_#index#"  tabindex="" class="inline_text span2">
 										<option value="">To</option>
 										<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['exp_yr']->value),$_smarty_tpl);?>
  
@@ -468,14 +468,14 @@ echo $_POST['native_location'];
 							<tr class="tbl_row">
 										<td width="120" class="tbl_column">Specialization/Expertise  <span class="f_req">*</span></td>
 											<td> 
-										<input type="text" name="area_#index#" tabindex="6"  id="area_#index#"  class="span8" />
+										<input type="text" name="area_#index#" tabindex=""  id="area_#index#"  class="span8" />
 										<label for="reg_city" generated="true" class="error" id="area_Err_#index#"></label>										
 										</td>
 							</tr>
 							<tr>
 										<td width="120" class="tbl_column">Company Name <span class="f_req">*</span></td>
 										<td> 
-										<input type="text"  name="company_#index#" tabindex="7" id="company_#index#"  class="span8" />
+										<input type="text"  name="company_#index#" tabindex="" id="company_#index#"  class="span8" />
 										<label for="reg_city" generated="true" class="error" id="company_Err_#index#"></label>										
 										</td>
 							</tr>		
@@ -491,14 +491,14 @@ echo $_POST['native_location'];
 							<tr class="tbl_row">
 										<td width="120" class="tbl_column"> Location<span class="f_req">*</span></td>
 										<td> 
-										<input type="text" tabindex="8"  name="location_#index#" id="location_#index#"  class="span8" />
+										<input type="text" tabindex=""  name="location_#index#" id="location_#index#"  class="span8" />
 										<label for="reg_city" generated="true" class="error" id="location_Err_#index#"></label>										
 										</td>
 							</tr>				
 								<tr>
 										<td width="120" class="tbl_column">Other Vital Information (Position Specific)  <span class="f_req"></span></td>
 										<td> 
-										<textarea name="vital_#index#" tabindex="9" id="vital_#index#" cols="10" rows="3" class="span8 wysiwyg1"></textarea>
+										<textarea name="vital_#index#" tabindex="" id="vital_#index#" cols="10" rows="3" class="span8 wysiwyg1"></textarea>
 										</td>
 							</tr>							
 								
@@ -616,7 +616,16 @@ echo $_POST['consultant'];
 </label>
 										</td>	
 									</tr>	
-																						
+									<tr class="">
+										<td width="120" class="tbl_column">Any Other Inputs <span class="f_req"></span></td>
+										<td>
+<textarea placeholder="" name="other_input" tabindex="1" id="other_input" cols="10" rows="3" class="span10 wysiwyg1"><?php if ($_smarty_tpl->tpl_vars['other_input']->value) {
+echo $_smarty_tpl->tpl_vars['other_input']->value;
+} else {
+echo $_POST['other_input'];
+}?></textarea>
+										</td>	
+									</tr>													
 								</tbody>
 							</table>
 						</div>
