@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-02-15 15:47:57
+/* Smarty version 3.1.29, created on 2018-03-08 10:24:52
   from "C:\xampp\htdocs\2017\ctsvn2\cthiring\hiring\templates\include\header.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5a855e55712538_17825320',
+  'unifunc' => 'content_5aa0c21ca7d3c7_54534326',
   'file_dependency' => 
   array (
     'da3aecccc003a75c9d8f86c2815864aaa9da7602' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn2\\cthiring\\hiring\\templates\\include\\header.tpl',
-      1 => 1518689731,
+      1 => 1520484504,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_5a855e55712538_17825320 ($_smarty_tpl) {
+function content_5aa0c21ca7d3c7_54534326 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -437,6 +437,16 @@ resume/">Search Resume <!-- span class="label-bub label-info white"><?php echo $
 														<li><a href="salary.php">Salary</a></li>
 														<li><a href="holidays.php">Holidays</a></li>
 														<!--li><a href="bonus_share.php">Bonus Share</a></li-->														
+													</ul>
+												</li>
+											<?php }?>
+											
+											<?php if ($_smarty_tpl->tpl_vars['module']->value['manage_qualification'] == '1') {?>
+                                           <li class="dropdown">
+													<a href="#">Qualification <b class="caret-right"></b></a>
+													<ul class="dropdown-menu">
+														<li><a href="degree.php">Degree</a></li>
+														<li><a href="specialization.php">Specialization</a></li>													
 													</ul>
 												</li>
 											<?php }?>

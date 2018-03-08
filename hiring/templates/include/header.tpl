@@ -377,6 +377,16 @@
 													</ul>
 												</li>
 											{/if}
+											
+											{if $module['manage_qualification'] eq '1'}
+                                           <li class="dropdown">
+													<a href="#">Qualification <b class="caret-right"></b></a>
+													<ul class="dropdown-menu">
+														<li><a href="degree.php">Degree</a></li>
+														<li><a href="specialization.php">Specialization</a></li>													
+													</ul>
+												</li>
+											{/if}
 
                                             </ul>
                                         </li>
