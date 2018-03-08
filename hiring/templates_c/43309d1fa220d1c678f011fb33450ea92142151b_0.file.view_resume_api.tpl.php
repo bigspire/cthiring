@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-02-15 15:50:58
+/* Smarty version 3.1.29, created on 2018-03-08 13:32:45
   from "C:\xampp\htdocs\2017\ctsvn2\cthiring\hiring\templates\view_resume_api.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5a855f0a9ee361_66826656',
+  'unifunc' => 'content_5aa0ee25b4bb84_26968438',
   'file_dependency' => 
   array (
     '43309d1fa220d1c678f011fb33450ea92142151b' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn2\\cthiring\\hiring\\templates\\view_resume_api.tpl',
-      1 => 1518689731,
+      1 => 1520496131,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5a855f0a9ee361_66826656 ($_smarty_tpl) {
+function content_5aa0ee25b4bb84_26968438 ($_smarty_tpl) {
 ?>
 
    
@@ -55,6 +55,7 @@ home"><i class="icon-home"></i></a>
 				 <div id="flashMessage" class="alert alert-success"><button type="button" class="close" data-dismiss="alert">×</button><?php echo $_smarty_tpl->tpl_vars['success_msg']->value;?>
 </div>					
 				<?php }?>
+				
 <div class="row-fluid">
 						<div class="span12">
 						

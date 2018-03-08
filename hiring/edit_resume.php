@@ -774,7 +774,20 @@ if(!empty($_POST)){
 				unlink($template_path);				
 			}
 			
-			
+			// query to get resume api details
+			$query = "CALL get_resume_api()";
+			try{
+				if(!$result = $mysql->execute_query($query)){
+					throw new Exception('Problem in getting the resume api Details');
+				}
+				$resume_api = $mysql->display_result($result);
+				// free the memory
+				$mysql->clear_result($result);
+				// call the next result
+				$mysql->next_query();
+			}catch(Exception $e){
+				echo 'Caught exception: ',  $e->getMessage(), "\n";
+			}
 				
 			// convert the resume doc. into pdf
 			require_once('vendor/ilovepdf-php-1.1.5/init.php');			
@@ -782,6 +795,9 @@ if(!empty($_POST)){
 			// to get your key pair, please visit https://developer.ilovepdf.com/user/projects
 			$ilovepdf = new Ilovepdf('project_public_e1b1961d9d9cb94da486a4a04f3ce2b6_vIiAd97ec8dba4620fe3944e24fee623378b6',
 			'secret_key_9912dae17d681dfe0fc2be7c92d895d8_BRyVqff37bf1e9f79bd62481c6bdbdb213e8b');
+			
+			// $ilovepdf = new Ilovepdf($resume_api['public_key'],$resume_api['secret_key']);
+			
 			// Create a new task
 			$myTaskConvertOffice = $ilovepdf->newTask('officepdf');
 			// Add files to task for upload

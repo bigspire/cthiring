@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-02-15 15:51:04
+/* Smarty version 3.1.29, created on 2018-03-08 13:37:13
   from "C:\xampp\htdocs\2017\ctsvn2\cthiring\hiring\templates\edit_resume_api.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5a855f10085420_03159812',
+  'unifunc' => 'content_5aa0ef3187e365_06348600',
   'file_dependency' => 
   array (
     '6a70aa32c0c507afe4c4725cf5bdcaeda1254721' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn2\\cthiring\\hiring\\templates\\edit_resume_api.tpl',
-      1 => 1518689730,
+      1 => 1520496400,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5a855f10085420_03159812 ($_smarty_tpl) {
+function content_5aa0ef3187e365_06348600 ($_smarty_tpl) {
 ?>
 
    
