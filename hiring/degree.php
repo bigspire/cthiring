@@ -22,8 +22,6 @@ include('classes/class.function.php');
 include('classes/class.paging.php');
 // add menu count
 include('menu_count.php');
-// add menu count
-// include('get_theme.php');
 
 // role based validation
 $module_access = $fun->check_role_access('52',$modules);
@@ -132,9 +130,9 @@ try{
 		include('classes/class.excel.php');
 		$excelObj = new libExcel();
 		// function to print the excel header
-      $excelObj->printHeader($header = array('Qualification','Degree','No. of Specialization','Status','Created Date','Modified Date') ,$col = array('A','B','C','D'));  
+      $excelObj->printHeader($header = array('Qualification','Degree','No. of Specialization','Status','Created Date','Modified Date') ,$col = array('A','B','C','D','E','F'));  
 		// function to print the excel data
-		$excelObj->printCell($data, $count,$col = array('A','B','C','D'), $field = array('qual','degree','no_of_spec','status','created_date','modified_date'),'Degree'.$current_date);
+		$excelObj->printCell($data, $count,$col = array('A','B','C','D','E','F'), $field = array('qual','degree','no_of_spec','status','created_date','modified_date'),'Degree_'.$current_date);
 	}	
 	
 	// create,update,delete message validation
@@ -160,7 +158,7 @@ $c_c = $mysql->close_connection();
 $paging->posturl($post_url);
 
 // smarty drop down array for status
-$smarty->assign('status_type', array('0' => 'All Status', '1' => 'Active', '0' => 'Inactive'));
+$smarty->assign('status_type', array('0' => 'All Status', '1' => 'Active', '2' => 'Inactive'));
 
 // assign smarty variables here
 $smarty->assign('page_links',$paging->print_link_frontend());

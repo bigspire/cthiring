@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-03-09 16:40:22
+/* Smarty version 3.1.29, created on 2018-03-09 17:43:10
   from "C:\xampp\htdocs\2017\ctsvn2\cthiring\hiring\templates\degree.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5aa26b9e7c3179_74779232',
+  'unifunc' => 'content_5aa27a56ccad65_43079106',
   'file_dependency' => 
   array (
     'c7b297afdf388f39011979df224559bda5cf8f7a' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn2\\cthiring\\hiring\\templates\\degree.tpl',
-      1 => 1520593820,
+      1 => 1520597586,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5aa26b9e7c3179_74779232 ($_smarty_tpl) {
+function content_5aa27a56ccad65_43079106 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\2017\\ctsvn2\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -65,10 +65,8 @@ home"><i class="icon-home"></i></a>
 							<input type="button" value="Search" class="btn btn-success"/></a>
 							<?php if (!$_smarty_tpl->tpl_vars['ALERT_MSG']->value) {?>
 								<a href="degree.php?action=export&keyword=<?php echo $_POST['keyword'];?>
-
-								&status=<?php echo $_smarty_tpl->tpl_vars['status']->value;?>
-" class="jsRedirect">
-								<button type="button" val="degree.php?action=export&keyword=<?php echo $_POST['keyword'];?>
+&status=<?php echo $_smarty_tpl->tpl_vars['status']->value;?>
+" class="jsRedirect"><button type="button" val="degree.php?action=export&keyword=<?php echo $_POST['keyword'];?>
 &status=<?php echo $_smarty_tpl->tpl_vars['status']->value;?>
 " name="export" class="btn btn-warning" >Export Excel</button></a>
 							<?php }?>
