@@ -101,7 +101,7 @@
 									<tr>
 										<td>{$item.qual}</td>
 										<td>{$item.degree}</td>
-										<td><a href="specialization.php">{$item.no_of_spec}</a></td>
+										<td><a href="specialization.php?keyword={$item.degree}">{$item.no_of_spec}</a></td>
 										<td><span class='label label-{$item.status_cls}'>{$item.status}</span></td>
 										<td>{$item.created_date}</td>
 										<td>{$item.modified_date}</td>
