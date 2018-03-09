@@ -2,7 +2,7 @@
 /* 
 Purpose : To add degree.
 Created : Nikitasa
-Date : 8-3-2018
+Date : 9-3-2018
 */
 
 session_start();
@@ -21,14 +21,14 @@ include('classes/class.mailer.php');
 include('classes/class.content.php');
 
 // role based validation
-$module_access = $fun->check_role_access('41',$modules);
+$module_access = $fun->check_role_access('52',$modules);
 $smarty->assign('module',$module_access);
 
 if(!empty($_POST)){	
 	// array for printing correct field name in error message
 	$fieldtype = array('1','0', '1');
 	$actualfield = array('qualification','degree ', 'status');
-   $field = array('qualification' => 'qualificationErr','degree' => 'degreeErr', 'status' => 'statusErr');
+	$field = array('qualification' => 'qualificationErr','degree' => 'degreeErr', 'status' => 'statusErr');
 	$j = 0;
 	foreach ($field as $field => $er_var){ 
 		if($_POST[$field] == ''){
@@ -64,8 +64,8 @@ if(!empty($_POST)){
 	if(empty($test)){
 		if($row['total'] == '0'){
 			// query to insert degree. 
-			echo $query = "CALL add_degree('".$fun->is_white_space($mysql->real_escape_str($_POST['degree']))."',
-			'".$date."','".$mysql->real_escape_str($_POST['status'])."','".$mysql->real_escape_str($_POST['qualification'])."')";die;
+			$query = "CALL add_degree('".$fun->is_white_space($mysql->real_escape_str($_POST['degree']))."',
+			'".$date."','".$mysql->real_escape_str($_POST['status'])."','".$mysql->real_escape_str($_POST['qualification'])."')";
 			// Calling the function that makes the insert
 			try{
 				// calling mysql exe_query function

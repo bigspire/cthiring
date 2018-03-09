@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-03-08 18:41:33
+/* Smarty version 3.1.29, created on 2018-03-09 09:32:29
   from "C:\xampp\htdocs\2017\ctsvn2\cthiring\hiring\templates\add_degree.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5aa13685d18974_47308553',
+  'unifunc' => 'content_5aa207551f1ea1_29072210',
   'file_dependency' => 
   array (
     'a3b9ab40a4eff26ebfcd73d3195f8d44a3615ade' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn2\\cthiring\\hiring\\templates\\add_degree.tpl',
-      1 => 1520514672,
+      1 => 1520568147,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5aa13685d18974_47308553 ($_smarty_tpl) {
+function content_5aa207551f1ea1_29072210 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\2017\\ctsvn2\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -69,11 +69,12 @@ home"><i class="icon-home"></i></a>
 							<td>										
 									<select name="qualification" tabindex="2" class="span8"  id="PositionEmpId">
 									<option value="">Select</option>
-									<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['qual']->value,'selected'=>$_smarty_tpl->tpl_vars['qualification']->value),$_smarty_tpl);?>
+									<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['qual']->value,'selected'=>$_POST['qualification']),$_smarty_tpl);?>
 	
-								<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['qualificationErr']->value;?>
- </label>									
-							</td>	
+									</select> 			
+									<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['qualificationErr']->value;?>
+</label>										
+							</td>		
 						</tr>
 						
 						<tr class="tbl_row">
@@ -82,7 +83,7 @@ home"><i class="icon-home"></i></a>
 								<input type="text" tabindex="1" name="degree" value="<?php echo $_smarty_tpl->tpl_vars['degree']->value;?>
 " class="span8 ui-autocomplete-input" autocomplete="off">
 								<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['degreeErr']->value;?>
- </label>									
+</label>									
 							</td>	
 						</tr>																											
 				</tbody>

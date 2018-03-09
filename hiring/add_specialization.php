@@ -21,14 +21,14 @@ include('classes/class.mailer.php');
 include('classes/class.content.php');
 
 // role based validation
-$module_access = $fun->check_role_access('41',$modules);
+$module_access = $fun->check_role_access('52',$modules);
 $smarty->assign('module',$module_access);
 
 if(!empty($_POST)){	
 	// array for printing correct field name in error message
-	$fieldtype = array('0', '1');
-	$actualfield = array('degree ', 'status');
-   $field = array('degree' => 'degreeErr', 'status' => 'statusErr');
+	$fieldtype = array('0','1', '1');
+	$actualfield = array('specialization','degree ', 'status');
+   $field = array('specialization' => 'specializationErr','degree' => 'degreeErr', 'status' => 'statusErr');
 	$j = 0;
 	foreach ($field as $field => $er_var){ 
 		if($_POST[$field] == ''){
@@ -45,12 +45,12 @@ if(!empty($_POST)){
 	// assigning the date
 	$date =  $fun->current_date();
 	// query to check whether it is exist or not. 
-	$query = "CALL check_degree_exist('0', '".$fun->is_white_space($_POST['degree'])."')";
+	$query = "CALL check_specialization_exist('0', '".$fun->is_white_space($_POST['specialization'])."')";
 	// Calling the function that makes the insert
 	try{
 		// calling mysql exe_query function
 		if(!$result = $mysql->execute_query($query)){
-			throw new Exception('Problem in executing to check degree exist');
+			throw new Exception('Problem in executing to check specialization exist');
 		}
 		$row = $mysql->display_result($result);
 		// free the memory
@@ -64,34 +64,55 @@ if(!empty($_POST)){
 	if(empty($test)){
 		if($row['total'] == '0'){
 			// query to insert degree. 
-			$query = "CALL add_degree('".$_SESSION['user_id']."',
-			'".$fun->is_white_space($mysql->real_escape_str($_POST['degree']))."',
-			'".$date."','".$mysql->real_escape_str($_POST['status'])."')";
+			$query = "CALL add_specialization('".$fun->is_white_space($mysql->real_escape_str($_POST['specialization']))."',
+			'".$date."','".$mysql->real_escape_str($_POST['status'])."','".$mysql->real_escape_str($_POST['degree'])."')";
 			// Calling the function that makes the insert
 			try{
 				// calling mysql exe_query function
 				if(!$result = $mysql->execute_query($query)){
-					throw new Exception('Problem in executing add degree');
+					throw new Exception('Problem in executing add specialization');
 				}
 				$row = $mysql->display_result($result);
 				$last_id = $row['inserted_id'];
 					if(!empty($last_id)){
 						// redirecting to list contact branch page
-						header('Location: degree.php?status=created');		
+						header('Location: specialization.php?status=created');		
 					}
 				// free the memory
 				$mysql->clear_result($result);
+				// call the next result
+				$mysql->next_query();
 			}catch(Exception $e){
 				echo 'Caught exception: ',  $e->getMessage(), "\n";
 			}
 		}else{
-			$msg = "Degree already exists";
+			$msg = "Specialization already exists";
 			$smarty->assign('EXIST_MSG',$msg); 
 		} 
 	}
 }
 // smarty dropdown array for status
-$smarty->assign('degree_status', array('' => 'Select', '1' => 'Active', '2' => 'Inactive'));
+$smarty->assign('specialization_status', array('' => 'Select', '1' => 'Active', '2' => 'Inactive'));
+
+// query to fetch all degree details. 
+$query = 'CALL get_degree()';
+try{
+	// calling mysql exe_query function
+	if(!$result = $mysql->execute_query($query)){
+		throw new Exception('Problem in getting degree details');
+	}
+	while($row = $mysql->display_result($result))
+	{
+ 		$degree_name[$row['id']] = ucwords($row['degree']);
+	}
+	$smarty->assign('degree_id',$degree_name);
+	// free the memory
+	$mysql->clear_result($result);
+	// call the next result
+	$mysql->next_query();
+}catch(Exception $e){
+	echo 'Caught exception: ',  $e->getMessage(), "\n";
+}
 
 // closing mysql
 $mysql->close_connection();

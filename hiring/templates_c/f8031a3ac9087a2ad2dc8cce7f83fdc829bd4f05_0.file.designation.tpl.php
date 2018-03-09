@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-03-09 16:41:39
-  from "C:\xampp\htdocs\2017\ctsvn2\cthiring\hiring\templates\specialization.tpl" */
+/* Smarty version 3.1.29, created on 2018-03-09 09:27:22
+  from "C:\xampp\htdocs\2017\ctsvn2\cthiring\hiring\templates\designation.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5aa26bebc50cc8_54431022',
+  'unifunc' => 'content_5aa2062225d171_99093734',
   'file_dependency' => 
   array (
-    'd10ad7e56731e563cac07095f40782c138dfd58d' => 
+    'f8031a3ac9087a2ad2dc8cce7f83fdc829bd4f05' => 
     array (
-      0 => 'C:\\xampp\\htdocs\\2017\\ctsvn2\\cthiring\\hiring\\templates\\specialization.tpl',
-      1 => 1520593896,
+      0 => 'C:\\xampp\\htdocs\\2017\\ctsvn2\\cthiring\\hiring\\templates\\designation.tpl',
+      1 => 1518689730,
       2 => 'file',
     ),
   ),
@@ -21,11 +21,10 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5aa26bebc50cc8_54431022 ($_smarty_tpl) {
+function content_5aa2062225d171_99093734 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\2017\\ctsvn2\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
-   
    
 
 			<?php $_smarty_tpl->smarty->ext->_subtemplate->render($_smarty_tpl, "file:include/header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
@@ -50,11 +49,11 @@ if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdoc
 home"><i class="icon-home"></i></a>
                                 </li>
                                 <li>
-                                    <a href="specialization.php">Specialization</a>
+                                    <a href="designation.php">Designation</a>
                                 </li>
                             
                                 <li>
-                                   Search Specialization
+                                   Search Designation
                                 </li>
                             </ul>
                         </div>
@@ -64,16 +63,16 @@ home"><i class="icon-home"></i></a>
 								<a class="jsRedirect toggleSearch"  href="javascript:void(0)">
 							<input type="button" value="Search" class="btn btn-success"/></a>
 							<?php if (!$_smarty_tpl->tpl_vars['ALERT_MSG']->value) {?>
-								<a href="specialization.php?action=export&keyword=<?php echo $_POST['keyword'];?>
+								<a href="designation.php?action=export&keyword=<?php echo $_POST['keyword'];?>
 
 								&status=<?php echo $_smarty_tpl->tpl_vars['status']->value;?>
 " class="jsRedirect">
-								<button type="button" val="specialization.php?action=export&keyword=<?php echo $_POST['keyword'];?>
+								<button type="button" val="designation.php?action=export&keyword=<?php echo $_POST['keyword'];?>
 &status=<?php echo $_smarty_tpl->tpl_vars['status']->value;?>
 " name="export" class="btn btn-warning" >Export Excel</button></a>
 							<?php }?>
-							<a class="jsRedirect" data-notify-time = '3000'   href="add_specialization.php">
-							<input type="button" value="Create Specialization" class="btn btn-info"/></a>	
+							<a class="jsRedirect" data-notify-time = '3000'   href="add_designation.php">
+							<input type="button" value="Create Designation" class="btn btn-info"/></a>	
 						</div>
 						
 						<?php if ($_smarty_tpl->tpl_vars['SUCCESS_MSG']->value) {?>
@@ -99,22 +98,21 @@ $_smarty_tpl->ext->_updateScope->updateScope($_smarty_tpl, 'hide', 0);?>
 							<?php $_smarty_tpl->tpl_vars['hide'] = new Smarty_Variable('dn', null);
 $_smarty_tpl->ext->_updateScope->updateScope($_smarty_tpl, 'hide', 0);?>
 						<?php }?>
-						
 							<form action="" id="formID" name="searchFrm" class="formID" method="post" accept-charset="utf-8"><div style="display:none;"><input type="hidden" name="_method" value="POST"/></div>	
 							<div class="<?php echo $_smarty_tpl->tpl_vars['hide']->value;?>
  dataTables_filter srchBox" style="float:left;" id="dt_gal_filter">
 							
-								<label style="margin-left:0;">Keyword: <input type="text" placeholder="Degree / Specialization Name" name="keyword" id="keyword" value="<?php echo $_smarty_tpl->tpl_vars['keyword']->value;?>
+								<label style="margin-left:0;">Keyword: <input type="text" placeholder="Designation Name" name="keyword" id="keyword" value="<?php echo $_smarty_tpl->tpl_vars['keyword']->value;?>
 " class="input-large" aria-controls="dt_gal"></label>
-								<label>Status: 
+								
+						<label>Status: 
 							<select name="status" class="input-small" style="clear:left" id="ClientStatus">
 								<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['status_type']->value,'selected'=>$_smarty_tpl->tpl_vars['status']->value),$_smarty_tpl);?>
 
 							</select> 
 							</label>
-						
 							<label style="margin-top:18px;"><input type="submit" value="Submit" class="btn btn-gebo" /></label>					
-							<label style="margin-top:18px;"><a href="specialization.php" class="jsRedirect"><input value="Reset" type="button" class="btn"/></a></label>
+							<label style="margin-top:18px;"><a href="designation.php" class="jsRedirect"><input value="Reset" type="button" class="btn"/></a></label>
 							
 							</div>
 
@@ -126,28 +124,22 @@ $_smarty_tpl->ext->_updateScope->updateScope($_smarty_tpl, 'hide', 0);?>
 							
 							<table class="table table-striped table-bordered dataTable stickyTable">
 								<thead>
-									<tr><th width="180"><a href="specialization.php?field=degree&order=<?php echo $_smarty_tpl->tpl_vars['order']->value;?>
+									<tr>
+										<th width="180"><a href="designation.php?field=designation&order=<?php echo $_smarty_tpl->tpl_vars['order']->value;?>
 &page=<?php echo $_GET['page'];?>
 &keyword=<?php echo $_smarty_tpl->tpl_vars['keyword']->value;?>
 &f_date=<?php echo $_smarty_tpl->tpl_vars['f_date']->value;?>
 &t_date=<?php echo $_smarty_tpl->tpl_vars['t_date']->value;?>
-" class="<?php echo $_smarty_tpl->tpl_vars['sort_field_degree']->value;?>
-">Degree</a></th>
-										<th width="180"><a href="specialization.php?field=spec&order=<?php echo $_smarty_tpl->tpl_vars['order']->value;?>
-&page=<?php echo $_GET['page'];?>
-&keyword=<?php echo $_smarty_tpl->tpl_vars['keyword']->value;?>
-&f_date=<?php echo $_smarty_tpl->tpl_vars['f_date']->value;?>
-&t_date=<?php echo $_smarty_tpl->tpl_vars['t_date']->value;?>
-" class="<?php echo $_smarty_tpl->tpl_vars['sort_field_spec']->value;?>
-">Specialization</a></th>
+" class="<?php echo $_smarty_tpl->tpl_vars['sort_field_designation']->value;?>
+">Designation</a></th>
 										<th width="80">Status</a></th>
-										<th width="80"><a href="specialization.php?field=created_date&order=<?php echo $_smarty_tpl->tpl_vars['order']->value;?>
+										<th width="80"><a href="designation.php?field=created_date&order=<?php echo $_smarty_tpl->tpl_vars['order']->value;?>
 &page=<?php echo $_GET['page'];?>
 &keyword=<?php echo $_smarty_tpl->tpl_vars['keyword']->value;?>
 &status=<?php echo $_smarty_tpl->tpl_vars['status']->value;?>
 " class="<?php echo $_smarty_tpl->tpl_vars['sort_field_created_date']->value;?>
 ">Created Date</a></th>
-										<th width="80"><a href="specialization.php?field=modified_date&order=<?php echo $_smarty_tpl->tpl_vars['order']->value;?>
+										<th width="80"><a href="designation.php?field=modified_date&order=<?php echo $_smarty_tpl->tpl_vars['order']->value;?>
 &page=<?php echo $_GET['page'];?>
 &keyword=<?php echo $_smarty_tpl->tpl_vars['keyword']->value;?>
 &status=<?php echo $_smarty_tpl->tpl_vars['status']->value;?>
@@ -171,10 +163,9 @@ foreach ($_from as $_smarty_tpl->tpl_vars['key']->value => $_smarty_tpl->tpl_var
 $_smarty_tpl->tpl_vars['item']->_loop = true;
 $__foreach_item_0_saved_local_item = $_smarty_tpl->tpl_vars['item'];
 ?>	
+									
 									<tr>
-										<td><?php echo $_smarty_tpl->tpl_vars['item']->value['degree'];?>
-</td>
-										<td><?php echo $_smarty_tpl->tpl_vars['item']->value['spec'];?>
+										<td><?php echo $_smarty_tpl->tpl_vars['item']->value['designation'];?>
 </td>
 										<td><span class='label label-<?php echo $_smarty_tpl->tpl_vars['item']->value['status_cls'];?>
 '><?php echo $_smarty_tpl->tpl_vars['item']->value['status'];?>
@@ -184,12 +175,13 @@ $__foreach_item_0_saved_local_item = $_smarty_tpl->tpl_vars['item'];
 										<td><?php echo $_smarty_tpl->tpl_vars['item']->value['modified_date'];?>
 </td>
 										<td class="actionItem" style="text-align:center">
-										<a href="edit_specialization.php?id=<?php echo $_smarty_tpl->tpl_vars['item']->value['id'];?>
+										<a href="edit_designation.php?id=<?php echo $_smarty_tpl->tpl_vars['item']->value['id'];?>
 " rel="tooltip" class="btn  btn-mini" class="sepV_a" title="Edit"><i class="icon-pencil"></i></a>
 										<a id="<?php echo $_smarty_tpl->tpl_vars['item']->value['id'];?>
 " href="javascript:void(0)" rel="tooltip" class="btn Confirm btn-mini" value="#"  title="Delete"><i class="icon-trash"></i></a>
 										</td>  
 									</tr>		
+									
 								<?php
 $_smarty_tpl->tpl_vars['item'] = $__foreach_item_0_saved_local_item;
 }
@@ -220,8 +212,8 @@ $_smarty_tpl->tpl_vars['key'] = $__foreach_item_0_saved_key;
 </div>
 </div>
 </div>
-<input type="hidden" id="page" value="list_specialization">
-<input type="hidden" id="web_root" value="delete_specialization.php">	
+<input type="hidden" id="page" value="list_designation">
+<input type="hidden" id="web_root" value="delete_designation.php">	
               </div>
             </div>
      </div>

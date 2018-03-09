@@ -26,7 +26,7 @@ include('menu_count.php');
 // include('get_theme.php');
 
 // role based validation
-$module_access = $fun->check_role_access('41',$modules);
+$module_access = $fun->check_role_access('52',$modules);
 $smarty->assign('module',$module_access);
 
 $keyword = $_POST['keyword'] ? $_POST['keyword'] : $_GET['keyword'];
@@ -51,10 +51,10 @@ if($_GET['action'] == 'export'){
 }
 
 // count the total no. of records
-$query = "CALL list_contact_branch('".$keyword."','".$status."','0','0','','','".$_GET['action']."')";
+$query = "CALL list_specialization('".$keyword."','".$status."','0','0','','','".$_GET['action']."')";
 try{
 	if(!$result = $mysql->execute_query($query)){
-		throw new Exception('Problem in executing list contact branch page');
+		throw new Exception('Problem in executing list specialization page');
 	}
 
 	// fetch result
@@ -79,8 +79,8 @@ try{
 
 // set the condition to check ascending or descending order		
 $order = ($_GET['order'] == 'desc') ? 'asc' :  'desc';	
-$sort_fields = array('1' => 'branch','status','created_date','modified_date');
-$org_fields = array('1' => 'branch','status','created_date','modified_date');
+$sort_fields = array('1' => 'degree','spec','status','created_date','modified_date');
+$org_fields = array('1' => 'degree','spec','status','created_date','modified_date');
 
 // to set the sorting image
 foreach($sort_fields as $key => $b_field){
@@ -94,7 +94,7 @@ foreach($sort_fields as $key => $b_field){
 // if no fields are set, set default sort image
 if(empty($_GET['field'])){		
 	$order = 'desc';			
-	$field = 'created_date';			
+	$field = 'rs.created_date';			
 	$smarty->assign('sort_field_created', 'sorting desc');
 }	
 $smarty->assign('order', $order);
@@ -104,17 +104,18 @@ if($search_key = array_search($_GET['field'], $sort_fields)){
 }
 
 // fetch all records
-$query =  "CALL list_contact_branch('".$keyword."','".$status."','$start','$limit','".$field."','".$order."','".$_GET['action']."')";
+$query =  "CALL list_specialization('".$keyword."','".$status."','$start','$limit','".$field."','".$order."','".$_GET['action']."')";
 try{
 	if(!$result = $mysql->execute_query($query)){
-		throw new Exception('Problem in executing list contact branch page');
+		throw new Exception('Problem in executing list specialization page');
 	}
 	// calling mysql fetch_result function
 	$i = '0';
 	while($obj = $mysql->display_result($result))
 	{
  		$data[] = $obj;
- 		$data[$i]['branch'] = $fun->upper_case_string($obj['branch']);
+ 		$data[$i]['degree'] = $fun->upper_case_string($obj['degree']);
+		$data[$i]['spec'] = $fun->upper_case_string($obj['spec']);
  		$data[$i]['status'] = $fun->display_status($obj['status']);
  		$data[$i]['status_cls'] = $fun->status_cls($obj['status']);
  		$data[$i]['created_date'] = $fun->convert_date_to_display($obj['created_date']);
@@ -131,14 +132,16 @@ try{
 		include('classes/class.excel.php');
 		$excelObj = new libExcel();
 		// function to print the excel header
-      $excelObj->printHeader($header = array('Branch','Status','Created Date','Modified Date') ,$col = array('A','B','C','D'));  
+      $excelObj->printHeader($header = array('Degree','Specialization','Status','Created Date','Modified Date') ,$col = array('A','B','C','D'));  
 		// function to print the excel data
-		$excelObj->printCell($data, $count,$col = array('A','B','C','D'), $field = array('branch','status','created_date','modified_date'),'Branch_'.$current_date);
+		$excelObj->printCell($data, $count,$col = array('A','B','C','D'), $field = array('degree','spec','status','created_date','modified_date'),'Specialization'.$current_date);
 	}	
 	
 	// create,update,delete message validation
 	if($_GET['status'] == 'deleted' || $_GET['status'] == 'created' || $_GET['status'] == 'updated'){
- 	 $success_msg = 'Branch ' . ucfirst($_GET['status']) . ' Successfully';
+		$success_msg = 'Specialization ' . ucfirst($_GET['status']) . ' Successfully';
+	}else if($_GET['delstatus'] == 'deleted'){
+		$success_msg = 'Specialization ' . ucfirst($_GET['delstatus']) . ' Successfully';
 	}else if($_GET['current_status'] == 'msg'){
 		$success_msg = 'This record is not available in our database';
 	}

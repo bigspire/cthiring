@@ -1,8 +1,8 @@
 <?php
 /* 
-   Purpose : To list and search contact branch..
+   Purpose : To list and search degree.
 	Created : Nikitasa
-	Date : 27-10-2017
+	Date : 8-3-2018
 */
 
 //unset session
@@ -26,7 +26,7 @@ include('menu_count.php');
 // include('get_theme.php');
 
 // role based validation
-$module_access = $fun->check_role_access('41',$modules);
+$module_access = $fun->check_role_access('52',$modules);
 $smarty->assign('module',$module_access);
 
 $keyword = $_POST['keyword'] ? $_POST['keyword'] : $_GET['keyword'];
@@ -138,8 +138,10 @@ try{
 	}	
 	
 	// create,update,delete message validation
-	if($_GET['status'] == 'deleted' || $_GET['status'] == 'created' || $_GET['status'] == 'updated'){
+	if($_GET['status'] == 'created' || $_GET['status'] == 'updated'){
  	 $success_msg = 'Degree ' . ucfirst($_GET['status']) . ' Successfully';
+	}else if($_GET['delstatus'] == 'deleted'){
+		$success_msg = 'Degree ' . ucfirst($_GET['delstatus']) . ' Successfully';
 	}else if($_GET['current_status'] == 'msg'){
 		$success_msg = 'This record is not available in our database';
 	}

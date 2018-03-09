@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-03-09 09:53:24
-  from "C:\xampp\htdocs\2017\ctsvn2\cthiring\hiring\templates\edit_degree.tpl" */
+/* Smarty version 3.1.29, created on 2018-03-09 09:38:39
+  from "C:\xampp\htdocs\2017\ctsvn2\cthiring\hiring\templates\edit_contact_branch.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5aa20c3c3e0426_48213642',
+  'unifunc' => 'content_5aa208c7b4c4b2_48005158',
   'file_dependency' => 
   array (
-    'f26adb4f9f2f23292ee711802aec36b8b5e2267b' => 
+    'a857d77ae4b24ee3487a5e9910c828e4d5b8ba65' => 
     array (
-      0 => 'C:\\xampp\\htdocs\\2017\\ctsvn2\\cthiring\\hiring\\templates\\edit_degree.tpl',
-      1 => 1520569401,
+      0 => 'C:\\xampp\\htdocs\\2017\\ctsvn2\\cthiring\\hiring\\templates\\edit_contact_branch.tpl',
+      1 => 1518689730,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5aa20c3c3e0426_48213642 ($_smarty_tpl) {
+function content_5aa208c7b4c4b2_48005158 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\2017\\ctsvn2\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -44,11 +44,11 @@ if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdoc
 home"><i class="icon-home"></i></a>
                                 </li>
                                 <li>
-                                    <a href="degree.php">Degree</a>
+                                    <a href="contact_branch.php">Branch</a>
                                 </li>
                             
                                 <li>
-                                   Edit Degree
+                                   Edit Branch
                                 </li>
                             </ul>
                         </div>
@@ -60,31 +60,18 @@ home"><i class="icon-home"></i></a>
 <form action="" id="formID" class="formID" method="post" accept-charset="utf-8">
 	<div class="box">
 		<div class="box-title mb5">
-			<h4><i class="icon-list"></i> Degree Details </h4>
+			<h4><i class="icon-list"></i> Branch Details </h4>
 		</div>
 		<div class="row-fluid">
 		<div class="span6">
 			<table class="table table-bordered dataTable" style="margin-bottom:0;">
 				<tbody>
 						<tr class="tbl_row">
-							<td width="120" class="tbl_column">Qualification <span class="f_req">*</span></td>
+							<td width="120" class="tbl_column">Branch <span class="f_req">*</span></td>
 							<td>										
-									<select name="qualification" tabindex="2" class="span8"  id="PositionEmpId">
-									<option value="">Select</option>
-									<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['qual']->value,'selected'=>$_smarty_tpl->tpl_vars['qualification']->value),$_smarty_tpl);?>
-	
-									</select> 			
-									<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['qualificationErr']->value;?>
-</label>										
-							</td>		
-						</tr>
-						
-						<tr class="tbl_row">
-							<td width="120" class="tbl_column">Degree <span class="f_req">*</span></td>
-							<td>										
-								<input type="text" tabindex="1" name="degree" value="<?php echo $_smarty_tpl->tpl_vars['degree']->value;?>
+								<input type="text" tabindex="1" name="branch" value="<?php echo $_smarty_tpl->tpl_vars['branch']->value;?>
 " class="span8 ui-autocomplete-input" autocomplete="off">
-								<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['degreeErr']->value;?>
+								<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['branchErr']->value;?>
 </label>									
 							</td>	
 						</tr>																											
@@ -99,7 +86,7 @@ home"><i class="icon-home"></i></a>
 						<td width="120" class="tbl_column">Status <span class="f_req">*</span></td>
 						<td>	
 							<select name="status" class="span8"  tabindex="2" id="PositionEmpId">
-								<?php echo smarty_function_html_options(array('id'=>"degree_status",'options'=>$_smarty_tpl->tpl_vars['degree_status']->value,'selected'=>$_smarty_tpl->tpl_vars['status']->value),$_smarty_tpl);?>
+								<?php echo smarty_function_html_options(array('id'=>"branch_status",'options'=>$_smarty_tpl->tpl_vars['branch_status']->value,'selected'=>$_smarty_tpl->tpl_vars['status']->value),$_smarty_tpl);?>
 	
 							</select> 
 							<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['statusErr']->value;?>
@@ -115,7 +102,7 @@ home"><i class="icon-home"></i></a>
 </div>
 <div class="form-actions">
 				<input name="submit" class="btn btn-gebo" value="Submit" type="submit"/>
-				<input type="hidden" name="data[Client][webroot]" value="degree.php" id="webroot">
+				<input type="hidden" name="data[Client][webroot]" value="contact_branch.php" id="webroot">
 
 	<a href="javascript:void(0)" class="jsRedirect cancelBtn cancel_event">
 	<input type="button" value="Cancel" class="btn">

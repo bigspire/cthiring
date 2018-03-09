@@ -1,6 +1,6 @@
-{* Purpose : To edit contact branch.
+{* Purpose : To edit degree.
  Created : Nikitasa
-   Date : 27-01-2017 *}
+   Date : 9-3-2018 *}
    
 
 			{include file='include/header.tpl'}
@@ -38,6 +38,17 @@
 		<div class="span6">
 			<table class="table table-bordered dataTable" style="margin-bottom:0;">
 				<tbody>
+						<tr class="tbl_row">
+							<td width="120" class="tbl_column">Qualification <span class="f_req">*</span></td>
+							<td>										
+									<select name="qualification" tabindex="2" class="span8"  id="PositionEmpId">
+									<option value="">Select</option>
+									{html_options options=$qual selected=$qualification}	
+									</select> 			
+									<label for="reg_city" generated="true" class="error">{$qualificationErr}</label>										
+							</td>		
+						</tr>
+						
 						<tr class="tbl_row">
 							<td width="120" class="tbl_column">Degree <span class="f_req">*</span></td>
 							<td>										

@@ -88,8 +88,8 @@
 							
 							<table class="table table-striped table-bordered dataTable stickyTable">
 								<thead>
-									<tr><th width="180"><a href="degree.php?field=specialization&order={$order}&page={$smarty.get.page}&keyword={$keyword}&f_date={$f_date}&t_date={$t_date}" class="{$sort_field_degree}">Degree</a></th>
-										<th width="180"><a href="specialization.php?field=specialization&order={$order}&page={$smarty.get.page}&keyword={$keyword}&f_date={$f_date}&t_date={$t_date}" class="{$sort_field_specialization}">Specialization</a></th>
+									<tr><th width="180"><a href="specialization.php?field=degree&order={$order}&page={$smarty.get.page}&keyword={$keyword}&f_date={$f_date}&t_date={$t_date}" class="{$sort_field_degree}">Degree</a></th>
+										<th width="180"><a href="specialization.php?field=spec&order={$order}&page={$smarty.get.page}&keyword={$keyword}&f_date={$f_date}&t_date={$t_date}" class="{$sort_field_spec}">Specialization</a></th>
 										<th width="80">Status</a></th>
 										<th width="80"><a href="specialization.php?field=created_date&order={$order}&page={$smarty.get.page}&keyword={$keyword}&status={$status}" class="{$sort_field_created_date}">Created Date</a></th>
 										<th width="80"><a href="specialization.php?field=modified_date&order={$order}&page={$smarty.get.page}&keyword={$keyword}&status={$status}" class="{$sort_field_modified_date}">Modified Date</a></th>									
@@ -99,8 +99,8 @@
 								<tbody>	
 								{foreach from=$data item=item key=key}	
 									<tr>
-										<td>{$item.branch}</td>
-										<td>{$item.branch}</td>
+										<td>{$item.degree}</td>
+										<td>{$item.spec}</td>
 										<td><span class='label label-{$item.status_cls}'>{$item.status}</span></td>
 										<td>{$item.created_date}</td>
 										<td>{$item.modified_date}</td>

@@ -71,7 +71,7 @@ if($_GET['page'] == 'list_grade'){
 		}
 		// iterate until get the matched results
 		while($obj = $mysql->display_result($result)){
-			$data[] = strtolower($fun->match_results($keyword,$obj['specialization']));	
+			$data[] = strtolower($fun->match_results($keyword,$obj['spec']));	
 			$data[] = strtolower($fun->match_results($keyword,$obj['degree']));				
 		}
 		

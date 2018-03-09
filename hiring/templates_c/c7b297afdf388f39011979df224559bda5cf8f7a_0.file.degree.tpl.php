@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-03-08 17:23:59
+/* Smarty version 3.1.29, created on 2018-03-09 16:40:22
   from "C:\xampp\htdocs\2017\ctsvn2\cthiring\hiring\templates\degree.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5aa12457c5dd75_59423814',
+  'unifunc' => 'content_5aa26b9e7c3179_74779232',
   'file_dependency' => 
   array (
     'c7b297afdf388f39011979df224559bda5cf8f7a' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn2\\cthiring\\hiring\\templates\\degree.tpl',
-      1 => 1520509581,
+      1 => 1520593820,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5aa12457c5dd75_59423814 ($_smarty_tpl) {
+function content_5aa26b9e7c3179_74779232 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\2017\\ctsvn2\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -184,8 +184,8 @@ $__foreach_item_0_saved_local_item = $_smarty_tpl->tpl_vars['item'];
 </td>
 										<td><?php echo $_smarty_tpl->tpl_vars['item']->value['degree'];?>
 </td>
-										<td><?php echo $_smarty_tpl->tpl_vars['item']->value['no_of_spec'];?>
-</td>
+										<td><a href="specialization.php"><?php echo $_smarty_tpl->tpl_vars['item']->value['no_of_spec'];?>
+</a></td>
 										<td><span class='label label-<?php echo $_smarty_tpl->tpl_vars['item']->value['status_cls'];?>
 '><?php echo $_smarty_tpl->tpl_vars['item']->value['status'];?>
 </span></td>

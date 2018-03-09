@@ -1,6 +1,6 @@
-{* Purpose : To add contact branch.
+{* Purpose : To add degree.
  Created : Nikitasa
-   Date : 27-10-2017 *}
+   Date : 9-3-2018 *}
 			{include file='include/header.tpl'}
 
 			<!-- main content -->
@@ -41,16 +41,17 @@
 							<td>										
 									<select name="qualification" tabindex="2" class="span8"  id="PositionEmpId">
 									<option value="">Select</option>
-									{html_options options=$qual selected=$qualification}	
-								<label for="reg_city" generated="true" class="error">{$qualificationErr} </label>									
-							</td>	
+									{html_options options=$qual selected=$smarty.post.qualification}	
+									</select> 			
+									<label for="reg_city" generated="true" class="error">{$qualificationErr}</label>										
+							</td>		
 						</tr>
 						
 						<tr class="tbl_row">
 							<td width="120" class="tbl_column">Degree <span class="f_req">*</span></td>
 							<td>										
 								<input type="text" tabindex="1" name="degree" value="{$degree}" class="span8 ui-autocomplete-input" autocomplete="off">
-								<label for="reg_city" generated="true" class="error">{$degreeErr} </label>									
+								<label for="reg_city" generated="true" class="error">{$degreeErr}</label>									
 							</td>	
 						</tr>																											
 				</tbody>
