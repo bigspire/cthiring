@@ -6,7 +6,6 @@ Date : 21-01-2017
 */
 // Report all errors except E_NOTICE
 // error_reporting(E_ALL & ~E_NOTICE);
-
 date_default_timezone_set('Asia/Kolkata');
 ini_set('display_errors', '0');
 ini_set('max_execution_time', 300); 

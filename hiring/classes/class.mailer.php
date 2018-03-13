@@ -16,8 +16,9 @@ class phpMail{
 		$mail->Password = 'bigspire1230';                           // SMTP password
 		// $mail->SMTPSecure = 'ssl';                            // Enable TLS encryption, `ssl` also accepted
 		$mail->Port = 587;                                    // TCP port to connect to
-
-		/*
+		
+		
+		
 		$mail->SMTPOptions = array(
 			'ssl' => array(
 				'verify_peer' => false,
@@ -25,7 +26,7 @@ class phpMail{
 				'allow_self_signed' => true
 			)
 		);
-		*/
+		
 		
 		$mail->setFrom($from_email, $from);
 		$mail->addAddress($recipient_email, $recipient);     // Add a recipient
@@ -44,10 +45,10 @@ class phpMail{
 		// $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
 		if(!$mail->send()){
-			// echo 'Message could not be sent.';
-			// echo 'Mailer Error: ' . $mail->ErrorInfo;
+			echo 'Message could not be sent.';
+			echo 'Mailer Error: ' . $mail->ErrorInfo;
 		} else {
-			 //echo 'Message has been sent';
+			 // echo 'Message has been sent';
 		}
 	} 
 	
@@ -62,7 +63,7 @@ class phpMail{
 
 		$mail->AddAttachment($resume_type, $file);
 
-		/*		
+			
 		$mail->SMTPOptions = array(
 			'ssl' => array(
 				'verify_peer' => false,
@@ -70,7 +71,7 @@ class phpMail{
 				'allow_self_signed' => true
 			)
 		);
-		*/
+		
 		
 		$mail->setFrom($from_email, $from);
 		$mail->addAddress($recipient_email, $recipient);     // Add a recipient
@@ -78,10 +79,10 @@ class phpMail{
 		$mail->Subject = $sub;
 		$mail->Body    = $msg;
 		if(!$mail->send()){
-			// echo 'Message could not be sent.';
-			// echo 'Mailer Error: ' . $mail->ErrorInfo;
+			echo 'Message could not be sent.';
+			echo 'Mailer Error: ' . $mail->ErrorInfo;
 		} else {
-			// echo 'Message has been sent';
+			// 'Message has been sent';
 		}
 	} 
 }

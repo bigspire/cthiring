@@ -793,10 +793,10 @@ if(!empty($_POST)){
 			require_once('vendor/ilovepdf-php-1.1.5/init.php');			
 			// you can call task class directly
 			// to get your key pair, please visit https://developer.ilovepdf.com/user/projects
-			$ilovepdf = new Ilovepdf('project_public_e1b1961d9d9cb94da486a4a04f3ce2b6_vIiAd97ec8dba4620fe3944e24fee623378b6',
-			'secret_key_9912dae17d681dfe0fc2be7c92d895d8_BRyVqff37bf1e9f79bd62481c6bdbdb213e8b');
+			/* $ilovepdf = new Ilovepdf('project_public_e1b1961d9d9cb94da486a4a04f3ce2b6_vIiAd97ec8dba4620fe3944e24fee623378b6',
+			'secret_key_9912dae17d681dfe0fc2be7c92d895d8_BRyVqff37bf1e9f79bd62481c6bdbdb213e8b'); */
 			
-			// $ilovepdf = new Ilovepdf($resume_api['public_key'],$resume_api['secret_key']);
+			$ilovepdf = new Ilovepdf($resume_api['public_key'],$resume_api['secret_key']);
 			
 			// Create a new task
 			$myTaskConvertOffice = $ilovepdf->newTask('officepdf');
