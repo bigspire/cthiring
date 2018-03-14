@@ -266,6 +266,7 @@ if(!empty($_POST)){
 		$companyData[] = $_POST['company_'.$i];
 		$locationData[] = $_POST['location_'.$i];
 		$vitalData[] = $_POST['vital_'.$i];
+		$reporting_toData[] = $_POST['reporting_to_'.$i];
 		
 		if($_POST['year_of_exp'] == 0 && $_POST['month_of_exp'] == 0){
 			// array for printing correct field name in error message 
@@ -315,6 +316,7 @@ if(!empty($_POST)){
 	$smarty->assign('companyData', $companyData);
 	$smarty->assign('locationData', $locationData);
 	$smarty->assign('vitalData', $vitalData);
+	$smarty->assign('reporting_toData', $reporting_toData);
 	$smarty->assign('expCount', $_POST['exp_count']);
 	$smarty->assign('expErr',$er1);
 		
@@ -575,6 +577,7 @@ if(!empty($_POST)){
 			$companyData = $_POST['company_'.$i];
 			$locationData = $_POST['location_'.$i];
 			$vitalData = $_POST['vital_'.$i];
+			$reporting_toData = $_POST['reporting_to_'.$i];
 			
 			// for snapshot printing
 			// $tot_exp_years = $_POST['year_of_exp_'.$i] == 0 ? '0' : $_POST['year_of_exp_'.$i].'.'.$_POST['month_of_exp_'.$i];
@@ -603,7 +606,8 @@ if(!empty($_POST)){
 				'".$fun->is_white_space($mysql->real_escape_str($locationData))."',
 				'".$fun->is_white_space($mysql->real_escape_str($areaData))."',
 				'".$fun->is_white_space($mysql->real_escape_str($companyData))."',
-				'".$fun->is_white_space($mysql->real_escape_str($vitalData))."','N','".$resume_id."')";
+				'".$fun->is_white_space($mysql->real_escape_str($vitalData))."','N','".$resume_id."',
+				'".$fun->is_white_space($mysql->real_escape_str($reporting_toData))."')";
 			try{
 				if(!$result = $mysql->execute_query($query)){
 					throw new Exception('Problem in adding experience details');

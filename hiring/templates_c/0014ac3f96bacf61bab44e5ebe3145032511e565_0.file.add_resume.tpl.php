@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-02-15 15:47:57
+/* Smarty version 3.1.29, created on 2018-03-14 12:35:08
   from "C:\xampp\htdocs\2017\ctsvn2\cthiring\hiring\templates\add_resume.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5a855e55531d32_03990200',
+  'unifunc' => 'content_5aa8c9a47f0e96_97098929',
   'file_dependency' => 
   array (
     '0014ac3f96bacf61bab44e5ebe3145032511e565' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn2\\cthiring\\hiring\\templates\\add_resume.tpl',
-      1 => 1518689730,
+      1 => 1521010924,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5a855e55531d32_03990200 ($_smarty_tpl) {
+function content_5aa8c9a47f0e96_97098929 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\2017\\ctsvn2\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -432,7 +432,13 @@ echo 'checked';?>
 		<table class="table table-bordered dataTable" style="margin-bottom:0;">
 			<tbody>
 			
-							
+							<tr>
+										<td width="120" class="tbl_column">Company Name <span class="f_req">*</span></td>
+										<td> 
+										<input type="text" tabindex="" name="company_#index#" id="company_#index#"  class="span8" />
+										<label for="reg_city" generated="true" class="error" id="company_Err_#index#"></label>										
+										</td>
+							</tr>	
 							<tr class="tbl_row">
 										<td width="120" class="tbl_column">Designation <span class="f_req">*</span></td>
 										<td> 
@@ -483,13 +489,7 @@ echo 'checked';?>
 										<label for="reg_city" generated="true" class="error" id="area_Err_#index#"></label>										
 										</td>
 							</tr>
-							<tr>
-										<td width="120" class="tbl_column">Company Name <span class="f_req">*</span></td>
-										<td> 
-										<input type="text" tabindex="" name="company_#index#" id="company_#index#"  class="span8" />
-										<label for="reg_city" generated="true" class="error" id="company_Err_#index#"></label>										
-										</td>
-							</tr>						
+												
 			</tbody>
 		</table>				
 		</div>
@@ -511,6 +511,13 @@ echo 'checked';?>
 										<textarea name="vital_#index#" tabindex="" id="vital_#index#" cols="10" rows="3" class="span8 wysiwyg1"></textarea>
 										</td>
 							</tr>
+							 <tr>
+										<td width="120" class="tbl_column"> Reporting To</td>
+										<td>
+										<input type="text" tabindex="13" name="reporting_to_#index#" id="reporting_to_#index#" value="" class="span8" autocomplete="off">							
+										<label for="reg_city" generated="true" class="error" id="reporting_toErr_#index#"></label>
+										</td>		
+									</tr>
 			
 					</tbody>
 		  </table>
@@ -842,7 +849,10 @@ for ($_foo=true;$_smarty_tpl->tpl_vars['i']->value < $_POST['exp_count']; $_smar
 " name="to_month_of_expData_<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
 " value="<?php echo $_smarty_tpl->tpl_vars['to_month_of_expData']->value[$_smarty_tpl->tpl_vars['i']->value];?>
 ">
-		
+		<input type="hidden" id="reporting_to_Data_<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
+" name="reporting_to_Data_<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
+" value="<?php echo $_smarty_tpl->tpl_vars['reporting_toData']->value[$_smarty_tpl->tpl_vars['i']->value];?>
+">
 		<!--<input type="hidden" id="current_locData_<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
 " name="current_locData_<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
 " value="<?php echo $_smarty_tpl->tpl_vars['current_locData']->value[$_smarty_tpl->tpl_vars['i']->value];?>
@@ -1100,6 +1110,9 @@ $(document).ready(function(){
 			}
 			if($('#vitalData_'+i).length > 0){ 
 				$('#vital_'+i).val( $('#vitalData_'+i).val());
+			}
+			if($('#reporting_to_Data_'+i).length > 0){ 
+				$('#reporting_to_'+i).val( $('#reporting_to_Data_'+i).val());
 			}
 			
 			// for error messages

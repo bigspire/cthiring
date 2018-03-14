@@ -353,7 +353,13 @@
 		<table class="table table-bordered dataTable" style="margin-bottom:0;">
 			<tbody>
 			
-							
+							<tr>
+										<td width="120" class="tbl_column">Company Name <span class="f_req">*</span></td>
+										<td> 
+										<input type="text" tabindex="" name="company_#index#" id="company_#index#"  class="span8" />
+										<label for="reg_city" generated="true" class="error" id="company_Err_#index#"></label>										
+										</td>
+							</tr>	
 							<tr class="tbl_row">
 										<td width="120" class="tbl_column">Designation <span class="f_req">*</span></td>
 										<td> 
@@ -399,13 +405,7 @@
 										<label for="reg_city" generated="true" class="error" id="area_Err_#index#"></label>										
 										</td>
 							</tr>
-							<tr>
-										<td width="120" class="tbl_column">Company Name <span class="f_req">*</span></td>
-										<td> 
-										<input type="text" tabindex="" name="company_#index#" id="company_#index#"  class="span8" />
-										<label for="reg_city" generated="true" class="error" id="company_Err_#index#"></label>										
-										</td>
-							</tr>						
+												
 			</tbody>
 		</table>				
 		</div>
@@ -427,6 +427,13 @@
 										<textarea name="vital_#index#" tabindex="" id="vital_#index#" cols="10" rows="3" class="span8 wysiwyg1"></textarea>
 										</td>
 							</tr>
+							 <tr>
+										<td width="120" class="tbl_column"> Reporting To</td>
+										<td>
+										<input type="text" tabindex="13" name="reporting_to_#index#" id="reporting_to_#index#" value="" class="span8" autocomplete="off">							
+										<label for="reg_city" generated="true" class="error" id="reporting_toErr_#index#"></label>
+										</td>		
+									</tr>
 			
 					</tbody>
 		  </table>
@@ -632,7 +639,7 @@
 		<input type="hidden" id="from_month_of_expData_{$i}" name="from_month_of_expData_{$i}" value="{$from_month_of_expData[$i]}">
 		<input type="hidden" id="to_year_of_expData_{$i}" name="to_year_of_expData_{$i}" value="{$to_year_of_expData[$i]}">
 		<input type="hidden" id="to_month_of_expData_{$i}" name="to_month_of_expData_{$i}" value="{$to_month_of_expData[$i]}">
-		
+		<input type="hidden" id="reporting_to_Data_{$i}" name="reporting_to_Data_{$i}" value="{$reporting_toData[$i]}">
 		<!--<input type="hidden" id="current_locData_{$i}" name="current_locData_{$i}" value="{$current_locData[$i]}">-->
 		<input type="hidden" id="companyData_{$i}" name="companyData_{$i}" value="{$companyData[$i]}">
 		<input type="hidden" id="locationData_{$i}" name="locationData_{$i}" value="{$locationData[$i]}">
@@ -856,6 +863,9 @@ $(document).ready(function(){
 			}
 			if($('#vitalData_'+i).length > 0){ 
 				$('#vital_'+i).val( $('#vitalData_'+i).val());
+			}
+			if($('#reporting_to_Data_'+i).length > 0){ 
+				$('#reporting_to_'+i).val( $('#reporting_to_Data_'+i).val());
 			}
 			
 			// for error messages
