@@ -578,15 +578,31 @@ if(!empty($_POST)){
 	}
 
 	// query to check whether it is exist or not. 
-	$query = "CALL check_resume_exist('0', '".$fun->is_white_space($mysql->real_escape_str($_POST['email']))."',
-	'".$fun->is_white_space($mysql->real_escape_str($_POST['mobile']))."')";
+	$query = "CALL check_email_exist('0', '".$fun->is_white_space($mysql->real_escape_str($_POST['email']))."')";
 	// Calling the function that makes the insert
 	try{
 		// calling mysql exe_query function
 		if(!$result = $mysql->execute_query($query)){
-			throw new Exception('Problem in executing to check resume exist');
+			throw new Exception('Problem in executing to check email exist');
 		}
-		$check = $mysql->display_result($result);
+		$check_mail = $mysql->display_result($result);
+		// free the memory
+		$mysql->clear_result($result);
+		// call the next result
+		$mysql->next_query();
+	}catch(Exception $e){
+		echo 'Caught exception: ',  $e->getMessage(), "\n";
+	}
+	
+	// query to check whether it is exist or not. 
+	$query = "CALL check_mobile_exist('0','".$fun->is_white_space($mysql->real_escape_str($_POST['mobile']))."')";
+	// Calling the function that makes the insert
+	try{
+		// calling mysql exe_query function
+		if(!$result = $mysql->execute_query($query)){
+			throw new Exception('Problem in executing to check mobile exist');
+		}
+		$check_mobile = $mysql->display_result($result);
 		// free the memory
 		$mysql->clear_result($result);
 		// call the next result
@@ -602,7 +618,7 @@ if(!empty($_POST)){
 	
 	// save all the data
 	if($test != 'error'){
-		if($check['total'] == '0'){
+		if($check_mail['total'] == '0' && $check_mobile['total'] == '0'){
 		// query to update personal details
 		$query = "CALL add_full_res_personal('".$fun->is_white_space($mysql->real_escape_str($_POST['first_name']))."',
 			'".$fun->is_white_space($mysql->real_escape_str($_POST['last_name']))."',
@@ -1026,8 +1042,12 @@ if(!empty($_POST)){
 			// }
 		} 
 		}else{
-			$msg = "Resume with same email address and mobile no. already exists";
-			$smarty->assign('EXIST_MSG',$msg); 
+			if($check_mail['total'] != '0'){
+					$smarty->assign('email_validErr',"Resume with same email address already exists"); 
+			}
+			if($check_mobile['total'] != '0'){
+				$smarty->assign('mobile_validErr',"Resume with same mobile already exists");
+			}
 		}
 	}else{
 		$smarty->assign('tab_open_resume', ($tab1 == 'fail' ? 'tab1' : ($tab2 == 'fail' ? 'tab2' : ($tab3 == 'fail' ? 'tab3' : ($tab4 == 'fail' ? 'tab4' : ($tab5 == 'fail' ? 'tab5' : ''))))));

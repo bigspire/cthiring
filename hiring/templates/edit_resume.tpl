@@ -71,14 +71,14 @@
 										<td width="120" class="tbl_column">Email <span class="f_req">*</span></td>
 										<td>	
 										<input type="text" tabindex="3" id="email" name="email" value="{$email}" class="span8">
-										<label for="reg_city" generated="true" class="error">{$emailErr}</label>																						
+										<label for="reg_city" generated="true" class="error">{$emailErr}{$email_validErr}</label>																						
 										</td>	
 									</tr>	
                                     <tr class="tbl_row">
 										<td width="120" class="tbl_column"> Mobile <span class="f_req">*</span></td>
 										<td>
 										<input type="text" tabindex="4" name="mobile" id="" class="span8" value="{$mobile}" autocomplete="off">							
-									<label for="reg_city" generated="true" class="error">{$mobileErr} </label>							
+									<label for="reg_city" generated="true" class="error">{$mobileErr} {$mobile_validErr}</label>							
 										</td>		
 									</tr>									
 									<tr>
