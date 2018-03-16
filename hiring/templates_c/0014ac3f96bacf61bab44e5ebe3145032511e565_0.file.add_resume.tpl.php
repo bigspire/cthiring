@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-03-14 12:35:08
+/* Smarty version 3.1.29, created on 2018-03-16 16:34:03
   from "C:\xampp\htdocs\2017\ctsvn2\cthiring\hiring\templates\add_resume.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5aa8c9a47f0e96_97098929',
+  'unifunc' => 'content_5aaba4a39d3254_97493701',
   'file_dependency' => 
   array (
     '0014ac3f96bacf61bab44e5ebe3145032511e565' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn2\\cthiring\\hiring\\templates\\add_resume.tpl',
-      1 => 1521010924,
+      1 => 1521198055,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5aa8c9a47f0e96_97098929 ($_smarty_tpl) {
+function content_5aaba4a39d3254_97493701 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\2017\\ctsvn2\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -108,7 +108,8 @@ echo $_smarty_tpl->tpl_vars['last_nameErr']->value;?>
 										<td>	
 										<input type="text" tabindex="3" id="email" name="email" value="<?php echo $_smarty_tpl->tpl_vars['email']->value;?>
 " class="span8">
-										<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['emailErr']->value;?>
+										<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['emailErr']->value;
+echo $_smarty_tpl->tpl_vars['email_validErr']->value;?>
 </label>																						
 										</td>	
 									</tr>	
@@ -121,7 +122,8 @@ echo $_smarty_tpl->tpl_vars['last_nameErr']->value;?>
 							
 										
 									<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['mobileErr']->value;?>
- </label>							
+ <?php echo $_smarty_tpl->tpl_vars['mobile_validErr']->value;?>
+</label>							
 										</td>		
 									</tr>									
 									<tr class="tbl_row">
@@ -1142,6 +1144,16 @@ $(document).ready(function(){
 			}
 		}
 	}
+
+	// mail already exist
+	$(document).on("change keyup blur", "#email", function() {
+		var emailVal = $('#email').val(); //alert(emailVal);// assuming this is a input text field
+		$.post('checkemail.php', {'email' : emailVal}, function(data) {
+			if(data=='exist') return false;
+			else $('#form1').submit();
+		});
+	});
+	
 });
 <?php echo '</script'; ?>
 >	

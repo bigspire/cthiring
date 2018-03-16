@@ -73,7 +73,7 @@
 										<td width="120" class="tbl_column">Email <span class="f_req">*</span></td>
 										<td>	
 										<input type="text" tabindex="3" id="email" name="email" value="{$email}" class="span8">
-										<label for="reg_city" generated="true" class="error">{$emailErr}</label>																						
+										<label for="reg_city" generated="true" class="error">{$emailErr}{$email_validErr}</label>																						
 										</td>	
 									</tr>	
                                     <tr class="">
@@ -83,7 +83,7 @@
 
 							
 										
-									<label for="reg_city" generated="true" class="error">{$mobileErr} </label>							
+									<label for="reg_city" generated="true" class="error">{$mobileErr} {$mobile_validErr}</label>							
 										</td>		
 									</tr>									
 									<tr class="tbl_row">
@@ -895,6 +895,16 @@ $(document).ready(function(){
 			}
 		}
 	}
+
+	// mail already exist
+	$(document).on("change keyup blur", "#email", function() {
+		var emailVal = $('#email').val(); //alert(emailVal);// assuming this is a input text field
+		$.post('checkemail.php', {'email' : emailVal}, function(data) {
+			if(data=='exist') return false;
+			else $('#form1').submit();
+		});
+	});
+	
 });
 </script>	
 {/literal}
