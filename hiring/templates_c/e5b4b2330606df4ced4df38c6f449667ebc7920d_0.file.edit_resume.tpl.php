@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-03-14 12:33:45
+/* Smarty version 3.1.29, created on 2018-03-20 11:20:59
   from "C:\xampp\htdocs\2017\ctsvn2\cthiring\hiring\templates\edit_resume.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5aa8c9512cd0e8_90631506',
+  'unifunc' => 'content_5ab0a143929666_19415165',
   'file_dependency' => 
   array (
     'e5b4b2330606df4ced4df38c6f449667ebc7920d' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn2\\cthiring\\hiring\\templates\\edit_resume.tpl',
-      1 => 1521011010,
+      1 => 1521202734,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5aa8c9512cd0e8_90631506 ($_smarty_tpl) {
+function content_5ab0a143929666_19415165 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\2017\\ctsvn2\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -107,7 +107,8 @@ echo $_smarty_tpl->tpl_vars['last_nameErr']->value;?>
 										<td>	
 										<input type="text" tabindex="3" id="email" name="email" value="<?php echo $_smarty_tpl->tpl_vars['email']->value;?>
 " class="span8">
-										<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['emailErr']->value;?>
+										<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['emailErr']->value;
+echo $_smarty_tpl->tpl_vars['email_validErr']->value;?>
 </label>																						
 										</td>	
 									</tr>	
@@ -117,7 +118,8 @@ echo $_smarty_tpl->tpl_vars['last_nameErr']->value;?>
 										<input type="text" tabindex="4" name="mobile" id="" class="span8" value="<?php echo $_smarty_tpl->tpl_vars['mobile']->value;?>
 " autocomplete="off">							
 									<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['mobileErr']->value;?>
- </label>							
+ <?php echo $_smarty_tpl->tpl_vars['mobile_validErr']->value;?>
+</label>							
 										</td>		
 									</tr>									
 									<tr>

@@ -904,7 +904,7 @@ $(document).ready(function(){
 			else $('#form1').submit();
 		});
 	});
-	
+		
 });
 </script>	
 {/literal}
