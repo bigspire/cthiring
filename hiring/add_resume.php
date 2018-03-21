@@ -266,6 +266,7 @@ if(!empty($_POST)){
 		$companyData[] = $_POST['company_'.$i];
 		$locationData[] = $_POST['location_'.$i];
 		$vitalData[] = $_POST['vital_'.$i];
+		$reporting_toData[] = $_POST['reporting_to_'.$i];
 		
 		if($_POST['year_of_exp'] == 0 && $_POST['month_of_exp'] == 0){
 			// array for printing correct field name in error message 
@@ -315,6 +316,7 @@ if(!empty($_POST)){
 	$smarty->assign('companyData', $companyData);
 	$smarty->assign('locationData', $locationData);
 	$smarty->assign('vitalData', $vitalData);
+	$smarty->assign('reporting_toData', $reporting_toData);
 	$smarty->assign('expCount', $_POST['exp_count']);
 	$smarty->assign('expErr',$er1);
 		
@@ -389,15 +391,31 @@ if(!empty($_POST)){
 	
 	
 	// query to check whether it is exist or not. 
-	$query = "CALL check_resume_exist('0', '".$fun->is_white_space($mysql->real_escape_str($_POST['email']))."',
-	'".$fun->is_white_space($mysql->real_escape_str($_POST['mobile']))."')";
+	$query = "CALL check_email_exist('0', '".$fun->is_white_space($mysql->real_escape_str($_POST['email']))."')";
 	// Calling the function that makes the insert
 	try{
 		// calling mysql exe_query function
 		if(!$result = $mysql->execute_query($query)){
-			throw new Exception('Problem in executing to check resume exist');
+			throw new Exception('Problem in executing to check email exist');
 		}
-		$check = $mysql->display_result($result);
+		$check_mail = $mysql->display_result($result);
+		// free the memory
+		$mysql->clear_result($result);
+		// call the next result
+		$mysql->next_query();
+	}catch(Exception $e){
+		echo 'Caught exception: ',  $e->getMessage(), "\n";
+	}
+	
+	// query to check whether it is exist or not. 
+	$query = "CALL check_mobile_exist('0','".$fun->is_white_space($mysql->real_escape_str($_POST['mobile']))."')";
+	// Calling the function that makes the insert
+	try{
+		// calling mysql exe_query function
+		if(!$result = $mysql->execute_query($query)){
+			throw new Exception('Problem in executing to check mobile exist');
+		}
+		$check_mobile = $mysql->display_result($result);
 		// free the memory
 		$mysql->clear_result($result);
 		// call the next result
@@ -413,7 +431,7 @@ if(!empty($_POST)){
 	$total_exp = $_POST['year_of_exp'].'.'.$_POST['month_of_exp'];
 	// save all the data
 	if($test != 'error'){
-	  if($check['total'] == '0'){
+	  if($check_mail['total'] == '0' && $check_mobile['total'] == '0'){
 		// for saving purpose of tech skills
 		foreach($_POST['ts'] as $key => $ts){ 
 			if($ts){
@@ -575,6 +593,7 @@ if(!empty($_POST)){
 			$companyData = $_POST['company_'.$i];
 			$locationData = $_POST['location_'.$i];
 			$vitalData = $_POST['vital_'.$i];
+			$reporting_toData = $_POST['reporting_to_'.$i];
 			
 			// for snapshot printing
 			// $tot_exp_years = $_POST['year_of_exp_'.$i] == 0 ? '0' : $_POST['year_of_exp_'.$i].'.'.$_POST['month_of_exp_'.$i];
@@ -603,7 +622,8 @@ if(!empty($_POST)){
 				'".$fun->is_white_space($mysql->real_escape_str($locationData))."',
 				'".$fun->is_white_space($mysql->real_escape_str($areaData))."',
 				'".$fun->is_white_space($mysql->real_escape_str($companyData))."',
-				'".$fun->is_white_space($mysql->real_escape_str($vitalData))."','N','".$resume_id."')";
+				'".$fun->is_white_space($mysql->real_escape_str($vitalData))."','N','".$resume_id."',
+				'".$fun->is_white_space($mysql->real_escape_str($reporting_toData))."')";
 			try{
 				if(!$result = $mysql->execute_query($query)){
 					throw new Exception('Problem in adding experience details');
@@ -752,7 +772,7 @@ if(!empty($_POST)){
 					// send mail to account holder
 					$sub = "Manage Hiring -  Resume uploaded by " .$recruiter;
 					$msg = $content->get_create_resume_mail($_POST,$client_autoresume,$position_autoresume,$recruiter,$recruiter_email,$username['ah_name'],$username['ah_email']);
-					$mailer->send_mail($sub,$msg,$recruiter,$recruiter_email,$username['ah_name'],$username['ah_email']);
+					// $mailer->send_mail($sub,$msg,$recruiter,$recruiter_email,$username['ah_name'],$username['ah_email']);
 				}catch(Exception $e){
 					echo 'Caught exception: ',  $e->getMessage(), "\n";
 				}
@@ -781,13 +801,30 @@ if(!empty($_POST)){
 			}
 			
 			
+			// query to get resume api details
+			$query = "CALL get_resume_api()";
+			try{
+				if(!$result = $mysql->execute_query($query)){
+					throw new Exception('Problem in getting the resume api Details');
+				}
+				$resume_api = $mysql->display_result($result);
+				// free the memory
+				$mysql->clear_result($result);
+				// call the next result
+				$mysql->next_query();
+			}catch(Exception $e){
+				echo 'Caught exception: ',  $e->getMessage(), "\n";
+			}
 			
 			// convert the resume doc. into pdf
 			require_once('vendor/ilovepdf-php-1.1.5/init.php');			
 			// you can call task class directly
 			// to get your key pair, please visit https://developer.ilovepdf.com/user/projects
-			$ilovepdf = new Ilovepdf('project_public_5b8a8c940b378f560a9af9b547fda145_DNRT62d35f5d2494212a0dad512be366352cf',
-			'secret_key_629c405d975d170c4785d1781f9a0e6c_DccLT641e98f8d020e52866e228464f75321d');
+			/* $ilovepdf = new Ilovepdf('project_public_5b8a8c940b378f560a9af9b547fda145_DNRT62d35f5d2494212a0dad512be366352cf',
+			'secret_key_629c405d975d170c4785d1781f9a0e6c_DccLT641e98f8d020e52866e228464f75321d');*/ 
+
+			$ilovepdf = new Ilovepdf($resume_api['public_key'],$resume_api['secret_key']);
+			
 			// Create a new task
 			$myTaskConvertOffice = $ilovepdf->newTask('officepdf');
 			// Add files to task for upload
@@ -888,9 +925,13 @@ if(!empty($_POST)){
 			// }
 		} 
 		}else{
-				$msg = "Resume with same email address and mobile no. already exists";
-				$smarty->assign('EXIST_MSG',$msg); 
-			}
+				if($check_mail['total'] != '0'){
+					$smarty->assign('email_validErr',"Resume with same email address already exists"); 
+				}
+				if($check_mobile['total'] != '0'){
+					$smarty->assign('mobile_validErr',"Resume with same mobile already exists");
+				}
+		}
 	}else{
 		$smarty->assign('tab_open', ($tab1 == 'fail' ? 'tab1' : ($tab2 == 'fail' ? 'tab2' : ($tab3 == 'fail' ? 'tab3' : 'tab4' ))));
 	}

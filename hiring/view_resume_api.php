@@ -42,8 +42,11 @@ try{
 
 // create,update,delete message validation
 if($_GET['status'] == 'updated'){
-  $success_msg = 'Resume API ' . $_GET['status'] . ' successfully';
-  $smarty->assign('success_msg',$success_msg);
+	$success_msg = 'Resume API ' . $_GET['status'] . ' successfully';
+	$smarty->assign('success_msg',$success_msg);
+}else if($_GET['current_status'] == 'msg'){
+	$alert_msg = 'This record is not available in our database';
+	$smarty->assign('alert_msg',$alert_msg);
 }
 	
 // calling mysql close db connection function

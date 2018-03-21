@@ -1,5 +1,6 @@
 <?php
 include_once('classes/class.function.php');
+include_once('classes/class.mysql.php');
 $tot_exp = $_POST['year_of_exp'] == 0 ? '0' : $_POST['year_of_exp'].'.'.$_POST['month_of_exp'];
 $expStr = $fun->show_exp_details($tot_exp);
 $pre_ctc_type = $fun->get_ctc_type($_POST['present_ctc_type']);
@@ -317,10 +318,25 @@ EOD;
 
 
 // echo $str;die;
-
+// query to get resume api details
+$query = "CALL get_resume_api()";
+try{
+	if(!$result = $mysql->execute_query($query)){
+		throw new Exception('Problem in getting the resume api Details');
+	}
+	$resume_api = $mysql->display_result($result);
+	// free the memory
+	$mysql->clear_result($result);
+	// call the next result
+	$mysql->next_query();
+}catch(Exception $e){
+	echo 'Caught exception: ',  $e->getMessage(), "\n";
+} 
+			
 $snap_file_name = substr($_SESSION['resume_doc'], 0, strlen($_SESSION['resume_doc'])-5);
 $snap_file_name = $fun->filter_file($snap_file_name);
-$apikey = '5ea15ca6-ba76-423a-9214-b2194c6c427a';
+// $apikey = '5ea15ca6-ba76-423a-9214-b2194c6c427a';
+$apikey = $resume_api['api_key'];
 // $value = 'http://www.bigspireshowcase.com/mh/bulma.html'; // a url starting with http or an HTML string.  see example #5 if you have a long HTML string
 $result = file_get_contents("http://api.html2pdfrocket.com/pdf?apikey=" . urlencode($apikey) . "&value=" . urlencode($str).'&page');
 try{

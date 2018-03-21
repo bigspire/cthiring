@@ -149,6 +149,9 @@ class fun{
 					case 51:					
 					$mod['api_keys'] = 1;
 					break;
+					case 52:					
+					$mod['manage_qualification'] = 1;
+					break;
 				}				
 			}
 		}

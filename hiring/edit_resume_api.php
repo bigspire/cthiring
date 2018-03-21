@@ -44,7 +44,8 @@ if($getid !=''){
 		$row = $mysql->display_result($result);
 		$total = $row['total'];
 		if($total == 0){ 
-			header("Location:view_resume_api.php?current_status=msg");
+			// header("Location:view_resume_api.php?current_status=msg");
+			header('Location: ../?access=invalid');
 		}
 		// free the memory
 		$mysql->clear_result($result);
@@ -53,7 +54,7 @@ if($getid !=''){
 	}catch(Exception $e){
 		echo 'Caught exception: ',  $e->getMessage(), "\n";
 	}
-}
+} 
 
 // get database values
 if(empty($_POST)){
@@ -119,7 +120,7 @@ if(!empty($_POST)){
 			die;
 		}
 		// query to insert api. 
-		$query = "CALL add_resume_api('".$_POST['api_key']."','".$_POST['secret_key']."','".$_POST['public_key']."','".$date."')";
+		$query = "CALL add_resume_api('".$_POST['public_key']."','".$_POST['secret_key']."','".$_POST['api_key']."','".$date."')";
 		try{
 	    	// calling mysql exe_query function
 			if(!$result = $mysql->execute_query($query)){

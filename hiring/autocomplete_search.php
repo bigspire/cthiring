@@ -36,6 +36,58 @@ if($_GET['page'] == 'list_grade'){
    }catch(Exception $e){
 		echo 'Caught exception: ',  $e->getMessage(), "\n";
    }
+}elseif($_GET['page'] == 'list_degree'){
+	// get matched data from base target
+	$query = "CALL search_degree('".$keyword."')";
+	try{	
+		if(!$result = $mysql->execute_query($query)){
+			throw new Exception('Problem in executing degree page');
+		}
+		// iterate until get the matched results
+		while($obj = $mysql->display_result($result)){
+			$data[] = strtolower($fun->match_results($keyword,$obj['degree']));		
+			$data[] = strtolower($fun->match_results($keyword,$obj['program']));	
+		}
+		
+		// filter the duplicate values
+		$unique_result = array_unique($data);	
+		// display the search results
+		foreach($unique_result as $res){
+			if(!empty($res)){ 
+				$unique[] = $res;
+			}
+		}
+		// free the memory
+		$mysql->clear_result($result);		
+   }catch(Exception $e){
+		echo 'Caught exception: ',  $e->getMessage(), "\n";
+   }
+}elseif($_GET['page'] == 'list_specialization'){
+	// get matched data from base target
+	$query = "CALL search_specialization('".$keyword."')";
+	try{	
+		if(!$result = $mysql->execute_query($query)){
+			throw new Exception('Problem in executing specialization page');
+		}
+		// iterate until get the matched results
+		while($obj = $mysql->display_result($result)){
+			$data[] = strtolower($fun->match_results($keyword,$obj['spec']));	
+			$data[] = strtolower($fun->match_results($keyword,$obj['degree']));				
+		}
+		
+		// filter the duplicate values
+		$unique_result = array_unique($data);	
+		// display the search results
+		foreach($unique_result as $res){
+			if(!empty($res)){ 
+				$unique[] = $res;
+			}
+		}
+		// free the memory
+		$mysql->clear_result($result);		
+   }catch(Exception $e){
+		echo 'Caught exception: ',  $e->getMessage(), "\n";
+   }
 }elseif($_GET['page'] == 'list_base_target'){
 	// get matched data from base target
 	$query = "CALL search_base_target('".$keyword."')";

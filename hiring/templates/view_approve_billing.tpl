@@ -110,8 +110,8 @@
                  </div>         
 						<div class="form-actions">
 						{if $approve_status eq 'W'}
-<a class="iframeBox unreadLink" rel="tooltip" title="Approve Billing" href="remarks.php?action=approve" val="40_50"><input type="button" value="Approve" class="btn btn btn-success"/></a>
-<a class="iframeBox unreadLink" rel="tooltip" title="Reject Billing" href="remarks.php?action=reject" val="40_50"><input type="button" value="Reject" class="btn btn btn-danger"/></a>
+<a class="iframeBox unreadLink" rel="tooltip" title="Approve Billing" href="remarks.php?action=approve" val="30_40"><input type="button" value="Approve" class="btn btn btn-success"/></a>
+<a class="iframeBox unreadLink" rel="tooltip" title="Reject Billing" href="remarks.php?action=reject" val="30_40"><input type="button" value="Reject" class="btn btn btn-danger"/></a>
 <a href="approve_billing.php" rel="tooltip" title="Cancel and Back to Billing"  class="jsRedirect"><button class="btn">Cancel</button></a>
 						{else}
 <a href="approve_billing.php" rel="tooltip" title="Back to Billing"  class="jsRedirect"><button class="btn">Back</button></a>

@@ -28,6 +28,7 @@ Date : 22-01-2018 *}
 				{if $success_msg}
 				 <div id="flashMessage" class="alert alert-success"><button type="button" class="close" data-dismiss="alert">×</button>{$success_msg}</div>					
 				{/if}
+				
 <div class="row-fluid">
 						<div class="span12">
 						

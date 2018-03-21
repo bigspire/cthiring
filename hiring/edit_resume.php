@@ -155,7 +155,7 @@ if($getid !=''){
 				$from_month_of_expData[$tot] = $row['from_month'];
 				$to_year_of_expData[$tot] = $row['to_year'];
 				$to_month_of_expData[$tot] = $row['to_month'];
-				
+				$reporting_toData[$tot] = $row['reporting'];	
 				$desigData[$tot] = $row['designation_id'];
 				$areaData[$tot] = $row['skills'];
 				$companyData[$tot] = $row['company'];
@@ -173,6 +173,7 @@ if($getid !=''){
 			$smarty->assign('companyData', $companyData);
 			$smarty->assign('locationData', $locationData);
 			$smarty->assign('vitalData', $vitalData);
+			$smarty->assign('reporting_toData', $reporting_toData);
 			$smarty->assign('expCount', $tot);
 
 			$smarty->assign('totCount_exp', $tot);
@@ -342,6 +343,7 @@ if(!empty($_POST)){
 		$companyData[] = $_POST['company_'.$i];
 		$locationData[] = $_POST['location_'.$i];
 		$vitalData[] = $_POST['vital_'.$i];
+		$reporting_toData[] = $_POST['reporting_to_'.$i];
 		
 		if($_POST['year_of_exp'] == 0 && $_POST['month_of_exp'] == 0){
 			// array for printing correct field name in error message 
@@ -393,6 +395,7 @@ if(!empty($_POST)){
 	$smarty->assign('companyData', $companyData);
 	$smarty->assign('locationData', $locationData);
 	$smarty->assign('vitalData', $vitalData);
+	$smarty->assign('reporting_toData', $reporting_toData);
 	$smarty->assign('expCount', $_POST['exp_count']);
 	$smarty->assign('expErr',$er1);
 		
@@ -467,15 +470,31 @@ if(!empty($_POST)){
 	}*/
 	
 	// query to check whether it is exist or not. 
-	$query = "CALL check_resume_exist('$getid', '".$fun->is_white_space($mysql->real_escape_str($_POST['email']))."',
-	'".$fun->is_white_space($mysql->real_escape_str($_POST['mobile']))."')";
+	$query = "CALL check_email_exist('$getid', '".$fun->is_white_space($mysql->real_escape_str($_POST['email']))."')";
 	// Calling the function that makes the insert
 	try{
 		// calling mysql exe_query function
 		if(!$result = $mysql->execute_query($query)){
-			throw new Exception('Problem in executing to check resume exist');
+			throw new Exception('Problem in executing to check email exist');
 		}
-		$check = $mysql->display_result($result);
+		$check_mail = $mysql->display_result($result);
+		// free the memory
+		$mysql->clear_result($result);
+		// call the next result
+		$mysql->next_query();
+	}catch(Exception $e){
+		echo 'Caught exception: ',  $e->getMessage(), "\n";
+	}
+	
+	// query to check whether it is exist or not. 
+	$query = "CALL check_mobile_exist('$getid','".$fun->is_white_space($mysql->real_escape_str($_POST['mobile']))."')";
+	// Calling the function that makes the insert
+	try{
+		// calling mysql exe_query function
+		if(!$result = $mysql->execute_query($query)){
+			throw new Exception('Problem in executing to check mobile exist');
+		}
+		$check_mobile = $mysql->display_result($result);
 		// free the memory
 		$mysql->clear_result($result);
 		// call the next result
@@ -491,7 +510,7 @@ if(!empty($_POST)){
 	
 	// save all the data
 	if($test != 'error'){
-	   if($check['total'] == '0'){
+	   if($check_mail['total'] == '0' && $check_mobile['total'] == '0'){
 		// for saving purpose of tech skills
 		foreach($_POST['ts'] as $key => $ts){
 			if($ts){
@@ -662,6 +681,7 @@ if(!empty($_POST)){
 			$companyData = $_POST['company_'.$i];
 			$locationData = $_POST['location_'.$i];
 			$vitalData = $_POST['vital_'.$i];
+			$reporting_toData = $_POST['reporting_to_'.$i];
 			
 			// for snapshot printing
 			// $tot_exp_years = $_POST['year_of_exp_'.$i] == 0 ? '0' : $_POST['year_of_exp_'.$i].'.'.$_POST['month_of_exp_'.$i];
@@ -691,7 +711,8 @@ if(!empty($_POST)){
 				'".$fun->is_white_space($mysql->real_escape_str($locationData))."',
 				'".$fun->is_white_space($mysql->real_escape_str($areaData))."',
 				'".$fun->is_white_space($mysql->real_escape_str($companyData))."',
-				'".$fun->is_white_space($mysql->real_escape_str($vitalData))."','N','$getid')";
+				'".$fun->is_white_space($mysql->real_escape_str($vitalData))."','N','$getid',
+				'".$fun->is_white_space($mysql->real_escape_str($reporting_toData))."')";
 			try{
 				if(!$result = $mysql->execute_query($query)){
 					throw new Exception('Problem in adding experience details');
@@ -774,14 +795,30 @@ if(!empty($_POST)){
 				unlink($template_path);				
 			}
 			
-			
+			// query to get resume api details
+			$query = "CALL get_resume_api()";
+			try{
+				if(!$result = $mysql->execute_query($query)){
+					throw new Exception('Problem in getting the resume api Details');
+				}
+				$resume_api = $mysql->display_result($result);
+				// free the memory
+				$mysql->clear_result($result);
+				// call the next result
+				$mysql->next_query();
+			}catch(Exception $e){
+				echo 'Caught exception: ',  $e->getMessage(), "\n";
+			}
 				
 			// convert the resume doc. into pdf
 			require_once('vendor/ilovepdf-php-1.1.5/init.php');			
 			// you can call task class directly
 			// to get your key pair, please visit https://developer.ilovepdf.com/user/projects
-			$ilovepdf = new Ilovepdf('project_public_e1b1961d9d9cb94da486a4a04f3ce2b6_vIiAd97ec8dba4620fe3944e24fee623378b6',
-			'secret_key_9912dae17d681dfe0fc2be7c92d895d8_BRyVqff37bf1e9f79bd62481c6bdbdb213e8b');
+			/* $ilovepdf = new Ilovepdf('project_public_e1b1961d9d9cb94da486a4a04f3ce2b6_vIiAd97ec8dba4620fe3944e24fee623378b6',
+			'secret_key_9912dae17d681dfe0fc2be7c92d895d8_BRyVqff37bf1e9f79bd62481c6bdbdb213e8b'); */
+			
+			$ilovepdf = new Ilovepdf($resume_api['public_key'],$resume_api['secret_key']);
+			
 			// Create a new task
 			$myTaskConvertOffice = $ilovepdf->newTask('officepdf');
 			// Add files to task for upload
@@ -876,8 +913,12 @@ if(!empty($_POST)){
 			header('Location: ../resume?action=modified');
 			} 
 		}else{
-			$msg = "Resume with same email address and mobile no. already exists";
-			$smarty->assign('EXIST_MSG',$msg); 
+			if($check_mail['total'] != '0'){
+				$smarty->assign('email_validErr',"Resume with same email address already exists"); 
+				}
+			if($check_mobile['total'] != '0'){
+				$smarty->assign('mobile_validErr',"Resume with same mobile already exists");
+			}
 		}
 	}else{
 		$smarty->assign('tab_open', ($tab1 == 'fail' ? 'tab1' : ($tab2 == 'fail' ? 'tab2' : ($tab3 == 'fail' ? 'tab3' : 'tab4' ))));

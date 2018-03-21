@@ -68,7 +68,7 @@
 										<td width="120" class="tbl_column">Email <span class="f_req">*</span></td>
 										<td>	
 										<input type="text" tabindex="3" id="email" name="email" value="{$email}" class="span8">
-										<label for="reg_city" generated="true" class="error">{$emailErr}</label>
+										<label for="reg_city" generated="true" class="error">{$emailErr}{$email_validErr}</label>
 										</td>	
 									</tr>	
 									
@@ -76,7 +76,7 @@
 										<td width="120" class="tbl_column"> Mobile <span class="f_req">*</span></td>
 										<td>
 										<input type="text" tabindex="4" name="mobile"  value="{$mobile}" class="span8 ui-autocomplete-input" autocomplete="off">							
-									<label for="reg_city" generated="true" class="error">{$mobileErr} </label>	</td>		
+									<label for="reg_city" generated="true" class="error">{$mobileErr}{$mobile_validErr} </label>	</td>		
 									</tr>	
 									
 									<tr>
@@ -394,7 +394,13 @@
 							<div class="span6">
 			<table class="table table-bordered dataTable" style="margin-bottom:0;">
 			<tbody>
-			
+						<tr class="tbl_row">
+										<td width="120" class="tbl_column">Company Name <span class="f_req">*</span></td>
+										<td> 
+										<input type="text"  tabindex="" name="company_#index#" value="" id="company_#index#"  class="span8" />
+										<label for="reg_city" generated="true" class="error" id="companyErr_#index#"></label>										
+										</td>
+							</tr>	
 					<tr class="tbl_row">
 										<td width="120" class="tbl_column">Designation <span class="f_req">*</span></td>
 										<td> 
@@ -448,13 +454,7 @@
 										<label for="reg_city" generated="true" class="error" id="areaErr_#index#"></label>										
 										</td>
 							</tr>
-								<tr class="tbl_row">
-										<td width="120" class="tbl_column">Company Name <span class="f_req">*</span></td>
-										<td> 
-										<input type="text"  tabindex="" name="company_#index#" value="" id="company_#index#"  class="span8" />
-										<label for="reg_city" generated="true" class="error" id="companyErr_#index#"></label>										
-										</td>
-							</tr>	
+							
 							<tr>
 								<td width="120" class="tbl_column">Company Profile <span class="f_req">*</span></td>
 								<td>
