@@ -158,7 +158,34 @@
 										</td>
 									</tr>
 									
-						
+						  <tr   class="tbl_row">
+										<td width="120" class="tbl_column">Resume Type <span class="f_req">*</span></td>
+										<td>	
+										
+			<?php echo $this->Form->input('resume_type', array('div'=> false,'type' => 'radio', 'label' => false,  'style' => 'margin:4px 2px', 'class' => 'input-xlarge', 
+	'options' => $resume_types, 'separator' => ' ', 'id' => '',  'required' => false, 'placeholder' => '', 
+	'legend' => false, 'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?>
+		
+		
+		
+	
+										</td>	
+									</tr>
+									
+														
+	   <tr class="">
+										<td width="120" class="tbl_column">Project Type <span class="f_req">*</span></td>
+										<td>	
+										
+			<?php echo $this->Form->input('is_rpo', array('div'=> false,'type' => 'radio', 'label' => false,  'style' => 'margin:4px 2px', 'class' => 'input-xlarge', 
+	'options' => $project_types, 'separator' => ' ', 'id' => '',  'required' => false, 'placeholder' => '', 
+	'legend' => false, 'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?>
+		
+		
+		
+	
+										</td>	
+									</tr>	
 																										
 				</tbody>
 			</table>
@@ -284,7 +311,17 @@
   </div>
 </div>						
 																	
+					  <tr class="">
+										<td width="120" class="tbl_column">Total Openings <span class="f_req">*</span></td>
+										<td>	
+										
+		<?php echo $this->Form->input('total_opening', array('div'=> false,'type' => 'select', 'label' => false, 
+		'class' => 'span8 input-xlarge', 'empty' => 'Select', 'required' => false, 'placeholder' => '', 
+		'style' => "clear:left", 'options' => $openingList, 'selected' => $this->request->data['Position']['no_job'], 'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 
 					
+	
+										</td>	
+									</tr>
 				  
 				  <tr  class="tbl_row">
 						<td width="120" class="tbl_column">Recruiters <span class="f_req">*</span></td>
@@ -356,7 +393,7 @@
 									</tr>
 				  
 				  <tr class="">
-										<td width="120" class="">Hide Resume Contacts <span class="f_req">*</span></td>
+										<td width="120" class="tbl_column">Hide Resume Contacts <span class="f_req">*</span></td>
 										<td>	
 	<?php echo $this->Form->input('hide_contact', array('div'=> false,'type' => 'radio', 'label' => false,  'style' => 'margin:4px 2px', 'class' => 'input-xlarge', 
 	'options' => $hide_contacts, 'separator' => ' ', 'id' => '',  'required' => false, 'placeholder' => '', 
@@ -365,34 +402,7 @@
 
 										</td>	
 									</tr>
-									    <tr   class="tbl_row">
-										<td width="120" class="tbl_column">Resume Type <span class="f_req">*</span></td>
-										<td>	
-										
-			<?php echo $this->Form->input('resume_type', array('div'=> false,'type' => 'radio', 'label' => false,  'style' => 'margin:4px 2px', 'class' => 'input-xlarge', 
-	'options' => $resume_types, 'separator' => ' ', 'id' => '',  'required' => false, 'placeholder' => '', 
-	'legend' => false, 'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?>
-		
-		
-		
-	
-										</td>	
-									</tr>
-									
-														
-	   <tr class="">
-										<td width="120" class="tbl_column">Project Type <span class="f_req">*</span></td>
-										<td>	
-										
-			<?php echo $this->Form->input('is_rpo', array('div'=> false,'type' => 'radio', 'label' => false,  'style' => 'margin:4px 2px', 'class' => 'input-xlarge', 
-	'options' => $project_types, 'separator' => ' ', 'id' => '',  'required' => false, 'placeholder' => '', 
-	'legend' => false, 'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?>
-		
-		
-		
-	
-										</td>	
-									</tr>	
+									  
 				</tbody>
 			</table>
 		</div>

@@ -229,6 +229,13 @@ class ClientController extends AppController {
 						'type' => 'LEFT',
 						'conditions' => array('`ClientStatus`.`clients_id` = `Client`.`id`')
 				),
+			array('table' => 'client_read',
+					'alias' => 'ClientRead',					
+					'type' => 'LEFT',
+					'conditions' => array('`ClientRead`.`clients_id` = `Client`.`id`',
+					'ClientRead.users_id' => $this->Session->read('USER.Login.id'),
+					'ClientRead.status' => 'U')
+			)
 			);
 			
 		
@@ -240,7 +247,8 @@ class ClientController extends AppController {
 		$fields = array('id','client_name','ResLocation.location','created_date',
 		'Creator.first_name','status',"group_concat(distinct CAH.first_name separator ', ') account_holder", 'city',
 		'count(distinct Position.id) no_pos','count(distinct CON.id) no_contact', 'modified_date', 'Client.created_by','Client.is_approve',
-		"max(ClientStatus.id) st_id","max(ClientStatus.users_id) st_user_id", 'ClientStatus.status');
+		"max(ClientStatus.id) st_id","max(ClientStatus.users_id) st_user_id", 'ClientStatus.status',
+		 'group_concat(distinct ClientRead.id) req_read_id', 'ClientRead.status');
 		// for export
 		if($this->request->query['action'] == 'export'){ 
 			$data = $this->Client->find('all', array('fields' => $fields,'conditions' => 
@@ -317,6 +325,10 @@ class ClientController extends AppController {
 							$this->save_client_contact_list($this->Client->id);
 							// save account holder
 							$this->save_account_holder($this->Client->id);	
+							
+							// make all the reads to read mode
+							$this->update_client_read_status($this->Client->id);
+							
 							// send mail to approver
 							$sub = 'Manage Hiring - Client Revised by '.ucfirst($this->Session->read('USER.Login.first_name')).' '.ucfirst($this->Session->read('USER.Login.last_name'));
 							$from = ucfirst($this->Session->read('USER.Login.first_name')).' '.ucfirst($this->Session->read('USER.Login.last_name'));
@@ -680,7 +692,20 @@ class ClientController extends AppController {
 		die;
 	}
 	
+	/* function to save the req read status for recruiter */
+	public function save_read_status($id, $user_id){
+		$this->loadModel('ClientRead');
+		$this->ClientRead->id = '';
+		$data = array('clients_id' => $id, 'created_date' => $this->Functions->get_current_date(),
+		'users_id' => $user_id);
+		$this->ClientRead->save($data, array('validate' => false));
+	}
 	
+	/* function to update the req read status */
+	public function update_client_read_status($id){
+		$this->loadModel('ClientRead');
+		$this->ClientRead->updateAll(array('status' => "'R'",  'modified_date' => '"'.$this->Functions->get_current_date().'"'), array('clients_id' => $id));
+	}
 	
 	/* function to save contact lists */
 	public function save_client_contact_list($client_id){ 
@@ -781,8 +806,19 @@ class ClientController extends AppController {
 		$this->loadModel('ClientStatus');
 		$ret_value = $this->auth_action($id, $st_id);
 		if($ret_value == 'pass'){
+			// update the read req.
+			if($this->request->params['pass'][3] != '' && $this->request->params['pass'][4] == 'U'){
+				$req_id = explode(',', $this->request->params['pass'][3]);
+				// update all the resumes update
+				foreach($req_id as $req_read_id){
+					$this->loadModel('ClientRead');
+					$this->ClientRead->id = $req_read_id;
+					$this->ClientRead->saveField('modified_date', $this->Functions->get_current_date());
+					$this->ClientRead->saveField('status', 'R');
+				}
+			}
 			// set the page title
-			$view_title = $this->Functions->get_view_type($this->request->params['pass'][3]);
+			$view_title = $this->Functions->get_view_type($this->request->params['pass'][5]);
 			$this->set('title_for_layout', $view_title.' Client - Manage Hiring');	
 			$options = array(			
 				array('table' => 'state',
@@ -892,7 +928,8 @@ class ClientController extends AppController {
 						$this->loadModel('ClientAccountHolder');
 						
 						$ac_holder = $this->ClientAccountHolder->find('all', array('fields' => array("group_concat(User.first_name separator ', ') account_holder",
-						"group_concat(User.email_id) account_holder_mail", "group_concat(User.last_name) account_holder_last"),
+						"group_concat(User.email_id) account_holder_mail", "group_concat(User.last_name) account_holder_last",
+						"group_concat(ClientAccountHolder.users_id) account_holder_id"),
 						'order' => array('User.first_name ASC'), 'conditions' => array('ClientAccountHolder.clients_id' => $id, 'User.is_deleted' => 'N')));
 						
 						$vars = array('to_name' =>  ucwords($creator_data[0]['Creator']['first_name'].' '.$creator_data[0]['Creator']['last_name']), 'from_name' => $from, 'client_name' => $creator_data[0]['Client']['client_name'], 'city' => $creator_data[0]['Client']['city'],'account_holder' => $ac_holder[0][0]['account_holder'], 'approve_msg' => $approve_msg, 'remarks' => $this->request->data['Client']['remarks']);
@@ -909,6 +946,8 @@ class ClientController extends AppController {
 							$mails = explode(',', $ac_holder[0][0]['account_holder_mail']);
 							$fname = explode(',', $ac_holder[0][0]['account_holder']);
 							$lname = explode(',', $ac_holder[0][0]['account_holder_last']);
+							$ah_id = explode(',', $ac_holder[0][0]['account_holder_id']);
+							
 							$sub = 'Manage Hiring - Client approved by '.ucfirst($this->Session->read('USER.Login.first_name')).' '.ucfirst($this->Session->read('USER.Login.last_name'));
 							foreach($mails as $key =>  $mail){
 								$vars = array('to_name' =>  ucwords($fname[$key].' '.$lname[$key]), 'from_name' => $from, 'client_name' => $creator_data[0]['Client']['client_name'], 'city' => $creator_data[0]['Client']['city'],'account_holder' => $ac_holder[0][0]['account_holder'], 'approve_msg' => $approve_msg, 'remarks' => $this->request->data['Client']['remarks']);
@@ -919,12 +958,18 @@ class ClientController extends AppController {
 								}else{
 									// $this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Client '.$approve_msg.' Successfully.', 'default', array('class' => 'alert alert-success'));
 								}
+								// save the read status
+								$this->save_read_status($id,$ah_id[$key]);
 							}
+							
+							
 						}
 						// update the client
 						$this->Client->id = $id;
 						$this->Client->saveField('is_approve', $status);
 						$this->Client->saveField('status', $status == 'A' ? 0 : 2);
+						
+						
 						
 						// If approved and first time add only
 						if($status == 'A' && $creator_data[0]['Client']['modified_date'] == ''){

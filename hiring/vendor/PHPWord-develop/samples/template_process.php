@@ -291,7 +291,8 @@ for($i = 0; $i < $_POST['exp_count']; $i++){
 		$templateProcessor->setValue('CARCOMPANYPROFILE#'.$train_flag, $company_profileData,   0, 0);
 		$templateProcessor->setValue('CARREPORTING#'.$train_flag, $reporting_toData,   0, 0);
 		
-		$responsibilityData = explode("\n", $key_responsibilityData);		
+		$responsibilityData = explode("\n", $key_responsibilityData);	
+		$key_res_data = '';
 		foreach($responsibilityData as $key_resp){
 			if(trim($key_resp) != ''){
 				$key_res_data .= '<w:p><w:pPr><w:numPr><w:ilvl w:val="0"/><w:numId w:val="1"/></w:numPr></w:pPr><w:rPr><w:rFonts w:ascii="Gadugi"/><w:sz w:val="30"/></w:rPr><w:r><w:t>'.ucfirst($key_resp).'</w:t></w:r></w:p>';
@@ -301,6 +302,7 @@ for($i = 0; $i < $_POST['exp_count']; $i++){
 		$templateProcessor->setValue('CARKEYRESP#'.$train_flag,  $key_responsibilityData_xml,   0, 1);
 		
 		$achievementData = explode("\n", $key_achievementData);		
+		$key_achi_data = '';
 		foreach($achievementData as $key_achieve){
 			if(trim($key_achieve) != ''){
 				$key_achi_data .= '<w:p><w:pPr><w:numPr><w:ilvl w:val="0"/><w:numId w:val="1"/></w:numPr></w:pPr><w:rPr><w:rFonts w:ascii="Gadugi"/><w:sz w:val="30"/></w:rPr><w:r><w:t>'.ucfirst($key_achieve).'</w:t></w:r></w:p>';

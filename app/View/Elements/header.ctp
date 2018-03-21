@@ -126,7 +126,7 @@
 										
 										
 										<?php 
-										if($APPR_CLIENT_COUNT > 0):
+										if($APPR_CLIENT_COUNT > 0  || $new_client_count > 0):
 										$active2 = 'active2';
 										else:
 										$active2 = '';

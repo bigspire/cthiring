@@ -72,7 +72,7 @@
 									<tr>
 										
 										<td width="" class="tbl_column">City / Town</td>
-										<td><?php echo $client_data['Client']['city'];?></td>
+										<td><?php echo ucfirst($client_data['Client']['city']);?></td>
 											
 									</tr>
 									

@@ -37,6 +37,14 @@
 						</td>	
 				</tr>
 				
+					<tr class="tbl_row" >
+					<td width="120" class="tbl_column">Cc  
+					</td>
+						<td>
+						<?php echo $this->Form->input('client_cc', array('div'=> false,'type' => 'text', 'label' => false, 'class' => 'span8',   'required' => false, 'placeholder' => 'Add multiple emails separated by comma')); ?> 					
+						</td>	
+				</tr>
+				
 				<tr class="tbl_row" >
 					<td width="120" class="tbl_column">Candidate(s) 
 					</td>

@@ -49,6 +49,7 @@ class AppController extends Controller {
 				$this->get_approve_leave_count();
 				$this->get_position_unread_count();
 				$this->get_approve_billing_count();
+				$this->get_client_unread_count();
 			}
 
 		}
@@ -98,6 +99,14 @@ class AppController extends Controller {
 		$count = $this->ReqRead->find('count', array('conditions' => array('users_id' => $this->Session->read('USER.Login.id'),
 		'ReqRead.status' => 'U'),'group' => array('ReqRead.requirements_id')));
 		$this->set('new_pos_count', $count);
+	}
+	
+	/* get unread count for the unread counts of clients */
+	public function get_client_unread_count(){
+		$this->loadModel('ClientRead');
+		$count = $this->ClientRead->find('count', array('conditions' => array('users_id' => $this->Session->read('USER.Login.id'),
+		'ClientRead.status' => 'U'),'group' => array('ClientRead.clients_id')));
+		$this->set('new_client_count', $count);
 	}
 	
 	/* function to get the approval billing count */
@@ -370,7 +379,7 @@ class AppController extends Controller {
 	}
 	
 	/* function to send email */
-	function send_email($subject,$template,$from,$to,$vars,$src){
+	function send_email($subject,$template,$from,$to,$vars,$src, $cc){
 		App::uses('CakeEmail', 'Network/Email');
 		$Email = new CakeEmail();
 		$Email->viewVars($vars);		
@@ -378,6 +387,10 @@ class AppController extends Controller {
 		$Email->emailFormat('html');
 		$Email->subject($subject);
 		$Email->to($to);
+		// only if cc emails are there
+		if(count($cc) > 0){
+			$Email->cc($cc);
+		}
 		$Email->from($from);
 		$Email->config('gmail');
 		$Email->delivery = 'smtp';
