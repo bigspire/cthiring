@@ -583,7 +583,7 @@ class ResumeController extends AppController {
 	
 	
 	/* function to export the profile snap shot */
-	public function profile_snapshot($snap_file, $updated, $action){ 
+	public function profile_snapshot($snap_file, $updated, $action){
 		 $snap_exp = substr($snap_file, 0, strlen($snap_file) - 5);
 		 $pdf_date = date('d-m-Y', $updated);
 		 if($action == 'view'){
