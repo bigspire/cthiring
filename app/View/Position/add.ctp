@@ -336,21 +336,16 @@
 					
 					
 				  	<tr class="tbl_row">
-										<td width="120" class="tbl_column">Requirement Date <span class="f_req">*</span></td>
+										<td width="120" class="tbl_column">Expected Joining Date <span class="f_req">*</span></td>
 										<td> 
 										
-						<span id="sandbox-container">
-						<span  class="input-daterange" id="datepicker">	
-	<?php echo $this->Form->input('start_date', array('div'=> false,'type' => 'text', 'label' => false, 'class' => 'span4 datepick',  'required' => false, 'placeholder' => 'Start Date',
-				'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 	
+	<?php //echo $this->Form->input('start_date', array('div'=> false,'type' => 'text', 'label' => false, 'class' => 'span4 datepick',  'required' => false, 'placeholder' => 'Start Date',		'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 	
 					
-<?php echo $this->Form->input('end_date', array('div'=> false,'type' => 'text', 'label' => false, 'class' => 'span4 inline_text datepick',  'required' => false, 'placeholder' => 'Closure Date',
+<?php echo $this->Form->input('end_date', array('div'=> false,'type' => 'text', 'label' => false, 'class' => 'span8 inline_text datepick',  'required' => false, 'placeholder' => '',
 				'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 	
 				
 		<input type="hidden" id="start_date" name="start_date" value="<?php echo date('d/m/Y');?>">
 
-						</span>	
-						</span>	
 									
 
 		</td>

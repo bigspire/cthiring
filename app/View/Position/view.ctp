@@ -301,7 +301,7 @@
 									</tr>
 										<tr>
 										
-										<td class="tbl_column">Closure Date</td>
+										<td class="tbl_column">Exp. Joining Date</td>
 <?php $end = $position_data['Position']['end_date'] ? $position_data['Position']['end_date'] : $position_data['Position']['modified_date'];?>
 
 										<td><?php echo $this->Functions->format_date($end);?></td>

@@ -331,7 +331,8 @@ class PositionController extends AppController {
 			'ctc_to_type','skills','team_member_req','end_date','function_area_id','status','job_desc','education','tech_skill','behav_skill',
 			'hide_contact','resume_type','job_code','is_rpo','total_opening')))){
 				// format the dates
-				$this->request->data['Position']['start_date'] = $this->Functions->format_date_save($this->request->data['Position']['start_date']);
+				// $this->request->data['Position']['start_date'] = $this->Functions->format_date_save($this->request->data['Position']['start_date']);
+				$this->request->data['Position']['start_date'] = date('Y-m-d');
 				$this->request->data['Position']['end_date'] = $this->Functions->format_date_save($this->request->data['Position']['end_date']);
 				// save the data
 				$this->request->data['Position']['status'] = 'I';
