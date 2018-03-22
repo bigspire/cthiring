@@ -214,7 +214,348 @@ if($getid !=''){
 
 }
 
+// checking for draft 
+if($_POST['hdnSubmit'] == 1){
+	// echo 'you pressed draft re';die;
+	if(!empty($_POST['email'])){
+		// query to check whether it is exist or not. 
+		$query = "CALL check_email_exist('$getid', '".$fun->is_white_space($mysql->real_escape_str($_POST['email']))."')";
+		// Calling the function that makes the insert
+		try{
+			// calling mysql exe_query function
+			if(!$result = $mysql->execute_query($query)){
+				throw new Exception('Problem in executing to check email exist');
+			}
+			$check_mail = $mysql->display_result($result);
+			// free the memory
+			$mysql->clear_result($result);
+			// call the next result
+			$mysql->next_query();
+		}catch(Exception $e){
+			echo 'Caught exception: ',  $e->getMessage(), "\n";
+		}
+	}else{
+		$check_mail['total'] = '0';
+	}
+	
+	if(!empty($_POST['mobile'])){
+		// query to check whether it is exist or not. 
+		$query = "CALL check_mobile_exist('$getid','".$fun->is_white_space($mysql->real_escape_str($_POST['mobile']))."')";
+		// Calling the function that makes the insert
+		try{
+			// calling mysql exe_query function
+			if(!$result = $mysql->execute_query($query)){
+				throw new Exception('Problem in executing to check mobile exist');
+			}
+			$check_mobile = $mysql->display_result($result);
+			// free the memory
+			$mysql->clear_result($result);
+			// call the next result
+			$mysql->next_query();
+		}catch(Exception $e){
+			echo 'Caught exception: ',  $e->getMessage(), "\n";
+		}
+	}else{
+		$check_mobile['total'] = '0';
+	}
+	
+	
+	
+	// assigning the date
+	$date =  $fun->current_date();
+	$created_by = $_SESSION['user_id'];
+	$total_exp = $_POST['year_of_exp'].'.'.$_POST['month_of_exp'];
+	// save all the data
+	 if($check_mail['total'] == '0' && $check_mobile['total'] == '0'){
+		// for saving purpose of tech skills
+		foreach($_POST['ts'] as $key => $ts){ 
+			if($ts){
+				$ts_data2[$ts] = $_POST['tsr'][$key];
+			}
+		}
 
+		// for saving purpose of behav skills
+		foreach($_POST['bs'] as $key => $bs){
+			if($bs){
+				$bs_data2[$bs] = $_POST['bsr'][$key];
+			}
+		}
+		$tech_skill = serialize($ts_data2);
+		$behav_skill = serialize($bs_data2);
+		// query to add personal details
+		$query = "CALL add_res_personal('".$fun->is_white_space($mysql->real_escape_str($_POST['first_name']))."',
+			'".$fun->is_white_space($mysql->real_escape_str($_POST['last_name']))."',
+			'".$mysql->real_escape_str($_POST['email'])."','".$mysql->real_escape_str($_POST['mobile'])."',
+			'".$fun->is_white_space($mysql->real_escape_str($fun->convert_date($_POST['dob'])))."',
+			'".$mysql->real_escape_str($_POST['gender'])."','".$fun->is_white_space($mysql->real_escape_str($_POST['present_ctc']))."',
+			'".$fun->is_white_space($mysql->real_escape_str($_POST['expected_ctc']))."','".$mysql->real_escape_str($_POST['present_ctc_type'])."',
+			'".$mysql->real_escape_str($_POST['expected_ctc_type'])."','".$mysql->real_escape_str($_POST['marital_status'])."',
+			'".$fun->is_white_space($mysql->real_escape_str($_POST['present_location']))."','".$fun->is_white_space($mysql->real_escape_str($_POST['native_location']))."',
+ 			'".$mysql->real_escape_str($_POST['notice_period'])."','".$mysql->real_escape_str($_POST['designation_id'])."',
+ 			'".$fun->is_white_space($mysql->real_escape_str($_POST['family']))."','".$mysql->real_escape_str($total_exp)."',
+ 			'".$date."','".$created_by."','N','".$mysql->real_escape_str($_SESSION['resume_doc_id'])."',
+ 			'".$fun->is_white_space($mysql->real_escape_str($_POST['consultant']))."',
+ 			'".$fun->is_white_space($mysql->real_escape_str($_POST['interview_availability']))."',
+			'".$fun->is_white_space($mysql->real_escape_str($_POST['certification']))."','".$tech_skill."',
+			'".$behav_skill."','".$fun->is_white_space($mysql->real_escape_str($_POST['other_input']))."')";
+		try{
+			if(!$result = $mysql->execute_query($query)){
+				throw new Exception('Problem in adding personal details');
+			}
+			$row = $mysql->display_result($result);
+			$resume_id = $row['inserted_id'];
+			// call the next result
+			$mysql->next_query();
+		}catch(Exception $e){
+			echo 'Caught exception: ',  $e->getMessage(), "\n";
+		}
+		
+		// generate resume code
+		$code = 'MH'.$resume_id;
+		// query to add resume code
+		$query = "CALL edit_resume_code('".$resume_id."','".$code."')";
+		try{
+			if(!$result = $mysql->execute_query($query)){
+				throw new Exception('Problem in adding resume code');
+			}
+			$row = $mysql->display_result($result);
+			$res_id = $row['affected_rows'];
+			// call the next result
+			$mysql->next_query();
+		}catch(Exception $e){
+			echo 'Caught exception: ',  $e->getMessage(), "\n";
+		}
+
+		// query to add position for details
+		$query = "CALL add_req_resume_position('".$created_by."','".$date."',
+			'".$mysql->real_escape_str($_SESSION['position_for'])."','".$resume_id."','Validation - Account Holder','Pending')";
+		try{
+			if(!$result = $mysql->execute_query($query)){
+				throw new Exception('Problem in adding position details');
+			}
+			$row = $mysql->display_result($result);
+			$position_id = $row['inserted_id'];
+			// call the next result
+			$mysql->next_query();
+		}catch(Exception $e){
+			echo 'Caught exception: ',  $e->getMessage(), "\n";
+		}
+		
+		for($i = 0; $i < $_POST['edu_count']; $i++){
+			$collegeData = $_POST['college_'.$i];
+			$specializationData = $_POST['specialization_'.$i];
+			$degreeData = $_POST['degree_'.$i];
+			$gradeData = $_POST['grade_'.$i];
+			$grade_typeData = $_POST['grade_type_'.$i];
+			$year_of_passData = $_POST['year_of_pass_'.$i];
+			$universityData = $_POST['university_'.$i];
+
+
+			// get degree name
+			$query = "call get_degree_id('".$mysql->real_escape_str($degreeData)."')";
+			if(!$result = $mysql->execute_query($query)){
+				throw new Exception('Problem in getting degree name');
+			}
+			$row = $mysql->display_result($result);
+			$degreeStr = $row['degree'];
+			$mysql->next_query();
+			// get specialization name
+			$query = "call get_spec_id('".$mysql->real_escape_str($specializationData)."')";
+			if(!$result = $mysql->execute_query($query)){
+				throw new Exception('Problem in getting spec. name');
+			}
+			$row = $mysql->display_result($result);
+			$specStr = $row['spec'];
+			$mysql->next_query();
+			$course_type = $fun->get_course_type($grade_typeData);
+			$gradeStr = $gradeData > 10 ? $gradeData.'%' : $gradeData;
+			// for snapshot printing
+			$snap_edu .= $degreeStr.', '.$specStr.', '.$year_of_passData.', '.$gradeStr.'<br>';
+
+			
+			// query to add education details
+			$query = "CALL add_res_education('".$fun->is_white_space($mysql->real_escape_str($gradeData))."',
+				'".$mysql->real_escape_str($year_of_passData)."','".$fun->is_white_space($mysql->real_escape_str($collegeData))."',
+				'".$mysql->real_escape_str($grade_typeData)."','".$fun->is_white_space($mysql->real_escape_str($universityData))."',
+				'".$date."','N','".$mysql->real_escape_str($degreeData)."',
+				'".$mysql->real_escape_str($specializationData)."','".$resume_id."')";
+			try{
+				if(!$result = $mysql->execute_query($query)){
+					throw new Exception('Problem in adding education details');
+				}
+				$row = $mysql->display_result($result);
+				// call the next result
+				$mysql->next_query();
+			}catch(Exception $e){
+				echo 'Caught exception: ',  $e->getMessage(), "\n";
+			}
+		}
+		$edu_id = $row['inserted_id'];
+		
+		// get and insert is recent field
+		$query = "CALL get_is_recent_edu('".$resume_id."')";
+		try{
+			if(!$result = $mysql->execute_query($query)){
+				throw new Exception('Problem in getting is recent details');
+			}
+			$row = $mysql->display_result($result);
+			// call the next result
+			$mysql->next_query();
+		}catch(Exception $e){
+			echo 'Caught exception: ',  $e->getMessage(), "\n";
+		}
+		// query to edit education
+		$query = "CALL edit_edu_is_recent('".$row['id']."')";
+		try{
+			if(!$result = $mysql->execute_query($query)){
+				throw new Exception('Problem in editing is recent details');
+			}
+			$row = $mysql->display_result($result);
+			// call the next result
+			$mysql->next_query();
+		}catch(Exception $e){
+			echo 'Caught exception: ',  $e->getMessage(), "\n";
+		}
+		
+		for($i = 0; $i < $_POST['exp_count']; $i++){
+			$desigData = $_POST['desig_'.$i];
+			$from_year_expData = $_POST['from_year_of_exp_'.$i];
+			$from_month_expData = $_POST['from_month_of_exp_'.$i];
+			$to_year_expData = $_POST['to_year_of_exp_'.$i];
+			$to_month_expData = $_POST['to_month_of_exp_'.$i];
+			$areaData = $_POST['area_'.$i];
+			//$current_locData[] = $_POST['current_loc_'.$i];
+			$companyData = $_POST['company_'.$i];
+			$locationData = $_POST['location_'.$i];
+			$vitalData = $_POST['vital_'.$i];
+			$reporting_toData = $_POST['reporting_to_'.$i];
+			
+			// for snapshot printing
+			// $tot_exp_years = $_POST['year_of_exp_'.$i] == 0 ? '0' : $_POST['year_of_exp_'.$i].'.'.$_POST['month_of_exp_'.$i];
+
+			// $expStr = $fun->show_exp_details($tot_exp_years);
+			$expStr = date('M',$from_month_expData).' '.$from_year_expData.' to '.date('M',$to_month_expData).' '.$to_year_expData;
+			$locationDataCase = ucwords($locationData);
+			// get the designation details
+			$query = "call get_designation_id('".$mysql->real_escape_str($desigData)."')";
+			if(!$result = $mysql->execute_query($query)){
+				throw new Exception('Problem in getting desig. name');
+			}
+			$row = $mysql->display_result($result);
+			$desigStr = $row['desig'];
+			$mysql->next_query();
+			$snap_exp .=  "<div style='margin-bottom:7px;'>".$expStr.'<br>'.ucwords($companyData).', '.ucwords($desigStr).', '.ucfirst($locationData).'</div>';
+			$snap_skill .= $areaData.' ';
+			$snap_exp = $from_month_expData == '' ? 'Fresher' : $snap_exp;
+			
+			// query to add experience details
+			$query = "CALL add_res_experience('".$mysql->real_escape_str($desigData)."',
+			'".$mysql->real_escape_str($from_month_expData)."',
+				'".$mysql->real_escape_str($from_year_expData)."',
+				'".$mysql->real_escape_str($to_month_expData)."',
+				'".$mysql->real_escape_str($to_year_expData)."',
+				'".$fun->is_white_space($mysql->real_escape_str($locationData))."',
+				'".$fun->is_white_space($mysql->real_escape_str($areaData))."',
+				'".$fun->is_white_space($mysql->real_escape_str($companyData))."',
+				'".$fun->is_white_space($mysql->real_escape_str($vitalData))."','N','".$resume_id."',
+				'".$fun->is_white_space($mysql->real_escape_str($reporting_toData))."')";
+			try{
+				if(!$result = $mysql->execute_query($query)){
+					throw new Exception('Problem in adding experience details');
+				}
+				$row = $mysql->display_result($result);
+				$exp_id = $row['inserted_id'];
+				// call the next result
+				$mysql->next_query();
+			}catch(Exception $e){
+				echo 'Caught exception: ',  $e->getMessage(), "\n";
+			}
+		}
+		
+		// get and insert is recent exp field
+		$query = "CALL get_is_recent_exp('".$resume_id."')";
+		try{
+			if(!$result = $mysql->execute_query($query)){
+				throw new Exception('Problem in getting is recent exp details');
+			}
+			$row = $mysql->display_result($result);
+			// call the next result
+			$mysql->next_query();
+		}catch(Exception $e){
+			echo 'Caught exception: ',  $e->getMessage(), "\n";
+		}
+		// query to insert is recent exp
+		$query = "CALL edit_exp_is_recent('".$row['id']."')";
+		try{
+			if(!$result = $mysql->execute_query($query)){
+				throw new Exception('Problem in editing is recent exp details');
+			}
+			$row = $mysql->display_result($result);
+			// call the next result
+			$mysql->next_query();
+		}catch(Exception $e){
+			echo 'Caught exception: ',  $e->getMessage(), "\n";
+		}
+		
+		// query to add req resume details
+		$query = "CALL add_req_resume_status('Validation - Account Holder','Pending','".$created_by."','".$date."','".$position_id."')";
+		try{
+			if(!$result = $mysql->execute_query($query)){
+				throw new Exception('Problem in adding resume requirement status details');
+			}
+			$row = $mysql->display_result($result);
+			$req_res_id = $row['inserted_id'];
+			// call the next result
+			$mysql->next_query();
+		}catch(Exception $e){
+			echo 'Caught exception: ',  $e->getMessage(), "\n";
+		}
+		
+		// get requirement status details
+		$query = "CALL get_requirement_status('".$_SESSION['position_for']."')";
+		try{
+			if(!$result = $mysql->execute_query($query)){
+				throw new Exception('Problem in getting requirement status details');
+			}
+			$row = $mysql->display_result($result);
+			// free the memory
+			$mysql->clear_result($result);
+			// call the next result
+			$mysql->next_query();
+		}catch(Exception $e){
+			echo 'Caught exception: ',  $e->getMessage(), "\n";
+		}
+		if($row['req_status_id'] == '0'){	
+			// query to add req resume details
+			$query = "CALL edit_requirement_status('1','".$_SESSION['position_for']."')";
+			try{
+				if(!$result = $mysql->execute_query($query)){
+					throw new Exception('Problem in adding requirement status details');
+				}
+				$row = $mysql->display_result($result);
+				$requirement_id = $row['affected_rows'];
+				// free the memory
+				$mysql->clear_result($result);
+				// call the next result
+				$mysql->next_query();
+			}catch(Exception $e){
+				echo 'Caught exception: ',  $e->getMessage(), "\n";
+			}
+		}
+		
+		if(!empty($edu_id) && !empty($res_id) && !empty($exp_id) && !empty($resume_id) && !empty($position_id) && !empty($req_res_id)){
+			// header('Location: ../position/view/'.$req_id.'?action=created');
+			$smarty->assign('draft_valid',"Resume details saved as draft");
+		} 
+	}else{
+		if($check_mail['total'] != '0' && $_POST['email'] != ''){
+			$smarty->assign('email_validErr',"Resume with same email address already exists"); 
+		}
+		if($check_mobile['total'] != '0' && $_POST['email'] != ''){
+			$smarty->assign('mobile_validErr',"Resume with same mobile already exists");
+		}
+	}
+}
 $edu = $_POST['edu_count'] ? $_POST['edu_count'] : $edu_tot;
 // post of education fields value
 for($i = 0; $i < $edu; $i++){
@@ -273,6 +614,8 @@ $smarty->assign('degreeData', $degree_data);
 $smarty->assign('degree', $degree);
 $smarty->assign('spec', $spec);
 
+
+
 if($_POST['RESUME_DATA'] == ''){
 	// fetch the resume data
 	$uploaddir = 'uploads/resume/'; 
@@ -284,7 +627,7 @@ if($_POST['RESUME_DATA'] == ''){
 	$smarty->assign('RESUME_DATA', $_POST['RESUME_DATA']);
 }
 
-if(!empty($_POST)){
+if(!empty($_POST) && empty($_POST['hdnSubmit'])){
 		// for retaining skills and rating
 	$smarty->assign('tsrData', $_POST['tsr']);
 	$smarty->assign('bsrData', $_POST['bsr']);

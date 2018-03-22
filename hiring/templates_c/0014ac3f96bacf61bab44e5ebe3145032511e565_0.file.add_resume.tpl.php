@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-03-21 16:17:38
+/* Smarty version 3.1.29, created on 2018-03-22 12:15:16
   from "C:\xampp\htdocs\2017\ctsvn2\cthiring\hiring\templates\add_resume.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5ab2384aae0a13_12483126',
+  'unifunc' => 'content_5ab350fc666798_22053477',
   'file_dependency' => 
   array (
     '0014ac3f96bacf61bab44e5ebe3145032511e565' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn2\\cthiring\\hiring\\templates\\add_resume.tpl',
-      1 => 1521629197,
+      1 => 1521701109,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5ab2384aae0a13_12483126 ($_smarty_tpl) {
+function content_5ab350fc666798_22053477 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\2017\\ctsvn2\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -55,6 +55,11 @@ home"><i class="icon-home"></i></a>
                     </nav>
 				<?php if ($_smarty_tpl->tpl_vars['EXIST_MSG']->value) {?>
 				 <div id="flashMessage" class="alert alert-error"><button type="button" class="close" data-dismiss="alert">×</button><?php echo $_smarty_tpl->tpl_vars['EXIST_MSG']->value;?>
+</div>					
+				<?php }?>
+					
+				<?php if ($_smarty_tpl->tpl_vars['draft_valid']->value) {?>
+				 <div id="flashMessage" class="alert alert-success"><button type="button" class="close" data-dismiss="alert">×</button><?php echo $_smarty_tpl->tpl_vars['draft_valid']->value;?>
 </div>					
 				<?php }?>
 <form action="" id="formID" class="formID" method="post" accept-charset="utf-8">

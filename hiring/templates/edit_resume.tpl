@@ -28,6 +28,10 @@
 				{if $EXIST_MSG}
 				 <div id="flashMessage" class="alert alert-error"><button type="button" class="close" data-dismiss="alert">×</button>{$EXIST_MSG}</div>					
 				{/if}
+				
+				{if $draft_valid}
+				 <div id="flashMessage" class="alert alert-success"><button type="button" class="close" data-dismiss="alert">×</button>{$draft_valid}</div>					
+				{/if}
 <form action="" id="formID" class="formID" method="post" accept-charset="utf-8">
 	<div class="box">
 		<div class="row-fluid">
@@ -554,15 +558,13 @@
 
 <input type="hidden" id="tab_open" value="{$tab_open}"/>
 <div class="form-actions">
-
+	
 	<input class="btn btn-gebo" type="submit" value="Submit">
 	<input type="hidden" name="data[Client][webroot]" value="{$smarty.const.webroot}resume" id="webroot">
 	<a href="javascript:void(0)" class="jsRedirect cancelBtn cancel_event"><input type="button" value="Cancel" class="btn">
 	</a>
-	
-	
-	
-	
+	<input type="hidden" name="hdnSubmit" id="hdnSubmit">
+	<input class="btn btn-success" type="submit" id="draftSave" name="draft" value="Draft"/>
 	
 </div>
  </div>
