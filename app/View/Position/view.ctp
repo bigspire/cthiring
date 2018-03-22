@@ -543,7 +543,12 @@
 								 </div>
 						<?php endif; ?>
 						
-					
+						<?php if($this->request->query['action'] == 'modified'):	?>					
+						<div class="alert alert-success">
+								<a class="close" data-dismiss="alert">×</a>
+								 Resume Modified Successfully
+								 </div>
+						<?php endif; ?>
 						
 					<?php echo $this->Session->flash();?>
 		<span id="update"></span>

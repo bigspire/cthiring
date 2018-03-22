@@ -29,6 +29,10 @@
 				{if $EXIST_MSG}
 				 <div id="flashMessage" class="alert alert-error"><button type="button" class="close" data-dismiss="alert">×</button>{$EXIST_MSG}</div>					
 				{/if}
+					
+				{if $draft_valid}
+				 <div id="flashMessage" class="alert alert-success"><button type="button" class="close" data-dismiss="alert">×</button>{$draft_valid}</div>					
+				{/if}
 <form action="" id="formID" class="formID" method="post" accept-charset="utf-8">
 	<div class="box">
 		<div class="row-fluid">

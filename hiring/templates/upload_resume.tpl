@@ -34,6 +34,12 @@
 								{$ALERT_MSG}
 							</div>
 						{/if}
+						 {if $ALERT_MSG1}
+							<div class="alert alert-info">
+								<a class="close" data-dismiss="alert">×</a>
+								{$ALERT_MSG1}
+							</div>
+						{/if}
 						{if $typeErr}
 							<div class="alert alert-info">
 								<a class="close" data-dismiss="alert">×</a>
