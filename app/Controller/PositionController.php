@@ -1026,7 +1026,7 @@ class PositionController extends AppController {
 			'Resume.notice_period','ResLoc.location','Creator.first_name','ReqResume.modified_date','ReqResume.bill_ctc','ResDoc.resume',
 			'Resume.present_location','Resume.present_ctc_type','Resume.expected_ctc_type', 'ReqResume.id', 'ReqResume.cv_sent_date',
 			'ReqResume.cv_shortlist_date','Reason.reason'),
-			'conditions' => array('requirements_id' => $id,'Position.is_deleted' => 'N','Resume.is_deleted' => 'N'),
+			'conditions' => array('requirements_id' => $id,'Position.is_deleted' => 'N','Resume.is_deleted' => 'N', 'ReqResume.status_title !=' => 'Draft'),
 			'order' => array('Resume.created_date' => 'desc'),'group' => array('ReqResume.id'), 'joins' => $options));		
 			$this->set('resume_data', $data);
 			/*
