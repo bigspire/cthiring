@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-03-13 12:41:20
+/* Smarty version 3.1.29, created on 2018-03-22 17:50:49
   from "C:\xampp\htdocs\2017\ctsvn2\cthiring\hiring\templates\add_formatted_resume.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5aa77998953d83_78088230',
+  'unifunc' => 'content_5ab39fa160a3f5_25498888',
   'file_dependency' => 
   array (
     '1544cafb412b6c8ed9cd8cbe2bd9d4453a61eee3' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn2\\cthiring\\hiring\\templates\\add_formatted_resume.tpl',
-      1 => 1518689730,
+      1 => 1521719976,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5aa77998953d83_78088230 ($_smarty_tpl) {
+function content_5ab39fa160a3f5_25498888 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\2017\\ctsvn2\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -56,6 +56,10 @@ resume">Resumes</a>
 				 <div id="flashMessage" class="alert alert-error"><button type="button" class="close" data-dismiss="alert">×</button><?php echo $_smarty_tpl->tpl_vars['EXIST_MSG']->value;?>
 </div>					
 				<?php }?>	
+				<?php if ($_smarty_tpl->tpl_vars['draft_valid']->value) {?>
+				 <div id="flashMessage" class="alert alert-success"><button type="button" class="close" data-dismiss="alert">×</button><?php echo $_smarty_tpl->tpl_vars['draft_valid']->value;?>
+</div>					
+				<?php }?>
 <form action="" id="formID" class="formID" method="post" accept-charset="utf-8">
 	<div class="box">
 		<div class="row-fluid">
@@ -103,7 +107,8 @@ echo $_smarty_tpl->tpl_vars['last_nameErr']->value;?>
 										<td>	
 										<input type="text" tabindex="3" id="email" name="email" value="<?php echo $_smarty_tpl->tpl_vars['email']->value;?>
 " class="span8">
-										<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['emailErr']->value;?>
+										<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['emailErr']->value;
+echo $_smarty_tpl->tpl_vars['email_validErr']->value;?>
 </label>
 										</td>	
 									</tr>	
@@ -113,7 +118,8 @@ echo $_smarty_tpl->tpl_vars['last_nameErr']->value;?>
 										<td>
 										<input type="text" tabindex="4" name="mobile"  value="<?php echo $_smarty_tpl->tpl_vars['mobile']->value;?>
 " class="span8 ui-autocomplete-input" autocomplete="off">							
-									<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['mobileErr']->value;?>
+									<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['mobileErr']->value;
+echo $_smarty_tpl->tpl_vars['mobile_validErr']->value;?>
  </label>	</td>		
 									</tr>	
 									
@@ -507,7 +513,13 @@ echo $_POST['hobby'];
 							<div class="span6">
 			<table class="table table-bordered dataTable" style="margin-bottom:0;">
 			<tbody>
-			
+						<tr class="tbl_row">
+										<td width="120" class="tbl_column">Company Name <span class="f_req">*</span></td>
+										<td> 
+										<input type="text"  tabindex="" name="company_#index#" value="" id="company_#index#"  class="span8" />
+										<label for="reg_city" generated="true" class="error" id="companyErr_#index#"></label>										
+										</td>
+							</tr>	
 					<tr class="tbl_row">
 										<td width="120" class="tbl_column">Designation <span class="f_req">*</span></td>
 										<td> 
@@ -566,13 +578,7 @@ echo $_POST['hobby'];
 										<label for="reg_city" generated="true" class="error" id="areaErr_#index#"></label>										
 										</td>
 							</tr>
-								<tr class="tbl_row">
-										<td width="120" class="tbl_column">Company Name <span class="f_req">*</span></td>
-										<td> 
-										<input type="text"  tabindex="" name="company_#index#" value="" id="company_#index#"  class="span8" />
-										<label for="reg_city" generated="true" class="error" id="companyErr_#index#"></label>										
-										</td>
-							</tr>	
+							
 							<tr>
 								<td width="120" class="tbl_column">Company Profile <span class="f_req">*</span></td>
 								<td>
@@ -859,7 +865,8 @@ resume" id="webroot">
 	<a href="javascript:void(0)" class="jsRedirect cancel_event cancelBtn">
 	<input type="button" value="Cancel" class="btn">
 	</a>
-	
+	<input type="hidden" name="hdnSubmit" id="hdnSubmit">
+	<input class="btn btn-success" type="submit" id="draftSave" name="draft" value="Draft"/>
 	</div>
 					</form>
          	

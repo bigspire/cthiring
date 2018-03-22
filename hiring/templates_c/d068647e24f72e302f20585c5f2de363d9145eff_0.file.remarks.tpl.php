@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-03-22 15:50:50
+/* Smarty version 3.1.29, created on 2018-03-22 17:14:37
   from "C:\xampp\htdocs\2017\ctsvn2\cthiring\hiring\templates\remarks.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5ab38382da9f57_00064530',
+  'unifunc' => 'content_5ab39725cb1d95_34566515',
   'file_dependency' => 
   array (
     'd068647e24f72e302f20585c5f2de363d9145eff' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn2\\cthiring\\hiring\\templates\\remarks.tpl',
-      1 => 1518689731,
+      1 => 1521719068,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_5ab38382da9f57_00064530 ($_smarty_tpl) {
+function content_5ab39725cb1d95_34566515 ($_smarty_tpl) {
 ?>
 
    
@@ -108,9 +108,6 @@ echo $_POST['remarks'];
 >		
 	 <input type="hidden" value="<?php echo $_smarty_tpl->tpl_vars['redirect_url']->value;?>
 " class="redirect_url"/>		
-	 <?php echo '<script'; ?>
- src="js/main.js"><?php echo '</script'; ?>
->	
 	 
 <?php echo '<script'; ?>
  type="text/javascript">

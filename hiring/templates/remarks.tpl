@@ -77,7 +77,6 @@
 			
 <script src="js/jquery.min.js"></script>		
 	 <input type="hidden" value="{$redirect_url}" class="redirect_url"/>		
-	 <script src="js/main.js"></script>	
 	 
 <script type="text/javascript">
 	$(".cancel").click(function(){

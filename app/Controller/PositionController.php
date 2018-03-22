@@ -249,7 +249,7 @@ class PositionController extends AppController {
 			'Position.created_by' => $this->Session->read('USER.Login.id'));
 		}else if($rec_status =='pending'){
 			// $approveCond = array('Position.status' => 'I', 'Position.is_approve' => 'W');
-			$req_team_cond = array('ReqTeam.is_approve' => 'W');
+			// $req_team_cond = array('ReqTeam.is_approve' => 'W');
 			$approveCond = array('PositionStatus.users_id' => $this->Session->read('USER.Login.id'),'PositionStatus.status' => 'W');
 		}else{ 
 			$req_team_cond = array('ReqTeam.is_approve' => 'A');

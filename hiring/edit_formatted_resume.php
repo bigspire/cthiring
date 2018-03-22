@@ -61,6 +61,346 @@ if($getid !=''){
 	}
 }
 
+// draft validation
+if($_POST['hdnSubmit'] == 1){
+	// echo 'you pressed draft re';die;
+	
+	if(!empty($_POST['email'])){
+		// query to check whether it is exist or not. 
+		$query = "CALL check_email_exist('$getid', '".$fun->is_white_space($mysql->real_escape_str($_POST['email']))."')";
+		// Calling the function that makes the insert
+		try{
+			// calling mysql exe_query function
+			if(!$result = $mysql->execute_query($query)){
+				throw new Exception('Problem in executing to check email exist');
+			}
+			$check_mail = $mysql->display_result($result);
+			// free the memory
+			$mysql->clear_result($result);
+			// call the next result
+			$mysql->next_query();
+		}catch(Exception $e){
+			echo 'Caught exception: ',  $e->getMessage(), "\n";
+		}
+	}else{
+		$check_mail['total'] = '0';
+	}
+	
+	if(!empty($_POST['mobile'])){
+		// query to check whether it is exist or not. 
+		$query = "CALL check_mobile_exist('$getid','".$fun->is_white_space($mysql->real_escape_str($_POST['mobile']))."')";
+		// Calling the function that makes the insert
+		try{
+			// calling mysql exe_query function
+			if(!$result = $mysql->execute_query($query)){
+				throw new Exception('Problem in executing to check mobile exist');
+			}
+			$check_mobile = $mysql->display_result($result);
+			// free the memory
+			$mysql->clear_result($result);
+			// call the next result
+			$mysql->next_query();
+		}catch(Exception $e){
+			echo 'Caught exception: ',  $e->getMessage(), "\n";
+		}
+	}else{
+		$check_mobile['total'] = '0';
+	}	
+	
+	// assigning the date
+	$date =  $fun->current_date();
+	$modified_by = $_SESSION['user_id'];
+	$total_exp = $_POST['year_of_exp'].'.'.$_POST['month_of_exp'];
+	
+	// save all the data
+	if($check_mail['total'] == '0' && $check_mobile['total'] == '0'){
+		// query to update personal details
+		$query = "CALL edit_full_res_personal('$getid','".$fun->is_white_space($mysql->real_escape_str($_POST['first_name']))."',
+			'".$fun->is_white_space($mysql->real_escape_str($_POST['last_name']))."',
+			'".$mysql->real_escape_str($_POST['email'])."','".$mysql->real_escape_str($_POST['mobile'])."',
+			'".$mysql->real_escape_str($_POST['telephone'])."',
+			'".$fun->is_white_space($mysql->real_escape_str($fun->convert_date($_POST['dob_field'])))."',
+			'".$mysql->real_escape_str($_POST['gender'])."',
+			'".$fun->is_white_space($mysql->real_escape_str($fun->is_white_space($_POST['nationality'])))."',
+			'".$fun->is_white_space($mysql->real_escape_str($fun->is_white_space($_POST['skills'])))."',
+			'".$fun->is_white_space($mysql->real_escape_str($fun->is_white_space($_POST['address'])))."',
+			'".$fun->is_white_space($mysql->real_escape_str($fun->is_white_space($_POST['tech_expert'])))."',
+			'".$fun->is_white_space($mysql->real_escape_str($fun->is_white_space($_POST['hobby'])))."',
+			'".$fun->is_white_space($mysql->real_escape_str($_POST['present_ctc']))."',
+			'".$fun->is_white_space($mysql->real_escape_str($_POST['expected_ctc']))."','".$mysql->real_escape_str($_POST['present_ctc_type'])."',
+			'".$mysql->real_escape_str($_POST['expected_ctc_type'])."','".$mysql->real_escape_str($_POST['marital_status'])."',
+			'".$fun->is_white_space($mysql->real_escape_str($_POST['present_location']))."',
+			'".$fun->is_white_space($mysql->real_escape_str($_POST['native_location']))."',
+ 			'".$mysql->real_escape_str($_POST['notice_period'])."','".$mysql->real_escape_str($_POST['designation_id'])."',
+ 			'".$fun->is_white_space($mysql->real_escape_str($_POST['family']))."','".$mysql->real_escape_str($total_exp)."',
+ 			'".$date."','".$modified_by."','N',
+ 			'".$fun->is_white_space($mysql->real_escape_str($_POST['personality']))."',
+ 			'".$fun->is_white_space($mysql->real_escape_str($_POST['interview_availability']))."',
+			'".$fun->is_white_space($mysql->real_escape_str($_POST['achievement']))."',
+			'".$fun->is_white_space($mysql->real_escape_str($_POST['about_company']))."',
+			'".$fun->is_white_space($mysql->real_escape_str($_POST['candidate_brief']))."',
+			'".$fun->is_white_space($mysql->real_escape_str($_POST['credential_shortlisting']))."',
+			'".$fun->is_white_space($mysql->real_escape_str($_POST['relevant_exposure']))."',
+			'".$fun->is_white_space($mysql->real_escape_str($_POST['vital_info_interview']))."')";
+		try{
+			if(!$result = $mysql->execute_query($query)){
+				throw new Exception('Problem in updating personal details');
+			}
+			$row = $mysql->display_result($result);
+			$resume_id = $row['affected_rows'];
+			// call the next result
+			$mysql->next_query();
+		}catch(Exception $e){
+			echo 'Caught exception: ',  $e->getMessage(), "\n";
+		}
+		
+		if(!empty($resume_id)){
+			// query to delete language details
+			$query = "CALL delete_res_language('$getid')";
+			try{
+				if(!$result = $mysql->execute_query($query)){
+					throw new Exception('Problem in deleting language details');
+				}
+			}catch(Exception $e){
+				echo 'Caught exception: ',  $e->getMessage(), "\n";
+			}
+		
+			foreach($language_list as $key => $val){
+		
+				// query to add language details
+				$query = "CALL add_full_res_language('$getid','".$mysql->real_escape_str($val)."')";
+				try{
+					if(!$result = $mysql->execute_query($query)){
+						throw new Exception('Problem in adding language details');
+					}
+					$row = $mysql->display_result($result);
+					// call the next result
+					$mysql->next_query();
+				}catch(Exception $e){
+					echo 'Caught exception: ',  $e->getMessage(), "\n";
+				}
+			}
+			$language_id = $row['last_inserted_id'];
+		}
+		
+		/*
+		// query to add position for details
+		$query = "CALL edit_req_resume_position('".$modified_by."','".$date."',
+			'".$mysql->real_escape_str($_POST['position_for'])."','$getid')";
+		try{
+			if(!$result = $mysql->execute_query($query)){
+				throw new Exception('Problem in updating position details');
+			}
+			$row = $mysql->display_result($result);
+			$position_id = $row['affected_rows'];
+			// call the next result
+			$mysql->next_query();
+		}catch(Exception $e){
+			echo 'Caught exception: ',  $e->getMessage(), "\n";
+		}
+		*/
+		
+		// query to delete education details
+		$query = "CALL delete_res_edu('$getid')";
+		try{
+			if(!$result = $mysql->execute_query($query)){
+				throw new Exception('Problem in deleting education details');
+			}
+		}catch(Exception $e){
+			echo 'Caught exception: ',  $e->getMessage(), "\n";
+		}
+		
+		for($i = 0; $i < $_POST['edu_count']; $i++){
+			
+			$collegeData = $_POST['college_'.$i];
+			$specializationData = $_POST['specialization_'.$i];
+			$degreeData = $_POST['degree_'.$i];
+			$gradeData = $_POST['grade_'.$i];
+			$grade_typeData = $_POST['grade_type_'.$i];
+			$year_of_passData = $_POST['from_yr_'.$i];
+			$loactionData = $_POST['location_'.$i];
+			$universityData = $_POST['university_'.$i];
+		
+			// query to update education details
+			$query = "CALL add_full_res_education('$getid','".$fun->is_white_space($mysql->real_escape_str($gradeData))."',
+				'".$mysql->real_escape_str($year_of_passData)."','".$fun->is_white_space($mysql->real_escape_str($collegeData))."',
+				'".$mysql->real_escape_str($grade_typeData)."','".$fun->is_white_space($mysql->real_escape_str($universityData))."',
+				'".$fun->is_white_space($mysql->real_escape_str($loactionData))."','".$date."','N',
+				'".$mysql->real_escape_str($degreeData)."','".$mysql->real_escape_str($specializationData)."')";
+			try{
+				if(!$result = $mysql->execute_query($query)){
+					throw new Exception('Problem in update education details');
+				}
+				$row = $mysql->display_result($result);
+				// call the next result
+				$mysql->next_query();
+			}catch(Exception $e){
+				echo 'Caught exception: ',  $e->getMessage(), "\n";
+			}
+		}
+		$edu_id = $row['last_inserted_id'];
+		
+		// get and insert is recent field
+		$query = "CALL get_is_recent_edu('".$getid."')";
+		try{
+			if(!$result = $mysql->execute_query($query)){
+				throw new Exception('Problem in getting is recent details');
+			}
+			$row = $mysql->display_result($result);
+			// call the next result
+			$mysql->next_query();
+		}catch(Exception $e){
+			echo 'Caught exception: ',  $e->getMessage(), "\n";
+		}
+		// query to edit education
+		$query = "CALL edit_edu_is_recent('".$row['id']."')";
+		try{
+			if(!$result = $mysql->execute_query($query)){
+				throw new Exception('Problem in editing is recent details');
+			}
+			$row = $mysql->display_result($result);
+			// free the memory
+			$mysql->clear_result($result);
+			// call the next result
+			$mysql->next_query();
+		}catch(Exception $e){
+			echo 'Caught exception: ',  $e->getMessage(), "\n";
+		}
+		
+		// query to delete experience details
+		$query = "CALL delete_res_exp('$getid')";
+		try{
+			if(!$result = $mysql->execute_query($query)){
+				throw new Exception('Problem in deleting experience details');
+			}
+		}catch(Exception $e){
+			echo 'Caught exception: ',  $e->getMessage(), "\n";
+		}
+		
+		for($i = 0; $i < $_POST['exp_count']; $i++){
+			$desigData = $_POST['desig_'.$i];
+			$from_year_exp = $_POST['from_year_of_exp_'.$i];
+			$from_month_exp = $_POST['from_month_of_exp_'.$i];
+			$to_year_exp = $_POST['to_year_of_exp_'.$i];
+			$to_month_exp = $_POST['to_month_of_exp_'.$i];
+			$areaData = $_POST['area_'.$i];
+			$companyData = $_POST['company_'.$i];
+			$vitalData = $_POST['vital_'.$i];
+			$company_profileData = $_POST['company_profile_'.$i];
+			$worklocData = $_POST['workloc_'.$i];
+			$key_responsibilityData = $_POST['key_responsibility_'.$i];
+			$key_achievementData = $_POST['key_achievement_'.$i];
+			$reporting_toData = $_POST['reporting_to_'.$i];
+			
+			// query to add experience details
+			$query = "CALL add_full_res_experience('$getid','".$mysql->real_escape_str($desigData)."',
+				'".$mysql->real_escape_str($from_month_exp)."',
+				'".$mysql->real_escape_str($from_year_exp)."',
+				'".$mysql->real_escape_str($to_month_exp)."',
+				'".$mysql->real_escape_str($to_year_exp)."',
+				'".$fun->is_white_space($mysql->real_escape_str($worklocData))."',
+				'".$fun->is_white_space($mysql->real_escape_str($areaData))."',
+				'".$fun->is_white_space($mysql->real_escape_str($companyData))."',
+				'".$fun->is_white_space($mysql->real_escape_str($vitalData))."','N',
+				'".$fun->is_white_space($mysql->real_escape_str($company_profileData))."',
+				'".$fun->is_white_space($mysql->real_escape_str($key_responsibilityData))."',
+				'".$fun->is_white_space($mysql->real_escape_str($key_achievementData))."',
+				'".$fun->is_white_space($mysql->real_escape_str($reporting_toData))."')";
+			try{
+				if(!$result = $mysql->execute_query($query)){
+					throw new Exception('Problem in updating experience details');
+				}
+				$row = $mysql->display_result($result);
+				$exp_id = $row['last_inserted_id'];
+				// free the memory
+				$mysql->clear_result($result);
+				// call the next result
+				$mysql->next_query();
+			}catch(Exception $e){
+				echo 'Caught exception: ',  $e->getMessage(), "\n";
+			}
+		}
+		
+		// get and insert is recent exp field
+		$query = "CALL get_is_recent_exp('".$getid."')";
+		try{
+			if(!$result = $mysql->execute_query($query)){
+				throw new Exception('Problem in getting is recent exp details');
+			}
+			$row = $mysql->display_result($result);
+			// call the next result
+			$mysql->next_query();
+		}catch(Exception $e){
+			echo 'Caught exception: ',  $e->getMessage(), "\n";
+		}
+		// query to insert is recent exp
+		$query = "CALL edit_exp_is_recent('".$row['id']."')";
+		try{
+			if(!$result = $mysql->execute_query($query)){
+				throw new Exception('Problem in editing is recent exp details');
+			}
+			$row = $mysql->display_result($result);
+			// call the next result
+			$mysql->next_query();
+		}catch(Exception $e){
+			echo 'Caught exception: ',  $e->getMessage(), "\n";
+		}
+		
+		// query to delete training details
+		$query = "CALL delete_res_training('$getid')";
+		try{
+			if(!$result = $mysql->execute_query($query)){
+				throw new Exception('Problem in deleting training details');
+			}
+			$row = $mysql->display_result($result);
+		}catch(Exception $e){
+			echo 'Caught exception: ',  $e->getMessage(), "\n";
+		}
+		
+		
+		for($i = 0; $i < $_POST['train_count']; $i++){
+			$train_yearData = $_POST['train_year_'.$i];
+			$descriptionData = $_POST['description_'.$i];
+			$programtitleData = $_POST['programtitle_'.$i];
+			$train_locationData = $_POST['train_location_'.$i];
+			
+			// query to add experience details
+			$query = "CALL add_full_res_training('$getid','".$mysql->real_escape_str($train_yearData)."',
+				'".$fun->is_white_space($mysql->real_escape_str($descriptionData))."',
+				'".$fun->is_white_space($mysql->real_escape_str($programtitleData))."',
+				'".$fun->is_white_space($mysql->real_escape_str($train_locationData))."','N')";
+			try{
+				if(!$result = $mysql->execute_query($query)){
+					throw new Exception('Problem in updating training details');
+				}
+				$row = $mysql->display_result($result);
+				$train_id = $row['last_inserted_id'];
+				// free the memory
+				$mysql->clear_result($result);
+				// call the next result
+				$mysql->next_query();
+			}catch(Exception $e){
+				echo 'Caught exception: ',  $e->getMessage(), "\n";
+			}
+		}
+		if(!empty($edu_id) && !empty($exp_id) && !empty($train_id) && !empty($language_id) && !empty($resume_id)){
+			$req_id = $_SESSION['position_for'];
+			unset($_SESSION['position_for']);
+			unset($_SESSION['resume_doc']);
+			unset($_SESSION['clients_id']);
+			header('Location: ../position/view/'.$req_id.'?action=created');
+			// $smarty->assign('draft_valid',"Resume details saved as draft");
+		}
+	}else{
+			if($check_mail['total'] != '0'){
+				$smarty->assign('email_validErr',"Resume with same email address already exists"); 
+			}
+			if($check_mobile['total'] != '0'){
+				$smarty->assign('mobile_validErr',"Resume with same mobile already exists");
+			}
+	}
+}
+	
 // get database values
 if(empty($_POST)){
 	$query = "CALL get_full_res_personal_byid('$getid')";
@@ -532,7 +872,7 @@ try{
 
 
 
-if(!empty($_POST)){
+if(!empty($_POST) && empty($_POST['hdnSubmit'])){
 	
 	// post of education fields value
 	for($i = 0; $i < $_POST['edu_count']; $i++){

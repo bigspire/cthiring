@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-03-20 09:17:39
+/* Smarty version 3.1.29, created on 2018-03-22 17:29:45
   from "C:\xampp\htdocs\2017\ctsvn2\cthiring\hiring\templates\edit_formatted_resume.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5ab0845bbf1474_78773974',
+  'unifunc' => 'content_5ab39ab1ce8fc8_82440243',
   'file_dependency' => 
   array (
     'a6d30e5eea955f26392c3640220a73a44cb14d66' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn2\\cthiring\\hiring\\templates\\edit_formatted_resume.tpl',
-      1 => 1521202734,
+      1 => 1521719980,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5ab0845bbf1474_78773974 ($_smarty_tpl) {
+function content_5ab39ab1ce8fc8_82440243 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\2017\\ctsvn2\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -56,6 +56,10 @@ resume">Resumes</a>
 				 <div id="flashMessage" class="alert alert-error"><button type="button" class="close" data-dismiss="alert">×</button><?php echo $_smarty_tpl->tpl_vars['EXIST_MSG']->value;?>
 </div>					
 				<?php }?>	
+				<?php if ($_smarty_tpl->tpl_vars['draft_valid']->value) {?>
+				 <div id="flashMessage" class="alert alert-success"><button type="button" class="close" data-dismiss="alert">×</button><?php echo $_smarty_tpl->tpl_vars['draft_valid']->value;?>
+</div>					
+				<?php }?>
 <form action="" id="formID" class="formID" method="post" accept-charset="utf-8">
 	<div class="box">
 		<div class="row-fluid">
@@ -861,7 +865,8 @@ resume" id="webroot">
 	<a href="javascript:void(0)" class="jsRedirect cancel_event cancelBtn">
 	<input type="button" value="Cancel" class="btn">
 	</a>
-	
+	<input type="hidden" name="hdnSubmit" id="hdnSubmit">
+	<input class="btn btn-success" type="submit" id="draftSave" name="draft" value="Draft"/>
 	</div>
 					</form>
          	
