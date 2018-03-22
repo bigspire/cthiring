@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-03-16 16:34:03
+/* Smarty version 3.1.29, created on 2018-03-21 16:17:38
   from "C:\xampp\htdocs\2017\ctsvn2\cthiring\hiring\templates\add_resume.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5aaba4a39d3254_97493701',
+  'unifunc' => 'content_5ab2384aae0a13_12483126',
   'file_dependency' => 
   array (
     '0014ac3f96bacf61bab44e5ebe3145032511e565' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn2\\cthiring\\hiring\\templates\\add_resume.tpl',
-      1 => 1521198055,
+      1 => 1521629197,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5aaba4a39d3254_97493701 ($_smarty_tpl) {
+function content_5ab2384aae0a13_12483126 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\2017\\ctsvn2\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -709,16 +709,20 @@ $_smarty_tpl->tpl_vars['bs_data'] = $__foreach_bs_data_1_saved_item;
 ">	
 
 <div class="form-actions">
-	<input class="btn btn-gebo" type="submit" value="Submit">
+	<input class="btn btn-gebo" name="submit "type="submit" value="Submit">
 	<input type="hidden" name="data[Client][webroot]" value="<?php echo @constant('webroot');?>
 resume" id="webroot">
 
 	<a href="javascript:void(0)" class="jsRedirect cancelBtn cancel_event">
 	<input type="button" value="Cancel" class="btn">
 	</a>
-	
+
+	<input type="hidden" name="hdnSubmit" id="hdnSubmit">
+	<input class="btn btn-success" type="submit" id="draftSave" name="draft" value="Draft"/>
 </div>
- </div>
+
+</div>
+
 	</div>
 	</div>
 	</form>
@@ -1153,7 +1157,7 @@ $(document).ready(function(){
 			else $('#form1').submit();
 		});
 	});
-	
+		
 });
 <?php echo '</script'; ?>
 >	

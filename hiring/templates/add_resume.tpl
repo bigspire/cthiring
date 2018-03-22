@@ -571,15 +571,19 @@
 <input type="hidden" id="end_date" name="end_date" value="{$dob_default}">	
 
 <div class="form-actions">
-	<input class="btn btn-gebo" type="submit" value="Submit">
+	<input class="btn btn-gebo" name="submit "type="submit" value="Submit">
 	<input type="hidden" name="data[Client][webroot]" value="{$smarty.const.webroot}resume" id="webroot">
 
 	<a href="javascript:void(0)" class="jsRedirect cancelBtn cancel_event">
 	<input type="button" value="Cancel" class="btn">
 	</a>
-	
+
+	<input type="hidden" name="hdnSubmit" id="hdnSubmit">
+	<input class="btn btn-success" type="submit" id="draftSave" name="draft" value="Draft"/>
 </div>
- </div>
+
+</div>
+
 	</div>
 	</div>
 	</form>
