@@ -383,12 +383,12 @@ if($_POST['hdnSubmit'] == 1){
 				echo 'Caught exception: ',  $e->getMessage(), "\n";
 			}
 		}
-		if(!empty($edu_id) && !empty($exp_id) && !empty($train_id) && !empty($language_id) && !empty($resume_id)){
+		if(!empty($edu_id) && !empty($exp_id) && !empty($train_id)  && !empty($resume_id)){
 			$req_id = $_SESSION['position_for'];
 			unset($_SESSION['position_for']);
 			unset($_SESSION['resume_doc']);
 			unset($_SESSION['clients_id']);
-			header('Location: ../position/view/'.$req_id.'?action=created');
+			header('Location: ../position/view/'.$req_id.'?action=modified');
 			// $smarty->assign('draft_valid',"Resume details saved as draft");
 		}
 	}else{

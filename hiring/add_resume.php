@@ -320,38 +320,6 @@ if($_POST['hdnSubmit'] == 1){
 			echo 'Caught exception: ',  $e->getMessage(), "\n";
 		}
 		
-		// get requirement status details
-		$query = "CALL get_requirement_status('".$_SESSION['position_for']."')";
-		try{
-			if(!$result = $mysql->execute_query($query)){
-				throw new Exception('Problem in getting requirement status details');
-			}
-			$row = $mysql->display_result($result);
-			// free the memory
-			$mysql->clear_result($result);
-			// call the next result
-			$mysql->next_query();
-		}catch(Exception $e){
-			echo 'Caught exception: ',  $e->getMessage(), "\n";
-		}
-		if($row['req_status_id'] == '0'){	
-			// query to add req resume details
-			$query = "CALL edit_requirement_status('1','".$_SESSION['position_for']."')";
-			try{
-				if(!$result = $mysql->execute_query($query)){
-					throw new Exception('Problem in adding requirement status details');
-				}
-				$row = $mysql->display_result($result);
-				$requirement_id = $row['affected_rows'];
-				// free the memory
-				$mysql->clear_result($result);
-				// call the next result
-				$mysql->next_query();
-			}catch(Exception $e){
-				echo 'Caught exception: ',  $e->getMessage(), "\n";
-			}
-		}
-		
 		if(!empty($edu_id) && !empty($res_id) && !empty($exp_id) && !empty($resume_id) && !empty($position_id) && !empty($req_res_id)){
 			$req_id = $_SESSION['position_for'];
 			unset($_SESSION['position_for']);
