@@ -122,6 +122,14 @@ class Position extends AppModel {
                 'message'  => 'Please select no. of openings'
             )
         ),
+		'total_opening' => array(		
+            'empty' => array(
+                'rule'     => 'notEmpty',
+                'required' => true,
+                'message'  => 'Please select no. of openings'
+            )
+        ),
+		
 		'team_member_req' => array(		
             'empty' => array(
                 'rule'     => 'validate_team',

@@ -301,6 +301,8 @@ class PositionController extends AppController {
 		$this->load_static_data();
 		// get exp list
 		$this->set('expList', $this->Functions->get_experience());
+		$this->set('openingList', $this->Functions->get_no_opening());
+		
 		// assign the ctc type
 		$this->set('ctcList', array('L' => 'Lacs'));
 		// resume hide and resume types
@@ -327,7 +329,7 @@ class PositionController extends AppController {
 			// validate the form fields
 			if ($this->Position->validates(array('fieldList' => array('clients_id','client_contact_id','job_title','location','max_exp',
 			'ctc_to_type','skills','team_member_req','end_date','function_area_id','status','job_desc','education','tech_skill','behav_skill',
-			'hide_contact','resume_type','job_code','is_rpo')))){
+			'hide_contact','resume_type','job_code','is_rpo','total_opening')))){
 				// format the dates
 				$this->request->data['Position']['start_date'] = $this->Functions->format_date_save($this->request->data['Position']['start_date']);
 				$this->request->data['Position']['end_date'] = $this->Functions->format_date_save($this->request->data['Position']['end_date']);
@@ -451,6 +453,7 @@ class PositionController extends AppController {
 				$this->load_static_data();
 				// get exp list
 				$this->set('expList', $this->Functions->get_experience());
+				$this->set('openingList', $this->Functions->get_no_opening());
 				// assign the ctc type
 				$this->set('ctcList', array('L' => 'Lacs'));
 				// resume hide and resume types
@@ -471,7 +474,7 @@ class PositionController extends AppController {
 					// validate the form fields
 					if($this->Position->validates(array('fieldList' => array('clients_id','client_contact_id','job_title','location','max_exp',
 					'ctc_from','ctc_to','ctc_from_type','ctc_to_type','skills','team_member_req','end_date','function_area_id','job_desc',
-					'education','tech_skill','behav_skill',	'hide_contact','resume_type','job_code','rev_remarks','is_rpo')))){
+					'education','tech_skill','behav_skill',	'hide_contact','resume_type','job_code','rev_remarks','is_rpo','total_opening')))){
 						// format the dates
 						$this->request->data['Position']['start_date'] = $this->Functions->format_date_save($this->request->data['Position']['start_date']);
 						$this->request->data['Position']['end_date'] = $this->Functions->format_date_save($this->request->data['Position']['end_date']);
@@ -884,7 +887,7 @@ class PositionController extends AppController {
 	/* function to view the position */
 	public function view($id, $st_id){
 		// set the page title
-		$view_title = $this->Functions->get_view_type($this->request->params['pass'][2]);
+		$view_title = $this->Functions->get_view_type($this->request->params['pass'][4]);
 		$this->set('title_for_layout', $view_title.' Position - Manage Hiring');	
 		$this->set('stList', $this->get_status_details());
 		// authorize user before action
@@ -1427,11 +1430,14 @@ class PositionController extends AppController {
 				$from = ucfirst($this->Session->read('USER.Login.first_name')).' '.ucfirst($this->Session->read('USER.Login.last_name'));
 				$to_name = $contact_data['Contact']['first_name'].' '.$contact_data['Contact']['last_name'];
 				// send mail to client 
-				$contact_data['Contact']['email'] = 'testing7@bigspire.com'; // for testing
+				// $contact_data['Contact']['email'] = 'testing7@bigspire.com'; // for testing
 				$vars = array('from_name' => $from, 'to_name' => ucwords($to_name), 'position' => $this->request->data['Position']['job_title'],'msg'=> $message, 'location' => $this->request->data['Position']['location']);
 				// save the mail box
 				$this->save_mail_box($subject, $message, $req_res_id, 'C',1);
-				if(!$this->send_email($subject, 'send_cv', $this->Session->read('USER.Login.email_id'), $contact_data['Contact']['email'],$vars,$resume_path)){	
+				// send cc mails
+				$cc = explode(',', $this->request->data['Position']['client_cc']);					
+
+				if(!$this->send_email($subject, 'send_cv', $this->Session->read('USER.Login.email_id'), $contact_data['Contact']['email'],$vars,$resume_path,$cc)){	
 					// show the msg.								
 					$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Problem in sending the mail to client...', 'default', array('class' => 'alert alert-error'));				
 				}else{						
@@ -2331,7 +2337,7 @@ class PositionController extends AppController {
 								
 								$from = ucfirst($this->Session->read('USER.Login.first_name')).' '.ucfirst($this->Session->read('USER.Login.last_name'));
 								// send mail to client 
-								$resume_data['Resume']['email_id'] = 'testing7@bigspire.com'; // for testing
+								// $resume_data['Resume']['email_id'] = 'testing7@bigspire.com'; // for testing
 								$vars = array('from_name' => $from, 'to_name' => ucwords($to_name), 'msg'=> $message);
 								// save the mail box
 								$this->save_mail_box($subject, $message, $req_res_id, 'R',3);
@@ -2396,13 +2402,18 @@ class PositionController extends AppController {
 					$from = ucfirst($this->Session->read('USER.Login.first_name')).' '.ucfirst($this->Session->read('USER.Login.last_name'));
 					$to_name = $contact_data['Contact']['first_name'].' '.$contact_data['Contact']['last_name'];
 					// send mail to client 
-					$contact_data['Contact']['email'] = 'testing7@bigspire.com'; // for testing
+					// $contact_data['Contact']['email'] = 'testing7@bigspire.com'; // for testing
 					$vars = array('from_name' => $from, 'to_name' => ucwords($to_name),'msg'=> $message);
 					// save the mail box
 					$this->save_mail_box($subject, $message, $req_res_id, 'C',2);
-					
+					// send cc to client
+					$cc = explode(',', $this->request->data['Position']['client_cc']);					
+					if($this->request->data['Position']['client_attach']['tmp_name'] != ''){
+						$attach_file = date('ymdhis').'_'.$this->request->data['Position']['client_attach']['name'];
+						$attach = $this->upload_attachment($this->request->data['Position']['client_attach'], $attach_file);
+					}			
 					// send mail
-					if(!$this->send_email($subject, 'confirm_interview', $this->Session->read('USER.Login.email_id'), $contact_data['Contact']['email'], $vars)){	
+					if(!$this->send_email($subject, 'confirm_interview', $this->Session->read('USER.Login.email_id'), $contact_data['Contact']['email'], $vars, $attach, $cc)){
 						// show the msg.								
 						$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Problem in sending the mail to candidate...', 'default', array('class' => 'alert alert-error'));				
 					}						
@@ -2412,6 +2423,16 @@ class PositionController extends AppController {
 			}
 		}
 			
+	}
+	
+	/* function to upload the photo */
+	public function upload_attachment($data, $file){			
+		if(!empty($data['tmp_name'])){
+			$attach_path = '../../hiring/uploads/attachment/'.$file;
+			if($this->upload_file($data['tmp_name'], $attach_path)){
+				return $attach_path;
+			}			
+		}			
 	}
 	
 	/* function to show the view interview */

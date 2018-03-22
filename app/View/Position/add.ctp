@@ -265,6 +265,22 @@
 						
 																	
 				
+				
+				
+				
+				  <tr class="">
+										<td width="120" class="tbl_column">Total Openings <span class="f_req">*</span></td>
+										<td>	
+										
+		<?php echo $this->Form->input('total_opening', array('div'=> false,'type' => 'select', 'label' => false, 
+		'class' => 'span8 input-xlarge', 'empty' => 'Select', 'required' => false, 'placeholder' => '', 
+		'style' => "clear:left", 'options' => $openingList, 'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 
+					
+	
+										</td>	
+									</tr>
+									
+									
 				  <tr class="">
 						<td width="120" class="tbl_column">Recruiters <span class="f_req">*</span></td>
 						<td>	
@@ -353,7 +369,7 @@
 									</tr>
 				  
 				     <tr class="tbl_row">
-										<td width="120">Hide Resume Contacts <span class="f_req">*</span></td>
+										<td width="120" class="tbl_column">Hide Resume Contacts <span class="f_req">*</span></td>
 										<td>	
 	<?php echo $this->Form->input('hide_contact', array('div'=> false,'type' => 'radio', 'label' => false,  'style' => 'margin:4px 2px', 'class' => 'input-xlarge', 
 	'options' => $hide_contacts, 'separator' => ' ', 'id' => '',  'required' => false, 'placeholder' => '', 

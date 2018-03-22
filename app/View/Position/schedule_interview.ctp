@@ -18,7 +18,7 @@
 		
 		<?php
 		if($cv_update_status == ''):?>					
-<?php echo $this->Form->create('Position', array('id' => '', 'class' => 'formID')); ?>
+<?php echo $this->Form->create('Position', array('id' => '', 'class' => 'formID', 'enctype' => "multipart/form-data")); ?>
 <div class="box">
 	<div class="box-title mb5">
 			<h4>Schedule Interview</h4>
@@ -157,6 +157,15 @@
 				<tbody> 
 				
 				
+					<tr class="tbl_row" >
+					<td width="150" class="tbl_column">Candidate(s)
+					</td>
+						<td>
+						<?php echo $this->Form->input('candidate', array('div'=> false,'type' => 'text', 'label' => false, 'class' => 'span8', 'readonly' => 'readonly', 'value' => $candidate_name,   'required' => false, 'placeholder' => '')); ?> 					
+						</td>	
+				</tr>
+				
+			
 				
 					<tr class="tbl_row" >
 					<td width="120" class="tbl_column">Subject <span class="f_req">*</span>
@@ -192,7 +201,21 @@
 															<table class="table table-bordered dataTable" align="centre">
 				<tbody> 
 				
+					<tr class="tbl_row" >
+					<td width="120" class="tbl_column">Client  
+					</td>
+						<td>
+						<?php echo $this->Form->input('client_name', array('div'=> false,'type' => 'text', 'label' => false, 'class' => 'span8', 'readonly' => 'readonly', 'value' => $this->request->query['client_name'],   'required' => false, 'placeholder' => '')); ?> 					
+						</td>	
+				</tr>
 				
+					<tr class="tbl_row" >
+					<td width="120" class="tbl_column">Cc  
+					</td>
+						<td>
+						<?php echo $this->Form->input('client_cc', array('div'=> false,'type' => 'text', 'label' => false, 'class' => 'span8',   'required' => false, 'placeholder' => 'Add multiple emails separated by comma')); ?> 					
+						</td>	
+				</tr>
 				
 					<tr class="tbl_row" >
 					<td width="120" class="tbl_column">Subject <span class="f_req">*</span>
@@ -216,6 +239,20 @@
 
 					</td>	
 				</tr>
+				
+				<tr class="tbl_row" >
+					<td width="120" class="tbl_column">Attachment 
+					</td>
+						<td>
+					<?php echo $this->Form->input('client_attach', array('div'=> false,'type' => 'file', 'label' => false, 
+					'class' => 'span10',  
+					'required' => false, 'placeholder' => '', 
+					'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 
+
+					</td>	
+				</tr>
+				
+				
 				</tbody>
 			</table>
 			<div class="form-actions">

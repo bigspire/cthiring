@@ -132,8 +132,14 @@
 								<?php foreach($data as $client):?>
 									<tr>
 										
-										<td><a rel="tooltip" title="Click to view the details" href="<?php echo $this->webroot;?>client/view/<?php echo $client['Client']['id'];?>/<?php echo $client[0]['st_id'];?>/<?php echo $client['Client']['created_by'];?>/<?php echo $this->request->params['pass'][0];?>/"><?php echo ucwords($client['Client']['client_name']);?></a></td>
-										<td><?php echo $client['Client']['city'];?></td>
+										<td><a rel="tooltip" title="Click to view the details" href="<?php echo $this->webroot;?>client/view/<?php echo $client['Client']['id'];?>/<?php echo $client[0]['st_id'];?>/<?php echo $client['Client']['created_by'];?>/<?php echo $client[0]['req_read_id'];?>/<?php echo $client['ClientRead']['status'];?>/<?php echo $this->request->params['pass'][0];?>"><?php echo ucwords($client['Client']['client_name']);?></a>
+										
+										<?php  if($client[0]['req_read_id'] != '' && $client['ClientRead']['status'] == 'U' && $this->Session->read('USER.Login.roles_id') == '34'):?>
+										<span rel="tooltip" title="New Client" class="label label-warning">New</span>			
+										<?php endif; ?>
+										
+										</td>
+										<td><?php echo ucfirst($client['Client']['city']);?></td>
 										<td><?php echo ucfirst($client['ResLocation']['location']);?></td>
 										
 										<?php if($this->request->params['pass'][0] != 'pending'):?>

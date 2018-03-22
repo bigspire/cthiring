@@ -52,6 +52,14 @@ class FunctionsComponent extends Component {
 		}
 	}
 	
+	/* function for job openings count */
+	public function get_no_opening(){
+		for($i = 1; $i <= 50; $i++){
+			$no_job[$i] = $i;
+		}
+		return $no_job;
+	}
+	
 		/* function to format the date to save */
 	public function format_date_time_save($date){ 
 		$split_date =  split("[/: ]", $date); 
