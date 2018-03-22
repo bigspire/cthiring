@@ -46,14 +46,14 @@ class NotificationController extends AppController {
 			)
 			*/
 		);		
-		/*
-		$last_updated = date('Y-m-d', strtotime('-10 days'));	
+		
+		$last_updated = date('Y-m-d', strtotime('-30 days'));	
 		$date_cond = array('OR' => array(
 					array('Notification.modified_date <=' =>  $last_updated, 'Notification.modified_date' => NULL),
 					array('Notification.modified_date <=' =>  $last_updated)					
 				)
 			);				
-		*/
+		
 		$this->paginate = array('fields' => $fields,'limit' => '100','conditions' => array($date_cond, 'Notification.created_by' => $this->Session->read('USER.Login.id'),
 		'Notification.is_deleted' => 'N', 'Notification.status' => 'A','Notification.req_status_id' => array('0','1')), 'order' => array('Notification.created_date' => 'desc'),	'group' => array('Notification.id'), 'joins' => $options);
 		
@@ -89,9 +89,8 @@ class NotificationController extends AppController {
 				)
 			
 			);	
-		$status_list = array('Pending','Validated','CV-Sent','Shortlisted','Scheduled','Re-Scheduled','Offer Pending','Selected',
-		'Offer Accepted','Joined','Deferred');
-		$last_updated = date('Y-m-d', strtotime('-30 days'));	
+		$status_list = array('Pending','CV-Sent','Scheduled','Re-Scheduled','Offer Pending','Selected',	'Offer Pending');
+		$last_updated = date('Y-m-d', strtotime('-180 days'));	
 		$date_cond = array('OR' => array(
 					array('ReqResume.created_date <=' =>  $last_updated, 'ReqResume.modified_date' => NULL),
 					array('ReqResume.modified_date <=' =>  $last_updated),
@@ -179,7 +178,7 @@ class NotificationController extends AppController {
 							$user_data = $this->ReqTeam->find('all', array('conditions' => array('ReqTeam.requirements_id' => $id,
 							'ReqTeam.is_approve' => 'A'),'fields' => array('Creator.first_name','Creator.last_name','Creator.email_id'),
 							'joins' => $options));						
-							// send mail to account holder and recruiters
+							// send mail to recruiters
 							foreach($user_data as $user){						
 								$from = ucfirst($user['Creator']['first_name']).' '.ucfirst($user['Creator']['last_name']);									
 								$vars = array('to_name' => $from, 'from_name' => ucwords($this->Session->read('USER.Login.first_name').' '.$this->Session->read('USER.Login.last_name')), 
@@ -193,9 +192,21 @@ class NotificationController extends AppController {
 									// show the msg.								
 									$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Problem in sending the mail to user...', 'default', array('class' => 'alert alert-error'));				
 								}else{
-									$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Position '.$approve_msg.' Successfully.', 'default', array('class' => 'alert alert-success'));
+									//$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Position '.$approve_msg.' Successfully.', 'default', array('class' => 'alert alert-success'));
 								}
 							}
+							// send notification mail to business head
+							$leader_data = $this->Notification->Creator->find('all', array('conditions' => array('roles_id' => '38'), 'fields' => array('Creator.id',	'Creator.first_name','Creator.last_name', 'Creator.email_id')));
+							$from = ucfirst($leader_data[0]['Creator']['first_name']).' '.ucfirst($leader_data[0]['Creator']['last_name']);	
+							$vars = array('to_name' => $from, 'from_name' => ucwords($this->Session->read('USER.Login.first_name').' '.$this->Session->read('USER.Login.last_name')),'position' => $position_data[0]['Notification']['job_title'],'client_name' => $position_data[0]['Client']['client_name'], 'location' => $position_data[0]['Notification']['location'], 'remarks' => $this->request->data['Notification']['remark_not_billable'],'reason' => $position_data[0]['Reason2']['reason']);
+							// notify business head						
+							if(!$this->send_email('Manage Hiring - Position status changed to Not Billable by '.ucfirst($this->Session->read('USER.Login.first_name')).' '.ucfirst($this->Session->read('USER.Login.last_name')),
+							'position_status', 'noreply@managehiring.com', $leader_data[0]['Creator']['email_id'],$vars)){		
+								// show the msg.								
+								$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Problem in sending the mail to business head ...', 'default', array('class' => 'alert alert-error'));				
+							}else{
+								//$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Position '.$approve_msg.' Successfully.', 'default', array('class' => 'alert alert-success'));
+							}							
 							// if successfully update
 							$this->set('form_status', 1);
 							$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Status Updated Successfully', 'default', array('class' => 'alert alert-success'));									
