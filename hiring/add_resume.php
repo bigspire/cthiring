@@ -21,6 +21,13 @@ include('classes/class.mailer.php');
 // content class
 include('classes/class.content.php');
 
+
+
+if(!empty($_POST['hdnSubmit'])){
+	echo 'you pressed draft re';die;
+}
+
+
 if(empty($_SESSION['resume_doc_id'])){
 	header('Location: ../?access=invalid');
 }
@@ -196,6 +203,9 @@ try{
 }
 
 
+
+
+// if(!empty($_POST['submit'])){
 if(!empty($_POST)){
 	// for retaining skills and rating
 	$smarty->assign('tsrData', $_POST['tsr']);
@@ -936,6 +946,9 @@ if(!empty($_POST)){
 		$smarty->assign('tab_open', ($tab1 == 'fail' ? 'tab1' : ($tab2 == 'fail' ? 'tab2' : ($tab3 == 'fail' ? 'tab3' : 'tab4' ))));
 	}
 }
+
+
+
 
 // convert the resume doc. into pdf
 // include('vendor/ilovepdf-php-1.1.5/samples/resume.php');

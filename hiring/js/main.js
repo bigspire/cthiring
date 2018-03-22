@@ -300,6 +300,10 @@ $(document).ready(function() {
 		
 	});
 	
+	$('#draftSave').click(function(){ 
+		$('#hdnSubmit').val(1);
+	});
+	
 	if($('#file_download').length > 0){ 
 		if($('#file_download').val() != ''){ 
 			$.sticky("Great! Resume Snapshot Downloaded Successfully!", {autoclose : 5000, position: "top-right", type: "st-success" });
