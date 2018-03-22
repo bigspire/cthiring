@@ -292,7 +292,7 @@ class FunctionsHelper extends AppHelper {
 			case 'On-Hold':
 			$color = 'info';
 			break;
-			case 'Closed':
+			case 'Billed':
 			$color = 'success';
 			break;
 			case 'Terminated':

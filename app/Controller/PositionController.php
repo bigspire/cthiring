@@ -47,7 +47,7 @@ class PositionController extends AppController {
 		$this->set('locList', $this->get_loc_details());
 		// set the approval status
 		$this->set('approveStatus', array('W' => 'Awaiting Approval', 'R' => 'Rejected'));
-		$this->set('stList', array('10' => 'Assigned', '1' => 'In-Process', '2' => 'On-Hold', '3' => 'Closed', '4' => 'Terminated','9' => 'In-Active'));			
+		$this->set('stList', array('10' => 'Assigned', '1' => 'In-Process', '2' => 'On-Hold', '3' => 'Billed', '4' => 'Terminated','9' => 'In-Active'));			
 		$fields = array('id','job_title','location','no_job','min_exp','max_exp','ctc_from','ctc_to','ReqStatus.title','req_status_id',
 		'Client.client_name','team_member', 'Creator.first_name','created_date','modified_date', 'count(distinct ReqResume.id) cv_sent','group_concat(ReqResume.id) req_resume_id', 
 		'group_concat(ReqResume.status_title) joined','count(distinct Read.id) read_count', "group_concat(distinct TeamMember.first_name
@@ -2633,7 +2633,7 @@ class PositionController extends AppController {
 		$this->check_role_access(5);
 		// exception for the positions where we updated resume status
 		if($this->request->params['controller'] == 'position' && $this->request->params['action'] == 'index'){
-			// $this->get_notification_count();
+			$this->get_notification_count();
 		}
 		
 	}
