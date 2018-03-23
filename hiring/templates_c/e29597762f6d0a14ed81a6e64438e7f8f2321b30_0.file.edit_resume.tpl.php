@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-02-17 14:56:52
+/* Smarty version 3.1.29, created on 2018-03-23 10:39:08
   from "C:\xampp\htdocs\ctsvn\cthiring\hiring\templates\edit_resume.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5a87f55c0cd928_01042641',
+  'unifunc' => 'content_5ab48bf44212d2_64533767',
   'file_dependency' => 
   array (
     'e29597762f6d0a14ed81a6e64438e7f8f2321b30' => 
     array (
       0 => 'C:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\templates\\edit_resume.tpl',
-      1 => 1515234216,
+      1 => 1521723671,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5a87f55c0cd928_01042641 ($_smarty_tpl) {
+function content_5ab48bf44212d2_64533767 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -55,6 +55,11 @@ resume">Resumes</a>
                     </nav>
 				<?php if ($_smarty_tpl->tpl_vars['EXIST_MSG']->value) {?>
 				 <div id="flashMessage" class="alert alert-error"><button type="button" class="close" data-dismiss="alert">×</button><?php echo $_smarty_tpl->tpl_vars['EXIST_MSG']->value;?>
+</div>					
+				<?php }?>
+				
+				<?php if ($_smarty_tpl->tpl_vars['draft_valid']->value) {?>
+				 <div id="flashMessage" class="alert alert-success"><button type="button" class="close" data-dismiss="alert">×</button><?php echo $_smarty_tpl->tpl_vars['draft_valid']->value;?>
 </div>					
 				<?php }?>
 <form action="" id="formID" class="formID" method="post" accept-charset="utf-8">
@@ -107,7 +112,8 @@ echo $_smarty_tpl->tpl_vars['last_nameErr']->value;?>
 										<td>	
 										<input type="text" tabindex="3" id="email" name="email" value="<?php echo $_smarty_tpl->tpl_vars['email']->value;?>
 " class="span8">
-										<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['emailErr']->value;?>
+										<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['emailErr']->value;
+echo $_smarty_tpl->tpl_vars['email_validErr']->value;?>
 </label>																						
 										</td>	
 									</tr>	
@@ -117,7 +123,8 @@ echo $_smarty_tpl->tpl_vars['last_nameErr']->value;?>
 										<input type="text" tabindex="4" name="mobile" id="" class="span8" value="<?php echo $_smarty_tpl->tpl_vars['mobile']->value;?>
 " autocomplete="off">							
 									<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['mobileErr']->value;?>
- </label>							
+ <?php echo $_smarty_tpl->tpl_vars['mobile_validErr']->value;?>
+</label>							
 										</td>		
 									</tr>									
 									<tr>
@@ -419,7 +426,13 @@ echo $_POST['native_location'];
 				   <div class="span6">
 		<table class="table table-bordered dataTable" style="margin-bottom:0;">
 			<tbody>
-			
+			<tr>
+										<td width="120" class="tbl_column">Company Name <span class="f_req">*</span></td>
+										<td> 
+										<input type="text"  name="company_#index#" tabindex="" id="company_#index#"  class="span8" />
+										<label for="reg_city" generated="true" class="error" id="company_Err_#index#"></label>										
+										</td>
+							</tr>	
 							
 							<tr class="tbl_row">
 										<td width="120" class="tbl_column">Designation <span class="f_req">*</span></td>
@@ -472,13 +485,7 @@ echo $_POST['native_location'];
 										<label for="reg_city" generated="true" class="error" id="area_Err_#index#"></label>										
 										</td>
 							</tr>
-							<tr>
-										<td width="120" class="tbl_column">Company Name <span class="f_req">*</span></td>
-										<td> 
-										<input type="text"  name="company_#index#" tabindex="" id="company_#index#"  class="span8" />
-										<label for="reg_city" generated="true" class="error" id="company_Err_#index#"></label>										
-										</td>
-							</tr>		
+								
            					
 			</tbody>
 		</table>				
@@ -500,7 +507,14 @@ echo $_POST['native_location'];
 										<td> 
 										<textarea name="vital_#index#" tabindex="" id="vital_#index#" cols="10" rows="3" class="span8 wysiwyg1"></textarea>
 										</td>
-							</tr>							
+							</tr>	
+					<tr>
+										<td width="120" class="tbl_column"> Reporting To </td>
+										<td>
+										<input type="text" tabindex="13" name="reporting_to_#index#" id="reporting_to_#index#" value="" class="span8" autocomplete="off">							
+										<label for="reg_city" generated="true" class="error" id="reporting_toErr_#index#"></label>
+										</td>		
+									</tr>							
 								
 					</tbody>
 		  </table>
@@ -721,16 +735,14 @@ echo $_POST['interview_availability'];
 <input type="hidden" id="tab_open" value="<?php echo $_smarty_tpl->tpl_vars['tab_open']->value;?>
 "/>
 <div class="form-actions">
-
+	
 	<input class="btn btn-gebo" type="submit" value="Submit">
 	<input type="hidden" name="data[Client][webroot]" value="<?php echo @constant('webroot');?>
 resume" id="webroot">
 	<a href="javascript:void(0)" class="jsRedirect cancelBtn cancel_event"><input type="button" value="Cancel" class="btn">
 	</a>
-	
-	
-	
-	
+	<input type="hidden" name="hdnSubmit" id="hdnSubmit">
+	<input class="btn btn-success" type="submit" id="draftSave" name="draft" value="Draft"/>
 	
 </div>
  </div>
@@ -867,7 +879,10 @@ for ($_foo=true;$_smarty_tpl->tpl_vars['i']->value < $_smarty_tpl->tpl_vars['exp
 " name="to_month_of_expData_<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
 " value="<?php echo $_smarty_tpl->tpl_vars['to_month_of_expData']->value[$_smarty_tpl->tpl_vars['i']->value];?>
 ">
-		
+		<input type="hidden" id="reporting_to_Data_<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
+" name="reporting_to_Data_<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
+" value="<?php echo $_smarty_tpl->tpl_vars['reporting_toData']->value[$_smarty_tpl->tpl_vars['i']->value];?>
+">
 		<!--<input type="hidden" id="current_locData_<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
 " name="current_locData_<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
 " value="<?php echo $_smarty_tpl->tpl_vars['current_locData']->value[$_smarty_tpl->tpl_vars['i']->value];?>
@@ -1127,6 +1142,9 @@ $(document).ready(function(){
 			}
 			if($('#vitalData_'+i).length > 0){ 
 				$('#vital_'+i).val( $('#vitalData_'+i).val());
+			}
+			if($('#reporting_to_Data_'+i).length > 0){ 
+				$('#reporting_to_'+i).val( $('#reporting_to_Data_'+i).val());
 			}
 			
 			// for error messages

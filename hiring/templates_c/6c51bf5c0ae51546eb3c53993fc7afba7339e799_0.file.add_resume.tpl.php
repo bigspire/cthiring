@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-01-27 12:29:39
+/* Smarty version 3.1.29, created on 2018-03-22 18:49:37
   from "C:\xampp\htdocs\ctsvn\cthiring\hiring\templates\add_resume.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5a6c235b6123e7_21485311',
+  'unifunc' => 'content_5ab3ad694a6e51_89234897',
   'file_dependency' => 
   array (
     '6c51bf5c0ae51546eb3c53993fc7afba7339e799' => 
     array (
       0 => 'C:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\templates\\add_resume.tpl',
-      1 => 1515234216,
+      1 => 1521723671,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5a6c235b6123e7_21485311 ($_smarty_tpl) {
+function content_5ab3ad694a6e51_89234897 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -55,6 +55,11 @@ home"><i class="icon-home"></i></a>
                     </nav>
 				<?php if ($_smarty_tpl->tpl_vars['EXIST_MSG']->value) {?>
 				 <div id="flashMessage" class="alert alert-error"><button type="button" class="close" data-dismiss="alert">×</button><?php echo $_smarty_tpl->tpl_vars['EXIST_MSG']->value;?>
+</div>					
+				<?php }?>
+					
+				<?php if ($_smarty_tpl->tpl_vars['draft_valid']->value) {?>
+				 <div id="flashMessage" class="alert alert-success"><button type="button" class="close" data-dismiss="alert">×</button><?php echo $_smarty_tpl->tpl_vars['draft_valid']->value;?>
 </div>					
 				<?php }?>
 <form action="" id="formID" class="formID" method="post" accept-charset="utf-8">
@@ -108,7 +113,8 @@ echo $_smarty_tpl->tpl_vars['last_nameErr']->value;?>
 										<td>	
 										<input type="text" tabindex="3" id="email" name="email" value="<?php echo $_smarty_tpl->tpl_vars['email']->value;?>
 " class="span8">
-										<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['emailErr']->value;?>
+										<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['emailErr']->value;
+echo $_smarty_tpl->tpl_vars['email_validErr']->value;?>
 </label>																						
 										</td>	
 									</tr>	
@@ -121,7 +127,8 @@ echo $_smarty_tpl->tpl_vars['last_nameErr']->value;?>
 							
 										
 									<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['mobileErr']->value;?>
- </label>							
+ <?php echo $_smarty_tpl->tpl_vars['mobile_validErr']->value;?>
+</label>							
 										</td>		
 									</tr>									
 									<tr class="tbl_row">
@@ -432,7 +439,13 @@ echo 'checked';?>
 		<table class="table table-bordered dataTable" style="margin-bottom:0;">
 			<tbody>
 			
-							
+							<tr>
+										<td width="120" class="tbl_column">Company Name <span class="f_req">*</span></td>
+										<td> 
+										<input type="text" tabindex="" name="company_#index#" id="company_#index#"  class="span8" />
+										<label for="reg_city" generated="true" class="error" id="company_Err_#index#"></label>										
+										</td>
+							</tr>	
 							<tr class="tbl_row">
 										<td width="120" class="tbl_column">Designation <span class="f_req">*</span></td>
 										<td> 
@@ -483,13 +496,7 @@ echo 'checked';?>
 										<label for="reg_city" generated="true" class="error" id="area_Err_#index#"></label>										
 										</td>
 							</tr>
-							<tr>
-										<td width="120" class="tbl_column">Company Name <span class="f_req">*</span></td>
-										<td> 
-										<input type="text" tabindex="" name="company_#index#" id="company_#index#"  class="span8" />
-										<label for="reg_city" generated="true" class="error" id="company_Err_#index#"></label>										
-										</td>
-							</tr>						
+												
 			</tbody>
 		</table>				
 		</div>
@@ -511,6 +518,13 @@ echo 'checked';?>
 										<textarea name="vital_#index#" tabindex="" id="vital_#index#" cols="10" rows="3" class="span8 wysiwyg1"></textarea>
 										</td>
 							</tr>
+							 <tr>
+										<td width="120" class="tbl_column"> Reporting To</td>
+										<td>
+										<input type="text" tabindex="13" name="reporting_to_#index#" id="reporting_to_#index#" value="" class="span8" autocomplete="off">							
+										<label for="reg_city" generated="true" class="error" id="reporting_toErr_#index#"></label>
+										</td>		
+									</tr>
 			
 					</tbody>
 		  </table>
@@ -700,16 +714,20 @@ $_smarty_tpl->tpl_vars['bs_data'] = $__foreach_bs_data_1_saved_item;
 ">	
 
 <div class="form-actions">
-	<input class="btn btn-gebo" type="submit" value="Submit">
+	<input class="btn btn-gebo" name="submit "type="submit" value="Submit">
 	<input type="hidden" name="data[Client][webroot]" value="<?php echo @constant('webroot');?>
 resume" id="webroot">
 
 	<a href="javascript:void(0)" class="jsRedirect cancelBtn cancel_event">
 	<input type="button" value="Cancel" class="btn">
 	</a>
-	
+
+	<input type="hidden" name="hdnSubmit" id="hdnSubmit">
+	<input class="btn btn-success" type="submit" id="draftSave" name="draft" value="Draft"/>
 </div>
- </div>
+
+</div>
+
 	</div>
 	</div>
 	</form>
@@ -842,7 +860,10 @@ for ($_foo=true;$_smarty_tpl->tpl_vars['i']->value < $_POST['exp_count']; $_smar
 " name="to_month_of_expData_<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
 " value="<?php echo $_smarty_tpl->tpl_vars['to_month_of_expData']->value[$_smarty_tpl->tpl_vars['i']->value];?>
 ">
-		
+		<input type="hidden" id="reporting_to_Data_<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
+" name="reporting_to_Data_<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
+" value="<?php echo $_smarty_tpl->tpl_vars['reporting_toData']->value[$_smarty_tpl->tpl_vars['i']->value];?>
+">
 		<!--<input type="hidden" id="current_locData_<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
 " name="current_locData_<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
 " value="<?php echo $_smarty_tpl->tpl_vars['current_locData']->value[$_smarty_tpl->tpl_vars['i']->value];?>
@@ -1101,6 +1122,9 @@ $(document).ready(function(){
 			if($('#vitalData_'+i).length > 0){ 
 				$('#vital_'+i).val( $('#vitalData_'+i).val());
 			}
+			if($('#reporting_to_Data_'+i).length > 0){ 
+				$('#reporting_to_'+i).val( $('#reporting_to_Data_'+i).val());
+			}
 			
 			// for error messages
 			if($('#desig_Err_Data_'+i).length > 0){ 
@@ -1129,6 +1153,16 @@ $(document).ready(function(){
 			}
 		}
 	}
+
+	// mail already exist
+	$(document).on("change keyup blur", "#email", function() {
+		var emailVal = $('#email').val(); //alert(emailVal);// assuming this is a input text field
+		$.post('checkemail.php', {'email' : emailVal}, function(data) {
+			if(data=='exist') return false;
+			else $('#form1').submit();
+		});
+	});
+		
 });
 <?php echo '</script'; ?>
 >	
