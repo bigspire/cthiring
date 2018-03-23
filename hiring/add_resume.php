@@ -1243,7 +1243,7 @@ if(!empty($_POST) && empty($_POST['hdnSubmit'])){
 			
 			// if($successfull == '1'){
 				// header('Location: ../resume?action=created&download='.$snap_file_name.'_'.date('d-m-Y').'.pdf');
-				header('Location: ../position/view/'.$req_id.'?action=created');
+				header('Location: ../resume?action=draft_created');
 			// }
 		} 
 		}else{
