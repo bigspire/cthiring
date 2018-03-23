@@ -699,8 +699,12 @@
 	<a href="javascript:void(0)" class="jsRedirect cancel_event cancelBtn">
 	<input type="button" value="Cancel" class="btn">
 	</a>
+		
+	{if $resumeStatus == 'Draft'}
 	<input type="hidden" name="hdnSubmit" id="hdnSubmit">
 	<input class="btn btn-success" type="submit" id="draftSave" name="draft" value="Draft"/>
+	{/if}
+	
 	</div>
 					</form>
          	

@@ -59,6 +59,23 @@ if($getid !=''){
 	}catch(Exception $e){
 		echo 'Caught exception: ',  $e->getMessage(), "\n";
 	}
+	
+	// get resume status
+	$query = "CALL get_req_resume('".$getid."')";
+	try{
+		// calling mysql execute query function
+		if(!$result = $mysql->execute_query($query)){ 
+			throw new Exception('Problem in checking resume details');
+		}
+		$row_status = $mysql->display_result($result);		
+		// free the memory
+		$mysql->clear_result($result);
+		$smarty->assign('resumeStatus', $row_status['status_title']);
+		// next query execution
+		$mysql->next_query();
+	}catch(Exception $e){
+		echo 'Caught exception: ',  $e->getMessage(), "\n";
+	}
 }
 
 // draft validation

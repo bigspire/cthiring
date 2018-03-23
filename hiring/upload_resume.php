@@ -209,7 +209,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 					echo 'Caught exception: ',  $e->getMessage(), "\n";
 				}
 				
-				if(($row['no_joined'] < $row['no_job'])){
+				if(($row['no_joined'] >= $row['no_job'])){
 					if($row['req_status_id'] != '2' && $row['req_status_id'] != '3' && $row['req_status_id'] != '4'){	
 						// upload the file
 						$prefix = substr(time(), 2,5).rand(1000,10000000).'_';

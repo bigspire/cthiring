@@ -139,9 +139,9 @@ class Position extends AppModel {
         ),
 		'end_date' => array(		
             'empty' => array(
-                'rule'     => 'validate_req_date',
+                'rule'     => 'notEmpty',
                 'required' => true,
-                'message'  => 'Please select the start and closure date'
+                'message'  => 'Please select the expected joining date'
             )
         ),			
 		'function_area_id' => array(		

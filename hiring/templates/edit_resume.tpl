@@ -563,8 +563,11 @@
 	<input type="hidden" name="data[Client][webroot]" value="{$smarty.const.webroot}resume" id="webroot">
 	<a href="javascript:void(0)" class="jsRedirect cancelBtn cancel_event"><input type="button" value="Cancel" class="btn">
 	</a>
+	
+	{if $resumeStatus == 'Draft'}
 	<input type="hidden" name="hdnSubmit" id="hdnSubmit">
 	<input class="btn btn-success" type="submit" id="draftSave" name="draft" value="Draft"/>
+	{/if}
 	
 </div>
  </div>

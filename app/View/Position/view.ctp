@@ -543,6 +543,8 @@
 								 </div>
 						<?php endif; ?>
 						
+						
+						
 						<?php if($this->request->query['action'] == 'modified'):	?>					
 						<div class="alert alert-success">
 								<a class="close" data-dismiss="alert">×</a>

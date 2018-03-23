@@ -56,6 +56,20 @@
 								 </div>						
 					
 						<?php endif; ?>
+						
+							<?php if($this->request->query['action'] == 'draft_created'):	?>					
+						<div class="alert alert-success">
+								<a class="close" data-dismiss="alert">×</a>
+								 Resume Created as Draft Successfully
+								 </div>
+						<?php endif; ?>
+						
+							<?php if($this->request->query['action'] == 'auto_draft_created'):	?>					
+						<div class="alert alert-success">
+								<a class="close" data-dismiss="alert">×</a>
+								 Auto Resume Created as Draft Successfully
+								 </div>
+						<?php endif; ?>
 
 						<?php if($this->request->query['action'] == 'auto_created'):	?>					
 						<div class="alert alert-success">
