@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-01-22 19:27:59
+/* Smarty version 3.1.29, created on 2018-03-22 18:45:56
   from "C:\xampp\htdocs\ctsvn\cthiring\hiring\templates\include\header.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5a65ede7e04fd9_80041071',
+  'unifunc' => 'content_5ab3ac8c7b9229_18119667',
   'file_dependency' => 
   array (
     '2cc32a09905a93cae1ddf68e0518ebdd3aca7f41' => 
     array (
       0 => 'C:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\templates\\include\\header.tpl',
-      1 => 1516620143,
+      1 => 1521632952,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_5a65ede7e04fd9_80041071 ($_smarty_tpl) {
+function content_5ab3ac8c7b9229_18119667 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -381,7 +381,15 @@ resume/">Search Resume <!-- span class="label-bub label-info white"><?php echo $
                                             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
 											<i class="icon-cog icon-white"></i> Settings <b class="caret"></b></a>
                                           <ul class="dropdown-menu">
-										  
+										  <?php if ($_smarty_tpl->tpl_vars['module']->value['manage_qualification'] == '1') {?>
+                                           <li class="dropdown">
+													<a href="#">Qualification <b class="caret-right"></b></a>
+													<ul class="dropdown-menu">
+														<li><a href="degree.php">Degree</a></li>
+														<li><a href="specialization.php">Specialization</a></li>													
+													</ul>
+												</li>
+											<?php }?>
 										  <?php if ($_smarty_tpl->tpl_vars['module']->value['manage_contact_branch'] == '1') {?>
 	
 												<li><a href="contact_branch.php">Branch</a></li>
@@ -440,6 +448,8 @@ resume/">Search Resume <!-- span class="label-bub label-info white"><?php echo $
 													</ul>
 												</li>
 											<?php }?>
+											
+											
 
                                             </ul>
                                         </li>

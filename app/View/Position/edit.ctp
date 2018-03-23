@@ -369,7 +369,7 @@
 	<?php echo $this->Form->input('start_date', array('div'=> false,'type' => 'text', 'label' => false, 'class' => 'span4',  'required' => false, 'placeholder' => 'Start Date',
 				'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 	
 					
-<?php echo $this->Form->input('end_date', array('div'=> false,'type' => 'text', 'label' => false, 'class' => 'span4 inline_text',  'required' => false, 'placeholder' => 'Closure Date',
+<?php echo $this->Form->input('end_date', array('div'=> false,'type' => 'text', 'label' => false, 'class' => 'span4 inline_text',  'required' => false, 'placeholder' => 'Exp. Joining Date',
 				'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 	
 				
 				</span>	

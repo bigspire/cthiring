@@ -14,5 +14,5 @@ define('Database', 'cthiringdata');
 define('Host', 'localhost');
 define('Username', 'root');
 define('Password', '');
-define('Database', 'cthiring_local5');
+define('Database', 'cthiring_local3');
 ?>
