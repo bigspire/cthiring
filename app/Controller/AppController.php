@@ -388,13 +388,13 @@ class AppController extends Controller {
 		$Email->subject($subject);
 		$Email->to($to);
 		// only if cc emails are there
-		if($cc[0] != ''){
+		if($cc[0] != '' || $cc != ''){
 			$Email->cc($cc);
 		}
 		$Email->from($from);
 		$Email->config('gmail');
 		$Email->delivery = 'smtp';
-		if(!empty($src) && file_exists($src)){
+		if(!empty($src) || $src[0] != ''){
 			$Email->attachments($src);
 		}
 		try{
