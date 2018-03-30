@@ -1363,7 +1363,7 @@ if(!empty($_POST) && empty($_POST['hdnSubmit'])){
 			
 			// if($successfull == '1'){
 				// once successfully created, redirect the page
-				// header('Location: ../resume/?action=auto_created');
+			    // header('Location: ../resume/?action=auto_created');
 				header('Location: ../position/view/'.$req_id.'?action=created');
 			// }
 		} 

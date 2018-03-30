@@ -327,6 +327,8 @@ if($_POST['hdnSubmit'] == 1){
 			unset($_SESSION['clients_id']);
 			header('Location: ../position/view/'.$req_id.'?action=created');
 			// $smarty->assign('draft_valid',"Resume details saved as draft");
+			// header('Location: ../resume?action=created');
+			// header('Location: ../resume?action=draft_created');
 		} 
 	}else{
 		if($check_mail['total'] != '0'){
@@ -1243,7 +1245,8 @@ if(!empty($_POST) && empty($_POST['hdnSubmit'])){
 			
 			// if($successfull == '1'){
 				// header('Location: ../resume?action=created&download='.$snap_file_name.'_'.date('d-m-Y').'.pdf');
-				header('Location: ../resume?action=created');
+				// header('Location: ../resume?action=created');
+				header('Location: ../position/view/'.$req_id.'?action=created');
 			// }
 		} 
 		}else{
