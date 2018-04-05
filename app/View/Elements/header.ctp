@@ -321,7 +321,21 @@
                                             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
 											<i class="icon-cog icon-white"></i> Settings <b class="caret"></b></a>
                                           <ul class="dropdown-menu">
-										  <?php if($manage_branch == '1'):?> 
+										  <?php if($setting_qualify == '1'):?> 
+                                                <li><a href="<?php echo $this->webroot;?>hiring/contact_branch.php">Qualification <!--span class="label-bub label-info white">102</span--></a></li>
+												
+												<li class="dropdown">
+													<a href="#">Qualification <b class="caret-right"></b></a>
+													<ul class="dropdown-menu">
+														<li><a href="degree.php">Degree</a></li>
+														<li><a href="specialization.php">Specialization</a></li>													
+													</ul>
+												</li>
+												
+												
+												<?php endif; ?>	
+												
+												  <?php if($manage_branch == '1'):?> 
                                                 <li><a href="<?php echo $this->webroot;?>hiring/contact_branch.php">Branch <!--span class="label-bub label-info white">102</span--></a></li>
 												<?php endif; ?>	
 											
@@ -377,13 +391,4 @@
                                         </li>
 										 <?php endif; ?>
 										
-                                        <li>
-                                        </li>
-                                       
-                                    </ul>
-                                </div>
-                            </nav>
-                        </div>
-                    </div>
-                </div>
-             </header>            
+   

@@ -339,6 +339,9 @@ class AppController extends Controller {
 					case 51:					
 					$this->set('api_keys', 1);
 					break;
+					case 52:					
+					$this->set('setting_qualify', 1);
+					break;
 				}				
 			}
 		}

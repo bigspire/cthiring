@@ -397,10 +397,7 @@
 				
                       </div>
 					  
-		<?php if($position_data['Position']['remarks'] != ''):?>
-			<div class="span6" style="clear:left;margin-top:10px;margin-left:0px;padding:0">		
-			<table class="table table-bordered  table-striped dataTable" style="margin-bottom:0;">
-				<tbody>
+	
 				
 								<?php 
 								
@@ -408,6 +405,15 @@
 								$revision_remark = explode('|||', $position_data[0]['revision_remark']);
 								$k = 0; 
 								$i = 1; 
+								
+								?>
+								
+			<?php if($position_data[0]['no_revision'] > 0):?>
+			<div class="span6" style="clear:left;margin-top:10px;margin-left:0px;padding:0">		
+			<table class="table table-bordered  table-striped dataTable" style="margin-bottom:0;">
+				<tbody>
+				
+				<?php
 								while($i <= $position_data[0]['no_revision']): ?>
 
 								<tr  class="">

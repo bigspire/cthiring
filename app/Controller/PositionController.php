@@ -997,7 +997,8 @@ class PositionController extends AppController {
 			 "group_concat(ReqRevision.remarks separator '|||') revision_remark",'Reason2.reason');
 
 			$data = $this->Position->find('all', array('fields' => $fields,'conditions' => array('Position.id' => $id),	'joins' => $options));
-
+			
+		
 			$this->set('position_data', $data[0]);
 			
 			// get the resume details
