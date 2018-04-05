@@ -275,7 +275,7 @@
 										<td class="optional">Openings Not Billed</td>
 										<td style="text-align:center" class="optional"><?php echo $VACANCY_MOP_COUNT - $JOINED_TAB_COUNT ;?></td>
 										<td  class="essential persist">CVs Not Billed</td>
-										<td style="text-align:center" class="optional"><?php echo $RESUME_SENT_MOP_COUNT - $BILLED_TAB_COUNT ;?></td>
+										<td style="text-align:center" class="optional"><?php echo abs($RESUME_SENT_MOP_COUNT - $BILLED_TAB_COUNT) ;?></td>
 									</tr>
 									
 									<tr>
