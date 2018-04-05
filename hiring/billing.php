@@ -106,7 +106,9 @@ try{
 	{
  		$data[] = $obj;
 		$data[$i]['created_date'] = $fun->convert_date_to_display($obj['created_date']);
- 		$data[$i]['billing_date'] = $fun->convert_date_to_display($obj['billing_date']);
+		if(){
+			$data[$i]['billing_date'] = $fun->convert_date_to_display($obj['billing_date']);
+		}
  		$data[$i]['status'] = $fun->format_status($obj['st_status'],$obj['st_created'],$obj['st_user'],$obj['st_modified']);
 		$data[$i]['pending_status'] = $fun->billing_status($obj['st_status']);
  		$i++;

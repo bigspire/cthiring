@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-03-22 17:29:45
+/* Smarty version 3.1.29, created on 2018-04-05 16:05:29
   from "C:\xampp\htdocs\2017\ctsvn2\cthiring\hiring\templates\edit_formatted_resume.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5ab39ab1ce8fc8_82440243',
+  'unifunc' => 'content_5ac5fbf16a5de5_37746916',
   'file_dependency' => 
   array (
     'a6d30e5eea955f26392c3640220a73a44cb14d66' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn2\\cthiring\\hiring\\templates\\edit_formatted_resume.tpl',
-      1 => 1521719980,
+      1 => 1522228976,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5ab39ab1ce8fc8_82440243 ($_smarty_tpl) {
+function content_5ac5fbf16a5de5_37746916 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\2017\\ctsvn2\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -865,8 +865,12 @@ resume" id="webroot">
 	<a href="javascript:void(0)" class="jsRedirect cancel_event cancelBtn">
 	<input type="button" value="Cancel" class="btn">
 	</a>
+		
+	<?php if ($_smarty_tpl->tpl_vars['resumeStatus']->value == 'Draft') {?>
 	<input type="hidden" name="hdnSubmit" id="hdnSubmit">
 	<input class="btn btn-success" type="submit" id="draftSave" name="draft" value="Draft"/>
+	<?php }?>
+	
 	</div>
 					</form>
          	
