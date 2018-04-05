@@ -69,9 +69,10 @@
 								{html_options options=$status_type selected=$status}
 							</select> 
 							</label>
+							<label style="margin-top:18px;"><input type="submit" value="Submit" class="btn btn-gebo" /></label>
 							<label style="margin-top:18px;"><a href="sharing_criteria.php" class="jsRedirect"><input value="Reset" type="button" class="btn"/></a></label>
 							
-							<label style="margin-top:18px;"><input type="submit" value="Submit" class="btn btn-gebo" /></label>
+							
 							
 														</div>
 

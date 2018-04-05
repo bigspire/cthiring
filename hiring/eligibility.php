@@ -77,8 +77,8 @@ try{
 
 // set the condition to check ascending or descending order		
 $order = ($_GET['order'] == 'desc') ? 'asc' :  'desc';	
-$sort_fields = array('1' => 'ctc_from','type','status','amount','no_resumes','created','modified');
-$org_fields = array('1' => 'ctc_from','type','status','amount','no_resumes','created_date','modified_date');
+$sort_fields = array('1' => 'ctc_from','type','user_type','period','status','amount','no_resumes','created','modified');
+$org_fields = array('1' => 'ctc_from','type','user_type','period','status','amount','no_resumes','created_date','modified_date');
 
 // to set the sorting image
 foreach($sort_fields as $key => $b_field){
@@ -137,9 +137,9 @@ try{
 		include('classes/class.excel.php');
 		$excelObj = new libExcel();
 		// function to print the excel header
-		$excelObj->printHeader($header = array('CTC','Type','No of Resume','Amount','Status','Created Date','Modified Date') ,$col = array('A','B','C','D','E','F','G'));  
+		$excelObj->printHeader($header = array('CTC','User Type','Period','Type','No of Resume','Amount(INR)','Status','Created Date','Modified Date') ,$col = array('A','B','C','D','E','F','G','H','I'));  
 		// function to print the excel data
-		$excelObj->printCell($data, $count,$col = array('A','B','C','D','E','F','G'), $field = array('target_elig','type','no_resumes','amount','status','created_date','modified_date'),'Eligibility_'.$current_date);
+		$excelObj->printCell($data, $count,$col = array('A','B','C','D','E','F','G','H','I'), $field = array('target_elig','user_type','period','type','no_resumes','amount','status','created_date','modified_date'),'Eligibility_'.$current_date);
 	}	
 	
 	// create,update,delete message validation
