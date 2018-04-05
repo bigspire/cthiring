@@ -127,6 +127,11 @@ class Position extends AppModel {
                 'rule'     => 'notEmpty',
                 'required' => true,
                 'message'  => 'Please select no. of openings'
+            ),
+			  'valid_opening' => array(
+                'rule'     => 'valid_opening',
+                'required' => true,
+                'message'  => 'Total openings not matched with the openings assigned'
             )
         ),
 		
@@ -298,7 +303,7 @@ class Position extends AppModel {
             'empty' => array(
                 'rule'     => 'notEmpty',
                 'required' => true,
-                'message'  => 'Please enter the technical skils'
+                'message'  => 'Please enter the technical skills'
             )
         )
 		,
@@ -394,6 +399,22 @@ class Position extends AppModel {
 			return false;
 		}
 	}
+	
+		/* function to validate the no. of openings*/
+	public function valid_opening(){
+		$assign = 0;
+		$no_job = explode(',', $this->data['Position']['team_id']);
+		foreach($no_job as $job_sel){ 
+			$assign_job = explode('-', $job_sel);
+			$assign += $assign_job[1];
+		}	
+		if($assign ==  $this->data['Position']['total_opening']){
+			return true;
+		}else{
+			return false;
+		}
+	}
+	
 	
 	/* function to validate the job desc length */
 	public function check_length(){

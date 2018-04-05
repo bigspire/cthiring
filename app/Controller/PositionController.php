@@ -311,8 +311,10 @@ class PositionController extends AppController {
 		$this->set('project_types', array('1' => 'RPO', '0' => 'Non - RPO'));
 		
 		// get total job for job code
-		$tot = $this->Position->find('count', array('conditions' => array('Position.created_date like' => date('Y').'%')));
-		$this->set('jobCode', 'CT/'.++$tot.'/'.date('Y'));		
+		if(empty($this->request->data)){
+			$tot = $this->Position->find('count', array('conditions' => array('Position.created_date like' => date('Y').'%')));
+			$this->set('jobCode', 'CT/'.++$tot.'/'.date('Y'));	
+		}		
 		// when client id is passed from view client
 		if($client_id){
 			$this->get_contact_list($client_id);
@@ -547,7 +549,7 @@ class PositionController extends AppController {
 										$position_data = $this->Position->find('all', array('conditions' => array('Position.id' => $this->Position->id),'fields' => array( 'Client.client_name',	"group_concat(distinct TeamMember.first_name  SEPARATOR ', ') team_member"),'joins' => $options));
 
 										$vars = array('from_name' => $from, 'to_name' => ucwords($leader_data[0]['Creator']['first_name'].' '.$leader_data[0]['Creator']['last_name']), 'position' => $this->request->data['Position']['job_title'],'client_name' => $position_data[0]['Client']['client_name'], 'no_opening' => $this->request->data['Position']['no_job'], 'team_member' => $position_data[0][0]['team_member'],
-										'location' => $this->request->data['Position']['location']);																
+										'location' => $this->request->data['Position']['location'], 'remarks' =>  $this->request->data['Position']['rev_remarks']);																
 										
 										// notify superiors						
 										if(!$this->send_email($sub, 'add_position', 'noreply@managehiring.com', $leader_data[0]['Creator']['email_id'],$vars)){	
@@ -997,7 +999,8 @@ class PositionController extends AppController {
 			 "group_concat(ReqRevision.remarks separator '|||') revision_remark",'Reason2.reason');
 
 			$data = $this->Position->find('all', array('fields' => $fields,'conditions' => array('Position.id' => $id),	'joins' => $options));
-
+			
+		
 			$this->set('position_data', $data[0]);
 			
 			// get the resume details
