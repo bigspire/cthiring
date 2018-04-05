@@ -134,7 +134,7 @@ try{
 	}	
 	
 	// create,update,delete message validation
-	if($_GET['status'] == 'created' || $_GET['status'] == 'updated'){
+	if($_GET['status'] == 'created' || $_GET['status'] == 'updated' || $_GET['status'] == 'deleted'){
  	 	$success_msg = 'User ' . $_GET['status'] . ' successfully';
 	}else if($_GET['current_status'] == 'msg'){
 		$success_msg = 'This record is not available in our database';

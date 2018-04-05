@@ -53,7 +53,7 @@ if($getid !=''){
 
 // get database values
 if(empty($_POST)){
-	$query = "CALL get_degree_byid('$getid')";
+	$query = "CALL get_degree_details('$getid')";
 	try{
 		// calling mysql exe_query function
 		if(!$result = $mysql->execute_query($query)){ 
