@@ -397,6 +397,7 @@ class AppController extends Controller {
 		$Email->from($from);
 		$Email->config('gmail');
 		$Email->delivery = 'smtp';
+		print_r($src);
 		if(!empty($src) || $src[0] != ''){
 			$Email->attachments($src);
 		}

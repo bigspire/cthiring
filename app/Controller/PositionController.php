@@ -1420,7 +1420,10 @@ class PositionController extends AppController {
 									$snap_file = substr($resume_file['ResDoc']['resume'], 0, strlen($resume_file['ResDoc']['resume']) - 5);
 									$pdf_date = date('d-m-Y', strtotime($updated));		
 									$resume_folder = $client_data['Position']['resume_type'] == 'F' ? 'autoresumepdf/' : 'snapshotwatermarked/';
-									$resume_path[] = '../../hiring/uploads/'.$resume_folder.$this->Functions->filter_file($snap_file).'_'.$pdf_date.'.pdf';
+									if(file_exists('../../hiring/uploads/'.$resume_folder.$this->Functions->filter_file($snap_file).'_'.$pdf_date.'.pdf')){
+										$resume_path[] = '../../hiring/uploads/'.$resume_folder.$this->Functions->filter_file($snap_file).'_'.$pdf_date.'.pdf';
+									}
+									
 								}						
 								// $this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>CV Sent Successfully', 'default', array('class' => 'alert alert-success'));									
 							}
