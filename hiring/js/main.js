@@ -58,6 +58,20 @@ $(document).ready(function() {
 
 	});
 	
+	   /* allow only numeric */
+	$(".formID").delegate(".digitOnly", "keyup keypress keydown blur change", function (event) {
+        // Allow special chars + arrows 
+		if(event.type == 'keyup' || event.type == 'keyup' || event.type == 'keydown'){				
+			// check its a key event
+			if ((event.keyCode >= 48 && event.keyCode <= 57) || (event.keyCode >= 96 && event.keyCode <= 105) || event.keyCode == 8 || event.keyCode == 46 || event.keyCode == 9){
+				//cal_total();
+			}else{
+				event.preventDefault(); 
+				return false;
+			}	
+		}
+	});	
+	
 	/* function to select no. of openings in add position */
 	$('.selPosReq').change(function(){
 		// get the selected value

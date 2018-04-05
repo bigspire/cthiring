@@ -298,7 +298,7 @@ class Position extends AppModel {
             'empty' => array(
                 'rule'     => 'notEmpty',
                 'required' => true,
-                'message'  => 'Please enter the technical skils'
+                'message'  => 'Please enter the technical skills'
             )
         )
 		,

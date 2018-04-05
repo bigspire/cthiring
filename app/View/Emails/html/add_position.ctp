@@ -57,6 +57,13 @@
              
             </tr>
 			
+			
+		<?php if($remarks != ''): ?>
+		 <tr style="background:#f5f4f4;">
+              <td>Remarks</td>
+              <td colspan="3" style="color:#2a2a2a;"><?php echo $remarks; ?></td>
+            </tr>
+		<?php endif; ?>	
 		
 			
 			

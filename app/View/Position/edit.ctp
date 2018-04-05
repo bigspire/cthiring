@@ -129,7 +129,7 @@
 									 <tr class="tbl_row">
 										<td width="120" class="tbl_column">CTC <span class="f_req">*</span></td>
 										<td>	
-<?php echo $this->Form->input('ctc_from', array('div'=> false,'type' => 'text', 'label' => false, 'class' => 'span2',  'required' => false, 'placeholder' => 'Min. CTC',
+<?php echo $this->Form->input('ctc_from', array('div'=> false,'type' => 'text', 'label' => false, 'class' => 'span2 digitOnly',  'required' => false, 'placeholder' => 'Min. CTC',
 				'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 		
 										
 		<?php echo $this->Form->input('ctc_from_type', array('div'=> false,'type' => 'select', 'label' => false, 
@@ -140,7 +140,7 @@
 				
 									
 
-<?php echo $this->Form->input('ctc_to', array('div'=> false,'type' => 'text', 'label' => false, 'class' => 'span2',  'required' => false, 'placeholder' => 'Max. CTC',
+<?php echo $this->Form->input('ctc_to', array('div'=> false,'type' => 'text', 'label' => false, 'class' => 'span2 digitOnly',  'required' => false, 'placeholder' => 'Max. CTC',
 				'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 				
 										
 				<?php echo $this->Form->input('ctc_to_type', array('div'=> false,'type' => 'select', 'label' => false, 
@@ -173,19 +173,7 @@
 									</tr>
 									
 														
-	   <tr class="">
-										<td width="120" class="tbl_column">Project Type <span class="f_req">*</span></td>
-										<td>	
-										
-			<?php echo $this->Form->input('is_rpo', array('div'=> false,'type' => 'radio', 'label' => false,  'style' => 'margin:4px 2px', 'class' => 'input-xlarge', 
-	'options' => $project_types, 'separator' => ' ', 'id' => '',  'required' => false, 'placeholder' => '', 
-	'legend' => false, 'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?>
-		
-		
-		
 	
-										</td>	
-									</tr>	
 																										
 				</tbody>
 			</table>
@@ -324,7 +312,7 @@
 									</tr>
 				  
 				  <tr  class="tbl_row">
-						<td width="120" class="tbl_column">Recruiters <span class="f_req">*</span></td>
+						<td width="120" class="">Recruiters <span class="f_req">*</span></td>
 						<td>	
 						
 			
@@ -360,7 +348,7 @@
 						</td>	
 
 				  </tr>
-				  	<tr class="">
+				  	<tr class="tbl_column">
 										<td width="120" class="tbl_column">Requirement Date <span class="f_req">*</span></td>
 										<td> 
 										
@@ -402,7 +390,20 @@
 
 										</td>	
 									</tr>
-									  
+					
+   <tr class="tbl_row">
+										<td width="120" class="">Project Type <span class="f_req">*</span></td>
+										<td>	
+										
+			<?php echo $this->Form->input('is_rpo', array('div'=> false,'type' => 'radio', 'label' => false,  'style' => 'margin:4px 2px', 'class' => 'input-xlarge', 
+	'options' => $project_types, 'separator' => ' ', 'id' => '',  'required' => false, 'placeholder' => '', 
+	'legend' => false, 'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?>
+		
+		
+		
+	
+										</td>	
+									</tr>						
 				</tbody>
 			</table>
 		</div>
