@@ -91,7 +91,7 @@
 									<tr class="tbl_row">
 										<td width="120" class="tbl_column">DOB <span class="f_req">*</span></td>
 										<td> 
-										<input name="dob_field" tabindex="6" value="{$dob_field}"  class="datepick span8" type="text">										
+										<input name="dob_field" tabindex="6" value="{if $dob_field neq '00/00/0000'}{$dob_field}{/if}"  class="datepick span8" type="text">										
 											<label for="reg_city" generated="true" class="error">{$dobErr}</label></td>
 									</tr>	
 

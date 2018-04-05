@@ -147,6 +147,14 @@ if($_POST['hdnSubmit'] == 1){
 			echo 'Caught exception: ',  $e->getMessage(), "\n";
 		}
 		
+		$language_list = array();
+		if(count($_POST['res_language']) > 0){
+			foreach($_POST['res_language'] as $lang){
+				$language_list[] = $lang;
+			}
+		}
+		$smarty->assign($res_language,$language_list);
+	
 		if(!empty($resume_id)){
 			foreach($language_list as $key => $val){
 		
