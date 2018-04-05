@@ -51,7 +51,7 @@ if(!empty($_POST)){
 	
 	// array for printing correct field name in error message
 	$fieldtype = array('1', '1','1','1','1','1');
-	$actualfield = array('user_type','period','type','ctc from','ctc to','status');
+	$actualfield = array('user type','period','type','ctc from','ctc to','status');
     $field = array('user_type' => 'user_typeErr','period_type' => 'period_typeErr','types' => 'typesErr','ctc_from' => 'target_from_Err',
 	'ctc_to' => 'target_to_Err', 'status' => 'statusErr');
 	$j = 0;

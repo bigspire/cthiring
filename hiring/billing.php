@@ -69,8 +69,8 @@ try{
 
 // set the condition to check ascending or descending order		
 $order = ($_GET['order'] == 'desc') ? 'asc' :  'desc';	
-$sort_fields = array('1' => 'job_title','recruiter','ac_holder','client_name','billing_amount','billing_date','candidate_name');
-$org_fields = array('1' => 'job_title','recruiter','ac_holder','client_name','billing_amount','billing_date','candidate_name');
+$sort_fields = array('1' => 'job_title','recruiter','ac_holder','client_name','billing_amount','billing_date','created_date','candidate_name');
+$org_fields = array('1' => 'job_title','recruiter','ac_holder','client_name','billing_amount','billing_date','created_date','candidate_name');
 
 // to set the sorting image
 foreach($sort_fields as $key => $b_field){
