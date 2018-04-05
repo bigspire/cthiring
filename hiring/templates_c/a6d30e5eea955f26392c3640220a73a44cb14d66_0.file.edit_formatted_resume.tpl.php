@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-04-05 16:05:29
+/* Smarty version 3.1.29, created on 2018-04-05 17:01:48
   from "C:\xampp\htdocs\2017\ctsvn2\cthiring\hiring\templates\edit_formatted_resume.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5ac5fbf16a5de5_37746916',
+  'unifunc' => 'content_5ac609243d81f3_48841711',
   'file_dependency' => 
   array (
     'a6d30e5eea955f26392c3640220a73a44cb14d66' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn2\\cthiring\\hiring\\templates\\edit_formatted_resume.tpl',
-      1 => 1522228976,
+      1 => 1522927905,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5ac5fbf16a5de5_37746916 ($_smarty_tpl) {
+function content_5ac609243d81f3_48841711 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\2017\\ctsvn2\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -137,8 +137,9 @@ echo $_POST['telephone'];
 									<tr class="tbl_row">
 										<td width="120" class="tbl_column">DOB <span class="f_req">*</span></td>
 										<td> 
-										<input name="dob_field" tabindex="6" value="<?php echo $_smarty_tpl->tpl_vars['dob_field']->value;?>
-"  class="datepick span8" type="text">										
+										<input name="dob_field" tabindex="6" value="<?php if ($_smarty_tpl->tpl_vars['dob_field']->value != '00/00/0000') {
+echo $_smarty_tpl->tpl_vars['dob_field']->value;
+}?>"  class="datepick span8" type="text">										
 											<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['dobErr']->value;?>
 </label></td>
 									</tr>	

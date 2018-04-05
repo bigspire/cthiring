@@ -181,7 +181,15 @@ if($_POST['hdnSubmit'] == 1){
 			}catch(Exception $e){
 				echo 'Caught exception: ',  $e->getMessage(), "\n";
 			}
-		
+			
+			$language_list = array();
+			if(count($_POST['res_language']) > 0){
+				foreach($_POST['res_language'] as $lang){
+					$language_list[] = $lang;
+				}
+			}
+			$smarty->assign($res_language,$language_list);
+			
 			foreach($language_list as $key => $val){
 		
 				// query to add language details
@@ -200,10 +208,9 @@ if($_POST['hdnSubmit'] == 1){
 			$language_id = $row['last_inserted_id'];
 		}
 		
-		/*
+		
 		// query to add position for details
-		$query = "CALL edit_req_resume_position('".$modified_by."','".$date."',
-			'".$mysql->real_escape_str($_POST['position_for'])."','$getid')";
+		$query = "CALL edit_req_resume_position('".$modified_by."','".$date."','".$mysql->real_escape_str($_POST['position_for'])."','$getid')";
 		try{
 			if(!$result = $mysql->execute_query($query)){
 				throw new Exception('Problem in updating position details');
@@ -215,7 +222,7 @@ if($_POST['hdnSubmit'] == 1){
 		}catch(Exception $e){
 			echo 'Caught exception: ',  $e->getMessage(), "\n";
 		}
-		*/
+		
 		
 		// query to delete education details
 		$query = "CALL delete_res_edu('$getid')";
@@ -400,6 +407,21 @@ if($_POST['hdnSubmit'] == 1){
 				echo 'Caught exception: ',  $e->getMessage(), "\n";
 			}
 		}
+		
+		// query to add req resume details
+		$query = "CALL edit_req_resume_status('Draft','Draft','".$_SESSION['user_id']."','".$date."','".$position_id."')";
+		try{
+			if(!$result = $mysql->execute_query($query)){
+				throw new Exception('Problem in adding resume requirement status details');
+			}
+			$row = $mysql->display_result($result);
+			$req_res_id = $row['inserted_id'];
+			// call the next result
+			$mysql->next_query();
+		}catch(Exception $e){
+			echo 'Caught exception: ',  $e->getMessage(), "\n";
+		}
+		
 		if(!empty($edu_id) && !empty($exp_id) && !empty($train_id)  && !empty($resume_id)){
 			$req_id = $_SESSION['position_for'];
 			unset($_SESSION['position_for']);
@@ -1239,8 +1261,52 @@ if(!empty($_POST) && empty($_POST['hdnSubmit'])){
 			$mysql->next_query();
 		}catch(Exception $e){
 			echo 'Caught exception: ',  $e->getMessage(), "\n";
+		}*/
+
+		if(($row_status['status_title'] == 'Draft')){
+			// query to add position for details
+			$query = "CALL edit_req_resume_position('".$modified_by."','".$date."',
+				'".$mysql->real_escape_str($_SESSION['position_for'])."','".$resume_id."','Validation - Account Holder','Pending','$getid')";
+			try{
+				if(!$result = $mysql->execute_query($query)){
+					throw new Exception('Problem in adding position details');
+				}
+				$row = $mysql->display_result($result);
+				$position_id = $row['inserted_id'];
+				// call the next result
+				$mysql->next_query();
+			}catch(Exception $e){
+				echo 'Caught exception: ',  $e->getMessage(), "\n";
+			}
+			
+			// query to add req resume details
+			$query = "CALL edit_req_resume_status('Validation - Account Holder','Pending','".$modified_by."','".$date."','".$position_id."')";
+			try{
+				if(!$result = $mysql->execute_query($query)){
+					throw new Exception('Problem in adding resume requirement status details');
+				}
+				$row = $mysql->display_result($result);
+				$req_res_id = $row['inserted_id'];
+				// call the next result
+				$mysql->next_query();
+			}catch(Exception $e){
+				echo 'Caught exception: ',  $e->getMessage(), "\n";
+			}
+		}else{
+			// query to add position for details
+			$query = "CALL edit_req_resume_position('".$modified_by."','".$date."','".$mysql->real_escape_str($_SESSION['position_for'])."','".$resume_id."','','','$getid')";
+			try{
+				if(!$result = $mysql->execute_query($query)){
+					throw new Exception('Problem in adding position details');
+				}
+				$row = $mysql->display_result($result);
+				$position_id = $row['inserted_id'];
+				// call the next result
+				$mysql->next_query();
+			}catch(Exception $e){
+				echo 'Caught exception: ',  $e->getMessage(), "\n";
+			}
 		}
-		*/
 		
 		// query to delete education details
 		$query = "CALL delete_res_edu('$getid')";
@@ -1425,6 +1491,9 @@ if(!empty($_POST) && empty($_POST['hdnSubmit'])){
 				echo 'Caught exception: ',  $e->getMessage(), "\n";
 			}
 		}
+		
+		
+		
 		if(!empty($edu_id) && !empty($exp_id) && !empty($train_id) && !empty($language_id) && !empty($resume_id)){
 			// get recruiter nameget_recruiter_name
 			$query =  "CALL get_recruiter_name('".$mysql->real_escape_str($_SESSION['user_id'])."')";
