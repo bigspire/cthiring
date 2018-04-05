@@ -86,6 +86,22 @@
 						<?php endif; ?>
 						
 						
+						<?php if($this->request->query['action'] == 'draft_modified'):	?>					
+						<div class="alert alert-success">
+								<a class="close" data-dismiss="alert">×</a>
+								  Resume Modified as Draft Successfully
+								 </div>	
+						<?php endif; ?>
+						
+						
+						<?php if($this->request->query['action'] == 'auto_draft_modified'):	?>					
+						<div class="alert alert-success">
+								<a class="close" data-dismiss="alert">×</a>
+								 Fully Formatted Resume Modified as Draft Successfully
+								 </div>	
+						<?php endif; ?>
+						
+						
 						
 				<?php echo $this->Session->flash();?>
 

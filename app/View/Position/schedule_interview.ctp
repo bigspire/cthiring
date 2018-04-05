@@ -53,6 +53,13 @@
 						</td>	
 				</tr>
 				
+					<tr class="" >
+					<td width="120" class="tbl_column">Cc  
+					</td>
+						<td>
+						<?php echo $this->Form->input('client_cc', array('div'=> false,'type' => 'text', 'label' => false, 'class' => 'span8',   'required' => false, 'placeholder' => 'Add multiple emails separated by comma')); ?> 					
+						</td>	
+				</tr>
 				
 				<tr class="tbl_row" >
 					<td width="150" class="tbl_column">Candidate(s)
@@ -132,6 +139,19 @@
 						</td>	
 				</tr>
 				
+						
+				<tr class="tbl_row" >
+					<td width="120" class="tbl_column">Attachment 
+					</td>
+						<td>
+					<?php echo $this->Form->input('client_attach', array('div'=> false,'type' => 'file', 'label' => false, 
+					'class' => 'span10',  
+					'required' => false, 'placeholder' => '', 
+					'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 
+
+					</td>	
+				</tr>
+				
 					<tr class="">
 					<td width="120" class="tbl_column">Additional Info 
 					</td>
@@ -209,13 +229,6 @@
 						</td>	
 				</tr>
 				
-					<tr class="tbl_row" >
-					<td width="120" class="tbl_column">Cc  
-					</td>
-						<td>
-						<?php echo $this->Form->input('client_cc', array('div'=> false,'type' => 'text', 'label' => false, 'class' => 'span8',   'required' => false, 'placeholder' => 'Add multiple emails separated by comma')); ?> 					
-						</td>	
-				</tr>
 				
 					<tr class="tbl_row" >
 					<td width="120" class="tbl_column">Subject <span class="f_req">*</span>
@@ -239,18 +252,7 @@
 
 					</td>	
 				</tr>
-				
-				<tr class="tbl_row" >
-					<td width="120" class="tbl_column">Attachment 
-					</td>
-						<td>
-					<?php echo $this->Form->input('client_attach', array('div'=> false,'type' => 'file', 'label' => false, 
-					'class' => 'span10',  
-					'required' => false, 'placeholder' => '', 
-					'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 
-
-					</td>	
-				</tr>
+		
 				
 				
 				</tbody>
