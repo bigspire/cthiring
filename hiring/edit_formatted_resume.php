@@ -212,7 +212,7 @@ if($_POST['hdnSubmit'] == 1){
 		$query = "CALL edit_req_resume_position('".$modified_by."','".$date."','".$mysql->real_escape_str($_SESSION['position_for'])."','".$getid."','Draft','Draft')";
 			try{
 				if(!$result = $mysql->execute_query($query)){
-					throw new Exception('Problem in adding position details');
+					throw new Exception('Problem in adding position details 1');
 				}
 				$row = $mysql->display_result($result);
 				$position_id = $row['inserted_id'];
@@ -1250,11 +1250,11 @@ if(!empty($_POST) && empty($_POST['hdnSubmit'])){
 
 		if(($row_status['status_title'] == 'Draft')){
 			// query to add position for details
-			$query = "CALL edit_req_resume_position('".$modified_by."','".$date."',
+			 $query = "CALL edit_req_resume_position('".$modified_by."','".$date."',
 				'".$mysql->real_escape_str($_SESSION['position_for'])."','".$getid."','Validation - Account Holder','Pending')";
 			try{
 				if(!$result = $mysql->execute_query($query)){
-					throw new Exception('Problem in adding position details');
+					throw new Exception('Problem in adding position details 3');
 				}
 				$row = $mysql->display_result($result);
 				$position_id = $row['inserted_id'];
@@ -1265,7 +1265,7 @@ if(!empty($_POST) && empty($_POST['hdnSubmit'])){
 			}
 			
 			// query to add req resume details
-			$query = "CALL edit_req_resume_status('Validation - Account Holder','Pending','".$modified_by."','".$date."','".$position_id."')";
+			echo $query = "CALL edit_req_resume_status('Validation - Account Holder','Pending','".$modified_by."','".$date."','".$position_id."')";
 			try{
 				if(!$result = $mysql->execute_query($query)){
 					throw new Exception('Problem in adding resume requirement status details');
@@ -1279,10 +1279,10 @@ if(!empty($_POST) && empty($_POST['hdnSubmit'])){
 			}
 		}else{
 			// query to add position for details
-			$query = "CALL edit_req_resume_position('".$modified_by."','".$date."','".$mysql->real_escape_str($_SESSION['position_for'])."','".$resume_id."','','','$getid')";
+			$query = "CALL edit_req_resume_position('".$modified_by."','".$date."','".$mysql->real_escape_str($_SESSION['position_for'])."','".$resume_id."','','')";
 			try{
 				if(!$result = $mysql->execute_query($query)){
-					throw new Exception('Problem in adding position details');
+					throw new Exception('Problem in adding position details 2');
 				}
 				$row = $mysql->display_result($result);
 				$position_id = $row['inserted_id'];

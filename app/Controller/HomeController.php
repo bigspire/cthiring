@@ -221,7 +221,7 @@ class HomeController  extends AppController {
 			$client_emp_cond = array('ClientAH.users_id' => $this->Session->read('USER.Login.id'));
 			$pos_emp_cond2 =  array('ClientAH.users_id' => $this->Session->read('USER.Login.id'), 'Position.status' => 'A');
 			$this->set('ac_dash', 'active');
-		}else if($this->Session->read('USER.Login.roles_id') == '33'  || $this->Session->read('USER.Login.roles_id') == '35'){ // director
+		}else if($this->Session->read('USER.Login.roles_id') == '33'  || $this->Session->read('USER.Login.roles_id') == '35'  || $this->Session->read('USER.Login.roles_id') == '39'){ // director
 			$resume_options = array(			
 				array('table' => 'req_resume',
 						'alias' => 'ReqResume',					

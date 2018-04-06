@@ -1443,9 +1443,10 @@ class PositionController extends AppController {
 				$this->save_mail_box($subject, $message, $req_res_id, 'C',1);
 				// send cc mails
 				if($this->request->data['Position']['client_cc'] != ''){
-					$cc = explode(',', $this->request->data['Position']['client_cc']);					
+					$cc = explode(',', $this->request->data['Position']['client_cc']);	
+					$cc_new = array_map('trim',$cc);					
 				}
-				if(!$this->send_email($subject, 'send_cv', $this->Session->read('USER.Login.email_id'), $contact_data['Contact']['email'],$vars,$resume_path,$cc)){	
+				if(!$this->send_email($subject, 'send_cv', $this->Session->read('USER.Login.email_id'), $contact_data['Contact']['email'],$vars,$resume_path,$cc_new)){	
 					// show the msg.								
 					$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Problem in sending the mail to client...', 'default', array('class' => 'alert alert-error'));				
 				}else{						
@@ -2416,7 +2417,8 @@ class PositionController extends AppController {
 					$this->save_mail_box($subject, $message, $req_res_id, 'C',2);
 					// send cc to client
 					if($this->request->data['Position']['client_cc'] != ''){
-						$cc = explode(',', $this->request->data['Position']['client_cc']);	
+						$cc = explode(',', $this->request->data['Position']['client_cc']);
+						$cc_new = array_map('trim',$cc);							
 					}
 					
 					if($this->request->data['Position']['client_attach']['tmp_name'] != ''){
@@ -2424,7 +2426,7 @@ class PositionController extends AppController {
 						$attach = $this->upload_attachment($this->request->data['Position']['client_attach'], $attach_file);
 					}			
 					// send mail
-					if(!$this->send_email($subject, 'confirm_interview', $this->Session->read('USER.Login.email_id'), $contact_data['Contact']['email'], $vars, $attach, $cc)){
+					if(!$this->send_email($subject, 'confirm_interview', $this->Session->read('USER.Login.email_id'), $contact_data['Contact']['email'], $vars, $attach, $cc_new)){
 						// show the msg.								
 						$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Problem in sending the mail to candidate...', 'default', array('class' => 'alert alert-error'));				
 					}						
