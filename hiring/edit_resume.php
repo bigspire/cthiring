@@ -327,7 +327,7 @@ if($_POST['hdnSubmit'] == 1){
 			echo 'Caught exception: ',  $e->getMessage(), "\n";
 		}
 		
-		$query = "CALL edit_req_resume_position('".$modified_by."','".$date."','".$mysql->real_escape_str($_SESSION['position_for'])."','".$getid."','','')";
+		$query = "CALL edit_req_resume_position('".$modified_by."','".$date."','".$mysql->real_escape_str($_SESSION['position_for'])."','".$getid."','Draft','Draft')";
 			try{
 				if(!$result = $mysql->execute_query($query)){
 					throw new Exception('Problem in adding position details');
