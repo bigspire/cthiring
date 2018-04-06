@@ -895,7 +895,20 @@ if(!empty($_POST) && empty($_POST['hdnSubmit'])){
 			}
 			
 			// query to add req resume details
-			$query = "CALL edit_req_resume_status('Validation - Account Holder','Pending','".$modified_by."','".$date."','".$position_id."')";
+			$query = "CALL get_req_resume('".$getid."')";
+			try{
+				if(!$result = $mysql->execute_query($query)){
+					throw new Exception('Problem in adding resume requirement status details');
+				}
+				$req_resume_id = $mysql->display_result($result);
+				// call the next result
+				$mysql->next_query();
+			}catch(Exception $e){
+				echo 'Caught exception: ',  $e->getMessage(), "\n";
+			}
+			
+			// query to add req resume details
+			$query = "CALL edit_req_resume_status('Validation - Account Holder','Pending','".$modified_by."','".$date."','".$req_resume_id['id']."')";
 			try{
 				if(!$result = $mysql->execute_query($query)){
 					throw new Exception('Problem in adding resume requirement status details');
@@ -909,10 +922,10 @@ if(!empty($_POST) && empty($_POST['hdnSubmit'])){
 			}
 		}else{
 			// query to add position for details
-			$query = "CALL edit_req_resume_position('".$modified_by."','".$date."','".$mysql->real_escape_str($_SESSION['position_for'])."','".$resume_id."','','','$getid')";
+			$query = "CALL edit_req_resume_position_status('".$modified_by."','".$date."','".$resume_id."')";
 			try{
 				if(!$result = $mysql->execute_query($query)){
-					throw new Exception('Problem in adding position details');
+					throw new Exception('Problem in adding req resume details');
 				}
 				$row = $mysql->display_result($result);
 				$position_id = $row['inserted_id'];
