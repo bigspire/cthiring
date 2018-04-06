@@ -1138,7 +1138,10 @@ if(!empty($_POST) && empty($_POST['hdnSubmit'])){
 			}catch(Exception $e){
 				echo 'Caught exception: ',  $e->getMessage(), "\n";
 			}
-				
+			
+					
+
+			
 			// convert the resume doc. into pdf
 			require_once('vendor/ilovepdf-php-1.1.5/init.php');			
 			// you can call task class directly
@@ -1146,18 +1149,40 @@ if(!empty($_POST) && empty($_POST['hdnSubmit'])){
 			/* $ilovepdf = new Ilovepdf('project_public_e1b1961d9d9cb94da486a4a04f3ce2b6_vIiAd97ec8dba4620fe3944e24fee623378b6',
 			'secret_key_9912dae17d681dfe0fc2be7c92d895d8_BRyVqff37bf1e9f79bd62481c6bdbdb213e8b'); */
 			
-			$ilovepdf = new Ilovepdf($resume_api['public_key'],$resume_api['secret_key']);
-			
-			// Create a new task
-			$myTaskConvertOffice = $ilovepdf->newTask('officepdf');
-			// Add files to task for upload
-			$resume_path = dirname(__FILE__).'/uploads/resume/'.$_SESSION['resume_doc'];
-			$file1 = $myTaskConvertOffice->addFile($resume_path);
-			$myTaskConvertOffice->setOutputFilename($snap_file_name);
-			// Execute the task
-			$myTaskConvertOffice->execute();
-			// Download the package files
-			$myTaskConvertOffice->download('uploads/resumepdf/');   
+					
+			try {
+				$ilovepdf = new Ilovepdf($resume_api['public_key'],$resume_api['secret_key']);
+				$myTaskConvertOffice = $ilovepdf->newTask('officepdf');			
+				// Add files to task for upload
+				$resume_path = dirname(__FILE__).'/uploads/resume/'.$_SESSION['resume_doc'];
+				$file1 = $myTaskConvertOffice->addFile($resume_path);
+				$myTaskConvertOffice->setOutputFilename($snap_file_name);
+				// Execute the task
+				$myTaskConvertOffice->execute();
+				// Download the package files
+				$myTaskConvertOffice->download('uploads/resumepdf/'); 
+			} catch (\Ilovepdf\Exceptions\StartException $e) {
+				echo "An error occured on start: " . $e->getMessage() . " ";
+				// Authentication errors
+			} catch (\Ilovepdf\Exceptions\AuthException $e) {
+				echo "An error occured on auth: " . $e->getMessage() . " ";
+				echo implode(', ', $e->getErrors());
+				// Uploading files errors
+			} catch (\Ilovepdf\Exceptions\UploadException $e) {
+				echo "An error occured on upload: " . $e->getMessage() . " ";
+				echo implode(', ', $e->getErrors());
+				// Processing files errors
+			} catch (\Ilovepdf\Exceptions\ProcessException $e) {
+				echo "An error occured on process: " . $e->getMessage() . " ";
+				echo implode(', ', $e->getErrors());
+				// Downloading files errors
+			} catch (\Ilovepdf\Exceptions\DownloadException $e) {
+				echo "An error occured on process: " . $e->getMessage() . " ";
+				echo implode(', ', $e->getErrors());
+				// Other errors (as connexion errors and other)
+			} catch (\Exception $e) {
+				echo "An error occured: " . $e->getMessage();
+			}  
 			
 			// create introduction pdf file			
 			$resume_path2 = dirname(__FILE__).'/uploads/introduction/'.$_SESSION['resume_doc'];

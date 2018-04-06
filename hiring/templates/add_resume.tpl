@@ -150,12 +150,12 @@
 										<td width="120" class="tbl_column">CTC <span class="f_req">*</span></td>
 										<td>	
 										
-										<input type="text" tabindex="9" name="present_ctc" value="{$present_ctc}" placeholder="Present"  class="span2"/>										
+										<input type="text" tabindex="9" name="present_ctc" value="{$present_ctc}" placeholder="Present"  class="span2 digitOnly"/>										
 										<select class="span2"  tabindex="10"  name="present_ctc_type">
 										{html_options options=$ctc_type selected=$smarty.post.present_ctc_type}
 										</select> 
 											
-										<input type="text" tabindex="11" name="expected_ctc" value="{$expected_ctc}" placeholder="Expected"  class="span2"/>	
+										<input type="text" tabindex="11" name="expected_ctc" value="{$expected_ctc}" placeholder="Expected"  class="span2 digitOnly"/>	
 										<select  class="span2" tabindex="12"  name="expected_ctc_type">
 										{html_options options=$ctc_type selected=$smarty.post.expected_ctc_type}
 										</select>			
