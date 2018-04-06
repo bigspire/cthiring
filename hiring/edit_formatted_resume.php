@@ -1292,10 +1292,10 @@ if(!empty($_POST) && empty($_POST['hdnSubmit'])){
 			}
 		}else{
 			// query to add position for details
-			$query = "CALL edit_req_resume_position('".$modified_by."','".$date."','".$mysql->real_escape_str($_SESSION['position_for'])."','".$resume_id."','','','$getid')";
+			$query = "CALL edit_req_resume_position_status('".$modified_by."','".$date."','".$resume_id."')";
 			try{
 				if(!$result = $mysql->execute_query($query)){
-					throw new Exception('Problem in adding position details');
+					throw new Exception('Problem in adding req resume details');
 				}
 				$row = $mysql->display_result($result);
 				$position_id = $row['inserted_id'];
