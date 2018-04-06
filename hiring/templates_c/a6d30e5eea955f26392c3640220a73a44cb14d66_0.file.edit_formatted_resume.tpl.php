@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-04-06 11:34:08
+/* Smarty version 3.1.29, created on 2018-04-06 12:38:55
   from "C:\xampp\htdocs\2017\ctsvn2\cthiring\hiring\templates\edit_formatted_resume.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5ac70dd806b754_21693445',
+  'unifunc' => 'content_5ac71d07ba1d54_43129765',
   'file_dependency' => 
   array (
     'a6d30e5eea955f26392c3640220a73a44cb14d66' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn2\\cthiring\\hiring\\templates\\edit_formatted_resume.tpl',
-      1 => 1522994239,
+      1 => 1522996477,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5ac70dd806b754_21693445 ($_smarty_tpl) {
+function content_5ac71d07ba1d54_43129765 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\2017\\ctsvn2\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -1312,7 +1312,7 @@ $(document).ready(function(){
 					html = "<option value=''>Select</option>";
 					$('#'+cur_obj+' option').each(function(){
 						// allow only values equals or greater than
-						if(val < $(this).val()){ 
+						if(val <= $(this).val()){ 
 							html += '<option value='+$(this).val()+'>'+$(this).text()+'</option>';
 						}
 					});

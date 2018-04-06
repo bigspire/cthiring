@@ -209,19 +209,18 @@ if($_POST['hdnSubmit'] == 1){
 		}
 		
 		
-		// query to add position for details
-		$query = "CALL edit_req_resume_position('".$modified_by."','".$date."','".$mysql->real_escape_str($_POST['position_for'])."','$getid')";
-		try{
-			if(!$result = $mysql->execute_query($query)){
-				throw new Exception('Problem in updating position details');
+		$query = "CALL edit_req_resume_position('".$modified_by."','".$date."','".$mysql->real_escape_str($_SESSION['position_for'])."','".$getid."','','')";
+			try{
+				if(!$result = $mysql->execute_query($query)){
+					throw new Exception('Problem in adding position details');
+				}
+				$row = $mysql->display_result($result);
+				$position_id = $row['inserted_id'];
+				// call the next result
+				$mysql->next_query();
+			}catch(Exception $e){
+				echo 'Caught exception: ',  $e->getMessage(), "\n";
 			}
-			$row = $mysql->display_result($result);
-			$position_id = $row['affected_rows'];
-			// call the next result
-			$mysql->next_query();
-		}catch(Exception $e){
-			echo 'Caught exception: ',  $e->getMessage(), "\n";
-		}
 		
 		
 		// query to delete education details
@@ -407,21 +406,7 @@ if($_POST['hdnSubmit'] == 1){
 				echo 'Caught exception: ',  $e->getMessage(), "\n";
 			}
 		}
-		
-		// query to add req resume details
-		$query = "CALL edit_req_resume_status('Draft','Draft','".$_SESSION['user_id']."','".$date."','".$position_id."')";
-		try{
-			if(!$result = $mysql->execute_query($query)){
-				throw new Exception('Problem in adding resume requirement status details');
-			}
-			$row = $mysql->display_result($result);
-			$req_res_id = $row['inserted_id'];
-			// call the next result
-			$mysql->next_query();
-		}catch(Exception $e){
-			echo 'Caught exception: ',  $e->getMessage(), "\n";
-		}
-		
+
 		if(!empty($edu_id) && !empty($exp_id) && !empty($train_id)  && !empty($resume_id)){
 			$req_id = $_SESSION['position_for'];
 			unset($_SESSION['position_for']);

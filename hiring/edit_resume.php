@@ -327,22 +327,18 @@ if($_POST['hdnSubmit'] == 1){
 			echo 'Caught exception: ',  $e->getMessage(), "\n";
 		}
 		
-		/*
-		// query to add position for details
-		$query = "CALL edit_req_resume_position('".$modified_by."','".$date."',
-			'".$mysql->real_escape_str($_POST['position_for'])."','$getid')";
-		try{
-			if(!$result = $mysql->execute_query($query)){
-				throw new Exception('Problem in adding position details');
+		$query = "CALL edit_req_resume_position('".$modified_by."','".$date."','".$mysql->real_escape_str($_SESSION['position_for'])."','".$getid."','','')";
+			try{
+				if(!$result = $mysql->execute_query($query)){
+					throw new Exception('Problem in adding position details');
+				}
+				$row = $mysql->display_result($result);
+				$position_id = $row['inserted_id'];
+				// call the next result
+				$mysql->next_query();
+			}catch(Exception $e){
+				echo 'Caught exception: ',  $e->getMessage(), "\n";
 			}
-			$row = $mysql->display_result($result);
-			$position_id = $row['affected_rows'];
-			// call the next result
-			$mysql->next_query();
-		}catch(Exception $e){
-			echo 'Caught exception: ',  $e->getMessage(), "\n";
-		}
-		*/
 		
 		// query to delete education details
 		$query = "CALL delete_res_edu('$getid')";
