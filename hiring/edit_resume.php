@@ -882,22 +882,50 @@ if(!empty($_POST) && empty($_POST['hdnSubmit'])){
 			echo 'Caught exception: ',  $e->getMessage(), "\n";
 		}
 		
-		/*
-		// query to add position for details
-		$query = "CALL edit_req_resume_position('".$modified_by."','".$date."',
-			'".$mysql->real_escape_str($_POST['position_for'])."','$getid')";
-		try{
-			if(!$result = $mysql->execute_query($query)){
-				throw new Exception('Problem in adding position details');
+		if(($row_status['status_title'] == 'Draft')){
+			// query to add position for details
+			$query = "CALL edit_req_resume_position('".$modified_by."','".$date."',
+				'".$mysql->real_escape_str($_SESSION['position_for'])."','".$getid."','Validation - Account Holder','Pending')";
+			try{
+				if(!$result = $mysql->execute_query($query)){
+					throw new Exception('Problem in adding position details');
+				}
+				$row = $mysql->display_result($result);
+				$position_id = $row['inserted_id'];
+				// call the next result
+				$mysql->next_query();
+			}catch(Exception $e){
+				echo 'Caught exception: ',  $e->getMessage(), "\n";
 			}
-			$row = $mysql->display_result($result);
-			$position_id = $row['affected_rows'];
-			// call the next result
-			$mysql->next_query();
-		}catch(Exception $e){
-			echo 'Caught exception: ',  $e->getMessage(), "\n";
+			
+			// query to add req resume details
+			$query = "CALL edit_req_resume_status('Validation - Account Holder','Pending','".$modified_by."','".$date."','".$position_id."')";
+			try{
+				if(!$result = $mysql->execute_query($query)){
+					throw new Exception('Problem in adding resume requirement status details');
+				}
+				$row = $mysql->display_result($result);
+				$req_res_id = $row['inserted_id'];
+				// call the next result
+				$mysql->next_query();
+			}catch(Exception $e){
+				echo 'Caught exception: ',  $e->getMessage(), "\n";
+			}
+		}else{
+			// query to add position for details
+			$query = "CALL edit_req_resume_position('".$modified_by."','".$date."','".$mysql->real_escape_str($_SESSION['position_for'])."','".$resume_id."','','','$getid')";
+			try{
+				if(!$result = $mysql->execute_query($query)){
+					throw new Exception('Problem in adding position details');
+				}
+				$row = $mysql->display_result($result);
+				$position_id = $row['inserted_id'];
+				// call the next result
+				$mysql->next_query();
+			}catch(Exception $e){
+				echo 'Caught exception: ',  $e->getMessage(), "\n";
+			}
 		}
-		*/
 		
 		// query to delete education details
 		$query = "CALL delete_res_edu('$getid')";

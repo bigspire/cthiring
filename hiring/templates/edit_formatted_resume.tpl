@@ -983,7 +983,7 @@ $(document).ready(function(){
 					html = "<option value=''>Select</option>";
 					$('#'+cur_obj+' option').each(function(){
 						// allow only values equals or greater than
-						if(val < $(this).val()){ 
+						if(val <= $(this).val()){ 
 							html += '<option value='+$(this).val()+'>'+$(this).text()+'</option>';
 						}
 					});

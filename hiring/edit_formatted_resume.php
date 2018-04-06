@@ -1266,7 +1266,7 @@ if(!empty($_POST) && empty($_POST['hdnSubmit'])){
 		if(($row_status['status_title'] == 'Draft')){
 			// query to add position for details
 			$query = "CALL edit_req_resume_position('".$modified_by."','".$date."',
-				'".$mysql->real_escape_str($_SESSION['position_for'])."','".$resume_id."','Validation - Account Holder','Pending','$getid')";
+				'".$mysql->real_escape_str($_SESSION['position_for'])."','".$getid."','Validation - Account Holder','Pending')";
 			try{
 				if(!$result = $mysql->execute_query($query)){
 					throw new Exception('Problem in adding position details');

@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-04-05 16:06:17
+/* Smarty version 3.1.29, created on 2018-04-06 11:47:54
   from "C:\xampp\htdocs\2017\ctsvn2\cthiring\hiring\templates\edit_resume.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5ac5fc21754aa0_98352839',
+  'unifunc' => 'content_5ac71112d1b9f6_80272299',
   'file_dependency' => 
   array (
     'e5b4b2330606df4ced4df38c6f449667ebc7920d' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn2\\cthiring\\hiring\\templates\\edit_resume.tpl',
-      1 => 1522228976,
+      1 => 1522994239,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5ac5fc21754aa0_98352839 ($_smarty_tpl) {
+function content_5ac71112d1b9f6_80272299 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\2017\\ctsvn2\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -193,14 +193,14 @@ echo $_smarty_tpl->tpl_vars['email_validErr']->value;?>
 										<td>	
 										
 										<input type="text"  tabindex="9" name="present_ctc" value="<?php echo $_smarty_tpl->tpl_vars['present_ctc']->value;?>
-" placeholder="Present"  class="span2"/>										
+" placeholder="Present"  class="span2 digitOnly"/>										
 										<select class="span2"   name="present_ctc_type">
 										<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['ctc_type']->value,'selected'=>$_smarty_tpl->tpl_vars['present_ctc_type']->value),$_smarty_tpl);?>
 
 										</select> 
 											
 										<input type="text" tabindex="10" name="expected_ctc" value="<?php echo $_smarty_tpl->tpl_vars['expected_ctc']->value;?>
-" placeholder="Expected"  class="span2"/>	
+" placeholder="Expected"  class="span2 digitOnly"/>	
 										<select  class="span2"  name="expected_ctc_type">
 										<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['ctc_type']->value,'selected'=>$_smarty_tpl->tpl_vars['expected_ctc_type']->value),$_smarty_tpl);?>
 
