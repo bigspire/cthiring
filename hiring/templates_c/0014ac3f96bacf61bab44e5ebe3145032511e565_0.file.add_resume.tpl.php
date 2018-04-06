@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-03-22 12:15:16
+/* Smarty version 3.1.29, created on 2018-04-06 12:03:15
   from "C:\xampp\htdocs\2017\ctsvn2\cthiring\hiring\templates\add_resume.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5ab350fc666798_22053477',
+  'unifunc' => 'content_5ac714ab1f2752_29623289',
   'file_dependency' => 
   array (
     '0014ac3f96bacf61bab44e5ebe3145032511e565' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn2\\cthiring\\hiring\\templates\\add_resume.tpl',
-      1 => 1521701109,
+      1 => 1522996376,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5ab350fc666798_22053477 ($_smarty_tpl) {
+function content_5ac714ab1f2752_29623289 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\2017\\ctsvn2\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -202,14 +202,14 @@ echo $_smarty_tpl->tpl_vars['email_validErr']->value;?>
 										<td>	
 										
 										<input type="text" tabindex="9" name="present_ctc" value="<?php echo $_smarty_tpl->tpl_vars['present_ctc']->value;?>
-" placeholder="Present"  class="span2"/>										
+" placeholder="Present"  class="span2 digitOnly"/>										
 										<select class="span2"  tabindex="10"  name="present_ctc_type">
 										<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['ctc_type']->value,'selected'=>$_POST['present_ctc_type']),$_smarty_tpl);?>
 
 										</select> 
 											
 										<input type="text" tabindex="11" name="expected_ctc" value="<?php echo $_smarty_tpl->tpl_vars['expected_ctc']->value;?>
-" placeholder="Expected"  class="span2"/>	
+" placeholder="Expected"  class="span2 digitOnly"/>	
 										<select  class="span2" tabindex="12"  name="expected_ctc_type">
 										<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['ctc_type']->value,'selected'=>$_POST['expected_ctc_type']),$_smarty_tpl);?>
 
@@ -1074,7 +1074,7 @@ $(document).ready(function(){
 					html = "<option value=''>Select</option>";
 					$('#'+cur_obj+' option').each(function(){
 						// allow only values equals or greater than
-						if(val < $(this).val()){ 
+						if(val <= $(this).val()){ 
 							html += '<option value='+$(this).val()+'>'+$(this).text()+'</option>';
 						}
 					});

@@ -325,7 +325,7 @@ if($_POST['hdnSubmit'] == 1){
 			unset($_SESSION['position_for']);
 			unset($_SESSION['resume_doc']);
 			unset($_SESSION['clients_id']);
-			header('Location: ../position/view/'.$req_id.'?action=created');
+			header('Location: ../resume?action=draft_created');
 			// $smarty->assign('draft_valid',"Resume details saved as draft");
 			// header('Location: ../resume?action=created');
 			// header('Location: ../resume?action=draft_created');
