@@ -296,11 +296,15 @@
 		<div  class="noJob">
 		<?php
 		foreach($teamData as $key => $team):
-		$mem_req = $posData[$key] ? $posData[$key] : $this->request->data['Position']['no_job'];?>
+		$mem_req = $posData[$key] ? $posData[$key] : $this->request->data['Position']['no_job'];
+		
+		?>
 		
 		<span id="" style="margin-top:2px;font-size:13px;font-weight:normal" class="tagDiv tag label label-warning"><?php echo $team['Creator']['first_name'].' '.$team['Creator']['last_name'];?> - <?php echo $mem_req;?> 
 		<i class="icon-adt_trash  removeTag" val="" rel="tooltip" data="<?php echo $team['Creator']['id'];?>" title="remove" style="margin-top:2px;cursor:pointer"></i></span>
 		<?php $pos_str .= $team['Creator']['id'].'-'.$mem_req.',';?>
+		
+
 		<?php endforeach;?>
 	
 		</div>

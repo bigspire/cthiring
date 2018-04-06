@@ -809,13 +809,13 @@ class PositionController extends AppController {
 		foreach($users as $key => $record){
 			$no_req = explode('-', $record);
 			if(trim($no_req[0]) != ''){
-				$users_list[] = $no_req[0];
+				$users_list = $no_req[0];
+				// get team member info
+				$data[] = $this->Position->Creator->findById($users_list, array('fields' => 'Creator.first_name','Creator.last_name','Creator.id'));
 				$no_pos[] = $no_req[1];
 			}
 		}
-		// get team member info
-		$data = $this->Position->Creator->find('all', array('fields' => array('Creator.first_name','Creator.last_name','Creator.id'),
-		'conditions' => array('Creator.id' => $users_list)));
+		
 		$this->set('teamData', $data);
 		$this->set('posData', $no_pos);
 	}
