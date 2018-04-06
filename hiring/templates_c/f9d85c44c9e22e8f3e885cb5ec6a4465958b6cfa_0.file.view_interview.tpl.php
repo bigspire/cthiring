@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-11-07 21:49:18
+/* Smarty version 3.1.29, created on 2018-04-05 18:55:18
   from "C:\xampp\htdocs\ctsvn\cthiring\hiring\templates\view_interview.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5a01dd06c4a6b5_01144202',
+  'unifunc' => 'content_5ac623be122412_99970134',
   'file_dependency' => 
   array (
     'f9d85c44c9e22e8f3e885cb5ec6a4465958b6cfa' => 
     array (
       0 => 'C:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\templates\\view_interview.tpl',
-      1 => 1488271090,
+      1 => 1512651320,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5a01dd06c4a6b5_01144202 ($_smarty_tpl) {
+function content_5ac623be122412_99970134 ($_smarty_tpl) {
 ?>
 
 
@@ -95,7 +95,7 @@ home"><i class="icon-home"></i></a>
 </td>
 								</tr>	
 								<tr>
-									<td class="tbl_column">Created By  </td>
+									<td class="tbl_column">Recruiter  </td>
 									<td><?php echo $_smarty_tpl->tpl_vars['interview_data']->value['created_by'];?>
 </td>
 								</tr>	

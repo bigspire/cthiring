@@ -180,12 +180,12 @@
 										<td width="120" class="tbl_column"> Compensation <span class="f_req">*</span></td>
 										<td>	
 										
-										<input type="text" value="{$present_ctc}"  tabindex="15" name="present_ctc"  placeholder="Present"  class="span2"/>										
+										<input type="text" value="{$present_ctc}"  tabindex="15" name="present_ctc"  placeholder="Present"  class="span2 digitOnly"/>										
 										<select class="span3"   name="present_ctc_type" tabindex="16">
 										{html_options options=$ctc_type selected=$present_ctc_type}
 										</select>  
 											
-										<input type="text" name="expected_ctc" tabindex="17"  placeholder="Expected" value="{$expected_ctc}" class="span2"/>	
+										<input type="text" name="expected_ctc" tabindex="17"  placeholder="Expected" value="{$expected_ctc}" class="span2 digitOnly"/>	
 										<select  class="span3"  name="expected_ctc_type" tabindex="18">
 										{html_options options=$ctc_type selected=$expected_ctc_type}
 										</select>

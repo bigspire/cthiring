@@ -1535,18 +1535,43 @@ if(!empty($_POST) && empty($_POST['hdnSubmit'])){
 			/* $ilovepdf = new Ilovepdf('project_public_5b8a8c940b378f560a9af9b547fda145_DNRT62d35f5d2494212a0dad512be366352cf',
 			'secret_key_629c405d975d170c4785d1781f9a0e6c_DccLT641e98f8d020e52866e228464f75321d');*/
 			
-			$ilovepdf = new Ilovepdf($resume_api['public_key'],$resume_api['secret_key']);
 			
-			// Create a new task
-			$myTaskConvertOffice = $ilovepdf->newTask('officepdf');
-			// Add files to task for upload
-			$file1 = $myTaskConvertOffice->addFile($resume_path);
-			$snap_file_name = substr($_SESSION['resume_doc'], 0, strlen($_SESSION['resume_doc'])-5);
-			$myTaskConvertOffice->setOutputFilename($fun->filter_file($snap_file_name).'_{date}'.'.pdf');
-			// Execute the task
-			$myTaskConvertOffice->execute();
-			// Download the package files
-			$myTaskConvertOffice->download('uploads/autoresumepdf/');   
+
+			try {
+				$ilovepdf = new Ilovepdf($resume_api['public_key'],$resume_api['secret_key']);			
+				// Create a new task
+				$myTaskConvertOffice = $ilovepdf->newTask('officepdf');
+				// Add files to task for upload
+				$file1 = $myTaskConvertOffice->addFile($resume_path);
+				$snap_file_name = substr($_SESSION['resume_doc'], 0, strlen($_SESSION['resume_doc'])-5);
+				$myTaskConvertOffice->setOutputFilename($fun->filter_file($snap_file_name).'_{date}'.'.pdf');
+				// Execute the task
+				$myTaskConvertOffice->execute();
+				// Download the package files
+				$myTaskConvertOffice->download('uploads/autoresumepdf/');  
+			} catch (\Ilovepdf\Exceptions\StartException $e) {
+				echo "An error occured on start: " . $e->getMessage() . " ";
+				// Authentication errors
+			} catch (\Ilovepdf\Exceptions\AuthException $e) {
+				echo "An error occured on auth: " . $e->getMessage() . " ";
+				echo implode(', ', $e->getErrors());
+				// Uploading files errors
+			} catch (\Ilovepdf\Exceptions\UploadException $e) {
+				echo "An error occured on upload: " . $e->getMessage() . " ";
+				echo implode(', ', $e->getErrors());
+				// Processing files errors
+			} catch (\Ilovepdf\Exceptions\ProcessException $e) {
+				echo "An error occured on process: " . $e->getMessage() . " ";
+				echo implode(', ', $e->getErrors());
+				// Downloading files errors
+			} catch (\Ilovepdf\Exceptions\DownloadException $e) {
+				echo "An error occured on process: " . $e->getMessage() . " ";
+				echo implode(', ', $e->getErrors());
+				// Other errors (as connexion errors and other)
+			} catch (\Exception $e) {
+				echo "An error occured: " . $e->getMessage();
+			}  
+			
 			// water mark the pdf
 			/*
 			$myTaskWatermark = $ilovepdf->newTask('watermark');
