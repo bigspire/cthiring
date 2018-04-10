@@ -1265,9 +1265,7 @@ if(!empty($_POST) && empty($_POST['hdnSubmit'])){
 			}
 			
 			// query to add req resume details
-<<<<<<< HEAD
-			echo $query = "CALL edit_req_resume_status('Validation - Account Holder','Pending','".$modified_by."','".$date."','".$position_id."')";
-=======
+
 			$query = "CALL get_req_resume('".$getid."')";
 			try{
 				if(!$result = $mysql->execute_query($query)){
@@ -1280,9 +1278,8 @@ if(!empty($_POST) && empty($_POST['hdnSubmit'])){
 				echo 'Caught exception: ',  $e->getMessage(), "\n";
 			}
 			
-			// query to add req resume details
 			$query = "CALL edit_req_resume_status('Validation - Account Holder','Pending','".$modified_by."','".$date."','".$req_resume_id['id']."')";
->>>>>>> 81315a5806ae68903a4752f9a7a836a64d848dcd
+
 			try{
 				if(!$result = $mysql->execute_query($query)){
 					throw new Exception('Problem in adding resume requirement status details');
