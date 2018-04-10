@@ -558,7 +558,24 @@
 								 </div>
 						<?php endif; ?>
 						
+							<?php if($this->request->query['action'] == 'auto_created'):	?>					
+						<div class="alert alert-success">
+								<a class="close" data-dismiss="alert">×</a>
+								Fully Formatted Resume Created Successfully
+								 </div>
+						<?php endif; ?>
+						
+						
+							<?php if($this->request->query['action'] == 'auto_modified'):	?>					
+						<div class="alert alert-success">
+								<a class="close" data-dismiss="alert">×</a>
+								 Fully Formatted Resume Modified Successfully
+								 </div>
+						<?php endif; ?>
+						
 					<?php echo $this->Session->flash();?>
+					
+					
 		<span id="update"></span>
 										
 									
