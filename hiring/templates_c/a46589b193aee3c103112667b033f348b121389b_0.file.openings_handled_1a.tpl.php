@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-04-10 21:02:32
+/* Smarty version 3.1.29, created on 2018-04-10 21:11:29
   from "C:\xampp\htdocs\ctsvn\cthiring\hiring\templates\openings_handled_1a.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5accd910b0d641_42363807',
+  'unifunc' => 'content_5accdb294e6287_78863340',
   'file_dependency' => 
   array (
     'a46589b193aee3c103112667b033f348b121389b' => 
     array (
       0 => 'C:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\templates\\openings_handled_1a.tpl',
-      1 => 1523374341,
+      1 => 1523374885,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5accd910b0d641_42363807 ($_smarty_tpl) {
+function content_5accdb294e6287_78863340 ($_smarty_tpl) {
 ?>
 
    
@@ -42,7 +42,7 @@ function content_5accd910b0d641_42363807 ($_smarty_tpl) {
 					  <div class="span12" style="margin:0;">
 					 
 				
-							<form>
+							<form method="post">
 															
 						<div class="dn dataTables_filter srchBox homeSrchBox" id="dt_gal_filter" style="display: block;">
 							
@@ -197,23 +197,23 @@ function content_5accd910b0d641_42363807 ($_smarty_tpl) {
 																		<tr>
 																				<td width="">Apr 2018</td>
 										
-										<td style="text-align:center">33</td>
-										<td style="text-align:center">3</td>
-										<td style="text-align:center">23</td>
-										<td style="text-align:center">54</td>
+										<td style="text-align:center"><a href="#">33</a></td>
+										<td style="text-align:center"><a href="#">3</a></td>
+										<td style="text-align:center"><a href="#">23</a></td>
+										<td style="text-align:center"><a href="#">54</a></td>
 										
-										<td style="text-align:center">2</td>
-										<td style="text-align:center">13</td>
-										<td style="text-align:center">36</td>
-										<td style="text-align:center">23</td>
-										<td style="text-align:center">54</td>
+										<td style="text-align:center"><a href="#">2</a></td>
+										<td style="text-align:center"><a href="#">13</a></td>
+										<td style="text-align:center"><a href="#">36</a></td>
+										<td style="text-align:center"><a href="#">23</a></td>
+										<td style="text-align:center"><a href="#">54</a></td>
 										
 										
 									
 										
 									
 						
-						<td width="" style="text-align:center">88						</td>
+						<td width="" style="text-align:center"><a href="#">88</td>
 						
 					
 								</tr>
@@ -221,23 +221,23 @@ function content_5accd910b0d641_42363807 ($_smarty_tpl) {
 								<tr>
 																				<td width="">May 2018</td>
 										
-										<td style="text-align:center">2</td>
-										<td style="text-align:center">3</td>
-										<td style="text-align:center">12</td>
-										<td style="text-align:center">23</td>
+										<td style="text-align:center"><a href="#">2</a></td>
+										<td style="text-align:center"><a href="#">3</a></td>
+										<td style="text-align:center"><a href="#">12</a></td>
+										<td style="text-align:center"><a href="#">23</a></td>
 										
-										<td style="text-align:center">16</td>
-										<td style="text-align:center">13</td>
-										<td style="text-align:center">10</td>
-										<td style="text-align:center">12</td>
-											<td style="text-align:center">3</td>
+										<td style="text-align:center"><a href="#">16</a></td>
+										<td style="text-align:center"><a href="#">13</a></td>
+										<td style="text-align:center"><a href="#">10</a></td>
+										<td style="text-align:center"><a href="#">12</a></td>
+											<td style="text-align:center"><a href="#">3</a></td>
 									
 										
 									
 										
 									
 						
-						<td width="" style="text-align:center">90						</td>
+						<td width="" style="text-align:center"><a href="#">90</a>						</td>
 						
 					
 								</tr>
@@ -246,17 +246,17 @@ function content_5accd910b0d641_42363807 ($_smarty_tpl) {
 								<tr>
 																				<td width="">Jun 2018</td>
 										
-										<td style="text-align:center">33</td>
-										<td style="text-align:center">3</td>
-										<td style="text-align:center">76</td>
-										<td style="text-align:center">23</td>
+										<td style="text-align:center"><a href="#">33</a></td>
+										<td style="text-align:center"><a href="#">3</a></td>
+										<td style="text-align:center"><a href="#">76</a></td>
+										<td style="text-align:center"><a href="#">23</a></td>
 										
-										<td style="text-align:center">33</td>
-										<td style="text-align:center">3</td>
-										<td style="text-align:center">76</td>
-										<td style="text-align:center">23</td>
-										<td style="text-align:center">3</td>
-										<td width="" style="text-align:center">56</td>
+										<td style="text-align:center"><a href="#">33</a></td>
+										<td style="text-align:center"><a href="#">3</a></td>
+										<td style="text-align:center"><a href="#">76</a></td>
+										<td style="text-align:center"><a href="#">23</a></td>
+										<td style="text-align:center"><a href="#">3</a></td>
+										<td width="" style="text-align:center"><a href="#">56</a></td>
 						
 					
 								</tr>
@@ -264,17 +264,17 @@ function content_5accd910b0d641_42363807 ($_smarty_tpl) {
 								<tr>
 																				<td width="">Jul 2018</td>
 										
-										<td style="text-align:center">33</td>
-										<td style="text-align:center">3</td>
-										<td style="text-align:center">76</td>
-										<td style="text-align:center">23</td>
+										<td style="text-align:center"><a href="#">33</a></td>
+										<td style="text-align:center"><a href="#">3</a></td>
+										<td style="text-align:center"><a href="#">76</a></td>
+										<td style="text-align:center"><a href="#">23</a></td>
 										
-										<td style="text-align:center">33</td>
-										<td style="text-align:center">3</td>
-										<td style="text-align:center">76</td>
-										<td style="text-align:center">23</td>
-										<td style="text-align:center">3</td>
-										<td width="" style="text-align:center">56</td>
+										<td style="text-align:center"><a href="#">33</a></td>
+										<td style="text-align:center"><a href="#">3</a></td>
+										<td style="text-align:center"><a href="#">76</a></td>
+										<td style="text-align:center"><a href="#">23</a></td>
+										<td style="text-align:center"><a href="#">3</a></td>
+										<td width="" style="text-align:center"><a href="#">56</a></td>
 						
 					
 								</tr>
@@ -282,17 +282,17 @@ function content_5accd910b0d641_42363807 ($_smarty_tpl) {
 									<tr>
 																				<td width="">Aug 2018</td>
 										
-										<td style="text-align:center">33</td>
-										<td style="text-align:center">3</td>
-										<td style="text-align:center">76</td>
-										<td style="text-align:center">23</td>
+											<td style="text-align:center"><a href="#">33</a></td>
+										<td style="text-align:center"><a href="#">3</a></td>
+										<td style="text-align:center"><a href="#">76</a></td>
+										<td style="text-align:center"><a href="#">23</a></td>
 										
-										<td style="text-align:center">33</td>
-										<td style="text-align:center">3</td>
-										<td style="text-align:center">76</td>
-										<td style="text-align:center">23</td>
-										<td style="text-align:center">3</td>
-										<td width="" style="text-align:center">56</td>
+										<td style="text-align:center"><a href="#">33</a></td>
+										<td style="text-align:center"><a href="#">3</a></td>
+										<td style="text-align:center"><a href="#">76</a></td>
+										<td style="text-align:center"><a href="#">23</a></td>
+										<td style="text-align:center"><a href="#">3</a></td>
+										<td width="" style="text-align:center"><a href="#">56</a></td>
 						
 					
 								</tr>
@@ -300,17 +300,17 @@ function content_5accd910b0d641_42363807 ($_smarty_tpl) {
 								<tr>
 																				<td width="">Sep 2018</td>
 										
-										<td style="text-align:center">33</td>
-										<td style="text-align:center">3</td>
-										<td style="text-align:center">76</td>
-										<td style="text-align:center">23</td>
+										<td style="text-align:center"><a href="#">33</a></td>
+										<td style="text-align:center"><a href="#">3</a></td>
+										<td style="text-align:center"><a href="#">76</a></td>
+										<td style="text-align:center"><a href="#">23</a></td>
 										
-										<td style="text-align:center">33</td>
-										<td style="text-align:center">3</td>
-										<td style="text-align:center">76</td>
-										<td style="text-align:center">23</td>
-										<td style="text-align:center">3</td>
-										<td width="" style="text-align:center">56</td>
+										<td style="text-align:center"><a href="#">33</a></td>
+										<td style="text-align:center"><a href="#">3</a></td>
+										<td style="text-align:center"><a href="#">76</a></td>
+										<td style="text-align:center"><a href="#">23</a></td>
+										<td style="text-align:center"><a href="#">3</a></td>
+										<td width="" style="text-align:center"><a href="#">56</a></td>
 						
 					
 								</tr>
@@ -319,35 +319,34 @@ function content_5accd910b0d641_42363807 ($_smarty_tpl) {
 								<tr>
 																				<td width="">Oct 2018</td>
 										
-										<td style="text-align:center">33</td>
-										<td style="text-align:center">3</td>
-										<td style="text-align:center">76</td>
-										<td style="text-align:center">23</td>
+										<td style="text-align:center"><a href="#">33</a></td>
+										<td style="text-align:center"><a href="#">3</a></td>
+										<td style="text-align:center"><a href="#">76</a></td>
+										<td style="text-align:center"><a href="#">23</a></td>
 										
-										<td style="text-align:center">33</td>
-										<td style="text-align:center">3</td>
-										<td style="text-align:center">76</td>
-										<td style="text-align:center">23</td>
-										<td style="text-align:center">3</td>
-										<td width="" style="text-align:center">56</td>
-						
+										<td style="text-align:center"><a href="#">33</a></td>
+										<td style="text-align:center"><a href="#">3</a></td>
+										<td style="text-align:center"><a href="#">76</a></td>
+										<td style="text-align:center"><a href="#">23</a></td>
+										<td style="text-align:center"><a href="#">3</a></td>
+										<td width="" style="text-align:center"><a href="#">56</a></td>
 					
 								</tr>
 								
 								<tr>
 																				<td width="">Nov 2018</td>
 										
-										<td style="text-align:center">33</td>
-										<td style="text-align:center">3</td>
-										<td style="text-align:center">76</td>
-										<td style="text-align:center">23</td>
+											<td style="text-align:center"><a href="#">33</a></td>
+										<td style="text-align:center"><a href="#">3</a></td>
+										<td style="text-align:center"><a href="#">76</a></td>
+										<td style="text-align:center"><a href="#">23</a></td>
 										
-										<td style="text-align:center">33</td>
-										<td style="text-align:center">3</td>
-										<td style="text-align:center">76</td>
-										<td style="text-align:center">23</td>
-										<td style="text-align:center">3</td>
-										<td width="" style="text-align:center">56</td>
+										<td style="text-align:center"><a href="#">33</a></td>
+										<td style="text-align:center"><a href="#">3</a></td>
+										<td style="text-align:center"><a href="#">76</a></td>
+										<td style="text-align:center"><a href="#">23</a></td>
+										<td style="text-align:center"><a href="#">3</a></td>
+										<td width="" style="text-align:center"><a href="#">56</a></td>
 						
 					
 								</tr>
@@ -355,17 +354,17 @@ function content_5accd910b0d641_42363807 ($_smarty_tpl) {
 								<tr>
 																				<td width="">Dec 2018</td>
 										
-										<td style="text-align:center">33</td>
-										<td style="text-align:center">3</td>
-										<td style="text-align:center">76</td>
-										<td style="text-align:center">23</td>
+										<td style="text-align:center"><a href="#">33</a></td>
+										<td style="text-align:center"><a href="#">3</a></td>
+										<td style="text-align:center"><a href="#">76</a></td>
+										<td style="text-align:center"><a href="#">23</a></td>
 										
-										<td style="text-align:center">33</td>
-										<td style="text-align:center">3</td>
-										<td style="text-align:center">76</td>
-										<td style="text-align:center">23</td>
-										<td style="text-align:center">3</td>
-										<td width="" style="text-align:center">56</td>
+										<td style="text-align:center"><a href="#">33</a></td>
+										<td style="text-align:center"><a href="#">3</a></td>
+										<td style="text-align:center"><a href="#">76</a></td>
+										<td style="text-align:center"><a href="#">23</a></td>
+										<td style="text-align:center"><a href="#">3</a></td>
+										<td width="" style="text-align:center"><a href="#">56</a></td>
 						
 					
 								</tr>
@@ -373,35 +372,34 @@ function content_5accd910b0d641_42363807 ($_smarty_tpl) {
 								<tr>
 																				<td width="">Jan 2019</td>
 										
-										<td style="text-align:center">33</td>
-										<td style="text-align:center">3</td>
-										<td style="text-align:center">76</td>
-										<td style="text-align:center">23</td>
+											<td style="text-align:center"><a href="#">33</a></td>
+										<td style="text-align:center"><a href="#">3</a></td>
+										<td style="text-align:center"><a href="#">76</a></td>
+										<td style="text-align:center"><a href="#">23</a></td>
 										
-										<td style="text-align:center">33</td>
-										<td style="text-align:center">3</td>
-										<td style="text-align:center">76</td>
-										<td style="text-align:center">23</td>
-										<td style="text-align:center">3</td>
-										<td width="" style="text-align:center">56</td>
-						
+										<td style="text-align:center"><a href="#">33</a></td>
+										<td style="text-align:center"><a href="#">3</a></td>
+										<td style="text-align:center"><a href="#">76</a></td>
+										<td style="text-align:center"><a href="#">23</a></td>
+										<td style="text-align:center"><a href="#">3</a></td>
+										<td width="" style="text-align:center"><a href="#">56</a></td>
 					
 								</tr>
 								
 								<tr>
 																				<td width="">Feb 2019</td>
 										
-										<td style="text-align:center">33</td>
-										<td style="text-align:center">3</td>
-										<td style="text-align:center">76</td>
-										<td style="text-align:center">23</td>
+											<td style="text-align:center"><a href="#">33</a></td>
+										<td style="text-align:center"><a href="#">3</a></td>
+										<td style="text-align:center"><a href="#">76</a></td>
+										<td style="text-align:center"><a href="#">23</a></td>
 										
-										<td style="text-align:center">33</td>
-										<td style="text-align:center">3</td>
-										<td style="text-align:center">76</td>
-										<td style="text-align:center">23</td>
-										<td style="text-align:center">3</td>
-										<td width="" style="text-align:center">56</td>
+										<td style="text-align:center"><a href="#">33</a></td>
+										<td style="text-align:center"><a href="#">3</a></td>
+										<td style="text-align:center"><a href="#">76</a></td>
+										<td style="text-align:center"><a href="#">23</a></td>
+										<td style="text-align:center"><a href="#">3</a></td>
+										<td width="" style="text-align:center"><a href="#">56</a></td>
 						
 					
 								</tr>
@@ -409,17 +407,17 @@ function content_5accd910b0d641_42363807 ($_smarty_tpl) {
 								<tr>
 																				<td width="">Mar 2019</td>
 										
-										<td style="text-align:center">33</td>
-										<td style="text-align:center">3</td>
-										<td style="text-align:center">76</td>
-										<td style="text-align:center">23</td>
+										<td style="text-align:center"><a href="#">33</a></td>
+										<td style="text-align:center"><a href="#">3</a></td>
+										<td style="text-align:center"><a href="#">76</a></td>
+										<td style="text-align:center"><a href="#">23</a></td>
 										
-										<td style="text-align:center">33</td>
-										<td style="text-align:center">3</td>
-										<td style="text-align:center">76</td>
-										<td style="text-align:center">23</td>
-										<td style="text-align:center">3</td>
-										<td width="" style="text-align:center">56</td>
+										<td style="text-align:center"><a href="#">33</a></td>
+										<td style="text-align:center"><a href="#">3</a></td>
+										<td style="text-align:center"><a href="#">76</a></td>
+										<td style="text-align:center"><a href="#">23</a></td>
+										<td style="text-align:center"><a href="#">3</a></td>
+										<td width="" style="text-align:center"><a href="#">56</a></td>
 						
 					
 								</tr>
@@ -428,17 +426,17 @@ function content_5accd910b0d641_42363807 ($_smarty_tpl) {
 									<tr>
 																				<th width="">Total Openings Handled</th>
 										
-										<th style="text-align:center">33</th>
-										<th style="text-align:center">3</th>
-										<th style="text-align:center">76</th>
-										<th style="text-align:center">23</th>
+										<th style="text-align:center"><a href="#">33</a></th>
+										<th style="text-align:center"><a href="#">3</a></th>
+										<th style="text-align:center"><a href="#">76</a></th>
+										<th style="text-align:center"><a href="#">23</a></th>
 										
-										<th style="text-align:center">33</th>
-										<th style="text-align:center">3</th>
-										<th style="text-align:center">76</th>
-										<th style="text-align:center">23</th>
-										<th style="text-align:center">3</th>
-										<th width="" style="text-align:center">56</th>
+										<th style="text-align:center"><a href="#">33</a></th>
+										<th style="text-align:center"><a href="#">3</a></th>
+										<th style="text-align:center"><a href="#">76</a></th>
+										<th style="text-align:center"><a href="#">23</a></th>
+										<th style="text-align:center"><a href="#">3</a></th>
+										<th width="" style="text-align:center"><a href="#">56</a></th>
 						
 					
 								</tr>
@@ -514,7 +512,7 @@ function content_5accd910b0d641_42363807 ($_smarty_tpl) {
 		['Nov 2018', 35, 12, 8, 2, 0],
 		['Dec 2018', 22, 19, 6, 2, 0],
 		['Jan 2019', 22, 11, 0, 1, 0],
-		['Feb 2018', 28, 12, 3, 2, 1],
+		['Feb 2019', 28, 12, 3, 2, 1],
 		['Mar 2019', 17, 9, 1, 2, 1]
       ]);
 	  
