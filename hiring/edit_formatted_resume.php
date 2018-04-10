@@ -912,11 +912,11 @@ if(!empty($_POST) && empty($_POST['hdnSubmit'])){
 		$locationData[] = $_POST['location_'.$i];
 			
 		// array for printing correct field name in error message 
-		$fieldtype2 = array('1','1', '1', '1','0','0','1'); 
-		$actualfield2 = array('qualification', 'degree', 'specialization', 'from year', 'location', '% of Marks', 'type'); 
+		$fieldtype2 = array('1','1', '1', '1','0','0','1','0'); 
+		$actualfield2 = array('qualification', 'degree', 'specialization', 'from year', 'location', '% of Marks', 'type','college'); 
 		$field_ar2 = array('qualification_'.$i => 'qualificationErr', 'degree_'.$i => 'degreeErr',
    		   'specialization_'.$i => 'specializationErr', 'from_yr_'.$i => 'from_yrErr',
-		   'location_'.$i => 'locationErr', 'grade_'.$i => 'gradeErr', 'grade_type_'.$i => 'grade_typeErr'); 
+		   'location_'.$i => 'locationErr', 'grade_'.$i => 'gradeErr', 'grade_type_'.$i => 'grade_typeErr','college_'.$i => 'collegeErr'); 
 		$j = 0;
 		foreach($field_ar2 as $field => $er_var){ 
 			if($_POST[$field] == ''){
@@ -1265,9 +1265,9 @@ if(!empty($_POST) && empty($_POST['hdnSubmit'])){
 			}
 			
 			// query to add req resume details
-<<<<<<< HEAD
+
 			echo $query = "CALL edit_req_resume_status('Validation - Account Holder','Pending','".$modified_by."','".$date."','".$position_id."')";
-=======
+
 			$query = "CALL get_req_resume('".$getid."')";
 			try{
 				if(!$result = $mysql->execute_query($query)){
@@ -1282,7 +1282,7 @@ if(!empty($_POST) && empty($_POST['hdnSubmit'])){
 			
 			// query to add req resume details
 			$query = "CALL edit_req_resume_status('Validation - Account Holder','Pending','".$modified_by."','".$date."','".$req_resume_id['id']."')";
->>>>>>> 81315a5806ae68903a4752f9a7a836a64d848dcd
+
 			try{
 				if(!$result = $mysql->execute_query($query)){
 					throw new Exception('Problem in adding resume requirement status details');
@@ -1296,17 +1296,17 @@ if(!empty($_POST) && empty($_POST['hdnSubmit'])){
 			}
 		}else{
 			// query to add position for details
-<<<<<<< HEAD
+
 			$query = "CALL edit_req_resume_position('".$modified_by."','".$date."','".$mysql->real_escape_str($_SESSION['position_for'])."','".$resume_id."','','')";
 			try{
 				if(!$result = $mysql->execute_query($query)){
 					throw new Exception('Problem in adding position details 2');
-=======
+
 			$query = "CALL edit_req_resume_position_status('".$modified_by."','".$date."','".$resume_id."')";
 			try{
 				if(!$result = $mysql->execute_query($query)){
 					throw new Exception('Problem in adding req resume details');
->>>>>>> 81315a5806ae68903a4752f9a7a836a64d848dcd
+
 				}
 				$row = $mysql->display_result($result);
 				$position_id = $row['inserted_id'];
@@ -1543,8 +1543,6 @@ if(!empty($_POST) && empty($_POST['hdnSubmit'])){
 			// to get your key pair, please visit https://developer.ilovepdf.com/user/projects
 			/* $ilovepdf = new Ilovepdf('project_public_5b8a8c940b378f560a9af9b547fda145_DNRT62d35f5d2494212a0dad512be366352cf',
 			'secret_key_629c405d975d170c4785d1781f9a0e6c_DccLT641e98f8d020e52866e228464f75321d');*/
-			
-			
 
 			try {
 				$ilovepdf = new Ilovepdf($resume_api['public_key'],$resume_api['secret_key']);			

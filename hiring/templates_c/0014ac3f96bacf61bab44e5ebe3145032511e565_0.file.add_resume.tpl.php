@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-04-06 12:03:15
+/* Smarty version 3.1.29, created on 2018-04-10 13:41:02
   from "C:\xampp\htdocs\2017\ctsvn2\cthiring\hiring\templates\add_resume.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5ac714ab1f2752_29623289',
+  'unifunc' => 'content_5acc71966c1d91_91039945',
   'file_dependency' => 
   array (
     '0014ac3f96bacf61bab44e5ebe3145032511e565' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn2\\cthiring\\hiring\\templates\\add_resume.tpl',
-      1 => 1522996376,
+      1 => 1523347777,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5ac714ab1f2752_29623289 ($_smarty_tpl) {
+function content_5acc71966c1d91_91039945 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\2017\\ctsvn2\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -351,10 +351,10 @@ echo 'checked';?>
 			</tr>
 			
 			<tr class="tbl_row">
-				<td width="120" class="tbl_column">College <span class="f_req"></span></td>
+				<td width="120" class="tbl_column">College <span class="f_req">*</span></td>
 				<td> 
 					<input type="text" tabindex="" name="college_#index#" id="college_#index#" class="span8" >										
-					<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['collegeErr']->value;?>
+					<label for="reg_city" generated="true" class="error" id="collegeErr_#index#"><?php echo $_smarty_tpl->tpl_vars['collegeErr']->value;?>
 </labe>									
 				</td>
 			</tr>
@@ -825,6 +825,9 @@ for ($_foo=true;$_smarty_tpl->tpl_vars['i']->value < $_POST['edu_count']; $_smar
 		<input type="hidden" id="year_of_pass_Err_Data_<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
 "  value="<?php echo $_smarty_tpl->tpl_vars['eduErr']->value[$_smarty_tpl->tpl_vars['i']->value]['year_of_passErr'];?>
 ">
+		<input type="hidden" id="collegeErr_Data_<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
+"  value="<?php echo $_smarty_tpl->tpl_vars['eduErr']->value[$_smarty_tpl->tpl_vars['i']->value]['collegeErr'];?>
+">
 	<?php }
 }
 ?>
@@ -1041,6 +1044,9 @@ $(document).ready(function(){
 			}
 			if($('#qualification_Err_Data_'+i).length > 0){ 
 				$('#qualification_Err_'+i).html($('#qualification_Err_Data_'+i).val());
+			}
+			if($('#collegeErr_Data_'+i).length > 0){ 
+				$('#collegeErr_'+i).html($('#collegeErr_Data_'+i).val());
 			}
 		}
 	}
