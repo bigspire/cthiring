@@ -859,7 +859,7 @@ if(!empty($_POST) && empty($_POST['hdnSubmit'])){
 			$course_type = $fun->get_course_type($grade_typeData);
 			$gradeStr = $gradeData > 10 ? $gradeData.'%' : $gradeData;
 			// for snapshot printing
-			$snap_edu .= $degreeStr.', '.$specStr.', '.$year_of_passData.', '.$gradeStr.'<br>';
+			$snap_edu .= $collegeData.', '.$degreeStr.', '.$specStr.', '.$year_of_passData.', '.$gradeStr.'<br>';
 
 			
 			// query to add education details

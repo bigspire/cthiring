@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-03-23 10:39:08
+/* Smarty version 3.1.29, created on 2018-04-10 10:21:13
   from "C:\xampp\htdocs\ctsvn\cthiring\hiring\templates\edit_resume.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5ab48bf44212d2_64533767',
+  'unifunc' => 'content_5acc42c174e192_75990735',
   'file_dependency' => 
   array (
     'e29597762f6d0a14ed81a6e64438e7f8f2321b30' => 
     array (
       0 => 'C:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\templates\\edit_resume.tpl',
-      1 => 1521723671,
+      1 => 1522996710,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5ab48bf44212d2_64533767 ($_smarty_tpl) {
+function content_5acc42c174e192_75990735 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -193,14 +193,14 @@ echo $_smarty_tpl->tpl_vars['email_validErr']->value;?>
 										<td>	
 										
 										<input type="text"  tabindex="9" name="present_ctc" value="<?php echo $_smarty_tpl->tpl_vars['present_ctc']->value;?>
-" placeholder="Present"  class="span2"/>										
+" placeholder="Present"  class="span2 digitOnly"/>										
 										<select class="span2"   name="present_ctc_type">
 										<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['ctc_type']->value,'selected'=>$_smarty_tpl->tpl_vars['present_ctc_type']->value),$_smarty_tpl);?>
 
 										</select> 
 											
 										<input type="text" tabindex="10" name="expected_ctc" value="<?php echo $_smarty_tpl->tpl_vars['expected_ctc']->value;?>
-" placeholder="Expected"  class="span2"/>	
+" placeholder="Expected"  class="span2 digitOnly"/>	
 										<select  class="span2"  name="expected_ctc_type">
 										<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['ctc_type']->value,'selected'=>$_smarty_tpl->tpl_vars['expected_ctc_type']->value),$_smarty_tpl);?>
 
@@ -741,8 +741,11 @@ echo $_POST['interview_availability'];
 resume" id="webroot">
 	<a href="javascript:void(0)" class="jsRedirect cancelBtn cancel_event"><input type="button" value="Cancel" class="btn">
 	</a>
+	
+	<?php if ($_smarty_tpl->tpl_vars['resumeStatus']->value == 'Draft') {?>
 	<input type="hidden" name="hdnSubmit" id="hdnSubmit">
 	<input class="btn btn-success" type="submit" id="draftSave" name="draft" value="Draft"/>
+	<?php }?>
 	
 </div>
  </div>
@@ -1093,7 +1096,7 @@ $(document).ready(function(){
 					html = "<option value=''>Select</option>";
 					$('#'+cur_obj+' option').each(function(){
 						// allow only values equals or greater than
-						if(val < $(this).val()){ 
+						if(val <= $(this).val()){ 
 							html += '<option value='+$(this).val()+'>'+$(this).text()+'</option>';
 						}
 					});

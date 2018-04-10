@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-04-10 13:39:20
+/* Smarty version 3.1.29, created on 2018-04-10 16:53:13
   from "C:\xampp\htdocs\2017\ctsvn2\cthiring\hiring\templates\edit_resume.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5acc71304ad142_59849535',
+  'unifunc' => 'content_5acc9ea1dc63f4_03632675',
   'file_dependency' => 
   array (
     'e5b4b2330606df4ced4df38c6f449667ebc7920d' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn2\\cthiring\\hiring\\templates\\edit_resume.tpl',
-      1 => 1523347746,
+      1 => 1523359389,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5acc71304ad142_59849535 ($_smarty_tpl) {
+function content_5acc9ea1dc63f4_03632675 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\2017\\ctsvn2\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -441,9 +441,9 @@ echo $_POST['native_location'];
 										<option value="">Select</option>	
 											<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['desig_name']->value),$_smarty_tpl);?>
 															
-										</select>
+										</select>  <a href="add_designation.php?action=dropdown" class="iframeBox" val="40_55">Add New</a>
 										<label for="reg_city" generated="true" class="error"id="desig_Err_#index#" ></label>										
-										</td>
+										</td> 
 							</tr>
 								<tr>
 										<td width="120" class="tbl_column">Employment Period<span class="f_req"> *</span></td>
@@ -1186,6 +1186,10 @@ $(document).ready(function(){
 			}
 		}
 	}
+	// load the color box
+	$('.iframeBox').click(function(){
+			load_colorBox(this, $(this).attr('val'));	
+	});	
 });
 <?php echo '</script'; ?>
 >	

@@ -20,10 +20,12 @@ include('classes/class.mailer.php');
 // content class
 include('classes/class.content.php');
 // print_r($modules);die;
-// role based validation
-$module_access = $fun->check_role_access('40',$modules);
-$smarty->assign('module',$module_access);
 
+if($_GET['action'] != 'dropdown'){
+	// role based validation
+	$module_access = $fun->check_role_access('40',$modules);
+	$smarty->assign('module',$module_access);
+}
 
 if(!empty($_POST)){	
 	// array for printing correct field name in error message

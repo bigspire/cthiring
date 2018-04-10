@@ -352,9 +352,9 @@
 										<select name="desig_#index#" class="span8"  tabindex="" id="desig_#index#">
 										<option value="">Select</option>	
 											{html_options options=$desig_name}															
-										</select>
+										</select>  <a href="add_designation.php?action=dropdown" class="iframeBox" val="40_55">Add New</a>
 										<label for="reg_city" generated="true" class="error"id="desig_Err_#index#" ></label>										
-										</td>
+										</td> 
 							</tr>
 								<tr>
 										<td width="120" class="tbl_column">Employment Period<span class="f_req"> *</span></td>
@@ -896,6 +896,10 @@ $(document).ready(function(){
 			}
 		}
 	}
+	// load the color box
+	$('.iframeBox').click(function(){
+			load_colorBox(this, $(this).attr('val'));	
+	});	
 });
 </script>	
 {/literal}

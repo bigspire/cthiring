@@ -1266,8 +1266,6 @@ if(!empty($_POST) && empty($_POST['hdnSubmit'])){
 			
 			// query to add req resume details
 
-			echo $query = "CALL edit_req_resume_status('Validation - Account Holder','Pending','".$modified_by."','".$date."','".$position_id."')";
-
 			$query = "CALL get_req_resume('".$getid."')";
 			try{
 				if(!$result = $mysql->execute_query($query)){
@@ -1280,7 +1278,6 @@ if(!empty($_POST) && empty($_POST['hdnSubmit'])){
 				echo 'Caught exception: ',  $e->getMessage(), "\n";
 			}
 			
-			// query to add req resume details
 			$query = "CALL edit_req_resume_status('Validation - Account Holder','Pending','".$modified_by."','".$date."','".$req_resume_id['id']."')";
 
 			try{
@@ -1296,12 +1293,6 @@ if(!empty($_POST) && empty($_POST['hdnSubmit'])){
 			}
 		}else{
 			// query to add position for details
-
-			$query = "CALL edit_req_resume_position('".$modified_by."','".$date."','".$mysql->real_escape_str($_SESSION['position_for'])."','".$resume_id."','','')";
-			try{
-				if(!$result = $mysql->execute_query($query)){
-					throw new Exception('Problem in adding position details 2');
-
 			$query = "CALL edit_req_resume_position_status('".$modified_by."','".$date."','".$resume_id."')";
 			try{
 				if(!$result = $mysql->execute_query($query)){
@@ -1598,8 +1589,15 @@ if(!empty($_POST) && empty($_POST['hdnSubmit'])){
 			// Download the package files
 			$myTaskWatermark->download('uploads/autoresumewatermarked/');
 			*/
+			
+			$req_id = $_SESSION['position_for'];
+			// unset the sessions
+			unset($_SESSION['position_for']);
+			unset($_SESSION['resume_doc']);
+			unset($_SESSION['clients_id']);
 			// once successfully created, redirect the page
-			header('Location: ../resume/?action=auto_modified');
+			// header('Location: ../resume/?action=auto_modified');
+			header('Location: ../position/view/'.$req_id.'?action=auto_modified');
 		} 
 	
 		}else{
