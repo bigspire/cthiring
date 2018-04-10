@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-03-22 18:45:56
+/* Smarty version 3.1.29, created on 2018-04-10 17:41:25
   from "C:\xampp\htdocs\ctsvn\cthiring\hiring\templates\include\header.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5ab3ac8c7b9229_18119667',
+  'unifunc' => 'content_5acca9ed8f4bb7_81242570',
   'file_dependency' => 
   array (
     '2cc32a09905a93cae1ddf68e0518ebdd3aca7f41' => 
     array (
       0 => 'C:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\templates\\include\\header.tpl',
-      1 => 1521632952,
+      1 => 1523362283,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_5ab3ac8c7b9229_18119667 ($_smarty_tpl) {
+function content_5acca9ed8f4bb7_81242570 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -314,6 +314,12 @@ resume/">Search Resume <!-- span class="label-bub label-info white"><?php echo $
 ">
                                             <a data-toggle="dropdown" class="dropdown-toggle " href="#"><i class="icon-download-alt icon-white"></i> Reports <b class="caret"></b></a>
                                           <ul class="dropdown-menu">
+										  
+										  
+										  <li><a href="openings_handled_1a.php">CTC Wise Monthly Openings Handled</a></li>
+										  
+										  
+										  
 											<?php if ($_smarty_tpl->tpl_vars['module']->value['recruiter_report'] == '1') {?>
                                                 <li><a href="recruiter_performance.php">Recruiter Performance</a></li>
 											<?php }?>

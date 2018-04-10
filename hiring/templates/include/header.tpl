@@ -256,6 +256,12 @@
 										<li class="dropdown {$report_menu}">
                                             <a data-toggle="dropdown" class="dropdown-toggle " href="#"><i class="icon-download-alt icon-white"></i> Reports <b class="caret"></b></a>
                                           <ul class="dropdown-menu">
+										  
+										  
+										  <li><a href="openings_handled_1a.php">CTC Wise Monthly Openings Handled</a></li>
+										  
+										  
+										  
 											{if $module['recruiter_report'] eq '1'}
                                                 <li><a href="recruiter_performance.php">Recruiter Performance</a></li>
 											{/if}
