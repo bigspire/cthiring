@@ -16,6 +16,10 @@
 .sidebar .accordion-heading{
 background:#f2f2f2
 }
+.main_content {
+    padding: 50px 30px 30px;
+}
+#ctc_wise{cursor: grab}
 </style>
 {/literal}
 
@@ -43,7 +47,7 @@ background:#f2f2f2
 												<ul class="nav nav-list">
 													<li  class="{$1a}"><a href="openings_handled_1a.php">CTC Wise Monthly Openings Handled</a></li>
 													<li class="{$1b}"><a href="openings_handled_1b.php">CTC Wise Client Openings Handled</a></li>
-													<li class="{$1c}"><a href="javascript:void(0)">Month Wise Client Openings Handled</a></li>
+													<li class="{$1c}"><a href="openings_handled_1c.php">Month Wise Client Openings Handled</a></li>
 												</ul>
 											</div>
 										</div>

@@ -263,7 +263,7 @@
 													<ul class="dropdown-menu">
 														<li><a href="openings_handled_1a.php">CTC Wise Monthly Openings Handled</a></li>
 														<li><a href="openings_handled_1b.php">CTC Wise Client Openings Handled</a></li>
-														<li><a href="#">Month Wise Client Openings Handled</a></li>														
+														<li><a href="openings_handled_1c.php">Month Wise Client Openings Handled</a></li>														
 													</ul>
 											</li>
 											

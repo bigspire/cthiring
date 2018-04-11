@@ -212,7 +212,7 @@
 										
 									
 						
-						<td width="" style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">88</td>
+						<th width="" style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">88</th>
 						
 					
 								</tr>
@@ -236,7 +236,7 @@
 										
 									
 						
-						<td width="" style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">90</a>						</td>
+						<th width="" style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">90</a>						</th>
 						
 					
 								</tr>
@@ -255,7 +255,7 @@
 										<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">76</a></td>
 										<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">23</a></td>
 										<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">3</a></td>
-										<td width="" style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">56</a></td>
+										<th width="" style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">56</a></th>
 						
 					
 								</tr>
@@ -273,7 +273,7 @@
 										<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">76</a></td>
 										<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">23</a></td>
 										<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">3</a></td>
-										<td width="" style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">56</a></td>
+										<th width="" style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">56</a></th>
 						
 					
 								</tr>
@@ -291,7 +291,7 @@
 										<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">76</a></td>
 										<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">23</a></td>
 										<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">3</a></td>
-										<td width="" style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">56</a></td>
+										<th width="" style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">56</a></th>
 						
 					
 								</tr>
@@ -309,7 +309,7 @@
 										<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">76</a></td>
 										<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">23</a></td>
 										<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">3</a></td>
-										<td width="" style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">56</a></td>
+										<th width="" style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">56</a></th>
 						
 					
 								</tr>
@@ -328,7 +328,7 @@
 										<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">76</a></td>
 										<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">23</a></td>
 										<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">3</a></td>
-										<td width="" style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">56</a></td>
+										<th width="" style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">56</a></th>
 					
 								</tr>
 								
@@ -345,7 +345,7 @@
 										<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">76</a></td>
 										<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">23</a></td>
 										<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">3</a></td>
-										<td width="" style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">56</a></td>
+										<th width="" style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">56</a></th>
 						
 					
 								</tr>
@@ -363,7 +363,7 @@
 										<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">76</a></td>
 										<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">23</a></td>
 										<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">3</a></td>
-										<td width="" style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">56</a></td>
+										<th width="" style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">56</a></th>
 						
 					
 								</tr>
@@ -381,7 +381,7 @@
 										<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">76</a></td>
 										<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">23</a></td>
 										<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">3</a></td>
-										<td width="" style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">56</a></td>
+										<th width="" style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">56</a></th>
 					
 								</tr>
 								
@@ -398,7 +398,7 @@
 										<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">76</a></td>
 										<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">23</a></td>
 										<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">3</a></td>
-										<td width="" style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">56</a></td>
+										<th width="" style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">56</a></th>
 						
 					
 								</tr>
@@ -416,7 +416,7 @@
 										<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">76</a></td>
 										<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">23</a></td>
 										<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">3</a></td>
-										<td width="" style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">56</a></td>
+										<th width="" style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">56</a></th>
 						
 					
 								</tr>

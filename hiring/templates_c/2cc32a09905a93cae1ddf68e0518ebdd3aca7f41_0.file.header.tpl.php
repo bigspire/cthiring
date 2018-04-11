@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-04-11 17:43:39
+/* Smarty version 3.1.29, created on 2018-04-11 20:39:12
   from "C:\xampp\htdocs\ctsvn\cthiring\hiring\templates\include\header.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5acdfbf32f6125_78929555',
+  'unifunc' => 'content_5ace25189df188_22062525',
   'file_dependency' => 
   array (
     '2cc32a09905a93cae1ddf68e0518ebdd3aca7f41' => 
     array (
       0 => 'C:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\templates\\include\\header.tpl',
-      1 => 1523448813,
+      1 => 1523459307,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_5acdfbf32f6125_78929555 ($_smarty_tpl) {
+function content_5ace25189df188_22062525 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -321,7 +321,7 @@ resume/">Search Resume <!-- span class="label-bub label-info white"><?php echo $
 													<ul class="dropdown-menu">
 														<li><a href="openings_handled_1a.php">CTC Wise Monthly Openings Handled</a></li>
 														<li><a href="openings_handled_1b.php">CTC Wise Client Openings Handled</a></li>
-														<li><a href="#">Month Wise Client Openings Handled</a></li>														
+														<li><a href="openings_handled_1c.php">Month Wise Client Openings Handled</a></li>														
 													</ul>
 											</li>
 											
