@@ -20,16 +20,28 @@ include('classes/class.mailer.php');
 // content class
 include('classes/class.content.php');
 // print_r($modules);die;
-// role based validation
-$module_access = $fun->check_role_access('40',$modules);
-$smarty->assign('module',$module_access);
 
+if($_GET['action'] != 'dropdown'){
+	// role based validation
+	$module_access = $fun->check_role_access('40',$modules);
+	$smarty->assign('module',$module_access);
+}
+
+// get action value
+$action = $_GET['action'];
+$smarty->assign('action', $action);	
 
 if(!empty($_POST)){	
-	// array for printing correct field name in error message
-	$fieldtype = array('0', '1');
-	$actualfield = array('designation ', 'status');
-   $field = array('designation' => 'designationErr', 'status' => 'statusErr');
+	if($_GET['action'] == 'dropdown'){
+		// array for printing correct field name in error message
+		$fieldtype = array('0');
+		$actualfield = array('designation ');
+		$field = array('designation' => 'designationErr');
+	}else{
+		$fieldtype = array('0', '1');
+		$actualfield = array('designation ', 'status');
+		$field = array('designation' => 'designationErr', 'status' => 'statusErr');
+	}
 	$j = 0;
 	foreach ($field as $field => $er_var){ 
 		if($_POST[$field] == ''){
@@ -76,10 +88,16 @@ if(!empty($_POST)){
 				}
 				$row = $mysql->display_result($result);
 				$last_id = $row['inserted_id'];
-					if(!empty($last_id)){
+				if(!empty($last_id)){
+					if(empty($action)){
 						// redirecting to list designation page
 						header('Location: designation.php?status=created');		
+					}else{
+						$smarty->assign('form_sent' , 1);
+						$msg = "Designation added successfully";
+						$smarty->assign('SUCCESS_MSG',$msg);				
 					}
+				}
 				// free the memory
 				$mysql->clear_result($result);
 			}catch(Exception $e){

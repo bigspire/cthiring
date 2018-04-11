@@ -330,10 +330,10 @@
 										</tr>
 									
 									<tr>
-										<td width="120" class="tbl_column"> College <span class="f_req"></span></td>
+										<td width="120" class="tbl_column"> College <span class="f_req">*</span></td>
 										<td> 
 					<input type="text" tabindex="" name="college_#index#" id="college_#index#" class="span8" >										
-					<label for="reg_city" generated="true" class="error">{$collegeErr}</labe>									
+					<label for="reg_city" generated="true" class="error" id="collegeErr_#index#">{$collegeErr}</labe>									
 				</td>		
 									</tr>
 									<tr class="tbl_row">
@@ -766,6 +766,7 @@
 		<input type="hidden" id="locationErr_Data_{$i}"  value="{$eduErr[$i]['locationErr']}">
 		<input type="hidden" id="gradeErr_Data_{$i}"  value="{$eduErr[$i]['gradeErr']}">
 		<input type="hidden" id="grade_typeErr_Data_{$i}"  value="{$eduErr[$i]['grade_typeErr']}">
+		<input type="hidden" id="collegeErr_Data_{$i}"  value="{$eduErr[$i]['collegeErr']}">
 	{/for}
 	
 	{for $i=0; $i < $expCount; $i++}
@@ -950,6 +951,9 @@ $(document).ready(function(){
 			}
 			if($('#grade_typeErr_Data_'+i).length > 0){ 
 				$('#grade_typeErr_'+i).html($('#grade_typeErr_Data_'+i).val());
+			}
+			if($('#collegeErr_Data_'+i).length > 0){ 
+				$('#collegeErr_'+i).html($('#collegeErr_Data_'+i).val());
 			}
 		}
 	}

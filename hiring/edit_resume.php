@@ -382,7 +382,7 @@ if($_POST['hdnSubmit'] == 1){
 			$course_type = $fun->get_course_type($grade_typeData);
 			$gradeStr = $gradeData > 10 ? $gradeData.'%' : $gradeData;
 			// for snapshot printing
-			$snap_edu .= $degreeStr.', '.$specStr.', '.$year_of_passData.', '.$gradeStr.'<br>';
+			$snap_edu .= $collegeData.', '.$degreeStr.', '.$specStr.', '.$year_of_passData.', '.$gradeStr.'<br>';
 			
 			// query to add education details
 			$query = "CALL add_res_education('".$fun->is_white_space($mysql->real_escape_str($gradeData))."',
@@ -400,7 +400,7 @@ if($_POST['hdnSubmit'] == 1){
 			}catch(Exception $e){
 				echo 'Caught exception: ',  $e->getMessage(), "\n";
 			}
-		}
+		}die;
 		$edu_id = $row['inserted_id'];
 		
 		// get and insert is recent field
@@ -631,10 +631,10 @@ if(!empty($_POST) && empty($_POST['hdnSubmit'])){
 		$universityData[] = $_POST['university_'.$i];
 			
 		// array for printing correct field name in error message 
-		$fieldtype = array('1','1','1', '1'); 
-		$actualfield = array('qualification', 'degree', 'specialization', 'year of passing'); 
+		$fieldtype = array('1','1', '1', '1','0'); 
+		$actualfield = array('qualification', 'degree', 'specialization', 'year of passing', 'college'); 
 		$field_ar = array('qualification_'.$i => 'qualificationErr', 'degree_'.$i => 'degreeErr',
-   		   'specialization_'.$i => 'specializationErr', 'year_of_pass_'.$i => 'year_of_passErr'); 
+   		   'specialization_'.$i => 'specializationErr', 'year_of_pass_'.$i => 'year_of_passErr', 'college_'.$i => 'collegeErr'); 
 		$j = 0;
 		foreach($field_ar as $field => $er_var){ 
 			if($_POST[$field] == ''){
@@ -978,7 +978,7 @@ if(!empty($_POST) && empty($_POST['hdnSubmit'])){
 			$course_type = $fun->get_course_type($grade_typeData);
 			$gradeStr = $gradeData > 10 ? $gradeData.'%' : $gradeData;
 			// for snapshot printing
-			$snap_edu .= $degreeStr.', '.$specStr.', '.$year_of_passData.', '.$gradeStr.'<br>';
+			$snap_edu .= $collegeData.', '.$degreeStr.', '.$specStr.', '.$year_of_passData.', '.$gradeStr.'<br>';
 			
 			// query to add education details
 			$query = "CALL add_res_education('".$fun->is_white_space($mysql->real_escape_str($gradeData))."',
@@ -1296,12 +1296,14 @@ if(!empty($_POST) && empty($_POST['hdnSubmit'])){
 			// Download the package files
 			$myTaskPageNumbers->download('uploads/snapshotwatermarked/');
 			*/
+			$req_id = $_SESSION['position_for'];
 			// unset the sessions
 			unset($_SESSION['position_for']);
 			unset($_SESSION['resume_doc']);
 			unset($_SESSION['clients_id']);
 			// header('Location: ../resume?action=modified&download='.$snap_file_name.'_'.date('d-m-Y').'.pdf');
-			header('Location: ../resume?action=modified');
+			// header('Location: ../resume?action=modified');
+			header('Location: ../position/view/'.$req_id.'?action=modified');
 			} 
 		}else{
 			if($check_mail['total'] != '0'){

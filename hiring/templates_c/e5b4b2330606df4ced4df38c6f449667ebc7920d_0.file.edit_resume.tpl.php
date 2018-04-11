@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-04-06 12:53:17
+/* Smarty version 3.1.29, created on 2018-04-11 17:07:59
   from "C:\xampp\htdocs\2017\ctsvn2\cthiring\hiring\templates\edit_resume.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5ac72065ccfc11_51704319',
+  'unifunc' => 'content_5acdf3974ff311_54662550',
   'file_dependency' => 
   array (
     'e5b4b2330606df4ced4df38c6f449667ebc7920d' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn2\\cthiring\\hiring\\templates\\edit_resume.tpl',
-      1 => 1522996453,
+      1 => 1523446676,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5ac72065ccfc11_51704319 ($_smarty_tpl) {
+function content_5acdf3974ff311_54662550 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\2017\\ctsvn2\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -345,10 +345,10 @@ echo $_POST['native_location'];
 			</tr>
 			
 			<tr class="tbl_row">
-				<td width="120" class="tbl_column">College <span class="f_req"></span></td>
+				<td width="120" class="tbl_column">College <span class="f_req">*</span></td>
 				<td> 
 					<input type="text" tabindex="" name="college_#index#" id="college_#index#" class="span8" >										
-					<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['collegeErr']->value;?>
+					<label for="reg_city" generated="true" class="error" id="collegeErr_#index#"><?php echo $_smarty_tpl->tpl_vars['collegeErr']->value;?>
 </labe>									
 				</td>
 			</tr>
@@ -437,13 +437,17 @@ echo $_POST['native_location'];
 							<tr class="tbl_row">
 										<td width="120" class="tbl_column">Designation <span class="f_req">*</span></td>
 										<td> 
-										<select name="desig_#index#" class="span8"  tabindex="" id="desig_#index#">
+										<select name="desig_#index#" class="span8 desig_details"  tabindex="" id="desig_#index#">
 										<option value="">Select</option>	
 											<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['desig_name']->value),$_smarty_tpl);?>
 															
-										</select>
-										<label for="reg_city" generated="true" class="error"id="desig_Err_#index#" ></label>										
-										</td>
+										</select>  <a href="add_designation.php?action=dropdown" class="iframeBox" val="40_55">Add New</a>
+										<label for="reg_city" generated="true" class="error"id="desig_Err_#index#" ></label>	
+										<input type="hidden" name="fr_desig" id="fr_desig" class="test">				
+<section id="similar_rows" class="col-xs-12 col-sm-6 col-md-12">
+
+</section>										
+										</td> 
 							</tr>
 								<tr>
 										<td width="120" class="tbl_column">Employment Period<span class="f_req"> *</span></td>
@@ -846,6 +850,9 @@ for ($_foo=true;$_smarty_tpl->tpl_vars['i']->value < $_smarty_tpl->tpl_vars['edu
 		<input type="hidden" id="year_of_pass_Err_Data_<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
 "  value="<?php echo $_smarty_tpl->tpl_vars['eduErr']->value[$_smarty_tpl->tpl_vars['i']->value]['year_of_passErr'];?>
 ">
+		<input type="hidden" id="collegeErr_Data_<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
+"  value="<?php echo $_smarty_tpl->tpl_vars['eduErr']->value[$_smarty_tpl->tpl_vars['i']->value]['collegeErr'];?>
+">
 	<?php }
 }
 ?>
@@ -1064,6 +1071,9 @@ $(document).ready(function(){
 			if($('#qualification_Err_Data_'+i).length > 0){ 
 				$('#qualification_Err_'+i).html($('#qualification_Err_Data_'+i).val());
 			}
+			if($('#collegeErr_Data_'+i).length > 0){ 
+				$('#collegeErr_'+i).html($('#collegeErr_Data_'+i).val());
+			}	
 		}
 	}
 	
@@ -1180,6 +1190,10 @@ $(document).ready(function(){
 			}
 		}
 	}
+	// load the color box for designation
+	$('.iframeBox').click(function(){
+			load_colorBox(this, $(this).attr('val'));	
+	});	
 });
 <?php echo '</script'; ?>
 >	

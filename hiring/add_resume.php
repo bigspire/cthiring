@@ -551,10 +551,10 @@ if(!empty($_POST) && empty($_POST['hdnSubmit'])){
 		$universityData[] = $_POST['university_'.$i];
 	
 		// array for printing correct field name in error message 
-		$fieldtype = array('1','1', '1', '1'); 
-		$actualfield = array('qualification', 'degree', 'specialization', 'year of passing'); 
+		$fieldtype = array('1','1', '1', '1','0'); 
+		$actualfield = array('qualification', 'degree', 'specialization', 'year of passing', 'college'); 
 		$field_ar = array('qualification_'.$i => 'qualificationErr', 'degree_'.$i => 'degreeErr',
-   		   'specialization_'.$i => 'specializationErr', 'year_of_pass_'.$i => 'year_of_passErr'); 
+   		   'specialization_'.$i => 'specializationErr', 'year_of_pass_'.$i => 'year_of_passErr', 'college_'.$i => 'collegeErr'); 
 		$j = 0;
 		foreach($field_ar as $field => $er_var){ 
 			if($_POST[$field] == ''){
@@ -859,7 +859,7 @@ if(!empty($_POST) && empty($_POST['hdnSubmit'])){
 			$course_type = $fun->get_course_type($grade_typeData);
 			$gradeStr = $gradeData > 10 ? $gradeData.'%' : $gradeData;
 			// for snapshot printing
-			$snap_edu .= $degreeStr.', '.$specStr.', '.$year_of_passData.', '.$gradeStr.'<br>';
+			$snap_edu .= $collegeData.', '.$degreeStr.', '.$specStr.', '.$year_of_passData.', '.$gradeStr.'<br>';
 
 			
 			// query to add education details

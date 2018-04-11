@@ -712,11 +712,11 @@ if(!empty($_POST) && empty($_POST['hdnSubmit'])){
 		$locationData[] = $_POST['location_'.$i];
 			
 		// array for printing correct field name in error message 
-		$fieldtype2 = array('1','1', '1', '1','0','0','1'); 
-		$actualfield2 = array('qualification', 'degree', 'specialization', 'from year', 'location', '% of Marks', 'type'); 
+		$fieldtype2 = array('1','1', '1', '1','0','0','1','0'); 
+		$actualfield2 = array('qualification', 'degree', 'specialization', 'from year', 'location', '% of Marks', 'type','college'); 
 		$field_ar2 = array('qualification_'.$i => 'qualificationErr', 'degree_'.$i => 'degreeErr',
    		   'specialization_'.$i => 'specializationErr', 'from_yr_'.$i => 'from_yrErr',
-		   'location_'.$i => 'locationErr', 'grade_'.$i => 'gradeErr', 'grade_type_'.$i => 'grade_typeErr'); 
+		   'location_'.$i => 'locationErr', 'grade_'.$i => 'gradeErr', 'grade_type_'.$i => 'grade_typeErr','college_'.$i => 'collegeErr'); 
 		$j = 0;
 		foreach($field_ar2 as $field => $er_var){ 
 			if($_POST[$field] == ''){

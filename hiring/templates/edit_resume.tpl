@@ -260,10 +260,10 @@
 			</tr>
 			
 			<tr class="tbl_row">
-				<td width="120" class="tbl_column">College <span class="f_req"></span></td>
+				<td width="120" class="tbl_column">College <span class="f_req">*</span></td>
 				<td> 
 					<input type="text" tabindex="" name="college_#index#" id="college_#index#" class="span8" >										
-					<label for="reg_city" generated="true" class="error">{$collegeErr}</labe>									
+					<label for="reg_city" generated="true" class="error" id="collegeErr_#index#">{$collegeErr}</labe>									
 				</td>
 			</tr>
 		
@@ -349,12 +349,16 @@
 							<tr class="tbl_row">
 										<td width="120" class="tbl_column">Designation <span class="f_req">*</span></td>
 										<td> 
-										<select name="desig_#index#" class="span8"  tabindex="" id="desig_#index#">
+										<select name="desig_#index#" class="span8 desig_details"  tabindex="" id="desig_#index#">
 										<option value="">Select</option>	
 											{html_options options=$desig_name}															
-										</select>
-										<label for="reg_city" generated="true" class="error"id="desig_Err_#index#" ></label>										
-										</td>
+										</select>  <a href="add_designation.php?action=dropdown" class="iframeBox" val="40_55">Add New</a>
+										<label for="reg_city" generated="true" class="error"id="desig_Err_#index#" ></label>	
+										<input type="hidden" name="fr_desig" id="fr_desig" class="test">				
+<section id="similar_rows" class="col-xs-12 col-sm-6 col-md-12">
+
+</section>										
+										</td> 
 							</tr>
 								<tr>
 										<td width="120" class="tbl_column">Employment Period<span class="f_req"> *</span></td>
@@ -621,6 +625,7 @@
 		<input type="hidden" id="degree_Err_Data_{$i}"  value="{$eduErr[$i]['degreeErr']}">
 		<input type="hidden" id="specialization_Err_Data_{$i}"  value="{$eduErr[$i]['specializationErr']}">
 		<input type="hidden" id="year_of_pass_Err_Data_{$i}"  value="{$eduErr[$i]['year_of_passErr']}">
+		<input type="hidden" id="collegeErr_Data_{$i}"  value="{$eduErr[$i]['collegeErr']}">
 	{/for}
 	
 	{for $i=0; $i < $expCount; $i++}
@@ -776,6 +781,9 @@ $(document).ready(function(){
 			if($('#qualification_Err_Data_'+i).length > 0){ 
 				$('#qualification_Err_'+i).html($('#qualification_Err_Data_'+i).val());
 			}
+			if($('#collegeErr_Data_'+i).length > 0){ 
+				$('#collegeErr_'+i).html($('#collegeErr_Data_'+i).val());
+			}	
 		}
 	}
 	
@@ -892,6 +900,10 @@ $(document).ready(function(){
 			}
 		}
 	}
+	// load the color box for designation
+	$('.iframeBox').click(function(){
+			load_colorBox(this, $(this).attr('val'));	
+	});	
 });
 </script>	
 {/literal}
