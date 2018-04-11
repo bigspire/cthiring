@@ -44,6 +44,9 @@ $(document).ready(function() {
       });
 	});
 	*/
+	
+
+	
     $(".tag_name").click(function(){
         // InsertText($(this).attr('rel'));
     });
@@ -206,6 +209,8 @@ $(document).ready(function() {
 		});
 		*/
 	});
+	
+
 	
 	/* function to show the alert message for cancel */   
 	$(".Cancel").click( function(s) {
@@ -1646,8 +1651,12 @@ function load_colorBox(obj, size){
 			onClosed:function(){  
 				if($('#fr_desig').length > 0 && $('#fr_desig').val() == 'success'){
 					// if($('.desig_details').length != ''){
-						window.parent.location.reload(true); 
-						//$(".desig_details").load(location.href + ".desig_details");
+						// window.parent.location.reload(true); 
+						// window.parent.location.submit();
+						// window.opener.$("#formID").submit();
+						window.parent.$('#formID').submit();
+
+						// $(".desig_details").load(location.href + ".desig_details");
 					// }
 					
 				}    		

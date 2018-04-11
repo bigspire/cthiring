@@ -73,13 +73,18 @@ if(!empty($_POST)){
 	}catch(Exception $e){
 		echo 'Caught exception: ',  $e->getMessage(), "\n";
 	} 
+	if($_GET['action'] == 'dropdown'){
+		$status_val = '1';
+	}else{
+		$status_val = $_POST['status'];
+	}
 	
 	if(empty($test)){
 		if($row['total'] == '0'){
 			// query to insert designation. 
 			$query = "CALL add_designation('".$_SESSION['user_id']."',
 			'".$fun->is_white_space($mysql->real_escape_str($_POST['designation']))."',
-			'".$date."','".$mysql->real_escape_str($_POST['status'])."')";
+			'".$date."','".$mysql->real_escape_str($status_val)."')";
 			// Calling the function that makes the insert
 			try{
 				// calling mysql exe_query function
