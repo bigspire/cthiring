@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-04-10 21:11:29
+/* Smarty version 3.1.29, created on 2018-04-11 17:57:13
   from "C:\xampp\htdocs\ctsvn\cthiring\hiring\templates\openings_handled_1a.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5accdb294e6287_78863340',
+  'unifunc' => 'content_5acdff211e7696_55605509',
   'file_dependency' => 
   array (
     'a46589b193aee3c103112667b033f348b121389b' => 
     array (
       0 => 'C:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\templates\\openings_handled_1a.tpl',
-      1 => 1523374885,
+      1 => 1523449588,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5accdb294e6287_78863340 ($_smarty_tpl) {
+function content_5acdff211e7696_55605509 ($_smarty_tpl) {
 ?>
 
    
@@ -61,11 +61,34 @@ function content_5accdb294e6287_78863340 ($_smarty_tpl) {
 											
 							</label>
 							
-								<label>
+							<label>
+							Role: 
+							<select name="data[Position][loc]" class="input-medium" placeholder="" style="clear:left" id="PositionLoc">
+<option value="">Select</option>
+<option value="104">Recruiter</option>
+<option value="102">CRM</option>
+<option value="103">Team Lead</option>
+<option value="105">Branch Head</option>
+<option value="105">BD Executive</option>
+<option value="105">BD Head</option>
+<option value="105">Business Head</option>
+<option value="105">Director</option>
+
+</select> 
+							</label>
+							
+							
+							
+							
+							
+							
+												
+							
+							<label>
 							Branch: 
 							<select name="data[Position][loc]" class="input-medium" placeholder="" style="clear:left" id="PositionLoc">
 <option value="">Select</option>
-<option value="104">Ahmadabad</option>
+<option value="104">Ahmedabad</option>
 <option value="102">Bangalore</option>
 <option value="103">Chennai</option>
 <option value="105">Hyderabad</option>
@@ -109,10 +132,7 @@ function content_5accdb294e6287_78863340 ($_smarty_tpl) {
 </select> 					
 							</label>
 												
-							
-						
-												
-					<label>
+					<!--label>
 							Type: 
 							<select name="data[Position][loc]" class="input-small" placeholder="" style="clear:left" id="PositionLoc">
 <option value="">Select</option>
@@ -120,7 +140,7 @@ function content_5accdb294e6287_78863340 ($_smarty_tpl) {
 <option value="102">Graph</option>
 
 </select> 
-							</label>
+							</label-->
 						
 							
 							
@@ -128,11 +148,9 @@ function content_5accdb294e6287_78863340 ($_smarty_tpl) {
 
 				<label style="margin-top:18px;"><input type="submit" value="Submit" class="btn btn-gebo"></label>
 
-							<label style="margin-top:18px;"><a class="jsRedirect" href="/ctsvn/cthiring/position/index/"><input value="Reset" type="button" class="btn"></a></label>
+							<label style="margin-top:18px;"><a class="jsRedirect" href=""><input value="Reset" type="button" class="btn"></a></label>
 
-					<label style="margin-top:18px;"><a href="#"><input value="Print" type="button" class="btn btn-success"/></a></label>
-
-							<label style="margin-top:18px;"><a href="#"><input value="Export" type="button" class="btn btn-warning"/></a></label>
+					
 		
 														</div>
 					
@@ -148,9 +166,17 @@ function content_5accdb294e6287_78863340 ($_smarty_tpl) {
 				<div class="span12">	
 				
 						<h3 class="heading" style="margin-bottom:0;border:;clear:left;">CTC Wise Monthly Openings Handled <small> For the year 2018 - 2019</small>
+						<div class="pull-right">Table View: 
+						
+						<a href="javascript:void(0)" rel="printAreaTable" class="printBtn"><input value="Print" type="button" class="btn btn-success"/></a>
+
+						<a href="openings_handled_1a.php?export=1"><input value="Export" type="button" class="btn btn-warning"/></a>
+							
+						</div>
+						
 							</h3>
 						
-							<table class="table table-hover table-bordered table-striped" style="margin: 15px 0px;">
+							<table class="table table-hover table-bordered table-striped printAreaTable" style="margin: 15px 0px;">
 								<thead>
 									
 									<tr>
@@ -197,23 +223,23 @@ function content_5accdb294e6287_78863340 ($_smarty_tpl) {
 																		<tr>
 																				<td width="">Apr 2018</td>
 										
-										<td style="text-align:center"><a href="#">33</a></td>
-										<td style="text-align:center"><a href="#">3</a></td>
-										<td style="text-align:center"><a href="#">23</a></td>
-										<td style="text-align:center"><a href="#">54</a></td>
+										<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">33</a></td>
+										<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">3</a></td>
+										<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">23</a></td>
+										<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">54</a></td>
 										
-										<td style="text-align:center"><a href="#">2</a></td>
-										<td style="text-align:center"><a href="#">13</a></td>
-										<td style="text-align:center"><a href="#">36</a></td>
-										<td style="text-align:center"><a href="#">23</a></td>
-										<td style="text-align:center"><a href="#">54</a></td>
+										<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">2</a></td>
+										<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">13</a></td>
+										<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">36</a></td>
+										<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">23</a></td>
+										<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">54</a></td>
 										
 										
 									
 										
 									
 						
-						<td width="" style="text-align:center"><a href="#">88</td>
+						<td width="" style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">88</td>
 						
 					
 								</tr>
@@ -221,23 +247,23 @@ function content_5accdb294e6287_78863340 ($_smarty_tpl) {
 								<tr>
 																				<td width="">May 2018</td>
 										
-										<td style="text-align:center"><a href="#">2</a></td>
-										<td style="text-align:center"><a href="#">3</a></td>
-										<td style="text-align:center"><a href="#">12</a></td>
-										<td style="text-align:center"><a href="#">23</a></td>
+										<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">2</a></td>
+										<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">3</a></td>
+										<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">12</a></td>
+										<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">23</a></td>
 										
-										<td style="text-align:center"><a href="#">16</a></td>
-										<td style="text-align:center"><a href="#">13</a></td>
-										<td style="text-align:center"><a href="#">10</a></td>
-										<td style="text-align:center"><a href="#">12</a></td>
-											<td style="text-align:center"><a href="#">3</a></td>
+										<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">16</a></td>
+										<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">13</a></td>
+										<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">10</a></td>
+										<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">12</a></td>
+											<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">3</a></td>
 									
 										
 									
 										
 									
 						
-						<td width="" style="text-align:center"><a href="#">90</a>						</td>
+						<td width="" style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">90</a>						</td>
 						
 					
 								</tr>
@@ -246,17 +272,17 @@ function content_5accdb294e6287_78863340 ($_smarty_tpl) {
 								<tr>
 																				<td width="">Jun 2018</td>
 										
-										<td style="text-align:center"><a href="#">33</a></td>
-										<td style="text-align:center"><a href="#">3</a></td>
-										<td style="text-align:center"><a href="#">76</a></td>
-										<td style="text-align:center"><a href="#">23</a></td>
+										<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">33</a></td>
+										<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">3</a></td>
+										<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">76</a></td>
+										<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">23</a></td>
 										
-										<td style="text-align:center"><a href="#">33</a></td>
-										<td style="text-align:center"><a href="#">3</a></td>
-										<td style="text-align:center"><a href="#">76</a></td>
-										<td style="text-align:center"><a href="#">23</a></td>
-										<td style="text-align:center"><a href="#">3</a></td>
-										<td width="" style="text-align:center"><a href="#">56</a></td>
+										<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">33</a></td>
+										<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">3</a></td>
+										<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">76</a></td>
+										<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">23</a></td>
+										<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">3</a></td>
+										<td width="" style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">56</a></td>
 						
 					
 								</tr>
@@ -264,17 +290,17 @@ function content_5accdb294e6287_78863340 ($_smarty_tpl) {
 								<tr>
 																				<td width="">Jul 2018</td>
 										
-										<td style="text-align:center"><a href="#">33</a></td>
-										<td style="text-align:center"><a href="#">3</a></td>
-										<td style="text-align:center"><a href="#">76</a></td>
-										<td style="text-align:center"><a href="#">23</a></td>
+										<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">33</a></td>
+										<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">3</a></td>
+										<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">76</a></td>
+										<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">23</a></td>
 										
-										<td style="text-align:center"><a href="#">33</a></td>
-										<td style="text-align:center"><a href="#">3</a></td>
-										<td style="text-align:center"><a href="#">76</a></td>
-										<td style="text-align:center"><a href="#">23</a></td>
-										<td style="text-align:center"><a href="#">3</a></td>
-										<td width="" style="text-align:center"><a href="#">56</a></td>
+										<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">33</a></td>
+										<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">3</a></td>
+										<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">76</a></td>
+										<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">23</a></td>
+										<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">3</a></td>
+										<td width="" style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">56</a></td>
 						
 					
 								</tr>
@@ -282,17 +308,17 @@ function content_5accdb294e6287_78863340 ($_smarty_tpl) {
 									<tr>
 																				<td width="">Aug 2018</td>
 										
-											<td style="text-align:center"><a href="#">33</a></td>
-										<td style="text-align:center"><a href="#">3</a></td>
-										<td style="text-align:center"><a href="#">76</a></td>
-										<td style="text-align:center"><a href="#">23</a></td>
+											<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">33</a></td>
+										<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">3</a></td>
+										<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">76</a></td>
+										<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">23</a></td>
 										
-										<td style="text-align:center"><a href="#">33</a></td>
-										<td style="text-align:center"><a href="#">3</a></td>
-										<td style="text-align:center"><a href="#">76</a></td>
-										<td style="text-align:center"><a href="#">23</a></td>
-										<td style="text-align:center"><a href="#">3</a></td>
-										<td width="" style="text-align:center"><a href="#">56</a></td>
+										<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">33</a></td>
+										<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">3</a></td>
+										<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">76</a></td>
+										<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">23</a></td>
+										<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">3</a></td>
+										<td width="" style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">56</a></td>
 						
 					
 								</tr>
@@ -300,17 +326,17 @@ function content_5accdb294e6287_78863340 ($_smarty_tpl) {
 								<tr>
 																				<td width="">Sep 2018</td>
 										
-										<td style="text-align:center"><a href="#">33</a></td>
-										<td style="text-align:center"><a href="#">3</a></td>
-										<td style="text-align:center"><a href="#">76</a></td>
-										<td style="text-align:center"><a href="#">23</a></td>
+										<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">33</a></td>
+										<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">3</a></td>
+										<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">76</a></td>
+										<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">23</a></td>
 										
-										<td style="text-align:center"><a href="#">33</a></td>
-										<td style="text-align:center"><a href="#">3</a></td>
-										<td style="text-align:center"><a href="#">76</a></td>
-										<td style="text-align:center"><a href="#">23</a></td>
-										<td style="text-align:center"><a href="#">3</a></td>
-										<td width="" style="text-align:center"><a href="#">56</a></td>
+										<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">33</a></td>
+										<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">3</a></td>
+										<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">76</a></td>
+										<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">23</a></td>
+										<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">3</a></td>
+										<td width="" style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">56</a></td>
 						
 					
 								</tr>
@@ -319,34 +345,34 @@ function content_5accdb294e6287_78863340 ($_smarty_tpl) {
 								<tr>
 																				<td width="">Oct 2018</td>
 										
-										<td style="text-align:center"><a href="#">33</a></td>
-										<td style="text-align:center"><a href="#">3</a></td>
-										<td style="text-align:center"><a href="#">76</a></td>
-										<td style="text-align:center"><a href="#">23</a></td>
+										<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">33</a></td>
+										<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">3</a></td>
+										<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">76</a></td>
+										<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">23</a></td>
 										
-										<td style="text-align:center"><a href="#">33</a></td>
-										<td style="text-align:center"><a href="#">3</a></td>
-										<td style="text-align:center"><a href="#">76</a></td>
-										<td style="text-align:center"><a href="#">23</a></td>
-										<td style="text-align:center"><a href="#">3</a></td>
-										<td width="" style="text-align:center"><a href="#">56</a></td>
+										<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">33</a></td>
+										<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">3</a></td>
+										<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">76</a></td>
+										<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">23</a></td>
+										<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">3</a></td>
+										<td width="" style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">56</a></td>
 					
 								</tr>
 								
 								<tr>
 																				<td width="">Nov 2018</td>
 										
-											<td style="text-align:center"><a href="#">33</a></td>
-										<td style="text-align:center"><a href="#">3</a></td>
-										<td style="text-align:center"><a href="#">76</a></td>
-										<td style="text-align:center"><a href="#">23</a></td>
+											<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">33</a></td>
+										<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">3</a></td>
+										<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">76</a></td>
+										<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">23</a></td>
 										
-										<td style="text-align:center"><a href="#">33</a></td>
-										<td style="text-align:center"><a href="#">3</a></td>
-										<td style="text-align:center"><a href="#">76</a></td>
-										<td style="text-align:center"><a href="#">23</a></td>
-										<td style="text-align:center"><a href="#">3</a></td>
-										<td width="" style="text-align:center"><a href="#">56</a></td>
+										<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">33</a></td>
+										<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">3</a></td>
+										<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">76</a></td>
+										<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">23</a></td>
+										<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">3</a></td>
+										<td width="" style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">56</a></td>
 						
 					
 								</tr>
@@ -354,17 +380,17 @@ function content_5accdb294e6287_78863340 ($_smarty_tpl) {
 								<tr>
 																				<td width="">Dec 2018</td>
 										
-										<td style="text-align:center"><a href="#">33</a></td>
-										<td style="text-align:center"><a href="#">3</a></td>
-										<td style="text-align:center"><a href="#">76</a></td>
-										<td style="text-align:center"><a href="#">23</a></td>
+										<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">33</a></td>
+										<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">3</a></td>
+										<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">76</a></td>
+										<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">23</a></td>
 										
-										<td style="text-align:center"><a href="#">33</a></td>
-										<td style="text-align:center"><a href="#">3</a></td>
-										<td style="text-align:center"><a href="#">76</a></td>
-										<td style="text-align:center"><a href="#">23</a></td>
-										<td style="text-align:center"><a href="#">3</a></td>
-										<td width="" style="text-align:center"><a href="#">56</a></td>
+										<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">33</a></td>
+										<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">3</a></td>
+										<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">76</a></td>
+										<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">23</a></td>
+										<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">3</a></td>
+										<td width="" style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">56</a></td>
 						
 					
 								</tr>
@@ -372,34 +398,34 @@ function content_5accdb294e6287_78863340 ($_smarty_tpl) {
 								<tr>
 																				<td width="">Jan 2019</td>
 										
-											<td style="text-align:center"><a href="#">33</a></td>
-										<td style="text-align:center"><a href="#">3</a></td>
-										<td style="text-align:center"><a href="#">76</a></td>
-										<td style="text-align:center"><a href="#">23</a></td>
+											<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">33</a></td>
+										<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">3</a></td>
+										<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">76</a></td>
+										<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">23</a></td>
 										
-										<td style="text-align:center"><a href="#">33</a></td>
-										<td style="text-align:center"><a href="#">3</a></td>
-										<td style="text-align:center"><a href="#">76</a></td>
-										<td style="text-align:center"><a href="#">23</a></td>
-										<td style="text-align:center"><a href="#">3</a></td>
-										<td width="" style="text-align:center"><a href="#">56</a></td>
+										<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">33</a></td>
+										<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">3</a></td>
+										<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">76</a></td>
+										<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">23</a></td>
+										<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">3</a></td>
+										<td width="" style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">56</a></td>
 					
 								</tr>
 								
 								<tr>
 																				<td width="">Feb 2019</td>
 										
-											<td style="text-align:center"><a href="#">33</a></td>
-										<td style="text-align:center"><a href="#">3</a></td>
-										<td style="text-align:center"><a href="#">76</a></td>
-										<td style="text-align:center"><a href="#">23</a></td>
+											<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">33</a></td>
+										<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">3</a></td>
+										<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">76</a></td>
+										<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">23</a></td>
 										
-										<td style="text-align:center"><a href="#">33</a></td>
-										<td style="text-align:center"><a href="#">3</a></td>
-										<td style="text-align:center"><a href="#">76</a></td>
-										<td style="text-align:center"><a href="#">23</a></td>
-										<td style="text-align:center"><a href="#">3</a></td>
-										<td width="" style="text-align:center"><a href="#">56</a></td>
+										<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">33</a></td>
+										<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">3</a></td>
+										<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">76</a></td>
+										<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">23</a></td>
+										<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">3</a></td>
+										<td width="" style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">56</a></td>
 						
 					
 								</tr>
@@ -407,17 +433,17 @@ function content_5accdb294e6287_78863340 ($_smarty_tpl) {
 								<tr>
 																				<td width="">Mar 2019</td>
 										
-										<td style="text-align:center"><a href="#">33</a></td>
-										<td style="text-align:center"><a href="#">3</a></td>
-										<td style="text-align:center"><a href="#">76</a></td>
-										<td style="text-align:center"><a href="#">23</a></td>
+										<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">33</a></td>
+										<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">3</a></td>
+										<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">76</a></td>
+										<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">23</a></td>
 										
-										<td style="text-align:center"><a href="#">33</a></td>
-										<td style="text-align:center"><a href="#">3</a></td>
-										<td style="text-align:center"><a href="#">76</a></td>
-										<td style="text-align:center"><a href="#">23</a></td>
-										<td style="text-align:center"><a href="#">3</a></td>
-										<td width="" style="text-align:center"><a href="#">56</a></td>
+										<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">33</a></td>
+										<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">3</a></td>
+										<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">76</a></td>
+										<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">23</a></td>
+										<td style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">3</a></td>
+										<td width="" style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">56</a></td>
 						
 					
 								</tr>
@@ -426,17 +452,17 @@ function content_5accdb294e6287_78863340 ($_smarty_tpl) {
 									<tr>
 																				<th width="">Total Openings Handled</th>
 										
-										<th style="text-align:center"><a href="#">33</a></th>
-										<th style="text-align:center"><a href="#">3</a></th>
-										<th style="text-align:center"><a href="#">76</a></th>
-										<th style="text-align:center"><a href="#">23</a></th>
+										<th style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">33</a></th>
+										<th style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">3</a></th>
+										<th style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">76</a></th>
+										<th style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">23</a></th>
 										
-										<th style="text-align:center"><a href="#">33</a></th>
-										<th style="text-align:center"><a href="#">3</a></th>
-										<th style="text-align:center"><a href="#">76</a></th>
-										<th style="text-align:center"><a href="#">23</a></th>
-										<th style="text-align:center"><a href="#">3</a></th>
-										<th width="" style="text-align:center"><a href="#">56</a></th>
+										<th style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">33</a></th>
+										<th style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">3</a></th>
+										<th style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">76</a></th>
+										<th style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">23</a></th>
+										<th style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">3</a></th>
+										<th width="" style="text-align:center"><a class="iframeBox" href="../position/index/approved/3/" val="90_80">56</a></th>
 						
 					
 								</tr>
@@ -455,10 +481,19 @@ function content_5accdb294e6287_78863340 ($_smarty_tpl) {
 
 		<div class="span12">
 						<h3 class="heading" style="margin-bottom:0;border:;clear:left;">CTC Wise Monthly Openings Handled <small> For the year 2018 - 2019</small>
-							</h3>
+							
+								<div class="pull-right">Graph View: 
+								
+									<a href="javascript:void(0)" rel="printAreaGraph" class="printBtn"><input value="Print" type="button" class="btn btn-success"/></a>
+
 							
 							
-							<div class="graph"  id="ctc_wise" style="height:500px">
+								</div>
+								
+								</h3>
+							
+							
+							<div class="graph printAreaGraph"  id="ctc_wise" style="height:500px">
 							</div>
 
 							
@@ -550,17 +585,17 @@ function content_5accdb294e6287_78863340 ($_smarty_tpl) {
 		 //  textPosition : 'none',
         },
 		
-        bar: {groupWidth: "60%"},
+        bar: {groupWidth: "90%"},
        //  legend: { position: "none" },
 		isStacked:true,
 		// colors: ['#6688e9', '#fcea54', '#12de6d'],
 		  legend: {position: 'top', maxLines:1, textStyle: {color: '#000000', fontSize: 14}},
-          dataOpacity: 0.7,
+          dataOpacity: 0.6,
 		  isStacked: true,
-		  bar: { groupWidth: '45%' },
-		  chartArea:{width:"98%",left:0},
+		  bar: { groupWidth: '70%' },
+		  chartArea:{width:"98%",left:40},
 		  tooltip:{textStyle: {color: '#000000', fontSize: 15}},
-		  titleTextStyle:{ fontSize: 12},
+		  titleTextStyle:{ fontSize: 15},
       };
       var chart = new google.visualization.ColumnChart(document.getElementById("ctc_wise"));
       chart.draw(view, options);

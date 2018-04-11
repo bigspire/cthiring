@@ -41,9 +41,9 @@ background:#f2f2f2
 										<div class="accordion-body collapse in" id="collapseOne">
 											<div class="accordion-inner">
 												<ul class="nav nav-list">
-													<li  class="active"><a href="javascript:void(0)">CTC Wise Monthly Openings Handled</a></li>
-													<li><a href="javascript:void(0)">CTC Wise Client Openings Handled</a></li>
-													<li><a href="javascript:void(0)">Month Wise Client Openings Handled</a></li>
+													<li  class="{$1a}"><a href="openings_handled_1a.php">CTC Wise Monthly Openings Handled</a></li>
+													<li class="{$1b}"><a href="openings_handled_1b.php">CTC Wise Client Openings Handled</a></li>
+													<li class="{$1c}"><a href="javascript:void(0)">Month Wise Client Openings Handled</a></li>
 												</ul>
 											</div>
 										</div>

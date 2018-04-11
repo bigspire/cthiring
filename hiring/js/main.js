@@ -1289,7 +1289,25 @@ $(document).ready(function() {
 					title: null,
 					doctype: '<!doctype html>'
 			});
-		});		
+		});
+
+		$(".printBtn").on('click', function(){
+			var rel = $(this).attr('rel');
+			$("."+rel).print({
+					globalStyles: true,
+					mediaPrint: false,
+					stylesheet: null,
+					noPrintSelector: ".no-print",
+					iframe: true,
+					append: null,
+					prepend: null,
+					manuallyCopyFormValues: true,
+					deferred: $.Deferred(),
+					timeout: 750,
+					title: null,
+					doctype: '<!doctype html>'
+			});
+		});
 	
     });
 	

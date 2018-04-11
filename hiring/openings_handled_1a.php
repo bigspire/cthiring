@@ -26,8 +26,14 @@ include('classes/class.content.php');
 $module_access = $fun->check_role_access('17',$modules);
 $smarty->assign('module',$module_access);
 
+$smarty->assign('1a','active');
+
 $smarty->assign('format_type_'.$_GET['format'], 'dn');  
 
+if($_GET['export'] == '1'){
+	$path = 'uploads/export/report_excel.xlsx';
+	$fun->download_file($path);
+}
 
 // assign page title
 $smarty->assign('page_title' , 'Openings Handled - Reportings - Manage Hiring');  

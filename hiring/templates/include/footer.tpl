@@ -56,6 +56,8 @@
 
 <script src="lib_cthiring/multisel/jquery.multi-select.js"></script>	
 
+<script src="js/jQuery.print.js"></script>
+
 <!-- datatable -->		 
 	<script type="text/javascript" src="lib_cthiring/chosen/chosen.jquery.min.js"></script>
 	 <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
