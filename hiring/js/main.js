@@ -1,5 +1,49 @@
 $(document).ready(function() {
-		
+	/*
+	// for retaining existing court case details
+	$(".desig_details").change(function (){
+		var div_data = '';
+		var head = '';
+		$.ajax({
+			url : "get_designation.php",
+			method : "GET",
+			dataType: "json",
+			data : {desig : $("#desig_#index#"). val()};
+		})
+		.done(function (data){ 		
+		var inc = 0;
+		$.each(data,function (a,y){ 
+			div_data += '<article class="search-result row">'+
+			'<div class="col-xs-12 col-sm-12 col-md-2">'+
+			'<ul class="meta-search">'+
+			'<li><i class="glyphicon glyphicon-calendar"></i> <span>'+y.judgement_date+'</span></li>'+
+			'<li><i class="glyphicon glyphicon-tags"></i> <span>'+y.court_name+'</span></li>'+
+			'<li><i class="glyphicon glyphicon-time"></i> <span>'+y.law+'</span></li>'+
+			'</ul>'+
+			'</div>'+
+			'<div class="col-xs-12 col-sm-12 col-md-7 excerpet">'+
+			'<h3><a href="../search_detail.php?display=hide&session=no&id='+y.id+'" class="iframeBox" val="80_80">'+y.citation+
+			'</a>	| <span style="font-size:14px;"><strong>Appellant:</strong> '+y.petitioner+', <strong>Respondent:</strong> '+y.respondent+'	</span></h3>'+
+			
+			'<p>'+y.head_note+'</p><a href="add_case.php?id='+y.id+'&citation='+y.citation+'">Add Case</a></div>'+						
+			'<span class="clearfix borda"></span>'+
+			'</article>'; 
+			inc++;
+		});
+		if(inc != 0){
+			count_div = '<h4> '+inc+' results found <span class="text-navy"></span></h2>';
+		}else{
+			count_div = '';
+		}
+		full_data = count_div + div_data;
+			$('#similar_rows').empty();
+      	$('#similar_rows').html(full_data); 
+			$('.iframeBox').click(function(){	
+				load_colorBox(this, $(this).attr('val'));	
+			}); 
+      });
+	});
+	*/
     $(".tag_name").click(function(){
         // InsertText($(this).attr('rel'));
     });
@@ -30,7 +74,7 @@ $(document).ready(function() {
 	
 	$('[data-toggle="popover"]').popover(); 
 
-		
+	
 	/* for multi select options */
 	if($(".chosen-select").length > 0){
 		$(".chosen-select").chosen({
@@ -1597,11 +1641,17 @@ function load_colorBox(obj, size){
 				esc = true;
 			}
 			
+			//colorbox.resize({width:"300px" , height:"300px"});
 			$(obj).colorbox({iframe:true, rel: 'nofollow',  width:width+'%', height:height+'%',opacity:   '.8', 	  scrolling: true, fixed:true,overlayClose:over_close, escKey: esc,
-			onClosed:function(){					
-			
-				}
-			
+			onClosed:function(){  
+				if($('#fr_desig').length > 0 && $('#fr_desig').val() == 'success'){
+					// if($('.desig_details').length != ''){
+						window.parent.location.reload(true); 
+						//$(".desig_details").load(location.href + ".desig_details");
+					// }
+					
+				}    		
+			}						
 			});
 		}
 }

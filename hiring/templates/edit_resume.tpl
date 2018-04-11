@@ -349,11 +349,15 @@
 							<tr class="tbl_row">
 										<td width="120" class="tbl_column">Designation <span class="f_req">*</span></td>
 										<td> 
-										<select name="desig_#index#" class="span8"  tabindex="" id="desig_#index#">
+										<select name="desig_#index#" class="span8 desig_details"  tabindex="" id="desig_#index#">
 										<option value="">Select</option>	
 											{html_options options=$desig_name}															
 										</select>  <a href="add_designation.php?action=dropdown" class="iframeBox" val="40_55">Add New</a>
-										<label for="reg_city" generated="true" class="error"id="desig_Err_#index#" ></label>										
+										<label for="reg_city" generated="true" class="error"id="desig_Err_#index#" ></label>	
+										<input type="hidden" name="fr_desig" id="fr_desig" class="test">				
+<section id="similar_rows" class="col-xs-12 col-sm-6 col-md-12">
+
+</section>										
 										</td> 
 							</tr>
 								<tr>
@@ -896,7 +900,7 @@ $(document).ready(function(){
 			}
 		}
 	}
-	// load the color box
+	// load the color box for designation
 	$('.iframeBox').click(function(){
 			load_colorBox(this, $(this).attr('val'));	
 	});	

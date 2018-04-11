@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-04-10 17:10:30
+/* Smarty version 3.1.29, created on 2018-04-11 17:06:12
   from "C:\xampp\htdocs\2017\ctsvn2\cthiring\hiring\templates\add_designation.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5acca2aeaa9eb3_83059522',
+  'unifunc' => 'content_5acdf32c0eb006_79634909',
   'file_dependency' => 
   array (
     'c2841799044e2d7c3bc6122e311ae8820e11b989' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn2\\cthiring\\hiring\\templates\\add_designation.tpl',
-      1 => 1523360385,
+      1 => 1523446555,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5acca2aeaa9eb3_83059522 ($_smarty_tpl) {
+function content_5acdf32c0eb006_79634909 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\2017\\ctsvn2\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -158,11 +158,15 @@ home"><i class="icon-home"></i></a>
 				 
 				 
 			 		
-<?php if ($_smarty_tpl->tpl_vars['EXIST_MSG']->value) {?>
-				 <div id="flashMessage" class="alert alert-error"><button type="button" class="close" data-dismiss="alert">×</button><?php echo $_smarty_tpl->tpl_vars['EXIST_MSG']->value;?>
-</div>					
-				<?php }?>
-<form action="" id="formID" class="formID" method="post" accept-charset="utf-8">
+				<?php if ($_smarty_tpl->tpl_vars['EXIST_MSG']->value || $_smarty_tpl->tpl_vars['SUCCESS_MSG']->value) {?>
+					<div id="flashMessage" class="alert alert-error"><button type="button" class="close" data-dismiss="alert">×</button><?php echo $_smarty_tpl->tpl_vars['EXIST_MSG']->value;
+echo $_smarty_tpl->tpl_vars['SUCCESS_MSG']->value;?>
+</div>		
+			      </div>
+			   <?php }?>  
+			   <?php if (!$_smarty_tpl->tpl_vars['SUCCESS_MSG']->value) {?> 
+<form action="add_designation.php?action=<?php echo $_smarty_tpl->tpl_vars['action']->value;?>
+" id="formID" class="formID" method="post" accept-charset="utf-8">
 	<div class="box">
 		<div class="box-title mb5">
 			<h4><i class="icon-list"></i> Designation Details </h4>
@@ -183,28 +187,6 @@ home"><i class="icon-home"></i></a>
 				</tbody>
 			</table>
 		</div>
-							
-		<div class="span6">		
-			<table class="table table-bordered dataTable" style="margin-bottom:0;">
-				<tbody>	  
-				  <tr class="tbl_row">
-						<td width="120" class="tbl_column">Status <span class="f_req">*</span></td>
-						<td>	
-							<select name="status" tabindex="2" class="span8"  id="PositionEmpId">
-							<?php if (isset($_smarty_tpl->tpl_vars['status']->value)) {?>
-								<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['designation_status']->value,'selected'=>$_smarty_tpl->tpl_vars['status']->value),$_smarty_tpl);?>
-	
-							<?php } else { ?>
-								<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['designation_status']->value,'selected'=>'1'),$_smarty_tpl);?>
-	
-							<?php }?>	
-							<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['statusErr']->value;?>
-</label>											
-						</td>	
-				  </tr>						
-				</tbody>
-			</table>
-		</div>
 		</div>	
 	<div>
 </div>
@@ -219,6 +201,7 @@ home"><i class="icon-home"></i></a>
 </div>
                     </div>
 				</form>
+				<?php }?>
   </div>
   </div>
  </div> 
@@ -236,16 +219,15 @@ home"><i class="icon-home"></i></a>
 <!-- main bootstrap js -->
 		 
 <?php if ($_smarty_tpl->tpl_vars['form_sent']->value == '1') {?>
-
-<?php echo '<script'; ?>
+	 
+	<?php echo '<script'; ?>
  type="text/javascript">
-/* redirect to add resume page once resume uploaded successfully */
-self.parent.location.href = jQuery('.redirect_url').val();
-parent.jQuery(".modalCloseImg").click();
-parent.$.colorbox.close();
-<?php echo '</script'; ?>
+	$(document).ready(function(){
+		window.parent.$('#fr_desig').val('success');
+	});
+	<?php echo '</script'; ?>
 >
-
+	
 <?php }?>
 
 
