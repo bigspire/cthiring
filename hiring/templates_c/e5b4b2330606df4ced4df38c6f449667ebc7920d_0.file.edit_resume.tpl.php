@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-04-11 17:07:59
+/* Smarty version 3.1.29, created on 2018-04-11 18:57:22
   from "C:\xampp\htdocs\2017\ctsvn2\cthiring\hiring\templates\edit_resume.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5acdf3974ff311_54662550',
+  'unifunc' => 'content_5ace0d3aa80596_51912204',
   'file_dependency' => 
   array (
     'e5b4b2330606df4ced4df38c6f449667ebc7920d' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn2\\cthiring\\hiring\\templates\\edit_resume.tpl',
-      1 => 1523446676,
+      1 => 1523453236,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5acdf3974ff311_54662550 ($_smarty_tpl) {
+function content_5ace0d3aa80596_51912204 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\2017\\ctsvn2\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -441,7 +441,7 @@ echo $_POST['native_location'];
 										<option value="">Select</option>	
 											<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['desig_name']->value),$_smarty_tpl);?>
 															
-										</select>  <a href="add_designation.php?action=dropdown" class="iframeBox" val="40_55">Add New</a>
+										</select>  <a href="add_designation.php?action=dropdown" rel="desig_#index#" class="iframeBox clearDesig" val="40_55">Add New</a>
 										<label for="reg_city" generated="true" class="error"id="desig_Err_#index#" ></label>	
 										<input type="hidden" name="fr_desig" id="fr_desig" class="test">				
 <section id="similar_rows" class="col-xs-12 col-sm-6 col-md-12">
@@ -1095,6 +1095,11 @@ $(document).ready(function(){
 		   continuousIndex: true,
 		   afterAdd: function(source, newForm) {
 			 $('#exp_count').attr('value',source.getFormsCount());
+			 	/* clear the drop down value */
+				$('.clearDesig').unbind().click(function(){
+					var id = $(this).attr('rel');
+					$('#'+id).val('');
+				});
 			  // for auto resize text area
 			 autosize(document.querySelectorAll('.wysiwyg1'));
 			 /* function to update max drop down */
