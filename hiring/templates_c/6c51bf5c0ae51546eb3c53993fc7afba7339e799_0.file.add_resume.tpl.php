@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-03-22 18:49:37
+/* Smarty version 3.1.29, created on 2018-04-13 10:29:50
   from "C:\xampp\htdocs\ctsvn\cthiring\hiring\templates\add_resume.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5ab3ad694a6e51_89234897',
+  'unifunc' => 'content_5ad039462e7086_54613553',
   'file_dependency' => 
   array (
     '6c51bf5c0ae51546eb3c53993fc7afba7339e799' => 
     array (
       0 => 'C:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\templates\\add_resume.tpl',
-      1 => 1521723671,
+      1 => 1523450124,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5ab3ad694a6e51_89234897 ($_smarty_tpl) {
+function content_5ad039462e7086_54613553 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -202,14 +202,14 @@ echo $_smarty_tpl->tpl_vars['email_validErr']->value;?>
 										<td>	
 										
 										<input type="text" tabindex="9" name="present_ctc" value="<?php echo $_smarty_tpl->tpl_vars['present_ctc']->value;?>
-" placeholder="Present"  class="span2"/>										
+" placeholder="Present"  class="span2 digitOnly"/>										
 										<select class="span2"  tabindex="10"  name="present_ctc_type">
 										<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['ctc_type']->value,'selected'=>$_POST['present_ctc_type']),$_smarty_tpl);?>
 
 										</select> 
 											
 										<input type="text" tabindex="11" name="expected_ctc" value="<?php echo $_smarty_tpl->tpl_vars['expected_ctc']->value;?>
-" placeholder="Expected"  class="span2"/>	
+" placeholder="Expected"  class="span2 digitOnly"/>	
 										<select  class="span2" tabindex="12"  name="expected_ctc_type">
 										<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['ctc_type']->value,'selected'=>$_POST['expected_ctc_type']),$_smarty_tpl);?>
 
@@ -351,10 +351,10 @@ echo 'checked';?>
 			</tr>
 			
 			<tr class="tbl_row">
-				<td width="120" class="tbl_column">College <span class="f_req"></span></td>
+				<td width="120" class="tbl_column">College <span class="f_req">*</span></td>
 				<td> 
 					<input type="text" tabindex="" name="college_#index#" id="college_#index#" class="span8" >										
-					<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['collegeErr']->value;?>
+					<label for="reg_city" generated="true" class="error" id="collegeErr_#index#"><?php echo $_smarty_tpl->tpl_vars['collegeErr']->value;?>
 </labe>									
 				</td>
 			</tr>
@@ -825,6 +825,9 @@ for ($_foo=true;$_smarty_tpl->tpl_vars['i']->value < $_POST['edu_count']; $_smar
 		<input type="hidden" id="year_of_pass_Err_Data_<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
 "  value="<?php echo $_smarty_tpl->tpl_vars['eduErr']->value[$_smarty_tpl->tpl_vars['i']->value]['year_of_passErr'];?>
 ">
+		<input type="hidden" id="collegeErr_Data_<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
+"  value="<?php echo $_smarty_tpl->tpl_vars['eduErr']->value[$_smarty_tpl->tpl_vars['i']->value]['collegeErr'];?>
+">
 	<?php }
 }
 ?>
@@ -1042,6 +1045,9 @@ $(document).ready(function(){
 			if($('#qualification_Err_Data_'+i).length > 0){ 
 				$('#qualification_Err_'+i).html($('#qualification_Err_Data_'+i).val());
 			}
+			if($('#collegeErr_Data_'+i).length > 0){ 
+				$('#collegeErr_'+i).html($('#collegeErr_Data_'+i).val());
+			}
 		}
 	}
 	
@@ -1074,7 +1080,7 @@ $(document).ready(function(){
 					html = "<option value=''>Select</option>";
 					$('#'+cur_obj+' option').each(function(){
 						// allow only values equals or greater than
-						if(val < $(this).val()){ 
+						if(val <= $(this).val()){ 
 							html += '<option value='+$(this).val()+'>'+$(this).text()+'</option>';
 						}
 					});
