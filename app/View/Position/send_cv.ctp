@@ -17,7 +17,7 @@
 				
 		<?php
 		if($cv_update_status == ''):?>					
-<?php echo $this->Form->create('Position', array('id' => '', 'class' => 'formID')); ?>
+<?php echo $this->Form->create('Position', array('id' => '', 'class' => 'formID', 'enctype' => "multipart/form-data")); ?>
 	<div class="box">
 	<div class="box-title mb5">
 			<h4>Send CV to Client</h4>
@@ -76,6 +76,20 @@
 
 						</td>	
 				</tr>
+				
+						<tr class="tbl_row" >
+					<td width="120" class="tbl_column">Attachment 
+					</td>
+						<td>
+					<?php echo $this->Form->input('client_attach', array('div'=> false,'type' => 'file', 'label' => false, 
+					'class' => 'span10',  
+					'required' => false, 'placeholder' => '', 
+					'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 
+
+					</td>	
+				</tr>
+				
+				
 				</tbody>
 			</table>
 				

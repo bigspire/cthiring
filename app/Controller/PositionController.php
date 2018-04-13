@@ -1446,6 +1446,12 @@ class PositionController extends AppController {
 					$cc = explode(',', $this->request->data['Position']['client_cc']);	
 					$cc_new = array_map('trim',$cc);					
 				}
+				
+				if($this->request->data['Position']['client_attach']['tmp_name'] != ''){
+					$attach_file = date('ymdhis').'_'.$this->request->data['Position']['client_attach']['name'];
+					$resume_path[] = $this->upload_attachment($this->request->data['Position']['client_attach'], $attach_file);
+				}
+					
 				if(!$this->send_email($subject, 'send_cv', $this->Session->read('USER.Login.email_id'), $contact_data['Contact']['email'],$vars,$resume_path,$cc_new)){	
 					// show the msg.								
 					$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Problem in sending the mail to client...', 'default', array('class' => 'alert alert-error'));				
@@ -2421,10 +2427,12 @@ class PositionController extends AppController {
 						$cc_new = array_map('trim',$cc);							
 					}
 					
+					/*
 					if($this->request->data['Position']['client_attach']['tmp_name'] != ''){
 						$attach_file = date('ymdhis').'_'.$this->request->data['Position']['client_attach']['name'];
 						$attach = $this->upload_attachment($this->request->data['Position']['client_attach'], $attach_file);
-					}			
+					}
+					*/					
 					// send mail
 					if(!$this->send_email($subject, 'confirm_interview', $this->Session->read('USER.Login.email_id'), $contact_data['Contact']['email'], $vars, $attach, $cc_new)){
 						// show the msg.								
