@@ -87,10 +87,16 @@ if(!empty($_POST)){
 				}
 				$row = $mysql->display_result($result);
 				$last_id = $row['inserted_id'];
-					if(!empty($last_id)){
+				if(!empty($last_id)){
+					if(empty($action)){
 						// redirecting to list contact branch page
 						header('Location: contact_branch.php?status=created');		
+					}else{
+						$smarty->assign('form_sent' , 1);
+						$msg = "Branch added successfully";
+						$smarty->assign('SUCCESS_MSG',$msg);				
 					}
+				}
 				// free the memory
 				$mysql->clear_result($result);
 			}catch(Exception $e){

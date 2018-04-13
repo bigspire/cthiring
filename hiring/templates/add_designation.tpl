@@ -123,10 +123,14 @@
 				 
 				 
 			 		
-				{if $EXIST_MSG || $SUCCESS_MSG}
-					<div id="flashMessage" class="alert alert-error"><button type="button" class="close" data-dismiss="alert">×</button>{$EXIST_MSG}{$SUCCESS_MSG}</div>		
+				{if $EXIST_MSG}
+					<div id="flashMessage" class="alert alert-error"><button type="button" class="close" data-dismiss="alert">×</button>{$EXIST_MSG}</div>		
 			      </div>
 			   {/if}  
+			   {if $SUCCESS_MSG}
+					<div id="flashMessage" class="alert alert-success"><button type="button" class="close" data-dismiss="alert">×</button>{$SUCCESS_MSG}</div>		
+			      </div>
+			   {/if} 
 			 
 <form action="add_designation.php?action={$action}" id="formID" class="formID" method="post" accept-charset="utf-8">
 	<div class="box">

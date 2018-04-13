@@ -123,12 +123,16 @@
 				 
 				 
 			 		
-				{if $EXIST_MSG || $SUCCESS_MSG}
-					<div id="flashMessage" class="alert alert-error"><button type="button" class="close" data-dismiss="alert">×</button>{$EXIST_MSG}{$SUCCESS_MSG}</div>		
+				{if $EXIST_MSG}
+					<div id="flashMessage" class="alert alert-error"><button type="button" class="close" data-dismiss="alert">×</button>{$EXIST_MSG}</div>		
+			      </div>
+			   {/if}  
+			   {if $SUCCESS_MSG}
+					<div id="flashMessage" class="alert alert-success"><button type="button" class="close" data-dismiss="alert">×</button>{$SUCCESS_MSG}</div>		
 			      </div>
 			   {/if}  
 			 
-<form action="add_branch.php?action={$action}" id="formID" class="formID" method="post" accept-charset="utf-8">
+<form action="add_contact_branch.php?action={$action}" id="formID" class="formID" method="post" accept-charset="utf-8">
 	<div class="box">
 		<div class="box-title mb5">
 			<h4><i class="icon-list"></i> Add Branch </h4>
@@ -141,7 +145,7 @@
 							<td width="120" class="tbl_column">Branch <span class="f_req">*</span></td>
 							<td>										
 								<input type="text" tabindex="1" name="branch" value="{$branch}" class="span8 ui-autocomplete-input" autocomplete="off">
-								<label for="reg_city" generated="true" class="error">{$branchErr} </label>									
+								<label for="reg_city" generated="true" class="error">{$branchErr}</label>									
 							</td>	
 						</tr>																											
 				</tbody>
@@ -179,7 +183,7 @@
 	{literal} 
 	<script type="text/javascript">
 	$(document).ready(function(){
-		window.parent.$('#fr_desig').val('success');
+		window.parent.$('#fr_branch').val('success');
 	});
 	</script>
 	{/literal}
