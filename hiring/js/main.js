@@ -734,7 +734,17 @@ $(document).ready(function() {
 				  $('#contact_count').attr('value',source.getFormsCount());
 			   },
 			   afterAdd: function(source, newForm) {
-				  $('#contact_count').attr('value',source.getFormsCount());			  		
+				  $('#contact_count').attr('value',source.getFormsCount());	
+					/* clear the drop down value */
+					$('.clearDesig').unbind().click(function(){ 
+						var id = $(this).attr('rel');
+						$('#'+id).val('');
+					});
+					// load the color box for designation
+					$('.iframeBox').click(function(){
+						load_colorBox(this, $(this).attr('val'));	
+					});
+				  
 			   }
 		   });	
 			
@@ -754,8 +764,9 @@ $(document).ready(function() {
 				if($('#emailId_'+i).length > 0){
 					$('#email_'+i).val($('#emailId_'+i).val());
 				}				
+				
 				if($('#desigName_'+i).length > 0){
-					$('#designation_'+i).val($('#desigName_'+i).val());
+					$('#desig_'+i).val($('#desigName_'+i).val());
 				}
 				if($('#mobileNo_'+i).length > 0){
 					$('#mobile_'+i).val($('#mobileNo_'+i).val());

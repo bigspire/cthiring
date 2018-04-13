@@ -22,7 +22,7 @@
                         </div>
                     </nav>
 			
-	<?php echo $this->Form->create('Client', array('id' => '', 'class' => 'formID')); ?>
+	<?php echo $this->Form->create('Client', array('id' => '', 'class' => 'formID', 'id' => 'formID')); ?>
 			
 							<?php echo $this->Session->flash();?>
 
@@ -192,9 +192,13 @@
 							<td width="120" class="tbl_column">Designation	 <span class="f_req">*</span></td>
 							<td>	
 							
-			<?php echo $this->Form->input('designation_#index#', array('div'=> false,'type' => 'select', 'label' => false, 'id' => 'designation_#index#',
+			<?php echo $this->Form->input('designation_#index#', array('div'=> false,'type' => 'select', 'label' => false, 'id' => 'desig_#index#',
 		'class' => 'span8', 'empty' => 'Select', 'required' => false, 'placeholder' => '', 
 		'style' => "clear:left", 'options' => $desigList, 'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 
+		
+		<a href="<?php echo $this->webroot;?>hiring/add_designation.php?action=dropdown" rel="desig_#index#" class="iframeBox clearDesig" val="40_55">Add New</a>
+		<input type="hidden" name="fr_desig" id="fr_desig" class="test">	
+		
 				<div id="desigErrData_#index#" class="error"></div>
 			
 							</td>	
@@ -227,7 +231,10 @@
 	<?php echo $this->Form->input('branch_#index#', array('div'=> false,'type' => 'select', 'label' => false, 'id' => 'branch_#index#',
 		'class' => 'span8', 'empty' => 'Select', 'required' => false, 'placeholder' => '', 
 		'style' => "clear:left", 'options' => $branchList, 'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 
-													
+					<a href="<?php echo $this->webroot;?>hiring/add_contact_branch.php?action=dropdown" rel="branch_#index#" class="iframeBox clearDesig" val="40_55">Add New</a>
+				
+					<input type="hidden" name="fr_branch" id="fr_branch">	
+					
 						</td>	
 					</tr>	
 					

@@ -38,17 +38,17 @@
 										<td>{$item.created_by}</</td>
 										
 										<td width="120"  class="tbl_column"><b>Rec. Location</b> </td>
-										<td>Chennai {$int_date}</td>
+										<td>{$item.location}</td>
 										
 									</tr>
 									
 								<tr>
 										
 										<td width="" class="tbl_column"><b>Rec. Contact No</b></td>
-										<td>92892982922{$interview_data['candidate_name']}</td>
+										<td>{$item.mobile]}</td>
 										
 										<td width="" class="tbl_column"><b>Sent Date</b> </td>
-										<td>{$item.created_date}</</td>
+										<td>{$item.cv_sent}</</td>
 										
 										<td width="" class="tbl_column"><b>Current Status </b> </td>
 										<td colspan="3">{$item.current_stage} {$item.current_status}</</td>
