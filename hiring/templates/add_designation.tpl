@@ -99,7 +99,7 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />	<title>
-		Upload Resume - CT Hiring</title>
+		Manage Hiring</title>
 	   <!-- Bootstrap framework -->
          <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
          <link rel="stylesheet" href="bootstrap/css/bootstrap-responsive.min.css" />
@@ -131,7 +131,7 @@
 <form action="add_designation.php?action={$action}" id="formID" class="formID" method="post" accept-charset="utf-8">
 	<div class="box">
 		<div class="box-title mb5">
-			<h4><i class="icon-list"></i> Designation Details </h4>
+			<h4><i class="icon-list"></i> Add Designation </h4>
 		</div>
 		<div class="row-fluid">
 		<div class="span6">

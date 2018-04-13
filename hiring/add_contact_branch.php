@@ -20,9 +20,15 @@ include('classes/class.mailer.php');
 // content class
 include('classes/class.content.php');
 
-// role based validation
-$module_access = $fun->check_role_access('41',$modules);
-$smarty->assign('module',$module_access);
+if($_GET['action'] != 'dropdown'){
+	// role based validation
+	$module_access = $fun->check_role_access('41',$modules);
+	$smarty->assign('module',$module_access);
+}
+
+// get action value
+$action = $_GET['action'];
+$smarty->assign('action', $action);	
 
 if(!empty($_POST)){	
 	// array for printing correct field name in error message
@@ -61,12 +67,18 @@ if(!empty($_POST)){
 		echo 'Caught exception: ',  $e->getMessage(), "\n";
 	} 
 	
+	if($_GET['action'] == 'dropdown'){
+		$status_val = '1';
+	}else{
+		$status_val = $_POST['status'];
+	}
+	
 	if(empty($test)){
 		if($row['total'] == '0'){
 			// query to insert contact branch. 
 			$query = "CALL add_contact_branch('".$_SESSION['user_id']."',
 			'".$fun->is_white_space($mysql->real_escape_str($_POST['branch']))."',
-			'".$date."','".$mysql->real_escape_str($_POST['status'])."')";
+			'".$date."','".$mysql->real_escape_str($status_val)."')";
 			// Calling the function that makes the insert
 			try{
 				// calling mysql exe_query function
