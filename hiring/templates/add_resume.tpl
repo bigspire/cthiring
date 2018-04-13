@@ -372,12 +372,8 @@
 											{html_options options=$desig_name}															
 										</select>
 										<a href="add_designation.php?action=dropdown" rel="desig_#index#" class="iframeBox clearDesig" val="40_55">Add New</a>
-										<!-- new branch validation -->
-										<a href="add_contact_branch.php?action=dropdown" rel="branch_#index#" class="iframeBox clearBranch" val="40_55">Add New Branch</a>
 										<label for="reg_city" generated="true" class="error"id="desig_Err_#index#" ></label>	
-										<input type="hidden" name="fr_desig" id="fr_desig" class="test">	
-										<!-- new branch validation -->
-										<input type="hidden" name="fr_branch" id="fr_branch" class="test">										
+										<input type="hidden" name="fr_desig" id="fr_desig" class="test">										
 										<section id="similar_rows" class="col-xs-12 col-sm-6 col-md-12">
 
 										</section>	
@@ -846,11 +842,6 @@ $(document).ready(function(){
 			 $('#exp_count').attr('value',source.getFormsCount());
 				/* clear the drop down value */
 				$('.clearDesig').unbind().click(function(){
-					var id = $(this).attr('rel');
-					$('#'+id).val('');
-				});
-				/* clear the drop down value of branch */
-				$('.clearBranch').unbind().click(function(){
 					var id = $(this).attr('rel');
 					$('#'+id).val('');
 				});

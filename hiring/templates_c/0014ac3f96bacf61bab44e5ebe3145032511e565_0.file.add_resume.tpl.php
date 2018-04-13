@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-04-13 15:01:25
+/* Smarty version 3.1.29, created on 2018-04-13 15:33:43
   from "C:\xampp\htdocs\2017\ctsvn2\cthiring\hiring\templates\add_resume.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5ad078edcb3637_15054755',
+  'unifunc' => 'content_5ad0807fbb8c68_49399438',
   'file_dependency' => 
   array (
     '0014ac3f96bacf61bab44e5ebe3145032511e565' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn2\\cthiring\\hiring\\templates\\add_resume.tpl',
-      1 => 1523611526,
+      1 => 1523613820,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5ad078edcb3637_15054755 ($_smarty_tpl) {
+function content_5ad0807fbb8c68_49399438 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\2017\\ctsvn2\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -455,12 +455,8 @@ echo 'checked';?>
 															
 										</select>
 										<a href="add_designation.php?action=dropdown" rel="desig_#index#" class="iframeBox clearDesig" val="40_55">Add New</a>
-										<!-- new branch validation -->
-										<a href="add_contact_branch.php?action=dropdown" rel="branch_#index#" class="iframeBox clearBranch" val="40_55">Add New Branch</a>
 										<label for="reg_city" generated="true" class="error"id="desig_Err_#index#" ></label>	
-										<input type="hidden" name="fr_desig" id="fr_desig" class="test">	
-										<!-- new branch validation -->
-										<input type="hidden" name="fr_branch" id="fr_branch" class="test">										
+										<input type="hidden" name="fr_desig" id="fr_desig" class="test">										
 										<section id="similar_rows" class="col-xs-12 col-sm-6 col-md-12">
 
 										</section>	
@@ -1100,11 +1096,6 @@ $(document).ready(function(){
 			 $('#exp_count').attr('value',source.getFormsCount());
 				/* clear the drop down value */
 				$('.clearDesig').unbind().click(function(){
-					var id = $(this).attr('rel');
-					$('#'+id).val('');
-				});
-				/* clear the drop down value of branch */
-				$('.clearBranch').unbind().click(function(){
 					var id = $(this).attr('rel');
 					$('#'+id).val('');
 				});
