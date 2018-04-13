@@ -127,7 +127,7 @@
 					<div id="flashMessage" class="alert alert-error"><button type="button" class="close" data-dismiss="alert">×</button>{$EXIST_MSG}{$SUCCESS_MSG}</div>		
 			      </div>
 			   {/if}  
-			   {if !$SUCCESS_MSG} 
+			 
 <form action="add_designation.php?action={$action}" id="formID" class="formID" method="post" accept-charset="utf-8">
 	<div class="box">
 		<div class="box-title mb5">
@@ -161,7 +161,7 @@
 </div>
                     </div>
 				</form>
-				{/if}
+				
   </div>
   </div>
  </div> 

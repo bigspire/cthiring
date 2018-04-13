@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-04-11 17:06:12
+/* Smarty version 3.1.29, created on 2018-04-13 13:23:19
   from "C:\xampp\htdocs\2017\ctsvn2\cthiring\hiring\templates\add_designation.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5acdf32c0eb006_79634909',
+  'unifunc' => 'content_5ad061ef3ed9d5_90068737',
   'file_dependency' => 
   array (
     'c2841799044e2d7c3bc6122e311ae8820e11b989' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn2\\cthiring\\hiring\\templates\\add_designation.tpl',
-      1 => 1523446555,
+      1 => 1523605988,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5acdf32c0eb006_79634909 ($_smarty_tpl) {
+function content_5ad061ef3ed9d5_90068737 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\2017\\ctsvn2\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -164,7 +164,7 @@ echo $_smarty_tpl->tpl_vars['SUCCESS_MSG']->value;?>
 </div>		
 			      </div>
 			   <?php }?>  
-			   <?php if (!$_smarty_tpl->tpl_vars['SUCCESS_MSG']->value) {?> 
+			 
 <form action="add_designation.php?action=<?php echo $_smarty_tpl->tpl_vars['action']->value;?>
 " id="formID" class="formID" method="post" accept-charset="utf-8">
 	<div class="box">
@@ -201,7 +201,7 @@ echo $_smarty_tpl->tpl_vars['SUCCESS_MSG']->value;?>
 </div>
                     </div>
 				</form>
-				<?php }?>
+				
   </div>
   </div>
  </div> 

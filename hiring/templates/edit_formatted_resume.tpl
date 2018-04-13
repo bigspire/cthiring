@@ -410,8 +410,12 @@
 										<select tabindex="" name="desig_#index#" class="span8"  id="desig_#index#">	
 											<option value="">Select</option>
 											{html_options options=$desig_name}															
-										</select>
-										<label for="reg_city" generated="true" class="error" id="desigErr_#index#"></label>									
+										</select>   <a href="add_designation.php?action=dropdown" rel="desig_#index#" class="iframeBox clearDesig" val="40_55">Add New</a>
+										<label for="reg_city" generated="true" class="error" id="desigErr_#index#"></label>		
+										<input type="hidden" name="fr_desig" id="fr_desig" class="test">				
+										<section id="similar_rows" class="col-xs-12 col-sm-6 col-md-12">
+
+										</section>										
 										</td>
 							</tr>
 								<tr>
@@ -976,6 +980,11 @@ $(document).ready(function(){
 		   continuousIndex: true,
 		   afterAdd: function(source, newForm) {
 			 $('#exp_count').attr('value',source.getFormsCount());
+			    /* clear the drop down value */
+				$('.clearDesig').unbind().click(function(){
+					var id = $(this).attr('rel');
+					$('#'+id).val('');
+				});
 			  // for auto resize text area
 			 autosize(document.querySelectorAll('.wysiwyg1'));
 			 /* function to update max drop down */
@@ -1142,6 +1151,10 @@ $(document).ready(function(){
 			}
 		}
 	}
+	// load the color box for designation
+	$('.iframeBox').click(function(){
+			load_colorBox(this, $(this).attr('val'));	
+	});	
 });
 </script>	
 {/literal}

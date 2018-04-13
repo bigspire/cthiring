@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-02-15 15:47:57
+/* Smarty version 3.1.29, created on 2018-04-13 13:23:15
   from "C:\xampp\htdocs\2017\ctsvn2\cthiring\hiring\templates\include\footer.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5a855e55787840_03817772',
+  'unifunc' => 'content_5ad061eb9151c9_67931855',
   'file_dependency' => 
   array (
     '16c7a71f6418b5db5819ed9b296ba119152dbeac' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn2\\cthiring\\hiring\\templates\\include\\footer.tpl',
-      1 => 1518689730,
+      1 => 1523604415,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_5a855e55787840_03817772 ($_smarty_tpl) {
+function content_5ad061eb9151c9_67931855 ($_smarty_tpl) {
 ?>
 <div id="footer">
 
@@ -137,6 +137,10 @@ home/add_feedback">Report a Bug</a> </span>
 <?php echo '<script'; ?>
  src="lib_cthiring/multisel/jquery.multi-select.js"><?php echo '</script'; ?>
 >	
+
+<?php echo '<script'; ?>
+ src="js/jQuery.print.js"><?php echo '</script'; ?>
+>
 
 <!-- datatable -->		 
 	<?php echo '<script'; ?>

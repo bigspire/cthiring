@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-04-11 11:44:19
+/* Smarty version 3.1.29, created on 2018-04-13 13:23:15
   from "C:\xampp\htdocs\2017\ctsvn2\cthiring\hiring\templates\include\header.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5acda7bbacc264_87053871',
+  'unifunc' => 'content_5ad061eb89c021_80703958',
   'file_dependency' => 
   array (
     'da3aecccc003a75c9d8f86c2815864aaa9da7602' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn2\\cthiring\\hiring\\templates\\include\\header.tpl',
-      1 => 1523421968,
+      1 => 1523604415,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_5acda7bbacc264_87053871 ($_smarty_tpl) {
+function content_5ad061eb89c021_80703958 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -316,10 +316,114 @@ resume/">Search Resume <!-- span class="label-bub label-info white"><?php echo $
                                           <ul class="dropdown-menu">
 										  
 										  
-										  <li><a href="openings_handled_1a.php">CTC Wise Monthly Openings Handled</a></li>
-										  
-										  
-										  
+										   <li class="dropdown">
+													<a href="#">CTC Wise Monthly Openings Handled <b class="caret-right"></b></a>
+													<ul class="dropdown-menu">
+														<li><a href="openings_handled_1a.php">CTC Wise Monthly Openings Handled</a></li>
+														<li><a href="openings_handled_1b.php">CTC Wise Client Openings Handled</a></li>
+														<li><a href="openings_handled_1c.php">Month Wise Client Openings Handled</a></li>														
+													</ul>
+											</li>
+											
+									
+											   <li class="dropdown">
+													<a href="#">CV Status <b class="caret-right"></b></a>
+													<ul class="dropdown-menu">
+														<li><a href="#">CTC Wise CV Status</a></li>
+														<li><a href="#">Client Wise CV Status</a></li>
+														<li><a href="#">Month Wise CV Status</a></li>														
+													</ul>
+											</li>
+											
+											   <li class="dropdown">
+													<a href="#">TAKT Time <b class="caret-right"></b></a>
+													<ul class="dropdown-menu">
+														<li><a href="#">CTC Wise Average TAKT Time</a></li>
+																											
+													</ul>
+											</li>
+											
+											   <li class="dropdown">
+													<a href="#">Productivity <b class="caret-right"></b></a>
+													<ul class="dropdown-menu">
+														<li><a href="#">Employee Productivity</a></li>
+																											
+													</ul>
+											</li>
+											
+											
+											   <li class="dropdown">
+													<a href="#">Business Conversion	<b class="caret-right"></b></a>
+													<ul class="dropdown-menu">
+														<li><a href="#">Employee Business Conversion</a></li>
+														<li><a href="#">Client Business Conversion</a></li>
+												
+													</ul>
+											</li>
+											
+											   <li class="dropdown">
+													<a href="#">Billing & Contribution	<b class="caret-right"></b></a>
+													<ul class="dropdown-menu">
+														<li><a href="#">Client Wise Billing</a></li>
+														<li><a href="#">Recruiter Wise Billing</a></li>
+														<li><a href="#">Individual Contribution</a></li>
+
+													</ul>
+											</li>
+											
+											  <li class="dropdown">
+													<a href="#">Incentive	<b class="caret-right"></b></a>
+													<ul class="dropdown-menu">
+														<li><a href="#">Location Wise Active Clients</a></li>
+														<li><a href="#">Business Continuity</a></li>
+														<li><a href="#">Client Retention</a></li>
+
+													</ul>
+											</li>
+											
+											  <li class="dropdown">
+													<a href="#">Client Retention <b class="caret-right"></b></a>
+													<ul class="dropdown-menu">
+														<li><a href="#">Location Wise Active Clients</a></li>
+														<li><a href="#">Business Continuity</a></li>
+														<li><a href="#">Client Retention</a></li>
+
+													</ul>
+											</li>
+											
+											
+											  <li class="dropdown">
+													<a href="#">Root Cause Analysis	 <b class="caret-right"></b></a>
+													<ul class="dropdown-menu">
+														<li><a href="#">CV Rejection Analysis</a></li>
+														<li><a href="#">Position Rejection Analysis
+</a></li>
+
+													</ul>
+											</li>
+											
+											  <li class="dropdown">
+													<a href="#">Cash Flow Management	 <b class="caret-right"></b></a>
+													<ul class="dropdown-menu">
+														<li><a href="#">Collection Days
+</a></li>
+			
+
+													</ul>
+											</li>
+											
+											
+												  <li class="dropdown">
+													<a href="#">Bad Debts			 <b class="caret-right"></b></a>
+													<ul class="dropdown-menu">
+														<li><a href="#">Recuiter Wise</a></li>
+														<li><a href="#">Client Wise</a></li>
+
+													</ul>
+											</li>
+											
+											
+											<!--
 											<?php if ($_smarty_tpl->tpl_vars['module']->value['recruiter_report'] == '1') {?>
                                                 <li><a href="recruiter_performance.php">Recruiter Performance</a></li>
 											<?php }?>
@@ -330,7 +434,6 @@ resume/">Search Resume <!-- span class="label-bub label-info white"><?php echo $
 											
 											<?php if ($_smarty_tpl->tpl_vars['module']->value['location_report'] == '1') {?>
 											<li><a href="location_performance.php">Location Performance</a></li>
-                                               <!-- <li><a href="#">Clientwise Performance</a></li>-->
 											<?php }?>
 											
 											<?php if ($_smarty_tpl->tpl_vars['module']->value['failure_report'] == '1') {?>
@@ -365,6 +468,10 @@ resume/">Search Resume <!-- span class="label-bub label-info white"><?php echo $
 											<?php if ($_smarty_tpl->tpl_vars['module']->value['weekly_report'] == '1') {?>
 												<li><a href="weekly_performance.php">Weekly Performance </a></li>
 											<?php }?>
+											
+											-->
+											
+											
                                             </ul>
 										</li>
                                         <?php }?>
