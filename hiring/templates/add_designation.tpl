@@ -132,7 +132,7 @@
 			      </div>
 			   {/if} 
 			 
-<form action="add_designation.php?action={$action}" id="formID" class="formID" method="post" accept-charset="utf-8">
+<form action="" id="formID" class="formID" method="post" accept-charset="utf-8">
 	<div class="box">
 		<div class="box-title mb5">
 			<h4><i class="icon-list"></i> Add Designation </h4>

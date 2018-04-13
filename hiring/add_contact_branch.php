@@ -31,10 +31,17 @@ $action = $_GET['action'];
 $smarty->assign('action', $action);	
 
 if(!empty($_POST)){	
-	// array for printing correct field name in error message
-	$fieldtype = array('0', '1');
-	$actualfield = array('branch ', 'status');
-   $field = array('branch' => 'branchErr', 'status' => 'statusErr');
+    // array for printing correct field name in error message  
+    if($_GET['action'] == 'dropdown'){
+		// array for printing correct field name in error message
+		$fieldtype = array('0');
+		$actualfield = array('branch');
+		$field = array('branch' => 'branchErr');
+	}else{
+		$fieldtype = array('0', '1');
+		$actualfield = array('branch', 'status');
+		$field = array('branch' => 'branchErr', 'status' => 'statusErr');
+	}
 	$j = 0;
 	foreach ($field as $field => $er_var){ 
 		if($_POST[$field] == ''){

@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-04-13 15:04:43
+/* Smarty version 3.1.29, created on 2018-04-13 15:07:58
   from "C:\xampp\htdocs\2017\ctsvn2\cthiring\hiring\templates\add_contact_branch.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5ad079b3a1c8e4_26463528',
+  'unifunc' => 'content_5ad07a7609f540_92466336',
   'file_dependency' => 
   array (
     'cc4bca3bc442ff069e3a48db401fffb396c50cd0' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn2\\cthiring\\hiring\\templates\\add_contact_branch.tpl',
-      1 => 1523612060,
+      1 => 1523612197,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5ad079b3a1c8e4_26463528 ($_smarty_tpl) {
+function content_5ad07a7609f540_92466336 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\2017\\ctsvn2\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -158,9 +158,13 @@ home"><i class="icon-home"></i></a>
 				 
 				 
 			 		
-				<?php if ($_smarty_tpl->tpl_vars['EXIST_MSG']->value || $_smarty_tpl->tpl_vars['SUCCESS_MSG']->value) {?>
-					<div id="flashMessage" class="alert alert-error"><button type="button" class="close" data-dismiss="alert">×</button><?php echo $_smarty_tpl->tpl_vars['EXIST_MSG']->value;
-echo $_smarty_tpl->tpl_vars['SUCCESS_MSG']->value;?>
+				<?php if ($_smarty_tpl->tpl_vars['EXIST_MSG']->value) {?>
+					<div id="flashMessage" class="alert alert-error"><button type="button" class="close" data-dismiss="alert">×</button><?php echo $_smarty_tpl->tpl_vars['EXIST_MSG']->value;?>
+</div>		
+			      </div>
+			   <?php }?>  
+			   <?php if ($_smarty_tpl->tpl_vars['SUCCESS_MSG']->value) {?>
+					<div id="flashMessage" class="alert alert-success"><button type="button" class="close" data-dismiss="alert">×</button><?php echo $_smarty_tpl->tpl_vars['SUCCESS_MSG']->value;?>
 </div>		
 			      </div>
 			   <?php }?>  

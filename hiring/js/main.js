@@ -1694,7 +1694,11 @@ function load_colorBox(obj, size){
 						// $(".desig_details").load(location.href + ".desig_details");
 					// }
 					
-				}    		
+				}    
+				// branch page validation
+				if($('#fr_branch').length > 0 && $('#fr_branch').val() == 'success'){
+						window.parent.$('#formID').submit();
+				} 				
 			}						
 			});
 		}
