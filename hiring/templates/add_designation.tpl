@@ -99,7 +99,7 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />	<title>
-		Upload Resume - CT Hiring</title>
+		Manage Hiring</title>
 	   <!-- Bootstrap framework -->
          <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
          <link rel="stylesheet" href="bootstrap/css/bootstrap-responsive.min.css" />
@@ -123,15 +123,19 @@
 				 
 				 
 			 		
-				{if $EXIST_MSG || $SUCCESS_MSG}
-					<div id="flashMessage" class="alert alert-error"><button type="button" class="close" data-dismiss="alert">×</button>{$EXIST_MSG}{$SUCCESS_MSG}</div>		
+				{if $EXIST_MSG}
+					<div id="flashMessage" class="alert alert-error"><button type="button" class="close" data-dismiss="alert">×</button>{$EXIST_MSG}</div>		
 			      </div>
 			   {/if}  
-			   {if !$SUCCESS_MSG} 
-<form action="add_designation.php?action={$action}" id="formID" class="formID" method="post" accept-charset="utf-8">
+			   {if $SUCCESS_MSG}
+					<div id="flashMessage" class="alert alert-success"><button type="button" class="close" data-dismiss="alert">×</button>{$SUCCESS_MSG}</div>		
+			      </div>
+			   {/if} 
+			 
+<form action="" id="formID" class="formID" method="post" accept-charset="utf-8">
 	<div class="box">
 		<div class="box-title mb5">
-			<h4><i class="icon-list"></i> Designation Details </h4>
+			<h4><i class="icon-list"></i> Add Designation </h4>
 		</div>
 		<div class="row-fluid">
 		<div class="span6">
@@ -161,7 +165,7 @@
 </div>
                     </div>
 				</form>
-				{/if}
+				
   </div>
   </div>
  </div> 

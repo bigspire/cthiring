@@ -352,12 +352,12 @@
 										<select name="desig_#index#" class="span8 desig_details"  tabindex="" id="desig_#index#">
 										<option value="">Select</option>	
 											{html_options options=$desig_name}															
-										</select>  <a href="add_designation.php?action=dropdown" rel="desig_#index#" class="iframeBox clearDesig" val="40_55">Add New</a>
+										</select>    <a href="add_designation.php?action=dropdown" rel="desig_#index#" class="iframeBox clearDesig" val="40_55">Add New</a>
 										<label for="reg_city" generated="true" class="error"id="desig_Err_#index#" ></label>	
 										<input type="hidden" name="fr_desig" id="fr_desig" class="test">				
-<section id="similar_rows" class="col-xs-12 col-sm-6 col-md-12">
+										<section id="similar_rows" class="col-xs-12 col-sm-6 col-md-12">
 
-</section>										
+										</section>										
 										</td> 
 							</tr>
 								<tr>

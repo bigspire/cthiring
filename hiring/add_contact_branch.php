@@ -20,15 +20,28 @@ include('classes/class.mailer.php');
 // content class
 include('classes/class.content.php');
 
-// role based validation
-$module_access = $fun->check_role_access('41',$modules);
-$smarty->assign('module',$module_access);
+if($_GET['action'] != 'dropdown'){
+	// role based validation
+	$module_access = $fun->check_role_access('41',$modules);
+	$smarty->assign('module',$module_access);
+}
+
+// get action value
+$action = $_GET['action'];
+$smarty->assign('action', $action);	
 
 if(!empty($_POST)){	
-	// array for printing correct field name in error message
-	$fieldtype = array('0', '1');
-	$actualfield = array('branch ', 'status');
-   $field = array('branch' => 'branchErr', 'status' => 'statusErr');
+    // array for printing correct field name in error message  
+    if($_GET['action'] == 'dropdown'){
+		// array for printing correct field name in error message
+		$fieldtype = array('0');
+		$actualfield = array('branch');
+		$field = array('branch' => 'branchErr');
+	}else{
+		$fieldtype = array('0', '1');
+		$actualfield = array('branch', 'status');
+		$field = array('branch' => 'branchErr', 'status' => 'statusErr');
+	}
 	$j = 0;
 	foreach ($field as $field => $er_var){ 
 		if($_POST[$field] == ''){
@@ -61,12 +74,18 @@ if(!empty($_POST)){
 		echo 'Caught exception: ',  $e->getMessage(), "\n";
 	} 
 	
+	if($_GET['action'] == 'dropdown'){
+		$status_val = '1';
+	}else{
+		$status_val = $_POST['status'];
+	}
+	
 	if(empty($test)){
 		if($row['total'] == '0'){
 			// query to insert contact branch. 
 			$query = "CALL add_contact_branch('".$_SESSION['user_id']."',
 			'".$fun->is_white_space($mysql->real_escape_str($_POST['branch']))."',
-			'".$date."','".$mysql->real_escape_str($_POST['status'])."')";
+			'".$date."','".$mysql->real_escape_str($status_val)."')";
 			// Calling the function that makes the insert
 			try{
 				// calling mysql exe_query function
@@ -75,10 +94,16 @@ if(!empty($_POST)){
 				}
 				$row = $mysql->display_result($result);
 				$last_id = $row['inserted_id'];
-					if(!empty($last_id)){
+				if(!empty($last_id)){
+					if(empty($action)){
 						// redirecting to list contact branch page
 						header('Location: contact_branch.php?status=created');		
+					}else{
+						$smarty->assign('form_sent' , 1);
+						$msg = "Branch added successfully";
+						$smarty->assign('SUCCESS_MSG',$msg);				
 					}
+				}
 				// free the memory
 				$mysql->clear_result($result);
 			}catch(Exception $e){

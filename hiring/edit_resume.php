@@ -234,7 +234,7 @@ if($getid !=''){
 // checking for draft 
 if($_POST['hdnSubmit'] == 1){
 	// echo 'you pressed draft re';die;
-	if(!empty($_POST['email'])){
+	/* if(!empty($_POST['email'])){
 		// query to check whether it is exist or not. 
 		$query = "CALL check_email_exist('$getid', '".$fun->is_white_space($mysql->real_escape_str($_POST['email']))."')";
 		// Calling the function that makes the insert
@@ -274,7 +274,7 @@ if($_POST['hdnSubmit'] == 1){
 		}
 	}else{
 		$check_mobile['total'] = '0';
-	}
+	} */
 	
 	
 	
@@ -284,7 +284,7 @@ if($_POST['hdnSubmit'] == 1){
 	$total_exp = $_POST['year_of_exp'].'.'.$_POST['month_of_exp'];
 	
 	// save all the data
-	if($check_mail['total'] == '0' && $check_mobile['total'] == '0'){
+	// if($check_mail['total'] == '0' && $check_mobile['total'] == '0'){
 		// for saving purpose of tech skills
 		foreach($_POST['ts'] as $key => $ts){
 			if($ts){
@@ -527,14 +527,14 @@ if($_POST['hdnSubmit'] == 1){
 			unset($_SESSION['clients_id']);
 			header('Location: ../resume?action=draft_modified');
 		} 
-	}else{
-		if($check_mail['total'] != '0' && $_POST['email'] != ''){
+	/*}else{
+		 if($check_mail['total'] != '0' && $_POST['email'] != ''){
 			$smarty->assign('email_validErr',"Resume with same email address already exists"); 
 		}
 		if($check_mobile['total'] != '0' && $_POST['email'] != ''){
 			$smarty->assign('mobile_validErr',"Resume with same mobile already exists");
 		}
-	}
+	} */
 }
 
 
@@ -795,7 +795,7 @@ if(!empty($_POST) && empty($_POST['hdnSubmit'])){
 	}*/
 	
 	// query to check whether it is exist or not. 
-	$query = "CALL check_email_exist('$getid', '".$fun->is_white_space($mysql->real_escape_str($_POST['email']))."')";
+	/* $query = "CALL check_email_exist('$getid', '".$fun->is_white_space($mysql->real_escape_str($_POST['email']))."')";
 	// Calling the function that makes the insert
 	try{
 		// calling mysql exe_query function
@@ -809,7 +809,7 @@ if(!empty($_POST) && empty($_POST['hdnSubmit'])){
 		$mysql->next_query();
 	}catch(Exception $e){
 		echo 'Caught exception: ',  $e->getMessage(), "\n";
-	}
+	} 
 	
 	// query to check whether it is exist or not. 
 	$query = "CALL check_mobile_exist('$getid','".$fun->is_white_space($mysql->real_escape_str($_POST['mobile']))."')";
@@ -826,7 +826,7 @@ if(!empty($_POST) && empty($_POST['hdnSubmit'])){
 		$mysql->next_query();
 	}catch(Exception $e){
 		echo 'Caught exception: ',  $e->getMessage(), "\n";
-	}
+	} */
 	
 	// assigning the date
 	$date =  $fun->current_date();
@@ -835,7 +835,7 @@ if(!empty($_POST) && empty($_POST['hdnSubmit'])){
 	
 	// save all the data
 	if($test != 'error'){
-	   if($check_mail['total'] == '0' && $check_mobile['total'] == '0'){
+	  /* if($check_mail['total'] == '0' && $check_mobile['total'] == '0'){
 		// for saving purpose of tech skills
 		foreach($_POST['ts'] as $key => $ts){
 			if($ts){
@@ -1305,14 +1305,14 @@ if(!empty($_POST) && empty($_POST['hdnSubmit'])){
 			// header('Location: ../resume?action=modified');
 			header('Location: ../position/view/'.$req_id.'?action=modified');
 			} 
-		}else{
+		/* }else{
 			if($check_mail['total'] != '0'){
 				$smarty->assign('email_validErr',"Resume with same email address already exists"); 
 				}
 			if($check_mobile['total'] != '0'){
 				$smarty->assign('mobile_validErr',"Resume with same mobile already exists");
 			}
-		}
+		} */
 	}else{
 		$smarty->assign('tab_open', ($tab1 == 'fail' ? 'tab1' : ($tab2 == 'fail' ? 'tab2' : ($tab3 == 'fail' ? 'tab3' : 'tab4' ))));
 	}

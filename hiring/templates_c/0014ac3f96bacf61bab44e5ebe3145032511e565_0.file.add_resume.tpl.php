@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-04-10 13:41:02
+/* Smarty version 3.1.29, created on 2018-04-13 15:01:25
   from "C:\xampp\htdocs\2017\ctsvn2\cthiring\hiring\templates\add_resume.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5acc71966c1d91_91039945',
+  'unifunc' => 'content_5ad078edcb3637_15054755',
   'file_dependency' => 
   array (
     '0014ac3f96bacf61bab44e5ebe3145032511e565' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn2\\cthiring\\hiring\\templates\\add_resume.tpl',
-      1 => 1523347777,
+      1 => 1523611526,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5acc71966c1d91_91039945 ($_smarty_tpl) {
+function content_5ad078edcb3637_15054755 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\2017\\ctsvn2\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -81,7 +81,7 @@ home"><i class="icon-home"></i></a>
 <div class="span6">
 			<table class="table table-bordered dataTable" style="margin-bottom:0;">
 						<tbody>
-						
+					
 						
 						<tr class="tbl_row">
 										<td width="120" class="tbl_column">Position For <span class="f_req">*</span></td>
@@ -454,7 +454,16 @@ echo 'checked';?>
 											<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['desig_name']->value),$_smarty_tpl);?>
 															
 										</select>
-										<label for="reg_city" generated="true" class="error"id="desig_Err_#index#" ></label>										
+										<a href="add_designation.php?action=dropdown" rel="desig_#index#" class="iframeBox clearDesig" val="40_55">Add New</a>
+										<!-- new branch validation -->
+										<a href="add_contact_branch.php?action=dropdown" rel="branch_#index#" class="iframeBox clearBranch" val="40_55">Add New Branch</a>
+										<label for="reg_city" generated="true" class="error"id="desig_Err_#index#" ></label>	
+										<input type="hidden" name="fr_desig" id="fr_desig" class="test">	
+										<!-- new branch validation -->
+										<input type="hidden" name="fr_branch" id="fr_branch" class="test">										
+										<section id="similar_rows" class="col-xs-12 col-sm-6 col-md-12">
+
+										</section>	
 										</td>
 							</tr>
 								<tr>
@@ -914,6 +923,26 @@ for ($_foo=true;$_smarty_tpl->tpl_vars['i']->value < $_POST['exp_count']; $_smar
 ?>
 
 	
+	
+		
+						<?php if ($_smarty_tpl->tpl_vars['email_exists']->value || $_smarty_tpl->tpl_vars['mobile_exists']->value) {?>
+						<input type="hidden" id="resume_exist_pop" value="1"/>
+						<?php }?>
+					
+					
+		
+		<input type="hidden" id="email_field" value="<?php echo $_smarty_tpl->tpl_vars['email']->value;?>
+"/>
+		<input type="hidden" id="mobile_field" value="<?php echo $_smarty_tpl->tpl_vars['mobile']->value;?>
+"/>
+		<input type="hidden" id="cv_url" value="resume_exist.php"/>
+
+		
+<style type="text/css">
+#cboxClose{display:none !important;}
+</style>
+
+						
 	<?php $_smarty_tpl->smarty->ext->_subtemplate->render($_smarty_tpl, "file:include/footer.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
 
@@ -1069,6 +1098,16 @@ $(document).ready(function(){
 		   continuousIndex: true,
 		   afterAdd: function(source, newForm) {
 			 $('#exp_count').attr('value',source.getFormsCount());
+				/* clear the drop down value */
+				$('.clearDesig').unbind().click(function(){
+					var id = $(this).attr('rel');
+					$('#'+id).val('');
+				});
+				/* clear the drop down value of branch */
+				$('.clearBranch').unbind().click(function(){
+					var id = $(this).attr('rel');
+					$('#'+id).val('');
+				});
 			 // for auto resize text area
 			 autosize(document.querySelectorAll('.wysiwyg1'));
 			 /* function to update max drop down */
@@ -1159,6 +1198,10 @@ $(document).ready(function(){
 			}
 		}
 	}
+	// load the color box for designation
+	$('.iframeBox').click(function(){
+			load_colorBox(this, $(this).attr('val'));	
+	});
 
 	// mail already exist
 	$(document).on("change keyup blur", "#email", function() {
@@ -1167,8 +1210,7 @@ $(document).ready(function(){
 			if(data=='exist') return false;
 			else $('#form1').submit();
 		});
-	});
-		
+	});	
 });
 <?php echo '</script'; ?>
 >	
