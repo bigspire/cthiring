@@ -52,7 +52,7 @@
 <div class="span6">
 			<table class="table table-bordered dataTable" style="margin-bottom:0;">
 						<tbody>
-						
+					
 						
 						<tr class="tbl_row">
 										<td width="120" class="tbl_column">Position For <span class="f_req">*</span></td>
@@ -665,6 +665,24 @@
 		<input type="hidden" id="company_Err_Data_{$i}"  value="{$expErr[$i]['companyErr']}">
 	{/for}
 	
+	
+		
+						{if $email_exists || $mobile_exists}
+						<input type="hidden" id="resume_exist_pop" value="1"/>
+						{/if}
+					
+					
+		
+		<input type="hidden" id="email_field" value="{$email}"/>
+		<input type="hidden" id="mobile_field" value="{$mobile}"/>
+		<input type="hidden" id="cv_url" value="resume_exist.php"/>
+
+		{literal}
+<style type="text/css">
+#cboxClose{display:none !important;}
+</style>
+{/literal}
+						
 	{include file='include/footer.tpl'}
 
 {literal}	 

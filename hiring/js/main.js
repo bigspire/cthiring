@@ -1114,6 +1114,23 @@ $(document).ready(function() {
 			});
 		}
 	});	
+	
+	/* to load the pop up in resume page */
+	if($('#resume_exist_pop').length > 0 && $('#resume_exist_pop').val() == '1'){
+		var email = $('#email_field').val();
+		var mobile = $('#mobile_field').val();		
+		
+		
+		$.colorbox({href:$('#cv_url').val()+'?email='+email+'&mobile='+mobile, iframe:true, rel: 'nofollow',  width:'80%', height:'70%',opacity:'.8', scrolling: false, fixed:true,overlayClose:false, escKey: false,closeButton:false,
+			onClosed:function(){					
+				
+			}
+		});
+			
+
+		
+	}
+	
 				
 				
 	/* function to call when the formatted resume tab change */

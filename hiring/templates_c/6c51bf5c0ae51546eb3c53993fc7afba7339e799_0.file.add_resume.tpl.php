@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-04-13 10:29:50
+/* Smarty version 3.1.29, created on 2018-04-13 11:12:55
   from "C:\xampp\htdocs\ctsvn\cthiring\hiring\templates\add_resume.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5ad039462e7086_54613553',
+  'unifunc' => 'content_5ad0435f0209c7_98980206',
   'file_dependency' => 
   array (
     '6c51bf5c0ae51546eb3c53993fc7afba7339e799' => 
     array (
       0 => 'C:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\templates\\add_resume.tpl',
-      1 => 1523450124,
+      1 => 1523598171,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5ad039462e7086_54613553 ($_smarty_tpl) {
+function content_5ad0435f0209c7_98980206 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -81,7 +81,7 @@ home"><i class="icon-home"></i></a>
 <div class="span6">
 			<table class="table table-bordered dataTable" style="margin-bottom:0;">
 						<tbody>
-						
+					
 						
 						<tr class="tbl_row">
 										<td width="120" class="tbl_column">Position For <span class="f_req">*</span></td>
@@ -914,6 +914,26 @@ for ($_foo=true;$_smarty_tpl->tpl_vars['i']->value < $_POST['exp_count']; $_smar
 ?>
 
 	
+	
+		
+						<?php if ($_smarty_tpl->tpl_vars['email_exists']->value || $_smarty_tpl->tpl_vars['mobile_exists']->value) {?>
+						<input type="hidden" id="resume_exist_pop" value="1"/>
+						<?php }?>
+					
+					
+		
+		<input type="hidden" id="email_field" value="<?php echo $_smarty_tpl->tpl_vars['email']->value;?>
+"/>
+		<input type="hidden" id="mobile_field" value="<?php echo $_smarty_tpl->tpl_vars['mobile']->value;?>
+"/>
+		<input type="hidden" id="cv_url" value="resume_exist.php"/>
+
+		
+<style type="text/css">
+#cboxClose{display:none !important;}
+</style>
+
+						
 	<?php $_smarty_tpl->smarty->ext->_subtemplate->render($_smarty_tpl, "file:include/footer.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
 

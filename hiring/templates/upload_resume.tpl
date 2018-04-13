@@ -127,6 +127,17 @@
 <input type="hidden" value="{$redirect_url}" class="redirect_url"/>		
 <input type="hidden" value="resume.php" class="redirect_url_value"/>	
 <!-- main bootstrap js -->
+
+{literal}
+<script type="text/javascript">
+$(document).ready(function(){
+ parent.$.fn.colorbox.resize({
+        innerWidth: '40%',
+        innerHeight: '55%'
+    });
+});
+</script>
+{/literal}
 		 
 {if $form_sent == '1'}
 {literal}

@@ -10,6 +10,7 @@ session_start();
 unset($_SESSION['position_for']);
 unset($_SESSION['resume_doc']);
 unset($_SESSION['clients_id']);
+unset($_SESSION['IGNORE_CV']);
 $_SESSION['extraction'] = '';
 // including smarty config
 include 'configs/smartyconfig.php';
