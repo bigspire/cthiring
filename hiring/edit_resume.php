@@ -1304,7 +1304,7 @@ if(!empty($_POST) && empty($_POST['hdnSubmit'])){
 			// header('Location: ../resume?action=modified&download='.$snap_file_name.'_'.date('d-m-Y').'.pdf');
 			// header('Location: ../resume?action=modified');
 			header('Location: ../position/view/'.$req_id.'?action=modified');
-			} 
+			// } 
 		/* }else{
 			if($check_mail['total'] != '0'){
 				$smarty->assign('email_validErr',"Resume with same email address already exists"); 
