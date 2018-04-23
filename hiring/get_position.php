@@ -18,7 +18,7 @@ include('classes/class.function.php');
 $client_id = $_GET['client'];
 
 // smarty dropdown for position
-$query ="CALL get_position('".$client_id."')";
+$query ="CALL get_position('".$client_id."','".$_SESSION['user_id']."')";
 try{
 	// calling mysql exe_query function
 	if(!$result = $mysql->execute_query($query)){

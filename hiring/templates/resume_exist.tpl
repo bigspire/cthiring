@@ -21,40 +21,55 @@
 						<div class="row-fluid">
 							<div class="span12">
 							
+							<h3 class="heading">Resume Status <small>Overview</small>						</h3>
+									
+									
 							
 							{foreach from=$resume_data item=item key=key}	
+							
+							
 							
 							{if $item.company != ''}
 							<table class="table  table-bordered dataTable" style="margin-bottom:0">
 								<tbody>
 									<tr>
-										<td width="120" class="tbl_column"><b>Client Name</b></td>
-										<td>{$item.company}</td>
+										<td width="10%" class="tbl_column"><b>Client Name</b></td>
+										<td width="20%">{$item.company}</td>
 										
-										<td width="80" class="tbl_column"><b>Position</b> </td>
-										<td>{$item.position}</</td>
+										<td width="10%" class="tbl_column"><b>Position</b> </td>
+										<td width="20%">{$item.position}</td>
 										
-										<td width="120" class="tbl_column"><b>Rec. Name</b> </td>
-										<td>{$item.created_by}</</td>
+										<td width="10%" class="tbl_column"><b>Rec. Name</b> </td>
+										<td width="12%">{$item.created_by}</td>
 										
-										<td width="120"  class="tbl_column"><b>Rec. Location</b> </td>
-										<td>{$item.location}</td>
+										<td width="10%"  class="tbl_column"><b>Rec. Location</b> </td>
+										<td width="12%">{$item.location}</td>
 										
 									</tr>
 									
 								<tr>
 										
+
+										
 										<td width="" class="tbl_column"><b>Rec. Contact No</b></td>
-										<td>{$item.mobile]}</td>
+										<td width="">{$item.mobile}</td>
 										
 										<td width="" class="tbl_column"><b>Sent Date</b> </td>
-										<td>{$item.cv_sent}</</td>
+										<td width="">{if $item.cv_sent eq ''}
+													 --
+													 {else}
+													{$item.cv_sent} 
+													{/if}
+													</td>
+										
 										
 										<td width="" class="tbl_column"><b>Current Status </b> </td>
-										<td colspan="3">{$item.current_stage} {$item.current_status}</</td>
+										<td width="" colspan="3">{$item.current_stage} - {$item.current_status}</td>
+									
 									
 										
-									</tr>
+										
+								
 									
 								</tr>	
 								</tbody>

@@ -23,6 +23,103 @@ include('classes/class.mailer.php');
 // content class
 include('classes/class.content.php');
 
+// when doc. extraction happen in first time
+if($_SESSION['extraction'] == '' || $_POST['RESUME_DATA'] == ''){
+	// fetch the resume data
+	$uploaddir = 'uploads/resume/'; 
+	$resume_data = $fun->read_document($uploaddir.$_SESSION['resume_doc']);
+	$smarty->assign('RESUME_DATA', $resume_data);
+	// extract the mobile
+	$string = preg_replace("#[^\d{12}\s]#",'',$resume_data);
+	preg_match_all("#(\d{12}|\d{11}|\d{10})#", $string, $found);	
+	
+	
+	foreach($found as $key => $phone_number) {
+		  if(strlen($phone_number[$key]) >= 10){ 
+			$mobile = $phone_number[$key];
+			// break;
+		  };
+		  // save for hiding contacts
+		  $phone_nos = $phone_number;
+	}
+	// extract the email
+	$string = preg_split("/[\s,]+/", $resume_data);
+	foreach($string as $mail){
+		if(!filter_var($mail, FILTER_VALIDATE_EMAIL)) {
+			// continue;
+		}else{
+			$mail_ids[] = $mail;
+			// break;
+			$email = $mail;
+		}
+	}	
+		
+		
+	// extract the candidate name
+	foreach($string as $name_key => $name){
+		$name = trim($name);
+		if($name != 'Name' && $name != 'Name:' && $name != 'vitae' && $name != 'CURRICULUM' && $name != 'Curriculum' && $name != 'Curriculam' && $name != 'Vitae' && $name != 'VITAE' && $name != 'RESUME' && $name != ''
+		&& $name != 'Mailing' && $name != 'Address' && $name != ':' && $name != '' && !is_numeric($name)){
+			break;
+		}else{
+			continue;
+		}
+	}
+		
+	$smarty->assign('first_name', ucfirst(strtolower($string[$name_key])));
+	$smarty->assign('last_name', ucfirst(strtolower($string[$name_key+1])));
+	$smarty->assign('email', $email);
+	$smarty->assign('mobile', $mobile);
+	$_SESSION['extraction'] = 'done';
+}else{
+	$smarty->assign('RESUME_DATA', $_POST['RESUME_DATA']);
+}
+
+$smarty->assign('dob_default', date('d/m/Y', strtotime('-18 years')));
+// role based validation
+$module_access = $fun->check_role_access('7',$modules);
+$smarty->assign('module',$module_access);
+
+// do not check if ignored
+if($_SESSION['IGNORE_CV'] == ''){
+	// query to check whether it is exist or not. 
+	$query = "CALL check_email_exist('0', '".$fun->is_white_space($mysql->real_escape_str($email))."')";
+	// Calling the function that makes the insert
+	try{
+		// calling mysql exe_query function
+		if(!$result = $mysql->execute_query($query)){
+			throw new Exception('Problem in executing to check email exist');
+		}
+		$check_mail_popup = $mysql->display_result($result);
+		// free the memory
+		$mysql->clear_result($result);
+		// call the next result
+		$mysql->next_query();
+	}catch(Exception $e){
+		echo 'Caught exception: ',  $e->getMessage(), "\n";
+	}
+
+	$smarty->assign('email_exists', $check_mail_popup['total']);
+
+	// query to check whether it is exist or not. 
+	$query = "CALL check_mobile_exist('0','".$fun->is_white_space($mysql->real_escape_str($mobile))."')";
+	// Calling the function that makes the insert
+	try{
+		// calling mysql exe_query function
+		if(!$result = $mysql->execute_query($query)){
+			throw new Exception('Problem in executing to check mobile exist');
+		}
+		$check_mobile_popup = $mysql->display_result($result);
+		// free the memory
+		$mysql->clear_result($result);
+		// call the next result
+		$mysql->next_query();
+	}catch(Exception $e){
+		echo 'Caught exception: ',  $e->getMessage(), "\n";
+	}
+	$smarty->assign('mobile_exists', $check_mobile_popup['total']);
+}
+
 // draft validation
 if($_POST['hdnSubmit'] == 1){
 	// echo 'you pressed draft re';die;
@@ -345,6 +442,7 @@ if($_POST['hdnSubmit'] == 1){
 			unset($_SESSION['position_for']);
 			unset($_SESSION['resume_doc']);
 			unset($_SESSION['clients_id']);
+			unset($_SESSION['IGNORE_CV']);
 			// header('Location: ../position/view/'.$req_id.'?action=created');
 			header('Location: ../resume/?action=auto_draft_created');
 		}
@@ -358,62 +456,7 @@ if($_POST['hdnSubmit'] == 1){
 	} */
 }
 		
-// when doc. extraction happen in first time
-if($_SESSION['extraction'] == '' || $_POST['RESUME_DATA'] == ''){
-	// fetch the resume data
-	$uploaddir = 'uploads/resume/'; 
-	$resume_data = $fun->read_document($uploaddir.$_SESSION['resume_doc']);
-	$smarty->assign('RESUME_DATA', $resume_data);
-	// extract the mobile
-	$string = preg_replace("#[^\d{12}\s]#",'',$resume_data);
-	preg_match_all("#(\d{12}|\d{11}|\d{10})#", $string, $found);	
-	
-	
-	foreach($found as $key => $phone_number) {
-		  if(strlen($phone_number[$key]) >= 10){ 
-			$mobile = $phone_number[$key];
-			// break;
-		  };
-		  // save for hiding contacts
-		  $phone_nos = $phone_number;
-	}
-	// extract the email
-	$string = preg_split("/[\s,]+/", $resume_data);
-	foreach($string as $mail){
-		if(!filter_var($mail, FILTER_VALIDATE_EMAIL)) {
-			// continue;
-		}else{
-			$mail_ids[] = $mail;
-			// break;
-			$email = $mail;
-		}
-	}	
-		
-		
-	// extract the candidate name
-	foreach($string as $name_key => $name){
-		$name = trim($name);
-		if($name != 'Name' && $name != 'Name:' && $name != 'vitae' && $name != 'CURRICULUM' && $name != 'Curriculum' && $name != 'Curriculam' && $name != 'Vitae' && $name != 'VITAE' && $name != 'RESUME' && $name != ''
-		&& $name != 'Mailing' && $name != 'Address' && $name != ':' && $name != '' && !is_numeric($name)){
-			break;
-		}else{
-			continue;
-		}
-	}
-		
-	$smarty->assign('first_name', ucfirst(strtolower($string[$name_key])));
-	$smarty->assign('last_name', ucfirst(strtolower($string[$name_key+1])));
-	$smarty->assign('email', $email);
-	$smarty->assign('mobile', $mobile);
-	$_SESSION['extraction'] = 'done';
-}else{
-	$smarty->assign('RESUME_DATA', $_POST['RESUME_DATA']);
-}
 
-$smarty->assign('dob_default', date('d/m/Y', strtotime('-18 years')));
-// role based validation
-$module_access = $fun->check_role_access('7',$modules);
-$smarty->assign('module',$module_access);
 
 
 	$edu = $_POST['edu_count'] ? $_POST['edu_count'] : $edu_tot;
@@ -1372,6 +1415,7 @@ if(!empty($_POST) && empty($_POST['hdnSubmit'])){
 			unset($_SESSION['position_for']);
 			unset($_SESSION['resume_doc']);
 			unset($_SESSION['clients_id']);	
+			unset($_SESSION['IGNORE_CV']);
 			
 			/*
 			// water mark the pdf

@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-04-13 14:33:44
+/* Smarty version 3.1.29, created on 2018-04-13 15:31:01
   from "C:\xampp\htdocs\ctsvn\cthiring\hiring\templates\add_designation.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5ad072703860e6_89843484',
+  'unifunc' => 'content_5ad07fdd26e728_25507796',
   'file_dependency' => 
   array (
     '6a5da7036affb2a51b4412fe9dd4a30af866f03f' => 
     array (
       0 => 'C:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\templates\\add_designation.tpl',
-      1 => 1523450124,
+      1 => 1523613142,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5ad072703860e6_89843484 ($_smarty_tpl) {
+function content_5ad07fdd26e728_25507796 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -134,7 +134,7 @@ home"><i class="icon-home"></i></a>
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />	<title>
-		Upload Resume - CT Hiring</title>
+		Manage Hiring</title>
 	   <!-- Bootstrap framework -->
          <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
          <link rel="stylesheet" href="bootstrap/css/bootstrap-responsive.min.css" />
@@ -158,18 +158,21 @@ home"><i class="icon-home"></i></a>
 				 
 				 
 			 		
-				<?php if ($_smarty_tpl->tpl_vars['EXIST_MSG']->value || $_smarty_tpl->tpl_vars['SUCCESS_MSG']->value) {?>
-					<div id="flashMessage" class="alert alert-error"><button type="button" class="close" data-dismiss="alert">×</button><?php echo $_smarty_tpl->tpl_vars['EXIST_MSG']->value;
-echo $_smarty_tpl->tpl_vars['SUCCESS_MSG']->value;?>
+				<?php if ($_smarty_tpl->tpl_vars['EXIST_MSG']->value) {?>
+					<div id="flashMessage" class="alert alert-error"><button type="button" class="close" data-dismiss="alert">×</button><?php echo $_smarty_tpl->tpl_vars['EXIST_MSG']->value;?>
 </div>		
 			      </div>
 			   <?php }?>  
-			   <?php if (!$_smarty_tpl->tpl_vars['SUCCESS_MSG']->value) {?> 
-<form action="add_designation.php?action=<?php echo $_smarty_tpl->tpl_vars['action']->value;?>
-" id="formID" class="formID" method="post" accept-charset="utf-8">
+			   <?php if ($_smarty_tpl->tpl_vars['SUCCESS_MSG']->value) {?>
+					<div id="flashMessage" class="alert alert-success"><button type="button" class="close" data-dismiss="alert">×</button><?php echo $_smarty_tpl->tpl_vars['SUCCESS_MSG']->value;?>
+</div>		
+			      </div>
+			   <?php }?> 
+			 
+<form action="" id="formID" class="formID" method="post" accept-charset="utf-8">
 	<div class="box">
 		<div class="box-title mb5">
-			<h4><i class="icon-list"></i> Designation Details </h4>
+			<h4><i class="icon-list"></i> Add Designation </h4>
 		</div>
 		<div class="row-fluid">
 		<div class="span6">
@@ -201,7 +204,7 @@ echo $_smarty_tpl->tpl_vars['SUCCESS_MSG']->value;?>
 </div>
                     </div>
 				</form>
-				<?php }?>
+				
   </div>
   </div>
  </div> 

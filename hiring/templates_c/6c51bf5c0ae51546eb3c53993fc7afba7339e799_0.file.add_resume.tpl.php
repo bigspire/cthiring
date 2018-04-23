@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-04-13 11:12:55
+/* Smarty version 3.1.29, created on 2018-04-13 16:07:47
   from "C:\xampp\htdocs\ctsvn\cthiring\hiring\templates\add_resume.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5ad0435f0209c7_98980206',
+  'unifunc' => 'content_5ad0887be9f364_86760675',
   'file_dependency' => 
   array (
     '6c51bf5c0ae51546eb3c53993fc7afba7339e799' => 
     array (
       0 => 'C:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\templates\\add_resume.tpl',
-      1 => 1523598171,
+      1 => 1523614058,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5ad0435f0209c7_98980206 ($_smarty_tpl) {
+function content_5ad0887be9f364_86760675 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -454,7 +454,12 @@ echo 'checked';?>
 											<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['desig_name']->value),$_smarty_tpl);?>
 															
 										</select>
-										<label for="reg_city" generated="true" class="error"id="desig_Err_#index#" ></label>										
+										<a href="add_designation.php?action=dropdown" rel="desig_#index#" class="iframeBox clearDesig" val="40_55">Add New</a>
+										<label for="reg_city" generated="true" class="error"id="desig_Err_#index#" ></label>	
+										<input type="hidden" name="fr_desig" id="fr_desig" class="test">										
+										<section id="similar_rows" class="col-xs-12 col-sm-6 col-md-12">
+
+										</section>	
 										</td>
 							</tr>
 								<tr>
@@ -1089,6 +1094,11 @@ $(document).ready(function(){
 		   continuousIndex: true,
 		   afterAdd: function(source, newForm) {
 			 $('#exp_count').attr('value',source.getFormsCount());
+				/* clear the drop down value */
+				$('.clearDesig').unbind().click(function(){
+					var id = $(this).attr('rel');
+					$('#'+id).val('');
+				});
 			 // for auto resize text area
 			 autosize(document.querySelectorAll('.wysiwyg1'));
 			 /* function to update max drop down */
@@ -1179,6 +1189,10 @@ $(document).ready(function(){
 			}
 		}
 	}
+	// load the color box for designation
+	$('.iframeBox').click(function(){
+			load_colorBox(this, $(this).attr('val'));	
+	});
 
 	// mail already exist
 	$(document).on("change keyup blur", "#email", function() {
@@ -1187,8 +1201,7 @@ $(document).ready(function(){
 			if(data=='exist') return false;
 			else $('#form1').submit();
 		});
-	});
-		
+	});	
 });
 <?php echo '</script'; ?>
 >	

@@ -810,7 +810,15 @@
 		<input type="hidden" id="train_location_Err_Data_{$i}"  value="{$trainErr[$i]['train_locationErr']}">
 	{/for}
 	
-
+		{if $email_exists || $mobile_exists}
+						<input type="hidden" id="resume_exist_pop" value="1"/>
+						{/if}
+					
+	<input type="hidden" id="email_field" value="{$email}"/>
+		<input type="hidden" id="mobile_field" value="{$mobile}"/>
+		<input type="hidden" id="cv_url" value="resume_exist.php"/>
+		
+		
 {literal}	 
 <script type="text/javascript">	
 $(document).ready(function(){

@@ -37,6 +37,7 @@ try{
 		
 	}
 	
+	
 	$smarty->assign('resume_data',$row);
 	// free the memory
 	$mysql->clear_result($result);
