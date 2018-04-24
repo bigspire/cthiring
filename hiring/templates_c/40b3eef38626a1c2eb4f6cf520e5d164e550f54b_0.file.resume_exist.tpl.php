@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-04-13 13:31:14
+/* Smarty version 3.1.29, created on 2018-04-24 12:25:52
   from "C:\xampp\htdocs\2017\ctsvn2\cthiring\hiring\templates\resume_exist.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5ad063cadef9c5_35940754',
+  'unifunc' => 'content_5aded4f8c8bfd5_23856142',
   'file_dependency' => 
   array (
     '40b3eef38626a1c2eb4f6cf520e5d164e550f54b' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn2\\cthiring\\hiring\\templates\\resume_exist.tpl',
-      1 => 1523604415,
+      1 => 1524481129,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/header_popup.tpl' => 1,
   ),
 ),false)) {
-function content_5ad063cadef9c5_35940754 ($_smarty_tpl) {
+function content_5aded4f8c8bfd5_23856142 ($_smarty_tpl) {
 ?>
 
 
@@ -45,6 +45,9 @@ function content_5ad063cadef9c5_35940754 ($_smarty_tpl) {
 						<div class="row-fluid">
 							<div class="span12">
 							
+							<h3 class="heading">Resume Status <small>Overview</small>						</h3>
+									
+									
 							
 							<?php
 $_from = $_smarty_tpl->tpl_vars['resume_data']->value;
@@ -61,45 +64,57 @@ $_smarty_tpl->tpl_vars['item']->_loop = true;
 $__foreach_item_0_saved_local_item = $_smarty_tpl->tpl_vars['item'];
 ?>	
 							
+							
+							
 							<?php if ($_smarty_tpl->tpl_vars['item']->value['company'] != '') {?>
 							<table class="table  table-bordered dataTable" style="margin-bottom:0">
 								<tbody>
 									<tr>
-										<td width="120" class="tbl_column"><b>Client Name</b></td>
-										<td><?php echo $_smarty_tpl->tpl_vars['item']->value['company'];?>
+										<td width="10%" class="tbl_column"><b>Client Name</b></td>
+										<td width="20%"><?php echo $_smarty_tpl->tpl_vars['item']->value['company'];?>
 </td>
 										
-										<td width="80" class="tbl_column"><b>Position</b> </td>
-										<td><?php echo $_smarty_tpl->tpl_vars['item']->value['position'];?>
-</</td>
+										<td width="10%" class="tbl_column"><b>Position</b> </td>
+										<td width="20%"><?php echo $_smarty_tpl->tpl_vars['item']->value['position'];?>
+</td>
 										
-										<td width="120" class="tbl_column"><b>Rec. Name</b> </td>
-										<td><?php echo $_smarty_tpl->tpl_vars['item']->value['created_by'];?>
-</</td>
+										<td width="10%" class="tbl_column"><b>Rec. Name</b> </td>
+										<td width="12%"><?php echo $_smarty_tpl->tpl_vars['item']->value['created_by'];?>
+</td>
 										
-										<td width="120"  class="tbl_column"><b>Rec. Location</b> </td>
-										<td>Chennai <?php echo $_smarty_tpl->tpl_vars['int_date']->value;?>
+										<td width="10%"  class="tbl_column"><b>Rec. Location</b> </td>
+										<td width="12%"><?php echo $_smarty_tpl->tpl_vars['item']->value['location'];?>
 </td>
 										
 									</tr>
 									
 								<tr>
 										
+
+										
 										<td width="" class="tbl_column"><b>Rec. Contact No</b></td>
-										<td>92892982922<?php echo $_smarty_tpl->tpl_vars['interview_data']->value['candidate_name'];?>
+										<td width=""><?php echo $_smarty_tpl->tpl_vars['item']->value['mobile'];?>
 </td>
 										
 										<td width="" class="tbl_column"><b>Sent Date</b> </td>
-										<td><?php echo $_smarty_tpl->tpl_vars['item']->value['created_date'];?>
-</</td>
+										<td width=""><?php if ($_smarty_tpl->tpl_vars['item']->value['cv_sent'] == '') {?>
+													 --
+													 <?php } else { ?>
+													<?php echo $_smarty_tpl->tpl_vars['item']->value['cv_sent'];?>
+ 
+													<?php }?>
+													</td>
+										
 										
 										<td width="" class="tbl_column"><b>Current Status </b> </td>
-										<td colspan="3"><?php echo $_smarty_tpl->tpl_vars['item']->value['current_stage'];?>
- <?php echo $_smarty_tpl->tpl_vars['item']->value['current_status'];?>
-</</td>
+										<td width="" colspan="3"><?php echo $_smarty_tpl->tpl_vars['item']->value['current_stage'];?>
+ - <?php echo $_smarty_tpl->tpl_vars['item']->value['current_status'];?>
+</td>
+									
 									
 										
-									</tr>
+										
+								
 									
 								</tr>	
 								</tbody>

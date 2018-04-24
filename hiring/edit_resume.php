@@ -333,7 +333,7 @@ if($_POST['hdnSubmit'] == 1){
 					throw new Exception('Problem in adding position details');
 				}
 				$row = $mysql->display_result($result);
-				$position_id = $row['inserted_id'];
+				$position_id = $row['affected_rows'];
 				// call the next result
 				$mysql->next_query();
 			}catch(Exception $e){
