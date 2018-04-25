@@ -25,7 +25,7 @@ $smarty->assign('dob_default', date('d/m/Y', strtotime('-18 years')));
 // role based validation
 $module_access = $fun->check_role_access('7',$modules);
 $smarty->assign('module',$module_access);
-
+$snap_edu = '';
 $getid = $_GET['id'];
 $smarty->assign('getid',$getid);
 // validate url 
@@ -232,7 +232,7 @@ if($getid !=''){
 }
 
 // checking for draft 
-if($_POST['hdnSubmit'] == 1){
+if($_POST['hdnSubmit'] == 1){ 
 	// echo 'you pressed draft re';die;
 	/* if(!empty($_POST['email'])){
 		// query to check whether it is exist or not. 
@@ -400,7 +400,7 @@ if($_POST['hdnSubmit'] == 1){
 			}catch(Exception $e){
 				echo 'Caught exception: ',  $e->getMessage(), "\n";
 			}
-		}die;
+		}
 		$edu_id = $row['inserted_id'];
 		
 		// get and insert is recent field
