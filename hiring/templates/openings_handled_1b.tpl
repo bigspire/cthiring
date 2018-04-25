@@ -564,9 +564,14 @@
         bar: {groupWidth: "90%"},
        //  legend: { position: "none" },
 		isStacked:true,
+		
+		// '#453d7e', '#2f97d3', '#bdcd40', '#ffcc2b', '#f58634'
+		
+				 colors: ['#ea3639','#f58634', '#ffcc2b', '#bdcd40', '#2f97d3'],
+
 		//  colors: ['#6688e9', '#09418d', '#12de6d', '#811905', '#ab1f57', '#23E5FF', '#ab1f57',  '#811905','#09418d', '#fabec2', '#0dac01','#d7f477'],
 		  legend: {position: 'top', maxLines:1, textStyle: {color: '#000000', fontSize: 14}},
-          dataOpacity: 0.6,
+          dataOpacity: 0.8,
 		  isStacked: true,
 		  bar: { groupWidth: '70%' },
 		  chartArea:{width:"98%",left:100},

@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-04-11 21:19:46
+/* Smarty version 3.1.29, created on 2018-04-19 16:14:11
   from "C:\xampp\htdocs\ctsvn\cthiring\hiring\templates\include\sidebar.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5ace2e9ac6fae9_20730551',
+  'unifunc' => 'content_5ad872fbb372a5_22114243',
   'file_dependency' => 
   array (
     '0efa3a79f2611cbccf18098a269a971b9bb43a1e' => 
     array (
       0 => 'C:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\templates\\include\\sidebar.tpl',
-      1 => 1523461784,
+      1 => 1524134649,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_5ace2e9ac6fae9_20730551 ($_smarty_tpl) {
+function content_5ad872fbb372a5_22114243 ($_smarty_tpl) {
 ?>
 
 <style>
@@ -69,11 +69,11 @@ background:#f2f2f2
 											<div class="accordion-inner">
 												<ul class="nav nav-list">
 													<li  class="<?php echo $_smarty_tpl->tpl_vars['1a']->value;?>
-"><a href="openings_handled_1a.php">CTC Wise Monthly Openings Handled</a></li>
+"><a href="openings_handled_1a.php">Monthly Openings (CTC)</a></li>
 													<li class="<?php echo $_smarty_tpl->tpl_vars['1b']->value;?>
-"><a href="openings_handled_1b.php">CTC Wise Client Openings Handled</a></li>
+"><a href="openings_handled_1b.php">Client Openings (CTC)</a></li>
 													<li class="<?php echo $_smarty_tpl->tpl_vars['1c']->value;?>
-"><a href="openings_handled_1c.php">Month Wise Client Openings Handled</a></li>
+"><a href="openings_handled_1c.php">Client Openings (Month)</a></li>
 												</ul>
 											</div>
 										</div>

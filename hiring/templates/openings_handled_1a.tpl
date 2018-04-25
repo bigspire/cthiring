@@ -504,7 +504,7 @@
     function drawChart() {
       var data = google.visualization.arrayToDataTable([
         ['Month', '0-8', '8-20', '20-30', '30-40','Above 40' ],
-        ['Apr 2018', 26, 3, 5, 3, 0],
+        ['Apr 2018', 16, 13, 15, 13, 10],
         ['May 2018', 33, 5, 5, 1, 1],
         ['Jun 2018', 12, 6, 4, 0, 1],
 		['Jul 2018', 28, 7, 3, 0, 1],
@@ -553,11 +553,13 @@
         },
 		
         bar: {groupWidth: "90%"},
-       //  legend: { position: "none" },
+       legend: { position: "bottom" },
 		isStacked:true,
-		// colors: ['#6688e9', '#fcea54', '#12de6d'],
+
+		
+				 colors: ['#ea3639','#f58634', '#ffcc2b', '#bdcd40', '#2f97d3'],
 		  legend: {position: 'top', maxLines:1, textStyle: {color: '#000000', fontSize: 14}},
-          dataOpacity: 0.6,
+          dataOpacity: 0.7,
 		  isStacked: true,
 		  bar: { groupWidth: '70%' },
 		  chartArea:{width:"98%",left:40},

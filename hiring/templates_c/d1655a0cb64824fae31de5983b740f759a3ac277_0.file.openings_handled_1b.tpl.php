@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-04-11 20:53:03
+/* Smarty version 3.1.29, created on 2018-04-19 16:06:44
   from "C:\xampp\htdocs\ctsvn\cthiring\hiring\templates\openings_handled_1b.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5ace28573ab7a3_65297132',
+  'unifunc' => 'content_5ad8713c209de1_58788439',
   'file_dependency' => 
   array (
     'd1655a0cb64824fae31de5983b740f759a3ac277' => 
     array (
       0 => 'C:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\templates\\openings_handled_1b.tpl',
-      1 => 1523460175,
+      1 => 1524134201,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5ace28573ab7a3_65297132 ($_smarty_tpl) {
+function content_5ad8713c209de1_58788439 ($_smarty_tpl) {
 ?>
 
    
@@ -597,9 +597,14 @@ function content_5ace28573ab7a3_65297132 ($_smarty_tpl) {
         bar: {groupWidth: "90%"},
        //  legend: { position: "none" },
 		isStacked:true,
+		
+		// '#453d7e', '#2f97d3', '#bdcd40', '#ffcc2b', '#f58634'
+		
+				 colors: ['#ea3639','#f58634', '#ffcc2b', '#bdcd40', '#2f97d3'],
+
 		//  colors: ['#6688e9', '#09418d', '#12de6d', '#811905', '#ab1f57', '#23E5FF', '#ab1f57',  '#811905','#09418d', '#fabec2', '#0dac01','#d7f477'],
 		  legend: {position: 'top', maxLines:1, textStyle: {color: '#000000', fontSize: 14}},
-          dataOpacity: 0.6,
+          dataOpacity: 0.8,
 		  isStacked: true,
 		  bar: { groupWidth: '70%' },
 		  chartArea:{width:"98%",left:100},
