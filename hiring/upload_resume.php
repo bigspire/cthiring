@@ -76,7 +76,7 @@ if($_GET['client_id'] != ''  and $_GET['req_id'] != ''){
 
 	$position = array();
 	// query to fetch position details. 
-	$query = "CALL get_position('".$_POST['client']."')";
+	$query = "CALL get_position('".$_POST['client']."','".$_SESSION['user_id']."')";
 	try{
 		// calling mysql exe_query function
 		if(!$result = $mysql->execute_query($query)){
