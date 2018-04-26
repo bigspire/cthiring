@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-04-13 13:36:14
+/* Smarty version 3.1.29, created on 2018-04-25 15:40:14
   from "C:\xampp\htdocs\2017\ctsvn2\cthiring\hiring\templates\add_formatted_resume.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5ad064f63d6822_33328456',
+  'unifunc' => 'content_5ae0540615da50_17222898',
   'file_dependency' => 
   array (
     '1544cafb412b6c8ed9cd8cbe2bd9d4453a61eee3' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn2\\cthiring\\hiring\\templates\\add_formatted_resume.tpl',
-      1 => 1523606648,
+      1 => 1524481129,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5ad064f63d6822_33328456 ($_smarty_tpl) {
+function content_5ae0540615da50_17222898 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\2017\\ctsvn2\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -1139,7 +1139,17 @@ for ($_foo=true;$_smarty_tpl->tpl_vars['i']->value < $_smarty_tpl->tpl_vars['tra
 ?>
 
 	
-
+		<?php if ($_smarty_tpl->tpl_vars['email_exists']->value || $_smarty_tpl->tpl_vars['mobile_exists']->value) {?>
+						<input type="hidden" id="resume_exist_pop" value="1"/>
+						<?php }?>
+					
+	<input type="hidden" id="email_field" value="<?php echo $_smarty_tpl->tpl_vars['email']->value;?>
+"/>
+		<input type="hidden" id="mobile_field" value="<?php echo $_smarty_tpl->tpl_vars['mobile']->value;?>
+"/>
+		<input type="hidden" id="cv_url" value="resume_exist.php"/>
+		
+		
 	 
 <?php echo '<script'; ?>
  type="text/javascript">	

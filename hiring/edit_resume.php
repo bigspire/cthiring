@@ -835,7 +835,7 @@ if(!empty($_POST) && empty($_POST['hdnSubmit'])){
 	
 	// save all the data
 	if($test != 'error'){
-	  /* if($check_mail['total'] == '0' && $check_mobile['total'] == '0'){
+	  // if($check_mail['total'] == '0' && $check_mobile['total'] == '0'){
 		// for saving purpose of tech skills
 		foreach($_POST['ts'] as $key => $ts){
 			if($ts){
@@ -1311,8 +1311,8 @@ if(!empty($_POST) && empty($_POST['hdnSubmit'])){
 				}
 			if($check_mobile['total'] != '0'){
 				$smarty->assign('mobile_validErr',"Resume with same mobile already exists");
-			}
-		} */
+			} */
+		}
 	}else{
 		$smarty->assign('tab_open', ($tab1 == 'fail' ? 'tab1' : ($tab2 == 'fail' ? 'tab2' : ($tab3 == 'fail' ? 'tab3' : 'tab4' ))));
 	}
