@@ -2434,7 +2434,7 @@ class PositionController extends AppController {
 					}
 					*/					
 					// send mail
-					if(!$this->send_email($subject, 'confirm_interview', $this->Session->read('USER.Login.email_id'), $contact_data['Contact']['email'], $vars, $attach, $cc_new)){
+					if(!$this->send_email($subject, 'confirm_interview', $this->Session->read('USER.Login.email_id'), $contact_data['Contact']['email'], $vars, '', $cc_new)){
 						// show the msg.								
 						$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Problem in sending the mail to candidate...', 'default', array('class' => 'alert alert-error'));				
 					}						

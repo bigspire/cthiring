@@ -140,7 +140,7 @@
 				</tr>
 				
 						
-				<tr class="tbl_row" >
+				<!--tr class="tbl_row" >
 					<td width="120" class="tbl_column">Attachment 
 					</td>
 						<td>
@@ -150,7 +150,7 @@
 					'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 
 
 					</td>	
-				</tr>
+				</tr-->
 				
 					<tr class="">
 					<td width="120" class="tbl_column">Additional Info 

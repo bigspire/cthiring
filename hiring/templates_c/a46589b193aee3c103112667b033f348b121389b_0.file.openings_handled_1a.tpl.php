@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-04-11 20:48:47
+/* Smarty version 3.1.29, created on 2018-04-19 16:10:56
   from "C:\xampp\htdocs\ctsvn\cthiring\hiring\templates\openings_handled_1a.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5ace27576681a6_06705618',
+  'unifunc' => 'content_5ad872385ea536_48772794',
   'file_dependency' => 
   array (
     'a46589b193aee3c103112667b033f348b121389b' => 
     array (
       0 => 'C:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\templates\\openings_handled_1a.tpl',
-      1 => 1523459925,
+      1 => 1524134450,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5ace27576681a6_06705618 ($_smarty_tpl) {
+function content_5ad872385ea536_48772794 ($_smarty_tpl) {
 ?>
 
    
@@ -537,7 +537,7 @@ function content_5ace27576681a6_06705618 ($_smarty_tpl) {
     function drawChart() {
       var data = google.visualization.arrayToDataTable([
         ['Month', '0-8', '8-20', '20-30', '30-40','Above 40' ],
-        ['Apr 2018', 26, 3, 5, 3, 0],
+        ['Apr 2018', 16, 13, 15, 13, 10],
         ['May 2018', 33, 5, 5, 1, 1],
         ['Jun 2018', 12, 6, 4, 0, 1],
 		['Jul 2018', 28, 7, 3, 0, 1],
@@ -586,11 +586,13 @@ function content_5ace27576681a6_06705618 ($_smarty_tpl) {
         },
 		
         bar: {groupWidth: "90%"},
-       //  legend: { position: "none" },
+       legend: { position: "bottom" },
 		isStacked:true,
-		// colors: ['#6688e9', '#fcea54', '#12de6d'],
+
+		
+				 colors: ['#ea3639','#f58634', '#ffcc2b', '#bdcd40', '#2f97d3'],
 		  legend: {position: 'top', maxLines:1, textStyle: {color: '#000000', fontSize: 14}},
-          dataOpacity: 0.6,
+          dataOpacity: 0.7,
 		  isStacked: true,
 		  bar: { groupWidth: '70%' },
 		  chartArea:{width:"98%",left:40},
