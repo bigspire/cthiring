@@ -49,6 +49,9 @@ class fun{
 					break;
 					case 10:					
 					$mod['view_interview'] = 1;
+					break;	
+					case 15:					
+					$mod['approve_incentive'] = 1;
 					break;					
 					case 14:					
 					$mod['view_incentive'] = 1;
