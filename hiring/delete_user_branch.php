@@ -1,8 +1,8 @@
 <?php
 /* 
-Purpose : To Delete client branch.
+Purpose : To Delete user branch.
 Created : Nikitasa
-Date : 27-10-2017
+Date : 29-05-2018
 */
 
 include 'configs/smartyconfig.php';
@@ -21,13 +21,13 @@ if(isset($_GET['id'])){
 	}
 
    // delete record details
- 	$query = "CALL delete_contact_branch('".$id."')";
+ 	$query = "CALL delete_user_branch('".$id."')";
 
   try{
 		if(!$result = $mysql->execute_query($query)){
 			throw new Exception('Problem in deleting');
 		}  
-  		header('Location:contact_branch.php?page='.$_GET['page'].'&status=deleted');	
+  		header('Location:user_branch.php?page='.$_GET['page'].'&status=deleted');	
    }catch(Exception $e){
 		echo 'Caught exception: ',  $e->getMessage(), "\n";
 	}

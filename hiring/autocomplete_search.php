@@ -384,6 +384,32 @@ elseif($_GET['page'] == 'list_eligibility'){
    }catch(Exception $e){
 		echo 'Caught exception: ',  $e->getMessage(), "\n";
    }
+}elseif($_GET['page'] == 'list_user_branch'){
+	// get matched data from user branch
+	$query = "CALL search_user_branch('".$keyword."')";
+	try{	
+		if(!$result = $mysql->execute_query($query)){
+			throw new Exception('Problem in executing user branch page');
+		}
+		// iterate until get the matched results
+		while($obj = $mysql->display_result($result)){
+			$data[] = strtolower($fun->match_results($keyword,$obj['location']));		
+		}
+		
+		// filter the duplicate values
+		$unique_result = array_unique($data);	
+		// display the search results
+		foreach($unique_result as $res){
+			if(!empty($res)){ 
+				$unique[] = $res;
+			}
+		}
+		
+		// free the memory
+		$mysql->clear_result($result);		
+   }catch(Exception $e){
+		echo 'Caught exception: ',  $e->getMessage(), "\n";
+   }
 }elseif($_GET['page'] == 'list_functional_area'){
 	// get matched data from functional area
 	$query = "CALL search_functional_area('".$keyword."')";

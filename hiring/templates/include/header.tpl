@@ -452,7 +452,7 @@
 													<a href="#">Branch <b class="caret-right"></b></a>
 													<ul class="dropdown-menu">
 														<li><a href="contact_branch.php">Client Branches</a></li>
-														<li><a href="contact_branch.php">User Branches</a></li>													
+														<li><a href="user_branch.php">User Branches</a></li>													
 													</ul>
 												</li>
 											{/if}

@@ -1,6 +1,6 @@
-{* Purpose : To edit contact branch.
+{* Purpose : To edit user branch.
  Created : Nikitasa
-   Date : 27-01-2017 *}
+   Date : 29-05-2018 *}
    
 
 			{include file='include/header.tpl'}
@@ -17,11 +17,11 @@
                                     <a href="{$smarty.const.webroot}home"><i class="icon-home"></i></a>
                                 </li>
                                 <li>
-                                    <a href="contact_branch.php">Client Branch</a>
+                                    <a href="contact_branch.php">User Branch</a>
                                 </li>
                             
                                 <li>
-                                   Edit Client Branch
+                                   Edit User Branch
                                 </li>
                             </ul>
                         </div>
@@ -32,16 +32,16 @@
 <form action="" id="formID" class="formID" method="post" accept-charset="utf-8">
 	<div class="box">
 		<div class="box-title mb5">
-			<h4><i class="icon-list"></i> Client Branch Details </h4>
+			<h4><i class="icon-list"></i> User Branch Details </h4>
 		</div>
 		<div class="row-fluid">
 		<div class="span6">
 			<table class="table table-bordered dataTable" style="margin-bottom:0;">
 				<tbody>
 						<tr class="tbl_row">
-							<td width="120" class="tbl_column">Client Branch <span class="f_req">*</span></td>
+							<td width="120" class="tbl_column">User Branch <span class="f_req">*</span></td>
 							<td>										
-								<input type="text" tabindex="1" name="branch" value="{$branch}" class="span8 ui-autocomplete-input" autocomplete="off">
+								<input type="text" tabindex="1" name="location" value="{$location}" class="span8 ui-autocomplete-input" autocomplete="off">
 								<label for="reg_city" generated="true" class="error">{$branchErr}</label>									
 							</td>	
 						</tr>																											
@@ -70,7 +70,7 @@
 </div>
 <div class="form-actions">
 				<input name="submit" class="btn btn-gebo" value="Submit" type="submit"/>
-				<input type="hidden" name="data[Client][webroot]" value="contact_branch.php" id="webroot">
+				<input type="hidden" name="data[Client][webroot]" value="user_branch.php" id="webroot">
 
 	<a href="javascript:void(0)" class="jsRedirect cancelBtn cancel_event">
 	<input type="button" value="Cancel" class="btn">
