@@ -1,6 +1,6 @@
-{* Purpose : To list and search contact branch.
+{* Purpose : To list and search user branch.
    Created : Nikitasa
-   Date : 27-10-2017 *}
+   Date : 29-05-2018 *}
 			{include file='include/header.tpl'}	
             <!-- main content -->
             <div id="contentwrapper">
@@ -18,11 +18,11 @@
                                     <a href="{$smarty.const.webroot}home"><i class="icon-home"></i></a>
                                 </li>
                                 <li>
-                                    <a href="contact_branch.php">Client Branch</a>
+                                    <a href="user_branch.php">User Branch</a>
                                 </li>
                             
                                 <li>
-                                   Search Client Branch
+                                   Search User Branch
                                 </li>
                             </ul>
                         </div>
@@ -32,12 +32,12 @@
 								<a class="jsRedirect toggleSearch"  href="javascript:void(0)">
 							<input type="button" value="Search" class="btn btn-success"/></a>
 							{if !$ALERT_MSG}
-								<a href="contact_branch.php?action=export&keyword={$smarty.post.keyword}
+								<a href="user_branch.php?action=export&keyword={$smarty.post.keyword}
 								&status={$status}" class="jsRedirect">
-								<button type="button" val="contact_branch.php?action=export&keyword={$smarty.post.keyword}&status={$status}" name="export" class="btn btn-warning" >Export Excel</button></a>
+								<button type="button" val="user_branch.php?action=export&keyword={$smarty.post.keyword}&status={$status}" name="export" class="btn btn-warning" >Export Excel</button></a>
 							{/if}
-							<a class="jsRedirect" data-notify-time = '3000'   href="add_contact_branch.php">
-							<input type="button" value="Create Client Branch" class="btn btn-info"/></a>	
+							<a class="jsRedirect" data-notify-time = '3000'   href="add_user_branch.php">
+							<input type="button" value="Create User Branch" class="btn btn-info"/></a>	
 						</div>
 						
 						{if $SUCCESS_MSG}
@@ -71,7 +71,7 @@
 							</label>
 						
 							<label style="margin-top:18px;"><input type="submit" value="Submit" class="btn btn-gebo" /></label>					
-							<label style="margin-top:18px;"><a href="contact_branch.php" class="jsRedirect"><input value="Reset" type="button" class="btn"/></a></label>
+							<label style="margin-top:18px;"><a href="user_branch.php" class="jsRedirect"><input value="Reset" type="button" class="btn"/></a></label>
 							
 							</div>
 
@@ -79,27 +79,25 @@
 						<input type="hidden" value="#" id="webroot">
 						</form>
 
-							
-							
 							<table class="table table-striped table-bordered dataTable stickyTable">
 								<thead>
 									<tr>
-										<th width="180"><a href="contact_branch.php?field=branch&order={$order}&page={$smarty.get.page}&keyword={$keyword}&f_date={$f_date}&t_date={$t_date}" class="{$sort_field_branch}">Client Branch</a></th>
+										<th width="180"><a href="user_branch.php?field=location&order={$order}&page={$smarty.get.page}&keyword={$keyword}&f_date={$f_date}&t_date={$t_date}" class="{$sort_field_location}">User Branch</a></th>
 										<th width="80">Status</a></th>
-										<th width="80"><a href="contact_branch.php?field=created_date&order={$order}&page={$smarty.get.page}&keyword={$keyword}&status={$status}" class="{$sort_field_created_date}">Created Date</a></th>
-										<th width="80"><a href="contact_branch.php?field=modified_date&order={$order}&page={$smarty.get.page}&keyword={$keyword}&status={$status}" class="{$sort_field_modified_date}">Modified Date</a></th>									
+										<th width="80"><a href="user_branch.php?field=created_date&order={$order}&page={$smarty.get.page}&keyword={$keyword}&status={$status}" class="{$sort_field_created_date}">Created Date</a></th>
+										<th width="80"><a href="user_branch.php?field=modified_date&order={$order}&page={$smarty.get.page}&keyword={$keyword}&status={$status}" class="{$sort_field_modified_date}">Modified Date</a></th>									
 										<th width="10" style="text-align:center">Actions</th>
 									</tr>
 								</thead>
 								<tbody>	
 								{foreach from=$data item=item key=key}	
 									<tr>
-										<td>{$item.branch}</td>
+										<td>{$item.location}</td>
 										<td><span class='label label-{$item.status_cls}'>{$item.status}</span></td>
 										<td>{$item.created_date}</td>
 										<td>{$item.modified_date}</td>
 										<td class="actionItem" style="text-align:center">
-										<a href="edit_contact_branch.php?id={$item.id}" rel="tooltip" class="btn  btn-mini" class="sepV_a" title="Edit"><i class="icon-pencil"></i></a>
+										<a href="edit_user_branch.php?id={$item.id}" rel="tooltip" class="btn  btn-mini" class="sepV_a" title="Edit"><i class="icon-pencil"></i></a>
 										<a id="{$item.id}" href="javascript:void(0)" rel="tooltip" class="btn Confirm btn-mini" value="#"  title="Delete"><i class="icon-trash"></i></a>
 										</td>  
 									</tr>		
@@ -122,8 +120,8 @@
 </div>
 </div>
 </div>
-<input type="hidden" id="page" value="list_contact_branch">
-<input type="hidden" id="web_root" value="delete_contact_branch.php">	
+<input type="hidden" id="page" value="list_user_branch">
+<input type="hidden" id="web_root" value="delete_user_branch.php">	
               </div>
             </div>
      </div>

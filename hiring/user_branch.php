@@ -1,8 +1,8 @@
 <?php
 /* 
-   Purpose : To list and search client branch..
+   Purpose : To list and search user branch.
 	Created : Nikitasa
-	Date : 27-10-2017
+	Date : 29-05-2018
 */
 
 //unset session
@@ -51,10 +51,10 @@ if($_GET['action'] == 'export'){
 }
 
 // count the total no. of records
-$query = "CALL list_contact_branch('".$keyword."','".$status."','0','0','','','".$_GET['action']."')";
+$query = "CALL list_user_branch('".$keyword."','".$status."','0','0','','','".$_GET['action']."')";
 try{
 	if(!$result = $mysql->execute_query($query)){
-		throw new Exception('Problem in executing list client branch page');
+		throw new Exception('Problem in executing list user branch page');
 	}
 
 	// fetch result
@@ -79,8 +79,8 @@ try{
 
 // set the condition to check ascending or descending order		
 $order = ($_GET['order'] == 'desc') ? 'asc' :  'desc';	
-$sort_fields = array('1' => 'branch','status','created_date','modified_date');
-$org_fields = array('1' => 'branch','status','created_date','modified_date');
+$sort_fields = array('1' => 'location','status','created_date','modified_date');
+$org_fields = array('1' => 'location','status','created_date','modified_date');
 
 // to set the sorting image
 foreach($sort_fields as $key => $b_field){
@@ -104,17 +104,17 @@ if($search_key = array_search($_GET['field'], $sort_fields)){
 }
 
 // fetch all records
-$query =  "CALL list_contact_branch('".$keyword."','".$status."','$start','$limit','".$field."','".$order."','".$_GET['action']."')";
+$query =  "CALL list_user_branch('".$keyword."','".$status."','$start','$limit','".$field."','".$order."','".$_GET['action']."')";
 try{
 	if(!$result = $mysql->execute_query($query)){
-		throw new Exception('Problem in executing list client branch page');
+		throw new Exception('Problem in executing list user branch page');
 	}
 	// calling mysql fetch_result function
 	$i = '0';
 	while($obj = $mysql->display_result($result))
 	{
  		$data[] = $obj;
- 		$data[$i]['branch'] = $fun->upper_case_string($obj['branch']);
+ 		$data[$i]['location'] = $fun->upper_case_string($obj['location']);
  		$data[$i]['status'] = $fun->display_status($obj['status']);
  		$data[$i]['status_cls'] = $fun->status_cls($obj['status']);
  		$data[$i]['created_date'] = $fun->convert_date_to_display($obj['created_date']);
@@ -131,14 +131,14 @@ try{
 		include('classes/class.excel.php');
 		$excelObj = new libExcel();
 		// function to print the excel header
-      $excelObj->printHeader($header = array('Client Branch','Status','Created Date','Modified Date') ,$col = array('A','B','C','D'));  
+      $excelObj->printHeader($header = array('User Branch','Status','Created Date','Modified Date') ,$col = array('A','B','C','D'));  
 		// function to print the excel data
-		$excelObj->printCell($data, $count,$col = array('A','B','C','D'), $field = array('branch','status','created_date','modified_date'),'Client Branch_'.$current_date);
+		$excelObj->printCell($data, $count,$col = array('A','B','C','D'), $field = array('location','status','created_date','modified_date'),'User Branch_'.$current_date);
 	}	
 	
 	// create,update,delete message validation
 	if($_GET['status'] == 'deleted' || $_GET['status'] == 'created' || $_GET['status'] == 'updated'){
- 	 $success_msg = 'Client Branch ' . ucfirst($_GET['status']) . ' Successfully';
+ 	 $success_msg = 'User Branch ' . ucfirst($_GET['status']) . ' Successfully';
 	}else if($_GET['current_status'] == 'msg'){
 		$success_msg = 'This record is not available in our database';
 	}
@@ -170,9 +170,9 @@ $smarty->assign('ALERT_MSG', $alert_msg);
 $smarty->assign('SUCCESS_MSG', $success_msg);
 
 // assign page title
-$smarty->assign('page_title' , 'Client Branch - Manage Hiring');  
+$smarty->assign('page_title' , 'User Branch - Manage Hiring');  
 // assigning active class status to smarty menu.tpl
 $smarty->assign('setting_active','active');
 // display smarty file
-$smarty->display('contact_branch.tpl');
+$smarty->display('user_branch.tpl');
 ?>

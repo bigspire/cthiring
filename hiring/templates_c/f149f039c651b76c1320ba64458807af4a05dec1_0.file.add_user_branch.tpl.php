@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-05-29 14:43:18
-  from "C:\xampp\htdocs\2017\ctsvn2\cthiring\hiring\templates\add_contact_branch.tpl" */
+/* Smarty version 3.1.29, created on 2018-05-29 14:46:46
+  from "C:\xampp\htdocs\2017\ctsvn2\cthiring\hiring\templates\add_user_branch.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5b0d19aee836f4_58893303',
+  'unifunc' => 'content_5b0d1a7e7e39f8_50459377',
   'file_dependency' => 
   array (
-    'cc4bca3bc442ff069e3a48db401fffb396c50cd0' => 
+    'f149f039c651b76c1320ba64458807af4a05dec1' => 
     array (
-      0 => 'C:\\xampp\\htdocs\\2017\\ctsvn2\\cthiring\\hiring\\templates\\add_contact_branch.tpl',
-      1 => 1527585155,
+      0 => 'C:\\xampp\\htdocs\\2017\\ctsvn2\\cthiring\\hiring\\templates\\add_user_branch.tpl',
+      1 => 1527585399,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5b0d19aee836f4_58893303 ($_smarty_tpl) {
+function content_5b0d1a7e7e39f8_50459377 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\2017\\ctsvn2\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -44,11 +44,11 @@ if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdoc
 home"><i class="icon-home"></i></a>
                                 </li>
                                 <li>
-                                    <a href="contact_branch.php">Client Branch</a>
+                                    <a href="user_branch.php">User Branch</a>
                                 </li>
                             
                                 <li>
-                                   Add Client Branch
+                                   Add User Branch
                                 </li>
                             </ul>
                         </div>
@@ -60,14 +60,14 @@ home"><i class="icon-home"></i></a>
 <form action="" id="formID" class="formID" method="post" accept-charset="utf-8">
 	<div class="box">
 		<div class="box-title mb5">
-			<h4><i class="icon-list"></i>Client Branch Details </h4>
+			<h4><i class="icon-list"></i>User Branch Details </h4>
 		</div>
 		<div class="row-fluid">
 		<div class="span6">
 			<table class="table table-bordered dataTable" style="margin-bottom:0;">
 				<tbody>
 						<tr class="tbl_row">
-							<td width="120" class="tbl_column">Client Branch <span class="f_req">*</span></td>
+							<td width="120" class="tbl_column">User Branch <span class="f_req">*</span></td>
 							<td>										
 								<input type="text" tabindex="1" name="branch" value="<?php echo $_smarty_tpl->tpl_vars['branch']->value;?>
 " class="span8 ui-autocomplete-input" autocomplete="off">
@@ -106,7 +106,7 @@ home"><i class="icon-home"></i></a>
 </div>
 <div class="form-actions">
 				<input name="submit" class="btn btn-gebo" value="Submit" type="submit"/>
-				<input type="hidden" name="data[Client][webroot]" value="contact_branch.php" id="webroot">
+				<input type="hidden" name="data[Client][webroot]" value="user_branch.php" id="webroot">
 
 	<a href="javascript:void(0)" class="jsRedirect cancelBtn cancel_event">
 	<input type="button" value="Cancel" class="btn">
@@ -169,18 +169,18 @@ home"><i class="icon-home"></i></a>
 			      </div>
 			   <?php }?>  
 			 
-<form action="add_contact_branch.php?action=<?php echo $_smarty_tpl->tpl_vars['action']->value;?>
+<form action="add_user_branch.php?action=<?php echo $_smarty_tpl->tpl_vars['action']->value;?>
 " id="formID" class="formID" method="post" accept-charset="utf-8">
 	<div class="box">
 		<div class="box-title mb5">
-			<h4><i class="icon-list"></i> Add Client Branch </h4>
+			<h4><i class="icon-list"></i> Add User Branch </h4>
 		</div>
 		<div class="row-fluid">
 		<div class="span6">
 			<table class="table table-bordered dataTable" style="margin-bottom:0;">
 				<tbody>
 						<tr class="tbl_row">
-							<td width="120" class="tbl_column">Client Branch <span class="f_req">*</span></td>
+							<td width="120" class="tbl_column">User Branch <span class="f_req">*</span></td>
 							<td>										
 								<input type="text" tabindex="1" name="branch" value="<?php echo $_smarty_tpl->tpl_vars['branch']->value;?>
 " class="span8 ui-autocomplete-input" autocomplete="off">
