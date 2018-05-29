@@ -89,21 +89,21 @@
                                              <ul class="dropdown-menu">
 											
 											<?php if($create_task == '1'):?> 											
-											<li><a href="<?php echo $this->webroot;?>taskplan/add/">Add Task</a></li>															
+											<li><a href="<?php echo $this->webroot;?>taskplan/add/">Create Today's Plan</a></li>															
 											<?php endif; ?>	
 
 												<?php if($view_task == '1'):?> 								
-                                                <li><a href="<?php echo $this->webroot;?>taskplan/">Search Task</a></li>
+                                                <li><a href="<?php echo $this->webroot;?>taskplan/">View Today's Plan</a></li>
 												
 												<?php endif; ?>
 												
 												
 												<?php if($create_leave == '1'):?> 
-												<li><a href="<?php echo $this->webroot;?>leave/add/">Add Leave</a></li>
+												<li><a href="<?php echo $this->webroot;?>leave/add/">Create Leave</a></li>
 												<?php endif; ?>
 												
 													<?php if($view_leave == '1'):?> 
-											    <li><a href="<?php echo $this->webroot;?>leave/">Search Leave</a></li>
+											    <li><a href="<?php echo $this->webroot;?>leave/">View Leave</a></li>
 												<?php endif; ?>
 												
 												<?php if($approve_leave == '1'):?> 
@@ -115,7 +115,7 @@
 												<?php endif; ?>
 												
 													<?php if($my_event == '1'):?> 
-												<li><a href="<?php echo $this->webroot;?>event/">Search Event</a></li>
+												<li><a href="<?php echo $this->webroot;?>event/">View Event</a></li>
 												<?php endif; ?>
 												
 												
@@ -175,7 +175,7 @@
 												 <li><a href="<?php echo $this->webroot;?>position/add/">Add Position</a></li>
 												  <?php endif; ?>
 												  <?php if($view_position == '1'):?> 
-                                                <li><a href="<?php echo $this->webroot;?>position/">Search Position 
+                                                <li><a href="<?php echo $this->webroot;?>position/">View Position 
 												
 											<?php if($new_pos_count):?>
 											<span class="label-bub label-info white"><?php echo $new_pos_count;?></span>
@@ -197,10 +197,10 @@
                                             <a data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icon-th icon-white"></i> Resumes <!--span class="label-bub label-info bubble"></span--><b class="caret"></b></a>
 											  <ul class="dropdown-menu">
 											   <?php if($create_resume == '1'):?>
-                                                <li><a href="<?php echo $this->webroot;?>hiring/upload_resume.php" class="iframeBox unreadLink" val="40_55">Upload Resume</a></li>
+                                                <li><a href="<?php echo $this->webroot;?>hiring/upload_resume.php" class="iframeBox unreadLink" val="40_55">Add Resume</a></li>
 												 <?php endif; ?>
 												 <?php if($view_resume == '1'):?>
-                                                <li><a href="<?php echo $this->webroot;?>resume/">Search Resume <!--span class="label-bub label-info white">13453</span--></a></li>
+                                                <li><a href="<?php echo $this->webroot;?>resume/">View Resume <!--span class="label-bub label-info white">13453</span--></a></li>
 												 <?php endif; ?>
 												<!--<li><a href="upload_resume.php">Upload Resume</a></li>
 												<li><a href="upload_resume.php">Upload Psychometric Test</a></li>
@@ -213,7 +213,7 @@
                                          <li class="dropdown">
                                             <a data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icon-list-alt icon-white"></i> Interviews <!--span class="label-bub label-info bubble">14</span--><b class="caret"></b></a>
 											  <ul class="dropdown-menu">                                              
-                                                <li><a href="<?php echo $this->webroot;?>hiring/interview.php">Search Interview <!--span class="label-bub label-info white">14</span--></a></li>
+                                                <li><a href="<?php echo $this->webroot;?>hiring/interview.php">View Interview Schedule <!--span class="label-bub label-info white">14</span--></a></li>
 												<!--<li><a href="upload_resume.php">Upload Resume</a></li>
 												<li><a href="upload_resume.php">Upload Psychometric Test</a></li>
 												<li><a href="snapshot.php">Search Snapshot</a></li>-->
@@ -231,10 +231,10 @@
 										?>
 										
                                         <li class="dropdown  <?php echo $active2;?>">
-                                            <a data-toggle="dropdown" class="dropdown-toggle " href="#"><i class="icon-file icon-white"></i> Performance Reward <b class="caret"></b></a>
+                                            <a data-toggle="dropdown" class="dropdown-toggle " href="#"><i class="icon-file icon-white"></i> Performance <b class="caret"></b></a>
                                            <ul class="dropdown-menu">
 										   <?php if($view_billing == '1'):?> 
-                                                <li><a href="<?php echo $this->webroot;?>hiring/billing.php">Search Billing</a></li>
+                                                <li><a href="<?php echo $this->webroot;?>hiring/billing.php">View Billing</a></li>
 										   <?php endif; ?>
 											
 											 <?php if($approve_billing == '1'):?>	   
@@ -246,7 +246,7 @@
 											 <?php endif; ?>
 											
 											<?php if($view_incentive == '1'):?> 
-												 <li><a href="<?php echo $this->webroot;?>hiring/incentive.php">Search Incentive</a></li>
+												 <li><a href="<?php echo $this->webroot;?>hiring/incentive.php">View Incentive</a></li>
 											<?php endif; ?>
 											
 												 <!--li><a href="<?php echo $this->webroot;?>hiring/add_billing.php">Add Billing</a></li>
@@ -261,44 +261,169 @@
 || $incentive_report == '1' || $daily_report == '1' || $weekly_report == '1'):?> 
 										 <li class="dropdown <?php echo $report_menu ?>">
                                             <a data-toggle="dropdown" class="dropdown-toggle " href="#"><i class="icon-download-alt icon-white"></i> Reports <b class="caret"></b></a>
-                                          <ul class="dropdown-menu">
-										    <?php if($recruiter_report == '1'):?> 
-                                                <li><a href="<?php echo $this->webroot;?>hiring/recruiter_performance.php">Recruiter Performance</a></li>
-											<?php endif; ?>	
-											 <?php if($account_holder_report == '1'):?> 
-                                                <li><a href="<?php echo $this->webroot;?>hiring/ah_performance.php">Account Holder Performance</a></li>
-													<?php endif; ?>	
-												 <?php if($location_report == '1'):?> 
-												<li><a href="<?php echo $this->webroot;?>hiring/location_performance.php">Location Performance</a></li>
-													<?php endif; ?>	
-                                               <!-- <li><a href="#">Clientwise Performance</a></li>-->
-											    <?php // if($failure_report == '1'):?> 
-                                                <!--li><a href="#">Recruiter Performance(Failure Root Cause Analysis )</a></li-->
-													<?php // endif; ?>	
-												 <?php if($revenue_report == '1'):?> 
-												<li><a href="#">Revenue </a></li>
-													<?php endif; ?>	
-												 <?php if($tat_report == '1'):?> 
-												<li><a href="#">TAT Time </a></li>
-													<?php endif; ?>	
-												 <?php if($collection_report == '1'):?> 
-												<li><a href="<?php echo $this->webroot;?>hiring/collection_table.php">Collection Table </a></li>
-													<?php endif; ?>	
-												 <?php if($client_retention_report == '1'):?> 
-												<li><a href="<?php echo $this->webroot;?>hiring/client_retention.php">Client Retention Table </a></li>
-													<?php endif; ?>	
-												 <?php if($incentive_report == '1'):?> 
-												<li><a href="<?php echo $this->webroot;?>hiring/incentive_report.php">Incentive </a></li>
-													<?php endif; ?>	
-												 <?php if($daily_report == '1'):?> 
-												<li><a href="<?php echo $this->webroot;?>hiring/daily_performance.php">Daily Performance </a></li>
-													<?php endif; ?>	
-												 <?php if($weekly_report == '1'):?> 
-												<li><a href="<?php echo $this->webroot;?>hiring/weekly_performance.php">Weekly Performance </a></li>
-													<?php endif; ?>	
-												
-                                            </ul>
+                                          
 
+										  <ul class="dropdown-menu">
+										  
+										  
+										   <li class="dropdown">
+													<a href="#">CTC Wise Monthly Openings Handled <b class="caret-right"></b></a>
+													<ul class="dropdown-menu">
+														<li><a href="<?php echo $this->webroot;?>hiring/openings_handled_1a.php">CTC Wise Monthly Openings Handled</a></li>
+														<li><a href="<?php echo $this->webroot;?>hiring/openings_handled_1b.php">CTC Wise Client Openings Handled</a></li>
+														<li><a href="<?php echo $this->webroot;?>hiring/openings_handled_1c.php">Month Wise Client Openings Handled</a></li>														
+													</ul>
+											</li>
+											
+									
+											   <li class="dropdown">
+													<a href="#">CV Status <b class="caret-right"></b></a>
+													<ul class="dropdown-menu">
+														<li><a href="#">CTC Wise CV Status</a></li>
+														<li><a href="#">Client Wise CV Status</a></li>
+														<li><a href="#">Month Wise CV Status</a></li>														
+													</ul>
+											</li>
+											
+											   <li class="dropdown">
+													<a href="#">TAKT Time <b class="caret-right"></b></a>
+													<ul class="dropdown-menu">
+														<li><a href="#">CTC Wise Average TAKT Time</a></li>
+																											
+													</ul>
+											</li>
+											
+											   <li class="dropdown">
+													<a href="#">Productivity <b class="caret-right"></b></a>
+													<ul class="dropdown-menu">
+														<li><a href="#">Employee Productivity</a></li>
+																											
+													</ul>
+											</li>
+											
+											
+											   <li class="dropdown">
+													<a href="#">Business Conversion	<b class="caret-right"></b></a>
+													<ul class="dropdown-menu">
+														<li><a href="#">Employee Business Conversion</a></li>
+														<li><a href="#">Client Business Conversion</a></li>
+												
+													</ul>
+											</li>
+											
+											   <li class="dropdown">
+													<a href="#">Billing & Contribution	<b class="caret-right"></b></a>
+													<ul class="dropdown-menu">
+														<li><a href="#">Client Wise Billing</a></li>
+														<li><a href="#">Recruiter Wise Billing</a></li>
+														<li><a href="#">Individual Contribution</a></li>
+
+													</ul>
+											</li>
+											
+											  <li class="dropdown">
+													<a href="#">Incentive	<b class="caret-right"></b></a>
+													<ul class="dropdown-menu">
+														<li><a href="#">Location Wise Active Clients</a></li>
+														<li><a href="#">Business Continuity</a></li>
+														<li><a href="#">Client Retention</a></li>
+
+													</ul>
+											</li>
+											
+											  <li class="dropdown">
+													<a href="#">Client Retention <b class="caret-right"></b></a>
+													<ul class="dropdown-menu">
+														<li><a href="#">Location Wise Active Clients</a></li>
+														<li><a href="#">Business Continuity</a></li>
+														<li><a href="#">Client Retention</a></li>
+
+													</ul>
+											</li>
+											
+											
+											  <li class="dropdown">
+													<a href="#">Root Cause Analysis	 <b class="caret-right"></b></a>
+													<ul class="dropdown-menu">
+														<li><a href="#">CV Rejection Analysis</a></li>
+														<li><a href="#">Position Rejection Analysis
+</a></li>
+
+													</ul>
+											</li>
+											
+											  <li class="dropdown">
+													<a href="#">Cash Flow Management	 <b class="caret-right"></b></a>
+													<ul class="dropdown-menu">
+														<li><a href="#">Collection Days
+</a></li>
+			
+
+													</ul>
+											</li>
+											
+											
+												  <li class="dropdown">
+													<a href="#">Bad Debts			 <b class="caret-right"></b></a>
+													<ul class="dropdown-menu">
+														<li><a href="#">Recuiter Wise</a></li>
+														<li><a href="#">Client Wise</a></li>
+
+													</ul>
+											</li>
+											
+											
+											<!--
+											{if $module['recruiter_report'] eq '1'}
+                                                <li><a href="recruiter_performance.php">Recruiter Performance</a></li>
+											{/if}
+										  
+											{if $module['account_holder_report'] eq '1'}
+                                                <li><a href="ah_performance.php">Account Holder Performance</a></li>
+										    {/if}
+											
+											{if $module['location_report'] eq '1'}
+											<li><a href="location_performance.php">Location Performance</a></li>
+											{/if}
+											
+											{if $module['failure_report'] eq '1'}
+											   <li><a href="#">Recruiter Performance(Failure Root Cause Analysis )</a></li>
+											{/if}
+											
+											
+											{if $module['revenue_report'] eq '1'}
+												<li><a href="#">Revenue</a></li>
+											{/if}
+											
+											{if $module['tat_report'] eq '1'}
+												<li><a href="#">TAT Time </a></li>
+											{/if}
+											
+											{if $module['collection_report'] eq '1'}
+												<li><a href="collection_table.php">Collection Table </a></li>
+											{/if}
+											
+											{if $module['client_retention_report'] eq '1'}
+												<li><a href="client_retention.php">Client Retention Table </a></li>
+											{/if}
+											
+											{if $module['incentive_report'] eq '1'}
+												<li><a href="incentive_report.php">Incentive </a></li>
+											{/if}
+											
+											{if $module['daily_report'] eq '1'}
+												<li><a href="daily_performance.php">Daily Performance </a></li>
+											{/if}
+											
+											{if $module['weekly_report'] eq '1'}
+												<li><a href="weekly_performance.php">Weekly Performance </a></li>
+											{/if}
+											
+											-->
+											
+											
+                                            </ul>
+										
 										 
                                         </li>
 										
@@ -333,9 +458,20 @@
 												
 												<?php endif; ?>	
 												
-												  <?php if($manage_branch == '1'):?> 
-                                                <li><a href="<?php echo $this->webroot;?>hiring/contact_branch.php">Branch <!--span class="label-bub label-info white">102</span--></a></li>
+												 <?php if($manage_branch == '1'):?> 												
+												<li class="dropdown">
+													<a href="#">Branch <b class="caret-right"></b></a>
+													<ul class="dropdown-menu">
+														<li><a href="<?php echo $this->webroot;?>hiring/contact_branch.php">Client Branches</a></li>
+														<li><a href="<?php echo $this->webroot;?>hiring/contact_branch.php">User Branches</a></li>													
+													</ul>
+												</li>
+												
+												
 												<?php endif; ?>	
+												
+												
+												
 											
 											<?php if($manage_desig == '1'):?> 
                                                 <li><a href="<?php echo $this->webroot;?>hiring/designation.php">Designation <!--span class="label-bub label-info white">102</span--></a></li>
@@ -347,7 +483,7 @@
 												
 												
 												<?php if($api_keys == '1'):?>
-													<li><a href="<?php echo $this->webroot;?>hiring/view_resume_api.php">Resume API</a></li>
+													<li><a href="<?php echo $this->webroot;?>hiring/view_resume_api.php">API Keys</a></li>
 													<?php endif; ?>
 	
 	

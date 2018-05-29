@@ -126,19 +126,19 @@
 										{if $module['create_my_leaves'] eq '1' || $module['approve_my_leaves'] eq '1' || $module['view_my_leaves'] eq '1' ||
 										$module['create_todays_plan'] eq '1' || $module['view_todays_plan'] eq '1'}
 											<li class="{$col_count_leave} dropdown <?php echo $fun->set_menu_active(array('add_task_plan','add_leave'));?>">
-                                          	 <a data-toggle="dropdown" class="dropdown-toggle " href="#"><i class="icon-list-alt icon-white"></i> Today's Plan<b class="caret"></b></a>
+                                          	 <a data-toggle="dropdown" class="dropdown-toggle " href="#"><i class="icon-list-alt icon-white"></i> Today's Plan <b class="caret"></b></a>
                                              <ul class="dropdown-menu">
 											 {if $module['create_todays_plan'] eq '1'}
-												<li><a href="{webroot}taskplan/add/">Add Task</a></li>
+												<li><a href="{webroot}taskplan/add/">Create Task</a></li>
 											 {/if}
 											 {if $module['view_todays_plan'] eq '1'}
-                                                <li><a href="{webroot}taskplan/">Search Task</a></li>
+                                                <li><a href="{webroot}taskplan/">View Task</a></li>
 											 {/if}
 											 {if $module['create_my_leaves'] eq '1'}
-												<li><a href="{webroot}leave/add/">Add Leave</a></li>
+												<li><a href="{webroot}leave/add/">Create Leave</a></li>
 											 {/if}
 											 {if $module['view_my_leaves'] eq '1'}
-											    <li><a href="{webroot}leave/">Search Leave</a></li>
+											    <li><a href="{webroot}leave/">View Leave</a></li>
 											 {/if}
 											 {if $module['approve_my_leaves'] eq '1'}
 											    <li><a href="{webroot}leave/index/pending/">Approve Leave
@@ -155,10 +155,10 @@
                                             <a data-toggle="dropdown" class="dropdown-toggle " href="#"><i class="icon-user icon-white"></i> Clients {* if $client_count *}<!--span class="label-bub label-info bubble">{* $client_count *}</span-->{* /if *}<b class="caret"></b></a>
 											  <ul class="dropdown-menu">
 											  {if $module['create_client'] eq '1'}
-                                                <li><a href="{webroot}client/add/">Add Client</a></li>
+                                                <li><a href="{webroot}client/add/">Create Client</a></li>
 											  {/if}
                                                {if $module['view_client'] eq '1'}
-												<li><a href="{webroot}client/">Search Client {* if $client_count *}<!--span class="label-bub label-info white">{$client_count}</span-->{* /if *}</a></li>
+												<li><a href="{webroot}client/">View Client {* if $client_count *}<!--span class="label-bub label-info white">{$client_count}</span-->{* /if *}</a></li>
 											    {/if}
 												{if $module['approve_client'] eq '1'}
 												<li><a href="{webroot}client/index/pending/">Approve Client {if $approve_client_count}<span class="label-bub label-info white">{$approve_client_count}</span>{/if}</a></li>
@@ -175,10 +175,10 @@
                                             <a  data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icon-list-alt icon-white"></i> Positions {* if $position_count *}<!--span class="label-bub label-info bubble">{* $position_count *}</span-->{* /if *}<b class="caret"></b></a>
                                              <ul class="dropdown-menu">
 											 {if $module['create_position'] eq '1'}
-                                                <li><a href="{webroot}position/add/">Add Position</a></li>
+                                                <li><a href="{webroot}position/add/">Create Position</a></li>
 											 {/if}
 											 {if $module['view_position'] eq '1'}
-                                                <li><a href="{webroot}position/">Search Position {if $position_count}<span class="label-bub label-info white">{$position_count}</span>{/if}</a></li>
+                                                <li><a href="{webroot}position/">View Position {if $position_count}<span class="label-bub label-info white">{$position_count}</span>{/if}</a></li>
 											  {/if}
 											  {if $module['approve_position'] eq '1'}
                                                 <li><a href="{webroot}position/index/pending/">Approve Position {if $approve_position_count}<span class="label-bub label-info white">{$approve_position_count}</span>{/if}</a></li>
@@ -190,10 +190,10 @@
                                             <a data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icon-th icon-white"></i> Resumes {* if $resume_count *}<!-- span class="label-bub label-info bubble">{$resume_count}</span-->{* /if *}<b class="caret"></b></a>
 											  <ul class="dropdown-menu">
 											  {if $module['create_resume'] eq '1'}
-                                                <li><a href="upload_resume.php" class="iframeBox unreadLink" val="40_55">Upload Resume</a></li>
+                                                <li><a href="upload_resume.php" class="iframeBox unreadLink" val="40_55">Add Resume</a></li>
 											   {/if}
 											   {if $module['view_resume'] eq '1'}
-												<li><a href="{webroot}resume/">Search Resume {* if $resume_count *}<!-- span class="label-bub label-info white">{$resume_count}</span-->{* /if *}</a></li>
+												<li><a href="{webroot}resume/">View Resume {* if $resume_count *}<!-- span class="label-bub label-info white">{$resume_count}</span-->{* /if *}</a></li>
 											   {/if}
 												<!--<li><a href="upload_resume.php">Upload Resume</a></li>
 												<li><a href="upload_resume.php">Upload Psychometric Test</a></li>
@@ -206,7 +206,7 @@
                                          <li class="{$interview_active} dropdown">
                                             <a data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icon-list-alt icon-white"></i> Interviews <!--span class="label-bub label-info bubble">{$interview_count}</span--><b class="caret"></b></a>
 											  <ul class="dropdown-menu">                                              
-                                                <li><a href="interview.php">Search Interview <!-- span class="label-bub label-info white">{* $interview_count *}</span--></a></li>
+                                                <li><a href="interview.php">View Interview Schedule <!-- span class="label-bub label-info white">{* $interview_count *}</span--></a></li>
 												<!--<li><a href="upload_resume.php">Upload Resume</a></li>
 												<li><a href="upload_resume.php">Upload Psychometric Test</a></li>
 												<li><a href="snapshot.php">Search Snapshot</a></li>-->
@@ -224,10 +224,10 @@
 											<li class="{$billings_active} dropdown">
 										 {/if}
                                         
-                                            <a data-toggle="dropdown" class="dropdown-toggle " href="#"><i class="icon-file icon-white"></i> Performance Reward {* if $module['approve_billing'] eq '1' and $approve_billing_count *}<!-- span class="label-bub label-info white">{$approve_billing_count}</span>{* /if *}<b class="caret"></b--></a>
+                                            <a data-toggle="dropdown" class="dropdown-toggle " href="#"><i class="icon-file icon-white"></i> Performance <b class="caret"></b> {* if $module['approve_billing'] eq '1' and $approve_billing_count *}<!-- span class="label-bub label-info white">{$approve_billing_count}</span>{* /if *}<b class="caret"></b--></a>
                                            <ul class="dropdown-menu">
 										   {if $module['view_billing'] eq '1'}
-												<li><a href="billing.php">Search Billing</a></li>
+												<li><a href="billing.php">View Billing</a></li>
 										   {/if}
 										   
                                                 <!--li><a href="bonus.php">Search Bonus</a></li-->
@@ -243,11 +243,7 @@
 												{* /if *} 
 												{/if}
 												{if $module['view_incentive'] eq '1'}
-                                                <li><a href="incentive.php">Search Incentive</a></li>
-										   {/if}
-										   
-										   {if $module['approve_incentive'] eq '1'}
-                                                <li><a href="approve_incentive.php">Approve Incentive</a></li>
+                                                <li><a href="incentive.php">View Incentive</a></li>
 										   {/if}
                                             </ul>
                                         </li>
@@ -260,6 +256,116 @@
 										<li class="dropdown {$report_menu}">
                                             <a data-toggle="dropdown" class="dropdown-toggle " href="#"><i class="icon-download-alt icon-white"></i> Reports <b class="caret"></b></a>
                                           <ul class="dropdown-menu">
+										  
+										  
+										   <li class="dropdown">
+													<a href="#">CTC Wise Monthly Openings Handled <b class="caret-right"></b></a>
+													<ul class="dropdown-menu">
+														<li><a href="openings_handled_1a.php">CTC Wise Monthly Openings Handled</a></li>
+														<li><a href="openings_handled_1b.php">CTC Wise Client Openings Handled</a></li>
+														<li><a href="openings_handled_1c.php">Month Wise Client Openings Handled</a></li>														
+													</ul>
+											</li>
+											
+									
+											   <li class="dropdown">
+													<a href="#">CV Status <b class="caret-right"></b></a>
+													<ul class="dropdown-menu">
+														<li><a href="#">CTC Wise CV Status</a></li>
+														<li><a href="#">Client Wise CV Status</a></li>
+														<li><a href="#">Month Wise CV Status</a></li>														
+													</ul>
+											</li>
+											
+											   <li class="dropdown">
+													<a href="#">TAKT Time <b class="caret-right"></b></a>
+													<ul class="dropdown-menu">
+														<li><a href="#">CTC Wise Average TAKT Time</a></li>
+																											
+													</ul>
+											</li>
+											
+											   <li class="dropdown">
+													<a href="#">Productivity <b class="caret-right"></b></a>
+													<ul class="dropdown-menu">
+														<li><a href="#">Employee Productivity</a></li>
+																											
+													</ul>
+											</li>
+											
+											
+											   <li class="dropdown">
+													<a href="#">Business Conversion	<b class="caret-right"></b></a>
+													<ul class="dropdown-menu">
+														<li><a href="#">Employee Business Conversion</a></li>
+														<li><a href="#">Client Business Conversion</a></li>
+												
+													</ul>
+											</li>
+											
+											   <li class="dropdown">
+													<a href="#">Billing & Contribution	<b class="caret-right"></b></a>
+													<ul class="dropdown-menu">
+														<li><a href="#">Client Wise Billing</a></li>
+														<li><a href="#">Recruiter Wise Billing</a></li>
+														<li><a href="#">Individual Contribution</a></li>
+
+													</ul>
+											</li>
+											
+											  <li class="dropdown">
+													<a href="#">Incentive	<b class="caret-right"></b></a>
+													<ul class="dropdown-menu">
+														<li><a href="#">Location Wise Active Clients</a></li>
+														<li><a href="#">Business Continuity</a></li>
+														<li><a href="#">Client Retention</a></li>
+
+													</ul>
+											</li>
+											
+											  <li class="dropdown">
+													<a href="#">Client Retention <b class="caret-right"></b></a>
+													<ul class="dropdown-menu">
+														<li><a href="#">Location Wise Active Clients</a></li>
+														<li><a href="#">Business Continuity</a></li>
+														<li><a href="#">Client Retention</a></li>
+
+													</ul>
+											</li>
+											
+											
+											  <li class="dropdown">
+													<a href="#">Root Cause Analysis	 <b class="caret-right"></b></a>
+													<ul class="dropdown-menu">
+														<li><a href="#">CV Rejection Analysis</a></li>
+														<li><a href="#">Position Rejection Analysis
+</a></li>
+
+													</ul>
+											</li>
+											
+											  <li class="dropdown">
+													<a href="#">Cash Flow Management	 <b class="caret-right"></b></a>
+													<ul class="dropdown-menu">
+														<li><a href="#">Collection Days
+</a></li>
+			
+
+													</ul>
+											</li>
+											
+											
+												  <li class="dropdown">
+													<a href="#">Bad Debts			 <b class="caret-right"></b></a>
+													<ul class="dropdown-menu">
+														<li><a href="#">Recuiter Wise</a></li>
+														<li><a href="#">Client Wise</a></li>
+
+													</ul>
+											</li>
+											
+											
+											<!--
 											{if $module['recruiter_report'] eq '1'}
                                                 <li><a href="recruiter_performance.php">Recruiter Performance</a></li>
 											{/if}
@@ -270,7 +376,6 @@
 											
 											{if $module['location_report'] eq '1'}
 											<li><a href="location_performance.php">Location Performance</a></li>
-                                               <!-- <li><a href="#">Clientwise Performance</a></li>-->
 											{/if}
 											
 											{if $module['failure_report'] eq '1'}
@@ -305,7 +410,14 @@
 											{if $module['weekly_report'] eq '1'}
 												<li><a href="weekly_performance.php">Weekly Performance </a></li>
 											{/if}
+											
+											-->
+											
+											
                                             </ul>
+										
+										
+										
 										</li>
                                         {/if}
 
@@ -334,10 +446,18 @@
 													</ul>
 												</li>
 											{/if}
-										  {if $module['manage_contact_branch'] eq '1'}
-	
-												<li><a href="contact_branch.php">Branch</a></li>
+											
+											 {if $module['manage_contact_branch'] eq '1'}
+                                           <li class="dropdown">
+													<a href="#">Branch <b class="caret-right"></b></a>
+													<ul class="dropdown-menu">
+														<li><a href="contact_branch.php">Client Branches</a></li>
+														<li><a href="contact_branch.php">User Branches</a></li>													
+													</ul>
+												</li>
 											{/if}
+											
+										
 											
 											{if $module['manage_designation'] eq '1'}
 	
@@ -350,7 +470,7 @@
 											{/if}
 											
 											{if $module['api_keys'] eq '1'}
-											<li><a href="view_resume_api.php">Resume API</a></li>
+											<li><a href="view_resume_api.php">API Keys</a></li>
 											{/if}
 											
 											{if $module['manage_grade'] eq '1'}
