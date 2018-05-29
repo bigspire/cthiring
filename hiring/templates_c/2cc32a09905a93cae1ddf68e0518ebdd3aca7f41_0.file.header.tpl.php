@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-05-29 17:22:41
+/* Smarty version 3.1.29, created on 2018-05-29 18:03:47
   from "C:\xampp\htdocs\ctsvn\cthiring\hiring\templates\include\header.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5b0d3f099f09e4_76350831',
+  'unifunc' => 'content_5b0d48abc3e680_99037818',
   'file_dependency' => 
   array (
     '2cc32a09905a93cae1ddf68e0518ebdd3aca7f41' => 
     array (
       0 => 'C:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\templates\\include\\header.tpl',
-      1 => 1527594754,
+      1 => 1527597217,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_5b0d3f099f09e4_76350831 ($_smarty_tpl) {
+function content_5b0d48abc3e680_99037818 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -521,7 +521,7 @@ report/client_wise_cv_status/">Client Wise CV Status</a></li>
 													<a href="#">Branch <b class="caret-right"></b></a>
 													<ul class="dropdown-menu">
 														<li><a href="contact_branch.php">Client Branches</a></li>
-														<li><a href="contact_branch.php">User Branches</a></li>													
+														<li><a href="user_branch.php">User Branches</a></li>													
 													</ul>
 												</li>
 											<?php }?>
