@@ -243,7 +243,7 @@ class AppController extends Controller {
 					$this->set('create_incentive', 1);
 					break;
 					case 17:					
-					$this->set('recruiter_report', 1);
+					$this->set('client_wise_cv_status', 1);
 					break;
 					case 18:					
 					$this->set('account_holder_report', 1);

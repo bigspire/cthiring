@@ -249,35 +249,40 @@
                                         </li>
 										{/if}
 										
-										{if $module['recruiter_report'] eq '1' || $module['account_holder_report'] eq '1' || $module['location_report'] eq '1'
-										|| $module['failure_report'] eq '1' || $module['revenue_report'] eq '1' || $module['tat_report'] eq '1'
-										|| $module['collection_report'] eq '1' || $module['client_retention_report'] eq '1' || $module['incentive_report'] eq '1'
-										|| $module['daily_report'] eq '1' || $module['weekly_report'] eq '1'}
+										
+										
+										{if $module['client_wise_cv_status'] eq '1' || $module['ctc_wise_monthly_opening'] eq '1'}
 										<li class="dropdown {$report_menu}">
                                             <a data-toggle="dropdown" class="dropdown-toggle " href="#"><i class="icon-download-alt icon-white"></i> Reports <b class="caret"></b></a>
                                           <ul class="dropdown-menu">
 										  
-										  
+										 {if $module['ctc_wise_monthly_opening'] eq '1'} 
 										   <li class="dropdown">
 													<a href="#">CTC Wise Monthly Openings Handled <b class="caret-right"></b></a>
 													<ul class="dropdown-menu">
-														<li><a href="openings_handled_1a.php">CTC Wise Monthly Openings Handled</a></li>
-														<li><a href="openings_handled_1b.php">CTC Wise Client Openings Handled</a></li>
-														<li><a href="openings_handled_1c.php">Month Wise Client Openings Handled</a></li>														
+														<li><a href="#">CTC Wise Monthly Openings Handled</a></li>
+														<li><a href="#">CTC Wise Client Openings Handled</a></li>
+														<li><a href="#">Month Wise Client Openings Handled</a></li>														
 													</ul>
 											</li>
+										{/if}
 											
-									
+									 {if $module['client_wise_cv_status'] eq '1'} 
 											   <li class="dropdown">
 													<a href="#">CV Status <b class="caret-right"></b></a>
 													<ul class="dropdown-menu">
-														<li><a href="#">CTC Wise CV Status</a></li>
-														<li><a href="#">Client Wise CV Status</a></li>
-														<li><a href="#">Month Wise CV Status</a></li>														
+														<!--li><a href="#">CTC Wise CV Status</a></li-->
+														
+														 {if $module['client_wise_cv_status'] eq '1'} 
+														<li><a href="{webroot}report/client_wise_cv_status/">Client Wise CV Status</a></li>
+														{/if}
+														<!--li><a href="#">Month Wise CV Status</a></li-->														
 													</ul>
 											</li>
-											
-											   <li class="dropdown">
+										{/if}
+
+										
+											   <!--li class="dropdown">
 													<a href="#">TAKT Time <b class="caret-right"></b></a>
 													<ul class="dropdown-menu">
 														<li><a href="#">CTC Wise Average TAKT Time</a></li>
@@ -362,7 +367,7 @@
 														<li><a href="#">Client Wise</a></li>
 
 													</ul>
-											</li>
+											</li-->
 											
 											
 											<!--
