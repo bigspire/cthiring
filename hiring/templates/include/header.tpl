@@ -245,6 +245,10 @@
 												{if $module['view_incentive'] eq '1'}
                                                 <li><a href="incentive.php">Search Incentive</a></li>
 										   {/if}
+										   
+										   {if $module['approve_incentive'] eq '1'}
+                                                <li><a href="approve_incentive.php">Approve Incentive</a></li>
+										   {/if}
                                             </ul>
                                         </li>
 										{/if}
@@ -256,116 +260,6 @@
 										<li class="dropdown {$report_menu}">
                                             <a data-toggle="dropdown" class="dropdown-toggle " href="#"><i class="icon-download-alt icon-white"></i> Reports <b class="caret"></b></a>
                                           <ul class="dropdown-menu">
-										  
-										  
-										   <li class="dropdown">
-													<a href="#">CTC Wise Monthly Openings Handled <b class="caret-right"></b></a>
-													<ul class="dropdown-menu">
-														<li><a href="openings_handled_1a.php">CTC Wise Monthly Openings Handled</a></li>
-														<li><a href="openings_handled_1b.php">CTC Wise Client Openings Handled</a></li>
-														<li><a href="openings_handled_1c.php">Month Wise Client Openings Handled</a></li>														
-													</ul>
-											</li>
-											
-									
-											   <li class="dropdown">
-													<a href="#">CV Status <b class="caret-right"></b></a>
-													<ul class="dropdown-menu">
-														<li><a href="#">CTC Wise CV Status</a></li>
-														<li><a href="#">Client Wise CV Status</a></li>
-														<li><a href="#">Month Wise CV Status</a></li>														
-													</ul>
-											</li>
-											
-											   <li class="dropdown">
-													<a href="#">TAKT Time <b class="caret-right"></b></a>
-													<ul class="dropdown-menu">
-														<li><a href="#">CTC Wise Average TAKT Time</a></li>
-																											
-													</ul>
-											</li>
-											
-											   <li class="dropdown">
-													<a href="#">Productivity <b class="caret-right"></b></a>
-													<ul class="dropdown-menu">
-														<li><a href="#">Employee Productivity</a></li>
-																											
-													</ul>
-											</li>
-											
-											
-											   <li class="dropdown">
-													<a href="#">Business Conversion	<b class="caret-right"></b></a>
-													<ul class="dropdown-menu">
-														<li><a href="#">Employee Business Conversion</a></li>
-														<li><a href="#">Client Business Conversion</a></li>
-												
-													</ul>
-											</li>
-											
-											   <li class="dropdown">
-													<a href="#">Billing & Contribution	<b class="caret-right"></b></a>
-													<ul class="dropdown-menu">
-														<li><a href="#">Client Wise Billing</a></li>
-														<li><a href="#">Recruiter Wise Billing</a></li>
-														<li><a href="#">Individual Contribution</a></li>
-
-													</ul>
-											</li>
-											
-											  <li class="dropdown">
-													<a href="#">Incentive	<b class="caret-right"></b></a>
-													<ul class="dropdown-menu">
-														<li><a href="#">Location Wise Active Clients</a></li>
-														<li><a href="#">Business Continuity</a></li>
-														<li><a href="#">Client Retention</a></li>
-
-													</ul>
-											</li>
-											
-											  <li class="dropdown">
-													<a href="#">Client Retention <b class="caret-right"></b></a>
-													<ul class="dropdown-menu">
-														<li><a href="#">Location Wise Active Clients</a></li>
-														<li><a href="#">Business Continuity</a></li>
-														<li><a href="#">Client Retention</a></li>
-
-													</ul>
-											</li>
-											
-											
-											  <li class="dropdown">
-													<a href="#">Root Cause Analysis	 <b class="caret-right"></b></a>
-													<ul class="dropdown-menu">
-														<li><a href="#">CV Rejection Analysis</a></li>
-														<li><a href="#">Position Rejection Analysis
-</a></li>
-
-													</ul>
-											</li>
-											
-											  <li class="dropdown">
-													<a href="#">Cash Flow Management	 <b class="caret-right"></b></a>
-													<ul class="dropdown-menu">
-														<li><a href="#">Collection Days
-</a></li>
-			
-
-													</ul>
-											</li>
-											
-											
-												  <li class="dropdown">
-													<a href="#">Bad Debts			 <b class="caret-right"></b></a>
-													<ul class="dropdown-menu">
-														<li><a href="#">Recuiter Wise</a></li>
-														<li><a href="#">Client Wise</a></li>
-
-													</ul>
-											</li>
-											
-											
-											<!--
 											{if $module['recruiter_report'] eq '1'}
                                                 <li><a href="recruiter_performance.php">Recruiter Performance</a></li>
 											{/if}
@@ -376,6 +270,7 @@
 											
 											{if $module['location_report'] eq '1'}
 											<li><a href="location_performance.php">Location Performance</a></li>
+                                               <!-- <li><a href="#">Clientwise Performance</a></li>-->
 											{/if}
 											
 											{if $module['failure_report'] eq '1'}
@@ -410,10 +305,6 @@
 											{if $module['weekly_report'] eq '1'}
 												<li><a href="weekly_performance.php">Weekly Performance </a></li>
 											{/if}
-											
-											-->
-											
-											
                                             </ul>
 										</li>
                                         {/if}

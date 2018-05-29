@@ -836,6 +836,13 @@ if(!empty($_POST) && empty($_POST['hdnSubmit'])){
 	// save all the data
 	if($test != 'error'){
 
+<<<<<<< HEAD
+=======
+	  // if($check_mail['total'] == '0' && $check_mobile['total'] == '0'){
+
+	 // if($check_mail['total'] == '0' && $check_mobile['total'] == '0'){
+
+>>>>>>> c0a8d8207041a12dacc97b5bbb39c0492294dc1b
 		// for saving purpose of tech skills
 		foreach($_POST['ts'] as $key => $ts){
 			if($ts){
