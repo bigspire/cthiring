@@ -245,6 +245,9 @@
 												{if $module['view_incentive'] eq '1'}
                                                 <li><a href="incentive.php">View Incentive</a></li>
 										   {/if}
+										   {if $module['approve_incentive'] eq '1'}
+                                                <li><a href="approve_incentive.php">Approve Incentive</a></li>
+										   {/if}
                                             </ul>
                                         </li>
 										{/if}

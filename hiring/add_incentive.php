@@ -335,6 +335,60 @@ if(!empty($_POST)){
 							echo 'Caught exception: ',  $e->getMessage(), "\n";
 						}
 					//}
+					
+					$bh_role_id = '39';
+						// query to fetch approval user id. 
+						$query = "CALL get_inc_approval_user('".$bh_role_id."')";
+						try{
+							// calling mysql exe_query function
+							if(!$result = $mysql->execute_query($query)){
+								throw new Exception('Problem in getting approval user details');
+							}
+							$row = $mysql->display_result($result);
+							$approval_id = $row['approval_id'];
+							$smarty->assign('approval_id',$row['approval_id']);
+							// free the memory
+							$mysql->clear_result($result);
+							// call the next result
+							$mysql->next_query();
+						}catch(Exception $e){
+							echo 'Caught exception: ',  $e->getMessage(), "\n";
+						}	
+		
+						// query to insert reward user status details.
+						$query = "CALL add_inc_reward_status('".$date."','".$incentive_id."','".$approval_id."')";
+						// Calling the function that makes the insert
+						try{
+							// calling mysql exe_query function
+							if(!$result = $mysql->execute_query($query)){
+								throw new Exception('Problem in adding reward user status');
+							}
+							$row = $mysql->display_result($result);			
+							// free the memory
+							$mysql->clear_result($result);
+							// call the next result
+							$mysql->next_query();
+						}catch(Exception $e){
+							echo 'Caught exception: ',  $e->getMessage(), "\n";
+						}
+						
+						// query to insert reward user details.  
+						$query = "CALL add_inc_reward_users('".$incentive_id."', '".$approval_id."')";
+						// Calling the function that makes the insert
+						try{
+							// calling mysql exe_query function
+							if(!$result = $mysql->execute_query($query)){
+								throw new Exception('Problem in adding reward user');
+							}
+							$row = $mysql->display_result($result);
+							$last_inserted_id = $row['inserted_id'];
+							// free the memory
+							$mysql->clear_result($result);
+							// call the next result
+							$mysql->next_query();
+						}catch(Exception $e){
+							echo 'Caught exception: ',  $e->getMessage(), "\n";
+						}
 				}
 			
 				/*
@@ -563,6 +617,7 @@ if(!empty($_POST)){
 								}
 								$row = $mysql->display_result($result);
 								$last_id = $row['inserted_id'];
+								$incentive_id = $last_id;
 								// free the memory
 								$mysql->clear_result($result);
 								// next query execution
@@ -570,7 +625,62 @@ if(!empty($_POST)){
 							}catch(Exception $e){
 								echo 'Caught exception: ',  $e->getMessage(), "\n";
 							}
-						// }	
+						// }
+						
+						$bh_role_id = '39';
+						// query to fetch approval user id. 
+						$query = "CALL get_inc_approval_user('".$bh_role_id."')";
+						try{
+							// calling mysql exe_query function
+							if(!$result = $mysql->execute_query($query)){
+								throw new Exception('Problem in getting approval user details');
+							}
+							$row = $mysql->display_result($result);
+							$approval_id = $row['approval_id'];
+							$smarty->assign('approval_id',$row['approval_id']);
+							// free the memory
+							$mysql->clear_result($result);
+							// call the next result
+							$mysql->next_query();
+						}catch(Exception $e){
+							echo 'Caught exception: ',  $e->getMessage(), "\n";
+						}	
+		
+						// query to insert reward user status details.
+						$query = "CALL add_inc_reward_status('".$date."','".$incentive_id."','".$approval_id."')";
+						// Calling the function that makes the insert
+						try{
+							// calling mysql exe_query function
+							if(!$result = $mysql->execute_query($query)){
+								throw new Exception('Problem in adding reward user status');
+							}
+							$row = $mysql->display_result($result);			
+							// free the memory
+							$mysql->clear_result($result);
+							// call the next result
+							$mysql->next_query();
+						}catch(Exception $e){
+							echo 'Caught exception: ',  $e->getMessage(), "\n";
+						}
+						
+						// query to insert reward user details.  
+						$query = "CALL add_inc_reward_users('".$incentive_id."', '".$approval_id."')";
+						// Calling the function that makes the insert
+						try{
+							// calling mysql exe_query function
+							if(!$result = $mysql->execute_query($query)){
+								throw new Exception('Problem in adding reward user');
+							}
+							$row = $mysql->display_result($result);
+							$last_inserted_id = $row['inserted_id'];
+							// free the memory
+							$mysql->clear_result($result);
+							// call the next result
+							$mysql->next_query();
+						}catch(Exception $e){
+							echo 'Caught exception: ',  $e->getMessage(), "\n";
+						}
+		
 					}else{						
 						// edit the incentive details of the candidates
 						$query = "CALL edit_candidate_incentive('".$check['id']."','".$emp_id."','J','".$date."','".$incentive_amount."','".$_SESSION['user_id']."','".$created_date."','".$incentive_target."','".$total_billing."')";
@@ -608,6 +718,22 @@ if(!empty($_POST)){
 			header("Location: incentive.php?status=created");
 				
 		}
+
+		
+		/*
+		// get billing user details
+		$user_name = ucwords($_POST['user_name']);
+		$user_email = $_POST['email_address'];
+				
+		// get approval user details
+		$approval_user_name = ucwords($_POST['approval_user_name']);
+		$approval_user_email = $_POST['approval_user_email'];
+				
+		// send mail to approval user
+		$sub = "Manage Hiring -  " .$user_name." submitted billing details!";
+		$msg = $content->get_create_billing_mail($_POST,$obj,$user_name,$approval_user_name,$candidate_name);
+		$mailer->send_mail($sub,$msg,$user_name,$user_email,$approval_user_name,$approval_user_email);
+		*/
 	}
 }
 			
