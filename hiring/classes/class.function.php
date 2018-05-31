@@ -60,7 +60,7 @@ class fun{
 					$mod['create_incentive'] = 1;
 					break;
 					case 17:					
-					$mod['recruiter_report'] = 1;
+					$mod['client_wise_cv_status'] = 1;
 					break;
 					case 18:					
 					$mod['account_holder_report'] = 1;

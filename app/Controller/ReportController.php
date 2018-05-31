@@ -247,6 +247,41 @@ class ReportController extends AppController {
 
 	}
 	
+	/* function to get the ctc wise client opening */
+	public function ctc_wise_client_opening(){
+		
+	}
+	
+	
+	/* function to get the client wise CV status */
+	public function client_wise_cv_status(){
+		// set the page title
+		$this->set('title_for_layout', 'Client Wise CV Status - Manage Hiring');	
+		$this->set('empList', $this->get_employee_details());	
+		$this->set('locList', $this->get_loc_details());
+		$this->get_client_details();
+		$this->get_role_details();
+	}
+	
+	
+	/* function to load the clients */
+	public function get_client_details(){
+		$this->loadModel('Client');
+		$client_list = $this->Client->find('list', array('fields' => array('id','client_name'), 
+		'order' => array('client_name ASC'),'conditions' => array('Client.is_deleted' => 'N', 'Client.status' => '0', 'Client.is_approve' => 'A',
+		'Client.client_name !=' => '', 'Client.is_inactive' => 'N', ),	'group' => array('Client.id')));
+		$this->set('clientList', $client_list);
+	}
+	
+	
+	/* function to load the clients */
+	public function get_role_details(){
+		$this->loadModel('Role');
+		$role_data = $this->Role->find('list',  array('fields' => array('id','role_name'), 'order' => array('role_name ASC'),'conditions' => array('status' => '1')));
+		$this->set('roleList', $role_data);
+	}
+	
+	
 	/* auto complete search */	
 	public function search(){ 
 		$this->layout = false;		
@@ -266,6 +301,6 @@ class ReportController extends AppController {
 		// check the role permissions
 	public function beforeFilter(){ 
 		$this->check_session();
-		
+		$this->check_role_access(17);
 	}
 }

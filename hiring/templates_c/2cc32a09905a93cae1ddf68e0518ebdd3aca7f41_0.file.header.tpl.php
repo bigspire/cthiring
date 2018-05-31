@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-05-29 12:01:17
+/* Smarty version 3.1.29, created on 2018-05-29 18:03:47
   from "C:\xampp\htdocs\ctsvn\cthiring\hiring\templates\include\header.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5b0cf3b5dbdf89_06413880',
+  'unifunc' => 'content_5b0d48abc3e680_99037818',
   'file_dependency' => 
   array (
     '2cc32a09905a93cae1ddf68e0518ebdd3aca7f41' => 
     array (
       0 => 'C:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\templates\\include\\header.tpl',
-      1 => 1527575464,
+      1 => 1527597217,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_5b0cf3b5dbdf89_06413880 ($_smarty_tpl) {
+function content_5b0d48abc3e680_99037818 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -309,33 +309,42 @@ resume/">View Resume <!-- span class="label-bub label-info white"><?php echo $_s
                                         </li>
 										<?php }?>
 										
-										<?php if ($_smarty_tpl->tpl_vars['module']->value['recruiter_report'] == '1' || $_smarty_tpl->tpl_vars['module']->value['account_holder_report'] == '1' || $_smarty_tpl->tpl_vars['module']->value['location_report'] == '1' || $_smarty_tpl->tpl_vars['module']->value['failure_report'] == '1' || $_smarty_tpl->tpl_vars['module']->value['revenue_report'] == '1' || $_smarty_tpl->tpl_vars['module']->value['tat_report'] == '1' || $_smarty_tpl->tpl_vars['module']->value['collection_report'] == '1' || $_smarty_tpl->tpl_vars['module']->value['client_retention_report'] == '1' || $_smarty_tpl->tpl_vars['module']->value['incentive_report'] == '1' || $_smarty_tpl->tpl_vars['module']->value['daily_report'] == '1' || $_smarty_tpl->tpl_vars['module']->value['weekly_report'] == '1') {?>
+										
+										
+										<?php if ($_smarty_tpl->tpl_vars['module']->value['client_wise_cv_status'] == '1' || $_smarty_tpl->tpl_vars['module']->value['ctc_wise_monthly_opening'] == '1') {?>
 										<li class="dropdown <?php echo $_smarty_tpl->tpl_vars['report_menu']->value;?>
 ">
                                             <a data-toggle="dropdown" class="dropdown-toggle " href="#"><i class="icon-download-alt icon-white"></i> Reports <b class="caret"></b></a>
                                           <ul class="dropdown-menu">
 										  
-										  
+										 <?php if ($_smarty_tpl->tpl_vars['module']->value['ctc_wise_monthly_opening'] == '1') {?> 
 										   <li class="dropdown">
 													<a href="#">CTC Wise Monthly Openings Handled <b class="caret-right"></b></a>
 													<ul class="dropdown-menu">
-														<li><a href="openings_handled_1a.php">CTC Wise Monthly Openings Handled</a></li>
-														<li><a href="openings_handled_1b.php">CTC Wise Client Openings Handled</a></li>
-														<li><a href="openings_handled_1c.php">Month Wise Client Openings Handled</a></li>														
+														<li><a href="#">CTC Wise Monthly Openings Handled</a></li>
+														<li><a href="#">CTC Wise Client Openings Handled</a></li>
+														<li><a href="#">Month Wise Client Openings Handled</a></li>														
 													</ul>
 											</li>
+										<?php }?>
 											
-									
+									 <?php if ($_smarty_tpl->tpl_vars['module']->value['client_wise_cv_status'] == '1') {?> 
 											   <li class="dropdown">
 													<a href="#">CV Status <b class="caret-right"></b></a>
 													<ul class="dropdown-menu">
-														<li><a href="#">CTC Wise CV Status</a></li>
-														<li><a href="#">Client Wise CV Status</a></li>
-														<li><a href="#">Month Wise CV Status</a></li>														
+														<!--li><a href="#">CTC Wise CV Status</a></li-->
+														
+														 <?php if ($_smarty_tpl->tpl_vars['module']->value['client_wise_cv_status'] == '1') {?> 
+														<li><a href="<?php echo webroot;?>
+report/client_wise_cv_status/">Client Wise CV Status</a></li>
+														<?php }?>
+														<!--li><a href="#">Month Wise CV Status</a></li-->														
 													</ul>
 											</li>
-											
-											   <li class="dropdown">
+										<?php }?>
+
+										
+											   <!--li class="dropdown">
 													<a href="#">TAKT Time <b class="caret-right"></b></a>
 													<ul class="dropdown-menu">
 														<li><a href="#">CTC Wise Average TAKT Time</a></li>
@@ -420,7 +429,7 @@ resume/">View Resume <!-- span class="label-bub label-info white"><?php echo $_s
 														<li><a href="#">Client Wise</a></li>
 
 													</ul>
-											</li>
+											</li-->
 											
 											
 											<!--
@@ -512,7 +521,7 @@ resume/">View Resume <!-- span class="label-bub label-info white"><?php echo $_s
 													<a href="#">Branch <b class="caret-right"></b></a>
 													<ul class="dropdown-menu">
 														<li><a href="contact_branch.php">Client Branches</a></li>
-														<li><a href="contact_branch.php">User Branches</a></li>													
+														<li><a href="user_branch.php">User Branches</a></li>													
 													</ul>
 												</li>
 											<?php }?>
