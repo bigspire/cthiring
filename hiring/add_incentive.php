@@ -15,6 +15,10 @@ $mysql->connect_database();
 include('classes/class.function.php');
 // add menu count
 include('menu_count.php');
+// mailing class
+include('classes/class.mailer.php');
+// content class
+include('classes/class.content.php');
 
 // role based validation
 $module_access = $fun->check_role_access('13',$modules);
