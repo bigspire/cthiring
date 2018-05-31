@@ -50,6 +50,9 @@ class fun{
 					case 10:					
 					$mod['view_interview'] = 1;
 					break;	
+					case 11:					
+					$mod['view_approve_incentive'] = 1;
+					break;	
 					case 15:					
 					$mod['approve_incentive'] = 1;
 					break;					
@@ -319,6 +322,16 @@ class fun{
 		return $inc;
 	}
 	
+	// function to validate incentive type field 
+	public function check_incentive_tp($incentive_type){
+		if($incentive_type == 'I'){
+			$inc = 'PS & I';
+		}else if($incentive_type == 'J'){
+			$inc = 'PC';
+		}
+		return $inc;
+	}
+	
 	// function to validate incentive quarter field 
 	public function convert_quater_month($created_date){
 		if(($created_date != '') && ($created_date != '0000-00-00')){
@@ -360,6 +373,44 @@ class fun{
 	 		$quater_st = 'Oct - Dec';
 		}
 		return $quater_st;
+	}
+	
+	public function display_pc_Months($quater){
+		if($quater == '04'){
+			$quater_st = 'Apr - Sep';
+		}elseif($quater == '10'){	
+	 		$quater_st = 'Oct - Mar';
+		}
+		return $quater_st;
+	}
+	
+	public function display_months($months){
+		if($months == '01'){
+			$months_st = 'Jan';
+		}elseif($months == '02'){	
+	 		$months_st = 'Feb';
+		}elseif($months == '03'){	
+	 		$months_st = 'Mar';
+		}elseif($months == '04'){	
+	 		$months_st = 'Apr';
+		}elseif($months == '05'){	
+	 		$months_st = 'May';
+		}elseif($months == '06'){	
+	 		$months_st = 'Jun';
+		}elseif($months == '07'){	
+	 		$months_st = 'Jul';
+		}elseif($months == '08'){	
+	 		$months_st = 'Aug';
+		}elseif($months == '09'){	
+	 		$months_st = 'Sep';
+		}elseif($months == '10'){	
+	 		$months_st = 'Oct';
+		}elseif($months == '11'){	
+	 		$months_st = 'Nov';
+		}elseif($months == '12'){	
+	 		$months_st = 'Dec';
+		}
+		return $months_st;
 	}
 	
 	

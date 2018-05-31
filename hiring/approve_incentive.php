@@ -207,7 +207,7 @@ try{
 	
 	// check the status of the billing for approval
 	if(!empty($data)){
-		foreach($data as $record){
+		foreach($data as $record){ 
 			$mysql->next_query();
 			$show_st = $mysql->auth_incentive_action($record['id'], $record['status_id']);
 			$status_id[] = $show_st;				

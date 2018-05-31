@@ -79,6 +79,28 @@ if(!empty($_POST)){
 	//$test = '';
 	
 	if(empty($test)){
+		// fetching L1 details
+		$bh_role_id = '39';
+		// query to fetch approval user id. 
+		$query = "CALL get_inc_approval_user('".$bh_role_id."')";
+		try{
+			// calling mysql exe_query function
+			if(!$result = $mysql->execute_query($query)){
+				throw new Exception('Problem in getting approval user details');
+			}
+			$row = $mysql->display_result($result);
+			$approval_id = $row['approval_id'];
+			$level1_email = $row['email_id'];
+			$level1_name = $row['approval_name'];
+			$smarty->assign('approval_id',$row['approval_id']);
+			// free the memory
+			$mysql->clear_result($result);
+			// call the next result
+			$mysql->next_query();
+		}catch(Exception $e){
+			echo 'Caught exception: ',  $e->getMessage(), "\n";
+		}
+						
 		if($_POST['type'] == 'I'){
 			
 			// query to fetch employee for incentive.		
@@ -318,6 +340,7 @@ if(!empty($_POST)){
 									}
 									$row = $mysql->display_result($result);
 									$last_id = $row['inserted_id'];
+									$incentive_id = $last_id;
 									// free the memory
 									$mysql->clear_result($result);
 									// next query execution
@@ -335,25 +358,7 @@ if(!empty($_POST)){
 							echo 'Caught exception: ',  $e->getMessage(), "\n";
 						}
 					//}
-					
-					$bh_role_id = '39';
-						// query to fetch approval user id. 
-						$query = "CALL get_inc_approval_user('".$bh_role_id."')";
-						try{
-							// calling mysql exe_query function
-							if(!$result = $mysql->execute_query($query)){
-								throw new Exception('Problem in getting approval user details');
-							}
-							$row = $mysql->display_result($result);
-							$approval_id = $row['approval_id'];
-							$smarty->assign('approval_id',$row['approval_id']);
-							// free the memory
-							$mysql->clear_result($result);
-							// call the next result
-							$mysql->next_query();
-						}catch(Exception $e){
-							echo 'Caught exception: ',  $e->getMessage(), "\n";
-						}	
+						
 		
 						// query to insert reward user status details.
 						$query = "CALL add_inc_reward_status('".$date."','".$incentive_id."','".$approval_id."')";
@@ -400,14 +405,46 @@ if(!empty($_POST)){
 					header("Location: incentive.php?status=not_found");
 				}
 				*/
+				
+				// get the L1 user details
+				$query = "CALL get_approval_user_by_id('".$_SESSION['user_id']."')";
+				try{
+					if(!$result = $mysql->execute_query($query)){
+						throw new Exception('Problem in getting approval user details');
+					}
+					// calling mysql fetch_result function
+					$obj = $mysql->display_result($result);
+					$admin_email = $obj['approval_email'];						
+					$admin_name = ucwords($obj['approval_user']);
+					// free the memory
+					$mysql->clear_result($result);
+					// call the next result
+					$mysql->next_query();
+				}catch(Exception $e){
+					echo 'Caught exception: ',  $e->getMessage(), "\n";
+				}
+				
+				// get billing user details
+				$user_name = ucwords($_POST['user_name']);
+				$user_email = $_POST['email_address'];
+						
+				// get approval user details
+				$approval_user_name = ucwords($_POST['approval_user_name']);
+				$approval_user_email = $_POST['approval_user_email'];
+
+				// get incentive months and year
+				$ps_month = $fun->display_months($_POST['ps_month']);
+				$position_month = $fun->display_pc_Months($_POST['position_month']);
+				$month = $ps_month ? $ps_month : $position_month;
+				$year = $_POST['year'] ? $_POST['year'] : $_POST['ps_year'];
+				
+				
+				// send mail to L1 
+				$sub = "Manage Hiring -  Incentive -  ".$fun->check_incentive_tp($_POST['type']).",  ".$month.' '.$year." Created By ".$admin_name;
+				$msg = $content->get_level1_incentive_details($_POST,$obj,$admin_name,$level1_name,$level1_email);
+				$mailer->send_mail($sub,$msg,$admin_name,$admin_email,$level1_name,$level1_email);
+			
 				header("Location: incentive.php?status=created");
-			
-			
-		/*
-		}else{
-				$msg = "Incentive already exists";
-				$smarty->assign('EXIST_MSG',$msg); 
-		}*/
 			
 	}else if($_POST['type'] == 'J'){
 			
@@ -627,25 +664,6 @@ if(!empty($_POST)){
 							}
 						// }
 						
-						$bh_role_id = '39';
-						// query to fetch approval user id. 
-						$query = "CALL get_inc_approval_user('".$bh_role_id."')";
-						try{
-							// calling mysql exe_query function
-							if(!$result = $mysql->execute_query($query)){
-								throw new Exception('Problem in getting approval user details');
-							}
-							$row = $mysql->display_result($result);
-							$approval_id = $row['approval_id'];
-							$smarty->assign('approval_id',$row['approval_id']);
-							// free the memory
-							$mysql->clear_result($result);
-							// call the next result
-							$mysql->next_query();
-						}catch(Exception $e){
-							echo 'Caught exception: ',  $e->getMessage(), "\n";
-						}	
-		
 						// query to insert reward user status details.
 						$query = "CALL add_inc_reward_status('".$date."','".$incentive_id."','".$approval_id."')";
 						// Calling the function that makes the insert
@@ -715,28 +733,50 @@ if(!empty($_POST)){
 				header("Location: incentive.php?status=updated");
 			}
 			*/	
+			
+			// get the L1 user details
+			$query = "CALL get_approval_user_by_id('".$_SESSION['user_id']."')";
+			try{
+				if(!$result = $mysql->execute_query($query)){
+					throw new Exception('Problem in getting approval user details');
+				}
+				// calling mysql fetch_result function
+				$obj = $mysql->display_result($result);
+				$admin_email = $obj['approval_email'];						
+				$admin_name = ucwords($obj['approval_user']);
+				// free the memory
+				$mysql->clear_result($result);
+				// call the next result
+				$mysql->next_query();
+			}catch(Exception $e){
+				echo 'Caught exception: ',  $e->getMessage(), "\n";
+			}
+			
+			// get billing user details
+			$user_name = ucwords($_POST['user_name']);
+			$user_email = $_POST['email_address'];
+						
+			// get approval user details
+			$approval_user_name = ucwords($_POST['approval_user_name']);
+			$approval_user_email = $_POST['approval_user_email'];
+
+			// get incentive months and year
+			$ps_month = $fun->display_months($_POST['ps_month']);
+			$position_month = $fun->display_pc_Months($_POST['position_month']);
+			$month = $ps_month ? $ps_month : $position_month;
+			$year = $_POST['year'] ? $_POST['year'] : $_POST['ps_year'];
+					
+			// send mail to L1 
+			$sub = "Manage Hiring -  Incentive -  ".$fun->check_incentive_tp($_POST['type']).",  ".$month.' '.$year." Created By ".$admin_name;
+			$msg = $content->get_level1_incentive_details($_POST,$obj,$admin_name,$level1_name,$level1_email);
+			$mailer->send_mail($sub,$msg,$admin_name,$admin_email,$level1_name,$level1_email);
+			
 			header("Location: incentive.php?status=created");
-				
 		}
 
-		
-		/*
-		// get billing user details
-		$user_name = ucwords($_POST['user_name']);
-		$user_email = $_POST['email_address'];
-				
-		// get approval user details
-		$approval_user_name = ucwords($_POST['approval_user_name']);
-		$approval_user_email = $_POST['approval_user_email'];
-				
-		// send mail to approval user
-		$sub = "Manage Hiring -  " .$user_name." submitted billing details!";
-		$msg = $content->get_create_billing_mail($_POST,$obj,$user_name,$approval_user_name,$candidate_name);
-		$mailer->send_mail($sub,$msg,$user_name,$user_email,$approval_user_name,$approval_user_email);
-		*/
 	}
 }
-			
+	
 // smarty drop down array for incentive type
 $smarty->assign('types', array('' => 'Select', 'I' => 'Profile Short-listing & Interviewing', 'J' => 'Position Closure'));
 

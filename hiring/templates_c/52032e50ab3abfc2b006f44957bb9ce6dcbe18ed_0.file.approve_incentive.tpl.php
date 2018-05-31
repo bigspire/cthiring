@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-05-28 16:48:31
+/* Smarty version 3.1.29, created on 2018-05-31 15:30:02
   from "C:\xampp\htdocs\2017\ctsvn2\cthiring\hiring\templates\approve_incentive.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5b0be587bce5b0_73449987',
+  'unifunc' => 'content_5b0fc7a2a86962_20264497',
   'file_dependency' => 
   array (
     '52032e50ab3abfc2b006f44957bb9ce6dcbe18ed' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn2\\cthiring\\hiring\\templates\\approve_incentive.tpl',
-      1 => 1527506309,
+      1 => 1527760798,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5b0be587bce5b0_73449987 ($_smarty_tpl) {
+function content_5b0fc7a2a86962_20264497 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\2017\\ctsvn2\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -219,7 +219,6 @@ $_smarty_tpl->ext->_updateScope->updateScope($_smarty_tpl, 'hide', 0);?>
 &employee=<?php echo $_smarty_tpl->tpl_vars['employee']->value;?>
 " rel="tooltip" data-original-title="Sort by Ascending or Descending" class="<?php echo $_smarty_tpl->tpl_vars['sort_field_created_date']->value;?>
 ">Created</a></th>
-										<th width="70">Pending</th>
 										<th width="70" style="text-align:center">Actions</th>
 									</tr>
 
@@ -265,23 +264,17 @@ $__foreach_item_0_saved_local_item = $_smarty_tpl->tpl_vars['item'];
 										<td width="">-</td>									
 										<td width=""><?php echo $_smarty_tpl->tpl_vars['item']->value['created_date'];?>
 </td>
-										<?php if ($_smarty_tpl->tpl_vars['item']->value['is_approve'] == 'N') {?>
-										<td><?php echo $_smarty_tpl->tpl_vars['item']->value['pending'];?>
-</td>
-										<?php } else { ?>
-										<td></td>
-										<?php }?>
 										<?php if ($_smarty_tpl->tpl_vars['show_status']->value[$_smarty_tpl->tpl_vars['key']->value] == 'pass') {?>
 										<td class="actionItem" style="text-align:center">
 											<a href="view_approve_incentive.php?id=<?php echo $_smarty_tpl->tpl_vars['item']->value['id'];?>
-&emp_id=<?php echo $_smarty_tpl->tpl_vars['item']->value['employee_id'];?>
+&emp_id=<?php echo $_smarty_tpl->tpl_vars['item']->value['emp_id'];?>
 &status_id=<?php echo $_smarty_tpl->tpl_vars['item']->value['status_id'];?>
-" rel="tooltip" class="btn  btn-mini" title="Verify Billing"><i class="icon-edit"></i></a>
+" rel="tooltip" class="btn  btn-mini" title="Verify Incentive"><i class="icon-edit"></i></a>
 										</td>
 										<?php } else { ?>
 										<td class="actionItem" style="text-align:center">
 											<a href="view_approve_incentive.php?id=<?php echo $_smarty_tpl->tpl_vars['item']->value['id'];?>
-&emp_id=<?php echo $_smarty_tpl->tpl_vars['item']->value['employee_id'];?>
+&emp_id=<?php echo $_smarty_tpl->tpl_vars['item']->value['emp_id'];?>
 &status_id=<?php echo $_smarty_tpl->tpl_vars['item']->value['status_id'];?>
 " rel="tooltip" class="btn  btn-mini" title="Verified"><i class="icon-check"></i></a>
 										</td>

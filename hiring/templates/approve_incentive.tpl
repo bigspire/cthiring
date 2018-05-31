@@ -109,7 +109,6 @@
 										<th width="180"><a href="approve_incentive.php?field=eligible_incentive_amt&order={$order}&page={$smarty.get.page}&f_date={$f_date}&t_date={$t_date}&employee={$employee}" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="{$sort_field_eligible_incentive_amt}">Incentive Amount (In Rs.) </a></th>
 										<th width="100"><a href="approve_incentive.php?field=ytd&order={$order}&page={$smarty.get.page}&f_date={$f_date}&t_date={$t_date}&employee={$employee}" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="{$sort_field_contribution}">Individual Contribution - YTD (In Rs.)</a></th>
 										<th width="120"><a href="approve_incentive.php?field=created_date&order={$order}&page={$smarty.get.page}&f_date={$f_date}&t_date={$t_date}&employee={$employee}" rel="tooltip" data-original-title="Sort by Ascending or Descending" class="{$sort_field_created_date}">Created</a></th>
-										<th width="70">Pending</th>
 										<th width="70" style="text-align:center">Actions</th>
 									</tr>
 
@@ -130,18 +129,13 @@
 										
 										<td width="">-</td>									
 										<td width="">{$item.created_date}</td>
-										{if $item.is_approve eq 'N'}
-										<td>{$item.pending}</td>
-										{else}
-										<td></td>
-										{/if}
 										{if $show_status[$key] eq 'pass'}
 										<td class="actionItem" style="text-align:center">
-											<a href="view_approve_incentive.php?id={$item.id}&emp_id={$item.employee_id}&status_id={$item.status_id}" rel="tooltip" class="btn  btn-mini" title="Verify Billing"><i class="icon-edit"></i></a>
+											<a href="view_approve_incentive.php?id={$item.id}&emp_id={$item.emp_id}&status_id={$item.status_id}" rel="tooltip" class="btn  btn-mini" title="Verify Incentive"><i class="icon-edit"></i></a>
 										</td>
 										{else}
 										<td class="actionItem" style="text-align:center">
-											<a href="view_approve_incentive.php?id={$item.id}&emp_id={$item.employee_id}&status_id={$item.status_id}" rel="tooltip" class="btn  btn-mini" title="Verified"><i class="icon-check"></i></a>
+											<a href="view_approve_incentive.php?id={$item.id}&emp_id={$item.emp_id}&status_id={$item.status_id}" rel="tooltip" class="btn  btn-mini" title="Verified"><i class="icon-check"></i></a>
 										</td>
 										{/if}
 									</tr>
