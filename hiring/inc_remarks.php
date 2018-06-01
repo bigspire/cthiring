@@ -42,10 +42,10 @@ $created_date = $fun->current_date($date);
 // approve/reject status validation
 if($_GET['action'] == 'reject'){	
 	$status = 'R';
-	$mail_status = 'Rejected by';
+	$mail_status = 'Rejected';
 }elseif($_GET['action'] == 'approve'){
 	$status = 'A';
-	$mail_status = 'Approved by';
+	$mail_status = 'Approved';
 }
 
 if($error){ 
@@ -129,7 +129,7 @@ if($error){
 			}
 							
 			// query to insert reward user details.  
-			$query = "CALL add_inc_reward_users('".$_SESSION['inc_id']."', '".$approval_id."')";
+			$query = "CALL add_inc_reward_users('".$_SESSION['inc_id']."', '".$level2."')";
 			// Calling the function that makes the insert
 			try{
 				// calling mysql exe_query function
@@ -145,32 +145,31 @@ if($error){
 			}catch(Exception $e){
 				echo 'Caught exception: ',  $e->getMessage(), "\n";
 			}
-			
-			// get the L1 user details
-			$query = "CALL get_approval_user_by_id('".$_SESSION['user_id']."')";
-			try{
-				if(!$result = $mysql->execute_query($query)){
-					throw new Exception('Problem in getting approval user details');
-				}
-				// calling mysql fetch_result function
-				$obj = $mysql->display_result($result);
-				$level1_email = $obj['approval_email'];						
-				$level1_name = ucwords($obj['approval_user']);
-				// free the memory
-				$mysql->clear_result($result);
-				// call the next result
-				$mysql->next_query();
-			}catch(Exception $e){
-				echo 'Caught exception: ',  $e->getMessage(), "\n";
-			}	
-			
-			// send mail to level2
-			$sub = "Manage Hiring -  " .$level1_name." Approved Incentive Details";
-			$msg = $content->get_level2_incentive_details($_SESSION['incentive_data'],$level1_name,$level2_name);
-			$mailer->send_mail($sub,$msg,$level1_name,$level1_email,$level2_name,$level2_email);
-				
 		}
-		$_SESSION['user'];
+		
+		// get the L1 user details
+		$query = "CALL get_approval_user_by_id('".$_SESSION['user_id']."')";
+		try{
+			if(!$result = $mysql->execute_query($query)){
+				throw new Exception('Problem in getting approval user details');
+			}
+			// calling mysql fetch_result function
+			$obj = $mysql->display_result($result);
+			$level1_email = $obj['approval_email'];						
+			$level1_name = ucwords($obj['approval_user']);
+			// free the memory
+			$mysql->clear_result($result);
+			// call the next result
+			$mysql->next_query();
+		}catch(Exception $e){
+			echo 'Caught exception: ',  $e->getMessage(), "\n";
+		}	
+		
+		// send mail to level2
+		$sub = "Manage Hiring -  " .$level1_name.' '.$mail_status." Incentive Details";
+		$msg = $content->get_level2_incentive_details($_SESSION['incentive_data'],$mail_status,$level1_name,$level2_name);
+		$mailer->send_mail($sub,$msg,$level1_name,$level1_email,$level2_name,$level2_email);
+		
 		// is approved condition - when L1 or L2 rejects
 		if($status == 'R'){
 			$is_approved = 'Y';

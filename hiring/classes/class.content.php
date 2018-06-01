@@ -85,9 +85,10 @@ EOD;
 
 /* function to print the L2 incentive info html */
 
-	function get_level2_incentive_details($incentive_data,$user_name,$approval_user_name){
+	function get_level2_incentive_details($incentive_data,$mail_status,$user_name,$approval_user_name){
 	  $approval_user_name = ucwords($approval_user_name);
 	  $user_name = ucwords($user_name);
+	  $status = strtolower($mail_status);
 	  $content = <<< EOD
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -111,7 +112,7 @@ EOD;
       <tr>
         <td width="490" valign="top"  style="padding:0 20px;"><br><h1 style="font:bold 15px Arial, Helvetica, sans-serif; color:#676767; margin:0 0 10px 0;">Dear {$approval_user_name},</h1>
           <p style="font:13px Arial, Helvetica, sans-serif; color:#676767; margin:0;">
-		  {$user_name} has approved the incentive details of {$incentive_data['employee']}. Please login to Manage Hiring and approve the incentive.</p><br />
+		  {$user_name} has {$status} the incentive details of {$incentive_data['employee']}. Please login to Manage Hiring and approve the incentive.</p><br />
 		  
           <p style="font:bold 13px Arial, Helvetica, sans-serif; color:#676767; margin:0;">Please check the incentive details below,</p>
           <table width="100%" border="0" cellspacing="0" cellpadding="10" style="border:1px solid #ededed; font:bold 13px Arial, Helvetica, sans-serif; color:#6f6e6e; margin:10px 0 20px 0;">
