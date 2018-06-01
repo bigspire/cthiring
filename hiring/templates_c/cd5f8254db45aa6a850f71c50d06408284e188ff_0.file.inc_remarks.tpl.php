@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-05-31 15:54:55
+/* Smarty version 3.1.29, created on 2018-06-01 12:06:04
   from "C:\xampp\htdocs\2017\ctsvn2\cthiring\hiring\templates\inc_remarks.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5b0fcd773c0d38_23244502',
+  'unifunc' => 'content_5b10e954cd04f8_66621769',
   'file_dependency' => 
   array (
     'cd5f8254db45aa6a850f71c50d06408284e188ff' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn2\\cthiring\\hiring\\templates\\inc_remarks.tpl',
-      1 => 1527762032,
+      1 => 1527834900,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_5b0fcd773c0d38_23244502 ($_smarty_tpl) {
+function content_5b10e954cd04f8_66621769 ($_smarty_tpl) {
 ?>
 
    
@@ -51,12 +51,12 @@ function content_5b0fcd773c0d38_23244502 ($_smarty_tpl) {
             <div class="row-fluid">
 				 <div class="span12">
 				 		
-<form action="remarks.php?action=<?php echo $_GET['action'];?>
+<form action="inc_remarks.php?action=<?php echo $_GET['action'];?>
 " id="formID" class="formID" method="post" accept-charset="utf-8">
 	<div class="box">
 	<div class="box-title mb5">
 			<h4><?php echo ucfirst($_GET['action']);?>
- Billing </h4>
+ Incentive </h4>
 	</div>
 	<?php if ($_smarty_tpl->tpl_vars['alert_msg']->value) {?>
 				 <div id="flashMessage" class="alert alert-success"><button type="button" class="close" data-dismiss="alert">×</button><?php echo $_smarty_tpl->tpl_vars['alert_msg']->value;?>
@@ -132,7 +132,7 @@ echo $_POST['remarks'];
 
 <?php echo '<script'; ?>
  type="text/javascript">
-/* redirect to view billing page once approved / rejected successfully */
+/* redirect to view incentive page once approved / rejected successfully */
 self.parent.location.href = jQuery('.redirect_url').val();
 parent.$.colorbox.close();
 <?php echo '</script'; ?>

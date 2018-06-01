@@ -30,10 +30,10 @@
             <div class="row-fluid">
 				 <div class="span12">
 				 		
-<form action="remarks.php?action={$smarty.get.action}" id="formID" class="formID" method="post" accept-charset="utf-8">
+<form action="inc_remarks.php?action={$smarty.get.action}" id="formID" class="formID" method="post" accept-charset="utf-8">
 	<div class="box">
 	<div class="box-title mb5">
-			<h4>{$smarty.get.action|ucfirst} Billing </h4>
+			<h4>{$smarty.get.action|ucfirst} Incentive </h4>
 	</div>
 	{if $alert_msg}
 				 <div id="flashMessage" class="alert alert-success"><button type="button" class="close" data-dismiss="alert">×</button>{$alert_msg}</div>					
@@ -98,7 +98,7 @@
 {if $form_sent == '1'}
 {literal}
 <script type="text/javascript">
-/* redirect to view billing page once approved / rejected successfully */
+/* redirect to view incentive page once approved / rejected successfully */
 self.parent.location.href = jQuery('.redirect_url').val();
 parent.$.colorbox.close();
 </script>

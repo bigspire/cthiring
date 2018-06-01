@@ -539,7 +539,7 @@ class fun{
 		return $st;
 	}
 	
-		/* function used to upload the image */
+	/* function used to upload the image */
 	function  upload_file($src, $dest){	
 		if(!empty($src)){			
 			// copy the file to the image path			

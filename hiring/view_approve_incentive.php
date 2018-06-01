@@ -94,6 +94,7 @@ try{
 		throw new Exception('Problem in executing view billing page');
 	}
 	$row = $mysql->display_result($result);
+	$_SESSION['incentive_data'] = $row;
 	$smarty->assign('incentive_data',$row);
 	$smarty->assign('row',$row);
 	$created_date = $fun->convert_date_to_display($row['created_date']);

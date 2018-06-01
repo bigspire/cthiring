@@ -145,14 +145,32 @@ if($error){
 			}catch(Exception $e){
 				echo 'Caught exception: ',  $e->getMessage(), "\n";
 			}
-				
+			
+			// get the L1 user details
+			$query = "CALL get_approval_user_by_id('".$_SESSION['user_id']."')";
+			try{
+				if(!$result = $mysql->execute_query($query)){
+					throw new Exception('Problem in getting approval user details');
+				}
+				// calling mysql fetch_result function
+				$obj = $mysql->display_result($result);
+				$level1_email = $obj['approval_email'];						
+				$level1_name = ucwords($obj['approval_user']);
+				// free the memory
+				$mysql->clear_result($result);
+				// call the next result
+				$mysql->next_query();
+			}catch(Exception $e){
+				echo 'Caught exception: ',  $e->getMessage(), "\n";
+			}	
+			
 			// send mail to level2
-			$sub = "Manage Hiring -  " .$user_name." submitted Incentive details!";
-			$msg = $content->get_create_incentive_mail($_POST,$rows,$approval_user_name,$level2_name,$candidate_name);
-			$mailer->send_mail($sub,$msg,$approval_user_name,$approval_user_email,$level2_name,$level2_email);
+			$sub = "Manage Hiring -  " .$level1_name." Approved Incentive Details";
+			$msg = $content->get_level2_incentive_details($_SESSION['incentive_data'],$level1_name,$level2_name);
+			$mailer->send_mail($sub,$msg,$level1_name,$level1_email,$level2_name,$level2_email);
 				
 		}
-		
+		$_SESSION['user'];
 		// is approved condition - when L1 or L2 rejects
 		if($status == 'R'){
 			$is_approved = 'Y';
@@ -163,14 +181,14 @@ if($error){
 		}
 		
 		if($is_approved == 'Y'){
-			// query to insert is_approve details into billing table. 
+			// query to insert is_approve details into incentive table. 
 			$query = "CALL edit_incentive('".$is_approved."', '".$_SESSION['inc_id']."')";
 
 			// Calling the function that makes the insert
 			try{
 				// calling mysql exe_query function
 				if(!$result = $mysql->execute_query($query)){
-					throw new Exception('Problem in edit billing');
+					throw new Exception('Problem in edit incentive');
 				}
 				$row = $mysql->display_result($result);
 				$affected_rows = $row['affected_rows'];

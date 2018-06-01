@@ -85,10 +85,11 @@ EOD;
 
 /* function to print the L2 incentive info html */
 
-	function get_level2_incentive_details($form_data,$user_name,$approval_user_name,$modified_date){
+	function get_level2_incentive_details($incentive_data,$user_name,$approval_user_name){
 	  $approval_user_name = ucwords($approval_user_name);
 	  $user_name = ucwords($user_name);
 	  $content = <<< EOD
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -110,22 +111,21 @@ EOD;
       <tr>
         <td width="490" valign="top"  style="padding:0 20px;"><br><h1 style="font:bold 15px Arial, Helvetica, sans-serif; color:#676767; margin:0 0 10px 0;">Dear {$approval_user_name},</h1>
           <p style="font:13px Arial, Helvetica, sans-serif; color:#676767; margin:0;">
-		  The following Employee(s) Resume API is updated by {$user_name} . Please login to Manage Hiring and check the details.</p><br />
+		  {$user_name} has approved the incentive details of {$incentive_data['employee']}. Please login to Manage Hiring and approve the incentive.</p><br />
 		  
-          <p style="font:bold 13px Arial, Helvetica, sans-serif; color:#676767; margin:0;">Please check the details below,</p>
-           <table width="100%" border="0" cellspacing="2" cellpadding="10" style="border:1px solid #ededed; font:bold 13px Arial, Helvetica, sans-serif; color:#6f6e6e; margin:10px 0 20px 0;">
+          <p style="font:bold 13px Arial, Helvetica, sans-serif; color:#676767; margin:0;">Please check the incentive details below,</p>
+          <table width="100%" border="0" cellspacing="0" cellpadding="10" style="border:1px solid #ededed; font:bold 13px Arial, Helvetica, sans-serif; color:#6f6e6e; margin:10px 0 20px 0;">
 		   <tr style="background:#f5f4f4;">
-             	<td width="130">HTML2PDF Rocket API Key</td>
-              	<td style="color:#2a2a2a;">{$form_data['api_key']}</td>
-              	<td width="130">ILOVEPDF Secret Key</td>
-              	<td style="color:#2a2a2a;">{$form_data['secret_key']}</td>			
+             	<td style="color:#2a2a2a;" width="200">Employee Name</td>
+              	<td style="color:#2a2a2a;" width="200">Designation</td>	
+					<td style="color:#2a2a2a;">Amount</td>			
              </tr>
-             <tr style="background:#f5f4f4;">
-				<td width="100">ILOVEPDF Public Key</td>
-              	<td style="color:#2a2a2a;">{$form_data['public_key']}</td>	
-			  	<td width="100">Modified Date </td>
-              	<td style="color:#2a2a2a;">{$modified_date}</td>	
+			 <tr>
+              	<td width="">{$incentive_data['employee']}</td>
+              	<td> {$incentive_data['role_name']}</td>	
+				<td>Rs.{$incentive_data['eligible_incentive_amt']}</td>				
              </tr>
+			 
           </table>
 </td>
       </tr>
