@@ -249,6 +249,11 @@
 												 <li><a href="<?php echo $this->webroot;?>hiring/incentive.php">View Incentive</a></li>
 											<?php endif; ?>
 											
+											<?php if($approve_incentive == '1'):?> 
+												 <li><a href="<?php echo $this->webroot;?>hiring/approve_incentive.php">Approve Incentive</a></li>
+											<?php endif; ?>
+											
+											
 												 <!--li><a href="<?php echo $this->webroot;?>hiring/add_billing.php">Add Billing</a></li>
 												 <li><a href="<?php echo $this->webroot;?>hiring/billing.php">Search Billing</a></li>
 												 <li><a href="<?php echo $this->webroot;?>hiring/approve_billing.php">Approve Billing <!--span class="label-bub label-info white">20</span></a></li-->
