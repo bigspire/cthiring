@@ -245,6 +245,9 @@
 												{if $module['view_incentive'] eq '1'}
                                                 <li><a href="incentive.php">View Incentive</a></li>
 										   {/if}
+										   {if $module['approve_incentive'] eq '1'}
+                                                <li><a href="approve_incentive.php">Approve Incentive</a></li>
+										   {/if}
                                             </ul>
                                         </li>
 										{/if}
@@ -465,8 +468,13 @@
 										
 											
 											{if $module['manage_designation'] eq '1'}
-	
-												<li><a href="designation.php">Designation </a></li>
+											<li class="dropdown">
+													<a href="#">Designation <b class="caret-right"></b></a>
+													<ul class="dropdown-menu">
+														<li><a href="client_designation.php">Client Designation</a></li>
+														<li><a href="candidate_designation.php">Candidate Designation</a></li>													
+													</ul>
+											</li>
 											{/if}
 											
 											{if $module['manage_functional_area'] eq '1'}

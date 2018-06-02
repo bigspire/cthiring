@@ -1,9 +1,8 @@
 {* Purpose : To add incentive.
  Created : Nikitasa
    Date : 22-01-2017 *}
-   
 
-			{include file='include/header.tpl'}
+   {include file='include/header.tpl'}
 			
 			<!-- main content -->
             <div id="contentwrapper">

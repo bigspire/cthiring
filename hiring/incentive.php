@@ -201,7 +201,7 @@ try{
 		// function to print the excel data
 		$excelObj->printCell($data, $count,$col = array('A','B','C','D','E','F','G','H','I','J','K','L'), $field = array('employee','incentive_type',
 		'incent_period_display','productivity','interview_candidate','incentive_target_amt','achievement_amt',
-		'candidate_billed','eligible_incentive_amt','created_date','modified_date'),'Incentive_'.$current_date);
+		'candidate_billed','eligible_incentive_amt','','created_date','modified_date'),'Incentive_'.$current_date);
 	}	
 
 	// approve or reject validation

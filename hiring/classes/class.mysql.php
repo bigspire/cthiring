@@ -71,11 +71,11 @@ class mysql{
 	
 	public function auth_incentive_action($id,$st_id){ 
 		// get the incentive approval status		
-		$query = "call check_incentive_status('".$st_id."')";
+		$query = "call check_incentive_status('".$id."')";
 		$result = $this->execute_query($query);
 		$record = $this->display_result($result);	
 		// check the req belongs to the user
-		if($record['users_id'] == $_SESSION['user_id'] && $record['status'] == 'W'){	
+		if($record['status'] == 'W'){	
 			return 'pass';
 		}else{
 			return 'fail';

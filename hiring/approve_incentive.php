@@ -87,7 +87,7 @@ if($_SESSION['roles_id'] == '35'){
 }
 		
 // count the total no. of records
-$query = "CALL list_approve_incentive('".$employee."','".$type."','".$_SESSION['roles_id']."','".$from_date."','".$to_date."','0','0','','','".$_GET['action']."','".$cond."')";
+$query = "CALL list_approve_incentive('".$employee."','".$_SESSION['user_id']."','".$type."','".$_SESSION['roles_id']."','".$from_date."','".$to_date."','0','0','','','".$_GET['action']."','".$cond."')";
 try{
 	if(!$result = $mysql->execute_query($query)){
 		throw new Exception('Problem in executing count incentive page');
@@ -140,7 +140,7 @@ if($search_key = array_search($_GET['field'], $sort_fields)){
 }
 
 // fetch all records
-$query =  "CALL list_approve_incentive('".$employee."','".$type."','".$_SESSION['roles_id']."','".$from_date."','".$to_date."','$start','$limit','".$field."','".$order."','".$_GET['action']."','".$cond."')";
+$query =  "CALL list_approve_incentive('".$employee."','".$_SESSION['user_id']."','".$type."','".$_SESSION['roles_id']."','".$from_date."','".$to_date."','$start','$limit','".$field."','".$order."','".$_GET['action']."','".$cond."')";
 try{
 	if(!$result = $mysql->execute_query($query)){
 		throw new Exception('Problem in executing list incentive page');
@@ -154,6 +154,9 @@ try{
  		$data[$i]['period'] = '01'.'-'.$fun->convert_quater_month($obj['period']).'-'.$fun->convert_quater_year($obj['period']);
 		$data[$i]['created_date'] = $fun->convert_date_to_display($obj['created_date']);
 		$data[$i]['modified_date'] = $fun->convert_date_to_display($obj['modified_date']);
+ 		$data[$i]['pending'] = $fun->time_diff($obj['created_date'], $ago_str=0, 0);
+		$data[$i]['pending_status'] = $fun->billing_status($obj['st_status']);
+		$data[$i]['status'] = $fun->format_status($obj['st_status'],$obj['st_created'],$obj['st_user'],$obj['st_modified']);
 		$data[$i]['incentive_type'] = $obj['incentive_type'] == 'I' ? 'PS & I' : 'PC'; //$fun->check_incentive_type($obj['incentive_type']);
 		$data[$i]['incent_type'] = $obj['incentive_type'];
 		if($data[$i]['incent_type'] == 'J' && $data[$i]['incent_type'] != 'I'){
@@ -195,19 +198,20 @@ try{
 	if($_GET['action'] == 'export'){ 
 		include('classes/class.excel.php');
 		$excelObj = new libExcel();
-		// function to print the excel header
+		
 		$excelObj->printHeader($header = array('Employee','Type','Period','Productivity %','No. of Candidates Interviewed','Min. Performance Target (In Rs.)',
 		'Actual Individual Contribution (In Rs.)','No. of Candidates Billed','Incentive Amt. (In Rs.)','Individual Contribution - YTD (In Rs.)',
-		'Created') ,$col = array('A','B','C','D','E','F','G','H','I','J','K'));  
+		'Created','Status','Pending') ,$col = array('A','B','C','D','E','F','G','H','I','J','K','L','M'));  
 		// function to print the excel data
-		$excelObj->printCell($data, $count,$col = array('A','B','C','D','E','F','G','H','I','J','K'), $field = array('employee','incentive_type',
+		$excelObj->printCell($data, $count,$col = array('A','B','C','D','E','F','G','H','I','J','K','L','M'), $field = array('employee','incentive_type',
 		'incent_period_display','productivity','interview_candidate','incentive_target_amt','achievement_amt',
-		'candidate_billed','eligible_incentive_amt','created_date'),'Approve Incentive_'.$current_date);
-	}	
+		'candidate_billed','eligible_incentive_amt','','created_date','pending_status','pending'),'Approve Incentive_'.$current_date);
+	
+	}
 	
 	// check the status of the billing for approval
 	if(!empty($data)){
-		foreach($data as $record){
+		foreach($data as $record){ 
 			$mysql->next_query();
 			$show_st = $mysql->auth_incentive_action($record['id'], $record['status_id']);
 			$status_id[] = $show_st;				

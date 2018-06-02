@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-05-29 14:32:33
+/* Smarty version 3.1.29, created on 2018-06-02 12:23:45
   from "C:\xampp\htdocs\2017\ctsvn2\cthiring\hiring\templates\include\header.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5b0d1729d33e61_83003572',
+  'unifunc' => 'content_5b123ef9501314_65749057',
   'file_dependency' => 
   array (
     'da3aecccc003a75c9d8f86c2815864aaa9da7602' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn2\\cthiring\\hiring\\templates\\include\\header.tpl',
-      1 => 1527584543,
+      1 => 1527922415,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_5b0d1729d33e61_83003572 ($_smarty_tpl) {
+function content_5b123ef9501314_65749057 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -305,37 +305,49 @@ resume/">View Resume <!-- span class="label-bub label-info white"><?php echo $_s
 												<?php if ($_smarty_tpl->tpl_vars['module']->value['view_incentive'] == '1') {?>
                                                 <li><a href="incentive.php">View Incentive</a></li>
 										   <?php }?>
+										   <?php if ($_smarty_tpl->tpl_vars['module']->value['approve_incentive'] == '1') {?>
+                                                <li><a href="approve_incentive.php">Approve Incentive</a></li>
+										   <?php }?>
                                             </ul>
                                         </li>
 										<?php }?>
 										
-										<?php if ($_smarty_tpl->tpl_vars['module']->value['recruiter_report'] == '1' || $_smarty_tpl->tpl_vars['module']->value['account_holder_report'] == '1' || $_smarty_tpl->tpl_vars['module']->value['location_report'] == '1' || $_smarty_tpl->tpl_vars['module']->value['failure_report'] == '1' || $_smarty_tpl->tpl_vars['module']->value['revenue_report'] == '1' || $_smarty_tpl->tpl_vars['module']->value['tat_report'] == '1' || $_smarty_tpl->tpl_vars['module']->value['collection_report'] == '1' || $_smarty_tpl->tpl_vars['module']->value['client_retention_report'] == '1' || $_smarty_tpl->tpl_vars['module']->value['incentive_report'] == '1' || $_smarty_tpl->tpl_vars['module']->value['daily_report'] == '1' || $_smarty_tpl->tpl_vars['module']->value['weekly_report'] == '1') {?>
+										
+										
+										<?php if ($_smarty_tpl->tpl_vars['module']->value['client_wise_cv_status'] == '1' || $_smarty_tpl->tpl_vars['module']->value['ctc_wise_monthly_opening'] == '1') {?>
 										<li class="dropdown <?php echo $_smarty_tpl->tpl_vars['report_menu']->value;?>
 ">
                                             <a data-toggle="dropdown" class="dropdown-toggle " href="#"><i class="icon-download-alt icon-white"></i> Reports <b class="caret"></b></a>
                                           <ul class="dropdown-menu">
 										  
-										  
+										 <?php if ($_smarty_tpl->tpl_vars['module']->value['ctc_wise_monthly_opening'] == '1') {?> 
 										   <li class="dropdown">
 													<a href="#">CTC Wise Monthly Openings Handled <b class="caret-right"></b></a>
 													<ul class="dropdown-menu">
-														<li><a href="openings_handled_1a.php">CTC Wise Monthly Openings Handled</a></li>
-														<li><a href="openings_handled_1b.php">CTC Wise Client Openings Handled</a></li>
-														<li><a href="openings_handled_1c.php">Month Wise Client Openings Handled</a></li>														
+														<li><a href="#">CTC Wise Monthly Openings Handled</a></li>
+														<li><a href="#">CTC Wise Client Openings Handled</a></li>
+														<li><a href="#">Month Wise Client Openings Handled</a></li>														
 													</ul>
 											</li>
+										<?php }?>
 											
-									
+									 <?php if ($_smarty_tpl->tpl_vars['module']->value['client_wise_cv_status'] == '1') {?> 
 											   <li class="dropdown">
 													<a href="#">CV Status <b class="caret-right"></b></a>
 													<ul class="dropdown-menu">
-														<li><a href="#">CTC Wise CV Status</a></li>
-														<li><a href="#">Client Wise CV Status</a></li>
-														<li><a href="#">Month Wise CV Status</a></li>														
+														<!--li><a href="#">CTC Wise CV Status</a></li-->
+														
+														 <?php if ($_smarty_tpl->tpl_vars['module']->value['client_wise_cv_status'] == '1') {?> 
+														<li><a href="<?php echo webroot;?>
+report/client_wise_cv_status/">Client Wise CV Status</a></li>
+														<?php }?>
+														<!--li><a href="#">Month Wise CV Status</a></li-->														
 													</ul>
 											</li>
-											
-											   <li class="dropdown">
+										<?php }?>
+
+										
+											   <!--li class="dropdown">
 													<a href="#">TAKT Time <b class="caret-right"></b></a>
 													<ul class="dropdown-menu">
 														<li><a href="#">CTC Wise Average TAKT Time</a></li>
@@ -420,7 +432,7 @@ resume/">View Resume <!-- span class="label-bub label-info white"><?php echo $_s
 														<li><a href="#">Client Wise</a></li>
 
 													</ul>
-											</li>
+											</li-->
 											
 											
 											<!--
@@ -520,8 +532,13 @@ resume/">View Resume <!-- span class="label-bub label-info white"><?php echo $_s
 										
 											
 											<?php if ($_smarty_tpl->tpl_vars['module']->value['manage_designation'] == '1') {?>
-	
-												<li><a href="designation.php">Designation </a></li>
+											<li class="dropdown">
+													<a href="#">Designation <b class="caret-right"></b></a>
+													<ul class="dropdown-menu">
+														<li><a href="client_designation.php">Client Designation</a></li>
+														<li><a href="candidate_designation.php">Candidate Designation</a></li>													
+													</ul>
+											</li>
 											<?php }?>
 											
 											<?php if ($_smarty_tpl->tpl_vars['module']->value['manage_functional_area'] == '1') {?>

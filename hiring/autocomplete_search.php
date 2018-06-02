@@ -332,12 +332,38 @@ elseif($_GET['page'] == 'list_eligibility'){
    }catch(Exception $e){
 		echo 'Caught exception: ',  $e->getMessage(), "\n";
    }
-}elseif($_GET['page'] == 'list_designation'){
-	// get matched data from designation
-	$query = "CALL search_designation('".$keyword."')";
+}elseif($_GET['page'] == 'list_client_designation'){
+	// get matched data from client designation
+	$query = "CALL search_designation('".$keyword."','CL')";
 	try{	
 		if(!$result = $mysql->execute_query($query)){
-			throw new Exception('Problem in executing designation page');
+			throw new Exception('Problem in executing client designation page');
+		}
+		// iterate until get the matched results
+		while($obj = $mysql->display_result($result)){
+			$data[] = strtolower($fun->match_results($keyword,$obj['designation']));		
+		}
+		
+		// filter the duplicate values
+		$unique_result = array_unique($data);	
+		// display the search results
+		foreach($unique_result as $res){
+			if(!empty($res)){ 
+				$unique[] = $res;
+			}
+		}
+		
+		// free the memory
+		$mysql->clear_result($result);		
+   }catch(Exception $e){
+		echo 'Caught exception: ',  $e->getMessage(), "\n";
+   }
+}elseif($_GET['page'] == 'list_candidate_designation'){
+	// get matched data from candidate designation
+	$query = "CALL search_designation('".$keyword."','CA')";
+	try{	
+		if(!$result = $mysql->execute_query($query)){
+			throw new Exception('Problem in executing candidate designation page');
 		}
 		// iterate until get the matched results
 		while($obj = $mysql->display_result($result)){
