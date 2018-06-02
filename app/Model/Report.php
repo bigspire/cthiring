@@ -28,17 +28,17 @@ class Report extends AppModel {
 	public $useTable = 'requirements';	
 	  
 	
-	
+	/*
 	public $hasOne = array(		
 		'ReqResume' => array(
             'className'  => 'ReqResume',
 			'foreignKey' => 'requirements_id',
-			'conditions' => array('stage_title not like' => 'Validation%', 'status_title not like' => 'Pending')
+			// 'conditions' => array('stage_title not like' => 'Validation%', 'status_title not like' => 'Pending')
         )
 	);
 	
 	  
-	
+	*/
 	
 
 	
