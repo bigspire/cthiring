@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-05-31 14:13:31
+/* Smarty version 3.1.29, created on 2018-06-02 12:23:45
   from "C:\xampp\htdocs\2017\ctsvn2\cthiring\hiring\templates\include\header.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5b0fb5b3dbb7b5_09702847',
+  'unifunc' => 'content_5b123ef9501314_65749057',
   'file_dependency' => 
   array (
     'da3aecccc003a75c9d8f86c2815864aaa9da7602' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn2\\cthiring\\hiring\\templates\\include\\header.tpl',
-      1 => 1527756195,
+      1 => 1527922415,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_5b0fb5b3dbb7b5_09702847 ($_smarty_tpl) {
+function content_5b123ef9501314_65749057 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -532,8 +532,13 @@ report/client_wise_cv_status/">Client Wise CV Status</a></li>
 										
 											
 											<?php if ($_smarty_tpl->tpl_vars['module']->value['manage_designation'] == '1') {?>
-	
-												<li><a href="designation.php">Designation </a></li>
+											<li class="dropdown">
+													<a href="#">Designation <b class="caret-right"></b></a>
+													<ul class="dropdown-menu">
+														<li><a href="client_designation.php">Client Designation</a></li>
+														<li><a href="candidate_designation.php">Candidate Designation</a></li>													
+													</ul>
+											</li>
 											<?php }?>
 											
 											<?php if ($_smarty_tpl->tpl_vars['module']->value['manage_functional_area'] == '1') {?>
