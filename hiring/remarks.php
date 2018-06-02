@@ -184,7 +184,36 @@ if($error){
 			}catch(Exception $e){
 				echo 'Caught exception: ',  $e->getMessage(), "\n";
 			}
+			
+			
+			// getting business head details
+			$bh_role_id = '39';
+			// query to fetch approval user id. 
+			$query = "CALL get_inc_approval_user('".$bh_role_id."')";
+			try{
+				// calling mysql exe_query function
+				if(!$result = $mysql->execute_query($query)){
+					throw new Exception('Problem in getting approval user details');
+				}
+				$row = $mysql->display_result($result);
+				$bh_email = $row['email_id'];
+				$bh_name = $row['approval_name'];
+				// free the memory
+				$mysql->clear_result($result);
+				// call the next result
+				$mysql->next_query();
+			}catch(Exception $e){
+				echo 'Caught exception: ',  $e->getMessage(), "\n";
+			}
 				
+			// send mail to business head if he/she is not L1
+			if($_SESSION['user_id'] != $row['approval_id']){		
+				// send mail to business head
+				$sub = "Manage Hiring -  " .$user_name." submitted billing details!";
+				$msg = $content->get_create_billing_mail($_POST,$rows,$user_name,$bh_name,$candidate_name);
+				$mailer->send_mail($sub,$msg,$user_name,$user_email,$bh_name,$bh_email);
+			}
+			
 			// send mail to level2
 			$sub = "Manage Hiring -  " .$user_name." submitted billing details!";
 			$msg = $content->get_create_billing_mail($_POST,$rows,$user_name,$level2_name,$candidate_name);
@@ -219,7 +248,35 @@ if($error){
 				$mysql->next_query();
 			}catch(Exception $e){
 				echo 'Caught exception: ',  $e->getMessage(), "\n";
-			}		
+			}
+
+			// getting director details
+			$bh_role_id = '33';
+			// query to fetch approval user id. 
+			$query = "CALL get_inc_approval_user('".$bh_role_id."')";
+			try{
+				// calling mysql exe_query function
+				if(!$result = $mysql->execute_query($query)){
+					throw new Exception('Problem in getting approval user details');
+				}
+				$row = $mysql->display_result($result);
+				$bh_email = $row['email_id'];
+				$bh_name = $row['approval_name'];
+				// free the memory
+				$mysql->clear_result($result);
+				// call the next result
+				$mysql->next_query();
+			}catch(Exception $e){
+				echo 'Caught exception: ',  $e->getMessage(), "\n";
+			}
+				
+			// send mail to director if he/she is not L2
+			if($_SESSION['user_id'] != $row['approval_id']){		
+				// send mail to business head
+				$sub = "Manage Hiring -  " .$user_name." submitted billing details!";
+				$msg = $content->get_create_billing_mail($_POST,$rows,$user_name,$bh_name,$candidate_name);
+				$mailer->send_mail($sub,$msg,$user_name,$user_email,$bh_name,$bh_email);
+			}
 		}
 		
 		// get total requirements

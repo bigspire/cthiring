@@ -30,16 +30,16 @@ class fun{
 			if (in_array($module, $format_per)) { 	
 				switch($module){
 					case 1:		
-					$mod['create_client'] = 1;
+					$mod['add_client'] = 1;
 					break;					
 					case 2:					
-					$mod['view_client'] = 1;
+					$mod['client'] = 1;
 					break;						
 					case 4:					
-					$mod['create_position'] = 1;
+					$mod['add_position'] = 1;
 					break;					
 					case 5:					
-					$mod['view_position'] = 1;
+					$mod['position'] = 1;
 					break;
 					case 7:					
 					$mod['create_resume'] = 1;
@@ -49,9 +49,6 @@ class fun{
 					break;
 					case 10:					
 					$mod['view_interview'] = 1;
-					break;	
-					case 11:					
-					$mod['view_approve_incentive'] = 1;
 					break;	
 					case 15:					
 					$mod['approve_incentive'] = 1;
@@ -157,6 +154,9 @@ class fun{
 					break;
 					case 52:					
 					$mod['manage_qualification'] = 1;
+					break;
+					case 50:					
+					$mod['view_event'] = 1;
 					break;
 				}				
 			}

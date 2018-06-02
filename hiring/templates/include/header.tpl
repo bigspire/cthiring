@@ -137,12 +137,17 @@
 											 {if $module['create_my_leaves'] eq '1'}
 												<li><a href="{webroot}leave/add/">Create Leave</a></li>
 											 {/if}
-											 {if $module['view_my_leaves'] eq '1'}
-											    <li><a href="{webroot}leave/">View Leave</a></li>
-											 {/if}
 											 {if $module['approve_my_leaves'] eq '1'}
 											    <li><a href="{webroot}leave/index/pending/">Approve Leave
 												{if $approve_leave_count}<span class="label-bub label-info white">{$approve_leave_count}</span>{/if}</a></li>{/if}
+												
+											 {if $module['view_my_leaves'] eq '1'}
+											    <li><a href="{webroot}leave/">View Leave</a></li>
+											 {/if}
+											 {if $module['view_event'] eq '1'}
+											    <li><a href="{webroot}event/">View Event</a></li>
+											 {/if}
+											 
                                             </ul>
                                         </li>
 										{/if}
@@ -154,14 +159,15 @@
 										  <li class="{$col_count_client} dropdown <?php echo $fun->set_menu_active(array('add_client','edit_client','client','view_client','client_contact','add_client_contact','edit_client_contact'));?>">
                                             <a data-toggle="dropdown" class="dropdown-toggle " href="#"><i class="icon-user icon-white"></i> Clients {* if $client_count *}<!--span class="label-bub label-info bubble">{* $client_count *}</span-->{* /if *}<b class="caret"></b></a>
 											  <ul class="dropdown-menu">
-											  {if $module['create_client'] eq '1'}
-                                                <li><a href="{webroot}client/add/">Create Client</a></li>
+											  
+											  {if $module['add_client'] eq '1'}
+                                                <li><a href="{webroot}client/add/">Add Client</a></li>
 											  {/if}
-                                               {if $module['view_client'] eq '1'}
-												<li><a href="{webroot}client/">View Client {* if $client_count *}<!--span class="label-bub label-info white">{$client_count}</span-->{* /if *}</a></li>
-											    {/if}
 												{if $module['approve_client'] eq '1'}
 												<li><a href="{webroot}client/index/pending/">Approve Client {if $approve_client_count}<span class="label-bub label-info white">{$approve_client_count}</span>{/if}</a></li>
+											    {/if}
+												{if $module['client'] eq '1'}
+												<li><a href="{webroot}client/">View Client {* if $client_count *}<!--span class="label-bub label-info white">{$client_count}</span-->{* /if *}</a></li>
 											    {/if}
 												<!-- <li><a href="add_client_contact.php">Add Client Contact</a></li>-->
 												<!--  <li><a href="client_contact.php">Search Client Contact</a></li>-->
@@ -174,14 +180,16 @@
 										  <li class="<?php echo $fun->set_menu_active(array('position','view_position','add_position','edit_position'));?>  dropdown {$col_count_position}">
                                             <a  data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icon-list-alt icon-white"></i> Positions {* if $position_count *}<!--span class="label-bub label-info bubble">{* $position_count *}</span-->{* /if *}<b class="caret"></b></a>
                                              <ul class="dropdown-menu">
-											 {if $module['create_position'] eq '1'}
-                                                <li><a href="{webroot}position/add/">Create Position</a></li>
+											  
+											 {if $module['add_position'] eq '1'}
+                                                <li><a href="{webroot}position/add/">Add Position</a></li>
 											 {/if}
-											 {if $module['view_position'] eq '1'}
-                                                <li><a href="{webroot}position/">View Position {if $position_count}<span class="label-bub label-info white">{$position_count}</span>{/if}</a></li>
-											  {/if}
+											
 											  {if $module['approve_position'] eq '1'}
-                                                <li><a href="{webroot}position/index/pending/">Approve Position {if $approve_position_count}<span class="label-bub label-info white">{$approve_position_count}</span>{/if}</a></li>
+                                                <li><a href="{webroot}position/index/pending/">Accept Position {if $approve_position_count}<span class="label-bub label-info white">{$approve_position_count}</span>{/if}</a></li>
+											  {/if}
+											  {if $module['position'] eq '1'}
+                                                <li><a href="{webroot}position/">View Position {if $position_count}<span class="label-bub label-info white">{$position_count}</span>{/if}</a></li>
 											  {/if}
 										   </ul>
                                         </li>
@@ -226,6 +234,13 @@
                                         
                                             <a data-toggle="dropdown" class="dropdown-toggle " href="#"><i class="icon-file icon-white"></i> Performance <b class="caret"></b> {* if $module['approve_billing'] eq '1' and $approve_billing_count *}<!-- span class="label-bub label-info white">{$approve_billing_count}</span>{* /if *}<b class="caret"></b--></a>
                                            <ul class="dropdown-menu">
+										    {if $module['approve_billing'] eq '1'}
+												 
+												 {* if $approve_billing_count *}
+												 <li><a href="approve_billing.php">Approve Billing {if $approve_billing_count}
+												 <span class="label-bub label-info white">{$approve_billing_count}</span>{/if}</a></li>
+												{* /if *} 
+												{/if}
 										   {if $module['view_billing'] eq '1'}
 												<li><a href="billing.php">View Billing</a></li>
 										   {/if}
@@ -235,19 +250,13 @@
 												 <!-- li><a href="add_billing.php">Add Billing</a></li-->
 												{* /if *}
 												
-												 {if $module['approve_billing'] eq '1'}
-												 
-												 {* if $approve_billing_count *}
-												 <li><a href="approve_billing.php">Approve Billing {if $approve_billing_count}
-												 <span class="label-bub label-info white">{$approve_billing_count}</span>{/if}</a></li>
-												{* /if *} 
-												{/if}
+												 {if $module['approve_incentive'] eq '1'}
+                                                <li><a href="approve_incentive.php">Approve Incentive</a></li>
+										   {/if}
 												{if $module['view_incentive'] eq '1'}
                                                 <li><a href="incentive.php">View Incentive</a></li>
 										   {/if}
-										   {if $module['approve_incentive'] eq '1'}
-                                                <li><a href="approve_incentive.php">Approve Incentive</a></li>
-										   {/if}
+										  
                                             </ul>
                                         </li>
 										{/if}
@@ -445,6 +454,10 @@
                                             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
 											<i class="icon-cog icon-white"></i> Settings <b class="caret"></b></a>
                                           <ul class="dropdown-menu">
+										  {if $module['manage_functional_area'] eq '1'}
+	
+												<li><a href="functional_area.php">Functional Area</a></li>
+											{/if}
 										  {if $module['manage_qualification'] eq '1'}
                                            <li class="dropdown">
 													<a href="#">Qualification <b class="caret-right"></b></a>
@@ -454,7 +467,15 @@
 													</ul>
 												</li>
 											{/if}
-											
+											{if $module['manage_designation'] eq '1'}
+											<li class="dropdown">
+													<a href="#">Designation <b class="caret-right"></b></a>
+													<ul class="dropdown-menu">
+														<li><a href="client_designation.php">Client Designation</a></li>
+														<li><a href="candidate_designation.php">Candidate Designation</a></li>													
+													</ul>
+											</li>
+											{/if}
 											 {if $module['manage_contact_branch'] eq '1'}
                                            <li class="dropdown">
 													<a href="#">Branch <b class="caret-right"></b></a>
@@ -465,38 +486,20 @@
 												</li>
 											{/if}
 											
-										
-											
-											{if $module['manage_designation'] eq '1'}
-											<li class="dropdown">
-													<a href="#">Designation <b class="caret-right"></b></a>
-													<ul class="dropdown-menu">
-														<li><a href="client_designation.php">Client Designation</a></li>
-														<li><a href="candidate_designation.php">Candidate Designation</a></li>													
-													</ul>
-											</li>
-											{/if}
-											
-											{if $module['manage_functional_area'] eq '1'}
-	
-												<li><a href="functional_area.php">Functional Area</a></li>
-											{/if}
-											
-											{if $module['api_keys'] eq '1'}
-											<li><a href="view_resume_api.php">API Keys</a></li>
-											{/if}
-											
-											{if $module['manage_grade'] eq '1'}
-                                                <li><a href="grade.php">Grade {* if $grade_count *}<!-- span class="label-bub label-info white">{$grade_count}</span-->{* /if *}</a></li>
-											{/if}
-											{if $module['manage_users'] eq '1'}
+										{if $module['manage_users'] eq '1'}
                                                 <li><a href="users.php">Users {* if $users_count *}<!--span class="label-bub label-info white">{$users_count}</span-->{* /if *}</a></li>
-											{/if}											
+											{/if}
+											
+											
 											{if $module['manage_role'] eq '1'}
 	
 												<li><a href="roles.php">Roles [Access] {* if $roles_count *}<!--pan class="label-bub label-info white">{$roles_count}</span-->{* /if *}</a></li>
 											{/if}
 											
+											
+											{if $module['api_keys'] eq '1'}
+											<li><a href="view_resume_api.php">API Keys</a></li>
+											{/if}
 											{if $module['manage_mailer_template'] eq '1'}
 												<li class="dropdown">
 													<a href="#">Mailer Templates <b class="caret-right"></b></a>
@@ -507,6 +510,11 @@
 													</ul>
 												</li>
 											{/if}
+											
+																						
+											
+											
+											
 											
 											{if $module['manage_incentive'] eq '1'}
                                            <li class="dropdown">
@@ -522,7 +530,9 @@
 													</ul>
 												</li>
 											{/if}
-											
+											{* if $module['manage_grade'] eq '1' *}
+                                                <!--li><a href="grade.php">Grade {* if $grade_count *}<!-- span class="label-bub label-info white">{$grade_count}</span-->{* /if *}</a></li-->
+											{* /if *}
 											
 
                                             </ul>
