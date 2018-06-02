@@ -208,13 +208,17 @@ class PositionController extends AppController {
 		if($this->params->query['keyword'] != ''){
 			$keyCond = array("MATCH (Client.client_name,job_title,Creator.first_name) AGAINST ('".$this->Functions->format_search_keyword($this->params->query['keyword'])."' IN BOOLEAN MODE)"); 
 		}
+		
 		// for client contact condition
 		if($contact_id != ''){ 
-			$contactCond = array('Position.client_contact_id' => $contact_id);
+			$contactCond = array('Position.client_contact_id' => $contact_id);			
+			
+		
 			$this->set('noHead', '1');
 			$date_cond = array('or' => array("DATE_FORMAT(ReqResume.created_date, '%Y-%m-%d') between ? and ?" => 
 					array($this->Functions->format_date_save($start), $this->Functions->format_date_save($end_search))));
-		
+			
+			
 			//unset($date_cond);
 			
 		}
@@ -267,23 +271,42 @@ class PositionController extends AppController {
 		$this->request->query['to'] = $end;
 		// for iframe in report
 		if($this->request->query['iframe'] == '1'){
-			$this->set('noHead', '1');
-			$date_cond = array('or' => array("DATE_FORMAT(ReqResume.created_date, '%Y-%m-%d') between ? and ?" => 
-					array($this->Functions->format_date_save($start), $this->Functions->format_date_save($end_search))));
+			$clientCond = array('Position.clients_id' => $this->request->params['pass'][1]);
+			$teamCond = '';
+			$roleCond = '';
+			$date_cond = '';
+			$branchCond = '';
+			$empCond = '';
+			$req_team_cond = '';
+			$contactCond = '';
+			$approveCond = '';			
+			$keyCond = '';
+			$stCond = '';
 			
+			$this->set('noHead', '1');
+			//$date_cond = array('or' => array("DATE_FORMAT(ReqResume.created_date, '%Y-%m-%d') between ? and ?" => 
+				//	array($this->Functions->format_date_save($start), $this->Functions->format_date_save($end_search))));
+			
+			// condition for the resume or position status from reportings
+			switch($this->request->params['pass'][0]){
+				case 'ow':
+				break;
+				
+			}
 		}
+		
+		
 		// for export
 		if($this->request->query['action'] == 'export'){
 			$data = $this->Position->find('all', array('fields' => $fields,'conditions' => 
-			array('Position.is_deleted' => 'N',
-		'Resume.is_deleted' => 'N',$keyCond,$date_cond,$branchCond,$empCond,$stCond,$teamCond,$contactCond,$clientCond,$roleCond,$approveCond,$req_team_cond), 
+			array('Position.is_deleted' => 'N',	'Resume.is_deleted' => 'N',$keyCond,$date_cond,$branchCond,$empCond,$stCond,$teamCond, $clientCond,$roleCond,$approveCond,$req_team_cond,$contactCond), 
 			'order' => array('created_date' => 'desc'), 'group' => array('Position.id'), 'joins' => $options));
 			$this->Excel->generate('positions', $data, $data, 'Report', 'PositionDetails'.date('dmy'));
 		}
 		
 		$this->paginate = array('fields' => $fields,'limit' => '25','conditions' => array('Position.is_deleted' => 'N',
 		$keyCond,$approveCond,$date_cond,$branchCond,$empCond,$stCond,
-		$contactCond,$teamCond,$clientCond,$roleCond,$req_team_cond),
+		$teamCond,$clientCond,$roleCond,$req_team_cond,$contactCond),
 		'order' => array('created_date' => 'desc'),	'group' => array('Position.id'), 'joins' => $options);
 		$data = $this->paginate('Position');
 		$this->set('data', $data);

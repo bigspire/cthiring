@@ -1,6 +1,6 @@
 <style>
 .main_content {
-    padding: 64px 30px 30px;
+    /*  padding: 64px 30px 30px; */
     background: #fff;
     border-left: 1px solid transparent;
     margin-left: 240px;
@@ -16,9 +16,8 @@
 background:#f2f2f2
 }
 .main_content {
-    padding: 50px 30px 30px;
+    /* padding: 50px 30px 30px; */
 }
-#ctc_wise{cursor: grab}
 </style>
 
 
@@ -222,7 +221,7 @@ background:#f2f2f2
 										<div class="accordion-body collapse" id="collapse11">
 											<div class="accordion-inner">
 												<ul class="nav nav-list">
-													<li><a href="javascript:void(0)">Recuiter Wise</a></li>
+													<li><a href="javascript:void(0)">Recruiter Wise</a></li>
 													<li><a href="javascript:void(0)">Client Wise</a></li>
 												</ul>
 												

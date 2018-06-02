@@ -342,6 +342,9 @@ class AppController extends Controller {
 					case 52:					
 					$this->set('setting_qualify', 1);
 					break;
+					case 15:					
+					$this->set('approve_incentive', 1);
+					break;
 				}				
 			}
 		}

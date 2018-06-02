@@ -184,7 +184,7 @@
 												</a></a></li>
 												 <?php endif; ?>
 												  <?php if($approve_position == '1'):?>
-                                                <li><a href="<?php echo $this->webroot;?>position/index/pending/">Approve Position 
+                                                <li><a href="<?php echo $this->webroot;?>position/index/pending/">Accept Position 
 												<?php if($APPR_REQ_COUNT):?>
 												<span class="label-bub label-info white"><?php echo $APPR_REQ_COUNT;?></span>
 												<?php endif; ?>
@@ -248,6 +248,11 @@
 											<?php if($view_incentive == '1'):?> 
 												 <li><a href="<?php echo $this->webroot;?>hiring/incentive.php">View Incentive</a></li>
 											<?php endif; ?>
+											
+											<?php if($approve_incentive == '1'):?> 
+												 <li><a href="<?php echo $this->webroot;?>hiring/approve_incentive.php">Approve Incentive</a></li>
+											<?php endif; ?>
+											
 											
 												 <!--li><a href="<?php echo $this->webroot;?>hiring/add_billing.php">Add Billing</a></li>
 												 <li><a href="<?php echo $this->webroot;?>hiring/billing.php">Search Billing</a></li>
