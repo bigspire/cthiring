@@ -214,7 +214,7 @@
 			<?php echo $this->Form->input('designation_#index#', array('div'=> false,'type' => 'select', 'label' => false, 'id' => 'desig_#index#',
 		'class' => 'span8', 'empty' => 'Select', 'required' => false, 'placeholder' => '', 
 		'style' => "clear:left", 'options' => $desigList, 'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 
-			<a href="<?php echo $this->webroot;?>hiring/add_designation.php?action=dropdown" rel="desig_#index#" class="iframeBox clearDesig" val="40_55">Add New</a>
+			<a href="<?php echo $this->webroot;?>hiring/add_client_designation.php?action=dropdown" rel="desig_#index#" class="iframeBox clearDesig" val="40_55">Add New</a>
 			<input type="hidden" name="fr_desig" id="fr_desig" class="test">	
 				<div id="desigErrData_#index#" class="error"></div>
 			

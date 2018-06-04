@@ -1439,7 +1439,7 @@ try{
 }
 
 // query to fetch all designation. 
-$query = 'CALL get_designation()';
+$query = "CALL get_designation('CA')";
 try{
 	// calling mysql exe_query function
 	if(!$result = $mysql->execute_query($query)){
