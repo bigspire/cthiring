@@ -144,7 +144,7 @@ try{
 	if(!$result = $mysql->execute_query($query)){
 		throw new Exception('Problem in executing get permissions');
 	}
-	while($row = $mysql->display_result($result)){
+	while($row = $mysql->display_result($result)){ 
 		$data[$row['id']] = $row['type'] == 'C' ? 'Add '.$row['module_name'] : ($row['type'] == 'V' ? 'View '.$row['module_name'] : ($row['type'] == 'D' ? 'Delete '.$row['module_name'] : ($row['type'] == 'V' ? 'View '.$row['module_name'] : $row['type'])));	
 		if($row['is_last'] == '1'){	
 			$module_name =  $row['module_name'];

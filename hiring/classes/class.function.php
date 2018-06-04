@@ -32,14 +32,20 @@ class fun{
 					case 1:		
 					$mod['add_client'] = 1;
 					break;					
-					case 2:					
+					case 3:					
 					$mod['client'] = 1;
-					break;						
+					break;	
+					case 2:					
+					$mod['approve_client'] = 1;
+					break;					
 					case 4:					
 					$mod['add_position'] = 1;
 					break;					
 					case 5:					
 					$mod['position'] = 1;
+					break;
+					case 38:					
+					$mod['approve_position'] = 1;
 					break;
 					case 7:					
 					$mod['create_resume'] = 1;
@@ -50,14 +56,14 @@ class fun{
 					case 10:					
 					$mod['view_interview'] = 1;
 					break;	
-					case 15:					
-					$mod['approve_incentive'] = 1;
+					case 13:					
+					$mod['create_incentive'] = 1;
 					break;					
 					case 14:					
 					$mod['view_incentive'] = 1;
 					break;
-					case 13:					
-					$mod['create_incentive'] = 1;
+					case 15:					
+					$mod['approve_incentive'] = 1;
 					break;
 					case 17:					
 					$mod['client_wise_cv_status'] = 1;
@@ -119,12 +125,8 @@ class fun{
 					case 37:					
 					$mod['approve_billing'] = 1;
 					break;
-					case 38:					
-					$mod['approve_position'] = 1;
-					break;
-					case 39:					
-					$mod['approve_client'] = 1;
-					break;
+					
+					
 					case 40:					
 					$mod['manage_designation'] = 1;
 					break;
@@ -149,15 +151,15 @@ class fun{
 					case 49:					
 					$mod['create_todays_plan'] = 1;
 					break;
+					case 50:					
+					$mod['view_event'] = 1;
+					break;
 					case 51:					
 					$mod['api_keys'] = 1;
 					break;
 					case 52:					
 					$mod['manage_qualification'] = 1;
-					break;
-					case 50:					
-					$mod['view_event'] = 1;
-					break;
+					break;	
 				}				
 			}
 		}
