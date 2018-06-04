@@ -283,6 +283,7 @@ class PositionController extends AppController {
 			$keyCond = '';
 			$stCond = '';
 			
+			
 			$this->set('noHead', '1');
 			//$date_cond = array('or' => array("DATE_FORMAT(ReqResume.created_date, '%Y-%m-%d') between ? and ?" => 
 				//	array($this->Functions->format_date_save($start), $this->Functions->format_date_save($end_search))));
@@ -293,6 +294,10 @@ class PositionController extends AppController {
 				break;
 				
 			}
+			
+			$this->set('sticky', '');
+		}else{	
+			$this->set('sticky', 'stickyTable');
 		}
 		
 		
@@ -310,7 +315,7 @@ class PositionController extends AppController {
 		'order' => array('created_date' => 'desc'),	'group' => array('Position.id'), 'joins' => $options);
 		$data = $this->paginate('Position');
 		$this->set('data', $data);
-		if(empty($data) && !empty($this->request->data)){
+		if(empty($data) && empty($this->request->data)){
 			$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Oops! No Positions Found!', 'default', array('class' => 'alert alert-info'));
 		}
 		

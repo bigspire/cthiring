@@ -480,12 +480,19 @@
 												<?php endif; ?>	
 												
 												
+												 <?php if($manage_desig == '1'):?> 												
+												<li class="dropdown">
+													<a href="#">Designation <b class="caret-right"></b></a>
+													<ul class="dropdown-menu">
+														<li><a href="<?php echo $this->webroot;?>hiring/client_designation.php">Client Designation</a></li>
+														<li><a href="<?php echo $this->webroot;?>hiring/candidate_designation.php">Candidate Designation</a></li>													
+													</ul>
+												</li>
 												
-											
-											<?php if($manage_desig == '1'):?> 
-                                                <li><a href="<?php echo $this->webroot;?>hiring/designation.php">Designation <!--span class="label-bub label-info white">102</span--></a></li>
+												
 												<?php endif; ?>	
 												
+								
 												<?php if($functional_area == '1'):?> 
                                                 <li><a href="<?php echo $this->webroot;?>hiring/functional_area.php">Functional Area <!--span class="label-bub label-info white">102</span--></a></li>
 												<?php endif; ?>	

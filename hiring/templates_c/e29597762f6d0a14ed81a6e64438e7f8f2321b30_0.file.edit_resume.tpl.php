@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-04-13 10:28:45
+/* Smarty version 3.1.29, created on 2018-06-04 11:50:41
   from "C:\xampp\htdocs\ctsvn\cthiring\hiring\templates\edit_resume.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5ad03905e08085_02832566',
+  'unifunc' => 'content_5b14da39b22525_49460935',
   'file_dependency' => 
   array (
     'e29597762f6d0a14ed81a6e64438e7f8f2321b30' => 
     array (
       0 => 'C:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\templates\\edit_resume.tpl',
-      1 => 1523463866,
+      1 => 1523613142,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5ad03905e08085_02832566 ($_smarty_tpl) {
+function content_5b14da39b22525_49460935 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -441,12 +441,12 @@ echo $_POST['native_location'];
 										<option value="">Select</option>	
 											<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['desig_name']->value),$_smarty_tpl);?>
 															
-										</select>  <a href="add_designation.php?action=dropdown" rel="desig_#index#" class="iframeBox clearDesig" val="40_55">Add New</a>
+										</select>    <a href="add_designation.php?action=dropdown" rel="desig_#index#" class="iframeBox clearDesig" val="40_55">Add New</a>
 										<label for="reg_city" generated="true" class="error"id="desig_Err_#index#" ></label>	
 										<input type="hidden" name="fr_desig" id="fr_desig" class="test">				
-<section id="similar_rows" class="col-xs-12 col-sm-6 col-md-12">
+										<section id="similar_rows" class="col-xs-12 col-sm-6 col-md-12">
 
-</section>										
+										</section>										
 										</td> 
 							</tr>
 								<tr>

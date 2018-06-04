@@ -270,8 +270,7 @@ class ReportController extends AppController {
 				array('table' => 'req_team',
 					'alias' => 'ReqTeam',					
 					'type' => 'LEFT',
-					'conditions' => array('`ReqTeam`.`requirements_id` = `Report`.`id`'),
-					'ReqTeam.is_approve !=' => array('S','R')
+					'conditions' => array('`ReqTeam`.`requirements_id` = `Report`.`id`')
 				),
 				array('table' => 'clients',
 					'alias' => 'Client',				
@@ -281,8 +280,14 @@ class ReportController extends AppController {
 			);		
 			
 			$opening_worked[] = $this->Report->find('all', array('fields' => array("sum(ReqTeam.no_req) no_job"), 'conditions' => array('Report.status' => 'A',
-			'Client.id' => $id), 'group' => array('Report.id'), 'joins' => $options));
+			'Client.id' => $id,	'ReqTeam.is_approve !=' => array('S','R')),  'joins' => $options));
 			
+			/*
+			echo '<pre>'; 
+			echo $id; 	echo '<br>';
+			print_r($opening_worked);
+			echo '<br>';
+			*/
 			// get all the cv sent details of the client positions
 			
 			$this->loadModel('ReqResumeStatus');
@@ -406,7 +411,7 @@ class ReportController extends AppController {
 			
 		}
 
-
+		// die;
 
 		// assign all the counts
 		$this->set('OPENING_WORKED', $opening_worked);

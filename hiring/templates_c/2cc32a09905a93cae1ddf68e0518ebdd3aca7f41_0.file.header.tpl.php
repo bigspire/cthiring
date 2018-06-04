@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-05-29 18:03:47
+/* Smarty version 3.1.29, created on 2018-06-04 11:45:28
   from "C:\xampp\htdocs\ctsvn\cthiring\hiring\templates\include\header.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5b0d48abc3e680_99037818',
+  'unifunc' => 'content_5b14d900865725_32861818',
   'file_dependency' => 
   array (
     '2cc32a09905a93cae1ddf68e0518ebdd3aca7f41' => 
     array (
       0 => 'C:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\templates\\include\\header.tpl',
-      1 => 1527597217,
+      1 => 1527938863,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_5b0d48abc3e680_99037818 ($_smarty_tpl) {
+function content_5b14d900865725_32861818 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -305,6 +305,9 @@ resume/">View Resume <!-- span class="label-bub label-info white"><?php echo $_s
 												<?php if ($_smarty_tpl->tpl_vars['module']->value['view_incentive'] == '1') {?>
                                                 <li><a href="incentive.php">View Incentive</a></li>
 										   <?php }?>
+										   <?php if ($_smarty_tpl->tpl_vars['module']->value['approve_incentive'] == '1') {?>
+                                                <li><a href="approve_incentive.php">Approve Incentive</a></li>
+										   <?php }?>
                                             </ul>
                                         </li>
 										<?php }?>
@@ -529,8 +532,13 @@ report/client_wise_cv_status/">Client Wise CV Status</a></li>
 										
 											
 											<?php if ($_smarty_tpl->tpl_vars['module']->value['manage_designation'] == '1') {?>
-	
-												<li><a href="designation.php">Designation </a></li>
+											<li class="dropdown">
+													<a href="#">Designation <b class="caret-right"></b></a>
+													<ul class="dropdown-menu">
+														<li><a href="client_designation.php">Client Designation</a></li>
+														<li><a href="candidate_designation.php">Candidate Designation</a></li>													
+													</ul>
+											</li>
 											<?php }?>
 											
 											<?php if ($_smarty_tpl->tpl_vars['module']->value['manage_functional_area'] == '1') {?>

@@ -183,75 +183,75 @@
 										$ow_total += $OPENING_WORKED[$j][0][0]['no_job'];
 										echo $OPENING_WORKED[$j][0][0]['no_job'] ? $OPENING_WORKED[$j][0][0]['no_job'] : '0';?></a></td>
 										
-										<td style="text-align:center"><a class="iframeBox" href="<?php echo $this->webroot;?>position/index/cvs/<?php echo $id; ?>/?iframe=1" val="90_80">
+										<td style="text-align:center"><a class="iframeBox" href="<?php echo $this->webroot;?>resume/index/cvs/<?php echo $id; ?>/?iframe=1" val="90_80">
 										<?php $sent_total += $CV_SENT[$j];
 										echo $CV_SENT[$j] ? $CV_SENT[$j] : '0';?></a></td>
 										
-										<td style="text-align:center"><a class="iframeBox" href="<?php echo $this->webroot;?>position/index/short/<?php echo $id; ?>/?iframe=1" val="90_80">
+										<td style="text-align:center"><a class="iframeBox" href="<?php echo $this->webroot;?>resume/index/short/<?php echo $id; ?>/?iframe=1" val="90_80">
 										<?php $shortlist_total += $CV_SHORTLIST[$j];
 										echo $CV_SHORTLIST[$j] ? $CV_SHORTLIST[$j] : '0';?></a></td>
 										
 										
-										<td style="text-align:center"><a class="iframeBox" href="<?php echo $this->webroot;?>position/index/cvr/<?php echo $id; ?>/?iframe=1" val="90_80">
+										<td style="text-align:center"><a class="iframeBox" href="<?php echo $this->webroot;?>resume/index/cvr/<?php echo $id; ?>/?iframe=1" val="90_80">
 										<?php $reject_total += $CV_REJECT[$j];
 										echo $CV_REJECT[$j] ? $CV_REJECT[$j] : '0';?></a></td>
 										
-										<td style="text-align:center"><a class="iframeBox" href="<?php echo $this->webroot;?>position/index/fba/<?php echo $id; ?>/?iframe=1" val="90_80">
+										<td style="text-align:center"><a class="iframeBox" href="<?php echo $this->webroot;?>resume/index/fba/<?php echo $id; ?>/?iframe=1" val="90_80">
 										<?php $feedback_total += $FEEDBACK_AWAITING[$j];
 										echo $FEEDBACK_AWAITING[$j] ? $FEEDBACK_AWAITING[$j] : '0';?></a></td>
 										
-										<td style="text-align:center"><a class="iframeBox" href="<?php echo $this->webroot;?>position/index/ia/<?php echo $id; ?>/?iframe=1" val="90_80">										
+										<td style="text-align:center"><a class="iframeBox" href="<?php echo $this->webroot;?>resume/index/ia/<?php echo $id; ?>/?iframe=1" val="90_80">										
 										<?php $interview_await_total += $INTERVIEW_AWAITING[$j];
 										echo $INTERVIEW_AWAITING[$j] ? $INTERVIEW_AWAITING[$j] : '0';?>
 										</a></td>
 										
-										<td style="text-align:center"><a class="iframeBox" href="<?php echo $this->webroot;?>position/index/pia/<?php echo $id; ?>/?iframe=1" val="90_80">
+										<td style="text-align:center"><a class="iframeBox" href="<?php echo $this->webroot;?>resume/index/pia/<?php echo $id; ?>/?iframe=1" val="90_80">
 										<?php $prili_interview_attend_total += $PRILIMINARY_INTERVIEW_ATTEND[$j];
 										echo $PRILIMINARY_INTERVIEW_ATTEND[$j] ? $PRILIMINARY_INTERVIEW_ATTEND[$j] : '0';?>
 										</a></td>
 										
 										
-										<td style="text-align:center"><a class="iframeBox" href="<?php echo $this->webroot;?>position/index/fi/<?php echo $id; ?>/?iframe=1" val="90_80">
+										<td style="text-align:center"><a class="iframeBox" href="<?php echo $this->webroot;?>resume/index/fi/<?php echo $id; ?>/?iframe=1" val="90_80">
 										<?php $final_interview_total += $FINAL_INTERVIEW_ATTEND[$j];
 										echo $FINAL_INTERVIEW_ATTEND[$j] ? $FINAL_INTERVIEW_ATTEND[$j] : '0';?>
 										</a></td>
 						
-										<td style="text-align:center"><a class="iframeBox" href="<?php echo $this->webroot;?>position/index/op/<?php echo $id; ?>/" val="90_80">
+										<td style="text-align:center"><a class="iframeBox" href="<?php echo $this->webroot;?>resume/index/op/<?php echo $id; ?>/" val="90_80">
 										<?php $op_total += $OFFER_PENDING[$j];
 										echo $OFFER_PENDING[$j] ? $OFFER_PENDING[$j] : '0';?></a></td>
 										
-										<td style="text-align:center"><a class="iframeBox" href="<?php echo $this->webroot;?>position/index/oa/<?php echo $id; ?>/?iframe=1" val="90_80">
+										<td style="text-align:center"><a class="iframeBox" href="<?php echo $this->webroot;?>resume/index/oa/<?php echo $id; ?>/?iframe=1" val="90_80">
 										<?php $oa_total += $OFFER_ACCEPT[$j];
 										echo $OFFER_ACCEPT[$j] ? $OFFER_ACCEPT[$j] : '0';?></a></td>
 										
-										<td style="text-align:center"><a class="iframeBox" href="<?php echo $this->webroot;?>position/index/or/<?php echo $id; ?>/" val="90_80">
+										<td style="text-align:center"><a class="iframeBox" href="<?php echo $this->webroot;?>resume/index/or/<?php echo $id; ?>/" val="90_80">
 										<?php $or_total += $OFFER_REJECT[$j];
 										echo $OFFER_REJECT[$j] ? $OFFER_REJECT[$j] : '0';?></a></td>
 										
 																
-										<td style="text-align:center"><a class="iframeBox" href="<?php echo $this->webroot;?>position/index/jp/<?php echo $id; ?>/?iframe=1" val="90_80">
+										<td style="text-align:center"><a class="iframeBox" href="<?php echo $this->webroot;?>resume/index/jp/<?php echo $id; ?>/?iframe=1" val="90_80">
 										<?php $jp_total += $JOIN_PENDING[$j];
 										echo $JOIN_PENDING[$j] ? $JOIN_PENDING[$j] : '0';?></a></td>
 										
-										<td style="text-align:center"><a class="iframeBox" href="<?php echo $this->webroot;?>position/index/ja/<?php echo $id; ?>/?iframe=1" val="90_80">
+										<td style="text-align:center"><a class="iframeBox" href="<?php echo $this->webroot;?>resume/index/ja/<?php echo $id; ?>/?iframe=1" val="90_80">
 										<?php $ja_total += $JOIN_ACCEPT[$j];
 										echo $JOIN_ACCEPT[$j] ? $JOIN_ACCEPT[$j] : '0';?></a></td>
 																												
 
-										<td style="text-align:center"><a class="iframeBox" href="<?php echo $this->webroot;?>position/index/nj/<?php echo $id; ?>/?iframe=1" val="90_80">
+										<td style="text-align:center"><a class="iframeBox" href="<?php echo $this->webroot;?>resume/index/nj/<?php echo $id; ?>/?iframe=1" val="90_80">
 										<?php $nj_total += $NOT_JOIN[$j];
 										echo $NOT_JOIN[$j] ? $NOT_JOIN[$j] : '0';?></a></td>
 
 																																								
-										<td style="text-align:center"><a class="iframeBox" href="<?php echo $this->webroot;?>position/index/jd/<?php echo $id; ?>/?iframe=1" val="90_80">
+										<td style="text-align:center"><a class="iframeBox" href="<?php echo $this->webroot;?>resume/index/jd/<?php echo $id; ?>/?iframe=1" val="90_80">
 										<?php $jd_total += $JOIN_DEFER[$j];
 										echo $JOIN_DEFER[$j] ? $JOIN_DEFER[$j] : '0';?></a></td>
 										
-										<td style="text-align:center"><a class="iframeBox" href="<?php echo $this->webroot;?>position/index/nb/<?php echo $id; ?>/?iframe=1" val="90_80">
+										<td style="text-align:center"><a class="iframeBox" href="<?php echo $this->webroot;?>resume/index/nb/<?php echo $id; ?>/?iframe=1" val="90_80">
 										<?php $not_bill_total += $NOT_BILLED[$j];
 										echo $NOT_BILLED[$j] ? $NOT_BILLED[$j] : '0';?></a></td>
 										
-										<td style="text-align:center"><a class="iframeBox" href="<?php echo $this->webroot;?>position/index/bil/<?php echo $id; ?>/?iframe=1" val="90_80">
+										<td style="text-align:center"><a class="iframeBox" href="<?php echo $this->webroot;?>resume/index/bil/<?php echo $id; ?>/?iframe=1" val="90_80">
 										<?php $bill_total += $BILLED[$j];
 										echo $BILLED[$j] ? $BILLED[$j] : '0';?></a></td>
 														
