@@ -766,7 +766,7 @@ class ClientController extends AppController {
 		// fetch the designation
 		$this->loadModel('Designation');
 		$desig_list = $this->Designation->find('list', array('fields' => array('id','designation'),
-		'order' => array('designation ASC'),'conditions' => array('is_deleted' => 'N', 'status' => '1')));
+		'order' => array('designation ASC'),'conditions' => array('is_deleted' => 'N', 'status' => '1', 'Designation.desig_type' => 'CL')));
 		$this->set('desigList', $desig_list);
 		// fetch the projects		
 		/*

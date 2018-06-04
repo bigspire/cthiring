@@ -287,12 +287,28 @@
 														<!--li><a href="#">CTC Wise CV Status</a></li-->
 														  <?php if($client_wise_cv_status == '1'):?>
 														<li><a href="<?php echo $this->webroot;?>report/client_wise_cv_status/">Client Wise CV Status</a></li>
+														<li><a href="<?php echo $this->webroot;?>report/month_wise_cv_status/">Month Wise CV Status</a></li>
+														
+
 														<?php endif; ?>
 														<!--li><a href="#">Month Wise CV Status</a></li-->														
 													</ul>
-											</li>
-											<?php endif; ?>
-											
+												</li>
+										<?php endif; ?>
+										
+										<?php if($client_wise_cv_status == '1'):?>
+											   <li class="dropdown">
+													<a href="#">CV Status <b class="caret-right"></b></a>
+													<ul class="dropdown-menu">
+														<!--li><a href="#">CTC Wise CV Status</a></li-->
+														  <?php if($client_wise_cv_status == '1'):?>
+														<li><a href="<?php echo $this->webroot;?>report/client_wise_cv_status/">Client Wise CV Status</a></li>
+														<?php endif; ?>
+														<!--li><a href="#">Month Wise CV Status</a></li-->														
+													</ul>
+												</li>
+										<?php endif; ?>
+										
 											
 											   <!--li class="dropdown">
 													<a href="#">TAKT Time <b class="caret-right"></b></a>
