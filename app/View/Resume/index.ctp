@@ -189,7 +189,7 @@
 							
 <?php endif; ?>	
 
-						<table class="table table-striped table-bordered dataTable stickyTable">
+						<table class="table table-striped table-bordered dataTable <?php echo $sticky;?>">
 								<thead>
 									<tr>
 										<th width="90"><?php echo $this->Paginator->sort('id', 'Code', array('escape' => false, 'direction' => 'desc'));?></th>
@@ -210,7 +210,9 @@
 										
 										<th width="90px" style="text-align:center">Actions</th>
 										<th width="75"><?php echo $this->Paginator->sort('created_date', 'Created', array('escape' => false, 'direction' => 'desc'));?></th>
+										<?php if($this->request->query['iframe'] != '1'):?>
 										<th width="75"><?php echo $this->Paginator->sort('modified_date', 'Modified', array('escape' => false, 'direction' => 'desc'));?></th>
+										<?php endif; ?>
 										
 									</tr>
 								</thead>
@@ -221,7 +223,9 @@
 									<?php foreach($data as $res):?>
 									<tr>
 										<td>
-										<a  href="<?php echo $this->webroot;?>resume/view/<?php echo $res['Resume']['id'];?>/"><?php 
+										
+											<?php if(!empty($noHead)): $target = "target='_blank'"; endif;?>
+										<a  <?php echo $target;?> href="<?php echo $this->webroot;?>resume/view/<?php echo $res['Resume']['id'];?>/"><?php 
 										if($res['Resume']['code']):
 										echo $res['Resume']['code'];
 										else:										
@@ -306,8 +310,9 @@
 </div>										
 										</td>
 <td><?php echo $this->Functions->format_date($res['Resume']['created_date']);?></td>
+<?php if($this->request->query['iframe'] != '1'):?>
 										<td><?php echo $this->Functions->format_date($res['Resume']['modified_date']);?></td>
-											
+	<?php endif; ?>										
 									</tr>
 								<?php endforeach; ?>
 								</tbody>

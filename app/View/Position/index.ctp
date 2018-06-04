@@ -125,7 +125,7 @@
 					
 							
 <?php endif; ?>				
-							<table class="table table-striped table-bordered dataTable stickyTable">
+							<table class="table table-striped table-bordered dataTable <?php echo $sticky;?>">
 								<thead>
 									<tr>
 
@@ -148,7 +148,9 @@
 										<th width="80"><?php echo $this->Paginator->sort('created_date', 'Created', array('escape' => false, 'direction' => 'desc', 'rel' => 'tooltip', 'title' => 'Sort by Ascending or Descending'));?></th>
 										<th width="80"><?php echo $this->Paginator->sort('modified_date', 'Modified', array('escape' => false, 'direction' => 'desc', 'rel' => 'tooltip', 'title' => 'Sort by Ascending or Descending'));?></th>
 										<!--th width="60" style="text-align:center">Message</th-->
+										<?php if($this->request->query['iframe'] != '1'):?>
 										<th width="50" style="text-align:center">Actions</th>
+										<?php endif; ?>
 									</tr>
 								</thead>
 
@@ -220,7 +222,10 @@
 									<span class="label label-important unreadCount"><?php echo $req[0]['read_count'];?></span>
 									<?php endif; ?>
 						</th-->
-									
+						
+
+<?php if($this->request->query['iframe'] != '1'):?>
+						
 	<td class="actionItem" style="text-align:center">
 	<?php if($req['Position']['status'] == 'A'  &&  $this->Session->read('USER.Login.id') == $req['Position']['created_by']):?>
 	<a href="<?php echo $this->webroot;?>position/edit/<?php echo $req['Position']['id'];?>/" class="btn  btn-mini"  rel="tooltip" class="sepV_a" title="Edit Position"><i class="icon-pencil"></i></a>
@@ -232,7 +237,8 @@
 	
 	
 		</td>
-								</tr>
+		
+<?php endif; ?>								</tr>
 								<?php endforeach; ?>
 								</tbody>
 							</table>

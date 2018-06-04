@@ -226,8 +226,24 @@ class ResumeController extends AppController {
 		// for iframe in report
 		if($this->request->query['iframe'] == '1'){
 			$this->set('noHead', '1');
+			$date_cond = '';
+			$keyCond = '';
+			$minCond = '';			
+			$maxCond = '';
+			$int_cond = '';
+			$empCond = '';
+			$branchCond = '';
+			$statusCond = '';
+			$repStatusCond = '';
+			$teamCond = '';
+			$specCond = '';	
+			$this->set('sticky', '');
 			//$empCond = array('ReqResumeStatus.created_by' => $this->request->query['emp_id']);
+		}else{	
+			$this->set('sticky', 'stickyTable');
 		}
+		
+		
 		// interview condition
 		if($this->request->query['int_from'] != '' || $this->request->query['int_to'] != ''){
 			$int_start = $this->request->query['int_from'] ? $this->request->query['int_from'] : date('d/m/Y', strtotime('-6 months'));
