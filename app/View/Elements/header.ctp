@@ -289,27 +289,52 @@
 														<li><a href="<?php echo $this->webroot;?>report/client_wise_cv_status/">Client Wise CV Status</a></li>
 														<li><a href="<?php echo $this->webroot;?>report/month_wise_cv_status/">Month Wise CV Status</a></li>
 														
-
+														
 														<?php endif; ?>
 														<!--li><a href="#">Month Wise CV Status</a></li-->														
 													</ul>
 												</li>
 										<?php endif; ?>
 										
-										<?php if($client_wise_cv_status == '1'):?>
+										<?php if($productivity_report == '1'):?>
 											   <li class="dropdown">
-													<a href="#">CV Status <b class="caret-right"></b></a>
+													<a href="#">Productivity <b class="caret-right"></b></a>
 													<ul class="dropdown-menu">
-														<!--li><a href="#">CTC Wise CV Status</a></li-->
-														  <?php if($client_wise_cv_status == '1'):?>
-														<li><a href="<?php echo $this->webroot;?>report/client_wise_cv_status/">Client Wise CV Status</a></li>
-														<?php endif; ?>
-														<!--li><a href="#">Month Wise CV Status</a></li-->														
+														<li><a href="<?php echo $this->webroot;?>report/employee_productivity/">Employee Productivity</a></li>
 													</ul>
 												</li>
 										<?php endif; ?>
 										
-											
+										
+										
+										
+											<?php if($biz_conversion_report == '1'):?>
+											   <li class="dropdown">
+													<a href="#">Business Conversion <b class="caret-right"></b></a>
+													<ul class="dropdown-menu">
+													
+													<?php if($biz_conversion_report == '1'):?>
+														<li><a href="<?php echo $this->webroot;?>report/employee_business_conversion/">Employee Business Conversion</a></li>
+													<?php endif; ?>	
+													
+													</ul>
+												</li>
+										<?php endif; ?>
+										
+										
+										<?php if($recruiter_bill_report == '1'):?>
+											   <li class="dropdown">
+													<a href="#">Recruiter Wise Billing <b class="caret-right"></b></a>
+													<ul class="dropdown-menu">													
+													<?php if($recruiter_bill_report == '1'):?>
+														<li><a href="<?php echo $this->webroot;?>report/recruiter_wise_billing/">Recruiter Wise Billing</a></li>
+													<?php endif; ?>	
+													
+													</ul>
+												</li>
+										<?php endif; ?>
+										
+										
 											   <!--li class="dropdown">
 													<a href="#">TAKT Time <b class="caret-right"></b></a>
 													<ul class="dropdown-menu">

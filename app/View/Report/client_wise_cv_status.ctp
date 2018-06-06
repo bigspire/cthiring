@@ -53,7 +53,7 @@
 							Role: 
 							
 							
-							<?php echo $this->Form->input('role_id', array('div'=> false,'type' => 'select', 'label' => false, 'class' => 'input-medium', 'empty' => 'Select', 
+							<?php echo $this->Form->input('role_id', array('div'=> false,'type' => 'select', 'id' => 'role', 'label' => false, 'class' => 'load_employee input-medium', 'empty' => 'Select', 
 	'selected' => $this->params->query['role_id'], 'required' => false, 'placeholder' => '', 'style' => "clear:left", 'options' => $roleList)); ?> 
 
 							</label>
@@ -65,15 +65,15 @@
 							
 												
 							
-							<label>
-							Branch: 
-					<?php echo $this->Form->input('branch_id', array('div'=> false,'type' => 'select', 'label' => false, 'class' => 'input-medium', 'empty' => 'Select', 
+		<label>
+			Branch: 
+					<?php echo $this->Form->input('branch_id', array('div'=> false,'type' => 'select', 'label' => false, 'id' => 'loc', 'class' => 'load_employee input-medium', 'empty' => 'Select', 
 	'selected' => $this->params->query['branch_id'], 'required' => false, 'placeholder' => '', 'style' => "clear:left", 'options' => $locList)); ?> 
 			</label>
 							
 							
 														<label>Employee: 
-							<?php echo $this->Form->input('emp_id', array('div'=> false,'type' => 'select', 'label' => false, 'class' => 'input-medium', 'empty' => 'Select', 
+							<?php echo $this->Form->input('emp_id', array('div'=> false,'type' => 'select', 'label' => false, 'class' => 'load_emp input-medium', 'empty' => 'Select', 
 	'selected' => $this->params->query['emp_id'], 'required' => false, 'placeholder' => '', 'style' => "clear:left", 'options' => $empList)); ?> 
 
 							</label>
@@ -102,7 +102,7 @@
 					
 <input type="hidden" name="data[srchSubmit]" id="srchSubmit"/>
 <input type="hidden" value="1" id="SearchKeywords">
-<input type="hidden" value="home/" id="webroot">	
+<input type="hidden" value="<?php echo $this->webroot;?>report/get_employee/" id="webroot">	
 <input type="hidden" name="data[type]" id="type"/>	
 					
 						</form>

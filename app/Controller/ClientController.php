@@ -584,7 +584,7 @@ class ClientController extends AppController {
 					*/					
 					
 					// get the Business Head
-					$leader_data = $this->Client->Creator->find('all', array('conditions' => array('roles_id' => '35'), 'fields' => array('Creator.id',	'Creator.first_name','Creator.last_name', 'Creator.email_id')));
+					$leader_data = $this->Client->Creator->find('all', array('conditions' => array('roles_id' => '39'), 'fields' => array('Creator.id',	'Creator.first_name','Creator.last_name', 'Creator.email_id')));
 					
 					// get account holder name				
 					

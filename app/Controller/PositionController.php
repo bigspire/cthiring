@@ -1172,7 +1172,9 @@ class PositionController extends AppController {
 						// if record approved
 						if($status == 'A'){
 							// get the team member user id							
-							$approval_data = $this->Approve->find('first', array('fields' => array('level2'), 'conditions'=> array('Approve.users_id' => $member_data['PositionStatus']['member_id'])));
+							// $approval_data = $this->Approve->find('first', array('fields' => array('level2'), 'conditions'=> array('Approve.users_id' => $member_data['PositionStatus']['member_id'])));
+							
+							/*
 							// make sure level 2 is not empty
 							if(!empty($approval_data['Approve']['level2'])){
 								// check level 2 is not empty and its not the same user
@@ -1214,6 +1216,8 @@ class PositionController extends AppController {
 									
 								}
 							}else{
+							
+							*/
 								// update  status
 								
 								$this->Position->id = $req_id;
@@ -1279,10 +1283,10 @@ class PositionController extends AppController {
 							}
 							*/
 							
-						}			
+						}		
 						
 					}else{
-						$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert-error">&times;</button>Problem in updating the status', 'default', array('class' => 'alert alert-error'));		
+						$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert-error">&times;</button>Problem in submitting the form. Pls check the errors', 'default', array('class' => 'alert alert-error'));		
 					}
 					$this->set('action_status', $approve_msg);
 					$this->set('form_status', '1');
@@ -1319,7 +1323,7 @@ class PositionController extends AppController {
 					}
 					*/
 
-				}
+				
 			}
 		}
 	}
@@ -2183,7 +2187,7 @@ class PositionController extends AppController {
 	public function schedule_interview($id, $pos_id, $req_res_id,$interview_level,$schedule_type, $multi_sel){
 		$this->layout = 'framebox';
 		// validate the fields
-		if(!empty($id) && !empty($pos_id)){		
+		if(!empty($id) && !empty($pos_id)){
 			// get interview levels
 			$int_levels = array('First Interview', 'Second Interview', 'Third Interview', 'Forth Interview', 'Final Interview');
 			$this->set('int_levels', $int_levels);
@@ -2301,9 +2305,85 @@ class PositionController extends AppController {
 				$can_name .= ucwords($exp['Resume']['first_name'].' '.$exp['Resume']['last_name']).', ';
 			}
 			$int_table .= "</table>";
+			
+			
+			
+			/* logics created for multiple selection of candidates for interview schedule / reschedule */
+		
+			foreach($cand_data as $key => $exp){
+				$int_table_form .= "<table  width='100%' border='0' cellspacing='2' cellpadding='5' style='border:1px solid #ededed; border-left:none; padding:10px; font:bold 13px Arial'>";
+				$int_table_form .= "<tr><td>Candidate Name</td><td>Interview Level</td><td>Interview Mode</td></tr>";
+				$int_table_form .= "<tr  style='font-weight:normal'>";
+				//$int_table_form .= "<td width='50'>";
+				//$int_table_form .= ++$key;
+				//$int_table_form .= "</td>";
+				$int_table_form .= "<td  width='120'>";
+				$int_table_form .= "<input type='text' name='candidate_name_$key' id='candidate_$key' value='$contact_name'/>";
+			 	// $contact_name = $multi_chk == 1 ? '[CANDIDATE_NAME]' : ucwords($exp['Resume']['first_name'].' '.$exp['Resume']['last_name']);
+				$contact_name = ucwords($exp['Resume']['first_name'].' '.$exp['Resume']['last_name']);
+				// $int_table_form .= $contact_name;
+				$int_table_form .= "</td>";
+				$int_table_form .= "<td  width='140'>";
+				$int_table_form .= "<select class='input-small' style='width:130px;' name='candidate_level_$key' id='candidate_level_$key'>";
+				foreach($int_levels as $int_key => $int_lev){
+					$int_table_form .= "<option value='$int_key'>$int_lev</option>";
+				}
+				$int_table_form .= "</select>";
+				// $int_table_form .= '[interview_level]';
+				$int_table_form .= "</td>";
+				$int_table_form .= "<td  width='140'>";
+				
+				$int_table_form .= "<select class='input-small' style='width:130px;' name='candidate_level_$key' id='candidate_level_$key'>";
+				foreach($stage_list as $stage_key => $stage){
+					$int_table_form .= "<option value='$stage_key'>$stage</option>";
+				}
+				$int_table_form .= "</select>";				
+				// $int_table_form .= '[interview_mode]';
+				$int_table_form .= "</td></tr>";
+				
+				$int_table_form .= "<tr><td>Interview Date</td><td>Interview Timing</td>
+				<td>Contact No.</td></tr><tr>";
+				
+				
+				$int_table_form .= "<td  width='140'>";				
+				$int_table_form .= "<input type='text' class='datepick input-small' name='candidate_int_date_$key' id='candidate_int_date_$key'/>";
+				$int_table_form .= "<input type='text' style='margin-left:15px;' class='datetimepick input-small' name='candidate_int_time_$key' id='candidate_int_time_$key'/>";
+				//$int_table_form .= '[interview_date]'. ', [interview_time]';
+				$int_table_form .= "</td>";
+				$int_table_form .= "<td  width='140'>";
+				
+				$int_table_form .= "<select class='input-small' style='width:130px;' name='candidate_duration_$key' id='candidate_duration_$key'>";
+				foreach($int_duration as $dur_key => $duration){
+					$int_table_form .= "<option value='$dur_key'>$duration</option>";
+				}
+				$int_table_form .= "</select>";	
+				
+				// $int_table_form .= '[interview_duration]';
+				$int_table_form .= "</td>";				
+				$int_table_form .= "<td  width='140'>";
+				// $mobile = $multi_chk == 1 ? '[MOBILE]' : $exp['Resume']['mobile'];
+				// $mobile =  $exp['Resume']['mobile'];
+				$int_table_form .= "<input type='text' class='input-medium' name='candidate_mobile_$key' value='$mobile' id='candidate_mobile_$key'/>";
+				// $int_table_form .= $mobile;
+				$int_table_form .= "</td>";
+				$int_table_form .= "</tr>";		
+				$can_name_form .= ucwords($exp['Resume']['first_name'].' '.$exp['Resume']['last_name']).', ';
+				$int_table_form .= "</table><splitter>";
+			}
+			
+			
+			
+			
+			$this->set('multi_check', $multi_chk);
+			$this->set('multi_int_form', $int_table_form);
+			$this->set('multi_candidate', explode(',',$can_name_form));
+			$this->set('multi_int_form_data', explode('<splitter>',$int_table_form));
+			
 			$pos_id = $chk_pos_id ? $chk_pos_id  : $pos_id;
 			$id = $chk_resume_id_ar[0];
+			
 		// }
+		
 		// for success page redirect
 		$cand_name = substr($can_name, 0, strlen($can_name)-3);
 		// get the template details

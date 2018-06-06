@@ -905,6 +905,21 @@ $(document).ready(function() {
 		
 	});
 	
+	/* get districts of state */
+	$('.load_employee').change(function(){			
+		var role_id = $('#role').val();
+		var loc_id = $('#loc').val();
+		$('.load_emp').empty();
+		$('.load_emp').append('<option>Loading...</option>');
+		$.ajax({
+			 url: $('#webroot').val()+'/'+role_id+'/'+loc_id
+		}).done(function( html ) {	
+			$('.load_emp').empty();
+			$('.load_emp').append(html);
+			// $(".bdDist").trigger("chosen:updated");
+		});	
+	});
+	
 	
 	// retain the account holder
 		if($('.load_ach').length > 0){

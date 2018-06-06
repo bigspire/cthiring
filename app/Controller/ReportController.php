@@ -252,6 +252,22 @@ class ReportController extends AppController {
 		
 	}
 	
+	/* function to get the employee details */
+	public function get_employee($role_id, $loc_id){
+		$this->layout = 'ajax';
+		$this->loadModel('User');
+		$locCond = $loc_id != '' ? array('location_id' => $loc_id) : '';
+		$roleCond = $role_id != '' ? array('roles_id' => $role_id) : '';
+		$data = $this->User->find('list',  array('fields' => array('id','first_name'), 'order' => array('first_name ASC'),'conditions' => array('status' => 0,$roleCond, $locCond)));
+		$list = "<option value=''>Select</option>";
+		foreach($data as $id => $emp){
+			$list .= "<option value=".$id.">".$emp."</option>";
+		}
+		echo $list;
+		die;
+	}
+	
+
 	
 	/* function to get the client wise CV status */
 	public function client_wise_cv_status(){
@@ -437,8 +453,36 @@ class ReportController extends AppController {
 		
 		$count_client = count($client_data);
 		$this->set('chart_height', $count_client < 10 ? '500' :  $count_client*50);
+		
 	}
 	
+	
+	/* function to show month wise CV Status */
+	public function month_wise_cv_status(){
+		
+				
+	}
+	
+	/* function to show employee productivity */
+	public function employee_productivity(){
+		
+		
+	}
+
+	/* function to show employee business conversion */
+	public function employee_business_conversion(){
+		
+		
+	}
+	
+	/* function to show recruiter wise billing */
+	public function recruiter_wise_billing(){
+		
+		
+	}							
+														
+												
+														
 	
 	/* function to load the clients */
 	public function get_client_details(){
@@ -478,6 +522,8 @@ class ReportController extends AppController {
 		// check the role permissions
 	public function beforeFilter(){ 
 		$this->check_session();
+		$this->set($this->request->params['action'].'_sidebar', 'in');
+		$this->set($this->request->params['action'].'_sidebar_menu', 'active');
 		$this->check_role_access(17);
 	}
 }

@@ -964,6 +964,7 @@ if(!empty($_POST) && empty($_POST['hdnSubmit'])){
 			if(!$result = $mysql->execute_query($query)){
 				throw new Exception('Problem in getting degree name');
 			}
+			
 			$row = $mysql->display_result($result);
 			$degreeStr = $row['degree'];
 			$mysql->next_query();

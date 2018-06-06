@@ -61,6 +61,10 @@
 						</td>	
 				</tr>
 				
+			
+			
+			<?php if($multi_check == ''):?>
+			
 				<tr class="tbl_row" >
 					<td width="150" class="tbl_column">Candidate(s)
 					</td>
@@ -162,8 +166,67 @@
 						</td>	
 				</tr>
 				
+				
+			
+			<?php endif; ?>
+				
+			
+				
 				</tbody>
 			</table>
+			
+			
+			<?php if($multi_check == '1'):?>
+			
+			
+				
+									<div class="row-fluid" style="clear:both;">
+
+				
+							<h3 class="heading" style="margin-top:10px;">Interview Candidate Details</h3>
+							
+							
+							<div class="tabbable tabs-left">
+								<ul class="nav nav-tabs"  style="float:left;margin-top:30px;">
+								
+								<?php foreach($multi_candidate as $can_key => $candidate):?>
+									<?php $li_status = $can_key == 0 ? 'active' : ''; ?>
+									<?php if(trim($candidate) != ''):?>
+									<li class="<?php echo $li_status;?>"><a href="#tab_<?php echo $can_key;?>" data-toggle="tab"><?php echo $candidate;?></a></li>
+									<?php endif; ?>
+								<?php endforeach;?>
+									
+								</ul>
+								<div class="tab-content" style="clear:none;margin-top:20px;">
+								
+								<?php // echo '<pre>'; print_r($multi_int_form_data);?>
+								<?php foreach($multi_int_form_data as $multi_can_key => $multi_can_form):?>
+								<?php $li_status2 = $multi_can_key == 0 ? 'active' : ''; ?>
+								
+								<?php if(trim($multi_can_form) != ''):?>
+									<div class="tab-pane <?php echo $li_status2;?>" id="tab_<?php echo $multi_can_key;?>">
+										<p>
+											<?php echo $multi_can_form;?>
+										</p>
+									</div>
+								<?php endif; ?>
+								<?php endforeach;?>									
+								
+								</div>
+							</div>
+						
+					</div>
+						
+			
+				<?php //echo $multi_int_form;?>
+				
+				
+				<?php endif; ?>
+			
+			
+			
+			
+			
 			<div class="form-actions">
 			<input name="submit" class="btn btn-gebo theForm" value="Submit"  type="submit"/>
 					<a class="jsRedirect toggleSearch"  href="javascript:window.close()">
