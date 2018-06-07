@@ -1733,9 +1733,10 @@ class PositionController extends AppController {
 				$loc,	$cand_data[0]['Designation']['designation'],$this->Functions->check_exp($cand_data[0]['Position']['total_exp']),	
 				ucwords($client_name),ucwords($client_contact_name),$cand_data[0]['Contact']['mobile'],	
 				ucfirst($cand_data[0]['Position']['location']),$cand_data[0]['Position']['job_desc'],$cand_data[0]['FunctionArea']['function'],	
-				date('d-M, Y'),	$rec_name, $signature,$contact_title,$crm_name, $this->Functions->format_date($position_date),
+				date('d-M, Y'),	$rec_name, $signature,$contact_title,$rec_name, $this->Functions->format_date($position_date),
 				$exp_table,$prev_exp_table,$int_candidates,$int_date,$int_time,$int_duration,$interview_stage,$venue,
 				ucwords($contact_name),$contact_no,$additional,	'www.career-tree.in',$int_level);
+				
 				
 				$body_text = str_replace($tags, $template_data, $data['MailTemplate']['message']);
 				$subject_text = str_replace($tags, $template_data, $data['MailTemplate']['subject']);
