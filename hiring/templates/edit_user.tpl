@@ -92,6 +92,15 @@
 							<label for="reg_city" generated="true" class="error">{$roleErr}</label>											
 						</td>	
 						 </tr>	
+						  <tr class="tbl_row">
+						<td width="120" class="tbl_column">Status <span class="f_req">*</span></td>
+						<td>	
+							<select name="status" class="span8"  id="PositionEmpId">
+								{html_options options=$user_status selected=$status}
+							</select> 
+							<label for="reg_city" generated="true" class="error">{$statusErr}</label>	
+						</td>	
+				  </tr>	
 				</tbody>
 			</table>
 		</div>
@@ -116,7 +125,7 @@
 				   <tr>
 						<td width="120" class="tbl_column">L2 </td>
 						<td>	
-							<select name="level2" class="span8"  id="PositionEmpId">
+							<select name="level2" class="span8" rows="4" id="PositionEmpId">
 							<option  value="">Select</option>
 								{html_options options=$users selected='0' selected=$level2}	
 							</select> 
@@ -125,23 +134,11 @@
 				   <tr class="tbl_row">
 						<td width="120" class="tbl_column">Email Signature <span class="f_req">*</span></td>
 						<td>
-						<textarea name="signature" class="span8 wysiwyg">{$signature}</textarea>	
+						<textarea name="signature" rows="8" class="span8 wysiwyg">{$signature}</textarea>	
 						<label for="reg_city" generated="true" class="error">{$signatureErr}</label>
 						</td>
 				  </tr>
-				  
-				  
-				   
-				  </tr class="tbl_row">
-							 <tr>
-						<td width="120" class="tbl_column">Status <span class="f_req">*</span></td>
-						<td>	
-							<select name="status" class="span8"  id="PositionEmpId">
-								{html_options options=$user_status selected=$status}
-							</select> 
-							<label for="reg_city" generated="true" class="error">{$statusErr}</label>	
-						</td>	
-				  </tr>			
+									
 				</tbody>
 			</table>
 		</div>
