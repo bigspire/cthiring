@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-12-26 10:20:49
+/* Smarty version 3.1.29, created on 2018-06-07 13:05:35
   from "C:\xampp\htdocs\ctsvn\cthiring\hiring\templates\add_user.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5a41d529598e24_16133009',
+  'unifunc' => 'content_5b18e047ef34a5_32064776',
   'file_dependency' => 
   array (
     '86998c382929dace1c4cd93ad3c11b47d5acc150' => 
     array (
       0 => 'C:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\templates\\add_user.tpl',
-      1 => 1510205605,
+      1 => 1528356771,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5a41d529598e24_16133009 ($_smarty_tpl) {
+function content_5b18e047ef34a5_32064776 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -155,7 +155,7 @@ home"><i class="icon-home"></i></a>
 				  <tr class="tbl_row">
 						<td width="120" class="tbl_column">Email Signature <span class="f_req">*</span></td>
 						<td>
-						<textarea name="signature" class="span8 wysiwyg1"><?php if ($_smarty_tpl->tpl_vars['signature']->value) {
+						<textarea name="signature" class="span8 wysiwyg"><?php if ($_smarty_tpl->tpl_vars['signature']->value) {
 echo $_smarty_tpl->tpl_vars['signature']->value;
 } else {
 echo $_smarty_tpl->tpl_vars['signature']->value;
