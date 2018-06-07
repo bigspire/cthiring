@@ -215,6 +215,7 @@ class Position extends AppModel {
             )
         ),
 	
+		/*
 		'int_time' => array(		
             'empty' => array(
                 'rule'     => 'notEmpty',
@@ -222,6 +223,7 @@ class Position extends AppModel {
                 'message'  => 'Please select the interview time'
             )
         ),
+		*/
 	
 		'int_duration' => array(		
             'empty' => array(

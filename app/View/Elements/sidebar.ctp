@@ -56,10 +56,10 @@ background:#f2f2f2
 												<i class="icon-file"></i> CV Status
 											</a>
 										</div>
-										<div class="accordion-body collapse  in " id="collapseTwo">
+										<div class="accordion-body collapse  <?php echo $month_wise_cv_status_sidebar;?> <?php echo $client_wise_cv_status_sidebar;?>" id="collapseTwo">
 											<div class="accordion-inner">
 												<ul class="nav nav-list">
-													<li><a href="javascript:void(0)">CTC Wise CV Status</a></li>
+													<li class="<?php echo $month_wise_cv_status_sidebar_menu;?> <?php echo $client_wise_cv_status_sidebar_menu;?>"><a href="javascript:void(0)" >CTC Wise CV Status</a></li>
 													<li><a href="javascript:void(0)">Client Wise CV Status</a></li>
 													<li><a href="javascript:void(0)">Month Wise CV Status</a></li>
 													

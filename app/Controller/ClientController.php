@@ -74,7 +74,7 @@ class ClientController extends AppController {
 		}
 		
 		// for director and BDH		
-		if($this->Session->read('USER.Login.roles_id') == '33' || $this->Session->read('USER.Login.roles_id') == '35'){
+		if($this->Session->read('USER.Login.roles_id') == '33' || $this->Session->read('USER.Login.roles_id') == '35'  || $this->Session->read('USER.Login.roles_id') == '39'){
 			$show = 'all';
 			$team_cond = false;
 		}else{
@@ -141,7 +141,7 @@ class ClientController extends AppController {
 		
 		*/
 		
-		if($this->Session->read('USER.Login.roles_id') == '33' || $this->Session->read('USER.Login.roles_id') == '35'){ // director & BD
+		if($this->Session->read('USER.Login.roles_id') == '33' || $this->Session->read('USER.Login.roles_id') == '35'  || $this->Session->read('USER.Login.roles_id') == '39'){ // director & BD
 			$empCond = '';
 			$team_cond = '';
 		}
@@ -513,7 +513,7 @@ class ClientController extends AppController {
 				return 'pass';
 			}else if($data[0]['AH']['users_id'] == $this->Session->read('USER.Login.id')){	
 				return 'pass';
-			}else if($this->Session->read('USER.Login.roles_id') == '33' || $this->Session->read('USER.Login.roles_id') == '35'){	
+			}else if($this->Session->read('USER.Login.roles_id') == '33' || $this->Session->read('USER.Login.roles_id') == '35' || $this->Session->read('USER.Login.roles_id') == '39'){	
 				return 'pass';
 			}else if($rec_data > 0){
 				return 'pass';
@@ -584,7 +584,7 @@ class ClientController extends AppController {
 					*/					
 					
 					// get the Business Head
-					$leader_data = $this->Client->Creator->find('all', array('conditions' => array('roles_id' => '35'), 'fields' => array('Creator.id',	'Creator.first_name','Creator.last_name', 'Creator.email_id')));
+					$leader_data = $this->Client->Creator->find('all', array('conditions' => array('roles_id' => '39'), 'fields' => array('Creator.id',	'Creator.first_name','Creator.last_name', 'Creator.email_id')));
 					
 					// get account holder name				
 					

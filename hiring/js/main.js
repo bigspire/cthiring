@@ -907,6 +907,21 @@ $(document).ready(function() {
 		
 	});
 	
+	/* get districts of state */
+	$('.load_employee').change(function(){			
+		var role_id = $('#role').val();
+		var loc_id = $('#loc').val();
+		$('.load_emp').empty();
+		$('.load_emp').append('<option>Loading...</option>');
+		$.ajax({
+			 url: $('#webroot').val()+'/'+role_id+'/'+loc_id
+		}).done(function( html ) {	
+			$('.load_emp').empty();
+			$('.load_emp').append(html);
+			// $(".bdDist").trigger("chosen:updated");
+		});	
+	});
+	
 	
 	// retain the account holder
 		if($('.load_ach').length > 0){
@@ -1075,6 +1090,7 @@ $(document).ready(function() {
 	$('.multi_interview').click(function () {			
 		var data_sel  = '';	
 		var sel_item = '';
+		var type = $(this).attr('rel');
 		$(".intSel").each(function() {
 			if($(this).attr('checked') == 'checked' && $(this).attr('checked') != undefined){
 				sel_item = sel_item + $(this).val() + ',';
@@ -1092,7 +1108,7 @@ $(document).ready(function() {
 			alert('Please select atleast a record to proceed!');
 			return false;
 		}else{
-			$(this).colorbox({href:$('#int_url').val()+'multi_select/'+sel_item+'/?client_name='+client, iframe:true, rel: 'nofollow',  width:'65%', height:'94%',opacity:   '.8', 	  scrolling: true, fixed:true,overlayClose:false, escKey: false,
+			$(this).colorbox({href:$('#int_url').val()+'multi_select/'+sel_item+'/?client_name='+client+'&int_type='+type, iframe:true, rel: 'nofollow',  width:'65%', height:'94%',opacity:   '.8', 	  scrolling: true, fixed:true,overlayClose:false, escKey: false,
 			onClosed:function(){					
 			
 				}

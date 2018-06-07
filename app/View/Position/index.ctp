@@ -238,7 +238,11 @@
 	
 		</td>
 		
-<?php endif; ?>								</tr>
+<?php endif; ?>	
+
+
+
+							</tr>
 								<?php endforeach; ?>
 								</tbody>
 							</table>

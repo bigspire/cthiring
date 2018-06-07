@@ -79,6 +79,10 @@ class HomeController  extends AppController {
 		// set date condition				
 		$this->request->query['from'] = $this->Functions->format_date_show($start);
 		$this->request->query['to'] = $this->Functions->format_date_show($end);	
+		
+		$this->set('chartStart', $this->Functions->format_date_show($start_chart));
+		$this->set('chartEnd', $this->Functions->format_date_show($end_chart));
+		
 		// for employee condition
 		/*
 		if($this->request->query['emp_id'] != ''){			

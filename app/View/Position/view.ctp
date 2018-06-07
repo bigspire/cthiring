@@ -1193,9 +1193,9 @@ $action = 1;?>
 					<div class="btn-group status_row sepH_b dn">
 								<button data-toggle="dropdown" class="btn btn-info  dropdown-toggle  no-print">Action <span class="caret"></span></button>
 								<ul class="dropdown-menu  no-print">
-									<li><a href="javascript:void(0)" class="multi_interview">Schedule Interview</a></li>
+									<li><a href="javascript:void(0)" class="multi_interview" rel="new">Schedule Interview</a></li>
 									<?php if($reschedule == '1'): ?>
-									<li><a href="javascript:void(0)"  class="multi_interview">Re-Schedule Interview</a></li>
+									<li><a href="javascript:void(0)"  class="multi_interview" rel="reschedule">Re-Schedule Interview</a></li>
 									<?php endif; ?>
 								</ul>
 	
