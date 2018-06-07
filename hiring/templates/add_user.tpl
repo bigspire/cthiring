@@ -92,6 +92,21 @@
 							<label for="reg_city" generated="true" class="error">{$roleErr}</label>											
 						</td>	
 				  </tr>
+				  
+					
+						  <tr class="tbl_row">
+						<td width="120" class="tbl_column">Status <span class="f_req">*</span></td>
+						<td>	
+							<select name="status" class="span8"  id="PositionEmpId">
+							{if isset($status)}
+								{html_options options=$user_status selected=$status}	
+							{else}
+								{html_options options=$user_status selected='0'}	
+							{/if}
+							</select> 
+							<label for="reg_city" generated="true" class="error">{$statusErr}</label>											
+						</td>	
+				  </tr>	
 				</tbody>
 			</table>
 		</div>
@@ -124,26 +139,12 @@
 				  <tr class="tbl_row">
 						<td width="120" class="tbl_column">Email Signature <span class="f_req">*</span></td>
 						<td>
-						<textarea name="signature" class="span8 wysiwyg">{if $signature}{$signature}{else}{$signature}{/if}</textarea>	
+						<textarea name="signature" rows="8"  class="span8 wysiwyg">{if $signature}{$signature}{else}{$signature}{/if}</textarea>	
 							<label for="reg_city" generated="true" class="error">{$signatureErr}</label>											
 						</td>
 				  </tr>
 				  
-				
-					
-						  <tr class="tbl_row">
-						<td width="120" class="tbl_column">Status <span class="f_req">*</span></td>
-						<td>	
-							<select name="status" class="span8"  id="PositionEmpId">
-							{if isset($status)}
-								{html_options options=$user_status selected=$status}	
-							{else}
-								{html_options options=$user_status selected='0'}	
-							{/if}
-							</select> 
-							<label for="reg_city" generated="true" class="error">{$statusErr}</label>											
-						</td>	
-				  </tr>			
+						
 				</tbody>
 			</table>
 		</div>

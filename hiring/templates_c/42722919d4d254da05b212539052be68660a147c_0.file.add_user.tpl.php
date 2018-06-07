@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-06-07 14:49:51
+/* Smarty version 3.1.29, created on 2018-06-07 15:38:09
   from "C:\xampp\htdocs\2017\ctsvn2\cthiring\hiring\templates\add_user.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5b18f8b7913738_52138156',
+  'unifunc' => 'content_5b190409492178_76527608',
   'file_dependency' => 
   array (
     '42722919d4d254da05b212539052be68660a147c' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn2\\cthiring\\hiring\\templates\\add_user.tpl',
-      1 => 1528363189,
+      1 => 1528366085,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5b18f8b7913738_52138156 ($_smarty_tpl) {
+function content_5b190409492178_76527608 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\2017\\ctsvn2\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -133,6 +133,24 @@ home"><i class="icon-home"></i></a>
 </label>											
 						</td>	
 				  </tr>
+				  
+					
+						  <tr class="tbl_row">
+						<td width="120" class="tbl_column">Status <span class="f_req">*</span></td>
+						<td>	
+							<select name="status" class="span8"  id="PositionEmpId">
+							<?php if (isset($_smarty_tpl->tpl_vars['status']->value)) {?>
+								<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['user_status']->value,'selected'=>$_smarty_tpl->tpl_vars['status']->value),$_smarty_tpl);?>
+	
+							<?php } else { ?>
+								<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['user_status']->value,'selected'=>'0'),$_smarty_tpl);?>
+	
+							<?php }?>
+							</select> 
+							<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['statusErr']->value;?>
+</label>											
+						</td>	
+				  </tr>	
 				</tbody>
 			</table>
 		</div>
@@ -167,7 +185,7 @@ home"><i class="icon-home"></i></a>
 				  <tr class="tbl_row">
 						<td width="120" class="tbl_column">Email Signature <span class="f_req">*</span></td>
 						<td>
-						<textarea name="signature" class="span8 wysiwyg"><?php if ($_smarty_tpl->tpl_vars['signature']->value) {
+						<textarea name="signature" rows="8"  class="span8 wysiwyg"><?php if ($_smarty_tpl->tpl_vars['signature']->value) {
 echo $_smarty_tpl->tpl_vars['signature']->value;
 } else {
 echo $_smarty_tpl->tpl_vars['signature']->value;
@@ -177,24 +195,7 @@ echo $_smarty_tpl->tpl_vars['signature']->value;
 						</td>
 				  </tr>
 				  
-				
-					
-						  <tr class="tbl_row">
-						<td width="120" class="tbl_column">Status <span class="f_req">*</span></td>
-						<td>	
-							<select name="status" class="span8"  id="PositionEmpId">
-							<?php if (isset($_smarty_tpl->tpl_vars['status']->value)) {?>
-								<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['user_status']->value,'selected'=>$_smarty_tpl->tpl_vars['status']->value),$_smarty_tpl);?>
-	
-							<?php } else { ?>
-								<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['user_status']->value,'selected'=>'0'),$_smarty_tpl);?>
-	
-							<?php }?>
-							</select> 
-							<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['statusErr']->value;?>
-</label>											
-						</td>	
-				  </tr>			
+						
 				</tbody>
 			</table>
 		</div>
