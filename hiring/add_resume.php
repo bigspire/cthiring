@@ -1088,14 +1088,23 @@ if(!empty($_POST) && empty($_POST['hdnSubmit'])){
 			// call the next result
 			$mysql->next_query();					
 			
-			// get recruiter nameget_recruiter_name
-			$query =  "CALL get_recruiter_name('".$mysql->real_escape_str($_SESSION['user_id'])."')";
+			// get recruiter name
+			/* $query =  "CALL get_recruiter_name('".$mysql->real_escape_str($_SESSION['user_id'])."')";
 			if(!$result = $mysql->execute_query($query)){
 					throw new Exception('Problem in getting recruiter details');
 			}
 			$row_user = $mysql->display_result($result);
 			$recruiter = $row_user['first_name'].' '.$row_user['last_name'];
-			$recruiter_email = $row_user['email_id'];
+				// free the memory
+			$mysql->clear_result($result); */
+			
+			// get crm name
+			$query =  "CALL get_crm_by_requirement_id('".$_SESSION['position_for']."')";
+			if(!$result = $mysql->execute_query($query)){
+					throw new Exception('Problem in getting recruiter details');
+			}
+			$row_user = $mysql->display_result($result);
+			$crm = $row_user['first_name'].' '.$row_user['last_name'];
 			$getid = $resume_id;
 			// free the memory
 			$mysql->clear_result($result);

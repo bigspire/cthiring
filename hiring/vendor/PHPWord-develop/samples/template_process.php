@@ -19,7 +19,9 @@ $templateProcessor->setValue('COMP_LOC', ucwords($city_autoresume),  1,0);
 // to retain company state field
 $templateProcessor->setValue('COMP_CTRY', ucwords($state_autoresume),  1,0);       
 // to retain recruiter name field
-$templateProcessor->setValue('RECRUITER_NAME', ucwords($recruiter),  1,0);
+// $templateProcessor->setValue('RECRUITER_NAME', ucwords($recruiter),  1,0);
+// to retain CRM name field
+$templateProcessor->setValue('CLIENT_MANAGER_NAME', ucwords($crm),  1,0);
 // to retain current date field      
 $templateProcessor->setValue('CURRENT_DATE', date('d-M-Y'),  1,0);       
 // to retain designation field 
