@@ -9,9 +9,23 @@ class mailContent extends fun{
 
 /* function to print L1 incentive info html */
 
-	function get_level1_incentive_details($form_data,$user_name,$approval_user_name,$modified_date){
+	function get_level1_incentive_details($incentive_user_details,$form_data,$user_name,$approval_user_name,$modified_date){
 	  $approval_user_name = ucwords($approval_user_name);
 	  $user_name = ucwords($user_name);
+	  
+	 foreach($incentive_user_details as $detail){	
+				$emp_detail .= "<tr><td>".$detail['employee']."</td><td>".$detail['role_name']."</td><td>".$detail['eligible_incentive_amt']."</td></tr>"; 			 
+				
+				/*$emp_detail .= "<tr>
+              	<td>"$detail['employee'];"</td>
+              	<td>"$detail['role_name'];"</td>	
+				<td> Rs."$detail['eligible_incentive_amt'];"</td>				
+             </tr>";	*/
+	 }
+			 
+		
+		
+			 
 	  $content = <<< EOD
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -43,20 +57,7 @@ class mailContent extends fun{
               	<td style="color:#2a2a2a;" width="200">Designation</td>	
 				<td style="color:#2a2a2a;">Amount</td>			
              </tr>
-			 <tr>
-              	<td width="">Bhargavi</td>
-              	<td> Account Holder</td>	
-				<td> Rs. 4000</td>				
-             </tr>
-			 
-			 <tr style="background:;">
-              	<td width="">Lavanya</td>
-              	<td> Senior Recruiter</td>
-				<td> Rs. 3000</td>					
-             </tr>
-			 
-			 
-			 
+		{$emp_detail} 
           </table>
 </td>
       </tr>

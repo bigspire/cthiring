@@ -291,12 +291,14 @@ $(document).ready(function() {
 			  branding: false,
 			  menubar: false,
 			  statusbar: false,
+			  image_advtab: false,
 			  plugins: [
 				'advlist autolink lists link image charmap print preview anchor',
 				'searchreplace visualblocks code fullscreen' ,
 				'insertdatetime media table contextmenu paste code'
 			  ],
-			  toolbar: 'undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent',
+			  toolbar: "image | undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent",
+			  // imagetools_toolbar: "imageoptions"
 			});
 		});
 	}

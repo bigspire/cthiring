@@ -32,10 +32,10 @@ class fun{
 					case 1:		
 					$mod['add_client'] = 1;
 					break;					
-					case 3:					
+					case 2:					
 					$mod['client'] = 1;
 					break;	
-					case 2:					
+					case 39:					
 					$mod['approve_client'] = 1;
 					break;					
 					case 4:					

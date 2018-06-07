@@ -114,7 +114,7 @@
 				  <tr class="tbl_row">
 						<td width="120" class="tbl_column">Email Signature <span class="f_req">*</span></td>
 						<td>
-						<textarea name="signature" class="span8 wysiwyg1">{if $signature}{$signature}{else}{$signature}{/if}</textarea>	
+						<textarea name="signature" class="span8 wysiwyg">{if $signature}{$signature}{else}{$signature}{/if}</textarea>	
 							<label for="reg_city" generated="true" class="error">{$signatureErr}</label>											
 						</td>
 				  </tr>
