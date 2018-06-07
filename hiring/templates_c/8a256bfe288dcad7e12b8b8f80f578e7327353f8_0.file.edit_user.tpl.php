@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-06-07 13:05:44
+/* Smarty version 3.1.29, created on 2018-06-07 15:15:22
   from "C:\xampp\htdocs\ctsvn\cthiring\hiring\templates\edit_user.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5b18e050ef7002_57838140',
+  'unifunc' => 'content_5b18feb2c22866_04421667',
   'file_dependency' => 
   array (
     '8a256bfe288dcad7e12b8b8f80f578e7327353f8' => 
     array (
       0 => 'C:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\templates\\edit_user.tpl',
-      1 => 1528356771,
+      1 => 1528364696,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5b18e050ef7002_57838140 ($_smarty_tpl) {
+function content_5b18feb2c22866_04421667 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -124,7 +124,18 @@ echo $_POST['designation'];
 }?>" class="span8" autocomplete="off">									
 						</td>	
 				  </tr>
-				  
+				  <tr>
+						<td width="120" class="tbl_column">Role <span class="f_req">*</span></td>
+						<td>	
+							<select name="roles_id" class="span8">
+								<option value="">Select</option>
+								<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['roles']->value,'selected'=>$_smarty_tpl->tpl_vars['roles_id']->value),$_smarty_tpl);?>
+	
+							</select> 
+							<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['roleErr']->value;?>
+</label>											
+						</td>	
+						 </tr>	
 				</tbody>
 			</table>
 		</div>
@@ -168,17 +179,7 @@ echo $_POST['designation'];
 				  </tr>
 				  
 				  
-				   <tr>
-						<td width="120" class="tbl_column">Role <span class="f_req">*</span></td>
-						<td>	
-							<select name="roles_id" class="span8">
-								<option value="">Select</option>
-								<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['roles']->value,'selected'=>$_smarty_tpl->tpl_vars['roles_id']->value),$_smarty_tpl);?>
-	
-							</select> 
-							<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['roleErr']->value;?>
-</label>											
-						</td>	
+				   
 				  </tr class="tbl_row">
 							 <tr>
 						<td width="120" class="tbl_column">Status <span class="f_req">*</span></td>

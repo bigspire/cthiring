@@ -1723,7 +1723,7 @@ class PositionController extends AppController {
 				// form the tags
 				$tags = array('[candidate_name]','[mobile]','[email_id]','[position]','[address]','[location]','[designation]','[experience]',	'[client]',
 				'[client_contact_name]','[client_contact_no]','[job_location]','[job_desc]','[function]','[today_date]','[recruiter_name]',
-				'[signature]','[client_contact_title]','[account_holder_name]','[position_date]','[sent_candidates]','[previous_sent_candidates]',
+				'[signature]','[client_contact_title]','[crm]','[position_date]','[sent_candidates]','[previous_sent_candidates]',
 				'[interview_candidates]','[interview_date]','[interview_time]','[interview_duration]','[interview_mode]','[interview_venue]',
 				'[interview_contact_person]','[interview_contact_no]','[interview_additional]','[website]','[interview_level]');
 				
@@ -1733,7 +1733,7 @@ class PositionController extends AppController {
 				$loc,	$cand_data[0]['Designation']['designation'],$this->Functions->check_exp($cand_data[0]['Position']['total_exp']),	
 				ucwords($client_name),ucwords($client_contact_name),$cand_data[0]['Contact']['mobile'],	
 				ucfirst($cand_data[0]['Position']['location']),$cand_data[0]['Position']['job_desc'],$cand_data[0]['FunctionArea']['function'],	
-				date('d-M, Y'),	$rec_name, $signature,$contact_title,$rec_name, $this->Functions->format_date($position_date),
+				date('d-M, Y'),	$rec_name, $signature,$contact_title,$crm_name, $this->Functions->format_date($position_date),
 				$exp_table,$prev_exp_table,$int_candidates,$int_date,$int_time,$int_duration,$interview_stage,$venue,
 				ucwords($contact_name),$contact_no,$additional,	'www.career-tree.in',$int_level);
 				
