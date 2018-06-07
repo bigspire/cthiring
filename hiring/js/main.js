@@ -286,6 +286,7 @@ $(document).ready(function() {
 			tinymce.init({
 			  selector: 'textarea.wysiwyg',
 			  body_class: 'wysiwygCls',
+			  height : "160",
 			  content_style: "@import url('https://fonts.googleapis.com/css?family=Open+Sans'); .wysiwygCls p {font-family:'Open Sans', sans-serif !important;font-size:12px !important;color:#555;line-height:18px;}",
 			  theme: 'modern',
 			  branding: false,

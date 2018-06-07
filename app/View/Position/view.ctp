@@ -28,7 +28,7 @@
                     </nav>
 					
 					<div class="srch_buttons no-print">
-				<?php if($this->Session->read('USER.Login.id') == $position_data['Position']['created_by'] && $this->Session->read('USER.Login.roles_id') == '34' && $position_data['Position']['status'] == 'A'):?>	
+				<?php if($this->Session->read('USER.Login.id') == $position_data['Position']['created_by'] && in_array($this->Session->read('USER.Login.id'), $ac_member) && $position_data['Position']['status'] == 'A'):?>	
 				<a rel="tooltip jsRedirect" href="<?php echo $this->webroot;?>position/edit/<?php echo $this->request->params['pass'][0];?>" title="Edit Position">
 				<input rel="tooltip" title="Edit Position" value="Edit" type="button" class="btn btn-info"></a>
 				<?php endif; ?>	
@@ -176,7 +176,7 @@
 										
 <span rel="tooltip" title="Requirement Status: <?php echo $position_data['ReqStatus']['title'];?> " class="label label-<?php echo $this->Functions->get_req_status_color($position_data['ReqStatus']['title']);?>"><?php echo $position_data['ReqStatus']['title'];?></span>	
 
-<?php if($this->Session->read('USER.Login.roles_id') == '34'):?>
+<?php if(in_array($this->Session->read('USER.Login.id'), $ac_member)):?>
 	<a rel="tooltip" val="40_60"  class="iframeBox" title="<?php echo $status_txt = $position_data['ReqStatus']['id'] == '10' ? 'Reactivate' : 'Change Status';?>" href="<?php echo $this->webroot;?>position/update_position_status/<?php echo $this->request->params['pass'][0];?>/<?php echo $position_data['ReqStatus']['id'];?>/"><i class="splashy-pencil"></i></a>
 <?php endif;?>
 
@@ -782,7 +782,7 @@
 														
 														<td style="text-align:center" class="actionItem upload_row">
 			<?php if($resume['ReqResume']['stage_title'] == 'Validation - Account Holder' &&
-										$resume['ReqResume']['status_title'] == 'Validated'  && $this->Session->read('USER.Login.roles_id') == '34'  && in_array($this->Session->read('USER.Login.id'), $ac_member)):
+										$resume['ReqResume']['status_title'] == 'Validated'   && in_array($this->Session->read('USER.Login.id'), $ac_member)):
 										$multi_send_cv = '1';?>
 					
 					<?php if($position_data['Position']['req_status_id'] == '9'):?>
@@ -794,7 +794,7 @@
 				
 																
 										<?php elseif($resume['ReqResume']['stage_title'] == 'Validation - Account Holder' &&
-										$resume['ReqResume']['status_title'] == 'Pending'  && $this->Session->read('USER.Login.roles_id') == '34'  && in_array($this->Session->read('USER.Login.id'), $ac_member)):?>
+										$resume['ReqResume']['status_title'] == 'Pending'   && in_array($this->Session->read('USER.Login.id'), $ac_member)):?>
 													<div class="btn-group">		
 												<span rel="tooltip" data-toggle="dropdown"  style="cursor:pointer" data-original-title="Update CV"><i class="splashy-sprocket_light"></i>
 																</span>
@@ -888,7 +888,7 @@
 										FA  
 										</span>
 									
-						<?php if($this->Session->read('USER.Login.roles_id') == '34'):?>
+						<?php if(in_array($this->Session->read('USER.Login.id'), $ac_member)):?>
 									
 										<span data-toggle="dropdown" style="padding-top:1px;margin-left:1px;border:1px solid #fbfcbd" class=" dropdown-toggle  alert-action"><span class="caret" style="margin-top:7px;"></span></span>
 									
@@ -964,7 +964,8 @@
 										<?php endif; ?>
 										
 										
-										<?php if($this->Session->read('USER.Login.roles_id') == '34'):?>
+									<?php if(in_array($this->Session->read('USER.Login.id'), $ac_member)):?>
+
 
 										<span data-toggle="dropdown" style="padding-top:1px;margin-left:1px;border:1px solid #fbfcbd" class=" dropdown-toggle  alert-action"><span class="caret" style="margin-top:7px;"></span></span>
 										
@@ -1032,7 +1033,8 @@
 										OP  
 										</span>
 										
-										<?php if($this->Session->read('USER.Login.roles_id') == '34'):?>	
+															<?php if(in_array($this->Session->read('USER.Login.id'), $ac_member)):?>
+	
 										<span data-toggle="dropdown" style="padding-top:1px;margin-left:1px;border:1px solid #fbfcbd" class=" dropdown-toggle  alert-action"><span class="caret" style="margin-top:7px;"></span></span>
 										
 										<ul class="dropdown-menu">
@@ -1091,7 +1093,8 @@ $action = 1;?>
 										<?php echo  $st_code;?>  
 										</span>
 									
-								<?php if($this->Session->read('USER.Login.roles_id') == '34'):?>										
+														<?php if(in_array($this->Session->read('USER.Login.id'), $ac_member)):?>
+										
 										<span data-toggle="dropdown" style="padding-top:1px;margin-left:1px;border:1px solid #fbfcbd" class=" dropdown-toggle  alert-action"><span class="caret" style="margin-top:7px;"></span></span>
 										
 									
@@ -1135,7 +1138,8 @@ $action = 1;?>
 										<span class="btn-mini alert alert-success alert-action legendView" rel="tooltip" title="Billing Pending"   style="">
 										BP  
 										</span>
-									<?php if($this->Session->read('USER.Login.roles_id') == '34'):?>		
+															<?php if(in_array($this->Session->read('USER.Login.id'), $ac_member)):?>
+		
 										<span data-toggle="dropdown" style="padding-top:1px;margin-left:1px;border:1px solid #fbfcbd" class=" dropdown-toggle  alert-action"><span class="caret" style="margin-top:7px;"></span></span>
 										
 										
@@ -1178,7 +1182,7 @@ $action = 1;?>
 						<input type="hidden" id="cv_url" value="<?php echo $this->webroot;?>position/send_cv/">
 
 												
-					<?php if($multi_send_cv == '1' && $this->Session->read('USER.Login.roles_id') == '34'):?>	
+					<?php if($multi_send_cv == '1' && in_array($this->Session->read('USER.Login.id'), $ac_member)):?>	
 						<div class="btn-group upload_row sepH_b  no-print">
 								<button data-toggle="dropdown" class="btn btn-info dropdown-toggle">Action <span class="caret"></span></button>
 								<ul class="dropdown-menu">
@@ -1189,7 +1193,7 @@ $action = 1;?>
 						
 						
 				
-					<?php if($multi_show_interview == '1' && $this->Session->read('USER.Login.roles_id') == '34'):?>		
+					<?php if($multi_show_interview == '1' && in_array($this->Session->read('USER.Login.id'), $ac_member)):?>		
 					<div class="btn-group status_row sepH_b dn">
 								<button data-toggle="dropdown" class="btn btn-info  dropdown-toggle  no-print">Action <span class="caret"></span></button>
 								<ul class="dropdown-menu  no-print">
