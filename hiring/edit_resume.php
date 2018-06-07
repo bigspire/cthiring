@@ -85,6 +85,7 @@ if($getid !=''){
 			$_SESSION['clients_id'] = $row['clients_id'];
 			$_SESSION['position_for'] = $row['position_for'];
 			$_SESSION['resume_doc'] = $row['resume'];
+			$_SESSION['requirement_id'] = $row['requirement_id'];
 			$smarty->assign('dob', $fun->convert_date_display($row['dob_field']));
 			$total_exp  = $row['total_exp'];
 			$total_exp_yrs = explode(".", $total_exp);
@@ -1132,14 +1133,25 @@ if(!empty($_POST) && empty($_POST['hdnSubmit'])){
 			$mysql->next_query();	
 			
 			// get recruiter name
-			$query =  "CALL get_recruiter_name('".$mysql->real_escape_str($_SESSION['user_id'])."')";
+			/* $query =  "CALL get_recruiter_name('".$mysql->real_escape_str($_SESSION['user_id'])."')";
 			if(!$result = $mysql->execute_query($query)){
 					throw new Exception('Problem in getting recruiter details');
 			}
 			$row_user = $mysql->display_result($result);
 			$recruiter = $row_user['first_name'].' '.$row_user['last_name'];
 				// free the memory
+			$mysql->clear_result($result); */
+			
+			// get crm name
+			$query =  "CALL get_crm_by_requirement_id('".$_SESSION['requirement_id']."')";
+			if(!$result = $mysql->execute_query($query)){
+					throw new Exception('Problem in getting recruiter details');
+			}
+			$row_user = $mysql->display_result($result);
+			$crm = $row_user['first_name'].' '.$row_user['last_name'];
+				// free the memory
 			$mysql->clear_result($result);
+			
 			// call the next result
 			$mysql->next_query();	
 			$_SESSION['extraction'] = '';
