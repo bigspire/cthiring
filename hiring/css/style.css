@@ -1005,3 +1005,4 @@ ul.statusLegend li{width:250px;float:left;list-style-type:none;margin:3px;height
     cursor: pointer;
 }
 
+ .missing{border:1px solid #ff0000 !important}

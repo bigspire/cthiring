@@ -12,6 +12,7 @@
 	  
 				  
 	     <link rel="stylesheet" href="<?php echo $this->webroot;?>hiring/lib_cthiring/datepicker/datepicker.css" />
+		 <link rel="stylesheet" href="<?php echo $this->webroot;?>hiring/css/bootstrap-datetimepicker.min.css" />
 
          <link rel="stylesheet" href="<?php echo $this->webroot;?>hiring/css/style.css" />
 		 
@@ -45,7 +46,9 @@
    <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
 	
 	<script type="text/javascript" src="<?php echo $this->webroot;?>hiring/lib_cthiring/datepicker/bootstrap-datepicker.min.js"></script>
-	<script type="text/javascript" src="<?php echo $this->webroot;?>hiring/lib_cthiring/datepicker/bootstrap-timepicker.min.js"></script>
+	<!--script type="text/javascript" src="<?php echo $this->webroot;?>hiring/lib_cthiring/datepicker/bootstrap-timepicker.min.js"></script-->
+	<script type="text/javascript" src="<?php echo $this->webroot;?>hiring/js/bootstrap-datetimepicker.min.js"></script>
+	
 				<script src="<?php echo $this->webroot;?>hiring/js/autosize.min.js"></script>			
 
 	<script src="<?php echo $this->webroot;?>hiring/js/framejs.js"></script>		

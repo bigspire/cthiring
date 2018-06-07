@@ -7,6 +7,14 @@
                <div class="main_content" style="min-height:auto;">
             <div class="row-fluid">
 				 <div class="span12">
+				 
+				 	<?php
+		if($validation_error == '1'):?>					
+		<div id="flashMessage" class="alert alert-error">
+		<button type="button" class="close" data-dismiss="alert-error">×</button>Problem in submitting the form. Pls check all fields filled...</div>
+		Redirecting now...
+		<?php endif; ?>	
+				 
 		<?php
 		if($cv_update_status == '1'):?>					
 		<div id="flashMessage" class="alert alert-success">
@@ -18,10 +26,16 @@
 		
 		<?php
 		if($cv_update_status == ''):?>					
-<?php echo $this->Form->create('Position', array('id' => '', 'class' => 'formID', 'enctype' => "multipart/form-data")); ?>
+<?php echo $this->Form->create('Position', array('id' => '', 'class' => 'intForm', 'enctype' => "multipart/form-data")); ?>
 <div class="box">
 	<div class="box-title mb5">
-			<h4>Schedule Interview</h4>
+		
+		<?php if($reschedule):?>		
+		<h4>Re-Schedule Interview</h4>
+		<?php else:?>
+		<h4>Schedule Interview</h4>
+		<?php endif; ?>
+			
 	</div>
 	
 	
@@ -76,7 +90,7 @@
 					<?php if($reschedule):?>
 				
 				<tr class="">
-					<td width="120" class="">Reason for Re-Schedule <span class="f_req">*</span>
+					<td width="120" class="tbl_column">Reason for Re-Schedule <span class="f_req">*</span>
 					</td>
 						<td>
 					<?php echo $this->Form->input('reason_id', array('div'=> false,'type' => 'select', 'label' => false, 
@@ -93,7 +107,7 @@
 					<td width="120" class="tbl_column">Interview Level <span class="f_req">*</span>
 					</td>
 						<td>
-		<?php echo $this->Form->input('interview_level', array('div'=> false,'type' => 'radio', 'value' => $interview_record['ResInterview']['interview_level'], 'label' => false, 'style' => 'margin:4px 2px', 'class' => 'input-xlarge',  'options' => $int_levels, 'separator' => ' ',  'required' => false, 'placeholder' => '', 'legend' => false, 'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?>
+		<?php echo $this->Form->input('interview_level', array('div'=> false,'type' => 'radio', 'value' => $interview_record['ResInterview']['stage_title'], 'label' => false, 'style' => 'margin:4px 2px', 'class' => 'input-xlarge',  'options' => $int_levels, 'separator' => ' ',  'required' => false, 'placeholder' => '', 'legend' => false, 'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?>
 						</td>	
 				</tr>
 				
@@ -109,9 +123,9 @@
 					<td width="120" class="tbl_column">Interview Date <span class="f_req">*</span>
 					</td>
 						<td>
-						<?php echo $this->Form->input('int_date', array('div'=> false,'type' => 'text', 'label' => false,  'class' => 'span3 datepick',   'required' => false,'placeholder' => '', 'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 					
+						<?php echo $this->Form->input('int_date', array('div'=> false,'type' => 'text', 'label' => false,  'class' => 'span6 datetimepick',   'required' => false,'placeholder' => '','error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 					
 
-						<?php echo $this->Form->input('int_time', array('div'=> false,'type' => 'text',   'label' => false, 'class' => 'span3 datetimepick', 'required' => false, 'style' => 'float:left;margin-right:5px;', 'placeholder' => '', 'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 	
+						<?php //echo $this->Form->input('int_time', array('div'=> false,'type' => 'text',   'label' => false, 'class' => 'span3 datetimepick', 'required' => false, 'style' => 'float:left;margin-right:5px;', 'placeholder' => '', 'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 	
 
 <?php echo $this->Form->input('int_duration', array('div'=> false,'type' => 'select',  'value' => $interview_record['ResInterview']['int_duration'],  'empty' => 'Duration', 'options' => $int_duration, 'label' => false, 'class' => 'span2',   'required' => false, 'placeholder' => '', 'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 	
 
@@ -227,10 +241,10 @@
 			
 			
 			
-			<div class="form-actions">
-			<input name="submit" class="btn btn-gebo theForm" value="Submit"  type="submit"/>
+			<div class="form-actions" style="margin-top:0px;">
+			<input name="submit" class="btn btn-gebo  intSubmit" value="Submit"  type="submit"/>
 					<a class="jsRedirect toggleSearch"  href="javascript:window.close()">
-					<input type="button" value="Cancel" id="cancel" class="btn cancel"/></a>
+					<input type="button" value="Cancel" id="cancel" class="btn cancel intCancel"/></a>
 					
 			</div>
 		
@@ -254,7 +268,7 @@
 					<td width="120" class="tbl_column">Subject <span class="f_req">*</span>
 					</td>
 						<td> 
-						<?php echo $this->Form->input('subject_candidate', array('div'=> false,'type' => 'text', 'label' => false, 'class' => 'span8', 'value' => $subject_3, 'required' => false, 'placeholder' => '')); ?> 					
+						<?php echo $this->Form->input('subject_candidate', array('div'=> false,'type' => 'text', 'label' => false, 'class' => 'span8', 'value' => $subject_3, 'required' => false, 'placeholder' => '','error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 					
 						</td>	
 				</tr>
 				
@@ -275,9 +289,9 @@
 				</tbody>
 			</table>
 			<div class="form-actions">
-			<input name="submit" class="btn btn-gebo theForm" value="Submit"  type="submit"/>
+			<input name="submit" class="btn btn-gebo  intSubmit" value="Submit"  type="submit"/>
 					<a class="jsRedirect toggleSearch"  href="javascript:window.close()">
-					<input type="button" value="Cancel" id="cancel" class="btn cancel"/></a>
+					<input type="button" value="Cancel" id="cancel" class="btn cancel intCancel"/></a>
 			</div>
 												</div>
 												<div class="tab-pane" id="tab3">
@@ -297,7 +311,7 @@
 					<td width="120" class="tbl_column">Subject <span class="f_req">*</span>
 					</td>
 						<td>
-						<?php echo $this->Form->input('subject', array('div'=> false,'type' => 'text', 'label' => false, 'class' => 'span8', 'value' => $subject_2, 'required' => false, 'placeholder' => '')); ?> 					
+						<?php echo $this->Form->input('subject', array('div'=> false,'type' => 'text', 'label' => false, 'class' => 'span8', 'value' => $subject_2, 'required' => false, 'placeholder' => '','error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 					
 						</td>	
 				</tr>
 				
@@ -320,16 +334,16 @@
 				
 				</tbody>
 			</table>
-			<div class="form-actions">
+			<div class="form-actions" >
 			
 			<input type="hidden" id="start_date" name="start_date" value="<?php echo date('d/m/Y');?>">
 			
 			<input type="hidden" id="tiny_readonly" name="tiny_readonly" value="<?php echo $tiny_readonly;?>">
 
 
-			<input name="submit" class="btn btn-gebo theForm" value="Submit"  type="submit"/>
+			<input name="submit" class="btn btn-gebo  intSubmit" value="Submit"  type="submit"/>
 					<a class="jsRedirect toggleSearch"  href="javascript:window.close()">
-					<input type="button" value="Cancel" id="cancel" class="btn cancel"/></a>
+					<input type="button" value="Cancel" id="cancel" class="btn cancel intCancel"/></a>
 			</div>
 			
 			

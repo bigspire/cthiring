@@ -325,9 +325,9 @@
 										
 										<b class="caret" style="color: #fff !important;"></b></a>
 										<ul class="dropdown-menu sort-by">
-											<li><a href="<?php echo $this->webroot;?>home/?type=req&from=<?php echo $this->request->query['from'];?>&to=<?php echo $this->request->query['to'];?>" class="sort" data-sort="sl_name2">Requirement Graph</a></li>
-											<li><a href="<?php echo $this->webroot;?>home/?from=<?php echo $this->request->query['from'];?>&to=<?php echo $this->request->query['to'];?>" class="sort" data-sort="sl_date2">As Is Graph</a></li>
-											<li><a class="iframeBox" val="95_95" href="<?php echo $this->webroot;?>home/?action=view_graph&from=<?php echo $this->request->query['from'];?>&to=<?php echo $this->request->query['to'];?>&type=<?php echo $this->request->query['type'];?>" class="sort" data-sort="sl_date2">Enlarge & Print Graph</a></li>
+											<li><a href="<?php echo $this->webroot;?>home/?type=req&from=<?php echo $chartStart;?>&to=<?php echo $chartEnd;?>" class="sort" data-sort="sl_name2">Requirement Graph</a></li>
+											<li><a href="<?php echo $this->webroot;?>home/?from=<?php echo $chartStart;?>&to=<?php echo $chartEnd;?>" class="sort" data-sort="sl_date2">As Is Graph</a></li>
+											<li><a class="iframeBox" val="95_95" href="<?php echo $this->webroot;?>home/?action=view_graph&from=<?php echo $chartStart;?>&to=<?php echo $chartEnd;?>&type=<?php echo $this->request->query['type'];?>" class="sort" data-sort="sl_date2">Enlarge & Print Graph</a></li>
 
 
 										</ul>

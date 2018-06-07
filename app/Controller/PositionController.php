@@ -1702,19 +1702,24 @@ class PositionController extends AppController {
 				$data = $this->MailTemplate->findById($mailtemplete, array('fields' => 'subject','message'));
 				
 				$loc = $cand_data[0]['ResLoc']['location'] ? $cand_data[0]['ResLoc']['location'] : $cand_data[0]['Resume']['present_location'];
+				
+				
 				$int_level = $this->request->data['Position']['interview_level'] ? $this->request->data['Position']['interview_level'] : '[INTERVIEW_LEVEL]';
-				$int_date = $this->request->data['Position']['int_date'] ? $this->request->data['Position']['int_date'] : '[INTERVIEW_DATE]';
-				$int_time = $this->request->data['Position']['int_time'] ? $this->request->data['Position']['int_time'] : '[INTERVIEW_TIME]';
+				$int_date_time = explode(' ', $this->request->data['Position']['int_date']);
+				$int_date = $int_date_time[0] ? $int_date_time[0] : '[INTERVIEW_DATE]';
+				$int_time = $int_date_time[1] ? $int_date_time[1] : '[INTERVIEW_TIME]';
 				$int_duration = $this->request->data['Position']['int_duration'] ? $this->request->data['Position']['int_duration'] : '[INTERVIEW_DURATION]';
 				$venue = $this->request->data['Position']['venue'] ? nl2br($this->request->data['Position']['venue']) : '[INTERVIEW_VENUE]';
 				$contact_name = $this->request->data['Position']['contact_name'] ? $this->request->data['Position']['contact_name'] : '[INTERVIEW_CONTACT_PERSON]';
 				$contact_no = $this->request->data['Position']['contact_no'] ? $this->request->data['Position']['contact_no'] : '[INTERVIEW_CONTACT_NO]';
 				$additional = $this->request->data['Position']['additional'] ? nl2br($this->request->data['Position']['additional']) : '[INTERVIEW_ADDITIONAL]';
-				// get the interview mode
 				$interview_stage = $this->get_interview_mode($this->request->data['Position']['interview_stage_id']);
+				$interview_stage = $interview_stage ? $interview_stage : '[INTERVIEW_MODE]';
+				
+				// get the interview mode
 				//$this->loadModel('InterviewStage');
 				//$stage_data = $this->InterviewStage->findById($this->request->data['Position']['interview_stage_id'], array('fields' => 'interview_stage'));
-				$interview_stage = $interview_stage ? $interview_stage : '[INTERVIEW_MODE]';
+				
 				// form the tags
 				$tags = array('[candidate_name]','[mobile]','[email_id]','[position]','[address]','[location]','[designation]','[experience]',	'[client]',
 				'[client_contact_name]','[client_contact_no]','[job_location]','[job_desc]','[function]','[today_date]','[recruiter_name]',
@@ -1748,7 +1753,7 @@ class PositionController extends AppController {
 	}
 	
 	/* function to parse the html data to send interview to candidates */
-	public function parse_interview_mail($message,$candidate,$pos_id){
+	public function parse_interview_mail($message,$candidate,$pos_id, $int_key){
 		// get the position details
 		$fields = array('Position.job_title','Contact.first_name','Contact.last_name'
 		,'Contact.mobile','Recruiter.first_name','Recruiter.last_name','Client.client_name','Recruiter.signature','Contact.title');
@@ -1772,17 +1777,30 @@ class PositionController extends AppController {
 				)
 				
 				);
-		$cand_data = $this->Position->find('all', array('fields' => $fields,'conditions' => array('Position.id' => $pos_id),'joins' => $options));
 				
-		$interview_mode = $this->get_interview_mode($this->request->data['Position']['interview_stage_id']);
-		$int_date = $this->request->data['Position']['int_date'];
-		$int_time = $this->request->data['Position']['int_time'];
-		$venue = $this->request->data['Position']['venue'];
-		$duration = $this->request->data['Position']['int_duration'];
-		$contact_name = $this->request->data['Position']['contact_name'];
-		$contact_no = $this->request->data['Position']['contact_no'];
-		$additional = $this->request->data['Position']['additional'];
-		$level =  $this->request->data['Position']['interview_level'];
+		$cand_data = $this->Position->find('all', array('fields' => $fields,'conditions' => array('Position.id' => $pos_id),'joins' => $options));
+		
+		// for multi candidates
+		$stage_id = $this->request->data['Position']['interview_stage_id'] ? $this->request->data['Position']['interview_stage_id'] : $this->request->data['Position']['candidate_stage_'.$int_key];
+		
+		$int_date_time = explode(' ', $this->request->data['Position']['int_date']);
+		$int_date_time2 = explode(' ', $this->request->data['Position']['candidate_int_date_'.$int_key]);
+		
+		$int_date = $int_date_time[0] ? $int_date_time[0] :  $int_date_time2[0];
+		
+		$int_time = $int_date_time[1] ? $int_date_time[1] :  $int_date_time2[1];
+
+		//$int_time = $this->request->data['Position']['int_time'] ? $this->request->data['Position']['int_time'] : $this->request->data['Position']['candidate_int_time_'.$int_key];
+		
+		$venue = $this->request->data['Position']['venue'] ? $this->request->data['Position']['venue'] : $this->request->data['Position']['candidate_venue_'.$int_key];
+		$duration = $this->request->data['Position']['int_duration'] ? $this->request->data['Position']['int_duration'] : $this->request->data['Position']['candidate_duration_'.$int_key];
+		$contact_name = $this->request->data['Position']['contact_name'] ? $this->request->data['Position']['contact_name'] : $this->request->data['Position']['candidate_person_'.$int_key];
+		$contact_no = $this->request->data['Position']['contact_no'] ? $this->request->data['Position']['contact_no'] : $this->request->data['Position']['candidate_mobile_'.$int_key];
+		$additional = $this->request->data['Position']['additional'] ? $this->request->data['Position']['additional'] : $this->request->data['Position']['candidate_addi_'.$int_key];
+		$level =  $this->request->data['Position']['interview_level'] ? $this->request->data['Position']['interview_level'] : $this->request->data['Position']['candidate_level_'.$int_key];
+		
+		$interview_mode = $this->get_interview_mode($stage_id);
+
 		
 		$rec_name = ucwords($cand_data[0]['Recruiter']['first_name'].' '.$cand_data[0]['Recruiter']['last_name']);
 		$signature = $cand_data[0]['Recruiter']['signature'];
@@ -1911,6 +1929,7 @@ class PositionController extends AppController {
 		$reason_list = $this->Reason->find('list', array('fields' => array('id','reason'), 
 		'order' => array('reason ASC'),'conditions' => array('status' => '1', 'type' => $types)));
 		$this->set('rejectList', $reason_list);
+		return $reason_list;
 	}
 	
 	/* function to update the CV status */
@@ -2203,29 +2222,7 @@ class PositionController extends AppController {
 			}if($interview_level == '1' || $interview_level == ''){
 				$int_levels = array('First Interview' => 'First Interview' , 'Second Interview' => 'Second Interview','Third Interview' => 'Third Interview', 'Forth Interview' => 'Forth Interview', 'Final Interview' => 'Final Interview');
 			}
-			// for reschedule
-			if($schedule_type == 'reschedule'){
-				// get rejection status drop down
-				$this->get_reject_drop('Interview Reschedule');
-				$reason_id = 'reason_id';
-				$this->set('reschedule', 1);
-				// get the interview details to retain in the form
-				$this->loadModel('ResInterview');
-				// $int_text = $this->Functions->get_level_text($int_level);
-				$options = array(				
-					array('table' => 'resume',
-							'alias' => 'Resume',					
-							'type' => 'LEFT',
-							'conditions' => array('`Resume.id` = `ReqResume`.`resume_id`')
-					)					
-				);
-				$data = $this->ResInterview->find('all', array('fields' => array('int_date','int_duration','Resume.first_name','Resume.last_name'
-				,'InterviewStage.interview_stage','venue','additional','contact_name','contact_no','stage_title','interview_stage_id'),
-				'conditions' => array('req_resume_id' => $req_res_id), 'order' => array('ResInterview.id' => 'desc'), 'limit' => '1', 'joins' => $options));
-				$this->set('interview_record', $data[0]);
-				//$int_date = explode(' ', $data[0]['ResInterview']['int_date']);
-				//$this->set('interview_date', $this->Functions->format_date_show($int_date[0]));
-			}
+			
 			
 			$this->set('int_levels', $int_levels);
 			// get interview duration
@@ -2258,6 +2255,38 @@ class PositionController extends AppController {
 				}
 			}
 		}
+		
+		// for reschedule
+			if($schedule_type == 'reschedule' || $this->request->query['int_type'] == 'reschedule'){ 
+				// get rejection status drop down
+				$reject_reason_data = $this->get_reject_drop('Interview Reschedule');
+				$reason_id = 'reason_id';
+				$this->set('reschedule', 1);
+				// get the interview details to retain in the form
+				$this->loadModel('ResInterview');
+				// $int_text = $this->Functions->get_level_text($int_level);
+				$options = array(				
+					array('table' => 'resume',
+							'alias' => 'Resume',					
+							'type' => 'LEFT',
+							'conditions' => array('`Resume.id` = `ReqResume`.`resume_id`')
+					)					
+				);
+				
+				// when the form is not submitted
+				if(!$this->request->is('post')){
+					$data = $this->ResInterview->find('all', array('fields' => array('int_date','int_duration','Resume.first_name','Resume.last_name'
+					,'InterviewStage.interview_stage','venue','additional','contact_name','contact_no','stage_title','interview_stage_id'),
+					'conditions' => array('req_resume_id' => $req_res_ids), 'order' => array('ResInterview.id' => 'desc'),  'joins' => $options));
+					if($multi_chk == '1'){
+						$inter_data = $data;
+					}else{
+						$this->set('interview_record', $data[0]);
+					}
+				}
+				//$int_date = explode(' ', $data[0]['ResInterview']['int_date']);
+				//$this->set('interview_date', $this->Functions->format_date_show($int_date[0]));
+			}
 			// get the candidate names
 			$options = array(			
 				array('table' => 'resume',
@@ -2268,6 +2297,8 @@ class PositionController extends AppController {
 			);
 			
 			$fields = array('Resume.first_name','Resume.last_name', 'Resume.mobile');
+			
+			
 			$cand_data = $this->Position->find('all', array('fields' => $fields,'conditions' => array('Resume.id' => $chk_resume_id_ar),
 			'group' => array('Resume.id'),'joins' => $options));		
 			// iterate the candidate interview table
@@ -2310,62 +2341,116 @@ class PositionController extends AppController {
 			
 			/* logics created for multiple selection of candidates for interview schedule / reschedule */
 		
-			foreach($cand_data as $key => $exp){
-				$int_table_form .= "<table  width='100%' border='0' cellspacing='2' cellpadding='5' style='border:1px solid #ededed; border-left:none; padding:10px; font:bold 13px Arial'>";
-				$int_table_form .= "<tr><td>Candidate Name</td><td>Interview Level</td><td>Interview Mode</td></tr>";
+		
+			foreach($cand_data as $key => $exp){ 
+				// for auto filling from first form
+				if($key == '0'){
+					// $level_cls = 'firstLevel';
+				}
+				
+				$int_table_form .= "<table  width='100%' border='0' cellspacing='2' cellpadding='5' style='padding:10px; font:bold 13px Arial'>";
+				
+				if($this->request->query['int_type'] == 'reschedule'){
+					$int_table_form .= "<tr><td>Reason for Re-Schedule  <span class='f_req'>*</span></td></tr>";
+					$int_table_form .= "<tr  style='font-weight:normal'><td>";
+					$int_table_form .= "<select class='input-small required $level_cls' style='width:130px;' name='data[Position][candidate_reason_$key]' id='candidate_level_$key'><option value=''>Select</option>";
+					foreach($reject_reason_data as $reason_key => $reason_val){						
+						$int_table_form .= "<option value='$reason_key'>$reason_val</option>";
+					}
+					$int_table_form .= "</select></td></tr>";
+				}
+				
+				$int_table_form .= "<tr><td>Interview Level <span class='f_req'>*</span> </td><td>Interview Mode <span class='f_req'>*</span></td><td>Interview Date & Time <span class='f_req'>*</span></td></tr>";
 				$int_table_form .= "<tr  style='font-weight:normal'>";
 				//$int_table_form .= "<td width='50'>";
 				//$int_table_form .= ++$key;
 				//$int_table_form .= "</td>";
-				$int_table_form .= "<td  width='120'>";
-				$int_table_form .= "<input type='text' name='candidate_name_$key' id='candidate_$key' value='$contact_name'/>";
+				//$int_table_form .= "<td  width='120'>";
+				//$int_table_form .= "<input type='text' name='candidate_name_$key' id='candidate_$key' value='$contact_name'/>";
 			 	// $contact_name = $multi_chk == 1 ? '[CANDIDATE_NAME]' : ucwords($exp['Resume']['first_name'].' '.$exp['Resume']['last_name']);
-				$contact_name = ucwords($exp['Resume']['first_name'].' '.$exp['Resume']['last_name']);
+				//$contact_name = ucwords($exp['Resume']['first_name'].' '.$exp['Resume']['last_name']);
 				// $int_table_form .= $contact_name;
-				$int_table_form .= "</td>";
+				//$int_table_form .= "</td>";
 				$int_table_form .= "<td  width='140'>";
-				$int_table_form .= "<select class='input-small' style='width:130px;' name='candidate_level_$key' id='candidate_level_$key'>";
+				$int_table_form .= "<select class='input-small required $level_cls' style='width:130px;' name='data[Position][candidate_level_$key]' id='candidate_level_$key'><option value=''>Select</option>";
+				
 				foreach($int_levels as $int_key => $int_lev){
-					$int_table_form .= "<option value='$int_key'>$int_lev</option>";
+					// for retaining
+					
+					if($inter_data[$key]['ResInterview']['stage_title'] == $int_key){
+						$level_select = 'selected';
+					}else{
+						$level_select = '';
+					}
+					
+
+					$int_table_form .= "<option $level_select value='$int_key'>$int_lev</option>";
 				}
 				$int_table_form .= "</select>";
 				// $int_table_form .= '[interview_level]';
 				$int_table_form .= "</td>";
 				$int_table_form .= "<td  width='140'>";
+				$int_table_form .= "<select class='input-small required' style='width:130px;' name='data[Position][candidate_stage_$key]' id='candidate_stage_$key'><option value=''>Select</option>";
 				
-				$int_table_form .= "<select class='input-small' style='width:130px;' name='candidate_level_$key' id='candidate_level_$key'>";
 				foreach($stage_list as $stage_key => $stage){
-					$int_table_form .= "<option value='$stage_key'>$stage</option>";
+					if($inter_data[$key]['ResInterview']['interview_stage_id'] == $stage_key){
+						$stage_select = 'selected';
+					}else{
+						$stage_select = '';
+					}
+					$int_table_form .= "<option $stage_select value='$stage_key'>$stage</option>";
 				}
-				$int_table_form .= "</select>";				
+				$int_table_form .= "</select></td>";				
 				// $int_table_form .= '[interview_mode]';
-				$int_table_form .= "</td></tr>";
 				
-				$int_table_form .= "<tr><td>Interview Date</td><td>Interview Timing</td>
-				<td>Contact No.</td></tr><tr>";
-				
-				
-				$int_table_form .= "<td  width='140'>";				
-				$int_table_form .= "<input type='text' class='datepick input-small' name='candidate_int_date_$key' id='candidate_int_date_$key'/>";
-				$int_table_form .= "<input type='text' style='margin-left:15px;' class='datetimepick input-small' name='candidate_int_time_$key' id='candidate_int_time_$key'/>";
+				$int_table_form .= "<td  width='180'>";				
+				$int_table_form .= "<input type='text' class='required datetimepick input-medium' name='data[Position][candidate_int_date_$key]' id='candidate_int_date_$key'/>";
+				//$int_table_form .= "<input type='text' style='margin-left:15px;' class='required datetimepick input-small' name='data[Position][candidate_int_time_$key]' id='candidate_int_time_$key'/>";
 				//$int_table_form .= '[interview_date]'. ', [interview_time]';
 				$int_table_form .= "</td>";
+				
+				
+				$int_table_form .= "</tr>";
+				
+				$int_table_form .= "<tr><td>Interview Duration <span class='f_req'>*</span> </td><td>Interview Venue <span class='f_req'>*</span> </td><td>Contact Person <span class='f_req'>*</span> </td></tr><tr>";
+				
+				
+				
 				$int_table_form .= "<td  width='140'>";
 				
-				$int_table_form .= "<select class='input-small' style='width:130px;' name='candidate_duration_$key' id='candidate_duration_$key'>";
+				$int_table_form .= "<select class='input-small required' style='width:130px;' name='data[Position][candidate_duration_$key]' id='candidate_duration_$key'><option value=''>Select</option>";
 				foreach($int_duration as $dur_key => $duration){
+					
 					$int_table_form .= "<option value='$dur_key'>$duration</option>";
 				}
 				$int_table_form .= "</select>";	
 				
 				// $int_table_form .= '[interview_duration]';
-				$int_table_form .= "</td>";				
+				$int_table_form .= "</td>";
+				
+				$int_contact_name = $inter_data[$key]['ResInterview']['contact_name'];
+				$int_contact_no = $inter_data[$key]['ResInterview']['contact_no'];
+				$int_addi = $inter_data[$key]['ResInterview']['additional'];
+				$int_venue = $inter_data[$key]['ResInterview']['venue'];
+
+				$int_table_form .= "<td><textarea   class='required input-medium wysiwyg1'  name='data[Position][candidate_venue_$key]'  id='candidate_venue_$key'>$int_venue</textarea></td>";
+
+				$int_table_form .= "<td><input type='text' class='required input-medium'  value='$int_contact_name' name='data[Position][candidate_person_$key]'  id='candidate_person_$key'/></td></tr>";
+
+
+				$int_table_form .= "<tr><td>Contact No. <span class='f_req'>*</span> </td><td>Additional Info </td></tr><tr>";					
+
+			
 				$int_table_form .= "<td  width='140'>";
 				// $mobile = $multi_chk == 1 ? '[MOBILE]' : $exp['Resume']['mobile'];
 				// $mobile =  $exp['Resume']['mobile'];
-				$int_table_form .= "<input type='text' class='input-medium' name='candidate_mobile_$key' value='$mobile' id='candidate_mobile_$key'/>";
+				$int_table_form .= "<input type='text' class='required input-medium' value='$int_contact_no'  name='data[Position][candidate_mobile_$key]' value='$mobile' id='candidate_mobile_$key'/>";
 				// $int_table_form .= $mobile;
 				$int_table_form .= "</td>";
+				
+				$int_table_form .= "<td><textarea   class='input-medium wysiwyg1'   name='data[Position][candidate_addi_$key]'  id='candidate_addi_$key'>$int_addi</textarea></td>";
+
+								
 				$int_table_form .= "</tr>";		
 				$can_name_form .= ucwords($exp['Resume']['first_name'].' '.$exp['Resume']['last_name']).', ';
 				$int_table_form .= "</table><splitter>";
@@ -2397,44 +2482,80 @@ class PositionController extends AppController {
 			$this->Position->set($this->request->data);
 			$interview_status = $schedule_type == 'reschedule' ? 'Re-Scheduled' : 'Scheduled';
 			// retain the district
-			// validate the form fields
-			if ($this->Position->validates(array('fieldList' => array('interview_level','interview_stage_id','int_date','int_time',
-				'int_duration','subject','message','subject_client','message_client','contact_name','contact_no','venue', $reason_id)))){	
+			// validate the form fields	
+			if($multi_chk == '' && $schedule_type == 'reschedule'){
+				$valid = array('interview_level','interview_stage_id', 'int_date','int_duration','contact_name','venue','contact_no','reason_id');				
+			}else if($multi_chk == ''){
+				$valid = array('interview_level','interview_stage_id', 'int_date','int_duration','contact_name','venue','contact_no');				
+			}		
+			
+			
+			if ($this->Position->validates(array('fieldList' => $valid))){	
 				// get the req. resume id
 				$this->loadModel('ReqResume');
 				//$req_res_id = $this->ReqResume->find('all', array('fields' => array('ReqResume.id'), 
 				//'conditions' => array('requirements_id' => $pos_id, 'resume_id' => $id)));
 				// send the interview mail to candidate
 				// iterate for multiple send CVs
+				
+				
+				$int_key = 0;
 				foreach($req_res_ids as $key => $req_res_id){
 					if($req_res_id != ''){
 						// save req resume table
-						$data = array('id' => $req_res_id,'modified_date' => $this->Functions->get_current_date(),
-						'modified_by' => $this->Session->read('USER.Login.id'),	 'stage_title' => $this->request->data['Position']['interview_level'],
-						 'status_title' => $interview_status);
+						if($multi_chk == '1'){
+							$data = array('id' => $req_res_id,'modified_date' => $this->Functions->get_current_date(),
+							'modified_by' => $this->Session->read('USER.Login.id'),	 'stage_title' => $this->request->data['Position']['candidate_level_'.$int_key],
+							'status_title' => $interview_status);
+						}else{
+							$data = array('id' => $req_res_id,'modified_date' => $this->Functions->get_current_date(),
+							'modified_by' => $this->Session->read('USER.Login.id'),	 'stage_title' => $this->request->data['Position']['interview_level'],
+							'status_title' => $interview_status);
+						 }
 						// save  req resume
-						if($this->ReqResume->save($data, array('validate' => false))){		
+						if($this->ReqResume->save($data, array('validate' => false))){
 							// save req resume status
 							$this->loadModel('ReqResumeStatus');
-							$data = array('req_resume_id' => $req_res_id, 'created_date' => $this->Functions->get_current_date(),
-							'created_by' => $this->Session->read('USER.Login.id'), 'stage_title' => $this->request->data['Position']['interview_level'],
-							'status_title' => $interview_status, 'note' => $this->request->data['Position']['note']);					
+							if($multi_chk == '1'){
+								$data = array('req_resume_id' => $req_res_id, 'created_date' => $this->Functions->get_current_date(),
+								'created_by' => $this->Session->read('USER.Login.id'), 'stage_title' => $this->request->data['Position']['candidate_level_'.$int_key],
+								'status_title' => $interview_status);
+							}else{
+								$data = array('req_resume_id' => $req_res_id, 'created_date' => $this->Functions->get_current_date(),
+								'created_by' => $this->Session->read('USER.Login.id'), 'stage_title' => $this->request->data['Position']['interview_level'],
+								'status_title' => $interview_status);
+							}			
+							
 							$this->ReqResumeStatus->id = '';
 							if($this->ReqResumeStatus->save($data, array('validate' => false))){			
 								// save interview status
 								$this->loadModel('ResInterview');
 								$this->ResInterview->id = '';
-								$data = array('req_resume_id' => $req_res_id, 'created_date' => $this->Functions->get_current_date(),
-								'created_by' => $this->Session->read('USER.Login.id'), 'stage_title' => $this->request->data['Position']['interview_level'],
-								'status_title' => $interview_status,	'int_date' => $this->Functions->format_date_save($this->request->data['Position']['int_date']),
-								'int_duration' => $this->request->data['Position']['int_duration'], 'int_time' => $this->request->data['Position']['int_time'],
-								'interview_stage_id' => $this->request->data['Position']['interview_stage_id'],
-								'venue' =>  $this->request->data['Position']['venue'],'reason_id' =>  $this->request->data['Position']['reason_id'],
-								'additional' => $this->request->data['Position']['additional'],
-								'contact_name' => $this->request->data['Position']['contact_name'],
-								'contact_no' => $this->request->data['Position']['contact_no']							
-								);
+								if($multi_chk == '1'){
+									$int_date_time = explode(' ', $this->request->data['Position']['candidate_int_time_'.$int_key]);
+									$data = array('req_resume_id' => $req_res_id, 'created_date' => $this->Functions->get_current_date(),
+									'created_by' => $this->Session->read('USER.Login.id'), 'stage_title' => $this->request->data['Position']['candidate_level_'.$int_key],
+									'status_title' => $interview_status,	'int_date' => $this->Functions->format_date_save($int_date_time[0]).' '.$int_date_time[1],	'int_duration' => $this->request->data['Position']['candidate_duration_'.$int_key], 'int_time' => $int_date_time[1],	'interview_stage_id' => $this->request->data['Position']['candidate_stage_'.$int_key],
+									'venue' =>  $this->request->data['Position']['candidate_venue_'.$int_key],'reason_id' =>  $this->request->data['Position']['candidate_reason_'.$int_key],'additional' => $this->request->data['Position']['candidate_addi_'.$int_key],	'contact_name' => $this->request->data['Position']['candidate_addi_'.$int_key], 'contact_no' => $this->request->data['Position']['candidate_mobile_'.$int_key]);
+								}else{
+									$int_date_time = explode(' ', $this->request->data['Position']['int_date']);
+									$data = array('req_resume_id' => $req_res_id, 'created_date' => $this->Functions->get_current_date(),
+									'created_by' => $this->Session->read('USER.Login.id'), 'stage_title' => $this->request->data['Position']['interview_level'],
+									'status_title' => $interview_status,	'int_date' => $this->Functions->format_date_save($int_date_time[0]).' '.$int_date_time[1],
+									'int_duration' => $this->request->data['Position']['int_duration'], 'int_time' => $int_date_time[1],
+									'interview_stage_id' => $this->request->data['Position']['interview_stage_id'],
+									'venue' =>  $this->request->data['Position']['venue'],'reason_id' =>  $this->request->data['Position']['reason_id'],
+									'additional' => $this->request->data['Position']['additional'],
+									'contact_name' => $this->request->data['Position']['contact_name'],
+									'contact_no' => $this->request->data['Position']['contact_no']);
+								}
+								
+								// echo '<pre>'; print_r($data);die;
+								 
 								$this->ResInterview->save($data, array('validate' => false));
+								
+								
+								
 								// for multi selection only
 								/*
 								if($multi_chk  == '1'){
@@ -2454,7 +2575,10 @@ class PositionController extends AppController {
 								$to_name = $resume_data['Resume']['first_name'].' '.$resume_data['Resume']['last_name'];
 
 																
-								$message = $this->parse_interview_mail($this->request->data['Position']['message_candidate'],$to_name,$pos_id);
+								$message = $this->parse_interview_mail($this->request->data['Position']['message_candidate'],$to_name,$pos_id, $int_key);
+								
+								$int_key++;
+								
 								$subject = $this->request->data['Position']['subject_candidate'];
 								
 								
@@ -2549,6 +2673,10 @@ class PositionController extends AppController {
 					// if successfully update
 				$this->set('cv_update_status', 1);
 				$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Interview Details Updated Successfully', 'default', array('class' => 'alert alert-success'));											
+			}else{
+				// print_r($this->Position->validationErrors);
+				// $this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Problem in submitting the form. Pls check all fields filled...', 'default', array('class' => 'alert alert-error'));
+				$this->set('validation_error', 1);
 			}
 		}
 			
