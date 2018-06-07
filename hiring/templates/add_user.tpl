@@ -82,6 +82,16 @@
 							<input type="text" tabindex="7" name="designation" value="{$smarty.post.designation}" class="span8" autocomplete="off">									
 						</td>	
 				  </tr>
+				  <tr>
+						<td width="120" class="tbl_column">Role <span class="f_req">*</span></td>
+						<td>	
+							<select name="role" class="span8"  id="PositionEmpId">
+								<option value="">Select</option>
+								{html_options options=$roles selected=$smarty.post.role}	
+							</select> 
+							<label for="reg_city" generated="true" class="error">{$roleErr}</label>											
+						</td>	
+				  </tr>
 				</tbody>
 			</table>
 		</div>
@@ -120,16 +130,7 @@
 				  </tr>
 				  
 				
-					<tr>
-						<td width="120" class="tbl_column">Role <span class="f_req">*</span></td>
-						<td>	
-							<select name="role" class="span8"  id="PositionEmpId">
-								<option value="">Select</option>
-								{html_options options=$roles selected=$smarty.post.role}	
-							</select> 
-							<label for="reg_city" generated="true" class="error">{$roleErr}</label>											
-						</td>	
-				  </tr>
+					
 						  <tr class="tbl_row">
 						<td width="120" class="tbl_column">Status <span class="f_req">*</span></td>
 						<td>	

@@ -82,7 +82,16 @@
 							<input type="text" tabindex="7" name="position" value="{if $position}{$position}{else}{$smarty.post.designation}{/if}" class="span8" autocomplete="off">									
 						</td>	
 				  </tr>
-				  
+				  <tr>
+						<td width="120" class="tbl_column">Role <span class="f_req">*</span></td>
+						<td>	
+							<select name="roles_id" class="span8">
+								<option value="">Select</option>
+								{html_options options=$roles selected=$roles_id}	
+							</select> 
+							<label for="reg_city" generated="true" class="error">{$roleErr}</label>											
+						</td>	
+						 </tr>	
 				</tbody>
 			</table>
 		</div>
@@ -122,15 +131,7 @@
 				  </tr>
 				  
 				  
-				   <tr>
-						<td width="120" class="tbl_column">Role <span class="f_req">*</span></td>
-						<td>	
-							<select name="roles_id" class="span8">
-								<option value="">Select</option>
-								{html_options options=$roles selected=$roles_id}	
-							</select> 
-							<label for="reg_city" generated="true" class="error">{$roleErr}</label>											
-						</td>	
+				   
 				  </tr class="tbl_row">
 							 <tr>
 						<td width="120" class="tbl_column">Status <span class="f_req">*</span></td>
