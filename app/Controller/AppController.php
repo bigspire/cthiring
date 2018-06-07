@@ -118,7 +118,7 @@ class AppController extends Controller {
 	
 	/* function to show the notification count */
 	public function get_notification_count(){		
-		if($this->Session->read('USER.Login.roles_id') == '34' && $this->Session->read('USER.Login.notification') == ''){
+		if(($this->Session->read('USER.Login.roles_id') == '37' || $this->Session->read('USER.Login.roles_id') == '40') && $this->Session->read('USER.Login.notification') == ''){
 			$this->redirect('/notification/');
 		}
 	}
