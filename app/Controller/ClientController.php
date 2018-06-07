@@ -756,7 +756,7 @@ class ClientController extends AppController {
 		// load the account holders
 		$user_list = $this->Client->Creator->find('list',  array('fields' => array('id','first_name'), 
 		'order' => array('first_name ASC'),'conditions' => array('status' => '0','Creator.is_deleted' => 'N',
-		'Creator.roles_id' => '34')));
+		'Creator.roles_id' => array('37', '40'))));
 		$this->set('userList', $user_list);
 		// fetch the contact branch
 		$this->loadModel('ContactBranch');

@@ -161,7 +161,7 @@ class HomeController  extends AppController {
 			$this->set('rec_dash', 'active');
 
 			
-		}else if($this->Session->read('USER.Login.roles_id') == '34'){
+		}else if($this->Session->read('USER.Login.roles_id') == '40'){ // for Vertical Lead
 			$cli_options = array(						
 				array('table' => 'requirements',
 						'alias' => 'Position',					
