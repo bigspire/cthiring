@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-12-05 19:56:58
+/* Smarty version 3.1.29, created on 2018-06-07 13:05:44
   from "C:\xampp\htdocs\ctsvn\cthiring\hiring\templates\edit_user.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5a26acb29b4825_84459990',
+  'unifunc' => 'content_5b18e050ef7002_57838140',
   'file_dependency' => 
   array (
     '8a256bfe288dcad7e12b8b8f80f578e7327353f8' => 
     array (
       0 => 'C:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\templates\\edit_user.tpl',
-      1 => 1511514442,
+      1 => 1528356771,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5a26acb29b4825_84459990 ($_smarty_tpl) {
+function content_5b18e050ef7002_57838140 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -160,7 +160,7 @@ echo $_POST['designation'];
 				   <tr class="tbl_row">
 						<td width="120" class="tbl_column">Email Signature <span class="f_req">*</span></td>
 						<td>
-						<textarea name="signature" class="span8 wysiwyg1"><?php echo $_smarty_tpl->tpl_vars['signature']->value;?>
+						<textarea name="signature" class="span8 wysiwyg"><?php echo $_smarty_tpl->tpl_vars['signature']->value;?>
 </textarea>	
 						<label for="reg_city" generated="true" class="error"><?php echo $_smarty_tpl->tpl_vars['signatureErr']->value;?>
 </label>
