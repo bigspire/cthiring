@@ -410,6 +410,23 @@ if(!empty($_POST)){
 				}
 				*/
 				
+				// get the incentive user details
+				$query = "CALL get_incentive_user_details('I')";
+				try{
+					if(!$result = $mysql->execute_query($query)){
+						throw new Exception('Problem in getting the incentive user details');
+					}
+					// calling mysql fetch_result function
+					while($incentive_user_details[] = $mysql->display_result($result)){
+					}
+					// free the memory
+					$mysql->clear_result($result);
+					// call the next result
+					$mysql->next_query();
+				}catch(Exception $e){
+					echo 'Caught exception: ',  $e->getMessage(), "\n";
+				}
+			
 				// get the L1 user details
 				$query = "CALL get_approval_user_by_id('".$_SESSION['user_id']."')";
 				try{
@@ -442,10 +459,9 @@ if(!empty($_POST)){
 				$month = $ps_month ? $ps_month : $position_month;
 				$year = $_POST['year'] ? $_POST['year'] : $_POST['ps_year'];
 				
-				
 				// send mail to L1 
 				$sub = "Manage Hiring -  Incentive -  ".$fun->check_incentive_tp($_POST['type']).",  ".$month.' '.$year." Created By ".$admin_name;
-				$msg = $content->get_level1_incentive_details($_POST,$obj,$admin_name,$level1_name,$level1_email);
+				$msg = $content->get_level1_incentive_details($incentive_user_details,$_POST,$obj,$admin_name,$level1_name,$level1_email);
 				$mailer->send_mail($sub,$msg,$admin_name,$admin_email,$level1_name,$level1_email);
 			
 				header("Location: incentive.php?status=created");
@@ -738,6 +754,22 @@ if(!empty($_POST)){
 			}
 			*/	
 			
+			// get the incentive user details
+			$query = "CALL get_incentive_user_details('I')";
+			try{
+				if(!$result = $mysql->execute_query($query)){
+					throw new Exception('Problem in getting the incentive user details');
+				}
+				// calling mysql fetch_result function
+				$incentive_user_details = $mysql->display_result($result);
+				// free the memory
+				$mysql->clear_result($result);
+				// call the next result
+				$mysql->next_query();
+			}catch(Exception $e){
+				echo 'Caught exception: ',  $e->getMessage(), "\n";
+			}
+			
 			// get the L1 user details
 			$query = "CALL get_approval_user_by_id('".$_SESSION['user_id']."')";
 			try{
@@ -772,7 +804,7 @@ if(!empty($_POST)){
 					
 			// send mail to L1 
 			$sub = "Manage Hiring -  Incentive -  ".$fun->check_incentive_tp($_POST['type']).",  ".$month.' '.$year." Created By ".$admin_name;
-			$msg = $content->get_level1_incentive_details($_POST,$obj,$admin_name,$level1_name,$level1_email);
+			$msg = $content->get_level1_incentive_details($incentive_user_details,$_POST,$obj,$admin_name,$level1_name,$level1_email);
 			$mailer->send_mail($sub,$msg,$admin_name,$admin_email,$level1_name,$level1_email);
 			
 			header("Location: incentive.php?status=created");
