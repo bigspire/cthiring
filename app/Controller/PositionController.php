@@ -1713,8 +1713,8 @@ class PositionController extends AppController {
 				
 				$int_level = $this->request->data['Position']['interview_level'] ? $this->request->data['Position']['interview_level'] : '[INTERVIEW_LEVEL]';
 				$int_date_time = explode(' ', $this->request->data['Position']['int_date']);
-				$int_date = $int_date_time[0] ? $int_date_time[0] : '[INTERVIEW_DATE]';
-				$int_time = $int_date_time[1] ? $int_date_time[1] : '[INTERVIEW_TIME]';
+				$int_date = $int_date_time[0] ? trim($int_date_time[0]) : '[INTERVIEW_DATE]';
+				$int_time = $int_date_time[1] ? trim($int_date_time[1]) : '[INTERVIEW_TIME]';
 				$int_duration = $this->request->data['Position']['int_duration'] ? $this->request->data['Position']['int_duration'] : '[INTERVIEW_DURATION]';
 				$venue = $this->request->data['Position']['venue'] ? nl2br($this->request->data['Position']['venue']) : '[INTERVIEW_VENUE]';
 				$contact_name = $this->request->data['Position']['contact_name'] ? $this->request->data['Position']['contact_name'] : '[INTERVIEW_CONTACT_PERSON]';
@@ -2500,7 +2500,7 @@ class PositionController extends AppController {
 			}		
 			
 			
-			if ($this->Position->validates(array('fieldList' => $valid))){	
+			if ($this->Position->validates(array('fieldList' => array($valid)))){	
 				// get the req. resume id
 				$this->loadModel('ReqResume');
 				//$req_res_id = $this->ReqResume->find('all', array('fields' => array('ReqResume.id'), 
@@ -2542,16 +2542,16 @@ class PositionController extends AppController {
 								$this->loadModel('ResInterview');
 								$this->ResInterview->id = '';
 								if($multi_chk == '1'){
-									$int_date_time = explode(' ', $this->request->data['Position']['candidate_int_time_'.$int_key]);
+									$int_date_time = explode(' ', $this->request->data['Position']['candidate_int_date_'.$int_key]);
 									$data = array('req_resume_id' => $req_res_id, 'created_date' => $this->Functions->get_current_date(),
 									'created_by' => $this->Session->read('USER.Login.id'), 'stage_title' => $this->request->data['Position']['candidate_level_'.$int_key],
-									'status_title' => $interview_status,	'int_date' => $this->Functions->format_date_save($int_date_time[0]).' '.$int_date_time[1],	'int_duration' => $this->request->data['Position']['candidate_duration_'.$int_key], 'int_time' => $int_date_time[1],	'interview_stage_id' => $this->request->data['Position']['candidate_stage_'.$int_key],
+									'status_title' => $interview_status,	'int_date' => $this->Functions->format_date_save(trim($int_date_time[0])).' '.trim($int_date_time[1]),	'int_duration' => $this->request->data['Position']['candidate_duration_'.$int_key], 'int_time' => $int_date_time[1],	'interview_stage_id' => $this->request->data['Position']['candidate_stage_'.$int_key],
 									'venue' =>  $this->request->data['Position']['candidate_venue_'.$int_key],'reason_id' =>  $this->request->data['Position']['candidate_reason_'.$int_key],'additional' => $this->request->data['Position']['candidate_addi_'.$int_key],	'contact_name' => $this->request->data['Position']['candidate_addi_'.$int_key], 'contact_no' => $this->request->data['Position']['candidate_mobile_'.$int_key]);
 								}else{
 									$int_date_time = explode(' ', $this->request->data['Position']['int_date']);
 									$data = array('req_resume_id' => $req_res_id, 'created_date' => $this->Functions->get_current_date(),
 									'created_by' => $this->Session->read('USER.Login.id'), 'stage_title' => $this->request->data['Position']['interview_level'],
-									'status_title' => $interview_status,	'int_date' => $this->Functions->format_date_save($int_date_time[0]).' '.$int_date_time[1],
+									'status_title' => $interview_status,	'int_date' => $this->Functions->format_date_save(trim($int_date_time[0])).' '.trim($int_date_time[1]),
 									'int_duration' => $this->request->data['Position']['int_duration'], 'int_time' => $int_date_time[1],
 									'interview_stage_id' => $this->request->data['Position']['interview_stage_id'],
 									'venue' =>  $this->request->data['Position']['venue'],'reason_id' =>  $this->request->data['Position']['reason_id'],
