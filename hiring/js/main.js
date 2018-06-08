@@ -1734,10 +1734,10 @@ function load_colorBox(obj, size){
 					
 				}    
 				// branch page validation
-				//if($('#fr_branch').length > 0 && $('#fr_branch').val() == 'success'){
-				//		window.parent.$('#formID').submit();
-				//} 				
-			}						
+				if($('#fr_branch').length > 0 && $('#fr_branch').val() == 'success'){
+						window.parent.$('#formID').submit();
+					} 				
+				}						
 			});
 		}
 }

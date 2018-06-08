@@ -261,7 +261,9 @@
                                         </li>
 	
 
-	 <?php if($client_wise_cv_status == '1' ):?> 
+	 <?php if($client_wise_cv_status == '1' || $month_wise_cv_status == '1' || $productivity_report == '1' 
+	 || $biz_conversion_report == '1' || $recruiter_bill_report == '1' ):?> 
+	 
 										 <li class="dropdown <?php echo $report_menu ?>">
                                             <a data-toggle="dropdown" class="dropdown-toggle " href="#"><i class="icon-download-alt icon-white"></i> Reports <b class="caret"></b></a>
                                           
@@ -280,16 +282,17 @@
 											
 									
 									
-									  <?php if($client_wise_cv_status == '1'):?>
+									  <?php if($client_wise_cv_status == '1' || $month_wise_cv_status == '1'):?>
 											   <li class="dropdown">
 													<a href="#">CV Status <b class="caret-right"></b></a>
 													<ul class="dropdown-menu">
 														<!--li><a href="#">CTC Wise CV Status</a></li-->
 														  <?php if($client_wise_cv_status == '1'):?>
 														<li><a href="<?php echo $this->webroot;?>report/client_wise_cv_status/">Client Wise CV Status</a></li>
-														<li><a href="<?php echo $this->webroot;?>report/month_wise_cv_status/">Month Wise CV Status</a></li>
+														<?php endif; ?>
 														
-														
+														  <?php if($month_wise_cv_status == '1'):?>
+														<li><a href="<?php echo $this->webroot;?>report/month_wise_cv_status/">Month Wise CV Status</a></li>														
 														<?php endif; ?>
 														<!--li><a href="#">Month Wise CV Status</a></li-->														
 													</ul>
@@ -306,9 +309,7 @@
 										<?php endif; ?>
 										
 										
-										
-										
-											<?php if($biz_conversion_report == '1'):?>
+										<?php if($biz_conversion_report == '1'):?>
 											   <li class="dropdown">
 													<a href="#">Business Conversion <b class="caret-right"></b></a>
 													<ul class="dropdown-menu">

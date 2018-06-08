@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-06-08 12:41:19
+/* Smarty version 3.1.29, created on 2018-06-08 17:26:39
   from "C:\xampp\htdocs\ctsvn\cthiring\hiring\templates\include\header.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5b1a2c17d46e50_91250426',
+  'unifunc' => 'content_5b1a6ef7b88794_64955038',
   'file_dependency' => 
   array (
     '2cc32a09905a93cae1ddf68e0518ebdd3aca7f41' => 
     array (
       0 => 'C:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\templates\\include\\header.tpl',
-      1 => 1528441287,
+      1 => 1528458996,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_5b1a2c17d46e50_91250426 ($_smarty_tpl) {
+function content_5b1a6ef7b88794_64955038 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -68,7 +68,9 @@ function content_5b1a2c17d46e50_91250426 ($_smarty_tpl) {
             <link rel="stylesheet" href="lib_cthiring/jBreadcrumbs/css/BreadCrumb.css" />
 	
 </head>
-<body  class="menu_hover">
+<body  class="menu_hover"> 
+
+
 	<div id="container">
 		<div id="content">
 			<div id="maincontainer" class="clearfix">
@@ -313,7 +315,7 @@ resume/">View Resume <!-- span class="label-bub label-info white"><?php echo $_s
 												
 												 <?php if ($_smarty_tpl->tpl_vars['module']->value['approve_incentive'] == '1') {?>
                                                 <li><a href="approve_incentive.php">Approve Incentive</a></li>
-										   <?php }?>
+												<?php }?>
 												<?php if ($_smarty_tpl->tpl_vars['module']->value['view_incentive'] == '1') {?>
                                                 <li><a href="incentive.php">View Incentive</a></li>
 										   <?php }?>
@@ -324,37 +326,75 @@ resume/">View Resume <!-- span class="label-bub label-info white"><?php echo $_s
 										
 										
 										
-										<?php if ($_smarty_tpl->tpl_vars['module']->value['client_wise_cv_status'] == '1' || $_smarty_tpl->tpl_vars['module']->value['ctc_wise_monthly_opening'] == '1') {?>
+			<?php if ($_smarty_tpl->tpl_vars['module']->value['client_wise_cv_status'] == '1' || $_smarty_tpl->tpl_vars['module']->value['month_wise_cv_status'] == '1' || $_smarty_tpl->tpl_vars['module']->value['employee_productivity'] == '1' || $_smarty_tpl->tpl_vars['module']->value['employee_business_conversion'] == '1' || $_smarty_tpl->tpl_vars['module']->value['recruiter_wise_billing'] == '1') {?>
 										<li class="dropdown <?php echo $_smarty_tpl->tpl_vars['report_menu']->value;?>
 ">
                                             <a data-toggle="dropdown" class="dropdown-toggle " href="#"><i class="icon-download-alt icon-white"></i> Reports <b class="caret"></b></a>
                                           <ul class="dropdown-menu">
 										  
-										 <?php if ($_smarty_tpl->tpl_vars['module']->value['ctc_wise_monthly_opening'] == '1') {?> 
+										
+										  
+										 <?php if ($_smarty_tpl->tpl_vars['module']->value['month_wise_cv_status'] == '1' || $_smarty_tpl->tpl_vars['module']->value['client_wise_cv_status'] == '1') {?> 
 										   <li class="dropdown">
-													<a href="#">CTC Wise Monthly Openings Handled <b class="caret-right"></b></a>
+													<a href="#">CV Status<b class="caret-right"></b></a>
 													<ul class="dropdown-menu">
-														<li><a href="#">CTC Wise Monthly Openings Handled</a></li>
-														<li><a href="#">CTC Wise Client Openings Handled</a></li>
-														<li><a href="#">Month Wise Client Openings Handled</a></li>														
-													</ul>
-											</li>
-										<?php }?>
-											
-									 <?php if ($_smarty_tpl->tpl_vars['module']->value['client_wise_cv_status'] == '1') {?> 
-											   <li class="dropdown">
-													<a href="#">CV Status <b class="caret-right"></b></a>
-													<ul class="dropdown-menu">
-														<!--li><a href="#">CTC Wise CV Status</a></li-->
-														
-														 <?php if ($_smarty_tpl->tpl_vars['module']->value['client_wise_cv_status'] == '1') {?> 
+													 <?php if ($_smarty_tpl->tpl_vars['module']->value['client_wise_cv_status'] == '1') {?> 
 														<li><a href="<?php echo webroot;?>
 report/client_wise_cv_status/">Client Wise CV Status</a></li>
-														<?php }?>
-														<!--li><a href="#">Month Wise CV Status</a></li-->														
+													 <?php }?>
+														
+													<?php if ($_smarty_tpl->tpl_vars['module']->value['month_wise_cv_status'] == '1') {?> 
+													<li><a href="<?php echo webroot;?>
+report/month_wise_cv_status/">Month Wise CV Status</a></li>
+													<?php }?>
 													</ul>
 											</li>
 										<?php }?>
+										
+										
+										
+										 <?php if ($_smarty_tpl->tpl_vars['module']->value['employee_productivity'] == '1') {?> 
+											   <li class="dropdown">
+													<a href="#">Productivity <b class="caret-right"></b></a>
+													<ul class="dropdown-menu">
+														<li><a href="<?php echo webroot;?>
+report/employee_productivity/">Employee Productivity</a></li>
+													</ul>
+												</li>
+										<?php }?>
+										
+										
+										
+										 <?php if ($_smarty_tpl->tpl_vars['module']->value['employee_business_conversion'] == '1') {?>
+											   <li class="dropdown">
+													<a href="#">Business Conversion <b class="caret-right"></b></a>
+													<ul class="dropdown-menu">
+													
+													 <?php if ($_smarty_tpl->tpl_vars['module']->value['employee_business_conversion'] == '1') {?>
+														<li><a href="<?php echo webroot;?>
+report/employee_business_conversion/">Employee Business Conversion</a></li>
+													<?php }?>
+													
+													</ul>
+												</li>
+										<?php }?>
+										
+										
+										<?php if ($_smarty_tpl->tpl_vars['module']->value['recruiter_wise_billing'] == '1') {?>
+											   <li class="dropdown">
+													<a href="#">Recruiter Wise Billing <b class="caret-right"></b></a>
+													<ul class="dropdown-menu">													
+													<?php if ($_smarty_tpl->tpl_vars['module']->value['recruiter_wise_billing'] == '1') {?>
+														<li><a href="<?php echo webroot;?>
+report/recruiter_wise_billing/">Recruiter Wise Billing</a></li>
+													<?php }?>
+													
+													</ul>
+												</li>
+										<?php }?>
+										
+										
+										
 
 										
 											   <!--li class="dropdown">

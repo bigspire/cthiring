@@ -209,12 +209,13 @@ class AppController extends Controller {
 				$this->redirect('/home/');	
 			}
 		}
+		
 	
 		// check the all module exists in the list
 		foreach($modules as $key => $module){
 			// check the user module exists in the database module list
 			if (in_array($module['Module']['id'], $format_per)) { 	
-				switch($module['Module']['id']){
+				switch($module['Module']['id']){					
 					case 1:					
 					$this->set('create_client', 1);
 					break;					
@@ -241,40 +242,22 @@ class AppController extends Controller {
 					break;
 					case 13:					
 					$this->set('create_incentive', 1);
-					break;
-					case 17:									
-					$this->set('client_wise_cv_status', 1);
-					break;
-					case 18:					
+					break;					
+					case 64:				
 					$this->set('month_wise_cv_status', 1);
-					break;
-					case 19:					
-					$this->set('productivity_report', 1);
-					break;
-					case 20:					
-					$this->set('biz_conversion_report', 1);
+					break;					
+					case 28:					
+					$this->set('recruiter_bill_report', 1);
 					break;				
 					case 22:					
-					$this->set('recruiter_bill_report', 1);
-					break;
-					case 23:					
-					$this->set('tat_report', 1);
-					break;
+					$this->set('client_wise_cv_status', 1);
+					break;					
 					case 24:					
-					$this->set('collection_report', 1);
+					$this->set('productivity_report', 1);
 					break;
 					case 25:					
-					$this->set('client_retention_report', 1);
-					break;
-					case 26:					
-					$this->set('incentive_report', 1);
-					break;
-					case 27:					
-					$this->set('daily_report', 1);
-					break;
-					case 28:					
-					$this->set('weekly_report', 1);
-					break;
+					$this->set('biz_conversion_report', 1);
+					break;					
 					case 29:					
 					$this->set('sent_item', 1);
 					break;
@@ -316,8 +299,7 @@ class AppController extends Controller {
 					break;					
 					case 43:					
 					$this->set('functional_area', 1);
-					break;
-					
+					break;					
 					case 45:					
 					$this->set('create_leave', 1);
 					break;
