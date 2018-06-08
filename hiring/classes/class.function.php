@@ -32,30 +32,34 @@ class fun{
 					case 1:		
 					$mod['add_client'] = 1;
 					break;					
+					case 39:					
+					$mod['approve_client'] = 1;
+					break;	
 					case 2:					
 					$mod['client'] = 1;
 					break;	
-					case 39:					
-					$mod['approve_client'] = 1;
-					break;					
+					
 					case 4:					
 					$mod['add_position'] = 1;
 					break;					
-					case 5:					
-					$mod['position'] = 1;
-					break;
 					case 38:					
 					$mod['approve_position'] = 1;
 					break;
+					case 5:					
+					$mod['position'] = 1;
+					break;
+					
 					case 7:					
 					$mod['create_resume'] = 1;
 					break;
 					case 8:					
 					$mod['view_resume'] = 1;
 					break;
+					
 					case 10:					
 					$mod['view_interview'] = 1;
 					break;	
+					
 					case 13:					
 					$mod['create_incentive'] = 1;
 					break;					
@@ -65,42 +69,21 @@ class fun{
 					case 15:					
 					$mod['approve_incentive'] = 1;
 					break;
-					case 17:					
-					$mod['client_wise_cv_status'] = 1;
-					break;
-					case 18:					
-					$mod['account_holder_report'] = 1;
-					break;
-					case 19:					
-					$mod['location_report'] = 1;
-					break;
-					case 20:					
-					$mod['failure_report'] = 1;
-					break;				
-					case 22:					
-					$mod['revenue_report'] = 1;
-					break;
-					case 23:					
-					$mod['tat_report'] = 1;
-					break;
-					case 24:					
-					$mod['collection_report'] = 1;
-					break;
-					case 25:					
-					$mod['client_retention_report'] = 1;
-					break;
-					case 26:					
-					$mod['incentive_report'] = 1;
-					break;
-					case 27:					
-					$mod['daily_report'] = 1;
-					break;
-					case 28:					
-					$mod['weekly_report'] = 1;
-					break;
+					
 					case 29:					
 					$mod['sent_item'] = 1;
 					break;
+					
+					case 35:
+					$mod['view_billing'] = 1;
+					break;
+					case 36:					
+					$mod['add_billing'] = 1;
+					break;
+					case 37:					
+					$mod['approve_billing'] = 1;
+					break;
+					
 					case 30:					
 					$mod['manage_grade'] = 1;
 					break;
@@ -116,17 +99,6 @@ class fun{
 					case 34:					
 					$mod['manage_incentive'] = 1;
 					break;
-					case 35:					
-					$mod['view_billing'] = 1;
-					break;
-					case 36:					
-					$mod['add_billing'] = 1;
-					break;
-					case 37:					
-					$mod['approve_billing'] = 1;
-					break;
-					
-					
 					case 40:					
 					$mod['manage_designation'] = 1;
 					break;
@@ -136,6 +108,13 @@ class fun{
 					case 43:					
 					$mod['manage_functional_area'] = 1;
 					break;
+					case 51:					
+					$mod['api_keys'] = 1;
+					break;
+					case 52:					
+					$mod['manage_qualification'] = 1;
+					break;	
+					
 					case 45:					
 					$mod['create_my_leaves'] = 1;
 					break;
@@ -145,21 +124,88 @@ class fun{
 					case 47:					
 					$mod['view_my_leaves'] = 1;
 					break;
+					
 					case 48:					
 					$mod['view_todays_plan'] = 1;
 					break;
 					case 49:					
 					$mod['create_todays_plan'] = 1;
 					break;
+					
 					case 50:					
 					$mod['view_event'] = 1;
 					break;
-					case 51:					
-					$mod['api_keys'] = 1;
+					
+					
+					case 18:					
+					$mod['ctc_wise_monthly_openings_handled'] = 1;
 					break;
-					case 52:					
-					$mod['manage_qualification'] = 1;
-					break;	
+					case 19:					
+					$mod['ctc_wise_client_openings_handled'] = 1;
+					break;
+					case 17:					
+					$mod['month_wise_client_openings_handled'] = 1;
+					break;
+					case 20:					
+					$mod['ctc_wise_cv_status'] = 1;
+					break;				
+					case 22:					
+					$mod['client_wise_cv_status'] = 1;
+					break;
+					case 64:					
+					$mod['month_wise_cv_status'] = 1;
+					break;
+					case 23:					
+					$mod['ctc_wise_average_takt_time'] = 1;
+					break;
+					case 24:					
+					$mod['employee_productivity'] = 1;
+					break;
+					case 25:					
+					$mod['employee_business_conversion'] = 1;
+					break;
+					case 26:					
+					$mod['client_business_conversion'] = 1;
+					break;
+					case 27:					
+					$mod['client_wise_billing'] = 1;
+					break;
+					case 28:					
+					$mod['recruiter_wise_billing'] = 1;
+					break;
+					case 53:					
+					$mod['individual_contribution'] = 1;
+					break;
+					case 54:					
+					$mod['recruiter_incentive_earning'] = 1;
+					break;
+					case 55:					
+					$mod['crm_incentive_earning'] = 1;
+					break;
+					case 56:					
+					$mod['location_wise_active_clients'] = 1;
+					break;
+					case 57:					
+					$mod['business_continuity'] = 1;
+					break;
+					case 58:					
+					$mod['client_retention'] = 1;
+					break;
+					case 59:					
+					$mod['cv_rejection_analysis'] = 1;
+					break;
+					case 60:					
+					$mod['position_rejection_analysis'] = 1;
+					break;
+					case 61:					
+					$mod['collection_days'] = 1;
+					break;
+					case 62:					
+					$mod['recuiter_wise'] = 1;
+					break;
+					case 63:					
+					$mod['client_wise'] = 1;
+					break;
 				}				
 			}
 		}
