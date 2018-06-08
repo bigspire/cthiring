@@ -285,16 +285,18 @@
 										<td style="text-align:center" class="optional"><?php echo $INTERVIEW_MOP_PERCENT_COUNT; ?></td>
 									</tr>
 									<tr>
-										<td class="optional">Avg Lead Time for Billing (Days)</td>
-										<td style="text-align:center" class="optional"><?php echo $AVG_BILLING_DAY; ?></td>
 										<td  class="essential persist">Billing Value (₹)</td>
 										<td style="text-align:center" class="optional"><?php echo $BILLED_AMT_TAB_AVG_COUNT ? $BILLED_AMT_TAB_AVG_COUNT  : 0;?> Lacs</td>
-									</tr>
-									<tr>
-										<th class="optional">Business Conversion</th>
-										<th style="text-align:center" class="optional"><?php echo round($BILLED_TAB_COUNT/$BUSINESS_VALUE_MOP_COUNT, 1).'%'; ?></td>
+										<!--td class="optional">Avg Lead Time for Billing (Days)</td>
+										<td style="text-align:center" class="optional"><?php echo $AVG_BILLING_DAY; ?></td-->
 										<th  class="essential persist">Individual Contribution</th>
 										<th style="text-align:center" class="optional"><?php echo $BILLED_AMT_INDIVIDUAL; ?> Lacs</th>
+										
+									</tr>
+									<tr>
+										<!--th class="optional">Business Conversion</th>
+										<th style="text-align:center" class="optional"><?php echo round($BILLED_TAB_COUNT/$BUSINESS_VALUE_MOP_COUNT, 1).'%'; ?></td-->
+										
 									</tr>
 								</tbody>
 								

@@ -83,7 +83,7 @@
 										
 										<?php if($create_task == '1' || $view_task == '1'  || $create_leave == '1'  || $view_leave == '1' || $approve_leave == '1'):?> 
 										   <li class="dropdown <?php echo $event_menu ?> <?php echo $taskplan_menu ?> <?php echo $leave_menu ?>  <?php echo $active2;?>">
-                                            <a  data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icon-list-alt icon-white"></i> Today's Plan
+                                            <a  data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icon-list-alt icon-white"></i> My Plan
 												
 											<b class="caret"></b></a>
                                              <ul class="dropdown-menu">
@@ -139,7 +139,7 @@
                                                 <li><a href="<?php echo $this->webroot;?>client/add/">Add Client</a></li>
 											  <?php endif; ?>
 											   <?php if($view_client == '1'):?>
-                                                <li><a href="<?php echo $this->webroot;?>client/">Search Client <!--span class="label-bub label-info white">1</span--></a></li>
+                                                <li><a href="<?php echo $this->webroot;?>client/">View Client <!--span class="label-bub label-info white">1</span--></a></li>
 												 <?php endif; ?>
 												  <?php if($approve_client == '1'):?>
                                                 <li><a href="<?php echo $this->webroot;?>client/index/pending/">Approve Client 
@@ -255,7 +255,7 @@
 											
 											
 												 <!--li><a href="<?php echo $this->webroot;?>hiring/add_billing.php">Add Billing</a></li>
-												 <li><a href="<?php echo $this->webroot;?>hiring/billing.php">Search Billing</a></li>
+												 <li><a href="<?php echo $this->webroot;?>hiring/billing.php">View Billing</a></li>
 												 <li><a href="<?php echo $this->webroot;?>hiring/approve_billing.php">Approve Billing <!--span class="label-bub label-info white">20</span></a></li-->
                                             </ul>
                                         </li>

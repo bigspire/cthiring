@@ -854,13 +854,21 @@
 													
 			<th  style="text-align:center" width="50">
 			
+			
+			<?php 
+			if($resume['ReqResume']['status_title'] == 'Scheduled'):
+			$relVal = 'shed';
+			else:
+			$relVal = '';
+			endif;
+			?>
 		<?php	if((strstr($resume['ReqResume']['stage_title'], 'Interview') && ($resume['ReqResume']['status_title'] != 'Rejected')
 	&& ($resume['ReqResume']['status_title'] == 'Selected' && $resume['ReqResume']['stage_title'] != 'Final Interview')
 	|| ($resume['ReqResume']['status_title'] == 'Scheduled') || ($resume['ReqResume']['status_title'] == 'Re-Scheduled')) ||
 	($resume['ReqResume']['stage_title'] == 'Shortlist' && $resume['ReqResume']['status_title'] == 'Shortlisted')
 	|| ($resume['ReqResume']['status_title'] == 'Cancelled' || $resume['ReqResume']['status_title'] == 'No Show')
 	&& $action != '1'):  $schedule_interview = 1; ?>
-		<input type="checkbox" name="int_row_sel" value="<?php echo $resume['Resume']['id']; ?>-<?php echo $this->request->params['pass'][0];?>-<?php echo $resume['ReqResume']['id']; ?>" class="selRow intSel">
+		<input type="checkbox" rel="<?php echo $relVal;?>" name="int_row_sel" value="<?php echo $resume['Resume']['id']; ?>-<?php echo $this->request->params['pass'][0];?>-<?php echo $resume['ReqResume']['id']; ?>" class="selRow intSel">
 		<?php else:?>
 		<input type="checkbox" name="row_sel" disabled>
 		<?php $schedule_interview = 0; 

@@ -75,7 +75,7 @@ if($_POST){
 		}
 		
 		// if branch admmin
-		if($_SESSION['roles_id'] == '35'){
+		if($_SESSION['roles_id'] == '38'){
 			$loc = $_SESSION['location_id'];
 			$sql = "select u.id from users where u.is_deleted = 'N' and u.status = '0' and u.location_id = '$loc'  group by u.id order by u.first_name asc";		
 			$result = $mysql->execute_query($sql);		

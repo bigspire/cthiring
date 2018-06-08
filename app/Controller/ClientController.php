@@ -293,6 +293,8 @@ class ClientController extends AppController {
 			$ret_value = $this->auth_action($id);
 			if($ret_value == 'pass'){
 			$this->set('statusList', array('0' => 'Active', '1' => 'Inactive'));
+			$this->set('reportStList', array('N' => 'Active','Y' => 'Inactive'));
+			
 			$this->set('titleList', array('1' => 'Mr.', '2' => 'Ms.'));
 			$this->load_static_data();
 				// load contact
@@ -399,7 +401,7 @@ class ClientController extends AppController {
 						)
 					);
 					$data = $this->Client->find('all', array('fields' => array('Client.id','client_name','phone','address','door_no',
-					'street_name','area_name','pincode','city','status','res_location_id','State.id'), 
+					'street_name','area_name','pincode','city','status','res_location_id','State.id','is_inactive'), 
 					'conditions' => array('Client.id' => $id), 'joins' => $options));
 					$this->request->data = $data[0];
 					$this->load_static_data();
@@ -555,6 +557,7 @@ class ClientController extends AppController {
 			$this->request->data['Client']['created_by'] = $this->Session->read('USER.Login.id');
 		    $this->request->data['Client']['created_date'] = $this->Functions->get_current_date();
 			$this->request->data['Client']['status'] = 2;
+			$this->request->data['Client']['is_inactive'] = 'N';
 			$this->Client->set($this->request->data);
 			// retain the district
 			$this->get_district_list($this->request->data['Client']['state']);
@@ -839,7 +842,7 @@ class ClientController extends AppController {
 			);
 			$fields = array('id','client_name','phone','ResLocation.location','address','created_date','Creator.first_name','Creator.last_name',
 			'address','status','door_no','street_name','area_name','city','modified_date','pincode','State.state',
-			'Modifier.first_name','is_approve','Client.created_by','Modifier.last_name', 'ClientStatus.status','remarks');
+			'Modifier.first_name','is_approve','Client.created_by','Modifier.last_name', 'ClientStatus.status','remarks','is_inactive');
 			$data = $this->Client->find('all', array('fields' => $fields,'conditions' => array('Client.id' => $id),
 			'joins' => $options));
 			$this->set('client_data', $data[0]);

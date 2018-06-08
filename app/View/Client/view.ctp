@@ -178,7 +178,19 @@
 									</tr>
 									
 								
-									
+								<tr>
+										
+										<td  class="tbl_column"width="120">Status (Reporting)</td>
+										<td>
+										<?php  if($client_data['Client']['is_inactive'] == 'N'):?>
+										<span title="Active" rel="tooltip" class="label label-success">Active</span>
+										<?php elseif($client_data['Client']['is_inactive'] == 'Y'):?>	
+										<span title="Inactive" rel="tooltip" class="label label-inverse">Inactive</span>									
+										<?php endif; ?>
+										</td>
+											
+									</tr>
+										
 									
 								</tbody>
 							</table>
