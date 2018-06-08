@@ -199,7 +199,7 @@ class PositionController extends AppController {
 		}
 		*/
 		
-		if($this->Session->read('USER.Login.roles_id') == '33' || $this->Session->read('USER.Login.roles_id') == '35'){ // director & BDH
+		if($this->Session->read('USER.Login.roles_id') == '33' || $this->Session->read('USER.Login.roles_id') == '35'  || $this->Session->read('USER.Login.roles_id') == '39'){ // director & BDH
 			$empCond = '';
 			$team_cond = '';
 		}
@@ -885,7 +885,7 @@ class PositionController extends AppController {
 		$this->set('clientList', $client_data);
 		// load the account holders
 		$ac_list = $this->Position->Creator->find('list',  array('fields' => array('id','first_name'), 
-		'order' => array('first_name ASC'),'conditions' => array('status' => '0', 'roles_id' => array('37', '40')));
+		'order' => array('first_name ASC'),'conditions' => array('status' => '0', 'roles_id' => array('37', '40'))));
 		$this->set('acList', $ac_list);
 		// load the team members
 		$this->Position->Creator->virtualFields['full_name'] = 'CONCAT(Creator.first_name, " ", Creator.last_name)';
@@ -1677,26 +1677,33 @@ class PositionController extends AppController {
 				'ResExp.company','ResExp.other_info','Designation.designation','Resume.first_name','Resume.last_name'),
 				'group' => array('Resume.id'), 'joins' => $options));
 				// iterate the experience details
-				$prev_exp_table .= "<table  width='90%' border='0' cellspacing='2' cellpadding='5' style='border:1px solid #ededed; font:bold 13px Arial'>";
-				$prev_exp_table .= "<tr><td>S. No.</td><td>Candidate Name</td><td>Present Designation</td><td>Present Company</td></tr>";
-				foreach($prev_exp_data as $key => $exp){
-					$prev_exp_table .= "<tr  style='font-weight:normal'>";
-					$prev_exp_table .= "<td width='50'>";
-					$prev_exp_table .= ++$key;
-					$prev_exp_table .= "</td>";
-					$prev_exp_table .= "<td  width='120'>";
-					$prev_exp_table .= ucwords($exp['Resume']['first_name'].' '.$exp['Resume']['last_name']);
-					$prev_exp_table .= "</td>";
-					$prev_exp_table .= "<td  width='140'>";
-					$prev_exp_table .= $exp['Designation']['designation'];
-					$prev_exp_table .= "</td>";
-					$prev_exp_table .= "<td  width='140'>";
-					$prev_exp_table .= $exp['ResExp']['company'];
-					$prev_exp_table .= "</td>";
-					$prev_exp_table .= "</tr>";
+				// send only if any candidates sent earlier
+				if(count($prev_exp_data) > 0){
+					$prev_exp_table .= '<br><p>For your reference, I am also sharing the details of CVs shared earlier for this position and its current status.</p><br><br>';
+					$prev_exp_table .= "<table  width='90%' border='0' cellspacing='2' cellpadding='5' style='border:1px solid #ededed; font:bold 13px Arial'>";
+					$prev_exp_table .= "<tr><td>S. No.</td><td>Candidate Name</td><td>Present Designation</td><td>Present Company</td></tr>";
+					foreach($prev_exp_data as $key => $exp){
+						$prev_exp_table .= "<tr  style='font-weight:normal'>";
+						$prev_exp_table .= "<td width='50'>";
+						$prev_exp_table .= ++$key;
+						$prev_exp_table .= "</td>";
+						$prev_exp_table .= "<td  width='120'>";
+						$prev_exp_table .= ucwords($exp['Resume']['first_name'].' '.$exp['Resume']['last_name']);
+						$prev_exp_table .= "</td>";
+						$prev_exp_table .= "<td  width='140'>";
+						$prev_exp_table .= $exp['Designation']['designation'];
+						$prev_exp_table .= "</td>";
+						$prev_exp_table .= "<td  width='140'>";
+						$prev_exp_table .= $exp['ResExp']['company'];
+						$prev_exp_table .= "</td>";
+						$prev_exp_table .= "</tr>";
 
+					}
+					$prev_exp_table .= "</table>";
 				}
-				$prev_exp_table .= "</table>";
+				
+				
+				
 				// get the mail template details
 				$this->loadModel('MailTemplate');
 				$data = $this->MailTemplate->findById($mailtemplete, array('fields' => 'subject','message'));
@@ -2304,7 +2311,7 @@ class PositionController extends AppController {
 			'group' => array('Resume.id'),'joins' => $options));		
 			// iterate the candidate interview table
 			$int_table .= "<table  width='90%' border='0' cellspacing='2' cellpadding='5' style='border:1px solid #ededed; font:bold 13px Arial'>";
-			$int_table .= "<tr><td>S. No.</td><td>Candidate Name</td><td>Interview Level</td><td>Interview Mode</td><td>Interview Date</td><td>Interview Timing</td>
+			$int_table .= "<tr><td>S. No.</td><td>Candidate Name</td><td>Interview Level</td><td>Interview Mode</td><td>Interview Date</td><td>Interview Time</td>
 			<td>Contact No.</td></tr>";
 			foreach($cand_data as $key => $exp){
 				$int_table .= "<tr  style='font-weight:normal'>";
@@ -2323,11 +2330,13 @@ class PositionController extends AppController {
 				$int_table .= '[interview_mode]';
 				$int_table .= "</td>";
 				$int_table .= "<td  width='140'>";
-				$int_table .= '[interview_date]'. ', [interview_time]';
+				$int_table .= '[interview_date]';
 				$int_table .= "</td>";
+				
 				$int_table .= "<td  width='140'>";
-				$int_table .= '[interview_duration]';
-				$int_table .= "</td>";				
+				$int_table .= '[interview_time]';
+				$int_table .= "</td>";	
+							
 				$int_table .= "<td  width='140'>";
 				// $mobile = $multi_chk == 1 ? '[MOBILE]' : $exp['Resume']['mobile'];
 				$mobile =  $exp['Resume']['mobile'];

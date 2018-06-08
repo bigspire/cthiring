@@ -126,7 +126,7 @@
 										{if $module['create_my_leaves'] eq '1' || $module['approve_my_leaves'] eq '1' || $module['view_my_leaves'] eq '1' ||
 										$module['create_todays_plan'] eq '1' || $module['view_todays_plan'] eq '1'}
 											<li class="{$col_count_leave} dropdown <?php echo $fun->set_menu_active(array('add_task_plan','add_leave'));?>">
-                                          	 <a data-toggle="dropdown" class="dropdown-toggle " href="#"><i class="icon-list-alt icon-white"></i> Today's Plan <b class="caret"></b></a>
+                                          	 <a data-toggle="dropdown" class="dropdown-toggle " href="#"><i class="icon-list-alt icon-white"></i> My Plan <b class="caret"></b></a>
                                              <ul class="dropdown-menu">
 											 {if $module['create_todays_plan'] eq '1'}
 												<li><a href="{webroot}taskplan/add/">Create Task</a></li>

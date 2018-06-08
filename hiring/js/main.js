@@ -1088,14 +1088,19 @@ $(document).ready(function() {
 	});
 	
 	/* for multiple interview */
-	$('.multi_interview').click(function () {			
+	$('.multi_interview').unbind().click(function () {			
 		var data_sel  = '';	
 		var sel_item = '';
+		var stFlag = '';
 		var type = $(this).attr('rel');
 		$(".intSel").each(function() {
 			if($(this).attr('checked') == 'checked' && $(this).attr('checked') != undefined){
 				sel_item = sel_item + $(this).val() + ',';
 				data_sel = 1;
+				if($(this).attr('rel') == 'shed'){
+					stFlag = '1';
+					// alert('You have chosen candidates whose interview is already scheduled');
+				}
 			}
 		}); 
 		
@@ -1108,12 +1113,15 @@ $(document).ready(function() {
 		if(data_sel != '1' && sel_item != undefined){
 			alert('Please select atleast a record to proceed!');
 			return false;
-		}else{
+		}else if(stFlag == ''){
 			$(this).colorbox({href:$('#int_url').val()+'multi_select/'+sel_item+'/?client_name='+client+'&int_type='+type, iframe:true, rel: 'nofollow',  width:'65%', height:'94%',opacity:   '.8', 	  scrolling: true, fixed:true,overlayClose:false, escKey: false,
 			onClosed:function(){					
 			
 				}
 			});
+		}else if(stFlag == '1'){
+			smoke.alert('You have chosen candidates whose interview is already scheduled', false, {ok: "Ok"});
+			return false;
 		}
 	});	
 	

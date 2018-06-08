@@ -79,7 +79,15 @@
 						</tr>
 						
 
-
+ <tr class="tbl_row">
+						<td width="120" class="tbl_column">Status (For Reporting)<span class="f_req">*</span></td>
+						<td>	
+					<?php echo $this->Form->input('is_inactive', array('div'=> false,'type' => 'select', 'label' => false, 
+		'class' => 'span8', 'id' => 'is_inactive', 'empty' => 'Select', 'required' => false, 'placeholder' => '', 
+		'style' => "clear:left", 'options' => $reportStList, 'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 
+						
+						</td>	
+				  </tr>	
 				  
 
 																									

@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-06-04 12:57:30
+/* Smarty version 3.1.29, created on 2018-06-08 12:41:19
   from "C:\xampp\htdocs\ctsvn\cthiring\hiring\templates\include\header.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5b14e9e2e702f7_79114303',
+  'unifunc' => 'content_5b1a2c17d46e50_91250426',
   'file_dependency' => 
   array (
     '2cc32a09905a93cae1ddf68e0518ebdd3aca7f41' => 
     array (
       0 => 'C:\\xampp\\htdocs\\ctsvn\\cthiring\\hiring\\templates\\include\\header.tpl',
-      1 => 1528093573,
+      1 => 1528441287,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_5b14e9e2e702f7_79114303 ($_smarty_tpl) {
+function content_5b1a2c17d46e50_91250426 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -156,7 +156,7 @@ $_smarty_tpl->ext->_updateScope->updateScope($_smarty_tpl, 'col_count_leave', 0)
 										<?php if ($_smarty_tpl->tpl_vars['module']->value['create_my_leaves'] == '1' || $_smarty_tpl->tpl_vars['module']->value['approve_my_leaves'] == '1' || $_smarty_tpl->tpl_vars['module']->value['view_my_leaves'] == '1' || $_smarty_tpl->tpl_vars['module']->value['create_todays_plan'] == '1' || $_smarty_tpl->tpl_vars['module']->value['view_todays_plan'] == '1') {?>
 											<li class="<?php echo $_smarty_tpl->tpl_vars['col_count_leave']->value;?>
  dropdown <?php echo '<?php ';?>echo $fun->set_menu_active(array('add_task_plan','add_leave'));<?php echo '?>';?>">
-                                          	 <a data-toggle="dropdown" class="dropdown-toggle " href="#"><i class="icon-list-alt icon-white"></i> Today's Plan <b class="caret"></b></a>
+                                          	 <a data-toggle="dropdown" class="dropdown-toggle " href="#"><i class="icon-list-alt icon-white"></i> My Plan <b class="caret"></b></a>
                                              <ul class="dropdown-menu">
 											 <?php if ($_smarty_tpl->tpl_vars['module']->value['create_todays_plan'] == '1') {?>
 												<li><a href="<?php echo webroot;?>
