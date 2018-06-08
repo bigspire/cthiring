@@ -885,12 +885,12 @@ class PositionController extends AppController {
 		$this->set('clientList', $client_data);
 		// load the account holders
 		$ac_list = $this->Position->Creator->find('list',  array('fields' => array('id','first_name'), 
-		'order' => array('first_name ASC'),'conditions' => array('status' => '0', 'roles_id' => '34')));
+		'order' => array('first_name ASC'),'conditions' => array('status' => '0', 'roles_id' => array('37', '40')));
 		$this->set('acList', $ac_list);
 		// load the team members
 		$this->Position->Creator->virtualFields['full_name'] = 'CONCAT(Creator.first_name, " ", Creator.last_name)';
 		$user_list = $this->Position->Creator->find('list',  array('fields' => array('id','full_name'), 
-		'order' => array('first_name ASC'),'conditions' => array('status' => '0', 'roles_id' => array('30','34','37'))));
+		'order' => array('first_name ASC'),'conditions' => array('status' => '0', 'roles_id' => array('30','37', '40'))));
 		$this->set('userList', $user_list);
 		// load the functional area
 		$function_list = $this->Position->FunctionArea->find('list', array('fields' => array('id','function'), 

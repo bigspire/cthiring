@@ -36,7 +36,8 @@
 							<input value="Edit" type="button" class="btn btn-info"></a>
 							<?php endif; ?>
 							
-							   <?php if($create_position == '1' && $this->Session->read('USER.Login.roles_id') == '34'):?>
+							   <?php if($create_position == '1' && ($this->Session->read('USER.Login.roles_id') == '40' ||
+							   $this->Session->read('USER.Login.roles_id') == '37')):?>
 	<a href="<?php echo $this->webroot;?>position/add/<?php echo $this->request->params['pass'][0];?>" class="sepV_a jsRedirect" title="Add Position">
 							<input value="Add Position" type="button" class="btn btn-info"></a>		
 							<?php endif; ?>

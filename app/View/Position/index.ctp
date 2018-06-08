@@ -37,7 +37,8 @@
 							|| $this->Session->read('USER.Login.roles_id') == '39')):?>
 							<a class="notify jsRedirect" data-notify-time = '3000' data-notify-title="In Progress!" data-notify-message="Downloading Excel... Please wait..."   href="<?php echo $this->webroot;?>position/?action=export&<?php echo $this->Functions->get_url_vars($this->request->query);?>"><input type="button" value="Export Excel" class="btn btn-warning"/></a>
 							<?php endif; ?>
-							 <?php if($create_position == '1' && $this->Session->read('USER.Login.roles_id') == '34'):?>
+							 <?php if($create_position == '1' && ($this->Session->read('USER.Login.roles_id') == '37'
+							 || $this->Session->read('USER.Login.roles_id') == '40')):?>
 							<a class="jsRedirect" data-notify-time = '3000'   href="<?php echo $this->webroot;?>position/add/">
 							<input type="button" value="Create Position" class="btn btn-info"/></a>		
 							<?php endif; ?>
@@ -166,7 +167,8 @@
 										<span rel="tooltip" title="New Position" class="label label-warning">New</span>			
 										<?php endif; ?>
 										
-										<?php  if($req[0]['req_read_id'] != '' && $req['ReqRead']['status'] == 'U' && $this->Session->read('USER.Login.roles_id') == '34'):?>
+										<?php  if($req[0]['req_read_id'] != '' && $req['ReqRead']['status'] == 'U' && ($this->Session->read('USER.Login.roles_id') == '37'
+										|| $this->Session->read('USER.Login.roles_id') == '40')):?>
 								<span style="margin-left:5px;" rel="tooltip" title="New Resumes Uploaded" class="label label-success">New</span>			
 								<?php endif; ?>
 								

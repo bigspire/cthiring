@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 2018-06-08 10:43:45 Debug: Notice (8): Undefined index: from in [C:\xampp\htdocs\2017\ctsvn2\cthiring\app\Controller\ResumeController.php, line 46]
 Trace:
 ResumeController::index() - APP\Controller\ResumeController.php, line 46
@@ -269,38 +270,88 @@ View::_render() - CORE\Cake\View\View.php, line 933
 View::_renderElement() - CORE\Cake\View\View.php, line 1224
 View::element() - CORE\Cake\View\View.php, line 418
 include - APP\View\Resume\index.ctp, line 3
+=======
+2018-06-07 21:06:01 Debug: Notice (8): Undefined index: color in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Layouts\default.ctp, line 33]
+Trace:
+include - APP\View\Layouts\default.ctp, line 33
+>>>>>>> 0e4e95a9f9428871443166ad43f958ae13b2c312
 View::_evaluate() - CORE\Cake\View\View.php, line 971
 View::_render() - CORE\Cake\View\View.php, line 933
-View::render() - CORE\Cake\View\View.php, line 473
+View::renderLayout() - CORE\Cake\View\View.php, line 546
+View::render() - CORE\Cake\View\View.php, line 481
 Controller::render() - CORE\Cake\Controller\Controller.php, line 963
-Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
-Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
-[main] - APP\webroot\index.php, line 118
+ExceptionRenderer::_outputMessage() - CORE\Cake\Error\ExceptionRenderer.php, line 289
+ExceptionRenderer::error500() - CORE\Cake\Error\ExceptionRenderer.php, line 257
+ExceptionRenderer::render() - CORE\Cake\Error\ExceptionRenderer.php, line 187
+ErrorHandler::handleException() - CORE\Cake\Error\ErrorHandler.php, line 127
+call_user_func - [internal], line ??
+ErrorHandler::handleFatalError() - CORE\Cake\Error\ErrorHandler.php, line 284
+ErrorHandler::handleError() - CORE\Cake\Error\ErrorHandler.php, line 213
+call_user_func - [internal], line ??
+App::_checkFatalError() - CORE\Cake\Core\App.php, line 970
+App::shutdown() - CORE\Cake\Core\App.php, line 943
+[main] - [internal], line ??
 
+<<<<<<< HEAD
 2018-06-08 10:43:45 Debug: Notice (8): Undefined variable: event_menu in [C:\xampp\htdocs\2017\ctsvn2\cthiring\app\View\Elements\header.ctp, line 85]
+=======
+2018-06-07 21:06:01 Debug: Notice (8): Undefined index: action in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Elements\footer.ctp, line 1]
+>>>>>>> 0e4e95a9f9428871443166ad43f958ae13b2c312
 Trace:
-include - APP\View\Elements\header.ctp, line 85
+include - APP\View\Elements\footer.ctp, line 1
 View::_evaluate() - CORE\Cake\View\View.php, line 971
 View::_render() - CORE\Cake\View\View.php, line 933
 View::_renderElement() - CORE\Cake\View\View.php, line 1224
 View::element() - CORE\Cake\View\View.php, line 418
+<<<<<<< HEAD
 include - APP\View\Resume\index.ctp, line 3
+=======
+include - APP\View\Layouts\default.ctp, line 91
+>>>>>>> 0e4e95a9f9428871443166ad43f958ae13b2c312
 View::_evaluate() - CORE\Cake\View\View.php, line 971
 View::_render() - CORE\Cake\View\View.php, line 933
-View::render() - CORE\Cake\View\View.php, line 473
+View::renderLayout() - CORE\Cake\View\View.php, line 546
+View::render() - CORE\Cake\View\View.php, line 481
 Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+ExceptionRenderer::_outputMessage() - CORE\Cake\Error\ExceptionRenderer.php, line 289
+ExceptionRenderer::error500() - CORE\Cake\Error\ExceptionRenderer.php, line 257
+ExceptionRenderer::render() - CORE\Cake\Error\ExceptionRenderer.php, line 187
+ErrorHandler::handleException() - CORE\Cake\Error\ErrorHandler.php, line 127
+call_user_func - [internal], line ??
+ErrorHandler::handleFatalError() - CORE\Cake\Error\ErrorHandler.php, line 284
+ErrorHandler::handleError() - CORE\Cake\Error\ErrorHandler.php, line 213
+call_user_func - [internal], line ??
+App::_checkFatalError() - CORE\Cake\Core\App.php, line 970
+App::shutdown() - CORE\Cake\Core\App.php, line 943
+[main] - [internal], line ??
+
+2018-06-07 21:07:16 Debug: Notice (8): Undefined variable: options in [C:\xampp\htdocs\ctsvn\cthiring\app\Controller\AppController.php, line 162]
+Trace:
+AppController::get_approve_leave_count() - APP\Controller\AppController.php, line 162
+AppController::beforeRender() - APP\Controller\AppController.php, line 49
+call_user_func - [internal], line ??
+CakeEventManager::dispatch() - CORE\Cake\Event\CakeEventManager.php, line 243
+Controller::render() - CORE\Cake\Controller\Controller.php, line 936
 Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
 Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
 [main] - APP\webroot\index.php, line 118
 
+<<<<<<< HEAD
 2018-06-08 10:43:45 Debug: Notice (8): Undefined variable: taskplan_menu in [C:\xampp\htdocs\2017\ctsvn2\cthiring\app\View\Elements\header.ctp, line 85]
+=======
+2018-06-07 21:07:16 Debug: Notice (8): Undefined variable: home_menu in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Elements\header.ctp, line 66]
+>>>>>>> 0e4e95a9f9428871443166ad43f958ae13b2c312
 Trace:
-include - APP\View\Elements\header.ctp, line 85
+include - APP\View\Elements\header.ctp, line 66
 View::_evaluate() - CORE\Cake\View\View.php, line 971
 View::_render() - CORE\Cake\View\View.php, line 933
 View::_renderElement() - CORE\Cake\View\View.php, line 1224
 View::element() - CORE\Cake\View\View.php, line 418
+<<<<<<< HEAD
 include - APP\View\Resume\index.ctp, line 3
+=======
+include - APP\View\Client\add.ctp, line 2
+>>>>>>> 0e4e95a9f9428871443166ad43f958ae13b2c312
 View::_evaluate() - CORE\Cake\View\View.php, line 971
 View::_render() - CORE\Cake\View\View.php, line 933
 View::render() - CORE\Cake\View\View.php, line 473
@@ -309,14 +360,22 @@ Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
 Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
 [main] - APP\webroot\index.php, line 118
 
+<<<<<<< HEAD
 2018-06-08 10:43:45 Debug: Notice (8): Undefined variable: leave_menu in [C:\xampp\htdocs\2017\ctsvn2\cthiring\app\View\Elements\header.ctp, line 85]
+=======
+2018-06-07 21:07:16 Debug: Notice (8): Undefined variable: event_menu in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Elements\header.ctp, line 85]
+>>>>>>> 0e4e95a9f9428871443166ad43f958ae13b2c312
 Trace:
 include - APP\View\Elements\header.ctp, line 85
 View::_evaluate() - CORE\Cake\View\View.php, line 971
 View::_render() - CORE\Cake\View\View.php, line 933
 View::_renderElement() - CORE\Cake\View\View.php, line 1224
 View::element() - CORE\Cake\View\View.php, line 418
+<<<<<<< HEAD
 include - APP\View\Resume\index.ctp, line 3
+=======
+include - APP\View\Client\add.ctp, line 2
+>>>>>>> 0e4e95a9f9428871443166ad43f958ae13b2c312
 View::_evaluate() - CORE\Cake\View\View.php, line 971
 View::_render() - CORE\Cake\View\View.php, line 933
 View::render() - CORE\Cake\View\View.php, line 473
@@ -325,14 +384,24 @@ Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
 Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
 [main] - APP\webroot\index.php, line 118
 
+<<<<<<< HEAD
 2018-06-08 10:43:45 Debug: Notice (8): Undefined variable: approve_leave in [C:\xampp\htdocs\2017\ctsvn2\cthiring\app\View\Elements\header.ctp, line 109]
 Trace:
 include - APP\View\Elements\header.ctp, line 109
+=======
+2018-06-07 21:07:16 Debug: Notice (8): Undefined variable: taskplan_menu in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Elements\header.ctp, line 85]
+Trace:
+include - APP\View\Elements\header.ctp, line 85
+>>>>>>> 0e4e95a9f9428871443166ad43f958ae13b2c312
 View::_evaluate() - CORE\Cake\View\View.php, line 971
 View::_render() - CORE\Cake\View\View.php, line 933
 View::_renderElement() - CORE\Cake\View\View.php, line 1224
 View::element() - CORE\Cake\View\View.php, line 418
+<<<<<<< HEAD
 include - APP\View\Resume\index.ctp, line 3
+=======
+include - APP\View\Client\add.ctp, line 2
+>>>>>>> 0e4e95a9f9428871443166ad43f958ae13b2c312
 View::_evaluate() - CORE\Cake\View\View.php, line 971
 View::_render() - CORE\Cake\View\View.php, line 933
 View::render() - CORE\Cake\View\View.php, line 473
@@ -341,14 +410,24 @@ Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
 Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
 [main] - APP\webroot\index.php, line 118
 
+<<<<<<< HEAD
 2018-06-08 10:43:45 Debug: Notice (8): Undefined variable: my_event in [C:\xampp\htdocs\2017\ctsvn2\cthiring\app\View\Elements\header.ctp, line 117]
 Trace:
 include - APP\View\Elements\header.ctp, line 117
+=======
+2018-06-07 21:07:16 Debug: Notice (8): Undefined variable: leave_menu in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Elements\header.ctp, line 85]
+Trace:
+include - APP\View\Elements\header.ctp, line 85
+>>>>>>> 0e4e95a9f9428871443166ad43f958ae13b2c312
 View::_evaluate() - CORE\Cake\View\View.php, line 971
 View::_render() - CORE\Cake\View\View.php, line 933
 View::_renderElement() - CORE\Cake\View\View.php, line 1224
 View::element() - CORE\Cake\View\View.php, line 418
+<<<<<<< HEAD
 include - APP\View\Resume\index.ctp, line 3
+=======
+include - APP\View\Client\add.ctp, line 2
+>>>>>>> 0e4e95a9f9428871443166ad43f958ae13b2c312
 View::_evaluate() - CORE\Cake\View\View.php, line 971
 View::_render() - CORE\Cake\View\View.php, line 933
 View::render() - CORE\Cake\View\View.php, line 473
@@ -357,14 +436,24 @@ Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
 Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
 [main] - APP\webroot\index.php, line 118
 
+<<<<<<< HEAD
 2018-06-08 10:43:45 Debug: Notice (8): Undefined variable: client_menu in [C:\xampp\htdocs\2017\ctsvn2\cthiring\app\View\Elements\header.ctp, line 135]
 Trace:
 include - APP\View\Elements\header.ctp, line 135
+=======
+2018-06-07 21:07:16 Debug: Notice (8): Undefined variable: position_menu in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Elements\header.ctp, line 167]
+Trace:
+include - APP\View\Elements\header.ctp, line 167
+>>>>>>> 0e4e95a9f9428871443166ad43f958ae13b2c312
 View::_evaluate() - CORE\Cake\View\View.php, line 971
 View::_render() - CORE\Cake\View\View.php, line 933
 View::_renderElement() - CORE\Cake\View\View.php, line 1224
 View::element() - CORE\Cake\View\View.php, line 418
+<<<<<<< HEAD
 include - APP\View\Resume\index.ctp, line 3
+=======
+include - APP\View\Client\add.ctp, line 2
+>>>>>>> 0e4e95a9f9428871443166ad43f958ae13b2c312
 View::_evaluate() - CORE\Cake\View\View.php, line 971
 View::_render() - CORE\Cake\View\View.php, line 933
 View::render() - CORE\Cake\View\View.php, line 473
@@ -373,14 +462,22 @@ Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
 Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
 [main] - APP\webroot\index.php, line 118
 
+<<<<<<< HEAD
 2018-06-08 10:43:45 Debug: Notice (8): Undefined variable: create_client in [C:\xampp\htdocs\2017\ctsvn2\cthiring\app\View\Elements\header.ctp, line 138]
+=======
+2018-06-07 21:07:16 Debug: Notice (8): Undefined variable: resume_menu in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Elements\header.ctp, line 196]
+>>>>>>> 0e4e95a9f9428871443166ad43f958ae13b2c312
 Trace:
 include - APP\View\Elements\header.ctp, line 138
 View::_evaluate() - CORE\Cake\View\View.php, line 971
 View::_render() - CORE\Cake\View\View.php, line 933
 View::_renderElement() - CORE\Cake\View\View.php, line 1224
 View::element() - CORE\Cake\View\View.php, line 418
+<<<<<<< HEAD
 include - APP\View\Resume\index.ctp, line 3
+=======
+include - APP\View\Client\add.ctp, line 2
+>>>>>>> 0e4e95a9f9428871443166ad43f958ae13b2c312
 View::_evaluate() - CORE\Cake\View\View.php, line 971
 View::_render() - CORE\Cake\View\View.php, line 933
 View::render() - CORE\Cake\View\View.php, line 473
@@ -389,14 +486,22 @@ Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
 Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
 [main] - APP\webroot\index.php, line 118
 
+<<<<<<< HEAD
 2018-06-08 10:43:45 Debug: Notice (8): Undefined variable: view_client in [C:\xampp\htdocs\2017\ctsvn2\cthiring\app\View\Elements\header.ctp, line 141]
+=======
+2018-06-07 21:07:16 Debug: Notice (8): Undefined variable: approve_incentive in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Elements\header.ctp, line 252]
+>>>>>>> 0e4e95a9f9428871443166ad43f958ae13b2c312
 Trace:
 include - APP\View\Elements\header.ctp, line 141
 View::_evaluate() - CORE\Cake\View\View.php, line 971
 View::_render() - CORE\Cake\View\View.php, line 933
 View::_renderElement() - CORE\Cake\View\View.php, line 1224
 View::element() - CORE\Cake\View\View.php, line 418
+<<<<<<< HEAD
 include - APP\View\Resume\index.ctp, line 3
+=======
+include - APP\View\Client\add.ctp, line 2
+>>>>>>> 0e4e95a9f9428871443166ad43f958ae13b2c312
 View::_evaluate() - CORE\Cake\View\View.php, line 971
 View::_render() - CORE\Cake\View\View.php, line 933
 View::render() - CORE\Cake\View\View.php, line 473
@@ -405,14 +510,24 @@ Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
 Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
 [main] - APP\webroot\index.php, line 118
 
+<<<<<<< HEAD
 2018-06-08 10:43:45 Debug: Notice (8): Undefined variable: approve_client in [C:\xampp\htdocs\2017\ctsvn2\cthiring\app\View\Elements\header.ctp, line 144]
 Trace:
 include - APP\View\Elements\header.ctp, line 144
+=======
+2018-06-07 21:07:16 Debug: Notice (8): Undefined variable: report_menu in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Elements\header.ctp, line 265]
+Trace:
+include - APP\View\Elements\header.ctp, line 265
+>>>>>>> 0e4e95a9f9428871443166ad43f958ae13b2c312
 View::_evaluate() - CORE\Cake\View\View.php, line 971
 View::_render() - CORE\Cake\View\View.php, line 933
 View::_renderElement() - CORE\Cake\View\View.php, line 1224
 View::element() - CORE\Cake\View\View.php, line 418
+<<<<<<< HEAD
 include - APP\View\Resume\index.ctp, line 3
+=======
+include - APP\View\Client\add.ctp, line 2
+>>>>>>> 0e4e95a9f9428871443166ad43f958ae13b2c312
 View::_evaluate() - CORE\Cake\View\View.php, line 971
 View::_render() - CORE\Cake\View\View.php, line 933
 View::render() - CORE\Cake\View\View.php, line 473
@@ -421,14 +536,22 @@ Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
 Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
 [main] - APP\webroot\index.php, line 118
 
+<<<<<<< HEAD
 2018-06-08 10:43:45 Debug: Notice (8): Undefined variable: position_menu in [C:\xampp\htdocs\2017\ctsvn2\cthiring\app\View\Elements\header.ctp, line 167]
+=======
+2018-06-07 21:07:16 Debug: Notice (8): Undefined variable: manage_grade in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Elements\header.ctp, line 493]
+>>>>>>> 0e4e95a9f9428871443166ad43f958ae13b2c312
 Trace:
 include - APP\View\Elements\header.ctp, line 167
 View::_evaluate() - CORE\Cake\View\View.php, line 971
 View::_render() - CORE\Cake\View\View.php, line 933
 View::_renderElement() - CORE\Cake\View\View.php, line 1224
 View::element() - CORE\Cake\View\View.php, line 418
+<<<<<<< HEAD
 include - APP\View\Resume\index.ctp, line 3
+=======
+include - APP\View\Client\add.ctp, line 2
+>>>>>>> 0e4e95a9f9428871443166ad43f958ae13b2c312
 View::_evaluate() - CORE\Cake\View\View.php, line 971
 View::_render() - CORE\Cake\View\View.php, line 933
 View::render() - CORE\Cake\View\View.php, line 473
@@ -437,14 +560,24 @@ Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
 Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
 [main] - APP\webroot\index.php, line 118
 
+<<<<<<< HEAD
 2018-06-08 10:43:45 Debug: Notice (8): Undefined variable: create_position in [C:\xampp\htdocs\2017\ctsvn2\cthiring\app\View\Elements\header.ctp, line 174]
 Trace:
 include - APP\View\Elements\header.ctp, line 174
+=======
+2018-06-07 21:07:16 Debug: Notice (8): Undefined variable: manage_grade in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Elements\header.ctp, line 547]
+Trace:
+include - APP\View\Elements\header.ctp, line 547
+>>>>>>> 0e4e95a9f9428871443166ad43f958ae13b2c312
 View::_evaluate() - CORE\Cake\View\View.php, line 971
 View::_render() - CORE\Cake\View\View.php, line 933
 View::_renderElement() - CORE\Cake\View\View.php, line 1224
 View::element() - CORE\Cake\View\View.php, line 418
+<<<<<<< HEAD
 include - APP\View\Resume\index.ctp, line 3
+=======
+include - APP\View\Client\add.ctp, line 2
+>>>>>>> 0e4e95a9f9428871443166ad43f958ae13b2c312
 View::_evaluate() - CORE\Cake\View\View.php, line 971
 View::_render() - CORE\Cake\View\View.php, line 933
 View::render() - CORE\Cake\View\View.php, line 473
@@ -453,6 +586,7 @@ Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
 Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
 [main] - APP\webroot\index.php, line 118
 
+<<<<<<< HEAD
 2018-06-08 10:43:45 Debug: Notice (8): Undefined variable: view_position in [C:\xampp\htdocs\2017\ctsvn2\cthiring\app\View\Elements\header.ctp, line 177]
 Trace:
 include - APP\View\Elements\header.ctp, line 177
@@ -461,6 +595,11 @@ View::_render() - CORE\Cake\View\View.php, line 933
 View::_renderElement() - CORE\Cake\View\View.php, line 1224
 View::element() - CORE\Cake\View\View.php, line 418
 include - APP\View\Resume\index.ctp, line 3
+=======
+2018-06-07 21:07:16 Debug: Notice (8): Undefined variable: districtList in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Client\add.ctp, line 108]
+Trace:
+include - APP\View\Client\add.ctp, line 108
+>>>>>>> 0e4e95a9f9428871443166ad43f958ae13b2c312
 View::_evaluate() - CORE\Cake\View\View.php, line 971
 View::_render() - CORE\Cake\View\View.php, line 933
 View::render() - CORE\Cake\View\View.php, line 473
@@ -469,6 +608,7 @@ Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
 Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
 [main] - APP\webroot\index.php, line 118
 
+<<<<<<< HEAD
 2018-06-08 10:43:45 Debug: Notice (8): Undefined variable: approve_billing in [C:\xampp\htdocs\2017\ctsvn2\cthiring\app\View\Elements\header.ctp, line 240]
 Trace:
 include - APP\View\Elements\header.ctp, line 240
@@ -477,6 +617,11 @@ View::_render() - CORE\Cake\View\View.php, line 933
 View::_renderElement() - CORE\Cake\View\View.php, line 1224
 View::element() - CORE\Cake\View\View.php, line 418
 include - APP\View\Resume\index.ctp, line 3
+=======
+2018-06-07 21:07:16 Debug: Notice (8): Undefined index: Client in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Client\add.ctp, line 284]
+Trace:
+include - APP\View\Client\add.ctp, line 284
+>>>>>>> 0e4e95a9f9428871443166ad43f958ae13b2c312
 View::_evaluate() - CORE\Cake\View\View.php, line 971
 View::_render() - CORE\Cake\View\View.php, line 933
 View::render() - CORE\Cake\View\View.php, line 473
@@ -485,6 +630,7 @@ Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
 Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
 [main] - APP\webroot\index.php, line 118
 
+<<<<<<< HEAD
 2018-06-08 10:43:45 Debug: Notice (8): Undefined variable: view_incentive in [C:\xampp\htdocs\2017\ctsvn2\cthiring\app\View\Elements\header.ctp, line 248]
 Trace:
 include - APP\View\Elements\header.ctp, line 248
@@ -493,14 +639,21 @@ View::_render() - CORE\Cake\View\View.php, line 933
 View::_renderElement() - CORE\Cake\View\View.php, line 1224
 View::element() - CORE\Cake\View\View.php, line 418
 include - APP\View\Resume\index.ctp, line 3
+=======
+2018-06-07 21:07:16 Debug: Notice (8): Undefined index: color in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Layouts\default.ctp, line 33]
+Trace:
+include - APP\View\Layouts\default.ctp, line 33
+>>>>>>> 0e4e95a9f9428871443166ad43f958ae13b2c312
 View::_evaluate() - CORE\Cake\View\View.php, line 971
 View::_render() - CORE\Cake\View\View.php, line 933
-View::render() - CORE\Cake\View\View.php, line 473
+View::renderLayout() - CORE\Cake\View\View.php, line 546
+View::render() - CORE\Cake\View\View.php, line 481
 Controller::render() - CORE\Cake\Controller\Controller.php, line 963
 Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
 Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
 [main] - APP\webroot\index.php, line 118
 
+<<<<<<< HEAD
 2018-06-08 10:43:45 Debug: Notice (8): Undefined variable: approve_incentive in [C:\xampp\htdocs\2017\ctsvn2\cthiring\app\View\Elements\header.ctp, line 252]
 Trace:
 include - APP\View\Elements\header.ctp, line 252
@@ -10316,6 +10469,10 @@ Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
 
 2018-06-08 11:48:42 Debug: Notice (8): Undefined index: action in [C:\xampp\htdocs\2017\ctsvn2\cthiring\app\View\Elements\footer.ctp, line 1]
 Trace:
+=======
+2018-06-07 21:07:16 Debug: Notice (8): Undefined index: action in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Elements\footer.ctp, line 1]
+Trace:
+>>>>>>> 0e4e95a9f9428871443166ad43f958ae13b2c312
 include - APP\View\Elements\footer.ctp, line 1
 View::_evaluate() - CORE\Cake\View\View.php, line 971
 View::_render() - CORE\Cake\View\View.php, line 933
