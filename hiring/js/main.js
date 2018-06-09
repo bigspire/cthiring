@@ -1097,7 +1097,7 @@ $(document).ready(function() {
 			if($(this).attr('checked') == 'checked' && $(this).attr('checked') != undefined){
 				sel_item = sel_item + $(this).val() + ',';
 				data_sel = 1;
-				if($(this).attr('rel') == 'shed'){
+				if($(this).attr('rel') == 'shed' && type != 'reschedule'){
 					stFlag = '1';
 					// alert('You have chosen candidates whose interview is already scheduled');
 				}
@@ -1734,10 +1734,10 @@ function load_colorBox(obj, size){
 					
 				}    
 				// branch page validation
-				//if($('#fr_branch').length > 0 && $('#fr_branch').val() == 'success'){
-				//		window.parent.$('#formID').submit();
-				//} 				
-			}						
+				if($('#fr_branch').length > 0 && $('#fr_branch').val() == 'success'){
+						window.parent.$('#formID').submit();
+					} 				
+				}						
 			});
 		}
 }

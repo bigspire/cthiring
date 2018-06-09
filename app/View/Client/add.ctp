@@ -231,7 +231,10 @@
 	<?php echo $this->Form->input('branch_#index#', array('div'=> false,'type' => 'select', 'label' => false, 'id' => 'branch_#index#',
 		'class' => 'span8', 'empty' => 'Select', 'required' => false, 'placeholder' => '', 
 		'style' => "clear:left", 'options' => $branchList, 'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?> 
-					<a href="<?php echo $this->webroot;?>hiring/add_contact_branch.php?action=dropdown" rel="branch_#index#" class="iframeBox clearDesig" val="40_55">Add New</a>
+		
+		<a href="<?php echo $this->webroot;?>hiring/add_contact_branch.php?action=dropdown" rel="branch_#index#" class="iframeBox clearDesig" val="40_55">Add New</a>
+		
+		
 				
 					<input type="hidden" name="fr_branch" id="fr_branch">	
 					

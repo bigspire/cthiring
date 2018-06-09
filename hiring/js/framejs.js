@@ -148,10 +148,13 @@
 			
 			if(submit == true){
 				// Disable the 'Next' button to prevent multiple clicks		
-				$('.intSubmit').attr('value', 'Processing...');		
-				$('.intSubmit').attr('disabled', 'disabled');
+				$('.intSubmit').attr('value', 'Processing...');	
+				$('.intSubmit').hide();			
+				//$('.intSubmit').attr('disabled', 'disabled');
 				// hide cancel button
-				$('.intCancel', this).hide();
+				$('.intCancel').hide();
+				//$('.intForm').submit();
+				
 			}
 			return submit;	
 		});

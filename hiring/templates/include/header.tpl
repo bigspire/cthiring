@@ -43,7 +43,9 @@
             <link rel="stylesheet" href="lib_cthiring/jBreadcrumbs/css/BreadCrumb.css" />
 	
 </head>
-<body  class="menu_hover">
+<body  class="menu_hover"> 
+
+
 	<div id="container">
 		<div id="content">
 			<div id="maincontainer" class="clearfix">
@@ -252,7 +254,7 @@
 												
 												 {if $module['approve_incentive'] eq '1'}
                                                 <li><a href="approve_incentive.php">Approve Incentive</a></li>
-										   {/if}
+												{/if}
 												{if $module['view_incentive'] eq '1'}
                                                 <li><a href="incentive.php">View Incentive</a></li>
 										   {/if}
@@ -263,35 +265,69 @@
 										
 										
 										
-										{if $module['client_wise_cv_status'] eq '1' || $module['ctc_wise_monthly_opening'] eq '1'}
+			{if $module['client_wise_cv_status'] eq '1' || $module['month_wise_cv_status'] eq '1' || $module['employee_productivity'] eq '1' || $module['employee_business_conversion'] eq '1' || $module['recruiter_wise_billing'] eq '1'}
 										<li class="dropdown {$report_menu}">
                                             <a data-toggle="dropdown" class="dropdown-toggle " href="#"><i class="icon-download-alt icon-white"></i> Reports <b class="caret"></b></a>
                                           <ul class="dropdown-menu">
 										  
-										 {if $module['ctc_wise_monthly_opening'] eq '1'} 
+										
+										  
+										 {if $module['month_wise_cv_status'] eq '1' || $module['client_wise_cv_status'] eq '1'} 
 										   <li class="dropdown">
-													<a href="#">CTC Wise Monthly Openings Handled <b class="caret-right"></b></a>
+													<a href="#">CV Status<b class="caret-right"></b></a>
 													<ul class="dropdown-menu">
-														<li><a href="#">CTC Wise Monthly Openings Handled</a></li>
-														<li><a href="#">CTC Wise Client Openings Handled</a></li>
-														<li><a href="#">Month Wise Client Openings Handled</a></li>														
-													</ul>
-											</li>
-										{/if}
-											
-									 {if $module['client_wise_cv_status'] eq '1'} 
-											   <li class="dropdown">
-													<a href="#">CV Status <b class="caret-right"></b></a>
-													<ul class="dropdown-menu">
-														<!--li><a href="#">CTC Wise CV Status</a></li-->
-														
-														 {if $module['client_wise_cv_status'] eq '1'} 
+													 {if $module['client_wise_cv_status'] eq '1'} 
 														<li><a href="{webroot}report/client_wise_cv_status/">Client Wise CV Status</a></li>
-														{/if}
-														<!--li><a href="#">Month Wise CV Status</a></li-->														
+													 {/if}
+														
+													{if $module['month_wise_cv_status'] eq '1'} 
+													<li><a href="{webroot}report/month_wise_cv_status/">Month Wise CV Status</a></li>
+													{/if}
 													</ul>
 											</li>
 										{/if}
+										
+										
+										
+										 {if $module['employee_productivity'] eq '1'} 
+											   <li class="dropdown">
+													<a href="#">Productivity <b class="caret-right"></b></a>
+													<ul class="dropdown-menu">
+														<li><a href="{webroot}report/employee_productivity/">Employee Productivity</a></li>
+													</ul>
+												</li>
+										{/if}
+										
+										
+										
+										 {if $module['employee_business_conversion'] eq '1'}
+											   <li class="dropdown">
+													<a href="#">Business Conversion <b class="caret-right"></b></a>
+													<ul class="dropdown-menu">
+													
+													 {if $module['employee_business_conversion'] eq '1'}
+														<li><a href="{webroot}report/employee_business_conversion/">Employee Business Conversion</a></li>
+													{/if}
+													
+													</ul>
+												</li>
+										{/if}
+										
+										
+										{if $module['recruiter_wise_billing'] eq '1'}
+											   <li class="dropdown">
+													<a href="#">Recruiter Wise Billing <b class="caret-right"></b></a>
+													<ul class="dropdown-menu">													
+													{if $module['recruiter_wise_billing'] eq '1'}
+														<li><a href="{webroot}report/recruiter_wise_billing/">Recruiter Wise Billing</a></li>
+													{/if}
+													
+													</ul>
+												</li>
+										{/if}
+										
+										
+										
 
 										
 											   <!--li class="dropdown">
