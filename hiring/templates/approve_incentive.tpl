@@ -40,6 +40,10 @@
 								&employee={$smarty.post.employee}&f_date={$f_date}&t_date={$t_date}" class="jsRedirect">
 								<button type="button" val="approve_incentive.php?action=export&keyword={$smarty.post.keyword}&employee={$smarty.post.employee}&f_date={$f_date}&t_date={$t_date}" name="export" class="btn btn-warning" >Export Excel</button></a>
 							{/if}
+							{if $module['create_incentive'] eq '1'}
+							<a class="jsRedirect" data-notify-time = '3000'   href="add_incentive.php">
+							<input type="button" value="Create Incentive" class="btn btn-info"/></a>
+							{/if}
 						</div>
 						
 						{if $SUCCESS_MSG}
@@ -137,6 +141,7 @@
 										{else}
 										<td></td>
 										{/if}
+										{if $roles_id neq '26'}
 										{if $show_status[$key] eq 'pass'}
 										<td class="actionItem" style="text-align:center">
 											<a href="view_approve_incentive.php?id={$item.id}&emp_id={$item.emp_id}&status_id={$item.status_id}" rel="tooltip" class="btn  btn-mini" title="Verify Incentive"><i class="icon-edit"></i></a>
@@ -144,6 +149,11 @@
 										{else}
 										<td class="actionItem" style="text-align:center">
 											<a href="view_approve_incentive.php?id={$item.id}&emp_id={$item.emp_id}&status_id={$item.status_id}" rel="tooltip" class="btn  btn-mini" title="Verified"><i class="icon-check"></i></a>
+										</td>
+										{/if}
+										{else}
+										<td class="actionItem" style="text-align:center">
+											<a href="view_approve_incentive.php?id={$item.id}&emp_id={$item.emp_id}&status_id={$item.status_id}" rel="tooltip" class="btn  btn-mini" title="View"><i class="icon-search"></i></a>
 										</td>
 										{/if}
 									</tr>

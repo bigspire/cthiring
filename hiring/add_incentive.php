@@ -464,7 +464,7 @@ if(!empty($_POST)){
 				$msg = $content->get_level1_incentive_details($incentive_user_details,$_POST,$obj,$admin_name,$level1_name,$level1_email);
 				$mailer->send_mail($sub,$msg,$admin_name,$admin_email,$level1_name,$level1_email);
 			
-				header("Location: incentive.php?status=created");
+				header("Location: approve_incentive.php?status=created");
 			
 	}else if($_POST['type'] == 'J'){
 			
@@ -807,7 +807,7 @@ if(!empty($_POST)){
 			$msg = $content->get_level1_incentive_details($incentive_user_details,$_POST,$obj,$admin_name,$level1_name,$level1_email);
 			$mailer->send_mail($sub,$msg,$admin_name,$admin_email,$level1_name,$level1_email);
 			
-			header("Location: incentive.php?status=created");
+			header("Location: approve_incentive.php?status=created");
 		}
 
 	}
