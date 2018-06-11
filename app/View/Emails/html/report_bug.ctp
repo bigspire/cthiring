@@ -7,8 +7,8 @@
 <body style="margin:0; padding:0; background:#e1e1e1;">
 
 <table width="700" border="0" align="left" cellpadding="0" cellspacing="0" style="border:2px solid #fff; background:#fff; margin-bottom:40px">
-  <tr style="background:#438eb9;">
-    <td width="436" height="40" style="padding-left:20px;color:#fff;font-family:arial;"><h3>MANAGE HIRING</h3></td>
+  <tr >
+    <td width="436" height="40" style="color:#fff;font-family:arial;"><h3>MANAGE HIRING</h3></td>
     <td width="269" align="right" style="padding-right:20px;"></td>
   </tr>
   <tr>
@@ -17,11 +17,11 @@
   <tr>
     <td colspan="2"><table width="100%" border="0" cellspacing="0" cellpadding="0">
       <tr>
-        <td width="490" valign="top"  style="padding:0 20px;"><h1 style="font:bold 15px Arial, Helvetica, sans-serif; color:#212428; margin:0 0 10px 0;">Dear Admin<b>,</h1>
+        <td width="490" valign="top"  ><h1 style="font:bold 15px Arial, Helvetica, sans-serif; color:#212428; margin:0 0 10px 0;">Dear Admin<b>,</h1>
           <p style="font:13px Arial, Helvetica, sans-serif; color:#212428; margin:0;">You have received a feedback request from <?php echo $from_name;?></p><br />
 
           <p style="font:normal 13px Arial, Helvetica, sans-serif; color:#212428; margin:0;">Please check the details below,</p>
-          <table width="100%" border="0" cellspacing="2" cellpadding="10" style="border:1px solid #ededed; font:bold 13px Arial, Helvetica, sans-serif; color:#212428; margin:10px 0 20px 0;">
+          <table width="100%" border="0" cellspacing="2" cellpadding="10" style="border:1px solid #ededed; font:bold 13px Arial, Helvetica, sans-serif; color:#212428; ">
           
 			
 			<tr style="background:#f5f4f4;">

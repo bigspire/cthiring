@@ -198,7 +198,20 @@ class Position extends AppModel {
                 'message'  => 'Please select the mail message'
             )
         ),
-	
+	'subject_candidate' => array(		
+            'empty' => array(
+                'rule'     => 'notEmpty',
+                'required' => true,
+                'message'  => 'Please enter the mail subject'
+            )
+        ),
+		'message_candidate' => array(		
+            'empty' => array(
+                'rule'     => 'notEmpty',
+                'required' => true,
+                'message'  => 'Please select the mail message'
+            )
+        ),
 		'interview_stage_id' => array(		
             'empty' => array(
                 'rule'     => 'notEmpty',

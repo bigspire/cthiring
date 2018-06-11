@@ -251,7 +251,39 @@ class FunctionsComponent extends Component {
 		}
 		return $view_title;
    }
-  
+	
+	/* function to show the status in crisp */ 
+   public function  get_status_crisp($stage, $status){
+		$short_stage = explode(' ', $stage);
+		if($stage == 'Validation - Account Holder' && $status == 'Pending'){
+			$new_status = 'CRM Validation Pending ';
+		}else if($stage == 'Validation - Account Holder' && $status == 'Rejected'){
+			$new_status = 'CRM Rejected';
+		}else if($stage == 'Validation - Account Holder' && $status == 'Validated'){
+			$new_status = 'CRM Validated';
+		}else if($stage == 'Shortlist' && $status == 'Shortlisted'){
+			$new_status = 'CV Shortlisted';
+		}else if($stage == 'Shortlist' && $status == 'CV-Sent'){
+			$new_status = 'CV Sent';
+		}else if($stage == 'Shortlist' && $status == 'Rejected'){
+			$new_status = 'CV Rejected';
+		}else if($stage == 'Shortlist' && $status == 'OnHold'){
+			$new_status = 'CV On Hold';
+		}else if($short_stage[1] == 'Interview'){
+			$new_status =  'Interview '.$status;
+		}else if($short_stage[0] == 'Offer'){
+			$new_status =  $status;
+		}else if($stage == 'Joining' && $status == 'Joined'){
+			$new_status = 'Joined';
+		}else if($stage == 'Joining' && $status == 'Not Joined'){
+			$new_status = 'Not Joined';
+		}else if($stage == 'In-Active'){
+			$new_status = $stage.' ('.$status.')';
+		}else{
+			$new_status =  $stage.' - '.$status;
+		}
+		return $new_status;
+   }
 	
 	
 }

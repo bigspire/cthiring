@@ -47,7 +47,7 @@ class NotificationController extends AppController {
 			*/
 		);		
 		
-		$last_updated = date('Y-m-d', strtotime('-300 days'));	
+		$last_updated = date('Y-m-d', strtotime('-10 days'));	
 		$date_cond = array('OR' => array(
 					array('Notification.modified_date <=' =>  $last_updated, 'Notification.modified_date' => NULL),
 					array('Notification.modified_date <=' =>  $last_updated)					
@@ -90,7 +90,7 @@ class NotificationController extends AppController {
 			
 			);	
 		$status_list = array('Pending','CV-Sent','Scheduled','Re-Scheduled','Offer Pending','Selected',	'Offer Pending');
-		$last_updated = date('Y-m-d', strtotime('-1800 days'));	
+		$last_updated = date('Y-m-d', strtotime('-10 days'));	
 		$date_cond = array('OR' => array(
 					array('ReqResume.created_date <=' =>  $last_updated, 'ReqResume.modified_date' => NULL),
 					array('ReqResume.modified_date <=' =>  $last_updated),

@@ -105,7 +105,13 @@
 		*/
 		
 		$('.datetimepick').datetimepicker({
-			 format: "dd/mm/yyyy  hh:ii"
+			 format: "dd/mm/yyyy hh:ii",
+			 startDate:$('#start_date').val(),
+			 endDate:$('#end_date').val(),
+			 autoclose: true,
+			 todayHighlight:true,
+			 minuteStep:15
+			 
 		});			
 	}
 	
