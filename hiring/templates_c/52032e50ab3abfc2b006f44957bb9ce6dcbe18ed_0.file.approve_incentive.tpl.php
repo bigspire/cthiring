@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-06-01 14:30:31
+/* Smarty version 3.1.29, created on 2018-06-09 17:31:19
   from "C:\xampp\htdocs\2017\ctsvn2\cthiring\hiring\templates\approve_incentive.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5b110b2fd7d718_56211227',
+  'unifunc' => 'content_5b1bc18f232c55_74536092',
   'file_dependency' => 
   array (
     '52032e50ab3abfc2b006f44957bb9ce6dcbe18ed' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn2\\cthiring\\hiring\\templates\\approve_incentive.tpl',
-      1 => 1527843630,
+      1 => 1528545674,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5b110b2fd7d718_56211227 ($_smarty_tpl) {
+function content_5b1bc18f232c55_74536092 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\2017\\ctsvn2\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -74,6 +74,10 @@ home"><i class="icon-home"></i></a>
 &f_date=<?php echo $_smarty_tpl->tpl_vars['f_date']->value;?>
 &t_date=<?php echo $_smarty_tpl->tpl_vars['t_date']->value;?>
 " name="export" class="btn btn-warning" >Export Excel</button></a>
+							<?php }?>
+							<?php if ($_smarty_tpl->tpl_vars['module']->value['create_incentive'] == '1') {?>
+							<a class="jsRedirect" data-notify-time = '3000'   href="add_incentive.php">
+							<input type="button" value="Create Incentive" class="btn btn-info"/></a>
 							<?php }?>
 						</div>
 						
@@ -272,6 +276,7 @@ $__foreach_item_0_saved_local_item = $_smarty_tpl->tpl_vars['item'];
 										<?php } else { ?>
 										<td></td>
 										<?php }?>
+										<?php if ($_smarty_tpl->tpl_vars['roles_id']->value != '26') {?>
 										<?php if ($_smarty_tpl->tpl_vars['show_status']->value[$_smarty_tpl->tpl_vars['key']->value] == 'pass') {?>
 										<td class="actionItem" style="text-align:center">
 											<a href="view_approve_incentive.php?id=<?php echo $_smarty_tpl->tpl_vars['item']->value['id'];?>
@@ -285,6 +290,14 @@ $__foreach_item_0_saved_local_item = $_smarty_tpl->tpl_vars['item'];
 &emp_id=<?php echo $_smarty_tpl->tpl_vars['item']->value['emp_id'];?>
 &status_id=<?php echo $_smarty_tpl->tpl_vars['item']->value['status_id'];?>
 " rel="tooltip" class="btn  btn-mini" title="Verified"><i class="icon-check"></i></a>
+										</td>
+										<?php }?>
+										<?php } else { ?>
+										<td class="actionItem" style="text-align:center">
+											<a href="view_approve_incentive.php?id=<?php echo $_smarty_tpl->tpl_vars['item']->value['id'];?>
+&emp_id=<?php echo $_smarty_tpl->tpl_vars['item']->value['emp_id'];?>
+&status_id=<?php echo $_smarty_tpl->tpl_vars['item']->value['status_id'];?>
+" rel="tooltip" class="btn  btn-mini" title="View"><i class="icon-search"></i></a>
 										</td>
 										<?php }?>
 									</tr>

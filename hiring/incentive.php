@@ -39,7 +39,8 @@ if($_POST){
 }
 
 // for director and BH and admin
-if($_SESSION['roles_id'] == '33' || $_SESSION['roles_id'] == '35' || $_SESSION['roles_id'] == '26'){
+// if($_SESSION['roles_id'] == '33' || $_SESSION['roles_id'] == '39' || $_SESSION['roles_id'] == '26'){
+if($_SESSION['roles_id'] == '33' || $_SESSION['roles_id'] == '39' || $_SESSION['roles_id'] == '35'){
 	$show = 'all';
 	$team_cond = false;
 }else{
@@ -65,13 +66,13 @@ while($row = $mysql->display_result($result)){
 if(!empty($emp_name)){
 	$smarty->assign('approveUser', '1');	
 	if($team_cond){
-		$cond .= ' or inc.users_id in('.substr($id_str, 0, strlen($id_str)-2).')';				
+		$cond .= '  inc.users_id in('.substr($id_str, 0, strlen($id_str)-2).')';				
 	}
 	$smarty->assign('emp_name',$emp_name);
 }
 		
-// if branch admmin
-if($_SESSION['roles_id'] == '35'){
+// if branch admin
+if($_SESSION['roles_id'] == '35' || $_SESSION['roles_id'] == '39' || $_SESSION['roles_id'] == '33'){
 	$loc = $_SESSION['location_id'];
 	$sql = "select u.id from users where u.is_deleted = 'N' and u.status = '0' and u.location_id = '$loc'  group by u.id order by u.first_name asc";		
 	$result = $mysql->execute_query($sql);		
@@ -86,7 +87,7 @@ if($_SESSION['roles_id'] == '35'){
 }
 		
 // count the total no. of records
-$query = "CALL list_incentive('".$employee."','".$type."','".$_SESSION['roles_id']."','".$from_date."','".$to_date."','0','0','','','".$_GET['action']."','".$cond."')";
+$query = "CALL list_incentive('".$employee."','".$_SESSION['user_id']."','".$type."','".$_SESSION['roles_id']."','".$from_date."','".$to_date."','0','0','','','".$_GET['action']."','".$cond."')";
 try{
 	if(!$result = $mysql->execute_query($query)){
 		throw new Exception('Problem in executing count incentive page');
@@ -139,7 +140,7 @@ if($search_key = array_search($_GET['field'], $sort_fields)){
 }
 
 // fetch all records
-$query =  "CALL list_incentive('".$employee."','".$type."','".$_SESSION['roles_id']."','".$from_date."','".$to_date."','$start','$limit','".$field."','".$order."','".$_GET['action']."','".$cond."')";
+$query =  "CALL list_incentive('".$employee."','".$_SESSION['user_id']."','".$type."','".$_SESSION['roles_id']."','".$from_date."','".$to_date."','$start','$limit','".$field."','".$order."','".$_GET['action']."','".$cond."')";
 try{
 	if(!$result = $mysql->execute_query($query)){
 		throw new Exception('Problem in executing list incentive page');

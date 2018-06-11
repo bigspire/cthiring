@@ -34,11 +34,11 @@
 							<a href="incentive.php?action=export&employee={$employee}&f_date={$f_date}&t_date={$t_date}">
 							<button type="button" val="incentive.php?action=export&employee={$employee}&f_date={$f_date}&t_date={$t_date}" name="export" class="jsRedirect btn btn-warning" >Export</button></a></a>							
 							{/if}	
-							 
-							{if $module['create_incentive'] eq '1'}
+								
+							{* {if $module['create_incentive'] eq '1'}
 							<a class="jsRedirect" data-notify-time = '3000'   href="add_incentive.php">
 							<input type="button" value="Create Incentive" class="btn btn-info"/></a>
-							{/if}
+							{/if} *}
 							</div>
 
 				 	{if $ALERT_MSG}
