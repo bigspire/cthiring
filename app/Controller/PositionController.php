@@ -819,7 +819,7 @@ class PositionController extends AppController {
 	public function get_team_member_list($id){
 		$this->loadModel('ReqTeam');
 		$team_member = $this->ReqTeam->find('all', array('fields' => array('users_id','no_req'), 'conditions' => array('requirements_id' => $id,
-		'ReqTeam.is_approve' => 'A')));
+		'ReqTeam.is_approve' => array('W','A'))));
 		foreach($team_member as $record){
 			$users[] = $record['ReqTeam']['users_id'];
 			$no_pos[] = $record['ReqTeam']['no_req'];
@@ -1445,7 +1445,7 @@ class PositionController extends AppController {
 											)
 									);
 								$resume_data = $this->ReqResume->Resume->find('all', array('conditions' => array('Resume.id' => $chk_resume_id_ar ? $chk_resume_id_ar : $res_id),
-								'fields' => array('ResDoc.resume','Resume.created_date','Resume.modified_date'), 'joins' => $options));
+								'fields' => array('ResDoc.resume','Resume.first_name', 'Resume.last_name', 'Resume.created_date','Resume.modified_date'), 'joins' => $options));
 								// parse the file name			
 								foreach($resume_data as $resume_file){
 									$updated = $resume_file['Resume']['modified_date'] ? $resume_file['Resume']['modified_date'] : $resume_file['Resume']['created_date'];
@@ -1453,7 +1453,7 @@ class PositionController extends AppController {
 									$pdf_date = date('d-m-Y', strtotime($updated));		
 									$resume_folder = $client_data['Position']['resume_type'] == 'F' ? 'autoresumepdf/' : 'snapshotwatermarked/';
 									if(file_exists('../../hiring/uploads/'.$resume_folder.$this->Functions->filter_file($snap_file).'_'.$pdf_date.'.pdf')){
-										$resume_path[] = '../../hiring/uploads/'.$resume_folder.$this->Functions->filter_file($snap_file).'_'.$pdf_date.'.pdf';
+										$resume_path[$resume_file['Resume']['first_name'].' '.$resume_file['Resume']['last_name'].'.pdf'] = '../../hiring/uploads/'.$resume_folder.$this->Functions->filter_file($snap_file).'_'.$pdf_date.'.pdf';
 									}
 									
 								}						
@@ -1674,14 +1674,15 @@ class PositionController extends AppController {
 				$this->loadModel('ReqResumeStatus');
 				$prev_exp_data = $this->ReqResumeStatus->find('all', array('conditions' => array('ReqResumeStatus.status_title' => 'CV-Sent',
 				'Position.id' => $pos_id), 'fields' => array('ResExp.experience','ResExp.work_location','ResExp.skills',
-				'ResExp.company','ResExp.other_info','Designation.designation','Resume.first_name','Resume.last_name'),
+				'ResExp.company','ResExp.other_info','Designation.designation','Resume.first_name','Resume.last_name','ReqResumeStatus.created_date',
+				'ReqResume.stage_title','ReqResume.status_title'),
 				'group' => array('Resume.id'), 'joins' => $options));
 				// iterate the experience details
 				// send only if any candidates sent earlier
 				if(count($prev_exp_data) > 0){
 					$prev_exp_table .= '<br><p>For your reference, I am also sharing the details of CVs shared earlier for this position and its current status.</p><br><br>';
 					$prev_exp_table .= "<table  width='90%' border='0' cellspacing='2' cellpadding='5' style='border:1px solid #ededed; font:bold 13px Arial'>";
-					$prev_exp_table .= "<tr><td>S. No.</td><td>Candidate Name</td><td>Present Designation</td><td>Present Company</td></tr>";
+					$prev_exp_table .= "<tr><td>S. No.</td><td>Candidate Name</td><td>CV Submission Date</td><td>Current Status</td></tr>";
 					foreach($prev_exp_data as $key => $exp){
 						$prev_exp_table .= "<tr  style='font-weight:normal'>";
 						$prev_exp_table .= "<td width='50'>";
@@ -1691,10 +1692,10 @@ class PositionController extends AppController {
 						$prev_exp_table .= ucwords($exp['Resume']['first_name'].' '.$exp['Resume']['last_name']);
 						$prev_exp_table .= "</td>";
 						$prev_exp_table .= "<td  width='140'>";
-						$prev_exp_table .= $exp['Designation']['designation'];
+						$prev_exp_table .= $this->Functions->format_date($exp['ReqResumeStatus']['created_date']);
 						$prev_exp_table .= "</td>";
 						$prev_exp_table .= "<td  width='140'>";
-						$prev_exp_table .= $exp['ResExp']['company'];
+						$prev_exp_table .= $this->Functions->get_status_crisp($exp['ReqResume']['stage_title'], $exp['ReqResume']['status_title']);
 						$prev_exp_table .= "</td>";
 						$prev_exp_table .= "</tr>";
 
@@ -1801,6 +1802,8 @@ class PositionController extends AppController {
 		//$int_time = $this->request->data['Position']['int_time'] ? $this->request->data['Position']['int_time'] : $this->request->data['Position']['candidate_int_time_'.$int_key];
 		
 		$venue = $this->request->data['Position']['venue'] ? $this->request->data['Position']['venue'] : $this->request->data['Position']['candidate_venue_'.$int_key];
+		
+		
 		$duration = $this->request->data['Position']['int_duration'] ? $this->request->data['Position']['int_duration'] : $this->request->data['Position']['candidate_duration_'.$int_key];
 		$contact_name = $this->request->data['Position']['contact_name'] ? $this->request->data['Position']['contact_name'] : $this->request->data['Position']['candidate_person_'.$int_key];
 		$contact_no = $this->request->data['Position']['contact_no'] ? $this->request->data['Position']['contact_no'] : $this->request->data['Position']['candidate_mobile_'.$int_key];
@@ -2281,19 +2284,24 @@ class PositionController extends AppController {
 					)					
 				);
 				
+				
 				// when the form is not submitted
 				if(!$this->request->is('post')){
-					$data = $this->ResInterview->find('all', array('fields' => array('int_date','int_duration','Resume.first_name','Resume.last_name'
-					,'InterviewStage.interview_stage','venue','additional','contact_name','contact_no','stage_title','interview_stage_id'),
-					'conditions' => array('req_resume_id' => $req_res_ids), 'order' => array('ResInterview.id' => 'desc'),  'joins' => $options));
+					// $groupCond = $multi_chk == '1' ? array('ResInterview.req_resume_id') : '';
+					foreach($req_res_ids as $reqid){
+						if($reqid != ''){
+							$data[] = $this->ResInterview->find('all', array('fields' => array('int_date','int_duration','Resume.first_name','Resume.last_name','InterviewStage.interview_stage','venue','additional','contact_name','contact_no','stage_title','interview_stage_id'),'conditions' => array('req_resume_id' => $reqid), 'limit' => '1', 'order' => array('ResInterview.created_date' => 'desc'),  'joins' => $options));
+						}
+					}
+					
 					if($multi_chk == '1'){
 						$inter_data = $data;
 					}else{
 						$this->set('interview_record', $data[0]);
 					}
 				}
-				//$int_date = explode(' ', $data[0]['ResInterview']['int_date']);
-				//$this->set('interview_date', $this->Functions->format_date_show($int_date[0]));
+				
+			
 			}
 			// get the candidate names
 			$options = array(			
@@ -2308,11 +2316,12 @@ class PositionController extends AppController {
 			
 			
 			$cand_data = $this->Position->find('all', array('fields' => $fields,'conditions' => array('Resume.id' => $chk_resume_id_ar),
-			'group' => array('Resume.id'),'joins' => $options));		
+			'group' => array('Resume.id'),'joins' => $options));	
+			
+			
 			// iterate the candidate interview table
 			$int_table .= "<table  width='90%' border='0' cellspacing='2' cellpadding='5' style='border:1px solid #ededed; font:bold 13px Arial'>";
-			$int_table .= "<tr><td>S. No.</td><td>Candidate Name</td><td>Interview Level</td><td>Interview Mode</td><td>Interview Date</td><td>Interview Time</td>
-			<td>Contact No.</td></tr>";
+			$int_table .= "<tr><td>S. No.</td><td>Candidate Name</td><td>Contact No.</td><td>Interview Level</td><td>Interview Mode</td><td>Interview Date</td><td>Interview Time</td></tr>";
 			foreach($cand_data as $key => $exp){
 				$int_table .= "<tr  style='font-weight:normal'>";
 				$int_table .= "<td width='50'>";
@@ -2322,6 +2331,10 @@ class PositionController extends AppController {
 			 	// $contact_name = $multi_chk == 1 ? '[CANDIDATE_NAME]' : ucwords($exp['Resume']['first_name'].' '.$exp['Resume']['last_name']);
 				$contact_name = ucwords($exp['Resume']['first_name'].' '.$exp['Resume']['last_name']);
 				$int_table .= $contact_name;
+				$int_table .= "</td>";
+				$int_table .= "<td  width='140'>";
+				$mobile =  $exp['Resume']['mobile'];
+				$int_table .= $mobile;
 				$int_table .= "</td>";
 				$int_table .= "<td  width='140'>";
 				$int_table .= '[interview_level]';
@@ -2337,20 +2350,44 @@ class PositionController extends AppController {
 				$int_table .= '[interview_time]';
 				$int_table .= "</td>";	
 							
-				$int_table .= "<td  width='140'>";
-				// $mobile = $multi_chk == 1 ? '[MOBILE]' : $exp['Resume']['mobile'];
-				$mobile =  $exp['Resume']['mobile'];
-				$int_table .= $mobile;
-				$int_table .= "</td>";
+				
 				$int_table .= "</tr>";		
 				$can_name .= ucwords($exp['Resume']['first_name'].' '.$exp['Resume']['last_name']).', ';
 			}
 			$int_table .= "</table>";
 			
+			$int_table .= '<p><br><br>Interview Venue & Contact Details shared to the candidate(s) are as follows:</p>';
+			
+			// iterate the candidate venue table
+			
+			$int_table .= "<table  width='90%' border='0' cellspacing='2' cellpadding='5' style='border:1px solid #ededed; font:bold 13px Arial'>";
+			$int_table .= "<tr><td>S. No.</td><td>Candidate Name</td><td>Venue</td><td>Contact Person</td><td>Contact No.</td></tr>";
+			foreach($cand_data as $key => $exp){
+				$int_table .= "<tr  style='font-weight:normal'>";
+				$int_table .= "<td width='50'>";
+				$int_table .= ++$key;
+				$int_table .= "</td>";
+				$int_table .= "<td  width='120'>";
+			 	// $contact_name = $multi_chk == 1 ? '[CANDIDATE_NAME]' : ucwords($exp['Resume']['first_name'].' '.$exp['Resume']['last_name']);
+				$contact_name = ucwords($exp['Resume']['first_name'].' '.$exp['Resume']['last_name']);
+				$int_table .= $contact_name;
+				$int_table .= "</td>";
+				$int_table .= "<td  width='200'>";
+				$int_table .= '[interview_venue]';
+				$int_table .= "</td>";
+				$int_table .= "<td  width='140'>";
+				$int_table .= '[interview_contact_person]';
+				$int_table .= "</td>";
+				$int_table .= "<td  width='140'>";
+				$int_table .= '[interview_contact_no]';
+				$int_table .= "</td>";				
+				$int_table .= "</tr>";		
+			}
+			$int_table .= "</table>";
 			
 			
 			/* logics created for multiple selection of candidates for interview schedule / reschedule */
-		
+			
 		
 			foreach($cand_data as $key => $exp){ 
 				// for auto filling from first form
@@ -2363,8 +2400,8 @@ class PositionController extends AppController {
 				if($this->request->query['int_type'] == 'reschedule'){
 					$int_table_form .= "<tr><td>Reason for Re-Schedule  <span class='f_req'>*</span></td></tr>";
 					$int_table_form .= "<tr  style='font-weight:normal'><td>";
-					$int_table_form .= "<select class='input-small required $level_cls' style='width:130px;' name='data[Position][candidate_reason_$key]' id='candidate_level_$key'><option value=''>Select</option>";
-					foreach($reject_reason_data as $reason_key => $reason_val){						
+					$int_table_form .= "<select class='required $level_cls' style='width:130px;' name='data[Position][candidate_reason_$key]' id='candidate_level_$key'><option value=''>Select</option>";
+					foreach($reject_reason_data as $reason_key => $reason_val){					
 						$int_table_form .= "<option value='$reason_key'>$reason_val</option>";
 					}
 					$int_table_form .= "</select></td></tr>";
@@ -2382,12 +2419,11 @@ class PositionController extends AppController {
 				// $int_table_form .= $contact_name;
 				//$int_table_form .= "</td>";
 				$int_table_form .= "<td  width='140'>";
-				$int_table_form .= "<select class='input-small required $level_cls' style='width:130px;' name='data[Position][candidate_level_$key]' id='candidate_level_$key'><option value=''>Select</option>";
-				
-				foreach($int_levels as $int_key => $int_lev){
+				$int_table_form .= "<select class='input-small required $level_cls' style='width:130px;' name='data[Position][candidate_level_$key]' id='candidate_level_$key'><option value=''>Select</option>";				
+				foreach($int_levels as $int_key => $int_lev){ 
 					// for retaining
 					
-					if($inter_data[$key]['ResInterview']['stage_title'] == $int_key){
+					if($inter_data[$key][0]['ResInterview']['stage_title'] == $int_key){
 						$level_select = 'selected';
 					}else{
 						$level_select = '';
@@ -2403,7 +2439,7 @@ class PositionController extends AppController {
 				$int_table_form .= "<select class='input-small required' style='width:130px;' name='data[Position][candidate_stage_$key]' id='candidate_stage_$key'><option value=''>Select</option>";
 				
 				foreach($stage_list as $stage_key => $stage){
-					if($inter_data[$key]['ResInterview']['interview_stage_id'] == $stage_key){
+					if($inter_data[$key][0]['ResInterview']['interview_stage_id'] == $stage_key){
 						$stage_select = 'selected';
 					}else{
 						$stage_select = '';
@@ -2422,13 +2458,12 @@ class PositionController extends AppController {
 				
 				$int_table_form .= "</tr>";
 				
-				$int_table_form .= "<tr><td>Interview Duration <span class='f_req'>*</span> </td><td>Interview Venue <span class='f_req'>*</span> </td><td>Contact Person <span class='f_req'>*</span> </td></tr><tr>";
+				$int_table_form .= "<tr><td>Interview Duration </td><td>Interview Venue <span class='f_req'>*</span> </td><td>Contact Person <span class='f_req'>*</span> </td></tr><tr>";
 				
-				
-				
+								
 				$int_table_form .= "<td  width='140'>";
 				
-				$int_table_form .= "<select class='input-small required' style='width:130px;' name='data[Position][candidate_duration_$key]' id='candidate_duration_$key'><option value=''>Select</option>";
+				$int_table_form .= "<select class='input-small' style='width:130px;' name='data[Position][candidate_duration_$key]' id='candidate_duration_$key'><option value=''>Select</option>";
 				foreach($int_duration as $dur_key => $duration){
 					
 					$int_table_form .= "<option value='$dur_key'>$duration</option>";
@@ -2438,10 +2473,10 @@ class PositionController extends AppController {
 				// $int_table_form .= '[interview_duration]';
 				$int_table_form .= "</td>";
 				
-				$int_contact_name = $inter_data[$key]['ResInterview']['contact_name'];
-				$int_contact_no = $inter_data[$key]['ResInterview']['contact_no'];
-				$int_addi = $inter_data[$key]['ResInterview']['additional'];
-				$int_venue = $inter_data[$key]['ResInterview']['venue'];
+				$int_contact_name = $inter_data[$key][0]['ResInterview']['contact_name'];
+				$int_contact_no = $inter_data[$key][0]['ResInterview']['contact_no'];
+				$int_addi = $inter_data[$key][0]['ResInterview']['additional'];
+				$int_venue = $inter_data[$key][0]['ResInterview']['venue'];
 
 				$int_table_form .= "<td><textarea   class='required input-medium wysiwyg1'  name='data[Position][candidate_venue_$key]'  id='candidate_venue_$key'>$int_venue</textarea></td>";
 
@@ -2462,11 +2497,10 @@ class PositionController extends AppController {
 
 								
 				$int_table_form .= "</tr>";		
-				$can_name_form .= ucwords($exp['Resume']['first_name'].' '.$exp['Resume']['last_name']).', ';
+				//$can_name_form .= ucwords($exp['Resume']['first_name'].' '.$exp['Resume']['last_name']).', ';
+				$can_name_form .= $inter_data[$key][0]['Resume']['first_name'].' '.$inter_data[$key][0]['Resume']['last_name'].', ';
 				$int_table_form .= "</table><splitter>";
-			}
-			
-			
+				}
 			
 			
 			$this->set('multi_check', $multi_chk);
@@ -2494,13 +2528,16 @@ class PositionController extends AppController {
 			// retain the district
 			// validate the form fields	
 			if($multi_chk == '' && $schedule_type == 'reschedule'){
-				$valid = array('interview_level','interview_stage_id', 'int_date','int_duration','contact_name','venue','contact_no','reason_id');				
+				$valid = array('subject','message','subject_candidate','message_candidate',
+				'interview_level','interview_stage_id', 'int_date','contact_name','venue','contact_no','reason_id');			
 			}else if($multi_chk == ''){
-				$valid = array('interview_level','interview_stage_id', 'int_date','int_duration','contact_name','venue','contact_no');				
+				$valid = array('subject','message','subject_candidate','message_candidate','interview_level','interview_stage_id', 'int_date','contact_name','venue','contact_no');				
+			}else{
+				$valid = array('subject','message','subject_candidate','message_candidate');
 			}		
 			
 			
-			if ($this->Position->validates(array('fieldList' => array($valid)))){	
+			if ($this->Position->validates(array('fieldList' => $valid))){	
 				// get the req. resume id
 				$this->loadModel('ReqResume');
 				//$req_res_id = $this->ReqResume->find('all', array('fields' => array('ReqResume.id'), 
@@ -2587,8 +2624,6 @@ class PositionController extends AppController {
 																
 								$message = $this->parse_interview_mail($this->request->data['Position']['message_candidate'],$to_name,$pos_id, $int_key);
 								
-								$int_key++;
-								
 								$subject = $this->request->data['Position']['subject_candidate'];
 								
 								
@@ -2627,9 +2662,14 @@ class PositionController extends AppController {
 					}	
 					*/
 					
-					$message = $this->parse_interview_mail($this->request->data['Position']['message'],'',$pos_id);
+					
+					echo $message = $this->parse_interview_mail($this->request->data['Position']['message'],'',$pos_id, $int_key);
+					die;
+					
 					$subject = $this->request->data['Position']['subject'];
 					
+					$int_key++;
+								
 					// get the resume details
 					$options = array(								
 							array('table' => 'resume_doc',

@@ -797,7 +797,10 @@ class FunctionsHelper extends AppHelper {
 			break;	
 			case '5':
 			$value = 'Final Interview';
-			break;				
+			break;	
+			default:
+			$value = 'First Interview';
+			break;
 		}
 		return $value;
    }

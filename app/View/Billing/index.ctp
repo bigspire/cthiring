@@ -19,7 +19,13 @@
 					<?php echo $this->Form->create('Billing', array('id' => 'formID','class' => 'formID')); ?>
 	
 							<div class="dataTables_filter srchBox" style="float:left;" id="dt_gal_filter">
-							<label style="margin-top:18px;"><a class="notify jsRedirect" data-notify-time = '3000' data-notify-title="In Progress!" data-notify-message="Downloading Excel... Please wait..."  href="<?php echo $this->webroot;?>billing/?action=export&<?php echo $this->Functions->get_url_vars($this->request->query);?>"><input type="button" value="Export Excel" class="btn btn-warning"/></a></label>
+							
+							<?php if($this->Session->read('USER.Login.roles_id') == '33' || $this->Session->read('USER.Login.roles_id') == '39' || $this->Session->read('USER.Login.roles_id') == '40'):?>
+							<label style="margin-top:18px;">							
+							<a class="notify jsRedirect" data-notify-time = '3000' data-notify-title="In Progress!" data-notify-message="Downloading Excel... Please wait..."  href="<?php echo $this->webroot;?>billing/?action=export&<?php echo $this->Functions->get_url_vars($this->request->query);?>"><input type="button" value="Export Excel" class="btn btn-warning"/></a>
+							</label>
+							<?php endif; ?>
+							
 							<label style="margin-top:18px;"><a href="<?php echo $this->webroot;?>billing/" class="jsRedirect"><input value="Reset" type="button" class="btn"/></a></label>
 							<label style="margin-top:18px;"><input type="submit" value="Submit" class="btn btn-gebo" /></label>
 							

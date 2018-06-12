@@ -12,7 +12,7 @@
 		if($validation_error == '1'):?>					
 		<div id="flashMessage" class="alert alert-error">
 		<button type="button" class="close" data-dismiss="alert-error">×</button>Problem in submitting the form. Pls check all fields filled...</div>
-		Redirecting now...
+		
 		<?php endif; ?>	
 				 
 		<?php
@@ -103,11 +103,12 @@
 				
 					<?php endif; ?>
 				
+				<?php $stageTit = $interview_record['ResInterview']['stage_title'] ? $interview_record['ResInterview']['stage_title'] : $this->Functions->get_level_text($this->request->params['pass'][3]); ?>
 				<tr class="tbl_row" >
 					<td width="120" class="tbl_column">Interview Level <span class="f_req">*</span>
 					</td>
 						<td>
-		<?php echo $this->Form->input('interview_level', array('div'=> false,'type' => 'radio', 'value' => $interview_record['ResInterview']['stage_title'], 'label' => false, 'style' => 'margin:4px 2px', 'class' => 'input-xlarge',  'options' => $int_levels, 'separator' => ' ',  'required' => false, 'placeholder' => '', 'legend' => false, 'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?>
+		<?php echo $this->Form->input('interview_level', array('div'=> false,'type' => 'radio', 'value' => $stageTit, 'label' => false, 'style' => 'margin:4px 2px', 'class' => 'input-xlarge',  'options' => $int_levels, 'separator' => ' ',  'required' => false, 'placeholder' => '', 'legend' => false, 'error' =>  array('attributes' => array('wrap' => 'div', 'class' => 'error')))); ?>
 						</td>	
 				</tr>
 				
@@ -334,9 +335,12 @@
 				
 				</tbody>
 			</table>
+			
+			
+			
 			<div class="form-actions" >
 			
-			<input type="hidden" id="start_date" name="start_date" value="<?php echo date('d/m/Y');?>">
+			<input type="hidden" id="start_date" name="start_date" value="<?php echo date('d/m/Y').' 00:00';?>">
 			
 			<input type="hidden" id="tiny_readonly" name="tiny_readonly" value="<?php echo $tiny_readonly;?>">
 
