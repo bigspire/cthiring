@@ -40,7 +40,7 @@ if($_POST){
 }
 
 // for director and BH and admin
-if($_SESSION['roles_id'] == '33' || $_SESSION['roles_id'] == '39' || $_SESSION['roles_id'] == '26'){
+if($_SESSION['roles_id'] == '33' || $_SESSION['roles_id'] == '39' || $_SESSION['roles_id'] == '35' || $_SESSION['roles_id'] == '26'){
 	$show = 'all';
 	$team_cond = false;
 }else{
@@ -61,7 +61,8 @@ while($row = $mysql->display_result($result)){
 	// concatenate the list of team members
 	$id_str .=  $row['id'].', ';
 }
-	
+
+/*	
 // if not director or BH 
 if(!empty($emp_name)){
 	$smarty->assign('approveUser', '1');	
@@ -70,7 +71,8 @@ if(!empty($emp_name)){
 	}
 	$smarty->assign('emp_name',$emp_name);
 }
-		
+*/		
+
 // if branch admmin
 if($_SESSION['roles_id'] == '26'){
 	$loc = $_SESSION['location_id'];
@@ -220,9 +222,9 @@ try{
 	$smarty->assign('show_status', $status_id);
 	
 	// approve or reject validation
-	if($_GET['status'] == 'created'){
+	if($_GET['status'] == 'Approved'){
  		$success_msg = 'Incentive  ' . ucfirst($_GET['status']) . ' Successfully';
-	}else if($_GET['status'] == 'updated'){
+	}else if($_GET['status'] == 'Rejected'){
 		$success_msg = 'Incentive  ' . ucfirst($_GET['status']) . ' Successfully';
 	}
 
