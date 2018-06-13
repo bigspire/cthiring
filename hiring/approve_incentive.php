@@ -71,7 +71,7 @@ if(!empty($emp_name)){
 	}
 	$smarty->assign('emp_name',$emp_name);
 }
-*/		
+		
 
 // if branch admmin
 if($_SESSION['roles_id'] == '26'){
@@ -86,7 +86,7 @@ if($_SESSION['roles_id'] == '26'){
 	$smarty->assign('approveUser', '1');	
 	$cond .= 'and ( inc.users_id in('.substr($id_str, 0, strlen($id_str)-2).') )';
 	$smarty->assign('emp_name',$emp_name);
-}
+} */
 		
 // count the total no. of records
 $query = "CALL list_approve_incentive('".$employee."','".$_SESSION['user_id']."','".$type."','".$_SESSION['roles_id']."','".$from_date."','".$to_date."','0','0','','','".$_GET['action']."','".$cond."')";
