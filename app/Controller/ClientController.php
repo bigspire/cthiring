@@ -275,7 +275,7 @@ class ClientController extends AppController {
 		}
 		$this->paginate = array('fields' => $fields,'limit' => '25','conditions' => array($keyCond,$date_cond,$stCond,
 		$empCond,$approveCond,$teamCond),
-		'order' => array('created_date' => 'desc'),	'group' => array('Client.id'), 'joins' => $options);
+		'order' => array('modified_date' => 'desc'),	'group' => array('Client.id'), 'joins' => $options);
 		$data = $this->paginate('Client');
 		$this->set('data', $data);
 		if(empty($data) && !empty($this->request->data)){
@@ -344,7 +344,7 @@ class ClientController extends AppController {
 							*/					
 							
 							// get the Business Head
-							$leader_data = $this->Client->Creator->find('all', array('conditions' => array('roles_id' => '35'), 'fields' => array('Creator.id',	'Creator.first_name','Creator.last_name', 'Creator.email_id')));
+							$leader_data = $this->Client->Creator->find('all', array('conditions' => array('roles_id' => '39'), 'fields' => array('Creator.id',	'Creator.first_name','Creator.last_name', 'Creator.email_id')));
 							
 							// get account holder name				
 							

@@ -89,21 +89,17 @@
                                              <ul class="dropdown-menu">
 											
 											<?php if($create_task == '1'):?> 											
-											<li><a href="<?php echo $this->webroot;?>taskplan/add/">Create Today's Plan</a></li>															
+											<li><a href="<?php echo $this->webroot;?>taskplan/add/">Create Task</a></li>															
 											<?php endif; ?>	
 
 												<?php if($view_task == '1'):?> 								
-                                                <li><a href="<?php echo $this->webroot;?>taskplan/">View Today's Plan</a></li>
+                                                <li><a href="<?php echo $this->webroot;?>taskplan/">View Task</a></li>
 												
 												<?php endif; ?>
 												
 												
 												<?php if($create_leave == '1'):?> 
 												<li><a href="<?php echo $this->webroot;?>leave/add/">Create Leave</a></li>
-												<?php endif; ?>
-												
-													<?php if($view_leave == '1'):?> 
-											    <li><a href="<?php echo $this->webroot;?>leave/">View Leave</a></li>
 												<?php endif; ?>
 												
 												<?php if($approve_leave == '1'):?> 
@@ -114,7 +110,12 @@
 												</a></li>
 												<?php endif; ?>
 												
-													<?php if($my_event == '1'):?> 
+												<?php if($view_leave == '1'):?> 
+											    <li><a href="<?php echo $this->webroot;?>leave/">View Leave</a></li>
+												<?php endif; ?>
+												
+																								
+												<?php if($my_event == '1'):?> 
 												<li><a href="<?php echo $this->webroot;?>event/">View Event</a></li>
 												<?php endif; ?>
 												
@@ -138,10 +139,8 @@
 											  <?php if($create_client == '1'):?>
                                                 <li><a href="<?php echo $this->webroot;?>client/add/">Add Client</a></li>
 											  <?php endif; ?>
-											   <?php if($view_client == '1'):?>
-                                                <li><a href="<?php echo $this->webroot;?>client/">View Client <!--span class="label-bub label-info white">1</span--></a></li>
-												 <?php endif; ?>
-												  <?php if($approve_client == '1'):?>
+											  
+											   <?php if($approve_client == '1'):?>
                                                 <li><a href="<?php echo $this->webroot;?>client/index/pending/">Approve Client 
 												<?php if($APPR_CLIENT_COUNT):?>
 												<span class="label-bub label-info white"><?php echo $APPR_CLIENT_COUNT;?></span>
@@ -149,6 +148,12 @@
 												</a>
 												</li>
 												 <?php endif; ?>
+												 
+												 
+											   <?php if($view_client == '1'):?>
+                                                <li><a href="<?php echo $this->webroot;?>client/">View Client <!--span class="label-bub label-info white">1</span--></a></li>
+												 <?php endif; ?>
+												 
 												<!-- <li><a href="add_client_contact.php">Add Client Contact</a></li>-->
 												<!--  <li><a href="client_contact.php">Search Client Contact</a></li>-->
                                             </ul>
@@ -174,6 +179,16 @@
                                                  <?php if($create_position == '1'):?>
 												 <li><a href="<?php echo $this->webroot;?>position/add/">Add Position</a></li>
 												  <?php endif; ?>
+												  
+												    <?php if($approve_position == '1'):?>
+                                                <li><a href="<?php echo $this->webroot;?>position/index/pending/">Accept Position 
+												<?php if($APPR_REQ_COUNT):?>
+												<span class="label-bub label-info white"><?php echo $APPR_REQ_COUNT;?></span>
+												<?php endif; ?>
+												</a></li>
+												 <?php endif; ?>
+												 
+												 
 												  <?php if($view_position == '1'):?> 
                                                 <li><a href="<?php echo $this->webroot;?>position/">View Position 
 												
@@ -183,13 +198,7 @@
 												
 												</a></a></li>
 												 <?php endif; ?>
-												  <?php if($approve_position == '1'):?>
-                                                <li><a href="<?php echo $this->webroot;?>position/index/pending/">Accept Position 
-												<?php if($APPR_REQ_COUNT):?>
-												<span class="label-bub label-info white"><?php echo $APPR_REQ_COUNT;?></span>
-												<?php endif; ?>
-												</a></li>
-												 <?php endif; ?>
+												
                                             </ul>
                                         </li>
 										
@@ -233,9 +242,7 @@
                                         <li class="dropdown  <?php echo $active2;?>">
                                             <a data-toggle="dropdown" class="dropdown-toggle " href="#"><i class="icon-file icon-white"></i> Performance <b class="caret"></b></a>
                                            <ul class="dropdown-menu">
-										   <?php if($view_billing == '1'):?> 
-                                                <li><a href="<?php echo $this->webroot;?>hiring/billing.php">View Billing</a></li>
-										   <?php endif; ?>
+										 
 											
 											 <?php if($approve_billing == '1'):?>	   
 											 <li><a href="<?php echo $this->webroot;?>hiring/approve_billing.php">Approve Billing
@@ -244,15 +251,20 @@
 												<?php endif; ?>
 											 </a></li>												
 											 <?php endif; ?>
-											
-											<?php if($view_incentive == '1'):?> 
-												 <li><a href="<?php echo $this->webroot;?>hiring/incentive.php">View Incentive</a></li>
-											<?php endif; ?>
+											 
+											   <?php if($view_billing == '1'):?> 
+                                                <li><a href="<?php echo $this->webroot;?>hiring/billing.php">View Billing</a></li>
+										   <?php endif; ?>
+										   
+										   
 											
 											<?php if($approve_incentive == '1'):?> 
 												 <li><a href="<?php echo $this->webroot;?>hiring/approve_incentive.php">Approve Incentive</a></li>
 											<?php endif; ?>
 											
+											<?php if($view_incentive == '1'):?> 
+												 <li><a href="<?php echo $this->webroot;?>hiring/incentive.php">View Incentive</a></li>
+											<?php endif; ?>
 											
 												 <!--li><a href="<?php echo $this->webroot;?>hiring/add_billing.php">Add Billing</a></li>
 												 <li><a href="<?php echo $this->webroot;?>hiring/billing.php">View Billing</a></li>
@@ -497,6 +509,13 @@
                                             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
 											<i class="icon-cog icon-white"></i> Settings <b class="caret"></b></a>
                                           <ul class="dropdown-menu">
+										  
+										  
+												<?php if($functional_area == '1'):?> 
+                                                <li><a href="<?php echo $this->webroot;?>hiring/functional_area.php">Functional Area <!--span class="label-bub label-info white">102</span--></a></li>
+												<?php endif; ?>	
+												
+												
 										  <?php if($setting_qualify == '1'):?> 												
 												<li class="dropdown">
 													<a href="#">Qualification <b class="caret-right"></b></a>
@@ -506,8 +525,21 @@
 													</ul>
 												</li>
 												
+												<?php endif; ?>	
+												
+												
+												
+												 <?php if($manage_desig == '1'):?> 												
+												<li class="dropdown">
+													<a href="#">Designation <b class="caret-right"></b></a>
+													<ul class="dropdown-menu">
+														<li><a href="<?php echo $this->webroot;?>hiring/client_designation.php">Client Designation</a></li>
+														<li><a href="<?php echo $this->webroot;?>hiring/candidate_designation.php">Candidate Designation</a></li>													
+													</ul>
+												</li>
 												
 												<?php endif; ?>	
+												
 												
 												 <?php if($manage_branch == '1'):?> 												
 												<li class="dropdown">
@@ -522,38 +554,20 @@
 												<?php endif; ?>	
 												
 												
-												 <?php if($manage_desig == '1'):?> 												
-												<li class="dropdown">
-													<a href="#">Designation <b class="caret-right"></b></a>
-													<ul class="dropdown-menu">
-														<li><a href="<?php echo $this->webroot;?>hiring/client_designation.php">Client Designation</a></li>
-														<li><a href="<?php echo $this->webroot;?>hiring/candidate_designation.php">Candidate Designation</a></li>													
-													</ul>
-												</li>
-												
-												
-												<?php endif; ?>	
-												
+												 <?php if($manage_users == '1'):?>    
+											   <li><a href="<?php echo $this->webroot;?>hiring/users.php">Users <!--span class="label-bub label-info white">14</span--></a></li>
+											   <?php endif; ?>	
 								
-												<?php if($functional_area == '1'):?> 
-                                                <li><a href="<?php echo $this->webroot;?>hiring/functional_area.php">Functional Area <!--span class="label-bub label-info white">102</span--></a></li>
+											 <?php if($manage_roles == '1'):?> 	
+												<li><a href="<?php echo $this->webroot;?>hiring/roles.php">Roles [Access] <!--span class="label-bub label-info white">3</span--></a></li>
 												<?php endif; ?>	
-												
 												
 												<?php if($api_keys == '1'):?>
 													<li><a href="<?php echo $this->webroot;?>hiring/view_resume_api.php">API Keys</a></li>
 													<?php endif; ?>
 	
 	
-										   <?php if($manage_grade == '1'):?> 
-                                                <li><a href="<?php echo $this->webroot;?>hiring/grade.php">Grade <!--span class="label-bub label-info white">102</span--></a></li>
-												<?php endif; ?>	
-                                             <?php if($manage_users == '1'):?>    
-											   <li><a href="<?php echo $this->webroot;?>hiring/users.php">Users <!--span class="label-bub label-info white">14</span--></a></li>
-											   <?php endif; ?>	
-											 <?php if($manage_roles == '1'):?> 	
-												<li><a href="<?php echo $this->webroot;?>hiring/roles.php">Roles [Access] <!--span class="label-bub label-info white">3</span--></a></li>
-												<?php endif; ?>	
+	
 											 <?php if($manage_mailer_template == '1'):?> 	
 												<li class="dropdown">
 													<a href="#">Mailer Templates <b class="caret-right"></b></a>
@@ -563,7 +577,18 @@
 														<li><a href="<?php echo $this->webroot;?>hiring/mailer_template.php?id=3">Schedule Interview to Candidates</a></li>														
 													</ul>
 												</li>
+												<?php endif; ?>
+												
+												
+												
+	
+										   <?php if($manage_grade == '1'):?> 
+                                                <li><a href="<?php echo $this->webroot;?>hiring/grade.php">Grade <!--span class="label-bub label-info white">102</span--></a></li>
 												<?php endif; ?>	
+                                            
+											
+
+												
 											 <?php if($manage_incentive == '1'):?> 	
                                            <li class="dropdown">
 													<a href="#">Incentive <b class="caret-right"></b></a>

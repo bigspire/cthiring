@@ -38,7 +38,7 @@ class mailContent extends fun{
 <table width="700" border="0" align="left" cellpadding="0" cellspacing="0" style="border:2px solid #fff; background:#fff; margin-bottom:40px">
 	
   <tr">
-    <td style="color:rgb(255,255,255);font-family:arial" width="436" height="40"><h3>MANAGE HIRING</h3></td>
+    <td style="color:rgb(255,255,255);font-family:arial" width="436" height="40"><img title="CareerTree HR Solutions" src="http://managehiring.com/img/ct_mail_logo.png"/></td>
     <td style="padding-right:20px" width="269" align="right"></td>
   </tr>
  
@@ -103,7 +103,7 @@ EOD;
 <table width="700" border="0" align="left" cellpadding="0" cellspacing="0" style="border:2px solid #fff; background:#fff; margin-bottom:40px">
 	
   <tr>
-    <td style="color:rgb(255,255,255);font-family:arial" width="436" height="40"><h3>MANAGE HIRING</h3></td>
+    <td style="color:rgb(255,255,255);font-family:arial" width="436" height="40"><img title="CareerTree HR Solutions" src="http://managehiring.com/img/ct_mail_logo.png"/></td>
     <td style="padding-right:20px" width="269" align="right"></td>
   </tr>
  
@@ -172,7 +172,7 @@ EOD;
 <table width="700" border="0" align="left" cellpadding="0" cellspacing="0" style="border:2px solid #fff; background:#fff; margin-bottom:40px">
 	
   <tr>
-    <td style="color:rgb(255,255,255);font-family:arial" width="436" height="40"><h3>MANAGE HIRING</h3></td>
+    <td style="color:rgb(255,255,255);font-family:arial" width="436" height="40"><img title="CareerTree HR Solutions" src="http://managehiring.com/img/ct_mail_logo.png"/></td>
     <td style="padding-right:20px" width="269" align="right"></td>
   </tr>
  
@@ -298,7 +298,7 @@ EOD;
 <table width="700" border="0" align="left" cellpadding="0" cellspacing="0" style="border:2px solid #fff; background:#fff; margin-bottom:40px">
 	
   <tr>
-    <td style="color:rgb(255,255,255);font-family:arial" width="436" height="40"><h3>MANAGE HIRING</h3></td>
+    <td style="color:rgb(255,255,255);font-family:arial" width="436" height="40"><img title="CareerTree HR Solutions" src="http://managehiring.com/img/ct_mail_logo.png"/></td>
     <td style="padding-right:20px" width="269" align="right"></td>
   </tr>
  
@@ -361,7 +361,7 @@ EOD;
 <table width="700" border="0" align="left" cellpadding="0" cellspacing="0" style="border:2px solid #fff; background:#fff; margin-bottom:40px">
 	
   <tr >
-    <td style="color:rgb(255,255,255);font-family:arial" width="436" height="40"><h3>MANAGE HIRING</h3></td>
+    <td style="color:rgb(255,255,255);font-family:arial" width="436" height="40"><img title="CareerTree HR Solutions" src="http://managehiring.com/img/ct_mail_logo.png"/></td>
     <td style="padding-right:20px" width="269" align="right"></td>
   </tr>
  
@@ -429,7 +429,7 @@ EOD;
 <table width="700" border="0" align="left" cellpadding="0" cellspacing="0" style="border:2px solid #fff; background:#fff; margin-bottom:40px">
 	
   <tr >
-    <td style="color:rgb(255,255,255);font-family:arial" width="436" height="40"><h3>MANAGE HIRING</h3></td>
+    <td style="color:rgb(255,255,255);font-family:arial" width="436" height="40"><img title="CareerTree HR Solutions" src="http://managehiring.com/img/ct_mail_logo.png"/></td>
     <td style="padding-right:20px" width="269" align="right"></td>
   </tr>
  
@@ -509,7 +509,7 @@ EOD;
 <table width="700" border="0" align="left" cellpadding="0" cellspacing="0" style="border:2px solid #fff; background:#fff; margin-bottom:40px">
 	
   <tr >
-    <td style="color:rgb(255,255,255);font-family:arial" width="436" height="40"><h3>MANAGE HIRING</h3></td>
+    <td style="color:rgb(255,255,255);font-family:arial" width="436" height="40"><img title="CareerTree HR Solutions" src="http://managehiring.com/img/ct_mail_logo.png"/></td>
     <td style="padding-right:20px" width="269" align="right"></td>
   </tr>
  
@@ -581,7 +581,7 @@ EOD;
 <table width="700" border="0" align="left" cellpadding="0" cellspacing="0" style="border:2px solid #fff; background:#fff; margin-bottom:40px">
 	
   <tr >
-    <td style="color:rgb(255,255,255);font-family:arial" width="436" height="40"><h3>MANAGE HIRING</h3></td>
+    <td style="color:rgb(255,255,255);font-family:arial" width="436" height="40"><img title="CareerTree HR Solutions" src="http://managehiring.com/img/ct_mail_logo.png"/></td>
     <td style="padding-right:20px" width="269" align="right"></td>
   </tr>
  
@@ -649,7 +649,7 @@ EOD;
 <table width="700" border="0" align="left" cellpadding="0" cellspacing="0" style="border:2px solid #fff; background:#fff; margin-bottom:40px">
 	
   <tr >
-    <td style="color:rgb(255,255,255);font-family:arial" width="436" height="40"><h3>MANAGE HIRING</h3></td>
+    <td style="color:rgb(255,255,255);font-family:arial" width="436" height="40"><img title="CareerTree HR Solutions" src="http://managehiring.com/img/ct_mail_logo.png"/></td>
     <td style="padding-right:20px" width="269" align="right"></td>
   </tr>
  
@@ -713,7 +713,7 @@ EOD;
 <table width="700" border="0" align="left" cellpadding="0" cellspacing="0" style="border:2px solid #fff; background:#fff; margin-bottom:40px">
 	
   <tr >
-    <td style="color:rgb(255,255,255);font-family:arial" width="436" height="40"><h3>MANAGE HIRING</h3></td>
+    <td style="color:rgb(255,255,255);font-family:arial" width="436" height="40"><img title="CareerTree HR Solutions" src="http://managehiring.com/img/ct_mail_logo.png"/></td>
     <td style="padding-right:20px" width="269" align="right"></td>
   </tr>
  
@@ -780,7 +780,7 @@ EOD;
 <table width="700" border="0" align="left" cellpadding="0" cellspacing="0" style="border:2px solid #fff; background:#fff; margin-bottom:40px">
   
    <tr >
-    <td style="color:rgb(255,255,255);font-family:arial" width="436" height="40"><h3>MANAGE HIRING</h3></td>
+    <td style="color:rgb(255,255,255);font-family:arial" width="436" height="40"><img title="CareerTree HR Solutions" src="http://managehiring.com/img/ct_mail_logo.png"/></td>
     <td style="padding-right:20px" width="269" align="right"></td>
   </tr>
  
@@ -848,7 +848,7 @@ EOD;
 
   
    <tr >
-    <td style="color:rgb(255,255,255);font-family:arial" width="436" height="40"><h3>MANAGE HIRING</h3></td>
+    <td style="color:rgb(255,255,255);font-family:arial" width="436" height="40"><img title="CareerTree HR Solutions" src="http://managehiring.com/img/ct_mail_logo.png"/></td>
     <td style="padding-right:20px" width="269" align="right"></td>
   </tr>
 
