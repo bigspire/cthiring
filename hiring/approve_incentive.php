@@ -222,9 +222,9 @@ try{
 	$smarty->assign('show_status', $status_id);
 	
 	// approve or reject validation
-	if($_GET['status'] == 'created'){
+	if($_GET['status'] == 'Approved'){
  		$success_msg = 'Incentive  ' . ucfirst($_GET['status']) . ' Successfully';
-	}else if($_GET['status'] == 'updated'){
+	}else if($_GET['status'] == 'Rejected'){
 		$success_msg = 'Incentive  ' . ucfirst($_GET['status']) . ' Successfully';
 	}
 

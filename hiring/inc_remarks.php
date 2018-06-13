@@ -50,7 +50,7 @@ if($_GET['action'] == 'reject'){
 
 if($error){ 
 
-      // query to insert into database. 
+        // query to insert into database. 
 		$query = "CALL edit_inc_reward_status('".$_SESSION['status_id']."','".$created_date."','".$user_id."','".$status."',
 		'".$mysql->real_escape_str($_POST['remarks'])."')";
 		// Calling the function that makes the insert
@@ -112,7 +112,7 @@ if($error){
 		
 		if(($level2 != '') && ($level2 != '0') && ($level2 != $_SESSION['user_id']) && $_GET['action'] == 'approve'){
 			// query to insert reward user status details.
-			$query = "CALL add_inc_reward_status('".$date."','".$_SESSION['inc_id']."','".$level2."')";
+			$query = "CALL add_inc_reward_status('".$created_date."','".$_SESSION['inc_id']."','".$level2."')";
 			// Calling the function that makes the insert
 			try{
 				// calling mysql exe_query function
@@ -199,7 +199,7 @@ if($error){
 				echo 'Caught exception: ',  $e->getMessage(), "\n";
 			}		
 		}
-					
+				
 		if(!empty($affected_rows)){ 
 			// $alert_msg = 'Incentive request approved and sent to user successfully. ';	
 			$smarty->assign('form_sent' , 1);	
