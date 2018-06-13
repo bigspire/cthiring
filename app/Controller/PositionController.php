@@ -312,7 +312,7 @@ class PositionController extends AppController {
 		$this->paginate = array('fields' => $fields,'limit' => '25','conditions' => array('Position.is_deleted' => 'N',
 		$keyCond,$approveCond,$date_cond,$branchCond,$empCond,$stCond,
 		$teamCond,$clientCond,$roleCond,$req_team_cond,$contactCond),
-		'order' => array('created_date' => 'desc'),	'group' => array('Position.id'), 'joins' => $options);
+		'order' => array('modified_date' => 'desc'), 'group' => array('Position.id'), 'joins' => $options);
 		$data = $this->paginate('Position');
 		$this->set('data', $data);
 		if(empty($data) && empty($this->request->data)){
@@ -885,12 +885,13 @@ class PositionController extends AppController {
 		$this->set('clientList', $client_data);
 		// load the account holders
 		$ac_list = $this->Position->Creator->find('list',  array('fields' => array('id','first_name'), 
-		'order' => array('first_name ASC'),'conditions' => array('status' => '0', 'roles_id' => array('37', '40'))));
+		'order' => array('first_name ASC'),'conditions' => array('status' => '0', 'Creator.is_deleted' => 'N', 'roles_id' => array('37', '40'))));
 		$this->set('acList', $ac_list);
 		// load the team members
 		$this->Position->Creator->virtualFields['full_name'] = 'CONCAT(Creator.first_name, " ", Creator.last_name)';
 		$user_list = $this->Position->Creator->find('list',  array('fields' => array('id','full_name'), 
-		'order' => array('first_name ASC'),'conditions' => array('status' => '0', 'roles_id' => array('30','37', '40'))));
+		'order' => array('first_name ASC'),'conditions' => array('status' => '0', 'Creator.is_deleted' => 'N',
+		'roles_id' => array('30','37', '40'))));
 		$this->set('userList', $user_list);
 		// load the functional area
 		$function_list = $this->Position->FunctionArea->find('list', array('fields' => array('id','function'), 
@@ -2297,7 +2298,7 @@ class PositionController extends AppController {
 					if($multi_chk == '1'){
 						$inter_data = $data;
 					}else{
-						$this->set('interview_record', $data[0]);
+						$this->set('interview_record', $data[0][0]);
 					}
 				}
 				
@@ -2663,8 +2664,8 @@ class PositionController extends AppController {
 					*/
 					
 					
-					echo $message = $this->parse_interview_mail($this->request->data['Position']['message'],'',$pos_id, $int_key);
-					die;
+					$message = $this->parse_interview_mail($this->request->data['Position']['message'],'',$pos_id, $int_key);
+					
 					
 					$subject = $this->request->data['Position']['subject'];
 					

@@ -229,11 +229,12 @@
 <?php if($this->request->query['iframe'] != '1'):?>
 						
 	<td class="actionItem" style="text-align:center">
-	<?php if($req['Position']['status'] == 'A'  &&  $this->Session->read('USER.Login.id') == $req['Position']['created_by']):?>
+	<?php if($req['Position']['status'] == 'A'  &&  $this->Session->read('USER.Login.id') == $req['Position']['created_by'] && $this->request->params['pass'][0] != 'pending'):?>
 	<a href="<?php echo $this->webroot;?>position/edit/<?php echo $req['Position']['id'];?>/" class="btn  btn-mini"  rel="tooltip" class="sepV_a" title="Edit Position"><i class="icon-pencil"></i></a>
-	<?php endif; ?>	
+	<?php endif; ?>
 	
-	<?php if($req['Position']['is_approve'] == 'W' && $req[0]['st_user_id'] == $this->Session->read('USER.Login.id') && $this->request->params['pass'][0] == 'pending'):?>
+	<?php 
+	if($req['Position']['is_approve'] == 'W' && $req[0]['st_user_id'] == $this->Session->read('USER.Login.id') && $this->request->params['pass'][0] == 'pending'):?>
 	<a rel="tooltip"  title="Verify" href="<?php echo $this->webroot;?>position/view/<?php echo $req['Position']['id'];?>/<?php echo $req[0]['st_id'];?>/<?php echo $this->request->params['pass'][0];?>" class="btn  btn-mini"><i class="icon-edit"></i></a>
 	<?php endif; ?>		
 	

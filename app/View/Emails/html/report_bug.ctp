@@ -8,7 +8,7 @@
 
 <table width="700" border="0" align="left" cellpadding="0" cellspacing="0" style="border:2px solid #fff; background:#fff; margin-bottom:40px">
   <tr >
-    <td width="436" height="40" style="color:#fff;font-family:arial;"><h3>MANAGE HIRING</h3></td>
+    <td width="436" height="40" style="color:#fff;font-family:arial;"><img title="CareerTree HR Solutions" src="http://managehiring.com/img/ct_mail_logo.png"/></td>
     <td width="269" align="right" style="padding-right:20px;"></td>
   </tr>
   <tr>
