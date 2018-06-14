@@ -195,6 +195,13 @@ try{
 		$data[$i]['status'] = $fun->format_status($obj['st_status'],$obj['st_created'],$obj['st_user'],$obj['st_modified']);
 		$data[$i]['approval_status'] = $fun->format_approve_status($obj['is_approve']);
 		$data[$i]['approval_status_clr'] = $fun->approve_status_cls($obj['is_approve']);
+		// status validation
+		if($_SESSION['roles_id'] == '33' || $_SESSION['roles_id'] == '39' || $_SESSION['roles_id'] == '35'){ 
+			$data[$i]['status_valid'] = $fun->billing_status($obj['st_status']);
+		}else{
+			$data[$i]['status_valid'] = $fun->format_approve_status($obj['is_approve']);	
+		}
+		
 		$data[$i]['incentive_type'] = $obj['incentive_type'] == 'I' ? 'PS & I' : 'PC'; //$fun->check_incentive_type($obj['incentive_type']);
 		$data[$i]['incent_type'] = $obj['incentive_type'];
 		if($data[$i]['incent_type'] == 'J' && $data[$i]['incent_type'] != 'I'){
@@ -243,7 +250,7 @@ try{
 		// function to print the excel data
 		$excelObj->printCell($data, $count,$col = array('A','B','C','D','E','F','G','H','I','J','K','L','M'), $field = array('employee','incentive_type',
 		'incent_period_display','productivity','interview_candidate','incentive_target_amt','achievement_amt',
-		'candidate_billed','eligible_incentive_amt','','created_date','pending_status','pending'),'Approve Incentive_'.$current_date);
+		'candidate_billed','eligible_incentive_amt','','created_date','status_valid','pending'),'Approve Incentive_'.$current_date);
 	
 	}
 	
