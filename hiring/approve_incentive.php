@@ -87,9 +87,42 @@ if($_SESSION['roles_id'] == '26'){
 	$cond .= 'and ( inc.users_id in('.substr($id_str, 0, strlen($id_str)-2).') )';
 	$smarty->assign('emp_name',$emp_name);
 } */
-		
+
+// get the director details
+$query = "CALL get_inc_director('33')";
+try{
+	if(!$result = $mysql->execute_query($query)){
+		throw new Exception('Problem in getting director details');
+	}
+	// calling mysql fetch_result function
+	$obj = $mysql->display_result($result);
+	$director_id = $obj['director_id'];						
+	// free the memory
+	$mysql->clear_result($result);
+	// call the next result
+	$mysql->next_query();
+}catch(Exception $e){
+	echo 'Caught exception: ',  $e->getMessage(), "\n";
+}
+
+// get the business head details
+$query = "CALL get_inc_business_head('39')";
+try{
+	if(!$result = $mysql->execute_query($query)){
+		throw new Exception('Problem in getting business head details');
+	}
+	// calling mysql fetch_result function
+	$obj = $mysql->display_result($result);						
+	$business_head_id = $obj['business_head_id'];
+	// free the memory
+	$mysql->clear_result($result);
+	// call the next result
+	$mysql->next_query();
+}catch(Exception $e){
+	echo 'Caught exception: ',  $e->getMessage(), "\n";
+}		
 // count the total no. of records
-$query = "CALL list_approve_incentive('".$employee."','".$_SESSION['user_id']."','".$type."','".$_SESSION['roles_id']."','".$from_date."','".$to_date."','0','0','','','".$_GET['action']."','".$cond."')";
+$query = "CALL list_approve_incentive('".$employee."','".$_SESSION['user_id']."','".$director_id."','".$business_head_id."','".$type."','".$_SESSION['roles_id']."','".$from_date."','".$to_date."','0','0','','','".$_GET['action']."','".$cond."')";
 try{
 	if(!$result = $mysql->execute_query($query)){
 		throw new Exception('Problem in executing count incentive page');
@@ -142,7 +175,8 @@ if($search_key = array_search($_GET['field'], $sort_fields)){
 }
 
 // fetch all records
-$query =  "CALL list_approve_incentive('".$employee."','".$_SESSION['user_id']."','".$type."','".$_SESSION['roles_id']."','".$from_date."','".$to_date."','$start','$limit','".$field."','".$order."','".$_GET['action']."','".$cond."')";
+// $query =  "CALL list_approve_incentive('".$employee."','".$_SESSION['user_id']."','".$director_id."','".$business_head_id."','".$type."','".$_SESSION['roles_id']."','".$from_date."','".$to_date."','$start','$limit','".$field."','".$order."','".$_GET['action']."','".$cond."')";
+$query =  "CALL list_approve_incentive('".$employee."','".$_SESSION['user_id']."','".$director_id."','".$business_head_id."','".$type."','".$_SESSION['roles_id']."','".$from_date."','".$to_date."','$start','$limit','".$field."','".$order."','".$_GET['action']."','".$cond."')";
 try{
 	if(!$result = $mysql->execute_query($query)){
 		throw new Exception('Problem in executing list incentive page');
@@ -159,6 +193,8 @@ try{
  		$data[$i]['pending'] = $fun->time_diff($obj['created_date'], $ago_str=0, 0);
 		$data[$i]['pending_status'] = $fun->billing_status($obj['st_status']);
 		$data[$i]['status'] = $fun->format_status($obj['st_status'],$obj['st_created'],$obj['st_user'],$obj['st_modified']);
+		$data[$i]['approval_status'] = $fun->format_approve_status($obj['is_approve']);
+		$data[$i]['approval_status_clr'] = $fun->approve_status_cls($obj['is_approve']);
 		$data[$i]['incentive_type'] = $obj['incentive_type'] == 'I' ? 'PS & I' : 'PC'; //$fun->check_incentive_type($obj['incentive_type']);
 		$data[$i]['incent_type'] = $obj['incentive_type'];
 		if($data[$i]['incent_type'] == 'J' && $data[$i]['incent_type'] != 'I'){

@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-05-31 13:08:22
+/* Smarty version 3.1.29, created on 2018-06-14 16:09:44
   from "C:\xampp\htdocs\2017\ctsvn2\cthiring\hiring\templates\add_incentive.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5b0fa66e52e497_87653048',
+  'unifunc' => 'content_5b2245f0e95633_70280964',
   'file_dependency' => 
   array (
     '2ae265ddaabbe966fcb8ff9646a265feba67900c' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn2\\cthiring\\hiring\\templates\\add_incentive.tpl',
-      1 => 1527749412,
+      1 => 1528972782,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5b0fa66e52e497_87653048 ($_smarty_tpl) {
+function content_5b2245f0e95633_70280964 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\2017\\ctsvn2\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -43,7 +43,7 @@ if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdoc
 home"><i class="icon-home"></i></a>
                                 </li>
                                 <li>
-                                    <a href="incentive.php">Incentive</a>
+                                    <a href="approve_incentive.php">Approve Incentive</a>
                                 </li>
                             
                                 <li>
@@ -121,7 +121,7 @@ home"><i class="icon-home"></i></a>
 </div>
 <div class="form-actions">
 				<input name="submit" class="btn btn-gebo" value="Submit" type="submit"/>
-					<input type="hidden" name="data[Client][webroot]" value="incentive.php" id="webroot">
+					<input type="hidden" name="data[Client][webroot]" value="approve_incentive.php" id="webroot">
 
 	<a href="javascript:void(0)" class="jsRedirect cancelBtn cancel_event">
 	<input type="button" value="Cancel" class="btn">

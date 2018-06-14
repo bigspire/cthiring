@@ -135,7 +135,11 @@
 										
 										<td width="">-</td>									
 										<td width="">{$item.created_date}</td>
+										{if $roles_id eq '26'}
+										<td><span class='label label-{$item.approval_status_clr}'>{$item.approval_status}</span></td>
+										{else}
 										<td>{$item.status}</td>
+										{/if}
 										{if $item.is_approve eq 'N'}
 										<td>{$item.pending}</td>
 										{else}

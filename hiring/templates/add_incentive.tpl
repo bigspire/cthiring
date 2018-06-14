@@ -16,7 +16,7 @@
                                     <a href="{$smarty.const.webroot}home"><i class="icon-home"></i></a>
                                 </li>
                                 <li>
-                                    <a href="incentive.php">Incentive</a>
+                                    <a href="approve_incentive.php">Approve Incentive</a>
                                 </li>
                             
                                 <li>
@@ -83,7 +83,7 @@
 </div>
 <div class="form-actions">
 				<input name="submit" class="btn btn-gebo" value="Submit" type="submit"/>
-					<input type="hidden" name="data[Client][webroot]" value="incentive.php" id="webroot">
+					<input type="hidden" name="data[Client][webroot]" value="approve_incentive.php" id="webroot">
 
 	<a href="javascript:void(0)" class="jsRedirect cancelBtn cancel_event">
 	<input type="button" value="Cancel" class="btn">

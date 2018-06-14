@@ -587,6 +587,31 @@ class fun{
 		return $st;
 	}
 	
+	// function to validate approve incentive status field 
+	public function format_approve_status($status){
+		if($status == 'N'){
+			$st = 'Pending';
+		}elseif($status == 'Y'){	
+	 		$st = 'Approved';
+		}elseif($status == 'R'){	
+	 		$st = 'Rejected';
+		}
+		return $st;
+	}
+	
+	// status color field validation for incentive
+	public function approve_status_cls($status){
+		if($status == 'Y'){
+		 $stat = 'success';
+		}elseif($status == 'N'){	
+		 $stat = '';	
+		}elseif($status == 'R'){
+		 $stat = 'important';	
+		}
+		return $stat;
+	}
+
+	
 	/* function used to upload the image */
 	function  upload_file($src, $dest){	
 		if(!empty($src)){			

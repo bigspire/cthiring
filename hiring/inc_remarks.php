@@ -172,16 +172,16 @@ if($error){
 		
 		// is approved condition - when L1 or L2 rejects
 		if($status == 'R'){
-			$is_approved = 'Y';
+			$is_approved = 'R';
 		}
 		// is approved condition - after L2 approves or L1 only exists and approves
 		elseif(($status == 'A' && $level2 == $_SESSION['user_id']) || ($status == 'A' && $level2 == '0')){
 			$is_approved = 'Y';
 		}
 		
-		if($is_approved == 'Y'){
+		if($is_approved == 'Y' || $is_approved = 'R'){
 			// query to insert is_approve details into incentive table. 
-			$query = "CALL edit_incentive('".$is_approved."', '".$_SESSION['inc_id']."')";
+			$query = "CALL edit_incentive('".$is_approved."', '".$_SESSION['inc_id']."','".$created_date."','".$_SESSION['user_id']."')";
 
 			// Calling the function that makes the insert
 			try{
@@ -199,7 +199,7 @@ if($error){
 				echo 'Caught exception: ',  $e->getMessage(), "\n";
 			}		
 		}
-				
+			
 		if(!empty($affected_rows)){ 
 			// $alert_msg = 'Incentive request approved and sent to user successfully. ';	
 			$smarty->assign('form_sent' , 1);	
