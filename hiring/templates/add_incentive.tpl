@@ -34,6 +34,7 @@
 			<h4><i class="icon-list"></i> Add Incentive </h4>
 		</div>
 		<div class="row-fluid">
+		{if $smarty.get.action eq ''}
 		<div class="span6">
 			<table class="table table-bordered dataTable" style="margin-bottom:0;">
 				<tbody>
@@ -77,6 +78,32 @@
 				</tbody>
 			</table>
 		</div>
+		{else}
+		
+		<div class="span6">
+			<table class="table table-bordered dataTable" style="margin-bottom:0;">
+				<tbody>
+				<tr class="tbl_row">
+				<td width="120" class="tbl_column inline">Employee Name <span class="f_req">*</span></td>
+							<td>																			
+								<input type="text" tabindex="1" name="mp_name" disabled value="{$incentive_details.employee}" class="span8 ui-autocomplete-input" autocomplete="off">								
+							</td>
+				</tr>
+				<tr class="tbl_row">
+							<td width="120" class="tbl_column inline">Incentive Type <span class="f_req">*</span></td>
+							<td>																			
+								<input type="text" tabindex="1" name="incentive_type" disabled value="{$incentive_type}" class="span8 ui-autocomplete-input" autocomplete="off">								
+							</td>	
+				</tr>
+				<tr class="tbl_row pos_Validity">
+							<td width="120" class="tbl_column inline">Incentive Date <span class="f_req">*</span></td>
+							<td><input type="text" tabindex="1" name="incent_period_display" disabled value="{$incent_period_display}" class="span8 ui-autocomplete-input" autocomplete="off">							
+								</td>
+				</tr>								
+				</tbody>
+			</table>
+		</div>
+		{/if}
 		</div>	
 	<div>
 </div>

@@ -179,7 +179,7 @@ if($error){
 			$is_approved = 'Y';
 		}
 		
-		if($is_approved == 'Y' || $is_approved = 'R'){
+		if($is_approved == 'Y' || $is_approved == 'R'){
 			// query to insert is_approve details into incentive table. 
 			$query = "CALL edit_incentive('".$is_approved."', '".$_SESSION['inc_id']."','".$created_date."','".$_SESSION['user_id']."')";
 

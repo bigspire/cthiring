@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-06-14 16:09:44
+/* Smarty version 3.1.29, created on 2018-06-15 15:49:58
   from "C:\xampp\htdocs\2017\ctsvn2\cthiring\hiring\templates\add_incentive.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5b2245f0e95633_70280964',
+  'unifunc' => 'content_5b2392ce735f94_24874703',
   'file_dependency' => 
   array (
     '2ae265ddaabbe966fcb8ff9646a265feba67900c' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn2\\cthiring\\hiring\\templates\\add_incentive.tpl',
-      1 => 1528972782,
+      1 => 1529057994,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5b2245f0e95633_70280964 ($_smarty_tpl) {
+function content_5b2392ce735f94_24874703 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\2017\\ctsvn2\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -62,6 +62,7 @@ home"><i class="icon-home"></i></a>
 			<h4><i class="icon-list"></i> Add Incentive </h4>
 		</div>
 		<div class="row-fluid">
+		<?php if ($_GET['action'] == '') {?>
 		<div class="span6">
 			<table class="table table-bordered dataTable" style="margin-bottom:0;">
 				<tbody>
@@ -115,6 +116,35 @@ home"><i class="icon-home"></i></a>
 				</tbody>
 			</table>
 		</div>
+		<?php } else { ?>
+		
+		<div class="span6">
+			<table class="table table-bordered dataTable" style="margin-bottom:0;">
+				<tbody>
+				<tr class="tbl_row">
+				<td width="120" class="tbl_column inline">Employee Name <span class="f_req">*</span></td>
+							<td>																			
+								<input type="text" tabindex="1" name="mp_name" disabled value="<?php echo $_smarty_tpl->tpl_vars['incentive_details']->value['employee'];?>
+" class="span8 ui-autocomplete-input" autocomplete="off">								
+							</td>
+				</tr>
+				<tr class="tbl_row">
+							<td width="120" class="tbl_column inline">Incentive Type <span class="f_req">*</span></td>
+							<td>																			
+								<input type="text" tabindex="1" name="incentive_type" disabled value="<?php echo $_smarty_tpl->tpl_vars['incentive_type']->value;?>
+" class="span8 ui-autocomplete-input" autocomplete="off">								
+							</td>	
+				</tr>
+				<tr class="tbl_row pos_Validity">
+							<td width="120" class="tbl_column inline">Incentive Date <span class="f_req">*</span></td>
+							<td><input type="text" tabindex="1" name="incent_period_display" disabled value="<?php echo $_smarty_tpl->tpl_vars['incent_period_display']->value;?>
+" class="span8 ui-autocomplete-input" autocomplete="off">							
+								</td>
+				</tr>								
+				</tbody>
+			</table>
+		</div>
+		<?php }?>
 		</div>	
 	<div>
 </div>

@@ -224,8 +224,13 @@
 <a class="iframeBox unreadLink" rel="tooltip" title="Approve Incentive" href="inc_remarks.php?action=approve" val="30_40"><input type="button" value="Approve" class="btn btn btn-success"/></a>
 <a class="iframeBox unreadLink" rel="tooltip" title="Reject Incentive" href="inc_remarks.php?action=reject" val="30_40"><input type="button" value="Reject" class="btn btn btn-danger"/></a>
 <a href="approve_incentive.php" rel="tooltip" title="Cancel and Back to Incentive"  class="jsRedirect"><button class="btn">Cancel</button></a>
-						{else}
+
+
+{elseif $incentive_created_by eq $smarty.session.user_id &&  $incentive_status eq 'R'}
 <a href="approve_incentive.php" rel="tooltip" title="Back to Incentive"  class="jsRedirect"><button class="btn">Back</button></a>
+<a href="add_incentive.php?action=regenerate&emp_id={$incentive_data.emp_id}&id={$incentive_data.id}" rel="tooltip" title="Re-Generate Incentive"  class="jsRedirect"><button class="btn btn-success">Re-Generate</button></a>
+						{else}
+						<a href="approve_incentive.php" rel="tooltip" title="Back to Incentive"  class="jsRedirect"><button class="btn">Back</button></a>
 						{/if}
 						</div>
                </div>

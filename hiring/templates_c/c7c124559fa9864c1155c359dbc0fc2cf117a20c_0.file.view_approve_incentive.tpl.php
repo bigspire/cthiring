@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-05-31 15:54:52
+/* Smarty version 3.1.29, created on 2018-06-15 15:42:45
   from "C:\xampp\htdocs\2017\ctsvn2\cthiring\hiring\templates\view_approve_incentive.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5b0fcd74a24f87_53984486',
+  'unifunc' => 'content_5b23911dbf9b48_92431730',
   'file_dependency' => 
   array (
     'c7c124559fa9864c1155c359dbc0fc2cf117a20c' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn2\\cthiring\\hiring\\templates\\view_approve_incentive.tpl',
-      1 => 1527762291,
+      1 => 1529057557,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5b0fcd74a24f87_53984486 ($_smarty_tpl) {
+function content_5b23911dbf9b48_92431730 ($_smarty_tpl) {
 ?>
 
    
@@ -309,8 +309,15 @@ $_smarty_tpl->tpl_vars['key'] = $__foreach_item_0_saved_key;
 <a class="iframeBox unreadLink" rel="tooltip" title="Approve Incentive" href="inc_remarks.php?action=approve" val="30_40"><input type="button" value="Approve" class="btn btn btn-success"/></a>
 <a class="iframeBox unreadLink" rel="tooltip" title="Reject Incentive" href="inc_remarks.php?action=reject" val="30_40"><input type="button" value="Reject" class="btn btn btn-danger"/></a>
 <a href="approve_incentive.php" rel="tooltip" title="Cancel and Back to Incentive"  class="jsRedirect"><button class="btn">Cancel</button></a>
-						<?php } else { ?>
+
+
+<?php } elseif ($_smarty_tpl->tpl_vars['incentive_created_by']->value == $_SESSION['user_id'] && $_smarty_tpl->tpl_vars['incentive_status']->value == 'R') {?>
 <a href="approve_incentive.php" rel="tooltip" title="Back to Incentive"  class="jsRedirect"><button class="btn">Back</button></a>
+<a href="add_incentive.php?action=regenerate&emp_id=<?php echo $_smarty_tpl->tpl_vars['incentive_data']->value['emp_id'];?>
+&id=<?php echo $_smarty_tpl->tpl_vars['incentive_data']->value['id'];?>
+" rel="tooltip" title="Re-Generate Incentive"  class="jsRedirect"><button class="btn btn-success">Re-Generate</button></a>
+						<?php } else { ?>
+						<a href="approve_incentive.php" rel="tooltip" title="Back to Incentive"  class="jsRedirect"><button class="btn">Back</button></a>
 						<?php }?>
 						</div>
                </div>
