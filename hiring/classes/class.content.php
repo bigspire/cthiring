@@ -7,9 +7,8 @@ Date : 03-02-2017
 
 class mailContent extends fun{
 
-/* function to print L1 incentive info html */
-
-	function get_level1_incentive_details($incentive_user_details,$form_data,$user_name,$approval_user_name,$modified_date){
+	/* function to print L1 incentive info html */
+	function get_level1_incentive_details($incentive_user_details,$form_data,$user_name,$approval_user_name){
 	  $approval_user_name = ucwords($approval_user_name);
 	  $user_name = ucwords($user_name);
 	  

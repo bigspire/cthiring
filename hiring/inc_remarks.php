@@ -166,9 +166,11 @@ if($error){
 		}	
 		
 		// send mail to level2
-		$sub = "Manage Hiring -  " .$level1_name.' '.$mail_status." Incentive Details";
-		$msg = $content->get_level2_incentive_details($_SESSION['incentive_data'],$mail_status,$level1_name,$level2_name);
-		$mailer->send_mail($sub,$msg,$level1_name,$level1_email,$level2_name,$level2_email);
+		if($status == 'A'){
+			$sub = "Manage Hiring -  " .$level1_name.' '.$mail_status." Incentive Details";
+			$msg = $content->get_level2_incentive_details($_SESSION['incentive_data'],$mail_status,$level1_name,$level2_name);
+			$mailer->send_mail($sub,$msg,$level1_name,$level1_email,$level2_name,$level2_email);
+		}
 		
 		// is approved condition - when L1 or L2 rejects
 		if($status == 'R'){
