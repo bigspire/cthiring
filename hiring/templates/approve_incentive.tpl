@@ -146,19 +146,19 @@
 										<td></td>
 										{/if}
 										{if $roles_id neq '26'}
-										{if $show_status[$key] eq 'pass'}
-										<td class="actionItem" style="text-align:center">
-											<a href="view_approve_incentive.php?id={$item.id}&emp_id={$item.emp_id}&status_id={$item.status_id}" rel="tooltip" class="btn  btn-mini" title="Verify Incentive"><i class="icon-edit"></i></a>
-										</td>
+											{if $show_status[$key] eq 'pass'}
+												<td class="actionItem" style="text-align:center">
+												<a href="view_approve_incentive.php?id={$item.id}&emp_id={$item.emp_id}&status_id={$item.status_id}" rel="tooltip" class="btn  btn-mini" title="Verify Incentive"><i class="icon-edit"></i></a>
+												</td>
+											{else}
+												<td class="actionItem" style="text-align:center">
+												<a href="view_approve_incentive.php?id={$item.id}&emp_id={$item.emp_id}&status_id={$item.status_id}" rel="tooltip" class="btn  btn-mini" title="Verified"><i class="icon-check"></i></a>
+												</td>
+											{/if}
 										{else}
-										<td class="actionItem" style="text-align:center">
-											<a href="view_approve_incentive.php?id={$item.id}&emp_id={$item.emp_id}&status_id={$item.status_id}" rel="tooltip" class="btn  btn-mini" title="Verified"><i class="icon-check"></i></a>
-										</td>
-										{/if}
-										{else}
-										<td class="actionItem" style="text-align:center">
-											<a href="view_approve_incentive.php?id={$item.id}&emp_id={$item.emp_id}&status_id={$item.status_id}" rel="tooltip" class="btn  btn-mini" title="View"><i class="icon-search"></i></a>
-										</td>
+											<td class="actionItem" style="text-align:center">
+												<a href="view_approve_incentive.php?id={$item.id}&emp_id={$item.emp_id}&status_id={$item.status_id}" rel="tooltip" class="btn  btn-mini" title="View"><i class="icon-search"></i></a>
+											</td>
 										{/if}
 									</tr>
 									{* /if *}

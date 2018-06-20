@@ -72,6 +72,24 @@ try{
 	echo 'Caught exception: ',  $e->getMessage(), "\n";
 }
 
+// fetch approve status 
+$query = "CALL get_incentive_status('".$inc_id."')";
+try{
+	if(!$result = $mysql->execute_query($query)){
+		throw new Exception('Problem in executing incentive status');
+	}
+	// calling mysql fetch_result function
+	$incentive_status = $mysql->display_result($result);
+	$smarty->assign('incentive_status', $incentive_status['is_approve']);
+	$smarty->assign('incentive_created_by', $incentive_status['created_by']);
+	// free the memory
+	$mysql->clear_result($result);
+	// call the next result
+	$mysql->next_query();
+}catch(Exception $e){
+	echo 'Caught exception: ',  $e->getMessage(), "\n";
+}
+
 $query = "call get_employee_by_id('".$_GET['emp_id']."')";
 try{
 	// calling mysql exe_query function
