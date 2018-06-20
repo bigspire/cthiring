@@ -2252,6 +2252,7 @@ class PositionController extends AppController {
 		$req_res_ids[] = $req_res_id;
 		$chk_resume_id_ar[] = $id;
 			
+			
 		// for multiple interview
 		if($id == 'multi_select'){
 			$multi_chk = 1;
@@ -2270,31 +2271,37 @@ class PositionController extends AppController {
 			}
 		}
 		
+		
 		// for reschedule
 			if($schedule_type == 'reschedule' || $this->request->query['int_type'] == 'reschedule'){ 
 				// get rejection status drop down
 				$reject_reason_data = $this->get_reject_drop('Interview Reschedule');
 				$reason_id = 'reason_id';
 				$this->set('reschedule', 1);
-				// get the interview details to retain in the form
-				$this->loadModel('ResInterview');
-				// $int_text = $this->Functions->get_level_text($int_level);
-				$options = array(				
-					array('table' => 'resume',
-							'alias' => 'Resume',					
-							'type' => 'LEFT',
-							'conditions' => array('`Resume.id` = `ReqResume`.`resume_id`')
-					)					
-				);
+			}				
 				
 				
 				// when the form is not submitted
 				if(!$this->request->is('post')){
+					// get the interview details to retain in the form
+					$this->loadModel('ResInterview');
+					// $int_text = $this->Functions->get_level_text($int_level);
+					$options = array(				
+						array('table' => 'resume',
+								'alias' => 'Resume',					
+								'type' => 'LEFT',
+								'conditions' => array('`Resume.id` = `ReqResume`.`resume_id`')
+						)					
+					);
 					// $groupCond = $multi_chk == '1' ? array('ResInterview.req_resume_id') : '';
 					foreach($req_res_ids as $reqid){
 						if($reqid != ''){
-							$data[] = $this->ResInterview->find('all', array('fields' => array('int_date','int_duration','Resume.first_name','Resume.last_name','InterviewStage.interview_stage','venue','additional','contact_name','contact_no','stage_title','interview_stage_id'),'conditions' => array('req_resume_id' => $reqid), 'limit' => '1', 'order' => array('ResInterview.created_date' => 'desc'),  'joins' => $options));
+							$data[] = $this->ResInterview->find('all', array('fields' => array('int_date','int_duration','Resume.first_name',
+							'Resume.last_name','InterviewStage.interview_stage','venue','additional','contact_name','contact_no','stage_title',
+							'interview_stage_id'),'conditions' => array('req_resume_id' => $reqid), 'limit' => '1', 'order' => array('ResInterview.created_date' => 'desc'), 
+							'joins' => $options));
 						}
+						
 					}
 					
 					if($multi_chk == '1'){
@@ -2305,7 +2312,7 @@ class PositionController extends AppController {
 				}
 				
 			
-			}
+			
 			// get the candidate names
 			$options = array(			
 				array('table' => 'resume',
@@ -2508,7 +2515,7 @@ class PositionController extends AppController {
 			
 			$this->set('multi_check', $multi_chk);
 			$this->set('multi_int_form', $int_table_form);
-			$this->set('multi_candidate', explode(',',$can_name_form));
+			$this->set('multi_candidate', explode(',',$can_name));
 			$this->set('multi_int_form_data', explode('<splitter>',$int_table_form));
 			
 			$pos_id = $chk_pos_id ? $chk_pos_id  : $pos_id;
