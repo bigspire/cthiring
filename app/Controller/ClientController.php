@@ -275,7 +275,7 @@ class ClientController extends AppController {
 		}
 		$this->paginate = array('fields' => $fields,'limit' => '25','conditions' => array($keyCond,$date_cond,$stCond,
 		$empCond,$approveCond,$teamCond),
-		'order' => array('modified_date' => 'desc'),	'group' => array('Client.id'), 'joins' => $options);
+		'order' => array('update_date' => 'desc'),	'group' => array('Client.id'), 'joins' => $options);
 		$data = $this->paginate('Client');
 		$this->set('data', $data);
 		if(empty($data) && !empty($this->request->data)){
@@ -303,6 +303,7 @@ class ClientController extends AppController {
 					// validates the form
 					$this->request->data['Client']['modified_by'] = $this->Session->read('USER.Login.id');
 					$this->request->data['Client']['modified_date'] = $this->Functions->get_current_date();
+					$this->request->data['Position']['update_date'] = $this->Functions->get_current_date();
 					$this->Client->set($this->request->data);
 					// retain the district
 					$this->get_district_list($this->request->data['Client']['state']);
@@ -556,6 +557,7 @@ class ClientController extends AppController {
 			// validates the form
 			$this->request->data['Client']['created_by'] = $this->Session->read('USER.Login.id');
 		    $this->request->data['Client']['created_date'] = $this->Functions->get_current_date();
+			$this->request->data['Position']['update_date'] = $this->Functions->get_current_date();
 			$this->request->data['Client']['status'] = 2;
 			$this->request->data['Client']['is_inactive'] = 'N';
 			$this->Client->set($this->request->data);
