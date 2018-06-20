@@ -2146,10 +2146,9 @@ class PositionController extends AppController {
 			// get the interview date
 			$this->loadModel('ResInterview');
 			$int_data =  $this->ResInterview->find('all', array('fields' => array('ResInterview.int_date'),
-			'conditions' => array('ResInterview.req_resume_id' => $req_res_id),
-			'order' => array('ResInterview.id' => 'desc')));
+			'conditions' => array('ResInterview.req_resume_id' => $req_res_id),	'order' => array('ResInterview.id' => 'desc')));
 			$interview_date = $int_data[0]['ResInterview']['int_date']; 
-			if(strtotime(date('Y-m-d')) < strtotime($interview_date)){
+			if(strtotime(date('Y-m-d H:i:s')) < strtotime($interview_date)){
 				$validate_interview_date = 0;
 				$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>You cannot update the interview status before the interview date', 'default', array('class' => 'alert alert-error'));
 			}
@@ -2277,10 +2276,8 @@ class PositionController extends AppController {
 				// get rejection status drop down
 				$reject_reason_data = $this->get_reject_drop('Interview Reschedule');
 				$reason_id = 'reason_id';
-				$this->set('reschedule', 1);
-			}				
-				
-				
+				$this->set('reschedule', 1);		
+			
 				// when the form is not submitted
 				if(!$this->request->is('post')){
 					// get the interview details to retain in the form
@@ -2303,13 +2300,17 @@ class PositionController extends AppController {
 						}
 						
 					}
-					
+				
+				}
+			
 					if($multi_chk == '1'){
 						$inter_data = $data;
 					}else{
 						$this->set('interview_record', $data[0][0]);
 					}
-				}
+			}
+				
+							
 				
 			
 			
