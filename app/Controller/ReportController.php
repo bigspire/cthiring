@@ -226,7 +226,9 @@ class ReportController extends AppController {
 		$this->set('offerReject', $candidate_offer_reject);		
 		$this->set('candidateJoin', $candidate_join);
 		$this->set('billingData', $billing_amt);
-		$this->set('billingReport', $billing_report);		
+		$this->set('billingReport', $billing_report);	
+
+		
 		
 		if(empty($empData)){
 			$this->Session->setFlash('<button type="button" class="close" data-dismiss="alert">&times;</button>Oops! No Reports Found!', 'default', array('class' => 'alert alert-info'));
@@ -237,7 +239,11 @@ class ReportController extends AppController {
 	/* function to get the employee details */
 	public function get_employee_details(){
 		$this->loadModel('User');
-		return $this->User->find('list',  array('fields' => array('id','first_name'), 'order' => array('first_name ASC'),'conditions' => array('status' => 0)));
+		$role_id = $this->request->data['Report']['role_id'];
+		$branch_id = $this->request->data['Report']['branch_id'];
+		$roleCond = !empty($role_id) ? array('roles_id' => $role_id) : '';
+		$branchCond = !empty($branch_id) ? array('location_id' => $branch_id) : '';
+		return $this->User->find('list',  array('fields' => array('id','first_name'), 'order' => array('first_name ASC'),'conditions' => array('status' => 0, $roleCond, $branchCond)));
 	}
 	
 	/* function to get the location details */
@@ -453,6 +459,30 @@ class ReportController extends AppController {
 		
 		$count_client = count($client_data);
 		$this->set('chart_height', $count_client < 10 ? '500' :  $count_client*50);
+		
+		// search filters
+		if(!empty($this->request->data['Report']['from'])){
+			$this->set('fromDate', date('d-M-Y', strtotime($this->Functions->format_date_save($this->request->data['Report']['from']))));
+		}
+		if(!empty($this->request->data['Report']['to'])){
+			$this->set('toDate', date('d-M-Y', strtotime($this->Functions->format_date_save($this->request->data['Report']['to']))));
+		}
+		// get client name
+		if(!empty($this->request->data['Report']['client_id'])){
+			$this->set('clientName', date('d-M-Y', strtotime($this->Functions->format_date_save($this->request->data['Report']['to']))));
+		}
+		// get branch name
+		if(!empty($this->request->data['Report']['loc'])){
+			$this->set('locName', date('d-M-Y', strtotime($this->Functions->format_date_save($this->request->data['Report']['to']))));
+		}
+		// get role name
+		if(!empty($this->request->data['Report']['role_id'])){
+			$this->set('roleName', date('d-M-Y', strtotime($this->Functions->format_date_save($this->request->data['Report']['to']))));
+		}
+		// get employee name
+		if(!empty($this->request->data['Report']['emp_id'])){
+			$this->set('empName', date('d-M-Y', strtotime($this->Functions->format_date_save($this->request->data['Report']['to']))));
+		}
 		
 	}
 	
