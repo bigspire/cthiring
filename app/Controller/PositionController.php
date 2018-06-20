@@ -312,7 +312,7 @@ class PositionController extends AppController {
 		$this->paginate = array('fields' => $fields,'limit' => '25','conditions' => array('Position.is_deleted' => 'N',
 		$keyCond,$approveCond,$date_cond,$branchCond,$empCond,$stCond,
 		$teamCond,$clientCond,$roleCond,$req_team_cond,$contactCond),
-		'order' => array('modified_date' => 'desc'), 'group' => array('Position.id'), 'joins' => $options);
+		'order' => array('update_date' => 'desc'), 'group' => array('Position.id'), 'joins' => $options);
 		$data = $this->paginate('Position');
 		$this->set('data', $data);
 		if(empty($data) && empty($this->request->data)){
@@ -351,6 +351,7 @@ class PositionController extends AppController {
 			// validates the form
 			$this->request->data['Position']['created_by'] = $this->Session->read('USER.Login.id');
 		    $this->request->data['Position']['created_date'] = $this->Functions->get_current_date();
+			$this->request->data['Position']['update_date'] = $this->Functions->get_current_date();
 			$this->Position->set($this->request->data);
 			// retain the district
 			$this->get_contact_list($this->request->data['Position']['clients_id']);
@@ -497,6 +498,7 @@ class PositionController extends AppController {
 					// validates the form
 					$this->request->data['Position']['modified_by'] = $this->Session->read('USER.Login.id');
 					$this->request->data['Position']['modified_date'] = $this->Functions->get_current_date();
+					$this->request->data['Position']['update_date'] = $this->Functions->get_current_date();
 					$this->Position->set($this->request->data);
 					// retain the district
 					$this->get_contact_list($this->request->data['Position']['clients_id']);

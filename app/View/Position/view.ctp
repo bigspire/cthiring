@@ -32,6 +32,8 @@
 				<a rel="tooltip jsRedirect" href="<?php echo $this->webroot;?>position/edit/<?php echo $this->request->params['pass'][0];?>" title="Edit Position">
 				<input rel="tooltip" title="Edit Position" value="Edit" type="button" class="btn btn-info"></a>
 				<?php endif; ?>	
+				
+				
 		<a href="<?php echo $this->webroot;?>position/index/<?php echo $this->request->params['pass'][2];?>"  title="Back to Positions"  class="jsRedirect"><button class="btn">Back</button></a>
 	
 					<!--<a href="#"  class="sepV_a" title="Delete Position">

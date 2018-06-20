@@ -45,7 +45,7 @@
   
   <tr>
     <td height="40" colspan="2" valign="top" style="font:normal 12px Arial, Helvetica, sans-serif; color:#212428; padding:0 20px">
-       <p>Note: This mail was sent from CareerTree HR Solutions. If you have a query or need any clarification you may email us.  <a href="mailto:es@career-tree.in" style="color:#e56712;">es@career-tree.in</a> 
+       <p>Note: This mail was sent from CareerTree HR Solutions. If you have a query or need any clarification you may email us.  <a href="mailto:hiring@career-tree.in" style="color:#e56712;">hiring@career-tree.in</a> 
 
     </td>
   </tr>
