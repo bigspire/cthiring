@@ -57150,3 +57150,3384 @@ Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
 Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
 [main] - APP\webroot\index.php, line 118
 
+2018-06-20 11:13:09 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 264]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 264
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 11:13:09 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 265]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 265
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 11:13:09 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 266]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 266
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 11:13:09 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 267]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 267
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 11:13:09 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 268]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 268
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 11:13:09 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 269]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 269
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 11:32:47 Warning: Warning (2): Missing argument 1 for AppController::check_role_access(), called in C:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php on line 1361 and defined in [C:\xampp\htdocs\ctsvn\cthiring\app\Controller\AppController.php, line 195]
+Trace:
+AppController::check_role_access() - APP\Controller\AppController.php, line 195
+HomeController::beforeFilter() - APP\Controller\HomeController.php, line 1361
+call_user_func - [internal], line ??
+CakeEventManager::dispatch() - CORE\Cake\Event\CakeEventManager.php, line 243
+Controller::startupProcess() - CORE\Cake\Controller\Controller.php, line 677
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 189
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 11:32:47 Warning: Warning (2): Missing argument 1 for HomeController::index() in [C:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php, line 43]
+Trace:
+HomeController::index() - APP\Controller\HomeController.php, line 43
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 11:32:47 Warning: Warning (2): Missing argument 6 for HomeController::get_position_count(), called in C:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php on line 344 and defined in [C:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php, line 747]
+Trace:
+HomeController::get_position_count() - APP\Controller\HomeController.php, line 747
+HomeController::index() - APP\Controller\HomeController.php, line 344
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 11:32:47 Warning: Warning (2): Missing argument 6 for HomeController::get_position_count(), called in C:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php on line 344 and defined in [C:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php, line 747]
+Trace:
+HomeController::get_position_count() - APP\Controller\HomeController.php, line 747
+HomeController::index() - APP\Controller\HomeController.php, line 344
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 11:32:47 Warning: Warning (2): Missing argument 6 for HomeController::get_position_count(), called in C:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php on line 344 and defined in [C:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php, line 747]
+Trace:
+HomeController::get_position_count() - APP\Controller\HomeController.php, line 747
+HomeController::index() - APP\Controller\HomeController.php, line 344
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 11:32:48 Warning: Warning (2): Missing argument 6 for HomeController::get_position_count(), called in C:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php on line 344 and defined in [C:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php, line 747]
+Trace:
+HomeController::get_position_count() - APP\Controller\HomeController.php, line 747
+HomeController::index() - APP\Controller\HomeController.php, line 344
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 11:32:48 Warning: Warning (2): Missing argument 6 for HomeController::get_position_count(), called in C:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php on line 344 and defined in [C:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php, line 747]
+Trace:
+HomeController::get_position_count() - APP\Controller\HomeController.php, line 747
+HomeController::index() - APP\Controller\HomeController.php, line 344
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 11:32:48 Warning: Warning (2): Missing argument 6 for HomeController::get_position_count(), called in C:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php on line 344 and defined in [C:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php, line 747]
+Trace:
+HomeController::get_position_count() - APP\Controller\HomeController.php, line 747
+HomeController::index() - APP\Controller\HomeController.php, line 344
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 11:32:48 Warning: Warning (2): Missing argument 6 for HomeController::get_position_count(), called in C:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php on line 344 and defined in [C:\xampp\htdocs\ctsvn\cthiring\app\Controller\HomeController.php, line 747]
+Trace:
+HomeController::get_position_count() - APP\Controller\HomeController.php, line 747
+HomeController::index() - APP\Controller\HomeController.php, line 344
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 11:32:55 Warning: Warning (2): Missing argument 1 for PositionController::index() in [C:\xampp\htdocs\ctsvn\cthiring\app\Controller\PositionController.php, line 33]
+Trace:
+PositionController::index() - APP\Controller\PositionController.php, line 33
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 11:32:55 Warning: Warning (2): Missing argument 2 for PositionController::index() in [C:\xampp\htdocs\ctsvn\cthiring\app\Controller\PositionController.php, line 33]
+Trace:
+PositionController::index() - APP\Controller\PositionController.php, line 33
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 11:32:56 Warning: Warning (2): in_array() expects parameter 2 to be array, null given in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Helper\FunctionsHelper.php, line 64]
+Trace:
+in_array - [internal], line ??
+FunctionsHelper::get_total_joined() - APP\View\Helper\FunctionsHelper.php, line 64
+include - APP\View\Position\index.ctp, line 193
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 11:32:56 Warning: Warning (2): in_array() expects parameter 2 to be array, null given in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Helper\FunctionsHelper.php, line 64]
+Trace:
+in_array - [internal], line ??
+FunctionsHelper::get_total_joined() - APP\View\Helper\FunctionsHelper.php, line 64
+include - APP\View\Position\index.ctp, line 193
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 11:33:07 Warning: Warning (2): Missing argument 1 for PositionController::index() in [C:\xampp\htdocs\ctsvn\cthiring\app\Controller\PositionController.php, line 33]
+Trace:
+PositionController::index() - APP\Controller\PositionController.php, line 33
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 11:33:07 Warning: Warning (2): Missing argument 2 for PositionController::index() in [C:\xampp\htdocs\ctsvn\cthiring\app\Controller\PositionController.php, line 33]
+Trace:
+PositionController::index() - APP\Controller\PositionController.php, line 33
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 11:33:08 Warning: Warning (2): in_array() expects parameter 2 to be array, null given in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Helper\FunctionsHelper.php, line 64]
+Trace:
+in_array - [internal], line ??
+FunctionsHelper::get_total_joined() - APP\View\Helper\FunctionsHelper.php, line 64
+include - APP\View\Position\index.ctp, line 193
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 11:33:08 Warning: Warning (2): in_array() expects parameter 2 to be array, null given in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Helper\FunctionsHelper.php, line 64]
+Trace:
+in_array - [internal], line ??
+FunctionsHelper::get_total_joined() - APP\View\Helper\FunctionsHelper.php, line 64
+include - APP\View\Position\index.ctp, line 193
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 11:33:13 Warning: Warning (2): in_array() expects parameter 2 to be array, null given in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Position\view.ctp, line 31]
+Trace:
+in_array - [internal], line ??
+include - APP\View\Position\view.ctp, line 31
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 11:33:13 Warning: Warning (2): in_array() expects parameter 2 to be array, null given in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Position\view.ctp, line 181]
+Trace:
+in_array - [internal], line ??
+include - APP\View\Position\view.ctp, line 181
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 11:33:13 Warning: Warning (2): in_array() expects parameter 2 to be array, null given in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Position\view.ctp, line 250]
+Trace:
+in_array - [internal], line ??
+include - APP\View\Position\view.ctp, line 250
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 11:33:13 Warning: Warning (2): Missing argument 4 for FunctionsHelper::get_req_tab_count(), called in C:\xampp\htdocs\ctsvn\cthiring\app\View\Position\view.ctp on line 1256 and defined in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Helper\FunctionsHelper.php, line 157]
+Trace:
+FunctionsHelper::get_req_tab_count() - APP\View\Helper\FunctionsHelper.php, line 157
+include - APP\View\Position\view.ctp, line 1256
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 11:33:14 Warning: Warning (2): Missing argument 4 for FunctionsHelper::get_req_tab_count(), called in C:\xampp\htdocs\ctsvn\cthiring\app\View\Position\view.ctp on line 1257 and defined in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Helper\FunctionsHelper.php, line 157]
+Trace:
+FunctionsHelper::get_req_tab_count() - APP\View\Helper\FunctionsHelper.php, line 157
+include - APP\View\Position\view.ctp, line 1257
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 11:33:15 Warning: Warning (2): Missing argument 4 for FunctionsHelper::get_req_tab_count(), called in C:\xampp\htdocs\ctsvn\cthiring\app\View\Position\view.ctp on line 1259 and defined in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Helper\FunctionsHelper.php, line 157]
+Trace:
+FunctionsHelper::get_req_tab_count() - APP\View\Helper\FunctionsHelper.php, line 157
+include - APP\View\Position\view.ctp, line 1259
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 11:33:15 Warning: Warning (2): Missing argument 4 for FunctionsHelper::get_req_tab_count(), called in C:\xampp\htdocs\ctsvn\cthiring\app\View\Position\view.ctp on line 1262 and defined in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Helper\FunctionsHelper.php, line 157]
+Trace:
+FunctionsHelper::get_req_tab_count() - APP\View\Helper\FunctionsHelper.php, line 157
+include - APP\View\Position\view.ctp, line 1262
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 11:33:15 Warning: Warning (2): in_array() expects parameter 2 to be array, null given in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Helper\FunctionsHelper.php, line 201]
+Trace:
+in_array - [internal], line ??
+FunctionsHelper::get_req_tab_count() - APP\View\Helper\FunctionsHelper.php, line 201
+include - APP\View\Position\view.ctp, line 1262
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 11:33:16 Warning: Warning (2): Missing argument 4 for FunctionsHelper::get_req_tab_count(), called in C:\xampp\htdocs\ctsvn\cthiring\app\View\Position\view.ctp on line 1264 and defined in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Helper\FunctionsHelper.php, line 157]
+Trace:
+FunctionsHelper::get_req_tab_count() - APP\View\Helper\FunctionsHelper.php, line 157
+include - APP\View\Position\view.ctp, line 1264
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 11:33:43 Warning: Warning (2): Missing argument 1 for PositionController::index() in [C:\xampp\htdocs\ctsvn\cthiring\app\Controller\PositionController.php, line 33]
+Trace:
+PositionController::index() - APP\Controller\PositionController.php, line 33
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 11:33:43 Warning: Warning (2): Missing argument 2 for PositionController::index() in [C:\xampp\htdocs\ctsvn\cthiring\app\Controller\PositionController.php, line 33]
+Trace:
+PositionController::index() - APP\Controller\PositionController.php, line 33
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 11:33:44 Warning: Warning (2): in_array() expects parameter 2 to be array, null given in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Helper\FunctionsHelper.php, line 64]
+Trace:
+in_array - [internal], line ??
+FunctionsHelper::get_total_joined() - APP\View\Helper\FunctionsHelper.php, line 64
+include - APP\View\Position\index.ctp, line 193
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 11:33:44 Warning: Warning (2): in_array() expects parameter 2 to be array, null given in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Helper\FunctionsHelper.php, line 64]
+Trace:
+in_array - [internal], line ??
+FunctionsHelper::get_total_joined() - APP\View\Helper\FunctionsHelper.php, line 64
+include - APP\View\Position\index.ctp, line 193
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 11:33:47 Warning: Warning (2): in_array() expects parameter 2 to be array, null given in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Position\view.ctp, line 31]
+Trace:
+in_array - [internal], line ??
+include - APP\View\Position\view.ctp, line 31
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 11:33:47 Warning: Warning (2): in_array() expects parameter 2 to be array, null given in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Position\view.ctp, line 181]
+Trace:
+in_array - [internal], line ??
+include - APP\View\Position\view.ctp, line 181
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 11:33:47 Warning: Warning (2): in_array() expects parameter 2 to be array, null given in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Position\view.ctp, line 250]
+Trace:
+in_array - [internal], line ??
+include - APP\View\Position\view.ctp, line 250
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 11:33:47 Warning: Warning (2): Missing argument 4 for FunctionsHelper::get_req_tab_count(), called in C:\xampp\htdocs\ctsvn\cthiring\app\View\Position\view.ctp on line 1256 and defined in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Helper\FunctionsHelper.php, line 157]
+Trace:
+FunctionsHelper::get_req_tab_count() - APP\View\Helper\FunctionsHelper.php, line 157
+include - APP\View\Position\view.ctp, line 1256
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 11:33:48 Warning: Warning (2): Missing argument 4 for FunctionsHelper::get_req_tab_count(), called in C:\xampp\htdocs\ctsvn\cthiring\app\View\Position\view.ctp on line 1257 and defined in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Helper\FunctionsHelper.php, line 157]
+Trace:
+FunctionsHelper::get_req_tab_count() - APP\View\Helper\FunctionsHelper.php, line 157
+include - APP\View\Position\view.ctp, line 1257
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 11:33:48 Warning: Warning (2): Missing argument 4 for FunctionsHelper::get_req_tab_count(), called in C:\xampp\htdocs\ctsvn\cthiring\app\View\Position\view.ctp on line 1259 and defined in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Helper\FunctionsHelper.php, line 157]
+Trace:
+FunctionsHelper::get_req_tab_count() - APP\View\Helper\FunctionsHelper.php, line 157
+include - APP\View\Position\view.ctp, line 1259
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 11:33:48 Warning: Warning (2): Missing argument 4 for FunctionsHelper::get_req_tab_count(), called in C:\xampp\htdocs\ctsvn\cthiring\app\View\Position\view.ctp on line 1262 and defined in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Helper\FunctionsHelper.php, line 157]
+Trace:
+FunctionsHelper::get_req_tab_count() - APP\View\Helper\FunctionsHelper.php, line 157
+include - APP\View\Position\view.ctp, line 1262
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 11:33:48 Warning: Warning (2): in_array() expects parameter 2 to be array, null given in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Helper\FunctionsHelper.php, line 201]
+Trace:
+in_array - [internal], line ??
+FunctionsHelper::get_req_tab_count() - APP\View\Helper\FunctionsHelper.php, line 201
+include - APP\View\Position\view.ctp, line 1262
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 11:33:48 Warning: Warning (2): Missing argument 4 for FunctionsHelper::get_req_tab_count(), called in C:\xampp\htdocs\ctsvn\cthiring\app\View\Position\view.ctp on line 1264 and defined in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Helper\FunctionsHelper.php, line 157]
+Trace:
+FunctionsHelper::get_req_tab_count() - APP\View\Helper\FunctionsHelper.php, line 157
+include - APP\View\Position\view.ctp, line 1264
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 11:33:48 Warning: Warning (2): in_array() expects parameter 2 to be array, null given in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Helper\FunctionsHelper.php, line 178]
+Trace:
+in_array - [internal], line ??
+FunctionsHelper::get_req_tab_count() - APP\View\Helper\FunctionsHelper.php, line 178
+include - APP\View\Position\view.ctp, line 1265
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 11:33:51 Warning: Warning (2): Missing argument 1 for PositionController::index() in [C:\xampp\htdocs\ctsvn\cthiring\app\Controller\PositionController.php, line 33]
+Trace:
+PositionController::index() - APP\Controller\PositionController.php, line 33
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 11:33:51 Warning: Warning (2): Missing argument 2 for PositionController::index() in [C:\xampp\htdocs\ctsvn\cthiring\app\Controller\PositionController.php, line 33]
+Trace:
+PositionController::index() - APP\Controller\PositionController.php, line 33
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 11:33:52 Warning: Warning (2): in_array() expects parameter 2 to be array, null given in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Helper\FunctionsHelper.php, line 64]
+Trace:
+in_array - [internal], line ??
+FunctionsHelper::get_total_joined() - APP\View\Helper\FunctionsHelper.php, line 64
+include - APP\View\Position\index.ctp, line 193
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 11:33:52 Warning: Warning (2): in_array() expects parameter 2 to be array, null given in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Helper\FunctionsHelper.php, line 64]
+Trace:
+in_array - [internal], line ??
+FunctionsHelper::get_total_joined() - APP\View\Helper\FunctionsHelper.php, line 64
+include - APP\View\Position\index.ctp, line 193
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 11:33:55 Warning: Warning (2): in_array() expects parameter 2 to be array, null given in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Position\view.ctp, line 181]
+Trace:
+in_array - [internal], line ??
+include - APP\View\Position\view.ctp, line 181
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 11:33:55 Warning: Warning (2): in_array() expects parameter 2 to be array, null given in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Position\view.ctp, line 250]
+Trace:
+in_array - [internal], line ??
+include - APP\View\Position\view.ctp, line 250
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 11:33:56 Warning: Warning (2): Missing argument 4 for FunctionsHelper::get_req_tab_count(), called in C:\xampp\htdocs\ctsvn\cthiring\app\View\Position\view.ctp on line 1256 and defined in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Helper\FunctionsHelper.php, line 157]
+Trace:
+FunctionsHelper::get_req_tab_count() - APP\View\Helper\FunctionsHelper.php, line 157
+include - APP\View\Position\view.ctp, line 1256
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 11:33:56 Warning: Warning (2): Missing argument 4 for FunctionsHelper::get_req_tab_count(), called in C:\xampp\htdocs\ctsvn\cthiring\app\View\Position\view.ctp on line 1257 and defined in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Helper\FunctionsHelper.php, line 157]
+Trace:
+FunctionsHelper::get_req_tab_count() - APP\View\Helper\FunctionsHelper.php, line 157
+include - APP\View\Position\view.ctp, line 1257
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 11:33:57 Warning: Warning (2): Missing argument 4 for FunctionsHelper::get_req_tab_count(), called in C:\xampp\htdocs\ctsvn\cthiring\app\View\Position\view.ctp on line 1259 and defined in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Helper\FunctionsHelper.php, line 157]
+Trace:
+FunctionsHelper::get_req_tab_count() - APP\View\Helper\FunctionsHelper.php, line 157
+include - APP\View\Position\view.ctp, line 1259
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 11:33:57 Warning: Warning (2): in_array() expects parameter 2 to be array, null given in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Helper\FunctionsHelper.php, line 201]
+Trace:
+in_array - [internal], line ??
+FunctionsHelper::get_req_tab_count() - APP\View\Helper\FunctionsHelper.php, line 201
+include - APP\View\Position\view.ctp, line 1259
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 11:33:57 Warning: Warning (2): Missing argument 4 for FunctionsHelper::get_req_tab_count(), called in C:\xampp\htdocs\ctsvn\cthiring\app\View\Position\view.ctp on line 1262 and defined in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Helper\FunctionsHelper.php, line 157]
+Trace:
+FunctionsHelper::get_req_tab_count() - APP\View\Helper\FunctionsHelper.php, line 157
+include - APP\View\Position\view.ctp, line 1262
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 11:33:58 Warning: Warning (2): in_array() expects parameter 2 to be array, null given in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Helper\FunctionsHelper.php, line 201]
+Trace:
+in_array - [internal], line ??
+FunctionsHelper::get_req_tab_count() - APP\View\Helper\FunctionsHelper.php, line 201
+include - APP\View\Position\view.ctp, line 1262
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 11:33:58 Warning: Warning (2): Missing argument 4 for FunctionsHelper::get_req_tab_count(), called in C:\xampp\htdocs\ctsvn\cthiring\app\View\Position\view.ctp on line 1264 and defined in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Helper\FunctionsHelper.php, line 157]
+Trace:
+FunctionsHelper::get_req_tab_count() - APP\View\Helper\FunctionsHelper.php, line 157
+include - APP\View\Position\view.ctp, line 1264
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 11:33:59 Warning: Warning (2): in_array() expects parameter 2 to be array, null given in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Helper\FunctionsHelper.php, line 178]
+Trace:
+in_array - [internal], line ??
+FunctionsHelper::get_req_tab_count() - APP\View\Helper\FunctionsHelper.php, line 178
+include - APP\View\Position\view.ctp, line 1265
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 11:34:04 Warning: Warning (2): Missing argument 2 for PositionController::get_reject_drop(), called in C:\xampp\htdocs\ctsvn\cthiring\app\Controller\PositionController.php on line 1961 and defined in [C:\xampp\htdocs\ctsvn\cthiring\app\Controller\PositionController.php, line 1940]
+Trace:
+PositionController::get_reject_drop() - APP\Controller\PositionController.php, line 1940
+PositionController::verify_cv() - APP\Controller\PositionController.php, line 1961
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:02:26 Warning: Warning (2): Missing argument 2 for ReportController::get_employee() in [C:\xampp\htdocs\ctsvn\cthiring\app\Controller\ReportController.php, line 256]
+Trace:
+ReportController::get_employee() - APP\Controller\ReportController.php, line 256
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:03:00 Warning: Warning (2): Missing argument 2 for ReportController::get_employee() in [C:\xampp\htdocs\ctsvn\cthiring\app\Controller\ReportController.php, line 256]
+Trace:
+ReportController::get_employee() - APP\Controller\ReportController.php, line 256
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:03:21 Warning: Warning (2): Missing argument 2 for ReportController::get_employee() in [C:\xampp\htdocs\ctsvn\cthiring\app\Controller\ReportController.php, line 256]
+Trace:
+ReportController::get_employee() - APP\Controller\ReportController.php, line 256
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:03:31 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 264]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 264
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:03:31 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 265]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 265
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:03:31 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 266]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 266
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:03:31 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 267]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 267
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:03:31 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 268]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 268
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:03:31 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 269]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 269
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:03:40 Warning: Warning (2): Missing argument 2 for ReportController::get_employee() in [C:\xampp\htdocs\ctsvn\cthiring\app\Controller\ReportController.php, line 256]
+Trace:
+ReportController::get_employee() - APP\Controller\ReportController.php, line 256
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:03:44 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 264]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 264
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:03:44 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 265]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 265
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:03:44 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 266]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 266
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:03:44 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 267]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 267
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:03:44 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 268]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 268
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:03:44 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 269]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 269
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:08:45 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 264]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 264
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:08:45 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 265]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 265
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:08:45 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 266]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 266
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:08:45 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 267]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 267
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:08:45 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 268]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 268
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:08:45 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 269]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 269
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:09:35 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 264]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 264
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:09:35 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 265]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 265
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:09:35 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 266]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 266
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:09:35 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 267]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 267
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:09:35 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 268]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 268
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:09:35 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 269]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 269
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:10:26 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 264]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 264
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:10:26 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 265]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 265
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:10:26 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 266]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 266
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:10:26 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 267]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 267
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:10:26 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 268]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 268
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:10:26 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 269]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 269
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:10:35 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 264]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 264
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:10:35 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 265]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 265
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:10:35 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 266]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 266
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:10:35 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 267]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 267
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:10:35 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 268]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 268
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:10:35 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 269]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 269
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:10:58 Warning: Warning (2): Missing argument 2 for ReportController::get_employee() in [C:\xampp\htdocs\ctsvn\cthiring\app\Controller\ReportController.php, line 260]
+Trace:
+ReportController::get_employee() - APP\Controller\ReportController.php, line 260
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 491
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:11:03 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 264]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 264
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:11:03 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 265]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 265
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:11:03 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 266]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 266
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:11:03 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 267]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 267
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:11:03 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 268]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 268
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:11:03 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 269]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 269
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:11:18 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 264]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 264
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:11:18 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 265]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 265
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:11:18 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 266]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 266
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:11:18 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 267]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 267
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:11:18 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 268]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 268
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:11:18 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 269]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 269
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:29:46 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 267]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 267
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:29:46 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 268]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 268
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:29:46 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 269]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 269
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:29:46 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 270]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 270
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:29:46 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 271]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 271
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:29:46 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 272]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 272
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:30:11 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 267]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 267
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:30:11 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 268]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 268
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:30:11 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 269]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 269
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:30:11 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 270]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 270
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:30:11 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 271]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 271
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:30:11 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 272]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 272
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:30:19 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 267]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 267
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:30:19 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 268]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 268
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:30:19 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 269]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 269
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:30:19 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 270]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 270
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:30:19 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 271]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 271
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:30:19 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 272]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 272
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:30:50 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 267]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 267
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:30:50 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 268]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 268
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:30:50 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 269]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 269
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:30:50 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 270]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 270
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:30:50 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 271]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 271
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:30:50 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 272]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 272
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:31:31 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 272]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 272
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:31:31 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 273]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 273
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:31:31 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 274]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 274
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:31:31 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 275]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 275
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:31:31 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 276]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 276
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:31:31 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 277]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 277
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:32:02 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 272]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 272
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:32:02 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 273]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 273
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:32:02 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 274]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 274
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:32:02 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 275]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 275
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:32:02 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 276]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 276
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:32:02 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 277]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 277
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:32:17 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 272]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 272
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:32:17 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 273]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 273
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:32:17 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 274]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 274
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:32:17 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 275]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 275
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:32:17 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 276]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 276
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:32:17 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 277]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 277
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:32:39 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 272]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 272
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:32:39 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 273]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 273
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:32:39 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 274]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 274
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:32:39 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 275]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 275
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:32:39 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 276]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 276
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:32:39 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 277]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 277
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:33:42 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 279]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 279
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:33:42 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 280]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 280
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:33:42 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 281]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 281
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:33:42 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 282]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 282
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:33:42 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 283]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 283
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:33:42 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 284]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 284
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:34:37 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 279]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 279
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:34:37 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 280]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 280
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:34:37 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 281]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 281
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:34:37 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 282]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 282
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:34:37 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 283]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 283
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:34:37 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 284]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 284
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:35:43 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 278]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 278
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:35:43 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 279]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 279
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:35:43 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 280]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 280
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:35:43 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 281]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 281
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:35:43 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 282]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 282
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:35:43 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 283]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 283
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:38:38 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 284]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 284
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:38:38 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 285]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 285
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:38:38 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 286]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 286
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:38:38 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 287]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 287
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:38:38 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 288]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 288
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:38:38 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 289]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 289
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:38:59 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 284]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 284
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:38:59 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 285]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 285
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:38:59 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 286]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 286
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:38:59 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 287]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 287
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:38:59 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 288]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 288
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:38:59 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 289]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 289
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:39:23 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 284]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 284
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:39:23 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 285]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 285
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:39:23 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 286]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 286
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:39:23 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 287]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 287
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:39:23 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 288]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 288
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:39:23 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 289]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 289
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:42:58 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 288]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 288
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:42:58 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 289]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 289
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:42:58 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 290]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 290
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:42:58 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 291]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 291
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:42:58 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 292]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 292
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:42:58 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 293]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 293
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:43:14 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 288]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 288
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:43:14 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 289]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 289
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:43:14 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 290]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 290
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:43:14 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 291]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 291
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:43:14 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 292]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 292
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:43:14 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 293]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 293
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:43:48 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 288]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 288
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:43:48 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 289]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 289
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:43:48 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 290]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 290
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:43:48 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 291]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 291
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:43:48 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 292]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 292
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:43:48 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 293]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 293
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:44:11 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 288]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 288
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:44:11 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 289]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 289
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:44:11 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 290]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 290
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:44:11 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 291]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 291
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:44:11 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 292]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 292
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:44:11 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 293]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 293
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:45:41 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 289]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 289
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:45:41 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 290]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 290
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:45:41 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 291]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 291
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:45:41 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 292]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 292
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:45:41 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 293]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 293
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:45:41 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 294]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 294
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:45:55 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 289]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 289
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:45:55 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 290]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 290
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:45:55 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 291]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 291
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:45:55 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 292]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 292
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:45:55 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 293]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 293
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:45:55 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 294]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 294
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:46:06 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 289]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 289
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:46:06 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 290]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 290
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:46:06 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 291]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 291
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:46:06 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 292]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 292
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:46:06 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 293]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 293
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:46:06 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 294]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 294
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:47:07 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 289]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 289
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:47:07 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 290]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 290
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:47:07 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 291]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 291
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:47:07 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 292]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 292
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:47:07 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 293]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 293
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:47:07 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 294]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 294
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:49:18 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 294]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 294
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:49:18 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 295]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 295
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:49:18 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 296]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 296
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:49:18 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 297]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 297
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:49:18 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 298]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 298
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 12:49:18 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 299]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 299
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 13:04:29 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 299]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 299
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 13:04:29 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 300]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 300
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 13:04:29 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 301]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 301
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 13:04:29 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 302]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 302
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 13:04:29 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 303]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 303
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 13:04:29 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 304]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 304
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 13:04:35 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 299]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 299
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 13:04:35 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 300]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 300
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 13:04:35 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 301]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 301
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 13:04:35 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 302]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 302
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 13:04:35 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 303]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 303
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 13:04:35 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 304]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 304
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 13:04:56 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 299]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 299
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 13:04:56 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 300]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 300
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 13:04:56 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 301]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 301
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 13:04:56 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 302]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 302
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 13:04:56 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 303]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 303
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 13:04:56 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 304]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 304
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 13:05:02 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 299]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 299
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 13:05:02 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 300]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 300
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 13:05:02 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 301]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 301
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 13:05:02 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 302]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 302
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 13:05:02 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 303]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 303
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 13:05:02 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 304]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 304
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 13:06:38 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 299]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 299
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 13:06:38 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 300]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 300
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 13:06:38 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 301]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 301
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 13:06:38 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 302]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 302
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 13:06:38 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 303]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 303
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 13:06:38 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 304]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 304
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 13:07:39 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 299]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 299
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 13:07:39 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 300]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 300
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 13:07:39 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 301]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 301
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 13:07:39 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 302]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 302
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 13:07:39 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 303]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 303
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 13:07:39 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 304]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 304
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 13:11:03 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 312]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 312
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 13:11:03 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 313]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 313
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 13:11:03 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 314]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 314
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 13:11:03 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 315]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 315
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 13:11:03 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 316]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 316
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 13:11:03 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 317]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 317
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 13:11:19 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 312]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 312
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 13:11:19 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 313]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 313
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 13:11:19 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 314]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 314
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 13:11:19 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 315]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 315
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 13:11:19 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 316]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 316
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 13:11:19 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 317]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 317
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 13:11:25 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 312]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 312
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 13:11:25 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 313]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 313
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 13:11:25 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 314]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 314
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 13:11:25 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 315]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 315
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 13:11:25 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 316]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 316
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2018-06-20 13:11:25 Warning: Warning (2): Division by zero in [C:\xampp\htdocs\ctsvn\cthiring\app\View\Report\client_wise_cv_status.ctp, line 317]
+Trace:
+include - APP\View\Report\client_wise_cv_status.ctp, line 317
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 963
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+

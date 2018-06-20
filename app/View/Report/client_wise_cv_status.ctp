@@ -7,6 +7,7 @@
 .printAreaTable a{color:#000000 !important}
 .printAreaTable tr td{font-size:14px;padding:8px;}
 .printAreaTable tr th{font-size:14px;padding:8px;}
+.dl-horizontal dt{text-align:left}
 </style>
 {/literal}
 <?php echo $this->element('header');?>		 
@@ -29,9 +30,20 @@
 							
 							<span id="sandbox-container">
 						<span class="input-daterange" id="datepicker">	
-							<label style="margin-left:0" >From Date: <input placeholder="dd/mm/yyyy" type="text" class="input-small" name="data[Report][from]" value="" aria-controls="dt_gal"></label>
+							<label style="margin-left:0" >From Date:
 
-							<label>To Date: <input placeholder="dd/mm/yyyy" type="text" name="data[Report][to]" value="" class="input-small" aria-controls="dt_gal"></label>
+<?php echo $this->Form->input('from', array('div'=> false,'type' => 'text', 'label' => false, 'class' => 'input-small', 'required' => false, 'placeholder' => 'dd/mm/yyyy')); ?> 
+							
+						
+							
+							</label>
+
+							<label>To Date: 
+							
+						<?php echo $this->Form->input('to', array('div'=> false,'type' => 'text', 'label' => false, 'class' => 'input-small', 'required' => false, 'placeholder' => 'dd/mm/yyyy')); ?> 
+							
+							
+							</label>
 
 						</span>	
 						</span>	
@@ -40,8 +52,8 @@
 							<label>
 							Client: 
 		
-	<?php echo $this->Form->input('loc', array('div'=> false,'type' => 'select', 'label' => false, 'class' => 'input-medium', 'empty' => 'Select', 
-	'selected' => $this->params->query['loc'], 'required' => false, 'placeholder' => '', 'style' => "clear:left", 'options' => $clientList)); ?> 
+	<?php echo $this->Form->input('client_id', array('div'=> false,'type' => 'select', 'label' => false, 'class' => 'input-medium', 'empty' => 'Select', 
+	'required' => false, 'placeholder' => '', 'style' => "clear:left", 'options' => $clientList)); ?> 
 	
 	
 							</label>
@@ -54,7 +66,7 @@
 							
 							
 							<?php echo $this->Form->input('role_id', array('div'=> false,'type' => 'select', 'id' => 'role', 'label' => false, 'class' => 'load_employee input-medium', 'empty' => 'Select', 
-	'selected' => $this->params->query['role_id'], 'required' => false, 'placeholder' => '', 'style' => "clear:left", 'options' => $roleList)); ?> 
+	'required' => false, 'placeholder' => '', 'style' => "clear:left", 'options' => $roleList)); ?> 
 
 							</label>
 							
@@ -68,13 +80,13 @@
 		<label>
 			Branch: 
 					<?php echo $this->Form->input('branch_id', array('div'=> false,'type' => 'select', 'label' => false, 'id' => 'loc', 'class' => 'load_employee input-medium', 'empty' => 'Select', 
-	'selected' => $this->params->query['branch_id'], 'required' => false, 'placeholder' => '', 'style' => "clear:left", 'options' => $locList)); ?> 
+	 'required' => false, 'placeholder' => '', 'style' => "clear:left", 'options' => $locList)); ?> 
 			</label>
 							
 							
 														<label>Employee: 
 							<?php echo $this->Form->input('emp_id', array('div'=> false,'type' => 'select', 'label' => false, 'class' => 'load_emp input-medium', 'empty' => 'Select', 
-	'selected' => $this->params->query['emp_id'], 'required' => false, 'placeholder' => '', 'style' => "clear:left", 'options' => $empList)); ?> 
+	 'required' => false, 'placeholder' => '', 'style' => "clear:left", 'options' => $empList)); ?> 
 
 							</label>
 												
@@ -105,6 +117,11 @@
 <input type="hidden" value="<?php echo $this->webroot;?>report/get_employee/" id="webroot">	
 <input type="hidden" name="data[type]" id="type"/>	
 					
+					
+					
+				
+		
+		
 						</form>
 						
 						<div class="row-fluid {$format_type_chart}">		
@@ -121,6 +138,37 @@
 						
 							</h3>
 						
+						
+							<h6 style="clear:left;margin-top:10px">Search Filters:</h6> 
+		
+		<dl class="dl-horizontal">
+										
+										<?php if(!empty($fromDate)):?>
+										<dt>From Date: </dt>
+										<dd><?php echo $fromDate;?></dd>
+										<?php endif; ?>
+										
+										<?php if(!empty($toDate)):?>
+										<dt>To Date: </dt>
+										<dd><?php echo $toDate;?></dd>
+										<?php endif; ?>
+										
+										
+										<dt>Client:</dt>
+										<dd>BigSpire Software</dd>
+										
+										<dt>Role: </dt>
+										<dd>Recruiter</dd>
+										
+										<dt>Branch: </dt>
+										<dd>Chennai</dd>
+										
+										<dt>Employee: </dt>
+										<dd>Siva</dd>
+										
+									</dl>
+									
+									
 							<table class="table table-hover table-bordered table-striped printAreaTable" style="margin: 15px 0px;">
 								<thead>
 									

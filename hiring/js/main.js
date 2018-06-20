@@ -1159,7 +1159,7 @@ $(document).ready(function() {
 		var mobile = $('#mobile_field').val();		
 		
 		
-		$.colorbox({href:$('#cv_url').val()+'?email='+email+'&mobile='+mobile, iframe:true, rel: 'nofollow',  width:'80%', height:'70%',opacity:'.8', scrolling: false, fixed:true,overlayClose:false, escKey: false,closeButton:false,
+		$.colorbox({href:$('#cv_url').val()+'?email='+email+'&mobile='+mobile, iframe:true, rel: 'nofollow',  width:'80%', height:'70%',opacity:'.8', fixed:true,overlayClose:false, escKey: false,closeButton:false,
 			onClosed:function(){					
 				
 			}
