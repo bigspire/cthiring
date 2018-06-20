@@ -223,14 +223,14 @@ if($error){
 		
 		// is approved condition - when L1 or L2 rejects
 		if($status == 'R'){
-			$is_approved = 'Y';
+			$is_approved = 'R';
 		}
 		// is approved condition - after L2 approves or L1 only exists and approves
 		elseif(($status == 'A' && $level2 == $_SESSION['user_id']) || ($status == 'A' && $level2 == '0')){
 			$is_approved = 'Y';
 		}
 		
-		if($is_approved == 'Y'){
+		if($is_approved == 'Y' || $is_approved == 'R'){
 			// query to insert is_approve details into billing table. 
 			$query = "CALL edit_billing('".$is_approved."', '".$_SESSION['billing_id']."')";
 
