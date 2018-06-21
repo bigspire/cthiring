@@ -92,7 +92,7 @@
 				<tr class="tbl_row">
 							<td width="120" class="tbl_column inline">Incentive Type <span class="f_req">*</span></td>
 							<td>																			
-								<input type="text" tabindex="1" name="incentive_type" disabled value="{$incentive_type}" class="span8 ui-autocomplete-input" autocomplete="off">								
+								<input type="text" tabindex="1" name="inc_type" disabled value="{$incentive_type}" class="span8 ui-autocomplete-input" autocomplete="off">								
 							</td>	
 				</tr>
 				<tr class="tbl_row pos_Validity">
