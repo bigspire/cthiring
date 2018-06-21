@@ -26,7 +26,7 @@
                                 </li>
                             
                                 <li>
-                                   Search Incentive
+                                   View Incentive
                                 </li>
                             </ul>
                         </div>

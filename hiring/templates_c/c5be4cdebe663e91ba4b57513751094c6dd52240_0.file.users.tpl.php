@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-03-09 09:27:39
+/* Smarty version 3.1.29, created on 2018-06-21 10:42:09
   from "C:\xampp\htdocs\2017\ctsvn2\cthiring\hiring\templates\users.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5aa20633579e78_04214024',
+  'unifunc' => 'content_5b2b33a9151c22_36662315',
   'file_dependency' => 
   array (
     'c5be4cdebe663e91ba4b57513751094c6dd52240' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn2\\cthiring\\hiring\\templates\\users.tpl',
-      1 => 1518689731,
+      1 => 1529557790,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5aa20633579e78_04214024 ($_smarty_tpl) {
+function content_5b2b33a9151c22_36662315 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\2017\\ctsvn2\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -48,7 +48,7 @@ home"><i class="icon-home"></i></a>
                                 </li>
                             
                                 <li>
-                                   Search User
+                                   View User
                                 </li>
                             </ul>
                         </div>

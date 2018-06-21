@@ -27,7 +27,7 @@
                                 </li>
                             
                                 <li>
-                                   Search Specialization
+                                   View Specialization
                                 </li>
                             </ul>
                         </div>

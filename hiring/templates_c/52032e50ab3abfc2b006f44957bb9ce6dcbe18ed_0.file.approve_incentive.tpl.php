@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-06-19 09:42:34
+/* Smarty version 3.1.29, created on 2018-06-21 10:32:23
   from "C:\xampp\htdocs\2017\ctsvn2\cthiring\hiring\templates\approve_incentive.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5b2882b2d6fe40_39071120',
+  'unifunc' => 'content_5b2b315f952a26_60940809',
   'file_dependency' => 
   array (
     '52032e50ab3abfc2b006f44957bb9ce6dcbe18ed' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn2\\cthiring\\hiring\\templates\\approve_incentive.tpl',
-      1 => 1529326324,
+      1 => 1529557309,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5b2882b2d6fe40_39071120 ($_smarty_tpl) {
+function content_5b2b315f952a26_60940809 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\2017\\ctsvn2\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -53,7 +53,7 @@ home"><i class="icon-home"></i></a>
                                 </li>
                             
                                 <li>
-                                   Search Incentive
+                                   View Incentive
                                 </li>
                             </ul>
                         </div>

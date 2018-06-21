@@ -25,7 +25,7 @@
                                 </li>
                             
                                 <li>
-                                   Search Sharing Criteria
+                                   View Sharing Criteria
                                 </li>
                             </ul>
                         </div>

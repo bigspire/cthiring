@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-03-09 09:27:29
+/* Smarty version 3.1.29, created on 2018-06-21 10:41:47
   from "C:\xampp\htdocs\2017\ctsvn2\cthiring\hiring\templates\functional_area.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5aa206291e58e5_77362091',
+  'unifunc' => 'content_5b2b33936465a9_49376262',
   'file_dependency' => 
   array (
     'd4b347e6ff7402d6e011965a9fd86b8b1e98ef5e' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn2\\cthiring\\hiring\\templates\\functional_area.tpl',
-      1 => 1518689730,
+      1 => 1529557900,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5aa206291e58e5_77362091 ($_smarty_tpl) {
+function content_5b2b33936465a9_49376262 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\2017\\ctsvn2\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -54,7 +54,7 @@ home"><i class="icon-home"></i></a>
                                 </li>
                             
                                 <li>
-                                   Search Functional Area
+                                   View Functional Area
                                 </li>
                             </ul>
                         </div>

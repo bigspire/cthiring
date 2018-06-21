@@ -26,7 +26,7 @@
                                 </li>
                             
                                 <li>
-                                   Search Candidate Designation
+                                   View Candidate Designation
                                 </li>
                             </ul>
                         </div>

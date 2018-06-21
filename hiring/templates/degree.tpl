@@ -27,7 +27,7 @@
                                 </li>
                             
                                 <li>
-                                   Search Degree
+                                   View Degree
                                 </li>
                             </ul>
                         </div>

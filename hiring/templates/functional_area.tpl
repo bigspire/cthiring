@@ -27,7 +27,7 @@
                                 </li>
                             
                                 <li>
-                                   Search Functional Area
+                                   View Functional Area
                                 </li>
                             </ul>
                         </div>

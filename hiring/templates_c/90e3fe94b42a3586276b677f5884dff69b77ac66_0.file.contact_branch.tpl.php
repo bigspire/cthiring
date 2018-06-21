@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-05-29 14:35:53
+/* Smarty version 3.1.29, created on 2018-06-21 10:42:03
   from "C:\xampp\htdocs\2017\ctsvn2\cthiring\hiring\templates\contact_branch.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5b0d17f17fd9a0_06868004',
+  'unifunc' => 'content_5b2b33a335fca4_15034104',
   'file_dependency' => 
   array (
     '90e3fe94b42a3586276b677f5884dff69b77ac66' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn2\\cthiring\\hiring\\templates\\contact_branch.tpl',
-      1 => 1527584751,
+      1 => 1529557855,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5b0d17f17fd9a0_06868004 ($_smarty_tpl) {
+function content_5b2b33a335fca4_15034104 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\2017\\ctsvn2\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -49,7 +49,7 @@ home"><i class="icon-home"></i></a>
                                 </li>
                             
                                 <li>
-                                   Search Client Branch
+                                   View Client Branch
                                 </li>
                             </ul>
                         </div>

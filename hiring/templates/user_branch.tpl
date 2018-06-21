@@ -22,7 +22,7 @@
                                 </li>
                             
                                 <li>
-                                   Search User Branch
+                                   View User Branch
                                 </li>
                             </ul>
                         </div>
