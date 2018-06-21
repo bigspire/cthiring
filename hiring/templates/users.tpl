@@ -21,7 +21,7 @@
                                 </li>
                             
                                 <li>
-                                   Search User
+                                   View User
                                 </li>
                             </ul>
                         </div>

@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-05-28 15:07:56
+/* Smarty version 3.1.29, created on 2018-06-21 10:42:11
   from "C:\xampp\htdocs\2017\ctsvn2\cthiring\hiring\templates\roles.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5b0bcdf4a5d3a4_92533849',
+  'unifunc' => 'content_5b2b33abacc204_83835810',
   'file_dependency' => 
   array (
     'd340fb516c8f4b2561c0ae7a492d178a740e99be' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn2\\cthiring\\hiring\\templates\\roles.tpl',
-      1 => 1518689731,
+      1 => 1529557797,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5b0bcdf4a5d3a4_92533849 ($_smarty_tpl) {
+function content_5b2b33abacc204_83835810 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\2017\\ctsvn2\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -48,7 +48,7 @@ home"><i class="icon-home"></i></a>
                                 </li>
                             
                                 <li>
-                                   Search Role
+                                   View Role
                                 </li>
                             </ul>
                         </div>

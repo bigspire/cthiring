@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-03-09 16:41:39
+/* Smarty version 3.1.29, created on 2018-06-21 10:41:54
   from "C:\xampp\htdocs\2017\ctsvn2\cthiring\hiring\templates\specialization.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5aa26bebc50cc8_54431022',
+  'unifunc' => 'content_5b2b339ac99320_98713744',
   'file_dependency' => 
   array (
     'd10ad7e56731e563cac07095f40782c138dfd58d' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn2\\cthiring\\hiring\\templates\\specialization.tpl',
-      1 => 1520593896,
+      1 => 1529557831,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5aa26bebc50cc8_54431022 ($_smarty_tpl) {
+function content_5b2b339ac99320_98713744 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\2017\\ctsvn2\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -54,7 +54,7 @@ home"><i class="icon-home"></i></a>
                                 </li>
                             
                                 <li>
-                                   Search Specialization
+                                   View Specialization
                                 </li>
                             </ul>
                         </div>

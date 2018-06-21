@@ -22,7 +22,7 @@
                                 </li>
                             
                                 <li>
-                                   Search Interview
+                                   View Interview Schedule
                                 </li>
                             </ul>
                         </div>

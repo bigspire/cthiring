@@ -23,7 +23,7 @@
                                 </li>
                             
                                 <li>
-                                   Search Salary
+                                   View Salary
                                 </li>
                             </ul>
                         </div>

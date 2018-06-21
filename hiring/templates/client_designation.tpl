@@ -26,7 +26,7 @@
                                 </li>
                             
                                 <li>
-                                   Search Client Designation
+                                   View Client Designation
                                 </li>
                             </ul>
                         </div>

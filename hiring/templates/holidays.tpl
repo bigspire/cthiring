@@ -23,7 +23,7 @@
                                 </li>
                             
                                 <li>
-                                   Search Holidays
+                                   View Holidays
                                 </li>
                             </ul>
                         </div>

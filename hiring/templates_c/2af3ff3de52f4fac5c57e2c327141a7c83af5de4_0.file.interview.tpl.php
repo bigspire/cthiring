@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-03-08 14:20:19
+/* Smarty version 3.1.29, created on 2018-06-21 10:45:43
   from "C:\xampp\htdocs\2017\ctsvn2\cthiring\hiring\templates\interview.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5aa0f94b08fc05_50324116',
+  'unifunc' => 'content_5b2b347fcdfe51_29789949',
   'file_dependency' => 
   array (
     '2af3ff3de52f4fac5c57e2c327141a7c83af5de4' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn2\\cthiring\\hiring\\templates\\interview.tpl',
-      1 => 1518689731,
+      1 => 1529558140,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5aa0f94b08fc05_50324116 ($_smarty_tpl) {
+function content_5b2b347fcdfe51_29789949 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\2017\\ctsvn2\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -49,7 +49,7 @@ home"><i class="icon-home"></i></a>
                                 </li>
                             
                                 <li>
-                                   Search Interview
+                                   View Interview Schedule
                                 </li>
                             </ul>
                         </div>

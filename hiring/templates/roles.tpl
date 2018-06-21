@@ -21,7 +21,7 @@
                                 </li>
                             
                                 <li>
-                                   Search Role
+                                   View Role
                                 </li>
                             </ul>
                         </div>

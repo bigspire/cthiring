@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-03-09 18:00:19
+/* Smarty version 3.1.29, created on 2018-06-21 10:41:52
   from "C:\xampp\htdocs\2017\ctsvn2\cthiring\hiring\templates\degree.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5aa27e5be973c4_79975044',
+  'unifunc' => 'content_5b2b33980d8c42_33045434',
   'file_dependency' => 
   array (
     'c7b297afdf388f39011979df224559bda5cf8f7a' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn2\\cthiring\\hiring\\templates\\degree.tpl',
-      1 => 1520598608,
+      1 => 1529557835,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5aa27e5be973c4_79975044 ($_smarty_tpl) {
+function content_5b2b33980d8c42_33045434 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\2017\\ctsvn2\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -54,7 +54,7 @@ home"><i class="icon-home"></i></a>
                                 </li>
                             
                                 <li>
-                                   Search Degree
+                                   View Degree
                                 </li>
                             </ul>
                         </div>

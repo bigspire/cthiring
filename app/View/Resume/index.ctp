@@ -21,7 +21,7 @@
                                 </li>
                             
                                 <li>
-                                   Search Resumes
+                                   View Resumes
                                 </li>
                             </ul>
                         </div>

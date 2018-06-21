@@ -22,7 +22,7 @@
                                 </li>
                             
                                 <li>
-                                   Search Client Branch
+                                   View Client Branch
                                 </li>
                             </ul>
                         </div>

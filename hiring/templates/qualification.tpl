@@ -27,7 +27,7 @@
                                 </li>
                             
                                 <li>
-                                   Search Qualification
+                                   View Qualification
                                 </li>
                             </ul>
                         </div>

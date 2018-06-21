@@ -23,7 +23,7 @@
                                 </li>
                             
                                 <li>
-                                   Search Base Target
+                                   View Base Target
                                 </li>
                             </ul>
                         </div>

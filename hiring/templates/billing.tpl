@@ -26,7 +26,7 @@
                                 </li>
                             
                                 <li>
-                                   Search Billing
+                                   View Billing
                                 </li>
                             </ul>
                         </div>

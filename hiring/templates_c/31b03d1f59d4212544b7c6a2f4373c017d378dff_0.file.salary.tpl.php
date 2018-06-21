@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-04-05 14:16:15
+/* Smarty version 3.1.29, created on 2018-06-21 10:42:41
   from "C:\xampp\htdocs\2017\ctsvn2\cthiring\hiring\templates\salary.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5ac5e257800c46_52731664',
+  'unifunc' => 'content_5b2b33c95b2404_87665764',
   'file_dependency' => 
   array (
     '31b03d1f59d4212544b7c6a2f4373c017d378dff' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn2\\cthiring\\hiring\\templates\\salary.tpl',
-      1 => 1518689731,
+      1 => 1529557959,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5ac5e257800c46_52731664 ($_smarty_tpl) {
+function content_5b2b33c95b2404_87665764 ($_smarty_tpl) {
 ?>
 
    
@@ -49,7 +49,7 @@ home"><i class="icon-home"></i></a>
                                 </li>
                             
                                 <li>
-                                   Search Salary
+                                   View Salary
                                 </li>
                             </ul>
                         </div>

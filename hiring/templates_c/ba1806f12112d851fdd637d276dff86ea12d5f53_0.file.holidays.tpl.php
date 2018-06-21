@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-04-05 14:16:16
+/* Smarty version 3.1.29, created on 2018-06-21 10:42:55
   from "C:\xampp\htdocs\2017\ctsvn2\cthiring\hiring\templates\holidays.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5ac5e25886a771_87798811',
+  'unifunc' => 'content_5b2b33d7b6e4f2_30588064',
   'file_dependency' => 
   array (
     'ba1806f12112d851fdd637d276dff86ea12d5f53' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn2\\cthiring\\hiring\\templates\\holidays.tpl',
-      1 => 1518689730,
+      1 => 1529557973,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5ac5e25886a771_87798811 ($_smarty_tpl) {
+function content_5b2b33d7b6e4f2_30588064 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\2017\\ctsvn2\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -50,7 +50,7 @@ home"><i class="icon-home"></i></a>
                                 </li>
                             
                                 <li>
-                                   Search Holidays
+                                   View Holidays
                                 </li>
                             </ul>
                         </div>

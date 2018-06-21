@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-04-05 14:33:09
+/* Smarty version 3.1.29, created on 2018-06-21 10:42:21
   from "C:\xampp\htdocs\2017\ctsvn2\cthiring\hiring\templates\eligibility.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5ac5e64d90d4f8_13915503',
+  'unifunc' => 'content_5b2b33b52525c4_45821232',
   'file_dependency' => 
   array (
     'c63ea5beec1f6b0fe6cf0c3495f757e218e8a51c' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn2\\cthiring\\hiring\\templates\\eligibility.tpl',
-      1 => 1522918960,
+      1 => 1529557845,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5ac5e64d90d4f8_13915503 ($_smarty_tpl) {
+function content_5b2b33b52525c4_45821232 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\2017\\ctsvn2\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -47,7 +47,7 @@ home"><i class="icon-home"></i></a>
                                     <a href="eligibility.php">Eligibility</a>
                                 </li>    
                                 <li>
-                                   Search Eligibility
+                                   View Eligibility
                                 </li>
                             </ul>
                         </div>

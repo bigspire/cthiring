@@ -20,7 +20,7 @@
                                     <a href="eligibility.php">Eligibility</a>
                                 </li>    
                                 <li>
-                                   Search Eligibility
+                                   View Eligibility
                                 </li>
                             </ul>
                         </div>

@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-04-05 14:27:28
+/* Smarty version 3.1.29, created on 2018-06-21 10:42:24
   from "C:\xampp\htdocs\2017\ctsvn2\cthiring\hiring\templates\sharing_criteria.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5ac5e4f8128b07_54520031',
+  'unifunc' => 'content_5b2b33b8066d08_32768747',
   'file_dependency' => 
   array (
     '1b91d2a360408bd244dd755fb002adce391fdd2c' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn2\\cthiring\\hiring\\templates\\sharing_criteria.tpl',
-      1 => 1522918646,
+      1 => 1529557842,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5ac5e4f8128b07_54520031 ($_smarty_tpl) {
+function content_5b2b33b8066d08_32768747 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\2017\\ctsvn2\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -52,7 +52,7 @@ home"><i class="icon-home"></i></a>
                                 </li>
                             
                                 <li>
-                                   Search Sharing Criteria
+                                   View Sharing Criteria
                                 </li>
                             </ul>
                         </div>

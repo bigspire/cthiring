@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-04-05 16:02:10
+/* Smarty version 3.1.29, created on 2018-06-21 10:32:19
   from "C:\xampp\htdocs\2017\ctsvn2\cthiring\hiring\templates\billing.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5ac5fb2a4116c3_92331219',
+  'unifunc' => 'content_5b2b315b9ab977_58099904',
   'file_dependency' => 
   array (
     '48dfd0963843f46e5cb4bbbbbb09c5330b736cee' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn2\\cthiring\\hiring\\templates\\billing.tpl',
-      1 => 1522924249,
+      1 => 1529557316,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5ac5fb2a4116c3_92331219 ($_smarty_tpl) {
+function content_5b2b315b9ab977_58099904 ($_smarty_tpl) {
 ?>
 
    
@@ -52,7 +52,7 @@ home"><i class="icon-home"></i></a>
                                 </li>
                             
                                 <li>
-                                   Search Billing
+                                   View Billing
                                 </li>
                             </ul>
                         </div>

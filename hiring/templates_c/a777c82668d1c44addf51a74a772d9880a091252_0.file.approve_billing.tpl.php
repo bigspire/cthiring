@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-03-15 11:27:42
+/* Smarty version 3.1.29, created on 2018-06-21 10:32:16
   from "C:\xampp\htdocs\2017\ctsvn2\cthiring\hiring\templates\approve_billing.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5aaa0b56be0399_08154652',
+  'unifunc' => 'content_5b2b3158760f30_99331051',
   'file_dependency' => 
   array (
     'a777c82668d1c44addf51a74a772d9880a091252' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn2\\cthiring\\hiring\\templates\\approve_billing.tpl',
-      1 => 1518689730,
+      1 => 1529557321,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5aaa0b56be0399_08154652 ($_smarty_tpl) {
+function content_5b2b3158760f30_99331051 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\xampp\\htdocs\\2017\\ctsvn2\\cthiring\\hiring\\vendor\\smarty-3.1.29\\libs\\plugins\\function.html_options.php';
 ?>
 
@@ -53,7 +53,7 @@ home"><i class="icon-home"></i></a>
                                 </li>
                             
                                 <li>
-                                   Search Billing
+                                   View Billing
                                 </li>
                             </ul>
                         </div>
