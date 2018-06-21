@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-04-24 12:25:52
+/* Smarty version 3.1.29, created on 2018-06-21 15:45:41
   from "C:\xampp\htdocs\2017\ctsvn2\cthiring\hiring\templates\resume_exist.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5aded4f8c8bfd5_23856142',
+  'unifunc' => 'content_5b2b7acdca6050_69636046',
   'file_dependency' => 
   array (
     '40b3eef38626a1c2eb4f6cf520e5d164e550f54b' => 
     array (
       0 => 'C:\\xampp\\htdocs\\2017\\ctsvn2\\cthiring\\hiring\\templates\\resume_exist.tpl',
-      1 => 1524481129,
+      1 => 1529573880,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:include/header_popup.tpl' => 1,
   ),
 ),false)) {
-function content_5aded4f8c8bfd5_23856142 ($_smarty_tpl) {
+function content_5b2b7acdca6050_69636046 ($_smarty_tpl) {
 ?>
 
 
@@ -34,7 +34,7 @@ function content_5aded4f8c8bfd5_23856142 ($_smarty_tpl) {
                 <div class="row-fluid">
 						<div class="span12">
 							<nav>
-                     <h3><div id="flashMessage" class="alert alert-error">Oops! The resume is already uploaded by some one</div>
+                     <h3><div id="flashMessage" class="alert alert-error">Oops! The resume is already uploaded by someone</div>
 					 
 					 </h3>
                     </nav>
