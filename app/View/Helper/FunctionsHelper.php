@@ -15,6 +15,14 @@ class FunctionsHelper extends AppHelper {
 		}
 	}
 	
+		/* function used to format the date */
+	public function format_time($time){ 
+		if(!empty($time) && $time!= '0000-00-00' && $time!= '0000-00-00 00:00:00'){
+			return date('h:i a',strtotime($time));
+		}
+	}
+	
+	
 	/* function to format the date to show */
 	public function format_date_time_show($date){ 
 		if(!empty($date) && $date!= '0000-00-00' && $date!= '0000-00-00 00:00:00'){

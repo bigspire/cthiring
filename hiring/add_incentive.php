@@ -933,7 +933,7 @@ if(!empty($_POST)){
 				//}
 			}
 			
-			if($check_approved['is_approve'] != 'A' && $check['id'] == ''){					
+			if($check_approved['is_approve'] != 'A' && ($check['id'] == '' || $check['id'] == '0')){				
 				// echo '<pre>';  print_r($avg);
 				// check if percentage >= 100 and calculate incentive
 				foreach($avg as $id => $avg_rec){

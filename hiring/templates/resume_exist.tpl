@@ -10,7 +10,7 @@
                 <div class="row-fluid">
 						<div class="span12">
 							<nav>
-                     <h3><div id="flashMessage" class="alert alert-error">Oops! The resume is already uploaded by some one</div>
+                     <h3><div id="flashMessage" class="alert alert-error">Oops! The resume is already uploaded by someone</div>
 					 
 					 </h3>
                     </nav>

@@ -14,7 +14,7 @@
 
 <div class="box">
 	<div class="box-title mb5">
-			<h4>View Scheduled / Re-Scheduled Interview</h4>
+			<h4>View Interview Details</h4>
 	</div>
 	
 	
@@ -72,7 +72,18 @@
 						</td>	
 				</tr>
 				
-				<tr class="tbl_row">
+					<tr class="tbl_row" >
+					<td width="120" class="tbl_column">Interview Time 
+					</td>
+						<td>
+						<?php echo $this->Functions->format_time($interview_data['ResInterview']['int_date']);?>
+
+						</td>	
+				</tr>
+				
+				
+				
+				<tr class="">
 					<td width="120" class="tbl_column">Interview Duration 
 					</td>
 						<td>
@@ -82,7 +93,7 @@
 						</td>	
 				</tr>
 				
-				<tr class="">
+				<tr class="tbl_row">
 					<td width="120" class="tbl_column">Venue 
 					</td>
 						<td>
@@ -92,12 +103,21 @@
 						</td>	
 				</tr>
 			
-				<tr class="tbl_row">
-					<td width="120" class="tbl_column">Contact Details 
+				<tr class="">
+					<td width="120" class="tbl_column">Contact Person 
 					</td>
 						<td>
 
-						<?php echo $interview_data['ResInterview']['contact_name']?>, 
+						<?php echo $interview_data['ResInterview']['contact_name']?>
+						
+						</td>	
+				</tr>
+				
+				<tr class="tbl_row">
+					<td width="120" class="tbl_column">Contact No. 
+					</td>
+						<td>
+
 						<?php echo $interview_data['ResInterview']['contact_no']?>
 						
 						</td>	
@@ -112,6 +132,18 @@
 						
 						</td>	
 				</tr>
+				
+				
+					<tr class="tbl_row">
+					<td width="120" class="tbl_column">Last Updated
+					</td>
+						<td>
+
+						<?php echo $this->Functions->show_event_date($interview_data['ResInterview']['created_date']);?>
+						
+						</td>	
+				</tr>
+				
 				
 				</tbody>
 			</table>
