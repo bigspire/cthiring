@@ -188,6 +188,10 @@ try{
  		$data[] = $obj;
  		// $data[$i]['period'] = $fun->display_quater($fun->convert_quater_month($obj['period'])).', '.$fun->convert_quater_year($obj['period']);
  		$data[$i]['period'] = '01'.'-'.$fun->convert_quater_month($obj['period']).'-'.$fun->convert_quater_year($obj['period']);
+		// get month
+		$orderdate = explode('-', $obj['period']);
+		$month   = $orderdate[1];		
+		$data[$i]['month'] = $fun->display_months($month);
 		$data[$i]['created_date'] = $fun->convert_date_to_display($obj['created_date']);
 		$data[$i]['modified_date'] = $fun->convert_date_to_display($obj['modified_date']);
  		$data[$i]['pending'] = $fun->time_diff($obj['created_date'], $ago_str=0, 0);

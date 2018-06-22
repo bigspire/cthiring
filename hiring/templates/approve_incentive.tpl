@@ -125,7 +125,7 @@
 									<tr>
 										<td width="">{$item.employee|ucwords}</td>
 										<td width="">{$item.incentive_type}</td>
-										<td width="">{$item.incent_period_display}</td>
+										<td width="">{$item.incent_period_display} {if $item.incent_type neq 'I'}({$item.month}){/if}</td>
 										<td width="">{$item.productivity}</td>
 										<td width="">{$item.interview_candidate}</td>
 										<td width="">{$item.incentive_target_amt}</td>	
