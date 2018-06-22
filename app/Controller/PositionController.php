@@ -2614,17 +2614,18 @@ class PositionController extends AppController {
 				
 				$int_key = 0;
 				foreach($req_res_ids as $key => $req_res_id){
-					if($req_res_id != ''){
+					if($req_res_id != ''){						
 						// save req resume table
 						if($multi_chk == '1'){
+							$int_date_time = explode(' ', $this->request->data['Position']['candidate_int_date_'.$int_key]);
 							$data = array('id' => $req_res_id,'modified_date' => $this->Functions->get_current_date(),
-							'modified_by' => $this->Session->read('USER.Login.id'),	 'stage_title' => $this->request->data['Position']['candidate_level_'.$int_key],
-							'status_title' => $interview_status);
+							'modified_by' => $this->Session->read('USER.Login.id'),	 'stage_title' => $this->request->data['Position']['candidate_level_'.$int_key],	'status_title' => $interview_status, 'int_date' => $this->Functions->format_date_save(trim($int_date_time[0])).' '.trim($int_date_time[1]));
 						}else{
+							$int_date_time = explode(' ', $this->request->data['Position']['int_date']);
 							$data = array('id' => $req_res_id,'modified_date' => $this->Functions->get_current_date(),
-							'modified_by' => $this->Session->read('USER.Login.id'),	 'stage_title' => $this->request->data['Position']['interview_level'],
-							'status_title' => $interview_status);
+							'modified_by' => $this->Session->read('USER.Login.id'),	 'stage_title' => $this->request->data['Position']['interview_level'],	'status_title' => $interview_status,  'int_date' => $this->Functions->format_date_save(trim($int_date_time[0])).' '.trim($int_date_time[1]));
 						 }
+						 
 						// save  req resume
 						if($this->ReqResume->save($data, array('validate' => false))){
 							// save req resume status
@@ -2633,7 +2634,7 @@ class PositionController extends AppController {
 								$data = array('req_resume_id' => $req_res_id, 'created_date' => $this->Functions->get_current_date(),
 								'created_by' => $this->Session->read('USER.Login.id'), 'stage_title' => $this->request->data['Position']['candidate_level_'.$int_key],
 								'status_title' => $interview_status);
-							}else{
+							}else{								
 								$data = array('req_resume_id' => $req_res_id, 'created_date' => $this->Functions->get_current_date(),
 								'created_by' => $this->Session->read('USER.Login.id'), 'stage_title' => $this->request->data['Position']['interview_level'],
 								'status_title' => $interview_status);
@@ -2645,13 +2646,13 @@ class PositionController extends AppController {
 								$this->loadModel('ResInterview');
 								$this->ResInterview->id = '';
 								if($multi_chk == '1'){
-									$int_date_time = explode(' ', $this->request->data['Position']['candidate_int_date_'.$int_key]);
+									
 									$data = array('req_resume_id' => $req_res_id, 'created_date' => $this->Functions->get_current_date(),
 									'created_by' => $this->Session->read('USER.Login.id'), 'stage_title' => $this->request->data['Position']['candidate_level_'.$int_key],
 									'status_title' => $interview_status,	'int_date' => $this->Functions->format_date_save(trim($int_date_time[0])).' '.trim($int_date_time[1]),	'int_duration' => $this->request->data['Position']['candidate_duration_'.$int_key], 'int_time' => $int_date_time[1],	'interview_stage_id' => $this->request->data['Position']['candidate_stage_'.$int_key],
 									'venue' =>  $this->request->data['Position']['candidate_venue_'.$int_key],'reason_id' =>  $this->request->data['Position']['candidate_reason_'.$int_key],'additional' => $this->request->data['Position']['candidate_addi_'.$int_key],	'contact_name' => $this->request->data['Position']['candidate_person_'.$int_key], 'contact_no' => $this->request->data['Position']['candidate_mobile_'.$int_key]);
 								}else{
-									$int_date_time = explode(' ', $this->request->data['Position']['int_date']);
+									
 									$data = array('req_resume_id' => $req_res_id, 'created_date' => $this->Functions->get_current_date(),
 									'created_by' => $this->Session->read('USER.Login.id'), 'stage_title' => $this->request->data['Position']['interview_level'],
 									'status_title' => $interview_status,	'int_date' => $this->Functions->format_date_save(trim($int_date_time[0])).' '.trim($int_date_time[1]),

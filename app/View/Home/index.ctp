@@ -377,7 +377,7 @@
 										<a class="dropdown-toggle" data-toggle="dropdown" href="#">Sort by <b class="caret"></b></a>
 										<ul class="dropdown-menu sort-by">
 											<li><a href="javascript:void(0)" class="sort" data-sort="sl_name2">Candidate Name</a></li>
-											<li><a href="javascript:void(0)" class="sort" data-sort="sl_date2">Created Date</a></li>
+											<li><a href="javascript:void(0)" class="sort" data-sort="sl_date2">CV Sent Date</a></li>
 
 										</ul>
 										
@@ -405,7 +405,7 @@
 							
 							<?php foreach($resume_data as $data):?>
 								<li>
-<span class="s_color sl_date2" style="font-size:12px;color:#b2abab;"><?php echo date('d,M', strtotime($data['ReqResume']['modified_date']));?>, </span>
+<span class="s_color sl_date2" style="font-size:12px;color:#b2abab;"><?php echo date('d,M', strtotime($data['ReqResume']['cv_sent_date']));?>, </span>
 <span class="label label-<?php echo $this->Functions->get_res_status_color($data['ReqResume']['status_title']);?> pull-right sl_status2"><?php echo $this->Functions->get_status_crisp($data['ReqResume']['stage_title'], $data['ReqResume']['status_title']);?></span>
 <a  href="<?php echo $this->webroot;?>resume/view/<?php echo $data['Resume']['id'];?>" class="sl_name2"><?php echo $data[0]['full_name'];?></a><br />
 <small class="s_color sl_email2"> <?php echo $data['Resume']['email_id'];?> <i class="splashy-bullet_blue_small"></i> <?php echo $data['Resume']['mobile'];?></small>
@@ -431,7 +431,7 @@
 										<a class="dropdown-toggle" data-toggle="dropdown" href="#">Sort by <b class="caret"></b></a>
 										<ul class="dropdown-menu sort-by">
 											<li><a href="javascript:void(0)" class="sort" data-sort="sl_name">Candidate Name</a></li>
-											<li><a href="javascript:void(0)" class="sort" data-sort="sl_date">Created Date</a></li>
+											<li><a href="javascript:void(0)" class="sort" data-sort="sl_date">Interview Date</a></li>
 										</ul>
 									</li>
 									<li class="dropdown">
@@ -449,7 +449,9 @@
 							<ul class="list user_list">
 								<?php foreach($interview_data as $data):?>
 								<li>
-<span class="s_color sl_date" style="font-size:12px;color:#b2abab;"><?php echo date('d,M', strtotime($data['ReqResume']['modified_date']));?>, </span>
+								
+		<?php $interview_date = $data['ReqResume']['int_date'] ? $data['ReqResume']['int_date'] : $data['ReqResume']['modified_date']; ?>
+<span class="s_color sl_date" style="font-size:12px;color:#b2abab;"><?php echo date('d,M', strtotime($interview_date));?>, </span>
 									<span class="label label-<?php echo $this->Functions->get_int_status_color($data['ReqResume']['status_title']);?> pull-right">
 									<span class="sl_status"><?php echo $this->Functions->get_status_crisp($data['ReqResume']['stage_title'], $data['ReqResume']['status_title']);?></span></span>
 									<a  href="<?php echo $this->webroot;?>resume/view/<?php echo $data['Resume']['id'];?>" class="sl_name"><?php echo $data[0]['full_name'];?></a><br />
@@ -552,7 +554,7 @@
 										<a class="dropdown-toggle" data-toggle="dropdown" href="#">Sort by <b class="caret"></b></a>
 										<ul class="dropdown-menu sort-by">
 											<li><a href="javascript:void(0)" class="sort" data-sort="sl_name3">Candidate Name</a></li>
-											<li><a href="javascript:void(0)" class="sort" data-sort="sl_date3">Created Date</a></li>
+											<li><a href="javascript:void(0)" class="sort" data-sort="sl_date3">Offered Date</a></li>
 										</ul>
 									</li>
 									<li class="dropdown">
@@ -572,7 +574,9 @@
 							
 								<?php foreach($offer_data as $data):?>
 								<li>
-								<span class="s_color sl_date3" style="font-size:12px;color:#b2abab;"><?php echo date('d,M', strtotime($data['ReqResume']['modified_date']));?>, </span>
+				<?php $offering_date = $data['ReqResume']['date_offer'] ? $data['ReqResume']['date_offer'] : $data['ReqResume']['modified_date']; ?>
+						
+								<span class="s_color sl_date3" style="font-size:12px;color:#b2abab;"><?php echo date('d,M', strtotime($offering_date));?>, </span>
 									<span class="label label-<?php echo $this->Functions->get_offer_status_color($data['ReqResume']['status_title']);?> pull-right">
 									<span class="sl_status3"><?php echo $this->Functions->get_status_crisp($data['ReqResume']['stage_title'], $data['ReqResume']['status_title']);?></span></span>
 									<a   href="<?php echo $this->webroot;?>resume/view/<?php echo $data['Resume']['id'];?>" class="sl_name3"><?php echo $data[0]['full_name'];?></a><br />
@@ -598,7 +602,7 @@
 										<a class="dropdown-toggle" data-toggle="dropdown" href="#">Sort by <b class="caret"></b></a>
 										<ul class="dropdown-menu sort-by">
 											<li><a href="javascript:void(0)" class="sort" data-sort="sl_name4">Candidate Name</a></li>
-											<li><a href="javascript:void(0)" class="sort" data-sort="sl_date4">Created Date</a></li>
+											<li><a href="javascript:void(0)" class="sort" data-sort="sl_date4">Joining Date</a></li>
 										</ul>
 									</li>
 									<li class="dropdown">
@@ -616,7 +620,8 @@
 							<ul class="list user_list4">
 								<?php foreach($join_data as $data):?>
 								<li>
-							<span class="s_color sl_date4" style="font-size:12px;color:#b2abab;"><?php echo date('d,M', strtotime($data['ReqResume']['modified_date']));?>, </span>
+		<?php $joining_date = $data['ReqResume']['joined_on'] ? $data['ReqResume']['joined_on'] : $data['ReqResume']['plan_join_date']; ?>
+				<span class="s_color sl_date4" style="font-size:12px;color:#b2abab;"><?php echo date('d,M', strtotime($joining_date));?>, </span>
 									<span class="label label-<?php echo $this->Functions->get_join_status_color($data['ReqResume']['status_title']);?> pull-right">
 									 <span class="sl_status4"><?php echo $this->Functions->get_status_crisp($data['ReqResume']['stage_title'], $data['ReqResume']['status_title']);?></span></span>
 									<a  href="<?php echo $this->webroot;?>resume/view/<?php echo $data['Resume']['id'];?>" class="sl_name4"><?php echo $data[0]['full_name'];?></a><br />

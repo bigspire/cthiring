@@ -922,7 +922,7 @@ class FunctionsHelper extends AppHelper {
 	/* function to get leave types */
 	public function show_list_page($page){
 		if($page == ''){
-			$list_page = 'Search';
+			$list_page = 'View';
 		}else if($page == 'pending'){
 			$list_page = 'Approve';
 		}

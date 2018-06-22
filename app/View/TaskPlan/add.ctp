@@ -26,6 +26,17 @@
 			
 	<?php echo $this->Session->flash();?>
 
+		<?php if($this->request->query['st'] == 'no_task'):	?>					
+						<div class="alert alert-info">
+								<a class="close" data-dismiss="alert">×</a>
+								 Please add your task for the day to upload resume for the position
+								 </div>	
+						<?php endif; ?>
+						
+	
+	
+	
+	
 			
 	<div class="box">
 	

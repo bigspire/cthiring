@@ -469,7 +469,7 @@ class HomeController  extends AppController {
 		);
 		$date_cond = array('or' => array("DATE_FORMAT(Position.created_date, '%Y-%m-%d') between ? and ?" => array($start, $end)));
 		$fields = array('id','job_title','location','Client.client_name', 'Creator.first_name','created_date',
-		'count(ReqResume.id) cv_sent','ReqStatus.title', 'ReqTeam.no_req', 'ctc_from','ctc_to','ctc_from_type','ctc_to_type');			
+		'count(Distinct ReqResume.id) cv_sent','ReqStatus.title', 'ReqTeam.no_req', 'ctc_from','ctc_to','ctc_from_type','ctc_to_type');			
 		$conditions = array('fields' => $fields,'conditions' => array($date_cond,$pos_emp_cond2,
 		'Position.status' => 'A'),	'order' => array('Position.created_date' => 'desc'),	'group' => array('Position.id'), 'joins' => $pos_options);
 		$this->Position->unBindModel(array('belongsTo' => array('FunctionArea')));
@@ -492,7 +492,7 @@ class HomeController  extends AppController {
 		// get recent resumes sent
 		$this->loadModel('Resume');		
 		$fields = array('id',"concat(Resume.first_name,' ',Resume.last_name) full_name",'email_id','mobile', 'Creator.first_name',
-		'ReqResume.stage_title','ReqResume.status_title','ReqResume.modified_date');			
+		'ReqResume.stage_title','ReqResume.status_title','ReqResume.modified_date','ReqResume.cv_sent_date');			
 		$conditions = array('fields' => $fields,'limit' => '50','conditions' => array($date_cond, $int_emp_cond,
 		'ReqResume.stage_title' =>   array( 'Shortlist'), 'ReqResume.status_title' => 'CV-Sent', 'Resume.is_deleted' => 'N'),
 		'order' => array('ReqResume.modified_date' => 'desc'),'group' => array('Resume.id'), 'joins' => $resume_options);
@@ -529,7 +529,7 @@ class HomeController  extends AppController {
 		);
 		*/
 		$fields = array('id',"concat(Resume.first_name,' ',Resume.last_name) full_name",'email_id','mobile', 'Creator.first_name',
-		'ReqResume.modified_date','Resume.modified_date','ReqResume.stage_title','ReqResume.status_title');			
+		'ReqResume.modified_date','Resume.modified_date','ReqResume.stage_title','ReqResume.status_title','ReqResume.int_date');			
 		$conditions = array('fields' => $fields,'limit' => '50','conditions' => array($int_emp_cond,$date_cond,
 		'ReqResume.stage_title like' => '%Interview', 'Resume.is_deleted' => 'N'),
 		'order' => array('ReqResume.modified_date' => 'desc'), 'group' => array('Resume.id'), 'joins' => $resume_options);
@@ -537,7 +537,7 @@ class HomeController  extends AppController {
 		$this->set('interview_data', $data);
 		// get recent resumes with offers
 		$fields = array('id',"concat(Resume.first_name,' ',Resume.last_name) full_name",'email_id','mobile', 'Creator.first_name',
-		'ReqResume.modified_date','Resume.modified_date','ReqResume.stage_title','ReqResume.status_title');		
+		'ReqResume.modified_date','Resume.modified_date','ReqResume.stage_title','ReqResume.status_title', 'ReqResume.date_offer');		
 		$conditions = array('fields' => $fields,'limit' => '50','conditions' => array('ReqResume.stage_title' => 'Offer', 
 		$date_cond,$int_emp_cond, 'ReqResume.stage_title' => 'Offer', 'Resume.is_deleted' => 'N'),'order' => array('ReqResume.modified_date' => 'desc'),
 		'group' => array('Resume.id'), 'joins' => $resume_options);
@@ -545,10 +545,10 @@ class HomeController  extends AppController {
 		$this->set('offer_data', $data);
 		// get resent resumes joinees
 		$fields = array('id',"concat(Resume.first_name,' ',Resume.last_name) full_name",'email_id','mobile', 'Creator.first_name',
-		'Resume.created_date','ReqResume.modified_date','ReqResume.stage_title','ReqResume.status_title');		
+		'Resume.created_date','ReqResume.modified_date','ReqResume.stage_title','ReqResume.status_title', 'ReqResume.plan_join_date',
+		'ReqResume.joined_on');		
 		$conditions = array('fields' => $fields,'limit' => '50','conditions' => array('ReqResume.stage_title' => 'Joining', 
-		$date_cond,$int_emp_cond, 'ReqResume.stage_title' => 'Joining', 'Resume.is_deleted' => 'N'),'order' => array('ReqResume.modified_date' => 'desc'),
-		'group' => array('Resume.id'), 'joins' => $resume_options);
+		$date_cond,$int_emp_cond, 'ReqResume.stage_title' => 'Joining', 'Resume.is_deleted' => 'N'),'order' => array('ReqResume.modified_date' => 'desc'),		'group' => array('Resume.id'), 'joins' => $resume_options);
 		$data = $this->Resume->find('all', $conditions);
 		$this->set('join_data', $data);
 		
