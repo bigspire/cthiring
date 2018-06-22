@@ -359,6 +359,12 @@ class fun{
 		$date = date('Y-m-d H:i:s');
 		return $date;
 	}
+	
+	// function for create current date and time
+    public function current_date_db(){
+		$date = date('Y-m-d');
+		return $date;
+	}
 
 	// function to validate incentive type field 
 	public function check_incentive_type($incentive_type){

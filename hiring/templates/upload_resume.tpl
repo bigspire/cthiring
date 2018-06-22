@@ -125,7 +125,7 @@
 <script src="js/jquery.min.js"></script>
 		
 <input type="hidden" value="{$redirect_url}" class="redirect_url"/>		
-<input type="hidden" value="resume.php" class="redirect_url_value"/>	
+<input type="hidden" value="resume.php" class="redirect_url_value"/>		
 <!-- main bootstrap js -->
 
 {literal}
@@ -150,6 +150,16 @@ parent.$.colorbox.close();
 {/literal}
 {/if}
 
+{if $error_form == '1'}
+{literal}
+<script type="text/javascript">
+/* redirect to add resume page once resume uploaded successfully */
+self.parent.location.href = '../taskplan/add/?st=no_task';
+parent.jQuery(".modalCloseImg").click();
+parent.$.colorbox.close();
+</script>
+{/literal}
+{/if}
 
 {literal}
 <script type="text/javascript">
