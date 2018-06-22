@@ -13,16 +13,10 @@ class mailContent extends fun{
 	  $user_name = ucwords($user_name);
 	  
 	 foreach($incentive_user_details as $detail){	
-				$emp_detail .= "<tr><td>".$detail['employee']."</td><td>".$detail['role_name']."</td><td>".$detail['eligible_incentive_amt']."</td></tr>"; 			 
-				
-				/*$emp_detail .= "<tr>
-              	<td>"$detail['employee'];"</td>
-              	<td>"$detail['role_name'];"</td>	
-				<td> Rs."$detail['eligible_incentive_amt'];"</td>				
-             </tr>";	*/
+		$emp_detail .= "<tr><td>".$detail['employee']."</td><td>".$detail['role_name']."</td><td>".$detail['eligible_incentive_amt']."</td></tr>"; 			 
 	 }
 			 
-		
+	
 		
 			 
 	  $content = <<< EOD

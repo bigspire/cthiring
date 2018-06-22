@@ -144,15 +144,20 @@ try{
 if($row['incentive_type'] == 'I'){
 	$period1 = date('Y-m',strtotime($row['period']));
 }else if($row['incentive_type'] == 'J'){
-	$period = explode("-",$fun->convert_period(date('m',$row['period'])));
-	$period1 = date('Y',strtotime($row['period'])).'-'.$period[0];
-	$period2 = (date('Y',strtotime($row['period']))  + 1).'-'.$period[1];
+	$period = explode("-",$row['period']);
+	if($period[1] == '10'){
+		$period2 = $period[0]  + 1 .'-03';
+	}else{
+		$period2 = $period[0].'-09';
+	}
+	$period1 = $period[0].'-'.$period[1];
+	
 }
 
 
 if(!empty($row)){
 	// select and execute query and fetch the result
-	$query = "CALL view_approved_billing_details('".$emp_id."','".$row['incentive_type']."','".$period1."','".$period2."')";
+	$query = "CALL view_approved_billing_details('".$_GET['emp_id']."','".$row['incentive_type']."','".$period1."','".$period2."')";
 	try{
 		if(!$result = $mysql->execute_query($query)){
 			throw new Exception('Problem in executing view billing details');

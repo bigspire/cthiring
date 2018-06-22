@@ -1323,7 +1323,7 @@ if(!empty($_POST)){
 				if(!empty($last_inserted_id)){
 					// send mail to L1 
 					$sub = "Manage Hiring -  Incentive -  ".$fun->check_incentive_tp($_POST['type']).",  ".$month.' '.$year." Created By ".$admin_name;
-					$msg = $content->get_level1_incentive_details($incentive_user_details,$_POST,$obj,$admin_name,$level1_name,$level1_email);
+					$msg = $content->get_level1_incentive_details($incentive_user_details,$_POST,$admin_name,$level1_name);
 					$mailer->send_mail($sub,$msg,$admin_name,$admin_email,$level1_name,$level1_email);
 				
 					header("Location: approve_incentive.php?status=Created");
@@ -1443,6 +1443,7 @@ if(!empty($_POST)){
 								$req_ctc = '';
 								$incentive_target = '';								
 								$incentive_amount = '';
+								$bill_user_type = '';
 																
 								while($ctc_row = $mysql->display_result($result)){							
 									$bill_ctc[] = $ctc_row['bill_ctc'];
@@ -1462,6 +1463,8 @@ if(!empty($_POST)){
 											$bill_user_type[] = 'AH';
 										}
 									}
+									
+									// print_r($bill_user_type);
 									// for recruiter percentage calculation
 									if($rec_id == $emp_id){
 										$rec_billing = round($ctc_row['bill_ctc'] * ($sharing_percent[0]['percent']/100), 1);
@@ -1481,6 +1484,8 @@ if(!empty($_POST)){
 								//$total_billing ; 
 								$employee_salary = 100;
 								if($total_billing >= $incentive_target && !empty($employee_salary)){
+									// echo '<pre>';print_r($req_ctc);
+									//print_r($bill_user_type);
 									// iterate all the values in the bill
 									foreach($req_ctc as $key => $pos_ctc){
 										// get the incentive amount for the position CTC from eligibility table
@@ -1696,7 +1701,8 @@ if(!empty($_POST)){
 					throw new Exception('Problem in getting the incentive user details');
 				}
 				// calling mysql fetch_result function
-				$incentive_user_details = $mysql->display_result($result);
+				while($incentive_user_details[] = $mysql->display_result($result)){
+				}
 				// free the memory
 				$mysql->clear_result($result);
 				// call the next result
@@ -1736,11 +1742,11 @@ if(!empty($_POST)){
 			$position_month = $fun->display_pc_Months($_POST['position_month']);
 			$month = $ps_month ? $ps_month : $position_month;
 			$year = $_POST['year'] ? $_POST['year'] : $_POST['ps_year'];
-				
+
 			if(!empty($last_id)){
 				// send mail to L1 
 				$sub = "Manage Hiring -  Incentive -  ".$fun->check_incentive_tp($_POST['type']).",  ".$month.' '.$year." Created By ".$admin_name;
-				$msg = $content->get_level1_incentive_details($incentive_user_details,$_POST,$obj,$admin_name,$level1_name,$level1_email);
+				$msg = $content->get_level1_incentive_details($incentive_user_details,$_POST,$admin_name,$level1_name);
 				$mailer->send_mail($sub,$msg,$admin_name,$admin_email,$level1_name,$level1_email);
 				header("Location: approve_incentive.php?status=Created");
 			}else{
