@@ -157,7 +157,7 @@ if($row['incentive_type'] == 'I'){
 
 if(!empty($row)){
 	// select and execute query and fetch the result
-	$query = "CALL view_approved_billing_details('".$_GET['emp_id']."','".$row['incentive_type']."','".$period1."','".$period2."')";
+	$query = "CALL view_approved_billing_details('".$_GET['emp_id']."','".$row['incentive_type']."','".$period1."')";
 	try{
 		if(!$result = $mysql->execute_query($query)){
 			throw new Exception('Problem in executing view billing details');

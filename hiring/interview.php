@@ -85,7 +85,9 @@ if($_POST){
 				$id_str .=  $row['id'].', ';
 			}
 			$smarty->assign('approveUser', '1');	
-			$cond .= 'and ( rri.created_by in('.substr($id_str, 0, strlen($id_str)-2).') )';
+			if($row != ''){
+				$cond .= 'and ( rri.created_by in('.substr($id_str, 0, strlen($id_str)-2).') )';
+		    }
 			$smarty->assign('emp_name',$emp_name);
 		}
 		

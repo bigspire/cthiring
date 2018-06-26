@@ -25,23 +25,6 @@ include('menu_count.php');
 // get current date 
 $current_date = $fun->current_date_db();
 
-$query = "CALL get_task_plan_details('".$current_date."','".$_SESSION['user_id']."','".$_SESSION['req_id']."')";
-try{
-	// calling mysql exe_query function
-	if(!$result = $mysql->execute_query($query)){
-		throw new Exception('Problem in getting client and position details');
-	}
-	$check_task = $mysql->display_result($result);
-	// free the memory
-	$mysql->clear_result($result);
-	// call the next result
-	$mysql->next_query();
-}catch(Exception $e){
-	echo 'Caught exception: ',  $e->getMessage(), "\n";
-}
-if(empty($check_task)){
-	$smarty->assign('error_form' , 1);
-}else{
 	
 	if($_GET['client_id'] != ''  and $_GET['req_id'] != ''){
 		$_SESSION['client_id'] = $_GET['client_id'];
@@ -49,27 +32,46 @@ if(empty($check_task)){
 		$smarty->assign('client_id',$_SESSION['client_id']);
 		$smarty->assign('req_id',$_SESSION['req_id'] );
 			
-		// query to fetch all clients names. 
-		$query = "CALL get_clients_position('".$_SESSION['client_id']."','".$_SESSION['req_id']."')";
+		$query = "CALL get_task_plan_details('".$current_date."','".$_SESSION['user_id']."','".$_SESSION['req_id']."')";
 		try{
 			// calling mysql exe_query function
 			if(!$result = $mysql->execute_query($query)){
 				throw new Exception('Problem in getting client and position details');
 			}
-			$row = $mysql->display_result($result);
-			$smarty->assign('client',ucwords($row['client_name']));
-			$smarty->assign('position_for',ucwords($row['job_title']));
-				
-			$url = $row['resume_type'] == 'F' ? 'add_formatted_resume.php' : 'add_resume.php';
-			// $id = '144576';
-			// $smarty->assign('redirect_url',$url.'?id='.$id);
-			$smarty->assign('redirect_url',$url);
+			$check_task = $mysql->display_result($result);
 			// free the memory
 			$mysql->clear_result($result);
 			// call the next result
 			$mysql->next_query();
 		}catch(Exception $e){
 			echo 'Caught exception: ',  $e->getMessage(), "\n";
+		}
+		if(empty($check_task)){
+			$smarty->assign('error_form' , 1);
+		}else{
+	
+			// query to fetch all clients names. 
+			$query = "CALL get_clients_position('".$_SESSION['client_id']."','".$_SESSION['req_id']."')";
+			try{
+				// calling mysql exe_query function
+				if(!$result = $mysql->execute_query($query)){
+					throw new Exception('Problem in getting client and position details');
+				}
+				$row = $mysql->display_result($result);
+				$smarty->assign('client',ucwords($row['client_name']));
+				$smarty->assign('position_for',ucwords($row['job_title']));
+					
+				$url = $row['resume_type'] == 'F' ? 'add_formatted_resume.php' : 'add_resume.php';
+				// $id = '144576';
+				// $smarty->assign('redirect_url',$url.'?id='.$id);
+				$smarty->assign('redirect_url',$url);
+				// free the memory
+				$mysql->clear_result($result);
+				// call the next result
+				$mysql->next_query();
+			}catch(Exception $e){
+				echo 'Caught exception: ',  $e->getMessage(), "\n";
+			}
 		}
 	}else{
 			
@@ -115,21 +117,42 @@ if(empty($check_task)){
 		}catch(Exception $e){
 			echo 'Caught exception: ',  $e->getMessage(), "\n";
 		} 
+		
+		
 			
-		// query to fetch all clients names. 
-		$query = "CALL get_clients_position('".$_POST['client']."','".$_POST['position_for']."')";
+			// query to fetch all clients names. 
+			$query = "CALL get_clients_position('".$_POST['client']."','".$_POST['position_for']."')";
+			try{
+				// calling mysql exe_query function
+				if(!$result = $mysql->execute_query($query)){
+					throw new Exception('Problem in getting client and position details');
+				}
+				$row = $mysql->display_result($result);
+				$smarty->assign('client',ucwords($row['client_name']));
+				$smarty->assign('position_for',ucwords($row['job_title']));
+				$url = $row['resume_type'] == 'F' ? 'add_formatted_resume.php' : 'add_resume.php';
+				// $id = '144576';
+				// $smarty->assign('redirect_url',$url.'?id='.$id);
+				$smarty->assign('redirect_url',$url);
+				// free the memory
+				$mysql->clear_result($result);
+				// call the next result
+				$mysql->next_query();
+			}catch(Exception $e){
+				echo 'Caught exception: ',  $e->getMessage(), "\n";
+			}
+		
+	}
+
+	if($_SERVER["REQUEST_METHOD"] == "POST"){
+		
+		$query = "CALL get_task_plan_details('".$current_date."','".$_SESSION['user_id']."','".$_POST['position_for']."')";
 		try{
 			// calling mysql exe_query function
 			if(!$result = $mysql->execute_query($query)){
 				throw new Exception('Problem in getting client and position details');
 			}
-			$row = $mysql->display_result($result);
-			$smarty->assign('client',ucwords($row['client_name']));
-			$smarty->assign('position_for',ucwords($row['job_title']));
-			$url = $row['resume_type'] == 'F' ? 'add_formatted_resume.php' : 'add_resume.php';
-			// $id = '144576';
-			// $smarty->assign('redirect_url',$url.'?id='.$id);
-			$smarty->assign('redirect_url',$url);
+			$check_task = $mysql->display_result($result);
 			// free the memory
 			$mysql->clear_result($result);
 			// call the next result
@@ -137,9 +160,9 @@ if(empty($check_task)){
 		}catch(Exception $e){
 			echo 'Caught exception: ',  $e->getMessage(), "\n";
 		}
-	}
-
-	if($_SERVER["REQUEST_METHOD"] == "POST"){
+		if(empty($check_task)){
+			$smarty->assign('error_form' , 1);
+		}else{
 
 		// validating the required fields
 		if(!isset($_POST['resume']) && empty($_FILES['resume']['name'])){
@@ -279,8 +302,8 @@ if(empty($check_task)){
 		if(!empty($last_id)){
 			$smarty->assign('form_sent' , 1);	
 		} 
-	}
-}
+	}}
+//}
 // closing mysql
 $mysql->close_connection();
 
